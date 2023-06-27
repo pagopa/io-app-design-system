@@ -1,5 +1,5 @@
 {
-  "name": "io-app-design-system",
+  "name": "@pagopa/io-app-design-system",
   "version": "0.1.0",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -40,13 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/PagoPa/io-app-design-system",
-  "author": "PagoPa <cri.tofani@gmail.com> (https://github.com/PagoPa)",
+  "repository": "https://github.com/pagopa/io-app-design-system",
+  "author": "PagoPa (https://github.com/pagopa)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PagoPa/io-app-design-system/issues"
+    "url": "https://github.com/pagopa/io-app-design-system/issues"
   },
-  "homepage": "https://github.com/PagoPa/io-app-design-system#readme",
+  "homepage": "https://github.com/pagopa/io-app-design-system#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
