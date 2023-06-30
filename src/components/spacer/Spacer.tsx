@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import type { IOSpacer } from "../../core";
-import { hexToRgba, IOColors } from "../../core";
+import { hexToRgba, IOColors, IOSpacer } from "../../core";
 import { HORIZONTAL, VERTICAL } from "../../utils/constants";
 
 export type SpacerOrientation = typeof VERTICAL | typeof HORIZONTAL;
