@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { View, Text } from "react-native";
-import { IOStyles } from "io-app-design-system";
+import { IOStyles } from "@pagopa/io-app-design-system/core";
 
 export default function App() {
   return (
