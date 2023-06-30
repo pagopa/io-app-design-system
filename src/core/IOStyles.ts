@@ -1,5 +1,4 @@
 import { Platform, StyleSheet } from "react-native";
-import themeVariables from "../utils/variables";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
 import { IOAppMargin, IOSpacer, IOSpacingScale } from "./IOSpacing";
@@ -21,8 +20,6 @@ export const IOVisualCostants: IOVisualCostants = {
   avatarSizeMedium: 66
 };
 
-// TODO: in a first iteration, to avoid overlaps,
-//  if a value already exists, will be used from themeVariables
 export const IOStyles = StyleSheet.create({
   flex: {
     flex: 1
@@ -34,7 +31,7 @@ export const IOStyles = StyleSheet.create({
     alignItems: "center"
   },
   horizontalContentPadding: {
-    paddingHorizontal: themeVariables.contentPadding
+    paddingHorizontal: IOVisualCostants.appMarginDefault
   },
   row: {
     flexDirection: "row"
@@ -53,20 +50,19 @@ export const IOStyles = StyleSheet.create({
   // NativeBase's `View`. They are moved here to
   // prevent UI regressions.
   footer: {
-    backgroundColor: themeVariables.footerBackground,
-    paddingBottom: themeVariables.footerPaddingBottom,
-    paddingLeft: themeVariables.footerPaddingLeft,
-    paddingRight: themeVariables.footerPaddingRight,
-    paddingTop: themeVariables.footerPaddingTop,
+    backgroundColor: IOColors.white,
+    paddingBottom: 16,
+    paddingHorizontal: IOVisualCostants.appMarginDefault,
+    paddingTop: 16,
     // iOS shadow
-    shadowColor: themeVariables.footerShadowColor,
+    shadowColor: IOColors.black,
     shadowOffset: {
-      width: themeVariables.footerShadowOffsetWidth,
-      height: themeVariables.footerShadowOffsetHeight
+      width: 0,
+      height: 50
     },
-    shadowOpacity: themeVariables.footerShadowOpacity,
-    shadowRadius: themeVariables.footerShadowRadius,
-    elevation: themeVariables.footerElevation // Prop supported on Android only
+    shadowOpacity: 0.5,
+    shadowRadius: 37,
+    elevation: 20 // Prop supported on Android only
   },
   bgWhite: {
     backgroundColor: IOColors.white
@@ -106,7 +102,7 @@ export const IOButtonLegacyStyles = StyleSheet.create({
     textAlignVertical: "center", // Prop supported on Android only
     /* Legacy visual properties. They will be replaced with
     dynamic ones once NativeBase is gone */
-    borderRadius: themeVariables.btnBorderRadius,
+    borderRadius: 4,
     paddingHorizontal: 16,
     // Reset default visual parameters
     elevation: 0
