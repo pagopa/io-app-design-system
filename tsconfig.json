@@ -2,28 +2,32 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "io-app-design-system": ["./src/index"]
+      "@pagopa/io-app-design-system": ["./src/index"],
+      "@pagopa/io-app-design-system/core": ["./src/core"]
     },
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "esModuleInterop": true,
-    "ignoreDeprecations": "5.0",
-    "importsNotUsedAsValues": "error",
-    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es6", "dom", "es2019"],
     "jsx": "react",
-    "lib": ["esnext"],
-    "module": "esnext",
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noStrictGenericChecks": false,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "allowJs": false,
     "strict": true,
-    "target": "esnext"
-  }
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "useUnknownInCatchVariables": true
+  },
+  "exclude": [
+    "android",
+    "ios",
+    "node_modules"
+  ]
 }
