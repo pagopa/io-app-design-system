@@ -4,7 +4,6 @@ export type ThemeSimpleValue = undefined | number | string;
 export type Theme = {
   [key: string]: ThemeSimpleValue | Theme;
 };
-<<<<<<< HEAD
 
 /**
  * Ensure that all the keys of type T are required, transforming all optional field of kind T | undefined to T
@@ -22,5 +21,3 @@ type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> = T | U extends object
   ? (Without<T, U> & U) | (Without<U, T> & T)
   : T | U;
-=======
->>>>>>> 83e4439c2fe9be1339e85bc3ece1fd684c4a1a07
