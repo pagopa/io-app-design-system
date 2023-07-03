@@ -1,0 +1,33 @@
+import React from "react";
+import { View } from "react-native";
+import { IOColors, IOThemeContext } from "../../core";
+
+type DividerOrientation = "vertical" | "horizontal";
+
+type DividerProps = {
+    orientation: DividerOrientation;
+};
+
+const DEFAULT_BORDER_SIZE = 1;
+
+/**
+Native `Divider` component
+@param  {DividerOrientation} orientation
+ */
+const BaseDivider = React.memo(({ orientation }: DividerProps) => {
+    const theme = React.useContext(IOThemeContext);
+    const baseStyle = {
+        backgroundColor: IOColors[theme["divider-default"]],
+        ...(orientation === "vertical" ? { width: DEFAULT_BORDER_SIZE } : { height: DEFAULT_BORDER_SIZE })
+    };
+    return <View style={baseStyle} />;
+});
+
+/**
+Horizontal Divider component
+ */
+export const Divider = () => <BaseDivider orientation={"horizontal"} />;
+/**
+Vertical Divider component
+ */
+export const VDivider = () => <BaseDivider orientation={"vertical"} />;
