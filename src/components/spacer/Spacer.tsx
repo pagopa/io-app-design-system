@@ -1,9 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { hexToRgba, IOColors, IOSpacer } from "../../core";
-import { HORIZONTAL, VERTICAL } from "../../utils/constants";
 
-export type SpacerOrientation = typeof VERTICAL | typeof HORIZONTAL;
+export type SpacerOrientation = "vertical" | "horizontal";
 
 type BaseSpacerProps = {
     orientation: SpacerOrientation;
@@ -27,10 +26,10 @@ Native `Spacer` component
  */
 const Spacer = ({ orientation, size }: BaseSpacerProps) => {
     const style = React.useMemo(() => ({
-        ...(orientation === VERTICAL && {
+        ...(orientation === "vertical" && {
             height: size
         }),
-        ...(orientation === HORIZONTAL && {
+        ...(orientation === "horizontal" && {
             width: size
         }),
         ...((debugMode as boolean) && {
@@ -46,12 +45,12 @@ Horizontal spacer component
 @param {IOSpacer} size
  */
 export const HSpacer = ({ size = DEFAULT_SIZE }: SpacerProps) => (
-    <Spacer orientation={HORIZONTAL} size={size} />
+    <Spacer orientation={"horizontal"} size={size} />
 );
 /**
 Vertical spacer component
 @param {IOSpacer} size
  */
 export const VSpacer = ({ size = DEFAULT_SIZE }: SpacerProps) => (
-    <Spacer orientation={VERTICAL} size={size} />
+    <Spacer orientation={"vertical"} size={size} />
 );

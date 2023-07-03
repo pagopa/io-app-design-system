@@ -1,9 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { IOColors, IOThemeContext } from "../../core";
-import { DIVIDER_DEFAULT, HORIZONTAL, VERTICAL } from "../../utils/constants";
 
-type DividerOrientation = typeof VERTICAL | typeof HORIZONTAL;
+type DividerOrientation = "vertical" | "horizontal";
 
 type DividerProps = {
     orientation: DividerOrientation;
@@ -18,8 +17,8 @@ Native `Divider` component
 const BaseDivider = React.memo(({ orientation }: DividerProps) => {
     const theme = React.useContext(IOThemeContext);
     const baseStyle = {
-        backgroundColor: IOColors[theme[DIVIDER_DEFAULT]],
-        ...(orientation === VERTICAL ? { width: DEFAULT_BORDER_SIZE } : { height: DEFAULT_BORDER_SIZE })
+        backgroundColor: IOColors[theme["divider-default"]],
+        ...(orientation === "vertical" ? { width: DEFAULT_BORDER_SIZE } : { height: DEFAULT_BORDER_SIZE })
     };
     return <View style={baseStyle} />;
 });
@@ -27,8 +26,8 @@ const BaseDivider = React.memo(({ orientation }: DividerProps) => {
 /**
 Horizontal Divider component
  */
-export const Divider = () => <BaseDivider orientation={HORIZONTAL} />;
+export const Divider = () => <BaseDivider orientation={"horizontal"} />;
 /**
 Vertical Divider component
  */
-export const VDivider = () => <BaseDivider orientation={VERTICAL} />;
+export const VDivider = () => <BaseDivider orientation={"vertical"} />;
