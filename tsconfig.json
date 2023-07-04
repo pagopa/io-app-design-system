@@ -3,7 +3,9 @@
     "baseUrl": "./",
     "paths": {
       "@pagopa/io-app-design-system": ["./src/index"],
-      "@pagopa/io-app-design-system/core": ["./src/core"]
+      "@pagopa/io-app-design-system/core": ["./src/core"],
+      "@pagopa/io-app-design-system/components": ["./src/components"],
+      "@pagopa/io-app-design-system/pictograms": ["./src/components/pictograms"],
     },
     "target": "esnext",
     "module": "commonjs",
