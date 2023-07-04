@@ -12,10 +12,7 @@ type AllowedFontSize = { fontSize?: FontSize };
 type OwnProps = ExternalTypographyProps<
     TypographyProps<AllowedWeight, AllowedColors>
 > &
-    AllowedFontSize & { isDesignSystemEnabled?: boolean };;
-
-export const linkLegacyDefaultColor: AllowedColors = "blue";
-export const linkLegacyDefaultWeight: AllowedWeight = "SemiBold";
+    AllowedFontSize;
 
 export const linkDefaultColor: AllowedColors = "blueIO-500";
 export const linkDefaultWeight: AllowedWeight = "Bold";
@@ -27,17 +24,11 @@ export const linkDefaultWeight: AllowedWeight = "Bold";
  * @constructor
  */
 export const Link: React.FC<OwnProps> = (props) => {
-    const isDesignSystemEnabled = props.isDesignSystemEnabled ?? false;
-
     const fontName: FontFamily = "TitilliumWeb";
     const fontSizeMapping: Record<FontSize, number> = { regular: 16, small: 14 };
 
-    const defaultWeight = isDesignSystemEnabled
-        ? linkDefaultWeight
-        : linkLegacyDefaultWeight;
-    const defaultColor = isDesignSystemEnabled
-        ? linkDefaultColor
-        : linkLegacyDefaultColor;
+    const defaultWeight = linkDefaultWeight;
+    const defaultColor = linkDefaultColor;
 
     const defaultFontSize = props.fontSize
         ? fontSizeMapping[props.fontSize]

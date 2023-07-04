@@ -9,7 +9,7 @@ type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
 
 type OwnProps = ExternalTypographyProps<
     TypographyProps<AllowedWeight, AllowedColors>
-> & { isDesignSystemEnabled?: boolean };
+>;
 
 /* Common typographic styles */
 export const h2FontSize = 20;
@@ -22,21 +22,10 @@ export const h2LineHeight = 24;
  * @constructor
  */
 export const H4: React.FC<OwnProps> = props => {
-    const isDesignSystemEnabled = props.isDesignSystemEnabled ?? false;
-
-    /* Legacy typographic styles */
-    const h2LegacyFontName: FontFamily = "TitilliumWeb";
-    const h2LegacyDefaultColor: AllowedColors = "bluegreyDark";
-    const h2LegacyDefaultWeight: AllowedWeight = "SemiBold";
-
     /* New typographic styles */
-    const h2FontName: FontFamily = "ReadexPro";
-    const h2DefaultColor: AllowedColors = "black";
-    const h2DefaultWeight: AllowedWeight = "Regular";
-
-    const font = isDesignSystemEnabled ? h2FontName : h2LegacyFontName;
-    const defaultColor = isDesignSystemEnabled ? h2DefaultColor : h2LegacyDefaultColor;
-    const defaultWeight = isDesignSystemEnabled ? h2DefaultWeight : h2LegacyDefaultWeight;
+    const font: FontFamily = "ReadexPro";
+    const defaultColor: AllowedColors = "black";
+    const defaultWeight: AllowedWeight = "Regular";
 
     return useTypographyFactory<AllowedWeight, AllowedColors>({
         ...props,
