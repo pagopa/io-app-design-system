@@ -147,9 +147,9 @@
     "@pagopa/ts-commons": "^12.0.0",
     "@testing-library/jest-native": "^5.4.2",
     "@types/react-test-renderer": "^18.0.0",
-    "react-native-reanimated": "^2.9.1",
     "react-native-haptic-feedback": "^2.0.2",
-    "react-native-svg": "^12.3.0",
-    "react-native-linear-gradient": "^2.7.3"
+    "react-native-linear-gradient": "^2.7.3",
+    "react-native-reanimated": "^2.9.1",
+    "react-native-svg": "^12.3.0"
   }
 }
