@@ -1,0 +1,482 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#CCD4DC",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <Text
+        color="black"
+        defaultColor="black"
+        defaultWeight="Regular"
+        font="ReadexPro"
+        fontStyle={
+          {
+            "fontSize": 20,
+            "lineHeight": 24,
+          }
+        }
+        style={
+          [
+            {
+              "fontSize": 20,
+              "lineHeight": 24,
+            },
+            {
+              "color": "#0E0F13",
+              "fontFamily": "Readex Pro",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+          ]
+        }
+        weight="Regular"
+      >
+        label
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "marginLeft": 8,
+        }
+      }
+    >
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight="24"
+        bbWidth="24"
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0073E6",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+        tintColor="#0073E6"
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGPath
+            d="M12.028 7.556a1.528 1.528 0 1 0 0-3.056 1.528 1.528 0 0 0 0 3.056ZM12.028 9.5C11.46 9.5 11 9.96 11 10.528v8.005a1.028 1.028 0 0 0 2.057 0v-8.005c0-.568-.461-1.028-1.029-1.028Z"
+            fill={
+              {
+                "type": 2,
+              }
+            }
+            propList={
+              [
+                "fill",
+              ]
+            }
+          />
+          <RNSVGPath
+            clipRule={0}
+            d="M0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12Zm19.288-7.288A10.238 10.238 0 0 0 12 1.693c-2.753 0-5.34 1.072-7.288 3.02A10.24 10.24 0 0 0 1.693 12c0 2.753 1.072 5.341 3.02 7.288A10.24 10.24 0 0 0 12 22.307c2.753 0 5.34-1.072 7.288-3.02A10.238 10.238 0 0 0 22.307 12c0-2.753-1.072-5.34-3.02-7.288Z"
+            fill={
+              {
+                "type": 2,
+              }
+            }
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  hitSlop={
+    {
+      "bottom": 14,
+      "left": 24,
+      "right": 24,
+      "top": 14,
+    }
+  }
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "textAlignVertical": "center",
+        },
+        false,
+        {},
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontFamily": "Readex Pro",
+            "fontSize": 16,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 8,
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingHorizontal": 24,
+          "textAlignVertical": "center",
+        },
+        {
+          "borderWidth": 2,
+        },
+        false,
+        {
+          "height": 48,
+        },
+        {
+          "backgroundColor": "rgba(231,236,252,0)",
+          "borderColor": "#0B3EE3",
+        },
+        {
+          "backgroundColor": undefined,
+          "borderColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontFamily": "Readex Pro",
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          {
+            "alignSelf": "center",
+          },
+          {
+            "fontSize": 16,
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 8,
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingHorizontal": 24,
+          "textAlignVertical": "center",
+        },
+        false,
+        {
+          "height": 48,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+        },
+        {
+          "backgroundColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Text
+      color="white"
+      ellipsizeMode="tail"
+      font="ReadexPro"
+      numberOfLines={1}
+      style={
+        [
+          [
+            {
+              "alignSelf": "center",
+            },
+            {
+              "fontSize": 16,
+            },
+          ],
+          undefined,
+          {
+            "color": "#FFFFFF",
+            "fontFamily": "Readex Pro",
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+        ]
+      }
+      weight="Regular"
+    >
+      label
+    </Text>
+  </View>
+</View>
+`;
