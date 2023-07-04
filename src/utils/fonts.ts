@@ -4,10 +4,19 @@
  * README file included in this repository.
  */
 
-import { Platform, PlatformStatic } from "react-native";
+import { Platform } from "react-native";
 
-type PlatformSelectType = PlatformStatic["select"];
+export type IOFontFamily = keyof typeof fonts;
 
+const weights = ["Light", "Regular", "SemiBold", "Bold"] as const;
+export type IOFontWeight = (typeof weights)[number];
+
+const weightValues = ["300", "400", "600", "700"] as const;
+export type FontWeightValue = (typeof weightValues)[number];
+
+/**
+ * Choose the font name based on the platform
+ */
 const fonts = {
   TitilliumWeb: Platform.select({
     android: "TitilliumWeb",
@@ -23,21 +32,19 @@ const fonts = {
   })
 };
 
-export const fontWeights = {
-  "300": "Light",
-  "400": "Regular",
-  "600": "SemiBold",
-  "700": "Bold"
+/**
+ * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value
+ * used on iOS
+ */
+export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
+  Light: "300",
+  Regular: "400",
+  SemiBold: "600",
+  Bold: "700"
 };
 
 export type FontFamily = keyof typeof fonts;
 export type FontWeight = keyof typeof fontWeights;
-
-const weights = ["Light", "Regular", "SemiBold", "Bold"] as const;
-export type IOFontWeight = typeof weights[number];
-
-const weightValues = ["300", "400", "600", "700"] as const;
-export type FontWeightValue = typeof weightValues[number];
 
 /**
  * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value
@@ -55,34 +62,35 @@ export enum FontStyle {
   "italic" = "italic"
 }
 
-export type FontStyleObject = {
+type FontStyleObject = {
   fontFamily: string;
   fontWeight?: FontWeightValue;
   fontStyle?: FontStyle;
 };
 
 /**
- * Get the correct fontFamily name on both Android and iOS
+ * Get the correct `fontFamily` name on both Android and iOS.
+ * @param font
+ * @param weight
+ * @param isItalic
  */
 export const makeFontFamilyName = (
-  osSelect: PlatformSelectType,
   font: FontFamily,
   weight?: IOFontWeight,
   isItalic: boolean = false
 ): string =>
-  osSelect({
+  Platform.select({
     default: "undefined",
-    android: `${fonts[font]}-${weight || "Regular"}${isItalic ? "Italic" : ""
-      }`,
+    android: `${fonts[font]}-${weight || "Regular"}${isItalic ? "Italic" : ""}`,
     ios: fonts[font]
   });
 
 /**
-* Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
-* @param weight
-* @param isItalic
-* @param font
-*/
+ * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
+ * @param weight
+ * @param isItalic
+ * @param font
+ */
 export const makeFontStyleObject = (
   weight: IOFontWeight | undefined = undefined,
   isItalic: boolean | undefined = false,
@@ -93,10 +101,10 @@ export const makeFontStyleObject = (
       fontFamily: "undefined"
     },
     android: {
-      fontFamily: makeFontFamilyName(Platform.select, font, weight, isItalic)
+      fontFamily: makeFontFamilyName(font, weight, isItalic)
     },
     ios: {
-      fontFamily: makeFontFamilyName(Platform.select, font, weight, isItalic),
+      fontFamily: makeFontFamilyName(font, weight, isItalic),
       fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
       fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
     }

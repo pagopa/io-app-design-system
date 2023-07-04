@@ -6,6 +6,7 @@
       "@pagopa/io-app-design-system/core": ["./src/core"],
       "@pagopa/io-app-design-system/components": ["./src/components"],
       "@pagopa/io-app-design-system/pictograms": ["./src/components/pictograms"],
+      "@pagopa/io-app-design-system/icons": ["./src/components/icons"]
     },
     "target": "esnext",
     "module": "commonjs",
