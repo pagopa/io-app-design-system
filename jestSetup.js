@@ -1,4 +1,4 @@
-/* globals jest, NativeModules, require, global */
+/* globals jest, NativeModules */
 /**
  * Set up of the testing environment
  */
