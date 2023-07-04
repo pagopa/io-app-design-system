@@ -25,6 +25,3 @@ runs:
         yarn install --cwd example --frozen-lockfile
         yarn install --frozen-lockfile
       shell: bash
-
-    - name: Run tests
-      run: yarn test
