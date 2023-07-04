@@ -1,18 +1,26 @@
 import React, { useMemo } from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
 import { IOColors } from "../../core/IOColors";
-import { FontFamily, IOFontWeight, makeFontStyleObject } from "../../utils/fonts";
+import {
+  IOFontFamily,
+  IOFontWeight,
+  makeFontStyleObject
+} from "../../utils/fonts";
 
 /**
  * The specific properties needed to calculate the font style using {@link makeFontStyleObject} (these information
  * cannot be included in the default StyleProp<TextStyle>
  */
 type BaseTypographyProps = {
-    weight: IOFontWeight;
-    color: IOColors;
-    font?: FontFamily;
-    isItalic?: boolean;
+  weight: IOFontWeight;
+  color: IOColors;
+  font?: IOFontFamily;
+  isItalic?: boolean;
 };
+
+type OwnProps = BaseTypographyProps & {
+  fontStyle?: StyleProp<TextStyle>;
+} & React.ComponentPropsWithRef<typeof Text>;
 
 /**
  * Decorate the function {@link makeFontStyleObject} with the additional color calculation.
@@ -20,16 +28,12 @@ type BaseTypographyProps = {
  * @param args the args of the function {@link makeFontStyleObject}
  */
 const calculateTextStyle = (
-    color: IOColors,
-    ...args: Parameters<typeof makeFontStyleObject>
+  color: IOColors,
+  ...args: Parameters<typeof makeFontStyleObject>
 ) => ({
-    ...makeFontStyleObject(...args),
-    color: IOColors[color]
+  ...makeFontStyleObject(...args),
+  color: IOColors[color]
 });
-
-type OwnProps = BaseTypographyProps & {
-    fontStyle?: StyleProp<TextStyle>;
-} & React.ComponentPropsWithRef<typeof Text>;
 
 /**
  * `BaseTypography` is the core Typography component used to render a text.
@@ -40,18 +44,18 @@ type OwnProps = BaseTypographyProps & {
  * @constructor
  */
 export const BaseTypography: React.FC<OwnProps> = props => {
-    const fontStyle = useMemo(
-        () =>
-            calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
-        [props.color, props.weight, props.isItalic, props.font]
-    );
-    const style = props.style
-        ? [props.style, props.fontStyle, fontStyle]
-        : [props.fontStyle, fontStyle];
+  const fontStyle = useMemo(
+    () =>
+      calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
+    [props.color, props.weight, props.isItalic, props.font]
+  );
+  const style = props.style
+    ? [props.style, props.fontStyle, fontStyle]
+    : [props.fontStyle, fontStyle];
 
-    return (
-        <Text {...props} style={style}>
-            {props.children}
-        </Text>
-    );
+  return (
+    <Text {...props} style={style}>
+      {props.children}
+    </Text>
+  );
 };
