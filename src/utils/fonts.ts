@@ -14,8 +14,6 @@ export type IOFontWeight = (typeof weights)[number];
 const weightValues = ["300", "400", "600", "700"] as const;
 export type FontWeightValue = (typeof weightValues)[number];
 
-const fontKeys: ReadonlyArray<IOFontFamily> = ["TitilliumWeb", "RobotoMono"];
-
 /**
  * Choose the font name based on the platform
  */
@@ -48,12 +46,6 @@ export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
 export type FontFamily = keyof typeof fonts;
 export type FontWeight = keyof typeof fontWeights;
 
-const weights = ["Light", "Regular", "SemiBold", "Bold"] as const;
-export type IOFontWeight = typeof weights[number];
-
-const weightValues = ["300", "400", "600", "700"] as const;
-export type FontWeightValue = typeof weightValues[number];
-
 /**
  * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value
  * used on iOS
@@ -83,7 +75,6 @@ type FontStyleObject = {
  * @param isItalic
  */
 export const makeFontFamilyName = (
-  osSelect: PlatformSelectType,
   font: FontFamily,
   weight?: IOFontWeight,
   isItalic: boolean = false
@@ -95,11 +86,11 @@ export const makeFontFamilyName = (
   });
 
 /**
-* Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
-* @param weight
-* @param isItalic
-* @param font
-*/
+ * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
+ * @param weight
+ * @param isItalic
+ * @param font
+ */
 export const makeFontStyleObject = (
   weight: IOFontWeight | undefined = undefined,
   isItalic: boolean | undefined = false,
@@ -110,10 +101,10 @@ export const makeFontStyleObject = (
       fontFamily: "undefined"
     },
     android: {
-      fontFamily: makeFontFamilyName(Platform.select, font, weight, isItalic)
+      fontFamily: makeFontFamilyName(font, weight, isItalic)
     },
     ios: {
-      fontFamily: makeFontFamilyName(Platform.select, font, weight, isItalic),
+      fontFamily: makeFontFamilyName(font, weight, isItalic),
       fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
       fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
     }
