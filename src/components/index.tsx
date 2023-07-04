@@ -1,3 +1,4 @@
+export * from "./pictograms";
 export * from "./icons";
 export * from "./checkbox";
 export * from "./radio";
