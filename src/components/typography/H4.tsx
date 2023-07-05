@@ -12,8 +12,8 @@ type OwnProps = ExternalTypographyProps<
 >;
 
 /* Common typographic styles */
-export const h2FontSize = 20;
-export const h2LineHeight = 24;
+export const h4FontSize = 20;
+export const h4LineHeight = 24;
 
 /**
  * Typography component to render `H4` text with font size {@link fontSize} and fontFamily {@link fontName}.
@@ -32,6 +32,6 @@ export const H4: React.FC<OwnProps> = props => {
         defaultWeight,
         defaultColor,
         font,
-        fontStyle: { fontSize: h2FontSize, lineHeight: h2LineHeight }
+        fontStyle: { fontSize: h4FontSize, lineHeight: h4LineHeight }
     });
 };
