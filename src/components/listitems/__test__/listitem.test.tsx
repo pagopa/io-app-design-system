@@ -5,6 +5,10 @@ import ListItemInfo from "../ListItemInfo";
 import ListItemInfoCopy from "../ListItemInfoCopy";
 import ListItemNav from "../ListItemNav";
 import ListItemNavAlert from "../ListItemNavAlert";
+import ListItemAction from "../ListItemAction";
+import ListItemIDP from "../ListItemIDP";
+import { ListItemTransaction } from "../ListItemTransaction";
+import { PressableListItemBase } from "../PressableListItemsBase";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -26,5 +30,28 @@ describe("Test List Item Components", () => {
   it("ListItemNavAlert Snapshot", () => {
     const listItemNavAlert = TestRenderer.create(<ListItemNavAlert value={"testValue"} onPress={onButtonPress} accessibilityLabel={"accessibilityLabel"} ></ListItemNavAlert>).toJSON();
     expect(listItemNavAlert).toMatchSnapshot();
+  });
+  it("ListItemAction Snapshot", () => {
+    const listItemAction = TestRenderer.create(<ListItemAction label={"label"} variant={"primary"} onPress={onButtonPress} accessibilityLabel={"accessibilityLabel"}></ListItemAction>).toJSON();
+    expect(listItemAction).toMatchSnapshot();
+  });
+  it("ListItemIDP Snapshot", () => {
+    const listItemIDP = TestRenderer.create(<ListItemIDP></ListItemIDP>).toJSON();
+    expect(listItemIDP).toMatchSnapshot();
+  });
+  it("ListItemTransaction Snapshot", () => {
+    const listItemIDP = TestRenderer.create(<ListItemTransaction
+      title="TITLE"
+      subtitle="subtitle"
+      transactionStatus="success"
+      transactionAmount="€ 1.000,00"
+      isLoading={true}
+      onPress={onButtonPress}
+    />).toJSON();
+    expect(listItemIDP).toMatchSnapshot();
+  });
+  it("PressableListItemsBase Snapshot", () => {
+    const listItemIDP = TestRenderer.create(<PressableListItemBase></PressableListItemBase>).toJSON();
+    expect(listItemIDP).toMatchSnapshot();
   });
 });
