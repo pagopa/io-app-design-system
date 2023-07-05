@@ -1,5 +1,12 @@
 export type ThemeSimpleValue = undefined | number | string;
 
+/**
+ * Enhance the type with the testID that should be used to locate a view in end-to-end tests.
+ */
+export type TestID = { testID?: string };
+
+export type WithTestID<T> = T & TestID;
+
 // A generic recursive type for the theme
 export type Theme = {
   [key: string]: ThemeSimpleValue | Theme;
@@ -21,10 +28,3 @@ type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> = T | U extends object
   ? (Without<T, U> & U) | (Without<U, T> & T)
   : T | U;
-
-/**
- * Enhance the type with the testID that should be used to locate a view in end-to-end tests.
- */
-export type TestID = { testID?: string };
-
-export type WithTestID<T> = T & TestID;

@@ -6,3 +6,5 @@ export * from "./switch";
 export * from "./spacer/Spacer";
 export * from "./divider/Divider";
 export * from "./contentWrapper/ContentWrapper";
+export * from "./badge";
+export * from "./tag";
