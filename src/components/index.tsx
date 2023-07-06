@@ -8,3 +8,4 @@ export * from "./divider/Divider";
 export * from "./contentWrapper/ContentWrapper";
 export * from "./badge";
 export * from "./tag";
+export * from "./alert";
