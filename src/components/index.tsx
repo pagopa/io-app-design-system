@@ -9,6 +9,7 @@ export * from "./contentWrapper/ContentWrapper";
 export * from "./typography";
 export * from "./spacer";
 export * from "./avatar";
+export * from "./accordion";
 export * from "./badge";
 export * from "./buttons";
 export * from "./listitems";
