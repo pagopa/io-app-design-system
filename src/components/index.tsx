@@ -9,3 +9,4 @@ export * from "./contentWrapper/ContentWrapper";
 export * from "./accordion";
 export * from "./badge";
 export * from "./tag";
+export * from "./alert";
