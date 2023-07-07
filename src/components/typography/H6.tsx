@@ -5,8 +5,8 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 // when the weight is bold, only these color are allowed
-type AllowedColors = IOTheme["textBody-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular">;
+type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
+type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
 
 type OwnProps = ExternalTypographyProps<
     TypographyProps<AllowedWeight, AllowedColors>
