@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { H6 } from "../typography/H6";
 import { IOStyles } from "../../core/IOStyles";
 import { HSpacer } from "../spacer/Spacer";
@@ -37,7 +37,7 @@ export const CheckboxLabel = ({
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
   const toggleCheckbox = () => {
-    ReactNativeHapticFeedback.trigger("impactLight");
+    triggerHaptic("impactLight");
     setToggleValue(!toggleValue);
     if (onValueChange !== undefined) {
       onValueChange(!toggleValue);
