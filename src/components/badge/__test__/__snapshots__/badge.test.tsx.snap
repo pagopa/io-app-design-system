@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Badge Components Badge Snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+        "paddingVertical": 4,
+      },
+      {
+        "backgroundColor": "#F4F5F8",
+      },
+    ]
+  }
+>
+  <Text
+    ellipsizeMode="tail"
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "flexShrink": 1,
+          "fontFamily": "Readex Pro",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 16,
+          "textTransform": "uppercase",
+        },
+        {
+          "color": "#555C70",
+        },
+      ]
+    }
+  >
+    text
+  </Text>
+</View>
+`;
