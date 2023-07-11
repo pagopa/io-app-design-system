@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Avatar = ({ logoUri, shape, size }: Avatar) => (
+export const Avatar = ({ logoUri, shape, size }: Avatar) => (
   <View
     style={[
       styles.avatarWrapper,
@@ -63,5 +63,3 @@ const Avatar = ({ logoUri, shape, size }: Avatar) => (
     <MultiImage style={styles.avatarImage} source={logoUri} />
   </View>
 );
-
-export default Avatar;
