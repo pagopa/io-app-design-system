@@ -21,7 +21,7 @@ const AppNavigator = () => (
       headerTitle: "Icons", headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
-      headerTitle: "Icons", headerBackTitleVisible: false
+      headerTitle: "Logos", headerBackTitleVisible: false
     }} />
   </Stack.Navigator>
 );
