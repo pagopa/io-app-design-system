@@ -12,7 +12,7 @@ import {
     useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import Avatar from "../avatar/Avatar";
+import { Avatar } from "../avatar/Avatar";
 import { Badge } from "../badge/Badge";
 import { Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";

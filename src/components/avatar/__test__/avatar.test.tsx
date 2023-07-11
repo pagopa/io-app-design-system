@@ -1,6 +1,6 @@
 import React from "react";
 import * as TestRenderer from "react-test-renderer";
-import Avatar from "../Avatar";
+import { Avatar } from "../Avatar";
 import { MultiImage } from "../MultiImage";
 
 describe("Test Avatar Components", () => {
