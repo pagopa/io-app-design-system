@@ -4,6 +4,7 @@ import { Icons } from "../pages/Icons";
 import { Logos } from "../pages/Logos";
 
 import MainScreen from "../pages/MainScreen";
+import { Buttons } from "../pages/Buttons";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -21,6 +22,9 @@ const AppNavigator = () => (
       headerTitle: "Icons", headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
+      headerTitle: "Logos", headerBackTitleVisible: false
+    }} />
+    <Stack.Screen name={APP_ROUTES.COMPONENTS.BUTTONS.route} component={Buttons} options={{
       headerTitle: "Logos", headerBackTitleVisible: false
     }} />
   </Stack.Navigator>

@@ -3,3 +3,5 @@ export * from "./ButtonLink";
 export * from "./ButtonOutline";
 export * from "./ButtonExtendedOutline";
 export * from "./IconButton";
+export * from "./IconButtonSolid";
+export * from "./IconButtonContained";

@@ -5,6 +5,9 @@ import ButtonExtendedOutline from "../ButtonExtendedOutline";
 import ButtonLink from "../ButtonLink";
 import ButtonOutline from "../ButtonOutline";
 import ButtonSolid from "../ButtonSolid";
+import IconButtonSolid from "../IconButtonSolid";
+import IconButton from "../IconButton";
+import IconButtonContained from "../IconButtonContained";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -29,5 +32,20 @@ describe("Test Buttons Components", () => {
   it("ButtonExtendedOutline Snapshot", () => {
     const buttonExtendedOutline = TestRenderer.create(<ButtonExtendedOutline label={"label"} onPress={onButtonPress}></ButtonExtendedOutline>).toJSON();
     expect(buttonExtendedOutline).toMatchSnapshot();
+  });
+
+  it("IconButtonSolid Snapshot", () => {
+    const iconButtonSolid = TestRenderer.create(<IconButtonSolid onPress={onButtonPress} icon={"spid"} accessibilityLabel={"accessibilityLabel"}></IconButtonSolid>).toJSON();
+    expect(iconButtonSolid).toMatchSnapshot();
+  });
+
+  it("IconButton Snapshot", () => {
+    const iconButton = TestRenderer.create(<IconButton onPress={onButtonPress} icon={"spid"} accessibilityLabel={"accessibilityLabel"}></IconButton>).toJSON();
+    expect(iconButton).toMatchSnapshot();
+  });
+
+  it("IconButtonContained Snapshot", () => {
+    const iconButtonContained = TestRenderer.create(<IconButtonContained onPress={onButtonPress} icon={"spid"} accessibilityLabel={"accessibilityLabel"}></IconButtonContained>).toJSON();
+    expect(iconButtonContained).toMatchSnapshot();
   });
 });
