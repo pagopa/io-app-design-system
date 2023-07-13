@@ -2,7 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { Icons } from "../pages/Icons";
 import { Logos } from "../pages/Logos";
-
+import {Selection} from "../pages/Selection";
 import MainScreen from "../pages/MainScreen";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
@@ -22,6 +22,9 @@ const AppNavigator = () => (
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
       headerTitle: "Logos", headerBackTitleVisible: false
+    }} />
+    <Stack.Screen name={APP_ROUTES.COMPONENTS.SELECTION.route} component={Selection} options={{
+      headerTitle: "Selection", headerBackTitleVisible: false
     }} />
   </Stack.Navigator>
 );
