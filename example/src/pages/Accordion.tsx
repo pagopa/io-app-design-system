@@ -3,7 +3,6 @@ import * as React from "react";
 import { View } from "react-native";
 import AlphaChannel from "../../assets/alphaChannel.svg";
 import Analytics from "../../assets/analytics.svg";
-import Fingerprint from "../../assets/fingerprint.svg";
 import { Screen } from "../components/Screen";
 
 export const Accordion = () => (
