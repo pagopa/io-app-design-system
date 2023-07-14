@@ -3,7 +3,7 @@ import * as TestRenderer from "react-test-renderer";
 import { Badge } from "../Badge";
 import CustomBadge from "../CustomBadge";
 import { IOBadge } from "../IOBadge";
-import PercentageValueBox from "../PercentageValueBox";
+import { PercentageValueBox } from "../PercentageValueBox";
 
 describe("Test Badge Components", () => {
   it("Badge Snapshot", () => {
