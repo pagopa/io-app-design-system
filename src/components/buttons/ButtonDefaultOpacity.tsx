@@ -3,7 +3,7 @@ import * as TE from "fp-ts/lib/TaskEither";
 import { pipe } from "fp-ts/lib/function";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { AccessibilityInfo, Button, Platform } from "react-native";
+import { AccessibilityInfo, AccessibilityProps, Button, Insets, Platform, StyleProp, ViewStyle } from "react-native";
 import {
     State,
     TapGestureHandler,
@@ -11,28 +11,24 @@ import {
 } from "react-native-gesture-handler";
 
 const defaultActiveOpacity = 1.0;
-// const btnSmallHeight = 39;
-// const btnXSmallHeight = 32;
-// const btnHeight = 40;
+const btnSmallHeight = 39;
+const btnXSmallHeight = 32;
+const btnHeight = 40;
 const minTouchableAreaSize = 48;
+
+type RnViewStyleProp = StyleProp<ViewStyle>;
 
 type CustomProps = {
     hasFullHitSlop?: boolean;
     onPressWithGestureHandler?: true;
     small?: string;
     xsmall?: string;
-    accessible?: boolean;
-    activeOpacity?: true;
+    activeOpacity?: number;
     onPress?: () => void;
-    disabled?: boolean;
-    testID?: string;
     children?: React.ReactNode;
-    style?: {
-        alignContent: "center";
-        flex: number;
-    };
+    style?: RnViewStyleProp | Array<RnViewStyleProp>;
 };
-type Props = Button & React.ClassAttributes<Button> & CustomProps;
+type Props = Omit<Button, "context" | "setState" | "state" | "refs" | "props" | "forceUpdate" | "render"> & React.ComponentProps<typeof Button> & CustomProps & AccessibilityProps;
 
 export const isIos = Platform.OS === "ios";
 
@@ -48,35 +44,35 @@ export const calculateSlop = (height: number): number => {
     return Math.ceil(additionalArea / 2);
 };
 
-// const slopsBySize: Record<"small" | "xsmall" | "default", number> = {
-//     small: calculateSlop(btnSmallHeight),
-//     xsmall: calculateSlop(btnXSmallHeight),
-//     default: calculateSlop(btnHeight)
-// };
+const slopsBySize: Record<"small" | "xsmall" | "default", number> = {
+    small: calculateSlop(btnSmallHeight),
+    xsmall: calculateSlop(btnXSmallHeight),
+    default: calculateSlop(btnHeight)
+};
 
 /**
  * This is a temporary solution to extend the touchable area using the existing theme system.
  * @param props
  */
-// const getSlopForCurrentButton = (props: Props): Insets => {
-//     const slop =
-//         slopsBySize[props.small ? "small" : props.xsmall ? "xsmall" : "default"];
+const getSlopForCurrentButton = (props: Props): Insets => {
+    const slop =
+        slopsBySize[props.small ? "small" : props.xsmall ? "xsmall" : "default"];
 
-//     // We've applied a vertical-only hitSlop so far, we don't want to break any existing button
-//     const result = {
-//         top: slop,
-//         bottom: slop
-//     };
+    // We've applied a vertical-only hitSlop so far, we don't want to break any existing button
+    const result = {
+        top: slop,
+        bottom: slop
+    };
 
-//     // The hasFullHitSlop prop should eventually be deprecated, after testing each button
-//     return props.hasFullHitSlop
-//         ? {
-//             ...result,
-//             right: slop,
-//             left: slop
-//         }
-//         : result;
-// };
+    // The hasFullHitSlop prop should eventually be deprecated, after testing each button
+    return props.hasFullHitSlop
+        ? {
+            ...result,
+            right: slop,
+            left: slop
+        }
+        : result;
+};
 
 // return the state of the screen reader when the caller component is mounted
 export const useScreenReaderEnabled = () => {
@@ -111,14 +107,14 @@ export const isScreenReaderEnabled = async (): Promise<boolean> =>
  * (this surely happen when a button is used inside a BottomSheet)
  */
 const ButtonDefaultOpacity = (props: Props) => {
-    // const hitSlop = getSlopForCurrentButton(props);
+    const hitSlop = getSlopForCurrentButton(props);
     const isScreenReaderEnabled = useScreenReaderEnabled();
 
     // use the alternative handling only if is request by props AND is android
     // if the screenReader is active render common button or the button would not be pressable
     const tapGestureRequired =
         props.onPressWithGestureHandler && !isIos && !isScreenReaderEnabled;
-    // const buttonIsAccessible = props.accessible;
+    const buttonIsAccessible = props.accessible;
 
     const button = (
         <Button
