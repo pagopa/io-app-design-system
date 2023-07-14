@@ -1,17 +1,19 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import {
+  View,
   AccessibilityProps,
   Animated,
   Easing,
   LayoutAnimation,
-  Platform,
   StyleSheet,
   TouchableWithoutFeedback,
-  UIManager,
-  View
+  UIManager
 } from "react-native";
-import { IOStyles, IOVisualCostants } from "../../core/IOStyles";
+import I18n from "../../../i18n";
+import customVariables from "../../../theme/variables";
+import { isAndroid } from "../../../utils/platform";
+import { IOStyles } from "../variables/IOStyles";
 import { Icon } from "../icons/Icon";
 
 // TODO: handle external initial open/closed state
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   },
   internalHeader: {
     flex: 1,
-    paddingRight: IOVisualCostants.appMarginDefault
+    paddingRight: customVariables.contentPadding
   }
 });
 
@@ -51,7 +53,7 @@ const getDegree = (isOpen: boolean) => (isOpen ? "-90deg" : "-270deg");
  * @param props
  * @constructor
  */
-export const RawAccordion: React.FC<Props> = props => {
+export const RawAccordion: React.FunctionComponent<Props> = props => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const animatedController = useRef(new Animated.Value(1)).current;
   const shouldAnimate = props.animated ?? true;
@@ -62,13 +64,13 @@ export const RawAccordion: React.FC<Props> = props => {
 
   const arrowAngle = shouldAnimate
     ? animatedController.interpolate({
-      inputRange: [0, 1],
-      outputRange: ["0deg", "-180deg"]
-    })
+        inputRange: [0, 1],
+        outputRange: ["0deg", "-180deg"]
+      })
     : getDegree(isOpen);
 
   useEffect(() => {
-    if (Platform.OS === "android") {
+    if (isAndroid) {
       UIManager.setLayoutAnimationEnabledExperimental(shouldAnimate);
     }
   }, [shouldAnimate]);
@@ -94,7 +96,9 @@ export const RawAccordion: React.FC<Props> = props => {
         accessibilityRole={"button"}
         accessibilityLabel={
           accessibilityLabel +
-          (isOpen ? "Paragrafo espanso" : "Paragrafo chiuso")
+          (isOpen
+            ? I18n.t("global.accessibility.expanded")
+            : I18n.t("global.accessibility.collapsed"))
         }
       >
         <View style={[styles.row, headerStyle]}>
