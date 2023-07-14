@@ -7,10 +7,15 @@ import "react-native-gesture-handler";
 import AppNavigator from "./navigation/navigator";
 
 export default function App() {
-  useFonts({
+  const [loaded] = useFonts({
     "Titillium Web": require("../assets/fonts/TitilliumWeb/TitilliumWeb-Regular.ttf"),
+    "Titillium Web-Bold": require("../assets/fonts/TitilliumWeb/TitilliumWeb-Bold.ttf"),
     "Readex Pro": require("../assets/fonts/ReadexPro/ReadexPro-Regular.ttf"),
   });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={IOStyles.flex}>
