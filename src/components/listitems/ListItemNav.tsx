@@ -1,9 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -13,7 +9,16 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOListItemStyles, IOListItemVisualParams, IOScaleValues, IOSpringValues, IOStyles, hexToRgba, useIOTheme } from "../../core";
+import {
+  IOColors,
+  IOListItemStyles,
+  IOListItemVisualParams,
+  IOScaleValues,
+  IOSpringValues,
+  IOStyles,
+  hexToRgba,
+  useIOTheme
+} from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";

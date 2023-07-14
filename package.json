@@ -81,7 +81,11 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*",
+    "react-native-reanimated": "*",
+    "react-native-linear-gradient": "*",
+    "react-native-haptic-feedback": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
