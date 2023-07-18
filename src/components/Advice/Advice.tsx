@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import { StyleSheet, View } from "react-native";
 import { IOColors, IOStyles } from "../../core";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { Body } from "../typography";
 
@@ -24,7 +24,7 @@ const defaultIconSize: IOIconSizeScale = 20;
  * This component displays an info icon on top-left and a text message
  * @constructor
  */
-const AdviceComponent: React.FC<Props> = ({
+export const AdviceComponent: React.FC<Props> = React.memo(({
     text,
     iconName = "notice",
     iconSize = defaultIconSize,
@@ -41,6 +41,4 @@ const AdviceComponent: React.FC<Props> = ({
         <HSpacer size={8} />
         <Body>{text}</Body>
     </View>
-);
-
-export default React.memo(AdviceComponent);
+));
