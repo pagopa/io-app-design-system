@@ -1,4 +1,4 @@
-import { Badge, CustomBadge, H2, H4, HSpacer, IOBadge, IOColors, IOStyles, IOTagRadius, PercentageValueBox, Tag, VSpacer } from "@pagopa/io-app-design-system";
+import { Badge, CustomBadge, H2, H4, HSpacer, IOColors, IOStyles, IOTagRadius, PercentageValueBox, Tag, VSpacer } from "@pagopa/io-app-design-system";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
@@ -25,13 +25,6 @@ export const Badges = () => (
             Badge
         </H2>
         {renderBadge()}
-
-        <VSpacer size={16} />
-
-        <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-            IOBadge
-        </H2>
-        {renderIOBadge()}
 
         <VSpacer size={24} />
 
@@ -103,70 +96,6 @@ const renderBadge = () => (
                 <Badge text={"Default"} variant="default" />
                 <HSpacer size={16} />
                 <Badge text={"Contrast"} variant="contrast" />
-            </View>
-        </View>
-    </>
-);
-
-const renderIOBadge = () => (
-    <>
-        <View style={IOStyles.row}>
-            <IOBadge small text={"Badge"} variant="solid" color="blue" />
-            <HSpacer size={16} />
-            <IOBadge small text={"Badge"} variant="solid" color="red" />
-            <HSpacer size={16} />
-            <IOBadge small text={"Badge"} variant="solid" color="aqua" />
-            <HSpacer size={16} />
-            <IOBadge small text={"Badge"} variant="solid" color="grey" />
-        </View>
-        <VSpacer size={16} />
-        <View style={IOStyles.row}>
-            <IOBadge small text={"Badge"} variant="outline" color="blue" />
-            <HSpacer size={16} />
-            <IOBadge small text={"Badge"} variant="outline" color="red" />
-            <HSpacer size={16} />
-            <IOBadge small text={"Badge"} variant="outline" color="orange" />
-        </View>
-        <VSpacer size={16} />
-        <View style={IOStyles.row}>
-            <IOBadge text={"Badge"} variant="solid" color="blue" />
-            <HSpacer size={16} />
-            <IOBadge text={"Badge"} variant="solid" color="red" />
-            <HSpacer size={16} />
-            <IOBadge text={"Badge"} variant="solid" color="aqua" />
-            <HSpacer size={16} />
-            <IOBadge text={"Badge"} variant="solid" color="grey" />
-        </View>
-        <VSpacer size={16} />
-        <View style={IOStyles.row}>
-            <IOBadge text={"Badge"} variant="outline" color="blue" />
-            <HSpacer size={16} />
-            <IOBadge text={"Badge"} variant="outline" color="red" />
-            <HSpacer size={16} />
-            <IOBadge text={"Badge"} variant="outline" color="orange" />
-        </View>
-        <VSpacer size={16} />
-        <View
-            style={{
-                backgroundColor: IOColors.bluegrey,
-                padding: 16,
-                borderRadius: 8
-            }}
-        >
-            <View style={IOStyles.row}>
-                <IOBadge small text={"Badge"} variant="solid" color="aqua" />
-                <HSpacer size={16} />
-                <IOBadge small text={"Badge"} variant="solid" color="white" />
-                <HSpacer size={16} />
-                <IOBadge small text={"Badge"} variant="outline" color="white" />
-            </View>
-            <VSpacer size={16} />
-            <View style={IOStyles.row}>
-                <IOBadge text={"Badge"} variant="solid" color="aqua" />
-                <HSpacer size={16} />
-                <IOBadge text={"Badge"} variant="solid" color="white" />
-                <HSpacer size={16} />
-                <IOBadge text={"Badge"} variant="outline" color="white" />
             </View>
         </View>
     </>
