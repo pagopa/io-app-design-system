@@ -2,15 +2,41 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@pagopa/io-app-design-system": ["./src/index"],
-      "@pagopa/io-app-design-system/core": ["./src/core"],
-      "@pagopa/io-app-design-system/components": ["./src/components"],
-      "@pagopa/io-app-design-system/pictograms": ["./src/components/pictograms"],
-      "@pagopa/io-app-design-system/icons": ["./src/components/icons"]
+      "@pagopa/io-app-design-system": [
+        "./src/index"
+      ],
+      "@pagopa/io-app-design-system/core": [
+        "./src/core"
+      ],
+      "@pagopa/io-app-design-system/components": [
+        "./src/components"
+      ],
+      "@pagopa/io-app-design-system/pictograms": [
+        "./src/components/pictograms"
+      ],
+      "@pagopa/io-app-design-system/icons": [
+        "src/components/icons"
+      ],
+      "@pagopa/io-app-design-system/typography": [
+        "./src/components/typography"
+      ],
+      "@pagopa/io-app-design-system/spacer": [
+        "./src/components/spacer"
+      ],
+      "@pagopa/io-app-design-system/color": [
+        "./src/core/IOColors"
+      ],
+      "@pagopa/io-app-design-system/styles": [
+        "./src/core/IOStyles"
+      ]
     },
     "target": "esnext",
     "module": "commonjs",
-    "lib": ["es6", "dom", "es2019"],
+    "lib": [
+      "es6",
+      "dom",
+      "es2019"
+    ],
     "jsx": "react",
     "moduleResolution": "node",
     "importHelpers": true,

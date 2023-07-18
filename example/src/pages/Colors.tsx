@@ -1,4 +1,7 @@
-import { H2, H3, H5, IOColorGradients, IOColors, IOColorsExtra, IOColorsLegacy, IOColorsNeutral, IOColorsStatus, IOColorsTints, IOStyles, IOThemeDark, IOThemeLight, LabelSmall, VSpacer, hexToRgba, themeStatusColorsDarkMode, themeStatusColorsLightMode } from "@pagopa/io-app-design-system";
+import { IOColorGradients, IOColors, IOColorsExtra, IOColorsLegacy, IOColorsNeutral, IOColorsStatus, IOColorsTints, IOThemeDark, IOThemeLight, hexToRgba, themeStatusColorsDarkMode, themeStatusColorsLightMode } from "@pagopa/io-app-design-system/color";
+import { VSpacer } from "@pagopa/io-app-design-system/spacer";
+import { IOStyles } from "@pagopa/io-app-design-system/styles";
+import { H2, H3, H5, LabelSmall } from "@pagopa/io-app-design-system/typography";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, Dimensions, StyleSheet, Text, View } from "react-native";

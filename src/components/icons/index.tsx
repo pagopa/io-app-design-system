@@ -1,2 +1,2 @@
 export * from "./Icon";
-export { Icon, AnimatedIcon } from "../icons/Icon";
+export { Icon, AnimatedIcon } from "./Icon";
