@@ -1,4 +1,4 @@
-import { AdviceComponent, Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
+import { Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
 import React from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
@@ -35,15 +35,6 @@ export const DSAdvice = () => (
 
         {renderBanner()}
 
-        <VSpacer size={40} />
-        <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
-            Legacy components
-        </H2>
-        <AdviceComponent
-            text={
-                "Dopo questo passaggio non sarà più possibile annullare il pagamento."
-            }
-        />
         <VSpacer size={40} />
     </Screen>
 );

@@ -17,5 +17,4 @@ export * from "./tag";
 export * from "./alert";
 export * from "./logos";
 export * from "./sectionStatus";
-export * from "./advice";
 export * from "./banner";
