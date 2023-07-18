@@ -19,13 +19,13 @@ const AppNavigator = () => (
       headerTitle: "Design System",
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.ICONS.route} component={Icons} options={{
-      headerTitle: "Icons", headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.FOUNDATION.ICONS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
-      headerTitle: "Logos", headerBackTitleVisible: false
+      headerTitle:APP_ROUTES.FOUNDATION.LOGOS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.COMPONENTS.BADGE.route} component={Badges} options={{
-      headerTitle: "Badges & Tags", headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.COMPONENTS.BADGE.title, headerBackTitleVisible: false
     }} />
   </Stack.Navigator>
 );

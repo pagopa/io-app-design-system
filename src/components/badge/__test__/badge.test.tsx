@@ -1,7 +1,7 @@
 import React from "react";
 import * as TestRenderer from "react-test-renderer";
 import { Badge } from "../Badge";
-import CustomBadge from "../CustomBadge";
+import { CustomBadge } from "../CustomBadge";
 import { PercentageValueBox } from "../PercentageValueBox";
 
 describe("Test Badge Components", () => {
