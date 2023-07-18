@@ -1,4 +1,4 @@
-import { Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
+import { Advice, Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
 import React from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
@@ -38,7 +38,7 @@ const bannerBackgroundColours: Array<BannerProps["color"]> = [
     "turquoise"
 ];
 
-export const Advice = () => (
+export const DSAdvice = () => (
     <Screen>
         {renderFeatureInfo()}
 
@@ -47,66 +47,15 @@ export const Advice = () => (
         {renderBanner()}
 
         <VSpacer size={40} />
-        {/* <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
+        <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
             Legacy components
         </H2>
-        <AdviceComponent
+        <Advice
             text={
                 "Dopo questo passaggio non sarà più possibile annullare il pagamento."
             }
         />
-        <VSpacer size={16} />
-        <View style={[styles.content, IOStyles.horizontalContentPadding]}>
-            <InfoBox>
-                <Body>
-                    Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
-                    tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut
-                    aliquid ex ea commodi consequatur.
-                </Body>
-            </InfoBox>
-        </View>
-        <InfoBox alignedCentral={true} iconSize={24} iconColor={"bluegreyDark"}>
-            <H5 weight={"Regular"}>
-                {
-                    "Per verificare la tua carta, tratteniamo € 0.02. Non preoccuparti: ti restituiremo l'importo al più presto."
-                }
-            </H5>
-        </InfoBox>
-        <InfoScreenComponent
-            image={<Icon name="info" />}
-            title={"Title"}
-            body={
-                <Body style={{ textAlign: "center" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
-                    tempor incidunt ut labore et dolore magna aliqua.
-                </Body>
-            }
-        />
-        <VSpacer size={16} />
-        <FullWidthComponent>
-            <PaymentBannerComponent
-                paymentReason={"Pagamento buoni pasto mensa scuola"}
-                fee={100 as ImportoEuroCents}
-                currentAmount={30000 as ImportoEuroCents}
-            />
-        </FullWidthComponent>
-        <VSpacer size={16} />
-        <ActivateBonusReminder
-            text={
-                "Puoi aggiungere o modificare i tuoi IBAN in qualsiasi momento visitando la sezione Profilo"
-            }
-        />
-        <VSpacer size={24} />
-        <View style={[styles.content, IOStyles.horizontalContentPadding]}>
-            <InfoBox iconName="profileAlt" iconColor="bluegrey">
-                <Label color={"bluegrey"} weight={"Regular"}>
-                    Puoi aggiungere o modificare i tuoi IBAN in qualsiasi momento
-                    visitando la sezione Profilo
-                </Label>
-            </InfoBox>
-        </View>
-        <VSpacer size={40} /> */}
+        <VSpacer size={40} />
     </Screen>
 );
 
