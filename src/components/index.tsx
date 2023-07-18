@@ -19,4 +19,3 @@ export * from "./logos";
 export * from "./sectionStatus";
 export * from "./advice";
 export * from "./banner";
-export * from "./box";
