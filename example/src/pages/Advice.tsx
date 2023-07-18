@@ -1,20 +1,9 @@
-import { Advice, Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
+import { AdviceComponent, Banner, H2, IOPictogramsBleed, VSpacer, WithTestID } from "@pagopa/io-app-design-system";
 import React from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { FeatureInfo } from "../components/FeatureInfo";
 import { Screen } from "../components/Screen";
-
-// const styles = StyleSheet.create({
-//     content: {
-//         flex: 1,
-//         width: "100%",
-//         justifySelf: "flex-start",
-//         flexDirection: "row",
-//         flexWrap: "wrap",
-//         justifyContent: "space-around"
-//     }
-// });
 
 const onLinkPress = () => {
     Alert.alert("Alert", "Action triggered");
@@ -50,7 +39,7 @@ export const DSAdvice = () => (
         <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
             Legacy components
         </H2>
-        <Advice
+        <AdviceComponent
             text={
                 "Dopo questo passaggio non sarà più possibile annullare il pagamento."
             }
