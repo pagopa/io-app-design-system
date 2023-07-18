@@ -24,7 +24,7 @@ const defaultIconSize: IOIconSizeScale = 20;
  * This component displays an info icon on top-left and a text message
  * @constructor
  */
-export const AdviceComponent: React.FC<Props> = React.memo(({
+export const Advice: React.FC<Props> = React.memo(({
     text,
     iconName = "notice",
     iconSize = defaultIconSize,
