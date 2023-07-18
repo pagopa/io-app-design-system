@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Advice Components StatusContent Snapshot 1`] = `
+<View
+  accessible={true}
+  style={
+    [
+      {
+        "alignContent": "center",
+        "alignItems": "flex-start",
+        "flexDirection": "row",
+        "paddingBottom": 8,
+        "paddingLeft": 24,
+        "paddingRight": 24,
+        "paddingTop": 8,
+        "width": "100%",
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+      },
+    ]
+  }
+  testID="SectionStatusContent"
+>
+  <View
+    style={
+      {
+        "alignSelf": "center",
+      }
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      accessibilityLabel=""
+      accessible={false}
+      align="xMidYMid"
+      bbHeight={24}
+      bbWidth={24}
+      color={4279710285}
+      focusable={false}
+      height={24}
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "color": "#17324D",
+          },
+          {
+            "flex": 0,
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+      tintColor={4279710285}
+      vbHeight={24}
+      vbWidth={24}
+      width={24}
+    >
+      <RNSVGGroup>
+        <RNSVGPath
+          d="M2 11c0-4.97056 4.02944-9 9-9 4.9706 0 9 4.02944 9 9 0 4.9706-4.0294 9-9 9-4.97056 0-9-4.0294-9-9Zm9-11C4.92487 0 0 4.92487 0 11c0 6.0751 4.92487 11 11 11 2.6775 0 5.1316-.9566 7.0391-2.5468l4.2539 4.2539c.3906.3906 1.0237.3906 1.4143 0 .3905-.3905.3905-1.0237 0-1.4142l-4.254-4.2539C21.0434 16.1315 22 13.6775 22 11c0-6.07513-4.9249-11-11-11Z"
+          fill={
+            [
+              2,
+            ]
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    color="bluegreyDark"
+    defaultColor="blue"
+    defaultWeight="Bold"
+    font="TitilliumWeb"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        [
+          {
+            "flex": 1,
+            "marginLeft": 16,
+          },
+          {},
+        ],
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#17324D",
+          "fontFamily": "Titillium Web",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  />
+</View>
+`;
