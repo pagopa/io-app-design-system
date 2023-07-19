@@ -82,10 +82,10 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "*",
-    "react-native-reanimated": "*",
+    "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
-    "react-native-haptic-feedback": "*"
+    "react-native-reanimated": "*",
+    "react-native-svg": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -153,6 +153,7 @@
     "@testing-library/jest-native": "^5.4.2",
     "@types/react-native-i18n": "2.0.0",
     "@types/react-test-renderer": "^18.0.0",
+    "auto-changelog": "^2.4.0",
     "react-native-haptic-feedback": "^2.0.2",
     "react-native-linear-gradient": "^2.7.3",
     "react-native-reanimated": "^2.9.1",
