@@ -15,3 +15,4 @@ export * from "./buttons";
 export * from "./listitems";
 export * from "./tag";
 export * from "./alert";
+export * from "./logos";
