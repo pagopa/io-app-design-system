@@ -29,11 +29,10 @@ jobs:
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c #v3.6
         with:
           node-version: 18.x
-          always-auth: true
           registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies and build with builder bob
         run: yarn install --frozen-lockfile 
       - name: Publish Package
         run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
