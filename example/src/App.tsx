@@ -12,7 +12,8 @@ export default function App() {
   React.useEffect(() => {
     Font.loadAsync({
       "Titillium Web": require("../assets/fonts/TitilliumWeb/TitilliumWeb-Regular.ttf"),
-      "Readex Pro": require("../assets/fonts/ReadexPro/ReadexPro-Regular.ttf")
+      "Readex Pro": require("../assets/fonts/ReadexPro/ReadexPro-Regular.ttf"),
+      "Roboto Mono": require("../assets/fonts/RobotoMono/RobotoMono-Regular.ttf")
     }).finally(() => setFontLoaded(true));
   }, []);
 

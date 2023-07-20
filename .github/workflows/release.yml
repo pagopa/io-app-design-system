@@ -1,0 +1,22 @@
+name: Publish the package npm registry
+on:
+  release:
+    types: [created]
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
+      - name: Setup Node
+        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 #v2.5.2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies and build with builder bob
+        run: yarn install --frozen-lockfile
+      - name: Publish package on NPM 📦
+        run: npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN }}
