@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "0.1.0",
+  "version": "1.0.0-9",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -40,7 +40,7 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/pagopa/io-app-design-system",
+  "repository": "https://github.com/pagopa/io-app-design-system.git",
   "author": "PagoPa (https://github.com/pagopa)",
   "license": "MIT",
   "bugs": {
@@ -82,10 +82,10 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "*",
-    "react-native-reanimated": "*",
+    "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
-    "react-native-haptic-feedback": "*"
+    "react-native-reanimated": "*",
+    "react-native-svg": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -106,19 +106,19 @@
   "release-it": {
     "git": {
       "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "tagName": "v${version}",
+      "changelog": "yarn auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
+    },
+    "hooks": {
+      "after:bump": "yarn auto-changelog -p && git add ."
     },
     "npm": {
-      "publish": true
+      "publish": false
     },
     "github": {
       "release": true
     },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
+    "plugins": {}
   },
   "eslintIgnore": [
     "node_modules/",
@@ -153,6 +153,7 @@
     "@testing-library/jest-native": "^5.4.2",
     "@types/react-native-i18n": "2.0.0",
     "@types/react-test-renderer": "^18.0.0",
+    "auto-changelog": "^2.4.0",
     "react-native-haptic-feedback": "^2.0.2",
     "react-native-linear-gradient": "^2.7.3",
     "react-native-reanimated": "^2.9.1",
