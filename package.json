@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "1.0.0-14",
+  "version": "1.0.0-15",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
