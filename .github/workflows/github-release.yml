@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@53a5c23a925969671a6bb98ea70a4f650928ef93 #v3.16 
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2 
       - name: Set up Node.js
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c #v3.6
         with:
           node-version: 18.x
           registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies and build with builder bob
-        run: yarn install --frozen-lockfile 
+        run: yarn install --frozen-lockfile
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@53a5c23a925969671a6bb98ea70a4f650928ef93 #v3.16
       - name: Publish Package
         run: yarn publish
         env:
