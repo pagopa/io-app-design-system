@@ -16,11 +16,10 @@ jobs:
           node-version: 18.x
           registry-url: 'https://npm.pkg.github.com'
           always-auth: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies and build with builder bob
         run: yarn install --frozen-lockfile 
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-      - name: Read .npmrc
-        run: cat /home/runner/work/_temp/.npmrc
       - name: Publish Package
         run: yarn publish
         env:
