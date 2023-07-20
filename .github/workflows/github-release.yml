@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: 18.x
           registry-url: 'https://npm.pkg.github.com'
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies and build with builder bob
         run: yarn install --frozen-lockfile
       - name: Setup tmate session
