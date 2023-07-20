@@ -18,6 +18,4 @@ jobs:
       - name: Install dependencies and build with builder bob
         run: yarn install --frozen-lockfile 
       - name: Publish Package
-        run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc && yarn publish
