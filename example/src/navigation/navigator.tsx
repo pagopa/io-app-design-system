@@ -24,11 +24,11 @@ const AppNavigator = () => (
       headerTitle: APP_ROUTES.FOUNDATION.ICONS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
-      headerTitle:APP_ROUTES.FOUNDATION.LOGOS.title, headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.COMPONENTS.BADGE.route} component={Badges} options={{
       headerTitle: APP_ROUTES.COMPONENTS.BADGE.title, headerBackTitleVisible: false
-    />
+    }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route} component={Typography} options={{
       headerTitle: APP_ROUTES.FOUNDATION.TYPOGRAPHY.title, headerBackTitleVisible: false
     }} />
