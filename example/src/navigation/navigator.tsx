@@ -33,7 +33,7 @@ const AppNavigator = () => (
       headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.COLOR.route} component={Colors} options={{
-      headerTitle: "Colors", headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.FOUNDATION.COLOR.title, headerBackTitleVisible: false
     }} />
   </Stack.Navigator>
 );
