@@ -4,6 +4,7 @@ import { Icons } from "../pages/Icons";
 import { Logos } from "../pages/Logos";
 
 import MainScreen from "../pages/MainScreen";
+import { Pictograms } from "../pages/Pictograms";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -22,6 +23,9 @@ const AppNavigator = () => (
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
       headerTitle: "Logos", headerBackTitleVisible: false
+    }} />
+    <Stack.Screen name={APP_ROUTES.FOUNDATION.PICTOGRAMS.route} component={Pictograms} options={{
+      headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title, headerBackTitleVisible: false
     }} />
   </Stack.Navigator>
 );
