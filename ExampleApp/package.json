@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pagopa/io-app-design-system": "^1.0.0-5",
+    "@pagopa/io-app-design-system": "^1.0.0-14",
     "@react-native/metro-config": "^0.72.9",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "5.14.9",

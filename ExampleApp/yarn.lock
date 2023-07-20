@@ -1003,10 +1003,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pagopa/io-app-design-system@^1.0.0-5":
-  version "1.0.0-5"
-  resolved "https://registry.yarnpkg.com/@pagopa/io-app-design-system/-/io-app-design-system-1.0.0-5.tgz#c22e155c9a1ef8944e9061e1e3316cb789692cc3"
-  integrity sha512-KB3QhoWHiSgZoFBHEMFVAMmwFf3j6qtOHA2+Jbpy8aIa8svxji2f4QsxhxKlsM+uTEEBGTWK5F/c+N0BXD8O0Q==
+"@pagopa/io-app-design-system@^1.0.0-14":
+  version "1.0.0-14"
+  resolved "https://registry.yarnpkg.com/@pagopa/io-app-design-system/-/io-app-design-system-1.0.0-14.tgz#379895532dc9b2bcb50c0a46163a7bdc62bf5867"
+  integrity sha512-Iw9OfN6t7CCIvw7DDdRKJqEzHZLiKCZTvBXvz6f+8L6enRr07jWKhJS8qA/ocvE39Hu8aSxtZkq6duETRDCO3A==
   dependencies:
     "@pagopa/ts-commons" "^12.0.0"
     "@testing-library/jest-native" "^5.4.2"

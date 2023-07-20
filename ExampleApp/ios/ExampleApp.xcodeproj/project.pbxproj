@@ -12,8 +12,29 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1BC0A570344341E6987FD8D9 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE7209C9D8E04B9A9E908DC6 /* TitilliumWeb-Italic.ttf */; };
+		2A76089ABE4E4D1E8E88ECFE /* TitilliumWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB3748E146C445A8EDEBF6B /* TitilliumWeb-BoldItalic.ttf */; };
+		314CC92BFFBA44489283EAA5 /* RobotoMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E4B716FF724CA6A1804955 /* RobotoMono-Bold.ttf */; };
+		3347048F785740F8889D46E8 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0DECA6E14564D48A132C4F2 /* TitilliumWeb-SemiBoldItalic.ttf */; };
+		3A6683997CAE4FFA8D2C4C17 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AC7977FFCF2471A93B6E66B /* TitilliumWeb-Light.ttf */; };
+		427A1C8E8E514AF7813C8D13 /* TitilliumWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D62B8E69F8B41E6B8432E86 /* TitilliumWeb-Bold.ttf */; };
+		4E8CD033CE644E80B2738918 /* TitilliumWeb-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC225F8C27DC4CB7A37B9FF3 /* TitilliumWeb-SemiBold.ttf */; };
+		4EA634FC85514B5EB08F6FBE /* TitilliumWeb-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52245BEC136D4B7189736F1B /* TitilliumWeb-ExtraLight.ttf */; };
+		5C48A65F60C64A42BE48573B /* RobotoMono-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5816D15AA2874BB7AD4CDC06 /* RobotoMono-RegularItalic.ttf */; };
+		5C78D009B8D2448AA5A7BF50 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5482F968509940DA97308858 /* Ionicons.ttf */; };
+		6CAFA906683E41198A3E0B67 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = A9C643B05B0946038186C829 /* LICENSE.txt */; };
+		753895DFE39C460D8291988D /* TitilliumWeb-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 514A5F0E1EE74CC6AA04FC6C /* TitilliumWeb-Black.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-ExampleApp-ExampleAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ExampleApp-ExampleAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		84F6CD4A5A94452FB9F5E168 /* TitilliumWeb-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58B501378304394BB6037C1 /* TitilliumWeb-LightItalic.ttf */; };
+		9035C01744844CC1A61F0E05 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA9D674B18F4716B5D60080 /* TitilliumWeb-ExtraLightItalic.ttf */; };
+		99720F45764B469394E54BAE /* RobotoMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B065D28ECFB6461AB8BFC591 /* RobotoMono-Light.ttf */; };
+		B27EC70C812A48909179D620 /* RobotoMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E00E040742F94B3C9803C367 /* RobotoMono-LightItalic.ttf */; };
+		C64444A48C304C1283FD55DE /* io-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9368F412B6034CD699ECBFEB /* io-icon-font.ttf */; };
+		C86AA9863D7F4749A7A4DF7C /* RobotoMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EB376F803B34D159E0A147C /* RobotoMono-BoldItalic.ttf */; };
+		DD2EDEE079464A559B3FE549 /* ReadexPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4AAA66E1BA4DC2947ADEF7 /* ReadexPro-Regular.ttf */; };
+		E8EF3336542140A88B10BFF7 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16CF61663EAF4B46B3B81980 /* TitilliumWeb-Regular.ttf */; };
+		EEEB48FBDCD04F78AB9AEC90 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95921ED1C55B4490A3418AB9 /* RobotoMono-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,19 +51,40 @@
 		00E356EE1AD99517003FC87E /* ExampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ExampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleAppTests.m; sourceTree = "<group>"; };
+		0EB376F803B34D159E0A147C /* RobotoMono-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-BoldItalic.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-BoldItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ExampleApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ExampleApp/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ExampleApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExampleApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleApp/main.m; sourceTree = "<group>"; };
+		16CF61663EAF4B46B3B81980 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-Regular.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ExampleApp-ExampleAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp-ExampleAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21E4B716FF724CA6A1804955 /* RobotoMono-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Bold.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-Bold.ttf"; sourceTree = "<group>"; };
+		2AC7977FFCF2471A93B6E66B /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-Light.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
+		2D62B8E69F8B41E6B8432E86 /* TitilliumWeb-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-Bold.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3FA9D674B18F4716B5D60080 /* TitilliumWeb-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-ExtraLightItalic.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		514A5F0E1EE74CC6AA04FC6C /* TitilliumWeb-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-Black.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-Black.ttf"; sourceTree = "<group>"; };
+		52245BEC136D4B7189736F1B /* TitilliumWeb-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-ExtraLight.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5482F968509940DA97308858 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = ../assets/fonts/Ionicons/Ionicons.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		5816D15AA2874BB7AD4CDC06 /* RobotoMono-RegularItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-RegularItalic.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-RegularItalic.ttf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ExampleApp-ExampleAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp-ExampleAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp-ExampleAppTests/Pods-ExampleApp-ExampleAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ExampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ExampleApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ExampleApp-ExampleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp-ExampleAppTests.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp-ExampleAppTests/Pods-ExampleApp-ExampleAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		9368F412B6034CD699ECBFEB /* io-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "io-icon-font.ttf"; path = "../assets/fonts/io-icon-font/io-icon-font.ttf"; sourceTree = "<group>"; };
+		95921ED1C55B4490A3418AB9 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Regular.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-Regular.ttf"; sourceTree = "<group>"; };
+		9AB3748E146C445A8EDEBF6B /* TitilliumWeb-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-BoldItalic.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A0DECA6E14564D48A132C4F2 /* TitilliumWeb-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-SemiBoldItalic.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A9C643B05B0946038186C829 /* LICENSE.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = LICENSE.txt; path = ../assets/fonts/RobotoMono/LICENSE.txt; sourceTree = "<group>"; };
+		AE4AAA66E1BA4DC2947ADEF7 /* ReadexPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "ReadexPro-Regular.ttf"; path = "../assets/fonts/ReadexPro/ReadexPro-Regular.ttf"; sourceTree = "<group>"; };
+		B065D28ECFB6461AB8BFC591 /* RobotoMono-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-Light.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-Light.ttf"; sourceTree = "<group>"; };
+		D58B501378304394BB6037C1 /* TitilliumWeb-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-LightItalic.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-LightItalic.ttf"; sourceTree = "<group>"; };
+		DE7209C9D8E04B9A9E908DC6 /* TitilliumWeb-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-Italic.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-Italic.ttf"; sourceTree = "<group>"; };
+		E00E040742F94B3C9803C367 /* RobotoMono-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoMono-LightItalic.ttf"; path = "../assets/fonts/RobotoMono/RobotoMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		EC225F8C27DC4CB7A37B9FF3 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-SemiBold.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -122,6 +164,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				8B89E994FF304D53907AB447 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +178,35 @@
 				00E356EE1AD99517003FC87E /* ExampleAppTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8B89E994FF304D53907AB447 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				514A5F0E1EE74CC6AA04FC6C /* TitilliumWeb-Black.ttf */,
+				2D62B8E69F8B41E6B8432E86 /* TitilliumWeb-Bold.ttf */,
+				9AB3748E146C445A8EDEBF6B /* TitilliumWeb-BoldItalic.ttf */,
+				52245BEC136D4B7189736F1B /* TitilliumWeb-ExtraLight.ttf */,
+				3FA9D674B18F4716B5D60080 /* TitilliumWeb-ExtraLightItalic.ttf */,
+				DE7209C9D8E04B9A9E908DC6 /* TitilliumWeb-Italic.ttf */,
+				2AC7977FFCF2471A93B6E66B /* TitilliumWeb-Light.ttf */,
+				D58B501378304394BB6037C1 /* TitilliumWeb-LightItalic.ttf */,
+				16CF61663EAF4B46B3B81980 /* TitilliumWeb-Regular.ttf */,
+				EC225F8C27DC4CB7A37B9FF3 /* TitilliumWeb-SemiBold.ttf */,
+				A0DECA6E14564D48A132C4F2 /* TitilliumWeb-SemiBoldItalic.ttf */,
+				AE4AAA66E1BA4DC2947ADEF7 /* ReadexPro-Regular.ttf */,
+				9368F412B6034CD699ECBFEB /* io-icon-font.ttf */,
+				5482F968509940DA97308858 /* Ionicons.ttf */,
+				21E4B716FF724CA6A1804955 /* RobotoMono-Bold.ttf */,
+				0EB376F803B34D159E0A147C /* RobotoMono-BoldItalic.ttf */,
+				B065D28ECFB6461AB8BFC591 /* RobotoMono-Light.ttf */,
+				E00E040742F94B3C9803C367 /* RobotoMono-LightItalic.ttf */,
+				95921ED1C55B4490A3418AB9 /* RobotoMono-Regular.ttf */,
+				5816D15AA2874BB7AD4CDC06 /* RobotoMono-RegularItalic.ttf */,
+				A9C643B05B0946038186C829 /* LICENSE.txt */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -244,6 +316,27 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				753895DFE39C460D8291988D /* TitilliumWeb-Black.ttf in Resources */,
+				427A1C8E8E514AF7813C8D13 /* TitilliumWeb-Bold.ttf in Resources */,
+				2A76089ABE4E4D1E8E88ECFE /* TitilliumWeb-BoldItalic.ttf in Resources */,
+				4EA634FC85514B5EB08F6FBE /* TitilliumWeb-ExtraLight.ttf in Resources */,
+				9035C01744844CC1A61F0E05 /* TitilliumWeb-ExtraLightItalic.ttf in Resources */,
+				1BC0A570344341E6987FD8D9 /* TitilliumWeb-Italic.ttf in Resources */,
+				3A6683997CAE4FFA8D2C4C17 /* TitilliumWeb-Light.ttf in Resources */,
+				84F6CD4A5A94452FB9F5E168 /* TitilliumWeb-LightItalic.ttf in Resources */,
+				E8EF3336542140A88B10BFF7 /* TitilliumWeb-Regular.ttf in Resources */,
+				4E8CD033CE644E80B2738918 /* TitilliumWeb-SemiBold.ttf in Resources */,
+				3347048F785740F8889D46E8 /* TitilliumWeb-SemiBoldItalic.ttf in Resources */,
+				DD2EDEE079464A559B3FE549 /* ReadexPro-Regular.ttf in Resources */,
+				C64444A48C304C1283FD55DE /* io-icon-font.ttf in Resources */,
+				5C78D009B8D2448AA5A7BF50 /* Ionicons.ttf in Resources */,
+				314CC92BFFBA44489283EAA5 /* RobotoMono-Bold.ttf in Resources */,
+				C86AA9863D7F4749A7A4DF7C /* RobotoMono-BoldItalic.ttf in Resources */,
+				99720F45764B469394E54BAE /* RobotoMono-Light.ttf in Resources */,
+				B27EC70C812A48909179D620 /* RobotoMono-LightItalic.ttf in Resources */,
+				EEEB48FBDCD04F78AB9AEC90 /* RobotoMono-Regular.ttf in Resources */,
+				5C48A65F60C64A42BE48573B /* RobotoMono-RegularItalic.ttf in Resources */,
+				6CAFA906683E41198A3E0B67 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
