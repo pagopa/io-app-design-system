@@ -10,7 +10,14 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOButtonStyles, IOColors, IOIconButtonStyles, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
+import {
+  IOButtonStyles,
+  IOColors,
+  IOIconButtonStyles,
+  IOScaleValues,
+  IOSpringValues,
+  hexToRgba
+} from "../../core";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
 
@@ -101,10 +108,7 @@ export const IconButton = ({
     const iconColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [
-        mapColorStates[color].icon.default,
-        mapColorStates[color].icon.pressed
-      ]
+      [mapColorStates[color].icon.default, mapColorStates[color].icon.pressed]
     );
     return { color: iconColor };
   });

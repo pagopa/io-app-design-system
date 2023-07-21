@@ -17,24 +17,53 @@ const AppNavigator = () => (
     initialRouteName={APP_ROUTES.MAIN}
     screenOptions={{ headerShown: true }}
   >
-    <Stack.Screen name={APP_ROUTES.MAIN} component={MainScreen} options={{
-      headerTitle: "Design System",
-    }} />
-    <Stack.Screen name={APP_ROUTES.FOUNDATION.ICONS.route} component={Icons} options={{
-      headerTitle: APP_ROUTES.FOUNDATION.ICONS.title, headerBackTitleVisible: false
-    }} />
-    <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
-      headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title, headerBackTitleVisible: false
-    }} />
-    <Stack.Screen name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route} component={Typography} options={{
-      headerTitle: APP_ROUTES.FOUNDATION.TYPOGRAPHY.title, headerBackTitleVisible: false
-    }} />
-    <Stack.Screen name={APP_ROUTES.FOUNDATION.PICTOGRAMS.route} component={Pictograms} options={{
-      headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title, headerBackTitleVisible: false
-    }} />
-    <Stack.Screen name={APP_ROUTES.COMPONENTS.BUTTONS.route} component={Buttons} options={{
-      headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title, headerBackTitleVisible: false
-    }} />
+    <Stack.Screen
+      name={APP_ROUTES.MAIN}
+      component={MainScreen}
+      options={{
+        headerTitle: "Design System"
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.ICONS.route}
+      component={Icons}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.ICONS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LOGOS.route}
+      component={Logos}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route}
+      component={Typography}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.TYPOGRAPHY.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.PICTOGRAMS.route}
+      component={Pictograms}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BUTTONS.route}
+      component={Buttons}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title,
+        headerBackTitleVisible: false
+      }}
+    />
   </Stack.Navigator>
 );
 
