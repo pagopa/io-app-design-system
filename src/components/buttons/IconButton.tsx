@@ -112,7 +112,6 @@ export const IconButton = ({
     );
     return { color: iconColor };
   });
-  /* REMOVE_LEGACY_COMPONENT: End ▶ */
 
   const handlePressIn = useCallback(() => {
     // eslint-disable-next-line functional/immutable-data

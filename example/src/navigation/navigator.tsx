@@ -1,11 +1,14 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Icons } from "../pages/Icons";
-import { Logos } from "../pages/Logos";
-
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
+import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
+import { Icons } from "../pages/Icons";
+import { Layout } from "../pages/Layout";
+import { Logos } from "../pages/Logos";
+import { Selection } from "../pages/Selection";
+
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Typography } from "../pages/Typography";
@@ -43,6 +46,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BADGE.route}
+      component={Badges}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BADGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route}
       component={Typography}
       options={{
@@ -67,6 +78,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LAYOUT.route}
+      component={Layout}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LAYOUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.COMPONENTS.ADVICE.route}
       component={DSAdvice}
       options={{
@@ -79,6 +98,14 @@ const AppNavigator = () => (
       component={DSAlert}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.SELECTION.route}
+      component={Selection}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.SELECTION.title,
         headerBackTitleVisible: false
       }}
     />
