@@ -1,5 +1,3 @@
-import { Component, ComponentType, StatelessComponent } from "react";
-
 export type ThemeSimpleValue = undefined | number | string;
 
 /**
