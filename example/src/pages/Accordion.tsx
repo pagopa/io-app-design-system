@@ -1,15 +1,15 @@
 import {
-    Body,
-    H3,
-    H5,
-    IOAccordion,
-    IOColors,
-    IOListItemVisualParams,
-    IOStyles,
-    Icon,
-    Label,
-    RawAccordion,
-    VSpacer
+  Body,
+  H3,
+  H5,
+  IOAccordion,
+  IOColors,
+  IOListItemVisualParams,
+  IOStyles,
+  Icon,
+  Label,
+  RawAccordion,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { View } from "react-native";
