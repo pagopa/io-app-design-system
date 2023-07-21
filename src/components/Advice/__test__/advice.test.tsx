@@ -4,7 +4,9 @@ import { Advice } from "../Advice";
 
 describe("Test Advice Components", () => {
   it("Advice Snapshot", () => {
-    const advice = TestRenderer.create(<Advice text={"Text"}></Advice>).toJSON();
+    const advice = TestRenderer.create(
+      <Advice text={"Text"}></Advice>
+    ).toJSON();
     expect(advice).toMatchSnapshot();
   });
 });
