@@ -85,7 +85,6 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
       onPress={onPress}
       style={styles.checkBoxWrapper}
     >
-      {/* ◀ REMOVE_LEGACY_COMPONENT: Remove the following conditions */}
       <View
         style={[
           styles.checkboxBorder,
@@ -105,7 +104,6 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
           animatedCheckboxSquare
         ]}
       />
-      {/* REMOVE_LEGACY_COMPONENT: End ▶ */}
       {isChecked && (
         <AnimatedTick
           progress={tickAnimationProgress}

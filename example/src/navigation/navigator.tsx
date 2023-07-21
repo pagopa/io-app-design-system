@@ -1,7 +1,12 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { DSAdvice } from "../pages/Advice";
+import { DSAlert } from "../pages/Alert";
+import { Badges } from "../pages/Badges";
 import { Icons } from "../pages/Icons";
+import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
+import { Selection } from "../pages/Selection";
 
 import { Colors } from "../pages/Colors";
 import MainScreen from "../pages/MainScreen";
@@ -41,6 +46,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BADGE.route}
+      component={Badges}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BADGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route}
       component={Typography}
       options={{
@@ -61,6 +74,38 @@ const AppNavigator = () => (
       component={Colors}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.COLOR.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LAYOUT.route}
+      component={Layout}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LAYOUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ADVICE.route}
+      component={DSAdvice}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ADVICE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ALERT.route}
+      component={DSAlert}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.SELECTION.route}
+      component={Selection}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.SELECTION.title,
         headerBackTitleVisible: false
       }}
     />
