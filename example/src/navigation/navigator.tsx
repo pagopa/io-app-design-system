@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
+import { Badges } from "../pages/Badges";
 import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
@@ -38,6 +39,14 @@ const AppNavigator = () => (
       component={Logos}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BADGE.route}
+      component={Badges}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BADGE.title,
         headerBackTitleVisible: false
       }}
     />
