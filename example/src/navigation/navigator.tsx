@@ -1,10 +1,15 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { Accordion } from "../pages/Accordion";
+import { DSAdvice } from "../pages/Advice";
+import { DSAlert } from "../pages/Alert";
+import { Badges } from "../pages/Badges";
 import { Icons } from "../pages/Icons";
+import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
+import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
@@ -40,6 +45,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BADGE.route}
+      component={Badges}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BADGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route}
       component={Typography}
       options={{
@@ -60,6 +73,38 @@ const AppNavigator = () => (
       component={Accordion}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LAYOUT.route}
+      component={Layout}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LAYOUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ADVICE.route}
+      component={DSAdvice}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ADVICE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ALERT.route}
+      component={DSAlert}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.SELECTION.route}
+      component={Selection}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.SELECTION.title,
         headerBackTitleVisible: false
       }}
     />

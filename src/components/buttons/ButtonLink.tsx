@@ -1,20 +1,20 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
-    Extrapolate,
-    interpolate,
-    interpolateColor,
-    useAnimatedProps,
-    useAnimatedStyle,
-    useDerivedValue,
-    useSharedValue,
-    withSpring
+  Extrapolate,
+  interpolate,
+  interpolateColor,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring
 } from "react-native-reanimated";
 import {
-    IOButtonStyles,
-    IOColors,
-    IOScaleValues,
-    IOSpringValues
+  IOButtonStyles,
+  IOColors,
+  IOScaleValues,
+  IOSpringValues
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -132,6 +132,7 @@ export const ButtonLink = React.memo(
 
     const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
+
       const labelColor = interpolateColor(
         progressPressed.value,
         [0, 1],
