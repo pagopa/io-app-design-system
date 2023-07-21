@@ -2,6 +2,7 @@ export * from "./accordion";
 export * from "./alert";
 export * from "./avatar";
 export * from "./badge";
+export * from "./banner";
 export * from "./buttons";
 export * from "./checkbox";
 export * from "./contentWrapper";

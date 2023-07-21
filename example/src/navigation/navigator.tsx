@@ -3,6 +3,8 @@ import React from "react";
 import { Icons } from "../pages/Icons";
 import { Logos } from "../pages/Logos";
 
+import { DSAdvice } from "../pages/Advice";
+import { DSAlert } from "../pages/Alert";
 import { Buttons } from "../pages/Buttons";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
@@ -61,6 +63,22 @@ const AppNavigator = () => (
       component={Buttons}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ADVICE.route}
+      component={DSAdvice}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ADVICE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ALERT.route}
+      component={DSAlert}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
         headerBackTitleVisible: false
       }}
     />
