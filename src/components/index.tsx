@@ -4,7 +4,9 @@ export * from "./avatar";
 export * from "./badge";
 export * from "./buttons";
 export * from "./checkbox";
+export * from "./contentWrapper";
 export * from "./contentWrapper/ContentWrapper";
+export * from "./divider";
 export * from "./divider/Divider";
 export * from "./icons";
 export * from "./listitems";
@@ -16,3 +18,4 @@ export * from "./spacer/Spacer";
 export * from "./switch";
 export * from "./tag";
 export * from "./typography";
+
