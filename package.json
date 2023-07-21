@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "0.1.0",
+  "version": "1.0.0-15",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -40,16 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/pagopa/io-app-design-system",
+  "repository": "https://github.com/pagopa/io-app-design-system.git",
   "author": "PagoPa (https://github.com/pagopa)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pagopa/io-app-design-system/issues"
   },
   "homepage": "https://github.com/pagopa/io-app-design-system#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
@@ -106,19 +103,19 @@
   "release-it": {
     "git": {
       "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "tagName": "v${version}",
+      "changelog": "yarn auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
+    },
+    "hooks": {
+      "after:bump": "yarn auto-changelog -p && git add ."
     },
     "npm": {
-      "publish": true
+      "publish": false
     },
     "github": {
       "release": true
     },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
+    "plugins": {}
   },
   "eslintIgnore": [
     "node_modules/",
@@ -159,6 +156,7 @@
     "expo-font": "^11.4.0",
     "expo-modules-core": "^1.5.6",
     "react-native-gesture-handler": "^2.12.0",
+    "auto-changelog": "^2.4.0",
     "react-native-haptic-feedback": "^2.0.2",
     "react-native-linear-gradient": "^2.7.3",
     "react-native-reanimated": "^2.9.1",
