@@ -4,7 +4,6 @@ import {
   H5,
   IOAccordion,
   IOColors,
-  IOListItemVisualParams,
   IOStyles,
   Icon,
   Label,
