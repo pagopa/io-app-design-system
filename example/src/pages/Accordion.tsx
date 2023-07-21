@@ -13,8 +13,6 @@ import {
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { View } from "react-native";
-import AlphaChannel from "../../assets/alphaChannel.svg";
-import Analytics from "../../assets/analytics.svg";
 import { Screen } from "../components/Screen";
 
 export const Accordion = () => (
@@ -22,15 +20,15 @@ export const Accordion = () => (
     <Label>{"<IOAccordion />"}</Label>
     <View style={[IOStyles.flex, { width: "100%" }]}>
       <IOAccordion title={"Animated Accordion"}>
-        <AlphaChannel width={128} height={128} />
+        <Icon name="productIOApp" size={20} color="grey-650" />
       </IOAccordion>
       <IOAccordion title={"Accordion without animation"} animated={false}>
-        <Analytics width={128} height={128} fill={IOColors.orange} />
+        <Icon name="productIOApp" size={20} color="grey-650" />
       </IOAccordion>
       <IOAccordion title={"Accordion with a very very very very long text"}>
         <>
-          <Analytics width={128} height={128} fill={IOColors.orange} />
-          <Analytics width={128} height={128} fill={IOColors.orange} />
+          <Icon name="productIOApp" size={20} color="grey-650" />
+          <Icon name="productIOApp" size={20} color="grey-650" />
         </>
       </IOAccordion>
     </View>
@@ -45,11 +43,7 @@ export const Accordion = () => (
         }}
         header={
           <View style={IOStyles.row}>
-            <Icon
-              name="chevronRightListItem"
-              color="grey-450"
-              size={IOListItemVisualParams.iconSize}
-            />
+            <Icon name="productIOApp" size={24} color="grey-650" />
             <H3 style={{ alignSelf: "center" }}>{"Custom header "}</H3>
             <H5 style={{ alignSelf: "center" }}>{"Purgatorio, Canto VI"}</H5>
           </View>
