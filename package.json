@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "1.0.0-14",
+  "version": "1.0.0-15",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -47,9 +47,6 @@
     "url": "https://github.com/pagopa/io-app-design-system/issues"
   },
   "homepage": "https://github.com/pagopa/io-app-design-system#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
