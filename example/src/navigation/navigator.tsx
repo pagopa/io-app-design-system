@@ -6,6 +6,8 @@ import { Logos } from "../pages/Logos";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import MainScreen from "../pages/MainScreen";
+import { Pictograms } from "../pages/Pictograms";
+import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -20,10 +22,16 @@ const AppNavigator = () => (
       headerTitle: "Design System",
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.ICONS.route} component={Icons} options={{
-      headerTitle: "Icons", headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.FOUNDATION.ICONS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.FOUNDATION.LOGOS.route} component={Logos} options={{
-      headerTitle: "Logos", headerBackTitleVisible: false
+      headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title, headerBackTitleVisible: false
+    }} />
+    <Stack.Screen name={APP_ROUTES.FOUNDATION.TYPOGRAPHY.route} component={Typography} options={{
+      headerTitle: APP_ROUTES.FOUNDATION.TYPOGRAPHY.title, headerBackTitleVisible: false
+    }} />
+    <Stack.Screen name={APP_ROUTES.FOUNDATION.PICTOGRAMS.route} component={Pictograms} options={{
+      headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title, headerBackTitleVisible: false
     }} />
     <Stack.Screen name={APP_ROUTES.COMPONENTS.ADVICE.route} component={DSAdvice} options={{
       headerTitle: APP_ROUTES.COMPONENTS.ADVICE.title, headerBackTitleVisible: false
