@@ -1,17 +1,17 @@
 import {
-    Body,
-    ContentWrapper,
-    Divider,
-    H1,
-    H3,
-    HSpacer,
-    IOAppMargin,
-    IOColors,
-    IOSpacer,
-    IOThemeContext,
-    LabelSmall,
-    VDivider,
-    VSpacer
+  Body,
+  ContentWrapper,
+  Divider,
+  H1,
+  H3,
+  HSpacer,
+  IOAppMargin,
+  IOColors,
+  IOSpacer,
+  IOThemeContext,
+  LabelSmall,
+  VDivider,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { View } from "react-native";
@@ -33,7 +33,7 @@ export const Layout = () => {
         </H1>
         <H3
           color={theme["textHeading-default"]}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: 16 }}
         >
           ContentWrapper
@@ -82,7 +82,7 @@ export const Layout = () => {
 
         <H3
           color={theme["textHeading-default"]}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: 16 }}
         >
           VSpacer
@@ -103,7 +103,7 @@ export const Layout = () => {
 
         <H3
           color={theme["textHeading-default"]}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: 16 }}
         >
           HSpacer
@@ -133,7 +133,7 @@ export const Layout = () => {
 
         <H3
           color={theme["textHeading-default"]}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: 16 }}
         >
           Default (Horizontal)
@@ -148,7 +148,7 @@ export const Layout = () => {
       <ContentWrapper>
         <H3
           color={theme["textHeading-default"]}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: 16 }}
         >
           Vertical
