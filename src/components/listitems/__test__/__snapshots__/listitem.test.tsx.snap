@@ -246,13 +246,6 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       >
         label
       </Text>
-      <View
-        style={
-          {
-            "height": 4,
-          }
-        }
-      />
       <Text
         color="black"
         defaultColor="black"
@@ -388,13 +381,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         >
           label
         </Text>
-        <View
-          style={
-            {
-              "height": 4,
-            }
-          }
-        />
         <Text
           color="blueIO-500"
           defaultColor="black"
