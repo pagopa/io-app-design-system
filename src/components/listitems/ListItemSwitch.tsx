@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, View } from "react-native";
+import { GestureResponderEvent, Switch, View } from "react-native";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
@@ -8,7 +8,7 @@ import {
 } from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { H6, LabelSmall, Link } from "../typography";
 import { NativeSwitch } from "../switch/NativeSwitch";
 
 type Props = {
@@ -16,6 +16,12 @@ type Props = {
   onSwitchValueChange?: (newValue: boolean) => void;
   description?: string;
   icon?: IOIcons;
+  action?: SwitchAction;
+};
+
+type SwitchAction = {
+  label: string;
+  onPress: (event: GestureResponderEvent) => void;
 };
 
 const DISABLED_OPACITY = 0.5;
@@ -30,6 +36,7 @@ export const ListItemSwitch = React.memo(
     icon,
     value,
     disabled,
+    action,
     onSwitchValueChange
   }: OwnProps) => {
     const theme = useIOTheme();
@@ -79,6 +86,14 @@ export const ListItemSwitch = React.memo(
                 <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
                   {description}
                 </LabelSmall>
+              </>
+            )}
+            {action && (
+              <>
+                <VSpacer size={IOSelectionListItemVisualParams.actionMargin} />
+                <Link fontSize="small" onPress={action.onPress}>
+                  {action.label}
+                </Link>
               </>
             )}
           </View>

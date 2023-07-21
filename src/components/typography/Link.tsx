@@ -1,8 +1,8 @@
-import React from "react";
-import type { IOColors } from "../../core/IOColors";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
+import * as React from "react";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import type { IOColors } from "../../core";
 import { ExternalTypographyProps, TypographyProps } from "./common";
+import { useTypographyFactory } from "./Factory";
 
 type AllowedColors = IOColors;
 type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Bold">;
@@ -10,40 +10,36 @@ type FontSize = "regular" | "small";
 type AllowedFontSize = { fontSize?: FontSize };
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 > &
-    AllowedFontSize;
+  AllowedFontSize;
+
+const fontName: IOFontFamily = "TitilliumWeb";
+const fontSizeMapping: Record<FontSize, number> = { regular: 16, small: 14 };
+
+export const linkLegacyDefaultColor: AllowedColors = "blue";
+export const linkLegacyDefaultWeight: AllowedWeight = "SemiBold";
 
 export const linkDefaultColor: AllowedColors = "blueIO-500";
 export const linkDefaultWeight: AllowedWeight = "Bold";
 
 /**
  * Typography component to render `Link` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Bold/SemiBold`, color: `blue/blueIO-500`
+ * default values(if not defined) are weight: `SemiBold`, color: `blue`
  * @param props`
  * @constructor
  */
-export const Link: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "TitilliumWeb";
-    const fontSizeMapping: Record<FontSize, number> = { regular: 16, small: 14 };
-
-    const defaultWeight = linkDefaultWeight;
-    const defaultColor = linkDefaultColor;
-
-    const defaultFontSize = props.fontSize
+export const Link: React.FunctionComponent<OwnProps> = props =>
+  useTypographyFactory<AllowedWeight, AllowedColors>({
+    accessibilityRole: props.onPress ? "link" : undefined,
+    ...props,
+    defaultWeight: linkDefaultWeight,
+    defaultColor: linkDefaultColor,
+    font: fontName,
+    fontStyle: {
+      fontSize: props.fontSize
         ? fontSizeMapping[props.fontSize]
-        : fontSizeMapping.regular;
-    const defaultTextDecorationLine = "underline";
-
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        accessibilityRole: props.onPress ? "link" : undefined,
-        ...props,
-        defaultWeight,
-        defaultColor,
-        font: fontName,
-        fontStyle: {
-            fontSize: defaultFontSize,
-            textDecorationLine: defaultTextDecorationLine
-        },
-    });
-};
+        : fontSizeMapping.regular,
+      textDecorationLine: "underline"
+    }
+  });

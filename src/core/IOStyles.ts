@@ -9,6 +9,8 @@ import { IOAppMargin, IOSpacer, IOSpacingScale } from "./IOSpacing";
 
 interface IOVisualCostants {
   appMarginDefault: IOAppMargin;
+  // Header
+  headerHeight: number;
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
@@ -16,6 +18,7 @@ interface IOVisualCostants {
 
 export const IOVisualCostants: IOVisualCostants = {
   appMarginDefault: 24,
+  headerHeight: 56,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66
 };
@@ -88,6 +91,8 @@ const btnSizeLarge = 56;
 // NEW Design System
 const btnBorderRadius = 8;
 const btnSizeDefault = 48;
+export const buttonSolidHeight: number = btnSizeDefault;
+
 // TODO: Replace the number type with the new IOIconSizeScale
 const iconBtnSizeSmall: number = 24;
 
@@ -300,6 +305,7 @@ interface IOSelectionListItemVisualParams {
   paddingVertical: IOSpacingScale;
   paddingHorizontal: IOAppMargin;
   iconMargin: IOSpacingScale;
+  actionMargin: IOSpacer;
   iconSize: IOIconSizeScale;
   descriptionMargin: IOSpacer;
 }
@@ -310,6 +316,7 @@ export const IOSelectionListItemVisualParams: IOSelectionListItemVisualParams =
     paddingHorizontal: IOVisualCostants.appMarginDefault,
     iconMargin: 8,
     iconSize: 24,
+    actionMargin: 16,
     descriptionMargin: 4
   };
 
