@@ -83,7 +83,6 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
       onPress={onPress}
       style={styles.radioWrapper}
     >
-      {/* ◀ REMOVE_LEGACY_COMPONENT: Remove the following conditions */}
       <View
         style={[
           styles.radioBorder,
@@ -103,7 +102,6 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
           animatedCheckboxSquare
         ]}
       />
-      {/* REMOVE_LEGACY_COMPONENT: End ▶ */}
       {isChecked && (
         <View>
           <AnimatedTick
