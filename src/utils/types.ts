@@ -30,14 +30,3 @@ type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> = T | U extends object
   ? (Without<T, U> & U) | (Without<U, T> & T)
   : T | U;
-
-/**
-* Evaluates the Props type of React component
-*/
-export type ComponentProps<C> = C extends StatelessComponent<infer P1>
-  ? P1
-  : C extends Component<infer P2>
-  ? P2
-  : C extends ComponentType<infer P3>
-  ? P3
-  : never;
