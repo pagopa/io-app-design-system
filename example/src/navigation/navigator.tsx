@@ -1,9 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { DSAdvice } from "../pages/Advice";
+import { DSAlert } from "../pages/Alert";
 import { Icons } from "../pages/Icons";
-import { Logos } from "../pages/Logos";
-
 import { Layout } from "../pages/Layout";
+import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Typography } from "../pages/Typography";
@@ -61,6 +62,22 @@ const AppNavigator = () => (
       component={Layout}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.LAYOUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ADVICE.route}
+      component={DSAdvice}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ADVICE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ALERT.route}
+      component={DSAlert}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
         headerBackTitleVisible: false
       }}
     />
