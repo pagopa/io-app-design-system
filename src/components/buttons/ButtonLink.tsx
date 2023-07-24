@@ -10,16 +10,16 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { WithTestID } from "../../utils/types";
+import {
+  IOButtonStyles,
+  IOColors,
+  IOScaleValues,
+  IOSpringValues
+} from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
+import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons/Icon";
 import { HSpacer } from "../spacer/Spacer";
-import {
-  IOScaleValues,
-  IOSpringValues,
-  IOColors,
-  IOButtonStyles
-} from "../../core";
 
 type ColorButtonLink = "primary" | "error" | "warning" | "success" | "info";
 export type ButtonLink = WithTestID<{

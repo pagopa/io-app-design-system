@@ -1,15 +1,15 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
-import { Selection } from "../pages/Selection";
-
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
+import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
@@ -65,6 +65,14 @@ const AppNavigator = () => (
       component={Pictograms}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ACCORDION.route}
+      component={Accordion}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
         headerBackTitleVisible: false
       }}
     />
