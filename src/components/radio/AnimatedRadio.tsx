@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View, Pressable, PressableProps } from "react-native";
+import { Pressable, PressableProps, StyleSheet, View } from "react-native";
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
+  Easing,
   interpolate,
+  useAnimatedStyle,
+  useSharedValue,
   withSpring,
-  withTiming,
-  Easing
+  withTiming
 } from "react-native-reanimated";
-import { IOSelectionTickVisualParams } from "../../core/IOStyles";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
+import { IOSelectionTickVisualParams } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
