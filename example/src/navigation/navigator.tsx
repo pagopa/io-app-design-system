@@ -8,9 +8,11 @@ import { Buttons } from "../pages/Buttons";
 import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
+import { Selection } from "../pages/Selection";
+
+import { Colors } from "../pages/Colors";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
-import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
@@ -70,10 +72,19 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.COLOR.route}
+      component={Colors}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.COLOR.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.COMPONENTS.BUTTONS.route}
       component={Buttons}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title,
+
         headerBackTitleVisible: false
       }}
     />
