@@ -1,21 +1,21 @@
 import {
-    H2,
-    H3,
-    H5,
-    IOColorGradients,
-    IOColors,
-    IOColorsExtra,
-    IOColorsNeutral,
-    IOColorsStatus,
-    IOColorsTints,
-    IOStyles,
-    IOThemeDark,
-    IOThemeLight,
-    LabelSmall,
-    VSpacer,
-    hexToRgba,
-    themeStatusColorsDarkMode,
-    themeStatusColorsLightMode
+  H2,
+  H3,
+  H5,
+  IOColorGradients,
+  IOColors,
+  IOColorsExtra,
+  IOColorsNeutral,
+  IOColorsStatus,
+  IOColorsTints,
+  IOStyles,
+  IOThemeDark,
+  IOThemeLight,
+  LabelSmall,
+  VSpacer,
+  hexToRgba,
+  themeStatusColorsDarkMode,
+  themeStatusColorsLightMode
 } from "@pagopa/io-app-design-system";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
@@ -141,7 +141,7 @@ const renderColorThemeGroup = (
       {name && (
         <H3
           color={"bluegrey"}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: sectionTitleMargin }}
         >
           {name}
@@ -225,7 +225,7 @@ const renderColorGroup = (
     {name && (
       <H3
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Bold"}
         style={{ marginBottom: sectionTitleMargin }}
       >
         {name}
