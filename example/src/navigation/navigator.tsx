@@ -4,6 +4,7 @@ import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
+import { Buttons } from "../pages/Buttons";
 import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
 import { Logos } from "../pages/Logos";
@@ -65,6 +66,14 @@ const AppNavigator = () => (
       component={Pictograms}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.BUTTONS.route}
+      component={Buttons}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title,
         headerBackTitleVisible: false
       }}
     />
