@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
@@ -74,6 +75,14 @@ const AppNavigator = () => (
       component={Colors}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.COLOR.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.ACCORDION.route}
+      component={Accordion}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
         headerBackTitleVisible: false
       }}
     />
