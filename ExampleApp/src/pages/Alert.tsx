@@ -1,4 +1,9 @@
-import { Alert, H2, VSpacer } from "@pagopa/io-app-design-system";
+import {
+  Alert,
+  H2,
+  IOVisualCostants,
+  VSpacer
+} from "@pagopa/io-app-design-system";
 import React from "react";
 import { View } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
@@ -9,7 +14,14 @@ export const DSAlert = () => {
   return (
     <Screen>
       {/* Content only */}
-      <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
+      <H2
+        color={"bluegrey"}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
         Content only
       </H2>
       <Alert

@@ -1,16 +1,17 @@
 import {
-    ButtonExtendedOutline,
-    ButtonLink,
-    ButtonOutline,
-    ButtonSolid,
-    H2,
-    HSpacer,
-    IOColors,
-    IOStyles,
-    IconButton,
-    IconButtonContained,
-    IconButtonSolid,
-    VSpacer
+  ButtonExtendedOutline,
+  ButtonLink,
+  ButtonOutline,
+  ButtonSolid,
+  H2,
+  HSpacer,
+  IOColors,
+  IOStyles,
+  IOVisualCostants,
+  IconButton,
+  IconButtonContained,
+  IconButtonSolid,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import React from "react";
 import { Alert, StyleSheet, View } from "react-native";
@@ -36,7 +37,10 @@ export const Buttons = () => (
     <H2
       color={"bluegrey"}
       weight={"SemiBold"}
-      style={{ marginBottom: 16, marginTop: 16 }}
+      style={{
+        marginBottom: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
     >
       ButtonSolid
     </H2>

@@ -1,25 +1,26 @@
 import {
-    H2,
-    H3,
-    H5,
-    IOColorGradients,
-    IOColors,
-    IOColorsExtra,
-    IOColorsNeutral,
-    IOColorsStatus,
-    IOColorsTints,
-    IOStyles,
-    IOThemeDark,
-    IOThemeLight,
-    LabelSmall,
-    VSpacer,
-    hexToRgba,
-    themeStatusColorsDarkMode,
-    themeStatusColorsLightMode
+  H2,
+  H3,
+  H5,
+  IOColorGradients,
+  IOColors,
+  IOColorsExtra,
+  IOColorsNeutral,
+  IOColorsStatus,
+  IOColorsTints,
+  IOStyles,
+  IOThemeDark,
+  IOThemeLight,
+  IOVisualCostants,
+  LabelSmall,
+  VSpacer,
+  hexToRgba,
+  themeStatusColorsDarkMode,
+  themeStatusColorsLightMode
 } from "@pagopa/io-app-design-system";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ColorValue, Dimensions, StyleSheet, Text, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import { Screen } from "../components/Screen";
 
 const gradientItemGutter = 16;
@@ -243,7 +244,10 @@ export const Colors = () => (
     <H2
       color={"bluegrey"}
       weight={"Bold"}
-      style={{ marginBottom: sectionTitleMargin }}
+      style={{
+        marginBottom: sectionTitleMargin,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
     >
       Color scales
     </H2>
@@ -315,7 +319,7 @@ const ColorBox = ({
           : { backgroundColor: color }
       ]}
     >
-      {color && <Text style={styles.colorPill}>{color}</Text>}
+      {color && <Text style={styles.colorPill}>{color.toString()}</Text>}
     </View>
 
     {name && (
@@ -340,7 +344,12 @@ const GradientBox = ({ name, colors }: GradientBoxProps) => {
   const [first, last] = colors;
   return (
     <View style={styles.gradientWrapper}>
-      <LinearGradient colors={colors} style={styles.gradientItem}>
+      <LinearGradient
+        colors={colors}
+        useAngle={true}
+        angle={180}
+        style={styles.gradientItem}
+      >
         {first && <Text style={styles.colorPill}>{first}</Text>}
         {last && <Text style={styles.colorPill}>{last}</Text>}
       </LinearGradient>

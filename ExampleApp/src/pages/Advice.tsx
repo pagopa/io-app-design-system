@@ -2,6 +2,7 @@ import {
   Banner,
   H2,
   IOPictogramsBleed,
+  IOVisualCostants,
   VSpacer,
   WithTestID
 } from "@pagopa/io-app-design-system";
@@ -104,7 +105,14 @@ const renderBanner = () => {
 
   return (
     <>
-      <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
+      <H2
+        color={"bluegrey"}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
         Banner
       </H2>
       {bannerBackgroundColours.map(color => (

@@ -8,6 +8,7 @@ import {
     IONavIcons,
     IOProductIcons,
     IOThemeContext,
+    IOVisualCostants,
     Icon,
     SVGIconProps
 } from "@pagopa/io-app-design-system";
@@ -58,7 +59,8 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         marginLeft: (iconItemGutter / 2) * -1,
         marginRight: (iconItemGutter / 2) * -1,
-        marginBottom: 16
+        marginBottom: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
     }
 });
 

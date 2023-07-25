@@ -1,17 +1,18 @@
 import {
-    Body,
-    ContentWrapper,
-    Divider,
-    H1,
-    H3,
-    HSpacer,
-    IOAppMargin,
-    IOColors,
-    IOSpacer,
-    IOThemeContext,
-    LabelSmall,
-    VDivider,
-    VSpacer
+  Body,
+  ContentWrapper,
+  Divider,
+  H1,
+  H3,
+  HSpacer,
+  IOAppMargin,
+  IOColors,
+  IOSpacer,
+  IOThemeContext,
+  IOVisualCostants,
+  LabelSmall,
+  VDivider,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { View } from "react-native";
@@ -27,7 +28,10 @@ export const Layout = () => {
         <H1
           color={theme["textHeading-default"]}
           weight={"Bold"}
-          style={{ marginBottom: 16 }}
+          style={{
+            marginBottom: 16,
+            paddingTop: IOVisualCostants.appMarginDefault
+          }}
         >
           Grid
         </H1>

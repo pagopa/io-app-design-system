@@ -8,7 +8,8 @@ import {
   H1,
   LabelSmall,
   VSpacer,
-  ListItemNav
+  ListItemNav,
+  IOVisualCostants
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -77,7 +78,8 @@ const MainScreen = (props: Props) => {
   return (
     <View
       style={{
-        backgroundColor: IOColors[theme["appBackground-primary"]]
+        backgroundColor: IOColors[theme["appBackground-primary"]],
+        paddingTop: IOVisualCostants.appMarginDefault
       }}
     >
       <SectionList

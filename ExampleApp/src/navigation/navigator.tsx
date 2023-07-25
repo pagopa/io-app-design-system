@@ -22,7 +22,16 @@ const Stack = createStackNavigator<AppParamsList>();
 const AppNavigator = () => (
   <Stack.Navigator
     initialRouteName={APP_ROUTES.MAIN}
-    screenOptions={{ headerShown: true }}
+    screenOptions=      {{
+      headerTitleStyle: {
+        fontFamily: "ReadexPro",
+        fontSize: 14,
+        fontWeight: "normal",
+        fontStyle: "normal",
+      },
+      headerTitleAlign: "center",
+      headerShown: true
+    }}
   >
     <Stack.Screen
       name={APP_ROUTES.MAIN}

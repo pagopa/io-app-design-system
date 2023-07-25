@@ -5,6 +5,7 @@ import {
   IOAccordion,
   IOColors,
   IOStyles,
+  IOVisualCostants,
   Icon,
   Label,
   RawAccordion,
@@ -17,7 +18,12 @@ import { Screen } from "../components/Screen";
 export const Accordion = () => (
   <Screen>
     <Label>{"<IOAccordion />"}</Label>
-    <View style={[IOStyles.flex, { width: "100%" }]}>
+    <View
+      style={[
+        IOStyles.flex,
+        { width: "100%", paddingTop: IOVisualCostants.appMarginDefault }
+      ]}
+    >
       <IOAccordion title={"Animated Accordion"}>
         <Icon name="productIOApp" size={20} color="grey-650" />
       </IOAccordion>
