@@ -17,9 +17,6 @@ type OwnProps = ExternalTypographyProps<
 const fontName: IOFontFamily = "TitilliumWeb";
 const fontSizeMapping: Record<FontSize, number> = { regular: 16, small: 14 };
 
-export const linkLegacyDefaultColor: AllowedColors = "blue";
-export const linkLegacyDefaultWeight: AllowedWeight = "SemiBold";
-
 export const linkDefaultColor: AllowedColors = "blueIO-500";
 export const linkDefaultWeight: AllowedWeight = "Bold";
 
