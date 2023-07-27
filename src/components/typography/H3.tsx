@@ -1,101 +1,35 @@
-import React from "react";
-import type { IOColors, IOTheme } from "../../core/IOColors";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
+import * as React from "react";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { IOColorsStatusForeground, IOTheme } from "../../core";
+import { ExternalTypographyProps, TypographyProps } from "./common";
 import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, RequiredTypographyProps } from "./common";
 
-// these colors are allowed only when the weight is SemiBold
-type AllowedSemiBoldColors = Extract<
-    IOColors,
-    | "bluegreyDark"
-    | "bluegreyLight"
-    | "white"
-    | "red"
-    | "blue"
-    | "bluegrey"
-    | "grey"
+type AllowedColors = IOColorsStatusForeground | IOTheme["textHeading-default"];
+type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular">;
+
+type OwnProps = ExternalTypographyProps<
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-// when the weight is bold, only the white color is allowed
-type AllowedBoldColors = Extract<
-    IOColors,
-    | "white"
-    | "bluegreyLight"
-    | "black"
-    | "bluegreyDark"
-    | "blue"
-    | "bluegrey"
-    | "grey-200"
->;
-
-// all the possible colors
-type AllowedColors =
-    | AllowedBoldColors
-    | AllowedSemiBoldColors
-    | IOTheme["textHeading-default"];
-
-// all the possible weight
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "SemiBold">;
-
-// these are the properties allowed only if weight is undefined or SemiBold
-type SemiBoldProps = {
-    weight?: Extract<IOFontWeight, "SemiBold">;
-    color?: AllowedSemiBoldColors | IOTheme["textHeading-default"];
-};
-
-// these are the properties allowed only if weight is Bold
-type BoldProps = {
-    weight: Extract<IOFontWeight, "Bold">;
-    color?: AllowedBoldColors | IOTheme["textHeading-default"];
-};
-
-type BoldKindProps = SemiBoldProps | BoldProps;
-
-type OwnProps = ExternalTypographyProps<BoldKindProps>;
-
-export const h3FontSize = 18;
-export const h3LineHeight = 22;
+/* Common typographic styles */
+export const h3FontSize = 22;
+export const h3LineHeight = 33;
+/* New typographic styles */
+const h3FontName: IOFontFamily = "ReadexPro";
+const h3DefaultColor: AllowedColors = "black";
+const h3DefaultWeight: AllowedWeight = "Regular";
 
 /**
- * A custom function to calculate the values if no weight or color is provided.
- * The choose of the default color depends on the weight, for this reason cannot be used
- * the default calculateWeightColor with fallback if undefined.
- * @param weight
- * @param color
- */
-export const calculateH3WeightColor = (
-    weight?: AllowedWeight,
-    color?: AllowedColors
-): RequiredTypographyProps<AllowedWeight, AllowedColors> => {
-    const newWeight = weight ?? "SemiBold";
-    const newColor =
-        color !== undefined
-            ? color
-            : newWeight === "SemiBold"
-                ? "bluegreyDark"
-                : "white";
-    return {
-        weight: newWeight,
-        color: newColor
-    };
-};
-
-/**
- * Typography component to render `H3` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `SemiBold`, color: `bluegreyDark`
+ * Typography component to render `H2` text with font size {@link fontSize} and fontFamily {@link fontName}.
+ * default values(if not defined) are weight: `Bold`, color: `bluegreyDark`
  * @param props
  * @constructor
  */
-export const H3: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "TitilliumWeb";
-    const weightColorFactory = React.useCallback(
-        () => calculateH3WeightColor(props.weight, props.color),
-        [props.weight, props.color]
-    );
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        weightColorFactory,
-        font: fontName,
-        fontStyle: { fontSize: h3FontSize, lineHeight: h3LineHeight }
-    });
-};
+export const H3: React.FunctionComponent<OwnProps> = props =>
+  useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: h3DefaultWeight,
+    defaultColor: h3DefaultColor,
+    font: h3FontName,
+    fontStyle: { fontSize: h3FontSize, lineHeight: h3LineHeight }
+  });

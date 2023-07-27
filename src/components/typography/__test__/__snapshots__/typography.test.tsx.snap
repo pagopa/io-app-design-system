@@ -130,30 +130,31 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 
 exports[`Test Typography Components H3 Snapshot 1`] = `
 <Text
-  color="bluegreyDark"
-  font="TitilliumWeb"
+  color="black"
+  defaultColor="black"
+  defaultWeight="Regular"
+  font="ReadexPro"
   fontStyle={
     {
-      "fontSize": 18,
-      "lineHeight": 22,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   style={
     [
       {
-        "fontSize": 18,
-        "lineHeight": 22,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
-        "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "color": "#0E0F13",
+        "fontFamily": "Readex Pro",
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
       },
     ]
   }
-  weight="SemiBold"
-  weightColorFactory={[Function]}
+  weight="Regular"
 >
   Text
 </Text>
@@ -162,29 +163,30 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
 exports[`Test Typography Components H3 Snapshot 2`] = `
 <Text
   color="bluegreyLight"
-  font="TitilliumWeb"
+  defaultColor="black"
+  defaultWeight="Regular"
+  font="ReadexPro"
   fontStyle={
     {
-      "fontSize": 18,
-      "lineHeight": 22,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   style={
     [
       {
-        "fontSize": 18,
-        "lineHeight": 22,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Readex Pro",
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
       },
     ]
   }
-  weight="SemiBold"
-  weightColorFactory={[Function]}
+  weight="Regular"
 >
   Text
 </Text>
@@ -193,29 +195,30 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
 exports[`Test Typography Components H3 Snapshot 3`] = `
 <Text
   color="white"
-  font="TitilliumWeb"
+  defaultColor="black"
+  defaultWeight="Regular"
+  font="ReadexPro"
   fontStyle={
     {
-      "fontSize": 18,
-      "lineHeight": 22,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   style={
     [
       {
-        "fontSize": 18,
-        "lineHeight": 22,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Readex Pro",
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
       },
     ]
   }
-  weight="SemiBold"
-  weightColorFactory={[Function]}
+  weight="Regular"
 >
   Text
 </Text>
@@ -224,29 +227,30 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
 exports[`Test Typography Components H3 Snapshot 4`] = `
 <Text
   color="white"
-  font="TitilliumWeb"
+  defaultColor="black"
+  defaultWeight="Regular"
+  font="ReadexPro"
   fontStyle={
     {
-      "fontSize": 18,
-      "lineHeight": 22,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   style={
     [
       {
-        "fontSize": 18,
-        "lineHeight": 22,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Readex Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
     ]
   }
   weight="Bold"
-  weightColorFactory={[Function]}
 >
   Text
 </Text>
@@ -254,30 +258,31 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
 
 exports[`Test Typography Components H3 Snapshot 5`] = `
 <Text
-  color="white"
-  font="TitilliumWeb"
+  color="black"
+  defaultColor="black"
+  defaultWeight="Regular"
+  font="ReadexPro"
   fontStyle={
     {
-      "fontSize": 18,
-      "lineHeight": 22,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   style={
     [
       {
-        "fontSize": 18,
-        "lineHeight": 22,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
-        "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "color": "#0E0F13",
+        "fontFamily": "Readex Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
     ]
   }
   weight="Bold"
-  weightColorFactory={[Function]}
 >
   Text
 </Text>
