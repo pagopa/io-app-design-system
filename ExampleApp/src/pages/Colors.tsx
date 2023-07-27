@@ -142,7 +142,7 @@ const renderColorThemeGroup = (
       {name && (
         <H3
           color={"bluegrey"}
-          weight={"SemiBold"}
+          weight={"Bold"}
           style={{ marginBottom: sectionTitleMargin }}
         >
           {name}
@@ -226,7 +226,7 @@ const renderColorGroup = (
     {name && (
       <H3
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Bold"}
         style={{ marginBottom: sectionTitleMargin }}
       >
         {name}

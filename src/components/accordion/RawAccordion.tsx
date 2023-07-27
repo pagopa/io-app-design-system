@@ -1,15 +1,15 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import {
-  View,
   AccessibilityProps,
   Animated,
   Easing,
   LayoutAnimation,
+  Platform,
   StyleSheet,
   TouchableWithoutFeedback,
   UIManager,
-  Platform
+  View
 } from "react-native";
 import { IOStyles, IOVisualCostants } from "../../core/IOStyles";
 import { Icon } from "../icons/Icon";
@@ -51,7 +51,7 @@ const getDegree = (isOpen: boolean) => (isOpen ? "-90deg" : "-270deg");
  * @param props
  * @constructor
  */
-export const RawAccordion: React.FunctionComponent<Props> = props => {
+export const RawAccordion: React.FC<Props> = props => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const animatedController = useRef(new Animated.Value(1)).current;
   const shouldAnimate = props.animated ?? true;
@@ -62,9 +62,9 @@ export const RawAccordion: React.FunctionComponent<Props> = props => {
 
   const arrowAngle = shouldAnimate
     ? animatedController.interpolate({
-        inputRange: [0, 1],
-        outputRange: ["0deg", "-180deg"]
-      })
+      inputRange: [0, 1],
+      outputRange: ["0deg", "-180deg"]
+    })
     : getDegree(isOpen);
 
   useEffect(() => {

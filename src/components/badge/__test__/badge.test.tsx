@@ -4,7 +4,9 @@ import { Badge } from "../Badge";
 
 describe("Test Badge Components", () => {
   it("Badge Snapshot", () => {
-    const badge = TestRenderer.create(<Badge text={"text"} variant={"default"}></Badge>).toJSON();
+    const badge = TestRenderer.create(
+      <Badge text={"text"} variant={"default"}></Badge>
+    ).toJSON();
     expect(badge).toMatchSnapshot();
   });
 });

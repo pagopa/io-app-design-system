@@ -1,29 +1,34 @@
-import React, { useCallback } from "react";
+import * as React from "react";
+import { useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
-  Extrapolate,
-  interpolate,
-  interpolateColor,
-  useAnimatedProps,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+    Extrapolate,
+    interpolate,
+    interpolateColor,
+    useAnimatedProps,
+    useAnimatedStyle,
+    useDerivedValue,
+    useSharedValue,
+    withSpring
 } from "react-native-reanimated";
+import { WithTestID } from "src/utils/types";
 import {
-  IOButtonStyles,
-  IOColors,
-  IOIconButtonStyles,
-  IOScaleValues,
-  IOSpringValues,
-  hexToRgba
+    AnimatedIcon,
+    IOIcons,
+    IconClassComponent
+} from "../../components/icons";
+import {
+    IOButtonStyles,
+    IOColors,
+    IOIconButtonStyles,
+    IOScaleValues,
+    IOSpringValues,
+    hexToRgba
 } from "../../core";
-import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
 
-export type IconButton = WithTestID<{
-  color?: "primary" | "neutral" | "contrast";
+export type IconButtonContained = WithTestID<{
   icon: IOIcons;
+  color?: "primary" | "neutral" | "contrast";
   disabled?: boolean;
   accessibilityLabel: string;
   accessibilityHint?: string;
@@ -31,6 +36,11 @@ export type IconButton = WithTestID<{
 }>;
 
 type ColorStates = {
+  background: {
+    default: string;
+    pressed: string;
+    disabled: string;
+  };
   icon: {
     default: string;
     pressed: string;
@@ -38,9 +48,17 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
+const mapColorStates: Record<
+  NonNullable<IconButtonContained["color"]>,
+  ColorStates
+> = {
   // Primary button
   primary: {
+    background: {
+      default: hexToRgba(IOColors["blueIO-500"], 0),
+      pressed: hexToRgba(IOColors["blueIO-500"], 0.15),
+      disabled: "transparent"
+    },
     icon: {
       default: IOColors["blueIO-500"],
       pressed: IOColors["blueIO-600"],
@@ -49,17 +67,27 @@ const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
   },
   // Neutral button
   neutral: {
+    background: {
+      default: IOColors.white,
+      pressed: IOColors.greyUltraLight,
+      disabled: "transparent"
+    },
     icon: {
-      default: IOColors.black,
-      pressed: IOColors["grey-850"],
+      default: IOColors.bluegrey,
+      pressed: IOColors.black,
       disabled: IOColors.grey
     }
   },
   // Contrast button
   contrast: {
+    background: {
+      default: hexToRgba(IOColors.white, 0),
+      pressed: hexToRgba(IOColors.white, 0.2),
+      disabled: "transparent"
+    },
     icon: {
       default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
+      pressed: IOColors.white,
       disabled: hexToRgba(IOColors.white, 0.25)
     }
   }
@@ -68,15 +96,15 @@ const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
 const AnimatedIconClassComponent =
   Animated.createAnimatedComponent(IconClassComponent);
 
-export const IconButton = ({
-  color = "primary",
+export const IconButtonContained = ({
   icon,
+  color = "primary",
   disabled = false,
   onPress,
   accessibilityLabel,
   accessibilityHint,
   testID
-}: IconButton) => {
+}: IconButtonContained) => {
   const isPressed = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
@@ -90,6 +118,16 @@ export const IconButton = ({
   // Interpolate animation values from `isPressed` values
 
   const pressedAnimationStyle = useAnimatedStyle(() => {
+    // Link color states to the pressed states
+    const backgroundColor = interpolateColor(
+      progressPressed.value,
+      [0, 1],
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.pressed
+      ]
+    );
+
     // Scale down button slightly when pressed
     const scale = interpolate(
       progressPressed.value,
@@ -99,6 +137,7 @@ export const IconButton = ({
     );
 
     return {
+      backgroundColor,
       transform: [{ scale }]
     };
   });
@@ -124,26 +163,21 @@ export const IconButton = ({
 
   return (
     <Pressable
-      style={IOButtonStyles.dimensionsDefault}
-      disabled={disabled}
-      // Events
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole={"button"}
+      testID={testID}
       onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      // Accessibility
       accessible={true}
-      accessibilityRole={"button"}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityHint={accessibilityHint}
-      // Usability
-      // Add a touchable area around the button
-      hitSlop={8}
-      // Test
-      testID={testID}
+      disabled={disabled}
+      style={IOButtonStyles.dimensionsDefault}
     >
       <Animated.View
         style={[
-          IOIconButtonStyles.buttonSizeSmall,
+          IOIconButtonStyles.button,
+          IOIconButtonStyles.buttonSizeDefault,
           !disabled && pressedAnimationStyle
         ]}
       >
@@ -164,4 +198,4 @@ export const IconButton = ({
   );
 };
 
-export default IconButton;
+export default IconButtonContained;
