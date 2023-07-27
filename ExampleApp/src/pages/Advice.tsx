@@ -119,7 +119,7 @@ const renderBanner = () => {
         <React.Fragment key={`${color}-block`}>
           <ComponentViewerBox name={`Banner · Big size, ${color} variant`}>
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -129,7 +129,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -139,7 +139,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -151,7 +151,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -162,7 +162,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -178,7 +178,7 @@ const renderBanner = () => {
             name={`Banner · Big size, ${color} variant, close action`}
           >
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -191,7 +191,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -206,7 +206,7 @@ const renderBanner = () => {
           </ComponentViewerBox>
           <ComponentViewerBox name={`Banner · Small size, ${color} variant`}>
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               title="Banner title"
@@ -219,7 +219,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               content={
@@ -231,7 +231,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               content={
