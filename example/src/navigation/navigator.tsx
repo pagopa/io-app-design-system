@@ -5,14 +5,14 @@ import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
+import { Colors } from "../pages/Colors";
 import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
+import { ListItems } from "../pages/ListItem";
 import { Logos } from "../pages/Logos";
-import { Selection } from "../pages/Selection";
-
-import { Colors } from "../pages/Colors";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
+import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
@@ -22,12 +22,12 @@ const Stack = createStackNavigator<AppParamsList>();
 const AppNavigator = () => (
   <Stack.Navigator
     initialRouteName={APP_ROUTES.MAIN}
-    screenOptions=      {{
+    screenOptions={{
       headerTitleStyle: {
         fontFamily: "ReadexPro",
         fontSize: 14,
         fontWeight: "normal",
-        fontStyle: "normal",
+        fontStyle: "normal"
       },
       headerTitleAlign: "center",
       headerShown: true
@@ -134,6 +134,14 @@ const AppNavigator = () => (
       component={Selection}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.SELECTION.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.LIST_ITEMS.route}
+      component={ListItems}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
         headerBackTitleVisible: false
       }}
     />
