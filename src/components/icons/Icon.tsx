@@ -144,8 +144,10 @@ import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
+import IconArchive from "./svg/IconArchive";
 
 export const IOIcons = {
+  archive: IconArchive,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   qrCode: IconQrCode,
