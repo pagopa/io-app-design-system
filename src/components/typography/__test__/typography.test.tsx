@@ -1,9 +1,9 @@
 import React from "react";
 import * as TestRenderer from "react-test-renderer";
-import { IOFontWeight } from "../../../utils/fonts";
 import type { IOColors } from "../../../core/IOColors";
+import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
-import { calculateWeightColor } from "../common";
+import { CTA } from "../CTA";
 import { H1 } from "../H1";
 import { H2 } from "../H2";
 import { H3 } from "../H3";
@@ -14,6 +14,7 @@ import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
 import { Link } from "../Link";
 import { Monospace } from "../Monospace";
+import { calculateWeightColor } from "../common";
 
 describe("Test Typography Components", () => {
   it("H1 Snapshot", () => {
@@ -143,6 +144,10 @@ describe("Test Typography Components", () => {
   it("Body Snapshot", () => {
     const bodyDefault = TestRenderer.create(<Body>Text</Body>).toJSON();
     expect(bodyDefault).toMatchSnapshot();
+  });
+  it("CTA Snapshot", () => {
+    const cta = TestRenderer.create(<CTA>Text</CTA>).toJSON();
+    expect(cta).toMatchSnapshot();
   });
   it("LabelSmall Snapshot", () => {
     const labelSmallDefault = TestRenderer.create(
