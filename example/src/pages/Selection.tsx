@@ -1,13 +1,14 @@
 import {
   CheckboxLabel,
-  ListItemCheckbox,
   Divider,
   H2,
+  IOVisualCostants,
+  ListItemCheckbox,
+  ListItemSwitch,
   NativeSwitch,
   NewRadioItem,
   RadioGroup,
   SwitchLabel,
-  ListItemSwitch,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
@@ -17,7 +18,13 @@ import { Screen } from "../components/Screen";
 
 export const Selection = () => (
   <Screen>
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
+    <H2
+      weight={"Bold"}
+      style={{
+        marginVertical: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
+    >
       Checkbox
     </H2>
     {/* CheckboxLabel */}

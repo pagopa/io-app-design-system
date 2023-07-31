@@ -8,7 +8,8 @@ import {
   H1,
   LabelSmall,
   VSpacer,
-  ListItemNav
+  ListItemNav,
+  IOVisualCostants
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -30,8 +31,6 @@ const DATA_ROUTES_FOUNDATION: RoutesProps = Object.values(
 const DATA_ROUTES_COMPONENTS: RoutesProps = Object.values(
   APP_ROUTES.COMPONENTS
 );
-const DATA_ROUTES_HEADERS: RoutesProps = Object.values(APP_ROUTES.HEADERS);
-const DATA_ROUTES_DEBUG: RoutesProps = Object.values(APP_ROUTES.DEBUG);
 
 const DESIGN_SYSTEM_SECTION_DATA = [
   {
@@ -41,14 +40,6 @@ const DESIGN_SYSTEM_SECTION_DATA = [
   {
     title: "Components",
     data: DATA_ROUTES_COMPONENTS
-  },
-  {
-    title: "Headers",
-    data: DATA_ROUTES_HEADERS
-  },
-  {
-    title: "Debug",
-    data: DATA_ROUTES_DEBUG
   }
 ];
 
@@ -87,7 +78,8 @@ const MainScreen = (props: Props) => {
   return (
     <View
       style={{
-        backgroundColor: IOColors[theme["appBackground-primary"]]
+        backgroundColor: IOColors[theme["appBackground-primary"]],
+        paddingTop: IOVisualCostants.appMarginDefault
       }}
     >
       <SectionList

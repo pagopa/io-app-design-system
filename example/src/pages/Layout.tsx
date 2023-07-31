@@ -9,6 +9,7 @@ import {
   IOColors,
   IOSpacer,
   IOThemeContext,
+  IOVisualCostants,
   LabelSmall,
   VDivider,
   VSpacer
@@ -27,7 +28,10 @@ export const Layout = () => {
         <H1
           color={theme["textHeading-default"]}
           weight={"Bold"}
-          style={{ marginBottom: 16 }}
+          style={{
+            marginBottom: 16,
+            paddingTop: IOVisualCostants.appMarginDefault
+          }}
         >
           Grid
         </H1>

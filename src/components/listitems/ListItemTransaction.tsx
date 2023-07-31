@@ -1,6 +1,5 @@
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
-import I18n from "i18n-js";
 import React from "react";
 import { ImageURISource, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
@@ -103,11 +102,11 @@ export const ListItemTransaction = ({
 
         case "failure":
           return (
-            <Badge variant="error" text={I18n.t("global.badges.failed")} />
+            <Badge variant="error" text={"Failed"} />
           );
         case "pending":
           return (
-            <Badge variant="info" text={I18n.t("global.badges.onGoing")} />
+            <Badge variant="info" text={"Cancelled"} />
           );
       }
     };

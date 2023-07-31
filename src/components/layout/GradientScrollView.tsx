@@ -73,7 +73,7 @@ to avoid little space from iPhone bottom handle */
   const actionsArea: number = useMemo(
     () =>
       primaryAction && secondaryAction
-        ? buttonSolidHeight +
+        ? (buttonSolidHeight as number) +
           spaceBetweenActions +
           secondaryActionEstHeight +
           extraBottomMargin

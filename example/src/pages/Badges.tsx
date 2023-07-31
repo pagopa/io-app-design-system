@@ -5,6 +5,7 @@ import {
   IOColors,
   IOStyles,
   IOTagRadius,
+  IOVisualCostants,
   Tag,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -15,7 +16,13 @@ import { Screen } from "../components/Screen";
 
 export const Badges = () => (
   <Screen>
-    <H2 weight={"Bold"} style={{ marginBottom: 16 }}>
+    <H2
+      weight={"Bold"}
+      style={{
+        marginBottom: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
+    >
       Tag
     </H2>
     {renderTag()}

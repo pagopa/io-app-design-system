@@ -2,6 +2,7 @@ import {
   Banner,
   H2,
   IOPictogramsBleed,
+  IOVisualCostants,
   VSpacer,
   WithTestID
 } from "@pagopa/io-app-design-system";
@@ -104,14 +105,21 @@ const renderBanner = () => {
 
   return (
     <>
-      <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
+      <H2
+        color={"bluegrey"}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
         Banner
       </H2>
       {bannerBackgroundColours.map(color => (
         <React.Fragment key={`${color}-block`}>
           <ComponentViewerBox name={`Banner · Big size, ${color} variant`}>
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -121,7 +129,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -131,7 +139,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -143,7 +151,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -154,7 +162,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -170,7 +178,7 @@ const renderBanner = () => {
             name={`Banner · Big size, ${color} variant, close action`}
           >
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               title="Banner title"
@@ -183,7 +191,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="big"
               content={
@@ -198,7 +206,7 @@ const renderBanner = () => {
           </ComponentViewerBox>
           <ComponentViewerBox name={`Banner · Small size, ${color} variant`}>
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               title="Banner title"
@@ -211,7 +219,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               content={
@@ -223,7 +231,7 @@ const renderBanner = () => {
             />
             <VSpacer size={24} />
             <Banner
-              viewRef={viewRef}
+              viewRef={viewRef as React.RefObject<any>}
               color={color}
               size="small"
               content={
