@@ -83,7 +83,6 @@ export const AnimatedMessageCheckbox = ({
       onPress={onPress}
       style={styles.checkBoxWrapper}
     >
-      {/* ◀ REMOVE_LEGACY_COMPONENT: Remove the following conditions */}
       <Animated.View
         style={[
           styles.checkBoxCircle,
@@ -94,7 +93,6 @@ export const AnimatedMessageCheckbox = ({
           animatedCheckboxCircle
         ]}
       />
-      {/* REMOVE_LEGACY_COMPONENT: End ▶ */}
       {isChecked && (
         <AnimatedTick
           progress={tickAnimationProgress}
