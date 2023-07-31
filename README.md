@@ -53,6 +53,12 @@ A part from the components, the library also exports the following core elements
 * [react-native-haptic-feedback](https://github.com/mkuczera/react-native-haptic-feedback)
 * [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context)
 
+## Prerequisites
+
+In order to contribute to the development of the library, you need to install nodejs and yarn. 
+
+We recommend the usage of nvm to properly handle the supported nodejs version (see [.nvmrc](./.nvmrc)).
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
