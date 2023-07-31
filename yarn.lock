@@ -9077,6 +9077,11 @@ react-native-i18n@^2.0.15:
   dependencies:
     i18n-js "3.0.11"
 
+react-native-linear-gradient@^2.5.6:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.8.1.tgz#e4284f3cb1ba403b8c03364f7569f0c9e4101862"
+  integrity sha512-934R4Bnjo7mYT38W9ypS1Dq/YW6TgyGdkHg+w72HNxN0ZDKG1GqAnZ6XlicMUYJDh7ViiJAKN8eOF3Ho0N4J0Q==
+
 react-native-reanimated@^2.9.1:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.17.0.tgz#eae2308235961cdd79810e01dfdd7e88b1ae5b5c"
