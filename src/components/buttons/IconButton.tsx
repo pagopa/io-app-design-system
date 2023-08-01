@@ -11,7 +11,6 @@ import Animated, {
   withSpring
 } from "react-native-reanimated";
 import {
-  IOButtonStyles,
   IOColors,
   IOIconButtonStyles,
   IOScaleValues,
@@ -124,7 +123,6 @@ export const IconButton = ({
 
   return (
     <Pressable
-      style={IOButtonStyles.dimensionsDefault}
       disabled={disabled}
       // Events
       onPress={onPress}

@@ -94,7 +94,7 @@ const btnSizeDefault = 48;
 export const buttonSolidHeight: number = btnSizeDefault;
 
 // TODO: Replace the number type with the new IOIconSizeScale
-const iconBtnSizeSmall: number = 24;
+export const iconBtnSizeSmall: number = 24;
 
 export const IOButtonLegacyStyles = StyleSheet.create({
   /* BaseButton, used in the:

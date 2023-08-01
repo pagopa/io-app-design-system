@@ -154,6 +154,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
+          onTouchEnd={[Function]}
           style={
             {
               "alignSelf": "flex-start",
