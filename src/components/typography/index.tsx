@@ -1,6 +1,6 @@
 export * from "./BaseTypography";
 export * from "./Body";
-export * from "./common";
+export * from "./CTA";
 export * from "./Factory";
 export * from "./H1";
 export * from "./H2";
@@ -12,5 +12,5 @@ export * from "./Label";
 export * from "./LabelSmall";
 export * from "./Link";
 export * from "./Monospace";
-
+export * from "./common";
 
