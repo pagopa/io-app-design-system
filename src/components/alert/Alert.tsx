@@ -1,11 +1,11 @@
+import React, { useCallback } from "react";
 import {
   GestureResponderEvent,
   Pressable,
   StyleSheet,
-  View,
-  Text
+  Text,
+  View
 } from "react-native";
-import React, { useCallback } from "react";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -14,21 +14,21 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { Label } from "../typography/Label";
+import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
   IOColorsStatusBackground,
   IOColorsStatusForeground
 } from "../../core/IOColors";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { HSpacer, VSpacer } from "../spacer";
-import { IOStyles } from "../../core/IOStyles";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { H4 } from "../typography/H4";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
+import { IOStyles } from "../../core/IOStyles";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import { HSpacer, VSpacer } from "../spacer";
+import { H4 } from "../typography/H4";
+import { Label } from "../typography/Label";
 
 const iconSize: IOIconSizeScale = 24;
 
@@ -73,7 +73,7 @@ type AlertActionProps =
       onPress?: never;
     };
 
-export type Alert = AlertProps & AlertActionProps;
+type AlertType = AlertProps & AlertActionProps;
 
 type VariantStates = {
   icon: IOIcons;
@@ -83,7 +83,7 @@ type VariantStates = {
 
 // COMPONENT CONFIGURATION
 
-const mapVariantStates: Record<NonNullable<Alert["variant"]>, VariantStates> = {
+const mapVariantStates: Record<NonNullable<AlertType["variant"]>, VariantStates> = {
   error: {
     icon: "errorFilled",
     background: "error-100",
@@ -116,7 +116,7 @@ export const Alert = ({
   fullWidth = false,
   accessibilityHint,
   testID
-}: Alert) => {
+}: AlertType): JSX.Element => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
