@@ -52,6 +52,7 @@ A part from the components, the library also exports the following core elements
 * [react-native-linear-gradient](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
 * [react-native-haptic-feedback](https://github.com/mkuczera/react-native-haptic-feedback)
 * [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context)
+* [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
 
 ## Prerequisites
 

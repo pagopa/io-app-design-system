@@ -15,4 +15,5 @@ export type AppParamsList = {
   [DESIGN_SYSTEM_ROUTES.COMPONENTS.ACCORDION.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.COMPONENTS.ALERT.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.COMPONENTS.LIST_ITEMS.route]: undefined;
+  [DESIGN_SYSTEM_ROUTES.COMPONENTS.TAB_NAVIGATION.route]: undefined;
 };
