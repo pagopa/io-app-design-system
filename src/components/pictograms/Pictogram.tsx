@@ -40,7 +40,7 @@ import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
 import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
-import PictrogramSuccess from "./svg/PictrogramSuccess";
+import PictogramSuccess from "./svg/PictogramSuccess";
 
 export const IOPictograms = {
   airBaloon: PictogramAirBaloon,
@@ -81,7 +81,7 @@ export const IOPictograms = {
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
   cameraRequest: PictogramCameraRequest,
-  success: PictrogramSuccess
+  success: PictogramSuccess
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
