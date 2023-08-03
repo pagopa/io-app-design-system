@@ -2,44 +2,45 @@ import React from "react";
 import { ColorValue } from "react-native";
 import { IOColors } from "../../core/IOColors";
 
-import PictogramAirBaloon from "./svg/PictogramAirBaloon";
-import PictogramHeart from "./svg/PictogramHeart";
-import PictogramCompleted from "./svg/PictogramCompleted";
-import PictogramEmailValidation from "./svg/PictogramEmailValidation";
-import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramAbacus from "./svg/PictogramAbacus";
-import PictogramPiggyBank from "./svg/PictogramPiggyBank";
-import PictogramProcessing from "./svg/PictogramProcessing";
-import PictogramBaloons from "./svg/PictogramBaloons";
-import PictogramPlaces from "./svg/PictogramPlaces";
-import PictogramNotAvailable from "./svg/PictogramNotAvailable";
+import PictogramAirBaloon from "./svg/PictogramAirBaloon";
 import PictogramAirship from "./svg/PictogramAirship";
-import PictogramSearch from "./svg/PictogramSearch";
-import PictogramUnrecognized from "./svg/PictogramUnrecognized";
+import PictogramAttention from "./svg/PictogramAttention";
+import PictogramBaloons from "./svg/PictogramBaloons";
+import PictogramBeerMug from "./svg/PictogramBeerMug";
+import PictogramCameraRequest from "./svg/PictogramCameraRequest";
+import PictogramCompleted from "./svg/PictogramCompleted";
+import PictogramDonation from "./svg/PictogramDonation";
+import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
+import PictogramEmailValidation from "./svg/PictogramEmailValidation";
+import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
 import PictogramError from "./svg/PictogramError";
-import PictogramUmbrella from "./svg/PictogramUmbrella";
-import PictogramInProgress from "./svg/PictogramInProgress";
+import PictogramFeedback from "./svg/PictogramFeedback";
 import PictogramFireworks from "./svg/PictogramFireworks";
+import PictogramFollowMessage from "./svg/PictogramFollowMessage";
+import PictogramHeart from "./svg/PictogramHeart";
+import PictogramHourglass from "./svg/PictogramHourglass";
+import PictogramIBANCard from "./svg/PictogramIBANCard";
+import PictogramInProgress from "./svg/PictogramInProgress";
+import PictogramInbox from "./svg/PictogramInbox";
+import PictogramManual from "./svg/PictogramManual";
+import PictogramNotAvailable from "./svg/PictogramNotAvailable";
+import PictogramPiggyBank from "./svg/PictogramPiggyBank";
+import PictogramPin from "./svg/PictogramPin";
+import PictogramPlaces from "./svg/PictogramPlaces";
+import PictogramProcessing from "./svg/PictogramProcessing";
 import PictogramPuzzle from "./svg/PictogramPuzzle";
 import PictogramQuestion from "./svg/PictogramQuestion";
-import PictogramPin from "./svg/PictogramPin";
-import PictogramTimeout from "./svg/PictogramTimeout";
-import PictogramUploadFile from "./svg/PictogramUploadFile";
-import PictogramHourglass from "./svg/PictogramHourglass";
-import PictogramTeaBreak from "./svg/PictogramTeaBreak";
-import PictogramSms from "./svg/PictogramSms";
-import PictogramInbox from "./svg/PictogramInbox";
-import PictogramBeerMug from "./svg/PictogramBeerMug";
-import PictogramIBANCard from "./svg/PictogramIBANCard";
-import PictogramFollowMessage from "./svg/PictogramFollowMessage";
-import PictogramManual from "./svg/PictogramManual";
+import PictogramSearch from "./svg/PictogramSearch";
 import PictogramSetup from "./svg/PictogramSetup";
-import PictogramDonation from "./svg/PictogramDonation";
-import PictogramAttention from "./svg/PictogramAttention";
-import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
+import PictogramSms from "./svg/PictogramSms";
+import PictogramTeaBreak from "./svg/PictogramTeaBreak";
+import PictogramTimeout from "./svg/PictogramTimeout";
+import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
-import PictogramFeedback from "./svg/PictogramFeedback";
-import PictogramCameraRequest from "./svg/PictogramCameraRequest";
+import PictogramUnrecognized from "./svg/PictogramUnrecognized";
+import PictogramUploadFile from "./svg/PictogramUploadFile";
+import PictrogramSuccess from "./svg/PictrogramSuccess";
 
 export const IOPictograms = {
   airBaloon: PictogramAirBaloon,
@@ -79,7 +80,8 @@ export const IOPictograms = {
   emptyArchive: PictogramEmptyArchive,
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
-  cameraRequest: PictogramCameraRequest
+  cameraRequest: PictogramCameraRequest,
+  success: PictrogramSuccess
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
