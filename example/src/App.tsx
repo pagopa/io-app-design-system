@@ -4,14 +4,15 @@ import {
   NavigationContainer
 } from "@react-navigation/native";
 import * as React from "react";
-import "react-native-gesture-handler";
 import {
+  IOStyles,
   IOThemeContext,
   IOThemeDark,
   IOThemeLight,
   IOThemes
 } from "@pagopa/io-app-design-system";
 import { useColorScheme } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/navigator";
 
 const IONavigationDarkTheme = {
@@ -46,7 +47,9 @@ export default function App() {
             : IONavigationLightTheme
         }
       >
-        <AppNavigator />
+        <GestureHandlerRootView style={IOStyles.flex}>
+          <AppNavigator />
+        </GestureHandlerRootView>
       </NavigationContainer>
     </IOThemeContext.Provider>
   );

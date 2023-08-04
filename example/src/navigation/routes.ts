@@ -15,7 +15,11 @@ const APP_ROUTES = {
     SELECTION: { route: "DESIGN_SYSTEM_SELECTION", title: "Selection" },
     ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Accordion" },
     ALERT: { route: "DESIGN_SYSTEM_ALERT", title: "Alert" },
-    ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" }
+    ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" },
+    TAB_NAVIGATION: {
+      route: "DESIGN_SYSTEM_TAB_NAVIGATION",
+      title: "Tab Navigation"
+    }
   },
   SCREENS: {
     FULL_SCREEN_MODAL: {

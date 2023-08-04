@@ -15,4 +15,5 @@ export * from "./radio";
 export * from "./spacer";
 export * from "./switch";
 export * from "./tag";
+export * from "./tabs";
 export * from "./typography";

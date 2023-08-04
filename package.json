@@ -83,7 +83,8 @@
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
     "react-native-svg": "*",
-    "react-native-safe-area-context": "*"
+    "react-native-safe-area-context": "*",
+    "react-native-gesture-handler": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
