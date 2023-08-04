@@ -2,14 +2,12 @@ import { SectionList, View } from "react-native";
 import * as React from "react";
 import {
   IOStyles,
-  IOColors,
   useIOTheme,
   Divider,
   H1,
   LabelSmall,
   VSpacer,
-  ListItemNav,
-  IOVisualCostants
+  ListItemNav
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
