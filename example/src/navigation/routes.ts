@@ -16,6 +16,13 @@ const APP_ROUTES = {
     ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Accordion" },
     ALERT: { route: "DESIGN_SYSTEM_ALERT", title: "Alert" },
     ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" }
+  },
+  SCREENS: {
+    FULL_SCREEN_MODAL: {
+      route: "DESIGN_SYSTEM_FULLSCR_MODAL",
+      title: "Full screen modal"
+    },
+    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
   }
 } as const;
 
