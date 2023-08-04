@@ -14,9 +14,9 @@ import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
+import { Search } from "../pages/Search";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
-import { Search } from "../pages/Search";
 
 const Stack = createNativeStackNavigator<AppParamsList>();
 
