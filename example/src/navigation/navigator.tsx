@@ -14,6 +14,7 @@ import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
+import { TabNavigationScreen } from "../pages/TabNavigation";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -140,6 +141,14 @@ const AppNavigator = () => (
     <Stack.Screen
       name={APP_ROUTES.COMPONENTS.LIST_ITEMS.route}
       component={ListItems}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.TAB_NAVIGATION.route}
+      component={TabNavigationScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
         headerBackTitleVisible: false
