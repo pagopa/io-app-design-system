@@ -2,14 +2,12 @@ import { SectionList, View } from "react-native";
 import * as React from "react";
 import {
   IOStyles,
-  IOColors,
   useIOTheme,
   Divider,
   H1,
   LabelSmall,
   VSpacer,
-  ListItemNav,
-  IOVisualCostants
+  ListItemNav
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -31,6 +29,7 @@ const DATA_ROUTES_FOUNDATION: RoutesProps = Object.values(
 const DATA_ROUTES_COMPONENTS: RoutesProps = Object.values(
   APP_ROUTES.COMPONENTS
 );
+const DATA_ROUTES_SCREENS: RoutesProps = Object.values(APP_ROUTES.SCREENS);
 
 const DESIGN_SYSTEM_SECTION_DATA = [
   {
@@ -40,6 +39,10 @@ const DESIGN_SYSTEM_SECTION_DATA = [
   {
     title: "Components",
     data: DATA_ROUTES_COMPONENTS
+  },
+  {
+    title: "Screens",
+    data: DATA_ROUTES_SCREENS
   }
 ];
 
@@ -63,7 +66,7 @@ const MainScreen = (props: Props) => {
   }: {
     section: { title: string; description?: string };
   }) => (
-    <View style={{ marginBottom: 8 }}>
+    <View style={{ marginTop: 24, marginBottom: 8 }}>
       <H1 color={theme["textHeading-default"]}>{title}</H1>
       {description && (
         <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>
@@ -73,26 +76,19 @@ const MainScreen = (props: Props) => {
     </View>
   );
 
-  const renderDSSectionFooter = () => <VSpacer size={40} />;
+  const renderDSSectionFooter = () => <VSpacer size={24} />;
 
   return (
-    <View
-      style={{
-        backgroundColor: IOColors[theme["appBackground-primary"]],
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      <SectionList
-        keyExtractor={(item, index) => `${item.route}-${index}`}
-        stickySectionHeadersEnabled={false}
-        contentContainerStyle={IOStyles.horizontalContentPadding}
-        renderSectionHeader={renderDSSection}
-        renderSectionFooter={renderDSSectionFooter}
-        renderItem={renderDSNavItem}
-        ItemSeparatorComponent={() => <Divider />}
-        sections={DESIGN_SYSTEM_SECTION_DATA}
-      />
-    </View>
+    <SectionList
+      keyExtractor={(item, index) => `${item.route}-${index}`}
+      stickySectionHeadersEnabled={false}
+      contentContainerStyle={IOStyles.horizontalContentPadding}
+      renderSectionHeader={renderDSSection}
+      renderSectionFooter={renderDSSectionFooter}
+      renderItem={renderDSNavItem}
+      ItemSeparatorComponent={() => <Divider />}
+      sections={DESIGN_SYSTEM_SECTION_DATA}
+    />
   );
 };
 

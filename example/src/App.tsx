@@ -1,15 +1,56 @@
-import { IOStyles } from "@pagopa/io-app-design-system";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer
+} from "@react-navigation/native";
 import * as React from "react";
+import {
+  IOStyles,
+  IOThemeContext,
+  IOThemeDark,
+  IOThemeLight,
+  IOThemes
+} from "@pagopa/io-app-design-system";
+import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/navigator";
 
+const IONavigationDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: IOThemeDark["appBackground-primary"],
+    card: IOThemeDark["appBackground-primary"]
+  }
+};
+
+const IONavigationLightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: IOThemeLight["appBackground-primary"],
+    card: IOThemeLight["appBackground-primary"]
+  }
+};
+
 export default function App() {
+  const colorScheme = useColorScheme();
+
   return (
-    <GestureHandlerRootView style={IOStyles.flex}>
-      <NavigationContainer>
-        <AppNavigator />
+    <IOThemeContext.Provider
+      value={colorScheme === "dark" ? IOThemes.dark : IOThemes.light}
+    >
+      <NavigationContainer
+        theme={
+          colorScheme === "dark"
+            ? IONavigationDarkTheme
+            : IONavigationLightTheme
+        }
+      >
+        <GestureHandlerRootView style={IOStyles.flex}>
+          <AppNavigator />
+        </GestureHandlerRootView>
       </NavigationContainer>
-    </GestureHandlerRootView>
+    </IOThemeContext.Provider>
   );
 }

@@ -48,6 +48,7 @@ export const AnimatedTick = ({ progress, ...pathProps }: AnimatedTickProps) => {
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+        fill="none"
         {...pathProps}
       />
     </Svg>

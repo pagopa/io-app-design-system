@@ -15,7 +15,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
-import { View } from "react-native";
+import { StatusBar, View } from "react-native";
 import { NoMarginScreen } from "../components/Screen";
 import { SpacerViewerBox } from "../components/SpacerViewerBox";
 
@@ -24,6 +24,10 @@ export const Layout = () => {
 
   return (
     <NoMarginScreen>
+      <StatusBar
+        barStyle={"default"}
+        backgroundColor={IOColors.black}
+      ></StatusBar>
       <ContentWrapper>
         <H1
           color={theme["textHeading-default"]}

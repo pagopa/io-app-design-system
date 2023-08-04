@@ -1,5 +1,5 @@
-import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
@@ -14,21 +14,21 @@ import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
+import { Search } from "../pages/Search";
 import { TabNavigationScreen } from "../pages/TabNavigation";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
-const Stack = createStackNavigator<AppParamsList>();
+const Stack = createNativeStackNavigator<AppParamsList>();
 
 const AppNavigator = () => (
   <Stack.Navigator
     initialRouteName={APP_ROUTES.MAIN}
     screenOptions={{
       headerTitleStyle: {
-        fontFamily: "ReadexPro",
+        fontFamily: "Readex Pro",
         fontSize: 14,
-        fontWeight: "normal",
-        fontStyle: "normal"
+        fontWeight: "normal"
       },
       headerTitleAlign: "center",
       headerShown: true
@@ -94,7 +94,6 @@ const AppNavigator = () => (
       component={Buttons}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.BUTTONS.title,
-
         headerBackTitleVisible: false
       }}
     />
@@ -146,6 +145,7 @@ const AppNavigator = () => (
         headerBackTitleVisible: false
       }}
     />
+
     <Stack.Screen
       name={APP_ROUTES.COMPONENTS.TAB_NAVIGATION.route}
       component={TabNavigationScreen}
@@ -154,6 +154,25 @@ const AppNavigator = () => (
         headerBackTitleVisible: false
       }}
     />
+
+    <Stack.Screen
+      name={APP_ROUTES.SCREENS.SEARCH.route}
+      component={Search}
+      options={{
+        headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Group screenOptions={{ presentation: "formSheet" }}>
+      <Stack.Screen
+        name={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.route}
+        component={ListItems}
+        options={{
+          headerShown: false
+        }}
+      />
+    </Stack.Group>
   </Stack.Navigator>
 );
 

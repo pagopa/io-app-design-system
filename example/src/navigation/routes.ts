@@ -20,6 +20,13 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
     }
+  },
+  SCREENS: {
+    FULL_SCREEN_MODAL: {
+      route: "DESIGN_SYSTEM_FULLSCR_MODAL",
+      title: "Full screen modal"
+    },
+    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
   }
 } as const;
 

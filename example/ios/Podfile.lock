@@ -1,7 +1,7 @@
 PODS:
   - boost (1.76.0)
-  - BVLinearGradient (2.5.6):
-    - React
+  - BVLinearGradient (2.8.1):
+    - React-Core
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.72.3)
@@ -489,11 +489,11 @@ PODS:
     - React-jsi (= 0.72.3)
     - React-logger (= 0.72.3)
     - React-perflogger (= 0.72.3)
-  - RNGestureHandler (2.12.0):
+  - RNGestureHandler (2.12.1):
     - React-Core
   - RNReactNativeHapticFeedback (2.0.3):
     - React-Core
-  - RNReanimated (3.3.0):
+  - RNReanimated (3.4.1):
     - DoubleConversion
     - FBLazyVector
     - glog
@@ -522,7 +522,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.22.1):
+  - RNScreens (3.23.0):
     - React-Core
     - React-RCTImage
   - RNSVG (13.10.0):
@@ -718,7 +718,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
-  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
+  BVLinearGradient: 421743791a59d259aec53f4c58793aad031da2ca
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: 4cce221dd782d3ff7c4172167bba09d58af67ccb
@@ -769,10 +769,10 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 837c1bebd2f84572db17698cd702ceaf585b0d9a
   React-utils: bcb57da67eec2711f8b353f6e3d33bd8e4b2efa3
   ReactCommon: 3ccb8fb14e6b3277e38c73b0ff5e4a1b8db017a9
-  RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
   RNReactNativeHapticFeedback: afa5bf2794aecbb2dba2525329253da0d66656df
-  RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
-  RNScreens: 50ffe2fa2342eabb2d0afbe19f7c1af286bc7fb3
+  RNReanimated: 53ca20eee770c41173703f5948cd8898aa08262c
+  RNScreens: 6a8a3c6b808aa48dca1780df7b73ea524f602c63
   RNSVG: 80584470ff1ffc7994923ea135a3e5ad825546b9
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 8796b55dba14d7004f980b54bcc9833ee45b28ce
@@ -780,4 +780,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3682f715bd91b22067ed6990af779570157f6eb0
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

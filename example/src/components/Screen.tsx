@@ -1,39 +1,19 @@
-import { ContentWrapper, IOThemeContext } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
+import { ContentWrapper } from "@pagopa/io-app-design-system";
+import React from "react";
 import { ScrollView, View } from "react-native";
 
 type Props = {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
 
-export const Screen = ({
-    children,
-}: Props) => {
-    const theme = useContext(IOThemeContext);
+export const Screen = ({ children }: Props) => (
+  <ScrollView>
+    <ContentWrapper>{children}</ContentWrapper>
+  </ScrollView>
+);
 
-    return (
-        <ScrollView
-            style={{
-                backgroundColor: theme["appBackground-primary"]
-            }}
-        >
-            <ContentWrapper>{children}</ContentWrapper>
-        </ScrollView>
-    );
-};
-
-export const NoMarginScreen = ({
-    children,
-}: Props) => {
-    const theme = useContext(IOThemeContext);
-
-    return (
-        <ScrollView
-            style={{
-                backgroundColor: theme["appBackground-primary"]
-            }}
-        >
-            <View>{children}</View>
-        </ScrollView>
-    );
-};
+export const NoMarginScreen = ({ children }: Props) => (
+  <ScrollView>
+    <View>{children}</View>
+  </ScrollView>
+);
