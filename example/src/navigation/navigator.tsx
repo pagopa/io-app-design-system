@@ -16,6 +16,7 @@ import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { Search } from "../pages/Search";
 import { TabNavigationScreen } from "../pages/TabNavigation";
+import { Sandbox } from "../pages/Sandbox";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -160,6 +161,15 @@ const AppNavigator = () => (
       component={Search}
       options={{
         headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.SANDBOX.SANDBOX_SCREEN.route}
+      component={Sandbox}
+      options={{
+        headerTitle: APP_ROUTES.SANDBOX.SANDBOX_SCREEN.title,
         headerBackTitleVisible: false
       }}
     />

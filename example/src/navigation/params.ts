@@ -18,4 +18,5 @@ export type AppParamsList = {
   [DESIGN_SYSTEM_ROUTES.COMPONENTS.TAB_NAVIGATION.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.SCREENS.FULL_SCREEN_MODAL.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.SCREENS.SEARCH.route]: undefined;
+  [DESIGN_SYSTEM_ROUTES.SANDBOX.SANDBOX_SCREEN.route]: undefined;
 };

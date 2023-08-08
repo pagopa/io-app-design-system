@@ -27,6 +27,12 @@ const APP_ROUTES = {
       title: "Full screen modal"
     },
     SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
+  },
+  SANDBOX: {
+    SANDBOX_SCREEN: {
+      route: "DESIGN_SYSYEM_SANDBOX",
+      title: "Sandbox"
+    }
   }
 } as const;
 
