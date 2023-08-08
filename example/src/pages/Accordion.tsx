@@ -1,10 +1,8 @@
 import {
   AccordionItem,
   FaqItem,
-  H1,
   IOVisualCostants,
-  VSpacer,
-  useIOTheme
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { FlatList, ListRenderItemInfo } from "react-native";
@@ -13,7 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const faqData: Array<FaqItem> = [
   {
     id: 1,
-    question: "Come posso pagare su 10?",
+    question: "Come posso pagare su I0?",
     answer:
       "Puoi pagare con carte di debito, credito e prepagate, con PayPal o BANCOMAT Pay."
   },

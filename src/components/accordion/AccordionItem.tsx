@@ -15,6 +15,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { IOColors } from "../../core/IOColors";
 import { H6 } from "../typography";
 import { IOSpringValues } from "../../core/IOAnimations";
+import { Icon } from "../icons/Icon";
 
 export type FaqItem = {
   id: number;
@@ -73,10 +74,11 @@ export const AccordionItem = ({ item }: { item: FaqItem }) => {
   return (
     <View style={styles.wrap}>
       <TouchableWithoutFeedback onPress={onItemPress}>
-        <View style={styles.container}>
-          <View style={styles.textContainer}>
+        <View style={styles.textContainer}>
+          <View style={{ flexShrink: 1, marginRight: 8 }}>
             <H6 color="black">{item.question}</H6>
           </View>
+          <Icon name="chevronBottom" color="blueIO-500" />
         </View>
       </TouchableWithoutFeedback>
 
@@ -95,8 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: IOColors.white
   },
   container: {
-    flexDirection: "row",
-    padding: 16
+    flexDirection: "row"
   },
   collapsableContainer: {
     overflow: "hidden"
@@ -112,5 +113,11 @@ const styles = StyleSheet.create({
     color: IOColors["grey-700"],
     ...makeFontStyleObject("Regular", undefined, "TitilliumWeb")
   },
-  textContainer: { alignItems: "center" }
+  textContainer: {
+    padding: 16,
+    flexGrow: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  }
 });
