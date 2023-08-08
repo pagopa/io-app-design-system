@@ -101,6 +101,7 @@ const AppNavigator = () => (
       name={APP_ROUTES.COMPONENTS.ACCORDION.route}
       component={Accordion}
       options={{
+        presentation: "modal",
         headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
         headerBackTitleVisible: false
       }}

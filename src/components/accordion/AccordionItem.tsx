@@ -11,8 +11,9 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { makeFontStyleObject } from "../../utils/fonts";
 import { IOColors } from "../../core/IOColors";
-import { Body, H6 } from "../typography";
+import { H6 } from "../typography";
 import { IOSpringValues } from "../../core/IOAnimations";
 
 export type FaqItem = {
@@ -54,8 +55,8 @@ export const AccordionBody = ({
   }, [expanded]);
 
   return (
-    <Animated.View style={[collapsableStyle, { overflow: "hidden" }]}>
-      <View style={{ position: "absolute" }} onLayout={onLayout}>
+    <Animated.View style={[collapsableStyle, styles.collapsableContainer]}>
+      <View style={styles.accordionBodyContainer} onLayout={onLayout}>
         {children}
       </View>
     </Animated.View>
@@ -74,13 +75,13 @@ export const AccordionItem = ({ item }: { item: FaqItem }) => {
       <TouchableWithoutFeedback onPress={onItemPress}>
         <View style={styles.container}>
           <View style={styles.textContainer}>
-            <H6 style={styles.text}>{item.question}</H6>
+            <H6 color="black">{item.question}</H6>
           </View>
         </View>
       </TouchableWithoutFeedback>
 
       <AccordionBody expanded={expanded}>
-        <Body>{item.answer}</Body>
+        <Text style={styles.accordionBodyText}>{item.answer}</Text>
       </AccordionBody>
     </View>
   );
@@ -97,6 +98,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 16
   },
-  textContainer: { alignItems: "center" },
-  text: { opacity: 0.7 }
+  collapsableContainer: {
+    overflow: "hidden"
+  },
+  accordionBodyContainer: {
+    position: "absolute",
+    padding: 16,
+    paddingTop: 0
+  },
+  accordionBodyText: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: IOColors["grey-700"],
+    ...makeFontStyleObject("Regular", undefined, "TitilliumWeb")
+  },
+  textContainer: { alignItems: "center" }
 });

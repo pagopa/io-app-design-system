@@ -7,41 +7,52 @@ import {
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { FlatList, ListRenderItemInfo, View } from "react-native";
+import { FlatList, ListRenderItemInfo } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const faqData: Array<FaqItem> = [
   {
     id: 1,
     question: "Come posso pagare su 10?",
     answer:
-      "Puoi pagare con carte di debito, credito e prepagate, con PayPal o BANCOMAT Pay.",
-    weight: 1
+      "Puoi pagare con carte di debito, credito e prepagate, con PayPal o BANCOMAT Pay."
   },
   {
     id: 2,
     question: "Come posso eliminare un metodo di pagamento?",
     answer:
-      "I tuoi metodi di pagamento sono visualizzati come card nella parte alta dello schermo del Portafoglio. Seleziona la card del metodo che vuoi eliminare e poi premi 'Elimina questo metodo!",
-    weight: 1.2
+      "I tuoi metodi di pagamento sono visualizzati come card nella parte alta dello schermo del Portafoglio. Seleziona la card del metodo che vuoi eliminare e poi premi 'Elimina questo metodo!"
   },
   {
     id: 3,
     question:
       "Nel 2021 ho maturato degli importi che non mi sono ancora stati rimborsati. Cosa posso fare?",
     answer:
-      "Probabilmente non hai indicato l'IBAN del conto su cui desideri ricevere l'accredito, oppure quello che hai indicato non è valido.Per inserire l'IBAN o verificarne la correttezza, apri l'app, vai al Portafoglio e premi sulla card del Cashback. Poi, inseriscilo o modificalo e seleziona 'Continua'. Entro 90 giorni riceverai tramite l'app 10 un messaggio sullo stato del rimborso. Le attività tra PagoPA S.p.A. e Consap S.p.A. per i pagamenti dei rimborsi sono in corso di dismissione, quindi, se non inserisci o non correggi l'IBAN entro il 31/07/2022, potrebbe non essere più possibile effettuare il bonifico per il rimborso.",
-    weight: 1.5
+      "Probabilmente non hai indicato l'IBAN del conto su cui desideri ricevere l'accredito, oppure quello che hai indicato non è valido.Per inserire l'IBAN o verificarne la correttezza, apri l'app, vai al Portafoglio e premi sulla card del Cashback. Poi, inseriscilo o modificalo e seleziona 'Continua'. Entro 90 giorni riceverai tramite l'app 10 un messaggio sullo stato del rimborso. Le attività tra PagoPA S.p.A. e Consap S.p.A. per i pagamenti dei rimborsi sono in corso di dismissione, quindi, se non inserisci o non correggi l'IBAN entro il 31/07/2022, potrebbe non essere più possibile effettuare il bonifico per il rimborso."
+  },
+  {
+    id: 4,
+    question: "Come posso eliminare un metodo di pagamento?",
+    answer:
+      "I tuoi metodi di pagamento sono visualizzati come card nella parte alta dello schermo del Portafoglio. Seleziona la card del metodo che vuoi eliminare e poi premi 'Elimina questo metodo!"
+  },
+  {
+    id: 5,
+    question:
+      "Nel 2021 ho maturato degli importi che non mi sono ancora stati rimborsati. Cosa posso fare?",
+    answer:
+      "Probabilmente non hai indicato l'IBAN del conto su cui desideri ricevere l'accredito, oppure quello che hai indicato non è valido.Per inserire l'IBAN o verificarne la correttezza, apri l'app, vai al Portafoglio e premi sulla card del Cashback. Poi, inseriscilo o modificalo e seleziona 'Continua'. Entro 90 giorni riceverai tramite l'app 10 un messaggio sullo stato del rimborso. Le attività tra PagoPA S.p.A. e Consap S.p.A. per i pagamenti dei rimborsi sono in corso di dismissione, quindi, se non inserisci o non correggi l'IBAN entro il 31/07/2022, potrebbe non essere più possibile effettuare il bonifico per il rimborso."
   }
 ];
 
 export const Accordion = () => {
-  const theme = useIOTheme();
+  const insets = useSafeAreaInsets();
 
-  const renderAccordionHeader = () => (
-    <View style={{ marginTop: 16, marginBottom: 24 }}>
-      <H1 color={theme["textHeading-default"]}>Accordion</H1>
-    </View>
-  );
+  // const renderAccordionHeader = () => (
+  //   <View style={{ marginTop: 16, marginBottom: 24 }}>
+  //     <H1 color={theme["textHeading-default"]}>Accordion</H1>
+  //   </View>
+  // );
 
   const renderItem = ({ item }: ListRenderItemInfo<FaqItem>) => (
     <AccordionItem item={item} />
@@ -51,9 +62,12 @@ export const Accordion = () => {
     <FlatList
       data={faqData}
       contentContainerStyle={{
-        paddingHorizontal: IOVisualCostants.appMarginDefault
+        flexGrow: 1,
+        paddingTop: IOVisualCostants.appMarginDefault,
+        paddingHorizontal: IOVisualCostants.appMarginDefault,
+        paddingBottom: insets.bottom
       }}
-      ListHeaderComponent={renderAccordionHeader}
+      // ListHeaderComponent={renderAccordionHeader}
       ItemSeparatorComponent={() => <VSpacer size={8} />}
       keyExtractor={(item, index) => `${item.id}-${index}`}
       renderItem={renderItem}
