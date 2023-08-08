@@ -1,10 +1,10 @@
 import {
-    HSpacer,
-    IOColors,
-    IOSpacer,
-    IOThemeContext,
-    SpacerOrientation,
-    VSpacer
+  HSpacer,
+  IOColors,
+  IOSpacer,
+  IOThemeContext,
+  SpacerOrientation,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { Text, View } from "react-native";
