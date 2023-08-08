@@ -4,8 +4,8 @@ import type { IOAppMargin } from "../../core";
 import { IOVisualCostants } from "../../core/IOStyles";
 
 type IOContentWrapperProps = {
-    margin?: IOAppMargin;
-    children: React.ReactNode;
+  margin?: IOAppMargin;
+  children: React.ReactNode;
 };
 
 /**
@@ -14,14 +14,14 @@ depending on the size value
 @param {IOContentWrapper} margin
  */
 export const ContentWrapper = ({
-    margin = IOVisualCostants.appMarginDefault,
-    children
+  margin = IOVisualCostants.appMarginDefault,
+  children
 }: IOContentWrapperProps) => (
-    <View
-        style={{
-            paddingHorizontal: margin
-        }}
-    >
-        {children}
-    </View>
+  <View
+    style={{
+      paddingHorizontal: margin
+    }}
+  >
+    {children}
+  </View>
 );

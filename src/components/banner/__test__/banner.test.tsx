@@ -10,15 +10,17 @@ const onLinkPress = () => {
 
 describe("Test Banner Components", () => {
   it("Banner Snapshot", () => {
-    const advice = TestRenderer.create(<Banner
-      viewRef={viewRef}
-      color="neutral"
-      size="big"
-      title="Banner title"
-      pictogramName="donation"
-      action="Action text"
-      onPress={onLinkPress}
-    />).toJSON();
+    const advice = TestRenderer.create(
+      <Banner
+        viewRef={viewRef}
+        color="neutral"
+        size="big"
+        title="Banner title"
+        pictogramName="donation"
+        action="Action text"
+        onPress={onLinkPress}
+      />
+    ).toJSON();
     expect(advice).toMatchSnapshot();
   });
 });

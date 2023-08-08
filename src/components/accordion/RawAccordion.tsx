@@ -62,9 +62,9 @@ export const RawAccordion: React.FC<Props> = props => {
 
   const arrowAngle = shouldAnimate
     ? animatedController.interpolate({
-      inputRange: [0, 1],
-      outputRange: ["0deg", "-180deg"]
-    })
+        inputRange: [0, 1],
+        outputRange: ["0deg", "-180deg"]
+      })
     : getDegree(isOpen);
 
   useEffect(() => {

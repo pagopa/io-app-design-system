@@ -13,26 +13,26 @@ import { toAndroidCacheTimestamp } from "./dates";
  * if the platform is Android and the source contains an URI. The same source otherwise.
  */
 export const addCacheTimestampToUri = (source: ImageURISource) => {
-    const UriSource = T.type({
-      uri: T.string
-    });
-  
-    return pipe(
-      Platform.OS === "android",
-      B.fold(
-        () => source,
-        () =>
-          pipe(
-            source,
-            UriSource.decode,
-            E.fold(
-              () => source,
-              () => ({
-                ...source,
-                uri: `${source.uri}?ts=${toAndroidCacheTimestamp()}`
-              })
-            )
+  const UriSource = T.type({
+    uri: T.string
+  });
+
+  return pipe(
+    Platform.OS === "android",
+    B.fold(
+      () => source,
+      () =>
+        pipe(
+          source,
+          UriSource.decode,
+          E.fold(
+            () => source,
+            () => ({
+              ...source,
+              uri: `${source.uri}?ts=${toAndroidCacheTimestamp()}`
+            })
           )
-      )
-    );
-  };
+        )
+    )
+  );
+};

@@ -9,7 +9,7 @@ type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
 type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 export const h6FontSize = 16;
@@ -23,13 +23,13 @@ export const h6DefaultWeight: AllowedWeight = "Regular";
  * @param props
  * @constructor
  */
-export const H6: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "ReadexPro";
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: h6DefaultWeight,
-        defaultColor: h6DefaultColor,
-        font: fontName,
-        fontStyle: { fontSize: h6FontSize, lineHeight: h6LineHeight }
-    });
+export const H6: React.FC<OwnProps> = props => {
+  const fontName: FontFamily = "ReadexPro";
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: h6DefaultWeight,
+    defaultColor: h6DefaultColor,
+    font: fontName,
+    fontStyle: { fontSize: h6FontSize, lineHeight: h6LineHeight }
+  });
 };

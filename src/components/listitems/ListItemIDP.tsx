@@ -1,149 +1,149 @@
 import * as React from "react";
 import { useCallback } from "react";
 import {
-    GestureResponderEvent,
-    Image,
-    ImageSourcePropType,
-    Platform,
-    Pressable,
-    StyleSheet,
-    Text
+  GestureResponderEvent,
+  Image,
+  ImageSourcePropType,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text
 } from "react-native";
 import Animated, {
-    Extrapolate,
-    interpolate,
-    useAnimatedStyle,
-    useDerivedValue,
-    useSharedValue,
-    withSpring
+  Extrapolate,
+  interpolate,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring
 } from "react-native-reanimated";
 import {
-    IOColors,
-    IOListItemIDPHSpacing,
-    IOListItemIDPRadius,
-    IOListItemIDPSavedVSpacing,
-    IOListItemIDPVSpacing,
-    IOListItemLogoMargin,
-    IOScaleValues,
-    IOSpringValues
+  IOColors,
+  IOListItemIDPHSpacing,
+  IOListItemIDPRadius,
+  IOListItemIDPSavedVSpacing,
+  IOListItemIDPVSpacing,
+  IOListItemLogoMargin,
+  IOScaleValues,
+  IOSpringValues
 } from "../../core";
 import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 
 type ListItemIDP = WithTestID<{
-    name: string;
-    localLogo: ImageSourcePropType;
-    logo: ImageSourcePropType;
-    saved?: boolean;
-    onPress: (event: GestureResponderEvent) => void;
-    urlLogoIDP: string;
+  name: string;
+  localLogo: ImageSourcePropType;
+  logo: ImageSourcePropType;
+  saved?: boolean;
+  onPress: (event: GestureResponderEvent) => void;
+  urlLogoIDP: string;
 }>;
 
 const styles = StyleSheet.create({
-    button: {
-        borderWidth: 1,
-        borderColor: IOColors["grey-100"],
-        borderRadius: IOListItemIDPRadius,
-        backgroundColor: IOColors.white,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingVertical: IOListItemIDPVSpacing,
-        paddingHorizontal: IOListItemIDPHSpacing
-    },
-    idpName: {
-        color: IOColors["grey-700"],
-        fontSize: 12,
-        lineHeight: 16,
-        alignSelf: "center",
-        textTransform: "uppercase",
-        flexShrink: 1,
-        ...makeFontStyleObject("Regular", false, "ReadexPro")
-    },
-    idpLogo: {
-        marginStart: IOListItemLogoMargin,
-        width: 120,
-        height: 30,
-        resizeMode: "contain"
-    }
+  button: {
+    borderWidth: 1,
+    borderColor: IOColors["grey-100"],
+    borderRadius: IOListItemIDPRadius,
+    backgroundColor: IOColors.white,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: IOListItemIDPVSpacing,
+    paddingHorizontal: IOListItemIDPHSpacing
+  },
+  idpName: {
+    color: IOColors["grey-700"],
+    fontSize: 12,
+    lineHeight: 16,
+    alignSelf: "center",
+    textTransform: "uppercase",
+    flexShrink: 1,
+    ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  idpLogo: {
+    marginStart: IOListItemLogoMargin,
+    width: 120,
+    height: 30,
+    resizeMode: "contain"
+  }
 });
 
 // https://github.com/facebook/react-native/issues/12606
 // Image cache forced refresh for Android by appending
 // the `ts` query parameter as DDMMYYYY to simulate a 24h TTL.
 const androidIdpLogoForcedRefreshed = () =>
-    Platform.OS === "android" ? `?ts=${toAndroidCacheTimestamp()}` : "";
+  Platform.OS === "android" ? `?ts=${toAndroidCacheTimestamp()}` : "";
 
 export const ListItemIDP = ({
-    name,
-    localLogo,
-    logo,
-    saved,
-    onPress,
-    testID,
+  name,
+  localLogo,
+  logo,
+  saved,
+  onPress,
+  testID
 }: ListItemIDP) => {
-    const isPressed = useSharedValue(0);
+  const isPressed = useSharedValue(0);
 
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
+  // Scaling transformation applied when the button is pressed
+  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
 
-    const scaleTraversed = useDerivedValue(() =>
-        withSpring(isPressed.value, IOSpringValues.button)
+  const scaleTraversed = useDerivedValue(() =>
+    withSpring(isPressed.value, IOSpringValues.button)
+  );
+
+  // Interpolate animation values from `isPressed` values
+  const animatedStyle = useAnimatedStyle(() => {
+    const scale = interpolate(
+      scaleTraversed.value,
+      [0, 1],
+      [1, animationScaleValue],
+      Extrapolate.CLAMP
     );
 
-    // Interpolate animation values from `isPressed` values
-    const animatedStyle = useAnimatedStyle(() => {
-        const scale = interpolate(
-            scaleTraversed.value,
-            [0, 1],
-            [1, animationScaleValue],
-            Extrapolate.CLAMP
-        );
+    return {
+      transform: [{ scale }]
+    };
+  });
 
-        return {
-            transform: [{ scale }]
-        };
-    });
+  const handlePressIn = useCallback(() => {
+    // eslint-disable-next-line functional/immutable-data
+    isPressed.value = 1;
+  }, [isPressed]);
+  const handlePressOut = useCallback(() => {
+    // eslint-disable-next-line functional/immutable-data
+    isPressed.value = 0;
+  }, [isPressed]);
 
-    const handlePressIn = useCallback(() => {
-        // eslint-disable-next-line functional/immutable-data
-        isPressed.value = 1;
-    }, [isPressed]);
-    const handlePressOut = useCallback(() => {
-        // eslint-disable-next-line functional/immutable-data
-        isPressed.value = 0;
-    }, [isPressed]);
-
-    // eslint-disable-next-line no-console
-    const urlLogoIDP = localLogo
-        ? localLogo
-        : {
-            uri: `${logo}${androidIdpLogoForcedRefreshed()}`
-        };
-    return (
-        <Pressable
-            onPress={onPress}
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onTouchEnd={handlePressOut}
-            accessible={true}
-            accessibilityRole={"button"}
-            accessibilityLabel={name}
-            testID={testID}
-        >
-            <Animated.View
-                style={[
-                    styles.button,
-                    saved && { paddingVertical: IOListItemIDPSavedVSpacing },
-                    animatedStyle
-                ]}
-            >
-                <Text style={styles.idpName}>{name}</Text>
-                <Image source={urlLogoIDP} style={styles.idpLogo} />
-            </Animated.View>
-        </Pressable>
-    );
+  // eslint-disable-next-line no-console
+  const urlLogoIDP = localLogo
+    ? localLogo
+    : {
+        uri: `${logo}${androidIdpLogoForcedRefreshed()}`
+      };
+  return (
+    <Pressable
+      onPress={onPress}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      onTouchEnd={handlePressOut}
+      accessible={true}
+      accessibilityRole={"button"}
+      accessibilityLabel={name}
+      testID={testID}
+    >
+      <Animated.View
+        style={[
+          styles.button,
+          saved && { paddingVertical: IOListItemIDPSavedVSpacing },
+          animatedStyle
+        ]}
+      >
+        <Text style={styles.idpName}>{name}</Text>
+        <Image source={urlLogoIDP} style={styles.idpLogo} />
+      </Animated.View>
+    </Pressable>
+  );
 };
 
 export default ListItemIDP;

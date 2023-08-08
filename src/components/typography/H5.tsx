@@ -6,20 +6,20 @@ import { ExternalTypographyProps } from "./common";
 
 // these colors are allowed only when the weight is SemiBold
 type AllowedSemiBoldColors = Extract<
-    IOColors,
-    "bluegreyDark" | "bluegrey" | "bluegreyLight" | "blue" | "white" | "red"
+  IOColors,
+  "bluegreyDark" | "bluegrey" | "bluegreyLight" | "blue" | "white" | "red"
 >;
 
 // when the weight is bold, only the white color is allowed
 type AllowedRegularColors = Extract<
-    IOColors,
-    | "bluegreyDark"
-    | "bluegrey"
-    | "bluegreyLight"
-    | "blue"
-    | "white"
-    | "red"
-    | "grey"
+  IOColors,
+  | "bluegreyDark"
+  | "bluegrey"
+  | "bluegreyLight"
+  | "blue"
+  | "white"
+  | "red"
+  | "grey"
 >;
 
 // all the possible colors
@@ -30,14 +30,14 @@ type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
 
 // these are the properties allowed only if weight is undefined or SemiBold
 type SemiBoldProps = {
-    weight?: Extract<IOFontWeight, "SemiBold">;
-    color?: AllowedSemiBoldColors;
+  weight?: Extract<IOFontWeight, "SemiBold">;
+  color?: AllowedSemiBoldColors;
 };
 
 // these are the properties allowed only if weight is Bold
 type RegularProps = {
-    weight: Extract<IOFontWeight, "Regular">;
-    color?: AllowedRegularColors;
+  weight: Extract<IOFontWeight, "Regular">;
+  color?: AllowedRegularColors;
 };
 
 type BoldKindProps = SemiBoldProps | RegularProps;
@@ -54,13 +54,13 @@ export const h5DefaultWeight: AllowedWeight = "SemiBold";
  * @param props
  * @constructor
  */
-export const H5: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "TitilliumWeb";
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: h5DefaultWeight,
-        defaultColor: h5DefaultColor,
-        font: fontName,
-        fontStyle: { fontSize: h5FontSize }
-    });
+export const H5: React.FC<OwnProps> = props => {
+  const fontName: FontFamily = "TitilliumWeb";
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: h5DefaultWeight,
+    defaultColor: h5DefaultColor,
+    font: fontName,
+    fontStyle: { fontSize: h5FontSize }
+  });
 };

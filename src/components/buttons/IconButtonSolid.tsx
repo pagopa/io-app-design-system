@@ -2,19 +2,19 @@ import * as React from "react";
 import { useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
-    Extrapolate,
-    interpolate,
-    interpolateColor,
-    useAnimatedStyle,
-    useDerivedValue,
-    useSharedValue,
-    withSpring
+  Extrapolate,
+  interpolate,
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring
 } from "react-native-reanimated";
 import {
-    IOButtonStyles,
-    IOIconButtonStyles,
-    IOScaleValues,
-    IOSpringValues
+  IOButtonStyles,
+  IOIconButtonStyles,
+  IOScaleValues,
+  IOSpringValues
 } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";

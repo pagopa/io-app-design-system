@@ -8,7 +8,7 @@ type AllowedColors = IOColorsStatusForeground | IOTheme["textHeading-default"];
 type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 /* Common typographic styles */
@@ -22,16 +22,16 @@ export const h4LineHeight = 24;
  * @constructor
  */
 export const H4: React.FC<OwnProps> = props => {
-    /* New typographic styles */
-    const font: FontFamily = "ReadexPro";
-    const defaultColor: AllowedColors = "black";
-    const defaultWeight: AllowedWeight = "Regular";
+  /* New typographic styles */
+  const font: FontFamily = "ReadexPro";
+  const defaultColor: AllowedColors = "black";
+  const defaultWeight: AllowedWeight = "Regular";
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight,
-        defaultColor,
-        font,
-        fontStyle: { fontSize: h4FontSize, lineHeight: h4LineHeight }
-    });
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight,
+    defaultColor,
+    font,
+    fontStyle: { fontSize: h4FontSize, lineHeight: h4LineHeight }
+  });
 };

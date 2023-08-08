@@ -101,13 +101,9 @@ export const ListItemTransaction = ({
           );
 
         case "failure":
-          return (
-            <Badge variant="error" text={"Failed"} />
-          );
+          return <Badge variant="error" text={"Failed"} />;
         case "pending":
-          return (
-            <Badge variant="info" text={"Cancelled"} />
-          );
+          return <Badge variant="info" text={"Cancelled"} />;
       }
     };
 

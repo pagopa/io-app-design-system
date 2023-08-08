@@ -5,14 +5,14 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type PartialAllowedColors = Extract<
-    IOColors,
-    "bluegreyDark" | "white" | "blue" | "bluegrey" | "bluegreyLight"
+  IOColors,
+  "bluegreyDark" | "white" | "blue" | "bluegrey" | "bluegreyLight"
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-default"];
 type AllowedWeight = IOFontWeight | "Regular" | "SemiBold";
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 const fontName: FontFamily = "TitilliumWeb";
@@ -28,10 +28,10 @@ export const bodyDefaultWeight: AllowedWeight = "Regular";
  * @constructor
  */
 export const Body: React.FunctionComponent<OwnProps> = props =>
-    useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: bodyDefaultWeight,
-        defaultColor: bodyDefaultColor,
-        font: fontName,
-        fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
-    });
+  useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: bodyDefaultWeight,
+    defaultColor: bodyDefaultColor,
+    font: fontName,
+    fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
+  });

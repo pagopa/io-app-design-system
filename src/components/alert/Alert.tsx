@@ -83,7 +83,10 @@ type VariantStates = {
 
 // COMPONENT CONFIGURATION
 
-const mapVariantStates: Record<NonNullable<AlertType["variant"]>, VariantStates> = {
+const mapVariantStates: Record<
+  NonNullable<AlertType["variant"]>,
+  VariantStates
+> = {
   error: {
     icon: "errorFilled",
     background: "error-100",

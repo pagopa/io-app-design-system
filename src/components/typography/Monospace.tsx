@@ -8,7 +8,7 @@ type AllowedColors = Extract<IOColors, "bluegreyDark" | "bluegrey">;
 type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold" | "Bold">;
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 /**
@@ -17,18 +17,18 @@ type OwnProps = ExternalTypographyProps<
  * @param props`
  * @constructor
  */
-export const Monospace: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "RobotoMono";
-    const fontSize = 16;
+export const Monospace: React.FC<OwnProps> = props => {
+  const fontName: FontFamily = "RobotoMono";
+  const fontSize = 16;
 
-    const monospaceDefaultWeight = "Regular";
-    const monospaceDefaultcolor = "bluegrey";
+  const monospaceDefaultWeight = "Regular";
+  const monospaceDefaultcolor = "bluegrey";
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: monospaceDefaultWeight,
-        defaultColor: monospaceDefaultcolor,
-        font: fontName,
-        fontStyle: { fontSize }
-    });
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: monospaceDefaultWeight,
+    defaultColor: monospaceDefaultcolor,
+    font: fontName,
+    fontStyle: { fontSize }
+  });
 };

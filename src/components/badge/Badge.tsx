@@ -1,22 +1,27 @@
 import React from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import { IOBadgeHSpacing, IOBadgeRadius, IOBadgeVSpacing, IOColors } from "../../core";
+import {
+  IOBadgeHSpacing,
+  IOBadgeRadius,
+  IOBadgeVSpacing,
+  IOColors
+} from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 
 export type Badge = WithTestID<{
   text: string;
   variant:
-  | "default"
-  | "info"
-  | "warning"
-  | "error"
-  | "success"
-  | "purple"
-  | "lightBlue"
-  | "blue"
-  | "turquoise"
-  | "contrast";
+    | "default"
+    | "info"
+    | "warning"
+    | "error"
+    | "success"
+    | "purple"
+    | "lightBlue"
+    | "blue"
+    | "turquoise"
+    | "contrast";
 }>;
 
 type VariantProps = {

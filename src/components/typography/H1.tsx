@@ -1,25 +1,25 @@
 import React from "react";
 import {
-    IOColors,
-    IOColorsStatusForeground,
-    IOTheme
+  IOColors,
+  IOColorsStatusForeground,
+  IOTheme
 } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type PartialAllowedColors = Extract<
-    IOColors,
-    "bluegreyDark" | "white" | "blue"
+  IOColors,
+  "bluegreyDark" | "white" | "blue"
 >;
 type AllowedColors =
-    | PartialAllowedColors
-    | IOColorsStatusForeground
-    | IOTheme["textHeading-default"];
+  | PartialAllowedColors
+  | IOColorsStatusForeground
+  | IOTheme["textHeading-default"];
 type AllowedWeight = Extract<IOFontWeight, "Bold">;
 
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 export const h1FontSize = 26;
@@ -33,13 +33,13 @@ export const h1DefaultWeight: AllowedWeight = "Bold";
  * @param props
  * @constructor
  */
-export const H1: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "TitilliumWeb";
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: h1DefaultWeight,
-        defaultColor: h1DefaultColor,
-        font: fontName,
-        fontStyle: { fontSize: h1FontSize, lineHeight: h1LineHeight }
-    });
+export const H1: React.FC<OwnProps> = props => {
+  const fontName: FontFamily = "TitilliumWeb";
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: h1DefaultWeight,
+    defaultColor: h1DefaultColor,
+    font: fontName,
+    fontStyle: { fontSize: h1FontSize, lineHeight: h1LineHeight }
+  });
 };

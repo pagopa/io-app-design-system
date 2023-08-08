@@ -2,28 +2,28 @@ import * as React from "react";
 import { useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
-    Extrapolate,
-    interpolate,
-    interpolateColor,
-    useAnimatedProps,
-    useAnimatedStyle,
-    useDerivedValue,
-    useSharedValue,
-    withSpring
+  Extrapolate,
+  interpolate,
+  interpolateColor,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring
 } from "react-native-reanimated";
 import { WithTestID } from "src/utils/types";
 import {
-    AnimatedIcon,
-    IOIcons,
-    IconClassComponent
+  AnimatedIcon,
+  IOIcons,
+  IconClassComponent
 } from "../../components/icons";
 import {
-    IOButtonStyles,
-    IOColors,
-    IOIconButtonStyles,
-    IOScaleValues,
-    IOSpringValues,
-    hexToRgba
+  IOButtonStyles,
+  IOColors,
+  IOIconButtonStyles,
+  IOScaleValues,
+  IOSpringValues,
+  hexToRgba
 } from "../../core";
 
 export type IconButtonContained = WithTestID<{

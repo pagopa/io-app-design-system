@@ -8,18 +8,18 @@ import { RequiredAll } from "../../utils/types";
  * The style exported for the typography elements, without the fields characterizing the font style
  */
 type TypographyStyle = StyleProp<
-    Omit<
-        TextStyle,
-        "color" | "fontFamily" | "fontStyle" | "fontWeight" | "fontSize"
-    >
+  Omit<
+    TextStyle,
+    "color" | "fontFamily" | "fontStyle" | "fontWeight" | "fontSize"
+  >
 >;
 
 /**
  * Define a generic type for props used by all the typography leaf components
  */
 export type TypographyProps<WeightPropsType, ColorsPropsType> = {
-    weight?: WeightPropsType;
-    color?: ColorsPropsType;
+  weight?: WeightPropsType;
+  color?: ColorsPropsType;
 };
 
 // Define a standard type, using IOFontWeight and IOColors
@@ -33,15 +33,15 @@ type DefaultTypographyProps = TypographyProps<IOFontWeight, IOColors>;
  * @param color the optional color value
  */
 export function calculateWeightColor<WeightPropsType, ColorsPropsType>(
-    defaultWeight: WeightPropsType,
-    defaultColor: ColorsPropsType,
-    weight?: WeightPropsType,
-    color?: ColorsPropsType
+  defaultWeight: WeightPropsType,
+  defaultColor: ColorsPropsType,
+  weight?: WeightPropsType,
+  color?: ColorsPropsType
 ): RequiredTypographyProps<WeightPropsType, ColorsPropsType> {
-    return {
-        weight: weight ?? defaultWeight,
-        color: color ?? defaultColor
-    };
+  return {
+    weight: weight ?? defaultWeight,
+    color: color ?? defaultColor
+  };
 }
 
 /**
@@ -49,12 +49,12 @@ export function calculateWeightColor<WeightPropsType, ColorsPropsType>(
  * In addition to the {@link DefaultTypographyProps} all the {@link Text} props are allowed (`style` excluded)
  */
 export type ExternalTypographyProps<T> = T extends DefaultTypographyProps
-    ? Omit<React.ComponentPropsWithRef<typeof Text>, "style"> &
-    T & { style?: TypographyStyle }
-    : never;
+  ? Omit<React.ComponentPropsWithRef<typeof Text>, "style"> &
+      T & { style?: TypographyStyle }
+  : never;
 
 /**
-* Define mandatory all the keys of {@link TypographyProps}
-*/
+ * Define mandatory all the keys of {@link TypographyProps}
+ */
 export type RequiredTypographyProps<WeightPropsType, ColorsPropsType> =
-    RequiredAll<TypographyProps<WeightPropsType, ColorsPropsType>>;
+  RequiredAll<TypographyProps<WeightPropsType, ColorsPropsType>>;

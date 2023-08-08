@@ -5,12 +5,12 @@ import { hexToRgba, IOColors, IOSpacer } from "../../core";
 export type SpacerOrientation = "vertical" | "horizontal";
 
 type BaseSpacerProps = {
-    orientation: SpacerOrientation;
-    size: IOSpacer;
+  orientation: SpacerOrientation;
+  size: IOSpacer;
 };
 
 type SpacerProps = {
-    size?: IOSpacer;
+  size?: IOSpacer;
 };
 
 const DEFAULT_SIZE = 16;
@@ -25,19 +25,22 @@ Native `Spacer` component
 @param {IOSpacer} size
  */
 const Spacer = ({ orientation, size }: BaseSpacerProps) => {
-    const style = React.useMemo(() => ({
-        ...(orientation === "vertical" && {
-            height: size
-        }),
-        ...(orientation === "horizontal" && {
-            width: size
-        }),
-        ...((debugMode as boolean) && {
-            backgroundColor: debugBg
-        })
-    }), [orientation, size]);
+  const style = React.useMemo(
+    () => ({
+      ...(orientation === "vertical" && {
+        height: size
+      }),
+      ...(orientation === "horizontal" && {
+        width: size
+      }),
+      ...((debugMode as boolean) && {
+        backgroundColor: debugBg
+      })
+    }),
+    [orientation, size]
+  );
 
-    return <View style={style} />;
+  return <View style={style} />;
 };
 
 /**
@@ -45,12 +48,12 @@ Horizontal spacer component
 @param {IOSpacer} size
  */
 export const HSpacer = ({ size = DEFAULT_SIZE }: SpacerProps) => (
-    <Spacer orientation={"horizontal"} size={size} />
+  <Spacer orientation={"horizontal"} size={size} />
 );
 /**
 Vertical spacer component
 @param {IOSpacer} size
  */
 export const VSpacer = ({ size = DEFAULT_SIZE }: SpacerProps) => (
-    <Spacer orientation={"vertical"} size={size} />
+  <Spacer orientation={"vertical"} size={size} />
 );

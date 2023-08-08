@@ -5,13 +5,13 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type PartialAllowedColors = Extract<
-    IOColors,
-    "blue" | "bluegrey" | "bluegreyDark" | "white" | "red"
+  IOColors,
+  "blue" | "bluegrey" | "bluegreyDark" | "white" | "red"
 >;
 type AllowedColors = PartialAllowedColors | IOColorsStatusForeground;
 type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
 type OwnProps = ExternalTypographyProps<
-    TypographyProps<AllowedWeight, AllowedColors>
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 /**
@@ -20,17 +20,17 @@ type OwnProps = ExternalTypographyProps<
  * @param props`
  * @constructor
  */
-export const Label: React.FC<OwnProps> = (props) => {
-    const fontName: FontFamily = "TitilliumWeb";
-    const fontSize = 16;
-    const labelDefaultWeight = "Bold";
-    const labelDefaultcolor = "blue";
+export const Label: React.FC<OwnProps> = props => {
+  const fontName: FontFamily = "TitilliumWeb";
+  const fontSize = 16;
+  const labelDefaultWeight = "Bold";
+  const labelDefaultcolor = "blue";
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>({
-        ...props,
-        defaultWeight: labelDefaultWeight,
-        defaultColor: labelDefaultcolor,
-        font: fontName,
-        fontStyle: { fontSize }
-    });
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
+    ...props,
+    defaultWeight: labelDefaultWeight,
+    defaultColor: labelDefaultcolor,
+    font: fontName,
+    fontStyle: { fontSize }
+  });
 };
