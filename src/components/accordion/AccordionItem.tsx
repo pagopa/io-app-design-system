@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Animated, {
   useAnimatedStyle,
-  useSharedValue,
   withSpring
 } from "react-native-reanimated";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -17,46 +16,44 @@ import { H6 } from "../typography";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { Icon } from "../icons/Icon";
 
-export type FaqItem = {
+export type AccordionItem = {
   id: number;
-  question: string;
-  answer: string;
+  title: string;
+  body: string | React.ReactNode;
+};
+
+type AccordionBody = {
+  children: React.ReactNode;
+  expanded: boolean;
 };
 
 /* The code below is a re-adaptation of Dima Portenko's code:
 https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
 */
-export const AccordionBody = ({
-  children,
-  expanded
-}: {
-  children: React.ReactNode;
-  expanded: boolean;
-}) => {
+export const AccordionBody = ({ children, expanded }: AccordionBody) => {
   const [height, setHeight] = useState(0);
-  const animatedHeight = useSharedValue(0);
 
   const onLayout = (event: LayoutChangeEvent) => {
-    const onLayoutHeight = event.nativeEvent.layout.height;
+    const { height: onLayoutHeight } = event.nativeEvent.layout;
 
     if (onLayoutHeight > 0 && height !== onLayoutHeight) {
       setHeight(onLayoutHeight);
     }
   };
 
-  const collapsableStyle = useAnimatedStyle(() => {
-    // eslint-disable-next-line functional/immutable-data
-    animatedHeight.value = expanded
-      ? withSpring(height, IOSpringValues.accordion)
-      : withSpring(0, IOSpringValues.accordion);
-
-    return {
-      height: animatedHeight.value
-    };
-  }, [expanded]);
+  const animatedHeightStyle = useAnimatedStyle(
+    () => ({
+      height: expanded
+        ? withSpring(height, IOSpringValues.accordion)
+        : withSpring(0, IOSpringValues.accordion)
+    }),
+    [expanded]
+  );
 
   return (
-    <Animated.View style={[collapsableStyle, styles.collapsableContainer]}>
+    <Animated.View
+      style={[animatedHeightStyle, styles.accordionCollapsableContainer]}
+    >
       <View style={styles.accordionBodyContainer} onLayout={onLayout}>
         {children}
       </View>
@@ -64,26 +61,45 @@ export const AccordionBody = ({
   );
 };
 
-export const AccordionItem = ({ item }: { item: FaqItem }) => {
+export const AccordionItem = ({ title, body }: AccordionItem) => {
   const [expanded, setExpanded] = useState(false);
 
   const onItemPress = () => {
     setExpanded(!expanded);
   };
 
+  const animatedChevron = useAnimatedStyle(
+    () => ({
+      transform: [
+        {
+          rotate: expanded
+            ? withSpring(`180deg`, IOSpringValues.accordion)
+            : withSpring(`0deg`, IOSpringValues.accordion)
+        }
+      ]
+    }),
+    [expanded]
+  );
+
   return (
     <View style={styles.wrap}>
       <TouchableWithoutFeedback onPress={onItemPress}>
         <View style={styles.textContainer}>
           <View style={{ flexShrink: 1, marginRight: 8 }}>
-            <H6 color="black">{item.question}</H6>
+            <H6 color="black">{title}</H6>
           </View>
-          <Icon name="chevronBottom" color="blueIO-500" />
+          <Animated.View style={animatedChevron}>
+            <Icon name="chevronBottom" color="blueIO-500" />
+          </Animated.View>
         </View>
       </TouchableWithoutFeedback>
 
       <AccordionBody expanded={expanded}>
-        <Text style={styles.accordionBodyText}>{item.answer}</Text>
+        {typeof body === "string" ? (
+          <Text style={styles.accordionBodyText}>{body}</Text>
+        ) : (
+          body
+        )}
       </AccordionBody>
     </View>
   );
@@ -96,10 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: IOColors.white
   },
-  container: {
-    flexDirection: "row"
-  },
-  collapsableContainer: {
+  accordionCollapsableContainer: {
     overflow: "hidden"
   },
   accordionBodyContainer: {
