@@ -10,8 +10,10 @@ import Animated, {
   useAnimatedStyle,
   withSpring
 } from "react-native-reanimated";
+import LinearGradient from "react-native-linear-gradient";
+import { IOAccordionRadius, type IOSpacingScale } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { IOColors } from "../../core/IOColors";
+import { IOColors, hexToRgba } from "../../core/IOColors";
 import { H6 } from "../typography";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { Icon } from "../icons/Icon";
@@ -26,6 +28,11 @@ type AccordionBody = {
   children: React.ReactNode;
   expanded: boolean;
 };
+
+const accordionBodySpacing: IOSpacingScale = 16;
+const accordionIconMargin: IOSpacingScale = 8;
+const accordionBorder: IOColors = "grey-200";
+const accordionBackground: IOColors = "white";
 
 /* The code below is a re-adaptation of Dima Portenko's code:
 https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
@@ -82,7 +89,7 @@ export const AccordionItem = ({ title, body }: AccordionItem) => {
   );
 
   return (
-    <View style={styles.wrap}>
+    <View style={styles.accordionWrapper}>
       <TouchableWithoutFeedback
         accessible={true}
         accessibilityRole="button"
@@ -90,7 +97,7 @@ export const AccordionItem = ({ title, body }: AccordionItem) => {
         onPress={onItemPress}
       >
         <View style={styles.textContainer}>
-          <View style={{ flexShrink: 1, marginRight: 8 }}>
+          <View style={{ flexShrink: 1, marginRight: accordionIconMargin }}>
             <H6 color="black">{title}</H6>
           </View>
           <Animated.View style={animatedChevron}>
@@ -106,23 +113,40 @@ export const AccordionItem = ({ title, body }: AccordionItem) => {
           body
         )}
       </AccordionBody>
+      {/* This gradient adds a smooth end to the content. If it is missing,
+      the content will be cut sharply during the height transition. */}
+      <LinearGradient
+        style={{
+          height: accordionBodySpacing,
+          position: "absolute",
+          // Place at the bottom
+          bottom: 0,
+          // Avoid gradient overlaps with border radius
+          left: accordionBodySpacing,
+          right: accordionBodySpacing
+        }}
+        colors={[
+          hexToRgba(IOColors[accordionBackground], 0),
+          IOColors[accordionBackground]
+        ]}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrap: {
-    borderColor: IOColors["grey-200"],
+  accordionWrapper: {
+    borderColor: IOColors[accordionBorder],
     borderWidth: 1,
-    borderRadius: 8,
-    backgroundColor: IOColors.white
+    borderRadius: IOAccordionRadius,
+    backgroundColor: IOColors[accordionBackground]
   },
   accordionCollapsableContainer: {
     overflow: "hidden"
   },
   accordionBodyContainer: {
     position: "absolute",
-    padding: 16,
+    padding: accordionBodySpacing,
     paddingTop: 0
   },
   accordionBodyText: {
@@ -132,7 +156,7 @@ const styles = StyleSheet.create({
     ...makeFontStyleObject("Regular", undefined, "TitilliumWeb")
   },
   textContainer: {
-    padding: 16,
+    padding: accordionBodySpacing,
     flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
