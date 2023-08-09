@@ -83,7 +83,12 @@ export const AccordionItem = ({ title, body }: AccordionItem) => {
 
   return (
     <View style={styles.wrap}>
-      <TouchableWithoutFeedback onPress={onItemPress}>
+      <TouchableWithoutFeedback
+        accessible={true}
+        accessibilityRole="button"
+        accessibilityState={{ expanded }}
+        onPress={onItemPress}
+      >
         <View style={styles.textContainer}>
           <View style={{ flexShrink: 1, marginRight: 8 }}>
             <H6 color="black">{title}</H6>

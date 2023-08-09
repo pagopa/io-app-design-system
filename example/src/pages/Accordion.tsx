@@ -11,7 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const assistanceData: Array<AccordionItem> = [
   {
     id: 1,
-    title: "Come posso pagare su I0?",
+    title: "Come posso pagare su IO?",
     body: "Puoi pagare con carte di debito, credito e prepagate, con PayPal o BANCOMAT Pay."
   },
   {
