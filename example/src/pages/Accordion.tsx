@@ -7,7 +7,6 @@ import {
   IOStyles,
   IOVisualCostants,
   Icon,
-  Label,
   RawAccordion,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -78,7 +77,7 @@ export const Accordion = () => {
       />
 
       <VSpacer size={40} />
-      <Label>{"<RawAccordion />"}</Label>
+      <H3>RawAccordion</H3>
       <VSpacer size={16} />
       <View style={[IOStyles.flex, { width: "100%" }]}>
         <RawAccordion
