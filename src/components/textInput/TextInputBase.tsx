@@ -133,6 +133,7 @@ const HelperRow = ({
     </View>
   );
 };
+
 export const TextInputBase = ({
   disabled = false,
   placeholder,
@@ -276,16 +277,15 @@ export const TextInputBase = ({
             {placeholder}
           </Animated.Text>
         </Animated.View>
-        {(onValidate && isValid !== undefined) ||
-          (secretInput && (
-            <RightIcon
-              onSecretTap={() => setSecretInput(v => !v)}
-              onValidate={onValidate}
-              secretInput={secretInput}
-              isValid={isValid}
-              isSecretInput={isSecretInput}
-            />
-          ))}
+        {((onValidate && isValid !== undefined) || secretInput) && (
+          <RightIcon
+            onSecretTap={() => setSecretInput(v => !v)}
+            onValidate={onValidate}
+            secretInput={secretInput}
+            isValid={isValid}
+            isSecretInput={isSecretInput}
+          />
+        )}
       </Pressable>
       {(helperText || counterLimit || (errorMessage && !isValid)) && (
         <HelperRow
@@ -308,6 +308,7 @@ type RightIconProps = {
   onSecretTap?: () => void;
 };
 
+// TODO: The Right button should handle the visualizations of both validation and secret input
 const RightIcon = ({
   isValid,
   secretInput,
