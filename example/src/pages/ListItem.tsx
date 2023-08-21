@@ -1,16 +1,16 @@
 import {
-    ButtonLink,
-    H2,
-    IOThemeContext,
-    IconButton,
-    ListItemAction,
-    ListItemIDP,
-    ListItemInfo,
-    ListItemInfoCopy,
-    ListItemNav,
-    ListItemNavAlert,
-    ListItemTransaction,
-    VSpacer
+  ButtonLink,
+  H2,
+  IOThemeContext,
+  IconButton,
+  ListItemAction,
+  ListItemIDP,
+  ListItemInfo,
+  ListItemInfoCopy,
+  ListItemNav,
+  ListItemNavAlert,
+  ListItemTransaction,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, ImageSourcePropType, View } from "react-native";

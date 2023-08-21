@@ -1,19 +1,19 @@
 import {
-    Body,
-    H1,
-    H2,
-    H3,
-    H4,
-    H5,
-    HSpacer,
-    IOColors,
-    IOStyles,
-    IOVisualCostants,
-    Label,
-    LabelSmall,
-    Link,
-    Monospace,
-    VSpacer
+  Body,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  HSpacer,
+  IOColors,
+  IOStyles,
+  IOVisualCostants,
+  Label,
+  LabelSmall,
+  Link,
+  Monospace,
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, StyleSheet, View } from "react-native";
