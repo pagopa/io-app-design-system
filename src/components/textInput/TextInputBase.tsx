@@ -114,7 +114,7 @@ const HelperRow = ({
         helperRowStyle
       ]}
     >
-      {errorMessage && !isValid && (
+      {errorMessage && isValid === false && (
         <LabelSmall weight="Regular" color="error-600">
           {errorMessage}
         </LabelSmall>
@@ -249,6 +249,7 @@ export const TextInputBase = ({
           ref={inputRef}
           onFocus={() => {
             setInputStatus("focused");
+            setIsValid(undefined);
             labelSharedValue.value = 1;
           }}
           maxLength={counterLimit}
@@ -315,24 +316,26 @@ const RightIcon = ({
   isSecretInput,
   onSecretTap
 }: RightIconProps) => (
-  <>
-    <View style={{ marginLeft: "auto" }}>
-      <HSpacer size={8} />
-      <Icon
-        name={(isValid ? "success" : "errorFilled") as IOIcons}
-        color={(isValid ? "green" : "error-600") as IOColors}
-        size={24}
-      />
-    </View>
-    {secretInput && onSecretTap && (
-      <View style={{ marginLeft: "auto" }}>
+  <View style={{ marginLeft: "auto" }}>
+    {isValid !== undefined && (
+      <>
+        <HSpacer size={8} />
+        <Icon
+          name={(isValid ? "success" : "errorFilled") as IOIcons}
+          color={(isValid ? "green" : "error-600") as IOColors}
+          size={24}
+        />
+      </>
+    )}
+    {secretInput && onSecretTap && isValid === undefined && (
+      <>
         <HSpacer size={8} />
         <IconButton
           icon={isSecretInput ? "eyeHide" : "eyeShow"}
           onPress={onSecretTap}
           accessibilityLabel="Toggle secret input"
         />
-      </View>
+      </>
     )}
-  </>
+  </View>
 );
