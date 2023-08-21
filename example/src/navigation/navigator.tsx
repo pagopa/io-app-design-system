@@ -17,6 +17,7 @@ import { Typography } from "../pages/Typography";
 import { Search } from "../pages/Search";
 import { TabNavigationScreen } from "../pages/TabNavigation";
 import { Sandbox } from "../pages/Sandbox";
+import { TextInputs } from "../pages/TextInputs";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -151,7 +152,16 @@ const AppNavigator = () => (
       name={APP_ROUTES.COMPONENTS.TAB_NAVIGATION.route}
       component={TabNavigationScreen}
       options={{
-        headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
+        headerTitle: APP_ROUTES.COMPONENTS.TAB_NAVIGATION.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.TEXT_INPUT.route}
+      component={TextInputs}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.TEXT_INPUT.title,
         headerBackTitleVisible: false
       }}
     />

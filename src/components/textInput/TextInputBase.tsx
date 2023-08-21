@@ -19,6 +19,7 @@ import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
 import { IconButton } from "../buttons";
+import { triggerHaptic } from "../../functions";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -119,7 +120,7 @@ const HelperRow = ({
           {errorMessage}
         </LabelSmall>
       )}
-      {helperText && !(errorMessage && !isValid) && (
+      {helperText && !(errorMessage && isValid === false) && (
         <LabelSmall weight="Regular" color="grey-700">
           {helperText}
         </LabelSmall>
@@ -214,16 +215,22 @@ export const TextInputBase = ({
     if (!value) {
       labelSharedValue.value = 0;
     }
+    if (secretInput) {
+      setSecretInput(true);
+    }
     if (onValidate) {
       const isValid = onValidate(value);
       setIsValid(isValid);
       if (!isValid) {
         setInputStatus("error");
+        triggerHaptic("notificationError");
         return;
+      } else {
+        triggerHaptic("notificationSuccess");
       }
     }
     setInputStatus("initial");
-  }, [onValidate, value, labelSharedValue]);
+  }, [onValidate, value, labelSharedValue, secretInput]);
 
   return (
     <>
