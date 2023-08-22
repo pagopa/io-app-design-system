@@ -20,6 +20,7 @@ type OwnProps = ExternalTypographyProps<
 export const Monospace: React.FC<OwnProps> = props => {
   const fontName: FontFamily = "RobotoMono";
   const fontSize = 16;
+  const lineHeight = 24;
 
   const monospaceDefaultWeight = "Regular";
   const monospaceDefaultcolor = "bluegrey";
@@ -29,6 +30,6 @@ export const Monospace: React.FC<OwnProps> = props => {
     defaultWeight: monospaceDefaultWeight,
     defaultColor: monospaceDefaultcolor,
     font: fontName,
-    fontStyle: { fontSize }
+    fontStyle: { fontSize, lineHeight }
   });
 };

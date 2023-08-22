@@ -12,8 +12,7 @@ type OwnProps = ExternalTypographyProps<
 >;
 
 /* Common typographic styles */
-export const h5FontSize = 14;
-export const h5LineHeight = 16;
+export const captionFontSize = 12;
 
 /**
  * Typography component to render `H4` text with font size {@link fontSize} and fontFamily {@link fontName}.
@@ -21,7 +20,7 @@ export const h5LineHeight = 16;
  * @param props
  * @constructor
  */
-export const H5: React.FC<OwnProps> = props => {
+export const Caption: React.FC<OwnProps> = props => {
   /* New typographic styles */
   const font: FontFamily = "TitilliumWeb";
   const defaultColor: AllowedColors = "black";
@@ -33,8 +32,7 @@ export const H5: React.FC<OwnProps> = props => {
     defaultColor,
     font,
     fontStyle: {
-      fontSize: h5FontSize,
-      lineHeight: h5LineHeight,
+      fontSize: captionFontSize,
       textTransform: "uppercase"
     }
   });

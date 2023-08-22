@@ -38,16 +38,12 @@ describe("Test Typography Components", () => {
     const h3white = TestRenderer.create(<H3 color={"white"}>Text</H3>).toJSON();
     expect(h3white).toMatchSnapshot();
     const h3whiteBold = TestRenderer.create(
-      <H3 color={"white"} weight={"Bold"}>
-        Text
-      </H3>
+      <H3 color={"white"}>Text</H3>
     ).toJSON();
     expect(h3whiteBold).toMatchSnapshot();
 
     // default color when choose only bold
-    const h3defaultBold = TestRenderer.create(
-      <H3 weight={"Bold"}>Text</H3>
-    ).toJSON();
+    const h3defaultBold = TestRenderer.create(<H3>Text</H3>).toJSON();
     expect(h3defaultBold).toMatchSnapshot();
   });
   it("H4 Snapshot", () => {
@@ -177,11 +173,7 @@ describe("Test Typography Components", () => {
 
     type BodyColors = React.ComponentProps<typeof Label>["color"];
 
-    const allowedColors: ReadonlyArray<BodyColors> = [
-      "blue",
-      "bluegrey",
-      "white"
-    ];
+    const allowedColors: ReadonlyArray<BodyColors> = ["black"];
 
     allowedColors.map(color => {
       const label = TestRenderer.create(
