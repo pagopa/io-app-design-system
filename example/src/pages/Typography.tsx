@@ -5,6 +5,8 @@ import {
   H3,
   H4,
   H5,
+  H6,
+  Hero,
   HSpacer,
   IOColors,
   IOStyles,
@@ -48,6 +50,8 @@ export const Typography = () => (
     <H3Row />
     <H4Row />
     <H5Row />
+    <H6Row />
+    <HeroRow />
     <Body>Body</Body>
     <LabelSmallRow />
     <LabelRow />
@@ -82,6 +86,15 @@ export const DarkBackgroundTypographicScale = () => (
     <H1 color={"white"}>Header H1</H1>
     <HSpacer size={16} />
   </View>
+);
+
+export const HeroRow = () => (
+  <>
+    <View>
+      <Hero>Hero example</Hero>
+    </View>
+    <VSpacer size={40} />
+  </>
 );
 
 export const H1Row = () => (
@@ -121,9 +134,7 @@ export const H3Row = () => (
     <VSpacer size={16} />
     <View style={styles.row}>
       <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H3 color={"white"} weight={"Bold"}>
-          Header H3 Bold
-        </H3>
+        <H3 color={"white"}>Header H3 Bold</H3>
       </View>
     </View>
     <VSpacer size={40} />
@@ -205,6 +216,35 @@ export const H5Row = () => (
   </>
 );
 
+export const H6Row = () => (
+  <>
+    <View style={styles.row}>
+      <H6>Header H6 SB</H6>
+      <HSpacer size={16} />
+      <H6 color={"bluegrey"}>Header H6 SB</H6>
+      <HSpacer size={16} />
+      <H6 color={"blue"}>Header H6 SB</H6>
+      <HSpacer size={16} />
+      <View style={{ backgroundColor: IOColors.bluegrey }}>
+        <H6 color={"white"}>Header H6 SB</H6>
+      </View>
+    </View>
+    <VSpacer size={16} />
+    <View style={styles.row}>
+      <H6 weight={"Regular"}>Header H6</H6>
+      <HSpacer size={16} />
+      <H6 weight={"Regular"} color={"bluegrey"}>
+        Header H6
+      </H6>
+      <HSpacer size={16} />
+      <H6 weight={"Regular"} color={"blue"}>
+        Header H6
+      </H6>
+    </View>
+    <VSpacer size={40} />
+  </>
+);
+
 export const LabelSmallRow = () => (
   <>
     <View style={styles.row}>
@@ -226,8 +266,6 @@ export const LabelRow = () => (
   <>
     <View style={styles.row}>
       <Label>Label</Label>
-      <HSpacer size={16} />
-      <Label color={"bluegrey"}>Label</Label>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors.bluegrey }}>
         <Label color={"white"}>Label</Label>
