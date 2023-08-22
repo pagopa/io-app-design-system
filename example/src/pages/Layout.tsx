@@ -31,7 +31,6 @@ export const Layout = () => {
       <ContentWrapper>
         <H1
           color={theme["textHeading-default"]}
-          weight={"Bold"}
           style={{
             marginBottom: 16,
             paddingTop: IOVisualCostants.appMarginDefault
@@ -39,11 +38,7 @@ export const Layout = () => {
         >
           Grid
         </H1>
-        <H3
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           ContentWrapper
         </H3>
       </ContentWrapper>
@@ -80,19 +75,11 @@ export const Layout = () => {
       <VSpacer size={40} />
 
       <ContentWrapper>
-        <H1
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H1 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           Spacing
         </H1>
 
-        <H3
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           VSpacer
         </H3>
 
@@ -109,11 +96,7 @@ export const Layout = () => {
 
         <VSpacer size={24} />
 
-        <H3
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           HSpacer
         </H3>
 
@@ -131,19 +114,11 @@ export const Layout = () => {
       </ContentWrapper>
 
       <ContentWrapper>
-        <H1
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H1 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           Divider
         </H1>
 
-        <H3
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           Default (Horizontal)
         </H3>
 
@@ -154,11 +129,7 @@ export const Layout = () => {
       <VSpacer size={48} />
 
       <ContentWrapper>
-        <H3
-          color={theme["textHeading-default"]}
-          weight={"Bold"}
-          style={{ marginBottom: 16 }}
-        >
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
           Vertical
         </H3>
 

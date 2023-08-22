@@ -140,11 +140,7 @@ const renderColorThemeGroup = (
   return (
     <View style={{ marginBottom: 40 }}>
       {name && (
-        <H3
-          color={"bluegrey"}
-          weight={"Bold"}
-          style={{ marginBottom: sectionTitleMargin }}
-        >
+        <H3 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
           {name}
         </H3>
       )}
@@ -224,11 +220,7 @@ const renderColorGroup = (
 ) => (
   <View style={{ marginBottom: 24 }}>
     {name && (
-      <H3
-        color={"bluegrey"}
-        weight={"Bold"}
-        style={{ marginBottom: sectionTitleMargin }}
-      >
+      <H3 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
         {name}
       </H3>
     )}
@@ -243,7 +235,6 @@ export const Colors = () => (
   <Screen>
     <H2
       color={"bluegrey"}
-      weight={"Bold"}
       style={{
         marginBottom: sectionTitleMargin,
         paddingTop: IOVisualCostants.appMarginDefault
@@ -260,11 +251,7 @@ export const Colors = () => (
     {/* Extra */}
     {renderColorGroup("Extra", IOColorsExtra)}
 
-    <H2
-      color={"bluegrey"}
-      weight={"Bold"}
-      style={{ marginBottom: sectionTitleMargin }}
-    >
+    <H2 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
       Theme
     </H2>
 
