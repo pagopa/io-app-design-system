@@ -178,7 +178,10 @@ export const TextInputBase = ({
   }, [inputStatus]);
 
   const animatedLabelProps = useAnimatedStyle(() => ({
-    fontSize: withTiming(interpolate(labelSharedValue.value, [0, 1], [16, 12])),
+    fontSize: withTiming(
+      interpolate(labelSharedValue.value, [0, 1], [16, 12]),
+      { duration: 300, easing: Easing.elastic(0.85) }
+    ),
     top: withTiming(interpolate(labelSharedValue.value, [0, 1], [0, -16]))
   }));
 
