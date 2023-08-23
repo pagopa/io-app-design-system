@@ -1,5 +1,6 @@
 import {
   Body,
+  Caption,
   H1,
   H2,
   H3,
@@ -10,7 +11,6 @@ import {
   HSpacer,
   IOColors,
   IOStyles,
-  IOVisualCostants,
   Label,
   LabelSmall,
   Link,
@@ -44,6 +44,8 @@ export const Typography = () => (
     <H6Row />
 
     <Body>Body</Body>
+
+    <CaptionRow />
     <LabelSmallRow />
     <LabelRow />
     <Link onPress={() => Alert.alert("onPress link!")}>Link</Link>
@@ -161,6 +163,19 @@ export const H6Row = () => (
       <H6 color="grey-650">Header H6</H6>
       <HSpacer size={16} />
       <H6 color={"blueIO-500"}>Header H6</H6>
+    </View>
+    <VSpacer size={40} />
+  </>
+);
+
+export const CaptionRow = () => (
+  <>
+    <View style={styles.row}>
+      <Caption>Caption</Caption>
+      <HSpacer size={16} />
+      <Caption color="grey-650">Caption</Caption>
+      <HSpacer size={16} />
+      <Caption color={"blueIO-500"}>Caption</Caption>
     </View>
     <VSpacer size={40} />
   </>
