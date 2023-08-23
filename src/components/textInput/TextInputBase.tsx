@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import Animated, {
+  Easing,
   interpolate,
   useAnimatedStyle,
   useSharedValue,
