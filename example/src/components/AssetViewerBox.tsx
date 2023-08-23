@@ -1,9 +1,4 @@
-import {
-  H5,
-  IOColors,
-  LabelSmall,
-  hexToRgba
-} from "@pagopa/io-app-design-system";
+import { IOColors, LabelSmall, hexToRgba } from "@pagopa/io-app-design-system";
 import React from "react";
 import {
   ImageBackground,
