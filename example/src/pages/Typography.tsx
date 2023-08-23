@@ -35,23 +35,14 @@ const sectionTitleMargin = 16;
 
 export const Typography = () => (
   <Screen>
-    <H2
-      color={"bluegrey"}
-      weight={"SemiBold"}
-      style={{
-        marginBottom: sectionTitleMargin,
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      Font family
-    </H2>
+    <HeroRow />
     <H1Row />
     <H2Row />
     <H3Row />
     <H4Row />
     <H5Row />
     <H6Row />
-    <HeroRow />
+
     <Body>Body</Body>
     <LabelSmallRow />
     <LabelRow />
@@ -91,7 +82,8 @@ export const DarkBackgroundTypographicScale = () => (
 export const HeroRow = () => (
   <>
     <View>
-      <Hero>Hero example</Hero>
+      <Hero>{getTitle("Hero")}</Hero>
+      <Hero>{getLongerTitle("Hero")}</Hero>
     </View>
     <VSpacer size={40} />
   </>
@@ -112,9 +104,6 @@ export const H2Row = () => (
     <View>
       <H2>{getTitle("H2")}</H2>
       <H2 style={styles.distancedTitle}>{getLongerTitle("H2")}</H2>
-      <H2 style={styles.distancedTitle} weight={"SemiBold"}>
-        {getTitle("H2 Semibold")}
-      </H2>
     </View>
     <VSpacer size={40} />
   </>
@@ -123,18 +112,12 @@ export const H2Row = () => (
 export const H3Row = () => (
   <>
     <View style={styles.row}>
-      <H3>Header H3 SB</H3>
+      <H3>Header H3</H3>
       <HSpacer size={16} />
-      <H3 color={"bluegreyLight"}>Header H3 SB</H3>
+      <H3 color="grey-650">Header H3</H3>
       <HSpacer size={16} />
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H3 color={"white"}>Header H3 SB</H3>
-      </View>
-    </View>
-    <VSpacer size={16} />
-    <View style={styles.row}>
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H3 color={"white"}>Header H3 Bold</H3>
+      <View style={{ backgroundColor: IOColors["grey-700"] }}>
+        <H3 color={"white"}>Header H3</H3>
       </View>
     </View>
     <VSpacer size={40} />
@@ -145,42 +128,12 @@ export const H4Row = () => (
   <>
     <View style={styles.row}>
       {/* Bold */}
-      <H4>Header H4 Bold</H4>
+      <H4>Header H4</H4>
       <HSpacer size={16} />
-      <H4 color={"blue"}>Header H4 Bold</H4>
+      <H4 color="blueIO-500">Header H4</H4>
       <HSpacer size={16} />
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H4 color={"white"}>Header H4 Bold</H4>
-      </View>
-    </View>
-    <VSpacer size={16} />
-    <View style={styles.row}>
-      {/* SemiBold */}
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H4 color={"white"} weight={"SemiBold"}>
-          Header H4 SemiBold
-        </H4>
-      </View>
-    </View>
-    <VSpacer size={16} />
-    <View style={styles.row}>
-      {/* Regular */}
-      <H4 weight={"Regular"} color={"bluegreyDark"}>
-        Header H4
-      </H4>
-      <HSpacer size={16} />
-      <H4 weight={"Regular"} color={"bluegrey"}>
-        Header H4
-      </H4>
-      <HSpacer size={16} />
-      <H4 weight={"Regular"} color={"bluegreyLight"}>
-        Header H4
-      </H4>
-      <HSpacer size={16} />
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H4 weight={"Regular"} color={"white"}>
-          Header H4
-        </H4>
+      <View style={{ backgroundColor: IOColors["grey-700"] }}>
+        <H4 color={"white"}>Header H4</H4>
       </View>
     </View>
     <VSpacer size={40} />
@@ -190,27 +143,11 @@ export const H4Row = () => (
 export const H5Row = () => (
   <>
     <View style={styles.row}>
-      <H5>Header H5 SB</H5>
+      <H5>Header H5</H5>
       <HSpacer size={16} />
-      <H5 color={"bluegrey"}>Header H5 SB</H5>
+      <H5 color="grey-650">Header H5</H5>
       <HSpacer size={16} />
-      <H5 color={"blue"}>Header H5 SB</H5>
-      <HSpacer size={16} />
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H5 color={"white"}>Header H5 SB</H5>
-      </View>
-    </View>
-    <VSpacer size={16} />
-    <View style={styles.row}>
-      <H5 weight={"Regular"}>Header H5</H5>
-      <HSpacer size={16} />
-      <H5 weight={"Regular"} color={"bluegrey"}>
-        Header H5
-      </H5>
-      <HSpacer size={16} />
-      <H5 weight={"Regular"} color={"blue"}>
-        Header H5
-      </H5>
+      <H5 color={"blueIO-500"}>Header H5</H5>
     </View>
     <VSpacer size={40} />
   </>
@@ -219,27 +156,11 @@ export const H5Row = () => (
 export const H6Row = () => (
   <>
     <View style={styles.row}>
-      <H6>Header H6 SB</H6>
+      <H6>Header H6</H6>
       <HSpacer size={16} />
-      <H6 color={"bluegrey"}>Header H6 SB</H6>
+      <H6 color="grey-650">Header H6</H6>
       <HSpacer size={16} />
-      <H6 color={"blue"}>Header H6 SB</H6>
-      <HSpacer size={16} />
-      <View style={{ backgroundColor: IOColors.bluegrey }}>
-        <H6 color={"white"}>Header H6 SB</H6>
-      </View>
-    </View>
-    <VSpacer size={16} />
-    <View style={styles.row}>
-      <H6 weight={"Regular"}>Header H6</H6>
-      <HSpacer size={16} />
-      <H6 weight={"Regular"} color={"bluegrey"}>
-        Header H6
-      </H6>
-      <HSpacer size={16} />
-      <H6 weight={"Regular"} color={"blue"}>
-        Header H6
-      </H6>
+      <H6 color={"blueIO-500"}>Header H6</H6>
     </View>
     <VSpacer size={40} />
   </>
