@@ -1,7 +1,6 @@
 import {
   H2,
   H3,
-  H5,
   IOColorGradients,
   IOColors,
   IOColorsExtra,
@@ -341,9 +340,9 @@ const GradientBox = ({ name, colors }: GradientBoxProps) => {
         {last && <Text style={styles.colorPill}>{last}</Text>}
       </LinearGradient>
       {name && (
-        <H5 color={"bluegrey"} weight={"Regular"}>
+        <LabelSmall weight="Regular" color="grey-700">
           {name}
-        </H5>
+        </LabelSmall>
       )}
     </View>
   );

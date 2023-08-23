@@ -54,19 +54,6 @@ describe("Test Typography Components", () => {
     expect(h4Dblue).toMatchSnapshot();
     const h4white = TestRenderer.create(<H4 color={"white"}>Text</H4>).toJSON();
     expect(h4white).toMatchSnapshot();
-    // SemiBold weight
-    const h4SemiBoldwhite = TestRenderer.create(
-      <H4 weight={"SemiBold"} color={"white"}>
-        Text
-      </H4>
-    ).toJSON();
-    expect(h4SemiBoldwhite).toMatchSnapshot();
-
-    // Semibold default color
-    const h4SemiBoldDefault = TestRenderer.create(
-      <H4 weight={"SemiBold"}>Text</H4>
-    ).toJSON();
-    expect(h4SemiBoldDefault).toMatchSnapshot();
 
     // Regular weight
     // with regular weight, default color is bluegreydark
@@ -112,25 +99,6 @@ describe("Test Typography Components", () => {
       <H5 color={"white"}>Text</H5>
     ).toJSON();
     expect(h5Defaultwhite).toMatchSnapshot();
-
-    // Regular weight
-    // with regular weight, default color is bluegreydark
-    const h5Regular = TestRenderer.create(
-      <H5 weight={"Regular"}>Text</H5>
-    ).toJSON();
-    expect(h5Regular).toMatchSnapshot();
-    const h5Regularbluegrey = TestRenderer.create(
-      <H5 weight={"Regular"} color={"bluegrey"}>
-        Text
-      </H5>
-    ).toJSON();
-    expect(h5Regularbluegrey).toMatchSnapshot();
-    const h5Regularblue = TestRenderer.create(
-      <H5 weight={"Regular"} color={"blue"}>
-        Text
-      </H5>
-    ).toJSON();
-    expect(h5Regularblue).toMatchSnapshot();
   });
   it("H6 Snapshot", () => {
     // SemiBold weight, default
