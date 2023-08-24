@@ -309,12 +309,12 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           "textAlignVertical": "center",
         },
         {
+          "height": 48,
+        },
+        {
           "borderWidth": 2,
         },
         false,
-        {
-          "height": 48,
-        },
         {
           "backgroundColor": "rgba(231,236,252,0)",
           "borderColor": "#0B3EE3",
@@ -338,14 +338,12 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         [
           {
             "fontFamily": "Readex Pro",
+            "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "400",
           },
           {
             "alignSelf": "center",
-          },
-          {
-            "fontSize": 16,
           },
           {
             "color": "#0B3EE3",
@@ -433,20 +431,24 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
   >
     <Text
       color="white"
+      defaultColor="white"
+      defaultWeight="Regular"
       ellipsizeMode="tail"
       font="ReadexPro"
+      fontStyle={
+        {
+          "fontSize": 16,
+        }
+      }
       numberOfLines={1}
       style={
         [
-          [
-            {
-              "alignSelf": "center",
-            },
-            {
-              "fontSize": 16,
-            },
-          ],
-          undefined,
+          {
+            "alignSelf": "center",
+          },
+          {
+            "fontSize": 16,
+          },
           {
             "color": "#FFFFFF",
             "fontFamily": "Readex Pro",

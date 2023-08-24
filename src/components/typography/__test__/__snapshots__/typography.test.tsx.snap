@@ -34,24 +34,22 @@ exports[`Test Typography Components Body Snapshot 1`] = `
 
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
-  color="black"
-  defaultColor="black"
+  color="white"
+  defaultColor="white"
   defaultWeight="Regular"
   font="ReadexPro"
   fontStyle={
     {
       "fontSize": 16,
-      "lineHeight": 20,
     }
   }
   style={
     [
       {
         "fontSize": 16,
-        "lineHeight": 20,
       },
       {
-        "color": "#0E0F13",
+        "color": "#FFFFFF",
         "fontFamily": "Readex Pro",
         "fontStyle": "normal",
         "fontWeight": "400",

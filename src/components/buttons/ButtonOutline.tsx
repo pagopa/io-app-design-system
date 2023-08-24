@@ -21,12 +21,12 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
+import { buttonTextFontSize } from "../typography";
 
-type ColorButtonOutline = "primary" | "neutral" | "contrast" | "danger";
+type ColorButtonOutline = "primary" | "contrast";
 export type ButtonOutline = WithTestID<{
   color?: ColorButtonOutline;
   label: string;
-  small?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
   // Icons
@@ -78,24 +78,6 @@ const mapColorStates: Record<
       disabled: IOColors["grey-700"]
     }
   },
-  // Neutral button
-  neutral: {
-    border: {
-      default: IOColors.grey,
-      pressed: IOColors.bluegrey,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: IOColors.white,
-      pressed: IOColors.greyUltraLight,
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.bluegrey,
-      pressed: IOColors.bluegreyDark,
-      disabled: IOColors.grey
-    }
-  },
   // Contrast button
   contrast: {
     border: {
@@ -113,24 +95,6 @@ const mapColorStates: Record<
       pressed: IOColors.white,
       disabled: IOColors["blueIO-200"]
     }
-  },
-  // Danger button
-  danger: {
-    border: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: hexToRgba(IOColors.red, 0),
-      pressed: hexToRgba(IOColors.red, 0.15),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.grey
-    }
   }
 };
 
@@ -138,7 +102,8 @@ const DISABLED_OPACITY = 0.5;
 
 const IOButtonStylesLocal = StyleSheet.create({
   label: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
+    ...makeFontStyleObject("Regular", false, "ReadexPro"),
+    fontSize: buttonTextFontSize
   },
   buttonWithBorder: {
     borderWidth: 2
@@ -148,7 +113,6 @@ const IOButtonStylesLocal = StyleSheet.create({
 export const ButtonOutline = ({
   color = "primary",
   label,
-  small = false,
   fullWidth = false,
   disabled = false,
   icon,
@@ -259,11 +223,9 @@ export const ButtonOutline = ({
       <Animated.View
         style={[
           IOButtonStyles.button,
+          IOButtonStyles.buttonSizeDefault,
           IOButtonStylesLocal.buttonWithBorder,
           iconPosition === "end" && { flexDirection: "row-reverse" },
-          small
-            ? IOButtonStyles.buttonSizeSmall
-            : IOButtonStyles.buttonSizeDefault,
           disabled
             ? {
                 backgroundColor: mapColorStates[color]?.background?.disabled,
@@ -300,9 +262,6 @@ export const ButtonOutline = ({
           style={[
             IOButtonStylesLocal.label,
             IOButtonStyles.label,
-            small
-              ? IOButtonStyles.labelSizeSmall
-              : IOButtonStyles.labelSizeDefault,
             disabled
               ? { color: mapColorStates[color]?.label?.disabled }
               : { color: mapColorStates[color]?.label?.default },

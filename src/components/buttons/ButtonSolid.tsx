@@ -15,7 +15,7 @@ import { IOButtonStyles } from "../../core/IOStyles";
 import { IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
-import { BaseTypography } from "../typography/BaseTypography";
+import { ButtonText, ButtonTextAllowedColors } from "../typography/ButtonText";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -23,8 +23,8 @@ type ColorStates = {
   default: string;
   pressed: string;
   label: {
-    default: IOColors;
-    disabled: IOColors;
+    default: ButtonTextAllowedColors;
+    disabled: ButtonTextAllowedColors;
   };
 };
 
@@ -141,7 +141,7 @@ export const ButtonSolid = React.memo(
     }, [isPressed]);
 
     // Label & Icons colors
-    const foregroundColor: IOColors = disabled
+    const foregroundColor = disabled
       ? mapColorStates[color]?.label?.disabled
       : mapColorStates[color]?.label?.default;
 
@@ -186,16 +186,9 @@ export const ButtonSolid = React.memo(
               <HSpacer size={8} />
             </>
           )}
-          <BaseTypography
-            font="ReadexPro"
-            weight={"Regular"}
+          <ButtonText
             color={foregroundColor}
-            style={[
-              IOButtonStyles.label,
-              small
-                ? IOButtonStyles.labelSizeSmall
-                : IOButtonStyles.labelSizeDefault
-            ]}
+            style={IOButtonStyles.label}
             numberOfLines={1}
             ellipsizeMode="tail"
             /* A11y-related props:
@@ -204,7 +197,7 @@ export const ButtonSolid = React.memo(
                 maxFontSizeMultiplier={1.3} */
           >
             {label}
-          </BaseTypography>
+          </ButtonText>
         </Animated.View>
       </Pressable>
     );

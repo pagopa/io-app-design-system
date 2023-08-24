@@ -2,7 +2,7 @@ export * from "./BaseTypography";
 export * from "./Body";
 export * from "./Caption";
 export * from "./Chip";
-export * from "./CTA";
+export * from "./ButtonText";
 export * from "./Factory";
 export * from "./H1";
 export * from "./H2";

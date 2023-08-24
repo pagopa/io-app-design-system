@@ -3,7 +3,7 @@ import * as TestRenderer from "react-test-renderer";
 import type { IOColors } from "../../../core/IOColors";
 import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
-import { CTA } from "../CTA";
+import { ButtonText } from "../ButtonText";
 import { H1 } from "../H1";
 import { H2 } from "../H2";
 import { H3 } from "../H3";
@@ -110,7 +110,7 @@ describe("Test Typography Components", () => {
     expect(bodyDefault).toMatchSnapshot();
   });
   it("CTA Snapshot", () => {
-    const cta = TestRenderer.create(<CTA>Text</CTA>).toJSON();
+    const cta = TestRenderer.create(<ButtonText>Text</ButtonText>).toJSON();
     expect(cta).toMatchSnapshot();
   });
   it("LabelSmall Snapshot", () => {

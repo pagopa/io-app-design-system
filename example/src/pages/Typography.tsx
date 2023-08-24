@@ -1,5 +1,6 @@
 import {
   Body,
+  ButtonText,
   Caption,
   H1,
   H2,
@@ -43,9 +44,11 @@ export const Typography = () => (
     <H5Row />
     <H6Row />
 
+    <ButtonTextRow />
+    <CaptionRow />
+
     <Body>Body</Body>
 
-    <CaptionRow />
     <LabelSmallRow />
     <LabelRow />
     <Link onPress={() => Alert.alert("onPress link!")}>Link</Link>
@@ -163,6 +166,21 @@ export const H6Row = () => (
       <H6 color="grey-650">Header H6</H6>
       <HSpacer size={16} />
       <H6 color={"blueIO-500"}>Header H6</H6>
+    </View>
+    <VSpacer size={40} />
+  </>
+);
+
+export const ButtonTextRow = () => (
+  <>
+    <View style={styles.row}>
+      <View style={{ backgroundColor: IOColors["grey-700"] }}>
+        <ButtonText>ButtonText</ButtonText>
+      </View>
+      <HSpacer size={16} />
+      <ButtonText color="grey-700">ButtonText</ButtonText>
+      <HSpacer size={16} />
+      <ButtonText color="blueIO-500">ButtonText</ButtonText>
     </View>
     <VSpacer size={40} />
   </>
