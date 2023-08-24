@@ -74,14 +74,14 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         fontStyle={
           {
             "fontSize": 20,
-            "lineHeight": 24,
+            "lineHeight": 30,
           }
         }
         style={
           [
             {
               "fontSize": 20,
-              "lineHeight": 24,
+              "lineHeight": 30,
             },
             {
               "color": "#0E0F13",

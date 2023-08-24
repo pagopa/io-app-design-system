@@ -329,14 +329,14 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#0E0F13",
@@ -361,14 +361,14 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#0073E6",
@@ -393,14 +393,14 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#FFFFFF",
@@ -418,38 +418,6 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
 
 exports[`Test Typography Components H4 Snapshot 4`] = `
 <Text
-  color="white"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
-        "fontStyle": "normal",
-        "fontWeight": "600",
-      },
-    ]
-  }
-  weight="SemiBold"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 5`] = `
-<Text
   color="black"
   defaultColor="black"
   defaultWeight="Regular"
@@ -457,46 +425,14 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
-        "fontStyle": "normal",
-        "fontWeight": "600",
-      },
-    ]
-  }
-  weight="SemiBold"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 6`] = `
-<Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#0E0F13",
@@ -512,7 +448,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
 </Text>
 `;
 
-exports[`Test Typography Components H4 Snapshot 7`] = `
+exports[`Test Typography Components H4 Snapshot 5`] = `
 <Text
   color="bluegrey"
   defaultColor="black"
@@ -521,14 +457,14 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#475A6D",
@@ -544,7 +480,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
 </Text>
 `;
 
-exports[`Test Typography Components H4 Snapshot 8`] = `
+exports[`Test Typography Components H4 Snapshot 6`] = `
 <Text
   color="bluegreyLight"
   defaultColor="black"
@@ -553,14 +489,14 @@ exports[`Test Typography Components H4 Snapshot 8`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#CCD4DC",
@@ -576,7 +512,7 @@ exports[`Test Typography Components H4 Snapshot 8`] = `
 </Text>
 `;
 
-exports[`Test Typography Components H4 Snapshot 9`] = `
+exports[`Test Typography Components H4 Snapshot 7`] = `
 <Text
   color="white"
   defaultColor="black"
@@ -585,14 +521,14 @@ exports[`Test Typography Components H4 Snapshot 9`] = `
   fontStyle={
     {
       "fontSize": 20,
-      "lineHeight": 24,
+      "lineHeight": 30,
     }
   }
   style={
     [
       {
         "fontSize": 20,
-        "lineHeight": 24,
+        "lineHeight": 30,
       },
       {
         "color": "#FFFFFF",
@@ -617,6 +553,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "letterSpacing": 0.5,
       "lineHeight": 16,
       "textTransform": "uppercase",
     }
@@ -625,6 +562,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
     [
       {
         "fontSize": 14,
+        "letterSpacing": 0.5,
         "lineHeight": 16,
         "textTransform": "uppercase",
       },
@@ -651,6 +589,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "letterSpacing": 0.5,
       "lineHeight": 16,
       "textTransform": "uppercase",
     }
@@ -659,6 +598,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
     [
       {
         "fontSize": 14,
+        "letterSpacing": 0.5,
         "lineHeight": 16,
         "textTransform": "uppercase",
       },
@@ -685,6 +625,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "letterSpacing": 0.5,
       "lineHeight": 16,
       "textTransform": "uppercase",
     }
@@ -693,6 +634,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
     [
       {
         "fontSize": 14,
+        "letterSpacing": 0.5,
         "lineHeight": 16,
         "textTransform": "uppercase",
       },
@@ -719,6 +661,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "letterSpacing": 0.5,
       "lineHeight": 16,
       "textTransform": "uppercase",
     }
@@ -727,6 +670,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
     [
       {
         "fontSize": 14,
+        "letterSpacing": 0.5,
         "lineHeight": 16,
         "textTransform": "uppercase",
       },
@@ -744,108 +688,6 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
 </Text>
 `;
 
-exports[`Test Typography Components H5 Snapshot 5`] = `
-<Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 14,
-        "lineHeight": 16,
-        "textTransform": "uppercase",
-      },
-      {
-        "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H5 Snapshot 6`] = `
-<Text
-  color="bluegrey"
-  defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 14,
-        "lineHeight": 16,
-        "textTransform": "uppercase",
-      },
-      {
-        "color": "#475A6D",
-        "fontFamily": "Titillium Web",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H5 Snapshot 7`] = `
-<Text
-  color="blue"
-  defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 14,
-        "lineHeight": 16,
-        "textTransform": "uppercase",
-      },
-      {
-        "color": "#0073E6",
-        "fontFamily": "Titillium Web",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
 exports[`Test Typography Components H6 Snapshot 1`] = `
 <Text
   color="black"
@@ -855,14 +697,14 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
   fontStyle={
     {
       "fontSize": 16,
-      "lineHeight": 20,
+      "lineHeight": 24,
     }
   }
   style={
     [
       {
         "fontSize": 16,
-        "lineHeight": 20,
+        "lineHeight": 24,
       },
       {
         "color": "#0E0F13",

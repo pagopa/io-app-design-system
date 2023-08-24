@@ -77,24 +77,24 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         fontStyle={
           {
             "fontSize": 16,
-            "lineHeight": 20,
+            "lineHeight": 24,
           }
         }
         style={
           [
             {
               "fontSize": 16,
-              "lineHeight": 20,
+              "lineHeight": 24,
             },
             {
               "color": "#031344",
               "fontFamily": "Readex Pro",
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "400",
             },
           ]
         }
-        weight="SemiBold"
+        weight="Regular"
       >
         Banner title
       </Text>
