@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-unused-styles */
 /* eslint-disable functional/immutable-data */
 import {
   Pressable,
@@ -9,7 +8,7 @@ import {
 } from "react-native";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import Animated, {
-  interpolate,
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming
@@ -18,8 +17,6 @@ import { IOColors, IOSpacingScale, IOStyles } from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
-import { IconButton } from "../buttons";
-import { triggerHaptic } from "../../functions";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -27,21 +24,19 @@ interface InputTextProps {
   placeholder: string;
   value: string;
   onChangeText: (value: string) => void;
+  status?: InputStatus;
   icon?: IOIcons;
+  rightElement?: React.ReactNode;
   counterLimit?: number;
-  helperText?: string;
+  bottomMessage?: string;
+  bottomMessageColor?: IOColors;
   disabled?: boolean;
-  secretInput?: boolean;
-  onValidate?: (value: string) => boolean;
-  errorMessage?: string;
+  isPassword?: boolean;
+  onBlur?: () => void;
+  onFocus?: () => void;
 }
 
 const styles = StyleSheet.create({
-  helperRow: {
-    ...IOStyles.row,
-    alignItems: "center",
-    paddingHorizontal: 10
-  },
   textInput: {
     ...IOStyles.row,
     alignItems: "center",
@@ -51,6 +46,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   textInputStyle: {
+    ...IOStyles.flex,
     fontSize: 16,
     marginTop: IOSpacingScale[2],
     fontWeight: "400",
@@ -60,7 +56,7 @@ const styles = StyleSheet.create({
   },
   textInputLabelWrapper: {
     position: "absolute",
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     zIndex: 10,
     bottom: 0,
     top: 0,
@@ -68,25 +64,21 @@ const styles = StyleSheet.create({
   }
 });
 
-type InputTextHelperRow = {
-  value: string;
-  counterLimit?: number;
-  helperText?: string;
-  errorMessage?: string;
-  isValid?: boolean;
-};
+type InputTextHelperRow = Pick<
+  InputTextProps,
+  "value" | "counterLimit" | "bottomMessage" | "bottomMessageColor"
+>;
 
 const HelperRow = ({
   value,
   counterLimit,
-  helperText,
-  errorMessage,
-  isValid
+  bottomMessage,
+  bottomMessageColor = "grey-700"
 }: InputTextHelperRow) => {
   const valueCount = useMemo(() => value.length, [value]);
 
   const helperRowStyle: ViewStyle = useMemo(() => {
-    if (counterLimit && helperText) {
+    if (counterLimit && bottomMessage) {
       return {
         justifyContent: "space-between"
       };
@@ -96,13 +88,13 @@ const HelperRow = ({
         justifyContent: "flex-end"
       };
     }
-    if (helperText) {
+    if (bottomMessage) {
       return {
         justifyContent: "flex-start"
       };
     }
     return {};
-  }, [counterLimit, helperText]);
+  }, [counterLimit, bottomMessage]);
 
   return (
     <View
@@ -115,14 +107,9 @@ const HelperRow = ({
         helperRowStyle
       ]}
     >
-      {errorMessage && isValid === false && (
-        <LabelSmall weight="Regular" color="error-600">
-          {errorMessage}
-        </LabelSmall>
-      )}
-      {helperText && !(errorMessage && isValid === false) && (
-        <LabelSmall weight="Regular" color="grey-700">
-          {helperText}
+      {bottomMessage && (
+        <LabelSmall weight="Regular" color={bottomMessageColor}>
+          {bottomMessage}
         </LabelSmall>
       )}
       {counterLimit && (
@@ -139,24 +126,27 @@ export const TextInputBase = ({
   disabled = false,
   placeholder,
   value = "",
-  icon,
-  counterLimit,
-  helperText,
   onChangeText,
-  onValidate,
-  secretInput,
-  errorMessage
+  status,
+  icon,
+  rightElement,
+  counterLimit,
+  bottomMessage,
+  bottomMessageColor,
+  onBlur,
+  onFocus,
+  isPassword
 }: InputTextProps) => {
-  const labelSharedValue = useSharedValue(0);
-  const [inputStatus, setInputStatus] = React.useState<InputStatus>(
-    disabled ? "disabled" : "initial"
-  );
-  const [isValid, setIsValid] = React.useState<boolean | undefined>(undefined);
-  const [isSecretInput, setSecretInput] = React.useState<boolean>(
-    secretInput ?? false
-  );
-
+  const labelSharedValue = useSharedValue<boolean>(false);
+  const [inputStatus, setInputStatus] = React.useState<InputStatus>("initial");
+  const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const inputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    if (status) {
+      setInputStatus(status);
+    }
+  }, [status]);
 
   const boxStyle: ViewStyle = useMemo(() => {
     if (inputStatus === "focused") {
@@ -178,19 +168,26 @@ export const TextInputBase = ({
   }, [inputStatus]);
 
   const animatedLabelProps = useAnimatedStyle(() => ({
-    fontSize: withTiming(
-      interpolate(labelSharedValue.value, [0, 1], [16, 12]),
-      { duration: 300, easing: Easing.elastic(0.85) }
-    ),
-    top: withTiming(interpolate(labelSharedValue.value, [0, 1], [0, -16]))
+    fontSize: withTiming(labelSharedValue.value ? 12 : 16, {
+      duration: 300,
+      easing: Easing.elastic(0.85)
+    }),
+    transform: [
+      {
+        translateY: withTiming(labelSharedValue.value ? -14 : 0, {
+          duration: 300,
+          easing: Easing.elastic(0.85)
+        })
+      }
+    ]
   }));
 
   useEffect(() => {
     if (value.length > 0) {
-      labelSharedValue.value = 1;
+      labelSharedValue.value = true;
     } else {
       if (inputStatus !== "focused") {
-        labelSharedValue.value = 0;
+        labelSharedValue.value = false;
       }
     }
   }, [labelSharedValue, value, inputStatus]);
@@ -199,7 +196,7 @@ export const TextInputBase = ({
     if (disabled) {
       return;
     }
-    labelSharedValue.value = 1;
+    labelSharedValue.value = true;
     setInputStatus("focused");
     inputRef?.current?.focus();
   };
@@ -216,24 +213,12 @@ export const TextInputBase = ({
 
   const onBlurHandler = useCallback(() => {
     if (!value) {
-      labelSharedValue.value = 0;
+      labelSharedValue.value = false;
     }
-    if (secretInput) {
-      setSecretInput(true);
-    }
-    if (onValidate) {
-      const isValid = onValidate(value);
-      setIsValid(isValid);
-      if (!isValid) {
-        setInputStatus("error");
-        triggerHaptic("notificationError");
-        return;
-      } else {
-        triggerHaptic("notificationSuccess");
-      }
-    }
+
+    onBlur?.();
     setInputStatus("initial");
-  }, [onValidate, value, labelSharedValue, secretInput]);
+  }, [value, labelSharedValue, onBlur]);
 
   return (
     <>
@@ -247,7 +232,7 @@ export const TextInputBase = ({
       >
         {icon && (
           <>
-            <Icon name={icon} size={24} />
+            <Icon name={icon} color="grey-300" size={24} />
             <HSpacer size={8} />
           </>
         )}
@@ -259,18 +244,18 @@ export const TextInputBase = ({
           ref={inputRef}
           onFocus={() => {
             setInputStatus("focused");
-            setIsValid(undefined);
-            labelSharedValue.value = 1;
+            labelSharedValue.value = true;
+            onFocus?.();
           }}
           maxLength={counterLimit}
           onBlur={onBlurHandler}
           value={value}
           onChangeText={onChangeTextHandler}
-          style={[
-            onValidate || secretInput ? { width: "80%" } : {},
-            styles.textInputStyle
-          ]}
+          style={styles.textInputStyle}
         />
+        {/** Left value is due to the absolute position of the label in order to let it
+         * translate to top on focus
+         */}
         <Animated.View
           style={[styles.textInputLabelWrapper, icon ? { left: 32 } : {}]}
         >
@@ -279,8 +264,6 @@ export const TextInputBase = ({
             style={[
               animatedLabelProps,
               {
-                backgroundColor: IOColors.white,
-                paddingHorizontal: 2,
                 color: IOColors["grey-700"]
               }
             ]}
@@ -288,64 +271,21 @@ export const TextInputBase = ({
             {placeholder}
           </Animated.Text>
         </Animated.View>
-        {((onValidate && isValid !== undefined) || secretInput) && (
-          <RightIcon
-            onSecretTap={() => setSecretInput(v => !v)}
-            onValidate={onValidate}
-            secretInput={secretInput}
-            isValid={isValid}
-            isSecretInput={isSecretInput}
-          />
+        {rightElement && (
+          <View style={{ marginLeft: "auto" }}>
+            <HSpacer size={8} />
+            {rightElement}
+          </View>
         )}
       </Pressable>
-      {(helperText || counterLimit || (errorMessage && !isValid)) && (
+      {(bottomMessage || counterLimit) && (
         <HelperRow
           value={value}
-          helperText={helperText}
+          bottomMessage={bottomMessage}
+          bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
-          errorMessage={errorMessage}
-          isValid={isValid}
         />
       )}
     </>
   );
 };
-
-type RightIconProps = {
-  onValidate?: (value: string) => boolean;
-  isValid?: boolean;
-  secretInput?: boolean;
-  isSecretInput?: boolean;
-  onSecretTap?: () => void;
-};
-
-// TODO: The Right button should handle the visualizations of both validation and secret input
-const RightIcon = ({
-  isValid,
-  secretInput,
-  isSecretInput,
-  onSecretTap
-}: RightIconProps) => (
-  <View style={{ marginLeft: "auto" }}>
-    {isValid !== undefined && (
-      <>
-        <HSpacer size={8} />
-        <Icon
-          name={(isValid ? "success" : "errorFilled") as IOIcons}
-          color={(isValid ? "green" : "error-600") as IOColors}
-          size={24}
-        />
-      </>
-    )}
-    {secretInput && onSecretTap && isValid === undefined && (
-      <>
-        <HSpacer size={8} />
-        <IconButton
-          icon={isSecretInput ? "eyeHide" : "eyeShow"}
-          onPress={onSecretTap}
-          accessibilityLabel="Toggle secret input"
-        />
-      </>
-    )}
-  </View>
-);
