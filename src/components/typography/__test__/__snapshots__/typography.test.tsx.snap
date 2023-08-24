@@ -32,6 +32,38 @@ exports[`Test Typography Components Body Snapshot 1`] = `
 </Text>
 `;
 
+exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
+<Text
+  color="bluegrey"
+  defaultColor="bluegrey"
+  defaultWeight="Regular"
+  font="RobotoMono"
+  fontStyle={
+    {
+      "fontSize": 16,
+      "lineHeight": 24,
+    }
+  }
+  style={
+    [
+      {
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      {
+        "color": "#475A6D",
+        "fontFamily": "Roboto Mono",
+        "fontStyle": "normal",
+        "fontWeight": "400",
+      },
+    ]
+  }
+  weight="Regular"
+>
+  Text
+</Text>
+`;
+
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
   color="white"
@@ -961,38 +993,6 @@ exports[`Test Typography Components Link Snapshot 1`] = `
     ]
   }
   weight="SemiBold"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components Monospace Snapshot 1`] = `
-<Text
-  color="bluegrey"
-  defaultColor="bluegrey"
-  defaultWeight="Regular"
-  font="RobotoMono"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-    }
-  }
-  style={
-    [
-      {
-        "fontSize": 16,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#475A6D",
-        "fontFamily": "Roboto Mono",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
 >
   Text
 </Text>

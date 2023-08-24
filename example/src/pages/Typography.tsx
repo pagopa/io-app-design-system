@@ -2,6 +2,7 @@ import {
   Body,
   ButtonText,
   Caption,
+  Chip,
   H1,
   H2,
   H3,
@@ -11,11 +12,10 @@ import {
   Hero,
   HSpacer,
   IOColors,
-  IOStyles,
   Label,
   LabelSmall,
   Link,
-  Monospace,
+  BodyMonospace,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -32,8 +32,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const sectionTitleMargin = 16;
-
 export const Typography = () => (
   <Screen>
     <HeroRow />
@@ -46,29 +44,23 @@ export const Typography = () => (
 
     <ButtonTextRow />
     <CaptionRow />
+    <ChipRow />
 
     <Body>Body</Body>
+    <Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a felis
+      congue, congue leo sit amet, semper ex. Nulla consectetur non quam vel
+      porttitor. Vivamus ac ex non nunc pellentesque molestie. Aliquam id lorem
+      aliquam, aliquam massa eget, commodo erat. Maecenas finibus dui massa,
+      eget pharetra mauris posuere semper.
+    </Body>
+    <VSpacer size={40} />
+    <BodyMonospace>BodyMonoSpace</BodyMonospace>
+    <VSpacer size={40} />
 
     <LabelSmallRow />
     <LabelRow />
     <Link onPress={() => Alert.alert("onPress link!")}>Link</Link>
-    <Monospace>MonoSpace</Monospace>
-    <VSpacer size={40} />
-    <H2
-      color={"bluegrey"}
-      weight={"SemiBold"}
-      style={{ marginBottom: sectionTitleMargin }}
-    >
-      NativeBase
-    </H2>
-    <Body>This is a Body text</Body>
-    <VSpacer size={16} />
-    <Body weight="SemiBold">This is a Body SemiBold text</Body>
-    <VSpacer size={16} />
-    <View style={IOStyles.alignCenter}>
-      <Body weight="SemiBold">This is a centered text</Body>
-      <Body weight="SemiBold">Another centered text</Body>
-    </View>
     <VSpacer size={40} />
   </Screen>
 );
@@ -194,6 +186,19 @@ export const CaptionRow = () => (
       <Caption color="grey-650">Caption</Caption>
       <HSpacer size={16} />
       <Caption color={"blueIO-500"}>Caption</Caption>
+    </View>
+    <VSpacer size={40} />
+  </>
+);
+
+export const ChipRow = () => (
+  <>
+    <View style={styles.row}>
+      <Chip>Chip</Chip>
+      <HSpacer size={16} />
+      <Chip color="grey-650">Chip</Chip>
+      <HSpacer size={16} />
+      <Chip color={"blueIO-500"}>Chip</Chip>
     </View>
     <VSpacer size={40} />
   </>

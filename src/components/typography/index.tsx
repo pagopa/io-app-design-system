@@ -14,5 +14,5 @@ export * from "./Hero";
 export * from "./Label";
 export * from "./LabelSmall";
 export * from "./Link";
-export * from "./Monospace";
+export * from "./BodyMonospace";
 export * from "./common";

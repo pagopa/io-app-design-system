@@ -13,7 +13,7 @@ import { H6 } from "../H6";
 import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
 import { Link } from "../Link";
-import { Monospace } from "../Monospace";
+import { BodyMonospace } from "../BodyMonospace";
 import { calculateWeightColor } from "../common";
 
 describe("Test Typography Components", () => {
@@ -154,8 +154,10 @@ describe("Test Typography Components", () => {
     const link = TestRenderer.create(<Link>Text</Link>).toJSON();
     expect(link).toMatchSnapshot();
   });
-  it("Monospace Snapshot", () => {
-    const monospace = TestRenderer.create(<Monospace>Text</Monospace>).toJSON();
+  it("BodyMonospace Snapshot", () => {
+    const monospace = TestRenderer.create(
+      <BodyMonospace>Text</BodyMonospace>
+    ).toJSON();
     expect(monospace).toMatchSnapshot();
   });
 });

@@ -765,7 +765,6 @@ export const Buttons = () => (
 
     <ComponentViewerBox name="CalendarEventButton (using new ButtonOutline)">
       <ButtonOutline
-        small
         accessibilityLabel="Tap to trigger test alert"
         label={"Aggiungi promemoria"}
         icon="add"
@@ -775,7 +774,6 @@ export const Buttons = () => (
       <VSpacer size={16} />
 
       <ButtonOutline
-        small
         accessibilityLabel="Tap to trigger test alert"
         label={"Aggiunto"}
         icon="checkTickBig"
