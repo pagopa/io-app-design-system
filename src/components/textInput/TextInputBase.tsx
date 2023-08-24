@@ -29,6 +29,7 @@ type InputTextProps = {
   placeholder: string;
   value: string;
   onChangeText: (value: string) => void;
+  accessibilityLabel?: string;
   textInputProps?: RNTextInputProps;
   valueFormat?: (value: string) => string;
   status?: InputStatus;
@@ -134,6 +135,7 @@ export const TextInputBase = ({
   placeholder,
   value = "",
   onChangeText,
+  accessibilityLabel,
   textInputProps,
   valueFormat,
   status,
@@ -244,6 +246,11 @@ export const TextInputBase = ({
           boxStyle,
           styles.textInput
         ]}
+        accessibilityLabel={
+          accessibilityLabel ?? `${placeholder} Premi due volte per modificare`
+        }
+        accessibilityState={{ disabled }}
+        accessibilityRole={"none"}
       >
         {icon && (
           <>
@@ -253,6 +260,7 @@ export const TextInputBase = ({
         )}
         <TextInput
           {...textInputProps}
+          accessible
           editable={!disabled}
           secureTextEntry={isSecretInput}
           disableFullscreenUI={true}
