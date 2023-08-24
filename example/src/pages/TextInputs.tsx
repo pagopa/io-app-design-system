@@ -81,6 +81,11 @@ export const TextInputs = () => (
     >
       <H4>Base input</H4>
       <InputComponentWrapper placeholder={"Base input"} />
+      <H5>Base input with value formatted</H5>
+      <InputComponentWrapper
+        placeholder={"Base input"}
+        valueFormat={v => v.replace(/\D/g, "").replace(/\d{4}?(?=...)/g, "$& ")}
+      />
       <H5>Base input with validation</H5>
       <InputValidationComponentWrapper
         placeholder={"Base input"}

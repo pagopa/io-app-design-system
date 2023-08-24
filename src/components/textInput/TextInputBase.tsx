@@ -20,10 +20,17 @@ import { LabelSmall } from "../typography";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
-interface InputTextProps {
+type RNTextInputProps = Pick<
+  React.ComponentProps<typeof TextInput>,
+  "keyboardType" | "inputMode" | "textContentType" | "autoComplete"
+>;
+
+type InputTextProps = {
   placeholder: string;
   value: string;
   onChangeText: (value: string) => void;
+  textInputProps?: RNTextInputProps;
+  valueFormat?: (value: string) => string;
   status?: InputStatus;
   icon?: IOIcons;
   rightElement?: React.ReactNode;
@@ -34,7 +41,7 @@ interface InputTextProps {
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
-}
+};
 
 const styles = StyleSheet.create({
   textInput: {
@@ -127,6 +134,8 @@ export const TextInputBase = ({
   placeholder,
   value = "",
   onChangeText,
+  textInputProps,
+  valueFormat,
   status,
   icon,
   rightElement,
@@ -138,7 +147,9 @@ export const TextInputBase = ({
   isPassword
 }: InputTextProps) => {
   const labelSharedValue = useSharedValue<boolean>(false);
-  const [inputStatus, setInputStatus] = React.useState<InputStatus>("initial");
+  const [inputStatus, setInputStatus] = React.useState<InputStatus>(
+    disabled ? "disabled" : "initial"
+  );
   const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const inputRef = useRef<TextInput>(null);
 
@@ -215,10 +226,14 @@ export const TextInputBase = ({
     if (!value) {
       labelSharedValue.value = false;
     }
-
     onBlur?.();
     setInputStatus("initial");
   }, [value, labelSharedValue, onBlur]);
+
+  const inputValue = useMemo(
+    () => (valueFormat ? valueFormat(value) : value),
+    [value, valueFormat]
+  );
 
   return (
     <>
@@ -237,6 +252,7 @@ export const TextInputBase = ({
           </>
         )}
         <TextInput
+          {...textInputProps}
           editable={!disabled}
           secureTextEntry={isSecretInput}
           disableFullscreenUI={true}
@@ -249,7 +265,7 @@ export const TextInputBase = ({
           }}
           maxLength={counterLimit}
           onBlur={onBlurHandler}
-          value={value}
+          value={inputValue}
           onChangeText={onChangeTextHandler}
           style={styles.textInputStyle}
         />

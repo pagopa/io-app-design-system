@@ -8,12 +8,13 @@ type TextInputPasswordProps = Omit<
 >;
 
 export const TextInputPassword = (props: TextInputPasswordProps) => {
-  const { onBlur } = props;
+  const { onBlur, disabled } = props;
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
   const rightElement = (
     <IconButton
-      icon={showPassword ? "eyeHide" : "eyeShow"}
+      icon={showPassword ? "eyeShow" : "eyeHide"}
+      disabled={disabled}
       onPress={() => setShowPassword(v => !v)}
       accessibilityLabel="Toggle secret input"
     />
