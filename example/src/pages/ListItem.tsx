@@ -403,6 +403,7 @@ const renderListItemTransaction = () => {
           subtitle="subtitle"
           paymentLogoIcon={"amex"}
           transactionStatus="failure"
+          badgeText="Failed"
           onPress={onButtonPress}
         />
         <ListItemTransaction
@@ -410,6 +411,7 @@ const renderListItemTransaction = () => {
           subtitle="subtitle"
           paymentLogoIcon={{ uri: organizationLogoURI.imageSource }}
           transactionStatus="pending"
+          badgeText="Ongoing"
           onPress={onButtonPress}
         />
         <ListItemTransaction
@@ -439,6 +441,7 @@ const renderListItemTransaction = () => {
           title="This one is not clickable"
           subtitle="subtitle"
           transactionStatus="failure"
+          badgeText="Failed"
           paymentLogoIcon={"postepay"}
         />
         <ListItemTransaction

@@ -1,7 +1,6 @@
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
 import React from "react";
-import I18n from "i18n-js";
 import { ImageURISource, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 
@@ -55,10 +54,12 @@ export type ListItemTransaction = WithTestID<
   } & (
       | {
           transactionStatus: "success" | "refunded";
+          badgeText?: string;
           transactionAmount: string;
         }
       | {
           transactionStatus: "failure" | "pending" | "cancelled" | "reversal";
+          badgeText: string;
           transactionAmount?: string;
         }
     )
@@ -99,9 +100,16 @@ export const ListItemTransaction = ({
   testID,
   title,
   transactionAmount,
+  badgeText,
   transactionStatus = "success"
 }: ListItemTransaction) => {
   const theme = useIOTheme();
+
+  const maybeBadgeText = pipe(
+    badgeText,
+    O.fromNullable,
+    O.getOrElse(() => "-")
+  );
 
   if (isLoading) {
     return <SkeletonComponent />;
@@ -130,24 +138,12 @@ export const ListItemTransaction = ({
             </H6>
           );
         case "failure":
-          return (
-            <Badge variant="error" text={I18n.t("global.badges.failed")} />
-          );
         case "cancelled":
-          return (
-            <Badge variant="error" text={I18n.t("global.badges.cancelled")} />
-          );
+          return <Badge variant="error" text={maybeBadgeText} />;
         case "reversal":
-          return (
-            <Badge
-              variant="lightBlue"
-              text={I18n.t("global.badges.reversal")}
-            />
-          );
+          return <Badge variant="lightBlue" text={maybeBadgeText} />;
         case "pending":
-          return (
-            <Badge variant="info" text={I18n.t("global.badges.onGoing")} />
-          );
+          return <Badge variant="info" text={maybeBadgeText} />;
       }
     };
 
