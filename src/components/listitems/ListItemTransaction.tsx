@@ -17,7 +17,7 @@ import { Badge } from "../badge/Badge";
 import { Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { VSpacer } from "../spacer";
-import { H5, H6, LabelSmall } from "../typography";
+import { H6, LabelSmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
@@ -115,9 +115,9 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={IOStyles.flex}>
-          <H5 numberOfLines={2} color={theme["textBody-default"]}>
+          <LabelSmall numberOfLines={2} color={theme["textBody-default"]}>
             {title}
-          </H5>
+          </LabelSmall>
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
           </LabelSmall>
