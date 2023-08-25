@@ -1,5 +1,5 @@
 import React from "react";
-import type { IOColors } from "../../core/IOColors";
+import type { IOColors, IOTheme } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps } from "./common";
@@ -7,7 +7,13 @@ import { ExternalTypographyProps } from "./common";
 // these colors are allowed only when the weight is SemiBold
 type AllowedSemiBoldColors = Extract<
   IOColors,
-  "bluegreyDark" | "bluegrey" | "bluegreyLight" | "blue" | "white" | "red"
+  | IOTheme["textBody-default"]
+  | "bluegreyDark"
+  | "bluegrey"
+  | "bluegreyLight"
+  | "blue"
+  | "white"
+  | "red"
 >;
 
 // when the weight is bold, only the white color is allowed
