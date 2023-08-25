@@ -246,10 +246,7 @@ export const TextInputBase = ({
           boxStyle,
           styles.textInput
         ]}
-        accessibilityLabel={
-          accessibilityLabel ?? `${placeholder} Premi due volte per modificare`
-        }
-        accessibilityState={{ disabled }}
+        accessible={false}
         accessibilityRole={"none"}
       >
         {icon && (
@@ -266,6 +263,8 @@ export const TextInputBase = ({
           disableFullscreenUI={true}
           blurOnSubmit={true}
           ref={inputRef}
+          accessibilityState={{ disabled }}
+          accessibilityLabel={accessibilityLabel ?? placeholder}
           onFocus={() => {
             setInputStatus("focused");
             labelSharedValue.value = true;
@@ -285,6 +284,7 @@ export const TextInputBase = ({
         >
           <Animated.Text
             numberOfLines={1}
+            accessible={false}
             style={[
               animatedLabelProps,
               {
