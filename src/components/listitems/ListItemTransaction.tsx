@@ -115,7 +115,9 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={IOStyles.flex}>
-          <H6 color={theme["textBody-default"]}>{title}</H6>
+          <H6 numberOfLines={1} color={theme["textBody-default"]}>
+            {title}
+          </H6>
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
           </LabelSmall>
