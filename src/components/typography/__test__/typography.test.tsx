@@ -12,7 +12,7 @@ import { H5 } from "../H5";
 import { H6 } from "../H6";
 import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
-import { Link } from "../Link";
+import { Link } from "../LabelLink";
 import { BodyMonospace } from "../BodyMonospace";
 import { calculateWeightColor } from "../common";
 

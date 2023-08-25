@@ -26,7 +26,7 @@ export const linkDefaultWeight: AllowedWeight = "SemiBold";
 /**
  * `Link` typographic style
  */
-export const Link = (props: LinkProps) =>
+export const LabelLink = (props: LinkProps) =>
   useTypographyFactory<AllowedWeight, AllowedColors>({
     accessibilityRole: props.onPress ? "link" : undefined,
     ...props,

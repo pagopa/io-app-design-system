@@ -13,6 +13,6 @@ export * from "./H6";
 export * from "./Hero";
 export * from "./Label";
 export * from "./LabelSmall";
-export * from "./Link";
+export * from "./LabelLink";
 export * from "./BodyMonospace";
 export * from "./common";
