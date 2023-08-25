@@ -17,6 +17,8 @@ import { IOColors, IOSpacingScale, IOStyles } from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
+import { InputType } from "../../utils/types";
+import { getInputPropsByType } from "../../utils/textInput";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -31,7 +33,7 @@ type InputTextProps = {
   onChangeText: (value: string) => void;
   accessibilityLabel?: string;
   textInputProps?: RNTextInputProps;
-  valueFormat?: (value: string) => string;
+  inputTyoe?: InputType;
   status?: InputStatus;
   icon?: IOIcons;
   rightElement?: React.ReactNode;
@@ -137,7 +139,7 @@ export const TextInputBase = ({
   onChangeText,
   accessibilityLabel,
   textInputProps,
-  valueFormat,
+  inputTyoe = "default",
   status,
   icon,
   rightElement,
@@ -232,9 +234,17 @@ export const TextInputBase = ({
     setInputStatus("initial");
   }, [value, labelSharedValue, onBlur]);
 
+  const derivedInputProps = useMemo(
+    () => getInputPropsByType(inputTyoe),
+    [inputTyoe]
+  );
+
   const inputValue = useMemo(
-    () => (valueFormat ? valueFormat(value) : value),
-    [value, valueFormat]
+    () =>
+      derivedInputProps && derivedInputProps.valueFormat
+        ? derivedInputProps.valueFormat(value)
+        : value,
+    [value, derivedInputProps]
   );
 
   return (
@@ -256,7 +266,9 @@ export const TextInputBase = ({
           </>
         )}
         <TextInput
-          {...textInputProps}
+          {...(derivedInputProps
+            ? derivedInputProps.textInputProps
+            : textInputProps)}
           accessible
           editable={!disabled}
           secureTextEntry={isSecretInput}

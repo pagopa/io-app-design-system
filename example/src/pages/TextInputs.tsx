@@ -84,7 +84,8 @@ export const TextInputs = () => (
       <H5>Base input with value formatted</H5>
       <InputComponentWrapper
         placeholder={"Base input"}
-        valueFormat={v => v.replace(/\D/g, "").replace(/\d{4}?(?=...)/g, "$& ")}
+        inputTyoe={"credit-card"}
+        bottomMessage="Handles credit card input type"
       />
       <H5>Base input with validation</H5>
       <InputValidationComponentWrapper
