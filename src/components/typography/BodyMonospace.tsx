@@ -4,16 +4,16 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = Extract<IOColors, "bluegreyDark" | "bluegrey">;
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold" | "Bold">;
+type AllowedWeight = Extract<IOFontWeight, "Medium">;
 
 type BodyMonospaceProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-const fontName: FontFamily = "RobotoMono";
+const fontName: FontFamily = "DMMono";
 const fontSize = 16;
 const lineHeight = 24;
-const monospaceDefaultWeight = "Regular";
+const monospaceDefaultWeight = "Medium";
 const monospaceDefaultcolor = "bluegrey";
 
 /**

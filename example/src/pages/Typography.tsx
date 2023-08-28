@@ -14,7 +14,7 @@ import {
   IOColors,
   Label,
   LabelSmall,
-  Link,
+  LabelLink,
   BodyMonospace,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -60,7 +60,9 @@ export const Typography = () => (
 
     <LabelSmallRow />
     <LabelRow />
-    <Link onPress={() => Alert.alert("onPress link!")}>Link</Link>
+    <LabelLink onPress={() => Alert.alert("onPress LabelLink!")}>
+      LabelLink
+    </LabelLink>
     <VSpacer size={40} />
   </Screen>
 );
