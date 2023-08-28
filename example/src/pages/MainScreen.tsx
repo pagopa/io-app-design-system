@@ -31,6 +31,8 @@ const DATA_ROUTES_COMPONENTS: RoutesProps = Object.values(
 );
 const DATA_ROUTES_SCREENS: RoutesProps = Object.values(APP_ROUTES.SCREENS);
 
+const DATA_ROUTES_SANDBOX: RoutesProps = Object.values(APP_ROUTES.SANDBOX);
+
 const DESIGN_SYSTEM_SECTION_DATA = [
   {
     title: "Foundation",
@@ -43,6 +45,10 @@ const DESIGN_SYSTEM_SECTION_DATA = [
   {
     title: "Screens",
     data: DATA_ROUTES_SCREENS
+  },
+  {
+    title: "Sandbox",
+    data: DATA_ROUTES_SANDBOX
   }
 ];
 
