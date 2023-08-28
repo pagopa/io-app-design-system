@@ -36,8 +36,8 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 <Text
   color="bluegrey"
   defaultColor="bluegrey"
-  defaultWeight="Regular"
-  font="RobotoMono"
+  defaultWeight="Medium"
+  font="DMMono"
   fontStyle={
     {
       "fontSize": 16,
@@ -52,13 +52,13 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Roboto Mono",
+        "fontFamily": "DM Mono",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "500",
       },
     ]
   }
-  weight="Regular"
+  weight="Medium"
 >
   Text
 </Text>

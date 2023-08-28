@@ -12,7 +12,7 @@ import { H5 } from "../H5";
 import { H6 } from "../H6";
 import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
-import { Link } from "../LabelLink";
+import { LabelLink } from "../LabelLink";
 import { BodyMonospace } from "../BodyMonospace";
 import { calculateWeightColor } from "../common";
 
@@ -151,7 +151,7 @@ describe("Test Typography Components", () => {
     });
   });
   it("Link Snapshot", () => {
-    const link = TestRenderer.create(<Link>Text</Link>).toJSON();
+    const link = TestRenderer.create(<LabelLink>Text</LabelLink>).toJSON();
     expect(link).toMatchSnapshot();
   });
   it("BodyMonospace Snapshot", () => {
