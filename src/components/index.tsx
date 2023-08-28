@@ -17,3 +17,4 @@ export * from "./switch";
 export * from "./tag";
 export * from "./tabs";
 export * from "./typography";
+export * from "./textInput";

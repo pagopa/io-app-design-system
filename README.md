@@ -43,6 +43,7 @@ The list of the component exported by the library is the following:
 * [Switch](./src/components/switch/)
 * [Tag](./src/components/tag/)
 * [Typography](./src/components/typography/)
+* [Text Input](./src/components/textInput/)
 
 A part from the components, the library also exports the following core elements and styles as part of the [core attributes](./src/core/) of the design system, and common functions used to wrap up external libraries and utilities (here listed as [functions](./src/functions/)).
 
