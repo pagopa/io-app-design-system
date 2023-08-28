@@ -16,6 +16,7 @@ const APP_ROUTES = {
     ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Accordion" },
     ALERT: { route: "DESIGN_SYSTEM_ALERT", title: "Alert" },
     ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" },
+    TEXT_INPUT: { route: "DESIGN_SYSTEM_TEXT_INPUT", title: "Text Inputs" },
     TAB_NAVIGATION: {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
@@ -27,6 +28,12 @@ const APP_ROUTES = {
       title: "Full screen modal"
     },
     SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
+  },
+  SANDBOX: {
+    SANDBOX_SCREEN: {
+      route: "DESIGN_SYSYEM_SANDBOX",
+      title: "Sandbox"
+    }
   }
 } as const;
 
