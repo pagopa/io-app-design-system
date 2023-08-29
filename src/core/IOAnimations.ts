@@ -9,6 +9,11 @@ export const IOSpringValues = {
     mass: 0.5,
     stiffness: 300
   },
+  accordion: {
+    damping: 30,
+    mass: 1,
+    stiffness: 325
+  },
   /* Used by selection items (checkbox, radio, etc…) */
   selection: {
     damping: 10,
