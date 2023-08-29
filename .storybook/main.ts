@@ -10,8 +10,12 @@ const config: StorybookConfig = {
     {
       name: "@storybook/addon-react-native-web",
       options: {
-        modulesToTranspile: ["react-native-reanimated"],
-        projectRoot: '../',
+        modulesToTranspile: [
+          "react-native-reanimated",
+          "rn-placeholder",
+          "react-native-linear-gradient"
+        ],
+        projectRoot: "../",
         // modulesToAlias: {
         //   "react-native": "react-native-web"
         // },
@@ -32,35 +36,41 @@ const config: StorybookConfig = {
   core: {
     builder: "@storybook/builder-webpack5"
   },
-  webpackFinal: (config) => {
+  webpackFinal: config => {
     config.module!.rules!.push({
       test: /\.(tsx|ts|js)?$/,
       exclude: /node_modules/,
       use: [
         {
-          loader: require.resolve('babel-loader'),
+          loader: require.resolve("babel-loader"),
           options: {
             presets: [
-              require('@babel/preset-typescript').default,
-              [require('@babel/preset-react').default, { runtime: 'automatic' }],
-              require('@babel/preset-env').default,
-            ],
-          },
-        },
-      ],
-    })
+              require("@babel/preset-typescript").default,
+              [
+                require("@babel/preset-react").default,
+                { runtime: "automatic" }
+              ],
+              require("@babel/preset-env").default
+            ]
+          }
+        }
+      ]
+    });
 
-    config.resolve!.extensions!.push('.ts', '.tsx')
-
+    config.resolve!.extensions!.push(".ts", ".tsx");
+    config.resolve!.alias = {
+      "react-native$": "react-native-web",
+      "react-native-linear-gradient$": "react-native-web-linear-gradient"
+    };
     config.module!.rules!.push({
       test: /\.mjs$/,
       include: /node_modules/,
-      type: 'javascript/auto',
-    })
+      type: "javascript/auto"
+    });
 
-    config.resolve!.extensions!.push('.mjs')
+    config.resolve!.extensions!.push(".mjs");
 
-    return config
+    return config;
   }
 };
 export default config;

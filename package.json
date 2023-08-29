@@ -88,6 +88,7 @@
     "react-native-builder-bob": "^0.20.0",
     "react-native-i18n": "^2.0.15",
     "react-native-web": "^0.19.4",
+    "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "^18.2.0",
     "release-it": "^15.0.0",
     "storybook": "^7.0.20",
