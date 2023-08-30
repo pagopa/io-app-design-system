@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@storybook/addon-actions",
     {
       name: "@storybook/addon-react-native-web",
       options: {
@@ -30,6 +31,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {}
   },
+  staticDirs: ['../example/assets'],
   docs: {
     autodocs: "tag"
   },

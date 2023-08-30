@@ -20,14 +20,17 @@ export type FontWeightValue = (typeof weightValues)[number];
 const fonts = {
   TitilliumWeb: Platform.select({
     android: "TitilliumWeb",
+    web: "TitilliumWeb",
     ios: "Titillium Web"
   }),
   ReadexPro: Platform.select({
     android: "ReadexPro",
+    web: "ReadexPro",
     ios: "Readex Pro"
   }),
-  RobotoMono: Platform.select({
+  default: Platform.select({
     android: "RobotoMono",
+    web: "RobotoMono",
     ios: "Roboto Mono"
   })
 };
@@ -80,9 +83,10 @@ export const makeFontFamilyName = (
   isItalic: boolean = false
 ): string =>
   Platform.select({
-    default: "undefined",
+    web: fonts[font],
     android: `${fonts[font]}-${weight || "Regular"}${isItalic ? "Italic" : ""}`,
-    ios: fonts[font]
+    ios: fonts[font],
+    default: "undefined"
   });
 
 /**
@@ -97,8 +101,10 @@ export const makeFontStyleObject = (
   font: FontFamily | undefined = "TitilliumWeb"
 ): FontStyleObject =>
   Platform.select({
-    default: {
-      fontFamily: "undefined"
+    web: {
+      fontFamily: makeFontFamilyName(font, weight, isItalic),
+      fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
+      fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
     },
     android: {
       fontFamily: makeFontFamilyName(font, weight, isItalic)
@@ -107,5 +113,6 @@ export const makeFontStyleObject = (
       fontFamily: makeFontFamilyName(font, weight, isItalic),
       fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
       fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
-    }
+    },
+    default: { fontFamily: "undefined" }
   });
