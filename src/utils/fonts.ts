@@ -28,7 +28,7 @@ const fonts = {
     web: "ReadexPro",
     ios: "Readex Pro"
   }),
-  default: Platform.select({
+  RobotoMono: Platform.select({
     android: "RobotoMono",
     web: "RobotoMono",
     ios: "Roboto Mono"
