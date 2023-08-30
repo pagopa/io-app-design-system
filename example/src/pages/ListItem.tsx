@@ -2,6 +2,7 @@ import {
   ButtonLink,
   H2,
   IOThemeContext,
+  Icon,
   IconButton,
   ListItemAction,
   ListItemIDP,
@@ -380,84 +381,94 @@ const renderListItemIDP = () => (
   </>
 );
 
-const renderListItemTransaction = () => (
-  <ComponentViewerBox name="ListItemTransaction">
-    <View>
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        isLoading={true}
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        // paymentLogoIcon={"amex"}
-        transactionStatus="failure"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        // paymentLogoIcon={{ uri: organizationLogoURI.imageSource }}
-        transactionStatus="pending"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        // paymentLogoIcon={"mastercard"}
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        hasChevronRight={true}
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="This one is not clickable"
-        subtitle="subtitle"
-        transactionStatus="failure"
-        // paymentLogoIcon={"postepay"}
-      />
-      <ListItemTransaction
-        title="This one is clickable but has a very long title"
-        subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
-        transactionAmount="€ 1.000,00"
-        // paymentLogoIcon={"postepay"}
-        onPress={onButtonPress}
-        transactionStatus="success"
-      />
-      <ListItemTransaction
-        title="Custom icon"
-        subtitle="This one has a custom icon on the left"
-        transactionStatus="success"
-        // paymentLogoIcon={<Icon name="notice" color="red" />}
-        transactionAmount=""
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="Refunded transaction"
-        subtitle="This one has a custom icon and transaction amount with a green color"
-        transactionStatus="failure"
-        // paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
-        transactionAmount="€ 100"
-        onPress={onButtonPress}
-      />
-    </View>
-  </ComponentViewerBox>
-);
+const renderListItemTransaction = () => {
+  const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
+  const organizationLogoURI = {
+    imageSource: `${cdnPath}82003830161.png`,
+    name: "Comune di Milano"
+  };
+  return (
+    <ComponentViewerBox name="ListItemTransaction">
+      <View>
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          transactionStatus="success"
+          transactionAmount="€ 1.000,00"
+          isLoading={true}
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          paymentLogoIcon={"amex"}
+          transactionStatus="failure"
+          badgeText="Failed"
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          paymentLogoIcon={{ uri: organizationLogoURI.imageSource }}
+          transactionStatus="pending"
+          badgeText="Ongoing"
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          transactionStatus="success"
+          transactionAmount="€ 1.000,00"
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          transactionStatus="success"
+          transactionAmount="€ 1.000,00"
+          paymentLogoIcon={"mastercard"}
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Title"
+          subtitle="subtitle"
+          transactionStatus="success"
+          transactionAmount="€ 1.000,00"
+          hasChevronRight={true}
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="This one is not clickable"
+          subtitle="subtitle"
+          transactionStatus="failure"
+          badgeText="Failed"
+          paymentLogoIcon={"postepay"}
+        />
+        <ListItemTransaction
+          title="This one is clickable but has a very long title"
+          subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
+          transactionAmount="€ 1.000,00"
+          paymentLogoIcon={"postepay"}
+          onPress={onButtonPress}
+          transactionStatus="success"
+        />
+        <ListItemTransaction
+          title="Custom icon"
+          subtitle="This one has a custom icon on the left"
+          transactionStatus="success"
+          paymentLogoIcon={<Icon name="notice" color="red" />}
+          transactionAmount=""
+          onPress={onButtonPress}
+        />
+        <ListItemTransaction
+          title="Refunded transaction"
+          subtitle="This one has a custom icon and transaction amount with a green color"
+          transactionStatus="refunded"
+          paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
+          transactionAmount="€ 100"
+          onPress={onButtonPress}
+        />
+      </View>
+    </ComponentViewerBox>
+  );
+};
