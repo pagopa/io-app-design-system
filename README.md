@@ -61,6 +61,16 @@ In order to contribute to the development of the library, you need to install no
 
 We recommend the usage of nvm to properly handle the supported nodejs version (see [.nvmrc](./.nvmrc)).
 
+## Storybook
+
+The library is provided with a [storybook](https://storybook.js.org/) instance to ease the development and the testing of the components.
+
+To start the storybook instance, run the following command:
+
+```sh
+yarn storybook
+```
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
