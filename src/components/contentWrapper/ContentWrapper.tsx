@@ -19,7 +19,6 @@ export const ContentWrapper = ({
 }: IOContentWrapperProps) => (
   <View
     style={{
-      flex: 1,
       paddingHorizontal: margin
     }}
   >
