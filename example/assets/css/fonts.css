@@ -56,13 +56,13 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'TitilliumWeb';
     src: url('../fonts/TitilliumWeb/TitilliumWeb-Black.ttf') format("truetype");
     font-weight: 400;
     font-style: normal;
     color: black;
-}
+} */
 
 @font-face {
     font-family: "TitilliumWeb";
