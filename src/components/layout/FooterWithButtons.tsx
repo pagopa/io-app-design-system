@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { StyleSheet, View } from "react-native";
-import { IOVisualCostants } from "../../core";
+import { IOStyles, IOVisualCostants } from "../../core";
 import { BlockButtons, BlockButtonsProps } from "./BlockButtons";
 
 // TODO: Refactor with an unique component like `FooterTopShadow` after bonus vacanze
@@ -9,7 +9,9 @@ const styles = StyleSheet.create({
   container: {
     overflow: "hidden",
     width: "100%",
-    paddingHorizontal: IOVisualCostants.appMarginDefault,
+    // This Magic number is an heritage of the app code-base, this component should be removed in favor of `GradientBottomAction`
+    marginTop: -50,
+    paddingTop: 50,
     position: "absolute",
     bottom: 0
   }
@@ -26,7 +28,9 @@ export const FooterWithButtons = (props: BlockButtonsProps) => (
     pointerEvents={"box-none"}
     testID="FooterWithButtons"
   >
-    <BlockButtons {...props} />
+    <View style={IOStyles.footer}>
+      <BlockButtons {...props} />
+    </View>
   </View>
 );
 
