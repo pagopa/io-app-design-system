@@ -39,12 +39,28 @@ const styles = StyleSheet.create({
 });
 
 export type ButtonSolidProps = WithTestID<{
+  /**
+   * @default primary
+   */
   color?: ButtonSolidColor;
   label: string;
+  /**
+   * Renders a small variant of the button. This property applies to the legacy look only
+   * @default false
+   */
   small?: boolean;
+  /**
+   * @default false
+   */
   fullWidth?: boolean;
+  /**
+   * @default false
+   */
   disabled?: boolean;
   icon?: IOIcons;
+  /**
+   * @default start
+   */
   iconPosition?: "start" | "end";
   accessibilityLabel: string;
   accessibilityHint?: string;
