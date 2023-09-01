@@ -18,6 +18,7 @@ import { Search } from "../pages/Search";
 import { TabNavigationScreen } from "../pages/TabNavigation";
 import { Sandbox } from "../pages/Sandbox";
 import { TextInputs } from "../pages/TextInputs";
+import { FooterWithButton } from "../pages/FooterWithButton";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -163,6 +164,15 @@ const AppNavigator = () => (
       component={TextInputs}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.TEXT_INPUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.route}
+      component={FooterWithButton}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
         headerBackTitleVisible: false
       }}
     />

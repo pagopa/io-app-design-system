@@ -20,6 +20,10 @@ const APP_ROUTES = {
     TAB_NAVIGATION: {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
+    },
+    FOOTER_WITH_BUTTON: {
+      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
+      title: "Footer with button"
     }
   },
   SCREENS: {
