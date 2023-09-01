@@ -1,11 +1,8 @@
 import {
   H2,
   IOPictograms,
-  IOSectionPictogramType,
-  IOSectionPictograms,
   IOVisualCostants,
-  Pictogram,
-  PictogramSection
+  Pictogram
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
@@ -42,26 +39,6 @@ export const Pictograms = () => (
           name={pictogramItemName}
           image={
             <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
-          }
-        />
-      ))}
-    </View>
-
-    <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
-      Sections
-    </H2>
-    <View style={styles.itemsWrapper}>
-      {Object.entries(IOSectionPictograms).map(([pictogramItemName]) => (
-        <AssetViewerBox
-          colorMode="dark"
-          size="small"
-          key={pictogramItemName}
-          name={pictogramItemName}
-          image={
-            <PictogramSection
-              name={pictogramItemName as IOSectionPictogramType}
-              size="100%"
-            />
           }
         />
       ))}

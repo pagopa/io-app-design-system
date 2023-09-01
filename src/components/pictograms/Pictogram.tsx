@@ -2,6 +2,7 @@ import React from "react";
 import { ColorValue } from "react-native";
 import { IOColors } from "../../core/IOColors";
 
+import PictogramMessages from "./svg/PictogramMessages";
 import PictogramAbacus from "./svg/PictogramAbacus";
 import PictogramAirBaloon from "./svg/PictogramAirBaloon";
 import PictogramAirship from "./svg/PictogramAirship";
@@ -44,10 +45,11 @@ import PictogramSuccess from "./svg/PictogramSuccess";
 import PictogramFocusOn from "./svg/PictogramFocusOn";
 
 export const IOPictograms = {
+  messages: PictogramMessages,
   airBaloon: PictogramAirBaloon,
   abacus: PictogramAbacus,
-  emailValidation: PictogramEmailValidation /* io-email-validated */,
-  emailToValidate: PictogramEmailToValidate /* io-email-to-validate */,
+  emailValidation: PictogramEmailValidation,
+  emailToValidate: PictogramEmailToValidate,
   inbox: PictogramInbox,
   piggyBank: PictogramPiggyBank,
   processing: PictogramProcessing,
@@ -60,7 +62,7 @@ export const IOPictograms = {
   error: PictogramError,
   umbrella: PictogramUmbrella,
   inProgress: PictogramInProgress,
-  fireworks: PictogramFireworks /* io-fireworks */,
+  fireworks: PictogramFireworks,
   puzzle: PictogramPuzzle,
   question: PictogramQuestion,
   pin: PictogramPin,
@@ -70,7 +72,7 @@ export const IOPictograms = {
   teaBreak: PictogramTeaBreak,
   beerMug: PictogramBeerMug,
   sms: PictogramSms,
-  heart: PictogramHeart /* io-heart */,
+  heart: PictogramHeart,
   completed: PictogramCompleted,
   ibanCard: PictogramIBANCard,
   followMessage: PictogramFollowMessage,
