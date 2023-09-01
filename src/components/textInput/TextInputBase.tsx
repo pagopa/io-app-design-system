@@ -19,6 +19,7 @@ import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
 import { InputType } from "../../utils/types";
 import { getInputPropsByType } from "../../utils/textInput";
+import { makeFontStyleObject } from "../../utils/fonts";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -57,11 +58,10 @@ const styles = StyleSheet.create({
   },
   textInputStyle: {
     ...IOStyles.flex,
+    ...makeFontStyleObject("Regular", false, "ReadexPro"),
     fontSize: 16,
     marginTop: IOSpacingScale[2],
-    fontWeight: "400",
     lineHeight: 24,
-    fontFamily: "Readex Pro",
     height: "100%"
   },
   textInputLabelWrapper: {
