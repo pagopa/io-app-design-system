@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { StyleSheet, View } from "react-native";
-import { IOStyles, IOVisualCostants } from "../../core";
+import { IOStyles } from "../../core";
 import { BlockButtons, BlockButtonsProps } from "./BlockButtons";
 
 // TODO: Refactor with an unique component like `FooterTopShadow` after bonus vacanze
