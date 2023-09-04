@@ -51,6 +51,7 @@
   },
   "homepage": "https://github.com/pagopa/io-app-design-system#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
@@ -169,7 +170,6 @@
     ]
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@expo/vector-icons": "^13.0.0",
     "@pagopa/ts-commons": "^12.0.0",
     "@testing-library/jest-native": "^5.4.2",
@@ -183,7 +183,7 @@
     "react-native-haptic-feedback": "^2.0.2",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^2.9.1",
-    "react-native-safe-area-context": "^4.7.1",
+    "react-native-safe-area-context": "^3.3.2",
     "react-native-svg": "^12.3.0",
     "rn-placeholder": "1.3.3"
   }
