@@ -9,13 +9,18 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
-import { IOColors } from "../../core/IOColors";
-import { IOButtonStyles } from "../../core/IOStyles";
 import { IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
 import { BaseTypography } from "../typography/BaseTypography";
+import {
+  IOButtonStyles,
+  IOColors,
+  IOScaleValues,
+  IOSpringValues,
+  useIOExperimentalDesign
+} from "../../core";
+import ButtonSolidLegacy from "./ButtonSolidLeg";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -115,7 +120,7 @@ export const ButtonSolid = React.memo(
     testID
   }: ButtonSolidProps) => {
     const isPressed = useSharedValue(0);
-
+    const { isExperimental } = useIOExperimentalDesign();
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -224,7 +229,26 @@ export const ButtonSolid = React.memo(
         </Animated.View>
       </Pressable>
     );
-    return <Button />;
+
+    return isExperimental ? (
+      <Button />
+    ) : (
+      <ButtonSolidLegacy
+        {...{
+          color,
+          accessibilityLabel,
+          label,
+          onPress,
+          accessibilityHint,
+          disabled,
+          fullWidth,
+          icon,
+          iconPosition,
+          small,
+          testID
+        }}
+      />
+    );
   }
 );
 
