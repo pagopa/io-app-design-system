@@ -14,13 +14,13 @@ import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
 import { BaseTypography } from "../typography/BaseTypography";
 import {
+  IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
   IOScaleValues,
   IOSpringValues,
   useIOExperimentalDesign
 } from "../../core";
-import ButtonSolidLegacy from "./ButtonSolidLeg";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -105,6 +105,39 @@ const mapColorStates: Record<
   }
 };
 
+const mapLegacyColorStates: Record<
+  NonNullable<ButtonSolidProps["color"]>,
+  ColorStates
+> = {
+  // Primary button
+  primary: {
+    default: IOColors.blue,
+    pressed: IOColors["blue-600"],
+    label: {
+      default: "white",
+      disabled: "white"
+    }
+  },
+  // Danger button
+  danger: {
+    default: IOColors["error-600"],
+    pressed: IOColors["error-500"],
+    label: {
+      default: "white",
+      disabled: "white"
+    }
+  },
+  // Contrast button
+  contrast: {
+    default: IOColors.white,
+    pressed: IOColors["blue-50"],
+    label: {
+      default: "blue",
+      disabled: "white"
+    }
+  }
+};
+
 export const ButtonSolid = React.memo(
   ({
     color = "primary",
@@ -124,6 +157,16 @@ export const ButtonSolid = React.memo(
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
+    const colorMap = React.useMemo(
+      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
+      [isExperimental]
+    );
+
+    const buttonStyles = React.useMemo(
+      () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
+      [isExperimental]
+    );
+
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>
       withSpring(isPressed.value, IOSpringValues.button)
@@ -135,7 +178,7 @@ export const ButtonSolid = React.memo(
       const bgColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [mapColorStates[color].default, mapColorStates[color].pressed]
+        [colorMap[color].default, colorMap[color].pressed]
       );
 
       // Scale down button slightly when pressed
@@ -163,8 +206,8 @@ export const ButtonSolid = React.memo(
 
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
-      ? mapColorStates[color]?.label?.disabled
-      : mapColorStates[color]?.label?.default;
+      ? colorMap[color]?.label?.disabled
+      : colorMap[color]?.label?.default;
 
     // Icon size
     const iconSize = small ? 16 : 20;
@@ -184,11 +227,11 @@ export const ButtonSolid = React.memo(
       >
         <Animated.View
           style={[
-            IOButtonStyles.button,
+            buttonStyles.button,
             iconPosition === "end" && { flexDirection: "row-reverse" },
             small
-              ? IOButtonStyles.buttonSizeSmall
-              : IOButtonStyles.buttonSizeDefault,
+              ? buttonStyles.buttonSizeSmall
+              : buttonStyles.buttonSizeDefault,
             disabled
               ? styles.backgroundDisabled
               : { backgroundColor: mapColorStates[color]?.default },
@@ -208,14 +251,14 @@ export const ButtonSolid = React.memo(
             </>
           )}
           <BaseTypography
-            font="ReadexPro"
+            font={isExperimental ? "ReadexPro" : undefined}
             weight={"Regular"}
             color={foregroundColor}
             style={[
-              IOButtonStyles.label,
+              buttonStyles.label,
               small
-                ? IOButtonStyles.labelSizeSmall
-                : IOButtonStyles.labelSizeDefault
+                ? buttonStyles.labelSizeSmall
+                : buttonStyles.labelSizeDefault
             ]}
             numberOfLines={1}
             ellipsizeMode="tail"
@@ -230,25 +273,7 @@ export const ButtonSolid = React.memo(
       </Pressable>
     );
 
-    return isExperimental ? (
-      <Button />
-    ) : (
-      <ButtonSolidLegacy
-        {...{
-          color,
-          accessibilityLabel,
-          label,
-          onPress,
-          accessibilityHint,
-          disabled,
-          fullWidth,
-          icon,
-          iconPosition,
-          small,
-          testID
-        }}
-      />
-    );
+    return <Button />;
   }
 );
 
