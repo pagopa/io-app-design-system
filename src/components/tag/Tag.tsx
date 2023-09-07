@@ -12,6 +12,7 @@ import {
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
+import { HSpacer } from "../spacer";
 
 export type Tag = WithTestID<{
   text?: string;
@@ -83,7 +84,6 @@ const styles = StyleSheet.create({
     paddingVertical: IOTagVSpacing
   },
   iconWrapper: {
-    marginEnd: IOTagIconMargin,
     flexShrink: 1
   },
   label: {
@@ -114,6 +114,7 @@ export const Tag = ({ text, variant, testID }: Tag) => (
         )
       )
     )}
+    {mapVariants[variant] && text && <HSpacer size={8} />}
     {text && (
       <Text numberOfLines={1} ellipsizeMode="tail" style={styles.label}>
         {text}
