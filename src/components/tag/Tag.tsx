@@ -7,11 +7,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { IOColors } from "../../core/IOColors";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOTagRadius } from "../../core/IOShapes";
-import {
-  IOSpacingScale,
-  IOTagHSpacing,
-  IOTagVSpacing
-} from "../../core/IOSpacing";
+import { IOTagHSpacing, IOTagVSpacing } from "../../core/IOSpacing";
 import { HSpacer } from "../spacer";
 
 export type Tag = WithTestID<{
@@ -23,6 +19,7 @@ export type Tag = WithTestID<{
     | "warning"
     | "error"
     | "success"
+    | "attachment"
     | "noIcon";
 }>;
 
@@ -38,6 +35,10 @@ const mapVariants: Record<
   qrCode: {
     iconColor: "blueIO-500",
     iconName: "qrCode"
+  },
+  attachment: {
+    iconColor: "grey-700",
+    iconName: "attachment"
   },
   legalMessage: {
     iconColor: "blueIO-500",
@@ -62,7 +63,6 @@ const mapVariants: Record<
   noIcon: undefined
 };
 
-const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;
 
 const styles = StyleSheet.create({
