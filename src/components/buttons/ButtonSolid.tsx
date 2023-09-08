@@ -33,6 +33,14 @@ type ColorStates = {
   };
 };
 
+// Disabled state
+const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
+const legacyStyles = StyleSheet.create({
+  backgroundDisabled: {
+    backgroundColor: IOColors[colorPrimaryLegacyButtonDisabled]
+  }
+});
+
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
 const DISABLED_OPACITY = 0.5;
 
@@ -233,8 +241,10 @@ export const ButtonSolid = React.memo(
               ? buttonStyles.buttonSizeSmall
               : buttonStyles.buttonSizeDefault,
             disabled
-              ? styles.backgroundDisabled
-              : { backgroundColor: mapColorStates[color]?.default },
+              ? isExperimental
+                ? styles.backgroundDisabled
+                : legacyStyles.backgroundDisabled
+              : { backgroundColor: colorMap[color]?.default },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
             !disabled && pressedAnimationStyle

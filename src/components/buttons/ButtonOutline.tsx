@@ -11,11 +11,13 @@ import Animated, {
   withSpring
 } from "react-native-reanimated";
 import {
+  IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
   IOScaleValues,
   IOSpringValues,
-  hexToRgba
+  hexToRgba,
+  useIOExperimentalDesign
 } from "../../core/";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -134,12 +136,103 @@ const mapColorStates: Record<
   }
 };
 
+const mapLegacyColorStates: Record<
+  NonNullable<ButtonOutline["color"]>,
+  ColorStates
+> = {
+  // Primary button
+  primary: {
+    border: {
+      default: IOColors.blue,
+      pressed: IOColors.blue,
+      disabled: IOColors.bluegreyLight
+    },
+    background: {
+      default: hexToRgba(IOColors.blue, 0),
+      pressed: hexToRgba(IOColors.blue, 0.15),
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.blue,
+      pressed: IOColors.blue,
+      disabled: IOColors.grey
+    }
+  },
+  // Neutral button
+  neutral: {
+    border: {
+      default: IOColors.grey,
+      pressed: IOColors.bluegrey,
+      disabled: IOColors.bluegreyLight
+    },
+    background: {
+      default: IOColors.white,
+      pressed: IOColors.greyUltraLight,
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.bluegrey,
+      pressed: IOColors.bluegreyDark,
+      disabled: IOColors.grey
+    }
+  },
+  // Contrast button
+  contrast: {
+    border: {
+      default: IOColors.white,
+      pressed: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
+    },
+    background: {
+      default: hexToRgba(IOColors.white, 0),
+      pressed: hexToRgba(IOColors.white, 0.2),
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.white,
+      pressed: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
+    }
+  },
+  // Danger button
+  danger: {
+    border: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.bluegreyLight
+    },
+    background: {
+      default: hexToRgba(IOColors.red, 0),
+      pressed: hexToRgba(IOColors.red, 0.15),
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.grey
+    }
+  }
+};
+
+const IOButtonLegacyStylesLocal = StyleSheet.create({
+  // eslint-disable-next-line react-native/no-unused-styles
+  label: {
+    ...makeFontStyleObject("Bold")
+  },
+  // eslint-disable-next-line react-native/no-unused-styles
+  buttonWithBorder: {
+    borderWidth: 1
+  }
+});
+
 const DISABLED_OPACITY = 0.5;
 
 const IOButtonStylesLocal = StyleSheet.create({
+  // eslint-disable-next-line react-native/no-unused-styles
   label: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
   },
+  // eslint-disable-next-line react-native/no-unused-styles
   buttonWithBorder: {
     borderWidth: 2
   }
@@ -158,8 +251,23 @@ export const ButtonOutline = ({
   accessibilityHint,
   testID
 }: ButtonOutline) => {
+  const { isExperimental } = useIOExperimentalDesign();
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
+  const colorMap = React.useMemo(
+    () => (isExperimental ? mapColorStates : mapLegacyColorStates),
+    [isExperimental]
+  );
+
+  const buttonStyles = React.useMemo(
+    () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
+    [isExperimental]
+  );
+
+  const buttonStylesLocal = React.useMemo(
+    () => (isExperimental ? IOButtonStylesLocal : IOButtonLegacyStylesLocal),
+    [isExperimental]
+  );
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -174,19 +282,13 @@ export const ButtonOutline = ({
     const backgroundColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [
-        mapColorStates[color].background.default,
-        mapColorStates[color].background.pressed
-      ]
+      [colorMap[color].background.default, colorMap[color].background.pressed]
     );
 
     const borderColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [
-        mapColorStates[color].border.default,
-        mapColorStates[color].border.pressed
-      ]
+      [colorMap[color].border.default, colorMap[color].border.pressed]
     );
 
     // Scale down button slightly when pressed
@@ -210,10 +312,7 @@ export const ButtonOutline = ({
     const labelColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [
-        mapColorStates[color].border.default,
-        mapColorStates[color].border.pressed
-      ]
+      [colorMap[color].border.default, colorMap[color].border.pressed]
     );
 
     return {
@@ -226,7 +325,7 @@ export const ButtonOutline = ({
     const iconColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [mapColorStates[color].label.default, mapColorStates[color].label.pressed]
+      [colorMap[color].label.default, colorMap[color].label.pressed]
     );
     return { color: iconColor };
   });
@@ -258,21 +357,19 @@ export const ButtonOutline = ({
     >
       <Animated.View
         style={[
-          IOButtonStyles.button,
-          IOButtonStylesLocal.buttonWithBorder,
+          buttonStyles.button,
+          buttonStylesLocal.buttonWithBorder,
           iconPosition === "end" && { flexDirection: "row-reverse" },
-          small
-            ? IOButtonStyles.buttonSizeSmall
-            : IOButtonStyles.buttonSizeDefault,
+          small ? buttonStyles.buttonSizeSmall : buttonStyles.buttonSizeDefault,
           disabled
             ? {
-                backgroundColor: mapColorStates[color]?.background?.disabled,
-                borderColor: mapColorStates[color]?.border?.disabled,
+                backgroundColor: colorMap[color]?.background?.disabled,
+                borderColor: colorMap[color]?.border?.disabled,
                 opacity: DISABLED_OPACITY
               }
             : {
-                backgroundColor: mapColorStates[color]?.background?.default,
-                borderColor: mapColorStates[color]?.border.default
+                backgroundColor: colorMap[color]?.background?.default,
+                borderColor: colorMap[color]?.border.default
               },
           /* Prevent Reanimated from overriding background colors
                     if button is disabled */
@@ -285,12 +382,12 @@ export const ButtonOutline = ({
               <AnimatedIconClassComponent
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
-                color={mapColorStates[color]?.label?.default}
+                color={colorMap[color]?.label?.default}
               />
             ) : (
               <AnimatedIcon
                 name={icon}
-                color={mapColorStates[color]?.label?.disabled}
+                color={colorMap[color]?.label?.disabled}
               />
             )}
             <HSpacer size={8} />
@@ -298,14 +395,12 @@ export const ButtonOutline = ({
         )}
         <Animated.Text
           style={[
-            IOButtonStylesLocal.label,
-            IOButtonStyles.label,
-            small
-              ? IOButtonStyles.labelSizeSmall
-              : IOButtonStyles.labelSizeDefault,
+            buttonStylesLocal.label,
+            buttonStyles.label,
+            small ? buttonStyles.labelSizeSmall : buttonStyles.labelSizeDefault,
             disabled
-              ? { color: mapColorStates[color]?.label?.disabled }
-              : { color: mapColorStates[color]?.label?.default },
+              ? { color: colorMap[color]?.label?.disabled }
+              : { color: colorMap[color]?.label?.default },
             !disabled && pressedColorLabelAnimationStyle
           ]}
           numberOfLines={1}
