@@ -5,6 +5,7 @@ import {
 } from "@react-navigation/native";
 import * as React from "react";
 import {
+  IODSExperimentalContextProvider,
   IOStyles,
   IOThemeContext,
   IOThemeDark,
@@ -40,17 +41,19 @@ export default function App() {
     <IOThemeContext.Provider
       value={colorScheme === "dark" ? IOThemes.dark : IOThemes.light}
     >
-      <NavigationContainer
-        theme={
-          colorScheme === "dark"
-            ? IONavigationDarkTheme
-            : IONavigationLightTheme
-        }
-      >
-        <GestureHandlerRootView style={IOStyles.flex}>
-          <AppNavigator />
-        </GestureHandlerRootView>
-      </NavigationContainer>
+      <IODSExperimentalContextProvider>
+        <NavigationContainer
+          theme={
+            colorScheme === "dark"
+              ? IONavigationDarkTheme
+              : IONavigationLightTheme
+          }
+        >
+          <GestureHandlerRootView style={IOStyles.flex}>
+            <AppNavigator />
+          </GestureHandlerRootView>
+        </NavigationContainer>
+      </IODSExperimentalContextProvider>
     </IOThemeContext.Provider>
   );
 }
