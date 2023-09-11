@@ -43,6 +43,19 @@ import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
 import PictogramSuccess from "./svg/PictogramSuccess";
 import PictogramFocusOn from "./svg/PictogramFocusOn";
+import PictogramITWallet from "./svg/PictogramITWallet";
+import PictogramFatalError from "./svg/PictogramFatalError";
+import PictogramUpdateOS from "./svg/PictogramUpdateOS";
+import PictogramIdentityAdd from "./svg/PictogramIdentityAdd";
+import PictogramIdentityRefresh from "./svg/PictogramIdentityRefresh";
+import PictogramIdentity from "./svg/PictogramIdentity";
+import PictogramAccessDenied from "./svg/PictogramAccessDenied";
+import PictogramTime from "./svg/PictogramTime";
+import PictogramStopSecurity from "./svg/PictogramStopSecurity";
+import PictogramPasscode from "./svg/PictogramPasscode";
+import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
+import PictogramTrash from "./svg/PictogramTrash";
+import PictogramCharity from "./svg/PictogramCharity";
 
 export const IOPictograms = {
   messages: PictogramMessages,
@@ -77,15 +90,28 @@ export const IOPictograms = {
   ibanCard: PictogramIBANCard,
   followMessage: PictogramFollowMessage,
   manual: PictogramManual,
+  trash: PictogramTrash,
   setup: PictogramSetup,
   donation: PictogramDonation,
+  charity: PictogramCharity,
   attention: PictogramAttention,
   emptyArchive: PictogramEmptyArchive,
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
   cameraRequest: PictogramCameraRequest,
   success: PictogramSuccess,
-  focusOn: PictogramFocusOn
+  fatalError: PictogramFatalError,
+  focusOn: PictogramFocusOn,
+  itWallet: PictogramITWallet,
+  updateOS: PictogramUpdateOS,
+  identity: PictogramIdentity,
+  identityAdd: PictogramIdentityAdd,
+  identityRefresh: PictogramIdentityRefresh,
+  identityCheck: PictogramIdentityCheck,
+  accessDenied: PictogramAccessDenied,
+  stopSecurity: PictogramStopSecurity,
+  time: PictogramTime,
+  passcode: PictogramPasscode
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
