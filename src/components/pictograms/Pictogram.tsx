@@ -58,6 +58,7 @@ import PictogramTrash from "./svg/PictogramTrash";
 import PictogramCharity from "./svg/PictogramCharity";
 
 export const IOPictograms = {
+  // Start legacy pictograms //
   messages: PictogramMessages,
   airBaloon: PictogramAirBaloon,
   abacus: PictogramAbacus,
@@ -87,6 +88,7 @@ export const IOPictograms = {
   sms: PictogramSms,
   heart: PictogramHeart,
   completed: PictogramCompleted,
+  // End legacy pictograms
   ibanCard: PictogramIBANCard,
   followMessage: PictogramFollowMessage,
   manual: PictogramManual,
@@ -154,3 +156,71 @@ const IOPictogramsBleed = {
 } as const;
 
 export type IOPictogramsBleed = keyof typeof IOPictogramsBleed;
+
+/* Legacy pictograms */
+
+const {
+  messages,
+  airBaloon,
+  abacus,
+  emailValidation,
+  emailToValidate,
+  inbox,
+  piggyBank,
+  processing,
+  baloons,
+  places,
+  notAvailable,
+  airship,
+  search,
+  unrecognized,
+  error,
+  umbrella,
+  inProgress,
+  fireworks,
+  puzzle,
+  question,
+  pin,
+  timeout,
+  uploadFile,
+  hourglass,
+  teaBreak,
+  beerMug,
+  sms,
+  heart,
+  completed
+} = IOPictograms;
+
+export const IOPictogramsLegacy = {
+  messages,
+  airBaloon,
+  abacus,
+  emailValidation,
+  emailToValidate,
+  inbox,
+  piggyBank,
+  processing,
+  baloons,
+  places,
+  notAvailable,
+  airship,
+  search,
+  unrecognized,
+  error,
+  umbrella,
+  inProgress,
+  fireworks,
+  puzzle,
+  question,
+  pin,
+  timeout,
+  uploadFile,
+  hourglass,
+  teaBreak,
+  beerMug,
+  sms,
+  heart,
+  completed
+} as const;
+
+export type IOPictogramsLegacy = keyof typeof IOPictogramsLegacy;
