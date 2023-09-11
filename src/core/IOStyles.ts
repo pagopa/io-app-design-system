@@ -14,13 +14,15 @@ interface IOVisualCostants {
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
+  iconContainedSizeDefault: number;
 }
 
 export const IOVisualCostants: IOVisualCostants = {
   appMarginDefault: 24,
   headerHeight: 56,
   avatarSizeSmall: 44,
-  avatarSizeMedium: 66
+  avatarSizeMedium: 66,
+  iconContainedSizeDefault: 44
 };
 
 export const IOStyles = StyleSheet.create({

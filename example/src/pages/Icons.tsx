@@ -1,6 +1,8 @@
 import {
   H2,
   H3,
+  H4,
+  HSpacer,
   IOBiometricIcons,
   IOCategoryIcons,
   IOColors,
@@ -8,15 +10,18 @@ import {
   IOIcons,
   IONavIcons,
   IOProductIcons,
+  IOStyles,
   IOThemeContext,
   IOVisualCostants,
   Icon,
+  IconContained,
   SVGIconProps
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";
 import { Screen } from "../components/Screen";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 
 // Filter the main object, removing already displayed icons in the other sets
 type IconSubsetObject = Record<
@@ -177,6 +182,18 @@ export const Icons = () => {
           />
         ))}
       </View>
+
+      <H4 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
+        IconContained
+      </H4>
+      <ComponentViewerBox name={"IconContained, default variant"}>
+        <View style={IOStyles.row}>
+          <IconContained icon="device" variant="tonal" color="neutral" />
+          <HSpacer size={24} />
+          <IconContained icon="institution" variant="tonal" color="neutral" />
+        </View>
+      </ComponentViewerBox>
+
       <H3
         color={theme["textHeading-default"]}
         weight={"Bold"}
