@@ -139,6 +139,7 @@ import IconSystemSettingsAndroid from "./svg/IconSystemSettingsAndroid";
 import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
 import IconTag from "./svg/IconTag";
+import IconTransactionsBoxed from "./svg/IconTransactionsBoxed";
 import IconTransactions from "./svg/IconTransactions";
 import IconTrashcan from "./svg/IconTrashcan";
 import IconWarningFilled from "./svg/IconWarningFilled";
@@ -161,6 +162,7 @@ export const IOIcons = {
   copy: IconCopy,
   selfCert: IconSelfCertification,
   institution: IconInstitution,
+  merchant: IconMerchant,
   hourglass: IconHourglass,
   shareiOs: IconShareiOs,
   shareAndroid: IconShareAndroid,
@@ -196,6 +198,7 @@ export const IOIcons = {
   fiscalCodeIndividual: IconFiscalCodeIndividual,
   creditCard: IconCreditCard /* io-carta */,
   bonus: IconBonus,
+  transactionsBoxed: IconTransactionsBoxed,
   transactions: IconTransactions,
   amount: IconAmount,
   psp: IconPSP,
@@ -286,7 +289,6 @@ export const IOIcons = {
   productIOAppBlueBg: IconProductIOAppBlueBg,
   checkTick: IconCheckTick,
   checkTickBig: IconCheckTickBig,
-  merchant: IconMerchant,
   light: IconLight,
   lightFilled: IconLightFilled,
   systemSettingsAndroid: IconSystemSettingsAndroid,
