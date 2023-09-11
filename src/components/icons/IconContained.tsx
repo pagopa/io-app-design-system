@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
   }
 });
 
+/*
+`IconContained` is just a special wrapper for the `Icon` component. 
+It's also not an interactive component when compared to the `IconButton` component.
+When adding new styles, you should be aware of this context and be careful
+not to add variants that look like interactive counterparts.
+*/
 export const IconContained = ({ variant, color, icon }: IconContained) => {
   const backgroundColor = useMemo(
     () => variantMap[variant][color].background,
