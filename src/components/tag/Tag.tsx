@@ -7,7 +7,11 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { IOColors } from "../../core/IOColors";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOTagRadius } from "../../core/IOShapes";
-import { IOTagHSpacing, IOTagVSpacing } from "../../core/IOSpacing";
+import {
+  IOSpacingScale,
+  IOTagHSpacing,
+  IOTagVSpacing
+} from "../../core/IOSpacing";
 import { HSpacer } from "../spacer";
 
 export type Tag = WithTestID<{
@@ -63,6 +67,7 @@ const mapVariants: Record<
   noIcon: undefined
 };
 
+const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;
 
 const styles = StyleSheet.create({
@@ -117,7 +122,7 @@ export const Tag = ({ text, variant, testID }: Tag) => (
         )
       )
     )}
-    {mapVariants[variant] && text && <HSpacer size={8} />}
+    {mapVariants[variant] && text && <View style={styles.spacer} />}
     {text && (
       <Text numberOfLines={1} ellipsizeMode="tail" style={styles.label}>
         {text}
