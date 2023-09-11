@@ -12,7 +12,6 @@ import {
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
-import { HSpacer } from "../spacer";
 
 export type Tag = WithTestID<{
   text?: string;
