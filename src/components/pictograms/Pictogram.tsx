@@ -56,6 +56,7 @@ import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
 import PictogramTrash from "./svg/PictogramTrash";
 import PictogramCharity from "./svg/PictogramCharity";
+import PictogramEmpty from "./svg/PictogramEmpty";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -94,6 +95,7 @@ export const IOPictograms = {
   manual: PictogramManual,
   trash: PictogramTrash,
   setup: PictogramSetup,
+  empty: PictogramEmpty,
   donation: PictogramDonation,
   charity: PictogramCharity,
   attention: PictogramAttention,
