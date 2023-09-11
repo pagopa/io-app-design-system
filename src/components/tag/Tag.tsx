@@ -86,6 +86,9 @@ const styles = StyleSheet.create({
   iconWrapper: {
     flexShrink: 1
   },
+  spacer: {
+    width: IOTagIconMargin
+  },
   label: {
     fontSize: 12,
     lineHeight: 16,
