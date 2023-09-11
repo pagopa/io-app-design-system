@@ -262,7 +262,7 @@ export const ButtonSolid = React.memo(
           )}
           <BaseTypography
             font={isExperimental ? "ReadexPro" : undefined}
-            weight={"Regular"}
+            weight={isExperimental ? "Regular" : "Bold"}
             color={foregroundColor}
             style={[
               buttonStyles.label,
