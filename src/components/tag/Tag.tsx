@@ -1,4 +1,6 @@
 import React from "react";
+import * as O from "fp-ts/lib/Option";
+import { pipe } from "fp-ts/lib/function";
 import { View, Text, StyleSheet, Platform } from "react-native";
 import { WithTestID } from "../../utils/types";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -12,8 +14,16 @@ import {
 } from "../../core/IOSpacing";
 
 export type Tag = WithTestID<{
-  text: string;
-  variant: "qrCode" | "legalMessage" | "info" | "warning" | "error" | "success";
+  text?: string;
+  variant:
+    | "qrCode"
+    | "legalMessage"
+    | "info"
+    | "warning"
+    | "error"
+    | "success"
+    | "attachment"
+    | "noIcon";
 }>;
 
 type VariantProps = {
@@ -21,10 +31,17 @@ type VariantProps = {
   iconName: IOIcons;
 };
 
-const mapVariants: Record<NonNullable<Tag["variant"]>, VariantProps> = {
+const mapVariants: Record<
+  NonNullable<Tag["variant"]>,
+  VariantProps | undefined
+> = {
   qrCode: {
     iconColor: "blueIO-500",
     iconName: "qrCode"
+  },
+  attachment: {
+    iconColor: "grey-700",
+    iconName: "attachment"
   },
   legalMessage: {
     iconColor: "blueIO-500",
@@ -45,7 +62,8 @@ const mapVariants: Record<NonNullable<Tag["variant"]>, VariantProps> = {
   success: {
     iconColor: "success-700",
     iconName: "success"
-  }
+  },
+  noIcon: undefined
 };
 
 const IOTagIconMargin: IOSpacingScale = 6;
@@ -70,8 +88,10 @@ const styles = StyleSheet.create({
     paddingVertical: IOTagVSpacing
   },
   iconWrapper: {
-    marginEnd: IOTagIconMargin,
     flexShrink: 1
+  },
+  spacer: {
+    width: IOTagIconMargin
   },
   label: {
     fontSize: 12,
@@ -89,15 +109,23 @@ const styles = StyleSheet.create({
  */
 export const Tag = ({ text, variant, testID }: Tag) => (
   <View testID={testID} style={styles.tag}>
-    <View style={styles.iconWrapper}>
-      <Icon
-        name={mapVariants[variant].iconName}
-        color={mapVariants[variant].iconColor}
-        size={IOTagIconSize}
-      />
-    </View>
-    <Text numberOfLines={1} ellipsizeMode="tail" style={styles.label}>
-      {text}
-    </Text>
+    {pipe(
+      mapVariants[variant],
+      O.fromNullable,
+      O.fold(
+        () => null,
+        ({ iconColor, iconName }) => (
+          <View style={styles.iconWrapper}>
+            <Icon name={iconName} color={iconColor} size={IOTagIconSize} />
+          </View>
+        )
+      )
+    )}
+    {mapVariants[variant] && text && <View style={styles.spacer} />}
+    {text && (
+      <Text numberOfLines={1} ellipsizeMode="tail" style={styles.label}>
+        {text}
+      </Text>
+    )}
   </View>
 );
