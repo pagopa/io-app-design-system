@@ -21,7 +21,12 @@ import {
 } from "../../core/";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
+import {
+  AnimatedIcon,
+  IOIconSizeScale,
+  IOIcons,
+  IconClassComponent
+} from "../icons";
 import { HSpacer } from "../spacer/Spacer";
 
 type ColorButtonOutline = "primary" | "neutral" | "contrast" | "danger";
@@ -344,7 +349,10 @@ export const ButtonOutline = ({
     isPressed.value = 0;
   }, [isPressed]);
 
-  const Button = () => (
+  // Icon size
+  const iconSize: IOIconSizeScale = small ? 16 : 20;
+
+  return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
@@ -385,11 +393,13 @@ export const ButtonOutline = ({
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
                 color={colorMap[color]?.label?.default}
+                size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 name={icon}
                 color={colorMap[color]?.label?.disabled}
+                size={iconSize}
               />
             )}
             <HSpacer size={8} />
@@ -417,8 +427,6 @@ export const ButtonOutline = ({
       </Animated.View>
     </Pressable>
   );
-
-  return <Button />;
 };
 
 export default ButtonOutline;

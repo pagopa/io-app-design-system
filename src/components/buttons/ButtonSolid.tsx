@@ -177,6 +177,9 @@ export const ButtonSolid = React.memo(
       [isExperimental]
     );
 
+    // Icon size
+    const iconSize = React.useMemo(() => (small ? 16 : 20), [small]);
+
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>
       withSpring(isPressed.value, IOSpringValues.button)
@@ -219,10 +222,7 @@ export const ButtonSolid = React.memo(
       ? colorMap[color]?.label?.disabled
       : colorMap[color]?.label?.default;
 
-    // Icon size
-    const iconSize = small ? 16 : 20;
-
-    const Button = () => (
+    return (
       <Pressable
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
@@ -284,8 +284,6 @@ export const ButtonSolid = React.memo(
         </Animated.View>
       </Pressable>
     );
-
-    return <Button />;
   }
 );
 
