@@ -34,7 +34,7 @@ type ColorStates = {
 };
 
 // Disabled state
-// TODO: Remove this when legacy look is deprecated
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
 const legacyStyles = StyleSheet.create({
   backgroundDisabled: {
@@ -114,7 +114,7 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const mapLegacyColorStates: Record<
   NonNullable<ButtonSolidProps["color"]>,
   ColorStates

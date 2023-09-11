@@ -56,6 +56,7 @@ const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
   }
 };
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const mapLegacyColorStates: Record<
   NonNullable<ButtonLink["color"]>,
   ColorStates
@@ -78,6 +79,7 @@ const IOButtonStylesLocal = StyleSheet.create({
   }
 });
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const IOButtonLegacyStylesLocal = StyleSheet.create({
   label: {
     fontSize: 16,
