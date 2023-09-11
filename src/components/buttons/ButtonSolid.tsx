@@ -34,6 +34,7 @@ type ColorStates = {
 };
 
 // Disabled state
+// TODO: Remove this when legacy look is deprecated
 const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
 const legacyStyles = StyleSheet.create({
   backgroundDisabled: {
@@ -113,6 +114,7 @@ const mapColorStates: Record<
   }
 };
 
+// TODO: Remove this when legacy look is deprecated
 const mapLegacyColorStates: Record<
   NonNullable<ButtonSolidProps["color"]>,
   ColorStates
