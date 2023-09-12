@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
   Extrapolate,
@@ -14,14 +14,15 @@ import {
   IOButtonStyles,
   IOColors,
   IOScaleValues,
-  IOSpringValues
+  IOSpringValues,
+  useIOExperimentalDesign
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons/Icon";
 import { HSpacer } from "../spacer/Spacer";
 
-type ColorButtonLink = "primary" | "error" | "warning" | "success" | "info";
+type ColorButtonLink = "primary";
 export type ButtonLink = WithTestID<{
   color?: ColorButtonLink;
   label: string;
@@ -52,32 +53,19 @@ const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
       pressed: IOColors["blueIO-600"],
       disabled: IOColors["grey-700"]
     }
-  },
-  error: {
+  }
+};
+
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const mapLegacyColorStates: Record<
+  NonNullable<ButtonLink["color"]>,
+  ColorStates
+> = {
+  // Primary button
+  primary: {
     label: {
-      default: IOColors["error-850"],
-      pressed: IOColors["error-850"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  warning: {
-    label: {
-      default: IOColors["warning-850"],
-      pressed: IOColors["warning-850"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  success: {
-    label: {
-      default: IOColors["success-850"],
-      pressed: IOColors["success-850"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  info: {
-    label: {
-      default: IOColors["info-850"],
-      pressed: IOColors["info-850"],
+      default: IOColors.blue,
+      pressed: IOColors["blue-600"],
       disabled: IOColors["grey-700"]
     }
   }
@@ -88,6 +76,14 @@ const IOButtonStylesLocal = StyleSheet.create({
   label: {
     fontSize: 16,
     ...makeFontStyleObject("Regular", false, "ReadexPro")
+  }
+});
+
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const IOButtonLegacyStylesLocal = StyleSheet.create({
+  label: {
+    fontSize: 16,
+    ...makeFontStyleObject("Bold", false, "TitilliumWeb")
   }
 });
 
@@ -104,6 +100,16 @@ export const ButtonLink = React.memo(
     testID
   }: ButtonLink) => {
     const isPressed = useSharedValue(0);
+    const { isExperimental } = useIOExperimentalDesign();
+
+    const colorMap = useMemo(
+      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
+      [isExperimental]
+    );
+    const buttonStylesLocal = useMemo(
+      () => (isExperimental ? IOButtonStylesLocal : IOButtonLegacyStylesLocal),
+      [isExperimental]
+    );
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -136,10 +142,7 @@ export const ButtonLink = React.memo(
       const labelColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [
-          mapColorStates[color].label.default,
-          mapColorStates[color].label.pressed
-        ]
+        [colorMap[color].label.default, colorMap[color].label.pressed]
       );
 
       return {
@@ -152,10 +155,7 @@ export const ButtonLink = React.memo(
       const iconColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [
-          mapColorStates[color].label.default,
-          mapColorStates[color].label.pressed
-        ]
+        [colorMap[color].label.default, colorMap[color].label.pressed]
       );
 
       return { color: iconColor };
@@ -207,13 +207,13 @@ export const ButtonLink = React.memo(
                 <AnimatedIconClassComponent
                   name={icon}
                   animatedProps={pressedColorIconAnimationStyle}
-                  color={mapColorStates[color]?.label?.default}
+                  color={colorMap[color]?.label?.default}
                   size={iconSize}
                 />
               ) : (
                 <AnimatedIcon
                   name={icon}
-                  color={mapColorStates[color]?.label?.disabled}
+                  color={colorMap[color]?.label?.disabled}
                   size={iconSize}
                 />
               )}
@@ -222,10 +222,10 @@ export const ButtonLink = React.memo(
           )}
           <Animated.Text
             style={[
-              IOButtonStylesLocal.label,
+              buttonStylesLocal.label,
               disabled
-                ? { color: mapColorStates[color]?.label?.disabled }
-                : { color: mapColorStates[color]?.label?.default },
+                ? { color: colorMap[color]?.label?.disabled }
+                : { color: colorMap[color]?.label?.default },
               !disabled && pressedColorLabelAnimationStyle
             ]}
             numberOfLines={1}

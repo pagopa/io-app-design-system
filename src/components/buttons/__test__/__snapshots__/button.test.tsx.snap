@@ -237,13 +237,13 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
       style={
         [
           {
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Web",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
           },
           {
-            "color": "#0B3EE3",
+            "color": "#0073E6",
           },
           {
             "color": undefined,
@@ -301,23 +301,23 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 8,
+          "borderRadius": 4,
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingHorizontal": 24,
+          "paddingHorizontal": 16,
           "textAlignVertical": "center",
         },
         {
-          "borderWidth": 2,
+          "borderWidth": 1,
         },
         false,
         {
-          "height": 48,
+          "height": 40,
         },
         {
-          "backgroundColor": "rgba(231,236,252,0)",
-          "borderColor": "#0B3EE3",
+          "backgroundColor": "rgba(0,115,230,0)",
+          "borderColor": "#0073E6",
         },
         {
           "backgroundColor": undefined,
@@ -337,9 +337,9 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
       style={
         [
           {
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Web",
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
           },
           {
             "alignSelf": "center",
@@ -348,7 +348,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
             "fontSize": 16,
           },
           {
-            "color": "#0B3EE3",
+            "color": "#0073E6",
           },
           {
             "color": undefined,
@@ -406,19 +406,19 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 8,
+          "borderRadius": 4,
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingHorizontal": 24,
+          "paddingHorizontal": 16,
           "textAlignVertical": "center",
         },
         false,
         {
-          "height": 48,
+          "height": 40,
         },
         {
-          "backgroundColor": "#0B3EE3",
+          "backgroundColor": "#0073E6",
         },
         {
           "backgroundColor": undefined,
@@ -434,7 +434,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     <Text
       color="white"
       ellipsizeMode="tail"
-      font="ReadexPro"
       numberOfLines={1}
       style={
         [
@@ -449,13 +448,13 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           undefined,
           {
             "color": "#FFFFFF",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Web",
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
           },
         ]
       }
-      weight="Regular"
+      weight="Bold"
     >
       label
     </Text>
@@ -527,7 +526,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278927075}
+      color={4278219750}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -541,7 +540,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
+            "color": "#0073E6",
           },
           {
             "flex": 0,
@@ -550,7 +549,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4278927075}
+      tintColor={4278219750}
       vbHeight={24}
       vbWidth={24}
       width={24}
@@ -653,7 +652,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278927075}
+      color={4278219750}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -667,7 +666,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
+            "color": "#0073E6",
           },
           {
             "flex": 0,
@@ -676,7 +675,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4278927075}
+      tintColor={4278219750}
       vbHeight={24}
       vbWidth={24}
       width={24}
