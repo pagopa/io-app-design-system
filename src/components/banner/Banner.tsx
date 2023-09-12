@@ -28,9 +28,9 @@ import { IOColors } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
 import { ButtonLink, IconButton } from "../buttons";
 import {
+  PictogramBleed,
   IOPictogramSizeScale,
-  IOPictogramsBleed,
-  PictogramBleed
+  IOPictogramsBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";

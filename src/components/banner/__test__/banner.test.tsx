@@ -16,7 +16,7 @@ describe("Test Banner Components", () => {
         color="neutral"
         size="big"
         title="Banner title"
-        pictogramName="donation"
+        pictogramName="charity"
         action="Action text"
         onPress={onLinkPress}
       />
