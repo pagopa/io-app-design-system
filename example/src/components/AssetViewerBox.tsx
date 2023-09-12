@@ -37,11 +37,17 @@ const styles = StyleSheet.create({
     position: "relative",
     aspectRatio: 1,
     borderRadius: 8,
-    padding: 32,
+    padding: 24,
     alignItems: "center",
     justifyContent: "center",
     borderColor: hexToRgba(IOColors.black, 0.1),
     borderWidth: 1
+  },
+  assetItemBleed: {
+    paddingRight: 0,
+    paddingLeft: 8,
+    paddingVertical: 4,
+    justifyContent: "flex-end"
   },
   assetItemSmall: {
     padding: 24
@@ -67,16 +73,18 @@ const styles = StyleSheet.create({
     backgroundColor: IOColors.yellow,
     color: IOColors.black
   },
-  pillIconFont: {
-    backgroundColor: IOColors.aqua,
-    color: IOColors.black
+  pillBleed: {
+    backgroundColor: IOColors["success-500"],
+    color: IOColors.white
   }
 });
 
 type AssetViewerBoxProps = {
   name: string;
   image: React.ReactNode;
-  type?: "vector" | "raster" | "iconFont";
+  /* "bleed" shows the pictogram without padding
+  "hasBleed" shows the pictgram label on top right */
+  type?: "vector" | "raster" | "bleed" | "hasBleed";
   size?: "small" | "medium";
   colorMode?: "light" | "dark";
 };
@@ -95,9 +103,9 @@ const pillMap = {
     style: styles.pillRaster,
     text: "Png"
   },
-  iconFont: {
-    style: styles.pillIconFont,
-    text: "Font"
+  hasBleed: {
+    style: styles.pillBleed,
+    text: "Bleed"
   }
 };
 
@@ -118,6 +126,7 @@ export const AssetViewerBox = ({
       style={[
         styles.assetItem,
         size === "small" ? styles.assetItemSmall : {},
+        type === "bleed" ? styles.assetItemBleed : {},
         colorMode === "dark" ? styles.assetItemDark : {}
       ]}
     >
@@ -126,17 +135,18 @@ export const AssetViewerBox = ({
         source={FakeTransparentBg}
       />
       {image}
-      {type !== "vector" && (
-        <Text
-          style={[
-            styles.pill,
-            size === "small" ? styles.pillSmall : {},
-            pillMap[type].style
-          ]}
-        >
-          {pillMap[type].text}
-        </Text>
-      )}
+      {type === "raster" ||
+        (type === "hasBleed" && (
+          <Text
+            style={[
+              styles.pill,
+              size === "small" ? styles.pillSmall : {},
+              pillMap[type].style
+            ]}
+          >
+            {pillMap[type].text}
+          </Text>
+        ))}
     </View>
     <View
       style={{

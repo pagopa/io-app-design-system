@@ -1,10 +1,12 @@
 import {
   H2,
   IOPictograms,
+  IOPictogramsBleed,
   IOPictogramsLegacy,
   IOThemeContext,
   IOVisualCostants,
   Pictogram,
+  PictogramBleed,
   SVGPictogramProps
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -69,8 +71,40 @@ export const Pictograms = () => {
           <AssetViewerBox
             key={pictogramItemName}
             name={pictogramItemName}
+            type={
+              Object.keys(IOPictogramsBleed).includes(pictogramItemName)
+                ? "hasBleed"
+                : "vector"
+            }
             image={
               <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
+            }
+          />
+        ))}
+      </View>
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Bleed Pictograms
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOPictogramsBleed).map(([pictogramItemName]) => (
+          <AssetViewerBox
+            type="bleed"
+            key={pictogramItemName}
+            name={pictogramItemName}
+            size="small"
+            image={
+              <PictogramBleed
+                name={pictogramItemName as IOPictogramsBleed}
+                size="100%"
+              />
             }
           />
         ))}
