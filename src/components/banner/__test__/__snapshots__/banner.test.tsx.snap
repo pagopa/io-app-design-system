@@ -189,13 +189,13 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               style={
                 [
                   {
-                    "fontFamily": "Readex Pro",
+                    "fontFamily": "Titillium Web",
                     "fontSize": 16,
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "700",
                   },
                   {
-                    "color": "#0B3EE3",
+                    "color": "#0073E6",
                   },
                   {
                     "color": undefined,

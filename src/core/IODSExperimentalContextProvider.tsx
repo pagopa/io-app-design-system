@@ -10,7 +10,7 @@ type IOExperimentalContextType = {
  */
 const IOExperimentalDesignContext =
   React.createContext<IOExperimentalContextType>({
-    isExperimental: true,
+    isExperimental: false,
     setExperimental: constVoid
   });
 
