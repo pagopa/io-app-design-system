@@ -652,7 +652,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278927075}
+      color={4278219750}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -666,7 +666,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
+            "color": "#0073E6",
           },
           {
             "flex": 0,
@@ -675,7 +675,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4278927075}
+      tintColor={4278219750}
       vbHeight={24}
       vbWidth={24}
       width={24}
