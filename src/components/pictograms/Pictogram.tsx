@@ -11,7 +11,6 @@ import PictogramBaloons from "./svg/PictogramBaloons";
 import PictogramBeerMug from "./svg/PictogramBeerMug";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
 import PictogramCompleted from "./svg/PictogramCompleted";
-import PictogramDonation from "./svg/PictogramDonation";
 import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramEmailValidation from "./svg/PictogramEmailValidation";
 import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
@@ -33,7 +32,6 @@ import PictogramProcessing from "./svg/PictogramProcessing";
 import PictogramPuzzle from "./svg/PictogramPuzzle";
 import PictogramQuestion from "./svg/PictogramQuestion";
 import PictogramSearch from "./svg/PictogramSearch";
-import PictogramSetup from "./svg/PictogramSetup";
 import PictogramSms from "./svg/PictogramSms";
 import PictogramTeaBreak from "./svg/PictogramTeaBreak";
 import PictogramTimeout from "./svg/PictogramTimeout";
@@ -42,7 +40,7 @@ import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
 import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
 import PictogramSuccess from "./svg/PictogramSuccess";
-import PictogramFocusOn from "./svg/PictogramFocusOn";
+import PictogramHelp from "./svg/PictogramHelp";
 import PictogramITWallet from "./svg/PictogramITWallet";
 import PictogramFatalError from "./svg/PictogramFatalError";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
@@ -59,6 +57,9 @@ import PictogramCharity from "./svg/PictogramCharity";
 import PictogramEmpty from "./svg/PictogramEmpty";
 /* Bleed Pictograms */
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
+import PictogramBleedHelp from "./svg/PictogramBleedHelp";
+import PictogramBleedITWallet from "./svg/PictogramBleedITWallet";
+import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -96,9 +97,7 @@ export const IOPictograms = {
   followMessage: PictogramFollowMessage,
   manual: PictogramManual,
   trash: PictogramTrash,
-  setup: PictogramSetup,
   empty: PictogramEmpty,
-  donation: PictogramDonation,
   charity: PictogramCharity,
   attention: PictogramAttention,
   emptyArchive: PictogramEmptyArchive,
@@ -107,7 +106,7 @@ export const IOPictograms = {
   cameraRequest: PictogramCameraRequest,
   success: PictogramSuccess,
   fatalError: PictogramFatalError,
-  focusOn: PictogramFocusOn,
+  help: PictogramHelp,
   itWallet: PictogramITWallet,
   updateOS: PictogramUpdateOS,
   identity: PictogramIdentity,
@@ -152,10 +151,18 @@ export const Pictogram = ({
     Used in the <Banner /> component
 */
 
+export type IOPictogramsBleed = Extract<
+  "charity" | "help" | "feedback" | "itWallet",
+  IOPictograms
+>;
+
 export const IOPictogramsBleed: {
-  [key in IOPictograms]: ({ size }: SVGPictogramProps) => JSX.Element;
+  [key in IOPictogramsBleed]: ({ size }: SVGPictogramProps) => JSX.Element;
 } = {
-  charity: PictogramBleedCharity
+  charity: PictogramBleedCharity,
+  help: PictogramBleedHelp,
+  feedback: PictogramBleedFeedback,
+  itWallet: PictogramBleedITWallet
 };
 
 export const PictogramBleed = ({
@@ -164,11 +171,9 @@ export const PictogramBleed = ({
   size = 80,
   ...props
 }: IOPictogramsProps) => {
-  const PictogramElement = IOPictogramsBleed[name];
+  const PictogramElement = IOPictogramsBleed[name as IOPictogramsBleed];
   return <PictogramElement {...props} size={size} color={IOColors[color]} />;
 };
-
-export type IOPictogramsBleed = keyof typeof IOPictogramsBleed;
 
 /* Legacy pictograms */
 

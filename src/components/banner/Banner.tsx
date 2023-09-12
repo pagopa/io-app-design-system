@@ -30,7 +30,7 @@ import { ButtonLink, IconButton } from "../buttons";
 import {
   IOPictogramSizeScale,
   IOPictogramsBleed,
-  Pictogram
+  PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
@@ -226,7 +226,7 @@ export const Banner = ({
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
-        <Pictogram
+        <PictogramBleed
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />

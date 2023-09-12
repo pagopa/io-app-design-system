@@ -71,6 +71,11 @@ export const Pictograms = () => {
           <AssetViewerBox
             key={pictogramItemName}
             name={pictogramItemName}
+            type={
+              Object.keys(IOPictogramsBleed).includes(pictogramItemName)
+                ? "hasBleed"
+                : "vector"
+            }
             image={
               <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
             }
@@ -91,6 +96,7 @@ export const Pictograms = () => {
       <View style={styles.itemsWrapper}>
         {Object.entries(IOPictogramsBleed).map(([pictogramItemName]) => (
           <AssetViewerBox
+            type="bleed"
             key={pictogramItemName}
             name={pictogramItemName}
             size="small"
