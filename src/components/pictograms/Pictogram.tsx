@@ -57,6 +57,8 @@ import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
 import PictogramTrash from "./svg/PictogramTrash";
 import PictogramCharity from "./svg/PictogramCharity";
 import PictogramEmpty from "./svg/PictogramEmpty";
+/* Bleed Pictograms */
+import PictogramBleedCharity from "./svg/PictogramBleedCharity";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -149,13 +151,22 @@ export const Pictogram = ({
 /* Bleed pictograms
     Used in the <Banner /> component
 */
-const { donation, feedback, focusOn } = IOPictograms;
 
-const IOPictogramsBleed = {
-  donation,
-  feedback,
-  focusOn
-} as const;
+export const IOPictogramsBleed: {
+  [key in IOPictograms]: ({ size }: SVGPictogramProps) => JSX.Element;
+} = {
+  charity: PictogramBleedCharity
+};
+
+export const PictogramBleed = ({
+  name,
+  color = "aqua",
+  size = 80,
+  ...props
+}: IOPictogramsProps) => {
+  const PictogramElement = IOPictogramsBleed[name];
+  return <PictogramElement {...props} size={size} color={IOColors[color]} />;
+};
 
 export type IOPictogramsBleed = keyof typeof IOPictogramsBleed;
 
