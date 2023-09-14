@@ -21,16 +21,11 @@ import {
 } from "../../core/";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import {
-  AnimatedIcon,
-  IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
-} from "../icons";
+import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
-type ColorButtonOutline = "primary" | "contrast";
+type ColorButtonOutline = "primary" | "contrast" | "danger";
 export type ButtonOutline = WithTestID<{
   color?: ColorButtonOutline;
   label: string;
@@ -102,6 +97,24 @@ const mapColorStates: Record<
       pressed: IOColors.white,
       disabled: IOColors["blueIO-200"]
     }
+  },
+  // Danger button
+  danger: {
+    border: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.bluegreyLight
+    },
+    background: {
+      default: hexToRgba(IOColors.red, 0),
+      pressed: hexToRgba(IOColors.red, 0.15),
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.grey
+    }
   }
 };
 
@@ -144,6 +157,24 @@ const mapLegacyColorStates: Record<
       default: IOColors.white,
       pressed: IOColors.white,
       disabled: hexToRgba(IOColors.white, 0.5)
+    }
+  },
+  // Danger button
+  danger: {
+    border: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.bluegreyLight
+    },
+    background: {
+      default: hexToRgba(IOColors.red, 0),
+      pressed: hexToRgba(IOColors.red, 0.15),
+      disabled: "transparent"
+    },
+    label: {
+      default: IOColors.red,
+      pressed: IOColors.red,
+      disabled: IOColors.grey
     }
   }
 };
