@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   }
 });
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyStyles = StyleSheet.create({
   labelLegacy: {
     fontSize: 18,
@@ -67,6 +68,11 @@ export const ListItemAction = ({
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const mapBackgroundStates: Record<string, string> = {
+    default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
+    pressed: IOColors[theme["listItem-pressed"]]
+  };
 
   const mapLegacyForegroundColor: Record<
     NonNullable<ListItemAction["variant"]>,
@@ -106,19 +112,14 @@ export const ListItemAction = ({
   const itemActionIconComponent = (icon: IOIcons) =>
     isExperimental ? itemActionIcon(icon) : legacyItemActionIcon(icon);
 
-  const DSTextStyle = [styles.label, { color: mapForegroundColor[variant] }];
+  const textStyle = [styles.label, { color: mapForegroundColor[variant] }];
 
   const legacyTextStyle = [
     legacyStyles.labelLegacy,
     { color: IOColors[mapLegacyForegroundColor[variant]] }
   ];
 
-  const textStyle = isExperimental ? DSTextStyle : legacyTextStyle;
-
-  const mapBackgroundStates: Record<string, string> = {
-    default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
-    pressed: IOColors[theme["listItem-pressed"]]
-  };
+  const textStyleComponent = isExperimental ? textStyle : legacyTextStyle;
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -185,7 +186,7 @@ export const ListItemAction = ({
             </View>
           )}
           <View style={IOStyles.flex}>
-            <Text style={textStyle}>{label}</Text>
+            <Text style={textStyleComponent}>{label}</Text>
           </View>
         </Animated.View>
       </Animated.View>
