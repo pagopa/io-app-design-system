@@ -229,6 +229,7 @@ export const IOIcons = {
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  dialpad: IconDialpad,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
@@ -253,6 +254,7 @@ export const IOIcons = {
   arrowLeft: IconArrowLeft,
   arrowTop: IconArrowTop,
   arrowRight: IconArrowRight,
+  change: IconChange,
   backiOS: IconBackiOS,
   backAndroid: IconBackAndroid,
   navMessages: IconNavMessages /* io-messaggi */,
@@ -295,9 +297,7 @@ export const IOIcons = {
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
-  systemNotificationsInstructions: IconSystemNotificationsInstructions,
-  change: IconChange,
-  dialpad: IconDialpad
+  systemNotificationsInstructions: IconSystemNotificationsInstructions
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
