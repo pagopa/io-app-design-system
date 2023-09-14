@@ -8,20 +8,20 @@ import {
   TabNavigation,
   TabItem,
   IOColors,
-  Monospace,
+  BodyMonospace,
   H3,
   H2,
   HSpacer,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
-import { Screen } from "../components/Screen";
+import { NoMarginScreen } from "../components/Screen";
 
 export const TabNavigationScreen = () => {
   const handlePress = () => {};
 
   return (
-    <Screen>
+    <NoMarginScreen>
       <ContentWrapper>
         <H2>Tab Item</H2>
         <VSpacer size={24} />
@@ -234,7 +234,7 @@ export const TabNavigationScreen = () => {
 
       <View style={[styles.default, { paddingVertical: 24 }]}>
         <ContentWrapper>
-          <Monospace>{`center (default)`}</Monospace>
+          <BodyMonospace>{`center (default)`}</BodyMonospace>
         </ContentWrapper>
 
         <VSpacer size={16} />
@@ -248,7 +248,7 @@ export const TabNavigationScreen = () => {
         <VSpacer size={24} />
 
         <ContentWrapper>
-          <Monospace>{`start`}</Monospace>
+          <BodyMonospace>{`start`}</BodyMonospace>
         </ContentWrapper>
 
         <VSpacer size={16} />
@@ -262,7 +262,7 @@ export const TabNavigationScreen = () => {
         <VSpacer size={24} />
 
         <ContentWrapper>
-          <Monospace>{`end`}</Monospace>
+          <BodyMonospace>{`end`}</BodyMonospace>
         </ContentWrapper>
 
         <VSpacer size={16} />
@@ -276,7 +276,7 @@ export const TabNavigationScreen = () => {
         <VSpacer size={24} />
 
         <ContentWrapper>
-          <Monospace>{`stretch`}</Monospace>
+          <BodyMonospace>{`stretch`}</BodyMonospace>
         </ContentWrapper>
 
         <VSpacer size={16} />
@@ -287,7 +287,7 @@ export const TabNavigationScreen = () => {
           <TabItem label="Label" accessibilityLabel="Label" />
         </TabNavigation>
       </View>
-    </Screen>
+    </NoMarginScreen>
   );
 };
 

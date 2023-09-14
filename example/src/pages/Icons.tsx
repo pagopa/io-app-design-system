@@ -208,11 +208,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Sizes
       </H3>
       <View style={styles.itemsWrapper}>
@@ -232,11 +228,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Colors
       </H3>
       <View style={styles.itemsWrapper}>

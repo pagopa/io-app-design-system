@@ -1,66 +1,34 @@
-import React from "react";
-import type { IOColors } from "../../core/IOColors";
+import { IOTheme } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps } from "./common";
+import { ExternalTypographyProps, TypographyProps } from "./common";
 
-// these colors are allowed only when the weight is SemiBold
-type AllowedSemiBoldColors = Extract<
-  IOColors,
-  "bluegreyDark" | "bluegrey" | "bluegreyLight" | "blue" | "white" | "red"
+type AllowedColors = IOTheme["textHeading-default"];
+type AllowedWeight = Extract<IOFontWeight, "SemiBold">;
+
+type H5Props = ExternalTypographyProps<
+  TypographyProps<AllowedWeight, AllowedColors>
 >;
-
-// when the weight is bold, only the white color is allowed
-type AllowedRegularColors = Extract<
-  IOColors,
-  | "bluegreyDark"
-  | "bluegrey"
-  | "bluegreyLight"
-  | "blue"
-  | "white"
-  | "red"
-  | "grey"
->;
-
-// all the possible colors
-type AllowedColors = AllowedSemiBoldColors | AllowedRegularColors;
-
-// all the possible weight
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
-
-// these are the properties allowed only if weight is undefined or SemiBold
-type SemiBoldProps = {
-  weight?: Extract<IOFontWeight, "SemiBold">;
-  color?: AllowedSemiBoldColors;
-};
-
-// these are the properties allowed only if weight is Bold
-type RegularProps = {
-  weight: Extract<IOFontWeight, "Regular">;
-  color?: AllowedRegularColors;
-};
-
-type BoldKindProps = SemiBoldProps | RegularProps;
-
-type OwnProps = ExternalTypographyProps<BoldKindProps>;
 
 export const h5FontSize = 14;
-export const h5DefaultColor: AllowedColors = "bluegreyDark";
-export const h5DefaultWeight: AllowedWeight = "SemiBold";
+export const h5LineHeight = 16;
+const font: FontFamily = "TitilliumWeb";
+const defaultColor: AllowedColors = "black";
+const defaultWeight: AllowedWeight = "SemiBold";
 
 /**
- * Typography component to render `H5` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `SemiBold`, color: `bluegreyDark`
- * @param props
- * @constructor
+ * `H5` typographic style
  */
-export const H5: React.FC<OwnProps> = props => {
-  const fontName: FontFamily = "TitilliumWeb";
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
+export const H5 = (props: H5Props) =>
+  useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: h5DefaultWeight,
-    defaultColor: h5DefaultColor,
-    font: fontName,
-    fontStyle: { fontSize: h5FontSize }
+    defaultWeight,
+    defaultColor,
+    font,
+    fontStyle: {
+      fontSize: h5FontSize,
+      lineHeight: h5LineHeight,
+      textTransform: "uppercase",
+      letterSpacing: 0.5
+    }
   });
-};

@@ -21,6 +21,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons/Icon";
 import { HSpacer } from "../spacer/Spacer";
+import { buttonTextFontSize } from "../typography";
 
 type ColorButtonLink = "primary";
 export type ButtonLink = WithTestID<{
@@ -74,8 +75,8 @@ const mapLegacyColorStates: Record<
 const DISABLED_OPACITY = 0.5;
 const IOButtonStylesLocal = StyleSheet.create({
   label: {
-    fontSize: 16,
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
+    ...makeFontStyleObject("Regular", false, "ReadexPro"),
+    fontSize: buttonTextFontSize
   }
 });
 

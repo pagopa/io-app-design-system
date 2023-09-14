@@ -1,4 +1,3 @@
-import React from "react";
 import { IOColors, IOTheme } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -11,7 +10,7 @@ type PartialAllowedColors = Extract<
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-default"];
 type AllowedWeight = IOFontWeight | "Regular" | "SemiBold";
 
-type OwnProps = ExternalTypographyProps<
+type BodyProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
@@ -22,12 +21,9 @@ export const bodyDefaultColor: AllowedColors = "bluegrey";
 export const bodyDefaultWeight: AllowedWeight = "Regular";
 
 /**
- * Typography component to render `Body` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values (if not defined) are weight: `Regular`, color: `bluegrey`
- * @param props`
- * @constructor
+ * `Body` typographic style
  */
-export const Body: React.FunctionComponent<OwnProps> = props =>
+export const Body = (props: BodyProps) =>
   useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: bodyDefaultWeight,

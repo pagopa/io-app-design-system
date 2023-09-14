@@ -1,4 +1,3 @@
-import * as React from "react";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { IOTheme, IOThemeLight } from "../../core";
 import { useTypographyFactory } from "./Factory";
@@ -12,26 +11,21 @@ type AllowedColors =
   | "black";
 type AllowedWeight = Extract<IOFontWeight, "Regular">;
 
-type OwnProps = ExternalTypographyProps<
+type LabelHeaderProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-/* Common typographic styles */
 export const labelHeaderFontSize = 14;
 export const labelHeaderLineHeight = 18;
 export const labelHeaderDefaultColor: AllowedColors =
   IOThemeLight["textBody-default"];
-/* New typographic styles */
 const labelHeaderFontName: IOFontFamily = "ReadexPro";
 const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
 /**
- * Typography component to render `LabelHeader` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Regular`, color: `bluegreyDark`
- * @param props
- * @constructor
+ * `LabelHeader` typographic style
  */
-export const LabelHeader: React.FunctionComponent<OwnProps> = props =>
+export const LabelHeader = (props: LabelHeaderProps) =>
   useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: labelHeaderDefaultWeight,

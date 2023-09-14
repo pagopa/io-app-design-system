@@ -12,7 +12,7 @@ import Animated, {
 import { IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
-import { BaseTypography } from "../typography/BaseTypography";
+import { ButtonText, ButtonTextAllowedColors } from "../typography/ButtonText";
 import {
   IOButtonLegacyStyles,
   IOButtonStyles,
@@ -28,8 +28,8 @@ type ColorStates = {
   default: string;
   pressed: string;
   label: {
-    default: IOColors;
-    disabled: IOColors;
+    default: ButtonTextAllowedColors;
+    disabled: ButtonTextAllowedColors;
   };
 };
 
@@ -142,7 +142,7 @@ const mapLegacyColorStates: Record<
     default: IOColors.white,
     pressed: IOColors["blue-50"],
     label: {
-      default: "blue",
+      default: "blueIO-500",
       disabled: "white"
     }
   }
@@ -239,9 +239,7 @@ export const ButtonSolid = React.memo(
           style={[
             buttonStyles.button,
             iconPosition === "end" && { flexDirection: "row-reverse" },
-            small
-              ? buttonStyles.buttonSizeSmall
-              : buttonStyles.buttonSizeDefault,
+            buttonStyles.buttonSizeDefault,
             disabled
               ? isExperimental
                 ? styles.backgroundDisabled
@@ -262,16 +260,9 @@ export const ButtonSolid = React.memo(
               <HSpacer size={8} />
             </>
           )}
-          <BaseTypography
-            font={isExperimental ? "ReadexPro" : undefined}
-            weight={isExperimental ? "Regular" : "Bold"}
+          <ButtonText
             color={foregroundColor}
-            style={[
-              buttonStyles.label,
-              small
-                ? buttonStyles.labelSizeSmall
-                : buttonStyles.labelSizeDefault
-            ]}
+            style={IOButtonStyles.label}
             numberOfLines={1}
             ellipsizeMode="tail"
             /* A11y-related props:
@@ -280,7 +271,7 @@ export const ButtonSolid = React.memo(
                 maxFontSizeMultiplier={1.3} */
           >
             {label}
-          </BaseTypography>
+          </ButtonText>
         </Animated.View>
       </Pressable>
     );

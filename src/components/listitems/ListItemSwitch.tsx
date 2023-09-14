@@ -8,7 +8,7 @@ import {
 } from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall, Link } from "../typography";
+import { H6, LabelSmall, LabelLink } from "../typography";
 import { NativeSwitch } from "../switch/NativeSwitch";
 
 type Props = {
@@ -91,9 +91,9 @@ export const ListItemSwitch = React.memo(
             {action && (
               <>
                 <VSpacer size={IOSelectionListItemVisualParams.actionMargin} />
-                <Link fontSize="small" onPress={action.onPress}>
+                <LabelLink fontSize="small" onPress={action.onPress}>
                   {action.label}
-                </Link>
+                </LabelLink>
               </>
             )}
           </View>
