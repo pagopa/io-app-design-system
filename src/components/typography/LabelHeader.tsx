@@ -1,5 +1,5 @@
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
-import { IOTheme, IOThemeLight } from "../../core";
+import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
@@ -22,17 +22,23 @@ export const labelHeaderDefaultColor: AllowedColors =
 const labelHeaderFontName: IOFontFamily = "ReadexPro";
 const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
+
 /**
  * `LabelHeader` typographic style
  */
-export const LabelHeader = (props: LabelHeaderProps) =>
+export const LabelHeader = (props: LabelHeaderProps) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
   useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: labelHeaderDefaultWeight,
     defaultColor: labelHeaderDefaultColor,
-    font: labelHeaderFontName,
+    font: isExperimental ? legacyLabelHeaderFontName : labelHeaderFontName,
     fontStyle: {
       fontSize: labelHeaderFontSize,
       lineHeight: labelHeaderLineHeight
     }
   });
+};

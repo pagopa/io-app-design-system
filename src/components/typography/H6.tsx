@@ -1,11 +1,11 @@
-import { IOTheme, IOThemeLight } from "../../core/IOColors";
+import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 // when the weight is bold, only these color are allowed
 type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
-type AllowedWeight = Extract<IOFontWeight, "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
 
 type H6Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -17,14 +17,21 @@ const h6DefaultColor: AllowedColors = IOThemeLight["textBody-default"];
 const h6DefaultWeight: AllowedWeight = "Regular";
 const fontName: FontFamily = "ReadexPro";
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyDefaultWeight: AllowedWeight = "SemiBold";
+
 /**
  * `H6` typographic style
  */
-export const H6 = (props: H6Props) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const H6 = (props: H6Props) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: h6DefaultWeight,
+    defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
     defaultColor: h6DefaultColor,
-    font: fontName,
+    font: isExperimental ? fontName : legacyFontName,
     fontStyle: { fontSize: h6FontSize, lineHeight: h6LineHeight }
   });
+};
