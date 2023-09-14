@@ -74,14 +74,14 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         fontStyle={
           {
             "fontSize": 20,
-            "lineHeight": 24,
+            "lineHeight": 30,
           }
         }
         style={
           [
             {
               "fontSize": 20,
-              "lineHeight": 24,
+              "lineHeight": 30,
             },
             {
               "color": "#0E0F13",
@@ -313,9 +313,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         },
         false,
         {
-          "height": 40,
-        },
-        {
           "backgroundColor": "rgba(0,115,230,0)",
           "borderColor": "#0073E6",
         },
@@ -343,9 +340,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           },
           {
             "alignSelf": "center",
-          },
-          {
-            "fontSize": 16,
           },
           {
             "color": "#0073E6",
@@ -433,28 +427,33 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
   >
     <Text
       color="white"
+      defaultColor="white"
+      defaultWeight="Regular"
       ellipsizeMode="tail"
+      font="ReadexPro"
+      fontStyle={
+        {
+          "fontSize": 16,
+        }
+      }
       numberOfLines={1}
       style={
         [
-          [
-            {
-              "alignSelf": "center",
-            },
-            {
-              "fontSize": 16,
-            },
-          ],
-          undefined,
+          {
+            "alignSelf": "center",
+          },
+          {
+            "fontSize": 16,
+          },
           {
             "color": "#FFFFFF",
-            "fontFamily": "Titillium Web",
+            "fontFamily": "Readex Pro",
             "fontStyle": "normal",
-            "fontWeight": "700",
+            "fontWeight": "400",
           },
         ]
       }
-      weight="Bold"
+      weight="Regular"
     >
       label
     </Text>

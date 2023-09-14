@@ -8,10 +8,10 @@ import { Platform } from "react-native";
 
 export type IOFontFamily = keyof typeof fonts;
 
-const weights = ["Light", "Regular", "SemiBold", "Bold"] as const;
+const weights = ["Light", "Regular", "Medium", "SemiBold", "Bold"] as const;
 export type IOFontWeight = (typeof weights)[number];
 
-const weightValues = ["300", "400", "600", "700"] as const;
+const weightValues = ["300", "400", "500", "600", "700"] as const;
 export type FontWeightValue = (typeof weightValues)[number];
 
 /**
@@ -28,10 +28,10 @@ const fonts = {
     web: "ReadexPro",
     ios: "Readex Pro"
   }),
-  RobotoMono: Platform.select({
-    android: "RobotoMono",
-    web: "RobotoMono",
-    ios: "Roboto Mono"
+  DMMono: Platform.select({
+    android: "DMMono",
+    web: "DMMono",
+    ios: "DM Mono"
   })
 };
 
@@ -42,6 +42,7 @@ const fonts = {
 export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
+  Medium: "500",
   SemiBold: "600",
   Bold: "700"
 };
@@ -56,6 +57,7 @@ export type FontWeight = keyof typeof fontWeights;
 export const fontWeightsMap: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
+  Medium: "500",
   SemiBold: "600",
   Bold: "700"
 };

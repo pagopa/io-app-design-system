@@ -51,6 +51,8 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>TitilliumWeb-Black.ttf</string>
@@ -65,12 +67,7 @@
 		<string>TitilliumWeb-SemiBold.ttf</string>
 		<string>TitilliumWeb-SemiBoldItalic.ttf</string>
 		<string>ReadexPro-Regular.ttf</string>
-		<string>RobotoMono-Bold.ttf</string>
-		<string>RobotoMono-BoldItalic.ttf</string>
-		<string>RobotoMono-Light.ttf</string>
-		<string>RobotoMono-LightItalic.ttf</string>
-		<string>RobotoMono-Regular.ttf</string>
-		<string>RobotoMono-RegularItalic.ttf</string>
+		<string>DMMono-Medium.ttf</string>
 	</array>
 </dict>
 </plist>
