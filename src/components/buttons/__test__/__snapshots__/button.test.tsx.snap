@@ -311,6 +311,9 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {
           "borderWidth": 1,
         },
+        {
+          "height": 40,
+        },
         false,
         {
           "backgroundColor": "rgba(0,115,230,0)",
