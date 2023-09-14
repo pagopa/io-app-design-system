@@ -28,9 +28,9 @@ import { IOColors } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
 import { ButtonLink, IconButton } from "../buttons";
 import {
+  PictogramBleed,
   IOPictogramSizeScale,
-  IOPictogramsBleed,
-  Pictogram
+  IOPictogramsBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
@@ -224,7 +224,7 @@ export const Banner = ({
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
-        <Pictogram
+        <PictogramBleed
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />

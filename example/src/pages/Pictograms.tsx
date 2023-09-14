@@ -1,14 +1,17 @@
 import {
   H2,
   IOPictograms,
-  IOSectionPictogramType,
-  IOSectionPictograms,
+  IOPictogramsBleed,
+  IOPictogramsLegacy,
+  IOThemeContext,
   IOVisualCostants,
   Pictogram,
-  PictogramSection
+  PictogramBleed,
+  SVGPictogramProps
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
+import { useContext } from "react";
 import { AssetViewerBox, assetItemGutter } from "../components/AssetViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -23,48 +26,111 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Pictograms = () => (
-  <Screen>
-    <H2
-      color={"bluegrey"}
-      weight={"SemiBold"}
-      style={{
-        marginBottom: 16,
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      Pictograms
-    </H2>
-    <View style={styles.itemsWrapper}>
-      {Object.entries(IOPictograms).map(([pictogramItemName]) => (
-        <AssetViewerBox
-          key={pictogramItemName}
-          name={pictogramItemName}
-          image={
-            <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
-          }
-        />
-      ))}
-    </View>
+// Filter the main object, removing already displayed pictograms in the other sets
+type PictogramSubsetObject = Record<
+  string,
+  ({ size }: SVGPictogramProps) => JSX.Element
+>;
+interface PictogramSetObject {
+  [key: string]: ({ size }: SVGPictogramProps) => JSX.Element;
+}
 
-    <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
-      Sections
-    </H2>
-    <View style={styles.itemsWrapper}>
-      {Object.entries(IOSectionPictograms).map(([pictogramItemName]) => (
-        <AssetViewerBox
-          colorMode="dark"
-          size="small"
-          key={pictogramItemName}
-          name={pictogramItemName}
-          image={
-            <PictogramSection
-              name={pictogramItemName as IOSectionPictogramType}
-              size="100%"
-            />
-          }
-        />
-      ))}
-    </View>
-  </Screen>
+const filterPictogramSet = (
+  pictogramSubsetObject: PictogramSubsetObject,
+  pictogramSetObject: PictogramSetObject
+): PictogramSetObject =>
+  Object.fromEntries(
+    Object.entries(pictogramSetObject).filter(
+      ([key]) => !Object.keys(pictogramSubsetObject).includes(key)
+    )
+  );
+
+const filteredIOPictograms = filterPictogramSet(
+  {
+    ...IOPictogramsLegacy
+  },
+  IOPictograms
 );
+
+export const Pictograms = () => {
+  const theme = useContext(IOThemeContext);
+  return (
+    <Screen>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Pictograms
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(filteredIOPictograms).map(([pictogramItemName]) => (
+          <AssetViewerBox
+            key={pictogramItemName}
+            name={pictogramItemName}
+            type={
+              Object.keys(IOPictogramsBleed).includes(pictogramItemName)
+                ? "hasBleed"
+                : "vector"
+            }
+            image={
+              <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
+            }
+          />
+        ))}
+      </View>
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Bleed Pictograms
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOPictogramsBleed).map(([pictogramItemName]) => (
+          <AssetViewerBox
+            type="bleed"
+            key={pictogramItemName}
+            name={pictogramItemName}
+            size="small"
+            image={
+              <PictogramBleed
+                name={pictogramItemName as IOPictogramsBleed}
+                size="100%"
+              />
+            }
+          />
+        ))}
+      </View>
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Legacy Pictograms
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOPictogramsLegacy).map(([pictogramItemName]) => (
+          <AssetViewerBox
+            key={pictogramItemName}
+            name={pictogramItemName}
+            image={
+              <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
+            }
+          />
+        ))}
+      </View>
+    </Screen>
+  );
+};

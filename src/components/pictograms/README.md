@@ -1,19 +1,12 @@
 # Pictograms
-There are different sets:
-* **General:** Pictograms used to enrich the following states:
-  * Empty 
-  * Success
-  * Error 
-* **Sections:** Pictograms used in the `Header` component as companion of the title. 
 
-## Prefixes
-- **General**: `Pictogram…`
-- **Sections**: `PictogramSection…`
+## Prefix
+To avoid confusion with other components referenced in the codebase, just use the prefix `Pictogram…`
 
 ## Add a new pictogram
 First of all, follow the instructions stated in the main README (`Vector graphics` section).
 
-If you want to add a new pictogram in the `General` set, open the `Pictogram.tsx` file and import the React component:
+If you want to add a new pictogram, open the `Pictogram.tsx` file and import the React component:
 ```jsx
 […]
 import PictogramAirBaloon from "./svg/PictogramAirBaloon";
@@ -29,7 +22,7 @@ export const IOPictograms = {
 You can add the recently added pictogram with the following declaration:
 ```jsx
 // Default size: 120×120px
-// Default color: Aqua
+// Default color: Turquoise
 <Pictogram name="airBaloon">
 ```
 

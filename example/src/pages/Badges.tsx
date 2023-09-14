@@ -92,6 +92,10 @@ const renderTag = () => (
         <HSpacer size={8} />
         <Tag text={"Valore legale"} variant="legalMessage" />
       </View>
+      <VSpacer size={8} />
+      <Tag variant="attachment" />
+      <VSpacer size={8} />
+      <Tag text={"No icon"} variant="noIcon" />
     </ComponentViewerBox>
     <ComponentViewerBox name={"Tag, stress test"}>
       <View
