@@ -8,7 +8,7 @@ export type ButtonTextAllowedColors = Extract<
   IOColors,
   "white" | "blueIO-500" | "grey-700"
 >;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular" | "Bold">;
 
 type ButtonTextProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, ButtonTextAllowedColors>
@@ -23,6 +23,7 @@ const buttonTextDefaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyTextFontName: IOFontFamily = "TitilliumWeb";
+const legacyTextDefaultWeight: AllowedWeight = "Bold";
 
 /**
  * `ButtonText` typographic style
@@ -32,7 +33,9 @@ export const ButtonText = (props: ButtonTextProps) => {
 
   return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>({
     ...props,
-    defaultWeight: buttonTextDefaultWeight,
+    defaultWeight: isExperimental
+      ? buttonTextDefaultWeight
+      : legacyTextDefaultWeight,
     defaultColor: buttonTextDefaultColor,
     font: isExperimental ? buttonTextFontName : legacyTextFontName,
     fontStyle: {
