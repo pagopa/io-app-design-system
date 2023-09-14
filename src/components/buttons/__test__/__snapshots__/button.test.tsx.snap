@@ -428,7 +428,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     <Text
       color="white"
       defaultColor="white"
-      defaultWeight="Regular"
+      defaultWeight="Bold"
       ellipsizeMode="tail"
       font="TitilliumWeb"
       fontStyle={
@@ -449,11 +449,11 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             "color": "#FFFFFF",
             "fontFamily": "Titillium Web",
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
           },
         ]
       }
-      weight="Regular"
+      weight="Bold"
     >
       label
     </Text>
