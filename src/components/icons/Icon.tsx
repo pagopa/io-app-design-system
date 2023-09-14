@@ -147,6 +147,9 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconOption from "./svg/IconOption";
+import IconKey from "./svg/IconKey";
+import IconNotification from "./svg/IconNotification";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -186,6 +189,8 @@ export const IOIcons = {
   docSign: IconDocumentSign,
   docAgree: IconAgreement,
   security: IconSecurity,
+  option: IconOption,
+  key: IconKey,
   docGiacenza: IconGiacenza,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
@@ -227,6 +232,7 @@ export const IOIcons = {
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  notification: IconNotification,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
