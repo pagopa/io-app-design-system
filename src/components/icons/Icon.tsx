@@ -147,6 +147,8 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconChange from "./svg/IconChange";
+import IconDialpad from "./svg/IconDialpad";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -293,7 +295,9 @@ export const IOIcons = {
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
-  systemNotificationsInstructions: IconSystemNotificationsInstructions
+  systemNotificationsInstructions: IconSystemNotificationsInstructions,
+  change: IconChange,
+  dialpad: IconDialpad
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
