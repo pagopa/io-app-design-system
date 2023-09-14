@@ -67,24 +67,24 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
       }
     >
       <Text
-        color="bluegreyDark"
-        defaultColor="bluegreyDark"
+        color="black"
+        defaultColor="black"
         defaultWeight="SemiBold"
         font="TitilliumWeb"
         fontStyle={
           {
-            "fontSize": 20,
-            "lineHeight": 30,
+            "fontSize": 16,
+            "lineHeight": 24,
           }
         }
         style={
           [
             {
-              "fontSize": 20,
-              "lineHeight": 30,
+              "fontSize": 16,
+              "lineHeight": 24,
             },
             {
-              "color": "#17324D",
+              "color": "#0E0F13",
               "fontFamily": "Titillium Web",
               "fontStyle": "normal",
               "fontWeight": "600",

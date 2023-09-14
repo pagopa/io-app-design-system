@@ -14,7 +14,7 @@ import Animated, {
   withSpring
 } from "react-native-reanimated";
 import { IOIcons, Icon } from "../icons";
-import { H4, LabelSmall } from "../typography";
+import { H6, LabelSmall } from "../typography";
 import { IOScaleValues, IOSpringValues, IOColors, IOStyles } from "../../core";
 
 type Props = {
@@ -88,7 +88,7 @@ export const ButtonExtendedOutline = ({
     >
       <Animated.View style={[styles.button, animatedStyle]}>
         <View style={IOStyles.flex}>
-          <H4>{label}</H4>
+          <H6>{label}</H6>
           {description && (
             <LabelSmall weight="Regular" color={"bluegreyDark"}>
               {description}
