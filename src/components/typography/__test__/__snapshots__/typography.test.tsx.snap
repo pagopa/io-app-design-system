@@ -69,7 +69,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
   color="white"
   defaultColor="white"
   defaultWeight="Regular"
-  font="ReadexPro"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 16,
@@ -82,7 +82,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -98,8 +98,8 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
 <Text
   color="black"
   defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 28,
@@ -114,13 +114,13 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -130,8 +130,8 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
 <Text
   color="white"
   defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 28,
@@ -146,13 +146,13 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -162,8 +162,8 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 <Text
   color="black"
   defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 26,
@@ -178,13 +178,13 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -192,10 +192,10 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 
 exports[`Test Typography Components H3 Snapshot 1`] = `
 <Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  color="bluegreyDark"
+  defaultColor="bluegreyDark"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 22,
@@ -209,14 +209,14 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
         "lineHeight": 33,
       },
       {
-        "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "color": "#17324D",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -225,9 +225,9 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
 exports[`Test Typography Components H3 Snapshot 2`] = `
 <Text
   color="bluegreyLight"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 22,
@@ -242,13 +242,13 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -257,9 +257,9 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
 exports[`Test Typography Components H3 Snapshot 3`] = `
 <Text
   color="white"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 22,
@@ -274,13 +274,13 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -289,9 +289,9 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
 exports[`Test Typography Components H3 Snapshot 4`] = `
 <Text
   color="white"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 22,
@@ -306,13 +306,13 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -320,10 +320,10 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
 
 exports[`Test Typography Components H3 Snapshot 5`] = `
 <Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  color="bluegreyDark"
+  defaultColor="bluegreyDark"
+  defaultWeight="Bold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 22,
@@ -337,14 +337,14 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
         "lineHeight": 33,
       },
       {
-        "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "color": "#17324D",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "700",
       },
     ]
   }
-  weight="Regular"
+  weight="Bold"
 >
   Text
 </Text>
@@ -352,10 +352,10 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
 
 exports[`Test Typography Components H4 Snapshot 1`] = `
 <Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  color="bluegreyDark"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -369,14 +369,14 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
         "lineHeight": 30,
       },
       {
-        "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "color": "#17324D",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "600",
       },
     ]
   }
-  weight="Regular"
+  weight="SemiBold"
 >
   Text
 </Text>
@@ -385,9 +385,9 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
 exports[`Test Typography Components H4 Snapshot 2`] = `
 <Text
   color="blue"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -402,13 +402,13 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "600",
       },
     ]
   }
-  weight="Regular"
+  weight="SemiBold"
 >
   Text
 </Text>
@@ -417,9 +417,9 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
 exports[`Test Typography Components H4 Snapshot 3`] = `
 <Text
   color="white"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -434,13 +434,13 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "600",
       },
     ]
   }
-  weight="Regular"
+  weight="SemiBold"
 >
   Text
 </Text>
@@ -448,10 +448,10 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
 
 exports[`Test Typography Components H4 Snapshot 4`] = `
 <Text
-  color="black"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  color="bluegreyDark"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -465,8 +465,8 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
         "lineHeight": 30,
       },
       {
-        "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "color": "#17324D",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -481,9 +481,9 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
 exports[`Test Typography Components H4 Snapshot 5`] = `
 <Text
   color="bluegrey"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -498,7 +498,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -513,9 +513,9 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
 exports[`Test Typography Components H4 Snapshot 6`] = `
 <Text
   color="bluegreyLight"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -530,7 +530,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -545,9 +545,9 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
 exports[`Test Typography Components H4 Snapshot 7`] = `
 <Text
   color="white"
-  defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultColor="bluegreyDark"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 20,
@@ -562,7 +562,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -722,8 +722,8 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
 <Text
   color="black"
   defaultColor="black"
-  defaultWeight="Regular"
-  font="ReadexPro"
+  defaultWeight="SemiBold"
+  font="TitilliumWeb"
   fontStyle={
     {
       "fontSize": 16,
@@ -738,13 +738,13 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Readex Pro",
+        "fontFamily": "Titillium Web",
         "fontStyle": "normal",
-        "fontWeight": "400",
+        "fontWeight": "600",
       },
     ]
   }
-  weight="Regular"
+  weight="SemiBold"
 >
   Text
 </Text>

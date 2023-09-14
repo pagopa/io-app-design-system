@@ -31,7 +31,7 @@ const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
 export const LabelHeader = (props: LabelHeaderProps) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: labelHeaderDefaultWeight,
     defaultColor: labelHeaderDefaultColor,

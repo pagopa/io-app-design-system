@@ -30,7 +30,7 @@ const legacyTextFontName: IOFontFamily = "TitilliumWeb";
 export const ButtonText = (props: ButtonTextProps) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>({
+  return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>({
     ...props,
     defaultWeight: buttonTextDefaultWeight,
     defaultColor: buttonTextDefaultColor,

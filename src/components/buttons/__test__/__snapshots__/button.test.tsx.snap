@@ -67,10 +67,10 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
       }
     >
       <Text
-        color="black"
-        defaultColor="black"
-        defaultWeight="Regular"
-        font="ReadexPro"
+        color="bluegreyDark"
+        defaultColor="bluegreyDark"
+        defaultWeight="SemiBold"
+        font="TitilliumWeb"
         fontStyle={
           {
             "fontSize": 20,
@@ -84,14 +84,14 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
               "lineHeight": 30,
             },
             {
-              "color": "#0E0F13",
-              "fontFamily": "Readex Pro",
+              "color": "#17324D",
+              "fontFamily": "Titillium Web",
               "fontStyle": "normal",
-              "fontWeight": "400",
+              "fontWeight": "600",
             },
           ]
         }
-        weight="Regular"
+        weight="SemiBold"
       >
         label
       </Text>
@@ -430,7 +430,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
       defaultColor="white"
       defaultWeight="Regular"
       ellipsizeMode="tail"
-      font="ReadexPro"
+      font="TitilliumWeb"
       fontStyle={
         {
           "fontSize": 16,
@@ -447,7 +447,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           },
           {
             "color": "#FFFFFF",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Web",
             "fontStyle": "normal",
             "fontWeight": "400",
           },
