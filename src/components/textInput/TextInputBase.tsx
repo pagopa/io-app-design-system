@@ -13,7 +13,12 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import { IOColors, IOSpacingScale, IOStyles } from "../../core";
+import {
+  IOColors,
+  IOSpacingScale,
+  IOStyles,
+  useIOExperimentalDesign
+} from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
@@ -58,11 +63,17 @@ const styles = StyleSheet.create({
   },
   textInputStyle: {
     ...IOStyles.flex,
-    ...makeFontStyleObject("Regular", false, "ReadexPro"),
     fontSize: 16,
     marginTop: IOSpacingScale[2],
     lineHeight: 24,
     height: "100%"
+  },
+  textInputStyleFont: {
+    ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  textInputStyleLegacyFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   },
   textInputLabelWrapper: {
     position: "absolute",
@@ -247,6 +258,7 @@ export const TextInputBase = ({
     [value, derivedInputProps]
   );
 
+  const { isExperimental } = useIOExperimentalDesign();
   return (
     <>
       <Pressable
@@ -286,7 +298,12 @@ export const TextInputBase = ({
           onBlur={onBlurHandler}
           value={inputValue}
           onChangeText={onChangeTextHandler}
-          style={styles.textInputStyle}
+          style={[
+            styles.textInputStyle,
+            isExperimental
+              ? styles.textInputStyleFont
+              : styles.textInputStyleLegacyFont
+          ]}
         />
         {/** Left value is due to the absolute position of the label in order to let it
          * translate to top on focus
