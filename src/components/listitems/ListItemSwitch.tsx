@@ -19,7 +19,7 @@ type Props = {
   action?: SwitchAction;
 };
 
-type SwitchAction = {
+export type SwitchAction = {
   label: string;
   onPress: (event: GestureResponderEvent) => void;
 };
