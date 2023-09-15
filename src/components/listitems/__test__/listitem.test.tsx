@@ -6,7 +6,7 @@ import ListItemInfoCopy from "../ListItemInfoCopy";
 import ListItemNav from "../ListItemNav";
 import ListItemNavAlert from "../ListItemNavAlert";
 import ListItemAction from "../ListItemAction";
-import ListItemIDP from "../ListItemIDP";
+import ListItemIDP from "../../modules/ModuleIDP";
 import { ListItemTransaction } from "../ListItemTransaction";
 import { PressableListItemBase } from "../PressableListItemsBase";
 

@@ -19,10 +19,10 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
-  IOListItemIDPHSpacing,
-  IOListItemIDPRadius,
-  IOListItemIDPSavedVSpacing,
-  IOListItemIDPVSpacing,
+  IOModuleIDPHSpacing,
+  IOModuleIDPRadius,
+  IOModuleIDPSavedVSpacing,
+  IOModuleIDPVSpacing,
   IOListItemLogoMargin,
   IOScaleValues,
   IOSpringValues,
@@ -32,7 +32,7 @@ import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 
-type ListItemIDP = WithTestID<{
+type ModuleIDP = WithTestID<{
   name: string;
   localLogo: ImageSourcePropType;
   logo: ImageSourcePropType;
@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
-    borderRadius: IOListItemIDPRadius,
+    borderRadius: IOModuleIDPRadius,
     backgroundColor: IOColors.white,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: IOListItemIDPVSpacing,
-    paddingHorizontal: IOListItemIDPHSpacing
+    paddingVertical: IOModuleIDPVSpacing,
+    paddingHorizontal: IOModuleIDPHSpacing
   },
   idpName: {
     color: IOColors["grey-700"],
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
 const androidIdpLogoForcedRefreshed = () =>
   Platform.OS === "android" ? `?ts=${toAndroidCacheTimestamp()}` : "";
 
-export const ListItemIDP = ({
+export const ModuleIDP = ({
   name,
   localLogo,
   logo,
   saved,
   onPress,
   testID
-}: ListItemIDP) => {
+}: ModuleIDP) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   // Scaling transformation applied when the button is pressed
@@ -141,7 +141,7 @@ export const ListItemIDP = ({
       <Animated.View
         style={[
           styles.button,
-          saved && { paddingVertical: IOListItemIDPSavedVSpacing },
+          saved && { paddingVertical: IOModuleIDPSavedVSpacing },
           animatedStyle
         ]}
       >
@@ -159,4 +159,4 @@ export const ListItemIDP = ({
   );
 };
 
-export default ListItemIDP;
+export default ModuleIDP;

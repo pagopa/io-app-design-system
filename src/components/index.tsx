@@ -9,6 +9,7 @@ export * from "./divider";
 export * from "./icons";
 export * from "./listitems";
 export * from "./logos";
+export * from "./modules";
 export * from "./banner";
 export * from "./pictograms";
 export * from "./radio";
