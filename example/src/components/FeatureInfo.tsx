@@ -7,7 +7,7 @@ import {
   IOStyles,
   Icon,
   LabelSmall,
-  Link,
+  LabelLink as Link,
   Pictogram,
   VSpacer
 } from "@pagopa/io-app-design-system";

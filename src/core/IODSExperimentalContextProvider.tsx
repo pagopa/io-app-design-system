@@ -17,10 +17,17 @@ const IOExperimentalDesignContext =
 export const useIOExperimentalDesign = () =>
   React.useContext(IOExperimentalDesignContext);
 
+type IOExperimentalContextProviderProps = {
+  isExperimentaEnabled?: boolean;
+};
+
 export const IODSExperimentalContextProvider = ({
-  children
-}: React.PropsWithChildren<any>) => {
-  const [isExperimental, setExperimental] = React.useState(false);
+  children,
+  isExperimentaEnabled
+}: React.PropsWithChildren<IOExperimentalContextProviderProps>) => {
+  const [isExperimental, setExperimental] = React.useState(
+    isExperimentaEnabled ?? false
+  );
 
   return (
     <IOExperimentalDesignContext.Provider

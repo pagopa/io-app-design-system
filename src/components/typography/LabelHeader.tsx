@@ -1,6 +1,5 @@
-import * as React from "react";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
-import { IOTheme, IOThemeLight } from "../../core";
+import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
@@ -12,33 +11,34 @@ type AllowedColors =
   | "black";
 type AllowedWeight = Extract<IOFontWeight, "Regular">;
 
-type OwnProps = ExternalTypographyProps<
+type LabelHeaderProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-/* Common typographic styles */
 export const labelHeaderFontSize = 14;
 export const labelHeaderLineHeight = 18;
 export const labelHeaderDefaultColor: AllowedColors =
   IOThemeLight["textBody-default"];
-/* New typographic styles */
 const labelHeaderFontName: IOFontFamily = "ReadexPro";
 const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
+
 /**
- * Typography component to render `LabelHeader` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Regular`, color: `bluegreyDark`
- * @param props
- * @constructor
+ * `LabelHeader` typographic style
  */
-export const LabelHeader: React.FunctionComponent<OwnProps> = props =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const LabelHeader = (props: LabelHeaderProps) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: labelHeaderDefaultWeight,
     defaultColor: labelHeaderDefaultColor,
-    font: labelHeaderFontName,
+    font: isExperimental ? legacyLabelHeaderFontName : labelHeaderFontName,
     fontStyle: {
       fontSize: labelHeaderFontSize,
       lineHeight: labelHeaderLineHeight
     }
   });
+};

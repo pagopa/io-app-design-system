@@ -1,35 +1,37 @@
-import React from "react";
-import { IOTheme, IOThemeLight } from "../../core/IOColors";
+import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 // when the weight is bold, only these color are allowed
 type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
 
-type OwnProps = ExternalTypographyProps<
+type H6Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 export const h6FontSize = 16;
-export const h6LineHeight = 20;
-export const h6DefaultColor: AllowedColors = IOThemeLight["textBody-default"];
-export const h6DefaultWeight: AllowedWeight = "Regular";
+export const h6LineHeight = 24;
+const h6DefaultColor: AllowedColors = IOThemeLight["textBody-default"];
+const h6DefaultWeight: AllowedWeight = "Regular";
+const fontName: FontFamily = "ReadexPro";
+
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyDefaultWeight: AllowedWeight = "SemiBold";
 
 /**
- * Typography component to render `H6` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Regular`, color: `black`
- * @param props
- * @constructor
+ * `H6` typographic style
  */
-export const H6: React.FC<OwnProps> = props => {
-  const fontName: FontFamily = "ReadexPro";
+export const H6 = (props: H6Props) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: h6DefaultWeight,
+    defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
     defaultColor: h6DefaultColor,
-    font: fontName,
+    font: isExperimental ? fontName : legacyFontName,
     fontStyle: { fontSize: h6FontSize, lineHeight: h6LineHeight }
   });
 };

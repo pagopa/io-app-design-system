@@ -88,7 +88,6 @@ export const IOStyles = StyleSheet.create({
 - Width and height for icon buttons
 */
 const btnLegacySizeDefault = 40;
-const btnLegacySizeSmall = 39;
 const btnSizeLarge = 56;
 // NEW Design System
 const btnBorderRadius = 8;
@@ -125,17 +124,11 @@ export const IOButtonLegacyStyles = StyleSheet.create({
   labelSizeDefault: {
     fontSize: 16
   },
-  labelSizeSmall: {
-    fontSize: 14
-  },
   /* Heights
   Must be replaced with dynamic values, depending on the
   fontScale parameter */
   buttonSizeDefault: {
     height: btnLegacySizeDefault
-  },
-  buttonSizeSmall: {
-    height: btnLegacySizeSmall
   }
 });
 

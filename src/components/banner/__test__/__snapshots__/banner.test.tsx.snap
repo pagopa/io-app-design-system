@@ -72,23 +72,23 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       <Text
         color="blueIO-850"
         defaultColor="black"
-        defaultWeight="Regular"
-        font="ReadexPro"
+        defaultWeight="SemiBold"
+        font="TitilliumWeb"
         fontStyle={
           {
             "fontSize": 16,
-            "lineHeight": 20,
+            "lineHeight": 24,
           }
         }
         style={
           [
             {
               "fontSize": 16,
-              "lineHeight": 20,
+              "lineHeight": 24,
             },
             {
               "color": "#031344",
-              "fontFamily": "Readex Pro",
+              "fontFamily": "Titillium Web",
               "fontStyle": "normal",
               "fontWeight": "600",
             },

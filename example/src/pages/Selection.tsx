@@ -19,7 +19,6 @@ import { Screen } from "../components/Screen";
 export const Selection = () => (
   <Screen>
     <H2
-      weight={"Bold"}
       style={{
         marginVertical: 16,
         paddingTop: IOVisualCostants.appMarginDefault
@@ -31,14 +30,10 @@ export const Selection = () => (
     {renderCheckboxLabel()}
     {/* ListItemCheckbox */}
     {renderListItemCheckbox()}
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-      Radio
-    </H2>
+    <H2 style={{ marginVertical: 16 }}>Radio</H2>
     {/* RadioListItem */}
     <RadioListItemsShowroom />
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-      Switch
-    </H2>
+    <H2 style={{ marginVertical: 16 }}>Switch</H2>
     {/* Native Switch */}
     <NativeSwitchShowroom />
     {/* ListItemSwitch */}

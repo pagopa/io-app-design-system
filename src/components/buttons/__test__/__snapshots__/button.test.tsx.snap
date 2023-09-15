@@ -69,29 +69,29 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
       <Text
         color="black"
         defaultColor="black"
-        defaultWeight="Regular"
-        font="ReadexPro"
+        defaultWeight="SemiBold"
+        font="TitilliumWeb"
         fontStyle={
           {
-            "fontSize": 20,
+            "fontSize": 16,
             "lineHeight": 24,
           }
         }
         style={
           [
             {
-              "fontSize": 20,
+              "fontSize": 16,
               "lineHeight": 24,
             },
             {
               "color": "#0E0F13",
-              "fontFamily": "Readex Pro",
+              "fontFamily": "Titillium Web",
               "fontStyle": "normal",
-              "fontWeight": "400",
+              "fontWeight": "600",
             },
           ]
         }
-        weight="Regular"
+        weight="SemiBold"
       >
         label
       </Text>
@@ -311,10 +311,10 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {
           "borderWidth": 1,
         },
-        false,
         {
           "height": 40,
         },
+        false,
         {
           "backgroundColor": "rgba(0,115,230,0)",
           "borderColor": "#0073E6",
@@ -343,9 +343,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           },
           {
             "alignSelf": "center",
-          },
-          {
-            "fontSize": 16,
           },
           {
             "color": "#0073E6",
@@ -433,19 +430,24 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
   >
     <Text
       color="white"
+      defaultColor="white"
+      defaultWeight="Bold"
       ellipsizeMode="tail"
+      font="TitilliumWeb"
+      fontStyle={
+        {
+          "fontSize": 16,
+        }
+      }
       numberOfLines={1}
       style={
         [
-          [
-            {
-              "alignSelf": "center",
-            },
-            {
-              "fontSize": 16,
-            },
-          ],
-          undefined,
+          {
+            "alignSelf": "center",
+          },
+          {
+            "fontSize": 16,
+          },
           {
             "color": "#FFFFFF",
             "fontFamily": "Titillium Web",

@@ -21,19 +21,14 @@ import {
 } from "../../core/";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import {
-  AnimatedIcon,
-  IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
-} from "../icons";
+import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
+import { buttonTextFontSize } from "../typography";
 
-type ColorButtonOutline = "primary" | "neutral" | "contrast" | "danger";
+type ColorButtonOutline = "primary" | "contrast" | "danger";
 export type ButtonOutline = WithTestID<{
   color?: ColorButtonOutline;
   label: string;
-  small?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
   // Icons
@@ -83,24 +78,6 @@ const mapColorStates: Record<
       default: IOColors["blueIO-500"],
       pressed: IOColors["blueIO-600"],
       disabled: IOColors["grey-700"]
-    }
-  },
-  // Neutral button
-  neutral: {
-    border: {
-      default: IOColors.grey,
-      pressed: IOColors.bluegrey,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: IOColors.white,
-      pressed: IOColors.greyUltraLight,
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.bluegrey,
-      pressed: IOColors.bluegreyDark,
-      disabled: IOColors.grey
     }
   },
   // Contrast button
@@ -164,24 +141,6 @@ const mapLegacyColorStates: Record<
       disabled: IOColors.grey
     }
   },
-  // Neutral button
-  neutral: {
-    border: {
-      default: IOColors.grey,
-      pressed: IOColors.bluegrey,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: IOColors.white,
-      pressed: IOColors.greyUltraLight,
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.bluegrey,
-      pressed: IOColors.bluegreyDark,
-      disabled: IOColors.grey
-    }
-  },
   // Contrast button
   contrast: {
     border: {
@@ -237,7 +196,8 @@ const DISABLED_OPACITY = 0.5;
 const IOButtonStylesLocal = StyleSheet.create({
   // eslint-disable-next-line react-native/no-unused-styles
   label: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
+    ...makeFontStyleObject("Regular", false, "ReadexPro"),
+    fontSize: buttonTextFontSize
   },
   // eslint-disable-next-line react-native/no-unused-styles
   buttonWithBorder: {
@@ -248,7 +208,6 @@ const IOButtonStylesLocal = StyleSheet.create({
 export const ButtonOutline = ({
   color = "primary",
   label,
-  small = false,
   fullWidth = false,
   disabled = false,
   icon,
@@ -349,9 +308,6 @@ export const ButtonOutline = ({
     isPressed.value = 0;
   }, [isPressed]);
 
-  // Icon size
-  const iconSize: IOIconSizeScale = small ? 16 : 20;
-
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
@@ -369,8 +325,8 @@ export const ButtonOutline = ({
         style={[
           buttonStyles.button,
           buttonStylesLocal.buttonWithBorder,
+          buttonStyles.buttonSizeDefault,
           iconPosition === "end" && { flexDirection: "row-reverse" },
-          small ? buttonStyles.buttonSizeSmall : buttonStyles.buttonSizeDefault,
           disabled
             ? {
                 backgroundColor: colorMap[color]?.background?.disabled,
@@ -393,13 +349,11 @@ export const ButtonOutline = ({
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
                 color={colorMap[color]?.label?.default}
-                size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 name={icon}
                 color={colorMap[color]?.label?.disabled}
-                size={iconSize}
               />
             )}
             <HSpacer size={8} />
@@ -409,7 +363,6 @@ export const ButtonOutline = ({
           style={[
             buttonStylesLocal.label,
             buttonStyles.label,
-            small ? buttonStyles.labelSizeSmall : buttonStyles.labelSizeDefault,
             disabled
               ? { color: colorMap[color]?.label?.disabled }
               : { color: colorMap[color]?.label?.default },

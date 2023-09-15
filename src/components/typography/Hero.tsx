@@ -1,36 +1,34 @@
-import { IOTheme, useIOExperimentalDesign } from "../../core";
+import { useIOExperimentalDesign, IOTheme } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "Bold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular">;
 
-type H1Props = ExternalTypographyProps<
+type HeroProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-export const h1FontSize = 28;
-export const h1LineHeight = 42;
+export const heroFontSize = 32;
+export const heroLineHeight = 48;
 const font: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFont: FontFamily = "TitilliumWeb";
-const legacyDefaultWeight: AllowedWeight = "Bold";
-
 /**
- * `H1` typographic style
+ * `Hero` typographic style
  */
-export const H1 = (props: H1Props) => {
+export const Hero = (props: HeroProps) => {
   const { isExperimental } = useIOExperimentalDesign();
 
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+    defaultWeight,
     defaultColor,
     font: isExperimental ? font : legacyFont,
-    fontStyle: { fontSize: h1FontSize, lineHeight: h1LineHeight }
+    fontStyle: { fontSize: heroFontSize, lineHeight: heroLineHeight }
   });
 };

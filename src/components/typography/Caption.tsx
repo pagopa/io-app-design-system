@@ -4,33 +4,34 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular" | "Bold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular">;
 
-type H3Props = ExternalTypographyProps<
+type CaptionProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-/* Common typographic styles */
-export const h3FontSize = 22;
-export const h3LineHeight = 33;
+export const captionFontSize = 12;
 const font: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFontName: FontFamily = "TitilliumWeb";
-const legacyDefaultColor: AllowedColors = "bluegreyDark";
-const legacyDefaultWeight: AllowedWeight = "Bold";
+const legacyFont: FontFamily = "TitilliumWeb";
+
 /**
- * `H3` typographic style
+ * `Caption` typographic style
  */
-export const H3 = (props: H3Props) => {
+export const Caption = (props: CaptionProps) => {
   const { isExperimental } = useIOExperimentalDesign();
+
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-    defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
-    font: isExperimental ? font : legacyFontName,
-    fontStyle: { fontSize: h3FontSize, lineHeight: h3LineHeight }
+    defaultWeight,
+    defaultColor,
+    font: isExperimental ? font : legacyFont,
+    fontStyle: {
+      fontSize: captionFontSize,
+      textTransform: "uppercase"
+    }
   });
 };

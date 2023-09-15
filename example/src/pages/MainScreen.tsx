@@ -7,7 +7,9 @@ import {
   H1,
   LabelSmall,
   VSpacer,
-  ListItemNav
+  ListItemNav,
+  useIOExperimentalDesign,
+  ListItemSwitch
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -54,7 +56,7 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 
 const MainScreen = (props: Props) => {
   const theme = useIOTheme();
-
+  const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const renderDSNavItem = ({
     item: { title, route }
   }: {
@@ -85,16 +87,26 @@ const MainScreen = (props: Props) => {
   const renderDSSectionFooter = () => <VSpacer size={24} />;
 
   return (
-    <SectionList
-      keyExtractor={(item, index) => `${item.route}-${index}`}
-      stickySectionHeadersEnabled={false}
-      contentContainerStyle={IOStyles.horizontalContentPadding}
-      renderSectionHeader={renderDSSection}
-      renderSectionFooter={renderDSSectionFooter}
-      renderItem={renderDSNavItem}
-      ItemSeparatorComponent={() => <Divider />}
-      sections={DESIGN_SYSTEM_SECTION_DATA}
-    />
+    <>
+      <View style={IOStyles.horizontalContentPadding}>
+        <ListItemSwitch
+          label="Abilita Design Sperimentale"
+          value={isExperimental}
+          onSwitchValueChange={setExperimental}
+        />
+        <VSpacer size={4} />
+      </View>
+      <SectionList
+        keyExtractor={(item, index) => `${item.route}-${index}`}
+        stickySectionHeadersEnabled={false}
+        contentContainerStyle={IOStyles.horizontalContentPadding}
+        renderSectionHeader={renderDSSection}
+        renderSectionFooter={renderDSSectionFooter}
+        renderItem={renderDSNavItem}
+        ItemSeparatorComponent={() => <Divider />}
+        sections={DESIGN_SYSTEM_SECTION_DATA}
+      />
+    </>
   );
 };
 
