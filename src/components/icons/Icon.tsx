@@ -147,6 +147,8 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconChange from "./svg/IconChange";
+import IconDialpad from "./svg/IconDialpad";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -227,6 +229,7 @@ export const IOIcons = {
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  dialpad: IconDialpad,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
@@ -251,6 +254,7 @@ export const IOIcons = {
   arrowLeft: IconArrowLeft,
   arrowTop: IconArrowTop,
   arrowRight: IconArrowRight,
+  change: IconChange,
   backiOS: IconBackiOS,
   backAndroid: IconBackAndroid,
   navMessages: IconNavMessages /* io-messaggi */,
