@@ -1,5 +1,11 @@
 import React, { useCallback } from "react";
-import { GestureResponderEvent, Pressable, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -17,11 +23,14 @@ import {
   IOSpringValues,
   IOStyles,
   hexToRgba,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
+import { VSpacer } from "../spacer";
+import { Body, H6, LabelSmall } from "../typography";
 
 export type ListItemInfoCopy = WithTestID<{
   label: string;
@@ -33,6 +42,15 @@ export type ListItemInfoCopy = WithTestID<{
   accessibilityLabel: string;
 }>;
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyStyles = StyleSheet.create({
+  textValue: {
+    fontSize: 18,
+    lineHeight: 24,
+    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
+  }
+});
+
 export const ListItemInfoCopy = ({
   label,
   value,
@@ -43,8 +61,52 @@ export const ListItemInfoCopy = ({
   testID
 }: ListItemInfoCopy) => {
   const isPressed = useSharedValue(0);
-
+  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyInfoCopyText = (
+    <>
+      <Body weight="Regular">{label}</Body>
+      <VSpacer size={4} />
+      {/* Let developer using a custom component (e.g: skeleton) */}
+      {typeof value === "string" ? (
+        <Text
+          style={[legacyStyles.textValue, { color: IOColors.blue }]}
+          numberOfLines={numberOfLines}
+        >
+          {value}
+        </Text>
+      ) : (
+        { value }
+      )}
+    </>
+  );
+
+  const infoCopyText = (
+    <>
+      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+              {label}
+            </LabelSmall>
+            {/* Let developer using a custom component (e.g: skeleton) */}
+            {typeof value === "string" ? (
+              <H6
+                color={theme["interactiveElem-default"]}
+                numberOfLines={numberOfLines}
+              >
+                {value}
+              </H6>
+            ) : (
+              { value }
+            )}
+    </>
+  );
+
+  const infoCopyTextComponent = isExperimental
+    ? infoCopyText
+    : legacyInfoCopyText;
+
+  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -119,25 +181,12 @@ export const ListItemInfoCopy = ({
             </View>
           )}
           <View style={IOStyles.flex}>
-            <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-              {label}
-            </LabelSmall>
-            {/* Let developer using a custom component (e.g: skeleton) */}
-            {typeof value === "string" ? (
-              <H6
-                color={theme["interactiveElem-default"]}
-                numberOfLines={numberOfLines}
-              >
-                {value}
-              </H6>
-            ) : (
-              { value }
-            )}
+            {infoCopyTextComponent}
           </View>
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="copy"
-              color={theme["interactiveElem-default"]}
+              color={iconColor}
               size={IOListItemVisualParams.chevronSize}
             />
           </View>

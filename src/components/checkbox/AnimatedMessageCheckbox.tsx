@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Pressable, PressableProps } from "react-native";
+import { Pressable, PressableProps, StyleSheet } from "react-native";
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
+  Easing,
   interpolate,
+  useAnimatedStyle,
+  useSharedValue,
   withSpring,
-  withTiming,
-  Easing
+  withTiming
 } from "react-native-reanimated";
-import { IOColors } from "../../core/IOColors";
+import { useIOExperimentalDesign } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
-import { AnimatedTick } from "../common/AnimatedTick";
+import { IOColors } from "../../core/IOColors";
+import { IOSpacingScale } from "../../core/IOSpacing";
 import {
+  IOSelectionTickLegacyVisualParams,
   IOSelectionTickVisualParams,
   IOVisualCostants
 } from "../../core/IOStyles";
-import { IOSpacingScale } from "../../core/IOSpacing";
+import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
   checked?: boolean;
@@ -50,9 +52,18 @@ export const AnimatedMessageCheckbox = ({
   onPress
 }: AnimatedMessageCheckbox) => {
   const isChecked = checked ?? true;
+  const { isExperimental } = useIOExperimentalDesign();
 
   const circleAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
+  const backgroundColorOnState =
+    IOColors[IOSelectionTickVisualParams.bgColorOnState];
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyBackgroundColorOnState =
+    IOColors[IOSelectionTickLegacyVisualParams.bgColorOnState];
+  const backgroundColorProp = isExperimental
+    ? backgroundColorOnState
+    : legacyBackgroundColorOnState;
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
@@ -87,8 +98,7 @@ export const AnimatedMessageCheckbox = ({
         style={[
           styles.checkBoxCircle,
           {
-            backgroundColor:
-              IOColors[IOSelectionTickVisualParams.bgColorOnState]
+            backgroundColor: backgroundColorProp
           },
           animatedCheckboxCircle
         ]}

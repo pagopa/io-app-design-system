@@ -23,11 +23,12 @@ import {
   IOSpringValues,
   IOStyles,
   hexToRgba,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons } from "../icons";
+import { AnimatedIcon, IOIcons, Icon } from "../icons";
 
 export type ListItemAction = WithTestID<{
   label: string;
@@ -46,6 +47,15 @@ const styles = StyleSheet.create({
   }
 });
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyStyles = StyleSheet.create({
+  labelLegacy: {
+    fontSize: 18,
+    lineHeight: 24,
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+  }
+});
+
 export const ListItemAction = ({
   variant,
   label,
@@ -56,11 +66,20 @@ export const ListItemAction = ({
 }: ListItemAction) => {
   const isPressed = useSharedValue(0);
 
+  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
     pressed: IOColors[theme["listItem-pressed"]]
+  };
+
+  const mapLegacyForegroundColor: Record<
+    NonNullable<ListItemAction["variant"]>,
+    IOColors
+  > = {
+    primary: "blue",
+    danger: "error-850"
   };
 
   const mapForegroundColor: Record<
@@ -70,6 +89,37 @@ export const ListItemAction = ({
     primary: IOColors[theme["interactiveElem-default"]],
     danger: IOColors[theme.errorText]
   };
+
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyItemActionIcon = (icon: IOIcons) => (
+    <Icon
+      name={icon}
+      color={mapLegacyForegroundColor[variant]}
+      size={IOListItemVisualParams.iconSize}
+    />
+  );
+
+  const itemActionIcon = (icon: IOIcons) => (
+    <>
+      <AnimatedIcon
+        name={icon}
+        color={mapForegroundColor[variant] as IOColors}
+        size={IOListItemVisualParams.iconSize}
+      />
+    </>
+  );
+
+  const itemActionIconComponent = (icon: IOIcons) =>
+    isExperimental ? itemActionIcon(icon) : legacyItemActionIcon(icon);
+
+  const textStyle = [styles.label, { color: mapForegroundColor[variant] }];
+
+  const legacyTextStyle = [
+    legacyStyles.labelLegacy,
+    { color: IOColors[mapLegacyForegroundColor[variant]] }
+  ];
+
+  const textStyleComponent = isExperimental ? textStyle : legacyTextStyle;
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -132,19 +182,11 @@ export const ListItemAction = ({
         >
           {icon && (
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <AnimatedIcon
-                name={icon}
-                color={mapForegroundColor[variant] as IOColors}
-                size={IOListItemVisualParams.iconSize}
-              />
+              {itemActionIconComponent(icon)}
             </View>
           )}
           <View style={IOStyles.flex}>
-            <Text
-              style={[styles.label, { color: mapForegroundColor[variant] }]}
-            >
-              {label}
-            </Text>
+            <Text style={textStyleComponent}>{label}</Text>
           </View>
         </Animated.View>
       </Animated.View>
