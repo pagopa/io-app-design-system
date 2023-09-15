@@ -9,39 +9,48 @@ import {
   NewRadioItem,
   RadioGroup,
   SwitchLabel,
-  VSpacer
+  VSpacer,
+  useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
 import { View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
-export const Selection = () => (
-  <Screen>
-    <H2
-      style={{
-        marginVertical: 16,
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      Checkbox
-    </H2>
-    {/* CheckboxLabel */}
-    {renderCheckboxLabel()}
-    {/* ListItemCheckbox */}
-    {renderListItemCheckbox()}
-    <H2 style={{ marginVertical: 16 }}>Radio</H2>
-    {/* RadioListItem */}
-    <RadioListItemsShowroom />
-    <H2 style={{ marginVertical: 16 }}>Switch</H2>
-    {/* Native Switch */}
-    <NativeSwitchShowroom />
-    {/* ListItemSwitch */}
-    <ListItemSwitchShowroom />
-    {/* SwitchLabel */}
-    {renderAnimatedSwitch()}
-  </Screen>
-);
+export const Selection = () => {
+  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  return (
+    <Screen>
+      <H2
+        style={{
+          marginVertical: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Checkbox
+      </H2>
+      <ListItemSwitch
+        label="Abilita Design Sperimentale"
+        value={isExperimental}
+        onSwitchValueChange={setExperimental}
+      />
+      {/* CheckboxLabel */}
+      {renderCheckboxLabel()}
+      {/* ListItemCheckbox */}
+      {renderListItemCheckbox()}
+      <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      {/* RadioListItem */}
+      <RadioListItemsShowroom />
+      <H2 style={{ marginVertical: 16 }}>Switch</H2>
+      {/* Native Switch */}
+      <NativeSwitchShowroom />
+      {/* ListItemSwitch */}
+      <ListItemSwitchShowroom />
+      {/* SwitchLabel */}
+      {renderAnimatedSwitch()}
+    </Screen>
+  );
+};
 
 const renderCheckboxLabel = () => (
   <>

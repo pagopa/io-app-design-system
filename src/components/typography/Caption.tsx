@@ -1,4 +1,4 @@
-import { IOTheme } from "../../core/IOColors";
+import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -15,17 +15,23 @@ const font: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFont: FontFamily = "TitilliumWeb";
+
 /**
  * `Caption` typographic style
  */
-export const Caption = (props: CaptionProps) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const Caption = (props: CaptionProps) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight,
     defaultColor,
-    font,
+    font: isExperimental ? font : legacyFont,
     fontStyle: {
       fontSize: captionFontSize,
       textTransform: "uppercase"
     }
   });
+};
