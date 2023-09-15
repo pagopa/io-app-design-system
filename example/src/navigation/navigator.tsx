@@ -19,6 +19,7 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { Sandbox } from "../pages/Sandbox";
 import { TextInputs } from "../pages/TextInputs";
 import { FooterWithButton } from "../pages/FooterWithButton";
+import Modules from "../pages/Modules";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -146,6 +147,14 @@ const AppNavigator = () => (
       component={ListItems}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.MODULES.route}
+      component={Modules}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.MODULES.title,
         headerBackTitleVisible: false
       }}
     />

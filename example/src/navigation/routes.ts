@@ -11,6 +11,7 @@ const APP_ROUTES = {
   COMPONENTS: {
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
+    MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },
     BADGE: { route: "DESIGN_SYSTEM_BADGE", title: "Badges & Tags" },
     SELECTION: { route: "DESIGN_SYSTEM_SELECTION", title: "Selection" },
     ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Accordion" },

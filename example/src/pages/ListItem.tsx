@@ -5,7 +5,6 @@ import {
   Icon,
   IconButton,
   ListItemAction,
-  ListItemIDP,
   ListItemInfo,
   ListItemInfoCopy,
   ListItemNav,
@@ -16,7 +15,7 @@ import {
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Alert, ImageSourcePropType, View } from "react-native";
+import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -70,15 +69,6 @@ export const ListItems = () => {
             ListItemAction
           </H2>
           {renderListItemAction()}
-
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemIDP
-          </H2>
-          {renderListItemIDP()}
 
           <H2
             color={theme["textHeading-default"]}
@@ -333,62 +323,6 @@ const renderListItemInfo = () => (
       />
     </View>
   </ComponentViewerBox>
-);
-
-const mockIDPProviderItem = {
-  id: "posteid",
-  name: "Poste ID",
-  logo: "",
-  localLogo: require("../../assets/images/spid-idp-posteid.png"),
-  profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
-};
-
-const renderListItemIDP = () => (
-  <>
-    <ComponentViewerBox name="ListItemIDP, default variant">
-      <View>
-        <ListItemIDP
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ListItemIDP, saved variant">
-      <View>
-        <ListItemIDP
-          saved
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ListItemIDP, default variant, stress test">
-      <View>
-        <ListItemIDP
-          name={"This is a very loooooong IDP provider name"}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-  </>
 );
 
 const renderListItemTransaction = () => {
