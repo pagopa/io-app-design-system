@@ -29,6 +29,7 @@ import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
+import { useIOExperimentalDesign } from "../../core";
 
 const iconSize: IOIconSizeScale = 24;
 
@@ -50,6 +51,10 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  labelLegacy: {
+    fontSize: 16,
+    ...makeFontStyleObject("Bold", false, "TitilliumWeb")
   }
 });
 
@@ -121,6 +126,7 @@ export const Alert = ({
   testID
 }: AlertType): JSX.Element => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  const { isExperimental } = useIOExperimentalDesign();
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -181,7 +187,7 @@ export const Alert = ({
             <VSpacer size={8} />
             <Text
               style={[
-                styles.label,
+                isExperimental ? styles.label : styles.labelLegacy,
                 { color: IOColors[mapVariantStates[variant].foreground] }
               ]}
               numberOfLines={1}
