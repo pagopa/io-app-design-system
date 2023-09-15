@@ -325,6 +325,7 @@ export const ButtonOutline = ({
         style={[
           buttonStyles.button,
           buttonStylesLocal.buttonWithBorder,
+          buttonStyles.buttonSizeDefault,
           iconPosition === "end" && { flexDirection: "row-reverse" },
           disabled
             ? {
