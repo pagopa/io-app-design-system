@@ -249,8 +249,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       <Text
         color="black"
         defaultColor="black"
-        defaultWeight="Regular"
-        font="ReadexPro"
+        defaultWeight="SemiBold"
+        font="TitilliumWeb"
         fontStyle={
           {
             "fontSize": 16,
@@ -266,13 +266,13 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
             },
             {
               "color": "#0E0F13",
-              "fontFamily": "Readex Pro",
+              "fontFamily": "Titillium Web",
               "fontStyle": "normal",
-              "fontWeight": "400",
+              "fontWeight": "600",
             },
           ]
         }
-        weight="Regular"
+        weight="SemiBold"
       >
         testValue
       </Text>
@@ -384,8 +384,8 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         <Text
           color="blueIO-500"
           defaultColor="black"
-          defaultWeight="Regular"
-          font="ReadexPro"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
           fontStyle={
             {
               "fontSize": 16,
@@ -401,13 +401,13 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               },
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
               },
             ]
           }
-          weight="Regular"
+          weight="SemiBold"
         >
           testValue
         </Text>
@@ -555,8 +555,8 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         <Text
           color="black"
           defaultColor="black"
-          defaultWeight="Regular"
-          font="ReadexPro"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
           fontStyle={
             {
               "fontSize": 16,
@@ -571,13 +571,13 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               },
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
               },
             ]
           }
-          weight="Regular"
+          weight="SemiBold"
         >
           testValue
         </Text>
@@ -787,8 +787,8 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         <Text
           color="black"
           defaultColor="black"
-          defaultWeight="Regular"
-          font="ReadexPro"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
           fontStyle={
             {
               "fontSize": 16,
@@ -803,13 +803,13 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
               },
             ]
           }
-          weight="Regular"
+          weight="SemiBold"
         >
           testValue
         </Text>
