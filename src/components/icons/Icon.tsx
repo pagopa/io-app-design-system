@@ -143,12 +143,15 @@ import IconTransactions from "./svg/IconTransactions";
 import IconTrashcan from "./svg/IconTrashcan";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
+import IconOption from "./svg/IconOption";
+import IconKey from "./svg/IconKey";
+import IconNotification from "./svg/IconNotification";
+import IconChange from "./svg/IconChange";
+import IconDialpad from "./svg/IconDialpad";
 import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconChange from "./svg/IconChange";
-import IconDialpad from "./svg/IconDialpad";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -166,7 +169,7 @@ export const IOIcons = {
   hourglass: IconHourglass,
   shareiOs: IconShareiOs,
   shareAndroid: IconShareAndroid,
-  locked: IconLockOn /* io-lucchetto */,
+  locked: IconLockOn,
   unlocked: IconLockOff,
   initiatives: IconInitiatives,
   analytics: IconAnalytics,
@@ -177,8 +180,8 @@ export const IOIcons = {
   pinOn: IconPinOn,
   emojiSad: IconEmojiSad,
   emojiHappy: IconEmojiHappy,
-  phone: IconPhone /* io-phone */,
-  email: IconEmail /* io-envelope */,
+  phone: IconPhone,
+  email: IconEmail,
   emailFill: IconEmailFill,
   pec: IconPEC,
   messageLegal: IconMessageLegal,
@@ -188,6 +191,8 @@ export const IOIcons = {
   docSign: IconDocumentSign,
   docAgree: IconAgreement,
   security: IconSecurity,
+  option: IconOption,
+  key: IconKey,
   docGiacenza: IconGiacenza,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
@@ -196,7 +201,7 @@ export const IOIcons = {
   success: IconSuccess,
   ok: IconOk,
   fiscalCodeIndividual: IconFiscalCodeIndividual,
-  creditCard: IconCreditCard /* io-carta */,
+  creditCard: IconCreditCard,
   bonus: IconBonus,
   transactions: IconTransactions,
   amount: IconAmount,
@@ -206,7 +211,7 @@ export const IOIcons = {
   locationAndroid: IconLocationAndroid,
   coggle: IconCoggle,
   warningFilled: IconWarningFilled,
-  notice: IconNotice /* io-warning */,
+  notice: IconNotice,
   noticeFilled: IconNoticeFilled,
   info: IconInfo,
   infoFilled: IconInfoFilled,
@@ -219,16 +224,17 @@ export const IOIcons = {
   edit: IconEdit,
   battery: IconBattery,
   trashcan: IconTrashcan,
-  calendar: IconCalendar /* io-calendar */ /* io-calendario */,
+  calendar: IconCalendar,
   profile: IconProfile,
   profileFilled: IconProfileFilled,
-  profileAlt: IconProfileAlt /* io-titolare */,
+  profileAlt: IconProfileAlt,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
   starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  notification: IconNotification,
   dialpad: IconDialpad,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
@@ -241,13 +247,13 @@ export const IOIcons = {
   externalLink: IconExternalLink,
   cancel: IconCancel,
   help: IconQuestion,
-  search: IconSearch /* io-search */,
+  search: IconSearch,
   chevronRight: IconChevronRight,
   chevronLeft: IconChevronLeft,
   chevronBottom: IconChevronBottom,
   chevronTop: IconChevronTop,
   chevronRightListItem: IconChevronRightListItem,
-  closeLarge: IconCloseLarge /* io-close */,
+  closeLarge: IconCloseLarge,
   closeMedium: IconCloseMedium,
   closeSmall: IconCloseSmall,
   arrowBottom: IconArrowBottom,
@@ -257,9 +263,9 @@ export const IOIcons = {
   change: IconChange,
   backiOS: IconBackiOS,
   backAndroid: IconBackAndroid,
-  navMessages: IconNavMessages /* io-messaggi */,
+  navMessages: IconNavMessages,
   navMessagesFocused: IconNavMessagesFocused,
-  navWallet: IconNavWallet /* io-portafoglio */,
+  navWallet: IconNavWallet,
   navWalletFocused: IconNavWalletFocused,
   navScan: IconNavScan,
   navServices: IconNavServices,
@@ -271,8 +277,8 @@ export const IOIcons = {
   legRadioOff: LegIconRadioOff,
   legCheckOn: LegIconCheckOn,
   legCheckOff: LegIconCheckOff,
-  biomFingerprint: IconBiomFingerprint /* io-fingerprint */,
-  biomFaceID: IconBiomFaceID /* io-face-id */,
+  biomFingerprint: IconBiomFingerprint,
+  biomFaceID: IconBiomFaceID,
   categCulture: IconCategCulture,
   categWellness: IconCategWellness,
   categLearning: IconCategLearning,
@@ -286,7 +292,7 @@ export const IOIcons = {
   categShopping: IconCategShopping,
   categSustainability: IconCategSustainability,
   productIOApp: IconProductIOApp,
-  productPagoPA: IconProductPagoPA /* io-pagopa */,
+  productPagoPA: IconProductPagoPA,
   productIOAppBlueBg: IconProductIOAppBlueBg,
   checkTick: IconCheckTick,
   checkTickBig: IconCheckTickBig,
