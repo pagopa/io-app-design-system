@@ -4,9 +4,8 @@ import { pipe } from "fp-ts/lib/function";
 import { View, Text, StyleSheet, Platform } from "react-native";
 import { WithTestID } from "../../utils/types";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { IOColors } from "../../core/IOColors";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { IOTagRadius } from "../../core/IOShapes";
+import { IOColors, IOTagRadius, useIOExperimentalDesign } from "../../core";
 import {
   IOSpacingScale,
   IOTagHSpacing,
@@ -99,33 +98,49 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textTransform: "uppercase",
     color: IOColors["grey-700"],
-    flexShrink: 1,
+    flexShrink: 1
+  },
+  labelFont: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  legacyLabelFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   }
 });
 
 /**
  * Tag component, used mainly for message list and details
  */
-export const Tag = ({ text, variant, testID }: Tag) => (
-  <View testID={testID} style={styles.tag}>
-    {pipe(
-      mapVariants[variant],
-      O.fromNullable,
-      O.fold(
-        () => null,
-        ({ iconColor, iconName }) => (
-          <View style={styles.iconWrapper}>
-            <Icon name={iconName} color={iconColor} size={IOTagIconSize} />
-          </View>
+export const Tag = ({ text, variant, testID }: Tag) => {
+  const { isExperimental } = useIOExperimentalDesign();
+  return (
+    <View testID={testID} style={styles.tag}>
+      {pipe(
+        mapVariants[variant],
+        O.fromNullable,
+        O.fold(
+          () => null,
+          ({ iconColor, iconName }) => (
+            <View style={styles.iconWrapper}>
+              <Icon name={iconName} color={iconColor} size={IOTagIconSize} />
+            </View>
+          )
         )
-      )
-    )}
-    {mapVariants[variant] && text && <View style={styles.spacer} />}
-    {text && (
-      <Text numberOfLines={1} ellipsizeMode="tail" style={styles.label}>
-        {text}
-      </Text>
-    )}
-  </View>
-);
+      )}
+      {mapVariants[variant] && text && <View style={styles.spacer} />}
+      {text && (
+        <Text
+          numberOfLines={1}
+          ellipsizeMode="tail"
+          style={[
+            styles.label,
+            isExperimental ? styles.labelFont : styles.legacyLabelFont
+          ]}
+        >
+          {text}
+        </Text>
+      )}
+    </View>
+  );
+};

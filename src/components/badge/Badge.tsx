@@ -4,7 +4,8 @@ import {
   IOBadgeHSpacing,
   IOBadgeRadius,
   IOBadgeVSpacing,
-  IOColors
+  IOColors,
+  useIOExperimentalDesign
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -91,31 +92,41 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     alignSelf: "center",
     textTransform: "uppercase",
-    flexShrink: 1,
+    flexShrink: 1
+  },
+  labelFont: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  legacyLabelFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   }
 });
 
 /**
  * Official badge component
  */
-export const Badge = ({ text, variant, testID }: Badge) => (
-  <View
-    testID={testID}
-    style={[
-      styles.badge,
-      { backgroundColor: IOColors[mapVariants[variant].background] }
-    ]}
-  >
-    <Text
-      numberOfLines={1}
-      ellipsizeMode="tail"
+export const Badge = ({ text, variant, testID }: Badge) => {
+  const { isExperimental } = useIOExperimentalDesign();
+  return (
+    <View
+      testID={testID}
       style={[
-        styles.label,
-        { color: IOColors[mapVariants[variant].foreground] }
+        styles.badge,
+        { backgroundColor: IOColors[mapVariants[variant].background] }
       ]}
     >
-      {text}
-    </Text>
-  </View>
-);
+      <Text
+        numberOfLines={1}
+        ellipsizeMode="tail"
+        style={[
+          styles.label,
+          isExperimental ? styles.labelFont : styles.legacyLabelFont,
+          { color: IOColors[mapVariants[variant].foreground] }
+        ]}
+      >
+        {text}
+      </Text>
+    </View>
+  );
+};
