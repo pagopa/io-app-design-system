@@ -159,17 +159,21 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
   >
     <Text
       style={
-        {
-          "alignSelf": "center",
-          "color": "#555C70",
-          "flexShrink": 1,
-          "fontFamily": "Readex Pro",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "lineHeight": 16,
-          "textTransform": "uppercase",
-        }
+        [
+          {
+            "alignSelf": "center",
+            "color": "#555C70",
+            "flexShrink": 1,
+            "fontSize": 12,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          {
+            "fontFamily": "Titillium Web",
+            "fontStyle": "normal",
+            "fontWeight": "600",
+          },
+        ]
       }
     />
     <Image
