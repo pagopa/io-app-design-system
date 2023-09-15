@@ -8,9 +8,13 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { useIOExperimentalDesign } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
-import { IOSelectionTickVisualParams } from "../../core/IOStyles";
+import {
+  IOSelectionTickLegacyVisualParams,
+  IOSelectionTickVisualParams
+} from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
@@ -52,6 +56,25 @@ const styles = StyleSheet.create({
 export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
   const isChecked = checked ?? false;
 
+  const { isExperimental } = useIOExperimentalDesign();
+  const borderColorOffState =
+    IOColors[IOSelectionTickVisualParams.borderColorOffState];
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyBorderColorOffState =
+    IOColors[IOSelectionTickLegacyVisualParams.borderColorOffState];
+  const borderColorProp = isExperimental
+    ? borderColorOffState
+    : legacyBorderColorOffState;
+
+  const backgroundColorOnState =
+    IOColors[IOSelectionTickVisualParams.bgColorOnState];
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyBackgroundColorOnState =
+    IOColors[IOSelectionTickLegacyVisualParams.bgColorOnState];
+  const backgroundColorProp = isExperimental
+    ? backgroundColorOnState
+    : legacyBackgroundColorOnState;
+
   const squareAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
 
@@ -89,8 +112,7 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
         style={[
           styles.checkboxBorder,
           {
-            borderColor:
-              IOColors[IOSelectionTickVisualParams.borderColorOffState]
+            borderColor: borderColorProp
           }
         ]}
       />
@@ -98,8 +120,7 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
         style={[
           styles.checkBoxSquare,
           {
-            backgroundColor:
-              IOColors[IOSelectionTickVisualParams.bgColorOnState]
+            backgroundColor: backgroundColorProp
           },
           animatedCheckboxSquare
         ]}
