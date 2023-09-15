@@ -50,16 +50,22 @@ import PictogramIdentity from "./svg/PictogramIdentity";
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";
 import PictogramTime from "./svg/PictogramTime";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
+import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
 import PictogramTrash from "./svg/PictogramTrash";
 import PictogramCharity from "./svg/PictogramCharity";
 import PictogramEmpty from "./svg/PictogramEmpty";
+import PictogramCie from "./svg/PictogramCie";
+import PictogramFeature from "./svg/PictogramFeature";
 /* Bleed Pictograms */
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
 import PictogramBleedHelp from "./svg/PictogramBleedHelp";
 import PictogramBleedITWallet from "./svg/PictogramBleedITWallet";
 import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
+import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
+import PictogramBleedFeature from "./svg/PictogramBleedFeature";
+import PictogramBleedCie from "./svg/PictogramBleedCie";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -98,6 +104,7 @@ export const IOPictograms = {
   manual: PictogramManual,
   trash: PictogramTrash,
   empty: PictogramEmpty,
+  feature: PictogramFeature,
   charity: PictogramCharity,
   attention: PictogramAttention,
   emptyArchive: PictogramEmptyArchive,
@@ -115,6 +122,8 @@ export const IOPictograms = {
   identityCheck: PictogramIdentityCheck,
   accessDenied: PictogramAccessDenied,
   stopSecurity: PictogramStopSecurity,
+  security: PictogramSecurity,
+  cie: PictogramCie,
   time: PictogramTime,
   passcode: PictogramPasscode
 };
@@ -152,7 +161,7 @@ export const Pictogram = ({
 */
 
 export type IOPictogramsBleed = Extract<
-  "charity" | "help" | "feedback" | "itWallet",
+  "charity" | "help" | "feedback" | "itWallet" | "security" | "feature" | "cie",
   IOPictograms
 >;
 
@@ -162,7 +171,10 @@ export const IOPictogramsBleed: {
   charity: PictogramBleedCharity,
   help: PictogramBleedHelp,
   feedback: PictogramBleedFeedback,
-  itWallet: PictogramBleedITWallet
+  itWallet: PictogramBleedITWallet,
+  security: PictogramBleedSecurity,
+  feature: PictogramBleedFeature,
+  cie: PictogramBleedCie
 };
 
 export const PictogramBleed = ({
