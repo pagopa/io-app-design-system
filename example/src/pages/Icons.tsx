@@ -8,6 +8,7 @@ import {
   IOIcons,
   IONavIcons,
   IOProductIcons,
+  IOSystemIcons,
   IOThemeContext,
   IOVisualCostants,
   Icon,
@@ -26,6 +27,7 @@ type IconSubsetObject = Record<
 interface IconSetObject {
   [key: string]: ({ size, style }: SVGIconProps) => JSX.Element;
 }
+
 const filterIconSet = (
   iconSubsetObject: IconSubsetObject,
   iconSetObject: IconSetObject
@@ -37,7 +39,13 @@ const filterIconSet = (
   );
 
 const filteredIOIcons = filterIconSet(
-  { ...IONavIcons, ...IOCategoryIcons, ...IOProductIcons, ...IOBiometricIcons },
+  {
+    ...IONavIcons,
+    ...IOCategoryIcons,
+    ...IOProductIcons,
+    ...IOBiometricIcons,
+    ...IOSystemIcons
+  },
   IOIcons
 );
 
@@ -101,6 +109,29 @@ export const Icons = () => {
             image={
               <Icon
                 name={iconItemName as IONavIcons}
+                color={theme["icon-default"]}
+                size="100%"
+              />
+            }
+          />
+        ))}
+      </View>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 12 }}
+      >
+        System
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOSystemIcons).map(([iconItemName]) => (
+          <IconViewerBox
+            key={iconItemName}
+            name={iconItemName}
+            size="small"
+            image={
+              <Icon
+                name={iconItemName as IOBiometricIcons}
                 color={theme["icon-default"]}
                 size="100%"
               />
@@ -177,11 +208,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Sizes
       </H3>
       <View style={styles.itemsWrapper}>
@@ -201,11 +228,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Colors
       </H3>
       <View style={styles.itemsWrapper}>

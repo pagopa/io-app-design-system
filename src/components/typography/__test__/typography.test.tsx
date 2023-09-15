@@ -3,7 +3,7 @@ import * as TestRenderer from "react-test-renderer";
 import type { IOColors } from "../../../core/IOColors";
 import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
-import { CTA } from "../CTA";
+import { ButtonText } from "../ButtonText";
 import { H1 } from "../H1";
 import { H2 } from "../H2";
 import { H3 } from "../H3";
@@ -12,8 +12,8 @@ import { H5 } from "../H5";
 import { H6 } from "../H6";
 import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
-import { Link } from "../Link";
-import { Monospace } from "../Monospace";
+import { LabelLink } from "../LabelLink";
+import { BodyMonospace } from "../BodyMonospace";
 import { calculateWeightColor } from "../common";
 
 describe("Test Typography Components", () => {
@@ -38,16 +38,12 @@ describe("Test Typography Components", () => {
     const h3white = TestRenderer.create(<H3 color={"white"}>Text</H3>).toJSON();
     expect(h3white).toMatchSnapshot();
     const h3whiteBold = TestRenderer.create(
-      <H3 color={"white"} weight={"Bold"}>
-        Text
-      </H3>
+      <H3 color={"white"}>Text</H3>
     ).toJSON();
     expect(h3whiteBold).toMatchSnapshot();
 
     // default color when choose only bold
-    const h3defaultBold = TestRenderer.create(
-      <H3 weight={"Bold"}>Text</H3>
-    ).toJSON();
+    const h3defaultBold = TestRenderer.create(<H3>Text</H3>).toJSON();
     expect(h3defaultBold).toMatchSnapshot();
   });
   it("H4 Snapshot", () => {
@@ -58,19 +54,6 @@ describe("Test Typography Components", () => {
     expect(h4Dblue).toMatchSnapshot();
     const h4white = TestRenderer.create(<H4 color={"white"}>Text</H4>).toJSON();
     expect(h4white).toMatchSnapshot();
-    // SemiBold weight
-    const h4SemiBoldwhite = TestRenderer.create(
-      <H4 weight={"SemiBold"} color={"white"}>
-        Text
-      </H4>
-    ).toJSON();
-    expect(h4SemiBoldwhite).toMatchSnapshot();
-
-    // Semibold default color
-    const h4SemiBoldDefault = TestRenderer.create(
-      <H4 weight={"SemiBold"}>Text</H4>
-    ).toJSON();
-    expect(h4SemiBoldDefault).toMatchSnapshot();
 
     // Regular weight
     // with regular weight, default color is bluegreydark
@@ -116,25 +99,6 @@ describe("Test Typography Components", () => {
       <H5 color={"white"}>Text</H5>
     ).toJSON();
     expect(h5Defaultwhite).toMatchSnapshot();
-
-    // Regular weight
-    // with regular weight, default color is bluegreydark
-    const h5Regular = TestRenderer.create(
-      <H5 weight={"Regular"}>Text</H5>
-    ).toJSON();
-    expect(h5Regular).toMatchSnapshot();
-    const h5Regularbluegrey = TestRenderer.create(
-      <H5 weight={"Regular"} color={"bluegrey"}>
-        Text
-      </H5>
-    ).toJSON();
-    expect(h5Regularbluegrey).toMatchSnapshot();
-    const h5Regularblue = TestRenderer.create(
-      <H5 weight={"Regular"} color={"blue"}>
-        Text
-      </H5>
-    ).toJSON();
-    expect(h5Regularblue).toMatchSnapshot();
   });
   it("H6 Snapshot", () => {
     // SemiBold weight, default
@@ -146,7 +110,7 @@ describe("Test Typography Components", () => {
     expect(bodyDefault).toMatchSnapshot();
   });
   it("CTA Snapshot", () => {
-    const cta = TestRenderer.create(<CTA>Text</CTA>).toJSON();
+    const cta = TestRenderer.create(<ButtonText>Text</ButtonText>).toJSON();
     expect(cta).toMatchSnapshot();
   });
   it("LabelSmall Snapshot", () => {
@@ -177,11 +141,7 @@ describe("Test Typography Components", () => {
 
     type BodyColors = React.ComponentProps<typeof Label>["color"];
 
-    const allowedColors: ReadonlyArray<BodyColors> = [
-      "blue",
-      "bluegrey",
-      "white"
-    ];
+    const allowedColors: ReadonlyArray<BodyColors> = ["black"];
 
     allowedColors.map(color => {
       const label = TestRenderer.create(
@@ -191,11 +151,13 @@ describe("Test Typography Components", () => {
     });
   });
   it("Link Snapshot", () => {
-    const link = TestRenderer.create(<Link>Text</Link>).toJSON();
+    const link = TestRenderer.create(<LabelLink>Text</LabelLink>).toJSON();
     expect(link).toMatchSnapshot();
   });
-  it("Monospace Snapshot", () => {
-    const monospace = TestRenderer.create(<Monospace>Text</Monospace>).toJSON();
+  it("BodyMonospace Snapshot", () => {
+    const monospace = TestRenderer.create(
+      <BodyMonospace>Text</BodyMonospace>
+    ).toJSON();
     expect(monospace).toMatchSnapshot();
   });
 });

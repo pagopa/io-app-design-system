@@ -28,9 +28,9 @@ import { IOColors } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
 import { ButtonLink, IconButton } from "../buttons";
 import {
+  PictogramBleed,
   IOPictogramSizeScale,
-  IOPictogramsBleed,
-  Pictogram
+  IOPictogramsBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
@@ -202,9 +202,7 @@ export const Banner = ({
           <>
             {/* Once we get 'gap' property, we can get rid of
           these <VSpacer> components */}
-            <H6 weight="SemiBold" color={colorTitle}>
-              {title}
-            </H6>
+            <H6 color={colorTitle}>{title}</H6>
             <VSpacer size={4} />
           </>
         )}
@@ -226,7 +224,7 @@ export const Banner = ({
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
-        <Pictogram
+        <PictogramBleed
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />
