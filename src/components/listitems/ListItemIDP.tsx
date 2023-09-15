@@ -25,7 +25,8 @@ import {
   IOListItemIDPVSpacing,
   IOListItemLogoMargin,
   IOScaleValues,
-  IOSpringValues
+  IOSpringValues,
+  useIOExperimentalDesign
 } from "../../core";
 import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -58,8 +59,13 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     alignSelf: "center",
     textTransform: "uppercase",
-    flexShrink: 1,
+    flexShrink: 1
+  },
+  idpNameFont: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  idpLegacyNameFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   },
   idpLogo: {
     marginStart: IOListItemLogoMargin,
@@ -84,7 +90,7 @@ export const ListItemIDP = ({
   testID
 }: ListItemIDP) => {
   const isPressed = useSharedValue(0);
-
+  const { isExperimental } = useIOExperimentalDesign();
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
 
@@ -139,7 +145,14 @@ export const ListItemIDP = ({
           animatedStyle
         ]}
       >
-        <Text style={styles.idpName}>{name}</Text>
+        <Text
+          style={[
+            styles.idpName,
+            isExperimental ? styles.idpNameFont : styles.idpLegacyNameFont
+          ]}
+        >
+          {name}
+        </Text>
         <Image source={urlLogoIDP} style={styles.idpLogo} />
       </Animated.View>
     </Pressable>
