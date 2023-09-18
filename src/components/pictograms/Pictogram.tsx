@@ -58,6 +58,9 @@ import PictogramObjClock from "./svg/PictogramObjClock";
 import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
 import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
+import PictogramObjKey from "./svg/PictogramObjKey";
+import PictogramObjMessage from "./svg/PictogramObjMessage";
+import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
 /* Bleed Pictograms */
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
 import PictogramBleedHelp from "./svg/PictogramBleedHelp";
@@ -66,9 +69,6 @@ import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
-import PictogramObjKey from "./svg/PictogramObjKey";
-import PictogramObjMessage from "./svg/PictogramObjMessage";
-import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -133,6 +133,7 @@ export const IOPictograms = {
   clock: PictogramObjClock,
   key: PictogramObjKey,
   message: PictogramObjMessage
+  // End Objects Pictogram
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
