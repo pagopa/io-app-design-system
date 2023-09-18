@@ -17,13 +17,10 @@ import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
 import PictogramError from "./svg/PictogramError";
 import PictogramFeedback from "./svg/PictogramFeedback";
 import PictogramFireworks from "./svg/PictogramFireworks";
-import PictogramFollowMessage from "./svg/PictogramFollowMessage";
 import PictogramHeart from "./svg/PictogramHeart";
 import PictogramHourglass from "./svg/PictogramHourglass";
-import PictogramIBANCard from "./svg/PictogramIBANCard";
 import PictogramInProgress from "./svg/PictogramInProgress";
 import PictogramInbox from "./svg/PictogramInbox";
-import PictogramManual from "./svg/PictogramManual";
 import PictogramNotAvailable from "./svg/PictogramNotAvailable";
 import PictogramPiggyBank from "./svg/PictogramPiggyBank";
 import PictogramPin from "./svg/PictogramPin";
@@ -53,11 +50,14 @@ import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
-import PictogramTrash from "./svg/PictogramTrash";
 import PictogramCharity from "./svg/PictogramCharity";
 import PictogramEmpty from "./svg/PictogramEmpty";
 import PictogramCie from "./svg/PictogramCie";
 import PictogramFeature from "./svg/PictogramFeature";
+import PictogramObjClock from "./svg/PictogramObjClock";
+import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
+import PictogramObjManual from "./svg/PictogramObjManual";
+import PictogramObjTrash from "./svg/PictogramObjTrash";
 /* Bleed Pictograms */
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
 import PictogramBleedHelp from "./svg/PictogramBleedHelp";
@@ -66,6 +66,9 @@ import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
+import PictogramObjKey from "./svg/PictogramObjKey";
+import PictogramObjMessage from "./svg/PictogramObjMessage";
+import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -99,10 +102,6 @@ export const IOPictograms = {
   heart: PictogramHeart,
   completed: PictogramCompleted,
   // End legacy pictograms
-  ibanCard: PictogramIBANCard,
-  followMessage: PictogramFollowMessage,
-  manual: PictogramManual,
-  trash: PictogramTrash,
   empty: PictogramEmpty,
   feature: PictogramFeature,
   charity: PictogramCharity,
@@ -125,7 +124,15 @@ export const IOPictograms = {
   security: PictogramSecurity,
   cie: PictogramCie,
   time: PictogramTime,
-  passcode: PictogramPasscode
+  passcode: PictogramPasscode,
+  // Start Objects Pictogram
+  objIbanCard: PictogramObjIbanCard,
+  objFollowMessage: PictogramObjFollowMessage,
+  objManual: PictogramObjManual,
+  objTrash: PictogramObjTrash,
+  objClock: PictogramObjClock,
+  objKey: PictogramObjKey,
+  objMessage: PictogramObjMessage
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
@@ -186,6 +193,30 @@ export const PictogramBleed = ({
   const PictogramElement = IOPictogramsBleed[name as IOPictogramsBleed];
   return <PictogramElement {...props} size={size} color={IOColors[color]} />;
 };
+
+/* Object Pictograms */
+
+const {
+  objIbanCard,
+  objFollowMessage,
+  objManual,
+  objTrash,
+  objClock,
+  objKey,
+  objMessage
+} = IOPictograms;
+
+export const IOPictogramsObject = {
+  objIbanCard,
+  objFollowMessage,
+  objManual,
+  objTrash,
+  objClock,
+  objKey,
+  objMessage
+} as const;
+
+export type IOPictogramsObject = keyof typeof IOPictogramsObject;
 
 /* Legacy pictograms */
 

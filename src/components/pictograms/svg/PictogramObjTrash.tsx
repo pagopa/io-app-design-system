@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramTrash = ({ size, color, ...props }: SVGPictogramProps) => (
+const PictogramObjTrash = ({ size, color, ...props }: SVGPictogramProps) => (
   <Svg fill="none" width={size} height={size} viewBox="0 0 240 240" {...props}>
     <Path
       fillRule="evenodd"
@@ -23,4 +23,4 @@ const PictogramTrash = ({ size, color, ...props }: SVGPictogramProps) => (
   </Svg>
 );
 
-export default PictogramTrash;
+export default PictogramObjTrash;

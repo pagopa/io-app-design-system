@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramFollowMessage = ({
+const PictogramObjFollowMessage = ({
   size,
   color,
   ...props
@@ -19,4 +19,4 @@ const PictogramFollowMessage = ({
   </Svg>
 );
 
-export default PictogramFollowMessage;
+export default PictogramObjFollowMessage;
