@@ -148,11 +148,12 @@ import IconOption from "./svg/IconOption";
 import IconKey from "./svg/IconKey";
 import IconNotification from "./svg/IconNotification";
 import IconChange from "./svg/IconChange";
-import IconDialpad from "./svg/IconDialpad";
 import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconKeyboard from "./svg/IconKeyboard";
+import IconContactless from "./svg/IconContactless";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -237,8 +238,9 @@ export const IOIcons = {
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  contactless: IconContactless,
   notification: IconNotification,
-  dialpad: IconDialpad,
+  keyboard: IconKeyboard,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
