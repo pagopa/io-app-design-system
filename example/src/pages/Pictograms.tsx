@@ -48,7 +48,7 @@ const filterPictogramSet = (
 
 const filteredIOPictograms = filterPictogramSet(
   {
-    ...IOPictogramsObjects,
+    ...IOPictogramsObject,
     ...IOPictogramsLegacy
   },
   IOPictograms

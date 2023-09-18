@@ -126,13 +126,13 @@ export const IOPictograms = {
   time: PictogramTime,
   passcode: PictogramPasscode,
   // Start Objects Pictogram
-  objIbanCard: PictogramObjIbanCard,
-  objFollowMessage: PictogramObjFollowMessage,
-  objManual: PictogramObjManual,
-  objTrash: PictogramObjTrash,
-  objClock: PictogramObjClock,
-  objKey: PictogramObjKey,
-  objMessage: PictogramObjMessage
+  ibanCard: PictogramObjIbanCard,
+  followMessage: PictogramObjFollowMessage,
+  manual: PictogramObjManual,
+  trash: PictogramObjTrash,
+  clock: PictogramObjClock,
+  key: PictogramObjKey,
+  message: PictogramObjMessage
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
@@ -196,24 +196,17 @@ export const PictogramBleed = ({
 
 /* Object Pictograms */
 
-const {
-  objIbanCard,
-  objFollowMessage,
-  objManual,
-  objTrash,
-  objClock,
-  objKey,
-  objMessage
-} = IOPictograms;
+const { ibanCard, followMessage, manual, trash, clock, key, message } =
+  IOPictograms;
 
 export const IOPictogramsObject = {
-  objIbanCard,
-  objFollowMessage,
-  objManual,
-  objTrash,
-  objClock,
-  objKey,
-  objMessage
+  ibanCard,
+  followMessage,
+  manual,
+  trash,
+  clock,
+  key,
+  message
 } as const;
 
 export type IOPictogramsObject = keyof typeof IOPictogramsObject;

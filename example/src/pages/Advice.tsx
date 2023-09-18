@@ -75,7 +75,7 @@ const renderFeatureInfo = () => (
     <VSpacer size={16} />
     <ComponentViewerBox name="FeatureInfo · with Pictogram">
       <FeatureInfo
-        pictogramName="followMessage"
+        pictogramName="clock"
         body={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
         }

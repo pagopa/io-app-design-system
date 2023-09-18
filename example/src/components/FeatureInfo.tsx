@@ -3,7 +3,7 @@ import {
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
-  IOPictograms,
+  IOPictogramsObject,
   IOStyles,
   Icon,
   LabelSmall,
@@ -30,7 +30,7 @@ type FeatureInfoActionProps =
     };
 
 type FeatureInfoGraphicProps =
-  | { iconName?: never; pictogramName: IOPictograms }
+  | { iconName?: never; pictogramName: IOPictogramsObject }
   | { iconName: IOIcons; pictogramName?: never };
 
 type FeatureInfo = FeatureInfoGraphicProps &

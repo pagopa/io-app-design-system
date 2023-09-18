@@ -1,5 +1,5 @@
 import React from "react";
-import { Svg, G, Mask, Path } from "react-native-svg";
+import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
 const PictogramObjMessage = ({ size, color, ...props }: SVGPictogramProps) => (
