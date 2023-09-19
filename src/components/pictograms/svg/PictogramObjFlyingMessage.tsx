@@ -2,7 +2,11 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramObjMessage = ({ size, color, ...props }: SVGPictogramProps) => (
+const PictogramObjFlyingMessage = ({
+  size,
+  color,
+  ...props
+}: SVGPictogramProps) => (
   <Svg fill="none" width={size} height={size} viewBox="0 0 240 240" {...props}>
     <Path
       d="M69.0186 82.1914 50.677 65.9896c-4.0915-3.6142-2.1733-10.357 3.2079-11.2764L224.344 25.5895c5.663-.9675 9.704 5.3495 6.451 10.085L152.866 149.143c-2.281 3.322-7.004 3.788-9.891.977l-9.628-9.374c-2.233-2.174-5.695-2.457-8.251-.675l-25.9573 18.102c-3.707 2.585-8.8556.691-10.003-3.68L71.002 85.4119a6.49865 6.49865 0 0 0-1.9834-3.2205Z"
@@ -17,4 +21,4 @@ const PictogramObjMessage = ({ size, color, ...props }: SVGPictogramProps) => (
   </Svg>
 );
 
-export default PictogramObjMessage;
+export default PictogramObjFlyingMessage;

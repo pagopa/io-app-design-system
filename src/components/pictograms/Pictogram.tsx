@@ -59,7 +59,7 @@ import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
 import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramObjKey from "./svg/PictogramObjKey";
-import PictogramObjMessage from "./svg/PictogramObjMessage";
+import PictogramObjFlyingMessage from "./svg/PictogramObjFlyingMessage";
 import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
 /* Bleed Pictograms */
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
@@ -132,7 +132,7 @@ export const IOPictograms = {
   trash: PictogramObjTrash,
   clock: PictogramObjClock,
   key: PictogramObjKey,
-  message: PictogramObjMessage
+  flyingMessage: PictogramObjFlyingMessage
   // End Objects Pictogram
 };
 
@@ -197,7 +197,7 @@ export const PictogramBleed = ({
 
 /* Object Pictograms */
 
-const { ibanCard, followMessage, manual, trash, clock, key, message } =
+const { ibanCard, followMessage, manual, trash, clock, key, flyingMessage } =
   IOPictograms;
 
 export const IOPictogramsObject = {
@@ -207,7 +207,7 @@ export const IOPictogramsObject = {
   trash,
   clock,
   key,
-  message
+  flyingMessage
 } as const;
 
 export type IOPictogramsObject = keyof typeof IOPictogramsObject;
