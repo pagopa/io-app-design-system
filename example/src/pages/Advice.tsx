@@ -1,4 +1,5 @@
 import {
+  FeatureInfo,
   Banner,
   H2,
   IOPictogramsBleed,
@@ -9,7 +10,6 @@ import {
 import React from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
-import { FeatureInfo } from "../components/FeatureInfo";
 import { Screen } from "../components/Screen";
 
 const onLinkPress = () => {
@@ -75,7 +75,7 @@ const renderFeatureInfo = () => (
     <VSpacer size={16} />
     <ComponentViewerBox name="FeatureInfo · with Pictogram">
       <FeatureInfo
-        pictogramName="followMessage"
+        pictogramName="clock"
         body={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
         }

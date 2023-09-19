@@ -3,6 +3,7 @@ import {
   IOPictograms,
   IOPictogramsBleed,
   IOPictogramsLegacy,
+  IOPictogramsObject,
   IOThemeContext,
   IOVisualCostants,
   Pictogram,
@@ -47,6 +48,7 @@ const filterPictogramSet = (
 
 const filteredIOPictograms = filterPictogramSet(
   {
+    ...IOPictogramsObject,
     ...IOPictogramsLegacy
   },
   IOPictograms
@@ -103,6 +105,31 @@ export const Pictograms = () => {
             image={
               <PictogramBleed
                 name={pictogramItemName as IOPictogramsBleed}
+                size="100%"
+              />
+            }
+          />
+        ))}
+      </View>
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Objects Pictograms
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOPictogramsObject).map(([pictogramItemName]) => (
+          <AssetViewerBox
+            key={pictogramItemName}
+            name={pictogramItemName}
+            image={
+              <Pictogram
+                name={pictogramItemName as IOPictogramsObject}
                 size="100%"
               />
             }
