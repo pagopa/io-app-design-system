@@ -154,6 +154,9 @@ import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
 import IconKeyboard from "./svg/IconKeyboard";
 import IconContactless from "./svg/IconContactless";
+import IconDisabilityCard from "./svg/IconDisabilityCard";
+import IconDriverLicense from "./svg/IconDriverLicense";
+import IconHealthCard from "./svg/IconHealthCard";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -253,6 +256,9 @@ export const IOIcons = {
   cancel: IconCancel,
   help: IconQuestion,
   search: IconSearch,
+  disabilityCard: IconDisabilityCard,
+  driverLicense: IconDriverLicense,
+  healthCard: IconHealthCard,
   chevronRight: IconChevronRight,
   chevronLeft: IconChevronLeft,
   chevronBottom: IconChevronBottom,
