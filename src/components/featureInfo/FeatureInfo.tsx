@@ -1,18 +1,18 @@
+import React from "react";
+import { GestureResponderEvent, View } from "react-native";
+import { IOStyles } from "../../core";
 import {
   HSpacer,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
-  IOPictogramsObject,
-  IOStyles,
+  IOPictograms,
   Icon,
+  LabelLink,
   LabelSmall,
-  LabelLink as Link,
   Pictogram,
   VSpacer
-} from "@pagopa/io-app-design-system";
-import React from "react";
-import { GestureResponderEvent, View } from "react-native";
+} from "../../components";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
@@ -30,7 +30,7 @@ type FeatureInfoActionProps =
     };
 
 type FeatureInfoGraphicProps =
-  | { iconName?: never; pictogramName: IOPictogramsObject }
+  | { iconName?: never; pictogramName: IOPictograms }
   | { iconName: IOIcons; pictogramName?: never };
 
 type FeatureInfo = FeatureInfoGraphicProps &
@@ -75,9 +75,9 @@ export const FeatureInfo = ({
           This verbose code could be deleted once we got "gap"
           property support */}
           {body && <VSpacer size={8} />}
-          <Link fontSize="small" onPress={actionOnPress}>
+          <LabelLink fontSize="small" onPress={actionOnPress}>
             {actionLabel}
-          </Link>
+          </LabelLink>
         </>
       )}
     </View>

@@ -1,4 +1,5 @@
 import {
+  FeatureInfo,
   Banner,
   H2,
   IOPictogramsBleed,
@@ -9,7 +10,6 @@ import {
 import React from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
-import { FeatureInfo } from "../components/FeatureInfo";
 import { Screen } from "../components/Screen";
 
 const onLinkPress = () => {
