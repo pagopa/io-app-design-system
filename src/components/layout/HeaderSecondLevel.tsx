@@ -6,32 +6,52 @@ import Animated, {
   interpolateColor,
   useAnimatedStyle
 } from "react-native-reanimated";
-import { IOColors, hexToRgba } from "../../core/IOColors";
-
 import {
   IOStyles,
   IOVisualCostants,
-  iconBtnSizeSmall
-} from "../../core/IOStyles";
+  iconBtnSizeSmall,
+  IOColors,
+  hexToRgba,
+  useIOExperimentalDesign
+} from "../../core";
 import { HSpacer } from "../spacer";
 import type { IOSpacer } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { makeFontStyleObject } from "../../utils/fonts";
 
-export type HeaderSecondLevel = WithTestID<{
+type CommonProps = WithTestID<{
   scrollValues: ScrollValues;
   title: string;
   goBack: () => void;
   backAccessibilityLabel: string;
-  // Accepted components: IconButton
-  // Don't use any components other than this, please.
-  firstAction?: React.ReactNode;
-  secondAction?: React.ReactNode;
-  thirdAction?: React.ReactNode;
   // Visual attributes
   transparent?: boolean;
 }>;
+
+interface Base extends CommonProps {
+  type: "base";
+}
+
+interface OneAction extends CommonProps {
+  type: "singleAction";
+  firstAction: React.ComponentProps<typeof IconButton>;
+}
+
+interface TwoActions extends CommonProps {
+  type: "twoActions";
+  firstAction: React.ComponentProps<typeof IconButton>;
+  secondAction: React.ComponentProps<typeof IconButton>;
+}
+
+interface ThreeActions extends CommonProps {
+  type: "threeActions";
+  firstAction: React.ComponentProps<typeof IconButton>;
+  secondAction: React.ComponentProps<typeof IconButton>;
+  thirdAction: React.ComponentProps<typeof IconButton>;
+}
+
+export type HeaderSecondLevel = Base | OneAction | TwoActions | ThreeActions;
 
 type ScrollValues = {
   contentOffsetY: Animated.SharedValue<number>;
@@ -54,26 +74,31 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   headerTitle: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro"),
     fontSize: 14,
     textAlign: "center",
     flexGrow: 1,
     flexShrink: 1,
     marginHorizontal: titleHorizontalMargin
+  },
+  headerTitleFont: {
+    ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  headerTitleLegacyFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   }
 });
 
-export const HeaderSecondLevel = ({
-  scrollValues,
-  goBack,
-  backAccessibilityLabel,
-  title,
-  firstAction,
-  secondAction,
-  thirdAction,
-  transparent = false,
-  testID
-}: HeaderSecondLevel) => {
+export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
+  const {
+    scrollValues,
+    goBack,
+    backAccessibilityLabel,
+    title,
+    type,
+    transparent = false,
+    testID
+  } = props;
+  const { isExperimental } = useIOExperimentalDesign();
   const insets = useSafeAreaInsets();
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
@@ -120,29 +145,35 @@ export const HeaderSecondLevel = ({
       />
       <Animated.Text
         numberOfLines={1}
-        style={[styles.headerTitle, titleAnimatedStyle]}
+        style={[
+          styles.headerTitle,
+          isExperimental
+            ? styles.headerTitleFont
+            : styles.headerTitleLegacyFont,
+          titleAnimatedStyle
+        ]}
       >
         {title}
       </Animated.Text>
       <View style={[IOStyles.row, { flexShrink: 0 }]}>
-        {firstAction ? (
-          firstAction
+        {type !== "base" ? (
+          <IconButton {...props.firstAction} />
         ) : (
           <HSpacer size={iconBtnSizeSmall as IOSpacer} />
         )}
-        {secondAction && (
+        {(type === "twoActions" || type === "threeActions") && (
           <>
             {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
             <HSpacer size={16} />
-            {secondAction}
+            <IconButton {...props.secondAction} />
           </>
         )}
-        {thirdAction && (
+        {type === "threeActions" && (
           <>
             {/* Same as above */}
             <HSpacer size={16} />
-            {thirdAction}
+            <IconButton {...props.thirdAction} />
           </>
         )}
       </View>
