@@ -51,7 +51,6 @@ export const HeaderSecondLevelScreen = () => {
           type="singleAction"
           firstAction={{
             icon: "help",
-            color: "neutral",
             onPress: () => {
               Alert.alert("Contextual Help");
             },
