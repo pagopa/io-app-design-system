@@ -6,6 +6,7 @@ export * from "./buttons";
 export * from "./checkbox";
 export * from "./contentWrapper";
 export * from "./divider";
+export * from "./featureInfo";
 export * from "./icons";
 export * from "./listitems";
 export * from "./logos";

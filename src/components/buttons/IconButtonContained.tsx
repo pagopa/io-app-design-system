@@ -11,7 +11,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { WithTestID } from "src/utils/types";
+import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
   IOIcons,
