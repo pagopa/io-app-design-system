@@ -1,4 +1,4 @@
-import { IOColors } from "src/core/IOColors";
+import { IOColors } from "../../core/IOColors";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
