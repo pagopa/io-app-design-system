@@ -20,6 +20,11 @@ import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { makeFontStyleObject } from "../../utils/fonts";
 
+type ActionProp = Pick<
+  React.ComponentProps<typeof IconButton>,
+  "icon" | "onPress" | "accessibilityLabel" | "accessibilityHint"
+>;
+
 type CommonProps = WithTestID<{
   scrollValues: ScrollValues;
   title: string;
@@ -35,20 +40,20 @@ interface Base extends CommonProps {
 
 interface OneAction extends CommonProps {
   type: "singleAction";
-  firstAction: React.ComponentProps<typeof IconButton>;
+  firstAction: ActionProp;
 }
 
 interface TwoActions extends CommonProps {
   type: "twoActions";
-  firstAction: React.ComponentProps<typeof IconButton>;
-  secondAction: React.ComponentProps<typeof IconButton>;
+  firstAction: ActionProp;
+  secondAction: ActionProp;
 }
 
 interface ThreeActions extends CommonProps {
   type: "threeActions";
-  firstAction: React.ComponentProps<typeof IconButton>;
-  secondAction: React.ComponentProps<typeof IconButton>;
-  thirdAction: React.ComponentProps<typeof IconButton>;
+  firstAction: ActionProp;
+  secondAction: ActionProp;
+  thirdAction: ActionProp;
 }
 
 export type HeaderSecondLevel = Base | OneAction | TwoActions | ThreeActions;
@@ -88,6 +93,11 @@ const styles = StyleSheet.create({
   }
 });
 
+/**
+ * HeaderSecondLevel component is used to display the header on pages on the second level of navigation.
+ * @param {HeaderSecondLevel} props - The props of the component
+ * @returns React Element
+ */
 export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
   const {
     scrollValues,
@@ -157,7 +167,7 @@ export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
       </Animated.Text>
       <View style={[IOStyles.row, { flexShrink: 0 }]}>
         {type !== "base" ? (
-          <IconButton {...props.firstAction} />
+          <IconButton {...props.firstAction} color="neutral" />
         ) : (
           <HSpacer size={iconBtnSizeSmall as IOSpacer} />
         )}
@@ -166,14 +176,14 @@ export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
             {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
             <HSpacer size={16} />
-            <IconButton {...props.secondAction} />
+            <IconButton {...props.secondAction} color="neutral" />
           </>
         )}
         {type === "threeActions" && (
           <>
             {/* Same as above */}
             <HSpacer size={16} />
-            <IconButton {...props.thirdAction} />
+            <IconButton {...props.thirdAction} color="neutral" />
           </>
         )}
       </View>
