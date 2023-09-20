@@ -33,14 +33,14 @@ type FeatureInfoGraphicProps =
   | { iconName?: never; pictogramName: IOPictograms }
   | { iconName: IOIcons; pictogramName?: never };
 
-type FeatureInfo = FeatureInfoGraphicProps &
+type FeatureInfoProps = FeatureInfoGraphicProps &
   PartialFeatureInfo &
   FeatureInfoActionProps;
 
 const DEFAULT_ICON_SIZE: IOIconSizeScale = 24;
 const DEFAULT_PICTOGRAM_SIZE: IOPictogramSizeScale = 48;
 
-const renderNode = (body: FeatureInfo["body"]) => {
+const renderNode = (body: FeatureInfoProps["body"]) => {
   if (typeof body === "string") {
     return (
       <LabelSmall weight="Regular" color="grey-700" testID="infoScreenBody">
@@ -58,7 +58,7 @@ export const FeatureInfo = ({
   body,
   actionLabel,
   actionOnPress
-}: FeatureInfo) => (
+}: FeatureInfoProps) => (
   <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
     {iconName && (
       <Icon name={iconName} size={DEFAULT_ICON_SIZE} color="grey-300" />

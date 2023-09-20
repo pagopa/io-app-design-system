@@ -1,5 +1,4 @@
 export * from "./ListItemAction";
-export * from "../modules/ModuleIDP";
 export * from "./ListItemInfo";
 export * from "./ListItemInfoCopy";
 export * from "./ListItemNav";

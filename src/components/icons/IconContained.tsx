@@ -2,7 +2,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { IOVisualCostants, IOColors } from "../../core";
-import { IOIcons, Icon } from ".";
+import { IOIcons, Icon } from "./Icon";
 
 type IconContained = {
   variant: "tonal";
