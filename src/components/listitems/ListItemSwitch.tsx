@@ -30,8 +30,8 @@ type Props = {
       badgeVariant: Pick<Badge, "variant">["variant"];
     }
   | {
-      badgeText?: undefined;
-      badgeVariant?: undefined;
+      badgeText?: never;
+      badgeVariant?: never;
     }
 );
 
