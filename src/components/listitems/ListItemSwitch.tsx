@@ -141,21 +141,6 @@ export const ListItemSwitch = React.memo(
               </>
             )}
           </View>
-
-          {/* <HSpacer size={8} /> */}
-          {/* <View style={{ flexShrink: 0, alignSelf: "flex-start" }}>
-            {badgeText && (
-              <Badge
-                text={badgeText}
-                variant={badgeVariant}
-                testID="ListItemSwitchBadge"
-              />
-            )}
-            {isLoading && <ActivityIndicator color={"black"} />}
-            {!isLoading && !badgeText && (
-              <NativeSwitch value={value} onValueChange={onSwitchValueChange} />
-            )}
-          </View> */}
         </View>
       </View>
     );
