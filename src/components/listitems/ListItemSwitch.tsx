@@ -78,7 +78,7 @@ export const ListItemSwitch = React.memo(
             { alignItems: "center" }
           ]}
         >
-          <View style={{ flexShrink: 1 }}>
+          <View style={{ flex: 1 }}>
             <View style={[IOStyles.row, { flexShrink: 1 }]}>
               {icon && (
                 <View
@@ -93,9 +93,34 @@ export const ListItemSwitch = React.memo(
                   />
                 </View>
               )}
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
-                {label}
-              </H6>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  alignContent: "space-between"
+                }}
+              >
+                <H6 color={"black"} style={{ flex: 1 }}>
+                  {label}
+                </H6>
+                <HSpacer size={8} />
+                <View>
+                  {badgeText && (
+                    <Badge
+                      text={badgeText}
+                      variant={badgeVariant}
+                      testID="ListItemSwitchBadge"
+                    />
+                  )}
+                  {isLoading && <ActivityIndicator color={"black"} />}
+                  {!isLoading && !badgeText && (
+                    <NativeSwitch
+                      value={value}
+                      onValueChange={onSwitchValueChange}
+                    />
+                  )}
+                </View>
+              </View>
             </View>
             {description && (
               <>
@@ -117,8 +142,8 @@ export const ListItemSwitch = React.memo(
             )}
           </View>
 
-          <HSpacer size={8} />
-          <View style={{ flexShrink: 0, alignSelf: "flex-start" }}>
+          {/* <HSpacer size={8} /> */}
+          {/* <View style={{ flexShrink: 0, alignSelf: "flex-start" }}>
             {badgeText && (
               <Badge
                 text={badgeText}
@@ -130,7 +155,7 @@ export const ListItemSwitch = React.memo(
             {!isLoading && !badgeText && (
               <NativeSwitch value={value} onValueChange={onSwitchValueChange} />
             )}
-          </View>
+          </View> */}
         </View>
       </View>
     );

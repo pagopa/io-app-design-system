@@ -435,6 +435,11 @@ const renderListItemSwitch = () => (
         description="Enabled list item with switch"
       />
       <ListItemSwitch
+        label="Loong loooooong looooooooong loooong title"
+        value={true}
+        description="Enabled list item with switch and a very loong looong looooong title and description"
+      />
+      <ListItemSwitch
         label="Disabled list item"
         value={false}
         description="Disabled list item with switch"
@@ -464,7 +469,14 @@ const renderListItemSwitch = () => (
       />
       <ListItemSwitch
         icon="device"
-        label="Label"
+        label="Loong loooooong looooooooong loooong title"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+      <ListItemSwitch
+        icon="device"
+        label="Usa l'app IO"
         value={false}
         badgeText="Attivo"
         badgeVariant="info"
