@@ -78,6 +78,15 @@ export const ListItems = () => {
             ListItemTransaction
           </H2>
           {renderListItemTransaction()}
+
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemSwitch
+          </H2>
+          {renderListItemSwitch()}
           <VSpacer size={40} />
         </Screen>
       )}
@@ -416,3 +425,51 @@ const renderListItemTransaction = () => {
     </ComponentViewerBox>
   );
 };
+
+const renderListItemSwitch = () => (
+  <ComponentViewerBox name="ListItemSwitch">
+    <View>
+      <ListItemSwitch
+        label="Enabled list item"
+        value={true}
+        description="Enabled list item with switch"
+      />
+      <ListItemSwitch
+        label="Disabled list item"
+        value={false}
+        description="Disabled list item with switch"
+      />
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={false}
+        description="Disabled list item with switch and icon"
+      />
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={true}
+        action={{
+          label: "Action",
+          onPress: onButtonPress
+        }}
+        description="Enabled list item switch with icon and action"
+      />
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={false}
+        badgeText="Attivo"
+        badgeVariant="info"
+        description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
+      />
+    </View>
+  </ComponentViewerBox>
+);
