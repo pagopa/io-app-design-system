@@ -21,7 +21,12 @@ import {
 } from "../../core/";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
+import {
+  AnimatedIcon,
+  IOIconSizeScale,
+  IOIcons,
+  IconClassComponent
+} from "../icons";
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
@@ -191,6 +196,9 @@ const IOButtonLegacyStylesLocal = StyleSheet.create({
   }
 });
 
+// Icon size
+const iconSize: IOIconSizeScale = 20;
+
 const DISABLED_OPACITY = 0.5;
 
 const IOButtonStylesLocal = StyleSheet.create({
@@ -349,11 +357,13 @@ export const ButtonOutline = ({
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
                 color={colorMap[color]?.label?.default}
+                size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 name={icon}
                 color={colorMap[color]?.label?.disabled}
+                size={iconSize}
               />
             )}
             <HSpacer size={8} />
