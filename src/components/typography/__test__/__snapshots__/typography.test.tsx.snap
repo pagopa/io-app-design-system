@@ -966,8 +966,8 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
 
 exports[`Test Typography Components Link Snapshot 1`] = `
 <Text
-  color="blueIO-500"
-  defaultColor="blueIO-500"
+  color="blue"
+  defaultColor="blue"
   defaultWeight="SemiBold"
   font="TitilliumWeb"
   fontStyle={
@@ -985,7 +985,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
         "textDecorationLine": "underline",
       },
       {
-        "color": "#0B3EE3",
+        "color": "#0073E6",
         "fontFamily": "Titillium Web",
         "fontStyle": "normal",
         "fontWeight": "600",
