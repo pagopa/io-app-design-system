@@ -21,6 +21,11 @@ import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
 const styles = StyleSheet.create({
+  primaryBlockLegacy: {
+    backgroundColor: IOColors.blue,
+    padding: 16,
+    borderRadius: 8
+  },
   primaryBlock: {
     backgroundColor: IOColors["blueIO-500"],
     padding: 16,
@@ -186,7 +191,9 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
-      <View style={styles.primaryBlock}>
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
         <ComponentViewerBox
           name="ButtonSolid · Contrast variant"
           colorMode="dark"
@@ -342,7 +349,9 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
-      <View style={styles.primaryBlock}>
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
         <ComponentViewerBox
           name="ButtonOutline · Contrast variant"
           colorMode="dark"
@@ -555,7 +564,9 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
-      <View style={styles.primaryBlock}>
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
         <ComponentViewerBox
           name="IconButton · Contrast variant"
           colorMode="dark"
@@ -626,7 +637,9 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
-      <View style={styles.primaryBlock}>
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
         <ComponentViewerBox
           name="IconButtonSolid · Contrast variant, large"
           colorMode="dark"
@@ -706,7 +719,9 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
-      <View style={styles.primaryBlock}>
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
         <ComponentViewerBox
           name="IconButtonContained · Contrast variant"
           colorMode="dark"
