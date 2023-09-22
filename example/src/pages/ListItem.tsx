@@ -478,8 +478,10 @@ const renderListItemSwitch = () => (
         icon="device"
         label="Usa l'app IO"
         value={false}
-        badgeText="Attivo"
-        badgeVariant="info"
+        badge={{
+          text: "Attivo",
+          variant: "info"
+        }}
         description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
       />
     </View>

@@ -24,16 +24,8 @@ type Props = {
   icon?: IOIcons;
   action?: SwitchAction;
   isLoading?: boolean;
-} & (
-  | {
-      badgeText: string;
-      badgeVariant: Pick<Badge, "variant">["variant"];
-    }
-  | {
-      badgeText?: never;
-      badgeVariant?: never;
-    }
-);
+  badge?: Badge;
+};
 
 export type SwitchAction = {
   label: string;
@@ -54,8 +46,7 @@ export const ListItemSwitch = React.memo(
     disabled,
     action,
     isLoading,
-    badgeText,
-    badgeVariant,
+    badge,
     onSwitchValueChange
   }: OwnProps) => {
     const theme = useIOTheme();
@@ -105,15 +96,15 @@ export const ListItemSwitch = React.memo(
                 </H6>
                 <HSpacer size={8} />
                 <View>
-                  {badgeText && (
+                  {badge && (
                     <Badge
-                      text={badgeText}
-                      variant={badgeVariant}
-                      testID="ListItemSwitchBadge"
+                      text={badge.text}
+                      variant={badge.variant}
+                      testID={badge.testID}
                     />
                   )}
                   {isLoading && <ActivityIndicator color={"black"} />}
-                  {!isLoading && !badgeText && (
+                  {!isLoading && !badge && (
                     <NativeSwitch
                       value={value}
                       onValueChange={onSwitchValueChange}
