@@ -19,7 +19,12 @@ import {
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons/Icon";
+import {
+  AnimatedIcon,
+  IOIconSizeScale,
+  IOIcons,
+  IconClassComponent
+} from "../icons";
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
@@ -175,7 +180,7 @@ export const ButtonLink = React.memo(
     }, [isPressed]);
 
     // Icon size
-    const iconSize = 24;
+    const iconSize: IOIconSizeScale = 24;
 
     return (
       <Pressable

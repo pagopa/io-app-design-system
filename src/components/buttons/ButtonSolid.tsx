@@ -9,7 +9,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOIcons, Icon } from "../icons";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
 import { ButtonText, ButtonTextAllowedColors } from "../typography/ButtonText";
@@ -45,6 +45,9 @@ const legacyStyles = StyleSheet.create({
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
 const DISABLED_OPACITY = 0.5;
 
+// Icon size
+const iconSize: IOIconSizeScale = 20;
+
 const styles = StyleSheet.create({
   backgroundDisabled: {
     backgroundColor: IOColors[colorPrimaryButtonDisabled],
@@ -58,11 +61,6 @@ export type ButtonSolidProps = WithTestID<{
    */
   color?: ButtonSolidColor;
   label: string;
-  /**
-   * Renders a small variant of the button. This property applies to the legacy look only
-   * @default false
-   */
-  small?: boolean;
   /**
    * @default false
    */
@@ -152,7 +150,6 @@ export const ButtonSolid = React.memo(
   ({
     color = "primary",
     label,
-    small = false,
     fullWidth = false,
     disabled = false,
     icon,
@@ -176,9 +173,6 @@ export const ButtonSolid = React.memo(
       () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
       [isExperimental]
     );
-
-    // Icon size
-    const iconSize = React.useMemo(() => (small ? 16 : 20), [small]);
 
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>
