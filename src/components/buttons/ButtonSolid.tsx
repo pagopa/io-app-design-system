@@ -12,7 +12,7 @@ import Animated, {
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
-import { ButtonText, ButtonTextAllowedColors } from "../typography/ButtonText";
+import { ButtonText } from "../typography/ButtonText";
 import {
   IOButtonLegacyStyles,
   IOButtonStyles,
@@ -28,8 +28,8 @@ type ColorStates = {
   default: string;
   pressed: string;
   label: {
-    default: ButtonTextAllowedColors;
-    disabled: ButtonTextAllowedColors;
+    default: IOColors;
+    disabled: IOColors;
   };
 };
 
@@ -140,7 +140,7 @@ const mapLegacyColorStates: Record<
     default: IOColors.white,
     pressed: IOColors["blue-50"],
     label: {
-      default: "blueIO-500",
+      default: "blue",
       disabled: "white"
     }
   }
