@@ -1,5 +1,5 @@
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
-import type { IOColors } from "../../core";
+import { useIOExperimentalDesign, type IOColors } from "../../core";
 import {
   ExternalTypographyProps,
   FontSize,
@@ -20,18 +20,22 @@ type LinkProps = ExternalTypographyProps<
 
 const fontName: IOFontFamily = "TitilliumWeb";
 
+export const linkLegacyDefaultColor: AllowedColors = "blue";
+
 export const linkDefaultColor: AllowedColors = "blueIO-500";
 export const linkDefaultWeight: AllowedWeight = "SemiBold";
 
 /**
  * `Link` typographic style
  */
-export const LabelLink = (props: LinkProps) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const LabelLink = (props: LinkProps) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     accessibilityRole: props.onPress ? "link" : undefined,
     ...props,
     defaultWeight: linkDefaultWeight,
-    defaultColor: linkDefaultColor,
+    defaultColor: isExperimental ? linkDefaultColor : linkLegacyDefaultColor,
     font: fontName,
     fontStyle: {
       fontSize: props.fontSize
@@ -43,3 +47,4 @@ export const LabelLink = (props: LinkProps) =>
       textDecorationLine: "underline"
     }
   });
+};
