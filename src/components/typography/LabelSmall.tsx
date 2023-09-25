@@ -1,6 +1,6 @@
 import { useIOExperimentalDesign } from "../../core";
 import type { IOColors, IOTheme } from "../../core/IOColors";
-import { FontFamily, IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, FontType, TypographyProps } from "./common";
 
@@ -16,7 +16,6 @@ type PartialAllowedColors = Extract<
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-tertiary"];
 type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
-type AllowedFonts = Extract<IOFontFamily, "TitilliumWeb" | "ReadexPro">;
 
 type FontSize = "regular" | "small";
 type AllowedFontSize = { fontSize?: FontSize };
