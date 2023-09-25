@@ -4,7 +4,8 @@ import {
   IOThemeContext,
   ListItemSwitch,
   H2,
-  ModuleIDP
+  ModuleIDP,
+  ModulePaymentNotice
 } from "@pagopa/io-app-design-system";
 import { Alert, ImageSourcePropType, View } from "react-native";
 import { Screen } from "../components/Screen";
@@ -18,6 +19,10 @@ const mockIDPProviderItem = {
   profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
 };
 
+const mockFn = () => {
+  Alert.alert("Action triggered");
+};
+
 const renderModuleIDP = () => (
   <>
     <ComponentViewerBox name="ModuleIDP, default variant">
@@ -26,9 +31,7 @@ const renderModuleIDP = () => (
           name={mockIDPProviderItem.name}
           logo={mockIDPProviderItem.logo as ImageSourcePropType}
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
+          onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
           urlLogoIDP={""}
         />
@@ -41,9 +44,7 @@ const renderModuleIDP = () => (
           name={mockIDPProviderItem.name}
           logo={mockIDPProviderItem.logo as ImageSourcePropType}
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
+          onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
           urlLogoIDP={""}
         />
@@ -55,11 +56,47 @@ const renderModuleIDP = () => (
           name={"This is a very loooooong IDP provider name"}
           logo={mockIDPProviderItem.logo as ImageSourcePropType}
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
+          onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
           urlLogoIDP={""}
+        />
+      </View>
+    </ComponentViewerBox>
+  </>
+);
+
+const renderModulePaymentNotice = () => (
+  <>
+    <ComponentViewerBox name="ModulePaymentNotice, payed variant">
+      <View>
+        <ModulePaymentNotice
+          onPress={mockFn}
+          paymentNoticeStatus="payed"
+          badgeText="Pagato"
+          subtitle="F24"
+          title="Codice avviso"
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModulePaymentNotice, default variant">
+      <View>
+        <ModulePaymentNotice
+          onPress={mockFn}
+          paymentNoticeStatus="default"
+          paymentNoticeAmount="100,00 €"
+          subtitle="F24"
+          title="Codice avviso"
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModulePaymentNotice, default variant, stress test">
+      <View>
+        <ModulePaymentNotice
+          onPress={mockFn}
+          paymentNoticeStatus="error"
+          badgeText="Errore"
+          title="Codice avviso"
+          subtitle="This is a very loooooong subtitle text"
         />
       </View>
     </ComponentViewerBox>
@@ -82,9 +119,17 @@ const Modules = () => {
             weight={"SemiBold"}
             style={{ marginBottom: 16, marginTop: 16 }}
           >
-            ListItemIDP
+            ModuleIDP
           </H2>
           {renderModuleIDP()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ModulePaymentNotice
+          </H2>
+          {renderModulePaymentNotice()}
         </Screen>
       )}
     </IOThemeContext.Consumer>
