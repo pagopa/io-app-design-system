@@ -2,8 +2,12 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramObjClock = ({ size, color, ...props }: SVGPictogramProps) => (
-  <Svg fill="none" width={size} height={size} viewBox="0 0 240 240" {...props}>
+const PictogramObjClock = ({
+  size,
+  colorValues,
+  ...props
+}: SVGPictogramProps) => (
+  <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
     <Path
       d="M121 240c65.722 0 119-53.726 119-120C240 53.7258 186.722 0 121 0 55.2781 0 2 53.7258 2 120c0 66.274 53.2781 120 119 120Z"
       fill="#AAEEEF"

@@ -2,8 +2,12 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramObjManual = ({ size, color, ...props }: SVGPictogramProps) => (
-  <Svg fill="none" width={size} height={size} viewBox="0 0 240 240" {...props}>
+const PictogramObjManual = ({
+  size,
+  colorValues,
+  ...props
+}: SVGPictogramProps) => (
+  <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
     <Path
       d="M218 43.2264c0-2.8129-1.802-5.2921-4.529-5.9848-7.953-2.0206-25.405-5.5643-44.471-3.7317-26 2.4992-49 19.4983-49 19.4983V53S97 36.5013 71 34.0021c-19.0657-1.8326-36.5182 1.7111-44.4714 3.7317C23.8023 38.4265 22 40.9057 22 43.7186V55H6.49869C2.90956 55 0 57.9096 0 61.4987V199.501C0 203.09 2.90956 206 6.49869 206H234.501c3.589 0 6.499-2.91 6.499-6.499V61.4987C241 57.9096 238.09 55 234.501 55H218V43.2264Z"
       fill="#AAEEEF"

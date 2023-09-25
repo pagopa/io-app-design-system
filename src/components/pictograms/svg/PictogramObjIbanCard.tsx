@@ -2,8 +2,12 @@ import React from "react";
 import { Svg, G, Mask, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramObjIbanCard = ({ size, color, ...props }: SVGPictogramProps) => (
-  <Svg fill="none" width={size} height={size} viewBox="0 0 240 240" {...props}>
+const PictogramObjIbanCard = ({
+  size,
+  colorValues,
+  ...props
+}: SVGPictogramProps) => (
+  <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
     <Path
       fill-rule="evenodd"
       clip-rule="evenodd"
