@@ -4,10 +4,7 @@ import { useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
-export type ButtonTextAllowedColors = Extract<
-  IOColors,
-  "white" | "blueIO-500" | "grey-700"
->;
+export type ButtonTextAllowedColors = IOColors;
 type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular" | "Bold">;
 
 type ButtonTextProps = ExternalTypographyProps<
