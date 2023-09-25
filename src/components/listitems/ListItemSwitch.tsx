@@ -1,5 +1,10 @@
 import React from "react";
-import { GestureResponderEvent, Switch, View } from "react-native";
+import {
+  ActivityIndicator,
+  GestureResponderEvent,
+  Switch,
+  View
+} from "react-native";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
@@ -10,6 +15,7 @@ import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall, LabelLink } from "../typography";
 import { NativeSwitch } from "../switch/NativeSwitch";
+import { Badge } from "../badge";
 
 type Props = {
   label: string;
@@ -17,6 +23,8 @@ type Props = {
   description?: string;
   icon?: IOIcons;
   action?: SwitchAction;
+  isLoading?: boolean;
+  badge?: Badge;
 };
 
 export type SwitchAction = {
@@ -37,6 +45,8 @@ export const ListItemSwitch = React.memo(
     value,
     disabled,
     action,
+    isLoading,
+    badge,
     onSwitchValueChange
   }: OwnProps) => {
     const theme = useIOTheme();
@@ -59,7 +69,7 @@ export const ListItemSwitch = React.memo(
             { alignItems: "center" }
           ]}
         >
-          <View style={{ flexShrink: 1 }}>
+          <View style={{ flex: 1 }}>
             <View style={[IOStyles.row, { flexShrink: 1 }]}>
               {icon && (
                 <View
@@ -74,9 +84,34 @@ export const ListItemSwitch = React.memo(
                   />
                 </View>
               )}
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
-                {label}
-              </H6>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  alignContent: "space-between"
+                }}
+              >
+                <H6 color={"black"} style={{ flex: 1 }}>
+                  {label}
+                </H6>
+                <HSpacer size={8} />
+                <View>
+                  {badge && (
+                    <Badge
+                      text={badge.text}
+                      variant={badge.variant}
+                      testID={badge.testID}
+                    />
+                  )}
+                  {isLoading && <ActivityIndicator color={"black"} />}
+                  {!isLoading && !badge && (
+                    <NativeSwitch
+                      value={value}
+                      onValueChange={onSwitchValueChange}
+                    />
+                  )}
+                </View>
+              </View>
             </View>
             {description && (
               <>
@@ -96,11 +131,6 @@ export const ListItemSwitch = React.memo(
                 </LabelLink>
               </>
             )}
-          </View>
-
-          <HSpacer size={8} />
-          <View style={{ flexShrink: 0, alignSelf: "flex-start" }}>
-            <NativeSwitch value={value} onValueChange={onSwitchValueChange} />
           </View>
         </View>
       </View>
