@@ -137,7 +137,7 @@ export const IOPictograms = {
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
-export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 240;
+export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 
 type IOPictogramsProps = {
   name: IOPictograms;
