@@ -6,14 +6,6 @@
 
 import { Platform } from "react-native";
 
-export type IOFontFamily = keyof typeof fonts;
-
-const weights = ["Light", "Regular", "Medium", "SemiBold", "Bold"] as const;
-export type IOFontWeight = (typeof weights)[number];
-
-const weightValues = ["300", "400", "500", "600", "700"] as const;
-export type FontWeightValue = (typeof weightValues)[number];
-
 /**
  * Choose the font name based on the platform
  */
@@ -34,6 +26,14 @@ const fonts = {
     ios: "DM Mono"
   })
 };
+
+export type IOFontFamily = keyof typeof fonts;
+
+const weights = ["Light", "Regular", "Medium", "SemiBold", "Bold"] as const;
+export type IOFontWeight = (typeof weights)[number];
+
+const weightValues = ["300", "400", "500", "600", "700"] as const;
+export type FontWeightValue = (typeof weightValues)[number];
 
 /**
  * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value

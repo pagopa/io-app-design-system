@@ -1,5 +1,7 @@
 import {
   H2,
+  HSpacer,
+  IOColors,
   IOPictograms,
   IOPictogramsBleed,
   IOPictogramsLegacy,
@@ -8,13 +10,15 @@ import {
   IOVisualCostants,
   Pictogram,
   PictogramBleed,
-  SVGPictogramProps
+  SVGPictogramProps,
+  hexToRgba
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { useContext } from "react";
 import { AssetViewerBox, assetItemGutter } from "../components/AssetViewerBox";
 import { Screen } from "../components/Screen";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 
 const styles = StyleSheet.create({
   itemsWrapper: {
@@ -104,6 +108,7 @@ export const Pictograms = () => {
             size="small"
             image={
               <PictogramBleed
+                pictogramStyle="dark-content"
                 name={pictogramItemName as IOPictogramsBleed}
                 size="100%"
               />
@@ -136,6 +141,52 @@ export const Pictograms = () => {
           />
         ))}
       </View>
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Color mode agnostic
+      </H2>
+      <ComponentViewerBox name={`pictogramStyle = "light-content"`}>
+        <View
+          style={{
+            borderRadius: 8,
+            padding: 16,
+            alignContent: "center",
+            justifyContent: "center",
+            backgroundColor: IOColors["blueIO-500"],
+            flexDirection: "row"
+          }}
+        >
+          <Pictogram name="feature" pictogramStyle="light-content" />
+          <HSpacer size={24} />
+          <Pictogram name="umbrellaNew" pictogramStyle="light-content" />
+        </View>
+      </ComponentViewerBox>
+
+      <ComponentViewerBox name={`pictogramStyle = "dark-content"`}>
+        <View
+          style={{
+            borderRadius: 8,
+            padding: 16,
+            alignContent: "center",
+            justifyContent: "center",
+            backgroundColor: IOColors.white,
+            flexDirection: "row",
+            borderColor: hexToRgba(IOColors.black, 0.1),
+            borderWidth: 1
+          }}
+        >
+          <Pictogram name="feedback" pictogramStyle="dark-content" />
+          <HSpacer size={24} />
+          <Pictogram name="charity" pictogramStyle="dark-content" />
+        </View>
+      </ComponentViewerBox>
 
       <H2
         color={theme["textHeading-default"]}

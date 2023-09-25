@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../Pictogram";
 
-const PictogramCameraRequest = ({
+const PictogramCameraDenied = ({
   size,
   colorValues,
   ...props
@@ -29,7 +29,11 @@ const PictogramCameraRequest = ({
       fill={colorValues.main}
     />
     <Path
-      d="M92.0098 135.34c-.83 0-1.5-.67-1.5-1.5v-36.9c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v36.9c0 .83-.67 1.5-1.5 1.5ZM92.1402 150.34c2.0269 0 3.67-1.643 3.67-3.67s-1.6431-3.67-3.67-3.67-3.67 1.643-3.67 3.67 1.6431 3.67 3.67 3.67Z"
+      d="M79.0899 138.19c-.38 0-.77-.15-1.06-.44-.59-.59-.59-1.54 0-2.12l26.0901-26.09c.59-.59 1.54-.59 2.12 0 .59.59.59 1.54 0 2.12l-26.0901 26.09c-.29.29-.68.44-1.06.44Z"
+      fill={colorValues.secondary}
+    />
+    <Path
+      d="M105.18 138.19c-.38 0-.77-.15-1.06-.44l-26.0901-26.09c-.59-.59-.59-1.54 0-2.12.59-.59 1.54-.59 2.12 0l26.0901 26.09c.59.59.59 1.54 0 2.12-.29.29-.68.44-1.06.44Z"
       fill={colorValues.secondary}
     />
     <Path
@@ -39,4 +43,4 @@ const PictogramCameraRequest = ({
   </Svg>
 );
 
-export default PictogramCameraRequest;
+export default PictogramCameraDenied;
