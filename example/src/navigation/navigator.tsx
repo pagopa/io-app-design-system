@@ -1,5 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { IOColors } from "@pagopa/io-app-design-system";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
@@ -21,6 +22,7 @@ import { TextInputs } from "../pages/TextInputs";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import Modules from "../pages/Modules";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -192,6 +194,15 @@ const AppNavigator = () => (
       component={HeaderSecondLevelScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.route}
+      component={StaticHeaderSecondLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
         headerBackTitleVisible: false
       }}
     />

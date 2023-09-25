@@ -26,6 +26,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL",
       title: "Header Second Level"
     },
+    HEADER_SECOND_LEVEL_STATIC: {
+      route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STATIC",
+      title: "Header Second Level Static"
+    },
     FOOTER_WITH_BUTTON: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
       title: "Footer with button"
