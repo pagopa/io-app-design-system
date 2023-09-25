@@ -225,6 +225,7 @@ export const Banner = ({
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
         <PictogramBleed
+          pictogramStyle="dark-content"
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />
