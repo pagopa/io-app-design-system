@@ -281,5 +281,34 @@ const ListItemSwitchShowroom = () => (
         }
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemSwitch, loading status">
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+      <Divider />
+      <ListItemSwitch
+        icon="device"
+        label="Loong loooooong looooooooong loooong title"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemSwitch with badge">
+      <ListItemSwitch
+        icon="device"
+        label="Usa l'app IO"
+        value={false}
+        badge={{
+          text: "Attivo",
+          variant: "info"
+        }}
+        description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
+      />
+    </ComponentViewerBox>
   </>
 );
