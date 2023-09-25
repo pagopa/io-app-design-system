@@ -10,6 +10,7 @@ import PictogramAttention from "./svg/PictogramAttention";
 import PictogramBaloons from "./svg/PictogramBaloons";
 import PictogramBeerMug from "./svg/PictogramBeerMug";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
+import PictogramCameraDenied from "./svg/PictogramCameraDenied";
 import PictogramCompleted from "./svg/PictogramCompleted";
 import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramEmailValidation from "./svg/PictogramEmailValidation";
@@ -69,6 +70,8 @@ import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
+import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
+import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -110,6 +113,7 @@ export const IOPictograms = {
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
   cameraRequest: PictogramCameraRequest,
+  cameraDenied: PictogramCameraDenied,
   success: PictogramSuccess,
   fatalError: PictogramFatalError,
   help: PictogramHelp,
@@ -169,7 +173,15 @@ export const Pictogram = ({
 */
 
 export type IOPictogramsBleed = Extract<
-  "charity" | "help" | "feedback" | "itWallet" | "security" | "feature" | "cie",
+  | "charity"
+  | "help"
+  | "feedback"
+  | "itWallet"
+  | "security"
+  | "feature"
+  | "cie"
+  | "cameraRequest"
+  | "cameraDenied",
   IOPictograms
 >;
 
@@ -182,7 +194,9 @@ export const IOPictogramsBleed: {
   itWallet: PictogramBleedITWallet,
   security: PictogramBleedSecurity,
   feature: PictogramBleedFeature,
-  cie: PictogramBleedCie
+  cie: PictogramBleedCie,
+  cameraRequest: PictogramBleedCameraRequest,
+  cameraDenied: PictogramBleedCameraDenied
 };
 
 export const PictogramBleed = ({
