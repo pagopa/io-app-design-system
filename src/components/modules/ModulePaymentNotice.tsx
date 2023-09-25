@@ -133,7 +133,7 @@ const ModulePaymentNoticeContent = ({
         <AmountOrBadgeComponent />
         <Icon
           name="chevronRightListItem"
-          color="blue"
+          color={isExperimental ? "blueIO-500" : "blue"}
           size={IOListItemVisualParams.chevronSize}
         />
       </View>
