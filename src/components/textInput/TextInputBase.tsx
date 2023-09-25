@@ -52,6 +52,8 @@ type InputTextProps = {
   onFocus?: () => void;
 };
 
+const inputMarginTop: IOSpacingScale = 8;
+
 const styles = StyleSheet.create({
   textInput: {
     ...IOStyles.row,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
   textInputStyle: {
     ...IOStyles.flex,
     fontSize: 16,
-    marginTop: IOSpacingScale[2],
+    marginTop: inputMarginTop,
     lineHeight: 24,
     height: "100%"
   },

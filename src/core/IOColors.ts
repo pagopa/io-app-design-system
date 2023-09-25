@@ -290,6 +290,10 @@ export type IOTheme = {
   // Status
   errorIcon: IOColors;
   errorText: IOColors;
+  // Pictograms
+  "pictogram-hands": IOColors;
+  "pictogram-tint-main": IOColors;
+  "pictogram-tint-secondary": IOColors;
 };
 
 export const IOThemeLight: IOTheme = {
@@ -312,7 +316,11 @@ export const IOThemeLight: IOTheme = {
   "divider-default": "grey-200",
   // Status
   errorIcon: "error-500",
-  errorText: "error-850"
+  errorText: "error-850",
+  // Pictograms
+  "pictogram-hands": "blueIO-500",
+  "pictogram-tint-main": "turquoise-150",
+  "pictogram-tint-secondary": "turquoise-500"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -336,7 +344,11 @@ export const IOThemeDark: IOTheme = {
   "divider-default": "grey-850",
   // Status
   errorIcon: "error-400",
-  errorText: "error-400"
+  errorText: "error-400",
+  // Pictograms
+  "pictogram-hands": "white",
+  "pictogram-tint-main": "turquoise-150",
+  "pictogram-tint-secondary": "turquoise-500"
 };
 
 export const themeStatusColorsLightMode = asIOThemeColors({

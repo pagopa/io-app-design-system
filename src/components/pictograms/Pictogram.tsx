@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ColorValue } from "react-native";
-import { IOColors } from "../../core/IOColors";
+import {
+  IOColors,
+  IOThemeDark,
+  IOThemeLight,
+  useIOTheme
+} from "../../core/IOColors";
 
 import PictogramMessages from "./svg/PictogramMessages";
 import PictogramAbacus from "./svg/PictogramAbacus";
@@ -10,6 +15,7 @@ import PictogramAttention from "./svg/PictogramAttention";
 import PictogramBaloons from "./svg/PictogramBaloons";
 import PictogramBeerMug from "./svg/PictogramBeerMug";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
+import PictogramCameraDenied from "./svg/PictogramCameraDenied";
 import PictogramCompleted from "./svg/PictogramCompleted";
 import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramEmailValidation from "./svg/PictogramEmailValidation";
@@ -69,6 +75,8 @@ import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
+import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
+import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -110,6 +118,7 @@ export const IOPictograms = {
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
   cameraRequest: PictogramCameraRequest,
+  cameraDenied: PictogramCameraDenied,
   success: PictogramSuccess,
   fatalError: PictogramFatalError,
   help: PictogramHelp,
@@ -142,22 +151,63 @@ export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 type IOPictogramsProps = {
   name: IOPictograms;
   color?: IOColors;
+  /* Not too happy about the API choice,
+  but at least we have the same <StatusBar …>
+  component props. */
+  pictogramStyle?: "default" | "light-content" | "dark-content";
   size?: IOPictogramSizeScale | "100%";
 };
 
 export type SVGPictogramProps = {
   size: IOPictogramSizeScale | "100%";
   color: ColorValue;
+  colorValues: Record<string, ColorValue>;
+};
+
+type PictogramPalette = {
+  hands: ColorValue;
+  main: ColorValue;
+  secondary: ColorValue;
 };
 
 export const Pictogram = ({
   name,
   color = "aqua",
+  pictogramStyle = "default",
   size = 120,
   ...props
 }: IOPictogramsProps) => {
   const PictogramElement = IOPictograms[name];
-  return <PictogramElement {...props} size={size} color={IOColors[color]} />;
+  const theme = useIOTheme();
+
+  const themeObj = useMemo(() => {
+    switch (pictogramStyle) {
+      case "dark-content":
+        return IOThemeLight;
+      case "light-content":
+        return IOThemeDark;
+      case "default":
+        return theme;
+    }
+  }, [pictogramStyle, theme]);
+
+  const colorValues: PictogramPalette = useMemo(
+    () => ({
+      hands: IOColors[themeObj["pictogram-hands"]],
+      main: IOColors[themeObj["pictogram-tint-main"]],
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+    }),
+    [themeObj]
+  );
+
+  return (
+    <PictogramElement
+      {...props}
+      size={size}
+      color={IOColors[color]}
+      colorValues={colorValues}
+    />
+  );
 };
 
 /*
@@ -169,7 +219,15 @@ export const Pictogram = ({
 */
 
 export type IOPictogramsBleed = Extract<
-  "charity" | "help" | "feedback" | "itWallet" | "security" | "feature" | "cie",
+  | "charity"
+  | "help"
+  | "feedback"
+  | "itWallet"
+  | "security"
+  | "feature"
+  | "cie"
+  | "cameraRequest"
+  | "cameraDenied",
   IOPictograms
 >;
 
@@ -182,17 +240,50 @@ export const IOPictogramsBleed: {
   itWallet: PictogramBleedITWallet,
   security: PictogramBleedSecurity,
   feature: PictogramBleedFeature,
-  cie: PictogramBleedCie
+  cie: PictogramBleedCie,
+  cameraRequest: PictogramBleedCameraRequest,
+  cameraDenied: PictogramBleedCameraDenied
 };
 
 export const PictogramBleed = ({
   name,
   color = "aqua",
   size = 80,
+  pictogramStyle = "default",
   ...props
 }: IOPictogramsProps) => {
   const PictogramElement = IOPictogramsBleed[name as IOPictogramsBleed];
-  return <PictogramElement {...props} size={size} color={IOColors[color]} />;
+
+  const theme = useIOTheme();
+
+  const themeObj = useMemo(() => {
+    switch (pictogramStyle) {
+      case "dark-content":
+        return IOThemeLight;
+      case "light-content":
+        return IOThemeDark;
+      case "default":
+        return theme;
+    }
+  }, [pictogramStyle, theme]);
+
+  const colorValues: PictogramPalette = useMemo(
+    () => ({
+      hands: IOColors[themeObj["pictogram-hands"]],
+      main: IOColors[themeObj["pictogram-tint-main"]],
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+    }),
+    [themeObj]
+  );
+
+  return (
+    <PictogramElement
+      {...props}
+      size={size}
+      color={IOColors[color]}
+      colorValues={colorValues}
+    />
+  );
 };
 
 /* Object Pictograms */
