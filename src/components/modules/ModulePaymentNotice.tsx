@@ -124,6 +124,7 @@ const ModulePaymentNoticeContent = ({
         )}
         <LabelSmall
           weight="SemiBold"
+          font={isExperimental ? "ReadexPro" : "TitilliumWeb"}
           color={isExperimental ? "blueIO-500" : "bluegrey"}
         >
           {subtitle}
