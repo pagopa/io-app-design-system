@@ -4,11 +4,22 @@ Every margin/padding used by different components
 should use a value defined in the following scale.
 */
 
-export const IOSpacingScale = [
-  4, 6, 8, 12, 16, 20, 24, 28, 32, 40, 48, 56, 64, 72, 80
-] as const;
-
-export type IOSpacingScale = (typeof IOSpacingScale)[number];
+export type IOSpacingScale =
+  | 4
+  | 6
+  | 8
+  | 12
+  | 16
+  | 20
+  | 24
+  | 28
+  | 32
+  | 40
+  | 48
+  | 56
+  | 64
+  | 72
+  | 80;
 
 // Values used in the new `<Spacer>` component
 export type IOSpacer = Extract<IOSpacingScale, 4 | 8 | 16 | 24 | 32 | 40 | 48>;

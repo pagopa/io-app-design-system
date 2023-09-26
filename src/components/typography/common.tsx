@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
 import type { IOColors } from "../../core";
-import { IOFontWeight } from "../../utils/fonts";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { RequiredAll } from "../../utils/types";
 
 /**
@@ -18,6 +18,13 @@ export const lineHeightMapping: Record<FontSize, number> = {
   regular: 24,
   small: 24,
   mini: 18
+};
+
+/**
+ * Define the font name values for the typography elements
+ */
+export type FontType = {
+  font?: IOFontFamily;
 };
 
 /**
