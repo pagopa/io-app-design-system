@@ -24,7 +24,6 @@ export const FooterWithButton = () => (
         primary={{
           type: "Solid",
           buttonProps: {
-            fullWidth: true,
             color: "primary",
             accessibilityLabel: "primary button",
             onPress: constVoid,
@@ -35,7 +34,6 @@ export const FooterWithButton = () => (
           type: "Outline",
           buttonProps: {
             color: "primary",
-            fullWidth: true,
             accessibilityLabel: "secondary button",
             onPress: constVoid,
             label: "Secondary button"
