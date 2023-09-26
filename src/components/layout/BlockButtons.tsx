@@ -23,7 +23,7 @@ type CommonProps = Readonly<{
 
 export type BlockButtonProps = {
   type: "Solid" | "Outline";
-  buttonProps: ButtonSolidProps;
+  buttonProps: Omit<ButtonSolidProps, "fullWidth">;
 };
 
 /**
@@ -125,9 +125,9 @@ export const BlockButtons = (props: Props) => {
   ) => (
     <View style={style}>
       {props.type === "Solid" ? (
-        <ButtonSolid {...props.buttonProps} />
+        <ButtonSolid fullWidth {...props.buttonProps} />
       ) : (
-        <ButtonOutline {...props.buttonProps} />
+        <ButtonOutline fullWidth {...props.buttonProps} />
       )}
     </View>
   );
