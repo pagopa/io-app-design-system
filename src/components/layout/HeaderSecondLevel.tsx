@@ -6,37 +6,62 @@ import Animated, {
   interpolateColor,
   useAnimatedStyle
 } from "react-native-reanimated";
-import { IOColors, hexToRgba } from "../../core/IOColors";
-
 import {
   IOStyles,
   IOVisualCostants,
-  iconBtnSizeSmall
-} from "../../core/IOStyles";
+  iconBtnSizeSmall,
+  IOColors,
+  hexToRgba,
+  useIOExperimentalDesign
+} from "../../core";
 import { HSpacer } from "../spacer";
 import type { IOSpacer } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { makeFontStyleObject } from "../../utils/fonts";
 
-export type HeaderSecondLevel = WithTestID<{
-  scrollValues: ScrollValues;
-  title: string;
-  goBack: () => void;
-  backAccessibilityLabel: string;
-  // Accepted components: IconButton
-  // Don't use any components other than this, please.
-  firstAction?: React.ReactNode;
-  secondAction?: React.ReactNode;
-  thirdAction?: React.ReactNode;
-  // Visual attributes
-  transparent?: boolean;
-}>;
+type ActionProp = Pick<
+  React.ComponentProps<typeof IconButton>,
+  "icon" | "onPress" | "accessibilityLabel" | "accessibilityHint"
+>;
 
 type ScrollValues = {
   contentOffsetY: Animated.SharedValue<number>;
   triggerOffset: number;
 };
+
+type CommonProps = WithTestID<{
+  scrollValues?: ScrollValues;
+  title: string;
+  goBack: () => void;
+  backAccessibilityLabel: string;
+  // Visual attributes
+  transparent?: boolean;
+}>;
+
+interface Base extends CommonProps {
+  type: "base";
+}
+
+interface OneAction extends CommonProps {
+  type: "singleAction";
+  firstAction: ActionProp;
+}
+
+interface TwoActions extends CommonProps {
+  type: "twoActions";
+  firstAction: ActionProp;
+  secondAction: ActionProp;
+}
+
+interface ThreeActions extends CommonProps {
+  type: "threeActions";
+  firstAction: ActionProp;
+  secondAction: ActionProp;
+  thirdAction: ActionProp;
+}
+
+export type HeaderSecondLevel = Base | OneAction | TwoActions | ThreeActions;
 
 const HEADER_BG_COLOR: IOColors = "white";
 const borderColorDisabled = hexToRgba(IOColors["grey-100"], 0);
@@ -54,98 +79,124 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   headerTitle: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro"),
     fontSize: 14,
     textAlign: "center",
     flexGrow: 1,
     flexShrink: 1,
     marginHorizontal: titleHorizontalMargin
+  },
+  headerTitleFont: {
+    ...makeFontStyleObject("Regular", false, "ReadexPro")
+  },
+  headerTitleLegacyFont: {
+    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   }
 });
 
-export const HeaderSecondLevel = ({
-  scrollValues,
-  goBack,
-  backAccessibilityLabel,
-  title,
-  firstAction,
-  secondAction,
-  thirdAction,
-  transparent = false,
-  testID
-}: HeaderSecondLevel) => {
+/**
+ * HeaderSecondLevel component is used to display the header on pages on the second level of navigation.
+ * @param {HeaderSecondLevel} props - The props of the component
+ * @returns React Element
+ */
+export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
+  const {
+    scrollValues = undefined,
+    goBack,
+    backAccessibilityLabel,
+    title,
+    type,
+    transparent = false,
+    testID
+  } = props;
+  const { isExperimental } = useIOExperimentalDesign();
   const insets = useSafeAreaInsets();
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
-    backgroundColor: transparent
+    backgroundColor:
+      transparent && scrollValues
+        ? interpolateColor(
+            scrollValues.contentOffsetY.value,
+            [0, scrollValues.triggerOffset],
+            [headerTransparent, IOColors[HEADER_BG_COLOR]]
+          )
+        : IOColors[HEADER_BG_COLOR],
+    borderColor: scrollValues
       ? interpolateColor(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
-          [headerTransparent, IOColors[HEADER_BG_COLOR]]
+          [borderColorDisabled, IOColors["grey-100"]]
         )
-      : undefined,
-    borderColor: interpolateColor(
-      scrollValues.contentOffsetY.value,
-      [0, scrollValues.triggerOffset],
-      [borderColorDisabled, IOColors["grey-100"]]
-    )
+      : "transparent"
   }));
 
   const titleAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      scrollValues.contentOffsetY.value,
-      [0, scrollValues.triggerOffset],
-      [0, 1]
-    )
+    opacity: scrollValues
+      ? interpolate(
+          scrollValues.contentOffsetY.value,
+          [0, scrollValues.triggerOffset],
+          [0, 1]
+        )
+      : 1
   }));
 
   return (
     <Animated.View
       accessibilityRole="header"
-      testID={testID}
-      style={[
-        { marginTop: insets.top },
-        styles.headerInner,
+      style={
         transparent
           ? { borderBottomWidth: 0 }
-          : { backgroundColor: IOColors[HEADER_BG_COLOR] },
-        headerWrapperAnimatedStyle
-      ]}
+          : { backgroundColor: IOColors[HEADER_BG_COLOR] }
+      }
     >
-      <IconButton
-        icon={Platform.OS === "ios" ? "backiOS" : "backAndroid"}
-        color="neutral"
-        onPress={goBack}
-        accessibilityLabel={backAccessibilityLabel}
-      />
-      <Animated.Text
-        numberOfLines={1}
-        style={[styles.headerTitle, titleAnimatedStyle]}
+      <Animated.View
+        testID={testID}
+        style={[
+          { marginTop: insets.top },
+          styles.headerInner,
+          headerWrapperAnimatedStyle
+        ]}
       >
-        {title}
-      </Animated.Text>
-      <View style={[IOStyles.row, { flexShrink: 0 }]}>
-        {firstAction ? (
-          firstAction
-        ) : (
-          <HSpacer size={iconBtnSizeSmall as IOSpacer} />
-        )}
-        {secondAction && (
-          <>
-            {/* Ideally, with the "gap" flex property,
+        <IconButton
+          icon={Platform.OS === "ios" ? "backiOS" : "backAndroid"}
+          color="neutral"
+          onPress={goBack}
+          accessibilityLabel={backAccessibilityLabel}
+        />
+        <Animated.Text
+          numberOfLines={1}
+          style={[
+            styles.headerTitle,
+            isExperimental
+              ? styles.headerTitleFont
+              : styles.headerTitleLegacyFont,
+            titleAnimatedStyle
+          ]}
+        >
+          {title}
+        </Animated.Text>
+        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+          {type !== "base" ? (
+            <IconButton {...props.firstAction} color="neutral" />
+          ) : (
+            <HSpacer size={iconBtnSizeSmall as IOSpacer} />
+          )}
+          {(type === "twoActions" || type === "threeActions") && (
+            <>
+              {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
-            <HSpacer size={16} />
-            {secondAction}
-          </>
-        )}
-        {thirdAction && (
-          <>
-            {/* Same as above */}
-            <HSpacer size={16} />
-            {thirdAction}
-          </>
-        )}
-      </View>
+              <HSpacer size={16} />
+              <IconButton {...props.secondAction} color="neutral" />
+            </>
+          )}
+          {type === "threeActions" && (
+            <>
+              {/* Same as above */}
+              <HSpacer size={16} />
+              <IconButton {...props.thirdAction} color="neutral" />
+            </>
+          )}
+        </View>
+      </Animated.View>
     </Animated.View>
   );
 };

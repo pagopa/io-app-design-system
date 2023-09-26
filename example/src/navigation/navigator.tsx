@@ -20,6 +20,8 @@ import { Sandbox } from "../pages/Sandbox";
 import { TextInputs } from "../pages/TextInputs";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import Modules from "../pages/Modules";
+import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -182,6 +184,24 @@ const AppNavigator = () => (
       component={FooterWithButton}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.route}
+      component={HeaderSecondLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.route}
+      component={StaticHeaderSecondLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
         headerBackTitleVisible: false
       }}
     />
