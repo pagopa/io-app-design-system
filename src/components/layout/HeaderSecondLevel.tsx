@@ -22,7 +22,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 
 type ActionProp = Pick<
   React.ComponentProps<typeof IconButton>,
-  "icon" | "onPress" | "accessibilityLabel" | "accessibilityHint"
+  "icon" | "onPress" | "accessibilityLabel" | "accessibilityHint" | "testID"
 >;
 
 type ScrollValues = {
