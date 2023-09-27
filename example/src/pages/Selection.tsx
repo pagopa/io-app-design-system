@@ -214,24 +214,46 @@ const NativeSwitchShowroom = () => {
 
 type ListItemSwitchSampleProps = Pick<
   React.ComponentProps<typeof ListItemSwitch>,
-  "label" | "description" | "value"
+  "label" | "description" | "value" | "icon" | "paymentLogo"
 >;
 
 const ListItemSwitchSample = ({
   value,
   label,
-  description
+  description,
+  icon,
+  paymentLogo
 }: ListItemSwitchSampleProps) => {
   const [isEnabled, setIsEnabled] = useState(value);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-    <ListItemSwitch
-      label={label}
-      description={description}
-      value={isEnabled}
-      onSwitchValueChange={toggleSwitch}
-    />
+    <>
+      {icon ? (
+        <ListItemSwitch
+          icon={icon}
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      ) : paymentLogo ? (
+        <ListItemSwitch
+          paymentLogo={paymentLogo}
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      ) : (
+        <ListItemSwitch
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      )}
+    </>
   );
 };
 
@@ -255,11 +277,19 @@ const ListItemSwitchShowroom = () => (
       />
       <Divider />
       <ListItemSwitchSample
+        icon="bonus"
         label="Let's try with a loooong loooooong looooooong title + icon"
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
       />
+      <Divider />
+      <ListItemSwitchSample
+        paymentLogo="mastercard"
+        label="5354 **** **** 0000"
+      />
+      <Divider />
+      <ListItemSwitchSample paymentLogo="applePay" label="Apple Pay" />
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemSwitch, disabled">
       <ListItemSwitch disabled label="Testo molto breve" value={true} />
@@ -308,6 +338,15 @@ const ListItemSwitchShowroom = () => (
           variant: "info"
         }}
         description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
+      />
+      <ListItemSwitch
+        icon="coggle"
+        label="Loong loooooong loooooooooong loooong title"
+        value={false}
+        badge={{
+          text: "Attivo",
+          variant: "info"
+        }}
       />
     </ComponentViewerBox>
   </>
