@@ -31,7 +31,7 @@ export type SwitchAction = {
   onPress: (event: GestureResponderEvent) => void;
 };
 
-type ListItemSwitchGraphicProps =
+export type ListItemSwitchGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType }
   | { icon: IOIcons; paymentLogo?: never }
   | { icon?: never; paymentLogo?: never };
@@ -42,7 +42,7 @@ const DISABLED_OPACITY = 0.5;
 both on iOS & Android */
 const ESTIMATED_SWITCH_HEIGHT: number = 32;
 
-type ListItemSwitch = PartialProps &
+export type ListItemSwitchProps = PartialProps &
   ListItemSwitchGraphicProps &
   Pick<React.ComponentProps<typeof Switch>, "value" | "disabled">;
 
@@ -58,7 +58,7 @@ export const ListItemSwitch = React.memo(
     isLoading,
     badge,
     onSwitchValueChange
-  }: ListItemSwitch) => {
+  }: ListItemSwitchProps) => {
     const theme = useIOTheme();
 
     return (
