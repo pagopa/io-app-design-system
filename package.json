@@ -1,7 +1,7 @@
 {
   "name": "@pagopa/io-app-design-system",
   "version": "1.11.1",
-  "description": "test",
+  "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",

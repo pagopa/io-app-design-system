@@ -64,11 +64,11 @@ const renderModuleIDP = () => (
 
 const renderModulePaymentNotice = () => (
   <>
-    <ComponentViewerBox name="ModulePaymentNotice, payed variant">
+    <ComponentViewerBox name="ModulePaymentNotice, paid variant">
       <View>
         <ModulePaymentNotice
           onPress={mockFn}
-          paymentNoticeStatus="payed"
+          paymentNoticeStatus="paid"
           badgeText="Pagato"
           subtitle="F24"
           title="Codice avviso"

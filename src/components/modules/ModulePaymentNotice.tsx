@@ -32,7 +32,7 @@ import { VSpacer } from "../spacer";
 
 export type PaymentNoticeStatus =
   | "default"
-  | "payed"
+  | "paid"
   | "error"
   | "expired"
   | "revoked"
@@ -101,7 +101,7 @@ const ModulePaymentNoticeContent = ({
             {paymentNoticeAmount}
           </H6>
         );
-      case "payed":
+      case "paid":
         return <Badge variant="success" text={badgeText} />;
       case "error":
         return <Badge variant="error" text={badgeText} />;
