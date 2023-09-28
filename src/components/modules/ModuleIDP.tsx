@@ -38,7 +38,6 @@ type ModuleIDP = WithTestID<{
   logo: ImageSourcePropType;
   saved?: boolean;
   onPress: (event: GestureResponderEvent) => void;
-  urlLogoIDP: string;
 }>;
 
 const styles = StyleSheet.create({
