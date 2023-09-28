@@ -38,7 +38,7 @@ export type PaymentNoticeStatus =
   | "revoked"
   | "canceled";
 
-type Props = WithTestID<
+export type ModulePaymentNoticeProps = WithTestID<
   {
     isLoading?: boolean;
     accessibilityLabel?: string;
@@ -87,7 +87,7 @@ const ModulePaymentNoticeContent = ({
   paymentNoticeStatus,
   paymentNoticeAmount,
   badgeText = ""
-}: Omit<Props, "isLoading" | "onPress" | "testID">) => {
+}: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const { isExperimental } = useIOExperimentalDesign();
 
   const AmountOrBadgeComponent = () => {
@@ -160,7 +160,7 @@ export const ModulePaymentNotice = ({
   accessibilityLabel,
   onPress,
   ...rest
-}: Props) => {
+}: ModulePaymentNoticeProps) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
