@@ -33,7 +33,6 @@ const renderModuleIDP = () => (
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
         />
       </View>
     </ComponentViewerBox>
@@ -46,7 +45,6 @@ const renderModuleIDP = () => (
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
         />
       </View>
     </ComponentViewerBox>
@@ -58,7 +56,6 @@ const renderModuleIDP = () => (
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
         />
       </View>
     </ComponentViewerBox>
