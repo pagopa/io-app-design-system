@@ -37,7 +37,20 @@ export type ListItemTransactionStatus =
   | "refunded"
   | "reversal";
 
-type PaymentLogoIcon = IOLogoPaymentType | ImageURISource | React.ReactNode;
+export type ListItemTransactionStatusWithoutBadge = Extract<
+  ListItemTransactionStatus,
+  "success" | "refunded"
+>;
+
+export type ListItemTransactionStatusWithBadge = Exclude<
+  ListItemTransactionStatus,
+  "success" | "refunded"
+>;
+
+export type ListItemTransactionLogo =
+  | IOLogoPaymentType
+  | ImageURISource
+  | React.ReactNode;
 
 export type ListItemTransaction = WithTestID<
   PressableBaseProps & {
@@ -48,17 +61,17 @@ export type ListItemTransaction = WithTestID<
      *
      * Must be a {@link IOLogoPaymentType} or an {@link ImageURISource} or an {@link Icon}.
      */
-    paymentLogoIcon?: PaymentLogoIcon;
+    paymentLogoIcon?: ListItemTransactionLogo;
     subtitle: string;
     title: string;
   } & (
       | {
-          transactionStatus: "success" | "refunded";
+          transactionStatus: ListItemTransactionStatusWithoutBadge;
           badgeText?: string;
           transactionAmount: string;
         }
       | {
-          transactionStatus: "failure" | "pending" | "cancelled" | "reversal";
+          transactionStatus: ListItemTransactionStatusWithBadge;
           badgeText: string;
           transactionAmount?: string;
         }
@@ -66,7 +79,7 @@ export type ListItemTransaction = WithTestID<
 >;
 
 type LeftComponentProps = {
-  logoIcon: PaymentLogoIcon;
+  logoIcon: ListItemTransactionLogo;
 };
 
 const CARD_LOGO_SIZE: IOIconSizeScale = 24;
