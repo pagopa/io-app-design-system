@@ -4,7 +4,7 @@ import { Divider } from "../divider";
 import { IOIcons } from "../icons";
 import { ListItemRadio } from "../listitems/ListItemRadio";
 
-export type NewRadioItem<T> = {
+export type RadioItem<T> = {
   id: T;
   value: string;
   description?: string;
@@ -13,7 +13,7 @@ export type NewRadioItem<T> = {
 };
 
 type Props<T> = {
-  items: ReadonlyArray<NewRadioItem<T>>;
+  items: ReadonlyArray<RadioItem<T>>;
   selectedItem?: T;
   onPress: (selected: T) => void;
 };
