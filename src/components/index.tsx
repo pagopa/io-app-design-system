@@ -18,6 +18,7 @@ export * from "./spacer";
 export * from "./switch";
 export * from "./tag";
 export * from "./tabs";
+export * from "./toast";
 export * from "./typography";
 export * from "./textInput";
 export * from "./layout";

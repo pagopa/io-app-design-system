@@ -30,6 +30,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STATIC",
       title: "Header Second Level Static"
     },
+    TOASTS: {
+      route: "DESIGN_SYSTEM_TOASTS",
+      title: "Toasts"
+    },
     FOOTER_WITH_BUTTON: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
       title: "Footer with button"

@@ -10,7 +10,8 @@ import {
   IOThemeContext,
   IOThemeDark,
   IOThemeLight,
-  IOThemes
+  IOThemes,
+  ToastProvider
 } from "@pagopa/io-app-design-system";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -38,22 +39,26 @@ export default function App() {
   const colorScheme = useColorScheme();
 
   return (
-    <IOThemeContext.Provider
-      value={colorScheme === "dark" ? IOThemes.dark : IOThemes.light}
-    >
-      <IODSExperimentalContextProvider>
-        <NavigationContainer
-          theme={
-            colorScheme === "dark"
-              ? IONavigationDarkTheme
-              : IONavigationLightTheme
-          }
-        >
-          <GestureHandlerRootView style={IOStyles.flex}>
-            <AppNavigator />
-          </GestureHandlerRootView>
-        </NavigationContainer>
-      </IODSExperimentalContextProvider>
-    </IOThemeContext.Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <IOThemeContext.Provider
+        value={colorScheme === "dark" ? IOThemes.dark : IOThemes.light}
+      >
+        <IODSExperimentalContextProvider>
+          <ToastProvider>
+            <NavigationContainer
+              theme={
+                colorScheme === "dark"
+                  ? IONavigationDarkTheme
+                  : IONavigationLightTheme
+              }
+            >
+              <GestureHandlerRootView style={IOStyles.flex}>
+                <AppNavigator />
+              </GestureHandlerRootView>
+            </NavigationContainer>
+          </ToastProvider>
+        </IODSExperimentalContextProvider>
+      </IOThemeContext.Provider>
+    </GestureHandlerRootView>
   );
 }
