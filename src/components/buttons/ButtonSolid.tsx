@@ -232,6 +232,7 @@ export const ButtonSolid = React.memo(
         <Animated.View
           style={[
             buttonStyles.button,
+            isExperimental && fullWidth && { paddingHorizontal: 16 },
             iconPosition === "end" && { flexDirection: "row-reverse" },
             buttonStyles.buttonSizeDefault,
             disabled
