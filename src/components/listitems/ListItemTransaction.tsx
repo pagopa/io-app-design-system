@@ -64,6 +64,7 @@ export type ListItemTransaction = WithTestID<
     paymentLogoIcon?: ListItemTransactionLogo;
     subtitle: string;
     title: string;
+    accessible?: boolean;
   } & (
       | {
           transactionStatus: ListItemTransactionStatusWithoutBadge;
@@ -114,7 +115,8 @@ export const ListItemTransaction = ({
   title,
   transactionAmount,
   badgeText,
-  transactionStatus = "success"
+  transactionStatus = "success",
+  accessible
 }: ListItemTransaction) => {
   const theme = useIOTheme();
 
@@ -203,7 +205,7 @@ export const ListItemTransaction = ({
         <View
           style={IOListItemStyles.listItem}
           testID={testID}
-          accessible={false}
+          accessible={accessible}
           accessibilityLabel={accessibilityLabel}
         >
           <View style={IOListItemStyles.listItemInner}>
