@@ -14,12 +14,12 @@ import {
   useIOTheme
 } from "../../core";
 
-import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
-import { isImageUri } from "../../utils/url";
-import { WithTestID } from "../../utils/types";
 import { getAccessibleAmountText } from "../../utils/accessibility";
+import { WithTestID } from "../../utils/types";
+import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
 import { Badge } from "../badge/Badge";
+import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { VSpacer } from "../spacer";
@@ -203,7 +203,7 @@ export const ListItemTransaction = ({
         <View
           style={IOListItemStyles.listItem}
           testID={testID}
-          accessible={true}
+          accessible={false}
           accessibilityLabel={accessibilityLabel}
         >
           <View style={IOListItemStyles.listItemInner}>
