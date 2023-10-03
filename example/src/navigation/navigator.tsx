@@ -22,6 +22,7 @@ import { FooterWithButton } from "../pages/FooterWithButton";
 import Modules from "../pages/Modules";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
+import { Toasts } from "../pages/Toasts";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -203,6 +204,14 @@ const AppNavigator = () => (
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
         headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.TOASTS.route}
+      component={Toasts}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.TOASTS.title
       }}
     />
 
