@@ -6,7 +6,7 @@ import {
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
-  NewRadioItem,
+  RadioItem,
   RadioGroup,
   SwitchLabel,
   VSpacer,
@@ -145,7 +145,7 @@ const renderListItemCheckbox = () => (
 
 // RADIO ITEMS
 
-const mockRadioItems = (): ReadonlyArray<NewRadioItem<string>> => [
+const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
     icon: "coggle",
     value: "Let's try with a basic title",
