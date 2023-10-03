@@ -2,14 +2,19 @@ import {
   Avatar,
   H2,
   HSpacer,
+  IOColors,
+  IOLogoPaymentCardType,
   IOLogoPaymentExtType,
   IOLogoPaymentType,
+  IOPaymentCardLogos,
   IOPaymentExtLogos,
   IOPaymentLogos,
   IOVisualCostants,
   LogoPayment,
+  LogoPaymentCard,
   LogoPaymentExt,
   VSpacer,
+  hexToRgba,
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -73,6 +78,15 @@ export const Logos = () => {
         Payment Networks (Big)
       </H2>
       {renderPaymentLogosBig()}
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 12 }}
+      >
+        Payment Networks (Card)
+      </H2>
+      {renderPaymentLogosCard()}
     </Screen>
   );
 };
@@ -211,5 +225,45 @@ const renderPaymentLogosBig = () => (
         }
       />
     ))}
+  </View>
+);
+
+const renderPaymentLogosCard = () => (
+  <View style={styles.itemsWrapper}>
+    {Object.entries(IOPaymentCardLogos).map(([logoItemName]) => (
+      <LogoPaymentViewerBox
+        key={logoItemName}
+        name={logoItemName}
+        size="full"
+        image={
+          <LogoPaymentCard
+            align="start"
+            height={32}
+            name={logoItemName as IOLogoPaymentCardType}
+          />
+        }
+      />
+    ))}
+    <VSpacer size={24} />
+    <ComponentViewerBox
+      fullWidth
+      name="Debug mode enabled, possible align values"
+    >
+      <View
+        style={{
+          borderRadius: 16,
+          padding: 16,
+          backgroundColor: IOColors.white,
+          borderColor: hexToRgba(IOColors.black, 0.15),
+          borderWidth: 1
+        }}
+      >
+        <LogoPaymentCard debugMode height={32} name="payPal" align="start" />
+        <VSpacer size={8} />
+        <LogoPaymentCard debugMode height={32} name="payPal" align="center" />
+        <VSpacer size={8} />
+        <LogoPaymentCard debugMode height={32} name="payPal" align="end" />
+      </View>
+    </ComponentViewerBox>
   </View>
 );

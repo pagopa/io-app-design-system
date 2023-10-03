@@ -1,5 +1,4 @@
 import React from "react";
-import LogoPaymentExtAmex from "./svg/LogoPaymentExtAmex";
 
 /* Logos */
 import LogoPaymentExtMaestro from "./svg/LogoPaymentExtMaestro";
@@ -15,6 +14,7 @@ import LogoPaymentExtBancomatPay from "./svg/LogoPaymentExtBancomatPay";
 import LogoPaymentExtPostepay from "./svg/LogoPaymentExtPostepay";
 import LogoPaymentExtPagoBancomat from "./svg/LogoPaymentExtPagoBancomat";
 import LogoPaymentExtApplePay from "./svg/LogoPaymentExtApplePay";
+import LogoPaymentExtAmex from "./svg/LogoPaymentExtAmex";
 
 export const IOPaymentExtLogos = {
   maestro: LogoPaymentExtMaestro,
