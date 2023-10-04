@@ -22,6 +22,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
     },
+    HEADER_FIRST_LEVEL: {
+      route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
+      title: "Header First Level"
+    },
     HEADER_SECOND_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL",
       title: "Header Second Level"

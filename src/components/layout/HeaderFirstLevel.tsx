@@ -5,6 +5,7 @@ import { WithTestID } from "../../utils/types";
 import { IOStyles, IOVisualCostants, IOColors } from "../../core";
 import { H3 } from "../typography";
 import { HSpacer } from "../spacer";
+import { IconButton } from "../buttons";
 import { ActionProp } from "./common";
 
 type CommonProps = WithTestID<{
@@ -66,20 +67,22 @@ export const HeaderFirstLevel = (props: HeaderFirstLevel) => {
           {title}
         </H3>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
-          {type !== "base" && props.firstAction}
+          {type !== "base" && (
+            <IconButton {...props.firstAction} color="neutral" />
+          )}
           {(type === "twoActions" || type === "threeActions") && (
             <>
               {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
               <HSpacer size={16} />
-              {props.secondAction}
+              <IconButton {...props.secondAction} color="neutral" />
             </>
           )}
           {type === "threeActions" && (
             <>
               {/* Same as above */}
               <HSpacer size={16} />
-              {props.thirdAction}
+              <IconButton {...props.thirdAction} color="neutral" />
             </>
           )}
         </View>
