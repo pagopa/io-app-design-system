@@ -212,7 +212,7 @@ export const IOIcons = {
   success: IconSuccess,
   ok: IconOk,
   fiscalCodeIndividual: IconFiscalCodeIndividual,
-  iconEntityCode: IconEntityCode,
+  entityCode: IconEntityCode,
   creditCard: IconCreditCard,
   bonus: IconBonus,
   transactionsBoxed: IconTransactionsBoxed,
