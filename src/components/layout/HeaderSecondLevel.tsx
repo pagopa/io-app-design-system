@@ -19,11 +19,7 @@ import type { IOSpacer } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { makeFontStyleObject } from "../../utils/fonts";
-
-type ActionProp = Pick<
-  React.ComponentProps<typeof IconButton>,
-  "icon" | "onPress" | "accessibilityLabel" | "accessibilityHint" | "testID"
->;
+import { ActionProp } from "./common";
 
 type ScrollValues = {
   contentOffsetY: Animated.SharedValue<number>;
