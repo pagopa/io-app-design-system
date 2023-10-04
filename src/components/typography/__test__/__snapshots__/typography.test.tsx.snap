@@ -2,6 +2,7 @@
 
 exports[`Test Typography Components Body Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Regular"
@@ -34,6 +35,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
 
 exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Medium"
@@ -66,6 +68,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="white"
   defaultWeight="Bold"
@@ -96,6 +99,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
 
 exports[`Test Typography Components H1 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
@@ -128,6 +132,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
 
 exports[`Test Typography Components H1 Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="black"
   defaultWeight="Bold"
@@ -160,6 +165,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
 
 exports[`Test Typography Components H2 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
@@ -192,6 +198,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 
 exports[`Test Typography Components H3 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Bold"
@@ -224,6 +231,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
 
 exports[`Test Typography Components H3 Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="Bold"
@@ -256,6 +264,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
 
 exports[`Test Typography Components H3 Snapshot 3`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Bold"
@@ -288,6 +297,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
 
 exports[`Test Typography Components H3 Snapshot 4`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Bold"
@@ -320,6 +330,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
 
 exports[`Test Typography Components H3 Snapshot 5`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Bold"
@@ -352,6 +363,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
 
 exports[`Test Typography Components H4 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -384,6 +396,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
 
 exports[`Test Typography Components H4 Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="blue"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -416,6 +429,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
 
 exports[`Test Typography Components H4 Snapshot 3`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -448,6 +462,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
 
 exports[`Test Typography Components H4 Snapshot 4`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -480,6 +495,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
 
 exports[`Test Typography Components H4 Snapshot 5`] = `
 <Text
+  allowFontScaling={false}
   color="bluegrey"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -512,6 +528,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
 
 exports[`Test Typography Components H4 Snapshot 6`] = `
 <Text
+  allowFontScaling={false}
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -544,6 +561,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
 
 exports[`Test Typography Components H4 Snapshot 7`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
@@ -576,6 +594,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
 
 exports[`Test Typography Components H5 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
@@ -612,6 +631,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
 
 exports[`Test Typography Components H5 Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="bluegrey"
   defaultColor="black"
   defaultWeight="SemiBold"
@@ -648,6 +668,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
 
 exports[`Test Typography Components H5 Snapshot 3`] = `
 <Text
+  allowFontScaling={false}
   color="blue"
   defaultColor="black"
   defaultWeight="SemiBold"
@@ -684,6 +705,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
 
 exports[`Test Typography Components H5 Snapshot 4`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="black"
   defaultWeight="SemiBold"
@@ -720,6 +742,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
 
 exports[`Test Typography Components H6 Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
@@ -752,6 +775,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
 
 exports[`Test Typography Components Label Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
@@ -784,6 +808,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
 
 exports[`Test Typography Components Label Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
@@ -816,6 +841,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
 
 exports[`Test Typography Components LabelSmall Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
@@ -846,6 +872,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
 
 exports[`Test Typography Components LabelSmall Snapshot 2`] = `
 <Text
+  allowFontScaling={false}
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
@@ -876,6 +903,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
 
 exports[`Test Typography Components LabelSmall Snapshot 3`] = `
 <Text
+  allowFontScaling={false}
   color="bluegrey"
   defaultColor="blue"
   defaultWeight="Bold"
@@ -906,6 +934,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
 
 exports[`Test Typography Components LabelSmall Snapshot 4`] = `
 <Text
+  allowFontScaling={false}
   color="red"
   defaultColor="blue"
   defaultWeight="Bold"
@@ -936,6 +965,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
 
 exports[`Test Typography Components LabelSmall Snapshot 5`] = `
 <Text
+  allowFontScaling={false}
   color="white"
   defaultColor="blue"
   defaultWeight="Bold"
@@ -966,6 +996,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
 
 exports[`Test Typography Components Link Snapshot 1`] = `
 <Text
+  allowFontScaling={false}
   color="blue"
   defaultColor="blue"
   defaultWeight="SemiBold"

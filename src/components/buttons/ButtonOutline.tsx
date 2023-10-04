@@ -332,6 +332,7 @@ export const ButtonOutline = ({
       <Animated.View
         style={[
           buttonStyles.button,
+          isExperimental && fullWidth && { paddingHorizontal: 16 },
           buttonStylesLocal.buttonWithBorder,
           buttonStyles.buttonSizeDefault,
           iconPosition === "end" && { flexDirection: "row-reverse" },
@@ -380,10 +381,8 @@ export const ButtonOutline = ({
           ]}
           numberOfLines={1}
           ellipsizeMode="tail"
-          /* A11y-related props:
-                DON'T UNCOMMENT THEM */
-          /* allowFontScaling
-                maxFontSizeMultiplier={1.3} */
+          allowFontScaling={isExperimental}
+          maxFontSizeMultiplier={1.3}
         >
           {label}
         </Animated.Text>

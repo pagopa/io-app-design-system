@@ -54,7 +54,7 @@ export const BaseTypography: React.FC<OwnProps> = props => {
     : [props.fontStyle, fontStyle];
 
   return (
-    <Text {...props} style={style}>
+    <Text allowFontScaling={false} {...props} style={style}>
       {props.children}
     </Text>
   );

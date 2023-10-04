@@ -232,6 +232,7 @@ export const ButtonSolid = React.memo(
         <Animated.View
           style={[
             buttonStyles.button,
+            isExperimental && fullWidth && { paddingHorizontal: 16 },
             iconPosition === "end" && { flexDirection: "row-reverse" },
             buttonStyles.buttonSizeDefault,
             disabled
@@ -259,10 +260,8 @@ export const ButtonSolid = React.memo(
             style={IOButtonStyles.label}
             numberOfLines={1}
             ellipsizeMode="tail"
-            /* A11y-related props:
-                DON'T UNCOMMENT THEM */
-            /* allowFontScaling
-                maxFontSizeMultiplier={1.3} */
+            allowFontScaling={isExperimental}
+            maxFontSizeMultiplier={1.3}
           >
             {label}
           </ButtonText>
