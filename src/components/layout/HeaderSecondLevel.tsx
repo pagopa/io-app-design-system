@@ -37,17 +37,23 @@ type CommonProps = WithTestID<{
 
 interface Base extends CommonProps {
   type: "base";
+  firstAction?: never;
+  secondAction?: never;
+  thirdAction?: never;
 }
 
 interface OneAction extends CommonProps {
   type: "singleAction";
   firstAction: ActionProp;
+  secondAction?: never;
+  thirdAction?: never;
 }
 
 interface TwoActions extends CommonProps {
   type: "twoActions";
   firstAction: ActionProp;
   secondAction: ActionProp;
+  thirdAction?: never;
 }
 
 interface ThreeActions extends CommonProps {
@@ -94,16 +100,18 @@ const styles = StyleSheet.create({
  * @param {HeaderSecondLevel} props - The props of the component
  * @returns React Element
  */
-export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
-  const {
-    scrollValues = undefined,
-    goBack,
-    backAccessibilityLabel,
-    title,
-    type,
-    transparent = false,
-    testID
-  } = props;
+export const HeaderSecondLevel = ({
+  scrollValues = undefined,
+  goBack,
+  backAccessibilityLabel,
+  title,
+  type,
+  transparent = false,
+  testID,
+  firstAction,
+  secondAction,
+  thirdAction
+}: HeaderSecondLevel) => {
   const { isExperimental } = useIOExperimentalDesign();
   const insets = useSafeAreaInsets();
 
@@ -172,7 +180,7 @@ export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
         </Animated.Text>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
           {type !== "base" ? (
-            <IconButton {...props.firstAction} color="neutral" />
+            <IconButton {...firstAction} color="neutral" />
           ) : (
             <HSpacer size={iconBtnSizeSmall as IOSpacer} />
           )}
@@ -181,14 +189,14 @@ export const HeaderSecondLevel = (props: HeaderSecondLevel) => {
               {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
               <HSpacer size={16} />
-              <IconButton {...props.secondAction} color="neutral" />
+              <IconButton {...secondAction} color="neutral" />
             </>
           )}
           {type === "threeActions" && (
             <>
               {/* Same as above */}
               <HSpacer size={16} />
-              <IconButton {...props.thirdAction} color="neutral" />
+              <IconButton {...thirdAction} color="neutral" />
             </>
           )}
         </View>

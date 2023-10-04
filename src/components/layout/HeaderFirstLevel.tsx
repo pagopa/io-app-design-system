@@ -14,17 +14,23 @@ type CommonProps = WithTestID<{
 
 interface Base extends CommonProps {
   type: "base";
+  firstAction?: never;
+  secondAction?: never;
+  thirdAction?: never;
 }
 
 interface OneAction extends CommonProps {
   type: "singleAction";
   firstAction: ActionProp;
+  secondAction?: never;
+  thirdAction?: never;
 }
 
 interface TwoActions extends CommonProps {
   type: "twoActions";
   firstAction: ActionProp;
   secondAction: ActionProp;
+  thirdAction?: never;
 }
 
 interface ThreeActions extends CommonProps {
@@ -49,8 +55,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export const HeaderFirstLevel = (props: HeaderFirstLevel) => {
-  const { title, type, testID } = props;
+export const HeaderFirstLevel = ({
+  title,
+  type,
+  testID,
+  firstAction,
+  secondAction,
+  thirdAction
+}: HeaderFirstLevel) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -67,22 +79,21 @@ export const HeaderFirstLevel = (props: HeaderFirstLevel) => {
           {title}
         </H3>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
-          {type !== "base" && (
-            <IconButton {...props.firstAction} color="neutral" />
-          )}
+          {type !== "base" && <IconButton {...firstAction} color="neutral" />}
           {(type === "twoActions" || type === "threeActions") && (
             <>
               {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
+              +.9+
               <HSpacer size={16} />
-              <IconButton {...props.secondAction} color="neutral" />
+              <IconButton {...secondAction} color="neutral" />
             </>
           )}
           {type === "threeActions" && (
             <>
               {/* Same as above */}
               <HSpacer size={16} />
-              <IconButton {...props.thirdAction} color="neutral" />
+              <IconButton {...thirdAction} color="neutral" />
             </>
           )}
         </View>
