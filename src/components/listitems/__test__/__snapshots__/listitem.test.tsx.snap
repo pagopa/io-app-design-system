@@ -224,6 +224,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       }
     >
       <Text
+        allowFontScaling={false}
         color="bluegrey"
         defaultColor="bluegrey"
         defaultWeight="Regular"
@@ -350,6 +351,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         }
       >
         <Text
+          allowFontScaling={false}
           color="bluegrey"
           defaultColor="bluegrey"
           defaultWeight="Regular"

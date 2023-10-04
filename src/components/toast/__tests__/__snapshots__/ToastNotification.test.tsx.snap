@@ -23,6 +23,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Bold"
@@ -132,6 +133,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="error-850"
     defaultColor="white"
     defaultWeight="Bold"
@@ -187,6 +189,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="info-850"
     defaultColor="white"
     defaultWeight="Bold"
@@ -242,6 +245,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Bold"
@@ -297,6 +301,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="success-850"
     defaultColor="white"
     defaultWeight="Bold"
@@ -352,6 +357,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
+    allowFontScaling={false}
     color="warning-850"
     defaultColor="white"
     defaultWeight="Bold"
