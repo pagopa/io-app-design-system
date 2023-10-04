@@ -157,7 +157,7 @@ import IconContactless from "./svg/IconContactless";
 import IconDisabilityCard from "./svg/IconDisabilityCard";
 import IconDriverLicense from "./svg/IconDriverLicense";
 import IconHealthCard from "./svg/IconHealthCard";
-import IconDocPaymentCode from "./svg/IconDocPaymentcode";
+import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconNotes from "./svg/IconNotes";
 import IconEntityCode from "./svg/IconEntityCode";
 
