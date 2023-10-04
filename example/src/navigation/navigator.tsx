@@ -23,6 +23,7 @@ import Modules from "../pages/Modules";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
 import { Toasts } from "../pages/Toasts";
+import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -185,6 +186,15 @@ const AppNavigator = () => (
       component={FooterWithButton}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
+      component={HeaderFirstLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
         headerBackTitleVisible: false
       }}
     />

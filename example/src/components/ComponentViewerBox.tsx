@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
   componentWrapper: {
     marginBottom: 24
   },
+  componentWrapperFullWidth: {
+    flexGrow: 1
+  },
   lastItem: {
     marginBottom: 0
   },
@@ -31,15 +34,22 @@ type ComponentViewerBoxProps = {
   colorMode?: "dark" | "light";
   last?: boolean;
   children: React.ReactNode;
+  fullWidth?: boolean;
 };
 
 export const ComponentViewerBox = ({
   name,
   colorMode = "light",
   last = false,
+  fullWidth = false,
   children
 }: ComponentViewerBoxProps) => (
-  <View style={last ? styles.lastItem : styles.componentWrapper}>
+  <View
+    style={[
+      last ? styles.lastItem : styles.componentWrapper,
+      fullWidth && styles.componentWrapperFullWidth
+    ]}
+  >
     {children}
     <View style={styles.labelWrapper}>
       {name && (
