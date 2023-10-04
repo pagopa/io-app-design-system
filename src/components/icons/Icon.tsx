@@ -157,6 +157,9 @@ import IconContactless from "./svg/IconContactless";
 import IconDisabilityCard from "./svg/IconDisabilityCard";
 import IconDriverLicense from "./svg/IconDriverLicense";
 import IconHealthCard from "./svg/IconHealthCard";
+import IconDocPaymentCode from "./svg/IconDocPaymentcode";
+import IconNotes from "./svg/IconNotes";
+import IconEntityCode from "./svg/IconEntityCode";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -200,13 +203,16 @@ export const IOIcons = {
   option: IconOption,
   key: IconKey,
   docGiacenza: IconGiacenza,
+  docPaymentCode: IconDocPaymentCode,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
+  notes: IconNotes,
   attachment: IconAttachment,
   add: IconAdd,
   success: IconSuccess,
   ok: IconOk,
   fiscalCodeIndividual: IconFiscalCodeIndividual,
+  iconEntityCode: IconEntityCode,
   creditCard: IconCreditCard,
   bonus: IconBonus,
   transactionsBoxed: IconTransactionsBoxed,
