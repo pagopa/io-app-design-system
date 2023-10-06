@@ -77,6 +77,7 @@ import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
 import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
 import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
+import PictogramNotification from "./svg/PictogramNotification";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -141,7 +142,8 @@ export const IOPictograms = {
   trash: PictogramObjTrash,
   clock: PictogramObjClock,
   key: PictogramObjKey,
-  flyingMessage: PictogramObjFlyingMessage
+  flyingMessage: PictogramObjFlyingMessage,
+  notification: PictogramNotification
   // End Objects Pictogram
 };
 
