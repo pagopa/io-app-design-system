@@ -4,8 +4,6 @@ import { WithTestID } from "../../utils/types";
 import { IOColors } from "../../core";
 
 type Props = WithTestID<{
-  captionTitle?: string;
-  captionSubtitle?: string;
   foregroundColor?: IOColors;
   backgroundColor?: IOColors;
   durationMs?: number;
