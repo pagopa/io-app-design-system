@@ -1,13 +1,15 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
+  Easing,
   Extrapolate,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
-  withSpring
+  withSpring,
+  withTiming
 } from "react-native-reanimated";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
@@ -21,6 +23,7 @@ import {
   IOSpringValues,
   useIOExperimentalDesign
 } from "../../core";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -65,6 +68,10 @@ export type ButtonSolidProps = WithTestID<{
    * @default false
    */
   fullWidth?: boolean;
+  /**
+   * @default false
+   */
+  loading?: boolean;
   /**
    * @default false
    */
@@ -152,6 +159,7 @@ export const ButtonSolid = React.memo(
     label,
     fullWidth = false,
     disabled = false,
+    loading = false,
     icon,
     iconPosition = "start",
     onPress,
@@ -202,6 +210,86 @@ export const ButtonSolid = React.memo(
       };
     });
 
+    /* Custom entering transition */
+    const customEntering = () => {
+      "worklet";
+      const animations = {
+        opacity: withTiming(1, {
+          duration: 250,
+          easing: Easing.in(Easing.cubic)
+        }),
+        transform: [
+          {
+            scale: withTiming(1, {
+              duration: 250,
+              easing: Easing.in(Easing.cubic)
+            })
+          }
+        ]
+      };
+      const initialValues = {
+        opacity: 0,
+        transform: [{ scale: 1.05 }]
+      };
+      return {
+        initialValues,
+        animations
+      };
+    };
+
+    const customEnteringExagerated = () => {
+      "worklet";
+      const animations = {
+        opacity: withTiming(1, {
+          duration: 250,
+          easing: Easing.in(Easing.cubic)
+        }),
+        transform: [
+          {
+            scale: withTiming(1, {
+              duration: 250,
+              easing: Easing.in(Easing.cubic)
+            })
+          }
+        ]
+      };
+      const initialValues = {
+        opacity: 0,
+        transform: [{ scale: 1.25 }]
+      };
+      return {
+        initialValues,
+        animations
+      };
+    };
+
+    /* Custom entering transition */
+    const customExiting = () => {
+      "worklet";
+      const animations = {
+        opacity: withTiming(0, {
+          duration: 400,
+          easing: Easing.out(Easing.cubic)
+        }),
+        transform: [
+          {
+            scale: withTiming(0.9, {
+              duration: 400,
+              easing: Easing.out(Easing.cubic)
+            })
+          }
+        ]
+      };
+      const initialValues = {
+        opacity: 1,
+        transform: [{ scale: 1 }]
+      };
+      return {
+        initialValues,
+        animations
+      };
+    };
+
     const onPressIn = useCallback(() => {
       // eslint-disable-next-line functional/immutable-data
       isPressed.value = 1;
@@ -232,8 +320,8 @@ export const ButtonSolid = React.memo(
         <Animated.View
           style={[
             buttonStyles.button,
+            { overflow: "hidden" },
             isExperimental && fullWidth && { paddingHorizontal: 16 },
-            iconPosition === "end" && { flexDirection: "row-reverse" },
             buttonStyles.buttonSizeDefault,
             disabled
               ? isExperimental
@@ -245,26 +333,47 @@ export const ButtonSolid = React.memo(
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {/* If 'iconPosition' is set to 'end', we use 
-            reverse flex property to invert the position */}
-              <Icon name={icon} size={iconSize} color={foregroundColor} />
-              {/* Once we have support for 'gap' property,
-            we can get rid of that spacer */}
-              <HSpacer size={8} />
-            </>
+          {loading && (
+            <Animated.View
+              style={buttonStyles.buttonInner}
+              entering={customEnteringExagerated}
+              exiting={customExiting}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
           )}
-          <ButtonText
-            color={foregroundColor}
-            style={IOButtonStyles.label}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            allowFontScaling={isExperimental}
-            maxFontSizeMultiplier={1.3}
-          >
-            {label}
-          </ButtonText>
+
+          {!loading && (
+            <Animated.View
+              style={[
+                buttonStyles.buttonInner,
+                iconPosition === "end" && { flexDirection: "row-reverse" }
+              ]}
+              entering={customEntering}
+              exiting={customExiting}
+            >
+              {icon && (
+                <>
+                  {/* If 'iconPosition' is set to 'end', we use 
+            reverse flex property to invert the position */}
+                  <Icon name={icon} size={iconSize} color={foregroundColor} />
+                  {/* Once we have support for 'gap' property,
+            we can get rid of that spacer */}
+                  <HSpacer size={8} />
+                </>
+              )}
+              <ButtonText
+                color={foregroundColor}
+                style={IOButtonStyles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                allowFontScaling={isExperimental}
+                maxFontSizeMultiplier={1.3}
+              >
+                {label}
+              </ButtonText>
+            </Animated.View>
+          )}
         </Animated.View>
       </Pressable>
     );

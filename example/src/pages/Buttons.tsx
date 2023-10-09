@@ -15,7 +15,7 @@ import {
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import React, { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -95,14 +95,15 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
       <ComponentViewerBox name="ButtonSolid · Primary, Full width">
-        <View>
-          <ButtonSolid
-            fullWidth
-            accessibilityLabel="Tap to trigger test alert"
-            label={"Primary button (full width)"}
-            onPress={onButtonPress}
-          />
-        </View>
+        <ButtonSolid
+          fullWidth
+          accessibilityLabel="Tap to trigger test alert"
+          label={"Primary button (full width)"}
+          onPress={onButtonPress}
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ButtonSolid · Primary · Full width, loading state">
+        <LoadingSolidButtonExample />
       </ComponentViewerBox>
       <ComponentViewerBox name="ButtonSolid · Primary, disabled">
         <View>
@@ -823,5 +824,27 @@ export const Buttons = () => {
         />
       </ComponentViewerBox>
     </Screen>
+  );
+};
+
+const LoadingSolidButtonExample = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  return (
+    <View>
+      <ButtonSolid
+        fullWidth
+        loading={isEnabled}
+        accessibilityLabel="Tap to trigger test alert"
+        label={"Primary button"}
+        onPress={() => setIsEnabled(true)}
+      />
+      <ListItemSwitch
+        label="Abilita lo stato di caricamento"
+        onSwitchValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </View>
   );
 };
