@@ -11,6 +11,7 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
@@ -299,6 +300,11 @@ export const ButtonSolid = React.memo(
       isPressed.value = 0;
     }, [isPressed]);
 
+    const handleOnPress = (event: GestureResponderEvent) => {
+      ReactNativeHapticFeedback.trigger("impactLight");
+      onPress(event);
+    };
+
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
       ? colorMap[color]?.label?.disabled
@@ -310,7 +316,7 @@ export const ButtonSolid = React.memo(
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
         testID={testID}
-        onPress={onPress}
+        onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         accessible={true}
