@@ -7,10 +7,10 @@ export const Loaders = () => (
   <Screen>
     <View style={{ borderRadius: 8, overflow: "hidden" }}>
       <View style={{ backgroundColor: IOColors.white, padding: 16 }}>
-        <LoadingSpinner foregroundColor="blueIO-500" backgroundColor="white" />
+        <LoadingSpinner color="blueIO-500" />
       </View>
       <View style={{ backgroundColor: IOColors["blueIO-500"], padding: 16 }}>
-        <LoadingSpinner foregroundColor="white" backgroundColor="blueIO-500" />
+        <LoadingSpinner color="white" />
       </View>
     </View>
   </Screen>
