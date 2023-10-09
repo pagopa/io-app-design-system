@@ -10,6 +10,7 @@ export * from "./featureInfo";
 export * from "./icons";
 export * from "./listitems";
 export * from "./logos";
+export * from "./loadingSpinner";
 export * from "./modules";
 export * from "./banner";
 export * from "./pictograms";
