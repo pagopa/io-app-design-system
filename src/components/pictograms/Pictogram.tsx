@@ -60,6 +60,7 @@ import PictogramCharity from "./svg/PictogramCharity";
 import PictogramEmpty from "./svg/PictogramEmpty";
 import PictogramCie from "./svg/PictogramCie";
 import PictogramFeature from "./svg/PictogramFeature";
+import PictogramNotification from "./svg/PictogramNotification";
 import PictogramObjClock from "./svg/PictogramObjClock";
 import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
 import PictogramObjManual from "./svg/PictogramObjManual";
@@ -77,6 +78,7 @@ import PictogramBleedFeature from "./svg/PictogramBleedFeature";
 import PictogramBleedCie from "./svg/PictogramBleedCie";
 import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
 import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
+import PictogramBleedNotification from "./svg/PictogramBleedNotification";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -134,6 +136,7 @@ export const IOPictograms = {
   cie: PictogramCie,
   time: PictogramTime,
   passcode: PictogramPasscode,
+  notification: PictogramNotification,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -227,7 +230,8 @@ export type IOPictogramsBleed = Extract<
   | "feature"
   | "cie"
   | "cameraRequest"
-  | "cameraDenied",
+  | "cameraDenied"
+  | "notification",
   IOPictograms
 >;
 
@@ -242,7 +246,8 @@ export const IOPictogramsBleed: {
   feature: PictogramBleedFeature,
   cie: PictogramBleedCie,
   cameraRequest: PictogramBleedCameraRequest,
-  cameraDenied: PictogramBleedCameraDenied
+  cameraDenied: PictogramBleedCameraDenied,
+  notification: PictogramBleedNotification
 };
 
 export const PictogramBleed = ({
