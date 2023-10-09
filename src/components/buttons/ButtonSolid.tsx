@@ -312,14 +312,15 @@ export const ButtonSolid = React.memo(
 
     return (
       <Pressable
+        testID={testID}
+        accessible={true}
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
+        accessibilityState={{ busy: loading }}
         accessibilityRole={"button"}
-        testID={testID}
         onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        accessible={true}
         disabled={disabled}
         style={!fullWidth ? IOButtonStyles.dimensionsDefault : {}}
       >
