@@ -10,7 +10,6 @@ import { Icons } from "../pages/Icons";
 import { Layout } from "../pages/Layout";
 import { ListItems } from "../pages/ListItem";
 import { Logos } from "../pages/Logos";
-import { Loaders } from "../pages/Loaders";
 import MainScreen from "../pages/MainScreen";
 import { Pictograms } from "../pages/Pictograms";
 import { Selection } from "../pages/Selection";
@@ -63,14 +62,6 @@ const AppNavigator = () => (
       component={Logos}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.LOGOS.title,
-        headerBackTitleVisible: false
-      }}
-    />
-    <Stack.Screen
-      name={APP_ROUTES.FOUNDATION.LOADERS.route}
-      component={Loaders}
-      options={{
-        headerTitle: APP_ROUTES.FOUNDATION.LOADERS.title,
         headerBackTitleVisible: false
       }}
     />
