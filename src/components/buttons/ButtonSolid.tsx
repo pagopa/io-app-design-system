@@ -221,10 +221,18 @@ export const ButtonSolid = React.memo(
       isPressed.value = 0;
     }, [isPressed]);
 
-    const handleOnPress = (event: GestureResponderEvent) => {
-      ReactNativeHapticFeedback.trigger("impactLight");
-      onPress(event);
-    };
+    const handleOnPress = useCallback(
+      (event: GestureResponderEvent) => {
+        /* Don't call `onPress` if the button is
+        in loading state */
+        if (loading) {
+          return;
+        }
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      },
+      [loading, onPress]
+    );
 
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
@@ -239,7 +247,7 @@ export const ButtonSolid = React.memo(
         accessibilityHint={accessibilityHint}
         accessibilityState={{ busy: loading }}
         accessibilityRole={"button"}
-        onPress={!loading ? handleOnPress : null}
+        onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         disabled={disabled}
@@ -257,7 +265,7 @@ export const ButtonSolid = React.memo(
                 : legacyStyles.backgroundDisabled
               : { backgroundColor: colorMap[color]?.default },
             /* Prevent Reanimated from overriding background colors
-                    if button is disabled */
+              if button is disabled */
             !disabled && pressedAnimationStyle
           ]}
         >
