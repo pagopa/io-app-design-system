@@ -79,23 +79,22 @@ export const HeaderFirstLevel = ({
           {title}
         </H3>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
-          {type !== "base" && <IconButton {...firstAction} color="neutral" />}
-          {(type === "twoActions" || type === "threeActions") && (
-            <>
-              {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-              +.9+
-              <HSpacer size={16} />
-              <IconButton {...secondAction} color="neutral" />
-            </>
-          )}
           {type === "threeActions" && (
             <>
-              {/* Same as above */}
-              <HSpacer size={16} />
               <IconButton {...thirdAction} color="neutral" />
+              {/* Ideally, with the "gap" flex property,
+              we can get rid of these ugly constructs */}
+              <HSpacer size={16} />
             </>
           )}
+          {(type === "twoActions" || type === "threeActions") && (
+            <>
+              <IconButton {...secondAction} color="neutral" />
+              {/* Same as above */}
+              <HSpacer size={16} />
+            </>
+          )}
+          {type !== "base" && <IconButton {...firstAction} color="neutral" />}
         </View>
       </View>
     </View>
