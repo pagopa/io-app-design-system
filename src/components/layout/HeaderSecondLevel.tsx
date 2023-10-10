@@ -179,25 +179,25 @@ export const HeaderSecondLevel = ({
           {title}
         </Animated.Text>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
+          {type === "threeActions" && (
+            <>
+              <IconButton {...thirdAction} color="neutral" />
+              {/* Same as above */}
+              <HSpacer size={16} />
+            </>
+          )}
+          {(type === "twoActions" || type === "threeActions") && (
+            <>
+              <IconButton {...secondAction} color="neutral" />
+              {/* Ideally, with the "gap" flex property,
+              we can get rid of these ugly constructs */}
+              <HSpacer size={16} />
+            </>
+          )}
           {type !== "base" ? (
             <IconButton {...firstAction} color="neutral" />
           ) : (
             <HSpacer size={iconBtnSizeSmall as IOSpacer} />
-          )}
-          {(type === "twoActions" || type === "threeActions") && (
-            <>
-              {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-              <HSpacer size={16} />
-              <IconButton {...secondAction} color="neutral" />
-            </>
-          )}
-          {type === "threeActions" && (
-            <>
-              {/* Same as above */}
-              <HSpacer size={16} />
-              <IconButton {...thirdAction} color="neutral" />
-            </>
           )}
         </View>
       </Animated.View>
