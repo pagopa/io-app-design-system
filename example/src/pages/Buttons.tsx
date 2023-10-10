@@ -246,6 +246,22 @@ export const Buttons = () => {
         </ComponentViewerBox>
 
         <ComponentViewerBox
+          name="ButtonSolid · Contrast, full width, loading state"
+          colorMode="dark"
+        >
+          <View>
+            <ButtonSolid
+              fullWidth
+              loading
+              color="contrast"
+              label={"Contrast button"}
+              onPress={onButtonPress}
+              accessibilityLabel="Tap to trigger test alert"
+            />
+          </View>
+        </ComponentViewerBox>
+
+        <ComponentViewerBox
           name="ButtonSolid · Contrast, disabled"
           colorMode="dark"
           last

@@ -1,15 +1,13 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
-  Easing,
   Extrapolate,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
-  withSpring,
-  withTiming
+  withSpring
 } from "react-native-reanimated";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -22,6 +20,9 @@ import {
   IOColors,
   IOScaleValues,
   IOSpringValues,
+  enterTransitionInnerContent,
+  enterTransitionInnerContentSmall,
+  exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
 import { LoadingSpinner } from "../loadingSpinner";
@@ -211,86 +212,6 @@ export const ButtonSolid = React.memo(
       };
     });
 
-    /* Custom entering transition */
-    const customEntering = () => {
-      "worklet";
-      const animations = {
-        opacity: withTiming(1, {
-          duration: 250,
-          easing: Easing.in(Easing.cubic)
-        }),
-        transform: [
-          {
-            scale: withTiming(1, {
-              duration: 250,
-              easing: Easing.in(Easing.cubic)
-            })
-          }
-        ]
-      };
-      const initialValues = {
-        opacity: 0,
-        transform: [{ scale: 1.05 }]
-      };
-      return {
-        initialValues,
-        animations
-      };
-    };
-
-    const customEnteringExagerated = () => {
-      "worklet";
-      const animations = {
-        opacity: withTiming(1, {
-          duration: 250,
-          easing: Easing.in(Easing.cubic)
-        }),
-        transform: [
-          {
-            scale: withTiming(1, {
-              duration: 250,
-              easing: Easing.in(Easing.cubic)
-            })
-          }
-        ]
-      };
-      const initialValues = {
-        opacity: 0,
-        transform: [{ scale: 1.25 }]
-      };
-      return {
-        initialValues,
-        animations
-      };
-    };
-
-    /* Custom entering transition */
-    const customExiting = () => {
-      "worklet";
-      const animations = {
-        opacity: withTiming(0, {
-          duration: 400,
-          easing: Easing.out(Easing.cubic)
-        }),
-        transform: [
-          {
-            scale: withTiming(0.9, {
-              duration: 400,
-              easing: Easing.out(Easing.cubic)
-            })
-          }
-        ]
-      };
-      const initialValues = {
-        opacity: 1,
-        transform: [{ scale: 1 }]
-      };
-      return {
-        initialValues,
-        animations
-      };
-    };
-
     const onPressIn = useCallback(() => {
       // eslint-disable-next-line functional/immutable-data
       isPressed.value = 1;
@@ -343,8 +264,8 @@ export const ButtonSolid = React.memo(
           {loading && (
             <Animated.View
               style={buttonStyles.buttonInner}
-              entering={customEnteringExagerated}
-              exiting={customExiting}
+              entering={enterTransitionInnerContentSmall}
+              exiting={exitTransitionInnerContent}
             >
               <LoadingSpinner color={foregroundColor} />
             </Animated.View>
@@ -356,8 +277,8 @@ export const ButtonSolid = React.memo(
                 buttonStyles.buttonInner,
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
-              entering={customEntering}
-              exiting={customExiting}
+              entering={enterTransitionInnerContent}
+              exiting={exitTransitionInnerContent}
             >
               {icon && (
                 <>
