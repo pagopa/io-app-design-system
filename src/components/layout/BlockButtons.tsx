@@ -133,7 +133,7 @@ export const BlockButtons = (props: Props) => {
   );
 
   return (
-    <View style={{ ...IOStyles.flex, ...IOStyles.row }}>
+    <View style={IOStyles.row}>
       {renderLeftButton()}
       {renderMidButton()}
       {renderRightButton()}
