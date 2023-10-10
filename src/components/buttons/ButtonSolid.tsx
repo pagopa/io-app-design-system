@@ -9,6 +9,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
@@ -19,8 +20,12 @@ import {
   IOColors,
   IOScaleValues,
   IOSpringValues,
+  enterTransitionInnerContent,
+  enterTransitionInnerContentSmall,
+  exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -65,6 +70,10 @@ export type ButtonSolidProps = WithTestID<{
    * @default false
    */
   fullWidth?: boolean;
+  /**
+   * @default false
+   */
+  loading?: boolean;
   /**
    * @default false
    */
@@ -152,6 +161,7 @@ export const ButtonSolid = React.memo(
     label,
     fullWidth = false,
     disabled = false,
+    loading = false,
     icon,
     iconPosition = "start",
     onPress,
@@ -211,6 +221,19 @@ export const ButtonSolid = React.memo(
       isPressed.value = 0;
     }, [isPressed]);
 
+    const handleOnPress = useCallback(
+      (event: GestureResponderEvent) => {
+        /* Don't call `onPress` if the button is
+        in loading state */
+        if (loading) {
+          return;
+        }
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      },
+      [loading, onPress]
+    );
+
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
       ? colorMap[color]?.label?.disabled
@@ -218,22 +241,23 @@ export const ButtonSolid = React.memo(
 
     return (
       <Pressable
+        testID={testID}
+        accessible={true}
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
+        accessibilityState={{ busy: loading }}
         accessibilityRole={"button"}
-        testID={testID}
-        onPress={onPress}
+        onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        accessible={true}
         disabled={disabled}
         style={!fullWidth ? IOButtonStyles.dimensionsDefault : {}}
       >
         <Animated.View
           style={[
             buttonStyles.button,
+            { overflow: "hidden" },
             isExperimental && fullWidth && { paddingHorizontal: 16 },
-            iconPosition === "end" && { flexDirection: "row-reverse" },
             buttonStyles.buttonSizeDefault,
             disabled
               ? isExperimental
@@ -241,30 +265,51 @@ export const ButtonSolid = React.memo(
                 : legacyStyles.backgroundDisabled
               : { backgroundColor: colorMap[color]?.default },
             /* Prevent Reanimated from overriding background colors
-                    if button is disabled */
+              if button is disabled */
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {/* If 'iconPosition' is set to 'end', we use 
-            reverse flex property to invert the position */}
-              <Icon name={icon} size={iconSize} color={foregroundColor} />
-              {/* Once we have support for 'gap' property,
-            we can get rid of that spacer */}
-              <HSpacer size={8} />
-            </>
+          {loading && (
+            <Animated.View
+              style={buttonStyles.buttonInner}
+              entering={enterTransitionInnerContentSmall}
+              exiting={exitTransitionInnerContent}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
           )}
-          <ButtonText
-            color={foregroundColor}
-            style={IOButtonStyles.label}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            allowFontScaling={isExperimental}
-            maxFontSizeMultiplier={1.3}
-          >
-            {label}
-          </ButtonText>
+
+          {!loading && (
+            <Animated.View
+              style={[
+                buttonStyles.buttonInner,
+                iconPosition === "end" && { flexDirection: "row-reverse" }
+              ]}
+              entering={enterTransitionInnerContent}
+              exiting={exitTransitionInnerContent}
+            >
+              {icon && (
+                <>
+                  {/* If 'iconPosition' is set to 'end', we use 
+            reverse flex property to invert the position */}
+                  <Icon name={icon} size={iconSize} color={foregroundColor} />
+                  {/* Once we have support for 'gap' property,
+            we can get rid of that spacer */}
+                  <HSpacer size={8} />
+                </>
+              )}
+              <ButtonText
+                color={foregroundColor}
+                style={IOButtonStyles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                allowFontScaling={isExperimental}
+                maxFontSizeMultiplier={1.3}
+              >
+                {label}
+              </ButtonText>
+            </Animated.View>
+          )}
         </Animated.View>
       </Pressable>
     );
