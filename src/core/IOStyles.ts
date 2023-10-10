@@ -117,6 +117,11 @@ export const IOButtonLegacyStyles = StyleSheet.create({
     // paddingHorizontal: PixelRatio.getFontScale() * 16,
     // borderRadius: PixelRatio.getFontScale() * 8
   },
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   /* Labels */
   label: {
     alignSelf: "center"
@@ -151,6 +156,11 @@ export const IOButtonStyles = StyleSheet.create({
     // paddingVertical: PixelRatio.getFontScale() * 10,
     // paddingHorizontal: PixelRatio.getFontScale() * 16,
     // borderRadius: PixelRatio.getFontScale() * 8
+  },
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonLink: {
     flexDirection: "row",
