@@ -4,9 +4,8 @@ import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
 import { IOColors } from "../../core";
 
-type Props = WithTestID<{
+export type LoadingSpinner = WithTestID<{
   color?: IOColors;
-  stroke?: number;
   size?: IOLoadingSpinnerSizeScale;
   durationMs?: number;
 }>;
@@ -16,6 +15,12 @@ type Props = WithTestID<{
  * It will be removed in the future.
  */
 export type IOLoadingSpinnerSizeScale = 24 | 48 | 76;
+
+const strokeMap: Record<NonNullable<LoadingSpinner["size"]>, number> = {
+  24: 3,
+  48: 6,
+  76: 9
+};
 
 const startRotationAnimation = (
   durationMs: number,
@@ -33,11 +38,11 @@ const startRotationAnimation = (
 
 export const LoadingSpinner = ({
   color = "blueIO-500",
-  stroke = 3,
   size = 24,
   durationMs = 750
-}: Props): React.ReactElement => {
+}: LoadingSpinner): React.ReactElement => {
   const rotationDegree = useRef(new Animated.Value(0)).current;
+  const stroke: number = strokeMap[size];
 
   useEffect(() => {
     startRotationAnimation(durationMs, rotationDegree);
