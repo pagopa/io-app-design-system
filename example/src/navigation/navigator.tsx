@@ -1,5 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { IOColors } from "@pagopa/io-app-design-system";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
@@ -194,6 +195,8 @@ const AppNavigator = () => (
       name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
       component={HeaderFirstLevelScreen}
       options={{
+        statusBarTranslucent: true,
+        statusBarStyle: "light",
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
         headerBackTitleVisible: false
       }}
