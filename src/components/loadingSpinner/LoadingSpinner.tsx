@@ -4,11 +4,12 @@ import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
 import { IOColors } from "../../core";
 
-type Props = WithTestID<{
+export type LoadingSpinner = WithTestID<{
   color?: IOColors;
-  stroke?: number;
   size?: IOLoadingSpinnerSizeScale;
   durationMs?: number;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 }>;
 
 /**
@@ -16,6 +17,12 @@ type Props = WithTestID<{
  * It will be removed in the future.
  */
 export type IOLoadingSpinnerSizeScale = 24 | 48 | 76;
+
+const strokeMap: Record<NonNullable<LoadingSpinner["size"]>, number> = {
+  24: 3,
+  48: 6,
+  76: 9
+};
 
 const startRotationAnimation = (
   durationMs: number,
@@ -33,89 +40,86 @@ const startRotationAnimation = (
 
 export const LoadingSpinner = ({
   color = "blueIO-500",
-  stroke = 3,
   size = 24,
-  durationMs = 750
-}: Props): React.ReactElement => {
+  durationMs = 750,
+  accessibilityHint,
+  accessibilityLabel,
+  testID = "LoadingSpinnerTestID"
+}: LoadingSpinner): React.ReactElement => {
   const rotationDegree = useRef(new Animated.Value(0)).current;
+  const stroke: number = strokeMap[size];
 
   useEffect(() => {
     startRotationAnimation(durationMs, rotationDegree);
   }, [durationMs, rotationDegree]);
 
   return (
-    <>
-      <View
-        style={{ width: size, height: size }}
-        accessibilityRole="progressbar"
-        testID={"LoadingSpinnerTestID"}
+    <View
+      style={{ width: size, height: size }}
+      accessible={true}
+      accessibilityRole="progressbar"
+      accessibilityHint={accessibilityHint}
+      accessibilityLabel={accessibilityLabel}
+      importantForAccessibility={"no-hide-descendants"}
+      testID={testID}
+    >
+      <Animated.View
+        testID={"LoadingSpinnerAnimatedTestID"}
+        style={{
+          transform: [
+            {
+              rotateZ: rotationDegree.interpolate({
+                inputRange: [0, 360],
+                outputRange: ["0deg", "360deg"]
+              })
+            }
+          ]
+        }}
       >
-        <Animated.View
-          testID={"LoadingSpinnerAnimatedTestID"}
-          style={{
-            transform: [
-              {
-                rotateZ: rotationDegree.interpolate({
-                  inputRange: [0, 360],
-                  outputRange: ["0deg", "360deg"]
-                })
-              }
-            ]
-          }}
-        >
-          {/* Thanks to Ben Ilegbodu for the article on how to
+        {/* Thanks to Ben Ilegbodu for the article on how to
           create a a SVG gradient loading spinner. Below is
-          a parameterized version of his  version of his code.
+          a parameterized version of his code.
           Source: https://www.benmvp.com/blog/how-to-create-circle-svg-gradient-loading-spinner/ */}
-          <Svg
-            width={size}
-            height={size}
-            viewBox={`0 0 ${size} ${size}`}
-            fill="none"
-          >
-            <Defs>
-              <LinearGradient id="spinner-secondHalf">
-                <Stop offset="0%" stopOpacity="0" stopColor={IOColors[color]} />
-                <Stop
-                  offset="100%"
-                  stopOpacity="1"
-                  stopColor={IOColors[color]}
-                />
-              </LinearGradient>
-              <LinearGradient id="spinner-firstHalf">
-                <Stop offset="0%" stopOpacity="1" stopColor={IOColors[color]} />
-                <Stop
-                  offset="100%"
-                  stopOpacity="1"
-                  stopColor={IOColors[color]}
-                />
-              </LinearGradient>
-            </Defs>
+        <Svg
+          width={size}
+          height={size}
+          viewBox={`0 0 ${size} ${size}`}
+          fill="none"
+        >
+          <Defs>
+            <LinearGradient id="spinner-secondHalf">
+              <Stop offset="0%" stopOpacity="0" stopColor={IOColors[color]} />
+              <Stop offset="100%" stopOpacity="1" stopColor={IOColors[color]} />
+            </LinearGradient>
+            <LinearGradient id="spinner-firstHalf">
+              <Stop offset="0%" stopOpacity="1" stopColor={IOColors[color]} />
+              <Stop offset="100%" stopOpacity="1" stopColor={IOColors[color]} />
+            </LinearGradient>
+          </Defs>
 
-            <G strokeWidth={stroke}>
-              <Path
-                stroke="url(#spinner-secondHalf)"
-                d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
-                  size / 2 - stroke / 2
-                } 0 0 1 ${size - stroke / 2} ${size / 2}`}
-              />
-              <Path
-                stroke="url(#spinner-firstHalf)"
-                d={`M ${size - stroke / 2} ${size / 2} A ${
-                  size / 2 - stroke / 2
-                } ${size / 2 - stroke / 2} 0 0 1 ${stroke / 2} ${size / 2}`}
-              />
-              <Path
-                stroke={IOColors[color]}
-                strokeLinecap="round"
-                d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
-                  size / 2 - stroke / 2
-                } 0 0 1 ${stroke / 2} ${size / 2 - stroke / 4}`}
-              />
-            </G>
-          </Svg>
-        </Animated.View>
-      </View>
-    </>
+          <G strokeWidth={stroke}>
+            <Path
+              stroke="url(#spinner-secondHalf)"
+              d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
+                size / 2 - stroke / 2
+              } 0 0 1 ${size - stroke / 2} ${size / 2}`}
+            />
+            <Path
+              stroke="url(#spinner-firstHalf)"
+              d={`M ${size - stroke / 2} ${size / 2} A ${
+                size / 2 - stroke / 2
+              } ${size / 2 - stroke / 2} 0 0 1 ${stroke / 2} ${size / 2}`}
+            />
+            <Path
+              stroke={IOColors[color]}
+              strokeLinecap="round"
+              d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
+                size / 2 - stroke / 2
+              } 0 0 1 ${stroke / 2} ${size / 2 - stroke / 4}`}
+            />
+          </G>
+        </Svg>
+      </Animated.View>
+    </View>
   );
 };
