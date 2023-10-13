@@ -194,6 +194,8 @@ const AppNavigator = () => (
       name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
       component={HeaderFirstLevelScreen}
       options={{
+        statusBarTranslucent: true,
+        statusBarStyle: "light",
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
         headerBackTitleVisible: false
       }}
