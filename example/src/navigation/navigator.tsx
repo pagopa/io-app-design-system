@@ -16,6 +16,14 @@ import { Selection } from "../pages/Selection";
 import { Typography } from "../pages/Typography";
 import { Search } from "../pages/Search";
 import { TabNavigationScreen } from "../pages/TabNavigation";
+import { Sandbox } from "../pages/Sandbox";
+import { TextInputs } from "../pages/TextInputs";
+import { FooterWithButton } from "../pages/FooterWithButton";
+import Modules from "../pages/Modules";
+import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
+import { Toasts } from "../pages/Toasts";
+import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -101,6 +109,7 @@ const AppNavigator = () => (
       name={APP_ROUTES.COMPONENTS.ACCORDION.route}
       component={Accordion}
       options={{
+        presentation: "modal",
         headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
         headerBackTitleVisible: false
       }}
@@ -145,13 +154,76 @@ const AppNavigator = () => (
         headerBackTitleVisible: false
       }}
     />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.MODULES.route}
+      component={Modules}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.MODULES.title,
+        headerBackTitleVisible: false
+      }}
+    />
 
     <Stack.Screen
       name={APP_ROUTES.COMPONENTS.TAB_NAVIGATION.route}
       component={TabNavigationScreen}
       options={{
-        headerTitle: APP_ROUTES.COMPONENTS.LIST_ITEMS.title,
+        headerTitle: APP_ROUTES.COMPONENTS.TAB_NAVIGATION.title,
         headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.TEXT_INPUT.route}
+      component={TextInputs}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.TEXT_INPUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.route}
+      component={FooterWithButton}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
+      component={HeaderFirstLevelScreen}
+      options={{
+        statusBarTranslucent: true,
+        statusBarStyle: "light",
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.route}
+      component={HeaderSecondLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.route}
+      component={StaticHeaderSecondLevelScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.TOASTS.route}
+      component={Toasts}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.TOASTS.title
       }}
     />
 
@@ -160,6 +232,15 @@ const AppNavigator = () => (
       component={Search}
       options={{
         headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.SANDBOX.SANDBOX_SCREEN.route}
+      component={Sandbox}
+      options={{
+        headerTitle: APP_ROUTES.SANDBOX.SANDBOX_SCREEN.title,
         headerBackTitleVisible: false
       }}
     />

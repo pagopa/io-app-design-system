@@ -6,47 +6,51 @@ import {
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
-  NewRadioItem,
+  RadioItem,
   RadioGroup,
   SwitchLabel,
-  VSpacer
+  VSpacer,
+  useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
 import { View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
-export const Selection = () => (
-  <Screen>
-    <H2
-      weight={"Bold"}
-      style={{
-        marginVertical: 16,
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      Checkbox
-    </H2>
-    {/* CheckboxLabel */}
-    {renderCheckboxLabel()}
-    {/* ListItemCheckbox */}
-    {renderListItemCheckbox()}
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-      Radio
-    </H2>
-    {/* RadioListItem */}
-    <RadioListItemsShowroom />
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-      Switch
-    </H2>
-    {/* Native Switch */}
-    <NativeSwitchShowroom />
-    {/* ListItemSwitch */}
-    <ListItemSwitchShowroom />
-    {/* SwitchLabel */}
-    {renderAnimatedSwitch()}
-  </Screen>
-);
+export const Selection = () => {
+  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  return (
+    <Screen>
+      <H2
+        style={{
+          marginVertical: 16,
+          paddingTop: IOVisualCostants.appMarginDefault
+        }}
+      >
+        Checkbox
+      </H2>
+      <ListItemSwitch
+        label="Abilita Design Sperimentale"
+        value={isExperimental}
+        onSwitchValueChange={setExperimental}
+      />
+      {/* CheckboxLabel */}
+      {renderCheckboxLabel()}
+      {/* ListItemCheckbox */}
+      {renderListItemCheckbox()}
+      <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      {/* RadioListItem */}
+      <RadioListItemsShowroom />
+      <H2 style={{ marginVertical: 16 }}>Switch</H2>
+      {/* Native Switch */}
+      <NativeSwitchShowroom />
+      {/* ListItemSwitch */}
+      <ListItemSwitchShowroom />
+      {/* SwitchLabel */}
+      {renderAnimatedSwitch()}
+    </Screen>
+  );
+};
 
 const renderCheckboxLabel = () => (
   <>
@@ -141,7 +145,7 @@ const renderListItemCheckbox = () => (
 
 // RADIO ITEMS
 
-const mockRadioItems = (): ReadonlyArray<NewRadioItem<string>> => [
+const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
     icon: "coggle",
     value: "Let's try with a basic title",
@@ -210,24 +214,46 @@ const NativeSwitchShowroom = () => {
 
 type ListItemSwitchSampleProps = Pick<
   React.ComponentProps<typeof ListItemSwitch>,
-  "label" | "description" | "value"
+  "label" | "description" | "value" | "icon" | "paymentLogo"
 >;
 
 const ListItemSwitchSample = ({
   value,
   label,
-  description
+  description,
+  icon,
+  paymentLogo
 }: ListItemSwitchSampleProps) => {
   const [isEnabled, setIsEnabled] = useState(value);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-    <ListItemSwitch
-      label={label}
-      description={description}
-      value={isEnabled}
-      onSwitchValueChange={toggleSwitch}
-    />
+    <>
+      {icon ? (
+        <ListItemSwitch
+          icon={icon}
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      ) : paymentLogo ? (
+        <ListItemSwitch
+          paymentLogo={paymentLogo}
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      ) : (
+        <ListItemSwitch
+          label={label}
+          description={description}
+          value={isEnabled}
+          onSwitchValueChange={toggleSwitch}
+        />
+      )}
+    </>
   );
 };
 
@@ -251,11 +277,19 @@ const ListItemSwitchShowroom = () => (
       />
       <Divider />
       <ListItemSwitchSample
+        icon="bonus"
         label="Let's try with a loooong loooooong looooooong title + icon"
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
       />
+      <Divider />
+      <ListItemSwitchSample
+        paymentLogo="mastercard"
+        label="5354 **** **** 0000"
+      />
+      <Divider />
+      <ListItemSwitchSample paymentLogo="applePay" label="Apple Pay" />
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemSwitch, disabled">
       <ListItemSwitch disabled label="Testo molto breve" value={true} />
@@ -275,6 +309,44 @@ const ListItemSwitchShowroom = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemSwitch, loading status">
+      <ListItemSwitch
+        icon="device"
+        label="Label"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+      <Divider />
+      <ListItemSwitch
+        icon="device"
+        label="Loong loooooong looooooooong loooong title"
+        value={false}
+        isLoading
+        description="Loading list item switch"
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemSwitch with badge">
+      <ListItemSwitch
+        icon="device"
+        label="Usa l'app IO"
+        value={false}
+        badge={{
+          text: "Attivo",
+          variant: "info"
+        }}
+        description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
+      />
+      <ListItemSwitch
+        icon="coggle"
+        label="Loong loooooong loooooooooong loooong title"
+        value={false}
+        badge={{
+          text: "Attivo",
+          variant: "info"
+        }}
       />
     </ComponentViewerBox>
   </>

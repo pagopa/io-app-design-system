@@ -43,6 +43,7 @@ The list of the component exported by the library is the following:
 * [Switch](./src/components/switch/)
 * [Tag](./src/components/tag/)
 * [Typography](./src/components/typography/)
+* [Text Input](./src/components/textInput/)
 
 A part from the components, the library also exports the following core elements and styles as part of the [core attributes](./src/core/) of the design system, and common functions used to wrap up external libraries and utilities (here listed as [functions](./src/functions/)).
 
@@ -59,6 +60,16 @@ A part from the components, the library also exports the following core elements
 In order to contribute to the development of the library, you need to install nodejs and yarn. 
 
 We recommend the usage of nvm to properly handle the supported nodejs version (see [.nvmrc](./.nvmrc)).
+
+## Storybook
+
+The library is provided with a [storybook](https://storybook.js.org/) instance to ease the development and the testing of the components.
+
+To start the storybook instance, run the following command:
+
+```sh
+yarn storybook
+```
 
 ## Contributing
 

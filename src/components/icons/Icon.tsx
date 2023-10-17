@@ -139,14 +139,27 @@ import IconSystemSettingsAndroid from "./svg/IconSystemSettingsAndroid";
 import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
 import IconTag from "./svg/IconTag";
+import IconTransactionsBoxed from "./svg/IconTransactionsBoxed";
 import IconTransactions from "./svg/IconTransactions";
 import IconTrashcan from "./svg/IconTrashcan";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
+import IconOption from "./svg/IconOption";
+import IconKey from "./svg/IconKey";
+import IconNotification from "./svg/IconNotification";
+import IconChange from "./svg/IconChange";
 import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconKeyboard from "./svg/IconKeyboard";
+import IconContactless from "./svg/IconContactless";
+import IconDisabilityCard from "./svg/IconDisabilityCard";
+import IconDriverLicense from "./svg/IconDriverLicense";
+import IconHealthCard from "./svg/IconHealthCard";
+import IconDocPaymentCode from "./svg/IconDocPaymentCode";
+import IconNotes from "./svg/IconNotes";
+import IconEntityCode from "./svg/IconEntityCode";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -161,10 +174,11 @@ export const IOIcons = {
   copy: IconCopy,
   selfCert: IconSelfCertification,
   institution: IconInstitution,
+  merchant: IconMerchant,
   hourglass: IconHourglass,
   shareiOs: IconShareiOs,
   shareAndroid: IconShareAndroid,
-  locked: IconLockOn /* io-lucchetto */,
+  locked: IconLockOn,
   unlocked: IconLockOff,
   initiatives: IconInitiatives,
   analytics: IconAnalytics,
@@ -175,8 +189,8 @@ export const IOIcons = {
   pinOn: IconPinOn,
   emojiSad: IconEmojiSad,
   emojiHappy: IconEmojiHappy,
-  phone: IconPhone /* io-phone */,
-  email: IconEmail /* io-envelope */,
+  phone: IconPhone,
+  email: IconEmail,
   emailFill: IconEmailFill,
   pec: IconPEC,
   messageLegal: IconMessageLegal,
@@ -186,16 +200,22 @@ export const IOIcons = {
   docSign: IconDocumentSign,
   docAgree: IconAgreement,
   security: IconSecurity,
+  option: IconOption,
+  key: IconKey,
   docGiacenza: IconGiacenza,
+  docPaymentCode: IconDocPaymentCode,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
+  notes: IconNotes,
   attachment: IconAttachment,
   add: IconAdd,
   success: IconSuccess,
   ok: IconOk,
   fiscalCodeIndividual: IconFiscalCodeIndividual,
-  creditCard: IconCreditCard /* io-carta */,
+  entityCode: IconEntityCode,
+  creditCard: IconCreditCard,
   bonus: IconBonus,
+  transactionsBoxed: IconTransactionsBoxed,
   transactions: IconTransactions,
   amount: IconAmount,
   psp: IconPSP,
@@ -204,7 +224,7 @@ export const IOIcons = {
   locationAndroid: IconLocationAndroid,
   coggle: IconCoggle,
   warningFilled: IconWarningFilled,
-  notice: IconNotice /* io-warning */,
+  notice: IconNotice,
   noticeFilled: IconNoticeFilled,
   info: IconInfo,
   infoFilled: IconInfoFilled,
@@ -217,16 +237,19 @@ export const IOIcons = {
   edit: IconEdit,
   battery: IconBattery,
   trashcan: IconTrashcan,
-  calendar: IconCalendar /* io-calendar */ /* io-calendario */,
+  calendar: IconCalendar,
   profile: IconProfile,
   profileFilled: IconProfileFilled,
-  profileAlt: IconProfileAlt /* io-titolare */,
+  profileAlt: IconProfileAlt,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
   starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
   device: IconDevice,
+  contactless: IconContactless,
+  notification: IconNotification,
+  keyboard: IconKeyboard,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
@@ -238,36 +261,41 @@ export const IOIcons = {
   externalLink: IconExternalLink,
   cancel: IconCancel,
   help: IconQuestion,
-  search: IconSearch /* io-search */,
+  search: IconSearch,
+  disabilityCard: IconDisabilityCard,
+  driverLicense: IconDriverLicense,
+  healthCard: IconHealthCard,
   chevronRight: IconChevronRight,
   chevronLeft: IconChevronLeft,
   chevronBottom: IconChevronBottom,
   chevronTop: IconChevronTop,
   chevronRightListItem: IconChevronRightListItem,
-  closeLarge: IconCloseLarge /* io-close */,
+  closeLarge: IconCloseLarge,
   closeMedium: IconCloseMedium,
   closeSmall: IconCloseSmall,
   arrowBottom: IconArrowBottom,
   arrowLeft: IconArrowLeft,
   arrowTop: IconArrowTop,
   arrowRight: IconArrowRight,
+  change: IconChange,
   backiOS: IconBackiOS,
   backAndroid: IconBackAndroid,
-  navMessages: IconNavMessages /* io-messaggi */,
+  navMessages: IconNavMessages,
   navMessagesFocused: IconNavMessagesFocused,
-  navWallet: IconNavWallet /* io-portafoglio */,
+  navWallet: IconNavWallet,
   navWalletFocused: IconNavWalletFocused,
   navScan: IconNavScan,
   navServices: IconNavServices,
   navServicesFocused: IconNavServicesFocused,
   navProfile: IconNavProfile,
   navProfileFocused: IconNavProfileFocused,
+  navPsp: IconPSP,
   legRadioOn: LegIconRadioOn,
   legRadioOff: LegIconRadioOff,
   legCheckOn: LegIconCheckOn,
   legCheckOff: LegIconCheckOff,
-  biomFingerprint: IconBiomFingerprint /* io-fingerprint */,
-  biomFaceID: IconBiomFaceID /* io-face-id */,
+  biomFingerprint: IconBiomFingerprint,
+  biomFaceID: IconBiomFaceID,
   categCulture: IconCategCulture,
   categWellness: IconCategWellness,
   categLearning: IconCategLearning,
@@ -281,11 +309,10 @@ export const IOIcons = {
   categShopping: IconCategShopping,
   categSustainability: IconCategSustainability,
   productIOApp: IconProductIOApp,
-  productPagoPA: IconProductPagoPA /* io-pagopa */,
+  productPagoPA: IconProductPagoPA,
   productIOAppBlueBg: IconProductIOAppBlueBg,
   checkTick: IconCheckTick,
   checkTickBig: IconCheckTickBig,
-  merchant: IconMerchant,
   light: IconLight,
   lightFilled: IconLightFilled,
   systemSettingsAndroid: IconSystemSettingsAndroid,
@@ -414,6 +441,7 @@ const {
   navScan,
   navServices,
   navProfile,
+  navPsp,
   navMessagesFocused,
   navWalletFocused,
   navServicesFocused,
@@ -426,6 +454,7 @@ export const IONavIcons = {
   navScan,
   navServices,
   navProfile,
+  navPsp,
   navMessagesFocused,
   navWalletFocused,
   navServicesFocused,

@@ -1,35 +1,36 @@
-import * as React from "react";
-import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
-import { IOColorsStatusForeground, IOTheme } from "../../core";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { IOTheme, useIOExperimentalDesign } from "../../core";
+import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
+import { ExternalTypographyProps, TypographyProps } from "./common";
 
-type AllowedColors = IOColorsStatusForeground | IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular">;
+type AllowedColors = IOTheme["textHeading-default"];
+type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular" | "Bold">;
 
-type OwnProps = ExternalTypographyProps<
+type H3Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 /* Common typographic styles */
 export const h3FontSize = 22;
 export const h3LineHeight = 33;
-/* New typographic styles */
-const h3FontName: IOFontFamily = "ReadexPro";
-const h3DefaultColor: AllowedColors = "black";
-const h3DefaultWeight: AllowedWeight = "Regular";
+const font: FontFamily = "ReadexPro";
+const defaultColor: AllowedColors = "black";
+const defaultWeight: AllowedWeight = "Regular";
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyDefaultColor: AllowedColors = "bluegreyDark";
+const legacyDefaultWeight: AllowedWeight = "Bold";
 /**
- * Typography component to render `H2` text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Bold`, color: `bluegreyDark`
- * @param props
- * @constructor
+ * `H3` typographic style
  */
-export const H3: React.FunctionComponent<OwnProps> = props =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const H3 = (props: H3Props) => {
+  const { isExperimental } = useIOExperimentalDesign();
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: h3DefaultWeight,
-    defaultColor: h3DefaultColor,
-    font: h3FontName,
+    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+    defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
+    font: isExperimental ? font : legacyFontName,
     fontStyle: { fontSize: h3FontSize, lineHeight: h3LineHeight }
   });
+};

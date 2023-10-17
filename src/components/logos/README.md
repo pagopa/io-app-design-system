@@ -5,7 +5,8 @@ There are different sets:
 
 ## Prefixes
 - **Payment Logos**: `LogoPayment…`
-- **Payment Logos (extended)**: `LogoPaymentExt…`
+- **Payment Logos**: `LogoPaymentExt…`
+- **Payment Card Logos**: `LogoPaymentCard…`
 
 ## Add a new logo
 First of all, follow the instructions stated in the main README (`Vector graphics` section).

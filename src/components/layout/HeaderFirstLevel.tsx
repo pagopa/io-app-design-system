@@ -5,17 +5,47 @@ import { WithTestID } from "../../utils/types";
 import { IOStyles, IOVisualCostants, IOColors } from "../../core";
 import { H3 } from "../typography";
 import { HSpacer } from "../spacer";
+import { IconButton } from "../buttons";
+import { ActionProp } from "./common";
 
-export type HeaderFirstLevel = WithTestID<{
+type CommonProps = WithTestID<{
   title: string;
-  // Accepted components: IconButton
-  // Don't use any components other than this, please.
-  firstAction?: React.ReactNode;
-  secondAction?: React.ReactNode;
-  thirdAction?: React.ReactNode;
+  // This Prop will be removed once all the screens on the first level routing will be refactored
+  backgroundColor?: "light" | "dark";
 }>;
 
-const HEADER_BG_COLOR: IOColors = "white";
+interface Base extends CommonProps {
+  type: "base";
+  firstAction?: never;
+  secondAction?: never;
+  thirdAction?: never;
+}
+
+interface OneAction extends CommonProps {
+  type: "singleAction";
+  firstAction: ActionProp;
+  secondAction?: never;
+  thirdAction?: never;
+}
+
+interface TwoActions extends CommonProps {
+  type: "twoActions";
+  firstAction: ActionProp;
+  secondAction: ActionProp;
+  thirdAction?: never;
+}
+
+interface ThreeActions extends CommonProps {
+  type: "threeActions";
+  firstAction: ActionProp;
+  secondAction: ActionProp;
+  thirdAction: ActionProp;
+}
+
+export type HeaderFirstLevel = Base | OneAction | TwoActions | ThreeActions;
+
+const HEADER_BG_COLOR_LIGHT: IOColors = "white";
+const HEADER_BG_COLOR_DARK: IOColors = "bluegrey";
 
 const styles = StyleSheet.create({
   headerInner: {
@@ -30,10 +60,12 @@ const styles = StyleSheet.create({
 
 export const HeaderFirstLevel = ({
   title,
+  type,
+  testID,
+  backgroundColor = "light",
   firstAction,
   secondAction,
-  thirdAction,
-  testID
+  thirdAction
 }: HeaderFirstLevel) => {
   const insets = useSafeAreaInsets();
 
@@ -41,31 +73,49 @@ export const HeaderFirstLevel = ({
     <View
       style={{
         paddingTop: insets.top,
-        backgroundColor: IOColors[HEADER_BG_COLOR]
+        backgroundColor:
+          backgroundColor === "light"
+            ? IOColors[HEADER_BG_COLOR_LIGHT]
+            : IOColors[HEADER_BG_COLOR_DARK]
       }}
       accessibilityRole="header"
       testID={testID}
     >
       <View style={styles.headerInner}>
-        <H3 style={{ flexShrink: 1 }} numberOfLines={1}>
+        <H3
+          style={{ flexShrink: 1 }}
+          numberOfLines={1}
+          color={backgroundColor === "dark" ? "white" : undefined}
+        >
           {title}
         </H3>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
-          {firstAction}
-          {secondAction && (
+          {type === "threeActions" && (
             <>
+              <IconButton
+                {...thirdAction}
+                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+              />
               {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
               <HSpacer size={16} />
-              {secondAction}
             </>
           )}
-          {thirdAction && (
+          {(type === "twoActions" || type === "threeActions") && (
             <>
+              <IconButton
+                {...secondAction}
+                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+              />
               {/* Same as above */}
               <HSpacer size={16} />
-              {thirdAction}
             </>
+          )}
+          {type !== "base" && (
+            <IconButton
+              {...firstAction}
+              color={backgroundColor === "dark" ? "contrast" : "neutral"}
+            />
           )}
         </View>
       </View>

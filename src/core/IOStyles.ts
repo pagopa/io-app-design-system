@@ -14,13 +14,15 @@ interface IOVisualCostants {
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
+  iconContainedSizeDefault: number;
 }
 
 export const IOVisualCostants: IOVisualCostants = {
   appMarginDefault: 24,
   headerHeight: 56,
   avatarSizeSmall: 44,
-  avatarSizeMedium: 66
+  avatarSizeMedium: 66,
+  iconContainedSizeDefault: 44
 };
 
 export const IOStyles = StyleSheet.create({
@@ -86,7 +88,6 @@ export const IOStyles = StyleSheet.create({
 - Width and height for icon buttons
 */
 const btnLegacySizeDefault = 40;
-const btnLegacySizeSmall = 39;
 const btnSizeLarge = 56;
 // NEW Design System
 const btnBorderRadius = 8;
@@ -116,6 +117,11 @@ export const IOButtonLegacyStyles = StyleSheet.create({
     // paddingHorizontal: PixelRatio.getFontScale() * 16,
     // borderRadius: PixelRatio.getFontScale() * 8
   },
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   /* Labels */
   label: {
     alignSelf: "center"
@@ -123,17 +129,11 @@ export const IOButtonLegacyStyles = StyleSheet.create({
   labelSizeDefault: {
     fontSize: 16
   },
-  labelSizeSmall: {
-    fontSize: 14
-  },
   /* Heights
   Must be replaced with dynamic values, depending on the
   fontScale parameter */
   buttonSizeDefault: {
     height: btnLegacySizeDefault
-  },
-  buttonSizeSmall: {
-    height: btnLegacySizeSmall
   }
 });
 
@@ -156,6 +156,11 @@ export const IOButtonStyles = StyleSheet.create({
     // paddingVertical: PixelRatio.getFontScale() * 10,
     // paddingHorizontal: PixelRatio.getFontScale() * 16,
     // borderRadius: PixelRatio.getFontScale() * 8
+  },
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonLink: {
     flexDirection: "row",

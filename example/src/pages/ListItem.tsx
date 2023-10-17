@@ -1,19 +1,24 @@
 import {
   ButtonLink,
+  Divider,
   H2,
   IOThemeContext,
+  Icon,
   IconButton,
   ListItemAction,
-  ListItemIDP,
   ListItemInfo,
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemSwitch,
   ListItemTransaction,
-  VSpacer
+  ListItemTransactionLogo,
+  ListItemTransactionStatusWithBadge,
+  VSpacer,
+  useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Alert, ImageSourcePropType, View } from "react-native";
+import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -21,68 +26,67 @@ const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
 
-export const ListItems = () => (
-  <IOThemeContext.Consumer>
-    {theme => (
-      <Screen>
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemNav
-        </H2>
-        {renderListItemNav()}
+export const ListItems = () => {
+  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  return (
+    <IOThemeContext.Consumer>
+      {theme => (
+        <Screen>
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemNav
+          </H2>
+          <ListItemSwitch
+            label="Abilita Design Sperimentale"
+            value={isExperimental}
+            onSwitchValueChange={setExperimental}
+          />
+          {renderListItemNav()}
 
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemInfoCopy
-        </H2>
-        {renderListItemInfoCopy()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemInfoCopy
+          </H2>
+          {renderListItemInfoCopy()}
 
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemInfo
-        </H2>
-        {renderListItemInfo()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemInfo
+          </H2>
+          {renderListItemInfo()}
 
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemAction
-        </H2>
-        {renderListItemAction()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemAction
+          </H2>
+          {renderListItemAction()}
 
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemIDP
-        </H2>
-        {renderListItemIDP()}
-
-        <H2
-          color={theme["textHeading-default"]}
-          weight={"SemiBold"}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          ListItemTransaction
-        </H2>
-        {renderListItemTransaction()}
-        <VSpacer size={40} />
-      </Screen>
-    )}
-  </IOThemeContext.Consumer>
-);
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemTransaction
+          </H2>
+          {renderListItemTransaction()}
+          <VSpacer size={40} />
+        </Screen>
+      )}
+    </IOThemeContext.Consumer>
+  );
+};
 
 const renderListItemNav = () => (
   <>
@@ -324,137 +328,138 @@ const renderListItemInfo = () => (
   </ComponentViewerBox>
 );
 
-const mockIDPProviderItem = {
-  id: "posteid",
-  name: "Poste ID",
-  logo: "",
-  localLogo: require("../../assets/images/spid-idp-posteid.png"),
-  profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
+/* LIST ITEM TRANSACTION */
+
+/* Mock assets */
+const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
+const organizationLogoURI = {
+  imageSource: `${cdnPath}82003830161.png`,
+  name: "Comune di Milano"
 };
 
-const renderListItemIDP = () => (
-  <>
-    <ComponentViewerBox name="ListItemIDP, default variant">
-      <View>
-        <ListItemIDP
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ListItemIDP, saved variant">
-      <View>
-        <ListItemIDP
-          saved
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ListItemIDP, default variant, stress test">
-      <View>
-        <ListItemIDP
-          name={"This is a very loooooong IDP provider name"}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={() => {
-            Alert.alert("Action triggered");
-          }}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-          urlLogoIDP={""}
-        />
-      </View>
-    </ComponentViewerBox>
-  </>
-);
+type mockTransactionStatusData = {
+  status: ListItemTransactionStatusWithBadge;
+  asset: ListItemTransactionLogo;
+};
+
+const transactionStatusArray: Array<mockTransactionStatusData> = [
+  {
+    status: "failure",
+    asset: "amex"
+  },
+  {
+    status: "pending",
+    asset: { uri: organizationLogoURI.imageSource }
+  },
+  {
+    status: "cancelled",
+    asset: "unionPay"
+  },
+  {
+    status: "reversal",
+    asset: "applePay"
+  }
+];
 
 const renderListItemTransaction = () => (
   <ComponentViewerBox name="ListItemTransaction">
     <View>
       <ListItemTransaction
-        title="TITLE"
+        title="Title"
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
         isLoading={true}
         onPress={onButtonPress}
       />
+
+      <Divider />
+
+      {transactionStatusArray.map(
+        ({ status, asset }: mockTransactionStatusData) => (
+          <React.Fragment key={`transactionStatus-${status}`}>
+            <ListItemTransaction
+              title="Title"
+              subtitle="subtitle"
+              paymentLogoIcon={asset}
+              transactionStatus={status}
+              badgeText={status}
+              onPress={onButtonPress}
+            />
+            <Divider />
+          </React.Fragment>
+        )
+      )}
+
       <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        // paymentLogoIcon={"amex"}
-        transactionStatus="failure"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        // paymentLogoIcon={{ uri: organizationLogoURI.imageSource }}
-        transactionStatus="pending"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
-        subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        onPress={onButtonPress}
-      />
-      <ListItemTransaction
-        title="TITLE"
+        title="Title"
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
-        // paymentLogoIcon={"mastercard"}
         onPress={onButtonPress}
       />
+
+      <Divider />
+
       <ListItemTransaction
-        title="TITLE"
+        title="Title"
+        subtitle="subtitle"
+        transactionStatus="success"
+        transactionAmount="€ 1.000,00"
+        paymentLogoIcon={"mastercard"}
+        onPress={onButtonPress}
+      />
+
+      <Divider />
+
+      <ListItemTransaction
+        title="Title"
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
         hasChevronRight={true}
         onPress={onButtonPress}
       />
+
+      <Divider />
+
       <ListItemTransaction
         title="This one is not clickable"
         subtitle="subtitle"
         transactionStatus="failure"
-        // paymentLogoIcon={"postepay"}
+        badgeText={"Failure"}
+        paymentLogoIcon={"postepay"}
       />
+
+      <Divider />
+
       <ListItemTransaction
         title="This one is clickable but has a very long title"
         subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
         transactionAmount="€ 1.000,00"
-        // paymentLogoIcon={"postepay"}
+        paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
         transactionStatus="success"
       />
+
+      <Divider />
+
       <ListItemTransaction
         title="Custom icon"
         subtitle="This one has a custom icon on the left"
         transactionStatus="success"
-        // paymentLogoIcon={<Icon name="notice" color="red" />}
+        paymentLogoIcon={<Icon name="notice" color="red" />}
         transactionAmount=""
         onPress={onButtonPress}
       />
+
+      <Divider />
+
       <ListItemTransaction
         title="Refunded transaction"
         subtitle="This one has a custom icon and transaction amount with a green color"
-        transactionStatus="failure"
-        // paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
+        transactionStatus="refunded"
+        paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         transactionAmount="€ 100"
         onPress={onButtonPress}
       />

@@ -17,7 +17,6 @@ import { Screen } from "../components/Screen";
 export const Badges = () => (
   <Screen>
     <H2
-      weight={"Bold"}
       style={{
         marginBottom: 16,
         paddingTop: IOVisualCostants.appMarginDefault
@@ -29,9 +28,7 @@ export const Badges = () => (
 
     <VSpacer size={16} />
 
-    <H2 weight={"Bold"} style={{ marginVertical: 16 }}>
-      Badge
-    </H2>
+    <H2 style={{ marginVertical: 16 }}>Badge</H2>
     {renderBadge()}
 
     <VSpacer size={40} />
@@ -95,6 +92,10 @@ const renderTag = () => (
         <HSpacer size={8} />
         <Tag text={"Valore legale"} variant="legalMessage" />
       </View>
+      <VSpacer size={8} />
+      <Tag variant="attachment" />
+      <VSpacer size={8} />
+      <Tag text={"No icon"} variant="noIcon" />
     </ComponentViewerBox>
     <ComponentViewerBox name={"Tag, stress test"}>
       <View

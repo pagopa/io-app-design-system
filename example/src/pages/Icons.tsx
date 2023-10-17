@@ -1,6 +1,8 @@
 import {
   H2,
   H3,
+  H4,
+  HSpacer,
   IOBiometricIcons,
   IOCategoryIcons,
   IOColors,
@@ -8,15 +10,19 @@ import {
   IOIcons,
   IONavIcons,
   IOProductIcons,
+  IOStyles,
+  IOSystemIcons,
   IOThemeContext,
   IOVisualCostants,
   Icon,
+  IconContained,
   SVGIconProps
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";
 import { Screen } from "../components/Screen";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 
 // Filter the main object, removing already displayed icons in the other sets
 type IconSubsetObject = Record<
@@ -26,6 +32,7 @@ type IconSubsetObject = Record<
 interface IconSetObject {
   [key: string]: ({ size, style }: SVGIconProps) => JSX.Element;
 }
+
 const filterIconSet = (
   iconSubsetObject: IconSubsetObject,
   iconSetObject: IconSetObject
@@ -37,7 +44,13 @@ const filterIconSet = (
   );
 
 const filteredIOIcons = filterIconSet(
-  { ...IONavIcons, ...IOCategoryIcons, ...IOProductIcons, ...IOBiometricIcons },
+  {
+    ...IONavIcons,
+    ...IOCategoryIcons,
+    ...IOProductIcons,
+    ...IOBiometricIcons,
+    ...IOSystemIcons
+  },
   IOIcons
 );
 
@@ -101,6 +114,29 @@ export const Icons = () => {
             image={
               <Icon
                 name={iconItemName as IONavIcons}
+                color={theme["icon-default"]}
+                size="100%"
+              />
+            }
+          />
+        ))}
+      </View>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 12 }}
+      >
+        System
+      </H2>
+      <View style={styles.itemsWrapper}>
+        {Object.entries(IOSystemIcons).map(([iconItemName]) => (
+          <IconViewerBox
+            key={iconItemName}
+            name={iconItemName}
+            size="small"
+            image={
+              <Icon
+                name={iconItemName as IOBiometricIcons}
                 color={theme["icon-default"]}
                 size="100%"
               />
@@ -177,6 +213,18 @@ export const Icons = () => {
           />
         ))}
       </View>
+
+      <H4 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
+        IconContained
+      </H4>
+      <ComponentViewerBox name={"IconContained, default variant"}>
+        <View style={IOStyles.row}>
+          <IconContained icon="device" variant="tonal" color="neutral" />
+          <HSpacer size={8} />
+          <IconContained icon="institution" variant="tonal" color="neutral" />
+        </View>
+      </ComponentViewerBox>
+
       <H3
         color={theme["textHeading-default"]}
         weight={"Bold"}
@@ -201,11 +249,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Colors
       </H3>
       <View style={styles.itemsWrapper}>

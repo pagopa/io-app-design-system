@@ -9,13 +9,23 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
-import { IOColors } from "../../core/IOColors";
-import { IOButtonStyles } from "../../core/IOStyles";
-import { IOIcons, Icon } from "../icons";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { WithTestID } from "../../utils/types";
 import { HSpacer } from "../spacer/Spacer";
-import { BaseTypography } from "../typography/BaseTypography";
+import { ButtonText } from "../typography/ButtonText";
+import {
+  IOButtonLegacyStyles,
+  IOButtonStyles,
+  IOColors,
+  IOScaleValues,
+  IOSpringValues,
+  enterTransitionInnerContent,
+  enterTransitionInnerContentSmall,
+  exitTransitionInnerContent,
+  useIOExperimentalDesign
+} from "../../core";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -28,8 +38,20 @@ type ColorStates = {
   };
 };
 
+// Disabled state
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
+const legacyStyles = StyleSheet.create({
+  backgroundDisabled: {
+    backgroundColor: IOColors[colorPrimaryLegacyButtonDisabled]
+  }
+});
+
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
 const DISABLED_OPACITY = 0.5;
+
+// Icon size
+const iconSize: IOIconSizeScale = 20;
 
 const styles = StyleSheet.create({
   backgroundDisabled: {
@@ -39,12 +61,27 @@ const styles = StyleSheet.create({
 });
 
 export type ButtonSolidProps = WithTestID<{
+  /**
+   * @default primary
+   */
   color?: ButtonSolidColor;
   label: string;
-  small?: boolean;
+  /**
+   * @default false
+   */
   fullWidth?: boolean;
+  /**
+   * @default false
+   */
+  loading?: boolean;
+  /**
+   * @default false
+   */
   disabled?: boolean;
   icon?: IOIcons;
+  /**
+   * @default start
+   */
   iconPosition?: "start" | "end";
   accessibilityLabel: string;
   accessibilityHint?: string;
@@ -84,13 +121,47 @@ const mapColorStates: Record<
   }
 };
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const mapLegacyColorStates: Record<
+  NonNullable<ButtonSolidProps["color"]>,
+  ColorStates
+> = {
+  // Primary button
+  primary: {
+    default: IOColors.blue,
+    pressed: IOColors["blue-600"],
+    label: {
+      default: "white",
+      disabled: "white"
+    }
+  },
+  // Danger button
+  danger: {
+    default: IOColors["error-600"],
+    pressed: IOColors["error-500"],
+    label: {
+      default: "white",
+      disabled: "white"
+    }
+  },
+  // Contrast button
+  contrast: {
+    default: IOColors.white,
+    pressed: IOColors["blue-50"],
+    label: {
+      default: "blue",
+      disabled: "white"
+    }
+  }
+};
+
 export const ButtonSolid = React.memo(
   ({
     color = "primary",
     label,
-    small = false,
     fullWidth = false,
     disabled = false,
+    loading = false,
     icon,
     iconPosition = "start",
     onPress,
@@ -99,9 +170,19 @@ export const ButtonSolid = React.memo(
     testID
   }: ButtonSolidProps) => {
     const isPressed = useSharedValue(0);
-
+    const { isExperimental } = useIOExperimentalDesign();
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+
+    const colorMap = React.useMemo(
+      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
+      [isExperimental]
+    );
+
+    const buttonStyles = React.useMemo(
+      () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
+      [isExperimental]
+    );
 
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>
@@ -114,7 +195,7 @@ export const ButtonSolid = React.memo(
       const bgColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [mapColorStates[color].default, mapColorStates[color].pressed]
+        [colorMap[color].default, colorMap[color].pressed]
       );
 
       // Scale down button slightly when pressed
@@ -140,75 +221,98 @@ export const ButtonSolid = React.memo(
       isPressed.value = 0;
     }, [isPressed]);
 
+    const handleOnPress = useCallback(
+      (event: GestureResponderEvent) => {
+        /* Don't call `onPress` if the button is
+        in loading state */
+        if (loading) {
+          return;
+        }
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      },
+      [loading, onPress]
+    );
+
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
-      ? mapColorStates[color]?.label?.disabled
-      : mapColorStates[color]?.label?.default;
+      ? colorMap[color]?.label?.disabled
+      : colorMap[color]?.label?.default;
 
-    // Icon size
-    const iconSize = small ? 16 : 20;
-
-    const Button = () => (
+    return (
       <Pressable
+        testID={testID}
+        accessible={true}
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
+        accessibilityState={{ busy: loading }}
         accessibilityRole={"button"}
-        testID={testID}
-        onPress={onPress}
+        onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        accessible={true}
         disabled={disabled}
         style={!fullWidth ? IOButtonStyles.dimensionsDefault : {}}
       >
         <Animated.View
           style={[
-            IOButtonStyles.button,
-            iconPosition === "end" && { flexDirection: "row-reverse" },
-            small
-              ? IOButtonStyles.buttonSizeSmall
-              : IOButtonStyles.buttonSizeDefault,
+            buttonStyles.button,
+            { overflow: "hidden" },
+            isExperimental && fullWidth && { paddingHorizontal: 16 },
+            buttonStyles.buttonSizeDefault,
             disabled
-              ? styles.backgroundDisabled
-              : { backgroundColor: mapColorStates[color]?.default },
+              ? isExperimental
+                ? styles.backgroundDisabled
+                : legacyStyles.backgroundDisabled
+              : { backgroundColor: colorMap[color]?.default },
             /* Prevent Reanimated from overriding background colors
-                    if button is disabled */
+              if button is disabled */
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {/* If 'iconPosition' is set to 'end', we use 
-            reverse flex property to invert the position */}
-              <Icon name={icon} size={iconSize} color={foregroundColor} />
-              {/* Once we have support for 'gap' property,
-            we can get rid of that spacer */}
-              <HSpacer size={8} />
-            </>
+          {loading && (
+            <Animated.View
+              style={buttonStyles.buttonInner}
+              entering={enterTransitionInnerContentSmall}
+              exiting={exitTransitionInnerContent}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
           )}
-          <BaseTypography
-            font="ReadexPro"
-            weight={"Regular"}
-            color={foregroundColor}
-            style={[
-              IOButtonStyles.label,
-              small
-                ? IOButtonStyles.labelSizeSmall
-                : IOButtonStyles.labelSizeDefault
-            ]}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            /* A11y-related props:
-                DON'T UNCOMMENT THEM */
-            /* allowFontScaling
-                maxFontSizeMultiplier={1.3} */
-          >
-            {label}
-          </BaseTypography>
+
+          {!loading && (
+            <Animated.View
+              style={[
+                buttonStyles.buttonInner,
+                iconPosition === "end" && { flexDirection: "row-reverse" }
+              ]}
+              entering={enterTransitionInnerContent}
+              exiting={exitTransitionInnerContent}
+            >
+              {icon && (
+                <>
+                  {/* If 'iconPosition' is set to 'end', we use 
+            reverse flex property to invert the position */}
+                  <Icon name={icon} size={iconSize} color={foregroundColor} />
+                  {/* Once we have support for 'gap' property,
+            we can get rid of that spacer */}
+                  <HSpacer size={8} />
+                </>
+              )}
+              <ButtonText
+                color={foregroundColor}
+                style={IOButtonStyles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                allowFontScaling={isExperimental}
+                maxFontSizeMultiplier={1.3}
+              >
+                {label}
+              </ButtonText>
+            </Animated.View>
+          )}
         </Animated.View>
       </Pressable>
     );
-    return <Button />;
   }
 );
 

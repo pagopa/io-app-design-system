@@ -1,14 +1,17 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import {
+  IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
   IOStyles,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { Icon, IOIcons } from "../icons";
-import { H6, LabelSmall } from "../typography";
+import { IOIcons, Icon } from "../icons";
+import { Body, H6, LabelSmall } from "../typography";
 
 export type ListItemInfo = WithTestID<{
   label: string;
@@ -22,6 +25,15 @@ export type ListItemInfo = WithTestID<{
   accessibilityLabel: string;
 }>;
 
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyStyles = StyleSheet.create({
+  textValue: {
+    fontSize: 18,
+    lineHeight: 24,
+    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
+  }
+});
+
 export const ListItemInfo = ({
   label,
   value,
@@ -31,7 +43,46 @@ export const ListItemInfo = ({
   accessibilityLabel,
   testID
 }: ListItemInfo) => {
+  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+  const legacyItemInfoText = (
+    <>
+      {/* Let developer using a custom component (e.g: skeleton) */}
+      {typeof label === "string" ? (
+        <Body weight="Regular">{label}</Body>
+      ) : (
+        label
+      )}
+      {typeof value === "string" ? (
+        <Text
+          style={[legacyStyles.textValue, { color: IOColors.bluegreyDark }]}
+          numberOfLines={numberOfLines}
+        >
+          {value}
+        </Text>
+      ) : (
+        value
+      )}
+    </>
+  );
+
+  const itemInfoText = (
+    <>
+      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        {label}
+      </LabelSmall>
+      <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
+        {value}
+      </H6>
+    </>
+  );
+
+  const itemInfoTextComponent = isExperimental
+    ? itemInfoText
+    : legacyItemInfoText;
+
   return (
     <View
       style={IOListItemStyles.listItem}
@@ -49,14 +100,7 @@ export const ListItemInfo = ({
             />
           </View>
         )}
-        <View style={IOStyles.flex}>
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {label}
-          </LabelSmall>
-          <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
-            {value}
-          </H6>
-        </View>
+        <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         {action && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
             {action}

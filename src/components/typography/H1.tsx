@@ -1,45 +1,36 @@
-import React from "react";
-import {
-  IOColors,
-  IOColorsStatusForeground,
-  IOTheme
-} from "../../core/IOColors";
+import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
-type PartialAllowedColors = Extract<
-  IOColors,
-  "bluegreyDark" | "white" | "blue"
->;
-type AllowedColors =
-  | PartialAllowedColors
-  | IOColorsStatusForeground
-  | IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Bold">;
+type AllowedColors = IOTheme["textHeading-default"];
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Bold">;
 
-type OwnProps = ExternalTypographyProps<
+type H1Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-export const h1FontSize = 26;
-export const h1LineHeight = 32;
-export const h1DefaultColor: AllowedColors = "bluegreyDark";
-export const h1DefaultWeight: AllowedWeight = "Bold";
+export const h1FontSize = 28;
+export const h1LineHeight = 42;
+const font: FontFamily = "ReadexPro";
+const defaultColor: AllowedColors = "black";
+const defaultWeight: AllowedWeight = "Regular";
+
+// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFont: FontFamily = "TitilliumWeb";
+const legacyDefaultWeight: AllowedWeight = "Bold";
 
 /**
- * Typography component to render H1 text with font size {@link fontSize} and fontFamily {@link fontName}.
- * default values(if not defined) are weight: `Bold`, color: `bluegreyDark`
- * @param props
- * @constructor
+ * `H1` typographic style
  */
-export const H1: React.FC<OwnProps> = props => {
-  const fontName: FontFamily = "TitilliumWeb";
+export const H1 = (props: H1Props) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: h1DefaultWeight,
-    defaultColor: h1DefaultColor,
-    font: fontName,
+    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+    defaultColor,
+    font: isExperimental ? font : legacyFont,
     fontStyle: { fontSize: h1FontSize, lineHeight: h1LineHeight }
   });
 };
