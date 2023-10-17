@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   ActivityIndicator,
   GestureResponderEvent,
@@ -60,7 +60,14 @@ export const ListItemSwitch = React.memo(
     onSwitchValueChange
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
-    const canRenderSwitch = !isLoading && !badge;
+
+    // If we have a badge or we are loading, we can't render the switch
+    // this affects the accessibility tree and the rendering of the component
+    const canRenderSwitch = useMemo(
+      () => !isLoading && !badge,
+      [isLoading, badge]
+    );
+
     return (
       <View
         testID="ListItemSwitch"
