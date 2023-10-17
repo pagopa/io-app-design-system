@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { GestureResponderEvent, Switch, View } from "react-native";
 import {
-  ActivityIndicator,
-  GestureResponderEvent,
-  Switch,
-  View
-} from "react-native";
-import {
+  IOColors,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { IOIcons, Icon } from "../icons";
@@ -16,6 +13,7 @@ import { H6, LabelSmall, LabelLink } from "../typography";
 import { NativeSwitch } from "../switch/NativeSwitch";
 import { Badge } from "../badge";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type PartialProps = {
   label: string;
@@ -52,14 +50,24 @@ export const ListItemSwitch = React.memo(
     description,
     icon,
     paymentLogo,
-    value,
+    value = false,
     disabled,
     action,
     isLoading,
     badge,
     onSwitchValueChange
   }: ListItemSwitchProps) => {
+    const { isExperimental } = useIOExperimentalDesign();
     const theme = useIOTheme();
+
+    // If we have a badge or we are loading, we can't render the switch
+    // this affects the accessibility tree and the rendering of the component
+    const canRenderSwitch = useMemo(
+      () => !isLoading && !badge,
+      [isLoading, badge]
+    );
+
+    const primaryColor: IOColors = isExperimental ? "blueIO-500" : "blue";
 
     return (
       <View
@@ -72,12 +80,14 @@ export const ListItemSwitch = React.memo(
         ]}
         pointerEvents={disabled ? "none" : "auto"}
         needsOffscreenAlphaCompositing={true}
+        accessible={false}
       >
         <View
           style={[
             IOSelectionListItemStyles.listItemInner,
             { alignItems: "center" }
           ]}
+          accessible={false}
         >
           <View
             style={{
@@ -85,6 +95,10 @@ export const ListItemSwitch = React.memo(
               flexDirection: "row",
               alignItems: "center"
             }}
+            accessible={!canRenderSwitch}
+            importantForAccessibility={
+              !canRenderSwitch ? "yes" : "no-hide-descendants"
+            }
           >
             {icon && (
               <View
@@ -114,7 +128,14 @@ export const ListItemSwitch = React.memo(
               </View>
             )}
 
-            <H6 color={"black"} style={{ flex: 1 }}>
+            <H6
+              color={"black"}
+              style={{ flex: 1 }}
+              accessible={!canRenderSwitch}
+              importantForAccessibility={
+                !canRenderSwitch ? "yes" : "no-hide-descendants"
+              }
+            >
               {label}
             </H6>
           </View>
@@ -133,9 +154,13 @@ export const ListItemSwitch = React.memo(
                 testID={badge.testID}
               />
             )}
-            {isLoading && <ActivityIndicator color={"black"} />}
-            {!isLoading && !badge && (
-              <NativeSwitch value={value} onValueChange={onSwitchValueChange} />
+            {isLoading && <LoadingSpinner size={24} color={primaryColor} />}
+            {canRenderSwitch && (
+              <NativeSwitch
+                value={value}
+                accessibilityLabel={label}
+                onValueChange={onSwitchValueChange}
+              />
             )}
           </View>
         </View>

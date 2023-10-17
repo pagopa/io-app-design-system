@@ -10,6 +10,8 @@ import { ActionProp } from "./common";
 
 type CommonProps = WithTestID<{
   title: string;
+  // This Prop will be removed once all the screens on the first level routing will be refactored
+  backgroundColor?: "light" | "dark";
 }>;
 
 interface Base extends CommonProps {
@@ -42,7 +44,8 @@ interface ThreeActions extends CommonProps {
 
 export type HeaderFirstLevel = Base | OneAction | TwoActions | ThreeActions;
 
-const HEADER_BG_COLOR: IOColors = "white";
+const HEADER_BG_COLOR_LIGHT: IOColors = "white";
+const HEADER_BG_COLOR_DARK: IOColors = "bluegrey";
 
 const styles = StyleSheet.create({
   headerInner: {
@@ -59,6 +62,7 @@ export const HeaderFirstLevel = ({
   title,
   type,
   testID,
+  backgroundColor = "light",
   firstAction,
   secondAction,
   thirdAction
@@ -69,32 +73,49 @@ export const HeaderFirstLevel = ({
     <View
       style={{
         paddingTop: insets.top,
-        backgroundColor: IOColors[HEADER_BG_COLOR]
+        backgroundColor:
+          backgroundColor === "light"
+            ? IOColors[HEADER_BG_COLOR_LIGHT]
+            : IOColors[HEADER_BG_COLOR_DARK]
       }}
       accessibilityRole="header"
       testID={testID}
     >
       <View style={styles.headerInner}>
-        <H3 style={{ flexShrink: 1 }} numberOfLines={1}>
+        <H3
+          style={{ flexShrink: 1 }}
+          numberOfLines={1}
+          color={backgroundColor === "dark" ? "white" : undefined}
+        >
           {title}
         </H3>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
-          {type !== "base" && <IconButton {...firstAction} color="neutral" />}
-          {(type === "twoActions" || type === "threeActions") && (
-            <>
-              {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-              +.9+
-              <HSpacer size={16} />
-              <IconButton {...secondAction} color="neutral" />
-            </>
-          )}
           {type === "threeActions" && (
             <>
+              <IconButton
+                {...thirdAction}
+                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+              />
+              {/* Ideally, with the "gap" flex property,
+              we can get rid of these ugly constructs */}
+              <HSpacer size={16} />
+            </>
+          )}
+          {(type === "twoActions" || type === "threeActions") && (
+            <>
+              <IconButton
+                {...secondAction}
+                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+              />
               {/* Same as above */}
               <HSpacer size={16} />
-              <IconButton {...thirdAction} color="neutral" />
             </>
+          )}
+          {type !== "base" && (
+            <IconButton
+              {...firstAction}
+              color={backgroundColor === "dark" ? "contrast" : "neutral"}
+            />
           )}
         </View>
       </View>

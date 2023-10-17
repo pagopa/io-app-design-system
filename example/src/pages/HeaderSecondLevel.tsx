@@ -48,11 +48,25 @@ export const HeaderSecondLevelScreen = () => {
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
-          type="singleAction"
+          type="threeActions"
           firstAction={{
             icon: "help",
             onPress: () => {
               Alert.alert("Contextual Help");
+            },
+            accessibilityLabel: ""
+          }}
+          secondAction={{
+            icon: "add",
+            onPress: () => {
+              Alert.alert("add");
+            },
+            accessibilityLabel: ""
+          }}
+          thirdAction={{
+            icon: "coggle",
+            onPress: () => {
+              Alert.alert("Settings");
             },
             accessibilityLabel: ""
           }}

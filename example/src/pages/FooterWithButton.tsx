@@ -21,6 +21,7 @@ export const FooterWithButton = () => (
         <H1>Footer with button</H1>
       </Screen>
       <FooterWithButtons
+        sticky={true}
         primary={{
           type: "Solid",
           buttonProps: {
