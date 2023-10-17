@@ -52,7 +52,7 @@ export const ListItemSwitch = React.memo(
     description,
     icon,
     paymentLogo,
-    value,
+    value = false,
     disabled,
     action,
     isLoading,
@@ -60,7 +60,7 @@ export const ListItemSwitch = React.memo(
     onSwitchValueChange
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
-
+    const canRenderSwitch = !isLoading && !badge;
     return (
       <View
         testID="ListItemSwitch"
@@ -72,12 +72,14 @@ export const ListItemSwitch = React.memo(
         ]}
         pointerEvents={disabled ? "none" : "auto"}
         needsOffscreenAlphaCompositing={true}
+        accessible={false}
       >
         <View
           style={[
             IOSelectionListItemStyles.listItemInner,
             { alignItems: "center" }
           ]}
+          accessible={false}
         >
           <View
             style={{
@@ -85,6 +87,10 @@ export const ListItemSwitch = React.memo(
               flexDirection: "row",
               alignItems: "center"
             }}
+            accessible={!canRenderSwitch}
+            importantForAccessibility={
+              !canRenderSwitch ? "yes" : "no-hide-descendants"
+            }
           >
             {icon && (
               <View
@@ -114,8 +120,15 @@ export const ListItemSwitch = React.memo(
               </View>
             )}
 
-            <H6 color={"black"} style={{ flex: 1 }}>
-              {label}
+            <H6
+              color={"black"}
+              style={{ flex: 1 }}
+              accessible={!canRenderSwitch}
+              importantForAccessibility={
+                !canRenderSwitch ? "yes" : "no-hide-descendants"
+              }
+            >
+              {label} {!canRenderSwitch ? "true" : "false"}
             </H6>
           </View>
           <HSpacer size={8} />
@@ -134,8 +147,12 @@ export const ListItemSwitch = React.memo(
               />
             )}
             {isLoading && <ActivityIndicator color={"black"} />}
-            {!isLoading && !badge && (
-              <NativeSwitch value={value} onValueChange={onSwitchValueChange} />
+            {canRenderSwitch && (
+              <NativeSwitch
+                value={value}
+                accessibilityLabel={label}
+                onValueChange={onSwitchValueChange}
+              />
             )}
           </View>
         </View>
