@@ -4,13 +4,20 @@ import { useIOExperimentalDesign } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import { IOSwitchVisualParams } from "../../core/IOStyles";
 
-type OwnProps = Pick<SwitchProps, "onValueChange" | "value">;
+type OwnProps = Pick<
+  SwitchProps,
+  "onValueChange" | "value" | "accessible" | "accessibilityLabel"
+>;
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const bgLegacyTrackColorAndroid =
   Platform.OS === "android" ? IOColors["grey-300"] : IOColors.greyUltraLight;
 
-export const NativeSwitch = ({ onValueChange, value }: OwnProps) => {
+export const NativeSwitch = ({
+  onValueChange,
+  value,
+  ...accessibility
+}: OwnProps) => {
   const { isExperimental } = useIOExperimentalDesign();
   const trackColor = {
     false: IOColors[IOSwitchVisualParams.bgColorOffState],
@@ -27,6 +34,7 @@ export const NativeSwitch = ({ onValueChange, value }: OwnProps) => {
 
   return (
     <Switch
+      {...accessibility}
       trackColor={trackColorComponent}
       thumbColor={IOColors[IOSwitchVisualParams.bgCircle]}
       ios_backgroundColor={
