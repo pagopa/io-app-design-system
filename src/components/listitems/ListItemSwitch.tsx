@@ -1,13 +1,10 @@
 import React, { useMemo } from "react";
+import { GestureResponderEvent, Switch, View } from "react-native";
 import {
-  ActivityIndicator,
-  GestureResponderEvent,
-  Switch,
-  View
-} from "react-native";
-import {
+  IOColors,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { IOIcons, Icon } from "../icons";
@@ -16,6 +13,7 @@ import { H6, LabelSmall, LabelLink } from "../typography";
 import { NativeSwitch } from "../switch/NativeSwitch";
 import { Badge } from "../badge";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type PartialProps = {
   label: string;
@@ -59,6 +57,7 @@ export const ListItemSwitch = React.memo(
     badge,
     onSwitchValueChange
   }: ListItemSwitchProps) => {
+    const { isExperimental } = useIOExperimentalDesign();
     const theme = useIOTheme();
 
     // If we have a badge or we are loading, we can't render the switch
@@ -67,6 +66,8 @@ export const ListItemSwitch = React.memo(
       () => !isLoading && !badge,
       [isLoading, badge]
     );
+
+    const primaryColor: IOColors = isExperimental ? "blueIO-500" : "blue";
 
     return (
       <View
@@ -153,7 +154,7 @@ export const ListItemSwitch = React.memo(
                 testID={badge.testID}
               />
             )}
-            {isLoading && <ActivityIndicator color={"black"} />}
+            {isLoading && <LoadingSpinner size={24} color={primaryColor} />}
             {canRenderSwitch && (
               <NativeSwitch
                 value={value}
