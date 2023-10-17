@@ -20,8 +20,8 @@ export type IOLoadingSpinnerSizeScale = 24 | 48 | 76;
 
 const strokeMap: Record<NonNullable<LoadingSpinner["size"]>, number> = {
   24: 3,
-  48: 6,
-  76: 9
+  48: 5,
+  76: 7
 };
 
 const startRotationAnimation = (
@@ -41,7 +41,7 @@ const startRotationAnimation = (
 export const LoadingSpinner = ({
   color = "blueIO-500",
   size = 24,
-  durationMs = 750,
+  durationMs = 850,
   accessibilityHint,
   accessibilityLabel,
   testID = "LoadingSpinnerTestID"
