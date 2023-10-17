@@ -128,7 +128,7 @@ export const ListItemSwitch = React.memo(
                 !canRenderSwitch ? "yes" : "no-hide-descendants"
               }
             >
-              {label} {!canRenderSwitch ? "true" : "false"}
+              {label}
             </H6>
           </View>
           <HSpacer size={8} />
