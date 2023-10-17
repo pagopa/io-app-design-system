@@ -20,7 +20,8 @@ export const getInputPropsByType = (
           autoComplete: "cc-number",
           keyboardType: "numeric",
           textContentType: "creditCardNumber",
-          inputMode: "numeric"
+          inputMode: "numeric",
+          returnKeyType: "done"
         }
       };
     default:

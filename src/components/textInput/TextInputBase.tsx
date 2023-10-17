@@ -30,7 +30,11 @@ type InputStatus = "initial" | "focused" | "disabled" | "error";
 
 type RNTextInputProps = Pick<
   React.ComponentProps<typeof TextInput>,
-  "keyboardType" | "inputMode" | "textContentType" | "autoComplete"
+  | "keyboardType"
+  | "inputMode"
+  | "textContentType"
+  | "autoComplete"
+  | "returnKeyType"
 >;
 
 type InputTextProps = {
@@ -39,7 +43,7 @@ type InputTextProps = {
   onChangeText: (value: string) => void;
   accessibilityLabel?: string;
   textInputProps?: RNTextInputProps;
-  inputTyoe?: InputType;
+  inputType?: InputType;
   status?: InputStatus;
   icon?: IOIcons;
   rightElement?: React.ReactNode;
@@ -152,7 +156,7 @@ export const TextInputBase = ({
   onChangeText,
   accessibilityLabel,
   textInputProps,
-  inputTyoe = "default",
+  inputType = "default",
   status,
   icon,
   rightElement,
@@ -248,8 +252,8 @@ export const TextInputBase = ({
   }, [value, labelSharedValue, onBlur]);
 
   const derivedInputProps = useMemo(
-    () => getInputPropsByType(inputTyoe),
-    [inputTyoe]
+    () => getInputPropsByType(inputType),
+    [inputType]
   );
 
   const inputValue = useMemo(
