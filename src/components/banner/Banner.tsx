@@ -197,7 +197,13 @@ export const Banner = ({
 
   const renderMainBlock = () => (
     <>
-      <View style={[IOStyles.flex, IOStyles.selfCenter]}>
+      <View
+        style={[IOStyles.flex, IOStyles.selfCenter]}
+        accessible={true}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityHint={accessibilityHint}
+        accessibilityRole={action !== undefined ? "button" : undefined}
+      >
         {title && (
           <>
             {/* Once we get 'gap' property, we can get rid of
@@ -251,10 +257,10 @@ export const Banner = ({
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       // A11y related props
-      accessible={true}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityHint={accessibilityHint}
-      accessibilityRole={"button"}
+      accessible={false}
+      // accessibilityLabel={accessibilityLabel}
+      // accessibilityHint={accessibilityHint}
+      // accessibilityRole={"button"}
     >
       <Animated.View
         style={[
