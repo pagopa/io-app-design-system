@@ -200,6 +200,7 @@ export const Banner = ({
       <View
         style={[IOStyles.flex, IOStyles.selfCenter]}
         accessible={true}
+        // A11y related props
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
         accessibilityRole={action !== undefined ? "button" : undefined}
@@ -256,11 +257,7 @@ export const Banner = ({
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      // A11y related props
       accessible={false}
-      // accessibilityLabel={accessibilityLabel}
-      // accessibilityHint={accessibilityHint}
-      // accessibilityRole={"button"}
     >
       <Animated.View
         style={[
