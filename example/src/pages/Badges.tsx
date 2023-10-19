@@ -62,6 +62,27 @@ const renderBadge = () => (
       <HSpacer size={16} />
     </View>
     <VSpacer size={16} />
+    <View style={IOStyles.row}>
+      <Badge outline text={"Info"} variant="info" />
+      <HSpacer size={16} />
+      <Badge outline text={"Warning"} variant="warning" />
+      <HSpacer size={16} />
+      <Badge outline text={"Error"} variant="error" />
+      <HSpacer size={16} />
+      <Badge outline text={"Success"} variant="success" />
+    </View>
+    <VSpacer size={16} />
+    <View style={IOStyles.row}>
+      <Badge outline text={"Purple"} variant="purple" />
+      <HSpacer size={16} />
+      <Badge outline text={"Light blue"} variant="lightBlue" />
+      <HSpacer size={16} />
+      <Badge outline text={"Blue"} variant="blue" />
+      <HSpacer size={16} />
+      <Badge outline text={"Turquoise"} variant="turquoise" />
+      <HSpacer size={16} />
+    </View>
+    <VSpacer size={16} />
     <View
       style={{
         backgroundColor: IOColors.bluegrey,

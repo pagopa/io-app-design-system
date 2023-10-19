@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import {
   IOBadgeHSpacing,
@@ -11,6 +11,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 
 export type Badge = WithTestID<{
+  outline?: boolean;
   text: string;
   variant:
     | "default"
@@ -27,7 +28,7 @@ export type Badge = WithTestID<{
 
 type VariantProps = {
   foreground: IOColors;
-  background: IOColors;
+  background?: IOColors;
 };
 
 const mapVariants: Record<NonNullable<Badge["variant"]>, VariantProps> = {
@@ -73,6 +74,42 @@ const mapVariants: Record<NonNullable<Badge["variant"]>, VariantProps> = {
   }
 };
 
+const mapOutlineVariants: Record<
+  NonNullable<Badge["variant"]>,
+  VariantProps
+> = {
+  default: {
+    foreground: "grey-700"
+  },
+  info: {
+    foreground: "info-850"
+  },
+  warning: {
+    foreground: "warning-850"
+  },
+  success: {
+    foreground: "success-850"
+  },
+  error: {
+    foreground: "error-850"
+  },
+  purple: {
+    foreground: "hanPurple-850"
+  },
+  lightBlue: {
+    foreground: "blueIO-850"
+  },
+  blue: {
+    foreground: "blueIO-500"
+  },
+  turquoise: {
+    foreground: "turquoise-850"
+  },
+  contrast: {
+    foreground: "grey-850"
+  }
+};
+
 const styles = StyleSheet.create({
   badge: {
     flexDirection: "row",
@@ -106,14 +143,26 @@ const styles = StyleSheet.create({
 /**
  * Official badge component
  */
-export const Badge = ({ text, variant, testID }: Badge) => {
+export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
+  const { background, foreground } = useMemo(
+    () => (outline ? mapOutlineVariants : mapVariants)[variant],
+    [outline, variant]
+  );
+
   return (
     <View
       testID={testID}
       style={[
         styles.badge,
-        { backgroundColor: IOColors[mapVariants[variant].background] }
+        outline
+          ? {
+              borderWidth: 1,
+              borderColor: IOColors[foreground]
+            }
+          : {
+              backgroundColor: background ? IOColors[background] : undefined
+            }
       ]}
     >
       <Text
@@ -122,7 +171,9 @@ export const Badge = ({ text, variant, testID }: Badge) => {
         style={[
           styles.label,
           isExperimental ? styles.labelFont : styles.legacyLabelFont,
-          { color: IOColors[mapVariants[variant].foreground] }
+          {
+            color: IOColors[foreground]
+          }
         ]}
       >
         {text}
