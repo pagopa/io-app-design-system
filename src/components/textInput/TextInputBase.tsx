@@ -1,4 +1,5 @@
 /* eslint-disable functional/immutable-data */
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -6,7 +7,6 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -19,12 +19,12 @@ import {
   IOStyles,
   useIOExperimentalDesign
 } from "../../core";
+import { makeFontStyleObject } from "../../utils/fonts";
+import { getInputPropsByType } from "../../utils/textInput";
+import { InputType } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
-import { InputType } from "../../utils/types";
-import { getInputPropsByType } from "../../utils/textInput";
-import { makeFontStyleObject } from "../../utils/fonts";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -35,6 +35,7 @@ type RNTextInputProps = Pick<
   | "textContentType"
   | "autoComplete"
   | "returnKeyType"
+  | "autoCapitalize"
 >;
 
 type InputTextProps = {
