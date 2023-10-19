@@ -84,7 +84,7 @@ export const TextInputs = () => (
       <H5>Base input with value formatted</H5>
       <InputComponentWrapper
         placeholder={"Base input"}
-        inputTyoe={"credit-card"}
+        inputType={"credit-card"}
         bottomMessage="Handles credit card input type"
       />
       <H5>Base input with validation</H5>
