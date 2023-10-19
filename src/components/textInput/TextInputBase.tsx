@@ -323,6 +323,7 @@ export const TextInputBase = ({
             style={[
               animatedLabelProps,
               {
+                ...makeFontStyleObject("Regular", false, "TitilliumWeb"),
                 color: IOColors["grey-700"]
               }
             ]}
