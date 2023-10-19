@@ -20,6 +20,7 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOScaleValues,
+  IOSelectionListItemVisualParams,
   IOSpringValues,
   IOStyles,
   hexToRgba,
@@ -30,6 +31,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { Body, H6, LabelSmall } from "../typography";
+import { IOLogoPaymentType, LogoPayment } from "../logos";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyStyles = StyleSheet.create({
@@ -41,20 +43,27 @@ const legacyStyles = StyleSheet.create({
   }
 });
 
-export type ListItemNav = WithTestID<{
+export type ListItemNavPartialProps = WithTestID<{
   value: string | React.ReactNode;
   description?: string | React.ReactNode;
   onPress: (event: GestureResponderEvent) => void;
-  icon?: IOIcons;
   // Accessibility
   accessibilityLabel: string;
 }>;
+
+export type ListItemNavGraphicProps =
+  | { icon?: never; paymentLogo: IOLogoPaymentType }
+  | { icon: IOIcons; paymentLogo?: never }
+  | { icon?: never; paymentLogo?: never };
+
+export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
 export const ListItemNav = ({
   value,
   description,
   onPress,
   icon,
+  paymentLogo,
   accessibilityLabel,
   testID
 }: ListItemNav) => {
@@ -94,9 +103,7 @@ export const ListItemNav = ({
     </>
   );
 
-  const navTextComponent = isExperimental
-    ? navText
-    : legacyNavText;
+  const navTextComponent = isExperimental ? navText : legacyNavText;
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
     pressed: IOColors[theme["listItem-pressed"]]
@@ -168,6 +175,14 @@ export const ListItemNav = ({
                 name={icon}
                 color="grey-450"
                 size={IOListItemVisualParams.iconSize}
+              />
+            </View>
+          )}
+          {paymentLogo && (
+            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+              <LogoPayment
+                name={paymentLogo}
+                size={IOSelectionListItemVisualParams.iconSize}
               />
             </View>
           )}

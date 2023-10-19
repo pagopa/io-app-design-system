@@ -133,6 +133,15 @@ const renderListItemNav = () => (
           }}
           accessibilityLabel="Empty just for testing purposes"
         />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with a payment logo"
+          paymentLogo="bancomatPay"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+        />
       </View>
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemNavAlert">
