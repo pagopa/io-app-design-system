@@ -20,7 +20,6 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOScaleValues,
-  IOSelectionListItemVisualParams,
   IOSpringValues,
   IOStyles,
   hexToRgba,
@@ -43,7 +42,7 @@ const legacyStyles = StyleSheet.create({
   }
 });
 
-export type ListItemNavPartialProps = WithTestID<{
+type ListItemNavPartialProps = WithTestID<{
   value: string | React.ReactNode;
   description?: string | React.ReactNode;
   onPress: (event: GestureResponderEvent) => void;
@@ -182,7 +181,7 @@ export const ListItemNav = ({
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
               <LogoPayment
                 name={paymentLogo}
-                size={IOSelectionListItemVisualParams.iconSize}
+                size={IOListItemVisualParams.iconSize}
               />
             </View>
           )}
