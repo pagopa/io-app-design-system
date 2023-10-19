@@ -2,7 +2,6 @@
 
 exports[`Test Banner Components Banner Snapshot 1`] = `
 <View
-  accessibilityRole="button"
   accessibilityState={
     {
       "busy": undefined,
@@ -20,7 +19,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       "text": undefined,
     }
   }
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={true}
   onBlur={[Function]}
@@ -58,6 +57,8 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
     }
   >
     <View
+      accessibilityRole="button"
+      accessible={true}
       style={
         [
           {
