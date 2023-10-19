@@ -1,15 +1,15 @@
-import * as React from "react";
-import { View } from "react-native";
 import {
-  IOVisualCostants,
+  H4,
+  H5,
   IOStyles,
-  VSpacer,
+  IOVisualCostants,
   TextInput,
   TextInputPassword,
   TextInputValidation,
-  H4,
-  H5
+  VSpacer
 } from "@pagopa/io-app-design-system";
+import * as React from "react";
+import { View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
