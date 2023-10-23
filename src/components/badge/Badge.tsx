@@ -26,12 +26,12 @@ export type Badge = WithTestID<{
     | "contrast";
 }>;
 
-type VariantProps = {
+type SolidVariantProps = {
+  background: IOColors;
   foreground: IOColors;
-  background?: IOColors;
 };
 
-const mapVariants: Record<NonNullable<Badge["variant"]>, VariantProps> = {
+const mapVariants: Record<NonNullable<Badge["variant"]>, SolidVariantProps> = {
   default: {
     foreground: "grey-700",
     background: "grey-50"
@@ -74,9 +74,14 @@ const mapVariants: Record<NonNullable<Badge["variant"]>, VariantProps> = {
   }
 };
 
+type OutlinedVariantProps = {
+  foreground: IOColors;
+  background?: never;
+};
+
 const mapOutlineVariants: Record<
   NonNullable<Badge["variant"]>,
-  VariantProps
+  OutlinedVariantProps
 > = {
   default: {
     foreground: "grey-700"
