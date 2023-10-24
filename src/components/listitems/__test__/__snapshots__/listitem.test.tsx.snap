@@ -146,7 +146,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
           "paddingHorizontal": 16,
           "paddingVertical": 16,
         },
-        undefined,
+        false,
         {
           "transform": [
             {
