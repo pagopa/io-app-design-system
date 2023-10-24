@@ -71,6 +71,7 @@ then improved step by step
 const path = require("path");
 const join = path.join;
 const { optimize } = require("svgo");
+const prettier = require("prettier");
 const fs = require("fs-extra");
 
 const svgDir = join(__dirname, "svg/originals");
@@ -130,7 +131,10 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
           .replace(`{/* SVGContent */}`, tsxData);
 
         const tsxFilePath = join(tsxDir, file.replace(".svg", ".tsx"));
-        fs.writeFileSync(tsxFilePath, componentData);
+        fs.writeFileSync(
+          tsxFilePath,
+          prettier.format(componentData, { parser: "typescript" })
+        );
 
         // eslint-disable-next-line no-console
         console.log("Created .tsx file:", tsxFilePath);
