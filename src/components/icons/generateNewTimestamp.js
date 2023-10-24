@@ -1,6 +1,6 @@
-import fs from "fs";
+const fs = require("fs-extra");
 
-const timestampFilePath = "./timestamp.txt"; // Adjust the path as needed
+const timestampFilePath = "./timestamp.txt";
 const currentTimestamp = new Date().toISOString();
 
 fs.writeFileSync(timestampFilePath, currentTimestamp);
