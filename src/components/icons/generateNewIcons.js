@@ -79,6 +79,14 @@ const tsxDir = join(__dirname, "svg");
 const templateFilePath = join(__dirname, "svg/_IconTemplate.tsx");
 const timestampFilePath = join(__dirname, "timestamp.txt");
 
+const timeConfigLang = "it-IT";
+const timeConfigObj = {
+  timeZone: "Europe/Rome"
+};
+
+const convertTimestampToReadableFormat = timestamp =>
+  new Date(timestamp).toLocaleString(timeConfigLang, timeConfigObj);
+
 fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
   if (err) {
     // eslint-disable-next-line no-console
@@ -87,7 +95,12 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
   }
 
   // eslint-disable-next-line no-console
-  console.log("Last processed timestamp:", timestamp);
+  console.log(
+    "Last processed timestamp:",
+    convertTimestampToReadableFormat(timestamp)
+  );
+  // eslint-disable-next-line no-console
+  console.log(`————————————————`);
 
   fs.readdir(svgDir, (err, files) => {
     if (err) {
@@ -148,14 +161,16 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
       }
     });
 
-    const newTimestamp = new Date().toISOString();
-    fs.writeFileSync(timestampFilePath, newTimestamp);
+    const newTimestamp = new Date();
+    const convertedISOTimestamp = newTimestamp.toISOString();
+    fs.writeFileSync(timestampFilePath, convertedISOTimestamp);
 
-    const readableItalianTime = new Date().toLocaleString("it-IT", {
-      timeZone: "Europe/Rome"
-    });
+    const readableUpdatedTimestamp =
+      convertTimestampToReadableFormat(newTimestamp);
 
     // eslint-disable-next-line no-console
-    console.log("Updated timestamp:", readableItalianTime);
+    console.log(`————————————————`);
+    // eslint-disable-next-line no-console
+    console.log("Updated timestamp:", readableUpdatedTimestamp);
   });
 });
