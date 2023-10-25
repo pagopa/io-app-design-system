@@ -83,13 +83,10 @@ const tsxDir = join(__dirname, "svg");
 const templateFilePath = join(__dirname, "svg/_IconTemplate.tsx");
 const timestampFilePath = join(__dirname, "timestamp.txt");
 
-const timeConfigLang = "it-IT";
-const timeConfigObj = {
-  timeZone: "Europe/Rome"
-};
-
 const convertTimestampToReadableFormat = timestamp =>
-  new Date(timestamp).toLocaleString(timeConfigLang, timeConfigObj);
+  new Date(timestamp).toLocaleString("it-IT", {
+    timeZone: "Europe/Rome"
+  });
 
 fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
   if (err) {
