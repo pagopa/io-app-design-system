@@ -1,13 +1,24 @@
 // A component to provide organization logo
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
-import { IOVisualCostants, IOColors, hexToRgba } from "../../core";
+import {
+  ImageRequireSource,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
+import {
+  IOColors,
+  IOThemeContext,
+  IOVisualCostants,
+  hexToRgba
+} from "../../core";
+import { Icon } from "../icons";
 import { MultiImage } from "./MultiImage";
 
 type Avatar = {
   shape: "circle" | "square";
   size: "small" | "medium";
-  logoUri: React.ComponentProps<typeof MultiImage>["source"];
+  logoUri?: ReadonlyArray<ImageURISource | ImageRequireSource>;
 };
 
 const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
@@ -45,21 +56,28 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Avatar = ({ logoUri, shape, size }: Avatar) => (
-  <View
-    style={[
-      styles.avatarWrapper,
-      {
-        height: dimensionsMap[size].size,
-        width: dimensionsMap[size].size,
-        borderRadius:
-          shape === "circle"
-            ? getAvatarCircleShape(size)
-            : dimensionsMap[size].radius,
-        padding: dimensionsMap[size].internalSpace
-      }
-    ]}
-  >
-    <MultiImage style={styles.avatarImage} source={logoUri} />
-  </View>
-);
+export const Avatar = ({ logoUri, shape, size }: Avatar) => {
+  const theme = React.useContext(IOThemeContext);
+  return (
+    <View
+      style={[
+        styles.avatarWrapper,
+        {
+          height: dimensionsMap[size].size,
+          width: dimensionsMap[size].size,
+          borderRadius:
+            shape === "circle"
+              ? getAvatarCircleShape(size)
+              : dimensionsMap[size].radius,
+          padding: dimensionsMap[size].internalSpace
+        }
+      ]}
+    >
+      {logoUri ? (
+        <MultiImage style={styles.avatarImage} source={logoUri} />
+      ) : (
+        <Icon name="placeholder" color={theme["icon-default"]} size="100%" />
+      )}
+    </View>
+  );
+};

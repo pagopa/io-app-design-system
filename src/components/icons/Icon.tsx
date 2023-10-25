@@ -160,6 +160,7 @@ import IconHealthCard from "./svg/IconHealthCard";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconNotes from "./svg/IconNotes";
 import IconEntityCode from "./svg/IconEntityCode";
+import IconPlaceholder from "./svg/IconPlaceholder";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -174,6 +175,7 @@ export const IOIcons = {
   copy: IconCopy,
   selfCert: IconSelfCertification,
   institution: IconInstitution,
+  placeholder: IconPlaceholder,
   merchant: IconMerchant,
   hourglass: IconHourglass,
   shareiOs: IconShareiOs,

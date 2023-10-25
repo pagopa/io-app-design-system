@@ -95,6 +95,10 @@ const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
 
 const organizationsURIs = [
   {
+    imageSource: undefined,
+    name: "Placeholder"
+  },
+  {
     imageSource: `${cdnPath}1199250158.png`,
     name: "Comune di Milano"
   },
@@ -137,11 +141,15 @@ const renderAvatar = () => (
             <Avatar
               shape="circle"
               size="small"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? [
+                      {
+                        uri: imageSource
+                      }
+                    ]
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={4} />}
           </React.Fragment>
@@ -159,11 +167,15 @@ const renderAvatar = () => (
             <Avatar
               shape="square"
               size="small"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? [
+                      {
+                        uri: imageSource
+                      }
+                    ]
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
           </React.Fragment>
@@ -181,11 +193,15 @@ const renderAvatar = () => (
             <Avatar
               shape="square"
               size="medium"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? [
+                      {
+                        uri: imageSource
+                      }
+                    ]
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
           </React.Fragment>
