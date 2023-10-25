@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGIconProps } from "../Icon";
 
-export const IconInstitution = ({ size, style, ...props }: SVGIconProps) => (
+const IconInstitution = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     <Path
       fill="currentColor"
@@ -12,3 +12,5 @@ export const IconInstitution = ({ size, style, ...props }: SVGIconProps) => (
     />
   </Svg>
 );
+
+export default IconInstitution;
