@@ -1,24 +1,19 @@
 // A component to provide organization logo
 import * as React from "react";
-import {
-  ImageRequireSource,
-  ImageURISource,
-  StyleSheet,
-  View
-} from "react-native";
+import { Image, ImageURISource, StyleSheet, View } from "react-native";
 import {
   IOColors,
   IOThemeContext,
   IOVisualCostants,
   hexToRgba
 } from "../../core";
+import { addCacheTimestampToUri } from "../../utils/image";
 import { Icon } from "../icons";
-import { MultiImage } from "./MultiImage";
 
 type Avatar = {
   shape: "circle" | "square";
   size: "small" | "medium";
-  logoUri?: ReadonlyArray<ImageURISource | ImageRequireSource>;
+  logoUri?: ImageURISource;
 };
 
 const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
@@ -58,6 +53,14 @@ const styles = StyleSheet.create({
 
 export const Avatar = ({ logoUri, shape, size }: Avatar) => {
   const theme = React.useContext(IOThemeContext);
+  const [imageSource, setImageSource] = React.useState(
+    logoUri ? addCacheTimestampToUri(logoUri) : undefined
+  );
+
+  const onError = () => {
+    setImageSource(_ => undefined);
+  };
+
   return (
     <View
       style={[
@@ -73,8 +76,12 @@ export const Avatar = ({ logoUri, shape, size }: Avatar) => {
         }
       ]}
     >
-      {logoUri ? (
-        <MultiImage style={styles.avatarImage} source={logoUri} />
+      {imageSource ? (
+        <Image
+          source={imageSource}
+          style={styles.avatarImage}
+          onError={onError}
+        />
       ) : (
         <Icon name="placeholder" color={theme["icon-default"]} size="100%" />
       )}

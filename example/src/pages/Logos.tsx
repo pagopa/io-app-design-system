@@ -125,6 +125,10 @@ const organizationsURIs = [
   {
     imageSource: `${cdnPath}80215430580.png`,
     name: "Ministero dell'Interno"
+  },
+  {
+    imageSource: `${cdnPath}wrongUri.png`,
+    name: "Wrong URI"
   }
 ];
 
@@ -143,11 +147,9 @@ const renderAvatar = () => (
               size="small"
               logoUri={
                 imageSource
-                  ? [
-                      {
-                        uri: imageSource
-                      }
-                    ]
+                  ? {
+                      uri: imageSource
+                    }
                   : undefined
               }
             />
@@ -169,11 +171,9 @@ const renderAvatar = () => (
               size="small"
               logoUri={
                 imageSource
-                  ? [
-                      {
-                        uri: imageSource
-                      }
-                    ]
+                  ? {
+                      uri: imageSource
+                    }
                   : undefined
               }
             />
@@ -195,11 +195,9 @@ const renderAvatar = () => (
               size="medium"
               logoUri={
                 imageSource
-                  ? [
-                      {
-                        uri: imageSource
-                      }
-                    ]
+                  ? {
+                      uri: imageSource
+                    }
                   : undefined
               }
             />

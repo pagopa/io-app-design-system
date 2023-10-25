@@ -19,7 +19,20 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
       },
     ]
   }
-/>
+>
+  <Image
+    onError={[Function]}
+    source={
+      {
+        "uri": "",
+      }
+    }
+    style={
+      {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</View>
 `;
-
-exports[`Test Avatar Components MultiImage Snapshot 1`] = `null`;
