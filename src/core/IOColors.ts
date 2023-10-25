@@ -285,6 +285,7 @@ export type IOTheme = {
   // Design System related
   "cardBorder-default": IOColors;
   "icon-default": IOColors;
+  "icon-decorative": IOColors;
   // Layout
   "divider-default": IOColors;
   // Status
@@ -312,6 +313,7 @@ export const IOThemeLight: IOTheme = {
   // Design System related
   "cardBorder-default": "grey-100",
   "icon-default": "grey-650",
+  "icon-decorative": "grey-300",
   // Layout
   "divider-default": "grey-200",
   // Status

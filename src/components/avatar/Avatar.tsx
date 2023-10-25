@@ -8,11 +8,12 @@ import {
 } from "react-native";
 import {
   IOColors,
+  IOSpacingScale,
   IOThemeContext,
   IOVisualCostants,
   hexToRgba
 } from "../../core";
-import { Icon } from "../icons";
+import { Icon } from "../../components/icons";
 import { MultiImage } from "./MultiImage";
 
 type Avatar = {
@@ -25,16 +26,20 @@ const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
 const internalSpaceDefaultSize: number = 6;
 const internalSpaceLargeSize: number = 9;
 const radiusDefaultSize: number = 8;
+const internalSpacePlaceholderDefaultSize: IOSpacingScale = 12;
+const internalSpacePlaceholderLargeSize: IOSpacingScale = 16;
 
 const dimensionsMap = {
   small: {
     size: IOVisualCostants.avatarSizeSmall,
     internalSpace: internalSpaceDefaultSize,
+    internalSpacePlaceholder: internalSpacePlaceholderDefaultSize,
     radius: radiusDefaultSize
   },
   medium: {
     size: IOVisualCostants.avatarSizeMedium,
     internalSpace: internalSpaceLargeSize,
+    internalSpacePlaceholder: internalSpacePlaceholderLargeSize,
     radius: radiusDefaultSize
   }
 };
@@ -47,8 +52,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     resizeMode: "contain",
     borderColor: avatarBorderLightMode,
-    borderWidth: 1,
-    backgroundColor: IOColors.white
+    borderWidth: 1
   },
   avatarImage: {
     height: "100%",
@@ -58,6 +62,8 @@ const styles = StyleSheet.create({
 
 export const Avatar = ({ logoUri, shape, size }: Avatar) => {
   const theme = React.useContext(IOThemeContext);
+  const isPlaceholder = !logoUri;
+
   return (
     <View
       style={[
@@ -69,14 +75,21 @@ export const Avatar = ({ logoUri, shape, size }: Avatar) => {
             shape === "circle"
               ? getAvatarCircleShape(size)
               : dimensionsMap[size].radius,
-          padding: dimensionsMap[size].internalSpace
+          backgroundColor: isPlaceholder ? IOColors["grey-50"] : IOColors.white,
+          padding: isPlaceholder
+            ? dimensionsMap[size].internalSpacePlaceholder
+            : dimensionsMap[size].internalSpace
         }
       ]}
     >
-      {logoUri ? (
-        <MultiImage style={styles.avatarImage} source={logoUri} />
+      {isPlaceholder ? (
+        <Icon
+          name="institution"
+          color={theme["icon-decorative"]}
+          size={"100%"}
+        />
       ) : (
-        <Icon name="placeholder" color={theme["icon-default"]} size="100%" />
+        <MultiImage style={styles.avatarImage} source={logoUri} />
       )}
     </View>
   );
