@@ -8,14 +8,14 @@ import { useModuleSpringAnimation } from "./hooks/useModuleSpringAnimation";
 export type PressableModuleBaseProps = WithTestID<{
   accessibilityLabel?: string;
   onPress?: (event: GestureResponderEvent) => void;
-  important?: boolean;
+  withLooseSpacing?: boolean;
 }>;
 
 export const PressableModuleBase = ({
   onPress,
   testID,
   accessibilityLabel,
-  important = false,
+  withLooseSpacing = false,
   children
 }: React.PropsWithChildren<PressableModuleBaseProps>) => {
   const { handlePressIn, handlePressOut, animatedStyle } =
@@ -34,7 +34,7 @@ export const PressableModuleBase = ({
       <Animated.View
         style={[
           IOModuleStyles.button,
-          important && { paddingVertical: IOModuleIDPSavedVSpacing },
+          withLooseSpacing && { paddingVertical: IOModuleIDPSavedVSpacing },
           animatedStyle
         ]}
       >

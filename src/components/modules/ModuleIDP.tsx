@@ -57,7 +57,7 @@ export const ModuleIDP = ({
   name,
   localLogo,
   logo,
-  important = false,
+  withLooseSpacing = false,
   onPress,
   testID
 }: ModuleIDP) => {
@@ -73,7 +73,7 @@ export const ModuleIDP = ({
     <PressableModuleBase
       onPress={onPress}
       testID={testID}
-      important={important}
+      withLooseSpacing={withLooseSpacing}
     >
       <Text
         style={[
