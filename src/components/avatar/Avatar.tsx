@@ -57,14 +57,15 @@ const styles = StyleSheet.create({
 
 export const Avatar = ({ logoUri, shape, size }: Avatar) => {
   const theme = React.useContext(IOThemeContext);
-  const isPlaceholder = !logoUri;
 
   const [imageSource, setImageSource] = React.useState(
-    isPlaceholder ? undefined : addCacheTimestampToUri(logoUri)
+    !logoUri ? undefined : addCacheTimestampToUri(logoUri)
   );
 
+  const isPlaceholder = !imageSource;
+
   const onError = () => {
-    setImageSource(_ => undefined);
+    setImageSource(undefined);
   };
 
   return (
@@ -85,7 +86,7 @@ export const Avatar = ({ logoUri, shape, size }: Avatar) => {
         }
       ]}
     >
-      {!imageSource ? (
+      {isPlaceholder ? (
         <Icon
           name="institution"
           color={theme["icon-decorative"]}
