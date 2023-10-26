@@ -4,6 +4,10 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGIconProps } from "../Icon";
 
+// The `generateNewIcons.js`s script uses this template to generate
+// the new `Icon…` component. Don't edit this file to avoid
+// adding breaking changes to the process.
+
 export const IconTemplate = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     {/* SVGContent */}
