@@ -36,7 +36,8 @@ export type PaymentNoticeStatus =
   | "error"
   | "expired"
   | "revoked"
-  | "canceled";
+  | "canceled"
+  | "in-progress";
 
 export type ModulePaymentNoticeProps = WithTestID<
   {
@@ -111,12 +112,14 @@ const ModulePaymentNoticeContent = ({
         return <Badge variant="default" text={badgeText} />;
       case "canceled":
         return <Badge variant="default" text={badgeText} />;
+      case "in-progress":
+        return <Badge variant="info" text={badgeText} />;
     }
   };
 
   return (
     <>
-      <View style={{ flexGrow: 1, flexShrink: 1 }}>
+      <View style={{ flexGrow: 1, flexShrink: 1, paddingEnd: 8 }}>
         {title && (
           <LabelSmall numberOfLines={1} weight="Regular" color="bluegrey">
             {title}
@@ -126,6 +129,7 @@ const ModulePaymentNoticeContent = ({
           weight="SemiBold"
           font={isExperimental ? "ReadexPro" : "TitilliumWeb"}
           color={isExperimental ? "blueIO-500" : "bluegrey"}
+          numberOfLines={2}
         >
           {subtitle}
         </LabelSmall>
