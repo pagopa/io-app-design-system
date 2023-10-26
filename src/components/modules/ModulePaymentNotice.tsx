@@ -37,7 +37,7 @@ export type PaymentNoticeStatus =
   | "expired"
   | "revoked"
   | "canceled"
-  | "inprogress";
+  | "in-progress";
 
 export type ModulePaymentNoticeProps = WithTestID<
   {
@@ -112,7 +112,7 @@ const ModulePaymentNoticeContent = ({
         return <Badge variant="default" text={badgeText} />;
       case "canceled":
         return <Badge variant="default" text={badgeText} />;
-      case "inprogress":
+      case "in-progress":
         return <Badge variant="info" text={badgeText} />;
     }
   };
