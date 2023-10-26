@@ -135,7 +135,7 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
           got from `colorMapValues` */
           .replace(/fill="[^"]*"/g, match => {
             const colorKey = match.slice(6, -1);
-            return `fill="${colorMapValues[colorKey]}"`;
+            return `fill={${colorMapValues[colorKey]}}`;
           })
           // /* Convert self-closing tags to Capital Case, because
           // `react-native-svg` doesn't recognize them otherwise */
