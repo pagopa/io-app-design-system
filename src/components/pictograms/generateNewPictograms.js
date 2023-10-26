@@ -3,12 +3,12 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 
 /**
-DRAFT for an AUTOMATIC process to generate new icon components 
-(`Icon....tsx`) from the SVG files exported from Figma.
+DRAFT for an AUTOMATIC process to generate new pictogram components 
+(`Pictogram....tsx`) from the SVG files exported from Figma.
 
 Prerequisites:
-- The icon must be exported from the 24 × 24 frame
-- The icon must be saved with the final name
+- The pictogram must be exported from the 240 × 240 frame
+- The pictogram must be saved with the final name
   - To learn more about naming conventions, please read the local README
 */
 
@@ -36,12 +36,6 @@ Prerequisites:
  *   - removeScriptElement
  *   - removeViewBox (disabled)
  * 3. Overwrite the original files
- * 4. Optionally save the old ones in a `tmp` folder, which may be useful
- *    for debugging purposes.
- *    - Consider adding a `--debug' flag to the
- *      command to enable this behavior.
- *    - Add the `tmp` folder to `.gitignore` to keep the folder clean
- *  5. Check the files after the optimizations
  */
 
 /**
@@ -50,21 +44,18 @@ Prerequisites:
  * Suggested path:
  * - For every new SVG file:
  *   1. Copy all the code contained in the `<svg>` tag
- *   2. Use the file `_IconTemplate.tsx` as component template
- *      - Replace `IconTemplate` with the original SVG name
+ *   2. Use the file `_PictogramTemplate.tsx` as component template
+ *      - Replace `PictogramTemplate` with the original SVG name
  *      - Remove all the comments inserted in the component file
  *   3. Replace the `{SVGContent}` placeholder with the code copied
  *      in the step 1, replacing all the tags with the appropriate
  *      React ones. E.g: `path` becomes `Path` and so on…
  *   4. Replace all the color values, set in hexadecimal format, with the
- *      `currentColor` attribute.
- *      E.g: fill="#CCCCCC" -> fill="currentColor"
+ *      correct `colorValues…` chromatic value.
+ *      E.g: fill="#CCCCCC" -> fill="colorValues.hands"
  *   5. Save a new file in the `svg` folder with the same filename
  *      of the relative SVG file and extension `.tsx`.
- *      E.g: svg/originals/IconProfile.svg -> svg/IconProfile.tsx
- *   6. Save the list of processed SVG files and corresponding generated
- *      React components to a separate file. Add it to the `.gitignore`
- *      to keep the folder clean.
+ *      E.g: svg/originals/PictogramProfile.svg -> svg/PictogramProfile.tsx
  */
 
 /*
@@ -80,8 +71,14 @@ const fs = require("fs-extra");
 
 const svgDir = join(__dirname, "svg/originals");
 const tsxDir = join(__dirname, "svg");
-const templateFilePath = join(__dirname, "svg/_IconTemplate.tsx");
+const templateFilePath = join(__dirname, "svg/_PictogramTemplate.tsx");
 const timestampFilePath = join(__dirname, "timestamp.txt");
+
+const colorMapValues = {
+  "#0B3EE3": "colorValues.hands",
+  "#AAEEEF": "colorValues.main",
+  "#00C5CA": "colorValues.secondary"
+};
 
 const convertTimestampToReadableFormat = timestamp =>
   new Date(timestamp).toLocaleString("it-IT", {
@@ -134,21 +131,25 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
 
         const tsxData = result.data
           .replace(/<svg[^>]*>((.|[\n\r])*)<\/svg>/im, "$1")
-          /* Replace hardcoded color value with `currentColor` */
-          .replace(/fill="[^"]*"/g, 'fill="currentColor"')
-          /* Convert self-closing tags to Capital Case, because
-          `react-native-svg` doesn't recognize them otherwise */
-          .replace(
-            /<([a-z]+)([^>]*)\/>/g,
-            (match, p1, p2) =>
-              `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2} />`
-          )
+          /* Replace hardcoded color value with the relative color value,
+          got from `colorMapValues` */
+          .replace(/fill="[^"]*"/g, match => {
+            const colorKey = match.slice(6, -1);
+            return `fill="${colorMapValues[colorKey]}"`;
+          })
+          // /* Convert self-closing tags to Capital Case, because
+          // `react-native-svg` doesn't recognize them otherwise */
+          // .replace(
+          //   /<([a-z]+)([^>]*)\/>/g,
+          //   (match, p1, p2) =>
+          //     `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2} />`
+          // )
           /* Convert all the remaining tags to Capital Case */
-          .replace(
-            /<([a-z]+)([^>]*)>/g,
-            (match, p1, p2) =>
-              `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2}>`
-          )
+          // .replace(
+          //   /<([a-z]+)([^>]*)>/g,
+          //   (match, p1, p2) =>
+          //     `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2}>`
+          // )
           /* Convert SVG props to compatible React props */
           .replace(/fill-rule/g, "fillRule")
           .replace(/clip-rule/g, "clipRule");
