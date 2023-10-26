@@ -119,7 +119,19 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
           return;
         }
 
-        const result = optimize(data, { path: filePath });
+        // Using SVGO to optimize the SVG
+        const result = optimize(data, {
+          path: filePath,
+          plugins: [
+            "removeDimensions",
+            "removeRasterImages",
+            "removeScriptElement",
+            "removeViewBox"
+          ]
+        });
+        // Overwrite original SVG file with optimized code
+        fs.writeFileSync(filePath, result.data);
+
         const tsxData = result.data
           .replace(/<svg[^>]*>((.|[\n\r])*)<\/svg>/im, "$1")
           /* Replace hardcoded color value with `currentColor` */
@@ -143,7 +155,7 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
 
         const template = fs.readFileSync(templateFilePath, "utf8");
         const componentData = template
-          .replace("IconTemplate", file.replace(".svg", ""))
+          .replace(/IconTemplate/g, file.replace(".svg", ""))
           .replace(/\/\/.*\n/g, "") // remove lines starting with //
           .replace(`{/* SVGContent */}`, tsxData);
 

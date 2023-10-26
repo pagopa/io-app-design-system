@@ -8,8 +8,10 @@ import { SVGIconProps } from "../Icon";
 // the new `Icon…` component. Don't edit this file to avoid
 // adding breaking changes to the process.
 
-export const IconTemplate = ({ size, style, ...props }: SVGIconProps) => (
+const IconTemplate = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     {/* SVGContent */}
   </Svg>
 );
+
+export default IconTemplate;
