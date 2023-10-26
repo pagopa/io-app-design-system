@@ -91,7 +91,7 @@ const MUNICIPALITY_LOGO_SIZE = 44;
 
 const LeftComponent = ({ logoIcon }: LeftComponentProps) => {
   if (isImageUri(logoIcon)) {
-    return <Avatar logoUri={[logoIcon]} size="small" shape="circle" />;
+    return <Avatar logoUri={logoIcon} size="small" shape="circle" />;
   }
   if (React.isValidElement(logoIcon)) {
     return <>{logoIcon}</>;
