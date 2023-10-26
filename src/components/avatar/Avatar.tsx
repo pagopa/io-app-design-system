@@ -85,7 +85,7 @@ export const Avatar = ({ logoUri, shape, size }: Avatar) => {
         }
       ]}
     >
-      {isPlaceholder ? (
+      {!imageSource ? (
         <Icon
           name="institution"
           color={theme["icon-decorative"]}
