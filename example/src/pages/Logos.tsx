@@ -95,6 +95,10 @@ const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
 
 const organizationsURIs = [
   {
+    imageSource: undefined,
+    name: "Placeholder"
+  },
+  {
     imageSource: `${cdnPath}1199250158.png`,
     name: "Comune di Milano"
   },
@@ -121,6 +125,10 @@ const organizationsURIs = [
   {
     imageSource: `${cdnPath}80215430580.png`,
     name: "Ministero dell'Interno"
+  },
+  {
+    imageSource: `${cdnPath}wrongUri.png`,
+    name: "Wrong URI"
   }
 ];
 
@@ -137,11 +145,13 @@ const renderAvatar = () => (
             <Avatar
               shape="circle"
               size="small"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? {
+                      uri: imageSource
+                    }
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={4} />}
           </React.Fragment>
@@ -159,11 +169,13 @@ const renderAvatar = () => (
             <Avatar
               shape="square"
               size="small"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? {
+                      uri: imageSource
+                    }
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
           </React.Fragment>
@@ -181,11 +193,13 @@ const renderAvatar = () => (
             <Avatar
               shape="square"
               size="medium"
-              logoUri={[
-                {
-                  uri: imageSource
-                }
-              ]}
+              logoUri={
+                imageSource
+                  ? {
+                      uri: imageSource
+                    }
+                  : undefined
+              }
             />
             {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
           </React.Fragment>
