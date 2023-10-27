@@ -39,7 +39,7 @@ const renderModuleIDP = () => (
     <ComponentViewerBox name="ModuleIDP, saved variant">
       <View>
         <ModuleIDP
-          saved
+          withLooseSpacing
           name={mockIDPProviderItem.name}
           logo={mockIDPProviderItem.logo as ImageSourcePropType}
           localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
