@@ -1,7 +1,14 @@
 import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
-import { IOAppMargin, IOSpacer, IOSpacingScale } from "./IOSpacing";
+import {
+  IOAppMargin,
+  IOModuleIDPHSpacing,
+  IOModuleIDPVSpacing,
+  IOSpacer,
+  IOSpacingScale
+} from "./IOSpacing";
+import { IOModuleIDPRadius } from "./IOShapes";
 
 /**
  * A collection of default styles used within IO App.
@@ -251,6 +258,20 @@ export const IOListItemStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  }
+});
+
+export const IOModuleStyles = StyleSheet.create({
+  button: {
+    borderWidth: 1,
+    borderColor: IOColors["grey-100"],
+    borderRadius: IOModuleIDPRadius,
+    backgroundColor: IOColors.white,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: IOModuleIDPVSpacing,
+    paddingHorizontal: IOModuleIDPHSpacing
   }
 });
 
