@@ -1,19 +1,5 @@
 import * as React from "react";
-import { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { WithTestID } from "../../utils/types";
 import { getAccessibleAmountText } from "../../utils/accessibility";
@@ -21,14 +7,13 @@ import { H6, LabelSmall } from "../typography";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import {
-  IOColors,
   IOListItemVisualParams,
-  IOScaleValues,
-  IOSpringValues,
+  IOModuleStyles,
   IOStyles,
   useIOExperimentalDesign
 } from "../../core";
 import { VSpacer } from "../spacer";
+import { PressableModuleBase } from "./PressableModuleBase";
 
 export type PaymentNoticeStatus =
   | "default"
@@ -61,19 +46,6 @@ export type ModulePaymentNoticeProps = WithTestID<
 >;
 
 const styles = StyleSheet.create({
-  button: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderRadius: 8,
-    borderColor: IOColors.bluegreyLight,
-    backgroundColor: IOColors.white,
-    borderStyle: "solid",
-    borderWidth: 1
-  },
   rightSection: {
     marginLeft: IOListItemVisualParams.iconMargin,
     flexDirection: "row",
@@ -165,62 +137,23 @@ export const ModulePaymentNotice = ({
   onPress,
   ...rest
 }: ModulePaymentNoticeProps) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
-
-  const scaleTraversed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      scaleTraversed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
-
   if (isLoading) {
     return <SkeletonComponent />;
   }
 
   return (
-    <Pressable
-      testID={testID}
+    <PressableModuleBase
       onPress={onPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      accessible={true}
-      accessibilityRole={"button"}
       accessibilityLabel={accessibilityLabel}
+      testID={testID}
     >
-      <Animated.View style={[styles.button, animatedStyle]}>
-        <ModulePaymentNoticeContent {...rest} />
-      </Animated.View>
-    </Pressable>
+      <ModulePaymentNoticeContent {...rest} />
+    </PressableModuleBase>
   );
 };
 
 const SkeletonComponent = () => (
-  <View style={styles.button} accessible={false}>
+  <View style={IOModuleStyles.button} accessible={false}>
     <View style={IOStyles.flex}>
       <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
       <VSpacer size={4} />
