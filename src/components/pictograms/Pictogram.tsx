@@ -79,6 +79,8 @@ import PictogramBleedCie from "./svg/PictogramBleedCie";
 import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
 import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
 import PictogramBleedNotification from "./svg/PictogramBleedNotification";
+import PictogramStar from "./svg/PictogramStar";
+import PictogramBleedStar from "./svg/PictogramBleedStar";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -137,6 +139,7 @@ export const IOPictograms = {
   time: PictogramTime,
   passcode: PictogramPasscode,
   notification: PictogramNotification,
+  star: PictogramStar,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -231,7 +234,8 @@ export type IOPictogramsBleed = Extract<
   | "cie"
   | "cameraRequest"
   | "cameraDenied"
-  | "notification",
+  | "notification"
+  | "star",
   IOPictograms
 >;
 
@@ -247,7 +251,8 @@ export const IOPictogramsBleed: {
   cie: PictogramBleedCie,
   cameraRequest: PictogramBleedCameraRequest,
   cameraDenied: PictogramBleedCameraDenied,
-  notification: PictogramBleedNotification
+  notification: PictogramBleedNotification,
+  star: PictogramBleedStar
 };
 
 export const PictogramBleed = ({
