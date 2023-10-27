@@ -77,6 +77,7 @@ const join = path.join;
 const { optimize } = require("svgo");
 const prettier = require("prettier");
 const fs = require("fs-extra");
+const { transform } = require("@svgr/core");
 
 const svgDir = join(__dirname, "svg/originals");
 const tsxDir = join(__dirname, "svg");
@@ -132,32 +133,39 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
         // Overwrite original SVG file with optimized code
         fs.writeFileSync(filePath, result.data);
 
-        const tsxData = result.data
-          .replace(/<svg[^>]*>((.|[\n\r])*)<\/svg>/im, "$1")
-          /* Replace hardcoded color value with `currentColor` */
-          .replace(/fill="[^"]*"/g, 'fill="currentColor"')
-          /* Convert self-closing tags to Capital Case, because
-          `react-native-svg` doesn't recognize them otherwise */
-          .replace(
-            /<([a-z]+)([^>]*)\/>/g,
-            (match, p1, p2) =>
-              `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2} />`
-          )
-          /* Convert all the remaining tags to Capital Case */
-          .replace(
-            /<([a-z]+)([^>]*)>/g,
-            (match, p1, p2) =>
-              `<${p1.charAt(0).toUpperCase() + p1.slice(1)}${p2}>`
-          )
-          /* Convert SVG props to compatible React props */
-          .replace(/fill-rule/g, "fillRule")
-          .replace(/clip-rule/g, "clipRule");
+        // Convert SVG to JSX using `svgr`
+        const jsxCode = transform.sync(result.data, {
+          // Optimize SVG code using SVGO
+          svgo: true,
+          svgoConfig: {
+            removeRasterImages: true,
+            removeScriptElement: true,
+            removeUselessDefs: true
+          },
+          // Transform tags in Capital Case for React Native
+          native: true,
+          // Remove `width` and `height` attrs
+          dimensions: false,
+          /* Prettify the result */
+          plugins: ["@svgr/plugin-jsx"]
+        });
+
+        /* Replace hardcoded color value with `currentColor` */
+        const jsxCodeWithoutHardcodedColors = jsxCode.replace(
+          /fill="[^"]*"/g,
+          'fill="currentColor"'
+        );
+
+        // Extract only the Path tags from the JSX code
+        const pathTagRegex = /<Path[^>]*\/>/g;
+        const pathTags = jsxCodeWithoutHardcodedColors.match(pathTagRegex);
+        const jsxCodeWithPathOnly = pathTags.join("");
 
         const template = fs.readFileSync(templateFilePath, "utf8");
         const componentData = template
           .replace(/IconTemplate/g, file.replace(".svg", ""))
           .replace(/\/\/.*\n/g, "") // Remove lines starting with //
-          .replace(`{/* SVGContent */}`, tsxData);
+          .replace(`{/* SVGContent */}`, jsxCodeWithPathOnly);
 
         const fileWithTsxExtension = file.replace(".svg", ".tsx");
         const tsxFilePath = join(tsxDir, fileWithTsxExtension);

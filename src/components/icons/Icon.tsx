@@ -160,6 +160,9 @@ import IconHealthCard from "./svg/IconHealthCard";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconNotes from "./svg/IconNotes";
 import IconEntityCode from "./svg/IconEntityCode";
+import IconFolder from "./svg/IconFolder";
+import IconReceiptOn from "./svg/IconReceiptOn";
+import IconFingerprint from "./svg/IconFingerprint";
 
 export const IOIcons = {
   archive: IconArchive,
@@ -206,6 +209,8 @@ export const IOIcons = {
   docPaymentCode: IconDocPaymentCode,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
+  folder: IconFolder,
+  receiptOn: IconReceiptOn,
   notes: IconNotes,
   attachment: IconAttachment,
   add: IconAdd,
@@ -246,6 +251,7 @@ export const IOIcons = {
   starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
   switchOff: IconSwitchOff,
+  fingerprint: IconFingerprint,
   device: IconDevice,
   contactless: IconContactless,
   notification: IconNotification,
