@@ -153,13 +153,13 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
         // Extract only the Path tags from the JSX code
         const pathTagRegex = /<Path[^>]*\/>/g;
         const pathTags = jsxCode.match(pathTagRegex);
-        const processedJsxCode = pathTags.join("");
+        const jsxCodeWithPathOnly = pathTags.join("");
 
         const template = fs.readFileSync(templateFilePath, "utf8");
         const componentData = template
           .replace(/PictogramTemplate/g, file.replace(".svg", ""))
           .replace(/\/\/.*\n/g, "") // Remove lines starting with //
-          .replace(`{/* SVGContent */}`, processedJsxCode);
+          .replace(`{/* SVGContent */}`, jsxCodeWithPathOnly);
 
         // Save the file with the same filename with `.tsx` extension
         const fileWithTsxExtension = file.replace(".svg", ".tsx");
