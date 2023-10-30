@@ -1,38 +1,37 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { ComponentProps, useCallback, useMemo } from "react";
+import { View } from "react-native";
 import {
-  IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
   IOStyles,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { Body, H6, LabelSmall } from "../typography";
+import { H6, LabelSmall } from "../typography";
+import { ButtonLink, IconButton } from "../buttons";
+
+type ButtonLinkActionProps = {
+  type: "buttonLink";
+  componentProps: ComponentProps<typeof ButtonLink>;
+};
+
+type IconButtonActionProps = {
+  type: "iconButton";
+  componentProps: ComponentProps<typeof IconButton>;
+};
+
+type ActionProps = ButtonLinkActionProps | IconButtonActionProps;
 
 export type ListItemInfo = WithTestID<{
   label: string;
   value: string | React.ReactNode;
   numberOfLines?: number;
   icon?: IOIcons;
-  // Accepted components: ButtonLink, IconButton
-  // Don't use any components other than these
-  action?: React.ReactNode;
+  action?: ActionProps;
   // Accessibility
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
 }>;
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyStyles = StyleSheet.create({
-  textValue: {
-    fontSize: 18,
-    lineHeight: 24,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
 
 export const ListItemInfo = ({
   label,
@@ -43,51 +42,76 @@ export const ListItemInfo = ({
   accessibilityLabel,
   testID
 }: ListItemInfo) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyItemInfoText = (
-    <>
-      {/* Let developer using a custom component (e.g: skeleton) */}
-      {typeof label === "string" ? (
-        <Body weight="Regular">{label}</Body>
-      ) : (
-        label
-      )}
-      {typeof value === "string" ? (
-        <Text
-          style={[legacyStyles.textValue, { color: IOColors.bluegreyDark }]}
-          numberOfLines={numberOfLines}
-        >
-          {value}
-        </Text>
-      ) : (
-        value
-      )}
-    </>
+  const componentValueToAccessibility = useMemo(
+    () => (typeof value === "string" ? value : ""),
+    [value]
   );
 
-  const itemInfoText = (
-    <>
-      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-        {label}
-      </LabelSmall>
-      <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
-        {value}
-      </H6>
-    </>
+  const listItemAccessibilityLabel = useMemo(
+    () =>
+      accessibilityLabel
+        ? accessibilityLabel
+        : `${label}; ${componentValueToAccessibility}`,
+    [label, componentValueToAccessibility, accessibilityLabel]
   );
 
-  const itemInfoTextComponent = isExperimental
-    ? itemInfoText
-    : legacyItemInfoText;
+  const itemInfoTextComponent = useMemo(
+    () => (
+      <View
+        accessible={action === undefined ? true : false}
+        importantForAccessibility={
+          action === undefined ? "yes" : "no-hide-descendants"
+        }
+        accessibilityElementsHidden={action !== undefined}
+      >
+        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          {label}
+        </LabelSmall>
+        {typeof value === "string" ? (
+          <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
+            {value}
+          </H6>
+        ) : (
+          value
+        )}
+      </View>
+    ),
+    [label, value, numberOfLines, theme, action]
+  );
+
+  const listItemInfoAction = useCallback(() => {
+    if (action) {
+      const { type, componentProps } = action;
+
+      const accessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
+      switch (type) {
+        case "buttonLink":
+          return (
+            <ButtonLink
+              {...componentProps}
+              accessibilityLabel={accessibilityLabel}
+            />
+          );
+        case "iconButton":
+          return (
+            <IconButton
+              {...componentProps}
+              accessibilityLabel={accessibilityLabel}
+            />
+          );
+        default:
+          return <></>;
+      }
+    }
+    return <></>;
+  }, [action, listItemAccessibilityLabel]);
 
   return (
     <View
       style={IOListItemStyles.listItem}
       testID={testID}
-      accessible={true}
+      accessible={action === undefined ? true : false}
       accessibilityLabel={accessibilityLabel}
     >
       <View style={IOListItemStyles.listItemInner}>
@@ -103,7 +127,7 @@ export const ListItemInfo = ({
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         {action && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
-            {action}
+            {listItemInfoAction()}
           </View>
         )}
       </View>
