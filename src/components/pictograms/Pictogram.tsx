@@ -311,7 +311,9 @@ export type IOPictogramsBleed = Extract<
   | "fatalError"
   | "notification"
   | "star"
-  | "doc",
+  | "doc"
+  | "notification"
+  | "star",
   IOPictograms
 >;
 
