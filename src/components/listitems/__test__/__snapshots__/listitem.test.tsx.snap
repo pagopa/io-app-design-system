@@ -223,55 +223,71 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         }
       }
     >
-      <Text
-        allowFontScaling={false}
-        color="bluegrey"
-        defaultColor="bluegrey"
-        defaultWeight="Regular"
-        font="TitilliumWeb"
-        fontStyle={
-          {
-            "fontSize": 16,
-            "lineHeight": 24,
+      <View
+        accessibilityElementsHidden={false}
+        accessible={true}
+        importantForAccessibility="yes"
+      >
+        <Text
+          allowFontScaling={false}
+          color="grey-700"
+          defaultColor="blue"
+          defaultWeight="Bold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 14,
+            }
           }
-        }
-        style={
-          [
+          style={
+            [
+              {
+                "fontSize": 14,
+              },
+              {
+                "color": "#555C70",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "400",
+              },
+            ]
+          }
+          weight="Regular"
+        >
+          label
+        </Text>
+        <Text
+          allowFontScaling={false}
+          color="black"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
             {
               "fontSize": 16,
               "lineHeight": 24,
-            },
-            {
-              "color": "#475A6D",
-              "fontFamily": "Titillium Web",
-              "fontStyle": "normal",
-              "fontWeight": "400",
-            },
-          ]
-        }
-        weight="Regular"
-      >
-        label
-      </Text>
-      <Text
-        numberOfLines={2}
-        style={
-          [
-            {
-              "fontFamily": "Titillium Web",
-              "fontSize": 18,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "lineHeight": 24,
-            },
-            {
-              "color": "#17324D",
-            },
-          ]
-        }
-      >
-        testValue
-      </Text>
+            }
+          }
+          numberOfLines={2}
+          style={
+            [
+              {
+                "fontSize": 16,
+                "lineHeight": 24,
+              },
+              {
+                "color": "#0E0F13",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
+        >
+          testValue
+        </Text>
+      </View>
     </View>
   </View>
 </View>
