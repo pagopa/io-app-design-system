@@ -490,9 +490,73 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 */
 
 /* New icons */
-// const {} = IOIcons;
+const {
+  filterOniOS,
+  filterOffiOS,
+  filterAndroid,
+  archiveFilled,
+  inbox,
+  inboxFilled,
+  docGiacenza,
+  docPaymentTitle,
+  folder,
+  receiptOn,
+  receiptOff,
+  print,
+  addSmall,
+  creditCardOff,
+  mapPin,
+  noticePlain,
+  familySharing,
+  hearthEmpty,
+  hearthFilled,
+  fingerprint,
+  touch,
+  deviceVibration,
+  signal,
+  keyboardDown,
+  externalLinkSmall,
+  forward,
+  compare,
+  instruction,
+  terms,
+  read,
+  code
+} = IOIcons;
 
-// export const IOIconsNew = {};
+export const IOIconsNew = {
+  filterOniOS,
+  filterOffiOS,
+  filterAndroid,
+  archiveFilled,
+  inbox,
+  inboxFilled,
+  docGiacenza,
+  docPaymentTitle,
+  folder,
+  receiptOn,
+  receiptOff,
+  print,
+  addSmall,
+  creditCardOff,
+  mapPin,
+  noticePlain,
+  familySharing,
+  hearthEmpty,
+  hearthFilled,
+  fingerprint,
+  touch,
+  deviceVibration,
+  signal,
+  keyboardDown,
+  externalLinkSmall,
+  forward,
+  compare,
+  instruction,
+  terms,
+  read,
+  code
+};
 
 /* Navigation */
 const {
