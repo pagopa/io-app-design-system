@@ -70,7 +70,6 @@ import IconEyeShow from "./svg/IconEyeShow";
 import IconFiscalCodeIndividual from "./svg/IconFiscalCodeIndividual";
 import IconFornitori from "./svg/IconFornitori";
 import IconGallery from "./svg/IconGallery";
-import IconGiacenza from "./svg/IconGiacenza";
 import IconHistory from "./svg/IconHistory";
 import IconHome from "./svg/IconHome";
 import IconHomeFill from "./svg/IconHomeFill";
@@ -163,9 +162,36 @@ import IconEntityCode from "./svg/IconEntityCode";
 import IconFolder from "./svg/IconFolder";
 import IconReceiptOn from "./svg/IconReceiptOn";
 import IconFingerprint from "./svg/IconFingerprint";
+import IconAddSmall from "./svg/IconAddSmall";
+import IconArchiveFilled from "./svg/IconArchiveFilled";
+import IconCode from "./svg/IconCode";
+import IconCompare from "./svg/IconCompare";
+import IconCreditCardOff from "./svg/IconCreditCardOff";
+import IconDeviceVibration from "./svg/IconDeviceVibration";
+import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
+import IconDocGiacenza from "./svg/IconDocGiacenza";
+import IconExternalLinkSmall from "./svg/IconExternalLinkSmall";
+import IconFamilySharing from "./svg/IconFamilySharing";
+import IconFilterOniOS from "./svg/IconFilterOniOS";
+import IconFilterOffiOS from "./svg/IconFilterOffiOS";
+import IconFilterAndroid from "./svg/IconFilterAndroid";
+import IconForward from "./svg/IconForward";
+import IconHearthEmpty from "./svg/IconHearthEmpty";
+import IconHearthFilled from "./svg/IconHearthFilled";
+import IconInboxEmpty from "./svg/IconInboxEmpty";
+import IconInboxFilled from "./svg/IconInboxFilled";
+import IconInstruction from "./svg/IconInstruction";
+import IconTerms from "./svg/IconTerms";
+import IconKeyboardDown from "./svg/IconKeyboardDown";
+import IconMapPin from "./svg/IconMapPin";
+import IconNoticePlain from "./svg/IconNoticePlain";
+import IconPrint from "./svg/IconPrint";
+import IconRead from "./svg/IconRead";
+import IconReceiptOff from "./svg/IconReceiptOff";
+import IconSignal from "./svg/IconSignal";
+import IconTouch from "./svg/IconTouch";
 
 export const IOIcons = {
-  archive: IconArchive,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   qrCode: IconQrCode,
@@ -181,6 +207,9 @@ export const IOIcons = {
   hourglass: IconHourglass,
   shareiOs: IconShareiOs,
   shareAndroid: IconShareAndroid,
+  filterOniOS: IconFilterOniOS,
+  filterOffiOS: IconFilterOffiOS,
+  filterAndroid: IconFilterAndroid,
   locked: IconLockOn,
   unlocked: IconLockOff,
   initiatives: IconInitiatives,
@@ -199,31 +228,41 @@ export const IOIcons = {
   messageLegal: IconMessageLegal,
   message: IconMessage,
   chat: IconChat,
+  archive: IconArchive,
+  archiveFilled: IconArchiveFilled,
+  inbox: IconInboxEmpty,
+  inboxFilled: IconInboxFilled,
   doc: IconDocument,
   docSign: IconDocumentSign,
   docAgree: IconAgreement,
   security: IconSecurity,
   option: IconOption,
   key: IconKey,
-  docGiacenza: IconGiacenza,
+  docGiacenza: IconDocGiacenza,
+  docPaymentTitle: IconDocPaymentTitle,
   docPaymentCode: IconDocPaymentCode,
   docAttach: IconDocumentAttachment,
   docAttachPDF: IconDocumentAttachmentPDF,
   folder: IconFolder,
   receiptOn: IconReceiptOn,
+  receiptOff: IconReceiptOff,
   notes: IconNotes,
   attachment: IconAttachment,
+  print: IconPrint,
   add: IconAdd,
+  addSmall: IconAddSmall,
   success: IconSuccess,
   ok: IconOk,
   fiscalCodeIndividual: IconFiscalCodeIndividual,
   entityCode: IconEntityCode,
   creditCard: IconCreditCard,
+  creditCardOff: IconCreditCardOff,
   bonus: IconBonus,
   transactionsBoxed: IconTransactionsBoxed,
   transactions: IconTransactions,
   amount: IconAmount,
   psp: IconPSP,
+  mapPin: IconMapPin,
   locationiOS: IconLocationiOS,
   locationiOSFilled: IconLocationiOSFilled,
   locationAndroid: IconLocationAndroid,
@@ -231,6 +270,7 @@ export const IOIcons = {
   warningFilled: IconWarningFilled,
   notice: IconNotice,
   noticeFilled: IconNoticeFilled,
+  noticePlain: IconNoticePlain,
   info: IconInfo,
   infoFilled: IconInfoFilled,
   canceled: IconCanceled,
@@ -246,16 +286,23 @@ export const IOIcons = {
   profile: IconProfile,
   profileFilled: IconProfileFilled,
   profileAlt: IconProfileAlt,
+  familySharing: IconFamilySharing,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
   starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
+  hearthEmpty: IconHearthEmpty,
+  hearthFilled: IconHearthFilled,
   switchOff: IconSwitchOff,
   fingerprint: IconFingerprint,
+  touch: IconTouch,
   device: IconDevice,
+  deviceVibration: IconDeviceVibration,
   contactless: IconContactless,
+  signal: IconSignal,
   notification: IconNotification,
   keyboard: IconKeyboard,
+  keyboardDown: IconKeyboardDown,
   dotMenu: IconDotMenu,
   barcode: IconBarcode,
   save: IconSave,
@@ -265,7 +312,12 @@ export const IOIcons = {
   tag: IconTag,
   gallery: IconGallery,
   externalLink: IconExternalLink,
+  externalLinkSmall: IconExternalLinkSmall,
+  forward: IconForward,
   cancel: IconCancel,
+  compare: IconCompare,
+  instruction: IconInstruction,
+  terms: IconTerms,
   help: IconQuestion,
   search: IconSearch,
   disabilityCard: IconDisabilityCard,
@@ -286,6 +338,12 @@ export const IOIcons = {
   change: IconChange,
   backiOS: IconBackiOS,
   backAndroid: IconBackAndroid,
+  checkTick: IconCheckTick,
+  checkTickBig: IconCheckTickBig,
+  read: IconRead,
+  light: IconLight,
+  lightFilled: IconLightFilled,
+  code: IconCode,
   navMessages: IconNavMessages,
   navMessagesFocused: IconNavMessagesFocused,
   navWallet: IconNavWallet,
@@ -317,10 +375,6 @@ export const IOIcons = {
   productIOApp: IconProductIOApp,
   productPagoPA: IconProductPagoPA,
   productIOAppBlueBg: IconProductIOAppBlueBg,
-  checkTick: IconCheckTick,
-  checkTickBig: IconCheckTickBig,
-  light: IconLight,
-  lightFilled: IconLightFilled,
   systemSettingsAndroid: IconSystemSettingsAndroid,
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
