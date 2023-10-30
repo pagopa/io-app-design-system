@@ -305,26 +305,28 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={
-          <ButtonLink
-            label="Modifica"
-            onPress={onButtonPress}
-            accessibilityLabel={""}
-          />
-        }
+        action={{
+          type: "buttonLink",
+          componentProps: {
+            label: "Modifica",
+            accessibilityLabel: "Modifica",
+            onPress: onButtonPress
+          }
+        }}
       />
       <ListItemInfo
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={
-          <IconButton
-            icon="info"
-            onPress={onButtonPress}
-            accessibilityLabel={""}
-          />
-        }
+        action={{
+          type: "iconButton",
+          componentProps: {
+            icon: "info",
+            accessibilityLabel: "info",
+            onPress: onButtonPress
+          }
+        }}
       />
 
       <ListItemInfo
