@@ -81,6 +81,44 @@ import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
 import PictogramBleedNotification from "./svg/PictogramBleedNotification";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramBleedStar from "./svg/PictogramBleedStar";
+import PictogramBleedEmpty from "./svg/PictogramBleedEmpty";
+import PictogramBleedAttention from "./svg/PictogramBleedAttention";
+import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
+import PictogramBleedFatalError from "./svg/PictogramBleedFatalError";
+import PictogramBleedIdentity from "./svg/PictogramBleedIdentity";
+import PictogramBleedIdentityAdd from "./svg/PictogramBleedIdentityAdd";
+import PictogramBleedIdentityCheck from "./svg/PictogramBleedIdentityCheck";
+import PictogramBleedIdentityRefresh from "./svg/PictogramBleedIdentityRefresh";
+import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
+import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
+import PictogramBleedTime from "./svg/PictogramBleedTime";
+import PictogramBleedPasscode from "./svg/PictogramBleedPasscode";
+import PictogramTiming from "./svg/PictogramTiming";
+import PictogramBleedTiming from "./svg/PictogramBleedTiming";
+import PictogramCardIssue from "./svg/PictogramCardIssue";
+import PictogramCardQuestion from "./svg/PictogramCardQuestion";
+import PictogramCardFavourite from "./svg/PictogramCardFavourite";
+import PictogramCardAdd from "./svg/PictogramCardAdd";
+import PictogramBleedCardAdd from "./svg/PictogramBleedCardAdd";
+import PictogramBleedCardFavourite from "./svg/PictogramBleedCardFavourite";
+import PictogramBleedCardQuestion from "./svg/PictogramBleedCardQuestion";
+import PictogramBleedCardIssue from "./svg/PictogramBleedCardIssue";
+import PictogramSearchLens from "./svg/PictogramSearchLens";
+import PictogramBleedSearch from "./svg/PictogramBleedSearch";
+import PictogramBleedDoc from "./svg/PictogramBleedDoc";
+import PictogramDoc from "./svg/PictogramDoc";
+import PictogramPending from "./svg/PictogramPending";
+import PictogramBleedPending from "./svg/PictogramBleedPending";
+import PictogramMessage from "./svg/PictogramMessage";
+import PictogramBleedMessage from "./svg/PictogramBleedMessage";
+import PictogramIdea from "./svg/PictogramIdea";
+import PictogramBleedIdea from "./svg/PictogramBleedIdea";
+import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
+import PictogramReactivate from "./svg/PictogramReactivate";
+import PictogramActivate from "./svg/PictogramActivate";
+import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
+import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
+import PictogramAttachment from "./svg/PictogramAttachment";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -118,9 +156,11 @@ export const IOPictograms = {
   feature: PictogramFeature,
   charity: PictogramCharity,
   attention: PictogramAttention,
+  message: PictogramMessage,
   emptyArchive: PictogramEmptyArchive,
   umbrellaNew: PictogramUmbrellaNew,
   feedback: PictogramFeedback,
+  idea: PictogramIdea,
   cameraRequest: PictogramCameraRequest,
   cameraDenied: PictogramCameraDenied,
   success: PictogramSuccess,
@@ -136,10 +176,24 @@ export const IOPictograms = {
   stopSecurity: PictogramStopSecurity,
   security: PictogramSecurity,
   cie: PictogramCie,
+  pending: PictogramPending,
   time: PictogramTime,
+  timing: PictogramTiming,
+  searchLens: PictogramSearchLens,
   passcode: PictogramPasscode,
   notification: PictogramNotification,
   star: PictogramStar,
+  doc: PictogramDoc,
+  cardAdd: PictogramCardAdd,
+  cardFavourite: PictogramCardFavourite,
+  cardQuestion: PictogramCardQuestion,
+  cardIssue: PictogramCardIssue,
+  moneyCheck: PictogramMoneyCheck,
+  reactivate: PictogramReactivate,
+  activate: PictogramActivate,
+  nfcScanAndroid: PictogramNFCScanAndroid,
+  nfcScaniOS: PictogramNFCScaniOS,
+  attachment: PictogramAttachment,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -225,34 +279,78 @@ export const Pictogram = ({
 */
 
 export type IOPictogramsBleed = Extract<
+  | "empty"
   | "charity"
+  | "attention"
+  | "message"
   | "help"
   | "feedback"
+  | "idea"
   | "itWallet"
   | "security"
   | "feature"
   | "cie"
+  | "identity"
+  | "identityAdd"
+  | "identityCheck"
+  | "identityRefresh"
   | "cameraRequest"
   | "cameraDenied"
+  | "cardAdd"
+  | "cardFavourite"
+  | "cardQuestion"
+  | "cardIssue"
+  | "accessDenied"
+  | "stopSecurity"
+  | "time"
+  | "pending"
+  | "timing"
+  | "searchLens"
+  | "passcode"
+  | "success"
+  | "fatalError"
   | "notification"
-  | "star",
+  | "star"
+  | "doc",
   IOPictograms
 >;
 
 export const IOPictogramsBleed: {
   [key in IOPictogramsBleed]: ({ size }: SVGPictogramProps) => JSX.Element;
 } = {
+  empty: PictogramBleedEmpty,
   charity: PictogramBleedCharity,
   help: PictogramBleedHelp,
+  attention: PictogramBleedAttention,
+  message: PictogramBleedMessage,
   feedback: PictogramBleedFeedback,
+  idea: PictogramBleedIdea,
   itWallet: PictogramBleedITWallet,
   security: PictogramBleedSecurity,
   feature: PictogramBleedFeature,
   cie: PictogramBleedCie,
+  identity: PictogramBleedIdentity,
+  identityAdd: PictogramBleedIdentityAdd,
+  identityCheck: PictogramBleedIdentityCheck,
+  identityRefresh: PictogramBleedIdentityRefresh,
   cameraRequest: PictogramBleedCameraRequest,
   cameraDenied: PictogramBleedCameraDenied,
+  cardAdd: PictogramBleedCardAdd,
+  cardFavourite: PictogramBleedCardFavourite,
+  cardQuestion: PictogramBleedCardQuestion,
+  cardIssue: PictogramBleedCardIssue,
+  accessDenied: PictogramBleedAccessDenied,
+  stopSecurity: PictogramBleedStopSecurity,
+  time: PictogramBleedTime,
+  pending: PictogramBleedPending,
+  timing: PictogramBleedTiming,
+  searchLens: PictogramBleedSearch,
+  passcode: PictogramBleedPasscode,
+  success: PictogramBleedSuccess,
+  fatalError: PictogramBleedFatalError,
   notification: PictogramBleedNotification,
-  star: PictogramBleedStar
+  star: PictogramBleedStar,
+  doc: PictogramBleedDoc
 };
 
 export const PictogramBleed = ({
