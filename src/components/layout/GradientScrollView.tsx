@@ -8,14 +8,15 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { WithTestID } from "../../utils/types";
 import {
-  IOVisualCostants,
-  buttonSolidHeight,
   IOSpacer,
-  IOSpacingScale
+  IOSpacingScale,
+  IOVisualCostants,
+  buttonSolidHeight
 } from "../../core";
+import { WithTestID } from "../../utils/types";
 import GradientBottomActions from "./GradientBottomActions";
+import { GradientBottomAction } from "./common";
 
 export type GradientScrollView = WithTestID<{
   children: React.ReactNode;
@@ -23,8 +24,8 @@ export type GradientScrollView = WithTestID<{
   debugMode?: boolean;
   // Accepted components: ButtonSolid, ButtonLink
   // Don't use any components other than this, please.
-  primaryAction: React.ReactNode;
-  secondaryAction?: React.ReactNode;
+  primaryAction: GradientBottomAction;
+  secondaryAction?: GradientBottomAction;
 }>;
 
 // Extended gradient area above the actions

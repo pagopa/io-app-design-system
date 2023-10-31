@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -9,11 +10,6 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { WithTestID } from "../../utils/types";
-import { HSpacer } from "../spacer/Spacer";
-import { ButtonText } from "../typography/ButtonText";
 import {
   IOButtonLegacyStyles,
   IOButtonStyles,
@@ -25,9 +21,13 @@ import {
   exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
+import { WithTestID } from "../../utils/types";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { HSpacer } from "../spacer/Spacer";
+import { ButtonText } from "../typography/ButtonText";
 
-type ButtonSolidColor = "primary" | "danger" | "contrast";
+export type ButtonSolidColor = "primary" | "danger" | "contrast";
 
 type ColorStates = {
   default: string;

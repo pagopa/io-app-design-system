@@ -28,8 +28,8 @@ import {
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
-type ColorButtonLink = "primary";
-export type ButtonLink = WithTestID<{
+export type ColorButtonLink = "primary";
+export type ButtonLinkProps = WithTestID<{
   color?: ColorButtonLink;
   label: string;
   disabled?: boolean;
@@ -51,7 +51,10 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
+const mapColorStates: Record<
+  NonNullable<ButtonLinkProps["color"]>,
+  ColorStates
+> = {
   // Primary button
   primary: {
     label: {
@@ -64,7 +67,7 @@ const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const mapLegacyColorStates: Record<
-  NonNullable<ButtonLink["color"]>,
+  NonNullable<ButtonLinkProps["color"]>,
   ColorStates
 > = {
   // Primary button
@@ -104,7 +107,7 @@ export const ButtonLink = React.memo(
     accessibilityLabel,
     accessibilityHint,
     testID
-  }: ButtonLink) => {
+  }: ButtonLinkProps) => {
     const isPressed = useSharedValue(0);
     const { isExperimental } = useIOExperimentalDesign();
 
