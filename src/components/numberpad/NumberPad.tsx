@@ -1,8 +1,8 @@
 /* eslint-disable functional/immutable-data */
 import React, { ComponentProps, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { BiometricsValidType } from "../../utils/types";
-import { IOStyles } from "../../core";
+import { IONumberPadButtonStyles, IOStyles } from "../../core";
 import { VSpacer } from "../spacer";
 import { IconButton } from "../buttons";
 import { IOIconSizeScale, IOIcons } from "../icons";
@@ -23,15 +23,8 @@ type BiometricAuthProps =
 type NumberPadProps = {
   onValueChange: (value: string) => void;
   variant: ComponentProps<typeof NumberButton>["variant"];
+  deleteAccessibilityLabel: string;
 } & BiometricAuthProps;
-
-const styles = StyleSheet.create({
-  lastRow: {
-    alignItems: "center",
-    justifyContent: "space-between"
-  },
-  elementGap: { width: 56, height: 56 }
-});
 
 const mapIconSpecByBiometric: Record<
   BiometricsValidType,
@@ -44,7 +37,11 @@ const mapIconSpecByBiometric: Record<
 
 const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
   <View
-    style={[styles.elementGap, IOStyles.alignCenter, IOStyles.centerJustified]}
+    style={[
+      IONumberPadButtonStyles.buttonSize,
+      IOStyles.alignCenter,
+      IOStyles.centerJustified
+    ]}
   >
     {children}
   </View>
@@ -54,7 +51,8 @@ export const NumberPad = ({
   onValueChange,
   biometricType,
   onBiometricPress,
-  biometricAccessibilityLabel
+  biometricAccessibilityLabel,
+  deleteAccessibilityLabel
 }: NumberPadProps) => {
   const numberPadValue = useRef<string>("");
 
@@ -75,7 +73,13 @@ export const NumberPad = ({
   }: {
     buttons: ReadonlyArray<number | ButtonType>;
   }) => (
-    <View style={[IOStyles.flex, IOStyles.rowSpaceBetween, styles.lastRow]}>
+    <View
+      style={[
+        IOStyles.flex,
+        IOStyles.rowSpaceBetween,
+        IONumberPadButtonStyles.button
+      ]}
+    >
       {buttons.map(elem => {
         if (typeof elem === "number") {
           return (
@@ -95,7 +99,7 @@ export const NumberPad = ({
                 icon="cancel"
                 color={variant === "dark" ? "contrast" : "primary"}
                 onPress={onDeletePress}
-                accessibilityLabel="Delete"
+                accessibilityLabel={deleteAccessibilityLabel}
               />
             </ButtonWrapper>
           );
@@ -111,7 +115,7 @@ export const NumberPad = ({
             />
           </ButtonWrapper>
         ) : (
-          <View key={"emptyElem"} style={styles.elementGap} />
+          <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />
         );
       })}
     </View>
