@@ -77,7 +77,7 @@ export const NumberPad = ({
       style={[
         IOStyles.flex,
         IOStyles.rowSpaceBetween,
-        IONumberPadButtonStyles.button
+        { justifyContent: "space-between", alignItems: "center" }
       ]}
     >
       {buttons.map(elem => {

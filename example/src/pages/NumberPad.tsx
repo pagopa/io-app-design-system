@@ -31,6 +31,7 @@ export const NumberPadScreen = () => {
         <H3>{value}</H3>
         <VSpacer />
         <NumberPad
+          deleteAccessibilityLabel="Delete"
           onValueChange={setValue}
           variant="light"
           biometricType="FACE_ID"
