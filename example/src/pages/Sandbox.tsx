@@ -1,12 +1,14 @@
 import * as React from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import {
   H1,
   H5,
   IOVisualCostants,
   IOStyles,
-  VSpacer
+  VSpacer,
+  NumberPad
 } from "@pagopa/io-app-design-system";
+import { constNull } from "fp-ts/lib/function";
 import { Screen } from "../components/Screen";
 
 /**
@@ -22,6 +24,13 @@ export const Sandbox = () => (
       <H5>{"Insert here the component you're willing to test"}</H5>
       <VSpacer />
       {/* Insert here the component you're willing to test */}
+      <NumberPad
+        onValueChange={constNull}
+        variant="light"
+        biometricType="FACE_ID"
+        biometricAccessibilityLabel="Face ID"
+        onBiometricPress={() => Alert.alert("biometric")}
+      />
     </View>
   </Screen>
 );

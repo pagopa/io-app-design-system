@@ -40,6 +40,7 @@ export const IOColors = asIOColors({
   "blueIO-850": "#031344",
   "blueIO-600": "#0932B6",
   "blueIO-500": "#0B3EE3",
+  "blueIO-400": "#3C65E9",
   "blueIO-450": "#2351E6" /* Dark mode */,
   "blueIO-200": "#9DB2F4",
   "blueIO-150": "#B6C5F7",
