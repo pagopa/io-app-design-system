@@ -135,7 +135,7 @@ const renderListItemNav = () => (
           value={"Value"}
           description="Description"
           icon="productPagoPA"
-          iconColor="blue-50"
+          iconColor="blueIO-500"
           onPress={() => {
             alert("Action triggered");
           }}
