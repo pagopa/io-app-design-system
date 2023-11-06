@@ -15,7 +15,6 @@ import {
   buttonSolidHeight
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonLinkProps, ButtonSolidProps } from "../buttons";
 import GradientBottomActions from "./GradientBottomActions";
 
 export type GradientScrollView = WithTestID<{
