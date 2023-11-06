@@ -1,18 +1,23 @@
 import * as React from "react";
-import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Animated from "react-native-reanimated";
+import { IOColors, IOSpacer, IOVisualCostants, hexToRgba } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { IOColors, hexToRgba, IOSpacer, IOVisualCostants } from "../../core";
+import {
+  ButtonLink,
+  ButtonLinkProps,
+  ButtonSolid,
+  ButtonSolidProps
+} from "../buttons";
 import { VSpacer } from "../spacer";
 
 export type GradientBottomActions = WithTestID<{
   transitionAnimStyle: Animated.AnimateStyle<StyleProp<ViewStyle>>;
   dimensions: GradientBottomActionsDimensions;
-  // Accepted components: ButtonSolid, ButtonLink
-  // Don't use any components other than this, please.
-  primaryAction?: React.ReactNode;
-  secondaryAction?: React.ReactNode;
+  // Accepted components: ButtonSolid for the primaryAction, ButtonLink for the secondaryAction
+  primaryActionProps?: Omit<ButtonSolidProps, "fullWidth">;
+  secondaryActionProps?: ButtonLinkProps;
   // Debug mode
   debugMode?: boolean;
 }>;
@@ -49,8 +54,8 @@ const styles = StyleSheet.create({
 });
 
 export const GradientBottomActions = ({
-  primaryAction,
-  secondaryAction,
+  primaryActionProps: primaryAction,
+  secondaryActionProps: secondaryAction,
   dimensions,
   transitionAnimStyle,
   debugMode,
@@ -99,7 +104,9 @@ export const GradientBottomActions = ({
       ]}
     />
     <View style={styles.buttonContainer} pointerEvents="box-none">
-      {primaryAction}
+      {primaryAction && (
+        <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
+      )}
 
       {secondaryAction && (
         <View
@@ -109,7 +116,7 @@ export const GradientBottomActions = ({
           }}
         >
           <VSpacer size={dimensions.spaceBetweenActions} />
-          {secondaryAction}
+          {<ButtonLink {...secondaryAction}></ButtonLink>}
         </View>
       )}
     </View>
