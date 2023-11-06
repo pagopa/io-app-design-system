@@ -15,10 +15,8 @@ import {
   buttonSolidHeight
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import GradientBottomActions, {
-  ButtonLinkAction,
-  ButtonSolidAction
-} from "./GradientBottomActions";
+import { ButtonLinkProps, ButtonSolidProps } from "../buttons";
+import GradientBottomActions from "./GradientBottomActions";
 
 export type GradientScrollView = WithTestID<{
   children: React.ReactNode;
@@ -26,8 +24,8 @@ export type GradientScrollView = WithTestID<{
   debugMode?: boolean;
   // Accepted components: ButtonSolid, ButtonLink
   // Don't use any components other than this, please.
-  primaryAction: ButtonSolidAction;
-  secondaryAction?: ButtonLinkAction;
+  primaryActionProps: ButtonSolidProps;
+  secondaryActionProps?: ButtonLinkProps;
 }>;
 
 // Extended gradient area above the actions
@@ -43,8 +41,8 @@ const extraSafeAreaMargin: IOSpacingScale = 8;
 
 export const GradientScrollView = ({
   children,
-  primaryAction,
-  secondaryAction,
+  primaryActionProps: primaryActionProps,
+  secondaryActionProps: secondaryActionProps,
   // Don't include safe area insets
   excludeSafeAreaMargins = false,
   debugMode = false,
@@ -68,20 +66,21 @@ export const GradientScrollView = ({
   /* When the secondary action is visible, add extra margin
 to avoid little space from iPhone bottom handle */
   const extraBottomMargin: number = useMemo(
-    () => (secondaryAction && insets.bottom !== 0 ? extraSafeAreaMargin : 0),
-    [insets.bottom, secondaryAction]
+    () =>
+      secondaryActionProps && insets.bottom !== 0 ? extraSafeAreaMargin : 0,
+    [insets.bottom, secondaryActionProps]
   );
 
   /* Total height of actions */
   const actionsArea: number = useMemo(
     () =>
-      primaryAction && secondaryAction
+      primaryActionProps && secondaryActionProps
         ? (buttonSolidHeight as number) +
           spaceBetweenActions +
           secondaryActionEstHeight +
           extraBottomMargin
         : buttonSolidHeight,
-    [extraBottomMargin, primaryAction, secondaryAction]
+    [extraBottomMargin, primaryActionProps, secondaryActionProps]
   );
 
   /* Total height of "Actions + Gradient" area */
@@ -106,13 +105,13 @@ to avoid little space from iPhone bottom handle */
 
   const safeBackgroundHeight = useMemo(
     () =>
-      secondaryAction
+      secondaryActionProps
         ? spaceBetweenActions +
           secondaryActionEstHeight +
           extraBottomMargin +
           bottomMargin
         : bottomMargin,
-    [bottomMargin, extraBottomMargin, secondaryAction]
+    [bottomMargin, extraBottomMargin, secondaryActionProps]
   );
 
   const handleScroll = useAnimatedScrollHandler(
@@ -152,8 +151,8 @@ to avoid little space from iPhone bottom handle */
       </Animated.ScrollView>
       <GradientBottomActions
         debugMode={debugMode}
-        primaryAction={primaryAction}
-        secondaryAction={secondaryAction}
+        primaryActionProps={primaryActionProps}
+        secondaryActionProps={secondaryActionProps}
         transitionAnimStyle={opacityTransition}
         dimensions={{
           bottomMargin,

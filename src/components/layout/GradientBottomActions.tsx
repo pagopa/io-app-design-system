@@ -12,23 +12,12 @@ import {
 } from "../buttons";
 import { VSpacer } from "../spacer";
 
-export interface ButtonLinkAction {
-  type: "ButtonLink";
-  actionProps: ButtonLinkProps;
-}
-
-export interface ButtonSolidAction {
-  type: "ButtonSolid";
-  actionProps: ButtonSolidProps;
-}
-
 export type GradientBottomActions = WithTestID<{
   transitionAnimStyle: Animated.AnimateStyle<StyleProp<ViewStyle>>;
   dimensions: GradientBottomActionsDimensions;
-  // Accepted components: ButtonSolid, ButtonLink
-  // Don't use any components other than this, please.
-  primaryAction?: ButtonSolidAction;
-  secondaryAction?: ButtonLinkAction;
+  // Accepted components: ButtonSolid for the primaryAction, ButtonLink for the secondaryAction
+  primaryActionProps?: ButtonSolidProps;
+  secondaryActionProps?: ButtonLinkProps;
   // Debug mode
   debugMode?: boolean;
 }>;
@@ -65,8 +54,8 @@ const styles = StyleSheet.create({
 });
 
 export const GradientBottomActions = ({
-  primaryAction,
-  secondaryAction,
+  primaryActionProps: primaryAction,
+  secondaryActionProps: secondaryAction,
   dimensions,
   transitionAnimStyle,
   debugMode,
@@ -115,9 +104,7 @@ export const GradientBottomActions = ({
       ]}
     />
     <View style={styles.buttonContainer} pointerEvents="box-none">
-      {primaryAction && (
-        <ButtonSolid {...primaryAction.actionProps}></ButtonSolid>
-      )}
+      {primaryAction && <ButtonSolid {...primaryAction}></ButtonSolid>}
 
       {secondaryAction && (
         <View
@@ -127,7 +114,7 @@ export const GradientBottomActions = ({
           }}
         >
           <VSpacer size={dimensions.spaceBetweenActions} />
-          {<ButtonLink {...secondaryAction.actionProps}></ButtonLink>}
+          {<ButtonLink {...secondaryAction}></ButtonLink>}
         </View>
       )}
     </View>
