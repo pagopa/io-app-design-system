@@ -29,8 +29,8 @@ import {
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { Body, H6, LabelSmall } from "../typography";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { Body, H6, LabelSmall } from "../typography";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyStyles = StyleSheet.create({
@@ -51,9 +51,9 @@ type ListItemNavPartialProps = WithTestID<{
 }>;
 
 export type ListItemNavGraphicProps =
-  | { icon?: never; paymentLogo: IOLogoPaymentType }
-  | { icon: IOIcons; paymentLogo?: never }
-  | { icon?: never; paymentLogo?: never };
+  | { icon?: never; iconColor?: never; paymentLogo: IOLogoPaymentType }
+  | { icon: IOIcons; iconColor?: IOColors; paymentLogo?: never }
+  | { icon?: never; iconColor?: never; paymentLogo?: never };
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
@@ -62,6 +62,7 @@ export const ListItemNav = ({
   description,
   onPress,
   icon,
+  iconColor = "grey-450",
   paymentLogo,
   accessibilityLabel,
   testID
@@ -108,7 +109,9 @@ export const ListItemNav = ({
     pressed: IOColors[theme["listItem-pressed"]]
   };
 
-  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
+  const navIconColor = isExperimental
+    ? theme["interactiveElem-default"]
+    : "blue";
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -172,7 +175,7 @@ export const ListItemNav = ({
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
               <Icon
                 name={icon}
-                color="grey-450"
+                color={iconColor}
                 size={IOListItemVisualParams.iconSize}
               />
             </View>
@@ -189,7 +192,7 @@ export const ListItemNav = ({
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="chevronRightListItem"
-              color={iconColor}
+              color={navIconColor}
               size={IOListItemVisualParams.chevronSize}
             />
           </View>

@@ -9,6 +9,7 @@ const APP_ROUTES = {
     LOGOS: { route: "DESIGN_SYSTEM_LOGOS", title: "Logos" }
   },
   COMPONENTS: {
+    NUMBER_PAD: { route: "DESIGN_SYSTEM_NUMBER_PAD", title: "Number Pad" },
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
     MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },

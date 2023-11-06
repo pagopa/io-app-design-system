@@ -65,7 +65,8 @@ const MainScreen = (props: Props) => {
     <ListItemNav
       accessibilityLabel={`Go to the ${title} page`}
       value={title}
-      onPress={() => props.navigation.navigate(route as keyof AppParamsList)}
+      // we're using as any cause of compilation error
+      onPress={() => props.navigation.navigate(route as any)}
     />
   );
 

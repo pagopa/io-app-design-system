@@ -533,6 +533,12 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
           "width": 24,
         },
         {
+          "alignItems": "center",
+        },
+        {
+          "justifyContent": "center",
+        },
+        {
           "transform": [
             {
               "scale": undefined,

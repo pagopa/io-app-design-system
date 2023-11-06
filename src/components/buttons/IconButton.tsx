@@ -15,15 +15,22 @@ import {
   IOIconButtonStyles,
   IOScaleValues,
   IOSpringValues,
+  IOStyles,
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, IconClassComponent } from "../icons";
+import {
+  AnimatedIcon,
+  IOIconSizeScale,
+  IOIcons,
+  IconClassComponent
+} from "../icons";
 
 export type IconButton = WithTestID<{
   color?: "primary" | "neutral" | "contrast";
   icon: IOIcons;
+  iconSize?: IOIconSizeScale;
   disabled?: boolean;
   accessibilityLabel: string;
   accessibilityHint?: string;
@@ -102,6 +109,7 @@ const AnimatedIconClassComponent =
 export const IconButton = ({
   color = "primary",
   icon,
+  iconSize = 24,
   disabled = false,
   onPress,
   accessibilityLabel,
@@ -181,17 +189,24 @@ export const IconButton = ({
       <Animated.View
         style={[
           IOIconButtonStyles.buttonSizeSmall,
+          IOStyles.alignCenter,
+          IOStyles.centerJustified,
           !disabled && pressedAnimationStyle
         ]}
       >
         {!disabled ? (
           <AnimatedIconClassComponent
             name={icon}
+            size={iconSize}
             animatedProps={animatedColor}
             color={colorMap[color]?.icon?.default}
           />
         ) : (
-          <AnimatedIcon name={icon} color={colorMap[color]?.icon?.disabled} />
+          <AnimatedIcon
+            name={icon}
+            size={iconSize}
+            color={colorMap[color]?.icon?.disabled}
+          />
         )}
       </Animated.View>
     </Pressable>
