@@ -40,6 +40,7 @@ export const IOColors = asIOColors({
   "blueIO-850": "#031344",
   "blueIO-600": "#0932B6",
   "blueIO-500": "#0B3EE3",
+  "blueIO-400": "#3C65E9",
   "blueIO-450": "#2351E6" /* Dark mode */,
   "blueIO-200": "#9DB2F4",
   "blueIO-150": "#B6C5F7",
@@ -285,6 +286,7 @@ export type IOTheme = {
   // Design System related
   "cardBorder-default": IOColors;
   "icon-default": IOColors;
+  "icon-decorative": IOColors;
   // Layout
   "divider-default": IOColors;
   // Status
@@ -312,6 +314,7 @@ export const IOThemeLight: IOTheme = {
   // Design System related
   "cardBorder-default": "grey-100",
   "icon-default": "grey-650",
+  "icon-decorative": "grey-300",
   // Layout
   "divider-default": "grey-200",
   // Status

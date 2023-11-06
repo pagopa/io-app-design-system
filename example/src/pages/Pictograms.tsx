@@ -108,7 +108,6 @@ export const Pictograms = () => {
             size="small"
             image={
               <PictogramBleed
-                pictogramStyle="dark-content"
                 name={pictogramItemName as IOPictogramsBleed}
                 size="100%"
               />

@@ -1,10 +1,8 @@
 import {
-  ButtonLink,
   Divider,
   H2,
   IOThemeContext,
   Icon,
-  IconButton,
   ListItemAction,
   ListItemInfo,
   ListItemInfoCopy,
@@ -128,6 +126,16 @@ const renderListItemNav = () => (
           value={"Value"}
           description="Description"
           icon="gallery"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="Description"
+          icon="productPagoPA"
+          iconColor="blueIO-500"
           onPress={() => {
             alert("Action triggered");
           }}
@@ -305,26 +313,28 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={
-          <ButtonLink
-            label="Modifica"
-            onPress={onButtonPress}
-            accessibilityLabel={""}
-          />
-        }
+        action={{
+          type: "buttonLink",
+          componentProps: {
+            label: "Modifica",
+            accessibilityLabel: "Modifica",
+            onPress: onButtonPress
+          }
+        }}
       />
       <ListItemInfo
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={
-          <IconButton
-            icon="info"
-            onPress={onButtonPress}
-            accessibilityLabel={""}
-          />
-        }
+        action={{
+          type: "iconButton",
+          componentProps: {
+            icon: "info",
+            accessibilityLabel: "info",
+            onPress: onButtonPress
+          }
+        }}
       />
 
       <ListItemInfo

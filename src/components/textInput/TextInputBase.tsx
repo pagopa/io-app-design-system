@@ -36,6 +36,7 @@ type RNTextInputProps = Pick<
   | "autoComplete"
   | "returnKeyType"
   | "autoCapitalize"
+  | "autoCorrect"
 >;
 
 type InputTextProps = {

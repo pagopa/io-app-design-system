@@ -1,7 +1,14 @@
 import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
-import { IOAppMargin, IOSpacer, IOSpacingScale } from "./IOSpacing";
+import {
+  IOAppMargin,
+  IOModuleIDPHSpacing,
+  IOModuleIDPVSpacing,
+  IOSpacer,
+  IOSpacingScale
+} from "./IOSpacing";
+import { IOModuleIDPRadius } from "./IOShapes";
 
 /**
  * A collection of default styles used within IO App.
@@ -96,6 +103,8 @@ export const buttonSolidHeight: number = btnSizeDefault;
 
 // TODO: Replace the number type with the new IOIconSizeScale
 export const iconBtnSizeSmall: number = 24;
+
+export const numberPadBtnSize: number = 56;
 
 export const IOButtonLegacyStyles = StyleSheet.create({
   /* BaseButton, used in the:
@@ -219,6 +228,22 @@ export const IOIconButtonStyles = StyleSheet.create({
   }
 });
 
+export const IONumberPadButtonStyles = StyleSheet.create({
+  /* IconButton */
+  button: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  circularShape: {
+    // Circular shape
+    borderRadius: 100
+  },
+  buttonSize: {
+    width: numberPadBtnSize,
+    height: numberPadBtnSize
+  }
+});
+
 /**
  * LIST ITEM STYLES
  */
@@ -251,6 +276,20 @@ export const IOListItemStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  }
+});
+
+export const IOModuleStyles = StyleSheet.create({
+  button: {
+    borderWidth: 1,
+    borderColor: IOColors["grey-100"],
+    borderRadius: IOModuleIDPRadius,
+    backgroundColor: IOColors.white,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: IOModuleIDPVSpacing,
+    paddingHorizontal: IOModuleIDPHSpacing
   }
 });
 

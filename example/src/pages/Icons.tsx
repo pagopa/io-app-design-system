@@ -16,7 +16,8 @@ import {
   IOVisualCostants,
   Icon,
   IconContained,
-  SVGIconProps
+  SVGIconProps,
+  IOIconsNew
 } from "@pagopa/io-app-design-system";
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
@@ -95,6 +96,7 @@ export const Icons = () => {
                 size="100%"
               />
             }
+            withDot={Object.keys(IOIconsNew).includes(iconItemName)}
           />
         ))}
       </View>
