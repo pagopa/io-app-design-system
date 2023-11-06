@@ -15,8 +15,10 @@ import {
   buttonSolidHeight
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import GradientBottomActions from "./GradientBottomActions";
-import { GradientBottomAction } from "./common";
+import GradientBottomActions, {
+  ButtonLinkAction,
+  ButtonSolidAction
+} from "./GradientBottomActions";
 
 export type GradientScrollView = WithTestID<{
   children: React.ReactNode;
@@ -24,8 +26,8 @@ export type GradientScrollView = WithTestID<{
   debugMode?: boolean;
   // Accepted components: ButtonSolid, ButtonLink
   // Don't use any components other than this, please.
-  primaryAction: GradientBottomAction;
-  secondaryAction?: GradientBottomAction;
+  primaryAction: ButtonSolidAction;
+  secondaryAction?: ButtonLinkAction;
 }>;
 
 // Extended gradient area above the actions

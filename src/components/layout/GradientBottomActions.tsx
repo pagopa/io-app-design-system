@@ -4,17 +4,31 @@ import LinearGradient from "react-native-linear-gradient";
 import Animated from "react-native-reanimated";
 import { IOColors, IOSpacer, IOVisualCostants, hexToRgba } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink, ButtonSolid } from "../buttons";
+import {
+  ButtonLink,
+  ButtonLinkProps,
+  ButtonSolid,
+  ButtonSolidProps
+} from "../buttons";
 import { VSpacer } from "../spacer";
-import { GradientBottomAction } from "./common";
+
+export interface ButtonLinkAction {
+  type: "ButtonLink";
+  actionProps: ButtonLinkProps;
+}
+
+export interface ButtonSolidAction {
+  type: "ButtonSolid";
+  actionProps: ButtonSolidProps;
+}
 
 export type GradientBottomActions = WithTestID<{
   transitionAnimStyle: Animated.AnimateStyle<StyleProp<ViewStyle>>;
   dimensions: GradientBottomActionsDimensions;
   // Accepted components: ButtonSolid, ButtonLink
   // Don't use any components other than this, please.
-  primaryAction?: GradientBottomAction;
-  secondaryAction?: GradientBottomAction;
+  primaryAction?: ButtonSolidAction;
+  secondaryAction?: ButtonLinkAction;
   // Debug mode
   debugMode?: boolean;
 }>;
@@ -101,12 +115,9 @@ export const GradientBottomActions = ({
       ]}
     />
     <View style={styles.buttonContainer} pointerEvents="box-none">
-      {primaryAction &&
-        (primaryAction.type === "ButtonLink" ? (
-          <ButtonLink {...primaryAction.actionProps}></ButtonLink>
-        ) : (
-          <ButtonSolid {...primaryAction.actionProps}></ButtonSolid>
-        ))}
+      {primaryAction && (
+        <ButtonSolid {...primaryAction.actionProps}></ButtonSolid>
+      )}
 
       {secondaryAction && (
         <View
@@ -116,11 +127,7 @@ export const GradientBottomActions = ({
           }}
         >
           <VSpacer size={dimensions.spaceBetweenActions} />
-          {secondaryAction.type === "ButtonLink" ? (
-            <ButtonLink {...secondaryAction.actionProps}></ButtonLink>
-          ) : (
-            <ButtonSolid {...secondaryAction.actionProps}></ButtonSolid>
-          )}
+          {<ButtonLink {...secondaryAction.actionProps}></ButtonLink>}
         </View>
       )}
     </View>
