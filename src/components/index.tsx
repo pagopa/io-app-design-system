@@ -23,3 +23,4 @@ export * from "./toast";
 export * from "./typography";
 export * from "./textInput";
 export * from "./layout";
+export * from "./numberpad";

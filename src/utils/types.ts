@@ -30,3 +30,7 @@ export type XOR<T, U> = T | U extends object
   : T | U;
 
 export type InputType = "credit-card" | "default";
+
+// Biometrics type used in io-app code base
+// https://github.com/pagopa/io-app/blob/master/ts/utils/biometrics.ts#L31
+export type BiometricsValidType = "BIOMETRICS" | "FACE_ID" | "TOUCH_ID";
