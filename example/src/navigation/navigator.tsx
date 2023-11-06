@@ -24,6 +24,7 @@ import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
 import { Toasts } from "../pages/Toasts";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
+import { NumberPadScreen } from "../pages/NumberPad";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -94,6 +95,14 @@ const AppNavigator = () => (
       component={Colors}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.COLOR.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.NUMBER_PAD.route}
+      component={NumberPadScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.NUMBER_PAD.title,
         headerBackTitleVisible: false
       }}
     />
