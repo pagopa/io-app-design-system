@@ -24,8 +24,8 @@ export type GradientScrollView = WithTestID<{
   debugMode?: boolean;
   // Accepted components: ButtonSolid, ButtonLink
   // Don't use any components other than this, please.
-  primaryActionProps: ButtonSolidProps;
-  secondaryActionProps?: ButtonLinkProps;
+  primaryActionProps: GradientBottomActions["primaryActionProps"];
+  secondaryActionProps?: GradientBottomActions["secondaryActionProps"];
 }>;
 
 // Extended gradient area above the actions

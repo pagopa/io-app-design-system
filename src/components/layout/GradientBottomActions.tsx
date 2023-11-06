@@ -16,7 +16,7 @@ export type GradientBottomActions = WithTestID<{
   transitionAnimStyle: Animated.AnimateStyle<StyleProp<ViewStyle>>;
   dimensions: GradientBottomActionsDimensions;
   // Accepted components: ButtonSolid for the primaryAction, ButtonLink for the secondaryAction
-  primaryActionProps?: ButtonSolidProps;
+  primaryActionProps?: Omit<ButtonSolidProps, "fullWidth">;
   secondaryActionProps?: ButtonLinkProps;
   // Debug mode
   debugMode?: boolean;
@@ -104,7 +104,9 @@ export const GradientBottomActions = ({
       ]}
     />
     <View style={styles.buttonContainer} pointerEvents="box-none">
-      {primaryAction && <ButtonSolid {...primaryAction}></ButtonSolid>}
+      {primaryAction && (
+        <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
+      )}
 
       {secondaryAction && (
         <View
