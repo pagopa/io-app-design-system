@@ -313,7 +313,7 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        rightElement={{
+        endElement={{
           type: "buttonLink",
           componentProps: {
             label: "Modifica",
@@ -327,7 +327,7 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        rightElement={{
+        endElement={{
           type: "iconButton",
           componentProps: {
             icon: "info",
@@ -342,7 +342,7 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        rightElement={{
+        endElement={{
           type: "badge",
           componentProps: {
             text: "Pagato",

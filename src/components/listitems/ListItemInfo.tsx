@@ -27,7 +27,7 @@ type BadgeProps = {
   componentProps: ComponentProps<typeof Badge>;
 };
 
-type RightElementProps =
+type EndElementProps =
   | ButtonLinkActionProps
   | IconButtonActionProps
   | BadgeProps;
@@ -37,7 +37,7 @@ export type ListItemInfo = WithTestID<{
   value: string | React.ReactNode;
   numberOfLines?: number;
   icon?: IOIcons;
-  rightElement?: RightElementProps;
+  endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
 }>;
@@ -47,7 +47,7 @@ export const ListItemInfo = ({
   value,
   numberOfLines = 2,
   icon,
-  rightElement,
+  endElement,
   accessibilityLabel,
   testID
 }: ListItemInfo) => {
@@ -68,14 +68,14 @@ export const ListItemInfo = ({
   const itemInfoTextComponent = useMemo(
     () => (
       <View
-        accessible={rightElement === undefined ? true : false}
+        accessible={endElement === undefined ? true : false}
         importantForAccessibility={
-          rightElement === undefined || rightElement.type === "badge"
+          endElement === undefined || endElement.type === "badge"
             ? "yes"
             : "no-hide-descendants"
         }
         accessibilityElementsHidden={
-          rightElement !== undefined && rightElement.type !== "badge"
+          endElement !== undefined && endElement.type !== "badge"
         }
       >
         <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
@@ -90,12 +90,12 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, rightElement]
+    [label, value, numberOfLines, theme, endElement]
   );
 
   const listItemInfoAction = useCallback(() => {
-    if (rightElement) {
-      const { type, componentProps } = rightElement;
+    if (endElement) {
+      const { type, componentProps } = endElement;
 
       switch (type) {
         case "buttonLink":
@@ -122,13 +122,13 @@ export const ListItemInfo = ({
       }
     }
     return <></>;
-  }, [rightElement, listItemAccessibilityLabel]);
+  }, [endElement, listItemAccessibilityLabel]);
 
   return (
     <View
       style={IOListItemStyles.listItem}
       testID={testID}
-      accessible={rightElement === undefined ? true : false}
+      accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
     >
       <View style={IOListItemStyles.listItemInner}>
@@ -142,7 +142,7 @@ export const ListItemInfo = ({
           </View>
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        {rightElement && (
+        {endElement && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
             {listItemInfoAction()}
           </View>
