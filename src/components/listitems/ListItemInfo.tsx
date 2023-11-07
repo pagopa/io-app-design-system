@@ -10,6 +10,7 @@ import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";
 import { ButtonLink, IconButton } from "../buttons";
+import { Badge } from "../badge";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -21,14 +22,22 @@ type IconButtonActionProps = {
   componentProps: ComponentProps<typeof IconButton>;
 };
 
-type ActionProps = ButtonLinkActionProps | IconButtonActionProps;
+type BadgeProps = {
+  type: "badge";
+  componentProps: ComponentProps<typeof Badge>;
+};
+
+type RightElementProps =
+  | ButtonLinkActionProps
+  | IconButtonActionProps
+  | BadgeProps;
 
 export type ListItemInfo = WithTestID<{
   label: string;
   value: string | React.ReactNode;
   numberOfLines?: number;
   icon?: IOIcons;
-  action?: ActionProps;
+  rightElement?: RightElementProps;
   // Accessibility
   accessibilityLabel?: string;
 }>;
@@ -38,7 +47,7 @@ export const ListItemInfo = ({
   value,
   numberOfLines = 2,
   icon,
-  action,
+  rightElement,
   accessibilityLabel,
   testID
 }: ListItemInfo) => {
@@ -59,11 +68,15 @@ export const ListItemInfo = ({
   const itemInfoTextComponent = useMemo(
     () => (
       <View
-        accessible={action === undefined ? true : false}
+        accessible={rightElement === undefined ? true : false}
         importantForAccessibility={
-          action === undefined ? "yes" : "no-hide-descendants"
+          rightElement === undefined || rightElement.type === "badge"
+            ? "yes"
+            : "no-hide-descendants"
         }
-        accessibilityElementsHidden={action !== undefined}
+        accessibilityElementsHidden={
+          rightElement !== undefined && rightElement.type !== "badge"
+        }
       >
         <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
@@ -77,42 +90,46 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, action]
+    [label, value, numberOfLines, theme, rightElement]
   );
 
   const listItemInfoAction = useCallback(() => {
-    if (action) {
-      const { type, componentProps } = action;
+    if (rightElement) {
+      const { type, componentProps } = rightElement;
 
-      const accessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
       switch (type) {
         case "buttonLink":
+          const buttonLinkAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
+
           return (
             <ButtonLink
               {...componentProps}
-              accessibilityLabel={accessibilityLabel}
+              accessibilityLabel={buttonLinkAccessibilityLabel}
             />
           );
         case "iconButton":
+          const iconButtonAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
           return (
             <IconButton
               {...componentProps}
-              accessibilityLabel={accessibilityLabel}
+              accessibilityLabel={iconButtonAccessibilityLabel}
             />
           );
+        case "badge":
+          return <Badge {...componentProps} />;
         default:
           return <></>;
       }
     }
     return <></>;
-  }, [action, listItemAccessibilityLabel]);
+  }, [rightElement, listItemAccessibilityLabel]);
 
   return (
     <View
       style={IOListItemStyles.listItem}
       testID={testID}
-      accessible={action === undefined ? true : false}
-      accessibilityLabel={accessibilityLabel}
+      accessible={rightElement === undefined ? true : false}
+      accessibilityLabel={listItemAccessibilityLabel}
     >
       <View style={IOListItemStyles.listItemInner}>
         {icon && (
@@ -125,7 +142,7 @@ export const ListItemInfo = ({
           </View>
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        {action && (
+        {rightElement && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
             {listItemInfoAction()}
           </View>
