@@ -48,6 +48,7 @@ export const HeaderSecondLevelScreen = () => {
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
+          transparent={true}
           type="threeActions"
           firstAction={{
             icon: "help",

@@ -144,21 +144,18 @@ export const HeaderSecondLevel = ({
   }));
 
   return (
-    <Animated.View
+    <View
       accessibilityRole="header"
-      style={
+      style={[
+        { paddingTop: insets.top },
         transparent
           ? { borderBottomWidth: 0 }
           : { backgroundColor: IOColors[HEADER_BG_COLOR] }
-      }
+      ]}
     >
       <Animated.View
         testID={testID}
-        style={[
-          { marginTop: insets.top },
-          styles.headerInner,
-          headerWrapperAnimatedStyle
-        ]}
+        style={[styles.headerInner, headerWrapperAnimatedStyle]}
       >
         <IconButton
           icon={Platform.OS === "ios" ? "backiOS" : "backAndroid"}
@@ -201,7 +198,7 @@ export const HeaderSecondLevel = ({
           )}
         </View>
       </Animated.View>
-    </Animated.View>
+    </View>
   );
 };
 
