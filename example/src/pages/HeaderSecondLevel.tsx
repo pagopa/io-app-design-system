@@ -11,6 +11,7 @@ import {
   Body,
   H3,
   HeaderSecondLevel,
+  IOColors,
   IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -39,6 +40,7 @@ export const HeaderSecondLevelScreen = () => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
           scrollValues={{
@@ -79,6 +81,7 @@ export const HeaderSecondLevelScreen = () => {
   return (
     <Animated.ScrollView
       contentContainerStyle={{
+        marginTop: insets.top + IOVisualCostants.headerHeight,
         paddingBottom: insets.bottom,
         paddingHorizontal: IOVisualCostants.appMarginDefault
       }}
@@ -88,7 +91,10 @@ export const HeaderSecondLevelScreen = () => {
       snapToEnd={false}
       decelerationRate="normal"
     >
-      <View onLayout={getTitleHeight}>
+      <View
+        onLayout={getTitleHeight}
+        // style={{ backgroundColor: IOColors["hanPurple-500"] }}
+      >
         <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
       </View>
       <VSpacer />
