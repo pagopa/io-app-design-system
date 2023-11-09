@@ -11,7 +11,6 @@ import {
   Body,
   H3,
   HeaderSecondLevel,
-  IOColors,
   IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
