@@ -9,7 +9,7 @@
 
 ## Prerequisites
 To contribute to the library development, you will need to install `nodejs` and `yarn`. We recommend using [`nvm`](https://github.com/nvm-sh/nvm) to properly handle the supported nodejs version (see [`.nvmrc`](./.nvmrc)).
-### [Learn more about the `io-app` prerequisites →](https://github.com/pagopa/io-app#prerequisites)
+#### [Learn more about the `io-app` prerequisites →](https://github.com/pagopa/io-app#prerequisites)
 ## Installing the component library
 To add the component library to the main app run:
 
@@ -40,6 +40,11 @@ Activate the toggle at the top of the application to view the experimental desig
 > The sample application consists of several pages with some components for testing purposes. To view the continuously updated Design System section, please refer to the [main app](https://github.com/pagopa/io-app).
 
 ## Playground & Documentation
+A [Storybook](https://storybook.js.org/) playground is also available to help develop and test components. To start it in the local environment, run the following command:
+
+```bash
+yarn storybook
+```
 
 # Usage
 To try a component, just import it:
@@ -92,22 +97,6 @@ A part from the components, the library also exports the following core elements
 * [react-native-haptic-feedback](https://github.com/mkuczera/react-native-haptic-feedback)
 * [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context)
 * [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
-
-## Prerequisites
-
-In order to contribute to the development of the library, you need to install nodejs and yarn. 
-
-We recommend the usage of nvm to properly handle the supported nodejs version (see [.nvmrc](./.nvmrc)).
-
-## Storybook
-
-The library is provided with a [storybook](https://storybook.js.org/) instance to ease the development and the testing of the components.
-
-To start the storybook instance, run the following command:
-
-```sh
-yarn storybook
-```
 
 ## Contributing
 
