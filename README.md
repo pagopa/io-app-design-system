@@ -1,6 +1,8 @@
 <div style="display: flex; flex-direction: column; align-items: center">
 <img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></h3>
+<br />
+<br />
 </div>
 
 
@@ -14,7 +16,7 @@ yarn add @pagopa/io-app-design-system
 ```
 
 ### Launch the example app
-For development purposes, a React Native example app is included in the package. Please follow these steps to launch it:
+For development purposes, a sample React Native application is included in the repository. To launch it:
 
 ```bash
 # Move into `example` folder
@@ -32,8 +34,8 @@ yarn ios --simulator='iPhone 15 Pro'
 ```
 Activate the toggle at the top of the application to view the experimental design system.
 
-> [!note]
-> The example app is composed by different pages with all the components for testing purposes. To view the continuously updated Design System section, please refer to the main app
+> [!important]
+> The sample application consists of several pages with some components for testing purposes. To view the continuously updated Design System section, please refer to the [main app](https://github.com/pagopa/io-app).
 
 ## Usage
 To try a component, just import it:
