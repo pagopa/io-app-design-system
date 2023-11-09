@@ -1,28 +1,55 @@
 <div style="display: flex; flex-direction: column; align-items: center">
-<img src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
-<h3 align="center" style="width: 100%">IO App Design System</h3>
-
-<p align="center">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></p>
-
+<img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
+<h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 </div>
 
 
-## Installation
+## Getting started
 
-```sh
+### Installing the DS
+To add the component library to the main app run:
+
+```bash
 yarn add @pagopa/io-app-design-system
 ```
 
+### Launch the example app
+For development purposes, a React Native example app is included in the package. Please follow these steps to launch it:
+
+```bash
+# Move into `example` folder
+cd example
+
+# Install dependencies 
+yarn install
+
+# Install podfiles when targeting iOS (ignore this step for Android)
+# Run this only during the first setup and when Pods dependencies change
+cd iOS && bundle exec pod install
+
+# Launch the app locally (iPhone model is optional)
+yarn ios --simulator='iPhone 15 Pro'
+```
+Activate the toggle at the top of the application to view the experimental design system.
+
+> [!note]
+> The example app is composed by different pages with all the components for testing purposes. To view the continuously updated Design System section, please refer to the main app
+
 ## Usage
+To try a component, just import it:
 
-```js
-import { IOStyles } from '@pagopa/io-app-design-system';
+```tsx
+import { ButtonSolid } from '@pagopa/io-app-design-system';
 
-// ...
+// [...]
 
-const Component = () => (
-  <View style={IOStyles.flex}>
-    // ... Further component code
+const MainScreen = () => (
+  <View>
+    <ButtonSolid
+      accessibilityLabel="Tap to trigger test alert"
+      label="Hello world"
+      onPress={() => Alert.alert("Alert", "Action triggered")}
+    />
   </View>
 );
 ```
