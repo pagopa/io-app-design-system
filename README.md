@@ -1,6 +1,11 @@
-# @pagopa/io-app-design-system
+<div style="display: flex; flex-direction: column; align-items: center">
+<img src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
+<h3 align="center" style="width: 100%">IO App Design System</h3>
 
-The library defining the core components of the design system of io-app
+A comprehensive library of components specifically designed for the [IO App](https://github.com/pagopa/io-app)
+
+</div>
+
 
 ## Installation
 
