@@ -45,7 +45,7 @@ A [Storybook](https://storybook.js.org/) playground is also available to help de
 ```bash
 yarn storybook
 ```
-> [!warning]
+> [!note]
 > Storybook documentation is a work in progress
 
 # Usage
