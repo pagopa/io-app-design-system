@@ -7,6 +7,9 @@
 
 ## Getting started
 
+### Prerequisites
+To contribute to the library development, you will need to install `nodejs` and `yarn`. We recommend using [`nvm`](https://github.com/nvm-sh/nvm) to properly handle the supported nodejs version (see [`.nvmrc`](./.nvmrc)).
+#### [Learn more about the `io-app` prerequisites →](https://github.com/pagopa/io-app#prerequisites)
 ### Installing the component library
 To add the component library to the main app run:
 
@@ -28,7 +31,7 @@ yarn install
 # Run this only during the first setup and when Pods dependencies change
 cd iOS && bundle exec pod install
 
-# Launch the app locally (iPhone model is optional)
+# Launch the app locally (simulator flag is optional)
 yarn ios --simulator='iPhone 15 Pro'
 ```
 Activate the toggle at the top of the application to view the experimental design system.
