@@ -127,6 +127,8 @@ Common functions used to wrap up external libraries and utilities
 * [`react-native-linear-gradient`](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
 * [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)
 
+---
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
