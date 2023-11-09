@@ -2,13 +2,12 @@
 <img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <br />
-<br />
 </div>
 
 
 ## Getting started
 
-### Installing the DS
+### Installing the component library
 To add the component library to the main app run:
 
 ```bash
