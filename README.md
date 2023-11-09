@@ -77,8 +77,8 @@ Essential core visual attributes of the design language. It includes:
 - **`IOSpacing`**: Defines the main spacing scale and various component spacing attributes
 - **`IOStyles`**: Defines common styles shared across components
 - **`IOShapes`**: Defines visual shape-related attributes, such as radius 
-- **`IOAnimations`**: Defines common animation attributes used for interactive elements
-- **`IOTransitions`**: Defines reusable custom enter/exit transitions specifically designed to be used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library
+- **`IOAnimations`**: Defines common animation attributes used for interactive elements (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
+- **`IOTransitions`**: Defines reusable custom enter/exit transitions (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 
 ## Foundation
 Essential atomic components:
