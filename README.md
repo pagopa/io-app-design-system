@@ -67,6 +67,21 @@ const MainScreen = () => (
 );
 ```
 
+# Architecture
+The library is made up of several parts:
+
+## [Core](./src/core)
+Essential core visual attributes of the design language. It includes:
+
+- **`IOColors`**: Defines the main color palette, themes (light/dark) and other color-related utilities
+- **`IOSpacing`**: Defines the main spacing scale and various component spacing attributes
+- **`IOStyles`**: Defines common styles shared across components
+- **`IOShapes`**: Defines visual shape-related attributes, such as radius 
+- **`IOAnimations`**: Defines common animation attributes used for interactive elements
+- **`IOTransitions`**: Defines reusable custom enter/exit transitions specifically designed to be used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library
+
+## Components
+
 The list of the component exported by the library is the following:
 
 * [Accordion](./src/components/accordion/)
