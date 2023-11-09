@@ -37,7 +37,7 @@ yarn ios --simulator='iPhone 15 Pro'
 Activate the toggle at the top of the application to view the experimental design system.
 
 > [!important]
-> The sample application consists of several pages with some components for testing purposes. To view the continuously updated Design System section, please refer to the [main app](https://github.com/pagopa/io-app).
+> The sample application consists of several pages with some components for testing purposes. To view the [continuously updated Design System section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system), please refer to the [main app](https://github.com/pagopa/io-app).
 
 ## Playground & Documentation
 A [Storybook](https://storybook.js.org/) playground is also available to help develop and test components. To start it in the local environment, run the following command:
@@ -80,32 +80,44 @@ Essential core visual attributes of the design language. It includes:
 - **`IOAnimations`**: Defines common animation attributes used for interactive elements
 - **`IOTransitions`**: Defines reusable custom enter/exit transitions specifically designed to be used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library
 
-## Components
+## Foundation
+Essential atomic components:
+* [**Typography**](./src/components/typography/)
+* **Layout**
+  * [ContentWrapper](./src/components/contentWrapper/)
+  * [Spacer](./src/components/spacer/): `VSpacer`, `HSpacing`
+  * [Divider](./src/components/divider/)
+* [**Icons**](./src/components/icons/): [📖 Relative docs →](./src/components/icons/)
+* [**Pictograms**](./src/components/pictograms/): [📖 Relative docs →](./src/components/pictograms/)
+* **Logos**
+  * [Payment Logos](./src/components/logos/): [📖 Relative docs →](./src/components/logos/)
+  * [Avatar](./src/components/avatar/)
+* **Loaders**
+  * [LoadingSpinner](./src/components/loadingSpinner/)
 
-The list of the component exported by the library is the following:
+## [Components](./src/components/)
 
-* [Accordion](./src/components/accordion/)
-* [Advice](./src/components/advice/)
-* [Alert](./src/components/alert/)
-* [Avatar](./src/components/avatar/)
-* [Badge](./src/components/badge/)
-* [Banner](./src/components/banner/)
-* [Buttons](./src/components/buttons/) 
-* [Checkbox](./src/components/checkbox/)
-* [contentWrapper](./src/components/contentWrapper/)
-* [Divider](./src/components/divider/)
-* [Icons](./src/components/icons/)
-* [List Items](./src/components/listitems/)
-* [Logos](./src/components/logos/)
-* [Pictograms](./src/components/pictograms/)
-* [Radio](./src/components/radio/)
-* [Spacer](./src/components/spacer/)
-* [Switch](./src/components/switch/)
-* [Tag](./src/components/tag/)
-* [Typography](./src/components/typography/)
-* [Text Input](./src/components/textInput/)
+* [**Buttons**](./src/components/buttons/)
+* [**TextInput**](./src/components/textInput/)
+* [**List Items**](./src/components/listitems/)
+* [**Modules**](./src/components/modules/)
+* [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+* **Selection**
+  * [Checkbox](./src/components/checkbox/)
+  * [Radio](./src/components/radio/)
+  * [Switch](./src/components/switch/)
+* [**Accordion**](./src/components/accordion/)
+* [**Alert**](./src/components/alert/)
+* **Advice & Banners**
+  * [FeatureInfo](./src/components/featureInfo/)
+  * [Banner](./src/components/banner/)
 
-A part from the components, the library also exports the following core elements and styles as part of the [core attributes](./src/core/) of the design system, and common functions used to wrap up external libraries and utilities (here listed as [functions](./src/functions/)).
+> [!note]
+> Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
+
+
+## [Functions](./src/functions)
+Common functions used to wrap up external libraries and utilities
 
 ## External dependencies
 * [react-native-svg](https://github.com/software-mansion/react-native-svg)
