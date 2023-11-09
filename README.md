@@ -5,19 +5,19 @@
 </div>
 
 
-## Getting started
+# Getting started
 
-### Prerequisites
+## Prerequisites
 To contribute to the library development, you will need to install `nodejs` and `yarn`. We recommend using [`nvm`](https://github.com/nvm-sh/nvm) to properly handle the supported nodejs version (see [`.nvmrc`](./.nvmrc)).
-#### [Learn more about the `io-app` prerequisites →](https://github.com/pagopa/io-app#prerequisites)
-### Installing the component library
+### [Learn more about the `io-app` prerequisites →](https://github.com/pagopa/io-app#prerequisites)
+## Installing the component library
 To add the component library to the main app run:
 
 ```bash
 yarn add @pagopa/io-app-design-system
 ```
 
-### Launch the example app
+## Launch the example app
 For development purposes, a sample React Native application is included in the repository. To launch it:
 
 ```bash
@@ -39,7 +39,9 @@ Activate the toggle at the top of the application to view the experimental desig
 > [!important]
 > The sample application consists of several pages with some components for testing purposes. To view the continuously updated Design System section, please refer to the [main app](https://github.com/pagopa/io-app).
 
-## Usage
+## Playground & Documentation
+
+# Usage
 To try a component, just import it:
 
 ```tsx
