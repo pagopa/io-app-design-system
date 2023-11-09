@@ -2,7 +2,7 @@
 <img src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
 <h3 align="center" style="width: 100%">IO App Design System</h3>
 
-A comprehensive library of components specifically designed for the [IO App](https://github.com/pagopa/io-app)
+<p align="center">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></p>
 
 </div>
 
