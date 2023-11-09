@@ -36,7 +36,10 @@
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "generate:icons": "node scripts/generateNewIcons.js",
+    "generate:pictograms": "node scripts/generateNewPictograms.js",
+    "generate": "npm-run-all generate:*"
   },
   "keywords": [
     "react-native",

@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Alert } from "react-native";
-import { Label } from "../components";
+import { H1 } from "../../components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Example/Label",
-  component: Label,
+  title: "IO-App Design System/Atoms/Typography/H1",
+  component: H1,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered",
     actions: { argTypesRegex: "^on.*" }
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
-} satisfies Meta<typeof Label>;
+  tags: ["autodocs"]
+} satisfies Meta<typeof H1>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
