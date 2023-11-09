@@ -85,7 +85,7 @@ Essential atomic components:
 * [**Typography**](./src/components/typography/)
 * **Layout**
   * [ContentWrapper](./src/components/contentWrapper/)
-  * [Spacer](./src/components/spacer/): `VSpacer`, `HSpacing`
+  * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
   * [Divider](./src/components/divider/)
 * [**Icons**](./src/components/icons/): [📖 Relative docs →](./src/components/icons/)
 * [**Pictograms**](./src/components/pictograms/): [📖 Relative docs →](./src/components/pictograms/)
@@ -119,13 +119,13 @@ Essential atomic components:
 ## [Functions](./src/functions)
 Common functions used to wrap up external libraries and utilities
 
-## External dependencies
-* [react-native-svg](https://github.com/software-mansion/react-native-svg)
-* [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
-* [react-native-linear-gradient](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
-* [react-native-haptic-feedback](https://github.com/mkuczera/react-native-haptic-feedback)
-* [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context)
-* [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
+## Dependencies
+* [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all component animations
+* [`react-native-svg`](https://github.com/software-mansion/react-native-svg): Handles all the vector asset components (icons, pictograms and logos)
+* [`react-native-haptic-feedback`](https://github.com/mkuczera/react-native-haptic-feedback): Handles all the haptic feedbacks
+* [`react-native-safe-area-context`](https://github.com/th3rdwave/react-native-safe-area-context): Handles all safe area spacing attributes
+* [`react-native-linear-gradient`](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
+* [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)
 
 ## Contributing
 
