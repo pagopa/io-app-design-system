@@ -39,6 +39,7 @@ export const HeaderSecondLevelScreen = () => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
           scrollValues={{
@@ -48,6 +49,7 @@ export const HeaderSecondLevelScreen = () => {
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
+          transparent={true}
           type="threeActions"
           firstAction={{
             icon: "help",
@@ -78,6 +80,7 @@ export const HeaderSecondLevelScreen = () => {
   return (
     <Animated.ScrollView
       contentContainerStyle={{
+        marginTop: insets.top + IOVisualCostants.headerHeight,
         paddingBottom: insets.bottom,
         paddingHorizontal: IOVisualCostants.appMarginDefault
       }}
@@ -87,7 +90,10 @@ export const HeaderSecondLevelScreen = () => {
       snapToEnd={false}
       decelerationRate="normal"
     >
-      <View onLayout={getTitleHeight}>
+      <View
+        onLayout={getTitleHeight}
+        // style={{ backgroundColor: IOColors["hanPurple-500"] }}
+      >
         <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
       </View>
       <VSpacer />

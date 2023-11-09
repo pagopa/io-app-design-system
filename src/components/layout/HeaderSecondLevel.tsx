@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
   headerInner: {
     paddingHorizontal: IOVisualCostants.appMarginDefault,
     height: IOVisualCostants.headerHeight,
-    borderBottomWidth: 1,
     flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -146,19 +145,17 @@ export const HeaderSecondLevel = ({
   return (
     <Animated.View
       accessibilityRole="header"
-      style={
+      style={[
         transparent
           ? { borderBottomWidth: 0 }
-          : { backgroundColor: IOColors[HEADER_BG_COLOR] }
-      }
+          : { backgroundColor: IOColors[HEADER_BG_COLOR] },
+        { borderBottomWidth: 1 },
+        headerWrapperAnimatedStyle
+      ]}
     >
       <Animated.View
         testID={testID}
-        style={[
-          { marginTop: insets.top },
-          styles.headerInner,
-          headerWrapperAnimatedStyle
-        ]}
+        style={[{ marginTop: insets.top }, styles.headerInner]}
       >
         <IconButton
           icon={Platform.OS === "ios" ? "backiOS" : "backAndroid"}
