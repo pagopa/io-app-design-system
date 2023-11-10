@@ -70,7 +70,7 @@ const MainScreen = () => (
 # Architecture
 The library is made up of several parts:
 
-## [Core](./src/core)
+## Core
 Essential core visual attributes of the design language. It includes:
 
 - **`IOColors`**: Defines the main color palette, themes (light/dark) and other color-related utilities
@@ -79,6 +79,8 @@ Essential core visual attributes of the design language. It includes:
 - **`IOShapes`**: Defines visual shape-related attributes, such as radius 
 - **`IOAnimations`**: Defines common animation attributes used for interactive elements (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 - **`IOTransitions`**: Defines reusable custom enter/exit transitions (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
+
+#### [Explore the `core` folder →](./src/core)
 
 ## Foundation
 Essential atomic components:
@@ -95,7 +97,7 @@ Essential atomic components:
 * **Loaders**
   * [LoadingSpinner](./src/components/loadingSpinner/)
 
-## [Components](./src/components/)
+## Components
 
 * [**Buttons**](./src/components/buttons/)
 * [**TextInput**](./src/components/textInput/)
@@ -112,12 +114,16 @@ Essential atomic components:
   * [FeatureInfo](./src/components/featureInfo/)
   * [Banner](./src/components/banner/)
 
+#### [Explore the `components` folder →](./src/components)
+
 > [!note]
 > Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
 
-## [Functions](./src/functions)
+## Functions
 Common functions used to wrap up external libraries and utilities
+
+#### [Explore the `functions` folder →](./src/functions)
 
 ## Dependencies
 * [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all the component animations
