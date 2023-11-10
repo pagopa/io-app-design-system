@@ -33,7 +33,6 @@
   "exclude": [
     "android",
     "ios",
-    "example",
     "node_modules",
   ]
 }
