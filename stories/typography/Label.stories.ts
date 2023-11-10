@@ -1,31 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 
-import { IconButtonContained } from "../../components";
+import { Alert } from "react-native";
+import { Label } from "../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "IO-App Design System/Atoms/Buttons/IconButtonContained",
-  component: IconButtonContained,
+  title: "IO-App Design System/Atoms/Typography/Label",
+  component: Label,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "centered"
+    layout: "centered",
+    actions: { argTypesRegex: "^on.*" }
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"]
-} satisfies Meta<typeof IconButtonContained>;
+} satisfies Meta<typeof Label>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    color: "primary",
-    icon: "add",
     accessibilityLabel: "Tap to trigger test alert",
-    onPress: e => {
-      action("clicked")(e);
-    }
+    onPress: () => Alert.alert("Alert", "Action triggered"),
+    children: "Hello World"
   }
 };

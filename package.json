@@ -166,6 +166,7 @@
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
+    "exclude": ["example"],
     "targets": [
       "commonjs",
       "module",
