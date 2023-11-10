@@ -3,7 +3,7 @@
 <img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <!-- NPM Badge -->
-<a href="https://www.npmjs.com/package/@pagopa/io-app-design-system"><img alt="npm latest package" src="https://img.shields.io/npm/v/@pagopa/io-app-design-system/latest.svg"></a>
+<a align="center" href="https://www.npmjs.com/package/@pagopa/io-app-design-system"><img alt="npm latest package" src="https://img.shields.io/npm/v/@pagopa/io-app-design-system/latest.svg"></a>
 
 <br />
 
