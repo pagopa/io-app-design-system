@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; align-items: center">
 <img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
-<h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for the <a href="https://github.com/pagopa/io-app">IO App</a></h3>
+<h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <br />
 </div>
 
