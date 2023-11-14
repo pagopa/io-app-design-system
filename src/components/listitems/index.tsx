@@ -1,4 +1,5 @@
 export * from "./ListItemAction";
+export * from "./ListItemHeader";
 export * from "./ListItemInfo";
 export * from "./ListItemInfoCopy";
 export * from "./ListItemNav";
