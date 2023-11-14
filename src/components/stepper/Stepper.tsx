@@ -59,6 +59,7 @@ export const Stepper = ({
           <View
             key={i}
             style={{
+              borderRadius: 2,
               borderBottomColor:
                 IOColors[i > currentStep - 1 ? colors.inactive : colors.active],
               borderBottomWidth: 2,
