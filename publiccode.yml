@@ -1,0 +1,80 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.3'
+categories:
+  - digital-citizenship
+description:
+  en:
+    features:
+      - Design System Components
+    genericName: Design System
+    longDescription: |
+      # IO App Design System
+
+
+      ## A comprehensive library of components specifically designed for IO App
+
+
+      This project is a specialized _React Native_ library for the IO App,
+      providing developers with a wide range of components. 
+
+
+      Users are welcome to try each component  and test them directly using the
+      included example app. The system's modular design makes integration easy,
+      and a storybook playground helps explore each component.
+
+
+      With core attributes, foundational components, and various UI elements it
+      ensures a consistent design.  
+
+
+      The project is open for collaboration under the MIT license, fostering
+      transparency and community engagement.
+    shortDescription: A comprehensive library of components specifically designed for the IO App
+developmentStatus: stable
+intendedAudience:
+  countries:
+    - it
+  scope:
+    - science-and-technology
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+  riuso:
+    codiceIPA: 5n2tr557
+legal:
+  license: MIT
+  mainCopyrightOwner: PagoPA S.p.A
+  repoOwner: PagoPA S.p.A
+localisation:
+  availableLanguages:
+    - it
+    - en
+  localisationReady: true
+logo: |-
+  https://raw.githubusercontent.com/pagopa/io-app-design-system/master/repo-assets/io-app-design-system-github-cover.png
+maintenance:
+  contacts:
+    - affiliation: PagoPA S.p.A.
+      email: ospo@pagopa.it
+      name: Open Source Program Office
+  type: internal
+name: IO Design System
+platforms:
+  - ios
+  - android
+releaseDate: '2023-11-09'
+softwareType: library
+softwareVersion: 1.16.1
+url: 'https://github.com/pagopa/io-app-design-system'
