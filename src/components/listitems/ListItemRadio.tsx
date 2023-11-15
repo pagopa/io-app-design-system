@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Pressable, View } from "react-native";
+import { Dimensions, Pressable, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import Placeholder from "rn-placeholder";
 import {
   IOColors,
   IOScaleValues,
@@ -33,6 +34,7 @@ type Props = WithTestID<{
   icon?: IOIcons;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
+  loading?: boolean;
 }>;
 
 const DISABLED_OPACITY = 0.5;
@@ -59,6 +61,7 @@ export const ListItemRadio = ({
   selected,
   disabled,
   onValueChange,
+  loading = false,
   testID
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
@@ -123,7 +126,37 @@ export const ListItemRadio = ({
     }
   };
 
-  return (
+  const SkeletonComponent = () => (
+    <View
+      style={[
+        IOSelectionListItemStyles.listItem,
+        { backgroundColor: mapBackgroundStates.default }
+      ]}
+      // This is required to avoid opacity
+      // inheritance on Android
+      needsOffscreenAlphaCompositing={true}
+    >
+      <View style={IOSelectionListItemStyles.listItemInner}>
+        <View style={[IOStyles.flex, IOStyles.rowSpaceBetween]}>
+          <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
+          <HSpacer size={8} />
+          <View pointerEvents="none">
+            <AnimatedRadio checked={toggleValue} />
+          </View>
+        </View>
+      </View>
+      <View>
+        <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
+        <Placeholder.Box animate="fade" radius={8} width={270} height={16} />
+        <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
+        <Placeholder.Box animate="fade" radius={8} width={200} height={16} />
+      </View>
+    </View>
+  );
+
+  return loading ? (
+    <SkeletonComponent />
+  ) : (
     <Pressable
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}

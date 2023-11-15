@@ -10,6 +10,7 @@ export type RadioItem<T> = {
   description?: string;
   icon?: IOIcons;
   disabled?: boolean;
+  loading?: boolean;
 };
 
 type Props<T> = {
@@ -33,6 +34,7 @@ export const RadioGroup = <T,>({ items, selectedItem, onPress }: Props<T>) => (
           description={item.description}
           icon={item.icon}
           disabled={item.disabled}
+          loading={item.loading}
           onValueChange={() => onPress(item.id)}
           selected={selectedItem === item.id}
         />
