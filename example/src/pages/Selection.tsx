@@ -169,6 +169,14 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
     id: "example-disabled",
     disabled: true
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading",
+    disabled: true,
+    loading: true
   }
 ];
 
