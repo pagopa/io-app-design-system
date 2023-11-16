@@ -29,6 +29,7 @@ import {
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons, Icon } from "../icons";
+import { buttonTextFontSize } from "../typography/ButtonText";
 
 export type ListItemAction = WithTestID<{
   label: string;
@@ -41,7 +42,7 @@ export type ListItemAction = WithTestID<{
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 16,
+    fontSize: buttonTextFontSize,
     lineHeight: 20,
     ...makeFontStyleObject("Regular", false, "ReadexPro")
   }
@@ -50,8 +51,8 @@ const styles = StyleSheet.create({
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyStyles = StyleSheet.create({
   labelLegacy: {
-    fontSize: 18,
-    lineHeight: 24,
+    fontSize: buttonTextFontSize,
+    lineHeight: 20,
     ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
   }
 });
