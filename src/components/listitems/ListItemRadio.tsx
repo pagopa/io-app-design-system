@@ -144,7 +144,13 @@ export const ListItemRadio = ({
       needsOffscreenAlphaCompositing={true}
     >
       <View style={IOSelectionListItemStyles.listItemInner}>
-        <View style={[IOStyles.flex, IOStyles.rowSpaceBetween]}>
+        <View
+          style={[
+            IOStyles.flex,
+            IOStyles.rowSpaceBetween,
+            IOStyles.alignCenter
+          ]}
+        >
           <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
           <HSpacer size={8} />
           <View pointerEvents="none" style={disabledStyle}>
@@ -152,7 +158,7 @@ export const ListItemRadio = ({
           </View>
         </View>
       </View>
-      <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
+      <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
       <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
