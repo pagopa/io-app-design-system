@@ -131,6 +131,8 @@ export const ListItemRadio = ({
     }
   };
 
+  const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
+
   const SkeletonComponent = () => (
     <View
       style={[
@@ -145,7 +147,7 @@ export const ListItemRadio = ({
         <View style={[IOStyles.flex, IOStyles.rowSpaceBetween]}>
           <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
           <HSpacer size={8} />
-          <View pointerEvents="none">
+          <View pointerEvents="none" style={disabledStyle}>
             <AnimatedRadio checked={toggleValue} />
           </View>
         </View>
@@ -174,7 +176,7 @@ export const ListItemRadio = ({
         style={[
           IOSelectionListItemStyles.listItem,
           animatedBackgroundStyle,
-          { opacity: disabled ? DISABLED_OPACITY : 1 }
+          disabledStyle
         ]}
         // This is required to avoid opacity
         // inheritance on Android
