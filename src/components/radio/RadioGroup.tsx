@@ -1,16 +1,15 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import { View } from "react-native";
 import { Divider } from "../divider";
-import { IOIcons } from "../icons";
 import { ListItemRadio } from "../listitems/ListItemRadio";
 
 export type RadioItem<T> = {
   id: T;
   value: string;
   description?: string;
-  icon?: IOIcons;
   disabled?: boolean;
   loading?: boolean;
+  startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
 };
 
 type Props<T> = {
@@ -32,7 +31,7 @@ export const RadioGroup = <T,>({ items, selectedItem, onPress }: Props<T>) => (
           testID={`RadioItemTestID_${item.id}`}
           value={item.value}
           description={item.description}
-          icon={item.icon}
+          startImage={item.startImage}
           disabled={item.disabled}
           loading={item.loading}
           onValueChange={() => onPress(item.id)}
