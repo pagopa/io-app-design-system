@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Dimensions, Pressable, View } from "react-native";
+import { Pressable, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -27,14 +27,19 @@ import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
+import { IOLogoPaymentType, LogoPayment } from "../logos";
+
+type ListItemRadioGraphicProps =
+  | { icon?: never; paymentLogo: IOLogoPaymentType }
+  | { icon: IOIcons; paymentLogo?: never };
 
 type Props = WithTestID<{
   value: string;
   description?: string;
-  icon?: IOIcons;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
   loading?: boolean;
+  startImage?: ListItemRadioGraphicProps;
 }>;
 
 const DISABLED_OPACITY = 0.5;
@@ -48,7 +53,7 @@ type OwnProps = Props &
   >;
 
 /**
- *  with the automatic state management that uses a {@link AnimatedCheckBox}
+ * `ListItemRadio` component with the automatic state management that uses a {@link AnimatedCheckBox}
  * The toggleValue change when a `onPress` event is received and dispatch the `onValueChange`.
  *
  * @param props
@@ -57,7 +62,7 @@ type OwnProps = Props &
 export const ListItemRadio = ({
   value,
   description,
-  icon,
+  startImage,
   selected,
   disabled,
   onValueChange,
@@ -178,17 +183,26 @@ export const ListItemRadio = ({
         <Animated.View style={animatedScaleStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
             <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {icon && (
+              {startImage && (
                 <View
                   style={{
                     marginRight: IOSelectionListItemVisualParams.iconMargin
                   }}
                 >
-                  <Icon
-                    name={icon}
-                    color="grey-300"
-                    size={IOSelectionListItemVisualParams.iconSize}
-                  />
+                  {/* icon or paymentLogo props are mutually exclusive */}
+                  {startImage.icon && (
+                    <Icon
+                      name={startImage.icon}
+                      color="grey-300"
+                      size={IOSelectionListItemVisualParams.iconSize}
+                    />
+                  )}
+                  {startImage.paymentLogo && (
+                    <LogoPayment
+                      name={startImage.paymentLogo}
+                      size={IOSelectionListItemVisualParams.iconSize}
+                    />
+                  )}
                 </View>
               )}
 

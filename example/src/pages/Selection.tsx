@@ -147,7 +147,14 @@ const renderListItemCheckbox = () => (
 
 const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
-    icon: "coggle",
+    startImage: { icon: "coggle" },
+    value: "Let's try with a basic title",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
+    id: "example-1"
+  },
+  {
+    startImage: { paymentLogo: "myBank" },
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
