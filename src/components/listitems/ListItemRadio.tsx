@@ -152,12 +152,12 @@ export const ListItemRadio = ({
           </View>
         </View>
       </View>
-      <View>
-        <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
-        <Placeholder.Box animate="fade" radius={8} width={270} height={16} />
-        <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
-        <Placeholder.Box animate="fade" radius={8} width={200} height={16} />
-      </View>
+      <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
     </View>
   );
 
