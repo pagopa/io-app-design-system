@@ -13,7 +13,6 @@ import {
 type StepperProps = {
   steps: number;
   currentStep: number;
-  padded?: boolean;
 };
 const STEPPER_SPACE: IOSpacer = 4;
 
@@ -30,7 +29,6 @@ const legacyColorMap: Record<string, IOColors> = {
 export const Stepper = ({
   steps,
   currentStep,
-  padded = false
 }: StepperProps) => {
   const { isExperimental } = useIOExperimentalDesign();
   const colors = useMemo(
@@ -47,9 +45,7 @@ export const Stepper = ({
 
   return (
     <View
-      style={
-        padded ? { paddingHorizontal: IOVisualCostants.appMarginDefault } : {}
-      }
+      style={{ paddingHorizontal: IOVisualCostants.appMarginDefault }}
     >
       <View
         onLayout={onLayout}
