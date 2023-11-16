@@ -151,14 +151,14 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-1"
+    id: "example-icon"
   },
   {
     startImage: { paymentLogo: "myBank" },
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-1"
+    id: "example-paymentLogo"
   },
   {
     value: "Let's try with a basic title",
