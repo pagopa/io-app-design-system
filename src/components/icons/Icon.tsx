@@ -379,7 +379,8 @@ export const IOIcons = {
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
-  systemNotificationsInstructions: IconSystemNotificationsInstructions
+  systemNotificationsInstructions: IconSystemNotificationsInstructions,
+  doubleSarsFilled: IconStarFilled
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
