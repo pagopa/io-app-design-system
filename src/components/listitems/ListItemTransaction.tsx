@@ -11,6 +11,7 @@ import {
   IOListItemVisualParams,
   IOStyles,
   IOVisualCostants,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 
@@ -118,6 +119,7 @@ export const ListItemTransaction = ({
   transactionStatus = "success",
   accessible
 }: ListItemTransaction) => {
+  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const maybeBadgeText = pipe(
@@ -130,7 +132,10 @@ export const ListItemTransaction = ({
     return <SkeletonComponent />;
   }
 
-  const designSystemBlue: IOColors = "blueIO-500";
+  const interactiveColor: IOColors = isExperimental
+    ? theme["interactiveElem-default"]
+    : "blue";
+
   const ListItemTransactionContent = () => {
     const TransactionAmountOrBadgeComponent = () => {
       switch (transactionStatus) {
@@ -138,7 +143,7 @@ export const ListItemTransaction = ({
           return (
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
-              color={hasChevronRight ? designSystemBlue : "black"}
+              color={hasChevronRight ? interactiveColor : "black"}
             >
               {transactionAmount || ""}
             </H6>
@@ -147,7 +152,7 @@ export const ListItemTransaction = ({
           return (
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
-              color={hasChevronRight ? designSystemBlue : "success-700"}
+              color={hasChevronRight ? interactiveColor : "success-700"}
             >
               {transactionAmount || ""}
             </H6>
@@ -188,7 +193,7 @@ export const ListItemTransaction = ({
           {hasChevronRight && (
             <Icon
               name="chevronRightListItem"
-              color={designSystemBlue}
+              color={interactiveColor}
               size={IOListItemVisualParams.chevronSize}
             />
           )}
