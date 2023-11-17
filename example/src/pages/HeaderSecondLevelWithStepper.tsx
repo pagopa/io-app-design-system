@@ -55,7 +55,7 @@ export const HeaderSecondLevelWithStepper = () => {
               accessibilityLabel: ""
             }}
           />
-          <Stepper padded steps={6} currentStep={1} />
+          <Stepper steps={6} currentStep={1} />
         </>
       )
     });
