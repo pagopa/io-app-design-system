@@ -25,6 +25,8 @@ import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel"
 import { Toasts } from "../pages/Toasts";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { NumberPadScreen } from "../pages/NumberPad";
+import { StepperPage } from "../pages/Stepper";
+import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -148,6 +150,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.STEPPER.route}
+      component={StepperPage}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.STEPPER.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.COMPONENTS.SELECTION.route}
       component={Selection}
       options={{
@@ -224,6 +234,15 @@ const AppNavigator = () => (
       component={StaticHeaderSecondLevelScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STEPPER.route}
+      component={HeaderSecondLevelWithStepper}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STEPPER.title,
         headerBackTitleVisible: false
       }}
     />
