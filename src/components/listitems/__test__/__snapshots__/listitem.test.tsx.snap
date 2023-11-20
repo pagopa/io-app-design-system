@@ -1009,7 +1009,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
 </View>
 `;
 
-exports[`Test List Item Components ListItemTransaction Snapshot 2`] = `
+exports[`Test List Item Components ListItemTransactionRadio Snapshot 1`] = `
 <View
   accessibilityRole="button"
   accessibilityState={
@@ -1113,14 +1113,10 @@ exports[`Test List Item Components ListItemTransaction Snapshot 2`] = `
         />
         <View
           style={
-            [
-              {
-                "flexDirection": "row",
-              },
-              {
-                "alignItems": "center",
-              },
-            ]
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
           }
         >
           <RNSVGSvgView
@@ -1393,7 +1389,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 2`] = `
 </View>
 `;
 
-exports[`Test List Item Components ListItemTransaction Snapshot 3`] = `
+exports[`Test List Item Components ListItemTransactionRadio Snapshot 2`] = `
 <View
   accessibilityRole="button"
   accessibilityState={
