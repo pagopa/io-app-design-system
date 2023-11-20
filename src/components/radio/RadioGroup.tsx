@@ -8,8 +8,8 @@ export type RadioItem<T> = {
   value: string;
   description?: string;
   disabled?: boolean;
-  loading?: boolean;
   startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
+  loadingProps?: ComponentProps<typeof ListItemRadio>["loadingProps"];
 };
 
 type Props<T> = {
@@ -33,7 +33,7 @@ export const RadioGroup = <T,>({ items, selectedItem, onPress }: Props<T>) => (
           description={item.description}
           startImage={item.startImage}
           disabled={item.disabled}
-          loading={item.loading}
+          loadingProps={item.loadingProps}
           onValueChange={() => onPress(item.id)}
           selected={selectedItem === item.id}
         />

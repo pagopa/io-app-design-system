@@ -33,13 +33,23 @@ type ListItemRadioGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType }
   | { icon: IOIcons; paymentLogo?: never };
 
+type ListItemRadioLoadingProps =
+  | {
+      loading: true;
+      loadingSkeleton: "base" | "extended" | "extended_icon";
+    }
+  | {
+      loading?: false;
+      loadingSkeleton?: never;
+    };
+
 type Props = WithTestID<{
   value: string;
   description?: string;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
-  loading?: boolean;
   startImage?: ListItemRadioGraphicProps;
+  loadingProps?: ListItemRadioLoadingProps;
 }>;
 
 const DISABLED_OPACITY = 0.5;
@@ -66,13 +76,12 @@ export const ListItemRadio = ({
   selected,
   disabled,
   onValueChange,
-  loading = false,
+  loadingProps,
   testID
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -133,41 +142,80 @@ export const ListItemRadio = ({
 
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
-  const SkeletonComponent = () => (
-    <View
-      style={[
-        IOSelectionListItemStyles.listItem,
-        { backgroundColor: mapBackgroundStates.default }
-      ]}
-      // This is required to avoid opacity
-      // inheritance on Android
-      needsOffscreenAlphaCompositing={true}
-    >
-      <View style={IOSelectionListItemStyles.listItemInner}>
-        <View
-          style={[
-            IOStyles.flex,
-            IOStyles.rowSpaceBetween,
-            IOStyles.alignCenter
-          ]}
-        >
-          <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
-          <HSpacer size={8} />
-          <View pointerEvents="none" style={disabledStyle}>
-            <AnimatedRadio checked={toggleValue} />
+  const SkeletonComponent = () =>
+    loadingProps && loadingProps.loading ? (
+      <View
+        style={[
+          IOSelectionListItemStyles.listItem,
+          { backgroundColor: mapBackgroundStates.default }
+        ]}
+        // This is required to avoid opacity
+        // inheritance on Android
+        needsOffscreenAlphaCompositing={true}
+      >
+        <View style={IOSelectionListItemStyles.listItemInner}>
+          <View
+            style={[
+              IOStyles.flex,
+              IOStyles.rowSpaceBetween,
+              IOStyles.alignCenter
+            ]}
+          >
+            {loadingProps.loadingSkeleton === "extended_icon" && (
+              <View
+                style={{
+                  marginRight: IOSelectionListItemVisualParams.iconMargin
+                }}
+              >
+                <Placeholder.Box
+                  animate="fade"
+                  radius={8}
+                  width={IOSelectionListItemVisualParams.iconSize}
+                  height={16}
+                />
+              </View>
+            )}
+            <Placeholder.Box
+              animate="fade"
+              radius={8}
+              width={179}
+              height={16}
+            />
+            <HSpacer size={8} />
+            <View pointerEvents="none" style={disabledStyle}>
+              <AnimatedRadio checked={toggleValue} />
+            </View>
           </View>
         </View>
+        {loadingProps.loadingSkeleton !== "base" && (
+          <>
+            <VSpacer size={8} />
+            <Placeholder.Box
+              animate="fade"
+              radius={8}
+              width={"100%"}
+              height={8}
+            />
+            <VSpacer size={8} />
+            <Placeholder.Box
+              animate="fade"
+              radius={8}
+              width={"100%"}
+              height={8}
+            />
+            <VSpacer size={8} />
+            <Placeholder.Box
+              animate="fade"
+              radius={8}
+              width={"100%"}
+              height={8}
+            />
+          </>
+        )}
       </View>
-      <VSpacer size={8} />
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-    </View>
-  );
+    ) : null;
 
-  return loading ? (
+  return loadingProps && loadingProps.loading ? (
     <SkeletonComponent />
   ) : (
     <Pressable
