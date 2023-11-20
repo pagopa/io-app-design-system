@@ -17,6 +17,7 @@ const APP_ROUTES = {
     SELECTION: { route: "DESIGN_SYSTEM_SELECTION", title: "Selection" },
     ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Accordion" },
     ALERT: { route: "DESIGN_SYSTEM_ALERT", title: "Alert" },
+    STEPPER: { route: "DESIGN_SYSTEM_STEPPER", title: "Stepper" },
     ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" },
     TEXT_INPUT: { route: "DESIGN_SYSTEM_TEXT_INPUT", title: "Text Inputs" },
     TAB_NAVIGATION: {
@@ -34,6 +35,10 @@ const APP_ROUTES = {
     HEADER_SECOND_LEVEL_STATIC: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STATIC",
       title: "Header Second Level Static"
+    },
+    HEADER_SECOND_LEVEL_STEPPER: {
+      route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STEPPER",
+      title: "Header Second Level Stepper"
     },
     TOASTS: {
       route: "DESIGN_SYSTEM_TOASTS",
