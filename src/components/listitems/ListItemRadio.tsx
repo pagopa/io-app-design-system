@@ -35,12 +35,12 @@ type ListItemRadioGraphicProps =
 
 type ListItemRadioLoadingProps =
   | {
-      loading: true;
-      loadingSkeleton: "base" | "extended" | "extended_icon";
+      state: true;
+      skeletonType: "base" | "extended" | "extended_icon";
     }
   | {
-      loading?: false;
-      loadingSkeleton?: never;
+      state?: false;
+      skeletonType?: never;
     };
 
 type Props = WithTestID<{
@@ -143,7 +143,7 @@ export const ListItemRadio = ({
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
   const SkeletonComponent = () =>
-    loadingProps && loadingProps.loading ? (
+    loadingProps && loadingProps.state ? (
       <View
         style={[
           IOSelectionListItemStyles.listItem,
@@ -161,7 +161,7 @@ export const ListItemRadio = ({
               IOStyles.alignCenter
             ]}
           >
-            {loadingProps.loadingSkeleton === "extended_icon" && (
+            {loadingProps.skeletonType === "extended_icon" && (
               <View
                 style={{
                   marginRight: IOSelectionListItemVisualParams.iconMargin
@@ -187,7 +187,7 @@ export const ListItemRadio = ({
             </View>
           </View>
         </View>
-        {loadingProps.loadingSkeleton !== "base" && (
+        {loadingProps.skeletonType !== "base" && (
           <>
             <VSpacer size={8} />
             <Placeholder.Box
@@ -215,7 +215,7 @@ export const ListItemRadio = ({
       </View>
     ) : null;
 
-  return loadingProps && loadingProps.loading ? (
+  return loadingProps && loadingProps.state ? (
     <SkeletonComponent />
   ) : (
     <Pressable
