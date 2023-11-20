@@ -190,6 +190,7 @@ import IconRead from "./svg/IconRead";
 import IconReceiptOff from "./svg/IconReceiptOff";
 import IconSignal from "./svg/IconSignal";
 import IconTouch from "./svg/IconTouch";
+import IconDoubleStarsFilled from "./svg/IconDoubleStarsFilled";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -380,7 +381,7 @@ export const IOIcons = {
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
   systemNotificationsInstructions: IconSystemNotificationsInstructions,
-  doubleSarsFilled: IconStarFilled
+  doubleSarsFilled: IconDoubleStarsFilled
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;

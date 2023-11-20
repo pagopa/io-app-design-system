@@ -9,6 +9,7 @@ import ListItemAction from "../ListItemAction";
 import ListItemIDP from "../../modules/ModuleIDP";
 import { ListItemTransaction } from "../ListItemTransaction";
 import { PressableListItemBase } from "../PressableListItemsBase";
+import { ListItemTransactionRadio } from "../ListItemTransactionRadio";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -91,5 +92,25 @@ describe("Test List Item Components", () => {
       <PressableListItemBase></PressableListItemBase>
     ).toJSON();
     expect(listItemIDP).toMatchSnapshot();
+  });
+  it("ListItemTransactionRadio Snapshot", () => {
+    const suggested = TestRenderer.create(
+      <ListItemTransactionRadio
+        formattedAmountString="€ 1.000,00"
+        label="label"
+        suggestReason="suggestReason"
+        isSuggested={true}
+        selected={true}
+      />
+    ).toJSON();
+    const notSuggested = TestRenderer.create(
+      <ListItemTransactionRadio
+        formattedAmountString="€ 1.000,00"
+        label="label"
+        isSuggested={false}
+      />
+    ).toJSON();
+    expect(suggested).toMatchSnapshot();
+    expect(notSuggested).toMatchSnapshot();
   });
 });
