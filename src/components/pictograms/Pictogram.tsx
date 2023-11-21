@@ -125,6 +125,7 @@ import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
 import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
+import PictogramBiometric from "./svg/PictogramBiometric";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -204,6 +205,7 @@ export const IOPictograms = {
   qrCode: PictogramQrCode,
   emailDotNotif: PictogramEmailDotNotif,
   emailDotCheck: PictogramEmailDotCheck,
+  biometric: PictogramBiometric,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
