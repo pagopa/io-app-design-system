@@ -119,6 +119,12 @@ import PictogramActivate from "./svg/PictogramActivate";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramAttachment from "./svg/PictogramAttachment";
+import PictogramLostConnection from "./svg/PictogramLostConnection";
+import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
+import PictogramQrCode from "./svg/PictogramQrCode";
+import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
+import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
+import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -194,6 +200,10 @@ export const IOPictograms = {
   nfcScanAndroid: PictogramNFCScanAndroid,
   nfcScaniOS: PictogramNFCScaniOS,
   attachment: PictogramAttachment,
+  lostConnection: PictogramLostConnection,
+  qrCode: PictogramQrCode,
+  emailDotNotif: PictogramEmailDotNotif,
+  emailDotCheck: PictogramEmailDotCheck,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -313,7 +323,8 @@ export type IOPictogramsBleed = Extract<
   | "star"
   | "doc"
   | "notification"
-  | "star",
+  | "star"
+  | "qrCode",
   IOPictograms
 >;
 
@@ -352,7 +363,8 @@ export const IOPictogramsBleed: {
   fatalError: PictogramBleedFatalError,
   notification: PictogramBleedNotification,
   star: PictogramBleedStar,
-  doc: PictogramBleedDoc
+  doc: PictogramBleedDoc,
+  qrCode: PictogramBleedQrCode
 };
 
 export const PictogramBleed = ({
