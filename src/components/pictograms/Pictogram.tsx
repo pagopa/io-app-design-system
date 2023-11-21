@@ -120,7 +120,6 @@ import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramAttachment from "./svg/PictogramAttachment";
 import PictogramLostConnection from "./svg/PictogramLostConnection";
-import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
 import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
