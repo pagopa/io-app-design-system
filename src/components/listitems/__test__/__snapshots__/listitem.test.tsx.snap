@@ -1114,18 +1114,20 @@ exports[`Test List Item Components ListItemTransactionRadio Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           color="black"
-          defaultColor="blue"
-          defaultWeight="Bold"
+          defaultColor="black"
+          defaultWeight="SemiBold"
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 14,
+              "fontSize": 16,
+              "lineHeight": 21,
             }
           }
           style={
             [
               {
-                "fontSize": 14,
+                "fontSize": 16,
+                "lineHeight": 21,
               },
               {
                 "color": "#0E0F13",
@@ -1221,12 +1223,14 @@ exports[`Test List Item Components ListItemTransactionRadio Snapshot 1`] = `
             fontStyle={
               {
                 "fontSize": 14,
+                "lineHeight": 21,
               }
             }
             style={
               [
                 {
                   "fontSize": 14,
+                  "lineHeight": 21,
                 },
                 {
                   "color": "#5517E3",
@@ -1258,15 +1262,15 @@ exports[`Test List Item Components ListItemTransactionRadio Snapshot 1`] = `
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             }
           }
           style={
             [
               {
-                "fontSize": 16,
-                "lineHeight": 24,
+                "fontSize": 18,
+                "lineHeight": 25,
               },
               {
                 "color": "#0B3EE3",
@@ -1494,18 +1498,20 @@ exports[`Test List Item Components ListItemTransactionRadio Snapshot 2`] = `
         <Text
           allowFontScaling={false}
           color="black"
-          defaultColor="blue"
-          defaultWeight="Bold"
+          defaultColor="black"
+          defaultWeight="SemiBold"
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 14,
+              "fontSize": 16,
+              "lineHeight": 21,
             }
           }
           style={
             [
               {
-                "fontSize": 14,
+                "fontSize": 16,
+                "lineHeight": 21,
               },
               {
                 "color": "#0E0F13",
@@ -1536,15 +1542,15 @@ exports[`Test List Item Components ListItemTransactionRadio Snapshot 2`] = `
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             }
           }
           style={
             [
               {
-                "fontSize": 16,
-                "lineHeight": 24,
+                "fontSize": 18,
+                "lineHeight": 25,
               },
               {
                 "color": "#0B3EE3",
