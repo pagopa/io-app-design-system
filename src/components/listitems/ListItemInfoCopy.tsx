@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -26,11 +20,9 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { VSpacer } from "../spacer";
-import { Body, H6, LabelSmall } from "../typography";
+import { H6, LabelSmall } from "../typography";
 
 export type ListItemInfoCopy = WithTestID<{
   label: string;
@@ -41,15 +33,6 @@ export type ListItemInfoCopy = WithTestID<{
   // Accessibility
   accessibilityLabel: string;
 }>;
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyStyles = StyleSheet.create({
-  textValue: {
-    fontSize: 18,
-    lineHeight: 24,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
 
 export const ListItemInfoCopy = ({
   label,
@@ -64,49 +47,25 @@ export const ListItemInfoCopy = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyInfoCopyText = (
+  const foregroundColor = isExperimental
+    ? theme["interactiveElem-default"]
+    : "blue";
+
+  const listItemInfoCopyContent = (
     <>
-      <Body weight="Regular">{label}</Body>
-      <VSpacer size={4} />
+      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        {label}
+      </LabelSmall>
       {/* Let developer using a custom component (e.g: skeleton) */}
       {typeof value === "string" ? (
-        <Text
-          style={[legacyStyles.textValue, { color: IOColors.blue }]}
-          numberOfLines={numberOfLines}
-        >
+        <H6 color={foregroundColor} numberOfLines={numberOfLines}>
           {value}
-        </Text>
+        </H6>
       ) : (
         { value }
       )}
     </>
   );
-
-  const infoCopyText = (
-    <>
-      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-              {label}
-            </LabelSmall>
-            {/* Let developer using a custom component (e.g: skeleton) */}
-            {typeof value === "string" ? (
-              <H6
-                color={theme["interactiveElem-default"]}
-                numberOfLines={numberOfLines}
-              >
-                {value}
-              </H6>
-            ) : (
-              { value }
-            )}
-    </>
-  );
-
-  const infoCopyTextComponent = isExperimental
-    ? infoCopyText
-    : legacyInfoCopyText;
-
-  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -180,13 +139,11 @@ export const ListItemInfoCopy = ({
               />
             </View>
           )}
-          <View style={IOStyles.flex}>
-            {infoCopyTextComponent}
-          </View>
+          <View style={IOStyles.flex}>{listItemInfoCopyContent}</View>
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="copy"
-              color={iconColor}
+              color={foregroundColor}
               size={IOListItemVisualParams.chevronSize}
             />
           </View>
