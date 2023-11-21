@@ -4,7 +4,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
 
 type HeroProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -18,6 +18,10 @@ const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFont: FontFamily = "TitilliumWeb";
+const legacyWeight: AllowedWeight = "SemiBold";
+const legacyHeroFontSize = 35;
+const legacyHeroLineHeight = 49;
+
 /**
  * `Hero` typographic style
  */
@@ -26,9 +30,12 @@ export const Hero = (props: HeroProps) => {
 
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight,
+    defaultWeight: isExperimental ? defaultWeight : legacyWeight,
     defaultColor,
     font: isExperimental ? font : legacyFont,
-    fontStyle: { fontSize: heroFontSize, lineHeight: heroLineHeight }
+    fontStyle: {
+      fontSize: isExperimental ? heroFontSize : legacyHeroFontSize,
+      lineHeight: isExperimental ? heroLineHeight : legacyHeroLineHeight
+    }
   });
 };

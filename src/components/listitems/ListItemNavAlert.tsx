@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -26,28 +20,18 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { Icon } from "../icons";
-import { Body, H6, LabelSmall } from "../typography";
+import { H6, LabelSmall } from "../typography";
 
 export type ListItemNavAlert = WithTestID<{
-  value: string;
-  description?: string;
+  value: string | React.ReactNode;
+  description?: string | React.ReactNode;
   withoutIcon?: boolean;
   onPress: (event: GestureResponderEvent) => void;
   // Accessibility
   accessibilityLabel: string;
 }>;
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyStyles = StyleSheet.create({
-  textValue: {
-    fontSize: 18,
-    lineHeight: 24,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
 
 export const ListItemNavAlert = ({
   value,
@@ -63,33 +47,30 @@ export const ListItemNavAlert = ({
   const theme = useIOTheme();
 
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyNavAlertText = (
+  const listItemNavAlertContent = (
     <>
-      <Text style={[legacyStyles.textValue, { color: IOColors.bluegreyDark }]}>
-        {value}
-      </Text>
+      {/* Let developer using a custom component (e.g: skeleton) */}
+      {typeof value === "string" ? (
+        <H6 color={theme["textBody-default"]}>{value}</H6>
+      ) : (
+        value
+      )}
       {description && (
-        <Body weight="SemiBold" color={theme.errorText}>
-          {description}
-        </Body>
+        <>
+          {typeof description === "string" ? (
+            <LabelSmall weight="SemiBold" color={theme.errorText}>
+              {description}
+            </LabelSmall>
+          ) : (
+            description
+          )}
+        </>
       )}
     </>
   );
 
-  const navAlertText = (
-    <>
-      <H6 color={theme["textBody-default"]}>{value}</H6>
-      {description && (
-        <LabelSmall weight="SemiBold" color={theme.errorText}>
-          {description}
-        </LabelSmall>
-      )}
-    </>
-  );
-
-  const navAlertTextComponent = isExperimental ? navAlertText : legacyNavAlertText;
   const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
-  
+
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
     pressed: IOColors[theme["listItem-pressed"]]
@@ -162,9 +143,7 @@ export const ListItemNavAlert = ({
               />
             </View>
           )}
-          <View style={IOStyles.flex}>
-          {navAlertTextComponent}
-          </View>
+          <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="chevronRightListItem"

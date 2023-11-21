@@ -79,10 +79,10 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
             [
               {
                 "fontFamily": "Titillium Web",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "lineHeight": 24,
+                "lineHeight": 20,
               },
               {
                 "color": "#0073E6",
@@ -237,12 +237,14 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
           fontStyle={
             {
               "fontSize": 14,
+              "lineHeight": 21,
             }
           }
           style={
             [
               {
                 "fontSize": 14,
+                "lineHeight": 21,
               },
               {
                 "color": "#555C70",
@@ -264,16 +266,16 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             }
           }
           numberOfLines={2}
           style={
             [
               {
-                "fontSize": 16,
-                "lineHeight": 24,
+                "fontSize": 18,
+                "lineHeight": 25,
               },
               {
                 "color": "#0E0F13",
@@ -368,24 +370,24 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="bluegrey"
-          defaultColor="bluegrey"
-          defaultWeight="Regular"
+          color="grey-700"
+          defaultColor="blue"
+          defaultWeight="Bold"
           font="TitilliumWeb"
           fontStyle={
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 14,
+              "lineHeight": 21,
             }
           }
           style={
             [
               {
-                "fontSize": 16,
-                "lineHeight": 24,
+                "fontSize": 14,
+                "lineHeight": 21,
               },
               {
-                "color": "#475A6D",
+                "color": "#555C70",
                 "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -396,29 +398,34 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         >
           label
         </Text>
-        <View
-          style={
+        <Text
+          allowFontScaling={false}
+          color="blue"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
             {
-              "height": 4,
+              "fontSize": 18,
+              "lineHeight": 25,
             }
           }
-        />
-        <Text
           numberOfLines={2}
           style={
             [
               {
-                "fontFamily": "Titillium Web",
                 "fontSize": 18,
-                "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 24,
+                "lineHeight": 25,
               },
               {
                 "color": "#0073E6",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
               },
             ]
           }
+          weight="SemiBold"
         >
           testValue
         </Text>
@@ -564,16 +571,32 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         }
       >
         <Text
-          style={
+          allowFontScaling={false}
+          color="black"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
             {
-              "color": "#17324D",
-              "fontFamily": "Titillium Web",
               "fontSize": 18,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "lineHeight": 24,
+              "lineHeight": 25,
             }
           }
+          style={
+            [
+              {
+                "fontSize": 18,
+                "lineHeight": 25,
+              },
+              {
+                "color": "#0E0F13",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
         >
           testValue
         </Text>
@@ -781,20 +804,32 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         }
       >
         <Text
+          allowFontScaling={false}
+          color="black"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 18,
+              "lineHeight": 25,
+            }
+          }
           style={
             [
               {
-                "fontFamily": "Titillium Web",
                 "fontSize": 18,
-                "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 24,
+                "lineHeight": 25,
               },
               {
-                "color": "#17324D",
+                "color": "#0E0F13",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
               },
             ]
           }
+          weight="SemiBold"
         >
           testValue
         </Text>
