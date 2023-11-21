@@ -125,6 +125,7 @@ import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
 import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
 import PictogramBiometric from "./svg/PictogramBiometric";
+import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -325,7 +326,8 @@ export type IOPictogramsBleed = Extract<
   | "doc"
   | "notification"
   | "star"
-  | "qrCode",
+  | "qrCode"
+  | "lostConnection",
   IOPictograms
 >;
 
@@ -365,7 +367,8 @@ export const IOPictogramsBleed: {
   notification: PictogramBleedNotification,
   star: PictogramBleedStar,
   doc: PictogramBleedDoc,
-  qrCode: PictogramBleedQrCode
+  qrCode: PictogramBleedQrCode,
+  lostConnection: PictogramBleedLostConnection
 };
 
 export const PictogramBleed = ({
