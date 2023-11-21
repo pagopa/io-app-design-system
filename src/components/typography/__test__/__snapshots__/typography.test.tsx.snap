@@ -749,15 +749,15 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
   font="TitilliumWeb"
   fontStyle={
     {
-      "fontSize": 16,
-      "lineHeight": 24,
+      "fontSize": 18,
+      "lineHeight": 25,
     }
   }
   style={
     [
       {
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 18,
+        "lineHeight": 25,
       },
       {
         "color": "#0E0F13",
@@ -849,12 +849,14 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "lineHeight": 21,
     }
   }
   style={
     [
       {
         "fontSize": 14,
+        "lineHeight": 21,
       },
       {
         "color": "#0073E6",
@@ -880,12 +882,14 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "lineHeight": 21,
     }
   }
   style={
     [
       {
         "fontSize": 14,
+        "lineHeight": 21,
       },
       {
         "color": "#0073E6",
@@ -911,12 +915,14 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "lineHeight": 21,
     }
   }
   style={
     [
       {
         "fontSize": 14,
+        "lineHeight": 21,
       },
       {
         "color": "#475A6D",
@@ -942,12 +948,14 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "lineHeight": 21,
     }
   }
   style={
     [
       {
         "fontSize": 14,
+        "lineHeight": 21,
       },
       {
         "color": "#C02927",
@@ -973,12 +981,14 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
   fontStyle={
     {
       "fontSize": 14,
+      "lineHeight": 21,
     }
   }
   style={
     [
       {
         "fontSize": 14,
+        "lineHeight": 21,
       },
       {
         "color": "#FFFFFF",

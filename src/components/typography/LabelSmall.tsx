@@ -31,6 +31,10 @@ const fontSizeMapping: Record<FontSize, number> = {
   regular: 14,
   small: 12
 };
+const lineHeightMapping: Record<FontSize, number> = {
+  regular: 21,
+  small: 18
+};
 const labelDefaultWeight = "Bold";
 const labelDefaultcolor = "blue";
 
@@ -49,7 +53,10 @@ export const LabelSmall = (props: LabelSmallProps) => {
     fontStyle: {
       fontSize: props.fontSize
         ? fontSizeMapping[props.fontSize]
-        : fontSizeMapping.regular
+        : fontSizeMapping.regular,
+      lineHeight: props.fontSize
+        ? lineHeightMapping[props.fontSize]
+        : lineHeightMapping.regular
     }
   });
 };

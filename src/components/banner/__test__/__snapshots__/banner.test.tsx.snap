@@ -78,15 +78,15 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         font="TitilliumWeb"
         fontStyle={
           {
-            "fontSize": 16,
-            "lineHeight": 24,
+            "fontSize": 18,
+            "lineHeight": 25,
           }
         }
         style={
           [
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             },
             {
               "color": "#031344",

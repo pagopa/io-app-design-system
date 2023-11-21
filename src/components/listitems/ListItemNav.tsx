@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -26,21 +20,10 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
-import { Body, H6, LabelSmall } from "../typography";
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyStyles = StyleSheet.create({
-  textValue: {
-    fontSize: 18,
-    lineHeight: 24,
-    color: IOColors.bluegreyDark,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
+import { H6, LabelSmall } from "../typography";
 
 type ListItemNavPartialProps = WithTestID<{
   value: string | React.ReactNode;
@@ -72,18 +55,20 @@ export const ListItemNav = ({
   const theme = useIOTheme();
 
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyNavText = (
+  const listItemNavContent = (
     <>
       {/* Let developer using a custom component (e.g: skeleton) */}
       {typeof value === "string" ? (
-        <Text style={legacyStyles.textValue}>{value}</Text>
+        <H6 color={theme["textBody-default"]}>{value}</H6>
       ) : (
         value
       )}
       {description && (
         <>
           {typeof description === "string" ? (
-            <Body weight="Regular">{description}</Body>
+            <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+              {description}
+            </LabelSmall>
           ) : (
             description
           )}
@@ -92,18 +77,6 @@ export const ListItemNav = ({
     </>
   );
 
-  const navText = (
-    <>
-      <H6 color={theme["textBody-default"]}>{value}</H6>
-      {description && (
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-          {description}
-        </LabelSmall>
-      )}
-    </>
-  );
-
-  const navTextComponent = isExperimental ? navText : legacyNavText;
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
     pressed: IOColors[theme["listItem-pressed"]]
@@ -188,7 +161,7 @@ export const ListItemNav = ({
               />
             </View>
           )}
-          <View style={IOStyles.flex}>{navTextComponent}</View>
+          <View style={IOStyles.flex}>{listItemNavContent}</View>
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="chevronRightListItem"
