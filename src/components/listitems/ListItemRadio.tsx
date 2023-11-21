@@ -36,11 +36,13 @@ type ListItemRadioGraphicProps =
 type ListItemRadioLoadingProps =
   | {
       state: true;
-      skeletonType: "base" | "extended" | "extended_icon";
+      skeletonDescription?: boolean;
+      skeletonIcon?: boolean;
     }
   | {
       state?: false;
-      skeletonType?: never;
+      skeletonDescription?: never;
+      skeletonIcon?: never;
     };
 
 type Props = WithTestID<{
@@ -142,80 +144,67 @@ export const ListItemRadio = ({
 
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
-  const SkeletonComponent = () =>
-    loadingProps && loadingProps.state ? (
-      <View
-        style={[
-          IOSelectionListItemStyles.listItem,
-          { backgroundColor: mapBackgroundStates.default }
-        ]}
-        // This is required to avoid opacity
-        // inheritance on Android
-        needsOffscreenAlphaCompositing={true}
-      >
-        <View style={IOSelectionListItemStyles.listItemInner}>
-          <View
-            style={[
-              IOStyles.flex,
-              IOStyles.rowSpaceBetween,
-              IOStyles.alignCenter
-            ]}
-          >
-            {loadingProps.skeletonType === "extended_icon" && (
-              <View
-                style={{
-                  marginRight: IOSelectionListItemVisualParams.iconMargin
-                }}
-              >
-                <Placeholder.Box
-                  animate="fade"
-                  radius={8}
-                  width={IOSelectionListItemVisualParams.iconSize}
-                  height={16}
-                />
-              </View>
-            )}
+  const SkeletonDescriptionLines = () => (
+    <>
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+    </>
+  );
+
+  const SkeletonIcon = () => (
+    <View
+      style={{
+        marginRight: IOSelectionListItemVisualParams.iconMargin
+      }}
+    >
+      <Placeholder.Box
+        animate="fade"
+        radius={4}
+        width={IOSelectionListItemVisualParams.iconSize}
+        height={IOSelectionListItemVisualParams.iconSize}
+      />
+    </View>
+  );
+
+  const SkeletonComponent = () => (
+    <View
+      style={[
+        IOSelectionListItemStyles.listItem,
+        { backgroundColor: mapBackgroundStates.default }
+      ]}
+    >
+      <View style={IOSelectionListItemStyles.listItemInner}>
+        <View
+          style={[
+            IOStyles.flex,
+            IOStyles.rowSpaceBetween,
+            IOStyles.alignCenter
+          ]}
+        >
+          <View style={[IOStyles.row, IOStyles.alignCenter]}>
+            {loadingProps?.skeletonIcon && <SkeletonIcon />}
             <Placeholder.Box
               animate="fade"
               radius={8}
               width={179}
               height={16}
             />
-            <HSpacer size={8} />
-            <View pointerEvents="none" style={disabledStyle}>
-              <AnimatedRadio checked={toggleValue} />
-            </View>
+          </View>
+          <HSpacer size={8} />
+          <View pointerEvents="none" style={disabledStyle}>
+            <AnimatedRadio checked={toggleValue} />
           </View>
         </View>
-        {loadingProps.skeletonType !== "base" && (
-          <>
-            <VSpacer size={8} />
-            <Placeholder.Box
-              animate="fade"
-              radius={8}
-              width={"100%"}
-              height={8}
-            />
-            <VSpacer size={8} />
-            <Placeholder.Box
-              animate="fade"
-              radius={8}
-              width={"100%"}
-              height={8}
-            />
-            <VSpacer size={8} />
-            <Placeholder.Box
-              animate="fade"
-              radius={8}
-              width={"100%"}
-              height={8}
-            />
-          </>
-        )}
       </View>
-    ) : null;
+      {loadingProps?.skeletonDescription && <SkeletonDescriptionLines />}
+    </View>
+  );
 
-  return loadingProps && loadingProps.state ? (
+  return loadingProps?.state ? (
     <SkeletonComponent />
   ) : (
     <Pressable

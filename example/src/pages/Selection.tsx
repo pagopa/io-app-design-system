@@ -185,29 +185,41 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonType: "base"
+      skeletonIcon: false
     }
   },
   {
     value: "Let's try with a disabled item",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
-    id: "example-loading_1",
+    id: "example-loading-withIcon",
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonType: "extended"
+      skeletonIcon: true
     }
   },
   {
     value: "Let's try with a disabled item",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
-    id: "example-loading_2",
+    id: "example-loading-withDescription",
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonType: "extended_icon"
+      skeletonDescription: true
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withIcon-withDescription",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonDescription: true,
+      skeletonIcon: true
     }
   }
 ];
