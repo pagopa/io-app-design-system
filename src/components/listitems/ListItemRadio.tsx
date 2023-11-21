@@ -171,12 +171,7 @@ export const ListItemRadio = ({
   );
 
   const SkeletonComponent = () => (
-    <View
-      style={[
-        IOSelectionListItemStyles.listItem,
-        { backgroundColor: mapBackgroundStates.default }
-      ]}
-    >
+    <View style={IOSelectionListItemStyles.listItem}>
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
           style={[
