@@ -5,7 +5,7 @@ import { useIOExperimentalDesign } from "../../core";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6 } from "../typography";
+import { H6, LabelSmallAlt } from "../typography";
 import { LabelSmall } from "../typography/LabelSmall";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
@@ -34,9 +34,7 @@ export const ListItemTransactionRadio = (
   return (
     <PressableListItemBase onPress={pressHandler}>
       <View>
-        <LabelSmall color="black" weight="SemiBold">
-          {props.label}
-        </LabelSmall>
+        <LabelSmallAlt>{props.label}</LabelSmallAlt>
         {props.isSuggested && (
           <>
             <VSpacer size={4} />
