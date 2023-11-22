@@ -44,29 +44,29 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 1. Move the exported file to the `icons/svg/originals` folder
 2. In your original SVG file, delete `width` and `height` attributes and leave the original `viewBox` attribute. You could easily process the image using online editors like [SVGOmg](https://jakearchibald.github.io/svgomg/) (enable `Prefer viewBox to width/height`)
 3. In the `icons/svg` folder, create a new React component (with a `.tsx` extension) of the same name
-4. Copy all the `<path>` elements into the new React component and replace the original `<path>` with the element `<Path>` (capital P) from the `react-native-svg` package. Replace all the harcoded fill values with the generic `currentColor` value
-5. Add the dynamic size and colour (if required), replacing the hardcoded values with the corresponding props. The final result should be similar to the following:
-```tsx
-import { Svg, Path } from "react-native-svg";
-// [...]
+4. Copy all the `<path>` elements into the new React component and replace the original `<path>` with the element `<Path>` (capital P) from the `react-native-svg` package. Replace all the harcoded fill values with the generic `currentColor` value, so that the icon inherits the color from the parent `Svg` container
 
-const IconSpid = ({ size, style }: SVGIconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" style={style}>
-    <Path
-      d="M13.615 …"
-      fill="currentColor"
-    />
-  </Svg>
-);
-```
+    > [!caution] 
+    > The `currentColor` value should only be added for monochromatic icons. For example, if you export an `IconSystem...` with specific color values, don't add it at all.
+
+5. Add the dynamic size and colour (if required), replacing the hardcoded values with the corresponding props. The final result should be similar to the following:
+    ```tsx
+    import { Svg, Path } from "react-native-svg";
+    // [...]
+
+    const IconSpid = ({ size, style }: SVGIconProps) => (
+      <Svg width={size} height={size} viewBox="0 0 24 24" style={style}>
+        <Path
+          d="M13.615 …"
+          fill="currentColor"
+        />
+      </Svg>
+    );
+    ```
 6. Repeat the previous steps for each icon
 7. Once you have finished processing all the new icons, run `node generateNewTimestamp` to avoid overwriting these files with the `generateNewIcons` process.
 
-> [!note]
-> The icon inherits the color from the parent `Svg` container
 
-> [!caution] 
-> The `currentColor` value should only be added for monochromatic icons. For example, if you export an `IconSystem...` with specific color values, don't add it at all.
 
 ### Add the corresponding key to the `Icon` component
 
