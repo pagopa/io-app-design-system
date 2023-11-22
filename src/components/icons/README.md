@@ -23,7 +23,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 > The icon must be contained within a `24×24` frame.
 
 > [!tip]
-> If you want to add a new icon `Wallet` to be used in the main tab bar, your icon will have a `IconNavWallet` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Icon…`, so `IconWallet`
+> If you want to add a new `Wallet` icon to be used in the main tab bar, your icon will have a `IconNavWallet` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Icon…`, so `IconWallet`
 
 > [!caution]
 > This filename will be the same as the React component, so make sure you don't already have a component with that filename

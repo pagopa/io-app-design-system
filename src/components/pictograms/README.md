@@ -17,7 +17,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 > The pictogram must be contained within a `240×240` frame.
 
 > [!tip]
-> If you want to add a new object pictogram `key`, your pictogram will have a `PictogramObjKey` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Pictogram…`, so `PictogramKey`
+> If you want to add a new `key` object pictogram, your pictogram will have a `PictogramObjKey` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Pictogram…`, so `PictogramKey`
 
 > [!caution]
 > This filename will be the same as the React component, so make sure you don't already have a component with that filename
