@@ -98,8 +98,10 @@ Essential atomic components:
   * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
   * [Divider](./src/components/divider/)
 * [**Icons**](./src/components/icons/)
+  * Assets with an intended size between `12px` and `56px`
   * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
 * [**Pictograms**](./src/components/pictograms/)
+  * Assets with an intended size greather than `56px`
   * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
 * **Logos**
   * [Payment Logos](./src/components/logos/)
@@ -107,6 +109,8 @@ Essential atomic components:
   * [Avatar](./src/components/avatar/)
 * **Loaders**
   * [LoadingSpinner](./src/components/loadingSpinner/)
+
+  ### Vector assets
 
 ## Components
 
