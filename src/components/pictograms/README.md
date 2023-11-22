@@ -43,6 +43,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
     * `#AAEEEF` → `{colorValues.main}`
     * `#00C5CA` → `{colorValues.secondary}`
 5. Add the dynamic size, replacing the hardcoded values with the corresponding props. The final result should be similar to the following:
+
     ```tsx
     import { Svg, Path } from "react-native-svg";
     // [...]
