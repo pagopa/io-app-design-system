@@ -68,6 +68,13 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 6. Repeat the previous steps for each pictogram
 7. Once you have finished processing all the new pictograms, run `node generateNewTimestamp` to avoid overwriting these files with the `generateNewPictograms` process.
 
+#### Wrong pictogram rendering?
+Before exporting the SVG file:
+1. Detach the symbol instance to avoid destructive actions to the original source component. Use a draft or disposable project document. **Don't detach it** if you are in the original Design System project file
+2. Outline all the present strokes (unless required for dynamic stroke width, but we don't manage this case at the moment)
+3. Select all the different paths and flatten into one. Now you should have a single vector layer.
+4. Make sure your vector path is centered (both vertically and horizontally) in a square
+
 ### Add the corresponding key to the `Pictogram` component
 
 Add the desired key to the `IOPictograms` object with the corresponding component reference:
@@ -77,6 +84,8 @@ export const IOPictograms = {
   …
 }
 ```
+There's no need to add the new pictogram in the specific Design System page because it happens automatically.
+
 > [!important]
 > To keep the pictograms grouped by sets, remember to put the key above the pictograms with a specific prefix
 
