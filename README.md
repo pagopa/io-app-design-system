@@ -92,18 +92,18 @@ Essential core visual attributes of the design language. It includes:
 ## Foundation
 Essential atomic components:
 * [**Typography**](./src/components/typography/)
-  * [📖 Documentation](./src/components/typography/)
-    * [Handling font files →](./src/components/typography/#handling-font-files)
+  * [📖 Docs](./src/components/typography/README.md) · [Handling font files →](./src/components/typography/README.md#handling-font-files)
 * **Layout**
   * [ContentWrapper](./src/components/contentWrapper/)
   * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
   * [Divider](./src/components/divider/)
 * [**Icons**](./src/components/icons/)
-  * [📖 Documentation](./src/components/icons/)
-    * [Add a new icon →](./src/components/icons/#add-a-new-icon)
-* [**Pictograms**](./src/components/pictograms/): [📖 Relative docs →](./src/components/pictograms/)
+  * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
+* [**Pictograms**](./src/components/pictograms/)
+  * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
 * **Logos**
-  * [Payment Logos](./src/components/logos/): [📖 Relative docs →](./src/components/logos/)
+  * [Payment Logos](./src/components/logos/)
+    * [📖 Docs](./src/components/logos/)
   * [Avatar](./src/components/avatar/)
 * **Loaders**
   * [LoadingSpinner](./src/components/loadingSpinner/)
