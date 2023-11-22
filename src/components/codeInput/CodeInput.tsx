@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSequence,
+  withTiming
+} from "react-native-reanimated";
 import { IOColors, IOStyles } from "../../core";
+import { triggerHaptic } from "../../functions";
 
 type CodeInputProps = {
   value: string;
+  onValueChange: (value: string) => void;
   length: number;
+  onValidate: (value: string) => boolean;
   variant?: "light" | "dark";
 };
 
@@ -26,23 +37,79 @@ const styles = StyleSheet.create({
 const EmptyDot = () => <View style={[styles.dotShape, styles.dotEmpty]} />;
 
 const FilletDot = ({ color }: { color: IOColors }) => (
-  <View style={[styles.dotShape, { backgroundColor: IOColors[color] }]} />
+  <View
+    style={[
+      styles.dotShape,
+      { backgroundColor: IOColors[color], borderColor: IOColors[color] }
+    ]}
+  />
 );
 
 export const CodeInput = ({
   length,
   value,
-  variant = "light"
-}: CodeInputProps) => (
-  <View style={[IOStyles.row, styles.wrapper]}>
-    {[...Array(length)].map((_, i) => (
-      <React.Fragment key={i}>
-        {value[i] ? (
-          <FilletDot color={variant === "light" ? "white" : "black"} />
-        ) : (
-          <EmptyDot />
-        )}
-      </React.Fragment>
-    ))}
-  </View>
-);
+  onValueChange,
+  variant = "light",
+  onValidate
+}: CodeInputProps) => {
+  const [status, setStatus] = React.useState<"default" | "error">("default");
+
+  const translate = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translate.value }]
+  }));
+
+  const fillColor = useMemo(
+    () =>
+      status === "error"
+        ? "error-600"
+        : variant === "light"
+        ? "white"
+        : "black",
+    [variant, status]
+  );
+
+  useEffect(() => {
+    if (onValidate && value.length === length) {
+      const isValid = onValidate(value);
+
+      if (!isValid) {
+        setStatus("error");
+        // eslint-disable-next-line functional/immutable-data
+        translate.value = withSequence(
+          withTiming(-8, {
+            duration: 150,
+            easing: Easing.inOut(Easing.cubic)
+          }),
+          withTiming(8, {
+            duration: 200,
+            easing: Easing.inOut(Easing.cubic)
+          }),
+          withTiming(0, {
+            duration: 300,
+            easing: Easing.inOut(Easing.cubic)
+          })
+        );
+
+        triggerHaptic("notificationError");
+        const timer = setTimeout(() => {
+          setStatus("default");
+          onValueChange("");
+        }, 500);
+        return () => clearTimeout(timer);
+      }
+    }
+    return;
+  }, [value, onValidate, length, onValueChange]);
+
+  return (
+    <Animated.View style={[IOStyles.row, styles.wrapper, animatedStyle]}>
+      {[...Array(length)].map((_, i) => (
+        <React.Fragment key={i}>
+          {value[i] ? <FilletDot color={fillColor} /> : <EmptyDot />}
+        </React.Fragment>
+      ))}
+    </Animated.View>
+  );
+};
