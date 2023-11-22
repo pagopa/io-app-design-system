@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Path, Svg } from "react-native-svg";
 import { SVGIconProps } from "../Icon";
-const IconDoubleStarsFilled = ({ size, style, ...props }: SVGIconProps) => (
+
+const IconSparkles = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 16 17" style={style} {...props}>
     <Path
       fill="currentColor"
@@ -10,4 +11,4 @@ const IconDoubleStarsFilled = ({ size, style, ...props }: SVGIconProps) => (
   </Svg>
 );
 
-export default IconDoubleStarsFilled;
+export default IconSparkles;

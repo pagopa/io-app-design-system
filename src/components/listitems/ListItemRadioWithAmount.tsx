@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { useIOExperimentalDesign } from "../../core";
+import { IOColors, useIOExperimentalDesign } from "../../core";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
@@ -9,7 +9,7 @@ import { H6, LabelSmallAlt } from "../typography";
 import { LabelSmall } from "../typography/LabelSmall";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
-type ListItemRadioWithAmountProps = {
+export type ListItemRadioWithAmountProps = {
   selected?: boolean;
   label: string;
   formattedAmountString: string;
@@ -31,6 +31,10 @@ export const ListItemRadioWithAmount = (
     setToggleValue(val => !val);
   };
   const isExperimental = useIOExperimentalDesign();
+
+  const interactiveColor: IOColors = isExperimental ? "blueIO-500" : "blue";
+  const suggestColor: IOColors = "hanPurple-500";
+
   return (
     <PressableListItemBase onPress={pressHandler}>
       <View>
@@ -39,9 +43,9 @@ export const ListItemRadioWithAmount = (
           <>
             <VSpacer size={4} />
             <View style={styles.rowCenter}>
-              <Icon name="doubleSarsFilled" size={16} color="hanPurple-500" />
+              <Icon name="sparkles" size={16} color={suggestColor} />
               <HSpacer size={4} />
-              <LabelSmall weight="Regular" color="hanPurple-500">
+              <LabelSmall weight="Regular" color={suggestColor}>
                 {props.suggestReason}
               </LabelSmall>
             </View>
@@ -49,9 +53,7 @@ export const ListItemRadioWithAmount = (
         )}
       </View>
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
-        <H6 color={isExperimental ? "blueIO-500" : "blue"}>
-          {props.formattedAmountString}
-        </H6>
+        <H6 color={interactiveColor}>{props.formattedAmountString}</H6>
         <HSpacer size={8} />
         <AnimatedRadio checked={toggleValue} />
       </View>

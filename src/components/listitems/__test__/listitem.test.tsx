@@ -93,7 +93,7 @@ describe("Test List Item Components", () => {
     ).toJSON();
     expect(listItemIDP).toMatchSnapshot();
   });
-  it("ListItemTransactionRadio Snapshot", () => {
+  it("ListItemRadioWithAmount Snapshot", () => {
     const suggested = TestRenderer.create(
       <ListItemRadioWithAmount
         formattedAmountString="€ 1.000,00"
