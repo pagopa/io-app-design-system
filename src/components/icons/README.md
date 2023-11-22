@@ -20,7 +20,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
   - **System**: `IconSystem…`
 
 > [!tip]
-> For example, if you want to add a new icon `Wallet` to be used in the main tab bar, your icon will have a `IconNavWallet` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Icon…`, so `IconWallet`
+> If you want to add a new icon `Wallet` to be used in the main tab bar, your icon will have a `IconNavWallet` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Icon…`, so `IconWallet`
 
 > [!caution]
 > This filename will be the same as the React component, so make sure you don't already have a component with that filename
@@ -29,9 +29,9 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 
 #### Using `generateNewIcons.js`
 1. Move the exported file to the `icons/svg/originals` folder
-2. In your terminal, in the same folder, run the command: ` node generateNewIcons.js`
-3. The script will process `timestamp.txt`, generate the new React components (with `*.tsx` extension) following exactly the steps listed in the manual process (see below), and process only the files added after this timestamp value.
-4. If the `generateNewIcons` script accidentally overwrites older React components, remember to discard the changes before committing.
+2. In your terminal, in the same folder, run the command: `node generateNewIcons.js`
+3. The script will process `timestamp.txt`, generate the new React components (with `*.tsx` extension) following exactly the steps listed in the manual process (see below), and process **only the files added after this timestamp value**
+4. If the `generateNewIcons` script accidentally overwrites older React components, remember to discard the changes before committing
 
 > [!caution] 
 > If your icon **is not** monochromatic, you should use the manual process because the script doesn't support this specific case yet
@@ -57,14 +57,14 @@ const IconSpid = ({ size, style }: SVGIconProps) => (
   </Svg>
 );
 ```
+6. Repeat the previous steps for each icon
+7. Once you have finished processing all the new icons, run `node generateNewTimestamp` to avoid overwriting these files with the `generateNewIcons` process.
+
 > [!note]
 > The icon inherits the color from the parent `Svg` container
 
 > [!caution] 
 > The `currentColor` value should only be added for monochromatic icons. For example, if you export an `IconSystem...` with specific color values, don't add it at all.
-
-6. Repeat the previous steps for each icon
-7. Once you have finished processing all the new icons, run `node generateNewTimestamp` to avoid overwriting these files with the `generateNewIcons` process.
 
 ### Add the corresponding key to `Icon` component
 
@@ -78,7 +78,7 @@ export const IOIcons = {
 > [!important]
 > To keep the icons grouped by sets, remember to put the key above the icons with a specific prefix
 
-If the icon belong to a specific set, add the key to the relative icon set:
+If the icon belongs to a specific set, add the key to the relative icon set as well:
 ```ts
 export const IONavIcons = {
   navMessages,
