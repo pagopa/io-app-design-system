@@ -110,8 +110,6 @@ Essential atomic components:
 * **Loaders**
   * [LoadingSpinner](./src/components/loadingSpinner/)
 
-  ### Vector assets
-
 ## Components
 
 * [**Buttons**](./src/components/buttons/)
