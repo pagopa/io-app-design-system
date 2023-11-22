@@ -20,6 +20,7 @@ const defaultWeight: AllowedWeight = "Regular";
 const legacyFontName: FontFamily = "TitilliumWeb";
 const legacyDefaultColor: AllowedColors = "bluegreyDark";
 const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyH4FontSize = 22;
 
 /**
  * `H4` typographic style
@@ -31,6 +32,9 @@ export const H4 = (props: H4Props) => {
     defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
     defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
     font: isExperimental ? font : legacyFontName,
-    fontStyle: { fontSize: h4FontSize, lineHeight: h4LineHeight }
+    fontStyle: {
+      fontSize: isExperimental ? h4FontSize : legacyH4FontSize,
+      lineHeight: h4LineHeight
+    }
   });
 };
