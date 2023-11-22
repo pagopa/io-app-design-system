@@ -1,8 +1,8 @@
 # Pictograms
 There are different sets:
 * **General** 
-* **Bleed**: Pictograms used near the edge of the component's block (w/o inner margins)
 * **Objects**: Pictograms that represent object without hands
+* **Bleed**: Pictograms used near the edge of the component's block (w/o inner margins)
 
 ## Add a new pictogram
 
