@@ -12,7 +12,7 @@ import {
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
-  ListItemTransactionRadio,
+  ListItemRadioWithAmount,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -85,9 +85,9 @@ export const ListItems = () => {
             weight={"SemiBold"}
             style={{ marginBottom: 16, marginTop: 16 }}
           >
-            ListItemTransactionRadio
+            ListItemRadioWithAmount
           </H2>
-          {renderListItemTransactionRadio()}
+          {renderListItemRadioWithAmount()}
           <VSpacer size={40} />
         </Screen>
       )}
@@ -509,10 +509,10 @@ const renderListItemTransaction = () => (
   </ComponentViewerBox>
 );
 
-const renderListItemTransactionRadio = () => (
-  <ComponentViewerBox name="ListItemTransaction">
+const renderListItemRadioWithAmount = () => (
+  <ComponentViewerBox name="ListItemRadioWithAmount">
     <View>
-      <ListItemTransactionRadio
+      <ListItemRadioWithAmount
         label="Banca Intesa"
         formattedAmountString={"2,50 €"}
         suggestReason="Perché costa meno"
@@ -520,7 +520,7 @@ const renderListItemTransactionRadio = () => (
       />
 
       <Divider />
-      <ListItemTransactionRadio
+      <ListItemRadioWithAmount
         label="Banca Malintesa"
         formattedAmountString={"4,50 €"}
       />

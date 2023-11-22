@@ -9,7 +9,7 @@ import { H6, LabelSmallAlt } from "../typography";
 import { LabelSmall } from "../typography/LabelSmall";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
-type ListItemTransactionRadioProps = {
+type ListItemRadioWithAmountProps = {
   selected?: boolean;
   label: string;
   formattedAmountString: string;
@@ -22,8 +22,8 @@ type ListItemTransactionRadioProps = {
       suggestReason: string;
     }
 );
-export const ListItemTransactionRadio = (
-  props: ListItemTransactionRadioProps
+export const ListItemRadioWithAmount = (
+  props: ListItemRadioWithAmountProps
 ) => {
   const [toggleValue, setToggleValue] = React.useState(props.selected ?? false);
   const pressHandler = () => {
