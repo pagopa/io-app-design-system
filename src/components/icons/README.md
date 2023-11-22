@@ -45,7 +45,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 6. Add the dynamic size and colour (if required), replacing the hardcoded values with the corresponding props:
 
 The final result should be similar to the following code:
-```jsx
+```tsx
 import { Svg, Path } from "react-native-svg";
 
 const IconSpid = ({ size, style }: SVGIconProps) => (
@@ -69,7 +69,7 @@ const IconSpid = ({ size, style }: SVGIconProps) => (
 ### Add the corresponding key to `Icon` component
 
 Add the desired key to the `IOIcons` object with the corresponding component reference:
-```jsx
+```tsx
 export const IOIcons = {
   spid: IconSpid,
   …
@@ -79,7 +79,7 @@ export const IOIcons = {
 > To keep the icons grouped by sets, remember to put the key above the icons with a specific prefix
 
 If the icon belongs to a specific set, add the key to the relative icon set as well:
-```ts
+```tsx
 export const IONavIcons = {
   navMessages,
   navWallet,
