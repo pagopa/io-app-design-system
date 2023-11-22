@@ -4,7 +4,6 @@ import Animated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
-  withRepeat,
   withSequence,
   withTiming
 } from "react-native-reanimated";
@@ -76,23 +75,24 @@ export const CodeInput = ({
 
       if (!isValid) {
         setStatus("error");
+        triggerHaptic("notificationError");
+
         // eslint-disable-next-line functional/immutable-data
         translate.value = withSequence(
           withTiming(-8, {
-            duration: 150,
+            duration: 100,
             easing: Easing.inOut(Easing.cubic)
           }),
           withTiming(8, {
-            duration: 200,
+            duration: 100,
             easing: Easing.inOut(Easing.cubic)
           }),
           withTiming(0, {
-            duration: 300,
+            duration: 100,
             easing: Easing.inOut(Easing.cubic)
           })
         );
 
-        triggerHaptic("notificationError");
         const timer = setTimeout(() => {
           setStatus("default");
           onValueChange("");
@@ -101,7 +101,7 @@ export const CodeInput = ({
       }
     }
     return;
-  }, [value, onValidate, length, onValueChange]);
+  }, [value, onValidate, length, onValueChange, translate]);
 
   return (
     <Animated.View style={[IOStyles.row, styles.wrapper, animatedStyle]}>
