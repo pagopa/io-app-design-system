@@ -100,7 +100,7 @@ export const IOPictogramsObject = {
 ### Use the new icon in a different component
 
 You can add the recently added pictogram with the following declaration:
-```tsx
+```jsx
 // Default size: 120×120
 <Pictogram name="feedback">
 ```
