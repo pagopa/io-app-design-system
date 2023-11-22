@@ -147,11 +147,18 @@ const renderListItemCheckbox = () => (
 
 const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
-    icon: "coggle",
+    startImage: { icon: "coggle" },
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-1"
+    id: "example-icon"
+  },
+  {
+    startImage: { paymentLogo: "myBank" },
+    value: "Let's try with a basic title",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
+    id: "example-paymentLogo"
   },
   {
     value: "Let's try with a basic title",
@@ -169,6 +176,51 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
     id: "example-disabled",
     disabled: true
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonIcon: false
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withIcon",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonIcon: true
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withDescription",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonDescription: true
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withIcon-withDescription",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonDescription: true,
+      skeletonIcon: true
+    }
   }
 ];
 
