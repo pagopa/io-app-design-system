@@ -12,6 +12,7 @@ import {
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
+  ListItemRadioWithAmount,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -79,6 +80,14 @@ export const ListItems = () => {
             ListItemTransaction
           </H2>
           {renderListItemTransaction()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemRadioWithAmount
+          </H2>
+          {renderListItemRadioWithAmount()}
           <VSpacer size={40} />
         </Screen>
       )}
@@ -495,6 +504,25 @@ const renderListItemTransaction = () => (
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         transactionAmount="€ 100"
         onPress={onButtonPress}
+      />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemRadioWithAmount = () => (
+  <ComponentViewerBox name="ListItemRadioWithAmount">
+    <View>
+      <ListItemRadioWithAmount
+        label="Banca Intesa"
+        formattedAmountString={"2,50 €"}
+        suggestReason="Perché costa meno"
+        isSuggested={true}
+      />
+
+      <Divider />
+      <ListItemRadioWithAmount
+        label="Banca Malintesa"
+        formattedAmountString={"4,50 €"}
       />
     </View>
   </ComponentViewerBox>

@@ -901,6 +901,621 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 </View>
 `;
 
+exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
+>
+  <View
+    style={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+        {
+          "backgroundColor": undefined,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "transform": [
+              {
+                "scale": undefined,
+              },
+            ],
+          },
+        ]
+      }
+    >
+      <View>
+        <Text
+          allowFontScaling={false}
+          color="black"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+          style={
+            [
+              {
+                "fontSize": 16,
+                "lineHeight": 21,
+              },
+              {
+                "color": "#0E0F13",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
+        >
+          label
+        </Text>
+        <View
+          style={
+            {
+              "height": 4,
+            }
+          }
+        />
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            accessibilityLabel=""
+            accessible={false}
+            align="xMidYMid"
+            bbHeight={16}
+            bbWidth={16}
+            color={4283766755}
+            focusable={false}
+            height={16}
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "color": "#5517E3",
+                },
+                {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
+              ]
+            }
+            tintColor={4283766755}
+            vbHeight={17}
+            vbWidth={16}
+            width={16}
+          >
+            <RNSVGGroup>
+              <RNSVGPath
+                d="M5.64418.97979c.23675-.63972 1.14156-.63972 1.37831 0l1.27772 3.45256a.73476.73476 0 0 0 .43411.43411l3.45258 1.27772c.6397.23675.6397 1.14156 0 1.37831L8.73432 8.80021a.73476.73476 0 0 0-.43411.43411L7.02249 12.6869c-.23675.6397-1.14156.6397-1.37831 0L4.36646 9.23432a.73476.73476 0 0 0-.43411-.43411L.47979 7.52249c-.63972-.23675-.63972-1.14156 0-1.37831l3.45256-1.27772a.73476.73476 0 0 0 .43411-.43411L5.64418.97979Zm6.65942 9.10601c.1246-.33665.6008-.33665.7255 0l.6724 1.8172a.38723.38723 0 0 0 .2285.2285l1.8172.6725c.3366.1246.3366.6008 0 .7254l-1.8172.6725a.3868.3868 0 0 0-.2285.2284l-.6724 1.8172c-.1247.3367-.6009.3367-.7255 0l-.6725-1.8172a.38638.38638 0 0 0-.2284-.2284l-1.81717-.6725c-.3367-.1246-.3367-.6008 0-.7254l1.81717-.6725a.3868.3868 0 0 0 .2284-.2285l.6725-1.8172Z"
+                fill={
+                  [
+                    2,
+                  ]
+                }
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <View
+            style={
+              {
+                "width": 4,
+              }
+            }
+          />
+          <Text
+            allowFontScaling={false}
+            color="hanPurple-500"
+            defaultColor="blue"
+            defaultWeight="Bold"
+            font="TitilliumWeb"
+            fontStyle={
+              {
+                "fontSize": 14,
+                "lineHeight": 21,
+              }
+            }
+            style={
+              [
+                {
+                  "fontSize": 14,
+                  "lineHeight": 21,
+                },
+                {
+                  "color": "#5517E3",
+                  "fontFamily": "Titillium Web",
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                },
+              ]
+            }
+            weight="Regular"
+          >
+            suggestReason
+          </Text>
+        </View>
+      </View>
+      <View
+        pointerEvents="none"
+        style={
+          {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          color="blueIO-500"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 18,
+              "lineHeight": 25,
+            }
+          }
+          style={
+            [
+              {
+                "fontSize": 18,
+                "lineHeight": 25,
+              },
+              {
+                "color": "#0B3EE3",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
+        >
+          € 1.000,00
+        </Text>
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 24,
+              "width": 24,
+            }
+          }
+          testID="AnimatedRadioInput"
+        >
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 12,
+                  "borderWidth": 2,
+                  "height": 24,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": 24,
+                },
+                {
+                  "borderColor": "#475A6D",
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0073E6",
+                },
+                {
+                  "opacity": 1,
+                  "transform": [
+                    {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          />
+          <View>
+            <RNSVGSvgView
+              align="xMidYMid"
+              bbHeight="100%"
+              bbWidth="100%"
+              focusable={false}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+            >
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="m7 12 4 4 7-7"
+                  fill={null}
+                  onLayout={[Function]}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                      "strokeDasharray",
+                      "strokeLinecap",
+                      "strokeLinejoin",
+                    ]
+                  }
+                  stroke={4294967295}
+                  strokeDasharray={null}
+                  strokeLinecap={1}
+                  strokeLinejoin={1}
+                  strokeWidth={2}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
+>
+  <View
+    style={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+        {
+          "backgroundColor": undefined,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "transform": [
+              {
+                "scale": undefined,
+              },
+            ],
+          },
+        ]
+      }
+    >
+      <View>
+        <Text
+          allowFontScaling={false}
+          color="black"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 16,
+              "lineHeight": 21,
+            }
+          }
+          style={
+            [
+              {
+                "fontSize": 16,
+                "lineHeight": 21,
+              },
+              {
+                "color": "#0E0F13",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
+        >
+          label
+        </Text>
+      </View>
+      <View
+        pointerEvents="none"
+        style={
+          {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          color="blueIO-500"
+          defaultColor="black"
+          defaultWeight="SemiBold"
+          font="TitilliumWeb"
+          fontStyle={
+            {
+              "fontSize": 18,
+              "lineHeight": 25,
+            }
+          }
+          style={
+            [
+              {
+                "fontSize": 18,
+                "lineHeight": 25,
+              },
+              {
+                "color": "#0B3EE3",
+                "fontFamily": "Titillium Web",
+                "fontStyle": "normal",
+                "fontWeight": "600",
+              },
+            ]
+          }
+          weight="SemiBold"
+        >
+          € 1.000,00
+        </Text>
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 24,
+              "width": 24,
+            }
+          }
+          testID="AnimatedRadioInput"
+        >
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 12,
+                  "borderWidth": 2,
+                  "height": 24,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": 24,
+                },
+                {
+                  "borderColor": "#475A6D",
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0073E6",
+                },
+                {
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
 <View
   accessible={false}
