@@ -43,27 +43,27 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
     * `#AAEEEF` → `{colorValues.main}`
     * `#00C5CA` → `{colorValues.secondary}`
 5. Add the dynamic size, replacing the hardcoded values with the corresponding props. The final result should be similar to the following:
-```tsx
-import { Svg, Path } from "react-native-svg";
-// [...]
+    ```tsx
+    import { Svg, Path } from "react-native-svg";
+    // [...]
 
-const PictogramAttention = ({
-  size,
-  colorValues,
-  ...props
-}: SVGPictogramProps) => (
-  <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
-    <Path
-      d="m137.89 157.04…"
-      fill={colorValues.main}
-    />
-    <Path
-      d="M139.17 211.6…"
-      fill={colorValues.hands}
-    />
-  </Svg>
-);
-```
+    const PictogramAttention = ({
+    size,
+    colorValues,
+    ...props
+    }: SVGPictogramProps) => (
+    <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
+      <Path
+        d="m137.89 157.04…"
+        fill={colorValues.main}
+      />
+      <Path
+        d="M139.17 211.6…"
+        fill={colorValues.hands}
+      />
+    </Svg>
+    );
+    ```
 6. Repeat the previous steps for each pictogram
 7. Once you have finished processing all the new pictograms, run `node generateNewTimestamp` to avoid overwriting these files with the `generateNewPictograms` process.
 
