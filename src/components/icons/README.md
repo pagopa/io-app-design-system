@@ -19,6 +19,9 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
   - **Product**: `IconProduct…`
   - **System**: `IconSystem…`
 
+> [!important]
+> The icon must be contained within a `24×24` frame.
+
 > [!tip]
 > If you want to add a new icon `Wallet` to be used in the main tab bar, your icon will have a `IconNavWallet` filename. If it doesn't belong to a specific set, you just put the name after the prefix `Icon…`, so `IconWallet`
 
@@ -40,13 +43,12 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 
 1. Move the exported file to the `icons/svg/originals` folder
 2. In your original SVG file, delete `width` and `height` attributes and leave the original `viewBox` attribute. You could easily process the image using online editors like [SVGOmg](https://jakearchibald.github.io/svgomg/) (enable `Prefer viewBox to width/height`)
-3. Copy all the `<path>` elements into a new React component and replace the original `<path>` with the element `<Path>` (capital P) from the `react-native-svg` package. Replace all the harcoded fill values with the generic `currentColor` value
-4. In the `icons/svg` folder, create a new React component (with a `.tsx` extension) of the same name
-6. Add the dynamic size and colour (if required), replacing the hardcoded values with the corresponding props:
-
-The final result should be similar to the following code:
+3. In the `icons/svg` folder, create a new React component (with a `.tsx` extension) of the same name
+4. Copy all the `<path>` elements into the new React component and replace the original `<path>` with the element `<Path>` (capital P) from the `react-native-svg` package. Replace all the harcoded fill values with the generic `currentColor` value
+5. Add the dynamic size and colour (if required), replacing the hardcoded values with the corresponding props. The final result should be similar to the following:
 ```tsx
 import { Svg, Path } from "react-native-svg";
+// [...]
 
 const IconSpid = ({ size, style }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style}>
@@ -66,7 +68,7 @@ const IconSpid = ({ size, style }: SVGIconProps) => (
 > [!caution] 
 > The `currentColor` value should only be added for monochromatic icons. For example, if you export an `IconSystem...` with specific color values, don't add it at all.
 
-### Add the corresponding key to `Icon` component
+### Add the corresponding key to the `Icon` component
 
 Add the desired key to the `IOIcons` object with the corresponding component reference:
 ```tsx
