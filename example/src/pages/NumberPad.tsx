@@ -7,7 +7,8 @@ import {
   IOStyles,
   VSpacer,
   NumberPad,
-  H3
+  H3,
+  CodeInput
 } from "@pagopa/io-app-design-system";
 import { Screen } from "../components/Screen";
 
@@ -25,11 +26,13 @@ export const NumberPadScreen = () => {
           { paddingTop: IOVisualCostants.appMarginDefault }
         ]}
       >
-        <H1>NumberPad</H1>
+        <H1>NumberPad + Code Input</H1>
         <H5>{"Value Typed on the NumberPad component"}</H5>
         <VSpacer />
         <H3>{value}</H3>
         <VSpacer />
+        <CodeInput value={value} length={6} variant="dark" />
+        <VSpacer size={48} />
         <NumberPad
           deleteAccessibilityLabel="Delete"
           onValueChange={setValue}

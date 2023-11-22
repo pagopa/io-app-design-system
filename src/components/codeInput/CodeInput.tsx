@@ -1,38 +1,48 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { IOColors, IOStyles } from "../../core";
-import { HSpacer, VSpacer } from "../spacer";
 
 type CodeInputProps = {
   value: string;
   length: number;
+  variant?: "light" | "dark";
 };
+
+const DOT_SIZE = 16;
 
 const styles = StyleSheet.create({
   dotShape: {
-    width: 16,
-    height: 16,
+    width: DOT_SIZE,
+    height: DOT_SIZE,
     borderRadius: 8,
-    borderWidth: 2,
+    borderWidth: 2
+  },
+  dotEmpty: {
     borderColor: IOColors["grey-200"]
-  }
+  },
+  wrapper: { justifyContent: "center", gap: DOT_SIZE }
 });
 
-const EmptyDot = () => <View style={styles.dotShape} />;
+const EmptyDot = () => <View style={[styles.dotShape, styles.dotEmpty]} />;
 
-export const CodeInput = ({ length }: CodeInputProps) => (
-  <View
-    style={[
-      IOStyles.flex,
-      IOStyles.row,
-      { justifyContent: "center" },
-      IOStyles.horizontalContentPadding
-    ]}
-  >
+const FilletDot = ({ color }: { color: IOColors }) => (
+  <View style={[styles.dotShape, { backgroundColor: IOColors[color] }]} />
+);
+
+export const CodeInput = ({
+  length,
+  value,
+  variant = "light"
+}: CodeInputProps) => (
+  <View style={[IOStyles.row, styles.wrapper]}>
     {[...Array(length)].map((_, i) => (
-      <View key={i}>
-        <EmptyDot />
-      </View>
+      <React.Fragment key={i}>
+        {value[i] ? (
+          <FilletDot color={variant === "light" ? "white" : "black"} />
+        ) : (
+          <EmptyDot />
+        )}
+      </React.Fragment>
     ))}
   </View>
 );
