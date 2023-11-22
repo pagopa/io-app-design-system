@@ -31,7 +31,7 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 4. If the `generateNewPictograms` script accidentally overwrites older React components, remember to discard the changes before committing
 
 > [!caution] 
-> If your pictogram **contains** other shapes than `path`, you should use the manual process because the script doesn't support this specific case yet
+> If your pictogram **contains** other shapes than `path`, you should use the manual process because the script doesn't support this specific case yet (e.g: `Circle`)
 
 #### Manual process (alternative)
 
