@@ -126,6 +126,8 @@ import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
 import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
 import PictogramBiometric from "./svg/PictogramBiometric";
 import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
+import PictogramEnded from "./svg/PictogramEnded";
+import PictogramBleedEnded from "./svg/PictogramBleedEnded";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -184,6 +186,7 @@ export const IOPictograms = {
   security: PictogramSecurity,
   cie: PictogramCie,
   pending: PictogramPending,
+  ended: PictogramEnded,
   time: PictogramTime,
   timing: PictogramTiming,
   searchLens: PictogramSearchLens,
@@ -316,6 +319,7 @@ export type IOPictogramsBleed = Extract<
   | "stopSecurity"
   | "time"
   | "pending"
+  | "ended"
   | "timing"
   | "searchLens"
   | "passcode"
@@ -359,6 +363,7 @@ export const IOPictogramsBleed: {
   stopSecurity: PictogramBleedStopSecurity,
   time: PictogramBleedTime,
   pending: PictogramBleedPending,
+  ended: PictogramBleedEnded,
   timing: PictogramBleedTiming,
   searchLens: PictogramBleedSearch,
   passcode: PictogramBleedPasscode,
