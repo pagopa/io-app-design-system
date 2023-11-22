@@ -49,9 +49,9 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
     // [...]
 
     const PictogramAttention = ({
-    size,
-    colorValues,
-    ...props
+      size,
+      colorValues,
+      ...props
     }: SVGPictogramProps) => (
     <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
       <Path
