@@ -26,8 +26,8 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 
 #### Using `generateNewPictograms.js`
 1. Move the exported file to the `pictograms/svg/originals` folder
-2. In your terminal, in the same folder, run the command: `node generateNewPictograms.js`
-3. The script will process `timestamp.txt`, generate the new React components (with `*.tsx` extension) following exactly the steps listed in the manual process (see below), and process **only the files added after this timestamp value**
+2. In your terminal, in the same folder, run the command: `yarn generate:pictograms`
+3. The script will process `scripts/pictograms_timestamp.txt`, generate the new React components (with `*.tsx` extension) following exactly the steps listed in the manual process (see below), and process **only the files added after this timestamp value**
 4. If the `generateNewPictograms` script accidentally overwrites older React components, remember to discard the changes before committing
 
 > [!caution] 
