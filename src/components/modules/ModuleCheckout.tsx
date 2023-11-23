@@ -10,7 +10,7 @@ import { PressableModuleBase } from "./PressableModuleBase";
 
 // ---------------- types ----------------
 
-type ModuleCheckoutProps = { ctaText: string } & (
+export type ModuleCheckoutProps = { ctaText: string } & (
   | {
       paymentLogo?: IOLogoPaymentType;
       title: string;
