@@ -67,7 +67,7 @@ export const ListItemNav = ({
           <View style={{ alignSelf: "flex-start" }}>
             <Badge {...badgeProps} />
           </View>
-          <VSpacer size={8} />
+          <VSpacer size={4} />
         </>
       )}
       {/* Let developer using a custom component (e.g: skeleton) */}
