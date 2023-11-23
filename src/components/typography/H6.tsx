@@ -18,6 +18,8 @@ const h6DefaultWeight: AllowedWeight = "Regular";
 const fontName: FontFamily = "ReadexPro";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontSize = 18;
+const legacyLineHeight = 25;
 const legacyFontName: FontFamily = "TitilliumWeb";
 const legacyDefaultWeight: AllowedWeight = "SemiBold";
 
@@ -32,6 +34,9 @@ export const H6 = (props: H6Props) => {
     defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
     defaultColor: h6DefaultColor,
     font: isExperimental ? fontName : legacyFontName,
-    fontStyle: { fontSize: h6FontSize, lineHeight: h6LineHeight }
+    fontStyle: {
+      fontSize: isExperimental ? h6FontSize : legacyFontSize,
+      lineHeight: isExperimental ? h6LineHeight : legacyLineHeight
+    }
   });
 };

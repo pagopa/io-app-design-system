@@ -190,6 +190,7 @@ import IconRead from "./svg/IconRead";
 import IconReceiptOff from "./svg/IconReceiptOff";
 import IconSignal from "./svg/IconSignal";
 import IconTouch from "./svg/IconTouch";
+import IconSparkles from "./svg/IconSparkles";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -289,6 +290,7 @@ export const IOIcons = {
   familySharing: IconFamilySharing,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
+  sparkles: IconSparkles,
   starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
   hearthEmpty: IconHearthEmpty,

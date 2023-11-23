@@ -119,6 +119,15 @@ import PictogramActivate from "./svg/PictogramActivate";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramAttachment from "./svg/PictogramAttachment";
+import PictogramLostConnection from "./svg/PictogramLostConnection";
+import PictogramQrCode from "./svg/PictogramQrCode";
+import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
+import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
+import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
+import PictogramBiometric from "./svg/PictogramBiometric";
+import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
+import PictogramEnded from "./svg/PictogramEnded";
+import PictogramBleedEnded from "./svg/PictogramBleedEnded";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -177,6 +186,7 @@ export const IOPictograms = {
   security: PictogramSecurity,
   cie: PictogramCie,
   pending: PictogramPending,
+  ended: PictogramEnded,
   time: PictogramTime,
   timing: PictogramTiming,
   searchLens: PictogramSearchLens,
@@ -194,6 +204,11 @@ export const IOPictograms = {
   nfcScanAndroid: PictogramNFCScanAndroid,
   nfcScaniOS: PictogramNFCScaniOS,
   attachment: PictogramAttachment,
+  lostConnection: PictogramLostConnection,
+  qrCode: PictogramQrCode,
+  emailDotNotif: PictogramEmailDotNotif,
+  emailDotCheck: PictogramEmailDotCheck,
+  biometric: PictogramBiometric,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -304,6 +319,7 @@ export type IOPictogramsBleed = Extract<
   | "stopSecurity"
   | "time"
   | "pending"
+  | "ended"
   | "timing"
   | "searchLens"
   | "passcode"
@@ -313,7 +329,9 @@ export type IOPictogramsBleed = Extract<
   | "star"
   | "doc"
   | "notification"
-  | "star",
+  | "star"
+  | "qrCode"
+  | "lostConnection",
   IOPictograms
 >;
 
@@ -345,6 +363,7 @@ export const IOPictogramsBleed: {
   stopSecurity: PictogramBleedStopSecurity,
   time: PictogramBleedTime,
   pending: PictogramBleedPending,
+  ended: PictogramBleedEnded,
   timing: PictogramBleedTiming,
   searchLens: PictogramBleedSearch,
   passcode: PictogramBleedPasscode,
@@ -352,7 +371,9 @@ export const IOPictogramsBleed: {
   fatalError: PictogramBleedFatalError,
   notification: PictogramBleedNotification,
   star: PictogramBleedStar,
-  doc: PictogramBleedDoc
+  doc: PictogramBleedDoc,
+  qrCode: PictogramBleedQrCode,
+  lostConnection: PictogramBleedLostConnection
 };
 
 export const PictogramBleed = ({
