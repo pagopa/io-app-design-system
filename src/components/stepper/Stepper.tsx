@@ -17,19 +17,14 @@ type StepperProps = {
 const STEPPER_SPACE: IOSpacer = 4;
 
 const colorMap: Record<string, IOColors> = {
-  active: "blueIO-500",
-  inactive: "grey-200"
+  active: "blueIO-500"
 };
 
 const legacyColorMap: Record<string, IOColors> = {
-  active: "blue",
-  inactive: "bluegrey"
+  active: "blue"
 };
 
-export const Stepper = ({
-  steps,
-  currentStep,
-}: StepperProps) => {
+export const Stepper = ({ steps, currentStep }: StepperProps) => {
   const { isExperimental } = useIOExperimentalDesign();
   const colors = useMemo(
     () => (isExperimental ? colorMap : legacyColorMap),
@@ -44,9 +39,7 @@ export const Stepper = ({
   };
 
   return (
-    <View
-      style={{ paddingHorizontal: IOVisualCostants.appMarginDefault }}
-    >
+    <View style={{ paddingHorizontal: IOVisualCostants.appMarginDefault }}>
       <View
         onLayout={onLayout}
         style={[IOStyles.flex, IOStyles.rowSpaceBetween]}
@@ -57,7 +50,7 @@ export const Stepper = ({
             style={{
               borderRadius: 2,
               borderBottomColor:
-                IOColors[i > currentStep - 1 ? colors.inactive : colors.active],
+                IOColors[i > currentStep - 1 ? "grey-200" : colors.active],
               borderBottomWidth: 2,
               width: stepWidth - STEPPER_SPACE
             }}

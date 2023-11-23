@@ -1,5 +1,11 @@
 
 {
   "extends": "./tsconfig",
-  "exclude": ["example"]
+  "exclude": [
+    "android",
+    "ios",
+    "example",
+    "node_modules",
+    "stories"
+  ]
 }

@@ -4,15 +4,16 @@ import {
   IOThemeContext,
   Icon,
   ListItemAction,
+  ListItemHeader,
   ListItemInfo,
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
-  ListItemRadioWithAmount,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -62,6 +63,15 @@ export const ListItems = () => {
             ListItemInfo
           </H2>
           {renderListItemInfo()}
+
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemHeader
+          </H2>
+          {renderListItemHeader()}
 
           <H2
             color={theme["textHeading-default"]}
@@ -158,6 +168,40 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav without chevron icon"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+          hideChevron
         />
       </View>
     </ComponentViewerBox>
@@ -364,6 +408,66 @@ const renderListItemInfo = () => (
         label="Label"
         value={"Value"}
         icon="gallery"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemHeader = () => (
+  <ComponentViewerBox name="ListItemHeader">
+    <View>
+      <ListItemHeader
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+      <ListItemHeader
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+      <ListItemHeader
+        iconName="creditCard"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "buttonLink",
+          componentProps: {
+            label: "Modifica",
+            accessibilityLabel: "Modifica",
+            onPress: onButtonPress
+          }
+        }}
+      />
+      <ListItemHeader
+        iconName="psp"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "iconButton",
+          componentProps: {
+            icon: "info",
+            accessibilityLabel: "info",
+            onPress: onButtonPress
+          }
+        }}
+      />
+
+      <ListItemHeader
+        iconName="psp"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "badge",
+          componentProps: {
+            text: "Pagato",
+            variant: "success"
+          }
+        }}
+      />
+
+      <ListItemHeader
+        label="Label"
+        iconName="gallery"
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
