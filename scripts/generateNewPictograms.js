@@ -65,10 +65,13 @@ const prettier = require("prettier");
 const fs = require("fs-extra");
 const { transform } = require("@svgr/core");
 
-const svgDir = join(__dirname, "svg/originals");
-const tsxDir = join(__dirname, "svg");
-const templateFilePath = join(__dirname, "svg/_PictogramTemplate.tsx");
-const timestampFilePath = join(__dirname, "timestamp.txt");
+const svgDir = join(__dirname, "../src/components/pictograms/svg/originals");
+const tsxDir = join(__dirname, "../src/components/pictograms/svg");
+const templateFilePath = join(
+  __dirname,
+  "../src/components/pictograms/svg/_PictogramTemplate.tsx"
+);
+const timestampFilePath = join(__dirname, "pictograms_timestamp.txt");
 
 const colorMapValues = {
   "#0B3EE3": "{colorValues.hands}",

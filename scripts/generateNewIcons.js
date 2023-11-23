@@ -74,10 +74,13 @@ const prettier = require("prettier");
 const fs = require("fs-extra");
 const { transform } = require("@svgr/core");
 
-const svgDir = join(__dirname, "svg/originals");
-const tsxDir = join(__dirname, "svg");
-const templateFilePath = join(__dirname, "svg/_IconTemplate.tsx");
-const timestampFilePath = join(__dirname, "timestamp.txt");
+const svgDir = join(__dirname, "../src/components/icons/svg/originals");
+const tsxDir = join(__dirname, "../src/components/icons/svg");
+const templateFilePath = join(
+  __dirname,
+  "../src/components/icons/svg/_IconTemplate.tsx"
+);
+const timestampFilePath = join(__dirname, "icons_timestamp.txt");
 
 const convertTimestampToReadableFormat = timestamp =>
   new Date(timestamp).toLocaleString("it-IT", {
