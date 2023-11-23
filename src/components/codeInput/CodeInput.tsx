@@ -54,6 +54,7 @@ export const CodeInput = ({
   const [status, setStatus] = React.useState<"default" | "error">("default");
 
   const translate = useSharedValue(0);
+  const shakeOffset: number = 8;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translate.value }]
@@ -79,18 +80,23 @@ export const CodeInput = ({
 
         // eslint-disable-next-line functional/immutable-data
         translate.value = withSequence(
-          withTiming(-8, {
-            duration: 100,
+          withTiming(shakeOffset, {
+            duration: 75,
             easing: Easing.inOut(Easing.cubic)
           }),
-          withTiming(8, {
-            duration: 100,
+          withTiming(-shakeOffset, {
+            duration: 75,
             easing: Easing.inOut(Easing.cubic)
           }),
-          withTiming(0, {
-            duration: 100,
+          withTiming(shakeOffset / 2, {
+            duration: 75,
             easing: Easing.inOut(Easing.cubic)
-          })
+          }),
+          withTiming(-shakeOffset / 2, {
+            duration: 75,
+            easing: Easing.inOut(Easing.cubic)
+          }),
+          withTiming(0, { duration: 75, easing: Easing.inOut(Easing.cubic) })
         );
 
         const timer = setTimeout(() => {
