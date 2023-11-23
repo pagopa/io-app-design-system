@@ -392,7 +392,7 @@ const renderListItemHeader = () => (
         accessibilityLabel="Empty just for testing purposes"
       />
       <ListItemHeader
-        icon="creditCard"
+        iconName="creditCard"
         label="Label"
         accessibilityLabel="Empty just for testing purposes"
         endElement={{
@@ -405,7 +405,7 @@ const renderListItemHeader = () => (
         }}
       />
       <ListItemHeader
-        icon="psp"
+        iconName="psp"
         label="Label"
         accessibilityLabel="Empty just for testing purposes"
         endElement={{
@@ -419,7 +419,7 @@ const renderListItemHeader = () => (
       />
 
       <ListItemHeader
-        icon="psp"
+        iconName="psp"
         label="Label"
         accessibilityLabel="Empty just for testing purposes"
         endElement={{
@@ -433,7 +433,7 @@ const renderListItemHeader = () => (
 
       <ListItemHeader
         label="Label"
-        icon="gallery"
+        iconName="gallery"
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
