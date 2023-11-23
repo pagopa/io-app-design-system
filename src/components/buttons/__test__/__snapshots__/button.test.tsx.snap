@@ -74,15 +74,15 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         font="TitilliumWeb"
         fontStyle={
           {
-            "fontSize": 16,
-            "lineHeight": 24,
+            "fontSize": 18,
+            "lineHeight": 25,
           }
         }
         style={
           [
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             },
             {
               "color": "#0E0F13",
