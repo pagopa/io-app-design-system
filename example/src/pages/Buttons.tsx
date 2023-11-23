@@ -785,7 +785,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
         <View>
           <ButtonExtendedOutline
-            icon="chevronRight"
+            icon="chevronRightListItem"
             label={"Label only"}
             onPress={() => {
               alert("Action triggered");

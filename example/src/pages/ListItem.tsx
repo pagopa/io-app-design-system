@@ -8,6 +8,7 @@ import {
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
@@ -79,6 +80,14 @@ export const ListItems = () => {
             ListItemTransaction
           </H2>
           {renderListItemTransaction()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemRadioWithAmount
+          </H2>
+          {renderListItemRadioWithAmount()}
           <VSpacer size={40} />
         </Screen>
       )}
@@ -149,6 +158,40 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav without chevron icon"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+          hideChevron
         />
       </View>
     </ComponentViewerBox>
@@ -495,6 +538,25 @@ const renderListItemTransaction = () => (
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         transactionAmount="€ 100"
         onPress={onButtonPress}
+      />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemRadioWithAmount = () => (
+  <ComponentViewerBox name="ListItemRadioWithAmount">
+    <View>
+      <ListItemRadioWithAmount
+        label="Banca Intesa"
+        formattedAmountString={"2,50 €"}
+        suggestReason="Perché costa meno"
+        isSuggested={true}
+      />
+
+      <Divider />
+      <ListItemRadioWithAmount
+        label="Banca Malintesa"
+        formattedAmountString={"4,50 €"}
       />
     </View>
   </ComponentViewerBox>

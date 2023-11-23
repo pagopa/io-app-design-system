@@ -16,7 +16,13 @@ import { Screen } from "../components/Screen";
 export const Sandbox = () => (
   <Screen>
     <View
-      style={[IOStyles.flex, { paddingTop: IOVisualCostants.appMarginDefault }]}
+      style={[
+        IOStyles.flex,
+        {
+          paddingTop: IOVisualCostants.appMarginDefault
+          // backgroundColor: IOColors["blueIO-500"]
+        }
+      ]}
     >
       <H1>Sandbox</H1>
       <H5>{"Insert here the component you're willing to test"}</H5>

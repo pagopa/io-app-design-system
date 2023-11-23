@@ -8,3 +8,4 @@ export * from "./PressableListItemsBase";
 export * from "./ListItemSwitch";
 export * from "./ListItemCheckbox";
 export * from "./ListItemRadio";
+export * from "./ListItemRadioWithAmount";
