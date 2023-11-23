@@ -106,13 +106,13 @@ const renderModuleCheckout = () => (
     <ComponentViewerBox name="ModuleCheckout, default">
       <ModuleCheckout
         paymentLogo="amex"
-        header="Amex"
-        body="arien_c********@**hoo.it"
+        title="Amex"
+        subtitle="arien_c********@**hoo.it"
         ctaText="Modifica"
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, no icon">
-      <ModuleCheckout header="3,50 $" body="Piú o meno" ctaText="Modifica" />
+      <ModuleCheckout title="3,50 $" subtitle="Piú o meno" ctaText="Modifica" />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
       <ModuleCheckout isLoading ctaText="Loading" />
