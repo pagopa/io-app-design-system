@@ -8,11 +8,11 @@ import {
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
-  ListItemRadioWithAmount,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -158,6 +158,40 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav without chevron icon"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          badgeProps={{
+            text: "Novità",
+            variant: "blue"
+          }}
+          hideChevron
         />
       </View>
     </ComponentViewerBox>
