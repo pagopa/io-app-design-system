@@ -27,6 +27,13 @@ type BadgeProps = {
   componentProps: ComponentProps<typeof Badge>;
 };
 
+type IconProps =
+  | {
+      iconName: IOIcons;
+      iconColor?: ComponentProps<typeof Icon>["color"];
+    }
+  | { iconName?: never; iconColor?: never };
+
 type EndElementProps =
   | ButtonLinkActionProps
   | IconButtonActionProps
@@ -35,15 +42,16 @@ type EndElementProps =
 export type ListItemHeader = WithTestID<{
   label: string;
   numberOfLines?: number;
-  icon?: IOIcons;
   endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
-}>;
+}> &
+  IconProps;
 
 export const ListItemHeader = ({
   label,
-  icon,
+  iconName,
+  iconColor,
   endElement,
   accessibilityLabel,
   testID
@@ -115,11 +123,11 @@ export const ListItemHeader = ({
       accessibilityLabel={listItemAccessibilityLabel}
     >
       <View style={IOListItemStyles.listItemInner}>
-        {icon && (
+        {iconName && (
           <View style={{ marginRight: IOListItemVisualParams.actionMargin }}>
             <Icon
-              name={icon}
-              color={theme["icon-decorative"]}
+              name={iconName}
+              color={iconColor ? iconColor : theme["icon-decorative"]}
               size={IOListItemVisualParams.iconSize}
             />
           </View>
