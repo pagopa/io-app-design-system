@@ -5,9 +5,7 @@ import {
   H5,
   IOVisualCostants,
   IOStyles,
-  VSpacer,
-  CodeInput,
-  IOColors
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import { Screen } from "../components/Screen";
 
@@ -30,7 +28,6 @@ export const Sandbox = () => (
       <H5>{"Insert here the component you're willing to test"}</H5>
       <VSpacer />
       {/* Insert here the component you're willing to test */}
-      <CodeInput length={6} value="" />
     </View>
   </Screen>
 );
