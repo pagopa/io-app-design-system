@@ -62,7 +62,7 @@ export const NumberPadScreen = () => {
         <H1>NumberPad + Code Input</H1>
         <H5>{"Value Typed on the NumberPad component"}</H5>
         <VSpacer />
-        <H3>{value}</H3>
+        <H3 color={blueBackground ? "white" : "black"}>{value}</H3>
         <VSpacer />
         <CodeInput
           value={value}
