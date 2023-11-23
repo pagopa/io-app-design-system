@@ -67,7 +67,7 @@ export const NumberPadScreen = () => {
         <CodeInput
           value={value}
           length={PIN_LENGTH}
-          variant="dark"
+          variant={blueBackground ? "light" : "dark"}
           onValueChange={onValueChange}
           onValidate={v => v === "123456"}
         />
