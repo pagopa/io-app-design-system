@@ -21,8 +21,10 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
+import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 
 type ListItemNavPartialProps = WithTestID<{
@@ -31,6 +33,8 @@ type ListItemNavPartialProps = WithTestID<{
   onPress: (event: GestureResponderEvent) => void;
   // Accessibility
   accessibilityLabel: string;
+  hideChevron?: boolean;
+  badgeProps?: React.ComponentProps<typeof Badge>;
 }>;
 
 export type ListItemNavGraphicProps =
@@ -48,15 +52,24 @@ export const ListItemNav = ({
   iconColor = "grey-450",
   paymentLogo,
   accessibilityLabel,
-  testID
+  testID,
+  hideChevron = false,
+  badgeProps
 }: ListItemNav) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   const listItemNavContent = (
     <>
+      {badgeProps && (
+        <>
+          <View style={{ alignSelf: "flex-start" }}>
+            <Badge {...badgeProps} />
+          </View>
+          <VSpacer size={8} />
+        </>
+      )}
       {/* Let developer using a custom component (e.g: skeleton) */}
       {typeof value === "string" ? (
         <H6 color={theme["textBody-default"]}>{value}</H6>
@@ -162,13 +175,15 @@ export const ListItemNav = ({
             </View>
           )}
           <View style={IOStyles.flex}>{listItemNavContent}</View>
-          <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name="chevronRightListItem"
-              color={navIconColor}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          </View>
+          {!hideChevron && (
+            <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
+              <Icon
+                name="chevronRightListItem"
+                color={navIconColor}
+                size={IOListItemVisualParams.chevronSize}
+              />
+            </View>
+          )}
         </Animated.View>
       </Animated.View>
     </Pressable>
