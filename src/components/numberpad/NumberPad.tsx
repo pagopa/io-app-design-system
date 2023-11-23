@@ -1,5 +1,4 @@
-/* eslint-disable functional/immutable-data */
-import React, { ComponentProps, useRef } from "react";
+import React, { ComponentProps } from "react";
 import { View } from "react-native";
 import { BiometricsValidType } from "../../utils/types";
 import { IONumberPadButtonStyles, IOStyles } from "../../core";
@@ -21,6 +20,7 @@ type BiometricAuthProps =
     };
 
 type NumberPadProps = {
+  value: string;
   onValueChange: (value: string) => void;
   variant: ComponentProps<typeof NumberButton>["variant"];
   deleteAccessibilityLabel: string;
@@ -47,6 +47,7 @@ const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
   </View>
 );
 export const NumberPad = ({
+  value,
   variant = "dark",
   onValueChange,
   biometricType,
@@ -54,16 +55,14 @@ export const NumberPad = ({
   biometricAccessibilityLabel,
   deleteAccessibilityLabel
 }: NumberPadProps) => {
-  const numberPadValue = useRef<string>("");
-
   const numberPadPress = (number: number) => {
-    numberPadValue.current = `${numberPadValue.current}${number}`;
-    onValueChange(numberPadValue.current);
+    const newValue = `${value}${number}`;
+    onValueChange(newValue);
   };
 
   const onDeletePress = () => {
-    numberPadValue.current = numberPadValue.current.slice(0, -1);
-    onValueChange(numberPadValue.current);
+    const newValue = value.slice(0, -1);
+    onValueChange(newValue);
   };
 
   type ButtonType = "biometric" | "delete";
