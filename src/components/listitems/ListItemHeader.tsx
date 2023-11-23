@@ -119,7 +119,7 @@ export const ListItemHeader = ({
           <View style={{ marginRight: IOListItemVisualParams.actionMargin }}>
             <Icon
               name={icon}
-              color="grey-450"
+              color={theme["icon-decorative"]}
               size={IOListItemVisualParams.iconSize}
             />
           </View>
