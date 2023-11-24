@@ -101,6 +101,8 @@ const renderModulePaymentNotice = () => (
   </>
 );
 
+const modulePress = () => Alert.alert("ModulePress");
+
 const renderModuleCheckout = () => (
   <>
     <ComponentViewerBox name="ModuleCheckout, default">
@@ -109,10 +111,16 @@ const renderModuleCheckout = () => (
         title="Amex"
         subtitle="arien_c********@**hoo.it"
         ctaText="Modifica"
+        onPress={modulePress}
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, no icon">
-      <ModuleCheckout title="3,50 $" subtitle="Piú o meno" ctaText="Modifica" />
+      <ModuleCheckout
+        title="3,50 $"
+        subtitle="Piú o meno"
+        ctaText="Modifica"
+        onPress={modulePress}
+      />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
       <ModuleCheckout isLoading ctaText="Loading" />
