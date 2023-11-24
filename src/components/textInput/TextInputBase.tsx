@@ -317,6 +317,7 @@ export const TextInputBase = ({
          * translate to top on focus
          */}
         <Animated.View
+          pointerEvents={"none"}
           style={[styles.textInputLabelWrapper, icon ? { left: 32 } : {}]}
         >
           <Animated.Text
