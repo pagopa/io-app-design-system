@@ -7,14 +7,12 @@ import {
   IOStyles,
   VSpacer,
   NumberPad,
-  H3,
   CodeInput,
   ListItemSwitch,
   IOColors,
   LabelSmallAlt
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import { Screen } from "../components/Screen";
 
 const PIN_LENGTH = 6;
 /**
