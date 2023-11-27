@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     justifyContent: "center"
-    // gap: DOT_SIZE ← Property not supported in RN 0.69
   }
 });
 
