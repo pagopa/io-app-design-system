@@ -17,4 +17,9 @@ jobs:
       - name: Build Storybook
         run: yarn predeploy
       - name: Publish to GH-Pages
-        run: yarn deploy-storybook
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy-storybook -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
