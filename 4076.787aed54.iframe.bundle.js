@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_pagopa_io_app_design_system=self.webpackChunk_pagopa_io_app_design_system||[]).push([[4076],{"./stories/tsconfig.json":module=>{module.exports=JSON.parse('{"extends":"../tsconfig"}')}}]);
