@@ -2,7 +2,7 @@ name: Publish the storybook
 on:
   - pull_request
 jobs:
-  npm:
+  storybook-release:
     runs-on: ubuntu-latest
     environment: prod
     steps:
