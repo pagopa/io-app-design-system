@@ -1,6 +1,10 @@
 name: Publish the storybook
 on:
   - pull_request
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   storybook-release:
     runs-on: ubuntu-latest
