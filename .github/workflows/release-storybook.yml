@@ -16,10 +16,13 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build Storybook
         run: yarn predeploy
-      - name: Publish to GH-Pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          yarn deploy-storybook -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'upload'
+        uses: actions/upload-pages-artifact@v1.0.4
+        with: 
+          path: "storybook-static"
+      - id: deploy
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ github.token }}
         
