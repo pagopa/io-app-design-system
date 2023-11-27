@@ -1,4 +1,4 @@
-name: Publish the package npm registry
+name: Publish the storybook
 on:
   - pull_request
 jobs:
