@@ -9,6 +9,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { IOColors, IOStyles } from "../../core";
 import { triggerHaptic } from "../../functions";
+import { HSpacer } from "../spacer";
 
 type CodeInputProps = {
   value: string;
@@ -30,7 +31,9 @@ const styles = StyleSheet.create({
   dotEmpty: {
     borderColor: IOColors["grey-200"]
   },
-  wrapper: { justifyContent: "center", gap: DOT_SIZE }
+  wrapper: {
+    justifyContent: "center"
+  }
 });
 
 const EmptyDot = () => <View style={[styles.dotShape, styles.dotEmpty]} />;
@@ -111,9 +114,19 @@ export const CodeInput = ({
 
   return (
     <Animated.View style={[IOStyles.row, styles.wrapper, animatedStyle]}>
-      {[...Array(length)].map((_, i) => (
+      {[...Array(length)].map((_, i, arr) => (
         <React.Fragment key={i}>
-          {value[i] ? <FilletDot color={fillColor} /> : <EmptyDot />}
+          {value[i] ? (
+            <>
+              <FilletDot color={fillColor} />
+              {i !== arr.length - 1 && <HSpacer size={DOT_SIZE} />}
+            </>
+          ) : (
+            <>
+              <EmptyDot />
+              {i !== arr.length - 1 && <HSpacer size={DOT_SIZE} />}
+            </>
+          )}
         </React.Fragment>
       ))}
     </Animated.View>

@@ -74,9 +74,12 @@ export const NumberPad = ({
   }) => (
     <View
       style={[
-        IOStyles.flex,
         IOStyles.rowSpaceBetween,
-        { justifyContent: "space-between", alignItems: "center" }
+        {
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexGrow: 1
+        }
       ]}
     >
       {buttons.map(elem => {
