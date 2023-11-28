@@ -94,7 +94,7 @@ export const HeaderFirstLevel = ({
             <>
               <IconButton
                 {...thirdAction}
-                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+                color={backgroundColor === "dark" ? "contrast" : "primary"}
               />
               {/* Ideally, with the "gap" flex property,
               we can get rid of these ugly constructs */}
@@ -105,7 +105,7 @@ export const HeaderFirstLevel = ({
             <>
               <IconButton
                 {...secondAction}
-                color={backgroundColor === "dark" ? "contrast" : "neutral"}
+                color={backgroundColor === "dark" ? "contrast" : "primary"}
               />
               {/* Same as above */}
               <HSpacer size={16} />
@@ -114,7 +114,7 @@ export const HeaderFirstLevel = ({
           {type !== "base" && (
             <IconButton
               {...firstAction}
-              color={backgroundColor === "dark" ? "contrast" : "neutral"}
+              color={backgroundColor === "dark" ? "contrast" : "primary"}
             />
           )}
         </View>
