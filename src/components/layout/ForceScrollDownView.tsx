@@ -14,7 +14,7 @@ import {
   StyleSheet
 } from "react-native";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
-import { IOSpringValues } from "../../core";
+import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 
 type ForceScrollDownViewProps = {
@@ -202,8 +202,8 @@ const styles = StyleSheet.create({
   scrollDownButton: {
     position: "absolute",
     zIndex: 10,
-    right: 20,
-    bottom: 50
+    right: IOVisualCostants.scrollDownButtonRight,
+    bottom: IOVisualCostants.scrollDownButtonBottom
   }
 });
 
