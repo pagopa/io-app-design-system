@@ -5,48 +5,14 @@
     font-style: normal;
 }
 
-/* ROBOTO MONO */
+/* DM MONO */
 @font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-Regular.ttf') format("truetype");
+    font-family: 'DMMono';
+    src: url('../fonts/DMMono/DMMono-Medium.ttf') format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-RegularItalic.ttf') format("truetype");
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-Light.ttf') format("truetype");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-LightItalic.ttf') format("truetype");
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-Bold.ttf') format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'RobotoMono';
-    src: url('../fonts/RobotoMono/RobotoMono-BoldItalic.ttf') format("truetype");
-    font-weight: 700;
-    font-style: italic;
-}
 
 /* TITILLIUM WEB */
 @font-face {

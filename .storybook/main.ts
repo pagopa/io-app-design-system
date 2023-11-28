@@ -79,7 +79,7 @@ const config: StorybookConfig = {
 
     if (process.env.GH_PAGES) {
       config.module!.rules!.push({
-        test: /\.css|.ttf$/,
+        test: /\.(css|ttf)$/,
         loader: "string-replace-loader",
         options: {
           search: "/assets/",
