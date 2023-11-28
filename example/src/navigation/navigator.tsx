@@ -27,6 +27,7 @@ import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { NumberPadScreen } from "../pages/NumberPad";
 import { StepperPage } from "../pages/Stepper";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
+import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -205,6 +206,15 @@ const AppNavigator = () => (
       component={FooterWithButton}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.route}
+      component={ForceScrollDownViewPage}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.title,
         headerBackTitleVisible: false
       }}
     />
