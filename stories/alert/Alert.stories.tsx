@@ -8,6 +8,7 @@ import { Alert } from "../../src/components";
 const meta = {
   title: "IO-App Design System/Components/Alert/Alert",
   component: Alert,
+  tags: ["autodocs"],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered"
@@ -30,21 +31,16 @@ const meta = {
   },
   render: args => {
     const { title, content, variant } = args;
-    const AlertWithRef = () => {
-      const viewRef = React.createRef<View>();
-      return (
-        <Alert
-          content={content}
-          title={title}
-          viewRef={viewRef}
-          variant={variant}
-        />
-      );
-    };
-    return AlertWithRef();
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"]
+    const viewRef = React.createRef<View>();
+    return (
+      <Alert
+        content={content}
+        title={title}
+        viewRef={viewRef}
+        variant={variant}
+      />
+    );
+  }
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -62,11 +58,13 @@ export const Error = {
     variant: "error"
   } as Partial<Story>
 };
+
 export const Info = {
   args: {
     variant: "info"
   } as Partial<Story>
 };
+
 export const Warning = {
   args: {
     variant: "warning"

@@ -50,19 +50,16 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Partial<Story> = {
   render: args => {
     const { size, color, title, content, pictogramName } = args;
-    const BannerWithRef = () => {
-      const viewRef = React.createRef<View>();
-      return (
-        <Banner
-          content={content}
-          title={title}
-          size={size}
-          color={color}
-          pictogramName={pictogramName}
-          viewRef={viewRef}
-        />
-      );
-    };
-    return BannerWithRef();
+    const viewRef = React.createRef<View>();
+    return (
+      <Banner
+        content={content}
+        title={title}
+        size={size}
+        color={color}
+        pictogramName={pictogramName}
+        viewRef={viewRef}
+      />
+    );
   }
 };
