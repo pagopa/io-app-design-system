@@ -85,7 +85,7 @@ export const HeaderFirstLevel = ({
         <H3
           style={{ flexShrink: 1 }}
           numberOfLines={1}
-          color={backgroundColor === "dark" ? "white" : undefined}
+          color={backgroundColor === "dark" ? "white" : "black"}
         >
           {title}
         </H3>
