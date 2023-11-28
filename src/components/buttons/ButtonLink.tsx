@@ -15,6 +15,7 @@ import {
   IOColors,
   IOScaleValues,
   IOSpringValues,
+  hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -28,7 +29,8 @@ import {
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
-export type ColorButtonLink = "primary";
+export type ColorButtonLink = "primary" | "contrast";
+
 export type ButtonLinkProps = WithTestID<{
   color?: ColorButtonLink;
   label: string;
@@ -62,6 +64,13 @@ const mapColorStates: Record<
       pressed: IOColors["blueIO-600"],
       disabled: IOColors["grey-700"]
     }
+  },
+  contrast: {
+    label: {
+      default: IOColors.white,
+      pressed: hexToRgba(IOColors.white, 0.85),
+      disabled: hexToRgba(IOColors.white, 0.5)
+    }
   }
 };
 
@@ -76,6 +85,13 @@ const mapLegacyColorStates: Record<
       default: IOColors.blue,
       pressed: IOColors["blue-600"],
       disabled: IOColors["grey-700"]
+    }
+  },
+  contrast: {
+    label: {
+      default: IOColors.white,
+      pressed: hexToRgba(IOColors.white, 0.85),
+      disabled: hexToRgba(IOColors.white, 0.5)
     }
   }
 };
