@@ -13,8 +13,7 @@ import {
   IOColors,
   IONumberPadButtonStyles,
   IOScaleValues,
-  IOSpringValues,
-  useIOExperimentalDesign
+  IOSpringValues
 } from "../../core";
 import { H3 } from "../typography";
 
@@ -45,30 +44,12 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   }
 };
 
-const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
-  light: {
-    background: "grey-50",
-    pressed: "grey-200",
-    foreground: "blue"
-  },
-  dark: {
-    background: "blue",
-    pressed: "blue-600",
-    foreground: "white"
-  }
-};
-
 export const NumberButton = ({
   number,
   variant,
   onPress
 }: NumberButtonProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
-
-  const colors = useMemo(
-    () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
-    [variant, isExperimental]
-  );
+  const colors = useMemo(() => colorMap[variant], [variant]);
   const isPressed = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
