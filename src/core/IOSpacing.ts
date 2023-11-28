@@ -28,8 +28,10 @@ export const IOSpacer: ReadonlyArray<IOSpacer> = [
 ] as const;
 
 // Margin values used in the new `<ContentWrapper>` component
-export type IOAppMargin = Extract<IOSpacingScale, 8 | 16 | 24 | 32>;
-export const IOAppMargin: ReadonlyArray<IOAppMargin> = [8, 16, 24, 32] as const;
+export type IOAppMargin = Extract<IOSpacingScale, 8 | 16 | 24 | 32 | 48>;
+export const IOAppMargin: ReadonlyArray<IOAppMargin> = [
+  8, 16, 24, 32, 48
+] as const;
 
 // Values used in the `<Alert>` component
 export type IOAlertSpacing = Extract<IOSpacingScale, 16 | 24>;

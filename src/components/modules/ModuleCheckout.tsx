@@ -10,18 +10,25 @@ import { PressableModuleBase } from "./PressableModuleBase";
 
 // ---------------- types ----------------
 
-export type ModuleCheckoutProps = { ctaText: string } & (
+type ModuleCheckoutPartialProps =
   | {
+      isLoading?: false;
       paymentLogo?: IOLogoPaymentType;
       title: string;
       subtitle: string;
-      isLoading?: false;
-      onPress?: () => void;
+      onPress: () => void;
     }
   | {
       isLoading: true;
-    }
-);
+      paymentLogo?: never;
+      title?: never;
+      subtitle?: never;
+      onPress?: never;
+    };
+
+export type ModuleCheckoutProps = {
+  ctaText: string;
+} & ModuleCheckoutPartialProps;
 
 type CtaOnlyProps = { text?: string };
 
