@@ -1,6 +1,8 @@
 name: Publish the storybook
 on:
-  - pull_request
+  push:
+    branches:
+      - main
 permissions:
   contents: read
   pages: write
