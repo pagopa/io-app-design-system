@@ -34,7 +34,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {}
   },
-  staticDirs: ["../example/assets"],
+  staticDirs: ["../example"],
   docs: {
     autodocs: "tag"
   },
@@ -74,6 +74,19 @@ const config: StorybookConfig = {
     });
 
     config.resolve!.extensions!.push(".mjs");
+
+    console.warn("process.env.GH_PAGES", process.env.GH_PAGES);
+
+    if (process.env.GH_PAGES) {
+      config.module!.rules!.push({
+        test: /\.css|.ttf$/,
+        loader: "string-replace-loader",
+        options: {
+          search: "/assets/",
+          replace: "/io-app-design-system/assets/"
+        }
+      });
+    }
 
     return config;
   }
