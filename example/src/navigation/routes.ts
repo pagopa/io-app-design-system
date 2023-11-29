@@ -32,6 +32,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL",
       title: "Header Second Level"
     },
+    FORCE_SCROLL_DOWN: {
+      route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN",
+      title: "Force Scroll Down"
+    },
     HEADER_SECOND_LEVEL_STATIC: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STATIC",
       title: "Header Second Level Static"
