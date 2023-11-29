@@ -6,8 +6,9 @@ import {
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
-  RadioItem,
+  RadioButtonLabel,
   RadioGroup,
+  RadioItem,
   SwitchLabel,
   VSpacer,
   useIOExperimentalDesign
@@ -48,6 +49,8 @@ export const Selection = () => {
       <ListItemSwitchShowroom />
       {/* SwitchLabel */}
       {renderAnimatedSwitch()}
+      {/* RadioButtonLabel */}
+      {renderRadioButtonLabel()}
     </Screen>
   );
 };
@@ -251,6 +254,14 @@ const renderAnimatedSwitch = () => (
   </ComponentViewerBox>
 );
 
+// RADIO BUTTON LABEL
+
+const renderRadioButtonLabel = () => (
+  <ComponentViewerBox name="Radio button label">
+    <RadioButtonLabel label="Radio button label" />
+    <VSpacer size={16} />
+  </ComponentViewerBox>
+);
 const NativeSwitchShowroom = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
