@@ -16,6 +16,7 @@ export * from "./logos";
 export * from "./loadingSpinner";
 export * from "./modules";
 export * from "./numberpad";
+export * from "./otpInput";
 export * from "./pictograms";
 export * from "./radio";
 export * from "./spacer";

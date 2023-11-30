@@ -7,7 +7,9 @@ import {
   IOStyles,
   VSpacer
 } from "@pagopa/io-app-design-system";
+import { constVoid } from "fp-ts/lib/function";
 import { Screen } from "../components/Screen";
+import { OTPInput } from "../../../src/components";
 
 /**
  * This Screen is used to test components in isolation while developing.
@@ -28,6 +30,7 @@ export const Sandbox = () => (
       <H5>{"Insert here the component you're willing to test"}</H5>
       <VSpacer />
       {/* Insert here the component you're willing to test */}
+      <OTPInput value="" length={8} onValueChange={constVoid} />
     </View>
   </Screen>
 );
