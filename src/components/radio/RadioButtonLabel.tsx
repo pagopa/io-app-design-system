@@ -1,10 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import { Pressable, View } from "react-native";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { HSpacer } from "../spacer/Spacer";
 import { H6 } from "../typography/H6";
 import { AnimatedRadio } from "./AnimatedRadio";
@@ -23,17 +21,6 @@ type OwnProps = Props &
   Pick<React.ComponentProps<typeof AnimatedRadio>, "disabled" | "checked"> &
   Pick<React.ComponentProps<typeof Pressable>, "onPress">;
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const styles = StyleSheet.create({
-  legacyTextValue: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: IOColors.bluegreyDark,
-    flexShrink: 1,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
-
 /**
  * A radio button with the automatic state management that uses a {@link AnimatedRadio}
  * The toggleValue change when a `onPress` event is received and dispatch the `onValueChange`.
@@ -48,22 +35,6 @@ export const RadioButtonLabel = ({
   onValueChange
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(checked ?? false);
-
-  const { isExperimental } = useIOExperimentalDesign();
-  const radioButtonLabelText = (
-    <H6 style={{ flexShrink: 1 }} color={"black"}>
-      {label}
-    </H6>
-  );
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacySwitchlabelText = (
-    <Text style={styles.legacyTextValue}>{label}</Text>
-  );
-
-  const RadioButtonLabelTextComponent = isExperimental
-    ? radioButtonLabelText
-    : legacySwitchlabelText;
 
   const toggleRadioButton = () => {
     triggerHaptic("impactLight");
@@ -93,7 +64,9 @@ export const RadioButtonLabel = ({
           <AnimatedRadio checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
-        {RadioButtonLabelTextComponent}
+        <H6 style={{ flexShrink: 1 }} color={"black"}>
+          {label}
+        </H6>
       </View>
     </Pressable>
   );
