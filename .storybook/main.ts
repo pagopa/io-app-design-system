@@ -34,7 +34,12 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {}
   },
-  staticDirs: ["../example/assets"],
+  staticDirs: [
+    "../example/assets/css",
+    "../example/assets/fonts/TitilliumWeb",
+    "../example/assets/fonts/ReadexPro",
+    "../example/assets/fonts/DMMono"
+  ],
   docs: {
     autodocs: "tag"
   },
