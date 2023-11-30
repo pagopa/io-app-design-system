@@ -19,6 +19,7 @@ import PictogramCameraRequest from "./svg/PictogramCameraRequest";
 import PictogramCharity from "./svg/PictogramCharity";
 import PictogramCie from "./svg/PictogramCie";
 import PictogramCompleted from "./svg/PictogramCompleted";
+import PictogramComunicationProblem from "./svg/PictogramComunicationProblem";
 import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramEmailValidation from "./svg/PictogramEmailValidation";
 import PictogramEmpty from "./svg/PictogramEmpty";
@@ -29,6 +30,7 @@ import PictogramFeature from "./svg/PictogramFeature";
 import PictogramFeedback from "./svg/PictogramFeedback";
 import PictogramFireworks from "./svg/PictogramFireworks";
 import PictogramHeart from "./svg/PictogramHeart";
+import PictogramHello from "./svg/PictogramHello";
 import PictogramHelp from "./svg/PictogramHelp";
 import PictogramHourglass from "./svg/PictogramHourglass";
 import PictogramITWallet from "./svg/PictogramITWallet";
@@ -211,6 +213,8 @@ export const IOPictograms = {
   emailDotCheck: PictogramEmailDotCheck,
   biometric: PictogramBiometric,
   eventClose: PictogramEventClose,
+  hello: PictogramHello,
+  comunicationProblem: PictogramComunicationProblem,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
