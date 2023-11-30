@@ -40,6 +40,8 @@ export const Selection = () => {
       {/* ListItemCheckbox */}
       {renderListItemCheckbox()}
       <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      {/* RadioButtonLabel */}
+      {renderRadioButtonLabel()}
       {/* RadioListItem */}
       <RadioListItemsShowroom />
       <H2 style={{ marginVertical: 16 }}>Switch</H2>
@@ -49,8 +51,6 @@ export const Selection = () => {
       <ListItemSwitchShowroom />
       {/* SwitchLabel */}
       {renderAnimatedSwitch()}
-      {/* RadioButtonLabel */}
-      {renderRadioButtonLabel()}
     </Screen>
   );
 };
@@ -257,9 +257,10 @@ const renderAnimatedSwitch = () => (
 // RADIO BUTTON LABEL
 
 const renderRadioButtonLabel = () => (
-  <ComponentViewerBox name="Radio button label">
-    <RadioButtonLabel label="Radio button label" />
+  <ComponentViewerBox name="RadioButtonLabel">
+    <RadioButtonLabel label="This is a test" />
     <VSpacer size={16} />
+    <RadioButtonLabel label="This is a test with a very loooong looooooong loooooooong text" />
   </ComponentViewerBox>
 );
 const NativeSwitchShowroom = () => {
