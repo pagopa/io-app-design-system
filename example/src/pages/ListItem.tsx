@@ -464,6 +464,13 @@ const renderListItemHeader = () => (
           }
         }}
       />
+      <ListItemHeader
+        label="Label"
+        endElement={{
+          type: "value",
+          componentProps: { children: "1.500,00 €" }
+        }}
+      />
 
       <ListItemHeader
         label="Label"
