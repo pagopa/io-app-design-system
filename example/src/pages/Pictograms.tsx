@@ -14,11 +14,11 @@ import {
   hexToRgba
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
 import { useContext } from "react";
+import { StyleSheet, View } from "react-native";
 import { AssetViewerBox, assetItemGutter } from "../components/AssetViewerBox";
-import { Screen } from "../components/Screen";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
+import { Screen } from "../components/Screen";
 
 const styles = StyleSheet.create({
   itemsWrapper: {
@@ -50,6 +50,15 @@ const filterPictogramSet = (
     )
   );
 
+const sortPictogramSet = (
+  pictogramSetObject: PictogramSetObject
+): PictogramSetObject =>
+  Object.fromEntries(
+    [...Object.entries(pictogramSetObject)].sort(([l], [r]) =>
+      l.localeCompare(r)
+    )
+  );
+
 const filteredIOPictograms = filterPictogramSet(
   {
     ...IOPictogramsObject,
@@ -57,6 +66,11 @@ const filteredIOPictograms = filterPictogramSet(
   },
   IOPictograms
 );
+
+const sortedIOPictograms = sortPictogramSet(filteredIOPictograms);
+const sortedIOPictogramsBleed = sortPictogramSet(IOPictogramsBleed);
+const sortedIOPictogramsObject = sortPictogramSet(IOPictogramsObject);
+const sortedIOPictogramsLegacy = sortPictogramSet(IOPictogramsLegacy);
 
 export const Pictograms = () => {
   const theme = useContext(IOThemeContext);
@@ -73,7 +87,7 @@ export const Pictograms = () => {
         Pictograms
       </H2>
       <View style={styles.itemsWrapper}>
-        {Object.entries(filteredIOPictograms).map(([pictogramItemName]) => (
+        {Object.entries(sortedIOPictograms).map(([pictogramItemName]) => (
           <AssetViewerBox
             key={pictogramItemName}
             name={pictogramItemName}
@@ -100,7 +114,7 @@ export const Pictograms = () => {
         Bleed Pictograms
       </H2>
       <View style={styles.itemsWrapper}>
-        {Object.entries(IOPictogramsBleed).map(([pictogramItemName]) => (
+        {Object.entries(sortedIOPictogramsBleed).map(([pictogramItemName]) => (
           <AssetViewerBox
             type="bleed"
             key={pictogramItemName}
@@ -127,7 +141,7 @@ export const Pictograms = () => {
         Objects Pictograms
       </H2>
       <View style={styles.itemsWrapper}>
-        {Object.entries(IOPictogramsObject).map(([pictogramItemName]) => (
+        {Object.entries(sortedIOPictogramsObject).map(([pictogramItemName]) => (
           <AssetViewerBox
             key={pictogramItemName}
             name={pictogramItemName}
@@ -198,7 +212,7 @@ export const Pictograms = () => {
         Legacy Pictograms
       </H2>
       <View style={styles.itemsWrapper}>
-        {Object.entries(IOPictogramsLegacy).map(([pictogramItemName]) => (
+        {Object.entries(sortedIOPictogramsLegacy).map(([pictogramItemName]) => (
           <AssetViewerBox
             key={pictogramItemName}
             name={pictogramItemName}
