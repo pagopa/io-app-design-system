@@ -616,6 +616,18 @@ const renderListItemTransaction = () => (
         transactionAmount="€ 100"
         onPress={onButtonPress}
       />
+
+      <Divider />
+
+      <ListItemTransaction
+        title="Long text truncated by ellipsis"
+        numberOfLines={1}
+        subtitle="Subtitle"
+        transactionAmount="€ 1.000,00"
+        paymentLogoIcon={"postepay"}
+        onPress={onButtonPress}
+        transactionStatus="success"
+      />
     </View>
   </ComponentViewerBox>
 );
