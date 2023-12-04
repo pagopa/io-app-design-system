@@ -40,6 +40,7 @@ const SecretValue = () => (
     weight="SemiBold"
     color="bluegreyDark"
     fontStyle={{ fontSize: 22, lineHeight: 33 }}
+    accessible={false}
   >
     {"•"}
   </BaseTypography>
@@ -58,8 +59,9 @@ export const BoxedInput = ({ status, value, secret }: Props) => {
     }
   }, [status]);
   return (
-    <View style={[styles.baseBox, derivedStyle]}>
-      {value && (secret ? <SecretValue /> : <H6>{value}</H6>)}
+    <View style={[styles.baseBox, derivedStyle]} accessible={false}>
+      {value &&
+        (secret ? <SecretValue /> : <H6 accessible={false}>{value}</H6>)}
     </View>
   );
 };

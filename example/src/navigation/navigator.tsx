@@ -28,6 +28,7 @@ import { NumberPadScreen } from "../pages/NumberPad";
 import { StepperPage } from "../pages/Stepper";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { OTPInputScreen } from "../pages/OTPInput";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -106,6 +107,14 @@ const AppNavigator = () => (
       component={NumberPadScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.NUMBER_PAD.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.OTP_INPUT.route}
+      component={OTPInputScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.OTP_INPUT.title,
         headerBackTitleVisible: false
       }}
     />

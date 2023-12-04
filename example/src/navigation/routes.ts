@@ -10,6 +10,7 @@ const APP_ROUTES = {
   },
   COMPONENTS: {
     NUMBER_PAD: { route: "DESIGN_SYSTEM_NUMBER_PAD", title: "Number Pad" },
+    OTP_INPUT: { route: "DESIGN_SYSTEM_OTP_INPUT", title: "OTP Input" },
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
     MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },
