@@ -13,6 +13,7 @@ export type ListItemRadioWithAmountProps = {
   selected?: boolean;
   label: string;
   formattedAmountString: string;
+  onPress?: (newValue: boolean) => void;
 } & (
   | {
       isSuggested?: false;
@@ -25,15 +26,20 @@ export type ListItemRadioWithAmountProps = {
 export const ListItemRadioWithAmount = (
   props: ListItemRadioWithAmountProps
 ) => {
+  const { onPress } = props;
   const [toggleValue, setToggleValue] = React.useState(props.selected ?? false);
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
-    setToggleValue(val => !val);
+    onPress?.(!toggleValue);
   };
   const isExperimental = useIOExperimentalDesign();
 
   const interactiveColor: IOColors = isExperimental ? "blueIO-500" : "blue";
   const suggestColor: IOColors = "hanPurple-500";
+
+  React.useEffect(() => {
+    setToggleValue(props.selected ?? false);
+  }, [props.selected]);
 
   return (
     <PressableListItemBase onPress={pressHandler}>
