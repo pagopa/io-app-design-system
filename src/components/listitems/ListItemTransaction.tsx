@@ -65,6 +65,11 @@ export type ListItemTransaction = WithTestID<
     paymentLogoIcon?: ListItemTransactionLogo;
     subtitle: string;
     title: string;
+    /**
+     * The maximum number of lines to display for the title.
+     * @default 2
+     */
+    numberOfLines?: number;
     accessible?: boolean;
   } & (
       | {
@@ -117,6 +122,7 @@ export const ListItemTransaction = ({
   transactionAmount,
   badgeText,
   transactionStatus = "success",
+  numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
   const { isExperimental } = useIOExperimentalDesign();
@@ -144,6 +150,7 @@ export const ListItemTransaction = ({
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
               color={hasChevronRight ? interactiveColor : "black"}
+              numberOfLines={numberOfLines}
             >
               {transactionAmount || ""}
             </H6>
@@ -153,6 +160,7 @@ export const ListItemTransaction = ({
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
               color={hasChevronRight ? interactiveColor : "success-700"}
+              numberOfLines={numberOfLines}
             >
               {transactionAmount || ""}
             </H6>
@@ -181,7 +189,10 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={IOStyles.flex}>
-          <LabelSmallAlt numberOfLines={2} color={theme["textBody-default"]}>
+          <LabelSmallAlt
+            numberOfLines={numberOfLines}
+            color={theme["textBody-default"]}
+          >
             {title}
           </LabelSmallAlt>
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
