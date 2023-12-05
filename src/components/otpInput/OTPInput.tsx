@@ -1,11 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import {
-  AccessibilityInfo,
-  Pressable,
-  TextInput,
-  findNodeHandle
-} from "react-native";
+import { Pressable, TextInput } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
 import { LabelSmall } from "../typography";
@@ -88,10 +83,6 @@ export const OTPInput = ({
       <Pressable
         onPress={() => {
           inputRef.current?.focus();
-          const reactElem = findNodeHandle(inputRef.current);
-          if (reactElem) {
-            AccessibilityInfo.setAccessibilityFocus(reactElem);
-          }
           setHasFocus(true);
         }}
         style={[IOStyles.row, { justifyContent: "space-around" }]}
@@ -102,10 +93,15 @@ export const OTPInput = ({
         <TextInput
           value={inputValue}
           onChangeText={handleChange}
-          style={{ display: "none" }}
+          style={{ position: "absolute", opacity: 0 }}
+          maxLength={length}
           ref={inputRef}
-          keyboardType="number-pad"
-          autoComplete={autocomplete ? "sms-otp" : "off"}
+          onBlur={() => setHasFocus(false)}
+          keyboardType="numeric"
+          inputMode="numeric"
+          returnKeyType="done"
+          textContentType="oneTimeCode"
+          autoComplete={autocomplete ? "sms-otp" : undefined}
           accessible={true}
         />
         {[...Array(length)].map((_, i) => (
