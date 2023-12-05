@@ -1,6 +1,11 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Pressable, TextInput } from "react-native";
+import {
+  AccessibilityInfo,
+  Pressable,
+  TextInput,
+  findNodeHandle
+} from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
 import { LabelSmall } from "../typography";
@@ -47,7 +52,7 @@ export const OTPInput = ({
 
   const { translate, animatedStyle, shakeAnimation } = useErrorShakeAnimation();
 
-  const inputRef = React.useRef<TextInput>(null);
+  const inputRef = React.createRef<TextInput>();
   const handleChange = (value: string) => {
     if (value.length > length) {
       return;
@@ -83,10 +88,16 @@ export const OTPInput = ({
       <Pressable
         onPress={() => {
           inputRef.current?.focus();
+          const reactElem = findNodeHandle(inputRef.current);
+          if (reactElem) {
+            AccessibilityInfo.setAccessibilityFocus(reactElem);
+          }
           setHasFocus(true);
         }}
         style={[IOStyles.row, { justifyContent: "space-around" }]}
-        accessible={false}
+        accessible={true}
+        accessibilityLabel="OTP Input"
+        accessibilityValue={{ text: inputValue }}
       >
         <TextInput
           value={inputValue}
