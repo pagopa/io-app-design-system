@@ -19,6 +19,19 @@ type Props = {
   errorMessage?: string;
 };
 
+/**
+ * `OTPInput` is a component that allows the user to enter a one-time password.
+ * It has an hidden `TextInput` that is used to handle the keyboard and the focus.
+ * The input handles the autocompletion of the OTP code.
+ * @param value - The value of the OTP code
+ * @param onValueChange - The function to call when the value changes
+ * @param length - The length of the OTP code
+ * @param secret - If the OTP code should be hidden
+ * @param autocomplete - If the OTP code should be autocompleted
+ * @param onValidate - The function to call when the OTP code is validated
+ * @param errorMessage - The error message to display
+ * @returns
+ */
 export const OTPInput = ({
   value,
   onValueChange,
