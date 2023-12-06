@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import { Pressable, TextInput } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
@@ -41,42 +40,48 @@ export const OTPInput = ({
   secret = false,
   autocomplete = false
 }: Props) => {
-  const [hasFocus, setHasFocus] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
+  const [hasFocus, setHasFocus] = React.useState(false);
+  const [hasError, setHasError] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(value);
 
   const { translate, animatedStyle, shakeAnimation } = useErrorShakeAnimation();
 
   const inputRef = React.createRef<TextInput>();
+  const timerRef = React.useRef<NodeJS.Timeout>();
+
+  const handleValidate = (val: string) => {
+    if (!onValidate || val.length < length) {
+      return;
+    }
+    const isValid = onValidate(val);
+    if (!isValid) {
+      setHasError(true);
+      triggerHaptic("notificationError");
+      // eslint-disable-next-line functional/immutable-data
+      translate.value = shakeAnimation();
+
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+      // eslint-disable-next-line functional/immutable-data
+      timerRef.current = setTimeout(() => {
+        setHasError(false);
+        setInputValue("");
+        onValueChange("");
+      }, 500);
+    }
+  };
+
+  React.useEffect(() => () => clearTimeout(timerRef.current), []);
+
   const handleChange = (value: string) => {
     if (value.length > length) {
       return;
     }
     setInputValue(value);
     onValueChange(value);
+    handleValidate(value);
   };
-
-  useEffect(() => {
-    if (onValidate && value.length === length) {
-      const isValid = onValidate(value);
-
-      if (!isValid) {
-        setHasError(true);
-        triggerHaptic("notificationError");
-
-        // eslint-disable-next-line functional/immutable-data
-        translate.value = shakeAnimation();
-
-        const timer = setTimeout(() => {
-          setHasError(false);
-          setInputValue("");
-          onValueChange("");
-        }, 500);
-        return () => clearTimeout(timer);
-      }
-    }
-    return;
-  }, [value, onValidate, length, onValueChange, translate, shakeAnimation]);
 
   return (
     <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
