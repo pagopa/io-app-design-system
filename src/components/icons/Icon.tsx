@@ -5,10 +5,12 @@ import { IOColors } from "../../core/IOColors";
 /* Icons */
 import IconAbacus from "./svg/IconAbacus";
 import IconAdd from "./svg/IconAdd";
+import IconAddSmall from "./svg/IconAddSmall";
 import IconAgreement from "./svg/IconAgreement";
 import IconAmount from "./svg/IconAmount";
 import IconAnalytics from "./svg/IconAnalytics";
 import IconArchive from "./svg/IconArchive";
+import IconArchiveFilled from "./svg/IconArchiveFilled";
 import IconArrowBottom from "./svg/IconArrowBottom";
 import IconArrowLeft from "./svg/IconArrowLeft";
 import IconArrowRight from "./svg/IconArrowRight";
@@ -37,6 +39,7 @@ import IconCategSustainability from "./svg/IconCategSustainability";
 import IconCategTelco from "./svg/IconCategTelco";
 import IconCategTravel from "./svg/IconCategTravel";
 import IconCategWellness from "./svg/IconCategWellness";
+import IconChange from "./svg/IconChange";
 import IconChat from "./svg/IconChat";
 import IconCheckTick from "./svg/IconCheckTick";
 import IconCheckTickBig from "./svg/IconCheckTickBig";
@@ -49,35 +52,63 @@ import IconCie from "./svg/IconCie";
 import IconCloseLarge from "./svg/IconCloseLarge";
 import IconCloseMedium from "./svg/IconCloseMedium";
 import IconCloseSmall from "./svg/IconCloseSmall";
+import IconCode from "./svg/IconCode";
 import IconCoggle from "./svg/IconCoggle";
+import IconCompare from "./svg/IconCompare";
+import IconContactless from "./svg/IconContactless";
 import IconCopy from "./svg/IconCopy";
 import IconCreditCard from "./svg/IconCreditCard";
+import IconCreditCardOff from "./svg/IconCreditCardOff";
 import IconDevice from "./svg/IconDevice";
+import IconDeviceVibration from "./svg/IconDeviceVibration";
+import IconDisabilityCard from "./svg/IconDisabilityCard";
+import IconDocGiacenza from "./svg/IconDocGiacenza";
+import IconDocPaymentCode from "./svg/IconDocPaymentCode";
+import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
 import IconDocument from "./svg/IconDocument";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
 import IconDocumentSign from "./svg/IconDocumentSign";
 import IconDotMenu from "./svg/IconDotMenu";
+import IconDriverLicense from "./svg/IconDriverLicense";
 import IconEdit from "./svg/IconEdit";
 import IconEmail from "./svg/IconEmail";
 import IconEmailFill from "./svg/IconEmailFill";
 import IconEmojiHappy from "./svg/IconEmojiHappy";
 import IconEmojiSad from "./svg/IconEmojiSad";
+import IconEntityCode from "./svg/IconEntityCode";
 import IconErrorFilled from "./svg/IconErrorFilled";
 import IconExternalLink from "./svg/IconExternalLink";
+import IconExternalLinkSmall from "./svg/IconExternalLinkSmall";
 import IconEyeHide from "./svg/IconEyeHide";
 import IconEyeShow from "./svg/IconEyeShow";
+import IconFamilySharing from "./svg/IconFamilySharing";
+import IconFilterAndroid from "./svg/IconFilterAndroid";
+import IconFilterOffiOS from "./svg/IconFilterOffiOS";
+import IconFilterOniOS from "./svg/IconFilterOniOS";
+import IconFingerprint from "./svg/IconFingerprint";
 import IconFiscalCodeIndividual from "./svg/IconFiscalCodeIndividual";
+import IconFolder from "./svg/IconFolder";
 import IconFornitori from "./svg/IconFornitori";
+import IconForward from "./svg/IconForward";
 import IconGallery from "./svg/IconGallery";
+import IconHealthCard from "./svg/IconHealthCard";
+import IconHearthEmpty from "./svg/IconHearthEmpty";
+import IconHearthFilled from "./svg/IconHearthFilled";
 import IconHistory from "./svg/IconHistory";
 import IconHome from "./svg/IconHome";
 import IconHomeFill from "./svg/IconHomeFill";
 import IconHourglass from "./svg/IconHourglass";
+import IconInboxEmpty from "./svg/IconInboxEmpty";
+import IconInboxFilled from "./svg/IconInboxFilled";
 import IconInfo from "./svg/IconInfo";
 import IconInfoFilled from "./svg/IconInfoFilled";
 import IconInitiatives from "./svg/IconInitiatives";
 import IconInstitution from "./svg/IconInstitution";
+import IconInstruction from "./svg/IconInstruction";
+import IconKey from "./svg/IconKey";
+import IconKeyboard from "./svg/IconKeyboard";
+import IconKeyboardDown from "./svg/IconKeyboardDown";
 import IconLadybug from "./svg/IconLadybug";
 import IconLegalValue from "./svg/IconLegalValue";
 import IconLight from "./svg/IconLight";
@@ -91,6 +122,7 @@ import IconLockOn from "./svg/IconLockOn";
 import IconLogin from "./svg/IconLogin";
 import IconLogout from "./svg/IconLogout";
 import IconMagicWand from "./svg/IconMagicWand";
+import IconMapPin from "./svg/IconMapPin";
 import IconMerchant from "./svg/IconMerchant";
 import IconMessage from "./svg/IconMessage";
 import IconMessageLegal from "./svg/IconMessageLegal";
@@ -103,14 +135,19 @@ import IconNavServices from "./svg/IconNavServices";
 import IconNavServicesFocused from "./svg/IconNavServicesFocused";
 import IconNavWallet from "./svg/IconNavWallet";
 import IconNavWalletFocused from "./svg/IconNavWalletFocused";
+import IconNotes from "./svg/IconNotes";
 import IconNotice from "./svg/IconNotice";
 import IconNoticeFilled from "./svg/IconNoticeFilled";
+import IconNoticePlain from "./svg/IconNoticePlain";
+import IconNotification from "./svg/IconNotification";
 import IconOk from "./svg/IconOk";
+import IconOption from "./svg/IconOption";
 import IconPEC from "./svg/IconPEC";
 import IconPSP from "./svg/IconPSP";
 import IconPhone from "./svg/IconPhone";
 import IconPinOff from "./svg/IconPinOff";
 import IconPinOn from "./svg/IconPinOn";
+import IconPrint from "./svg/IconPrint";
 import IconProductIOApp from "./svg/IconProductIOApp";
 import IconProductIOAppBlueBg from "./svg/IconProductIOAppBlueBg";
 import IconProductPagoPA from "./svg/IconProductPagoPA";
@@ -119,6 +156,9 @@ import IconProfileAlt from "./svg/IconProfileAlt";
 import IconProfileFilled from "./svg/IconProfileFilled";
 import IconQrCode from "./svg/IconQrCode";
 import IconQuestion from "./svg/IconQuestion";
+import IconRead from "./svg/IconRead";
+import IconReceiptOff from "./svg/IconReceiptOff";
+import IconReceiptOn from "./svg/IconReceiptOn";
 import IconRefund from "./svg/IconRefund";
 import IconReload from "./svg/IconReload";
 import IconSave from "./svg/IconSave";
@@ -127,6 +167,8 @@ import IconSecurity from "./svg/IconSecurity";
 import IconSelfCertification from "./svg/IconSelfCertification";
 import IconShareAndroid from "./svg/IconShareAndroid";
 import IconShareiOs from "./svg/IconShareiOs";
+import IconSignal from "./svg/IconSignal";
+import IconSparkles from "./svg/IconSparkles";
 import IconSpid from "./svg/IconSpid";
 import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
@@ -134,63 +176,22 @@ import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
+import IconSystemPermissionsAndroid from "./svg/IconSystemPermissionsAndroid";
 import IconSystemSettingsAndroid from "./svg/IconSystemSettingsAndroid";
 import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
 import IconTag from "./svg/IconTag";
-import IconTransactionsBoxed from "./svg/IconTransactionsBoxed";
+import IconTerms from "./svg/IconTerms";
+import IconTouch from "./svg/IconTouch";
 import IconTransactions from "./svg/IconTransactions";
+import IconTransactionsBoxed from "./svg/IconTransactionsBoxed";
 import IconTrashcan from "./svg/IconTrashcan";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
-import IconOption from "./svg/IconOption";
-import IconKey from "./svg/IconKey";
-import IconNotification from "./svg/IconNotification";
-import IconChange from "./svg/IconChange";
 import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconKeyboard from "./svg/IconKeyboard";
-import IconContactless from "./svg/IconContactless";
-import IconDisabilityCard from "./svg/IconDisabilityCard";
-import IconDriverLicense from "./svg/IconDriverLicense";
-import IconHealthCard from "./svg/IconHealthCard";
-import IconDocPaymentCode from "./svg/IconDocPaymentCode";
-import IconNotes from "./svg/IconNotes";
-import IconEntityCode from "./svg/IconEntityCode";
-import IconFolder from "./svg/IconFolder";
-import IconReceiptOn from "./svg/IconReceiptOn";
-import IconFingerprint from "./svg/IconFingerprint";
-import IconAddSmall from "./svg/IconAddSmall";
-import IconArchiveFilled from "./svg/IconArchiveFilled";
-import IconCode from "./svg/IconCode";
-import IconCompare from "./svg/IconCompare";
-import IconCreditCardOff from "./svg/IconCreditCardOff";
-import IconDeviceVibration from "./svg/IconDeviceVibration";
-import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
-import IconDocGiacenza from "./svg/IconDocGiacenza";
-import IconExternalLinkSmall from "./svg/IconExternalLinkSmall";
-import IconFamilySharing from "./svg/IconFamilySharing";
-import IconFilterOniOS from "./svg/IconFilterOniOS";
-import IconFilterOffiOS from "./svg/IconFilterOffiOS";
-import IconFilterAndroid from "./svg/IconFilterAndroid";
-import IconForward from "./svg/IconForward";
-import IconHearthEmpty from "./svg/IconHearthEmpty";
-import IconHearthFilled from "./svg/IconHearthFilled";
-import IconInboxEmpty from "./svg/IconInboxEmpty";
-import IconInboxFilled from "./svg/IconInboxFilled";
-import IconInstruction from "./svg/IconInstruction";
-import IconTerms from "./svg/IconTerms";
-import IconKeyboardDown from "./svg/IconKeyboardDown";
-import IconMapPin from "./svg/IconMapPin";
-import IconNoticePlain from "./svg/IconNoticePlain";
-import IconPrint from "./svg/IconPrint";
-import IconRead from "./svg/IconRead";
-import IconReceiptOff from "./svg/IconReceiptOff";
-import IconSignal from "./svg/IconSignal";
-import IconTouch from "./svg/IconTouch";
-import IconSparkles from "./svg/IconSparkles";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -381,7 +382,8 @@ export const IOIcons = {
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
-  systemNotificationsInstructions: IconSystemNotificationsInstructions
+  systemNotificationsInstructions: IconSystemNotificationsInstructions,
+  systemPermissionsAndroid: IconSystemPermissionsAndroid
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
@@ -649,7 +651,8 @@ const {
   systemSettingsiOS,
   systemToggleInstructions,
   systemAppsAndroid,
-  systemNotificationsInstructions
+  systemNotificationsInstructions,
+  systemPermissionsAndroid
 } = IOIcons;
 
 export const IOSystemIcons = {
@@ -657,7 +660,8 @@ export const IOSystemIcons = {
   systemSettingsiOS,
   systemToggleInstructions,
   systemAppsAndroid,
-  systemNotificationsInstructions
+  systemNotificationsInstructions,
+  systemPermissionsAndroid
 } as const;
 
 export type IOSystemIcons = keyof typeof IOSystemIcons;
