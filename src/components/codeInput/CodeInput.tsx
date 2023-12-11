@@ -1,15 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withSequence,
-  withTiming
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { IOColors, IOStyles } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { HSpacer } from "../spacer";
+import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
 
 type CodeInputProps = {
   value: string;
@@ -56,12 +51,7 @@ export const CodeInput = ({
 }: CodeInputProps) => {
   const [status, setStatus] = React.useState<"default" | "error">("default");
 
-  const translate = useSharedValue(0);
-  const shakeOffset: number = 8;
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translate.value }]
-  }));
+  const { translate, animatedStyle, shakeAnimation } = useErrorShakeAnimation();
 
   const fillColor = useMemo(
     () =>
@@ -82,25 +72,7 @@ export const CodeInput = ({
         triggerHaptic("notificationError");
 
         // eslint-disable-next-line functional/immutable-data
-        translate.value = withSequence(
-          withTiming(shakeOffset, {
-            duration: 75,
-            easing: Easing.inOut(Easing.cubic)
-          }),
-          withTiming(-shakeOffset, {
-            duration: 75,
-            easing: Easing.inOut(Easing.cubic)
-          }),
-          withTiming(shakeOffset / 2, {
-            duration: 75,
-            easing: Easing.inOut(Easing.cubic)
-          }),
-          withTiming(-shakeOffset / 2, {
-            duration: 75,
-            easing: Easing.inOut(Easing.cubic)
-          }),
-          withTiming(0, { duration: 75, easing: Easing.inOut(Easing.cubic) })
-        );
+        translate.value = shakeAnimation();
 
         const timer = setTimeout(() => {
           setStatus("default");
@@ -110,7 +82,7 @@ export const CodeInput = ({
       }
     }
     return;
-  }, [value, onValidate, length, onValueChange, translate]);
+  }, [value, onValidate, length, onValueChange, translate, shakeAnimation]);
 
   return (
     <Animated.View style={[IOStyles.row, styles.wrapper, animatedStyle]}>
