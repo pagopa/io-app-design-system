@@ -175,8 +175,11 @@ import IconStarFilled from "./svg/IconStarFilled";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
+import IconSystemLocationiOS from "./svg/IconSystemLocationiOS";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
 import IconSystemPermissionsAndroid from "./svg/IconSystemPermissionsAndroid";
+import IconSystemPhotosiOS from "./svg/IconSystemPhotosiOS";
+import IconSystemPrivacyiOS from "./svg/IconSystemPrivacyiOS";
 import IconSystemSettingsAndroid from "./svg/IconSystemSettingsAndroid";
 import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
@@ -383,7 +386,10 @@ export const IOIcons = {
   systemToggleInstructions: IconSystemToggleInstructions,
   systemAppsAndroid: IconSystemAppsAndroid,
   systemNotificationsInstructions: IconSystemNotificationsInstructions,
-  systemPermissionsAndroid: IconSystemPermissionsAndroid
+  systemPermissionsAndroid: IconSystemPermissionsAndroid,
+  systemLocationiOS: IconSystemLocationiOS,
+  systemPhotosiOS: IconSystemPhotosiOS,
+  systemPrivacyiOS: IconSystemPrivacyiOS
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
@@ -652,7 +658,10 @@ const {
   systemToggleInstructions,
   systemAppsAndroid,
   systemNotificationsInstructions,
-  systemPermissionsAndroid
+  systemPermissionsAndroid,
+  systemLocationiOS,
+  systemPhotosiOS,
+  systemPrivacyiOS
 } = IOIcons;
 
 export const IOSystemIcons = {
@@ -661,7 +670,10 @@ export const IOSystemIcons = {
   systemToggleInstructions,
   systemAppsAndroid,
   systemNotificationsInstructions,
-  systemPermissionsAndroid
+  systemPermissionsAndroid,
+  systemLocationiOS,
+  systemPhotosiOS,
+  systemPrivacyiOS
 } as const;
 
 export type IOSystemIcons = keyof typeof IOSystemIcons;
