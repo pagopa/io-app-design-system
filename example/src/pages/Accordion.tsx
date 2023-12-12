@@ -47,6 +47,19 @@ const assistanceData: Array<AccordionItem> = [
     title:
       "Nel 2021 ho maturato degli importi che non mi sono ancora stati rimborsati. Cosa posso fare?",
     body: "Probabilmente non hai indicato l'IBAN del conto su cui desideri ricevere l'accredito, oppure quello che hai indicato non è valido.Per inserire l'IBAN o verificarne la correttezza, apri l'app, vai al Portafoglio e premi sulla card del Cashback. Poi, inseriscilo o modificalo e seleziona 'Continua'. Entro 90 giorni riceverai tramite l'app 10 un messaggio sullo stato del rimborso. Le attività tra PagoPA S.p.A. e Consap S.p.A. per i pagamenti dei rimborsi sono in corso di dismissione, quindi, se non inserisci o non correggi l'IBAN entro il 31/07/2022, potrebbe non essere più possibile effettuare il bonifico per il rimborso."
+  },
+  {
+    id: 6,
+    title: "Come posso pagare su IO?",
+    body: "Puoi pagare con carte di debito, credito e prepagate, con PayPal o BANCOMAT Pay.",
+    icon: "bell"
+  },
+  {
+    id: 7,
+    title:
+      "Nel 2021 ho maturato degli importi che non mi sono ancora stati rimborsati. Cosa posso fare?",
+    body: "Probabilmente non hai indicato l'IBAN del conto su cui desideri ricevere l'accredito, oppure quello che hai indicato non è valido.Per inserire l'IBAN o verificarne la correttezza, apri l'app, vai al Portafoglio e premi sulla card del Cashback. Poi, inseriscilo o modificalo e seleziona 'Continua'. Entro 90 giorni riceverai tramite l'app 10 un messaggio sullo stato del rimborso. Le attività tra PagoPA S.p.A. e Consap S.p.A. per i pagamenti dei rimborsi sono in corso di dismissione, quindi, se non inserisci o non correggi l'IBAN entro il 31/07/2022, potrebbe non essere più possibile effettuare il bonifico per il rimborso.",
+    icon: "bell"
   }
 ];
 
@@ -58,7 +71,12 @@ export const Accordion = () => {
   // );
 
   const renderItem = ({ item }: ListRenderItemInfo<AccordionItem>) => (
-    <AccordionItem id={item.id} title={item.title} body={item.body} />
+    <AccordionItem
+      id={item.id}
+      title={item.title}
+      body={item.body}
+      icon={item.icon}
+    />
   );
 
   return (

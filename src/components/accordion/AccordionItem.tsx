@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import {
-  Text,
-  View,
+  LayoutChangeEvent,
   StyleSheet,
+  Text,
   TouchableWithoutFeedback,
-  LayoutChangeEvent
+  View
 } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import Animated, {
   useAnimatedStyle,
   withSpring
 } from "react-native-reanimated";
-import LinearGradient from "react-native-linear-gradient";
-import { IOAccordionRadius, type IOSpacingScale } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
-import { IOColors, hexToRgba } from "../../core/IOColors";
-import { H6 } from "../typography";
+import { IOAccordionRadius, IOStyles, type IOSpacingScale } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
-import { Icon } from "../icons/Icon";
+import { IOColors, hexToRgba } from "../../core/IOColors";
+import { makeFontStyleObject } from "../../utils/fonts";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons/Icon";
+import { H6 } from "../typography";
 
 export type AccordionItem = {
   id: number;
   title: string;
   body: string | React.ReactNode;
+  icon?: IOIcons;
 };
 
 type AccordionBody = {
@@ -30,9 +31,13 @@ type AccordionBody = {
 };
 
 const accordionBodySpacing: IOSpacingScale = 16;
-const accordionIconMargin: IOSpacingScale = 8;
+const accordionIconMargin: IOSpacingScale = 12;
+const accordionChevronMargin: IOSpacingScale = 8;
 const accordionBorder: IOColors = "grey-200";
 const accordionBackground: IOColors = "white";
+
+// Icon size
+const iconSize: IOIconSizeScale = 24;
 
 /* The code below is a re-adaptation of Dima Portenko's code:
 https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
@@ -68,7 +73,7 @@ export const AccordionBody = ({ children, expanded }: AccordionBody) => {
   );
 };
 
-export const AccordionItem = ({ title, body }: AccordionItem) => {
+export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
   const [expanded, setExpanded] = useState(false);
 
   const onItemPress = () => {
@@ -97,8 +102,24 @@ export const AccordionItem = ({ title, body }: AccordionItem) => {
         onPress={onItemPress}
       >
         <View style={styles.textContainer}>
-          <View style={{ flexShrink: 1, marginRight: accordionIconMargin }}>
-            <H6 color="black">{title}</H6>
+          <View
+            style={[
+              IOStyles.row,
+              IOStyles.alignCenter,
+              {
+                flexShrink: 1,
+                marginRight: accordionChevronMargin
+              }
+            ]}
+          >
+            {icon && (
+              <View style={{ marginRight: accordionIconMargin }}>
+                <Icon name={icon} size={iconSize} color="black" />
+              </View>
+            )}
+            <View style={{ flexShrink: 1 }}>
+              <H6 color="black">{title}</H6>
+            </View>
           </View>
           <Animated.View style={animatedChevron}>
             <Icon name="chevronBottom" color="blueIO-500" />
@@ -157,7 +178,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     padding: accordionBodySpacing,
-    flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
