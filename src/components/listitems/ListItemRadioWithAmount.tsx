@@ -10,6 +10,7 @@ import { LabelSmall } from "../typography/LabelSmall";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
 export type ListItemRadioWithAmountProps = {
+  onValueChange?: (newValue: boolean) => void;
   selected?: boolean;
   label: string;
   formattedAmountString: string;
@@ -29,6 +30,9 @@ export const ListItemRadioWithAmount = (
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
     setToggleValue(val => !val);
+    if (props.onValueChange !== undefined) {
+      props.onValueChange(!toggleValue);
+    }
   };
   const isExperimental = useIOExperimentalDesign();
 
@@ -55,7 +59,7 @@ export const ListItemRadioWithAmount = (
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
         <H6 color={interactiveColor}>{props.formattedAmountString}</H6>
         <HSpacer size={8} />
-        <AnimatedRadio checked={toggleValue} />
+        <AnimatedRadio checked={props.selected ?? toggleValue} />
       </View>
     </PressableListItemBase>
   );
