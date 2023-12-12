@@ -31,12 +31,13 @@ type AccordionBody = {
 };
 
 const accordionBodySpacing: IOSpacingScale = 16;
-const accordionIconMargin: IOSpacingScale = 8;
+const accordionIconMargin: IOSpacingScale = 12;
+const accordionChevronMargin: IOSpacingScale = 8;
 const accordionBorder: IOColors = "grey-200";
 const accordionBackground: IOColors = "white";
 
 // Icon size
-const iconSize: IOIconSizeScale = 20;
+const iconSize: IOIconSizeScale = 24;
 
 /* The code below is a re-adaptation of Dima Portenko's code:
 https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
@@ -106,7 +107,8 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
               IOStyles.row,
               IOStyles.alignCenter,
               {
-                flexShrink: 1
+                flexShrink: 1,
+                marginRight: accordionChevronMargin
               }
             ]}
           >
