@@ -10,6 +10,7 @@ export * from "./codeInput";
 export * from "./divider";
 export * from "./featureInfo";
 export * from "./icons";
+export * from "./image";
 export * from "./layout";
 export * from "./listitems";
 export * from "./logos";
