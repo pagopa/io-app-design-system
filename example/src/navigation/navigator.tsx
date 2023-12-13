@@ -1,5 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { HeaderSecondLevel } from "@pagopa/io-app-design-system";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
@@ -297,7 +298,22 @@ const AppNavigator = () => (
         name={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.route}
         component={ListItems}
         options={{
-          headerShown: false
+          headerShown: true,
+          header: ({ navigation }) => (
+            <HeaderSecondLevel
+              title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
+              transparent
+              isModal
+              type="singleAction"
+              firstAction={{
+                icon: "closeMedium",
+                onPress: () => {
+                  navigation.goBack();
+                },
+                accessibilityLabel: ""
+              }}
+            />
+          )
         }}
       />
     </Stack.Group>
