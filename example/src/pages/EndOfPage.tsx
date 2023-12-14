@@ -1,25 +1,37 @@
-import { Body, EndOfPage } from "@pagopa/io-app-design-system";
+import { Body, ContentWrapper, EndOfPage } from "@pagopa/io-app-design-system";
 import React from "react";
-import { Alert, SafeAreaView, ScrollView } from "react-native";
-import { Screen } from "../components/Screen";
+import { Alert, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export const EndOfPageScreen = () => (
-  <SafeAreaView>
-    <Screen>
-      <ScrollView>
+export const EndOfPageScreen = () => {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <ScrollView
+      contentContainerStyle={{
+        paddingBottom: insets.bottom
+      }}
+    >
+      <ContentWrapper>
         {[...Array(50)].map((_el, i) => (
           <Body key={`body-${i}`}>Repeated text</Body>
         ))}
         <EndOfPage />
-      </ScrollView>
-    </Screen>
-  </SafeAreaView>
-);
+      </ContentWrapper>
+    </ScrollView>
+  );
+};
 
-export const EndOfPageScreenWithCTA = () => (
-  <SafeAreaView>
-    <Screen>
-      <ScrollView>
+export const EndOfPageScreenWithCTA = () => {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <ScrollView
+      contentContainerStyle={{
+        paddingBottom: insets.bottom
+      }}
+    >
+      <ContentWrapper>
         {[...Array(50)].map((_el, i) => (
           <Body key={`body-${i}`}>Repeated text</Body>
         ))}
@@ -41,7 +53,7 @@ export const EndOfPageScreenWithCTA = () => (
             }
           }}
         />
-      </ScrollView>
-    </Screen>
-  </SafeAreaView>
-);
+      </ContentWrapper>
+    </ScrollView>
+  );
+};
