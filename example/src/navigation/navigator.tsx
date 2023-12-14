@@ -29,6 +29,8 @@ import { StepperPage } from "../pages/Stepper";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { OTPInputScreen } from "../pages/OTPInput";
+import { ImageScreen } from "../pages/Image";
+import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -107,6 +109,14 @@ const AppNavigator = () => (
       component={NumberPadScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.NUMBER_PAD.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.IMAGE.route}
+      component={ImageScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.IMAGE.title,
         headerBackTitleVisible: false
       }}
     />
@@ -228,6 +238,23 @@ const AppNavigator = () => (
       }}
     />
 
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.END_OF_PAGE.route}
+      component={EndOfPageScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.route}
+      component={EndOfPageScreenWithCTA}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.title,
+        headerBackTitleVisible: false
+      }}
+    />
     <Stack.Screen
       name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
       component={HeaderFirstLevelScreen}

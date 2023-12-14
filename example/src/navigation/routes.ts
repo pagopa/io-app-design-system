@@ -10,6 +10,7 @@ const APP_ROUTES = {
   },
   COMPONENTS: {
     NUMBER_PAD: { route: "DESIGN_SYSTEM_NUMBER_PAD", title: "Number Pad" },
+    IMAGE: { route: "DESIGN_SYSTEM_IMAGE", title: "Image" },
     OTP_INPUT: { route: "DESIGN_SYSTEM_OTP_INPUT", title: "OTP Input" },
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
@@ -24,6 +25,14 @@ const APP_ROUTES = {
     TAB_NAVIGATION: {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
+    },
+    END_OF_PAGE: {
+      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE",
+      title: "End of Page"
+    },
+    END_OF_PAGE_WITH_CTA: {
+      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE_WITH_CTA",
+      title: "End of Page (with CTA)"
     },
     HEADER_FIRST_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
