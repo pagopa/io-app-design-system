@@ -8,6 +8,7 @@ export * from "./checkbox";
 export * from "./contentWrapper";
 export * from "./codeInput";
 export * from "./divider";
+export * from "./endOfPage";
 export * from "./featureInfo";
 export * from "./icons";
 export * from "./layout";
