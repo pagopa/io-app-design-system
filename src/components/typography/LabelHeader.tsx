@@ -9,7 +9,7 @@ type AllowedColors =
   | "grey-850"
   | "white"
   | "black";
-type AllowedWeight = Extract<IOFontWeight, "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
 
 type LabelHeaderProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -24,21 +24,26 @@ const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
-
+const legacyLabelHeaderWeight: AllowedWeight = "SemiBold";
+const legacyLabelHeaderLineHeight = 20;
 /**
  * `LabelHeader` typographic style
  */
 export const LabelHeader = (props: LabelHeaderProps) => {
   const { isExperimental } = useIOExperimentalDesign();
-
+  // console.log("isExperimental", isExperimental);
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
-    defaultWeight: labelHeaderDefaultWeight,
+    defaultWeight: isExperimental
+      ? labelHeaderDefaultWeight
+      : legacyLabelHeaderWeight,
     defaultColor: labelHeaderDefaultColor,
-    font: isExperimental ? legacyLabelHeaderFontName : labelHeaderFontName,
+    font: isExperimental ? labelHeaderFontName : legacyLabelHeaderFontName,
     fontStyle: {
       fontSize: labelHeaderFontSize,
-      lineHeight: labelHeaderLineHeight
+      lineHeight: isExperimental
+        ? labelHeaderLineHeight
+        : legacyLabelHeaderLineHeight
     }
   });
 };
