@@ -37,19 +37,3 @@ export const IODSExperimentalContextProvider = ({
     </IOExperimentalDesignContext.Provider>
   );
 };
-export const IODSExperimentalEnabledContextProvider = ({
-  children,
-  isExperimentaEnabled
-}: React.PropsWithChildren<IOExperimentalContextProviderProps>) => {
-  const [isExperimental, setExperimental] = React.useState(
-    isExperimentaEnabled ?? true
-  );
-
-  return (
-    <IOExperimentalDesignContext.Provider
-      value={{ isExperimental, setExperimental }}
-    >
-      {children}
-    </IOExperimentalDesignContext.Provider>
-  );
-};
