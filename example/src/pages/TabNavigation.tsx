@@ -46,7 +46,7 @@ export const TabNavigationScreen = () => {
             </View>
           </ComponentViewerBox>
 
-          <ComponentViewerBox name="Light Selected" last={true}>
+          <ComponentViewerBox name="Light Selected">
             <View style={{ flexDirection: "row" }}>
               <TabItem
                 label="Label tab"
@@ -61,6 +61,26 @@ export const TabNavigationScreen = () => {
                 icon={"starEmpty"}
                 iconSelected={"starFilled"}
                 selected={true}
+                onPress={handlePress}
+              />
+            </View>
+          </ComponentViewerBox>
+
+          <ComponentViewerBox name="Light Disabled" last={true}>
+            <View style={{ flexDirection: "row" }}>
+              <TabItem
+                label="Label tab"
+                accessibilityLabel="Label tab"
+                disabled
+                onPress={handlePress}
+              />
+              <HSpacer size={8} />
+              <TabItem
+                label="Label tab"
+                accessibilityLabel="Label tab"
+                disabled
+                icon={"starEmpty"}
+                iconSelected={"starFilled"}
                 onPress={handlePress}
               />
             </View>
@@ -90,7 +110,7 @@ export const TabNavigationScreen = () => {
             </View>
           </ComponentViewerBox>
 
-          <ComponentViewerBox name="Dark Selected" colorMode="dark" last={true}>
+          <ComponentViewerBox name="Dark Selected" colorMode="dark">
             <View style={{ flexDirection: "row" }}>
               <TabItem
                 label="Label tab"
@@ -107,6 +127,27 @@ export const TabNavigationScreen = () => {
                 iconSelected={"starFilled"}
                 color="dark"
                 selected={true}
+                onPress={handlePress}
+              />
+            </View>
+          </ComponentViewerBox>
+          <ComponentViewerBox name="Dark Disabled" colorMode="dark" last={true}>
+            <View style={{ flexDirection: "row" }}>
+              <TabItem
+                label="Label tab"
+                accessibilityLabel="Label tab"
+                color="dark"
+                disabled={true}
+                onPress={handlePress}
+              />
+              <HSpacer size={8} />
+              <TabItem
+                label="Label tab"
+                accessibilityLabel="Label tab"
+                icon={"starEmpty"}
+                iconSelected={"starFilled"}
+                color="dark"
+                disabled={true}
                 onPress={handlePress}
               />
             </View>
