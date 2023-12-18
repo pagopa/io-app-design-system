@@ -8,7 +8,7 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { H6 } from "../typography";
+import { H3, H6 } from "../typography";
 import { ButtonLink, IconButton } from "../buttons";
 import { Badge } from "../badge";
 
@@ -27,6 +27,11 @@ type BadgeProps = {
   componentProps: ComponentProps<typeof Badge>;
 };
 
+type ValueProps = {
+  type: "value";
+  componentProps: ComponentProps<typeof H3>;
+};
+
 type IconProps =
   | {
       iconName: IOIcons;
@@ -37,7 +42,8 @@ type IconProps =
 type EndElementProps =
   | ButtonLinkActionProps
   | IconButtonActionProps
-  | BadgeProps;
+  | BadgeProps
+  | ValueProps;
 
 export type ListItemHeader = WithTestID<{
   label: string;
@@ -108,6 +114,15 @@ export const ListItemHeader = ({
           );
         case "badge":
           return <Badge {...componentProps} />;
+        case "value":
+          return (
+            <H3
+              weight={"SemiBold"}
+              color={"black"}
+              {...componentProps}
+              accessibilityLabel={`${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`}
+            />
+          );
         default:
           return <></>;
       }
