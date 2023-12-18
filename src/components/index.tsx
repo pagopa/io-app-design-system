@@ -11,6 +11,7 @@ export * from "./divider";
 export * from "./endOfPage";
 export * from "./featureInfo";
 export * from "./icons";
+export * from "./image";
 export * from "./layout";
 export * from "./listitems";
 export * from "./logos";

@@ -9,6 +9,7 @@ import {
   RadioButtonLabel,
   RadioGroup,
   RadioItem,
+  RadioItemWithAmount,
   SwitchLabel,
   VSpacer,
   useIOExperimentalDesign
@@ -44,6 +45,8 @@ export const Selection = () => {
       {renderRadioButtonLabel()}
       {/* RadioListItem */}
       <RadioListItemsShowroom />
+      {/* RadioListItemWithAmount */}
+      <RadioListItemsWithAmountShowroom />
       <H2 style={{ marginVertical: 16 }}>Switch</H2>
       {/* Native Switch */}
       <NativeSwitchShowroom />
@@ -235,6 +238,7 @@ const RadioListItemsShowroom = () => {
   return (
     <ComponentViewerBox name="RadioListItem">
       <RadioGroup<string>
+        type="radioListItem"
         key="check_income"
         items={mockRadioItems()}
         selectedItem={selectedItem}
@@ -243,7 +247,42 @@ const RadioListItemsShowroom = () => {
     </ComponentViewerBox>
   );
 };
+// RADIO ITEMS WITH AMOUNT
 
+const mockRadioItemsWithAmount = (): ReadonlyArray<
+  RadioItemWithAmount<string>
+> => [
+  {
+    id: "example-1",
+    label: "Banca Intesa",
+    formattedAmountString: "2,50 €",
+    suggestReason: "Perché costa meno",
+    isSuggested: true
+  },
+  {
+    id: "example-2",
+    label: "Banca Unicredit",
+    formattedAmountString: "4,50 €"
+  }
+];
+
+const RadioListItemsWithAmountShowroom = () => {
+  const [selectedItem, setSelectedItem] = useState<string | undefined>(
+    "example-1"
+  );
+
+  return (
+    <ComponentViewerBox name="RadioListItemWithAmount">
+      <RadioGroup<string>
+        type="radioListItemWithAmount"
+        // key="check_income"
+        items={mockRadioItemsWithAmount()}
+        selectedItem={selectedItem}
+        onPress={setSelectedItem}
+      />
+    </ComponentViewerBox>
+  );
+};
 // SWITCH
 
 const renderAnimatedSwitch = () => (
