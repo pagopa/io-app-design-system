@@ -3,14 +3,15 @@ import { View } from "react-native";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
+  IOSpacingScale,
   IOStyles,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
+import { Badge } from "../badge";
+import { ButtonLink, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
 import { H6 } from "../typography";
-import { ButtonLink, IconButton } from "../buttons";
-import { Badge } from "../badge";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -47,6 +48,8 @@ export type ListItemHeader = WithTestID<{
   accessibilityLabel?: string;
 }> &
   IconProps;
+
+const iconMargin: IOSpacingScale = 8;
 
 export const ListItemHeader = ({
   label,
@@ -124,7 +127,7 @@ export const ListItemHeader = ({
     >
       <View style={IOListItemStyles.listItemInner}>
         {iconName && (
-          <View style={{ marginRight: IOListItemVisualParams.actionMargin }}>
+          <View style={{ marginRight: iconMargin }}>
             <Icon
               name={iconName}
               color={iconColor ?? theme["icon-decorative"]}
