@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
+<View
+  style={
+    [
+      {
+        "borderColor": "rgba(14,15,19,0.1)",
+        "borderWidth": 1,
+        "overflow": "hidden",
+        "resizeMode": "contain",
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 22,
+        "height": 44,
+        "padding": 6,
+        "width": 44,
+      },
+    ]
+  }
+>
+  <Image
+    onError={[Function]}
+    source={
+      {
+        "uri": "",
+      }
+    }
+    style={
+      {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
+
 exports[`Test Avatar Components Avatar Snapshot 1`] = `
 <View
   style={
