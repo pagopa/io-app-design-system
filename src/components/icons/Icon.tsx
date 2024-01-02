@@ -6,7 +6,6 @@ import { IOColors } from "../../core/IOColors";
 import IconAbacus from "./svg/IconAbacus";
 import IconAdd from "./svg/IconAdd";
 import IconAddSmall from "./svg/IconAddSmall";
-import IconAgreement from "./svg/IconAgreement";
 import IconAmount from "./svg/IconAmount";
 import IconAnalytics from "./svg/IconAnalytics";
 import IconArchive from "./svg/IconArchive";
@@ -65,10 +64,8 @@ import IconDisabilityCard from "./svg/IconDisabilityCard";
 import IconDocGiacenza from "./svg/IconDocGiacenza";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
-import IconDocument from "./svg/IconDocument";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
-import IconDocumentSign from "./svg/IconDocumentSign";
 import IconDotMenu from "./svg/IconDotMenu";
 import IconDriverLicense from "./svg/IconDriverLicense";
 import IconEdit from "./svg/IconEdit";
@@ -152,8 +149,6 @@ import IconProductIOApp from "./svg/IconProductIOApp";
 import IconProductIOAppBlueBg from "./svg/IconProductIOAppBlueBg";
 import IconProductPagoPA from "./svg/IconProductPagoPA";
 import IconProfile from "./svg/IconProfile";
-import IconProfileAlt from "./svg/IconProfileAlt";
-import IconProfileFilled from "./svg/IconProfileFilled";
 import IconQrCode from "./svg/IconQrCode";
 import IconQuestion from "./svg/IconQuestion";
 import IconRead from "./svg/IconRead";
@@ -237,9 +232,6 @@ export const IOIcons = {
   archiveFilled: IconArchiveFilled,
   inbox: IconInboxEmpty,
   inboxFilled: IconInboxFilled,
-  doc: IconDocument,
-  docSign: IconDocumentSign,
-  docAgree: IconAgreement,
   security: IconSecurity,
   option: IconOption,
   key: IconKey,
@@ -289,8 +281,6 @@ export const IOIcons = {
   trashcan: IconTrashcan,
   calendar: IconCalendar,
   profile: IconProfile,
-  profileFilled: IconProfileFilled,
-  profileAlt: IconProfileAlt,
   familySharing: IconFamilySharing,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
