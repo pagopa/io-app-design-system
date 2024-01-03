@@ -34,7 +34,7 @@ export const ListItemRadioWithAmount = (
       props.onValueChange(!toggleValue);
     }
   };
-  const isExperimental = useIOExperimentalDesign();
+  const { isExperimental } = useIOExperimentalDesign();
 
   const interactiveColor: IOColors = isExperimental ? "blueIO-500" : "blue";
   const suggestColor: IOColors = "hanPurple-500";
