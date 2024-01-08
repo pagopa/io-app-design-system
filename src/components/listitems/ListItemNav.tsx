@@ -27,7 +27,7 @@ import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { Caption, H6, LabelSmall } from "../typography";
 
-type ListItemTopElementPropa =
+type ListItemTopElementProps =
   | {
       badgeProps: React.ComponentProps<typeof Badge>;
       dateValue?: never;
@@ -44,7 +44,7 @@ type ListItemNavPartialProps = WithTestID<{
   // Accessibility
   accessibilityLabel: string;
   hideChevron?: boolean;
-  topElement?: ListItemTopElementPropa;
+  topElement?: ListItemTopElementProps;
 }>;
 
 export type ListItemNavGraphicProps =
