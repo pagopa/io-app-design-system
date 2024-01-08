@@ -185,9 +185,11 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
-          badgeProps={{
-            text: "Novità",
-            variant: "blue"
+          topElement={{
+            badgeProps: {
+              text: "Novità",
+              variant: "blue"
+            }
           }}
         />
         <ListItemNav
@@ -197,11 +199,24 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
-          badgeProps={{
-            text: "Novità",
-            variant: "blue"
+          topElement={{
+            badgeProps: {
+              text: "Novità",
+              variant: "blue"
+            }
           }}
           hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          topElement={{
+            dateValue: "14/04/2024"
+          }}
         />
       </View>
     </ComponentViewerBox>

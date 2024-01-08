@@ -24,8 +24,18 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
-import { VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { HSpacer, VSpacer } from "../spacer";
+import { Caption, H6, LabelSmall } from "../typography";
+
+type ListItemTopElementProps =
+  | {
+      badgeProps: React.ComponentProps<typeof Badge>;
+      dateValue?: never;
+    }
+  | {
+      badgeProps?: never;
+      dateValue: string;
+    };
 
 type ListItemNavPartialProps = WithTestID<{
   value: string | React.ReactNode;
@@ -34,7 +44,7 @@ type ListItemNavPartialProps = WithTestID<{
   // Accessibility
   accessibilityLabel: string;
   hideChevron?: boolean;
-  badgeProps?: React.ComponentProps<typeof Badge>;
+  topElement?: ListItemTopElementProps;
 }>;
 
 export type ListItemNavGraphicProps =
@@ -54,7 +64,7 @@ export const ListItemNav = ({
   accessibilityLabel,
   testID,
   hideChevron = false,
-  badgeProps
+  topElement
 }: ListItemNav) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
@@ -62,12 +72,28 @@ export const ListItemNav = ({
 
   const listItemNavContent = (
     <>
-      {badgeProps && (
+      {topElement && (
         <>
-          <View style={{ alignSelf: "flex-start" }}>
-            <Badge {...badgeProps} />
-          </View>
-          <VSpacer size={4} />
+          {topElement.badgeProps && (
+            <>
+              <View style={{ alignSelf: "flex-start" }}>
+                <Badge {...topElement.badgeProps} />
+              </View>
+              <VSpacer size={8} />
+            </>
+          )}
+          {topElement.dateValue && (
+            <>
+              <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
+                <Icon name="calendar" size={16} />
+                <HSpacer size={4} />
+                <Caption color={theme["textBody-tertiary"]}>
+                  {topElement.dateValue}
+                </Caption>
+              </View>
+              <VSpacer size={4} />
+            </>
+          )}
         </>
       )}
       {/* Let developer using a custom component (e.g: skeleton) */}
