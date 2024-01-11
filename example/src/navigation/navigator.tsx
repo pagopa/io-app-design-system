@@ -1,37 +1,38 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HeaderSecondLevel } from "@pagopa/io-app-design-system";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
+import { DynamicCardRotation } from "../pages/DynamicCardRotation";
+import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
+import { FooterWithButton } from "../pages/FooterWithButton";
+import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
+import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { Icons } from "../pages/Icons";
+import { ImageScreen } from "../pages/Image";
 import { Layout } from "../pages/Layout";
 import { ListItems } from "../pages/ListItem";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
-import { Pictograms } from "../pages/Pictograms";
-import { Selection } from "../pages/Selection";
-import { Typography } from "../pages/Typography";
-import { Search } from "../pages/Search";
-import { TabNavigationScreen } from "../pages/TabNavigation";
-import { Sandbox } from "../pages/Sandbox";
-import { TextInputs } from "../pages/TextInputs";
-import { FooterWithButton } from "../pages/FooterWithButton";
 import Modules from "../pages/Modules";
-import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
-import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
-import { Toasts } from "../pages/Toasts";
-import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { NumberPadScreen } from "../pages/NumberPad";
-import { StepperPage } from "../pages/Stepper";
-import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
-import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { OTPInputScreen } from "../pages/OTPInput";
-import { ImageScreen } from "../pages/Image";
-import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
+import { Pictograms } from "../pages/Pictograms";
+import { Sandbox } from "../pages/Sandbox";
+import { Search } from "../pages/Search";
+import { Selection } from "../pages/Selection";
+import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
+import { StepperPage } from "../pages/Stepper";
+import { TabNavigationScreen } from "../pages/TabNavigation";
+import { TextInputs } from "../pages/TextInputs";
+import { Toasts } from "../pages/Toasts";
+import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -208,6 +209,15 @@ const AppNavigator = () => (
       component={TabNavigationScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.TAB_NAVIGATION.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.DYNAMIC_CARD_ROTATION.route}
+      component={DynamicCardRotation}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.DYNAMIC_CARD_ROTATION.title,
         headerBackTitleVisible: false
       }}
     />
