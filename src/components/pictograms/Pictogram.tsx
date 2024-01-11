@@ -72,6 +72,7 @@ import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
 /* Bleed Pictograms */
 import PictogramActivate from "./svg/PictogramActivate";
+import PictogramAddCard from "./svg/PictogramAddCard";
 import PictogramAttachment from "./svg/PictogramAttachment";
 import PictogramBiometric from "./svg/PictogramBiometric";
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
@@ -215,6 +216,7 @@ export const IOPictograms = {
   eventClose: PictogramEventClose,
   hello: PictogramHello,
   comunicationProblem: PictogramComunicationProblem,
+  addCard: PictogramAddCard,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
