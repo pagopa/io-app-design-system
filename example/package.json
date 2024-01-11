@@ -11,10 +11,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-native/metro-config": "^0.72.9",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
     "@react-navigation/stack": "^6.3.17",
+    "@shopify/react-native-skia": "^0.1.233",
     "babel-plugin-macros": "^3.1.0",
     "fp-ts": "^2.16.0",
     "i18n-js": "^4.3.0",
