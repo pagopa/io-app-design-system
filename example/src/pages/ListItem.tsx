@@ -4,6 +4,7 @@ import {
   IOThemeContext,
   Icon,
   ListItemAction,
+  ListItemAmount,
   ListItemHeader,
   ListItemInfo,
   ListItemInfoCopy,
@@ -72,6 +73,15 @@ export const ListItems = () => {
             ListItemHeader
           </H2>
           {renderListItemHeader()}
+
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemAmount
+          </H2>
+          {renderListItemAmount()}
 
           <H2
             color={theme["textHeading-default"]}
@@ -479,13 +489,6 @@ const renderListItemHeader = () => (
           }
         }}
       />
-      <ListItemHeader
-        label="Label"
-        endElement={{
-          type: "value",
-          componentProps: { children: "1.500,00 €" }
-        }}
-      />
 
       <ListItemHeader
         label="Label"
@@ -493,6 +496,17 @@ const renderListItemHeader = () => (
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemAmount = () => (
+  <ComponentViewerBox name="ListItemAmount">
+    <ListItemAmount label="Amount" valueString="€ 1.000,00" />
+    <ListItemAmount
+      iconName="creditCard"
+      label="Amount with card "
+      valueString="€ 1.000,00"
+    />
   </ComponentViewerBox>
 );
 
