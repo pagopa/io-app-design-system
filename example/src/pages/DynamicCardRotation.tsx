@@ -1,6 +1,21 @@
 /* eslint-disable functional/immutable-data */
-import { H6, IOColors, VSpacer } from "@pagopa/io-app-design-system";
+import {
+  H6,
+  IOColors,
+  IORadiusScale,
+  VSpacer,
+  hexToRgba
+} from "@pagopa/io-app-design-system";
 import MaskedView from "@react-native-masked-view/masked-view";
+import {
+  Canvas,
+  Mask,
+  RoundedRect,
+  Circle as SkiaCircle,
+  Group as SkiaGroup,
+  RadialGradient as SkiaRadialGradient,
+  vec
+} from "@shopify/react-native-skia";
 import * as React from "react";
 import { useState } from "react";
 import {
@@ -34,7 +49,7 @@ type LightSize = {
 
 /* LIGHT
    Visual parameters */
-const lightSizePercentage: ViewStyle["width"] = "80%";
+const lightSizePercentage: ViewStyle["width"] = "40%";
 const lightScaleMultiplier: number = 1;
 const lightOpacity: ViewStyle["opacity"] = 0.3;
 /* Percentage of visible light when it's near
@@ -44,6 +59,7 @@ const visibleLightPercentage: number = 0.5;
 /* CARD
    Visual parameters */
 const cardAspectRatio: ViewStyle["aspectRatio"] = 7 / 4;
+const cardBorderRadius: IORadiusScale = 24;
 
 /* MOVEMENT
    Spring config for the light movement */
@@ -110,7 +126,7 @@ const DynamicCardRotation = () => {
 
     /* We don't need to consider the whole
     quaternion range, just the 1/10 */
-    const quaternionRange: number = 0.1;
+    const quaternionRange: number = 0.07;
 
     const translateX = interpolate(
       relativeQx,
@@ -134,6 +150,31 @@ const DynamicCardRotation = () => {
       ]
     };
   });
+
+  const light = (
+    <SkiaGroup
+      opacity={1}
+      // blendMode={"colorDodge"}
+      origin={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
+    >
+      <SkiaCircle
+        cx={(cardSize?.width ?? 0) / 2}
+        cy={(cardSize?.height ?? 0) / 2}
+        r={(lightSize?.value ?? 0) / 2}
+        color="lightblue"
+      >
+        <SkiaRadialGradient
+          c={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
+          r={(lightSize?.value ?? 0) / 2}
+          colors={[
+            "rgba(255,255,255,0.5)",
+            "rgba(255,255,255,0.2)",
+            "rgba(255,255,255,0.01)"
+          ]}
+        />
+      </SkiaCircle>
+    </SkiaGroup>
+  );
 
   return (
     <View style={styles.container}>
@@ -179,6 +220,39 @@ const DynamicCardRotation = () => {
           </Animated.View>
         </View>
       </MaskedView>
+
+      <VSpacer />
+
+      <Canvas
+        style={{
+          width: "100%",
+          aspectRatio: cardAspectRatio
+        }}
+      >
+        <Mask
+          mode="alpha"
+          mask={
+            <RoundedRect
+              x={0}
+              y={0}
+              width={cardSize?.width ?? 0}
+              height={cardSize?.height ?? 0}
+              r={cardBorderRadius}
+            />
+          }
+        >
+          <RoundedRect
+            x={0}
+            y={0}
+            width={cardSize?.width ?? 0}
+            height={cardSize?.height ?? 0}
+            r={cardBorderRadius}
+            color={hexToRgba(IOColors["hanPurple-250"], 1)}
+          />
+        </Mask>
+        {light}
+      </Canvas>
+
       <View style={styles.debugInfo}>
         <H6>Card</H6>
         <Text>{`Size: ${cardSize?.width} × ${cardSize?.height}`}</Text>
@@ -196,12 +270,14 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingHorizontal: 24
   },
+  // eslint-disable-next-line react-native/no-color-literals
   light: {
     alignSelf: "center",
     width: lightSizePercentage,
     aspectRatio: 1,
-    opacity: lightOpacity,
-    borderRadius: 100
+    // opacity: lightOpacity,
+    borderRadius: 400,
+    backgroundColor: "lightblue"
   },
   mask: {
     width: "100%",
@@ -209,7 +285,7 @@ const styles = StyleSheet.create({
     backgroundColor: IOColors.black,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 24
+    borderRadius: cardBorderRadius
   },
   box: {
     justifyContent: "center",

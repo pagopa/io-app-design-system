@@ -5,7 +5,7 @@ should use a value defined in the following scale.
 */
 
 export const IORadiusScale = [6, 8, 16, 24] as const;
-type IORadiusScale = (typeof IORadiusScale)[number];
+export type IORadiusScale = (typeof IORadiusScale)[number];
 
 const IODefaultRadius: IORadiusScale = 8;
 
