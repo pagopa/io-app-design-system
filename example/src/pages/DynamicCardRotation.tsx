@@ -271,6 +271,7 @@ const DynamicCardRotation = () => {
           </Animated.View>
         </View>
       </MaskedView>
+      <Text style={styles.cardDebugLabel}>Using React Native engine</Text>
 
       <VSpacer />
 
@@ -303,6 +304,7 @@ const DynamicCardRotation = () => {
         </Mask>
         {light}
       </Canvas>
+      <Text style={styles.cardDebugLabel}>Using Skia engine</Text>
 
       <View style={styles.debugInfo}>
         <H6>Card</H6>
@@ -328,6 +330,10 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     // opacity: lightOpacity,
     borderRadius: 400
+  },
+  cardDebugLabel: {
+    fontSize: 11,
+    marginTop: 4
   },
   mask: {
     width: "100%",
