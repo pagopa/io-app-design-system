@@ -33,6 +33,7 @@ import Animated, {
   useAnimatedReaction,
   useAnimatedSensor,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
@@ -78,6 +79,9 @@ const DynamicCardRotation = () => {
   const initialQx = useSharedValue(0);
   const initialQy = useSharedValue(0);
 
+  const skiaTranslateX = useSharedValue(0);
+  const skiaTranslateY = useSharedValue(0);
+
   useAnimatedReaction(
     () => rotationSensor.sensor.value,
     s => {
@@ -86,6 +90,12 @@ const DynamicCardRotation = () => {
     },
     []
   );
+
+  /* Not all devices are in an initial flat position on a surface 
+    (e.g. a table) then we use relative rotation values,
+    not absolute ones  */
+  const relativeQx = useDerivedValue(() => qx - initialQx.value);
+  const relativeQy = useDerivedValue(() => qy - initialQy.value);
 
   // eslint-disable-next-line no-console
   console.log(
@@ -107,36 +117,31 @@ const DynamicCardRotation = () => {
     setLightSize({ value: lightSize });
   };
 
+  /* Set translate boundaries */
+  const maxTranslateX =
+    ((cardSize?.width ?? 0) -
+      (lightSize?.value ?? 0) * visibleLightPercentage) /
+    2;
+  const maxTranslateY =
+    ((cardSize?.height ?? 0) -
+      (lightSize?.value ?? 0) * visibleLightPercentage) /
+    2;
+
+  /* We don't need to consider the whole
+    quaternion range, just the 1/10 */
+  const quaternionRange: number = 0.07;
+
   /* Calculate the light position using quaternions */
   const lightAnimatedStyle = useAnimatedStyle(() => {
-    /* Not all devices are in an initial flat position on a surface 
-    (e.g. a table) then we use relative rotation values,
-    not absolute ones  */
-    const relativeQx = qx - initialQx.value;
-    const relativeQy = qy - initialQy.value;
-
-    const maxTranslateX =
-      ((cardSize?.width ?? 0) -
-        (lightSize?.value ?? 0) * visibleLightPercentage) /
-      2;
-    const maxTranslateY =
-      ((cardSize?.height ?? 0) -
-        (lightSize?.value ?? 0) * visibleLightPercentage) /
-      2;
-
-    /* We don't need to consider the whole
-    quaternion range, just the 1/10 */
-    const quaternionRange: number = 0.07;
-
     const translateX = interpolate(
-      relativeQx,
+      relativeQx.value,
       [-quaternionRange, quaternionRange],
       [maxTranslateX, -maxTranslateX],
       Extrapolate.CLAMP
     );
 
     const translateY = interpolate(
-      relativeQy,
+      relativeQy.value,
       [-quaternionRange, quaternionRange],
       [-maxTranslateY, maxTranslateY],
       Extrapolate.CLAMP
@@ -151,6 +156,28 @@ const DynamicCardRotation = () => {
     };
   });
 
+  const skiaLightTranslateValues = useDerivedValue(() => {
+    skiaTranslateX.value = interpolate(
+      relativeQx.value,
+      [-quaternionRange, quaternionRange],
+      [maxTranslateX, -maxTranslateX],
+      Extrapolate.CLAMP
+    );
+
+    skiaTranslateY.value = interpolate(
+      relativeQy.value,
+      [-quaternionRange, quaternionRange],
+      [-maxTranslateY, maxTranslateY],
+      Extrapolate.CLAMP
+    );
+
+    return [
+      { translateX: skiaTranslateX.value },
+      { translateY: skiaTranslateY.value },
+      { scale: lightScaleMultiplier }
+    ];
+  });
+
   const light = (
     <SkiaGroup
       opacity={1}
@@ -162,6 +189,7 @@ const DynamicCardRotation = () => {
         cy={(cardSize?.height ?? 0) / 2}
         r={(lightSize?.value ?? 0) / 2}
         color="lightblue"
+        transform={skiaLightTranslateValues}
       >
         <SkiaRadialGradient
           c={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
