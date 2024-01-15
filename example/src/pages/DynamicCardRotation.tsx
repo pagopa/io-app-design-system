@@ -194,10 +194,27 @@ const DynamicCardRotation = () => {
         <SkiaRadialGradient
           c={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
           r={(lightSize?.value ?? 0) / 2}
+          positions={[
+            0, 0.081, 0.155, 0.225, 0.29, 0.353, 0.412, 0.471, 0.529, 0.588,
+            0.647, 0.71, 0.775, 0.845, 0.919, 1
+          ]}
           colors={[
-            "rgba(255,255,255,0.5)",
-            "rgba(255,255,255,0.2)",
-            "rgba(255,255,255,0.01)"
+            "rgba(255,255,255,1)",
+            "rgba(255,255,255,0.987)",
+            "rgba(255,255,255,0.95)",
+            "rgba(255,255,255,0.89)",
+            "rgba(255,255,255,0.825)",
+            "rgba(255,255,255,0.74)",
+            "rgba(255,255,255,0.65)",
+            "rgba(255,255,255,0.55)",
+            "rgba(255,255,255,0.45)",
+            "rgba(255,255,255,0.35)",
+            "rgba(255,255,255,0.26)",
+            "rgba(255,255,255,0.175)",
+            "rgba(255,255,255,0.1)",
+            "rgba(255,255,255,0.05)",
+            "rgba(255,255,255,0.01)",
+            "rgba(255,255,255,0)"
           ]}
         />
       </SkiaCircle>
@@ -304,8 +321,7 @@ const styles = StyleSheet.create({
     width: lightSizePercentage,
     aspectRatio: 1,
     // opacity: lightOpacity,
-    borderRadius: 400,
-    backgroundColor: "lightblue"
+    borderRadius: 400
   },
   mask: {
     width: "100%",
