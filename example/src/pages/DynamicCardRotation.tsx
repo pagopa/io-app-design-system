@@ -157,18 +157,24 @@ const DynamicCardRotation = () => {
   });
 
   const skiaLightTranslateValues = useDerivedValue(() => {
-    skiaTranslateX.value = interpolate(
-      relativeQx.value,
-      [-quaternionRange, quaternionRange],
-      [maxTranslateX, -maxTranslateX],
-      Extrapolate.CLAMP
+    skiaTranslateX.value = withSpring(
+      interpolate(
+        relativeQx.value,
+        [-quaternionRange, quaternionRange],
+        [maxTranslateX, -maxTranslateX],
+        Extrapolate.CLAMP
+      ),
+      springConfig
     );
 
-    skiaTranslateY.value = interpolate(
-      relativeQy.value,
-      [-quaternionRange, quaternionRange],
-      [-maxTranslateY, maxTranslateY],
-      Extrapolate.CLAMP
+    skiaTranslateY.value = withSpring(
+      interpolate(
+        relativeQy.value,
+        [-quaternionRange, quaternionRange],
+        [-maxTranslateY, maxTranslateY],
+        Extrapolate.CLAMP
+      ),
+      springConfig
     );
 
     return [
