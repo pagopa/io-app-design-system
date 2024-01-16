@@ -16,9 +16,11 @@ import {
   RoundedRect,
   Circle as SkiaCircle,
   Group as SkiaGroup,
+  Image as SkiaImage,
   RadialGradient as SkiaRadialGradient,
   rect,
   rrect,
+  useImage,
   vec
 } from "@shopify/react-native-skia";
 import * as React from "react";
@@ -58,7 +60,7 @@ type LightSize = {
    Visual parameters */
 const lightSizePercentage: ViewStyle["width"] = "90%";
 const lightScaleMultiplier: number = 1;
-const lightOpacity: ViewStyle["opacity"] = 0.3;
+const lightOpacity: ViewStyle["opacity"] = 0.9;
 const lightSkiaOpacity: number = 0.4;
 /* Percentage of visible light when it's near
 card boundaries */
@@ -71,7 +73,7 @@ const cardBorderRadius: IORadiusScale = 24;
 const cardBorderWidth: number = 1;
 const cardBorderColor: ColorValue = IOColors["hanPurple-500"];
 const cardBorderHighlighted: ColorValue = IOColors.white;
-const cardBorderOpacity: number = 1;
+const cardBorderOpacity: number = 0.65;
 // Drivers' License
 const cardGradient: Array<Color> = ["#F4ACD5", "#FCE6F2"];
 
@@ -208,10 +210,34 @@ const DynamicCardRotation = () => {
     ];
   });
 
+  // Total card (border included)
+  const CardMask = () => (
+    <RoundedRect
+      x={0}
+      y={0}
+      width={cardSize?.width ?? 0}
+      height={cardSize?.height ?? 0}
+      r={cardBorderRadius}
+      color={IOColors.black}
+    />
+  );
+
+  // Inner card (border excluded)
+  const CardInnerMask = () => (
+    <RoundedRect
+      x={cardBorderWidth}
+      y={cardBorderWidth}
+      width={(cardSize?.width ?? 0) - cardBorderWidth * 2}
+      height={(cardSize?.height ?? 0) - cardBorderWidth * 2}
+      r={cardBorderRadius - cardBorderWidth}
+      color={IOColors.black}
+    />
+  );
+
   const CardLight = () => (
     <SkiaGroup
       opacity={lightSkiaOpacity}
-      blendMode={"colorDodge"}
+      blendMode={"hardLight"}
       origin={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
     >
       <SkiaCircle
@@ -286,9 +312,29 @@ const DynamicCardRotation = () => {
     );
   };
 
+  const CardPatternMask = () => {
+    const cardPattern = useImage(
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      require("../../assets/images/DriverLicenseBackground.png")
+    );
+
+    return (
+      <Mask mask={<CardInnerMask />}>
+        <SkiaImage
+          x={0}
+          y={0}
+          fit="cover"
+          image={cardPattern}
+          width={cardSize?.width ?? 0}
+          height={cardSize?.height ?? 0}
+        />
+      </Mask>
+    );
+  };
+
   const CardBorderMask = () => (
     <Mask mode="alpha" mask={<CardLight />}>
-      <CardBorder color={cardBorderHighlighted} opacity={0.5} />
+      <CardBorder color={cardBorderHighlighted} opacity={0.8} />
     </Mask>
   );
 
@@ -346,35 +392,24 @@ const DynamicCardRotation = () => {
           aspectRatio: cardAspectRatio
         }}
       >
-        <Mask
-          mode="alpha"
-          mask={
-            <RoundedRect
-              x={0}
-              y={0}
-              width={cardSize?.width ?? 0}
-              height={cardSize?.height ?? 0}
-              r={cardBorderRadius}
-            />
-          }
+        <RoundedRect
+          x={0}
+          y={0}
+          width={cardSize?.width ?? 0}
+          height={cardSize?.height ?? 0}
+          r={cardBorderRadius}
+          color={hexToRgba(IOColors["hanPurple-250"], 1)}
         >
-          <RoundedRect
-            x={0}
-            y={0}
-            width={cardSize?.width ?? 0}
-            height={cardSize?.height ?? 0}
-            r={cardBorderRadius}
-            color={hexToRgba(IOColors["hanPurple-250"], 1)}
-          >
-            <LinearGradient
-              start={vec(0, cardSize?.height ?? 0)}
-              end={vec(cardSize?.width ?? 0, 0)}
-              colors={cardGradient}
-            />
-          </RoundedRect>
-          <CardBorder color={"#D279AC"} />
-        </Mask>
+          <LinearGradient
+            start={vec(0, cardSize?.height ?? 0)}
+            end={vec(cardSize?.width ?? 0, 0)}
+            colors={cardGradient}
+          />
+        </RoundedRect>
+        <CardBorder color={"#D279AC"} />
         <CardLight />
+        <CardPatternMask />
+
         <CardBorderMask />
       </Canvas>
       <Text style={styles.cardDebugLabel}>Using Skia engine</Text>
