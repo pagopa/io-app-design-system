@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; align-items: center">
 
-<img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
+<img alt="IO App Design System" src="io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <!-- NPM Badge -->
 <div align="center">
@@ -43,7 +43,6 @@ yarn ios --simulator='iPhone 15 Pro'
 ```
 Activate the toggle at the top of the application to view the experimental design system.
 
-> [!important]
 > The sample application consists of several pages with some components for testing purposes. To view the [continuously updated Design System section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system), please refer to the [main app](https://github.com/pagopa/io-app).
 
 ## Playground & Documentation
@@ -90,8 +89,8 @@ Essential core visual attributes of the design language. It includes:
 
 ## Foundation
 Essential atomic components:
-* [**Typography**](./src/components/typography/)
-  * [📖 Docs](./src/components/typography/README.md) · [Handling font files →](./src/components/typography/README.md#handling-font-files)
+* **Typography**
+  * [📖 Docs](?path=/docs/atoms-typography--docs)
 * **Layout**
   * [ContentWrapper](./src/components/contentWrapper/)
   * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
@@ -111,11 +110,10 @@ Essential atomic components:
 
 ## Components
 
-* [**Buttons**](./src/components/buttons/)
-* [**TextInput**](./src/components/textInput/)
-* [**List Items**](./src/components/listitems/)
-* [**Modules**](./src/components/modules/)
-* [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+* [**Buttons**](/docs/components-buttons-buttonextendedoutline--docs)
+* [**TextInput**](/docs/components-text-input-textinput--docs)
+* [**List Items**](/docs/components-list-items-listitemcheckbox--docs)
+* [**Badges**](/docs/components-badge-badge--docs) & [**Tags**](/docs/components-tag-tag--docs)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
   * [Radio](./src/components/radio/)
@@ -128,7 +126,6 @@ Essential atomic components:
 
 #### [Explore the `components` folder →](./src/components)
 
-> [!note]
 > Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
 

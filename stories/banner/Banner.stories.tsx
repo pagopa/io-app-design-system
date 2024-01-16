@@ -6,7 +6,7 @@ import { Banner, IOPictogramsBleed } from "../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "IO-App Design System/Components/Banner/Banner",
+  title: "Components/Banner/Banner",
   component: Banner,
   argTypes: {
     size: {

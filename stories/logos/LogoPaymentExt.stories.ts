@@ -4,7 +4,7 @@ import { LogoPaymentExt } from "../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "IO-App Design System/Components/LogoPayment/LogoPaymentExt",
+  title: "Components/LogoPayment/LogoPaymentExt",
   component: LogoPaymentExt,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout

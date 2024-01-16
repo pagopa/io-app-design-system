@@ -38,7 +38,8 @@ const config: StorybookConfig = {
     "../example/assets/css",
     "../example/assets/fonts/TitilliumWeb",
     "../example/assets/fonts/ReadexPro",
-    "../example/assets/fonts/DMMono"
+    "../example/assets/fonts/DMMono",
+    "../repo-assets"
   ],
   docs: {
     autodocs: "tag"

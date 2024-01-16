@@ -5,7 +5,7 @@ import { H2 } from "../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "IO-App Design System/Atoms/Typography/H2",
+  title: "Atoms/Typography/H2",
   component: H2,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout

@@ -3,6 +3,11 @@ import { IOThemeLight, IOThemeDark } from "../src/core";
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ["Getting Started", ["Atoms", "Components"], "Changelog"]
+      }
+    },
     backgrounds: {
       default: "light",
       values: [

@@ -6,7 +6,7 @@ import { Alert } from "../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "IO-App Design System/Components/Alert/Alert",
+  title: "Components/Alert/Alert",
   component: Alert,
   tags: ["autodocs"],
   parameters: {
