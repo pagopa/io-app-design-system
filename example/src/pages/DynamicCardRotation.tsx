@@ -11,6 +11,7 @@ import {
   Canvas,
   Color,
   DiffRect,
+  LinearGradient,
   Mask,
   RoundedRect,
   Circle as SkiaCircle,
@@ -70,7 +71,9 @@ const cardBorderRadius: IORadiusScale = 24;
 const cardBorderWidth: number = 1;
 const cardBorderColor: ColorValue = IOColors["hanPurple-500"];
 const cardBorderHighlighted: ColorValue = IOColors.white;
-const cardBorderOpacity: number = 0.5;
+const cardBorderOpacity: number = 1;
+// Drivers' License
+const cardGradient: Array<Color> = ["#F4ACD5", "#FCE6F2"];
 
 /* MOVEMENT
    Spring config for the light movement */
@@ -362,8 +365,14 @@ const DynamicCardRotation = () => {
             height={cardSize?.height ?? 0}
             r={cardBorderRadius}
             color={hexToRgba(IOColors["hanPurple-250"], 1)}
-          />
-          <CardBorder />
+          >
+            <LinearGradient
+              start={vec(0, cardSize?.height ?? 0)}
+              end={vec(cardSize?.width ?? 0, 0)}
+              colors={cardGradient}
+            />
+          </RoundedRect>
+          <CardBorder color={"#D279AC"} />
         </Mask>
         <CardLight />
         <CardBorderMask />
