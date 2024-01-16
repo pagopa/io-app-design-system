@@ -9,16 +9,20 @@ import {
 import MaskedView from "@react-native-masked-view/masked-view";
 import {
   Canvas,
+  DiffRect,
   Mask,
   RoundedRect,
   Circle as SkiaCircle,
   Group as SkiaGroup,
   RadialGradient as SkiaRadialGradient,
+  rect,
+  rrect,
   vec
 } from "@shopify/react-native-skia";
 import * as React from "react";
 import { useState } from "react";
 import {
+  ColorValue,
   LayoutChangeEvent,
   LayoutRectangle,
   StyleSheet,
@@ -50,17 +54,21 @@ type LightSize = {
 
 /* LIGHT
    Visual parameters */
-const lightSizePercentage: ViewStyle["width"] = "40%";
+const lightSizePercentage: ViewStyle["width"] = "90%";
 const lightScaleMultiplier: number = 1;
 const lightOpacity: ViewStyle["opacity"] = 0.3;
+const lightSkiaOpacity: number = 0.5;
 /* Percentage of visible light when it's near
 card boundaries */
-const visibleLightPercentage: number = 0.5;
+const visibleLightPercentage: number = 0.25;
 
 /* CARD
    Visual parameters */
 const cardAspectRatio: ViewStyle["aspectRatio"] = 7 / 4;
 const cardBorderRadius: IORadiusScale = 24;
+const cardBorderWidth: number = 1;
+const cardBorderColor: ColorValue = IOColors["hanPurple-500"];
+const cardBorderOpacity: number = 0.5;
 
 /* MOVEMENT
    Spring config for the light movement */
@@ -122,6 +130,7 @@ const DynamicCardRotation = () => {
     ((cardSize?.width ?? 0) -
       (lightSize?.value ?? 0) * visibleLightPercentage) /
     2;
+
   const maxTranslateY =
     ((cardSize?.height ?? 0) -
       (lightSize?.value ?? 0) * visibleLightPercentage) /
@@ -129,10 +138,20 @@ const DynamicCardRotation = () => {
 
   /* We don't need to consider the whole
     quaternion range, just the 1/10 */
-  const quaternionRange: number = 0.07;
+  const quaternionRange: number = 0.1;
 
   /* Calculate the light position using quaternions */
   const lightAnimatedStyle = useAnimatedStyle(() => {
+    const maxTranslateX =
+      ((cardSize?.width ?? 0) -
+        (lightSize?.value ?? 0) * visibleLightPercentage) /
+      2;
+
+    const maxTranslateY =
+      ((cardSize?.height ?? 0) -
+        (lightSize?.value ?? 0) * visibleLightPercentage) /
+      2;
+
     const translateX = interpolate(
       relativeQx.value,
       [-quaternionRange, quaternionRange],
@@ -186,8 +205,8 @@ const DynamicCardRotation = () => {
 
   const light = (
     <SkiaGroup
-      opacity={1}
-      // blendMode={"colorDodge"}
+      opacity={lightSkiaOpacity}
+      blendMode={"colorDodge"}
       origin={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
     >
       <SkiaCircle
@@ -200,6 +219,7 @@ const DynamicCardRotation = () => {
         <SkiaRadialGradient
           c={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
           r={(lightSize?.value ?? 0) / 2}
+          /* There are many stops because it's an easing gradient. */
           positions={[
             0, 0.081, 0.155, 0.225, 0.29, 0.353, 0.412, 0.471, 0.529, 0.588,
             0.647, 0.71, 0.775, 0.845, 0.919, 1
@@ -226,6 +246,34 @@ const DynamicCardRotation = () => {
       </SkiaCircle>
     </SkiaGroup>
   );
+
+  const CardBorder = () => {
+    const outerRect = rrect(
+      rect(0, 0, cardSize?.width ?? 0, cardSize?.height ?? 0),
+      cardBorderRadius,
+      cardBorderRadius
+    );
+
+    const innerRect = rrect(
+      rect(
+        cardBorderWidth,
+        cardBorderWidth,
+        (cardSize?.width ?? 0) - cardBorderWidth * 2,
+        (cardSize?.height ?? 0) - cardBorderWidth * 2
+      ),
+      cardBorderRadius - cardBorderWidth,
+      cardBorderRadius - cardBorderWidth
+    );
+
+    return (
+      <DiffRect
+        inner={innerRect}
+        outer={outerRect}
+        color={cardBorderColor}
+        opacity={cardBorderOpacity}
+      />
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -301,6 +349,7 @@ const DynamicCardRotation = () => {
             r={cardBorderRadius}
             color={hexToRgba(IOColors["hanPurple-250"], 1)}
           />
+          <CardBorder />
         </Mask>
         {light}
       </Canvas>
@@ -328,7 +377,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: lightSizePercentage,
     aspectRatio: 1,
-    // opacity: lightOpacity,
+    opacity: lightOpacity,
     borderRadius: 400
   },
   cardDebugLabel: {
