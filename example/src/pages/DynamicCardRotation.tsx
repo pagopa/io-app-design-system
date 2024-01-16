@@ -9,6 +9,7 @@ import {
 import MaskedView from "@react-native-masked-view/masked-view";
 import {
   Canvas,
+  Color,
   DiffRect,
   Mask,
   RoundedRect,
@@ -57,7 +58,7 @@ type LightSize = {
 const lightSizePercentage: ViewStyle["width"] = "90%";
 const lightScaleMultiplier: number = 1;
 const lightOpacity: ViewStyle["opacity"] = 0.3;
-const lightSkiaOpacity: number = 0.5;
+const lightSkiaOpacity: number = 0.4;
 /* Percentage of visible light when it's near
 card boundaries */
 const visibleLightPercentage: number = 0.25;
@@ -68,6 +69,7 @@ const cardAspectRatio: ViewStyle["aspectRatio"] = 7 / 4;
 const cardBorderRadius: IORadiusScale = 24;
 const cardBorderWidth: number = 1;
 const cardBorderColor: ColorValue = IOColors["hanPurple-500"];
+const cardBorderHighlighted: ColorValue = IOColors.white;
 const cardBorderOpacity: number = 0.5;
 
 /* MOVEMENT
@@ -203,7 +205,7 @@ const DynamicCardRotation = () => {
     ];
   });
 
-  const light = (
+  const CardLight = () => (
     <SkiaGroup
       opacity={lightSkiaOpacity}
       blendMode={"colorDodge"}
@@ -247,7 +249,13 @@ const DynamicCardRotation = () => {
     </SkiaGroup>
   );
 
-  const CardBorder = () => {
+  const CardBorder = ({
+    color = cardBorderColor,
+    opacity = cardBorderOpacity
+  }: {
+    color?: Color;
+    opacity?: number;
+  }) => {
     const outerRect = rrect(
       rect(0, 0, cardSize?.width ?? 0, cardSize?.height ?? 0),
       cardBorderRadius,
@@ -269,11 +277,17 @@ const DynamicCardRotation = () => {
       <DiffRect
         inner={innerRect}
         outer={outerRect}
-        color={cardBorderColor}
-        opacity={cardBorderOpacity}
+        color={color}
+        opacity={opacity}
       />
     );
   };
+
+  const CardBorderMask = () => (
+    <Mask mode="alpha" mask={<CardLight />}>
+      <CardBorder color={cardBorderHighlighted} opacity={0.5} />
+    </Mask>
+  );
 
   return (
     <View style={styles.container}>
@@ -351,7 +365,8 @@ const DynamicCardRotation = () => {
           />
           <CardBorder />
         </Mask>
-        {light}
+        <CardLight />
+        <CardBorderMask />
       </Canvas>
       <Text style={styles.cardDebugLabel}>Using Skia engine</Text>
 
