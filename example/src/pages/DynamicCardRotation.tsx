@@ -17,10 +17,12 @@ import {
   Circle as SkiaCircle,
   Group as SkiaGroup,
   Image as SkiaImage,
+  ImageSVG as SkiaImageSVG,
   RadialGradient as SkiaRadialGradient,
   rect,
   rrect,
   useImage,
+  useSVG,
   vec
 } from "@shopify/react-native-skia";
 import * as React from "react";
@@ -76,6 +78,9 @@ const cardBorderHighlighted: ColorValue = IOColors.white;
 const cardBorderOpacity: number = 0.65;
 // Drivers' License
 const cardGradient: Array<Color> = ["#F4ACD5", "#FCE6F2"];
+// Flag
+const flagDistanceFromEdge: number = 16;
+const flagSize: number = 32;
 
 /* MOVEMENT
    Spring config for the light movement */
@@ -237,7 +242,7 @@ const DynamicCardRotation = () => {
   const CardLight = () => (
     <SkiaGroup
       opacity={lightSkiaOpacity}
-      blendMode={"hardLight"}
+      blendMode={"colorDodge"}
       origin={vec((cardSize?.width ?? 0) / 2, (cardSize?.height ?? 0) / 2)}
     >
       <SkiaCircle
@@ -315,7 +320,7 @@ const DynamicCardRotation = () => {
   const CardPatternMask = () => {
     const cardPattern = useImage(
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      require("../../assets/images/DriverLicenseBackground.png")
+      require("../../assets/images/driver-license-background.png")
     );
 
     return (
@@ -329,6 +334,23 @@ const DynamicCardRotation = () => {
           height={cardSize?.height ?? 0}
         />
       </Mask>
+    );
+  };
+
+  const CardEUCountry = () => {
+    const countryFlag = useSVG(
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      require("../../assets/images/driver-license-it-flag.svg")
+    );
+
+    return (
+      <SkiaImageSVG
+        x={(cardSize?.width ?? 0) - flagDistanceFromEdge - flagSize}
+        y={flagDistanceFromEdge}
+        svg={countryFlag}
+        width={flagSize}
+        height={flagSize}
+      />
     );
   };
 
@@ -409,6 +431,7 @@ const DynamicCardRotation = () => {
         <CardBorder color={"#D279AC"} />
         <CardLight />
         <CardPatternMask />
+        <CardEUCountry />
 
         <CardBorderMask />
       </Canvas>
