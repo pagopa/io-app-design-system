@@ -85,28 +85,28 @@ Essential core visual attributes of the design language. It includes:
 - **`IOAnimations`**: Defines common animation attributes used for interactive elements (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 - **`IOTransitions`**: Defines reusable custom enter/exit transitions (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 
-#### [Explore the `core` folder →](./src/core)
+#### [Explore the `core` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/core)
 
 ## Foundation
 Essential atomic components:
 * **Typography**
-  * [📖 Docs](?path=/docs/atoms-typography--docs)
+  * [📖 Docs](/docs/foundation-typography--docs)
 * **Layout**
   * [ContentWrapper](./src/components/contentWrapper/)
   * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
   * [Divider](./src/components/divider/)
-* [**Icons**](./src/components/icons/)
+* [**Icons**](/docs/foundation-icons-intro--docs)
   * Assets with an intended size between `12px` and `56px`
-  * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
-* [**Pictograms**](./src/components/pictograms/)
+  * [📖 Docs](/docs/foundation-icons-intro--docs) · [Add a new icon →](/docs/foundation-icons-intro--docs#add-a-new-icon)
+* [**Pictograms**](/docs/foundation-pictograms-intro--docs)
   * Assets with an intended size greather than `56px`
-  * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
+  * [📖 Docs](/docs/foundation-pictograms-intro--docs) · [Add a new pictogram →](/docs/foundation-pictograms-intro--docs#add-a-new-pictogram)
 * **Logos**
-  * [Payment Logos](./src/components/logos/)
-    * [📖 Docs](./src/components/logos/)
-  * [Avatar](./src/components/avatar/)
+  * [Payment Logos](/docs/foundation-logos-logopayment--docs)
+    * [📖 Docs](/docs/foundation-logos-intro--docs)
+  * [Avatar](/docs/foundation-avatar-avatar--docs)
 * **Loaders**
-  * [LoadingSpinner](./src/components/loadingSpinner/)
+  * [LoadingSpinner](/docs/foundation-loadingspinner-loadingspinner--docs)
 
 ## Components
 
@@ -124,7 +124,7 @@ Essential atomic components:
   * [FeatureInfo](./src/components/featureInfo/)
   * [Banner](./src/components/banner/)
 
-#### [Explore the `components` folder →](./src/components)
+#### [Explore the `components` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/components)
 
 > Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
@@ -132,7 +132,7 @@ Essential atomic components:
 ## Functions
 Common functions used to wrap up external libraries and utilities
 
-#### [Explore the `functions` folder →](./src/functions)
+#### [Explore the `functions` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/functions)
 
 ## Dependencies
 * [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all the component animations
@@ -146,7 +146,7 @@ Common functions used to wrap up external libraries and utilities
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+See the [contributing guide](https://github.com/pagopa/io-app-design-system/tree/main/CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 

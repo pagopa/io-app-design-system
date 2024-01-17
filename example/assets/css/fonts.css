@@ -92,3 +92,9 @@
     font-weight: 600;
     font-style: italic;
 }
+
+
+/* Add to fix text-input focus UI on story */
+input:focus-visible {
+    outline: none;
+}

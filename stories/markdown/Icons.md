@@ -107,4 +107,4 @@ You can add the recently added icon with the following declaration:
 There are two ways:
 - In the main app, go to the `Profile → Design System → Icons` (you must enable `Debug Mode`)
 - In the repository, go to the `svg/originals` subfolder
-- Storybook Section [here](/docs/atoms-assets-icons--docs) 
+- Storybook Section [here](/docs/foundation-icons--docs) 
