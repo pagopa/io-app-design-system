@@ -92,9 +92,10 @@ Essential atomic components:
 * **Typography**
   * [📖 Docs](/docs/foundation-typography--docs)
 * **Layout**
-  * [ContentWrapper](./src/components/contentWrapper/)
-  * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
-  * [Divider](./src/components/divider/)
+  * [📖 Docs](/docs/foundation-layout-docs--docs)
+    * [ContentWrapper](/docs/foundation-layout-docs--docs#contentwrapper)
+    * [Spacer](/docs/foundation-layout-docs--docs#spacer) (`VSpacer`,`HSpacing`)
+    * [Divider](/docs/foundation-layout-docs--docs#divider)
 * [**Icons**](/docs/foundation-icons-intro--docs)
   * Assets with an intended size between `12px` and `56px`
   * [📖 Docs](/docs/foundation-icons-intro--docs) · [Add a new icon →](/docs/foundation-icons-intro--docs#add-a-new-icon)
