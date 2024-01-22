@@ -51,7 +51,6 @@ A [Storybook](https://storybook.js.org/) playground is also available to help de
 ```bash
 yarn storybook
 ```
-> Storybook documentation is a work in progress
 
 # Usage
 To try a component, just import it:
