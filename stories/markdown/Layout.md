@@ -25,10 +25,7 @@ const ComponentWithMargin = () => (
   </ContentWrapper>
 );
 ```
-<div style="display: flex; flex-direction: column; align-items: center">
-<img alt="ContentWrapper component" src="ContentWrapper.png" width="400"/>
-</div>
-<br/>
+Example for **ContentWrapper** can be found in related stories of [ContentWrapper](/docs/foundation-layout-contentwrapper--docs).
 
 ### Spacer
 
@@ -53,9 +50,7 @@ const ComponentWithHSpacer = () => (
   </ View>
 );
 ```
-<div style="display: flex; flex-direction: column; align-items: center">
-<img alt="Spacers component" src="Spacers.png" width="400"/>
-</div>
+Example for **Spacers** can be found in related stories of [HSpacer](/docs/foundation-layout-hspacer--docs) and [VSpacer](/docs/foundation-layout-vspacer--docs).
 
 ### Divider
 
@@ -80,6 +75,4 @@ const ComponentWithVDivider = () => (
   </ View>
 );
 ```
-<div style="display: flex; flex-direction: column; align-items: center">
-<img alt="Divider component" src="Divider.png" width="400"/>
-</div>
+Example for **Dividers** can be found in related stories of [Divider](/docs/foundation-layout-divider--docs) and [VDivider](/docs/foundation-layout-vdivider--docs).
