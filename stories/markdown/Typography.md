@@ -1,23 +1,17 @@
 # Typography
+## Components
 
-## Handling font files
+The library provides a set of components to manage the text rendering. Components have a predefined set of styles that can't be customized using the props. In case of need to create a new custom text component it is possible to use the `BaseTypography` component and apply the customization using its props.
 
-The application uses the font _Titillium Web_. Fonts are handled differently than Android and iOS. To use the font, `TitilliumWeb-SemiBoldItalic` example, you must apply the following properties for Android:
+Each component has its own font size and line height and a set of accepted weight.
 
-```css
-{
-  fontFamily: 'TitilliumWeb-SemiBoldItalic'
-}
-```
+## Fonts
 
-while in iOS the code to be applied is:
+The app uses `TitilliumWeb` as main font. Font object mapping and definition can be located at [fonts.ts](https://github.com/pagopa/io-app-design-system/blob/main/src/utils/fonts.ts).
 
-```css
-{
-  fontFamily: 'Titillium Web',
-  fontWeight: '600',
-  fontStyle: 'italic'
-}
-```
+The library supports three different font families:
+- `TitilliumWeb`
+- `ReadexPro`
+- `DMMono`
 
-To manage fonts and variants more easily, we have created utility functions within the file [fonts.ts](https://github.com/pagopa/io-app-design-system/blob/main/src/utils/fonts.ts).
+The `ReadexPro` font is visible only enabling the experimental features of the library for more information see the [IODSExperimentalContext](/docs/core-core--docs#iodsexperimentalcontext) section.
