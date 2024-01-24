@@ -4,7 +4,9 @@ The library provides some screen templates that you can use to build your own sc
 
 This is a list of the available screen templates:
 * `GradientScrollView`: A template component which wraps up a ScrollView with a sticky footer and a gradient background.
+  * [Docs](/docs/foundation-layout-screen-gradientscrollview--docs)
 * `ForceScrollDownView`: A template component which wraps up a ScrollView with a button to force the scroll down.
+  * [Docs](/docs/foundation-layout-screen-forcescrolldownview--docs)
 
 Aside from these templates, the library also provides two different variant of Header components that you can integrate in the project:
 * `HeaderFirstLevel`: This header is mainly projected to be used as the header of the home page section of the app.
