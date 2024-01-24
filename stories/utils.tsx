@@ -1,6 +1,8 @@
 import React from "react";
 import { Decorator } from "@storybook/react";
-import { IOThemeContext, IOThemes } from "../src/core";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { View } from "react-native";
+import { IOColors, IOThemeContext, IOThemes, hexToRgba } from "../src/core";
 
 export const withTheme: Decorator = (StoryFn, context) => {
   const themeContext =
@@ -29,7 +31,23 @@ export const withMaxWitdth: Decorator = StoryFn => (
         maxWidth: "420px"
       }}
     >
-      <StoryFn />
+      <View
+        style={{
+          borderRightColor: hexToRgba(IOColors.black, 0.15),
+          borderRightWidth: 1,
+          borderLeftColor: hexToRgba(IOColors.black, 0.15),
+          borderLeftWidth: 1,
+          paddingHorizontal: 16
+        }}
+      >
+        <StoryFn />
+      </View>
     </div>
   </div>
+);
+
+export const withSafeAreaProvider: Decorator = StoryFn => (
+  <SafeAreaProvider>
+    <StoryFn />
+  </SafeAreaProvider>
 );
