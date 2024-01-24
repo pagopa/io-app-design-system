@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import { ButtonOutline } from "../../../src/components";
+import { withMaxWitdth } from "../../utils";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
+  decorators: [withMaxWitdth],
   title: "Components/Buttons/ButtonOutline",
   component: ButtonOutline,
   parameters: {

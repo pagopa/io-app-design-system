@@ -3,15 +3,6 @@ import type { Preview } from "@storybook/react";
 import { IOThemeLight, IOThemeDark } from "../src/core";
 
 const preview: Preview = {
-  decorators: [
-    Story => (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ minWidth: "400px", maxWidth: "420px" }}>
-          <Story />
-        </div>
-      </div>
-    )
-  ],
   parameters: {
     options: {
       storySort: {

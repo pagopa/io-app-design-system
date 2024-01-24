@@ -1,14 +1,14 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { IOThemeContext, IOThemes } from "../../../src";
 
 import { ModulePaymentNotice } from "../../../src/components";
+import { withMaxWitdth, withTheme } from "../../utils";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
   title: "Components/Modules/ModulePaymentNotice",
   component: ModulePaymentNotice,
+  decorators: [withMaxWitdth, withTheme],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered"
@@ -22,15 +22,6 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
-  decorators: [
-    Story => (
-      <IOThemeContext.Provider value={IOThemes.dark}>
-        <div style={{ width: "300px" }}>
-          <Story />
-        </div>
-      </IOThemeContext.Provider>
-    )
-  ],
   args: {
     isLoading: false,
     title: "Title",

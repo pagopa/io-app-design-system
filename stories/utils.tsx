@@ -15,3 +15,21 @@ export const withTheme: Decorator = (StoryFn, context) => {
     </IOThemeContext.Provider>
   );
 };
+
+export const withMaxWitdth: Decorator = StoryFn => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center"
+    }}
+  >
+    <div
+      style={{
+        minWidth: "400px",
+        maxWidth: "420px"
+      }}
+    >
+      <StoryFn />
+    </div>
+  </div>
+);

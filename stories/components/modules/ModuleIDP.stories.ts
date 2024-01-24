@@ -1,24 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { action } from "@storybook/addon-actions";
 
 import { ImageSourcePropType } from "react-native";
 import { ModuleIDP } from "../../../src/components";
-import { IOThemeContext, IOThemes } from "../../../src";
+import { withMaxWitdth, withTheme } from "../../utils";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
   title: "Components/Modules/ModuleIDP",
   component: ModuleIDP,
-  decorators: [
-    Story => (
-      <IOThemeContext.Provider value={IOThemes.dark}>
-        <div style={{ width: "300px" }}>
-          <Story />
-        </div>
-      </IOThemeContext.Provider>
-    )
-  ],
+  decorators: [withMaxWitdth, withTheme],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered"
