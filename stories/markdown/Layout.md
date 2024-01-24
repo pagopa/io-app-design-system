@@ -3,7 +3,7 @@
 There are different kinds of layout components:
 * **ContentWrapper**: it is a simple `<View>` component with a default `paddingHorizontal` of `16` (defined as a style constant in `IOVisualConstants`). It is used to wrap the content of a screen to the fixed spacing. The value of the padding can be overridden by passing a `margin` prop that accepts values defined in `IOAppMargin`.
 * **Spacer**: there are two spacer components, `VSpacer` and `HSpacer`, which are used to add vertical and horizontal spacing between components. They are defined as `<View>` components with a fixed height or width, respectively.
-* **Divider**: there are two spacer components, `Divider` and `VDivider`, which are used to add a dividing bar between components.
+* **Divider**: there are two divider components, `Divider` and `VDivider`, which are used to add a dividing bar between components.
 
 ## Examples
 <br />
