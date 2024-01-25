@@ -14,7 +14,7 @@ import { Screen } from "../components/Screen";
  * @returns a screen with a flexed view where you can test components
  */
 export const FooterWithButton = () => (
-  <View style={{ flexGrow: 1 }}>
+  <View>
     <Screen>
       <VSpacer />
       <H1>Footer with button</H1>
