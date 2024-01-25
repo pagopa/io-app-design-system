@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; align-items: center">
 
-<img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
+<img alt="IO App Design System" src="io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <!-- NPM Badge -->
 <div align="center">
@@ -43,7 +43,6 @@ yarn ios --simulator='iPhone 15 Pro'
 ```
 Activate the toggle at the top of the application to view the experimental design system.
 
-> [!important]
 > The sample application consists of several pages with some components for testing purposes. To view the [continuously updated Design System section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system), please refer to the [main app](https://github.com/pagopa/io-app).
 
 ## Playground & Documentation
@@ -52,7 +51,6 @@ A [Storybook](https://storybook.js.org/) playground is also available to help de
 ```bash
 yarn storybook
 ```
-> Storybook documentation is a work in progress
 
 # Usage
 To try a component, just import it:
@@ -86,36 +84,36 @@ Essential core visual attributes of the design language. It includes:
 - **`IOAnimations`**: Defines common animation attributes used for interactive elements (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 - **`IOTransitions`**: Defines reusable custom enter/exit transitions (used by the [`reanimated`](https://docs.swmansion.com/react-native-reanimated/) library)
 
-#### [Explore the `core` folder →](./src/core)
+#### [Explore the `core` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/core)
 
 ## Foundation
 Essential atomic components:
-* [**Typography**](./src/components/typography/)
-  * [📖 Docs](./src/components/typography/README.md) · [Handling font files →](./src/components/typography/README.md#handling-font-files)
+* **Typography**
+  * [📖 Docs](/docs/foundation-typography--docs)
 * **Layout**
-  * [ContentWrapper](./src/components/contentWrapper/)
-  * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
-  * [Divider](./src/components/divider/)
-* [**Icons**](./src/components/icons/)
+  * [📖 Docs](/docs/foundation-layout-docs--docs)
+    * [ContentWrapper](/docs/foundation-layout-docs--docs#contentwrapper)
+    * [Spacer](/docs/foundation-layout-docs--docs#spacer) (`VSpacer`,`HSpacing`)
+    * [Divider](/docs/foundation-layout-docs--docs#divider)
+* [**Icons**](/docs/foundation-icons-intro--docs)
   * Assets with an intended size between `12px` and `56px`
-  * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
-* [**Pictograms**](./src/components/pictograms/)
+  * [📖 Docs](/docs/foundation-icons-intro--docs) · [Add a new icon →](/docs/foundation-icons-intro--docs#add-a-new-icon)
+* [**Pictograms**](/docs/foundation-pictograms-intro--docs)
   * Assets with an intended size greather than `56px`
-  * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
+  * [📖 Docs](/docs/foundation-pictograms-intro--docs) · [Add a new pictogram →](/docs/foundation-pictograms-intro--docs#add-a-new-pictogram)
 * **Logos**
-  * [Payment Logos](./src/components/logos/)
-    * [📖 Docs](./src/components/logos/)
-  * [Avatar](./src/components/avatar/)
+  * [Payment Logos](/docs/foundation-logos-logopayment--docs)
+    * [📖 Docs](/docs/foundation-logos-intro--docs)
+  * [Avatar](/docs/foundation-avatar-avatar--docs)
 * **Loaders**
-  * [LoadingSpinner](./src/components/loadingSpinner/)
+  * [LoadingSpinner](/docs/foundation-loadingspinner-loadingspinner--docs)
 
 ## Components
 
-* [**Buttons**](./src/components/buttons/)
-* [**TextInput**](./src/components/textInput/)
-* [**List Items**](./src/components/listitems/)
-* [**Modules**](./src/components/modules/)
-* [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+* [**Buttons**](/docs/components-buttons-buttonextendedoutline--docs)
+* [**TextInput**](/docs/components-text-input-textinput--docs)
+* [**List Items**](/docs/components-list-items-listitemcheckbox--docs)
+* [**Badges**](/docs/components-badge-badge--docs) & [**Tags**](/docs/components-tag-tag--docs)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
   * [Radio](./src/components/radio/)
@@ -126,16 +124,15 @@ Essential atomic components:
   * [FeatureInfo](./src/components/featureInfo/)
   * [Banner](./src/components/banner/)
 
-#### [Explore the `components` folder →](./src/components)
+#### [Explore the `components` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/components)
 
-> [!note]
 > Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
 
 ## Functions
 Common functions used to wrap up external libraries and utilities
 
-#### [Explore the `functions` folder →](./src/functions)
+#### [Explore the `functions` folder →](https://github.com/pagopa/io-app-design-system/tree/main/src/functions)
 
 ## Dependencies
 * [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all the component animations
@@ -149,7 +146,7 @@ Common functions used to wrap up external libraries and utilities
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+See the [contributing guide](https://github.com/pagopa/io-app-design-system/tree/main/CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 

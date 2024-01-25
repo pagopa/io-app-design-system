@@ -1,35 +1,29 @@
-import { action } from "@storybook/addon-actions";
+import * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { FeatureInfo } from "../../src/components";
-import { withMaxWitdth } from "../utils";
+import { TabItem, TabNavigation } from "../../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Components/FeatureInfo/FeatureInfo",
-  component: FeatureInfo,
+  title: "Components/Tabs/TabNavigation",
+  component: TabNavigation,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "centered"
+    layout: "padded"
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
-  decorators: [withMaxWitdth],
-  args: {
-    pictogramName: "cie"
-  }
-} satisfies Meta<typeof FeatureInfo>;
+  tags: ["autodocs"]
+} satisfies Meta<typeof TabNavigation>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    body: "Dopo questo passaggio non sarà più possibile annullare il pagamento",
-    actionLabel: "Conferma",
-    actionOnPress: e => {
-      action("clicked")(e);
-    }
+    children: [
+      <TabItem key={0} {...{ label: "Tab 1", accessibilityLabel: "Tab 1" }} />,
+      <TabItem key={1} {...{ label: "Tab 2", accessibilityLabel: "Tab 2" }} />,
+      <TabItem key={2} {...{ label: "Tab 3", accessibilityLabel: "Tab 3" }} />
+    ]
   }
 };
