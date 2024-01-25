@@ -1,35 +1,37 @@
-import { action } from "@storybook/addon-actions";
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { FeatureInfo } from "../../src/components";
-import { withMaxWitdth } from "../utils";
+import { useArgs } from "@storybook/preview-api";
+import { withMaxWitdth } from "../../utils";
+import { NumberPad } from "../../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Components/FeatureInfo/FeatureInfo",
-  component: FeatureInfo,
+  title: "Components/NumberPad/NumberPad",
+  component: NumberPad,
+  decorators: [withMaxWitdth],
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "centered"
+    layout: "padded"
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
-  decorators: [withMaxWitdth],
-  args: {
-    pictogramName: "cie"
+  render: function Render(args) {
+    const [{ value }, updateargs] = useArgs();
+    const onChange = (value: string) => {
+      updateargs({ value });
+    };
+    return <NumberPad {...args} value={value} onValueChange={onChange} />;
   }
-} satisfies Meta<typeof FeatureInfo>;
+} satisfies Meta<typeof NumberPad>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Story = {
+export const Light: Story = {
   args: {
-    body: "Dopo questo passaggio non sarà più possibile annullare il pagamento",
-    actionLabel: "Conferma",
-    actionOnPress: e => {
-      action("clicked")(e);
-    }
+    value: "",
+    deleteAccessibilityLabel: "Delete",
+    variant: "light"
   }
 };
