@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
+import { IOModuleIDPRadius } from "./IOShapes";
 import {
   IOAppMargin,
   IOModuleIDPHSpacing,
@@ -8,7 +9,6 @@ import {
   IOSpacer,
   IOSpacingScale
 } from "./IOSpacing";
-import { IOModuleIDPRadius } from "./IOShapes";
 
 /**
  * A collection of default styles used within IO App.
