@@ -85,7 +85,7 @@ export const ListItemNav = ({
           {topElement.dateValue && (
             <>
               <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
-                <Icon name="calendar" size={16} />
+                <Icon name="calendar" size={16} color="grey-300" />
                 <HSpacer size={4} />
                 <Caption color={theme["textBody-tertiary"]}>
                   {topElement.dateValue}
