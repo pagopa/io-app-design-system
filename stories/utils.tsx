@@ -1,12 +1,20 @@
 import React from "react";
 import { Decorator } from "@storybook/react";
+import { useGlobals } from "@storybook/preview-api";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View } from "react-native";
-import { IOColors, IOThemeContext, IOThemes, hexToRgba } from "../src/core";
+import {
+  IOColors,
+  IODSExperimentalContextProvider,
+  IOThemeContext,
+  IOThemes,
+  hexToRgba
+} from "../src/core";
+import { EXPERIMENTAL_DS_PARAM_KEY } from "./addons/ExperimentalDsToggle";
 
 export const withTheme: Decorator = (StoryFn, context) => {
   const themeContext =
-    context.globals.backgrounds && context.globals.backgrounds.value === "dark"
+    context.globals.backgrounds && context.globals.backgrounds.value === "black"
       ? IOThemes.dark
       : IOThemes.light;
 
@@ -15,6 +23,19 @@ export const withTheme: Decorator = (StoryFn, context) => {
     <IOThemeContext.Provider value={themeContext}>
       <StoryFn />
     </IOThemeContext.Provider>
+  );
+};
+
+export const withEperimentalDs: Decorator = StoryFn => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [globals] = useGlobals();
+
+  return (
+    <IODSExperimentalContextProvider
+      isExperimentaEnabled={globals[EXPERIMENTAL_DS_PARAM_KEY]}
+    >
+      <StoryFn />
+    </IODSExperimentalContextProvider>
   );
 };
 
