@@ -8,6 +8,7 @@ import { BlockButtons, BlockButtonsProps } from "./BlockButtons";
 
 type Props = BlockButtonsProps & {
   sticky?: boolean;
+  onLayoutChange?: (height: number) => void;
 };
 
 // TODO: Refactor with an unique component like `FooterTopShadow` after bonus vacanze
@@ -44,8 +45,16 @@ const verticalSpacing: IOSpacingScale = 16;
  * Implements a component that show buttons as sticky footer
  * It can include 1, 2 or 3 buttons. If they are 2, they can have the inlineHalf  or the inlineOneThird style
  */
-export const FooterWithButtons = ({ sticky = false, ...rest }: Props) => {
+export const FooterWithButtons = ({
+  sticky = false,
+  onLayoutChange,
+  ...rest
+}: Props) => {
   const insets = useSafeAreaInsets();
+
+  const onLayout = (event: any) => {
+    onLayoutChange?.(event.nativeEvent.layout.height);
+  };
 
   /* Check if the iPhone bottom handle is present.
   If not add a default margin to prevent the
@@ -63,6 +72,7 @@ export const FooterWithButtons = ({ sticky = false, ...rest }: Props) => {
       testID="FooterWithButtons"
     >
       <View
+        onLayout={onLayout}
         style={[
           styles.footerShadow,
           { paddingBottom: bottomMargin, paddingTop: verticalSpacing }
