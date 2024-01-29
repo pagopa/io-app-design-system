@@ -1,5 +1,6 @@
-import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { useIOExperimentalDesign, type IOColors } from "../../core";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { useTypographyFactory } from "./Factory";
 import {
   ExternalTypographyProps,
   FontSize,
@@ -7,7 +8,6 @@ import {
   fontSizeMapping,
   lineHeightMapping
 } from "./common";
-import { useTypographyFactory } from "./Factory";
 
 type AllowedColors = IOColors;
 type AllowedWeight = Extract<IOFontWeight, "SemiBold">;
@@ -18,7 +18,8 @@ type LinkProps = ExternalTypographyProps<
 > &
   AllowedFontSize;
 
-const fontName: IOFontFamily = "TitilliumWeb";
+const fontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontName: IOFontFamily = "TitilliumWeb";
 
 export const linkLegacyDefaultColor: AllowedColors = "blue";
 
@@ -36,7 +37,7 @@ export const LabelLink = (props: LinkProps) => {
     ...props,
     defaultWeight: linkDefaultWeight,
     defaultColor: isExperimental ? linkDefaultColor : linkLegacyDefaultColor,
-    font: fontName,
+    font: isExperimental ? fontName : legacyFontName,
     fontStyle: {
       fontSize: props.fontSize
         ? fontSizeMapping[props.fontSize]
