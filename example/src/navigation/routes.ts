@@ -57,10 +57,6 @@ const APP_ROUTES = {
     TOASTS: {
       route: "DESIGN_SYSTEM_TOASTS",
       title: "Toasts"
-    },
-    FOOTER_WITH_BUTTON: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
-      title: "Footer with button"
     }
   },
   SCREENS: {
@@ -68,7 +64,15 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FULLSCR_MODAL",
       title: "Full screen modal"
     },
-    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
+    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" },
+    FOOTER_WITH_BUTTON_EMPTY: {
+      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
+      title: "Footer with button (Empty state)"
+    },
+    FOOTER_WITH_BUTTON: {
+      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
+      title: "Footer with button"
+    }
   },
   SANDBOX: {
     SANDBOX_SCREEN: {

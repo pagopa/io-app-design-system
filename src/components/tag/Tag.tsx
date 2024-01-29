@@ -23,6 +23,7 @@ export type Tag = WithTestID<{
     | "success"
     | "attachment"
     | "noIcon";
+  iconAccessibilityLabel?: string;
 }>;
 
 type VariantProps = {
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
 /**
  * Tag component, used mainly for message list and details
  */
-export const Tag = ({ text, variant, testID }: Tag) => {
+export const Tag = ({ text, variant, testID, iconAccessibilityLabel }: Tag) => {
   const { isExperimental } = useIOExperimentalDesign();
   return (
     <View testID={testID} style={styles.tag}>
@@ -123,7 +124,13 @@ export const Tag = ({ text, variant, testID }: Tag) => {
           () => null,
           ({ iconColor, iconName }) => (
             <View style={styles.iconWrapper}>
-              <Icon name={iconName} color={iconColor} size={IOTagIconSize} />
+              <Icon
+                name={iconName}
+                color={iconColor}
+                size={IOTagIconSize}
+                accessible={!!iconAccessibilityLabel}
+                accessibilityLabel={iconAccessibilityLabel}
+              />
             </View>
           )
         )
