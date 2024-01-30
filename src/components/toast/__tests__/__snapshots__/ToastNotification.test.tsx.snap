@@ -36,6 +36,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -53,6 +54,13 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   >
     Hello
   </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
   <RNSVGSvgView
     accessibilityElementsHidden={true}
     accessibilityLabel=""
@@ -146,6 +154,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -202,6 +211,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -258,6 +268,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -314,6 +325,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -370,6 +382,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -426,6 +439,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -443,6 +457,13 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   >
     Hello
   </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
   <RNSVGSvgView
     accessibilityElementsHidden={true}
     accessibilityLabel=""
@@ -536,6 +557,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -592,6 +614,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -648,6 +671,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -704,6 +728,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -760,6 +785,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
