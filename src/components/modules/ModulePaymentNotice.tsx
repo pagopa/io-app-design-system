@@ -1,18 +1,18 @@
 import * as React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
-import { WithTestID } from "../../utils/types";
-import { getAccessibleAmountText } from "../../utils/accessibility";
-import { H6, LabelSmall } from "../typography";
-import { Badge } from "../badge";
-import { Icon } from "../icons";
 import {
   IOListItemVisualParams,
   IOModuleStyles,
   IOStyles,
   useIOExperimentalDesign
 } from "../../core";
+import { getAccessibleAmountText } from "../../utils/accessibility";
+import { WithTestID } from "../../utils/types";
+import { Badge } from "../badge";
+import { Icon } from "../icons";
 import { VSpacer } from "../spacer";
+import { H6, LabelSmall, LabelSmallAlt } from "../typography";
 import { PressableModuleBase } from "./PressableModuleBase";
 
 export type PaymentNoticeStatus =
@@ -97,14 +97,15 @@ const ModulePaymentNoticeContent = ({
             {title}
           </LabelSmall>
         )}
-        <LabelSmall
-          weight="SemiBold"
-          font={isExperimental ? "ReadexPro" : "TitilliumWeb"}
-          color={isExperimental ? "blueIO-500" : "bluegrey"}
-          numberOfLines={2}
-        >
-          {subtitle}
-        </LabelSmall>
+        {isExperimental ? (
+          <LabelSmallAlt color={"blueIO-500"} numberOfLines={2}>
+            {subtitle}
+          </LabelSmallAlt>
+        ) : (
+          <LabelSmall weight="SemiBold" color={"bluegrey"} numberOfLines={2}>
+            {subtitle}
+          </LabelSmall>
+        )}
       </View>
       <View style={[styles.rightSection, { flexShrink: 1 }]}>
         <AmountOrBadgeComponent />

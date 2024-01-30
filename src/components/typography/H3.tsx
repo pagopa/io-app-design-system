@@ -28,6 +28,7 @@ const legacyH3LineHeight = 34;
  */
 export const H3 = (props: H3Props) => {
   const { isExperimental } = useIOExperimentalDesign();
+
   return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
