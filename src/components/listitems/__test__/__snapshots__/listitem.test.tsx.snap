@@ -233,7 +233,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
           color="grey-700"
           defaultColor="blue"
           defaultWeight="Bold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 14,
@@ -248,7 +248,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               },
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "400",
               },
@@ -373,7 +373,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           color="grey-700"
           defaultColor="blue"
           defaultWeight="Bold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 14,
@@ -388,7 +388,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               },
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "400",
               },
@@ -1076,7 +1076,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             color="hanPurple-500"
             defaultColor="blue"
             defaultWeight="Bold"
-            font="TitilliumWeb"
+            font="TitilliumSansPro"
             fontStyle={
               {
                 "fontSize": 14,
@@ -1091,7 +1091,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
                 {
                   "color": "#5517E3",
-                  "fontFamily": "Titillium Web",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontStyle": "normal",
                   "fontWeight": "400",
                 },

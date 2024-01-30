@@ -93,6 +93,76 @@
     font-style: italic;
 }
 
+/* TITILLIUM SANS PRO */
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Thin.otf') format("opentype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Thin-Italic.otf') format("opentype");
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Light.otf') format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Light-Italic.otf') format("opentype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TitilliumSansPro';
+    src: url('TitilliumSansPro-Regular.otf') format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Regular-Italic.otf') format("opentype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Semibold.otf') format("opentype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Semibold-Italic.otf') format("opentype");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Bold.otf') format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TitilliumSansPro";
+    src: url('TitilliumSansPro-Bold-Italic.otf') format("opentype");
+    font-weight: 700;
+    font-style: italic;
+}
 
 /* Add to fix text-input focus UI on story */
 input:focus-visible {

@@ -46,6 +46,58 @@
       "sha1": "f81d3a5f38c6bda1fb3547bf91fe0b68b54066c5"
     },
     {
+      "path": "assets/fonts/TitilliumSansPro/LICENSE.txt",
+      "sha1": "e06911034a1618d5e4c791bc3eac8b2cbda28886"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Black-Italic.otf",
+      "sha1": "e1e51c2d7edc1c2b43bbcb86a3de0ffc2c858cf7"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Black.otf",
+      "sha1": "fd7404b8829b3fc36a57ab59e30d260e47bfa1bf"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Bold-Italic.otf",
+      "sha1": "0adf67e1f483383193604444a87f170cdb6ced3c"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Bold.otf",
+      "sha1": "ec9f41a68e3b4946a818c960a53b4f8a7cdb4ee0"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Light-Italic.otf",
+      "sha1": "8c2abf6f862d0f44284f8efa1bd1f2ebdd4895f3"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Light.otf",
+      "sha1": "35164c371f7e0d85a5dca00d755b2e6f9bf6f65d"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Regular-Italic.otf",
+      "sha1": "e34eedd18ae48fb951bfc4463fe6565ca5ce3292"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Regular.otf",
+      "sha1": "8b19b197587a854f46bac052e209cb0c2d6466ba"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Semibold-Italic.otf",
+      "sha1": "6822815ea0c71b7be9a46932f08b6cb8ffcf1d7a"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Semibold.otf",
+      "sha1": "a3c3077d7fb9bb4704ecf110f910107fd901599b"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Thin-Italic.otf",
+      "sha1": "eb91f1c768495d4f8731c14e92eb4944d6afa465"
+    },
+    {
+      "path": "assets/fonts/TitilliumSansPro/TitilliumSansPro-Thin.otf",
+      "sha1": "384fd5c2b6a58114a19c0e61ccaa9abe8251ee04"
+    },
+    {
       "path": "assets/fonts/ReadexPro/ReadexPro-Regular.ttf",
       "sha1": "93e4080794b725f216a94b57ed62a51bc77bce91"
     },
