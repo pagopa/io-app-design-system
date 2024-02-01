@@ -143,6 +143,7 @@ export const HeaderSecondLevel = ({
       : "transparent"
   }));
 
+  const isTitleAccessible = !!title.trim();
   const titleAnimatedStyle = useAnimatedStyle(() => ({
     opacity: scrollValues
       ? interpolate(
@@ -183,6 +184,7 @@ export const HeaderSecondLevel = ({
         )}
         <Animated.Text
           numberOfLines={1}
+          accessible={isTitleAccessible}
           style={[
             styles.headerTitle,
             isExperimental
