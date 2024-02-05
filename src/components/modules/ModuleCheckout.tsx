@@ -26,9 +26,9 @@ type ModuleCheckoutPartialProps =
       onPress?: never;
     };
 
-export type ModuleCheckoutProps = {
-  ctaText: string;
-} & ModuleCheckoutPartialProps;
+export type ModuleCheckoutProps = ModuleCheckoutPartialProps & {
+  ctaText?: string;
+};
 
 type CtaOnlyProps = { text?: string };
 
@@ -43,29 +43,37 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
 
   const paymentLogoEndMargin: IOSpacingScale = 12;
 
-  return (
-    <PressableModuleBase onPress={props.onPress}>
-      {/*
-        we don't want to let the `space-between`
-        handle spacing for the logo/text section,
-        so we use a row and a marginEnd on the logo
-      */}
-      <View style={styles.rowCenter}>
-        {props.paymentLogo && (
-          <View style={{ marginEnd: paymentLogoEndMargin }}>
-            <LogoPayment name={props.paymentLogo} />
-          </View>
-        )}
-        <View>
-          <H6>{props.title}</H6>
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {props.subtitle}
-          </LabelSmall>
+  const ModuleBaseContent = (
+    <View style={styles.rowCenter}>
+      {props.paymentLogo && (
+        <View style={{ marginEnd: paymentLogoEndMargin }}>
+          <LogoPayment name={props.paymentLogo} />
         </View>
+      )}
+      <View>
+        <H6>{props.title}</H6>
+        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          {props.subtitle}
+        </LabelSmall>
       </View>
-      <CTA text={props.ctaText} />
-    </PressableModuleBase>
+    </View>
   );
+
+  if (props.ctaText) {
+    return (
+      <PressableModuleBase onPress={props.onPress}>
+        {/*
+          we don't want to let the `space-between`
+          handle spacing for the logo/text section,
+          so we use a row and a marginEnd on the logo
+        */}
+        {ModuleBaseContent}
+        {props.ctaText && <CTA text={props.ctaText} />}
+      </PressableModuleBase>
+    );
+  }
+
+  return <View style={IOModuleStyles.button}>{ModuleBaseContent}</View>;
 };
 
 // ---------------- sub-components----------------
