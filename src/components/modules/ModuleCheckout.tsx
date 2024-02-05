@@ -45,6 +45,11 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
 
   const ModuleBaseContent = (
     <View style={styles.rowCenter}>
+      {/*
+          we don't want to let the `space-between`
+          handle spacing for the logo/text section,
+          so we use a row and a marginEnd on the logo
+        */}
       {props.paymentLogo && (
         <View style={{ marginEnd: paymentLogoEndMargin }}>
           <LogoPayment name={props.paymentLogo} />
@@ -62,11 +67,6 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   if (props.ctaText) {
     return (
       <PressableModuleBase onPress={props.onPress}>
-        {/*
-          we don't want to let the `space-between`
-          handle spacing for the logo/text section,
-          so we use a row and a marginEnd on the logo
-        */}
         {ModuleBaseContent}
         {props.ctaText && <CTA text={props.ctaText} />}
       </PressableModuleBase>
