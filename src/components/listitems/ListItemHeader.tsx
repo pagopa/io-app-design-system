@@ -125,7 +125,10 @@ export const ListItemHeader = ({
       accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
     >
-      <View style={IOListItemStyles.listItemInner}>
+      <View
+        style={IOListItemStyles.listItemInner}
+        importantForAccessibility={endElement ? "auto" : "no-hide-descendants"}
+      >
         {iconName && (
           <View style={{ marginRight: iconMargin }}>
             <Icon
