@@ -181,6 +181,16 @@ const renderListItemNav = () => (
         />
         <ListItemNav
           value={"Value"}
+          description="This is a list item nav with a loading indicator"
+          paymentLogo="bancomatPay"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          loading
+        />
+        <ListItemNav
+          value={"Value"}
           description="This is a list item nav without chevron icon"
           onPress={() => {
             alert("Action triggered");
