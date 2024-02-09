@@ -99,6 +99,14 @@ const organizationsURIs = [
     name: "Placeholder"
   },
   {
+    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}1199250158.png`],
+    name: "Multi image uris"
+  },
+  {
+    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}wrongUri.pg`],
+    name: "Multi image uris both bad uris"
+  },
+  {
     imageSource: `${cdnPath}1199250158.png`,
     name: "Comune di Milano"
   },
@@ -147,9 +155,11 @@ const renderAvatar = () => (
               size="small"
               logoUri={
                 imageSource
-                  ? {
-                      uri: imageSource
-                    }
+                  ? Array.isArray(imageSource)
+                    ? imageSource.map(s => ({ uri: s }))
+                    : {
+                        uri: imageSource
+                      }
                   : undefined
               }
             />
@@ -158,7 +168,7 @@ const renderAvatar = () => (
         ))}
       </ScrollView>
     </ComponentViewerBox>
-    <ComponentViewerBox name={`Avatar, small size, square shape`}>
+    {/* <ComponentViewerBox name={`Avatar, small size, square shape`}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -171,9 +181,11 @@ const renderAvatar = () => (
               size="small"
               logoUri={
                 imageSource
-                  ? {
-                      uri: imageSource
-                    }
+                  ? Array.isArray(imageSource)
+                    ? imageSource.map(s => ({ uri: s }))
+                    : {
+                        uri: imageSource
+                      }
                   : undefined
               }
             />
@@ -195,9 +207,11 @@ const renderAvatar = () => (
               size="medium"
               logoUri={
                 imageSource
-                  ? {
-                      uri: imageSource
-                    }
+                  ? Array.isArray(imageSource)
+                    ? imageSource.map(s => ({ uri: s }))
+                    : {
+                        uri: imageSource
+                      }
                   : undefined
               }
             />
@@ -205,7 +219,7 @@ const renderAvatar = () => (
           </React.Fragment>
         ))}
       </ScrollView>
-    </ComponentViewerBox>
+    </ComponentViewerBox> */}
   </>
 );
 
