@@ -26,6 +26,7 @@ import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { Caption, H6, LabelSmall } from "../typography";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type ListItemTopElementProps =
   | {
@@ -40,6 +41,7 @@ type ListItemTopElementProps =
 type ListItemNavPartialProps = WithTestID<{
   value: string | React.ReactNode;
   description?: string | React.ReactNode;
+  loading?: boolean;
   onPress: (event: GestureResponderEvent) => void;
   // Accessibility
   accessibilityLabel: string;
@@ -64,7 +66,8 @@ export const ListItemNav = ({
   accessibilityLabel,
   testID,
   hideChevron = false,
-  topElement
+  topElement,
+  loading
 }: ListItemNav) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
@@ -167,9 +170,17 @@ export const ListItemNav = ({
     isPressed.value = 0;
   }, [isPressed]);
 
+  const handleOnPress = (event: GestureResponderEvent) => {
+    if (!loading) {
+      onPress(event);
+    }
+  };
+
+  const primaryColor: IOColors = isExperimental ? "blueIO-500" : "blue";
+
   return (
     <Pressable
-      onPress={onPress}
+      onPress={handleOnPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       accessible={true}
@@ -201,7 +212,8 @@ export const ListItemNav = ({
             </View>
           )}
           <View style={IOStyles.flex}>{listItemNavContent}</View>
-          {!hideChevron && (
+          {loading && <LoadingSpinner color={primaryColor} />}
+          {!loading && !hideChevron && (
             <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
               <Icon
                 name="chevronRightListItem"
