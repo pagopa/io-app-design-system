@@ -35,3 +35,15 @@ export const EnitityLogo: Story = {
       "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png" as ImageURISource
   }
 };
+
+// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+export const EnitityLogoWithFallback: Story = {
+  args: {
+    shape: "circle",
+    size: "medium",
+    logoUri: [
+      "https://wrongUri.png",
+      "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png"
+    ] as ReadonlyArray<ImageURISource>
+  }
+};
