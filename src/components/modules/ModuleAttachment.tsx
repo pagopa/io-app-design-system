@@ -21,8 +21,8 @@ import {
   IOScaleValues,
   IOSpringValues,
   useIOTheme
-} from "src/core";
-import { WithTestID } from "src/utils/types";
+} from "../../core";
+import { WithTestID } from "../../utils/types";
 import { Icon } from "../icons";
 import { LabelSmall } from "../typography";
 import { VSpacer } from "../spacer";
