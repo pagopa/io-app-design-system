@@ -1,20 +1,19 @@
-// A component to provide organization logo
 import * as React from "react";
 import { Image, ImageURISource, StyleSheet, View } from "react-native";
 import { Icon } from "../../components/icons";
 import {
   IOColors,
   IOSpacingScale,
-  IOThemeContext,
   IOVisualCostants,
-  hexToRgba
+  hexToRgba,
+  useIOTheme
 } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
 
 type Avatar = {
   shape: "circle" | "square";
   size: "small" | "medium";
-  logoUri?: ImageURISource;
+  logoUri?: ImageURISource | ReadonlyArray<ImageURISource>;
 };
 
 const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
@@ -55,16 +54,33 @@ const styles = StyleSheet.create({
   }
 });
 
+/**
+ * Avatar component is used to display the logo of an organization. It accepts the following props:
+ * - `logoUri`: the uri of the image to display. If not provided, a placeholder icon will be displayed. It can be a single uri or an array of uris, in which case the first one that is available will be used.
+ * - `shape`: the shape of the avatar, can be "circle" or "square"
+ * - `size`: the size of the avatar, can be "small" or "medium"
+ * @param AvatarProps
+ * @returns
+ */
 export const Avatar = ({ logoUri, shape, size }: Avatar) => {
-  const theme = React.useContext(IOThemeContext);
+  const theme = useIOTheme();
+  const indexValue = React.useRef<number>(0);
 
   const [imageSource, setImageSource] = React.useState(
-    !logoUri ? undefined : addCacheTimestampToUri(logoUri)
+    logoUri === undefined
+      ? undefined
+      : Array.isArray(logoUri)
+      ? addCacheTimestampToUri(logoUri[0])
+      : addCacheTimestampToUri(logoUri as ImageURISource)
   );
 
-  const isPlaceholder = !imageSource;
-
   const onError = () => {
+    if (Array.isArray(logoUri) && indexValue.current + 1 < logoUri.length) {
+      // eslint-disable-next-line functional/immutable-data
+      indexValue.current = indexValue.current + 1;
+      setImageSource(addCacheTimestampToUri(logoUri[indexValue.current]));
+      return;
+    }
     setImageSource(undefined);
   };
 
@@ -79,14 +95,16 @@ export const Avatar = ({ logoUri, shape, size }: Avatar) => {
             shape === "circle"
               ? getAvatarCircleShape(size)
               : dimensionsMap[size].radius,
-          backgroundColor: isPlaceholder ? IOColors["grey-50"] : IOColors.white,
-          padding: isPlaceholder
-            ? dimensionsMap[size].internalSpacePlaceholder
-            : dimensionsMap[size].internalSpace
+          backgroundColor:
+            imageSource === undefined ? IOColors["grey-50"] : IOColors.white,
+          padding:
+            imageSource === undefined
+              ? dimensionsMap[size].internalSpacePlaceholder
+              : dimensionsMap[size].internalSpace
         }
       ]}
     >
-      {isPlaceholder ? (
+      {imageSource === undefined ? (
         <Icon
           name="institution"
           color={theme["icon-decorative"]}
