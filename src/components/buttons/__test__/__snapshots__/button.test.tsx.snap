@@ -439,7 +439,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
     }
   >
     <View
-      entering={[Function]}
       exiting={[Function]}
       style={
         [
@@ -1300,7 +1299,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     }
   >
     <View
-      entering={[Function]}
       exiting={[Function]}
       style={
         [
