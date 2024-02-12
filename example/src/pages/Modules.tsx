@@ -123,6 +123,13 @@ const renderModuleCheckout = () => (
         onPress={modulePress}
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no CTA">
+      <ModuleCheckout
+        title="3,50 $"
+        subtitle="Piú o meno"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
       <ModuleCheckout isLoading ctaText="Loading" />
     </ComponentViewerBox>
