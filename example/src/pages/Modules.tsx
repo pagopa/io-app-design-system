@@ -5,6 +5,7 @@ import {
   ListItemSwitch,
   H2,
   ModuleIDP,
+  ModuleAttachment,
   ModulePaymentNotice,
   ModuleCheckout
 } from "@pagopa/io-app-design-system";
@@ -135,6 +136,49 @@ const renderModuleCheckout = () => (
   </>
 );
 
+const renderModuleAttachment = () => (
+  <>
+    <ComponentViewerBox name="ModuleAttachment, pdf variant">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, doc variant">
+      <ModuleAttachment
+        title="Documento.docx"
+        format="doc"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, disabled">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        disabled
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, loading">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        isLoading
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, fetching">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        isFetching
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+  </>
+);
+
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   return (
@@ -170,6 +214,14 @@ const Modules = () => {
             ModuleCheckout
           </H2>
           {renderModuleCheckout()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ModuleAttachment
+          </H2>
+          {renderModuleAttachment()}
         </Screen>
       )}
     </IOThemeContext.Consumer>
