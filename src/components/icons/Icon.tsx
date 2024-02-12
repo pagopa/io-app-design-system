@@ -427,15 +427,16 @@ export const Icon = ({
   ...props
 }: IOIconsProps) => {
   const IconElement = IOIcons[name];
+  const isAccessible = accessible && accessibilityLabel.trim().length > 0;
   return (
     <IconElement
       {...props}
       style={{ color: IOColors[color] }}
       size={size}
-      accessible={accessible}
-      accessibilityElementsHidden={true}
+      accessible={isAccessible}
+      accessibilityElementsHidden={!isAccessible}
       accessibilityLabel={accessibilityLabel}
-      importantForAccessibility={"no-hide-descendants"}
+      importantForAccessibility={isAccessible ? "auto" : "no-hide-descendants"}
     />
   );
 };
