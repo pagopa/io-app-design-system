@@ -1,7 +1,12 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
-import { IOModuleStyles, IOSpacingScale, useIOTheme } from "../../core";
+import {
+  IOModuleStyles,
+  IOSpacingScale,
+  IOStyles,
+  useIOTheme
+} from "../../core";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
@@ -43,7 +48,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
 
   const paymentLogoEndMargin: IOSpacingScale = 12;
 
-  const ModuleBaseContent = (
+  const ModuleBaseContent = () => (
     <View style={styles.rowCenter}>
       {/*
           we don't want to let the `space-between`
@@ -55,7 +60,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
           <LogoPayment name={props.paymentLogo} />
         </View>
       )}
-      <View>
+      <View style={IOStyles.flex}>
         <H6>{props.title}</H6>
         <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
           {props.subtitle}
@@ -67,7 +72,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   if (props.ctaText) {
     return (
       <PressableModuleBase onPress={props.onPress}>
-        {ModuleBaseContent}
+        <ModuleBaseContent />
         {props.ctaText && <CTA text={props.ctaText} />}
       </PressableModuleBase>
     );
@@ -108,6 +113,7 @@ const LoadingVersion = ({ text }: CtaOnlyProps) => (
 const styles = StyleSheet.create({
   rowCenter: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    flex: 1
   }
 });
