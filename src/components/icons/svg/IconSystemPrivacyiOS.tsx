@@ -1,6 +1,6 @@
 import React from "react";
 import { Path, Rect, Svg } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconSystemPrivacyiOS = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>

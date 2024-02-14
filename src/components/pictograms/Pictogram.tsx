@@ -131,6 +131,7 @@ import PictogramReactivate from "./svg/PictogramReactivate";
 import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
+import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -227,7 +228,6 @@ export const IOPictograms = {
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
-export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 
 type IOPictogramsProps = {
   name: IOPictograms;
@@ -237,12 +237,6 @@ type IOPictogramsProps = {
   component props. */
   pictogramStyle?: "default" | "light-content" | "dark-content";
   size?: IOPictogramSizeScale | "100%";
-};
-
-export type SVGPictogramProps = {
-  size: IOPictogramSizeScale | "100%";
-  color: ColorValue;
-  colorValues: Record<string, ColorValue>;
 };
 
 type PictogramPalette = {

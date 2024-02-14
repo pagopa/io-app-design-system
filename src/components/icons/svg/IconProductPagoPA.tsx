@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconProductPagoPA = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 32 32" style={style} {...props}>

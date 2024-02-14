@@ -1,6 +1,6 @@
 import React from "react";
 import { Path, Rect, Svg } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconSystemPermissionsAndroid = ({
   size,
