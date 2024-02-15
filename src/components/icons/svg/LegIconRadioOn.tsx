@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const LegIconRadioOn = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 22 22" style={style} {...props}>

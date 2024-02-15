@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconBackiOS = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>

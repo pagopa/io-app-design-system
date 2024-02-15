@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Rect, Path } from "react-native-svg";
-import { SVGLogoProps } from "../LogoPayment";
+import { SVGLogoProps } from "../types";
 
 const LogoPaymentVisa = ({ size }: SVGLogoProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24">

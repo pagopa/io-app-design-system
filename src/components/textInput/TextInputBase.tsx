@@ -20,24 +20,13 @@ import {
   useIOExperimentalDesign
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { getInputPropsByType } from "../../utils/textInput";
+import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
-
-type RNTextInputProps = Pick<
-  React.ComponentProps<typeof TextInput>,
-  | "keyboardType"
-  | "inputMode"
-  | "textContentType"
-  | "autoComplete"
-  | "returnKeyType"
-  | "autoCapitalize"
-  | "autoCorrect"
->;
 
 type InputTextProps = {
   placeholder: string;
