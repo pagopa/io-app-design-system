@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path, Circle } from "react-native-svg";
-import { SVGPictogramProps } from "../Pictogram";
+import { SVGPictogramProps } from "../types";
 
 const PictogramEmailDotNotif = ({
   size,

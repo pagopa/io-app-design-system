@@ -42,10 +42,6 @@ type IOIconsProps = {
   size?: number | "100%";
 };
 
-export type SVGLogoProps = {
-  size: number | "100%";
-};
-
 const LogoPayment = ({ name, size = 24, ...props }: IOIconsProps) => {
   const LogoElement = IOPaymentLogos[name];
   return <LogoElement {...props} size={size} />;

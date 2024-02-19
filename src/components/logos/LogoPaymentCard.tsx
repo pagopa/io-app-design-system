@@ -5,6 +5,7 @@ import { hexToRgba, IOColors } from "../../core";
 /* Logos */
 import LogoPaymentCardPayPal from "./svg/LogoPaymentCardPayPal";
 import LogoPaymentCardBancomatPay from "./svg/LogoPaymentCardBancomatPay";
+import { SVGCardLogoProps } from "./types";
 
 export const IOPaymentCardLogos = {
   payPal: LogoPaymentCardPayPal,
@@ -19,10 +20,6 @@ type IOPaymentLogos = {
   width?: "100%" | number;
   height?: number;
   debugMode?: boolean;
-};
-
-export type SVGCardLogoProps = {
-  preserveAspectRatio: "xMinYMin meet" | "xMidYMid meet" | "xMaxYMax meet";
 };
 
 const preserveAspectRatioValues: Record<

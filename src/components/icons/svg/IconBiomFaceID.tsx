@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconBiomFaceID = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 56 56" style={style} {...props}>
