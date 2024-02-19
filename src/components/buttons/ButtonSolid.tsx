@@ -320,6 +320,7 @@ export const ButtonSolid = React.memo(
                 ellipsizeMode="tail"
                 allowFontScaling={isExperimental}
                 maxFontSizeMultiplier={1.3}
+                importantForAccessibility="no-hide-descendants"
               >
                 {label}
               </ButtonText>
