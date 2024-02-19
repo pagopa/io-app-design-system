@@ -78,7 +78,11 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     );
   }
 
-  return <View style={IOModuleStyles.button}>{ModuleBaseContent}</View>;
+  return (
+    <View style={IOModuleStyles.button}>
+      <ModuleBaseContent />
+    </View>
+  );
 };
 
 // ---------------- sub-components----------------
