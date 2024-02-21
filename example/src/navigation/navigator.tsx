@@ -33,6 +33,7 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
+import { Loaders } from "../pages/Loaders";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -152,6 +153,14 @@ const AppNavigator = () => (
       component={Layout}
       options={{
         headerTitle: APP_ROUTES.FOUNDATION.LAYOUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LOADERS.route}
+      component={Loaders}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LOADERS.title,
         headerBackTitleVisible: false
       }}
     />
