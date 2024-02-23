@@ -20,7 +20,7 @@ type ModuleCheckoutPartialProps =
       isLoading?: false;
       paymentLogo?: IOLogoPaymentType;
       title: string;
-      subtitle: string;
+      subtitle?: string;
       onPress: () => void;
     }
   | {
@@ -62,9 +62,11 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
       )}
       <View style={IOStyles.flex}>
         <H6>{props.title}</H6>
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-          {props.subtitle}
-        </LabelSmall>
+        {props.subtitle && (
+          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+            {props.subtitle}
+          </LabelSmall>
+        )}
       </View>
     </View>
   );
