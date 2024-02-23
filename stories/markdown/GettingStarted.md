@@ -24,6 +24,15 @@ To add the component library to the main app run:
 yarn add @pagopa/io-app-design-system
 ```
 
+Remember to encapsulate the app container with the `SafeAreaProvider` from [`react-native-safe-area-context`](https://github.com/th3rdwave/react-native-safe-area-context?tab=readme-ov-file#safeareaprovider) in your `App.tsx` file. Also, remember to apply this wrapper in other relevant places such as the root components of modals and routes when utilizing [`react-native-screens`](https://github.com/software-mansion/react-native-screens):
+```js
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+function App() {
+  return <SafeAreaProvider>...</SafeAreaProvider>;
+}
+```
+
 ## Launch the example app
 For development purposes, a sample React Native application is included in the repository. To launch it:
 
