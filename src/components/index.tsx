@@ -20,6 +20,7 @@ export * from "./modules";
 export * from "./numberpad";
 export * from "./otpInput";
 export * from "./pictograms";
+export * from "./progressLoader";
 export * from "./radio";
 export * from "./spacer";
 export * from "./stepper";

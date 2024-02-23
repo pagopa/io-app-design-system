@@ -4,6 +4,7 @@ const APP_ROUTES = {
     COLOR: { route: "DESIGN_SYSTEM_COLOR", title: "Colors" },
     TYPOGRAPHY: { route: "DESIGN_SYSTEM_TYPOGRAPHY", title: "Typography" },
     LAYOUT: { route: "DESIGN_SYSTEM_LAYOUT", title: "Layout" },
+    LOADERS: { route: "DESIGN_SYSTEM_LOADERS", title: "Loaders" },
     ICONS: { route: "DESIGN_SYSTEM_ICONS", title: "Icons" },
     PICTOGRAMS: { route: "DESIGN_SYSTEM_PICTOGRAMS", title: "Pictograms" },
     LOGOS: { route: "DESIGN_SYSTEM_LOGOS", title: "Logos" }
