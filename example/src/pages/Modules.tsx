@@ -115,6 +115,14 @@ const renderModuleCheckout = () => (
         onPress={modulePress}
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no description">
+      <ModuleCheckout
+        paymentLogo="amex"
+        title="Amex"
+        ctaText="Modifica"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, no icon">
       <ModuleCheckout
         title="3,50 $"
