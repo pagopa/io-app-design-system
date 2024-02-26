@@ -2,7 +2,9 @@ import {
   CheckboxLabel,
   Divider,
   H2,
+  IOColors,
   IOVisualCostants,
+  LabelSmall,
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
@@ -15,7 +17,7 @@ import {
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -160,11 +162,17 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     id: "example-icon"
   },
   {
-    startImage: { paymentLogo: "myBank" },
-    value: "Let's try with a basic title",
-    description:
-      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-paymentLogo"
+    value: "Let's try with JSX description",
+    description: (
+      <LabelSmall color="grey-700" weight="Regular">
+        Ti contatteranno solo i servizi che hanno qualcosa di importante da
+        dirti.{" "}
+        <Text style={{ color: IOColors["grey-700"], fontWeight: "600" }}>
+          Potrai sempre disattivare le comunicazioni che non ti interessano.
+        </Text>
+      </LabelSmall>
+    ),
+    id: "example-jsx-element"
   },
   {
     value: "Let's try with a basic title",
