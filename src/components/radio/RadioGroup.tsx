@@ -5,7 +5,7 @@ import { ListItemRadio, ListItemRadioWithAmount } from "../listitems";
 export type RadioItem<T> = {
   id: T;
   value: string;
-  description?: string;
+  description?: string | React.ReactNode;
   disabled?: boolean;
   startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
   loadingProps?: ComponentProps<typeof ListItemRadio>["loadingProps"];

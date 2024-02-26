@@ -47,7 +47,7 @@ type ListItemRadioLoadingProps =
 
 type Props = WithTestID<{
   value: string;
-  description?: string;
+  description?: string | React.ReactNode;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
   startImage?: ListItemRadioGraphicProps;
