@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     resizeMode: "contain",
     borderColor: avatarBorderLightMode,
-    borderWidth: 1
+    borderWidth: 1,
+    borderCurve: "continuous"
   },
   avatarImage: {
     height: "100%",

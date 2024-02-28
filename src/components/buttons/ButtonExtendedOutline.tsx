@@ -13,9 +13,9 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { IOColors, IOScaleValues, IOSpringValues, IOStyles } from "../../core";
 import { IOIcons, Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";
-import { IOScaleValues, IOSpringValues, IOColors, IOStyles } from "../../core";
 
 type Props = {
   label: string;
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     borderRadius: 8,
-    borderColor: IOColors.bluegreyLight,
+    borderCurve: "continuous",
+    borderColor: IOColors["grey-100"],
     backgroundColor: IOColors.white,
     borderStyle: "solid",
     borderWidth: 1

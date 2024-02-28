@@ -9,12 +9,12 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { IOColors, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
+import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelHeader } from "../typography/LabelHeader";
-import { IOSpringValues, IOColors, hexToRgba, IOScaleValues } from "../../core";
-import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
 
 type ColorMode = "light" | "dark";
 
@@ -186,7 +186,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 65,
+    borderRadius: 64,
+    borderCurve: "continuous",
     justifyContent: "center",
     alignSelf: "flex-start"
   },

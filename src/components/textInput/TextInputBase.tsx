@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     height: 60,
     borderRadius: 8,
+    borderCurve: "continuous",
     paddingHorizontal: 12
   },
   textInputStyle: {
