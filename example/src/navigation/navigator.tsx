@@ -11,6 +11,7 @@ import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
@@ -18,6 +19,7 @@ import { Icons } from "../pages/Icons";
 import { ImageScreen } from "../pages/Image";
 import { Layout } from "../pages/Layout";
 import { ListItems } from "../pages/ListItem";
+import { Loaders } from "../pages/Loaders";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
 import Modules from "../pages/Modules";
@@ -33,7 +35,6 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
-import { Loaders } from "../pages/Loaders";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -327,6 +328,15 @@ const AppNavigator = () => (
       component={Search}
       options={{
         headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.route}
+      component={GradientScroll}
+      options={{
+        headerTitle: APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.title,
         headerBackTitleVisible: false
       }}
     />

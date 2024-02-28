@@ -28,7 +28,7 @@ export type GradientScrollView = WithTestID<{
 }>;
 
 // Extended gradient area above the actions
-export const gradientSafeArea: IOSpacingScale = 80;
+export const gradientSafeArea: IOSpacingScale = 96;
 // End content margin before the actions
 const contentEndMargin: IOSpacingScale = 32;
 // Margin between primary action and secondary one
