@@ -39,7 +39,8 @@ exports[`Test Buttons Components - Experimental Enabled ButtonExtendedOutline Sn
         {
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
-          "borderColor": "#CCD4DC",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -304,6 +305,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
       [
         {
           "alignItems": "center",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "elevation": 0,
           "flexDirection": "row",
@@ -411,6 +413,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
       [
         {
           "alignItems": "center",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "elevation": 0,
           "flexDirection": "row",
@@ -902,7 +905,8 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
-          "borderColor": "#CCD4DC",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 1,
