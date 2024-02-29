@@ -41,7 +41,7 @@ const DISABLED_OPACITY = 0.5;
 type OwnProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "disabled" | "accessibilityLabel" | "accessibilityState"
   >;
 
 /**
@@ -56,6 +56,7 @@ export const ListItemCheckbox = ({
   description,
   icon,
   selected,
+  accessibilityLabel,
   disabled,
   onValueChange
 }: OwnProps) => {
@@ -128,6 +129,13 @@ export const ListItemCheckbox = ({
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
+      accessible={true}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="checkbox"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
       disabled={disabled}
     >
       <Animated.View
