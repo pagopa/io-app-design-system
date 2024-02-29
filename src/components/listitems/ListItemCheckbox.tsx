@@ -41,7 +41,7 @@ const DISABLED_OPACITY = 0.5;
 type OwnProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "disabled" | "accessibilityLabel" | "accessibilityState"
+    "onPress" | "accessibilityLabel" | "disabled"
   >;
 
 /**
