@@ -19,7 +19,7 @@ export const HeaderFirstLevelScreen = () => {
     navigation.setOptions({
       header: () => (
         <HeaderFirstLevel
-          backgroundColor="dark"
+          backgroundColor="light"
           title={"Pagina"}
           type="singleAction"
           firstAction={{

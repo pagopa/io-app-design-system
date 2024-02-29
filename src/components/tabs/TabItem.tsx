@@ -31,6 +31,7 @@ export type TabItem = WithTestID<{
   accessibilityHint?: string;
   // Events
   onPress?: (event: GestureResponderEvent) => void;
+  disabled?: boolean;
 }>;
 
 type ColorStates = {
@@ -42,6 +43,7 @@ type ColorStates = {
   foreground: {
     default: IOColors;
     selected: IOColors;
+    disabled: IOColors;
   };
 };
 
@@ -53,8 +55,9 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
       pressed: IOColors["grey-50"]
     },
     foreground: {
-      default: "grey-650",
-      selected: "black"
+      default: "black",
+      selected: "black",
+      disabled: "grey-700"
     }
   },
   dark: {
@@ -65,7 +68,8 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
     },
     foreground: {
       default: "white",
-      selected: "grey-850"
+      selected: "black",
+      disabled: "white"
     }
   }
 };
@@ -79,6 +83,7 @@ const TabItem = ({
   accessibilityHint,
   testID,
   onPress,
+  disabled = false,
   icon,
   iconSelected
 }: TabItem) => {
@@ -89,7 +94,11 @@ const TabItem = ({
   } = useSpringPressProgressValue(IOSpringValues.selection);
 
   const colors = mapColorStates[color];
-  const foregroundColor = colors.foreground[selected ? "selected" : "default"];
+
+  const foregroundColor =
+    colors.foreground[
+      selected ? "selected" : disabled ? "disabled" : "default"
+    ];
 
   const opaquePressedBackgroundColor = hexToRgba(
     colors.background.pressed,
@@ -149,9 +158,15 @@ const TabItem = ({
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       accessible={true}
+      disabled={disabled}
     >
       <Animated.View
-        style={[styles.container, animatedStyle, fullWidth && styles.fullWidth]}
+        style={[
+          styles.container,
+          animatedStyle,
+          fullWidth && styles.fullWidth,
+          disabled && styles.disabled
+        ]}
       >
         {activeIcon && (
           <>
@@ -177,7 +192,8 @@ const styles = StyleSheet.create({
   },
   fullWidth: {
     alignSelf: "auto"
-  }
+  },
+  disabled: { opacity: 0.5 }
 });
 
 export { TabItem };

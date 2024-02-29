@@ -5,7 +5,9 @@ import {
   ListItemSwitch,
   H2,
   ModuleIDP,
-  ModulePaymentNotice
+  ModuleAttachment,
+  ModulePaymentNotice,
+  ModuleCheckout
 } from "@pagopa/io-app-design-system";
 import { Alert, ImageSourcePropType, View } from "react-native";
 import { Screen } from "../components/Screen";
@@ -100,6 +102,91 @@ const renderModulePaymentNotice = () => (
   </>
 );
 
+const modulePress = () => Alert.alert("ModulePress");
+
+const renderModuleCheckout = () => (
+  <>
+    <ComponentViewerBox name="ModuleCheckout, default">
+      <ModuleCheckout
+        paymentLogo="amex"
+        title="Amex"
+        subtitle="arien_c********@**hoo.it"
+        ctaText="Modifica"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no description">
+      <ModuleCheckout
+        paymentLogo="amex"
+        title="Amex"
+        ctaText="Modifica"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no icon">
+      <ModuleCheckout
+        title="3,50 $"
+        subtitle="Piú o meno"
+        ctaText="Modifica"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no CTA">
+      <ModuleCheckout
+        title="3,50 $"
+        subtitle="Piú o meno"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, loading">
+      <ModuleCheckout isLoading ctaText="Loading" />
+    </ComponentViewerBox>
+  </>
+);
+
+const renderModuleAttachment = () => (
+  <>
+    <ComponentViewerBox name="ModuleAttachment, pdf variant">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, doc variant">
+      <ModuleAttachment
+        title="Documento.docx"
+        format="doc"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, disabled">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        disabled
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, loading">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        isLoading
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleAttachment, fetching">
+      <ModuleAttachment
+        title="Documento.pdf"
+        format="pdf"
+        isFetching
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
+  </>
+);
+
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   return (
@@ -127,6 +214,22 @@ const Modules = () => {
             ModulePaymentNotice
           </H2>
           {renderModulePaymentNotice()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ModuleCheckout
+          </H2>
+          {renderModuleCheckout()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ModuleAttachment
+          </H2>
+          {renderModuleAttachment()}
         </Screen>
       )}
     </IOThemeContext.Consumer>

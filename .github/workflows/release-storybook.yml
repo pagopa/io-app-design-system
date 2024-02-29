@@ -1,0 +1,34 @@
+name: Publish the storybook
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  storybook-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
+      - name: Setup Node
+        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 #v2.5.2
+        with:
+          node-version-file: .nvmrc
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies and build with builder bob
+        run: yarn install --frozen-lockfile
+      - name: Build Storybook
+        run: yarn predeploy
+      - name: 'upload'
+        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c #v2.0.0
+        with: 
+          path: "storybook-static"
+      - id: deploy
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@9dbe3824824f8a1377b8e298bafde1a50ede43e5 #v2.0.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        

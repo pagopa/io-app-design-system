@@ -1,5 +1,4 @@
-import { useIOExperimentalDesign } from "../../core";
-import type { IOColors, IOTheme } from "../../core/IOColors";
+import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, FontType, TypographyProps } from "./common";
@@ -26,10 +25,15 @@ type LabelSmallProps = ExternalTypographyProps<
   AllowedFontSize &
   FontType;
 
-const defaultFontName: FontFamily = "TitilliumWeb";
+const fontName: FontFamily = "TitilliumSansPro";
+const legacyFontName: FontFamily = "TitilliumWeb";
 const fontSizeMapping: Record<FontSize, number> = {
   regular: 14,
   small: 12
+};
+const lineHeightMapping: Record<FontSize, number> = {
+  regular: 21,
+  small: 18
 };
 const labelDefaultWeight = "Bold";
 const labelDefaultcolor = "blue";
@@ -44,12 +48,14 @@ export const LabelSmall = (props: LabelSmallProps) => {
     ...props,
     defaultWeight: labelDefaultWeight,
     defaultColor: labelDefaultcolor,
-    font:
-      isExperimental && props.font !== undefined ? props.font : defaultFontName,
+    font: isExperimental ? fontName : legacyFontName,
     fontStyle: {
       fontSize: props.fontSize
         ? fontSizeMapping[props.fontSize]
-        : fontSizeMapping.regular
+        : fontSizeMapping.regular,
+      lineHeight: props.fontSize
+        ? lineHeightMapping[props.fontSize]
+        : lineHeightMapping.regular
     }
   });
 };

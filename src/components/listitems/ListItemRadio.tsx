@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import Placeholder from "rn-placeholder";
 import {
   IOColors,
   IOScaleValues,
@@ -26,13 +27,31 @@ import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
+import { IOLogoPaymentType, LogoPayment } from "../logos";
+
+type ListItemRadioGraphicProps =
+  | { icon?: never; paymentLogo: IOLogoPaymentType }
+  | { icon: IOIcons; paymentLogo?: never };
+
+type ListItemRadioLoadingProps =
+  | {
+      state: true;
+      skeletonDescription?: boolean;
+      skeletonIcon?: boolean;
+    }
+  | {
+      state?: false;
+      skeletonDescription?: never;
+      skeletonIcon?: never;
+    };
 
 type Props = WithTestID<{
   value: string;
-  description?: string;
-  icon?: IOIcons;
+  description?: string | React.ReactNode;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
+  startImage?: ListItemRadioGraphicProps;
+  loadingProps?: ListItemRadioLoadingProps;
 }>;
 
 const DISABLED_OPACITY = 0.5;
@@ -46,7 +65,7 @@ type OwnProps = Props &
   >;
 
 /**
- *  with the automatic state management that uses a {@link AnimatedCheckBox}
+ * `ListItemRadio` component with the automatic state management that uses a {@link AnimatedCheckBox}
  * The toggleValue change when a `onPress` event is received and dispatch the `onValueChange`.
  *
  * @param props
@@ -55,16 +74,16 @@ type OwnProps = Props &
 export const ListItemRadio = ({
   value,
   description,
-  icon,
+  startImage,
   selected,
   disabled,
   onValueChange,
+  loadingProps,
   testID
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -123,7 +142,66 @@ export const ListItemRadio = ({
     }
   };
 
-  return (
+  const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
+
+  const SkeletonDescriptionLines = () => (
+    <>
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <VSpacer size={8} />
+      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+    </>
+  );
+
+  const SkeletonIcon = () => (
+    <View
+      style={{
+        marginRight: IOSelectionListItemVisualParams.iconMargin
+      }}
+    >
+      <Placeholder.Box
+        animate="fade"
+        radius={4}
+        width={IOSelectionListItemVisualParams.iconSize}
+        height={IOSelectionListItemVisualParams.iconSize}
+      />
+    </View>
+  );
+
+  const SkeletonComponent = () => (
+    <View style={IOSelectionListItemStyles.listItem}>
+      <View style={IOSelectionListItemStyles.listItemInner}>
+        <View
+          style={[
+            IOStyles.flex,
+            IOStyles.rowSpaceBetween,
+            IOStyles.alignCenter
+          ]}
+        >
+          <View style={[IOStyles.row, IOStyles.alignCenter]}>
+            {loadingProps?.skeletonIcon && <SkeletonIcon />}
+            <Placeholder.Box
+              animate="fade"
+              radius={8}
+              width={179}
+              height={16}
+            />
+          </View>
+          <HSpacer size={8} />
+          <View pointerEvents="none" style={disabledStyle}>
+            <AnimatedRadio checked={toggleValue} />
+          </View>
+        </View>
+      </View>
+      {loadingProps?.skeletonDescription && <SkeletonDescriptionLines />}
+    </View>
+  );
+
+  return loadingProps?.state ? (
+    <SkeletonComponent />
+  ) : (
     <Pressable
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
@@ -136,7 +214,7 @@ export const ListItemRadio = ({
         style={[
           IOSelectionListItemStyles.listItem,
           animatedBackgroundStyle,
-          { opacity: disabled ? DISABLED_OPACITY : 1 }
+          disabledStyle
         ]}
         // This is required to avoid opacity
         // inheritance on Android
@@ -145,17 +223,26 @@ export const ListItemRadio = ({
         <Animated.View style={animatedScaleStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
             <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {icon && (
+              {startImage && (
                 <View
                   style={{
                     marginRight: IOSelectionListItemVisualParams.iconMargin
                   }}
                 >
-                  <Icon
-                    name={icon}
-                    color="grey-300"
-                    size={IOSelectionListItemVisualParams.iconSize}
-                  />
+                  {/* icon or paymentLogo props are mutually exclusive */}
+                  {startImage.icon && (
+                    <Icon
+                      name={startImage.icon}
+                      color="grey-300"
+                      size={IOSelectionListItemVisualParams.iconSize}
+                    />
+                  )}
+                  {startImage.paymentLogo && (
+                    <LogoPayment
+                      name={startImage.paymentLogo}
+                      size={IOSelectionListItemVisualParams.iconSize}
+                    />
+                  )}
                 </View>
               )}
 

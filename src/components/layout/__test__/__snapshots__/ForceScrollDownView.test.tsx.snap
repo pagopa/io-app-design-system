@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForceScrollDownView should match snapshot 1`] = `
+<RCTScrollView
+  onContentSizeChange={[Function]}
+  onLayout={[Function]}
+  onScroll={[Function]}
+  scrollEnabled={true}
+  scrollEventThrottle={400}
+  scrollIndicatorInsets={
+    {
+      "right": 1,
+    }
+  }
+  testID="ScrollView"
+>
+  <View>
+    <Text>
+      Some content
+    </Text>
+  </View>
+</RCTScrollView>
+`;

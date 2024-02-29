@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
+import { IOModuleIDPRadius } from "./IOShapes";
 import {
   IOAppMargin,
   IOModuleIDPHSpacing,
@@ -8,7 +9,6 @@ import {
   IOSpacer,
   IOSpacingScale
 } from "./IOSpacing";
-import { IOModuleIDPRadius } from "./IOShapes";
 
 /**
  * A collection of default styles used within IO App.
@@ -22,6 +22,8 @@ interface IOVisualCostants {
   avatarSizeSmall: number;
   avatarSizeMedium: number;
   iconContainedSizeDefault: number;
+  scrollDownButtonRight: number;
+  scrollDownButtonBottom: number;
 }
 
 export const IOVisualCostants: IOVisualCostants = {
@@ -29,7 +31,9 @@ export const IOVisualCostants: IOVisualCostants = {
   headerHeight: 56,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
-  iconContainedSizeDefault: 44
+  iconContainedSizeDefault: 44,
+  scrollDownButtonRight: 24,
+  scrollDownButtonBottom: 24
 };
 
 export const IOStyles = StyleSheet.create({

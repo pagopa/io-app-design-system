@@ -1,30 +1,39 @@
-import React from "react";
+import { HeaderSecondLevel } from "@pagopa/io-app-design-system";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
+import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
+import { FooterWithButton } from "../pages/FooterWithButton";
+import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
+import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
+import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { Icons } from "../pages/Icons";
+import { ImageScreen } from "../pages/Image";
 import { Layout } from "../pages/Layout";
 import { ListItems } from "../pages/ListItem";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
-import { Pictograms } from "../pages/Pictograms";
-import { Selection } from "../pages/Selection";
-import { Typography } from "../pages/Typography";
-import { Search } from "../pages/Search";
-import { TabNavigationScreen } from "../pages/TabNavigation";
-import { Sandbox } from "../pages/Sandbox";
-import { TextInputs } from "../pages/TextInputs";
-import { FooterWithButton } from "../pages/FooterWithButton";
 import Modules from "../pages/Modules";
-import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
-import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
-import { Toasts } from "../pages/Toasts";
-import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { NumberPadScreen } from "../pages/NumberPad";
+import { OTPInputScreen } from "../pages/OTPInput";
+import { Pictograms } from "../pages/Pictograms";
+import { Sandbox } from "../pages/Sandbox";
+import { Search } from "../pages/Search";
+import { Selection } from "../pages/Selection";
+import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
+import { StepperPage } from "../pages/Stepper";
+import { TabNavigationScreen } from "../pages/TabNavigation";
+import { TextInputs } from "../pages/TextInputs";
+import { Toasts } from "../pages/Toasts";
+import { Typography } from "../pages/Typography";
+import { Loaders } from "../pages/Loaders";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -107,6 +116,22 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.IMAGE.route}
+      component={ImageScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.IMAGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.OTP_INPUT.route}
+      component={OTPInputScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.OTP_INPUT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.COMPONENTS.BUTTONS.route}
       component={Buttons}
       options={{
@@ -132,6 +157,14 @@ const AppNavigator = () => (
       }}
     />
     <Stack.Screen
+      name={APP_ROUTES.FOUNDATION.LOADERS.route}
+      component={Loaders}
+      options={{
+        headerTitle: APP_ROUTES.FOUNDATION.LOADERS.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
       name={APP_ROUTES.COMPONENTS.ADVICE.route}
       component={DSAdvice}
       options={{
@@ -144,6 +177,14 @@ const AppNavigator = () => (
       component={DSAlert}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.ALERT.title,
+        headerBackTitleVisible: false
+      }}
+    />
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.STEPPER.route}
+      component={StepperPage}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.STEPPER.title,
         headerBackTitleVisible: false
       }}
     />
@@ -191,14 +232,50 @@ const AppNavigator = () => (
     />
 
     <Stack.Screen
-      name={APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.route}
+      name={APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.route}
       component={FooterWithButton}
       options={{
-        headerTitle: APP_ROUTES.COMPONENTS.FOOTER_WITH_BUTTON.title,
+        headerTitle: APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.title,
         headerBackTitleVisible: false
       }}
     />
 
+    <Stack.Screen
+      name={APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON_EMPTY.route}
+      component={FooterWithButtonEmptyState}
+      options={{
+        headerShown: false,
+        headerTitle: APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.route}
+      component={ForceScrollDownViewPage}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.END_OF_PAGE.route}
+      component={EndOfPageScreen}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.route}
+      component={EndOfPageScreenWithCTA}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.title,
+        headerBackTitleVisible: false
+      }}
+    />
     <Stack.Screen
       name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
       component={HeaderFirstLevelScreen}
@@ -224,6 +301,15 @@ const AppNavigator = () => (
       component={StaticHeaderSecondLevelScreen}
       options={{
         headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
+        headerBackTitleVisible: false
+      }}
+    />
+
+    <Stack.Screen
+      name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STEPPER.route}
+      component={HeaderSecondLevelWithStepper}
+      options={{
+        headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STEPPER.title,
         headerBackTitleVisible: false
       }}
     />
@@ -259,7 +345,22 @@ const AppNavigator = () => (
         name={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.route}
         component={ListItems}
         options={{
-          headerShown: false
+          headerShown: true,
+          header: ({ navigation }) => (
+            <HeaderSecondLevel
+              title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
+              transparent
+              isModal
+              type="singleAction"
+              firstAction={{
+                icon: "closeMedium",
+                onPress: () => {
+                  navigation.goBack();
+                },
+                accessibilityLabel: ""
+              }}
+            />
+          )
         }}
       />
     </Stack.Group>

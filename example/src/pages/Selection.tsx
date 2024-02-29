@@ -2,18 +2,22 @@ import {
   CheckboxLabel,
   Divider,
   H2,
+  IOColors,
   IOVisualCostants,
+  LabelSmall,
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
-  RadioItem,
+  RadioButtonLabel,
   RadioGroup,
+  RadioItem,
+  RadioItemWithAmount,
   SwitchLabel,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -39,8 +43,12 @@ export const Selection = () => {
       {/* ListItemCheckbox */}
       {renderListItemCheckbox()}
       <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      {/* RadioButtonLabel */}
+      {renderRadioButtonLabel()}
       {/* RadioListItem */}
       <RadioListItemsShowroom />
+      {/* RadioListItemWithAmount */}
+      <RadioListItemsWithAmountShowroom />
       <H2 style={{ marginVertical: 16 }}>Switch</H2>
       {/* Native Switch */}
       <NativeSwitchShowroom />
@@ -147,11 +155,24 @@ const renderListItemCheckbox = () => (
 
 const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
-    icon: "coggle",
+    startImage: { icon: "coggle" },
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-1"
+    id: "example-icon"
+  },
+  {
+    value: "Let's try with JSX description",
+    description: (
+      <LabelSmall color="grey-700" weight="Regular">
+        Ti contatteranno solo i servizi che hanno qualcosa di importante da
+        dirti.{" "}
+        <Text style={{ color: IOColors["grey-700"], fontWeight: "600" }}>
+          Potrai sempre disattivare le comunicazioni che non ti interessano.
+        </Text>
+      </LabelSmall>
+    ),
+    id: "example-jsx-element"
   },
   {
     value: "Let's try with a basic title",
@@ -169,6 +190,51 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
     id: "example-disabled",
     disabled: true
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonIcon: false
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withIcon",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonIcon: true
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withDescription",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonDescription: true
+    }
+  },
+  {
+    value: "Let's try with a disabled item",
+    description:
+      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",
+    id: "example-loading-withIcon-withDescription",
+    disabled: true,
+    loadingProps: {
+      state: true,
+      skeletonDescription: true,
+      skeletonIcon: true
+    }
   }
 ];
 
@@ -180,6 +246,7 @@ const RadioListItemsShowroom = () => {
   return (
     <ComponentViewerBox name="RadioListItem">
       <RadioGroup<string>
+        type="radioListItem"
         key="check_income"
         items={mockRadioItems()}
         selectedItem={selectedItem}
@@ -188,7 +255,42 @@ const RadioListItemsShowroom = () => {
     </ComponentViewerBox>
   );
 };
+// RADIO ITEMS WITH AMOUNT
 
+const mockRadioItemsWithAmount = (): ReadonlyArray<
+  RadioItemWithAmount<string>
+> => [
+  {
+    id: "example-1",
+    label: "Banca Intesa",
+    formattedAmountString: "2,50 €",
+    suggestReason: "Perché costa meno",
+    isSuggested: true
+  },
+  {
+    id: "example-2",
+    label: "Banca Unicredit",
+    formattedAmountString: "4,50 €"
+  }
+];
+
+const RadioListItemsWithAmountShowroom = () => {
+  const [selectedItem, setSelectedItem] = useState<string | undefined>(
+    "example-1"
+  );
+
+  return (
+    <ComponentViewerBox name="RadioListItemWithAmount">
+      <RadioGroup<string>
+        type="radioListItemWithAmount"
+        // key="check_income"
+        items={mockRadioItemsWithAmount()}
+        selectedItem={selectedItem}
+        onPress={setSelectedItem}
+      />
+    </ComponentViewerBox>
+  );
+};
 // SWITCH
 
 const renderAnimatedSwitch = () => (
@@ -199,6 +301,15 @@ const renderAnimatedSwitch = () => (
   </ComponentViewerBox>
 );
 
+// RADIO BUTTON LABEL
+
+const renderRadioButtonLabel = () => (
+  <ComponentViewerBox name="RadioButtonLabel">
+    <RadioButtonLabel label="This is a test" />
+    <VSpacer size={16} />
+    <RadioButtonLabel label="This is a test with a very loooong looooooong loooooooong text" />
+  </ComponentViewerBox>
+);
 const NativeSwitchShowroom = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);

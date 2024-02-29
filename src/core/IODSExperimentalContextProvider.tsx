@@ -1,5 +1,5 @@
-import * as React from "react";
-import { constVoid } from "fp-ts/lib/function";
+import { constVoid } from "fp-ts/function";
+import React from "react";
 
 type IOExperimentalContextType = {
   isExperimental: boolean;
@@ -8,7 +8,7 @@ type IOExperimentalContextType = {
 /**
  * Experimental Context for new UI Representations
  */
-const IOExperimentalDesignContext =
+export const IOExperimentalDesignContext =
   React.createContext<IOExperimentalContextType>({
     isExperimental: false,
     setExperimental: constVoid

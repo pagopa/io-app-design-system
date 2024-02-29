@@ -1,7 +1,10 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -31,7 +34,15 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {}
   },
-  staticDirs: ['../example/assets'],
+  staticDirs: [
+    "../example/assets/css",
+    "../example/assets/fonts/TitilliumWeb",
+    "../example/assets/fonts/TitilliumSansPro",
+    "../example/assets/fonts/ReadexPro",
+    "../example/assets/fonts/DMMono",
+    "../repo-assets",
+    "../stories/assets"
+  ],
   docs: {
     autodocs: "tag"
   },

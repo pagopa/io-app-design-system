@@ -515,6 +515,84 @@ export const Buttons = () => {
         </View>
       </ComponentViewerBox>
 
+      <View
+        style={isExperimental ? styles.primaryBlock : styles.primaryBlockLegacy}
+      >
+        <ComponentViewerBox
+          name="ButtonLink · Contrast variant"
+          colorMode="dark"
+        >
+          <View>
+            <ButtonLink
+              color="contrast"
+              accessibilityLabel="Tap to trigger test alert"
+              label={"Primary button"}
+              onPress={onButtonPress}
+            />
+
+            <VSpacer size={16} />
+
+            <ButtonLink
+              color="contrast"
+              accessibilityLabel="Tap to trigger test alert"
+              label={"Primary button"}
+              icon="starEmpty"
+              onPress={onButtonPress}
+            />
+
+            <VSpacer size={16} />
+
+            <ButtonLink
+              color="contrast"
+              accessibilityLabel="Tap to trigger test alert"
+              label={"Primary button"}
+              icon="starEmpty"
+              iconPosition="end"
+              onPress={onButtonPress}
+            />
+
+            <VSpacer size={16} />
+
+            <View style={{ alignSelf: "center" }}>
+              <ButtonLink
+                color="contrast"
+                accessibilityLabel="Tap to trigger test alert"
+                label={"Primary button (centered)"}
+                onPress={onButtonPress}
+              />
+            </View>
+          </View>
+        </ComponentViewerBox>
+
+        <ComponentViewerBox
+          name="ButtonLink · Contrast, disabled"
+          colorMode="dark"
+          last
+        >
+          <View>
+            <ButtonLink
+              disabled
+              color="contrast"
+              accessibilityLabel="Tap to trigger test alert"
+              label={"Primary button (disabled)"}
+              onPress={onButtonPress}
+            />
+
+            <VSpacer size={16} />
+
+            <ButtonLink
+              disabled
+              color="contrast"
+              accessibilityLabel="Tap to trigger test alert"
+              label={"Primary button (disabled)"}
+              icon="starEmpty"
+              iconPosition="end"
+              onPress={onButtonPress}
+            />
+          </View>
+        </ComponentViewerBox>
+      </View>
+
       <VSpacer size={40} />
 
       <H2
@@ -785,7 +863,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
         <View>
           <ButtonExtendedOutline
-            icon="chevronRight"
+            icon="chevronRightListItem"
             label={"Label only"}
             onPress={() => {
               alert("Action triggered");

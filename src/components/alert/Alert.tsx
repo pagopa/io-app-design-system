@@ -63,7 +63,7 @@ type AlertProps = WithTestID<{
   title?: string;
   content: string;
   fullWidth?: boolean;
-  viewRef: React.RefObject<View>;
+  viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
   accessibilityHint?: string;
 }>;

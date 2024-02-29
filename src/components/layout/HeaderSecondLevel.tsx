@@ -26,13 +26,22 @@ type ScrollValues = {
   triggerOffset: number;
 };
 
+type BackProps =
+  | {
+      goBack: () => void;
+      backAccessibilityLabel: string;
+    }
+  | {
+      goBack?: never;
+      backAccessibilityLabel?: never;
+    };
+
 type CommonProps = WithTestID<{
   scrollValues?: ScrollValues;
   title: string;
-  goBack: () => void;
-  backAccessibilityLabel: string;
   // Visual attributes
   transparent?: boolean;
+  isModal?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -63,7 +72,8 @@ interface ThreeActions extends CommonProps {
   thirdAction: ActionProp;
 }
 
-export type HeaderSecondLevel = Base | OneAction | TwoActions | ThreeActions;
+export type HeaderSecondLevel = BackProps &
+  (Base | OneAction | TwoActions | ThreeActions);
 
 const HEADER_BG_COLOR: IOColors = "white";
 const borderColorDisabled = hexToRgba(IOColors["grey-100"], 0);
@@ -74,7 +84,6 @@ const styles = StyleSheet.create({
   headerInner: {
     paddingHorizontal: IOVisualCostants.appMarginDefault,
     height: IOVisualCostants.headerHeight,
-    borderBottomWidth: 1,
     flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -107,6 +116,7 @@ export const HeaderSecondLevel = ({
   title,
   type,
   transparent = false,
+  isModal = false,
   testID,
   firstAction,
   secondAction,
@@ -133,6 +143,7 @@ export const HeaderSecondLevel = ({
       : "transparent"
   }));
 
+  const isTitleAccessible = !!title.trim();
   const titleAnimatedStyle = useAnimatedStyle(() => ({
     opacity: scrollValues
       ? interpolate(
@@ -146,28 +157,34 @@ export const HeaderSecondLevel = ({
   return (
     <Animated.View
       accessibilityRole="header"
-      style={
+      style={[
         transparent
           ? { borderBottomWidth: 0 }
-          : { backgroundColor: IOColors[HEADER_BG_COLOR] }
-      }
+          : { backgroundColor: IOColors[HEADER_BG_COLOR] },
+        { borderBottomWidth: 1 },
+        headerWrapperAnimatedStyle
+      ]}
     >
       <Animated.View
         testID={testID}
-        style={[
-          { marginTop: insets.top },
-          styles.headerInner,
-          headerWrapperAnimatedStyle
-        ]}
+        style={[isModal ? {} : { marginTop: insets.top }, styles.headerInner]}
       >
-        <IconButton
-          icon={Platform.OS === "ios" ? "backiOS" : "backAndroid"}
-          color="neutral"
-          onPress={goBack}
-          accessibilityLabel={backAccessibilityLabel}
-        />
+        {goBack ? (
+          <IconButton
+            icon={Platform.select({
+              android: "backAndroid",
+              default: "backiOS"
+            })}
+            color="neutral"
+            onPress={goBack}
+            accessibilityLabel={backAccessibilityLabel}
+          />
+        ) : (
+          <HSpacer size={32} />
+        )}
         <Animated.Text
           numberOfLines={1}
+          accessible={isTitleAccessible}
           style={[
             styles.headerTitle,
             isExperimental
