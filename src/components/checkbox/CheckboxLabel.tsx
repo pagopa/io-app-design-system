@@ -1,10 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import { Pressable, View } from "react-native";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { HSpacer } from "../spacer/Spacer";
 import { H6 } from "../typography/H6";
 import { AnimatedCheckbox } from "./AnimatedCheckbox";
@@ -23,17 +21,6 @@ type OwnProps = Props &
   Pick<React.ComponentProps<typeof AnimatedCheckbox>, "disabled" | "checked"> &
   Pick<React.ComponentProps<typeof Pressable>, "onPress">;
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const styles = StyleSheet.create({
-  legacyTextValue: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: IOColors.bluegreyDark,
-    flexShrink: 1,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
-  }
-});
-
 /**
  * A checkbox with the automatic state management that uses a {@link AnimatedCheckBox}
  * The toggleValue change when a `onPress` event is received and dispatch the `onValueChange`.
@@ -48,22 +35,6 @@ export const CheckboxLabel = ({
   onValueChange
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(checked ?? false);
-
-  const { isExperimental } = useIOExperimentalDesign();
-  const checkboxLabelText = (
-    <H6 style={{ flexShrink: 1 }} color={"black"}>
-      {label}
-    </H6>
-  );
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyCheckboxlabelText = (
-    <Text style={styles.legacyTextValue}>{label}</Text>
-  );
-
-  const checkboxLabelTextComponent = isExperimental
-    ? checkboxLabelText
-    : legacyCheckboxlabelText;
 
   const toggleCheckbox = () => {
     triggerHaptic("impactLight");
@@ -96,7 +67,9 @@ export const CheckboxLabel = ({
           <AnimatedCheckbox checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
-        {checkboxLabelTextComponent}
+        <H6 style={{ flexShrink: 1 }} color={"black"}>
+          {label}
+        </H6>
       </View>
     </Pressable>
   );

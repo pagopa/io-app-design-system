@@ -1,43 +1,94 @@
-import React from "react";
-import { View } from "react-native";
+import React, { ComponentProps } from "react";
 import { Divider } from "../divider";
-import { IOIcons } from "../icons";
-import { ListItemRadio } from "../listitems/ListItemRadio";
+import { ListItemRadio, ListItemRadioWithAmount } from "../listitems";
 
 export type RadioItem<T> = {
   id: T;
   value: string;
-  description?: string;
-  icon?: IOIcons;
+  description?: string | React.ReactNode;
   disabled?: boolean;
+  startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
+  loadingProps?: ComponentProps<typeof ListItemRadio>["loadingProps"];
 };
 
-type Props<T> = {
-  items: ReadonlyArray<RadioItem<T>>;
+export type RadioItemWithAmount<T> = {
+  id: T;
+  label: string;
+  formattedAmountString: string;
+} & (
+  | {
+      isSuggested?: false;
+    }
+  | {
+      isSuggested: true;
+      suggestReason: string;
+    }
+);
+type CommonProps<T> = {
   selectedItem?: T;
   onPress: (selected: T) => void;
 };
+
+type RadioListItemProps<T> = {
+  type: "radioListItem";
+  items: ReadonlyArray<RadioItem<T>>;
+} & CommonProps<T>;
+
+type RadioListItemWithAmountProps<T> = {
+  type: "radioListItemWithAmount";
+  items: ReadonlyArray<RadioItemWithAmount<T>>;
+} & CommonProps<T>;
+
+type Props<T> = RadioListItemProps<T> | RadioListItemWithAmountProps<T>;
 
 /**
  * A list of radio buttons.
  * The management of the selection is demanded and derived by the `selectedItem` prop.
  * The item with the `id` equal to the `selectedItem` is the active one.
  */
-export const RadioGroup = <T,>({ items, selectedItem, onPress }: Props<T>) => (
-  <View>
-    {items.map((item, index) => (
+
+const RadioListItem = <T,>(props: RadioListItemProps<T>) => (
+  <>
+    {props.items.map((item, index) => (
       <React.Fragment key={`radio_item_${item.id}`}>
         <ListItemRadio
           testID={`RadioItemTestID_${item.id}`}
           value={item.value}
           description={item.description}
-          icon={item.icon}
+          startImage={item.startImage}
           disabled={item.disabled}
-          onValueChange={() => onPress(item.id)}
-          selected={selectedItem === item.id}
+          loadingProps={item.loadingProps}
+          onValueChange={() => props.onPress(item.id)}
+          selected={props.selectedItem === item.id}
         />
-        {index < items.length - 1 && <Divider />}
+        {index < props.items.length - 1 && <Divider />}
       </React.Fragment>
     ))}
-  </View>
+  </>
+);
+
+const RadioListItemWithAmount = <T,>(
+  props: RadioListItemWithAmountProps<T>
+) => (
+  <>
+    {props.items.map((item, index) => (
+      <React.Fragment key={`radio_item_${item.id}`}>
+        <ListItemRadioWithAmount
+          label={item.label}
+          formattedAmountString={item.formattedAmountString}
+          suggestReason={item.isSuggested ? item.suggestReason : ""}
+          isSuggested={item.isSuggested}
+          onValueChange={() => props.onPress(item.id)}
+          selected={props.selectedItem === item.id}
+        />
+        {index < props.items.length - 1 && <Divider />}
+      </React.Fragment>
+    ))}
+  </>
+);
+export const RadioGroup = <T,>(props: Props<T>) => (
+  <>
+    {props.type === "radioListItem" && RadioListItem(props)}
+    {props.type === "radioListItemWithAmount" && RadioListItemWithAmount(props)}
+  </>
 );

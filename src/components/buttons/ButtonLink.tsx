@@ -15,6 +15,7 @@ import {
   IOColors,
   IOScaleValues,
   IOSpringValues,
+  hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -28,8 +29,9 @@ import {
 import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
-type ColorButtonLink = "primary";
-export type ButtonLink = WithTestID<{
+export type ColorButtonLink = "primary" | "contrast";
+
+export type ButtonLinkProps = WithTestID<{
   color?: ColorButtonLink;
   label: string;
   disabled?: boolean;
@@ -51,7 +53,10 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
+const mapColorStates: Record<
+  NonNullable<ButtonLinkProps["color"]>,
+  ColorStates
+> = {
   // Primary button
   primary: {
     label: {
@@ -59,12 +64,19 @@ const mapColorStates: Record<NonNullable<ButtonLink["color"]>, ColorStates> = {
       pressed: IOColors["blueIO-600"],
       disabled: IOColors["grey-700"]
     }
+  },
+  contrast: {
+    label: {
+      default: IOColors.white,
+      pressed: hexToRgba(IOColors.white, 0.85),
+      disabled: hexToRgba(IOColors.white, 0.5)
+    }
   }
 };
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const mapLegacyColorStates: Record<
-  NonNullable<ButtonLink["color"]>,
+  NonNullable<ButtonLinkProps["color"]>,
   ColorStates
 > = {
   // Primary button
@@ -73,6 +85,13 @@ const mapLegacyColorStates: Record<
       default: IOColors.blue,
       pressed: IOColors["blue-600"],
       disabled: IOColors["grey-700"]
+    }
+  },
+  contrast: {
+    label: {
+      default: IOColors.white,
+      pressed: hexToRgba(IOColors.white, 0.85),
+      disabled: hexToRgba(IOColors.white, 0.5)
     }
   }
 };
@@ -104,7 +123,7 @@ export const ButtonLink = React.memo(
     accessibilityLabel,
     accessibilityHint,
     testID
-  }: ButtonLink) => {
+  }: ButtonLinkProps) => {
     const isPressed = useSharedValue(0);
     const { isExperimental } = useIOExperimentalDesign();
 

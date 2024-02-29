@@ -7,27 +7,50 @@ import {
   useIOTheme
 } from "../../core/IOColors";
 
-import PictogramMessages from "./svg/PictogramMessages";
 import PictogramAbacus from "./svg/PictogramAbacus";
+import PictogramAccessDenied from "./svg/PictogramAccessDenied";
 import PictogramAirBaloon from "./svg/PictogramAirBaloon";
 import PictogramAirship from "./svg/PictogramAirship";
 import PictogramAttention from "./svg/PictogramAttention";
 import PictogramBaloons from "./svg/PictogramBaloons";
 import PictogramBeerMug from "./svg/PictogramBeerMug";
-import PictogramCameraRequest from "./svg/PictogramCameraRequest";
 import PictogramCameraDenied from "./svg/PictogramCameraDenied";
+import PictogramCameraRequest from "./svg/PictogramCameraRequest";
+import PictogramCharity from "./svg/PictogramCharity";
+import PictogramCie from "./svg/PictogramCie";
 import PictogramCompleted from "./svg/PictogramCompleted";
+import PictogramComunicationProblem from "./svg/PictogramComunicationProblem";
 import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
 import PictogramEmailValidation from "./svg/PictogramEmailValidation";
+import PictogramEmpty from "./svg/PictogramEmpty";
 import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
 import PictogramError from "./svg/PictogramError";
+import PictogramFatalError from "./svg/PictogramFatalError";
+import PictogramFeature from "./svg/PictogramFeature";
 import PictogramFeedback from "./svg/PictogramFeedback";
 import PictogramFireworks from "./svg/PictogramFireworks";
 import PictogramHeart from "./svg/PictogramHeart";
+import PictogramHello from "./svg/PictogramHello";
+import PictogramHelp from "./svg/PictogramHelp";
 import PictogramHourglass from "./svg/PictogramHourglass";
+import PictogramITWallet from "./svg/PictogramITWallet";
+import PictogramIdentity from "./svg/PictogramIdentity";
+import PictogramIdentityAdd from "./svg/PictogramIdentityAdd";
+import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
+import PictogramIdentityRefresh from "./svg/PictogramIdentityRefresh";
 import PictogramInProgress from "./svg/PictogramInProgress";
 import PictogramInbox from "./svg/PictogramInbox";
+import PictogramMessages from "./svg/PictogramMessages";
 import PictogramNotAvailable from "./svg/PictogramNotAvailable";
+import PictogramNotification from "./svg/PictogramNotification";
+import PictogramObjClock from "./svg/PictogramObjClock";
+import PictogramObjFlyingMessage from "./svg/PictogramObjFlyingMessage";
+import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
+import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
+import PictogramObjKey from "./svg/PictogramObjKey";
+import PictogramObjManual from "./svg/PictogramObjManual";
+import PictogramObjTrash from "./svg/PictogramObjTrash";
+import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPiggyBank from "./svg/PictogramPiggyBank";
 import PictogramPin from "./svg/PictogramPin";
 import PictogramPlaces from "./svg/PictogramPlaces";
@@ -35,90 +58,80 @@ import PictogramProcessing from "./svg/PictogramProcessing";
 import PictogramPuzzle from "./svg/PictogramPuzzle";
 import PictogramQuestion from "./svg/PictogramQuestion";
 import PictogramSearch from "./svg/PictogramSearch";
+import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramSms from "./svg/PictogramSms";
+import PictogramStopSecurity from "./svg/PictogramStopSecurity";
+import PictogramSuccess from "./svg/PictogramSuccess";
 import PictogramTeaBreak from "./svg/PictogramTeaBreak";
+import PictogramTime from "./svg/PictogramTime";
 import PictogramTimeout from "./svg/PictogramTimeout";
 import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
 import PictogramUnrecognized from "./svg/PictogramUnrecognized";
-import PictogramUploadFile from "./svg/PictogramUploadFile";
-import PictogramSuccess from "./svg/PictogramSuccess";
-import PictogramHelp from "./svg/PictogramHelp";
-import PictogramITWallet from "./svg/PictogramITWallet";
-import PictogramFatalError from "./svg/PictogramFatalError";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
-import PictogramIdentityAdd from "./svg/PictogramIdentityAdd";
-import PictogramIdentityRefresh from "./svg/PictogramIdentityRefresh";
-import PictogramIdentity from "./svg/PictogramIdentity";
-import PictogramAccessDenied from "./svg/PictogramAccessDenied";
-import PictogramTime from "./svg/PictogramTime";
-import PictogramStopSecurity from "./svg/PictogramStopSecurity";
-import PictogramSecurity from "./svg/PictogramSecurity";
-import PictogramPasscode from "./svg/PictogramPasscode";
-import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
-import PictogramCharity from "./svg/PictogramCharity";
-import PictogramEmpty from "./svg/PictogramEmpty";
-import PictogramCie from "./svg/PictogramCie";
-import PictogramFeature from "./svg/PictogramFeature";
-import PictogramNotification from "./svg/PictogramNotification";
-import PictogramObjClock from "./svg/PictogramObjClock";
-import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
-import PictogramObjManual from "./svg/PictogramObjManual";
-import PictogramObjTrash from "./svg/PictogramObjTrash";
-import PictogramObjKey from "./svg/PictogramObjKey";
-import PictogramObjFlyingMessage from "./svg/PictogramObjFlyingMessage";
-import PictogramObjFollowMessage from "./svg/PictogramObjFollowMessage";
+import PictogramUploadFile from "./svg/PictogramUploadFile";
 /* Bleed Pictograms */
+import PictogramActivate from "./svg/PictogramActivate";
+import PictogramAttachment from "./svg/PictogramAttachment";
+import PictogramBiometric from "./svg/PictogramBiometric";
+import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
+import PictogramBleedAttention from "./svg/PictogramBleedAttention";
+import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
+import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
+import PictogramBleedCardAdd from "./svg/PictogramBleedCardAdd";
+import PictogramBleedCardFavourite from "./svg/PictogramBleedCardFavourite";
+import PictogramBleedCardIssue from "./svg/PictogramBleedCardIssue";
+import PictogramBleedCardQuestion from "./svg/PictogramBleedCardQuestion";
 import PictogramBleedCharity from "./svg/PictogramBleedCharity";
+import PictogramBleedCie from "./svg/PictogramBleedCie";
+import PictogramBleedDoc from "./svg/PictogramBleedDoc";
+import PictogramBleedEmpty from "./svg/PictogramBleedEmpty";
+import PictogramBleedEnded from "./svg/PictogramBleedEnded";
+import PictogramBleedFatalError from "./svg/PictogramBleedFatalError";
+import PictogramBleedFeature from "./svg/PictogramBleedFeature";
+import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
 import PictogramBleedHelp from "./svg/PictogramBleedHelp";
 import PictogramBleedITWallet from "./svg/PictogramBleedITWallet";
-import PictogramBleedFeedback from "./svg/PictogramBleedFeedback";
-import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
-import PictogramBleedFeature from "./svg/PictogramBleedFeature";
-import PictogramBleedCie from "./svg/PictogramBleedCie";
-import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
-import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
-import PictogramBleedNotification from "./svg/PictogramBleedNotification";
-import PictogramStar from "./svg/PictogramStar";
-import PictogramBleedStar from "./svg/PictogramBleedStar";
-import PictogramBleedEmpty from "./svg/PictogramBleedEmpty";
-import PictogramBleedAttention from "./svg/PictogramBleedAttention";
-import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
-import PictogramBleedFatalError from "./svg/PictogramBleedFatalError";
+import PictogramBleedIdea from "./svg/PictogramBleedIdea";
 import PictogramBleedIdentity from "./svg/PictogramBleedIdentity";
 import PictogramBleedIdentityAdd from "./svg/PictogramBleedIdentityAdd";
 import PictogramBleedIdentityCheck from "./svg/PictogramBleedIdentityCheck";
 import PictogramBleedIdentityRefresh from "./svg/PictogramBleedIdentityRefresh";
-import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
-import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
-import PictogramBleedTime from "./svg/PictogramBleedTime";
+import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
+import PictogramBleedMessage from "./svg/PictogramBleedMessage";
+import PictogramBleedNotification from "./svg/PictogramBleedNotification";
 import PictogramBleedPasscode from "./svg/PictogramBleedPasscode";
-import PictogramTiming from "./svg/PictogramTiming";
+import PictogramBleedPending from "./svg/PictogramBleedPending";
+import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
+import PictogramBleedSearch from "./svg/PictogramBleedSearch";
+import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
+import PictogramBleedStar from "./svg/PictogramBleedStar";
+import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
+import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
+import PictogramBleedTime from "./svg/PictogramBleedTime";
 import PictogramBleedTiming from "./svg/PictogramBleedTiming";
+import PictogramCardAdd from "./svg/PictogramCardAdd";
+import PictogramCardFavourite from "./svg/PictogramCardFavourite";
 import PictogramCardIssue from "./svg/PictogramCardIssue";
 import PictogramCardQuestion from "./svg/PictogramCardQuestion";
-import PictogramCardFavourite from "./svg/PictogramCardFavourite";
-import PictogramCardAdd from "./svg/PictogramCardAdd";
-import PictogramBleedCardAdd from "./svg/PictogramBleedCardAdd";
-import PictogramBleedCardFavourite from "./svg/PictogramBleedCardFavourite";
-import PictogramBleedCardQuestion from "./svg/PictogramBleedCardQuestion";
-import PictogramBleedCardIssue from "./svg/PictogramBleedCardIssue";
-import PictogramSearchLens from "./svg/PictogramSearchLens";
-import PictogramBleedSearch from "./svg/PictogramBleedSearch";
-import PictogramBleedDoc from "./svg/PictogramBleedDoc";
 import PictogramDoc from "./svg/PictogramDoc";
-import PictogramPending from "./svg/PictogramPending";
-import PictogramBleedPending from "./svg/PictogramBleedPending";
-import PictogramMessage from "./svg/PictogramMessage";
-import PictogramBleedMessage from "./svg/PictogramBleedMessage";
+import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
+import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
+import PictogramEnded from "./svg/PictogramEnded";
+import PictogramEventClose from "./svg/PictogramEventClose";
 import PictogramIdea from "./svg/PictogramIdea";
-import PictogramBleedIdea from "./svg/PictogramBleedIdea";
+import PictogramLostConnection from "./svg/PictogramLostConnection";
+import PictogramMessage from "./svg/PictogramMessage";
 import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
-import PictogramReactivate from "./svg/PictogramReactivate";
-import PictogramActivate from "./svg/PictogramActivate";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
-import PictogramAttachment from "./svg/PictogramAttachment";
+import PictogramPending from "./svg/PictogramPending";
+import PictogramQrCode from "./svg/PictogramQrCode";
+import PictogramReactivate from "./svg/PictogramReactivate";
+import PictogramSearchLens from "./svg/PictogramSearchLens";
+import PictogramStar from "./svg/PictogramStar";
+import PictogramTiming from "./svg/PictogramTiming";
+import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -177,6 +190,7 @@ export const IOPictograms = {
   security: PictogramSecurity,
   cie: PictogramCie,
   pending: PictogramPending,
+  ended: PictogramEnded,
   time: PictogramTime,
   timing: PictogramTiming,
   searchLens: PictogramSearchLens,
@@ -194,6 +208,14 @@ export const IOPictograms = {
   nfcScanAndroid: PictogramNFCScanAndroid,
   nfcScaniOS: PictogramNFCScaniOS,
   attachment: PictogramAttachment,
+  lostConnection: PictogramLostConnection,
+  qrCode: PictogramQrCode,
+  emailDotNotif: PictogramEmailDotNotif,
+  emailDotCheck: PictogramEmailDotCheck,
+  biometric: PictogramBiometric,
+  eventClose: PictogramEventClose,
+  hello: PictogramHello,
+  comunicationProblem: PictogramComunicationProblem,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -206,7 +228,6 @@ export const IOPictograms = {
 };
 
 export type IOPictograms = keyof typeof IOPictograms;
-export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 
 type IOPictogramsProps = {
   name: IOPictograms;
@@ -216,12 +237,6 @@ type IOPictogramsProps = {
   component props. */
   pictogramStyle?: "default" | "light-content" | "dark-content";
   size?: IOPictogramSizeScale | "100%";
-};
-
-export type SVGPictogramProps = {
-  size: IOPictogramSizeScale | "100%";
-  color: ColorValue;
-  colorValues: Record<string, ColorValue>;
 };
 
 type PictogramPalette = {
@@ -304,6 +319,7 @@ export type IOPictogramsBleed = Extract<
   | "stopSecurity"
   | "time"
   | "pending"
+  | "ended"
   | "timing"
   | "searchLens"
   | "passcode"
@@ -313,7 +329,9 @@ export type IOPictogramsBleed = Extract<
   | "star"
   | "doc"
   | "notification"
-  | "star",
+  | "star"
+  | "qrCode"
+  | "lostConnection",
   IOPictograms
 >;
 
@@ -345,6 +363,7 @@ export const IOPictogramsBleed: {
   stopSecurity: PictogramBleedStopSecurity,
   time: PictogramBleedTime,
   pending: PictogramBleedPending,
+  ended: PictogramBleedEnded,
   timing: PictogramBleedTiming,
   searchLens: PictogramBleedSearch,
   passcode: PictogramBleedPasscode,
@@ -352,7 +371,9 @@ export const IOPictogramsBleed: {
   fatalError: PictogramBleedFatalError,
   notification: PictogramBleedNotification,
   star: PictogramBleedStar,
-  doc: PictogramBleedDoc
+  doc: PictogramBleedDoc,
+  qrCode: PictogramBleedQrCode,
+  lostConnection: PictogramBleedLostConnection
 };
 
 export const PictogramBleed = ({

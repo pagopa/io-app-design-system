@@ -227,11 +227,7 @@ export const Icons = () => {
         </View>
       </ComponentViewerBox>
 
-      <H3
-        color={theme["textHeading-default"]}
-        weight={"Bold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Sizes
       </H3>
       <View style={styles.itemsWrapper}>

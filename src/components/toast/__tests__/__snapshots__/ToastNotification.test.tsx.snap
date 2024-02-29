@@ -1,5 +1,408 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', icon: 'checkTick' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#AAEEEF",
+        "borderColor": "#003B3D",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="turquoise-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#003B3D",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    accessibilityLabel=""
+    accessible={false}
+    align="xMidYMid"
+    bbHeight={24}
+    bbWidth={24}
+    color={4278205245}
+    focusable={false}
+    height={24}
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "color": "#003B3D",
+        },
+        {
+          "flex": 0,
+          "height": 24,
+          "width": 24,
+        },
+      ]
+    }
+    tintColor={4278205245}
+    vbHeight={24}
+    vbWidth={24}
+    width={24}
+  >
+    <RNSVGGroup>
+      <RNSVGPath
+        clipRule={0}
+        d="M17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L11.4142 17C10.6332 17.781 9.36684 17.7811 8.58579 17L5.29289 13.7071C4.90237 13.3166 4.90237 12.6834 5.29289 12.2929C5.68342 11.9024 6.31658 11.9024 6.70711 12.2929L10 15.5858L16.2929 9.29289C16.6834 8.90237 17.3166 8.90237 17.7071 9.29289Z"
+        fill={
+          [
+            2,
+          ]
+        }
+        fillRule={0}
+        propList={
+          [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;
+
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', variant: 'error' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#FFE0E0",
+        "borderColor": "#761F1F",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="error-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#761F1F",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', variant: 'info' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#E1F5FE",
+        "borderColor": "#215C76",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="info-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#215C76",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', variant: 'neutral' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#AAEEEF",
+        "borderColor": "#003B3D",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="turquoise-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#003B3D",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', variant: 'success' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#E1F4E1",
+        "borderColor": "#224021",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="success-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#224021",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+</View>
+`;
+
+exports[`Test ToastNotification component - Experimental Enabled should match snapshot for props ({ message: 'Hello', variant: 'warning' }) 1`] = `
+<View
+  accessibilityLabel="Hello"
+  accessibilityRole="alert"
+  accessible={true}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#FFF5DA",
+        "borderColor": "#614C15",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    color="warning-850"
+    defaultColor="white"
+    defaultWeight="Regular"
+    font="ReadexPro"
+    fontStyle={
+      {
+        "fontSize": 16,
+      }
+    }
+    style={
+      [
+        {
+          "flexShrink": 1,
+          "paddingVertical": 2,
+        },
+        {
+          "fontSize": 16,
+        },
+        {
+          "color": "#614C15",
+          "fontFamily": "Readex Pro",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+      ]
+    }
+    weight="Regular"
+  >
+    Hello
+  </Text>
+</View>
+`;
+
 exports[`Test ToastNotification component should match snapshot for props ({ message: 'Hello', icon: 'checkTick' }) 1`] = `
 <View
   accessibilityLabel="Hello"
@@ -36,6 +439,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -53,6 +457,13 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   >
     Hello
   </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
   <RNSVGSvgView
     accessibilityElementsHidden={true}
     accessibilityLabel=""
@@ -146,6 +557,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -202,6 +614,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -258,6 +671,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -314,6 +728,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -370,6 +785,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {

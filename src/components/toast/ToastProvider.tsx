@@ -7,12 +7,12 @@ import Animated, {
   SlideInUp,
   SlideOutUp
 } from "react-native-reanimated";
-import { Dismissable } from "../layout/Dismissable";
 import { triggerHaptic } from "../../functions";
+import { Dismissable } from "../layout/Dismissable";
 import { ToastNotification } from "./ToastNotification";
+import { ToastContext } from "./context";
 import { Toast } from "./types";
 import { IOToastRef, useIOToast } from "./useIOToast";
-import { ToastContext } from "./context";
 
 /**
  * The maximum number of toasts that can be displayed at the same time
@@ -67,7 +67,16 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
 
   const addToast = React.useCallback((toast: Toast): number => {
     const id = (toastId.current ?? 0) + 1;
-    setToasts(prevToasts => [{ id, ...toast }, ...prevToasts]);
+    // eslint-disable-next-line functional/immutable-data
+    toastId.current = id;
+    setToasts(prevToasts => {
+      if (prevToasts.length >= MAX_TOAST_STACK_SIZE) {
+        const mostRecentToasts = prevToasts.slice(0, -1);
+        return [{ id, ...toast }, ...mostRecentToasts];
+      }
+
+      return [{ id, ...toast }, ...prevToasts];
+    });
 
     setTimeout(() => {
       setToasts(prevToasts => prevToasts.filter(t => t.id !== id));
@@ -83,20 +92,6 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
   const removeToast = React.useCallback((id: number) => {
     setToasts(prevToasts => prevToasts.filter(t => t.id !== id));
   }, []);
-
-  const removeToastAtIndex = (index: number) => {
-    setToasts(prevToasts => [
-      ...prevToasts.slice(0, index),
-      ...prevToasts.slice(index + 1)
-    ]);
-  };
-
-  // If stack size exceed the maximum, remove the oldest toast
-  React.useEffect(() => {
-    if (toasts.length > MAX_TOAST_STACK_SIZE) {
-      removeToastAtIndex(MAX_TOAST_STACK_SIZE);
-    }
-  }, [toasts]);
 
   const removeAllToasts = React.useCallback(() => {
     setToasts([]);

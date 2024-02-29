@@ -126,10 +126,12 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
         ]}
       />
       {isChecked && (
-        <AnimatedTick
-          progress={tickAnimationProgress}
-          stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
-        />
+        <View style={{ zIndex: 1 }}>
+          <AnimatedTick
+            progress={tickAnimationProgress}
+            stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
+          />
+        </View>
       )}
     </Pressable>
   );

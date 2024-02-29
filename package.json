@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "1.15.0",
+  "version": "1.25.1",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -36,7 +36,12 @@
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "yarn build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
+    "generate:icons": "node scripts/generateNewIcons.js",
+    "generate:pictograms": "node scripts/generateNewPictograms.js",
+    "generate": "npm-run-all generate:*"
   },
   "keywords": [
     "react-native",
@@ -49,7 +54,7 @@
   "bugs": {
     "url": "https://github.com/pagopa/io-app-design-system/issues"
   },
-  "homepage": "https://github.com/pagopa/io-app-design-system#readme",
+  "homepage": "https://pagopa.github.io/io-app-design-system",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
@@ -69,6 +74,7 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "@testing-library/react-native": "^12.4.0",
     "@types/jest": "^28.1.2",
     "@types/lodash": "^4.14.157",
     "@types/react": "~17.0.38",
@@ -98,6 +104,7 @@
     "react-test-renderer": "^18.2.0",
     "release-it": "^15.0.0",
     "storybook": "^7.4.0",
+    "storybook-react-context": "^0.6.0",
     "svgo": "^3.0.2",
     "typescript": "^4.9.5"
   },
@@ -163,6 +170,9 @@
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
+    "exclude": [
+      "example"
+    ],
     "targets": [
       "commonjs",
       "module",
@@ -175,15 +185,11 @@
     ]
   },
   "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
     "@pagopa/ts-commons": "^12.0.0",
     "@testing-library/jest-native": "^5.4.2",
     "@types/react-native-i18n": "2.0.0",
     "@types/react-test-renderer": "^18.0.0",
     "auto-changelog": "^2.4.0",
-    "expo-asset": "^8.10.1",
-    "expo-font": "^11.4.0",
-    "expo-modules-core": "^1.5.6",
     "lodash": "^4.17.21",
     "react-native-gesture-handler": "^2.12.0",
     "react-native-haptic-feedback": "^2.0.2",

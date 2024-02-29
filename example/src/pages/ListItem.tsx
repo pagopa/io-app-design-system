@@ -4,10 +4,13 @@ import {
   IOThemeContext,
   Icon,
   ListItemAction,
+  ListItemAmount,
+  ListItemHeader,
   ListItemInfo,
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
@@ -67,6 +70,24 @@ export const ListItems = () => {
             weight={"SemiBold"}
             style={{ marginBottom: 16, marginTop: 16 }}
           >
+            ListItemHeader
+          </H2>
+          {renderListItemHeader()}
+
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemAmount
+          </H2>
+          {renderListItemAmount()}
+
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
             ListItemAction
           </H2>
           {renderListItemAction()}
@@ -79,6 +100,14 @@ export const ListItems = () => {
             ListItemTransaction
           </H2>
           {renderListItemTransaction()}
+          <H2
+            color={theme["textHeading-default"]}
+            weight={"SemiBold"}
+            style={{ marginBottom: 16, marginTop: 16 }}
+          >
+            ListItemRadioWithAmount
+          </H2>
+          {renderListItemRadioWithAmount()}
           <VSpacer size={40} />
         </Screen>
       )}
@@ -149,6 +178,65 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with a loading indicator"
+          paymentLogo="bancomatPay"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          loading
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav without chevron icon"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          topElement={{
+            badgeProps: {
+              text: "Novità",
+              variant: "blue"
+            }
+          }}
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          topElement={{
+            badgeProps: {
+              text: "Novità",
+              variant: "blue"
+            }
+          }}
+          hideChevron
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with badge"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          accessibilityLabel="Empty just for testing purposes"
+          topElement={{
+            dateValue: "14/04/2024"
+          }}
         />
       </View>
     </ComponentViewerBox>
@@ -313,7 +401,7 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={{
+        endElement={{
           type: "buttonLink",
           componentProps: {
             label: "Modifica",
@@ -327,12 +415,26 @@ const renderListItemInfo = () => (
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
         accessibilityLabel="Empty just for testing purposes"
-        action={{
+        endElement={{
           type: "iconButton",
           componentProps: {
             icon: "info",
             accessibilityLabel: "info",
             onPress: onButtonPress
+          }
+        }}
+      />
+
+      <ListItemInfo
+        icon="psp"
+        label="Label"
+        value="A looong looooong looooooooong looooooooooong title"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "badge",
+          componentProps: {
+            text: "Pagato",
+            variant: "success"
           }
         }}
       />
@@ -344,6 +446,77 @@ const renderListItemInfo = () => (
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemHeader = () => (
+  <ComponentViewerBox name="ListItemHeader">
+    <View>
+      <ListItemHeader
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+      <ListItemHeader
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+      <ListItemHeader
+        iconName="creditCard"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "buttonLink",
+          componentProps: {
+            label: "Modifica",
+            accessibilityLabel: "Modifica",
+            onPress: onButtonPress
+          }
+        }}
+      />
+      <ListItemHeader
+        iconName="psp"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "iconButton",
+          componentProps: {
+            icon: "info",
+            accessibilityLabel: "info",
+            onPress: onButtonPress
+          }
+        }}
+      />
+
+      <ListItemHeader
+        iconName="psp"
+        label="Label"
+        accessibilityLabel="Empty just for testing purposes"
+        endElement={{
+          type: "badge",
+          componentProps: {
+            text: "Pagato",
+            variant: "success"
+          }
+        }}
+      />
+
+      <ListItemHeader
+        label="Label"
+        iconName="gallery"
+        accessibilityLabel="Empty just for testing purposes"
+      />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemAmount = () => (
+  <ComponentViewerBox name="ListItemAmount">
+    <ListItemAmount label="Amount" valueString="€ 1.000,00" />
+    <ListItemAmount
+      iconName="creditCard"
+      label="Amount with card "
+      valueString="€ 1.000,00"
+    />
   </ComponentViewerBox>
 );
 
@@ -481,6 +654,37 @@ const renderListItemTransaction = () => (
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         transactionAmount="€ 100"
         onPress={onButtonPress}
+      />
+
+      <Divider />
+
+      <ListItemTransaction
+        title="Long text truncated by ellipsis"
+        numberOfLines={1}
+        subtitle="Subtitle"
+        transactionAmount="€ 1.000,00"
+        paymentLogoIcon={"postepay"}
+        onPress={onButtonPress}
+        transactionStatus="success"
+      />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemRadioWithAmount = () => (
+  <ComponentViewerBox name="ListItemRadioWithAmount">
+    <View>
+      <ListItemRadioWithAmount
+        label="Banca Intesa"
+        formattedAmountString={"2,50 €"}
+        suggestReason="Perché costa meno"
+        isSuggested={true}
+      />
+
+      <Divider />
+      <ListItemRadioWithAmount
+        label="Banca Malintesa"
+        formattedAmountString={"4,50 €"}
       />
     </View>
   </ComponentViewerBox>

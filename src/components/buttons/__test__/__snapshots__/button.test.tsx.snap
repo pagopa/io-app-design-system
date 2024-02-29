@@ -1,5 +1,868 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test Buttons Components - Experimental Enabled ButtonExtendedOutline Snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#CCD4DC",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        color="black"
+        defaultColor="black"
+        defaultWeight="Regular"
+        font="ReadexPro"
+        fontStyle={
+          {
+            "fontSize": 16,
+            "lineHeight": 24,
+          }
+        }
+        style={
+          [
+            {
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+            {
+              "color": "#0E0F13",
+              "fontFamily": "Readex Pro",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+          ]
+        }
+        weight="Regular"
+      >
+        label
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "marginLeft": 8,
+        }
+      }
+    >
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight={24}
+        bbWidth={24}
+        color={4278219750}
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0073E6",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+        tintColor={4278219750}
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
+      >
+        <RNSVGGroup>
+          <RNSVGPath
+            clipRule={0}
+            d="M0 12C0 5.3726 5.3726 0 12 0s12 5.3726 12 12-5.3726 12-12 12S0 18.6274 0 12Zm2 0C2 6.47717 6.47717 2 12 2c5.5228 0 10 4.47717 10 10 0 5.5228-4.4772 10-10 10-5.52283 0-10-4.4772-10-10Zm10.0281-4.50455c.8439 0 1.5281-.68415 1.5281-1.52809 0-.84394-.6842-1.52809-1.5281-1.52809-.844 0-1.5281.68415-1.5281 1.52809 0 .84394.6841 1.52809 1.5281 1.52809Zm0 1.94382h.0005c.5678 0 1.0281.46029 1.0281 1.02813v8.0045c0 .5678-.4603 1.0281-1.0281 1.0281h-.0005C11.4603 19.5 11 19.0397 11 18.4719v-8.0045c0-.56784.4603-1.02813 1.0281-1.02813Z"
+            fill={
+              [
+                2,
+              ]
+            }
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  hitSlop={
+    {
+      "bottom": 14,
+      "left": 24,
+      "right": 24,
+      "top": 14,
+    }
+  }
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "textAlignVertical": "center",
+        },
+        false,
+        {},
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Text
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      maxFontSizeMultiplier={1.3}
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontFamily": "Readex Pro",
+            "fontSize": 16,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 8,
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingHorizontal": 24,
+          "textAlignVertical": "center",
+        },
+        false,
+        {
+          "borderWidth": 2,
+        },
+        {
+          "height": 48,
+        },
+        false,
+        {
+          "backgroundColor": "rgba(231,236,252,0)",
+          "borderColor": "#0B3EE3",
+        },
+        {
+          "backgroundColor": undefined,
+          "borderColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Text
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      importantForAccessibility="no-hide-descendants"
+      maxFontSizeMultiplier={1.3}
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontFamily": "Readex Pro",
+            "fontSize": 16,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          {
+            "alignSelf": "center",
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "color": undefined,
+          },
+        ]
+      }
+    >
+      label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": false,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 8,
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingHorizontal": 24,
+          "textAlignVertical": "center",
+        },
+        {
+          "overflow": "hidden",
+        },
+        false,
+        {
+          "height": 48,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+        },
+        {
+          "backgroundColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <View
+      exiting={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          false,
+        ]
+      }
+    >
+      <Text
+        allowFontScaling={true}
+        color="white"
+        defaultColor="white"
+        defaultWeight="Regular"
+        ellipsizeMode="tail"
+        font="ReadexPro"
+        fontStyle={
+          {
+            "fontSize": 16,
+          }
+        }
+        importantForAccessibility="no-hide-descendants"
+        maxFontSizeMultiplier={1.3}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "alignSelf": "center",
+            },
+            {
+              "fontSize": 16,
+            },
+            {
+              "color": "#FFFFFF",
+              "fontFamily": "Readex Pro",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+          ]
+        }
+        weight="Regular"
+      >
+        label
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  hitSlop={8}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <View
+    style={
+      [
+        {
+          "height": 24,
+          "width": 24,
+        },
+        {
+          "alignItems": "center",
+        },
+        {
+          "justifyContent": "center",
+        },
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      accessibilityLabel=""
+      accessible={false}
+      align="xMidYMid"
+      animatedProps={
+        {
+          "color": undefined,
+        }
+      }
+      bbHeight={24}
+      bbWidth={24}
+      color={4278927075}
+      focusable={false}
+      height={24}
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "flex": 0,
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+      tintColor={4278927075}
+      vbHeight={24}
+      vbWidth={24}
+      width={24}
+    >
+      <RNSVGGroup>
+        <RNSVGPath
+          clipRule={0}
+          d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
+          fill={
+            [
+              2,
+            ]
+          }
+          fillRule={0}
+          propList={
+            [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "elevation": 0,
+          "justifyContent": "center",
+        },
+        {
+          "borderRadius": 48,
+          "height": 48,
+          "width": 48,
+        },
+        {
+          "backgroundColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      accessibilityLabel=""
+      accessible={false}
+      align="xMidYMid"
+      animatedProps={
+        {
+          "color": undefined,
+        }
+      }
+      bbHeight={24}
+      bbWidth={24}
+      color={4278927075}
+      focusable={false}
+      height={24}
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "color": "#0B3EE3",
+          },
+          {
+            "flex": 0,
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+      tintColor={4278927075}
+      vbHeight={24}
+      vbWidth={24}
+      width={24}
+    >
+      <RNSVGGroup>
+        <RNSVGPath
+          clipRule={0}
+          d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
+          fill={
+            [
+              2,
+            ]
+          }
+          fillRule={0}
+          propList={
+            [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "elevation": 0,
+          "justifyContent": "center",
+        },
+        {
+          "borderRadius": 56,
+          "height": 56,
+          "width": 56,
+        },
+        {
+          "backgroundColor": undefined,
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      accessibilityElementsHidden={true}
+      accessibilityLabel=""
+      accessible={false}
+      align="xMidYMid"
+      bbHeight={24}
+      bbWidth={24}
+      color={4294967295}
+      focusable={false}
+      height={24}
+      importantForAccessibility="no-hide-descendants"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "color": "#FFFFFF",
+          },
+          {
+            "flex": 0,
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+      tintColor={4294967295}
+      vbHeight={24}
+      vbWidth={24}
+      width={24}
+    >
+      <RNSVGGroup>
+        <RNSVGPath
+          clipRule={0}
+          d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
+          fill={
+            [
+              2,
+            ]
+          }
+          fillRule={0}
+          propList={
+            [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+</View>
+`;
+
 exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
 <View
   accessibilityRole="button"
@@ -74,15 +937,15 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         font="TitilliumWeb"
         fontStyle={
           {
-            "fontSize": 16,
-            "lineHeight": 24,
+            "fontSize": 18,
+            "lineHeight": 25,
           }
         }
         style={
           [
             {
-              "fontSize": 16,
-              "lineHeight": 24,
+              "fontSize": 18,
+              "lineHeight": 25,
             },
             {
               "color": "#0E0F13",
@@ -338,6 +1201,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
     <Text
       allowFontScaling={false}
       ellipsizeMode="tail"
+      importantForAccessibility="no-hide-descendants"
       maxFontSizeMultiplier={1.3}
       numberOfLines={1}
       style={
@@ -438,7 +1302,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     }
   >
     <View
-      entering={[Function]}
       exiting={[Function]}
       style={
         [
@@ -463,6 +1326,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             "fontSize": 16,
           }
         }
+        importantForAccessibility="no-hide-descendants"
         maxFontSizeMultiplier={1.3}
         numberOfLines={1}
         style={

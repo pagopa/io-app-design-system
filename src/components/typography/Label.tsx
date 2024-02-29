@@ -1,4 +1,8 @@
-import type { IOColors, IOColorsStatusForeground } from "../../core/IOColors";
+import {
+  IOColors,
+  IOColorsStatusForeground,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import {
@@ -16,19 +20,22 @@ type LabelProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 > & { fontSize?: FontSize };
 
-const fontName: FontFamily = "TitilliumWeb";
+const fontName: FontFamily = "TitilliumSansPro";
+const legacyFontName: FontFamily = "TitilliumWeb";
 const labelDefaultWeight = "Bold";
 const labelDefaultcolor = "black";
 
 /**
  * `Label` typographic style
  */
-export const Label = ({ fontSize, ...props }: LabelProps) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
+export const Label = ({ fontSize, ...props }: LabelProps) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight: labelDefaultWeight,
     defaultColor: labelDefaultcolor,
-    font: fontName,
+    font: isExperimental ? fontName : legacyFontName,
     fontStyle: {
       fontSize: fontSize ? fontSizeMapping[fontSize] : fontSizeMapping.regular,
       lineHeight: fontSize
@@ -36,3 +43,4 @@ export const Label = ({ fontSize, ...props }: LabelProps) =>
         : lineHeightMapping.regular
     }
   });
+};

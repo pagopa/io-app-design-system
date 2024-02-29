@@ -1,5 +1,6 @@
 import {
   Body,
+  BodyMonospace,
   ButtonText,
   Caption,
   Chip,
@@ -9,13 +10,13 @@ import {
   H4,
   H5,
   H6,
-  Hero,
   HSpacer,
+  Hero,
   IOColors,
   Label,
-  LabelSmall,
   LabelLink,
-  BodyMonospace,
+  LabelSmall,
+  LabelSmallAlt,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -59,6 +60,7 @@ export const Typography = () => (
     <VSpacer size={40} />
 
     <LabelSmallRow />
+    <LabelSmallAltRow />
     <LabelRow />
     <LabelLink onPress={() => Alert.alert("onPress LabelLink!")}>
       LabelLink
@@ -217,6 +219,21 @@ export const LabelSmallRow = () => (
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors.bluegrey }}>
         <LabelSmall color={"white"}>Label small</LabelSmall>
+      </View>
+    </View>
+    <VSpacer size={40} />
+  </>
+);
+
+export const LabelSmallAltRow = () => (
+  <>
+    <View style={styles.row}>
+      <LabelSmallAlt>Label small alt</LabelSmallAlt>
+      <HSpacer size={16} />
+      <LabelSmallAlt color={"bluegrey"}>Label small alt</LabelSmallAlt>
+      <HSpacer size={16} />
+      <View style={{ backgroundColor: IOColors.bluegrey }}>
+        <LabelSmallAlt color={"white"}>Label small alt</LabelSmallAlt>
       </View>
     </View>
     <VSpacer size={40} />

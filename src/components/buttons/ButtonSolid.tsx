@@ -1,5 +1,6 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -9,11 +10,6 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { WithTestID } from "../../utils/types";
-import { HSpacer } from "../spacer/Spacer";
-import { ButtonText } from "../typography/ButtonText";
 import {
   IOButtonLegacyStyles,
   IOButtonStyles,
@@ -25,9 +21,13 @@ import {
   exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
+import { WithTestID } from "../../utils/types";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { HSpacer } from "../spacer/Spacer";
+import { ButtonText } from "../typography/ButtonText";
 
-type ButtonSolidColor = "primary" | "danger" | "contrast";
+export type ButtonSolidColor = "primary" | "danger" | "contrast";
 
 type ColorStates = {
   default: string;
@@ -174,6 +174,17 @@ export const ButtonSolid = React.memo(
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
+    /* Prevent the component from triggering the `isEntering' transition
+       on the on the first render. Solution from this discussion:
+       https://github.com/software-mansion/react-native-reanimated/discussions/2513
+    */
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isMounted.current = true;
+    }, []);
+
     const colorMap = React.useMemo(
       () => (isExperimental ? mapColorStates : mapLegacyColorStates),
       [isExperimental]
@@ -272,7 +283,9 @@ export const ButtonSolid = React.memo(
           {loading && (
             <Animated.View
               style={buttonStyles.buttonInner}
-              entering={enterTransitionInnerContentSmall}
+              entering={
+                isMounted.current ? enterTransitionInnerContentSmall : undefined
+              }
               exiting={exitTransitionInnerContent}
             >
               <LoadingSpinner color={foregroundColor} />
@@ -285,7 +298,9 @@ export const ButtonSolid = React.memo(
                 buttonStyles.buttonInner,
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
-              entering={enterTransitionInnerContent}
+              entering={
+                isMounted.current ? enterTransitionInnerContent : undefined
+              }
               exiting={exitTransitionInnerContent}
             >
               {icon && (
@@ -305,6 +320,7 @@ export const ButtonSolid = React.memo(
                 ellipsizeMode="tail"
                 allowFontScaling={isExperimental}
                 maxFontSizeMultiplier={1.3}
+                importantForAccessibility="no-hide-descendants"
               >
                 {label}
               </ButtonText>

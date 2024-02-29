@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { IOAlertRadius, IOColors } from "../../core";
 import { Icon } from "../icons";
-import { IOColors, IOAlertRadius } from "../../core";
+import { HSpacer } from "../spacer";
 import { ButtonText } from "../typography";
 import { Toast, ToastVariant } from "./types";
 
@@ -54,7 +55,12 @@ const ToastNotification = ({ message, variant = "neutral", icon }: Props) => {
       <ButtonText color={colors.stroke} style={styles.content}>
         {message}
       </ButtonText>
-      {icon && <Icon name={icon} size={24} color={colors.stroke} />}
+      {icon && (
+        <>
+          <HSpacer size={16} />
+          <Icon name={icon} size={24} color={colors.stroke} />
+        </>
+      )}
     </View>
   );
 };
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   content: {
+    flexShrink: 1,
     paddingVertical: 2
   }
 });
