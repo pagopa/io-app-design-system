@@ -6,7 +6,14 @@ import { IOSwitchVisualParams } from "../../core/IOStyles";
 
 type OwnProps = Pick<
   SwitchProps,
-  "onValueChange" | "value" | "accessible" | "accessibilityLabel"
+  | "onValueChange"
+  | "value"
+  | "accessible"
+  | "accessibilityLabel"
+  | "testID"
+  | "disabled"
+  | "accessibilityElementsHidden"
+  | "importantForAccessibility"
 >;
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
