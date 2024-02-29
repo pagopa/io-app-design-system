@@ -56,6 +56,7 @@ export const ListItemCheckbox = ({
   description,
   icon,
   selected,
+  accessibilityLabel,
   disabled,
   onValueChange
 }: OwnProps) => {
@@ -128,6 +129,13 @@ export const ListItemCheckbox = ({
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
+      accessible={true}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="checkbox"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
       disabled={disabled}
     >
       <Animated.View
