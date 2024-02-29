@@ -42,6 +42,8 @@ export const NativeSwitch = ({
   return (
     <Switch
       {...accessibility}
+      accessibilityRole="switch"
+      accessibilityState={{ checked: value, disabled: accessibility.disabled }}
       trackColor={trackColorComponent}
       thumbColor={IOColors[IOSwitchVisualParams.bgCircle]}
       ios_backgroundColor={
