@@ -1,5 +1,6 @@
 import * as React from "react";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { Easing, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { easeGradient } from "react-native-easing-gradient";
 import LinearGradient from "react-native-linear-gradient";
 import Animated from "react-native-reanimated";
 import { IOColors, IOSpacer, IOVisualCostants, hexToRgba } from "../../core";
@@ -32,6 +33,15 @@ type GradientBottomActionsDimensions = {
 
 // Background color should be app main background (both light and dark themes)
 const HEADER_BG_COLOR: IOColors = "white";
+
+const { colors, locations } = easeGradient({
+  colorStops: {
+    0: { color: hexToRgba(IOColors[HEADER_BG_COLOR], 0) },
+    1: { color: IOColors[HEADER_BG_COLOR] }
+  },
+  easing: Easing.ease,
+  extraColorStopsPerTransition: 20
+});
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -84,14 +94,18 @@ export const GradientBottomActions = ({
       ]}
       pointerEvents="none"
     >
+      {/* 100% opacity bg color fills at least 45% of the area */}
       <LinearGradient
-        style={{ height: dimensions.gradientAreaHeight }}
-        // 100% opacity bg color fills at least 50% of the area
-        locations={[0, 0.5]}
-        colors={[
-          hexToRgba(IOColors[HEADER_BG_COLOR], 0),
-          IOColors[HEADER_BG_COLOR]
-        ]}
+        style={{ height: dimensions.gradientAreaHeight * 0.55 }}
+        locations={locations}
+        colors={colors}
+      />
+      <View
+        style={{
+          bottom: 0,
+          height: dimensions.gradientAreaHeight * 0.45,
+          backgroundColor: IOColors[HEADER_BG_COLOR]
+        }}
       />
     </Animated.View>
 

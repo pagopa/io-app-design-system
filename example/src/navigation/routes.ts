@@ -73,6 +73,10 @@ const APP_ROUTES = {
     FOOTER_WITH_BUTTON: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
       title: "Footer with button"
+    },
+    GRADIENT_SCROLLVIEW: {
+      route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
+      title: "Gradient ScrollView"
     }
   },
   SANDBOX: {
