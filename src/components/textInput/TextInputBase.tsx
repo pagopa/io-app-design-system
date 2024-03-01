@@ -21,14 +21,14 @@ import {
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
-import { InputType } from "../../utils/types";
+import { InputType, WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
-type InputTextProps = {
+type InputTextProps = WithTestID<{
   placeholder: string;
   value: string;
   onChangeText: (value: string) => void;
@@ -45,7 +45,7 @@ type InputTextProps = {
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
-};
+}>;
 
 const inputMarginTop: IOSpacingScale = 8;
 
