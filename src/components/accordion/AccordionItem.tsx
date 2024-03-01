@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     borderColor: IOColors[accordionBorder],
     borderWidth: 1,
     borderRadius: IOAccordionRadius,
+    borderCurve: "continuous",
     backgroundColor: IOColors[accordionBackground]
   },
   accordionCollapsableContainer: {

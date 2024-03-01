@@ -1,16 +1,16 @@
-import React from "react";
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import { WithTestID } from "../../utils/types";
-import { makeFontStyleObject } from "../../utils/fonts";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import React from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import { IOColors, IOTagRadius, useIOExperimentalDesign } from "../../core";
 import {
   IOSpacingScale,
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
+import { makeFontStyleObject } from "../../utils/fonts";
+import { WithTestID } from "../../utils/types";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 
 export type Tag = WithTestID<{
   text?: string;
@@ -80,10 +80,11 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
       }
     }),
-    borderWidth: 1,
     backgroundColor: IOColors.white,
+    borderWidth: 1,
     borderColor: IOColors["grey-100"],
     borderRadius: IOTagRadius,
+    borderCurve: "continuous",
     paddingHorizontal: IOTagHSpacing,
     paddingVertical: IOTagVSpacing
   },

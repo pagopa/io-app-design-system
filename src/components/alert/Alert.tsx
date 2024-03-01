@@ -14,6 +14,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { useIOExperimentalDesign } from "../../core";
 import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
@@ -29,7 +30,6 @@ import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
-import { useIOExperimentalDesign } from "../../core";
 
 const iconSize: IOIconSizeScale = 24;
 
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
   },
   spacingDefault: {
     padding: spacingDefault,
-    borderRadius: IOAlertRadius
+    borderRadius: IOAlertRadius,
+    borderCurve: "continuous"
   },
   spacingFullWidth: {
     padding: spacingFullWidth

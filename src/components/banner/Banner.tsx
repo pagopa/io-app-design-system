@@ -28,15 +28,14 @@ import { IOColors } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
 import { ButtonLink, IconButton } from "../buttons";
 import {
-  PictogramBleed,
   IOPictogramSizeScale,
-  IOPictogramsBleed
+  IOPictogramsBleed,
+  PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 
 /* Styles */
-
 const colorTitle: IOColors = "blueIO-850";
 const colorContent: IOColors = "grey-700";
 const colorCloseButton: IconButton["color"] = "neutral";
@@ -53,7 +52,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     alignContent: "center",
-    borderRadius: IOBannerRadius
+    borderRadius: IOBannerRadius,
+    borderCurve: "continuous"
   },
   bleedPictogram: {
     marginRight: -sizeBigPadding

@@ -6,6 +6,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
     [
       {
         "borderColor": "rgba(14,15,19,0.1)",
+        "borderCurve": "continuous",
         "borderWidth": 1,
         "overflow": "hidden",
         "resizeMode": "contain",
@@ -43,6 +44,7 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
     [
       {
         "borderColor": "rgba(14,15,19,0.1)",
+        "borderCurve": "continuous",
         "borderWidth": 1,
         "overflow": "hidden",
         "resizeMode": "contain",
