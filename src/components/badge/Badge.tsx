@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
       }
     }),
+    borderCurve: "continuous",
     borderRadius: IOBadgeRadius,
     paddingHorizontal: IOBadgeHSpacing,
     paddingVertical: IOBadgeVSpacing

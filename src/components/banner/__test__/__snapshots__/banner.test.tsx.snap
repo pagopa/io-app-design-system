@@ -38,6 +38,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         {
           "alignContent": "center",
           "alignItems": "flex-start",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "flexDirection": "row",
         },
@@ -353,6 +354,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         {
           "alignContent": "center",
           "alignItems": "flex-start",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "flexDirection": "row",
         },

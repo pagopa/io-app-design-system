@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     width: IOSelectionTickVisualParams.size,
     height: IOSelectionTickVisualParams.size,
     borderWidth: IOSelectionTickVisualParams.borderWidth,
-    borderRadius: checkBoxRadius
+    borderRadius: checkBoxRadius,
+    borderCurve: "continuous"
   },
   checkBoxSquare: {
     position: "absolute",
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
     top: 0,
     width: IOSelectionTickVisualParams.size,
     height: IOSelectionTickVisualParams.size,
-    borderRadius: checkBoxRadius
+    borderRadius: checkBoxRadius,
+    borderCurve: "continuous"
   }
 });
 

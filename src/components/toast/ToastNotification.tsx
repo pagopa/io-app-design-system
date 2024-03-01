@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   toast: {
     borderRadius: IOAlertRadius,
     borderWidth: 1,
+    borderCurve: "continuous",
     padding: 16,
     flexDirection: "row",
     alignItems: "center",

@@ -9,6 +9,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -127,6 +128,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -184,6 +186,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -241,6 +244,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -298,6 +302,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -355,6 +360,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -412,6 +418,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -530,6 +537,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -587,6 +595,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -644,6 +653,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -701,6 +711,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -758,6 +769,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",

@@ -162,6 +162,7 @@ export const IOButtonStyles = StyleSheet.create({
     /* Legacy visual properties. They will be replaced with
     dynamic ones once NativeBase is gone */
     borderRadius: btnBorderRadius,
+    borderCurve: "continuous",
     paddingHorizontal: 24,
     // Reset default visual parameters
     elevation: 0
@@ -288,6 +289,7 @@ export const IOModuleStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
     borderRadius: IOModuleIDPRadius,
+    borderCurve: "continuous",
     backgroundColor: IOColors.white,
     flexDirection: "row",
     justifyContent: "space-between",
