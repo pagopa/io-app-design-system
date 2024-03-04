@@ -177,6 +177,7 @@ export const ListItemAction = ({
     >
       <Animated.View
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
+        importantForAccessibility="no-hide-descendants"
       >
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
