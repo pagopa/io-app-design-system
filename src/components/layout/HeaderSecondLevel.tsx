@@ -37,8 +37,9 @@ type BackProps =
     };
 
 type CommonProps = WithTestID<{
-  scrollValues?: ScrollValues;
   title: string;
+  titleRef?: React.ComponentPropsWithRef<typeof Animated.Text>["ref"];
+  scrollValues?: ScrollValues;
   // Visual attributes
   transparent?: boolean;
   isModal?: boolean;
@@ -114,6 +115,7 @@ export const HeaderSecondLevel = ({
   goBack,
   backAccessibilityLabel,
   title,
+  titleRef,
   type,
   transparent = false,
   isModal = false,
@@ -184,6 +186,7 @@ export const HeaderSecondLevel = ({
         )}
         <Animated.Text
           numberOfLines={1}
+          ref={titleRef}
           accessible={isTitleAccessible}
           style={[
             styles.headerTitle,

@@ -10,6 +10,7 @@ import { ActionProp } from "./common";
 
 type CommonProps = WithTestID<{
   title: string;
+  titleRef?: React.ComponentProps<typeof H3>["ref"];
   // This Prop will be removed once all the screens on the first level routing will be refactored
   backgroundColor?: "light" | "dark";
 }>;
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
 
 export const HeaderFirstLevel = ({
   title,
+  titleRef,
   type,
   testID,
   backgroundColor = "light",
@@ -83,6 +85,7 @@ export const HeaderFirstLevel = ({
     >
       <View style={styles.headerInner}>
         <H3
+          ref={titleRef}
           style={{ flexShrink: 1 }}
           numberOfLines={1}
           color={backgroundColor === "dark" ? "white" : "black"}
