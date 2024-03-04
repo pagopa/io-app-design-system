@@ -36,6 +36,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
   onTouchEnd={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -1766,6 +1767,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
