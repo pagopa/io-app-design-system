@@ -43,8 +43,8 @@ type BackProps =
     };
 
 type CommonProps = WithTestID<{
-  title: string;
   scrollValues?: ScrollValues;
+  title: string;
   // Visual attributes
   transparent?: boolean;
   isModal?: boolean;
@@ -136,12 +136,10 @@ export const HeaderSecondLevel = ({
   const insets = useSafeAreaInsets();
 
   React.useLayoutEffect(() => {
-    setTimeout(() => {
-      const reactNode = findNodeHandle(titleRef.current);
-      if (reactNode !== null) {
-        AccessibilityInfo.setAccessibilityFocus(reactNode);
-      }
-    }, 500);
+    const reactNode = findNodeHandle(titleRef.current);
+    if (reactNode !== null) {
+      AccessibilityInfo.setAccessibilityFocus(reactNode);
+    }
   });
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
