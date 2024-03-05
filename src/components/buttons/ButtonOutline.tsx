@@ -383,6 +383,8 @@ export const ButtonOutline = ({
           ellipsizeMode="tail"
           allowFontScaling={isExperimental}
           maxFontSizeMultiplier={1.3}
+          accessible={false}
+          accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"
         >
           {label}

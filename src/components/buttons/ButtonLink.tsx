@@ -246,6 +246,9 @@ export const ButtonLink = React.memo(
             </>
           )}
           <Animated.Text
+            accessible={false}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
             style={[
               buttonStylesLocal.label,
               disabled
