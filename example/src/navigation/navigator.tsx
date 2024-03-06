@@ -1,4 +1,4 @@
-import { HeaderSecondLevel } from "@pagopa/io-app-design-system";
+import { HeaderSecondLevel, ModalBSHeader } from "@pagopa/io-app-design-system";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { Accordion } from "../pages/Accordion";
@@ -369,6 +369,20 @@ const AppNavigator = () => (
                 },
                 accessibilityLabel: ""
               }}
+            />
+          )
+        }}
+      />
+      <Stack.Screen
+        name={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.route}
+        component={ListItems}
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => (
+            <ModalBSHeader
+              title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.title}
+              onClose={navigation.goBack}
+              closeAccessibilityLabel="Chiudi"
             />
           )
         }}
