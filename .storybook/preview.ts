@@ -1,4 +1,3 @@
-import React from "react";
 import type { Preview } from "@storybook/react";
 import { IOThemeLight, IOThemeDark } from "../src/core";
 import { withEperimentalDs } from "../stories/utils";
@@ -10,6 +9,30 @@ const preview: Preview = {
     [EXPERIMENTAL_DS_PARAM_KEY]: false
   },
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          "Getting Started",
+          "Changelog",
+          "Core",
+          "Foundation",
+          [
+            "Typography",
+            "Layout",
+            "Icons",
+            "Pictograms",
+            "Logos",
+            "Avatar",
+            "LoadingSpinner",
+            "ProgressLoader",
+            "Templates",
+            ["Screen", "ForceScrollDownView", "GradientScroll"]
+          ],
+          "Components",
+          "Functions"
+        ]
+      }
+    },
     backgrounds: {
       default: "light",
       values: [
