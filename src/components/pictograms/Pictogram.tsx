@@ -1,11 +1,6 @@
 import React, { useMemo } from "react";
 import { ColorValue } from "react-native";
-import {
-  IOColors,
-  IOThemeDark,
-  IOThemeLight,
-  useIOTheme
-} from "../../core/IOColors";
+import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
 
 import PictogramAbacus from "./svg/PictogramAbacus";
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";

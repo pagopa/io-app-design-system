@@ -1,6 +1,5 @@
 import type { ComponentProps } from "react";
-import * as React from "react";
-import { Appearance, ColorValue } from "react-native";
+import { ColorValue } from "react-native";
 import type LinearGradient from "react-native-linear-gradient"; // Used by `getGradientColorValues` function
 
 /*
@@ -399,15 +398,6 @@ export const themeStatusColorsDarkMode: Record<
 };
 
 export type themeStatusColorsDarkMode = keyof typeof themeStatusColorsDarkMode;
-
-/*
-THEME CONTEXT
-*/
-export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
-export const IOThemeContext: React.Context<IOTheme> = React.createContext(
-  Appearance.getColorScheme() === "dark" ? IOThemes.dark : IOThemes.light
-);
-export const useIOTheme = () => React.useContext(IOThemeContext);
 
 /*
 UTILS

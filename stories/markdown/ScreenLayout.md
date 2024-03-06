@@ -4,15 +4,17 @@ The library provides some screen templates that you can use to build your own sc
 
 This is a list of the available screen templates:
 * `GradientScrollView`: A template component which wraps up a ScrollView with a sticky footer and a gradient background.
-  * [Docs](/docs/foundation-layout-screen-gradientscrollview--docs)
+  * [Docs](/docs/foundation-templates-gradientscrollview--docs)
 * `ForceScrollDownView`: A template component which wraps up a ScrollView with a button to force the scroll down.
-  * [Docs](/docs/foundation-layout-screen-forcescrolldownview--docs)
+  * [Docs](/docs/foundation-templates-forcescrolldownview--docs)
 
-Aside from these templates, the library also provides two different variant of Header components that you can integrate in the project:
+Aside from these templates, the library also provides three different variant of Header components that you can integrate in the project:
 * `HeaderFirstLevel`: This header is mainly projected to be used as the header of the home page section of the app.
-  * [Docs](/docs/foundation-layout-screen-headerfirstlevel--docs)
+  * [Docs](/docs/foundation-templates-headerfirstlevel--docs)
 * `HeaderSecondLevel`: This header is mainly projected to be used as the header of the inner pages on the app navigation structure.
-  * [Docs](/docs/foundation-layout-screen-headersecondlevel--docs)
+  * [Docs](/docs/foundation-templates-headersecondlevel--docs)
+* `ModalBSHeader`: This header is mainly projected to be used as the header of Modals and Bottom Sheets where the title should be placed in the left corner of the element and the close button is stuck to the right.
+  * [Docs](/docs/foundation-templates-modalbsheader--docs)
 
 These headers have been developed to properly work alongside [react-navigation](https://github.com/react-navigation/react-navigation), to be integrated in the project they will be used as navigation header.
 

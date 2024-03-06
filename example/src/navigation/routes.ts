@@ -65,6 +65,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FULLSCR_MODAL",
       title: "Full screen modal"
     },
+    FULL_SCREEN_MODAL_2: {
+      route: "DESIGN_SYSTEM_FULLSCR_MODAL_2",
+      title: "Full screen modal (second example)"
+    },
     SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" },
     FOOTER_WITH_BUTTON_EMPTY: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
