@@ -6,3 +6,4 @@ export * from "./HeaderSecondLevel";
 export * from "./ForceScrollDownView";
 export * from "./FooterWithButtons";
 export * from "./BlockButtons";
+export * from "./ModalBSHeader";

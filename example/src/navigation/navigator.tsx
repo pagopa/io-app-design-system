@@ -1,5 +1,6 @@
 import {
   HeaderSecondLevel,
+  ModalBSHeader,
   IOStyles,
   IOThemeDark,
   IOThemeLight,
@@ -409,6 +410,20 @@ const AppNavigator = () => {
                       },
                       accessibilityLabel: ""
                     }}
+                  />
+                )
+              }}
+            />
+            <Stack.Screen
+              name={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.route}
+              component={ListItems}
+              options={{
+                headerShown: true,
+                header: ({ navigation }) => (
+                  <ModalBSHeader
+                    title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.title}
+                    onClose={navigation.goBack}
+                    closeAccessibilityLabel="Chiudi"
                   />
                 )
               }}
