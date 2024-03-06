@@ -255,6 +255,9 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
             </>
           )}
           <Animated.Text
+            accessible={false}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
             style={[
               buttonStylesLocal.label,
               disabled
