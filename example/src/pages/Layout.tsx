@@ -8,19 +8,19 @@ import {
   IOAppMargin,
   IOColors,
   IOSpacer,
-  IOThemeContext,
   IOVisualCostants,
   LabelSmall,
   VDivider,
-  VSpacer
+  VSpacer,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
+import React from "react";
 import { StatusBar, View } from "react-native";
 import { NoMarginScreen } from "../components/Screen";
 import { SpacerViewerBox } from "../components/SpacerViewerBox";
 
 export const Layout = () => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
 
   return (
     <NoMarginScreen>
