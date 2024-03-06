@@ -1,5 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, Platform } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Platform,
+  findNodeHandle,
+  AccessibilityInfo
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
   interpolate,
@@ -89,12 +95,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between"
   },
-  headerTitle: {
-    fontSize: 14,
-    textAlign: "center",
+  titleContainer: {
     flexGrow: 1,
     flexShrink: 1,
     marginHorizontal: titleHorizontalMargin
+  },
+  headerTitle: {
+    fontSize: 14,
+    textAlign: "center"
   },
   headerTitleFont: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
@@ -122,8 +130,17 @@ export const HeaderSecondLevel = ({
   secondAction,
   thirdAction
 }: HeaderSecondLevel) => {
+  const titleRef = React.createRef<View>();
+
   const { isExperimental } = useIOExperimentalDesign();
   const insets = useSafeAreaInsets();
+
+  React.useLayoutEffect(() => {
+    const reactNode = findNodeHandle(titleRef.current);
+    if (reactNode !== null) {
+      AccessibilityInfo.setAccessibilityFocus(reactNode);
+    }
+  });
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
     backgroundColor:
@@ -182,19 +199,27 @@ export const HeaderSecondLevel = ({
         ) : (
           <HSpacer size={32} />
         )}
-        <Animated.Text
-          numberOfLines={1}
+        <View
+          ref={titleRef}
           accessible={isTitleAccessible}
-          style={[
-            styles.headerTitle,
-            isExperimental
-              ? styles.headerTitleFont
-              : styles.headerTitleLegacyFont,
-            titleAnimatedStyle
-          ]}
+          accessibilityLabel={title}
+          accessibilityRole="header"
+          style={styles.titleContainer}
         >
-          {title}
-        </Animated.Text>
+          <Animated.Text
+            numberOfLines={1}
+            accessible={false}
+            style={[
+              styles.headerTitle,
+              isExperimental
+                ? styles.headerTitleFont
+                : styles.headerTitleLegacyFont,
+              titleAnimatedStyle
+            ]}
+          >
+            {title}
+          </Animated.Text>
+        </View>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
           {type === "threeActions" && (
             <>

@@ -1,5 +1,10 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  AccessibilityInfo,
+  findNodeHandle
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { WithTestID } from "../../utils/types";
 import { IOStyles, IOVisualCostants, IOColors } from "../../core";
@@ -67,6 +72,14 @@ export const HeaderFirstLevel = ({
   secondAction,
   thirdAction
 }: HeaderFirstLevel) => {
+  const titleRef = React.createRef<View>();
+
+  React.useLayoutEffect(() => {
+    const reactNode = findNodeHandle(titleRef.current);
+    if (reactNode !== null) {
+      AccessibilityInfo.setAccessibilityFocus(reactNode);
+    }
+  });
   const insets = useSafeAreaInsets();
 
   return (
@@ -82,13 +95,15 @@ export const HeaderFirstLevel = ({
       testID={testID}
     >
       <View style={styles.headerInner}>
-        <H3
-          style={{ flexShrink: 1 }}
-          numberOfLines={1}
-          color={backgroundColor === "dark" ? "white" : "black"}
-        >
-          {title}
-        </H3>
+        <View ref={titleRef} accessible accessibilityRole="header">
+          <H3
+            style={{ flexShrink: 1 }}
+            numberOfLines={1}
+            color={backgroundColor === "dark" ? "white" : "black"}
+          >
+            {title}
+          </H3>
+        </View>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
           {type === "threeActions" && (
             <>
