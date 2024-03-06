@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, StyleSheet } from "react-native";
 import { HSpacer } from "../spacer/Spacer";
-import { ButtonOutline, ButtonSolid, ButtonSolidProps } from "../buttons";
+import { ButtonOutline, ButtonSolid } from "../buttons";
 import { IOStyles } from "../../core";
 
 const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ type CommonProps = Readonly<{
 
 export type BlockButtonProps = {
   type: "Solid" | "Outline";
-  buttonProps: Omit<ButtonSolidProps, "fullWidth">;
+  buttonProps: Omit<React.ComponentProps<typeof ButtonSolid>, "fullWidth">;
 };
 
 /**
