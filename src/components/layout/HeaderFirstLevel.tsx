@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
 
 export const HeaderFirstLevel = ({
   title,
-  // titleRef,
   type,
   testID,
   backgroundColor = "light",
