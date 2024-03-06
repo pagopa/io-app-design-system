@@ -1,7 +1,6 @@
 import {
   Divider,
   H2,
-  IOThemeContext,
   Icon,
   ListItemAction,
   ListItemAmount,
@@ -16,7 +15,8 @@ import {
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
   VSpacer,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
@@ -29,89 +29,86 @@ const onButtonPress = () => {
 
 export const ListItems = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
   return (
-    <IOThemeContext.Consumer>
-      {theme => (
-        <Screen>
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemNav
-          </H2>
-          <ListItemSwitch
-            label="Abilita Design Sperimentale"
-            value={isExperimental}
-            onSwitchValueChange={setExperimental}
-          />
-          {renderListItemNav()}
+    <Screen>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemNav
+      </H2>
+      <ListItemSwitch
+        label="Abilita Design Sperimentale"
+        value={isExperimental}
+        onSwitchValueChange={setExperimental}
+      />
+      {renderListItemNav()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemInfoCopy
-          </H2>
-          {renderListItemInfoCopy()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemInfoCopy
+      </H2>
+      {renderListItemInfoCopy()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemInfo
-          </H2>
-          {renderListItemInfo()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemInfo
+      </H2>
+      {renderListItemInfo()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemHeader
-          </H2>
-          {renderListItemHeader()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemHeader
+      </H2>
+      {renderListItemHeader()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemAmount
-          </H2>
-          {renderListItemAmount()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemAmount
+      </H2>
+      {renderListItemAmount()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemAction
-          </H2>
-          {renderListItemAction()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemAction
+      </H2>
+      {renderListItemAction()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemTransaction
-          </H2>
-          {renderListItemTransaction()}
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemRadioWithAmount
-          </H2>
-          {renderListItemRadioWithAmount()}
-          <VSpacer size={40} />
-        </Screen>
-      )}
-    </IOThemeContext.Consumer>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemTransaction
+      </H2>
+      {renderListItemTransaction()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemRadioWithAmount
+      </H2>
+      {renderListItemRadioWithAmount()}
+      <VSpacer size={40} />
+    </Screen>
   );
 };
 

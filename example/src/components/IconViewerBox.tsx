@@ -1,5 +1,5 @@
-import { IOColors, IOThemeContext } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
+import { IOColors, useIOTheme } from "@pagopa/io-app-design-system";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export const iconItemGutter = 8;
@@ -92,7 +92,7 @@ export const IconViewerBox = ({
   size,
   withDot = false
 }: IconViewerBoxProps) => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
   return (
     <View
       style={[

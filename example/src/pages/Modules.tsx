@@ -1,13 +1,13 @@
 import * as React from "react";
 import {
   useIOExperimentalDesign,
-  IOThemeContext,
   ListItemSwitch,
   H2,
   ModuleIDP,
   ModuleAttachment,
   ModulePaymentNotice,
-  ModuleCheckout
+  ModuleCheckout,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import { Alert, ImageSourcePropType, View } from "react-native";
 import { Screen } from "../components/Screen";
@@ -189,50 +189,47 @@ const renderModuleAttachment = () => (
 
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
   return (
-    <IOThemeContext.Consumer>
-      {theme => (
-        <Screen>
-          <ListItemSwitch
-            label="Abilita Design Sperimentale"
-            value={isExperimental}
-            onSwitchValueChange={setExperimental}
-          />
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ModuleIDP
-          </H2>
-          {renderModuleIDP()}
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ModulePaymentNotice
-          </H2>
-          {renderModulePaymentNotice()}
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ModuleCheckout
-          </H2>
-          {renderModuleCheckout()}
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ModuleAttachment
-          </H2>
-          {renderModuleAttachment()}
-        </Screen>
-      )}
-    </IOThemeContext.Consumer>
+    <Screen>
+      <ListItemSwitch
+        label="Abilita Design Sperimentale"
+        value={isExperimental}
+        onSwitchValueChange={setExperimental}
+      />
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleIDP
+      </H2>
+      {renderModuleIDP()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModulePaymentNotice
+      </H2>
+      {renderModulePaymentNotice()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleCheckout
+      </H2>
+      {renderModuleCheckout()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleAttachment
+      </H2>
+      {renderModuleAttachment()}
+    </Screen>
   );
 };
 

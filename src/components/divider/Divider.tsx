@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { IOColors, IOThemeContext } from "../../core";
+import { IOColors, useIOTheme } from "../../core";
 
 type DividerOrientation = "vertical" | "horizontal";
 
@@ -15,7 +15,7 @@ Native `Divider` component
 @param  {DividerOrientation} orientation
  */
 const BaseDivider = React.memo(({ orientation }: DividerProps) => {
-  const theme = React.useContext(IOThemeContext);
+  const theme = useIOTheme();
   const baseStyle = {
     backgroundColor: IOColors[theme["divider-default"]],
     ...(orientation === "vertical"
