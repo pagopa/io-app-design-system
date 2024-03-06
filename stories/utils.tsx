@@ -6,8 +6,7 @@ import { View } from "react-native";
 import {
   IOColors,
   IODSExperimentalContextProvider,
-  IOThemeContext,
-  IOThemes,
+  IOThemeContextProvider,
   hexToRgba
 } from "../src/core";
 import { EXPERIMENTAL_DS_PARAM_KEY } from "./addons/ExperimentalDsToggle";
@@ -15,14 +14,14 @@ import { EXPERIMENTAL_DS_PARAM_KEY } from "./addons/ExperimentalDsToggle";
 export const withTheme: Decorator = (StoryFn, context) => {
   const themeContext =
     context.globals.backgrounds && context.globals.backgrounds.value === "black"
-      ? IOThemes.dark
-      : IOThemes.light;
+      ? "dark"
+      : "light";
 
   // console.log("context", context);
   return (
-    <IOThemeContext.Provider value={themeContext}>
+    <IOThemeContextProvider theme={themeContext}>
       <StoryFn />
-    </IOThemeContext.Provider>
+    </IOThemeContextProvider>
   );
 };
 

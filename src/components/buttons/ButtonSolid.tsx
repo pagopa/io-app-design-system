@@ -1,5 +1,10 @@
 import React, { useCallback, useEffect, useRef } from "react";
-import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  View
+} from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -155,20 +160,23 @@ const mapLegacyColorStates: Record<
   }
 };
 
-export const ButtonSolid = React.memo(
-  ({
-    color = "primary",
-    label,
-    fullWidth = false,
-    disabled = false,
-    loading = false,
-    icon,
-    iconPosition = "start",
-    onPress,
-    accessibilityLabel,
-    accessibilityHint,
-    testID
-  }: ButtonSolidProps) => {
+export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
+  (
+    {
+      color = "primary",
+      label,
+      fullWidth = false,
+      disabled = false,
+      loading = false,
+      icon,
+      iconPosition = "start",
+      onPress,
+      accessibilityLabel,
+      accessibilityHint,
+      testID
+    },
+    ref
+  ) => {
     const isPressed = useSharedValue(0);
     const { isExperimental } = useIOExperimentalDesign();
     // Scaling transformation applied when the button is pressed
@@ -253,6 +261,7 @@ export const ButtonSolid = React.memo(
     return (
       <Pressable
         testID={testID}
+        ref={ref}
         accessible={true}
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
