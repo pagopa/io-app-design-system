@@ -31,13 +31,13 @@ const dimensionsMap = {
     size: IOVisualCostants.avatarSizeSmall,
     internalSpace: internalSpaceDefaultSize,
     internalSpacePlaceholder: internalSpacePlaceholderDefaultSize,
-    radius: IOVisualCostants.avatarRadius
+    radius: IOVisualCostants.avatarRadiusSizeSmall
   },
   medium: {
     size: IOVisualCostants.avatarSizeMedium,
     internalSpace: internalSpaceLargeSize,
     internalSpacePlaceholder: internalSpacePlaceholderLargeSize,
-    radius: IOVisualCostants.avatarRadius
+    radius: IOVisualCostants.avatarRadiusSizeMedium
   }
 };
 

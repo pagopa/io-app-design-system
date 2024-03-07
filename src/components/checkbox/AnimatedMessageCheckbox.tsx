@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
     height: IOVisualCostants.avatarSizeSmall,
     padding: internalSpacing
   },
-  checkBoxCircle: {
+  checkBoxShape: {
     position: "absolute",
     left: 0,
     top: 0,
     width: IOVisualCostants.avatarSizeSmall,
     height: IOVisualCostants.avatarSizeSmall,
-    borderRadius: IOVisualCostants.avatarRadius,
+    borderRadius: IOVisualCostants.avatarRadiusSizeSmall,
     borderCurve: "continuous"
   }
 });
@@ -97,7 +97,7 @@ export const AnimatedMessageCheckbox = ({
     >
       <Animated.View
         style={[
-          styles.checkBoxCircle,
+          styles.checkBoxShape,
           {
             backgroundColor: backgroundColorProp
           },
