@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     top: 0,
     width: IOVisualCostants.avatarSizeSmall,
     height: IOVisualCostants.avatarSizeSmall,
-    borderRadius: IOVisualCostants.avatarSizeSmall
+    borderRadius: IOVisualCostants.avatarRadius,
+    borderCurve: "continuous"
   }
 });
 

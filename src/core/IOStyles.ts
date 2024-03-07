@@ -21,6 +21,7 @@ interface IOVisualCostants {
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
+  avatarRadius: number;
   iconContainedSizeDefault: number;
   scrollDownButtonRight: number;
   scrollDownButtonBottom: number;
@@ -31,6 +32,7 @@ export const IOVisualCostants: IOVisualCostants = {
   headerHeight: 56,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
+  avatarRadius: 12,
   iconContainedSizeDefault: 44,
   scrollDownButtonRight: 24,
   scrollDownButtonBottom: 24
