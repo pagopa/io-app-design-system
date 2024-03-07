@@ -9,11 +9,10 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
         "borderCurve": "continuous",
         "borderWidth": 1,
         "overflow": "hidden",
-        "resizeMode": "contain",
       },
       {
         "backgroundColor": "#FFFFFF",
-        "borderRadius": 22,
+        "borderRadius": 8,
         "height": 44,
         "padding": 6,
         "width": 44,
@@ -21,20 +20,36 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
     ]
   }
 >
-  <Image
-    onError={[Function]}
-    source={
-      {
-        "uri": "",
-      }
-    }
+  <View
     style={
-      {
-        "height": "100%",
-        "width": "100%",
-      }
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderCurve": "continuous",
+          "overflow": "hidden",
+          "resizeMode": "contain",
+        },
+        {
+          "borderRadius": 2,
+        },
+      ]
     }
-  />
+  >
+    <Image
+      onError={[Function]}
+      source={
+        {
+          "uri": "",
+        }
+      }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
 </View>
 `;
 
@@ -47,11 +62,10 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
         "borderCurve": "continuous",
         "borderWidth": 1,
         "overflow": "hidden",
-        "resizeMode": "contain",
       },
       {
         "backgroundColor": "#FFFFFF",
-        "borderRadius": 22,
+        "borderRadius": 8,
         "height": 44,
         "padding": 6,
         "width": 44,
@@ -59,19 +73,35 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
     ]
   }
 >
-  <Image
-    onError={[Function]}
-    source={
-      {
-        "uri": "",
-      }
-    }
+  <View
     style={
-      {
-        "height": "100%",
-        "width": "100%",
-      }
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderCurve": "continuous",
+          "overflow": "hidden",
+          "resizeMode": "contain",
+        },
+        {
+          "borderRadius": 2,
+        },
+      ]
     }
-  />
+  >
+    <Image
+      onError={[Function]}
+      source={
+        {
+          "uri": "",
+        }
+      }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
 </View>
 `;
