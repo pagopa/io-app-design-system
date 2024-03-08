@@ -152,6 +152,7 @@ Common functions used to wrap up external libraries and utilities
 * [`react-native-haptic-feedback`](https://github.com/mkuczera/react-native-haptic-feedback): Handles all the haptic feedbacks
 * [`react-native-safe-area-context`](https://github.com/th3rdwave/react-native-safe-area-context): Handles all safe area spacing attributes
 * [`react-native-linear-gradient`](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
+* [`react-native-easing-gradient`](https://github.com/phamfoo/react-native-easing-gradient): Generates easing gradients
 * [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)
 
 ---
