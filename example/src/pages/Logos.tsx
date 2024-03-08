@@ -142,7 +142,7 @@ const organizationsURIs = [
 
 const renderAvatar = () => (
   <>
-    <ComponentViewerBox name={`Avatar, small size, circle shape`}>
+    <ComponentViewerBox name={`Avatar, small size, square shape`}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -151,33 +151,6 @@ const renderAvatar = () => (
         {organizationsURIs.map(({ imageSource }, i) => (
           <React.Fragment key={i}>
             <Avatar
-              shape="circle"
-              size="small"
-              logoUri={
-                imageSource
-                  ? Array.isArray(imageSource)
-                    ? imageSource.map(s => ({ uri: s }))
-                    : {
-                        uri: imageSource
-                      }
-                  : undefined
-              }
-            />
-            {i < organizationsURIs.length - 1 && <HSpacer size={4} />}
-          </React.Fragment>
-        ))}
-      </ScrollView>
-    </ComponentViewerBox>
-    {/* <ComponentViewerBox name={`Avatar, small size, square shape`}>
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.horizontalScroll}
-      >
-        {organizationsURIs.map(({ imageSource }, i) => (
-          <React.Fragment key={i}>
-            <Avatar
-              shape="square"
               size="small"
               logoUri={
                 imageSource
@@ -203,7 +176,6 @@ const renderAvatar = () => (
         {organizationsURIs.map(({ imageSource }, i) => (
           <React.Fragment key={i}>
             <Avatar
-              shape="square"
               size="medium"
               logoUri={
                 imageSource
@@ -219,7 +191,7 @@ const renderAvatar = () => (
           </React.Fragment>
         ))}
       </ScrollView>
-    </ComponentViewerBox> */}
+    </ComponentViewerBox>
   </>
 );
 

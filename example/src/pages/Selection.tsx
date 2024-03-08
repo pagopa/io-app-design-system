@@ -1,8 +1,11 @@
 import {
+  AnimatedMessageCheckbox,
   CheckboxLabel,
   Divider,
   H2,
+  HSpacer,
   IOColors,
+  IOStyles,
   IOVisualCostants,
   LabelSmall,
   ListItemCheckbox,
@@ -42,6 +45,9 @@ export const Selection = () => {
       {renderCheckboxLabel()}
       {/* ListItemCheckbox */}
       {renderListItemCheckbox()}
+      {/* AnimatedMessageCheckbox */}
+      <H2 style={{ marginVertical: 16 }}>Checkbox (Messages)</H2>
+      <AnimatedMessageCheckboxShowroom />
       <H2 style={{ marginVertical: 16 }}>Radio</H2>
       {/* RadioButtonLabel */}
       {renderRadioButtonLabel()}
@@ -151,6 +157,22 @@ const renderListItemCheckbox = () => (
   </>
 );
 
+const AnimatedMessageCheckboxShowroom = () => {
+  const [isEnabled, setIsEnabled] = useState(true);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  return (
+    <>
+      <ComponentViewerBox name="AnimatedMessageCheckbox">
+        <View style={[IOStyles.row, IOStyles.alignCenter]}>
+          <AnimatedMessageCheckbox checked={isEnabled} />
+          <HSpacer size={24} />
+          <NativeSwitch onValueChange={toggleSwitch} value={isEnabled} />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
 // RADIO ITEMS
 
 const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [

@@ -117,6 +117,7 @@
     "react-native-gesture-handler": "*",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
+    "react-native-easing-gradient": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*",
     "react-native-svg": "*"
