@@ -125,6 +125,7 @@ export const ListItemInfoCopy = ({
       testID={testID}
     >
       <Animated.View
+        importantForAccessibility="no-hide-descendants"
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
