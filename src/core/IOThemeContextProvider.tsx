@@ -1,7 +1,13 @@
 import { constVoid } from "fp-ts/function";
 import React from "react";
 import { Appearance } from "react-native";
-import { IOTheme, IOThemeDark, IOThemeLight } from "./IOColors";
+import {
+  IOTheme,
+  IOThemeDark,
+  IOThemeLight,
+  IOThemeLightLegacy
+} from "./IOColors";
+import { useIOExperimentalDesign } from "./IODSExperimentalContextProvider";
 
 export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
 type IOThemeType = keyof typeof IOThemes;
@@ -35,12 +41,18 @@ export const IOThemeContextProvider = ({
   const [currentTheme, setCurrentTheme] = React.useState<IOThemeType>(
     theme ?? "light"
   );
+  const { isExperimental } = useIOExperimentalDesign();
 
   return (
     <IOThemeContext.Provider
       value={{
         themeType: currentTheme,
-        theme: IOThemes[currentTheme],
+        theme:
+          currentTheme === "dark"
+            ? IOThemes[currentTheme]
+            : isExperimental
+            ? IOThemes[currentTheme]
+            : IOThemeLightLegacy,
         setTheme: setCurrentTheme
       }}
     >

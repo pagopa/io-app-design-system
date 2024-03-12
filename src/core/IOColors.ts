@@ -325,6 +325,11 @@ export const IOThemeLight: IOTheme = {
   "pictogram-tint-secondary": "turquoise-500"
 };
 
+export const IOThemeLightLegacy: IOTheme = {
+  ...IOThemeLight,
+  "interactiveElem-default": "blue"
+};
+
 export const IOThemeDark: IOTheme = {
   ...IOThemeLight,
   // General
