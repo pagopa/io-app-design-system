@@ -274,6 +274,7 @@ export type IOTheme = {
   "appBackground-primary": IOColors;
   "appBackground-secondary": IOColors;
   "appBackground-tertiary": IOColors;
+  "appBackground-accent": IOColors;
   "interactiveElem-default": IOColors;
   "interactiveElem-pressed": IOColors;
   "listItem-pressed": IOColors;
@@ -302,6 +303,7 @@ export const IOThemeLight: IOTheme = {
   "appBackground-primary": "white",
   "appBackground-secondary": "grey-50",
   "appBackground-tertiary": "grey-100",
+  "appBackground-accent": "blueIO-500",
   "interactiveElem-default": "blueIO-500",
   "interactiveElem-pressed": "blueIO-600",
   "listItem-pressed": "grey-50",
@@ -327,6 +329,7 @@ export const IOThemeLight: IOTheme = {
 
 export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
+  "appBackground-accent": "blue",
   "interactiveElem-default": "blue"
 };
 
