@@ -1,4 +1,3 @@
-import { Platform } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -13,7 +12,7 @@ type H3Props = ExternalTypographyProps<
 
 /* Common typographic styles */
 export const h3FontSize = 22;
-export const h3LineHeight = Platform.select({ ios: 33, android: 38 });
+export const h3LineHeight = 33;
 const font: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";

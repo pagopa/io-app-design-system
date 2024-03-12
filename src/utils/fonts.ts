@@ -114,6 +114,7 @@ export const makeFontStyleObject = (
       fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
     },
     android: {
+      includeFontPadding: false,
       fontFamily: makeFontFamilyName(font, weight, isItalic)
     },
     ios: {
