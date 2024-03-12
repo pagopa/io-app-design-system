@@ -48,13 +48,13 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
 
 const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   light: {
-    background: IOColors.greyLight,
-    pressed: IOColors.bluegrey,
+    background: IOColors["grey-100"],
+    pressed: IOColors["grey-200"],
     foreground: "blue"
   },
   dark: {
     background: hexToRgba(IOColors.black, 0.1),
-    pressed: IOColors.bluegrey,
+    pressed: hexToRgba(IOColors.white, 0.5),
     foreground: "white"
   }
 };
