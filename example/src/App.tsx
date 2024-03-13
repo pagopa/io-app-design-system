@@ -1,9 +1,9 @@
-import * as React from "react";
 import {
   IODSExperimentalContextProvider,
   IOThemeContextProvider,
   ToastProvider
 } from "@pagopa/io-app-design-system";
+import * as React from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/navigator";
@@ -13,13 +13,15 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <IOThemeContextProvider theme={colorScheme === "dark" ? "dark" : "light"}>
-        <IODSExperimentalContextProvider>
+      <IODSExperimentalContextProvider>
+        <IOThemeContextProvider
+          theme={colorScheme === "dark" ? "dark" : "light"}
+        >
           <ToastProvider>
             <AppNavigator />
           </ToastProvider>
-        </IODSExperimentalContextProvider>
-      </IOThemeContextProvider>
+        </IOThemeContextProvider>
+      </IODSExperimentalContextProvider>
     </GestureHandlerRootView>
   );
 }

@@ -24,10 +24,10 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
+import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
-import { AnimatedRadio } from "../radio/AnimatedRadio";
-import { IOLogoPaymentType, LogoPayment } from "../logos";
 
 type ListItemRadioGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType }
@@ -246,7 +246,7 @@ export const ListItemRadio = ({
                 </View>
               )}
 
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
+              <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
             </View>

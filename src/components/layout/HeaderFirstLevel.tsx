@@ -1,16 +1,16 @@
 import * as React from "react";
 import {
-  View,
-  StyleSheet,
   AccessibilityInfo,
+  StyleSheet,
+  View,
   findNodeHandle
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { IOColors, IOStyles, IOVisualCostants, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { IOStyles, IOVisualCostants, IOColors } from "../../core";
-import { H3 } from "../typography";
-import { HSpacer } from "../spacer";
 import { IconButton } from "../buttons";
+import { HSpacer } from "../spacer";
+import { H3 } from "../typography";
 import { ActionProp } from "./common";
 
 type CommonProps = WithTestID<{
@@ -49,7 +49,6 @@ interface ThreeActions extends CommonProps {
 
 export type HeaderFirstLevel = Base | OneAction | TwoActions | ThreeActions;
 
-const HEADER_BG_COLOR_LIGHT: IOColors = "white";
 const HEADER_BG_COLOR_DARK: IOColors = "bluegrey";
 
 const styles = StyleSheet.create({
@@ -73,6 +72,8 @@ export const HeaderFirstLevel = ({
   thirdAction
 }: HeaderFirstLevel) => {
   const titleRef = React.createRef<View>();
+  const insets = useSafeAreaInsets();
+  const theme = useIOTheme();
 
   React.useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
@@ -80,7 +81,6 @@ export const HeaderFirstLevel = ({
       AccessibilityInfo.setAccessibilityFocus(reactNode);
     }
   });
-  const insets = useSafeAreaInsets();
 
   return (
     <View
@@ -88,7 +88,7 @@ export const HeaderFirstLevel = ({
         paddingTop: insets.top,
         backgroundColor:
           backgroundColor === "light"
-            ? IOColors[HEADER_BG_COLOR_LIGHT]
+            ? IOColors[theme["appBackground-primary"]]
             : IOColors[HEADER_BG_COLOR_DARK]
       }}
       accessibilityRole="header"
@@ -99,7 +99,9 @@ export const HeaderFirstLevel = ({
           <H3
             style={{ flexShrink: 1 }}
             numberOfLines={1}
-            color={backgroundColor === "dark" ? "white" : "black"}
+            color={
+              backgroundColor === "dark" ? "white" : theme["textBody-default"]
+            }
           >
             {title}
           </H3>

@@ -21,10 +21,10 @@ import {
   hexToRgba,
   useIOTheme
 } from "../../core";
+import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
-import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 
 type Props = {
   value: string;
@@ -164,7 +164,7 @@ export const ListItemCheckbox = ({
                   />
                 </View>
               )}
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
+              <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
             </View>
