@@ -2848,7 +2848,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="blue"
+          color="blueIO-500"
           defaultColor="black"
           defaultWeight="SemiBold"
           font="TitilliumWeb"
@@ -2865,7 +2865,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 "lineHeight": 25,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
                 "fontWeight": "600",
@@ -3128,7 +3128,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
       >
         <Text
           allowFontScaling={false}
-          color="blue"
+          color="blueIO-500"
           defaultColor="black"
           defaultWeight="SemiBold"
           font="TitilliumWeb"
@@ -3145,7 +3145,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                 "lineHeight": 25,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
                 "fontWeight": "600",

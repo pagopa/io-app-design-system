@@ -131,13 +131,9 @@ export const ListItemSwitch = React.memo(
               color={theme["textBody-default"]}
               style={{ flex: 1 }}
               accessible={!canRenderSwitch}
-              {...Platform.select({
-                android: {
-                  importantForAccessibility: !canRenderSwitch
-                    ? "yes"
-                    : "no-hide-descendants"
-                }
-              })}
+              importantForAccessibility={
+                !canRenderSwitch ? "yes" : "no-hide-descendants"
+              }
             >
               {label}
             </H6>
