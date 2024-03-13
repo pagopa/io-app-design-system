@@ -46,6 +46,7 @@ import PictogramObjKey from "./svg/PictogramObjKey";
 import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramPasscode from "./svg/PictogramPasscode";
+import PictogramPayments from "./svg/PictogramPayments";
 import PictogramPiggyBank from "./svg/PictogramPiggyBank";
 import PictogramPin from "./svg/PictogramPin";
 import PictogramPlaces from "./svg/PictogramPlaces";
@@ -96,6 +97,7 @@ import PictogramBleedLostConnection from "./svg/PictogramBleedLostConnection";
 import PictogramBleedMessage from "./svg/PictogramBleedMessage";
 import PictogramBleedNotification from "./svg/PictogramBleedNotification";
 import PictogramBleedPasscode from "./svg/PictogramBleedPasscode";
+import PictogramBleedPayments from "./svg/PictogramBleedPayments";
 import PictogramBleedPending from "./svg/PictogramBleedPending";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramBleedSearch from "./svg/PictogramBleedSearch";
@@ -211,6 +213,7 @@ export const IOPictograms = {
   eventClose: PictogramEventClose,
   hello: PictogramHello,
   comunicationProblem: PictogramComunicationProblem,
+  payments: PictogramPayments,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -326,7 +329,8 @@ export type IOPictogramsBleed = Extract<
   | "notification"
   | "star"
   | "qrCode"
-  | "lostConnection",
+  | "lostConnection"
+  | "payments",
   IOPictograms
 >;
 
@@ -368,7 +372,8 @@ export const IOPictogramsBleed: {
   star: PictogramBleedStar,
   doc: PictogramBleedDoc,
   qrCode: PictogramBleedQrCode,
-  lostConnection: PictogramBleedLostConnection
+  lostConnection: PictogramBleedLostConnection,
+  payments: PictogramBleedPayments
 };
 
 export const PictogramBleed = ({
