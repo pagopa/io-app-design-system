@@ -7,7 +7,7 @@ const PictogramBleedPayments = ({
   colorValues,
   ...props
 }: SVGPictogramProps) => (
-  <Svg width={size} height={size} viewBox="0 0 240 240" {...props}>
+  <Svg width={size} height={size} viewBox="0 0 64 64" {...props}>
     <Path
       d="M23.5653 60.7657C32.1618 60.7657 39.1307 53.7968 39.1307 45.2003C39.1307 36.6038 32.1618 29.635 23.5653 29.635C14.9688 29.635 8 36.6038 8 45.2003C8 53.7968 14.9688 60.7657 23.5653 60.7657Z"
       fill={colorValues.main}
