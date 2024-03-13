@@ -10,7 +10,7 @@ import {
   ListItemSwitch,
   NumberPad,
   VSpacer,
-  useIOExperimentalDesign
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
@@ -22,16 +22,11 @@ const PIN_LENGTH = 6;
  * @returns a screen with a flexed view where you can test components
  */
 export const NumberPadScreen = () => {
+  const theme = useIOTheme();
+  const navigation = useNavigation();
+
   const [value, setValue] = React.useState("");
   const [blueBackground, setBlueBackground] = React.useState(false);
-  const { isExperimental } = useIOExperimentalDesign();
-
-  const primaryBackground = React.useMemo(
-    () => (isExperimental ? IOColors["blueIO-500"] : IOColors.blue),
-    [isExperimental]
-  );
-
-  const navigation = useNavigation();
 
   const onValueChange = (v: string) => {
     if (v.length <= PIN_LENGTH) {
@@ -42,16 +37,21 @@ export const NumberPadScreen = () => {
   React.useEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: blueBackground ? primaryBackground : IOColors.white
+        backgroundColor: blueBackground
+          ? IOColors[theme["appBackground-accent"]]
+          : IOColors.white
       }
     });
-  }, [blueBackground, primaryBackground, navigation]);
+  }, [blueBackground, navigation, theme]);
+
   return (
     <View
       style={{
         flexGrow: 1,
         paddingVertical: IOVisualCostants.appMarginDefault,
-        backgroundColor: blueBackground ? primaryBackground : IOColors.white
+        backgroundColor: blueBackground
+          ? IOColors[theme["appBackground-accent"]]
+          : IOColors.white
       }}
     >
       <ContentWrapper>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import { IOColors, useIOTheme } from "../../core";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
@@ -34,15 +34,16 @@ export const ListItemRadioWithAmount = (
       props.onValueChange(!toggleValue);
     }
   };
-  const { isExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
 
-  const interactiveColor: IOColors = isExperimental ? "blueIO-500" : "blue";
   const suggestColor: IOColors = "hanPurple-500";
 
   return (
     <PressableListItemBase onPress={pressHandler}>
       <View>
-        <LabelSmallAlt>{props.label}</LabelSmallAlt>
+        <LabelSmallAlt color={theme["textBody-default"]}>
+          {props.label}
+        </LabelSmallAlt>
         {props.isSuggested && (
           <>
             <VSpacer size={4} />
@@ -57,7 +58,9 @@ export const ListItemRadioWithAmount = (
         )}
       </View>
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
-        <H6 color={interactiveColor}>{props.formattedAmountString}</H6>
+        <H6 color={theme["interactiveElem-default"]}>
+          {props.formattedAmountString}
+        </H6>
         <HSpacer size={8} />
         <AnimatedRadio checked={props.selected ?? toggleValue} />
       </View>

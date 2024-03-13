@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
+import { useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { HSpacer } from "../spacer/Spacer";
@@ -34,6 +35,8 @@ export const RadioButtonLabel = ({
   disabled,
   onValueChange
 }: OwnProps) => {
+  const theme = useIOTheme();
+
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
   const toggleRadioButton = () => {
@@ -64,7 +67,7 @@ export const RadioButtonLabel = ({
           <AnimatedRadio checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
-        <H6 style={{ flexShrink: 1 }} color={"black"}>
+        <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
         </H6>
       </View>

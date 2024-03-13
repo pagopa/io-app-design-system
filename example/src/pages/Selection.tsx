@@ -17,7 +17,8 @@ import {
   RadioItemWithAmount,
   SwitchLabel,
   VSpacer,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
 import { Text, View } from "react-native";
@@ -26,9 +27,12 @@ import { Screen } from "../components/Screen";
 
 export const Selection = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
+
   return (
     <Screen>
       <H2
+        color={theme["textBody-default"]}
         style={{
           marginVertical: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -46,16 +50,22 @@ export const Selection = () => {
       {/* ListItemCheckbox */}
       {renderListItemCheckbox()}
       {/* AnimatedMessageCheckbox */}
-      <H2 style={{ marginVertical: 16 }}>Checkbox (Messages)</H2>
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Checkbox (Messages)
+      </H2>
       <AnimatedMessageCheckboxShowroom />
-      <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Radio
+      </H2>
       {/* RadioButtonLabel */}
       {renderRadioButtonLabel()}
       {/* RadioListItem */}
       <RadioListItemsShowroom />
       {/* RadioListItemWithAmount */}
       <RadioListItemsWithAmountShowroom />
-      <H2 style={{ marginVertical: 16 }}>Switch</H2>
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Switch
+      </H2>
       {/* Native Switch */}
       <NativeSwitchShowroom />
       {/* ListItemSwitch */}
