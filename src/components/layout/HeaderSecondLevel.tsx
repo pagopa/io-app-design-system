@@ -201,6 +201,10 @@ export const HeaderSecondLevel = ({
         )}
         <View
           ref={titleRef}
+          accessibilityElementsHidden={!isTitleAccessible}
+          importantForAccessibility={
+            isTitleAccessible ? "yes" : "no-hide-descendants"
+          }
           accessible={isTitleAccessible}
           accessibilityLabel={title}
           accessibilityRole="header"
