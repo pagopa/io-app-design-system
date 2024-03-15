@@ -970,7 +970,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -983,6 +989,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -1000,6 +1007,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           weight="Regular"
         >
           label
+           con nome molto molto lungo
         </Text>
         <View
           style={
@@ -1114,6 +1122,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
@@ -1354,7 +1369,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -1367,6 +1388,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -1384,6 +1406,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           weight="Regular"
         >
           label
+           con nome molto molto lungo
         </Text>
       </View>
       <View
@@ -1394,6 +1417,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
@@ -2702,7 +2732,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -2715,6 +2751,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -2732,6 +2769,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           weight="SemiBold"
         >
           label
+           con nome molto molto lungo
         </Text>
         <View
           style={
@@ -2846,6 +2884,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
@@ -3086,7 +3131,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -3099,6 +3150,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -3116,6 +3168,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           weight="SemiBold"
         >
           label
+           con nome molto molto lungo
         </Text>
       </View>
       <View
@@ -3126,6 +3179,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
