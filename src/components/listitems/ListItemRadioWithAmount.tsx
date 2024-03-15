@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOColors, IOStyles, useIOTheme } from "../../core";
+import { IOColors, useIOTheme } from "../../core";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
@@ -40,9 +40,9 @@ export const ListItemRadioWithAmount = (
 
   return (
     <PressableListItemBase onPress={pressHandler}>
-      <View style={IOStyles.flex}>
+      <View style={{ flexShrink: 1 }}>
         <LabelSmallAlt numberOfLines={1} color={theme["textBody-default"]}>
-          {props.label}
+          {props.label} con nome molto molto lungo
         </LabelSmallAlt>
         {props.isSuggested && (
           <>
@@ -58,6 +58,7 @@ export const ListItemRadioWithAmount = (
         )}
       </View>
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
+        <HSpacer size={8} />
         <H6 color={theme["interactiveElem-default"]}>
           {props.formattedAmountString}
         </H6>

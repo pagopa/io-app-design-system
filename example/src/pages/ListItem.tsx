@@ -683,6 +683,7 @@ const renderListItemRadioWithAmount = () => (
         label="Banca Malintesa"
         formattedAmountString={"4,50 €"}
       />
+      <Divider />
       <ListItemRadioWithAmount
         label="Banca Malintesa con un testo molto ma molto lungo"
         formattedAmountString={"4,50 €"}
