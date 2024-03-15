@@ -134,11 +134,14 @@ export const HeaderSecondLevel = ({
 
   const { isExperimental } = useIOExperimentalDesign();
   const insets = useSafeAreaInsets();
+  const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
 
   React.useLayoutEffect(() => {
-    const reactNode = findNodeHandle(titleRef.current);
-    if (reactNode !== null) {
-      AccessibilityInfo.setAccessibilityFocus(reactNode);
+    if (isTitleAccessible) {
+      const reactNode = findNodeHandle(titleRef.current);
+      if (reactNode !== null) {
+        AccessibilityInfo.setAccessibilityFocus(reactNode);
+      }
     }
   });
 
@@ -160,7 +163,6 @@ export const HeaderSecondLevel = ({
       : "transparent"
   }));
 
-  const isTitleAccessible = !!title.trim();
   const titleAnimatedStyle = useAnimatedStyle(() => ({
     opacity: scrollValues
       ? interpolate(
