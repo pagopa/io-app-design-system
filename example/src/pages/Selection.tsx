@@ -207,6 +207,13 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     id: "example-jsx-element"
   },
   {
+    startImage: {
+      uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+    },
+    value: "PayPal",
+    id: "example-paypal"
+  },
+  {
     value: "Let's try with a basic title",
     description:
       "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti.",

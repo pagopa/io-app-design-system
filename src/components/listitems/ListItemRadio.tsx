@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Pressable, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -30,8 +30,9 @@ import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 
 type ListItemRadioGraphicProps =
-  | { icon?: never; paymentLogo: IOLogoPaymentType }
-  | { icon: IOIcons; paymentLogo?: never };
+  | { icon?: never; paymentLogo: IOLogoPaymentType; uri?: never }
+  | { icon?: never; paymentLogo?: never; uri: string }
+  | { icon: IOIcons; paymentLogo?: never; uri?: never };
 
 type ListItemRadioLoadingProps =
   | {
@@ -63,6 +64,13 @@ type OwnProps = Props &
     React.ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "disabled"
   >;
+
+const styles = StyleSheet.create({
+  imageSize: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize
+  }
+});
 
 /**
  * `ListItemRadio` component with the automatic state management that uses a {@link AnimatedCheckBox}
@@ -236,6 +244,9 @@ export const ListItemRadio = ({
                       color="grey-300"
                       size={IOSelectionListItemVisualParams.iconSize}
                     />
+                  )}
+                  {startImage.uri && (
+                    <Image source={startImage} style={styles.imageSize} />
                   )}
                   {startImage.paymentLogo && (
                     <LogoPayment
