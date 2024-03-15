@@ -41,7 +41,7 @@ export const StaticHeaderSecondLevelScreen = () => {
     navigation.setOptions({
       header: () => (
         <HeaderSecondLevel
-          title={"Questo è un titolo statico"}
+          title=""
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
           type="singleAction"
