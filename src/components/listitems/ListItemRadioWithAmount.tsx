@@ -40,9 +40,9 @@ export const ListItemRadioWithAmount = (
 
   return (
     <PressableListItemBase onPress={pressHandler}>
-      <View>
-        <LabelSmallAlt color={theme["textBody-default"]}>
-          {props.label}
+      <View style={{ flexShrink: 1 }}>
+        <LabelSmallAlt numberOfLines={1} color={theme["textBody-default"]}>
+          {props.label} con nome molto molto lungo
         </LabelSmallAlt>
         {props.isSuggested && (
           <>
@@ -58,6 +58,7 @@ export const ListItemRadioWithAmount = (
         )}
       </View>
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
+        <HSpacer size={8} />
         <H6 color={theme["interactiveElem-default"]}>
           {props.formattedAmountString}
         </H6>
