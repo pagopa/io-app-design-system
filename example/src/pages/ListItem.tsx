@@ -170,7 +170,7 @@ const renderListItemNav = () => (
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with a payment logo"
-          paymentLogo="bancomatPay"
+          paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
           onPress={() => {
             alert("Action triggered");
           }}
@@ -179,7 +179,7 @@ const renderListItemNav = () => (
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with a loading indicator"
-          paymentLogo="bancomatPay"
+          paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
           onPress={() => {
             alert("Action triggered");
           }}
