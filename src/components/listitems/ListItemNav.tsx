@@ -1,5 +1,11 @@
 import React, { useCallback } from "react";
-import { GestureResponderEvent, Pressable, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Image,
+  Pressable,
+  StyleSheet,
+  View
+} from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -14,6 +20,7 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOScaleValues,
+  IOSelectionListItemVisualParams,
   IOSpringValues,
   IOStyles,
   hexToRgba,
@@ -23,7 +30,6 @@ import {
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
-import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { Caption, H6, LabelSmall } from "../typography";
 import { LoadingSpinner } from "../loadingSpinner";
@@ -50,11 +56,18 @@ type ListItemNavPartialProps = WithTestID<{
 }>;
 
 export type ListItemNavGraphicProps =
-  | { icon?: never; iconColor?: never; paymentLogo: IOLogoPaymentType }
-  | { icon: IOIcons; iconColor?: IOColors; paymentLogo?: never }
-  | { icon?: never; iconColor?: never; paymentLogo?: never };
+  | { icon?: never; iconColor?: never; paymentLogoUri: string }
+  | { icon: IOIcons; iconColor?: IOColors; paymentLogoUri?: never }
+  | { icon?: never; iconColor?: never; paymentLogoUri?: never };
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
+
+const styles = StyleSheet.create({
+  paymentLogoSize: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize
+  }
+});
 
 export const ListItemNav = ({
   value,
@@ -62,7 +75,7 @@ export const ListItemNav = ({
   onPress,
   icon,
   iconColor = "grey-450",
-  paymentLogo,
+  paymentLogoUri,
   accessibilityLabel,
   testID,
   hideChevron = false,
@@ -203,12 +216,16 @@ export const ListItemNav = ({
               />
             </View>
           )}
-          {paymentLogo && (
+          {paymentLogoUri && (
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <LogoPayment
-                name={paymentLogo}
-                size={IOListItemVisualParams.iconSize}
+              <Image
+                source={{ uri: paymentLogoUri }}
+                style={styles.paymentLogoSize}
               />
+              {/* <LogoPayment
+                name={paymentLogoUri}
+                size={IOListItemVisualParams.iconSize}
+              /> */}
             </View>
           )}
           <View style={IOStyles.flex}>{listItemNavContent}</View>
