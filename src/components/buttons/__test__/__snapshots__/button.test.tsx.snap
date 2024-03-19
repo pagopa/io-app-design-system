@@ -112,7 +112,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonExtendedOutline Sn
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
-        color={4278219750}
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -135,19 +134,26 @@ exports[`Test Buttons Components - Experimental Enabled ButtonExtendedOutline Sn
             },
           ]
         }
-        tintColor={4278219750}
+        tintColor="#0073E6"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
-        <RNSVGGroup>
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
           <RNSVGPath
             clipRule={0}
             d="M0 12C0 5.3726 5.3726 0 12 0s12 5.3726 12 12-5.3726 12-12 12S0 18.6274 0 12Zm2 0C2 6.47717 6.47717 2 12 2c5.5228 0 10 4.47717 10 10 0 5.5228-4.4772 10-10 10-5.52283 0-10-4.4772-10-10Zm10.0281-4.50455c.8439 0 1.5281-.68415 1.5281-1.52809 0-.84394-.6842-1.52809-1.5281-1.52809-.844 0-1.5281.68415-1.5281 1.52809 0 .84394.6841 1.52809 1.5281 1.52809Zm0 1.94382h.0005c.5678 0 1.0281.46029 1.0281 1.02813v8.0045c0 .5678-.4603 1.0281-1.0281 1.0281h-.0005C11.4603 19.5 11 19.0397 11 18.4719v-8.0045c0-.56784.4603-1.02813 1.0281-1.02813Z"
             fill={
-              [
-                2,
-              ]
+              {
+                "type": 2,
+              }
             }
             fillRule={0}
             propList={
@@ -572,7 +578,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278927075}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -595,19 +600,26 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
           },
         ]
       }
-      tintColor={4278927075}
+      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
@@ -698,7 +710,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278927075}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -721,19 +732,26 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
           },
         ]
       }
-      tintColor={4278927075}
+      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
@@ -822,7 +840,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
-      color={4294967295}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -845,19 +862,26 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
           },
         ]
       }
-      tintColor={4294967295}
+      tintColor="#FFFFFF"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
@@ -985,7 +1009,6 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
-        color={4278219750}
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -1008,19 +1031,26 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
             },
           ]
         }
-        tintColor={4278219750}
+        tintColor="#0073E6"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
-        <RNSVGGroup>
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
           <RNSVGPath
             clipRule={0}
             d="M0 12C0 5.3726 5.3726 0 12 0s12 5.3726 12 12-5.3726 12-12 12S0 18.6274 0 12Zm2 0C2 6.47717 6.47717 2 12 2c5.5228 0 10 4.47717 10 10 0 5.5228-4.4772 10-10 10-5.52283 0-10-4.4772-10-10Zm10.0281-4.50455c.8439 0 1.5281-.68415 1.5281-1.52809 0-.84394-.6842-1.52809-1.5281-1.52809-.844 0-1.5281.68415-1.5281 1.52809 0 .84394.6841 1.52809 1.5281 1.52809Zm0 1.94382h.0005c.5678 0 1.0281.46029 1.0281 1.02813v8.0045c0 .5678-.4603 1.0281-1.0281 1.0281h-.0005C11.4603 19.5 11 19.0397 11 18.4719v-8.0045c0-.56784.4603-1.02813 1.0281-1.02813Z"
             fill={
-              [
-                2,
-              ]
+              {
+                "type": 2,
+              }
             }
             fillRule={0}
             propList={
@@ -1442,7 +1472,6 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278219750}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1465,19 +1494,26 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4278219750}
+      tintColor="#0073E6"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
@@ -1568,7 +1604,6 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       }
       bbHeight={24}
       bbWidth={24}
-      color={4278219750}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1591,19 +1626,26 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4278219750}
+      tintColor="#0073E6"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
@@ -1692,7 +1734,6 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
-      color={4294967295}
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1715,19 +1756,26 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
           },
         ]
       }
-      tintColor={4294967295}
+      tintColor="#FFFFFF"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
-      <RNSVGGroup>
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+      >
         <RNSVGPath
           clipRule={0}
           d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0C5.375 0 0 5.371 0 12s5.375 12 12 12Zm.033-10.97c-.997 0-1.818-.336-2.463-1.014-.646-.674-.968-1.51-.968-2.507 0-1.001.322-1.83.964-2.492.64-.662 1.458-.992 2.458-.992.997 0 1.81.334 2.435 1.017.625.678.94 1.51.94 2.511 0 .993-.315 1.822-.94 2.484-.625.657-1.43.992-2.426.992Zm-3.431 4.905c0-1.001.322-1.83.96-2.492.64-.662 1.458-.992 2.467-.992.996 0 1.809.335 2.43 1.017.625.682.94 1.515.94 2.512l-6.797-.045Z"
           fill={
-            [
-              2,
-            ]
+            {
+              "type": 2,
+            }
           }
           fillRule={0}
           propList={
