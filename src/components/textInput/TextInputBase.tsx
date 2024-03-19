@@ -45,6 +45,7 @@ type InputTextProps = WithTestID<{
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
+  autoFocus?: boolean;
 }>;
 
 const inputMarginTop: IOSpacingScale = 8;
@@ -157,7 +158,8 @@ export const TextInputBase = ({
   bottomMessageColor,
   onBlur,
   onFocus,
-  isPassword
+  isPassword,
+  autoFocus
 }: InputTextProps) => {
   const labelSharedValue = useSharedValue<boolean>(false);
   const [inputStatus, setInputStatus] = React.useState<InputStatus>(
@@ -302,6 +304,7 @@ export const TextInputBase = ({
               ? styles.textInputStyleFont
               : styles.textInputStyleLegacyFont
           ]}
+          autoFocus={autoFocus}
         />
         {/** Left value is due to the absolute position of the label in order to let it
          * translate to top on focus
