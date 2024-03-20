@@ -32,7 +32,7 @@ const meta = {
     content: "Alert content"
   },
   render: args => {
-    const { title, content, variant } = args;
+    const { title, content, variant, isLoading } = args;
     const viewRef = React.createRef<View>();
     return (
       <Alert
@@ -40,6 +40,7 @@ const meta = {
         title={title}
         viewRef={viewRef}
         variant={variant}
+        isLoading={isLoading}
       />
     );
   }
