@@ -310,7 +310,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
               entering={
                 isMounted.current ? enterTransitionInnerContent : undefined
               }
-              exiting={exitTransitionInnerContent}
+              /* Temporarily disable the exiting transition because it caused
+              a weird glitch on page exit */
+              // exiting={exitTransitionInnerContent}
             >
               {icon && (
                 <>
