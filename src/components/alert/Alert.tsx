@@ -14,7 +14,6 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import Placeholder from "rn-placeholder";
 import { useIOExperimentalDesign } from "../../core";
 import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
@@ -68,7 +67,6 @@ type AlertProps = WithTestID<{
   viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
   accessibilityHint?: string;
-  isLoading?: boolean;
 }>;
 
 type AlertActionProps =
@@ -126,8 +124,7 @@ export const Alert = ({
   onPress,
   fullWidth = false,
   accessibilityHint,
-  testID,
-  isLoading = false
+  testID
 }: AlertType): JSX.Element => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
@@ -175,61 +172,30 @@ export const Alert = ({
       <View style={IOStyles.flex}>
         {title && (
           <>
-            {isLoading ? (
-              <Placeholder.Box
-                color={IOColors[mapVariantStates[variant].foreground]}
-                width={"58%"}
-                animate={"fade"}
-                height={30}
-                radius={4}
-              />
-            ) : (
-              <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
-            )}
-
+            <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
             <VSpacer size={8} />
           </>
         )}
-        {isLoading ? (
-          <Placeholder.Box
-            color={IOColors[mapVariantStates[variant].foreground]}
-            width={"100%"}
-            animate={"fade"}
-            height={24}
-            radius={4}
-          />
-        ) : (
-          <Label
-            color={mapVariantStates[variant].foreground}
-            weight={"Regular"}
-            accessibilityRole="text"
-          >
-            {content}
-          </Label>
-        )}
+        <Label
+          color={mapVariantStates[variant].foreground}
+          weight={"Regular"}
+          accessibilityRole="text"
+        >
+          {content}
+        </Label>
         {action && (
           <>
             <VSpacer size={8} />
-            {isLoading ? (
-              <Placeholder.Box
-                color={IOColors[mapVariantStates[variant].foreground]}
-                width={"62%"}
-                animate={"fade"}
-                height={20}
-                radius={4}
-              />
-            ) : (
-              <Text
-                style={[
-                  isExperimental ? styles.label : styles.labelLegacy,
-                  { color: IOColors[mapVariantStates[variant].foreground] }
-                ]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {action}
-              </Text>
-            )}
+            <Text
+              style={[
+                isExperimental ? styles.label : styles.labelLegacy,
+                { color: IOColors[mapVariantStates[variant].foreground] }
+              ]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {action}
+            </Text>
           </>
         )}
       </View>

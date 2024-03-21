@@ -29,13 +29,6 @@ export const DSAlert = () => {
         variant="error"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="error"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -43,13 +36,6 @@ export const DSAlert = () => {
         viewRef={viewRef as React.RefObject<any>}
         variant="warning"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="warning"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer />
@@ -59,13 +45,6 @@ export const DSAlert = () => {
         variant="info"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="info"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -73,13 +52,6 @@ export const DSAlert = () => {
         viewRef={viewRef as React.RefObject<any>}
         variant="success"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="success"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer size={40} />
@@ -94,14 +66,6 @@ export const DSAlert = () => {
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="error"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -111,14 +75,6 @@ export const DSAlert = () => {
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="warning"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -127,14 +83,6 @@ export const DSAlert = () => {
         variant="info"
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="info"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer />
@@ -145,14 +93,6 @@ export const DSAlert = () => {
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="success"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -161,14 +101,6 @@ export const DSAlert = () => {
         variant="info"
         title="A very very very looooooooooong title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="info"
-        title="A very very very looooooooooong title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer size={40} />
@@ -186,17 +118,6 @@ export const DSAlert = () => {
         }}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="error"
-        action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -208,17 +129,6 @@ export const DSAlert = () => {
           alert("Action triggered");
         }}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="warning"
-        action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer />
@@ -232,17 +142,6 @@ export const DSAlert = () => {
         }}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="info"
-        action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
-      />
 
       <VSpacer />
 
@@ -254,17 +153,6 @@ export const DSAlert = () => {
           alert("Action triggered");
         }}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-      <VSpacer size={8} />
-      <Alert
-        viewRef={viewRef as React.RefObject<any>}
-        variant="success"
-        action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-        isLoading
       />
 
       <VSpacer size={40} />
@@ -280,14 +168,6 @@ export const DSAlert = () => {
           variant="error"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="error"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
-        />
 
         <VSpacer />
 
@@ -297,14 +177,6 @@ export const DSAlert = () => {
           variant="warning"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="warning"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
-        />
 
         <VSpacer />
 
@@ -313,14 +185,6 @@ export const DSAlert = () => {
           viewRef={viewRef as React.RefObject<any>}
           variant="info"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-        />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="info"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
         />
 
         <VSpacer />
@@ -331,14 +195,6 @@ export const DSAlert = () => {
           variant="success"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="success"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
-        />
 
         <VSpacer />
 
@@ -348,15 +204,6 @@ export const DSAlert = () => {
           variant="info"
           title="Alert title"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-        />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="info"
-          title="Alert title"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
         />
 
         <VSpacer />
@@ -370,18 +217,6 @@ export const DSAlert = () => {
             alert("Action triggered");
           }}
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-        />
-        <VSpacer size={8} />
-        <Alert
-          fullWidth
-          viewRef={viewRef as React.RefObject<any>}
-          variant="info"
-          action="Alert action"
-          onPress={() => {
-            alert("Action triggered");
-          }}
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-          isLoading
         />
       </FullWidthComponent>
 
