@@ -105,10 +105,11 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
 
   return (
     <Pressable
+      accessible={false}
       disabled={disabled}
-      testID="AnimatedCheckboxInput"
       onPress={onPress}
       style={styles.checkBoxWrapper}
+      testID="AnimatedCheckboxInput"
     >
       <View
         style={[

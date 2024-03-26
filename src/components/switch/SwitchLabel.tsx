@@ -78,11 +78,16 @@ export const SwitchLabel = ({
     <Pressable
       disabled={disabled}
       onPress={toggleCheckbox}
-      testID="AnimatedCheckbox"
+      accessibilityRole="switch"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
       style={{
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      testID="SwitchLabel"
     >
       <View
         style={[
