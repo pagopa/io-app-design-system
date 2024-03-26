@@ -246,7 +246,11 @@ export const ListItemRadio = ({
                     />
                   )}
                   {startImage.uri && (
-                    <Image source={startImage} style={styles.imageSize} />
+                    <Image
+                      accessibilityIgnoresInvertColors
+                      source={startImage}
+                      style={styles.imageSize}
+                    />
                   )}
                   {startImage.paymentLogo && (
                     <LogoPayment

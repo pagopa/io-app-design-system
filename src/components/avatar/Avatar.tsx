@@ -92,6 +92,7 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
 
   return (
     <View
+      accessibilityIgnoresInvertColors
       style={[
         styles.avatarWrapper,
         {
@@ -124,6 +125,7 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
           ]}
         >
           <Image
+            accessibilityIgnoresInvertColors
             source={imageSource}
             style={styles.avatarImage}
             onError={onError}

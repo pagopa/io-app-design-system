@@ -83,7 +83,11 @@ export const ModuleIDP = ({
       >
         {name}
       </Text>
-      <Image source={urlLogoIDP} style={styles.idpLogo} />
+      <Image
+        accessibilityIgnoresInvertColors
+        source={urlLogoIDP}
+        style={styles.idpLogo}
+      />
     </PressableModuleBase>
   );
 };
