@@ -211,6 +211,11 @@ export const ListItemRadio = ({
     <SkeletonComponent />
   ) : (
     <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
