@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     name: "payPal",
+    accessibilityLabel: "PayPal",
     align: "center",
     width: 100,
     height: 32,
