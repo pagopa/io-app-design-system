@@ -49,13 +49,18 @@ export const RadioButtonLabel = ({
 
   return (
     <Pressable
-      disabled={disabled}
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
       onPress={toggleRadioButton}
-      testID="AnimatedRadioButton"
       style={{
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      disabled={disabled}
+      testID="AnimatedRadioButton"
     >
       <View
         style={[

@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { hexToRgba, IOColors } from "../../core";
+import { StyleSheet, View } from "react-native";
+import { WithTestID } from "src/utils/types";
+import { IOColors, hexToRgba } from "../../core";
 
 /* Logos */
-import LogoPaymentCardPayPal from "./svg/LogoPaymentCardPayPal";
 import LogoPaymentCardBancomatPay from "./svg/LogoPaymentCardBancomatPay";
+import LogoPaymentCardPayPal from "./svg/LogoPaymentCardPayPal";
 import { SVGCardLogoProps } from "./types";
 
 export const IOPaymentCardLogos = {
@@ -14,13 +15,14 @@ export const IOPaymentCardLogos = {
 
 export type IOLogoPaymentCardType = keyof typeof IOPaymentCardLogos;
 
-type IOPaymentLogos = {
+type IOPaymentLogos = WithTestID<{
   name: IOLogoPaymentCardType;
+  accessibilityLabel: string;
   align: "start" | "center" | "end";
   width?: "100%" | number;
   height?: number;
   debugMode?: boolean;
-};
+}>;
 
 const preserveAspectRatioValues: Record<
   IOPaymentLogos["align"],
@@ -42,12 +44,19 @@ const LogoPaymentCard = ({
   width = "100%",
   height = 32,
   align = "center",
+  accessibilityLabel,
+  testID,
   debugMode = false,
   ...props
 }: IOPaymentLogos) => {
   const LogoElement = IOPaymentCardLogos[name];
   return (
-    <View style={[{ width, height }, debugMode && styles.debugMode]}>
+    <View
+      accessible={true}
+      accessibilityLabel={accessibilityLabel}
+      style={[{ width, height }, debugMode && styles.debugMode]}
+      testID={testID}
+    >
       <LogoElement
         preserveAspectRatio={preserveAspectRatioValues[align]}
         {...props}

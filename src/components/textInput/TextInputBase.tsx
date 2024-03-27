@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Animated, {
   Easing,
+  WithTimingConfig,
   useAnimatedStyle,
   useSharedValue,
   withTiming
@@ -17,7 +18,8 @@ import {
   IOColors,
   IOSpacingScale,
   IOStyles,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
@@ -161,6 +163,8 @@ export const TextInputBase = ({
   isPassword,
   autoFocus
 }: InputTextProps) => {
+  const theme = useIOTheme();
+
   const labelSharedValue = useSharedValue<boolean>(false);
   const [inputStatus, setInputStatus] = React.useState<InputStatus>(
     disabled ? "disabled" : "initial"
@@ -177,7 +181,7 @@ export const TextInputBase = ({
   const boxStyle: ViewStyle = useMemo(() => {
     if (inputStatus === "focused") {
       return {
-        borderColor: IOColors["blueIO-500"],
+        borderColor: IOColors[theme["interactiveElem-default"]],
         borderWidth: 2
       };
     }
@@ -191,20 +195,17 @@ export const TextInputBase = ({
       borderColor: IOColors["grey-200"],
       borderWidth: 1
     };
-  }, [inputStatus]);
+  }, [inputStatus, theme]);
+
+  const easingConf: WithTimingConfig = {
+    duration: 300,
+    easing: Easing.elastic(0.85)
+  };
 
   const animatedLabelProps = useAnimatedStyle(() => ({
-    fontSize: withTiming(labelSharedValue.value ? 12 : 16, {
-      duration: 300,
-      easing: Easing.elastic(0.85)
-    }),
+    fontSize: withTiming(labelSharedValue.value ? 12 : 16, easingConf),
     transform: [
-      {
-        translateY: withTiming(labelSharedValue.value ? -14 : 0, {
-          duration: 300,
-          easing: Easing.elastic(0.85)
-        })
-      }
+      { translateY: withTiming(labelSharedValue.value ? -14 : 0, easingConf) }
     ]
   }));
 
@@ -294,6 +295,8 @@ export const TextInputBase = ({
             labelSharedValue.value = true;
             onFocus?.();
           }}
+          selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret iOS
+          cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={counterLimit}
           onBlur={onBlurHandler}
           value={inputValue}

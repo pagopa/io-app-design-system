@@ -30,9 +30,9 @@ import {
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { LoadingSpinner } from "../loadingSpinner";
 import { HSpacer, VSpacer } from "../spacer";
 import { Caption, H6, LabelSmall } from "../typography";
-import { LoadingSpinner } from "../loadingSpinner";
 
 type ListItemTopElementProps =
   | {
@@ -219,6 +219,7 @@ export const ListItemNav = ({
           {paymentLogoUri && (
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
               <Image
+                accessibilityIgnoresInvertColors
                 source={{ uri: paymentLogoUri }}
                 style={styles.paymentLogoSize}
               />

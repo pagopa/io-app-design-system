@@ -44,6 +44,11 @@ export const IOImage = ({
   );
 
   return (
-    <Image {...imageProps} style={[styles.image, aspectRatioStyle]} alt={alt} />
+    <Image
+      accessibilityIgnoresInvertColors
+      {...imageProps}
+      style={[styles.image, aspectRatioStyle]}
+      alt={alt}
+    />
   );
 };

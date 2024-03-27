@@ -179,6 +179,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -1214,7 +1215,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1521,7 +1522,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1983,6 +1984,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -3018,7 +3020,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -3325,7 +3327,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
