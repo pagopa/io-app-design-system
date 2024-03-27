@@ -56,6 +56,11 @@ export const CheckboxLabel = ({
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      accessibilityRole="checkbox"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
       // This is required to avoid opacity
       // inheritance on Android
       needsOffscreenAlphaCompositing={true}

@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Pressable, PressableProps } from "react-native";
+import { Pressable, PressableProps, StyleSheet } from "react-native";
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  interpolate,
-  withSpring,
-  withTiming,
   Easing,
-  interpolateColor
+  interpolate,
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming
 } from "react-native-reanimated";
-import { IOColors } from "../../core/IOColors";
 import { IOSpringValues } from "../../core/IOAnimations";
-import { AnimatedTick } from "../common/AnimatedTick";
+import { IOColors } from "../../core/IOColors";
 import { IOSwitchVisualParams } from "../../core/IOStyles";
+import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
   checked?: boolean;
@@ -106,6 +106,7 @@ export const AnimatedSwitch = ({ checked, onPress, disabled }: OwnProps) => {
 
   return (
     <Pressable
+      accessibilityRole="switch"
       disabled={disabled}
       testID="AnimatedSwitch"
       onPress={onPress}
