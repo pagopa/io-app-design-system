@@ -237,9 +237,11 @@ const renderPaymentLogosCard = () => (
         size="full"
         image={
           <LogoPaymentCard
+            accessibilityLabel={logoItemName}
             align="start"
             height={32}
             name={logoItemName as IOLogoPaymentCardType}
+            testID={`${logoItemName}-testID`}
           />
         }
       />
@@ -258,11 +260,29 @@ const renderPaymentLogosCard = () => (
           borderWidth: 1
         }}
       >
-        <LogoPaymentCard debugMode height={32} name="payPal" align="start" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="start"
+        />
         <VSpacer size={8} />
-        <LogoPaymentCard debugMode height={32} name="payPal" align="center" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="center"
+        />
         <VSpacer size={8} />
-        <LogoPaymentCard debugMode height={32} name="payPal" align="end" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="end"
+        />
       </View>
     </ComponentViewerBox>
   </View>
