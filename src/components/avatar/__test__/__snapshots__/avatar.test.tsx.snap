@@ -2,6 +2,7 @@
 
 exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
 <View
+  accessibilityIgnoresInvertColors={true}
   style={
     [
       {
@@ -36,6 +37,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
     }
   >
     <Image
+      accessibilityIgnoresInvertColors={true}
       onError={[Function]}
       source={
         {
@@ -55,6 +57,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
 
 exports[`Test Avatar Components Avatar Snapshot 1`] = `
 <View
+  accessibilityIgnoresInvertColors={true}
   style={
     [
       {
@@ -89,6 +92,7 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
     }
   >
     <Image
+      accessibilityIgnoresInvertColors={true}
       onError={[Function]}
       source={
         {

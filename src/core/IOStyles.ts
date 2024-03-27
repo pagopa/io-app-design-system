@@ -370,7 +370,7 @@ export const IOSelectionListItemVisualParams: IOSelectionListItemVisualParams =
     paddingHorizontal: IOVisualCostants.appMarginDefault,
     iconMargin: 8,
     iconSize: 24,
-    actionMargin: 16,
+    actionMargin: 8,
     descriptionMargin: 4
   };
 

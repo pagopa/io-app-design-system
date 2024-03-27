@@ -211,6 +211,11 @@ export const ListItemRadio = ({
     <SkeletonComponent />
   ) : (
     <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
@@ -246,7 +251,11 @@ export const ListItemRadio = ({
                     />
                   )}
                   {startImage.uri && (
-                    <Image source={startImage} style={styles.imageSize} />
+                    <Image
+                      accessibilityIgnoresInvertColors
+                      source={startImage}
+                      style={styles.imageSize}
+                    />
                   )}
                   {startImage.paymentLogo && (
                     <LogoPayment

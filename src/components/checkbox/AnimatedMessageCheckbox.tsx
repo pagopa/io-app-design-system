@@ -55,7 +55,7 @@ export const AnimatedMessageCheckbox = ({
   const isChecked = checked ?? true;
   const { isExperimental } = useIOExperimentalDesign();
 
-  const circleAnimationProgress = useSharedValue(checked ? 1 : 0);
+  const shapeAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
   const backgroundColorOnState =
     IOColors[IOSelectionTickVisualParams.bgColorOnState];
@@ -68,7 +68,7 @@ export const AnimatedMessageCheckbox = ({
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
-    circleAnimationProgress.value = withSpring(
+    shapeAnimationProgress.value = withSpring(
       checked ? 1 : 0,
       IOSpringValues.selection
     );
@@ -77,11 +77,11 @@ export const AnimatedMessageCheckbox = ({
       duration: 250,
       easing: Easing.out(Easing.cubic)
     });
-  }, [checked, circleAnimationProgress, tickAnimationProgress]);
+  }, [checked, shapeAnimationProgress, tickAnimationProgress]);
 
-  const animatedCheckboxCircle = useAnimatedStyle(() => {
-    const scale = interpolate(circleAnimationProgress.value, [0, 1], [0.8, 1]);
-    const opacity = circleAnimationProgress.value;
+  const animatedCheckboxShape = useAnimatedStyle(() => {
+    const scale = interpolate(shapeAnimationProgress.value, [0, 1], [0.8, 1]);
+    const opacity = shapeAnimationProgress.value;
 
     return {
       opacity,
@@ -91,6 +91,8 @@ export const AnimatedMessageCheckbox = ({
 
   return (
     <Pressable
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked }}
       testID="AnimatedMessageCheckboxInput"
       onPress={onPress}
       style={styles.checkBoxWrapper}
@@ -101,7 +103,7 @@ export const AnimatedMessageCheckbox = ({
           {
             backgroundColor: backgroundColorProp
           },
-          animatedCheckboxCircle
+          animatedCheckboxShape
         ]}
       />
       {isChecked && (
