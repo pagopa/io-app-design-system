@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Image, ImageURISource, StyleSheet, View } from "react-native";
+import {
+  Image,
+  ImageRequireSource,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import { Icon } from "../../components/icons";
 import {
   IOColors,
@@ -11,7 +17,10 @@ import {
 import { addCacheTimestampToUri } from "../../utils/image";
 
 type Avatar = {
-  imageSource?: ImageURISource | ReadonlyArray<ImageURISource>;
+  imageSource?:
+    | ImageRequireSource
+    | ImageURISource
+    | ReadonlyArray<ImageURISource>;
   /**
    * @deprecated Only `square` shape variant accepted
    */
