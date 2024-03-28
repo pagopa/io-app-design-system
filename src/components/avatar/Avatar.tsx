@@ -55,11 +55,11 @@ const styles = StyleSheet.create({
   },
   avatarInnerWrapper: {
     overflow: "hidden",
-    resizeMode: "contain",
     backgroundColor: IOColors.white,
     borderCurve: "continuous"
   },
   avatarImage: {
+    resizeMode: "contain",
     height: "100%",
     width: "100%"
   }
