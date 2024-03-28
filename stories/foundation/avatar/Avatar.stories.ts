@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ImageURISource } from "react-native";
 import { Avatar } from "../../../src/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -31,8 +30,9 @@ export const EnitityLogo: Story = {
   args: {
     shape: "circle",
     size: "medium",
-    logoUri:
-      "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png" as ImageURISource
+    logoUri: {
+      uri: "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png"
+    }
   }
 };
 
@@ -42,8 +42,10 @@ export const EnitityLogoWithFallback: Story = {
     shape: "circle",
     size: "medium",
     logoUri: [
-      "https://wrongUri.png",
-      "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png"
-    ] as ReadonlyArray<ImageURISource>
+      { uri: "https://wrongUri.png" },
+      {
+        uri: "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png"
+      }
+    ]
   }
 };
