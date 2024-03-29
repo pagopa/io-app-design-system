@@ -68,7 +68,8 @@ type OwnProps = Props &
 const styles = StyleSheet.create({
   imageSize: {
     width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
   }
 });
 
