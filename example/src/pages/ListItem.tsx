@@ -9,6 +9,7 @@ import {
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadio,
   ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
@@ -99,6 +100,14 @@ export const ListItems = () => {
         ListItemTransaction
       </H2>
       {renderListItemTransaction()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemRadio
+      </H2>
+      {renderListItemRadio()}
       <H2
         color={theme["textHeading-default"]}
         weight={"SemiBold"}
@@ -664,6 +673,33 @@ const renderListItemTransaction = () => (
         onPress={onButtonPress}
         transactionStatus="success"
       />
+    </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemRadio = () => (
+  <ComponentViewerBox name="ListItemRadio">
+    <View>
+      <ListItemRadio value="Item (selected)" selected={true} />
+      <Divider />
+      <ListItemRadio value="Item" selected={false} />
+      <Divider />
+      <ListItemRadio
+        value="Item with square icon"
+        selected={false}
+        startImage={{
+          uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+        }}
+      />
+      <Divider />
+      <ListItemRadio
+        value="Item with rectangular icon"
+        selected={false}
+        startImage={{
+          uri: "https://raw.githubusercontent.com/slaterjohn/payment-logos/master/Rounded%20Corners/PNG/medium/visa.png?raw=true"
+        }}
+      />
+      <Divider />
     </View>
   </ComponentViewerBox>
 );
