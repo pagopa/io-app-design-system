@@ -41,13 +41,13 @@ export type ButtonOutline = WithTestID<{
   label: string;
   fullWidth?: boolean;
   disabled?: boolean;
+  onPress: (event: GestureResponderEvent) => void;
   // Icons
   icon?: IOIcons;
   iconPosition?: "start" | "end";
   // Accessibility
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
   accessibilityHint?: string;
-  onPress: (event: GestureResponderEvent) => void;
 }>;
 
 type ColorStates = {
@@ -328,7 +328,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
     return (
       <Pressable
         ref={ref}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
         testID={testID}

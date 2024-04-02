@@ -88,7 +88,7 @@ export type ButtonSolidProps = WithTestID<{
    * @default start
    */
   iconPosition?: "start" | "end";
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
   accessibilityHint?: string;
   onPress: (event: GestureResponderEvent) => void;
 }>;
@@ -263,7 +263,8 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
         testID={testID}
         ref={ref}
         accessible={true}
-        accessibilityLabel={accessibilityLabel}
+        // Using || operator because empty string is not an accepted value
+        accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityState={{ busy: loading }}
         accessibilityRole={"button"}
