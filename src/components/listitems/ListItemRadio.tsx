@@ -62,7 +62,7 @@ const DISABLED_OPACITY = 0.5;
 type OwnProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 
 const styles = StyleSheet.create({
@@ -87,6 +87,8 @@ export const ListItemRadio = ({
   selected,
   disabled,
   onValueChange,
+  accessibilityLabel,
+  accessibilityHint,
   loadingProps,
   testID
 }: OwnProps) => {
@@ -217,6 +219,11 @@ export const ListItemRadio = ({
         checked: selected ?? toggleValue,
         disabled: !!disabled
       }}
+      accessibilityLabel={accessibilityLabel || value}
+      accessibilityHint={
+        accessibilityHint ||
+        (typeof description === "string" ? description : undefined)
+      }
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
