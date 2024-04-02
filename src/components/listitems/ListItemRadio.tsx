@@ -220,10 +220,7 @@ export const ListItemRadio = ({
         disabled: !!disabled
       }}
       accessibilityLabel={accessibilityLabel || value}
-      accessibilityHint={
-        accessibilityHint ||
-        (typeof description === "string" ? description : undefined)
-      }
+      accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}

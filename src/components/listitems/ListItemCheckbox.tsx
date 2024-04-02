@@ -129,8 +129,8 @@ export const ListItemCheckbox = ({
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
       accessible={true}
-      accessibilityLabel={accessibilityLabel || value}
-      accessibilityHint={accessibilityHint || description}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="checkbox"
       accessibilityState={{
         checked: selected ?? toggleValue,

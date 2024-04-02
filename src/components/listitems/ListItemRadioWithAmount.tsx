@@ -50,9 +50,7 @@ export const ListItemRadioWithAmount = ({
     <PressableListItemBase
       onPress={pressHandler}
       accessibilityRole="radio"
-      accessibilityLabel={
-        accessibilityLabel || `${label}, ${formattedAmountString}`
-      }
+      accessibilityLabel={accessibilityLabel}
       accessibilityState={{
         checked: selected ?? toggleValue
       }}
