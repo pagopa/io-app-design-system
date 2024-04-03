@@ -73,6 +73,12 @@ export const ListItemCheckbox = ({
   // Theme
   const theme = useIOTheme();
 
+  // Accessibility
+  // Comma = Small pause when announcing content
+  const fallbackAccessibilityLabel = description
+    ? `${value}, ${description}`
+    : value;
+
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
     pressed: IOColors[theme["listItem-pressed"]]
@@ -129,7 +135,7 @@ export const ListItemCheckbox = ({
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel || fallbackAccessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole="checkbox"
       accessibilityState={{
