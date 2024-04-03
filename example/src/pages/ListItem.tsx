@@ -130,7 +130,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -138,7 +137,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value="A looong looooong looooooooong looooooooooong title"
@@ -146,7 +144,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
 
         <ListItemNav
@@ -155,7 +152,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -164,7 +160,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -174,7 +169,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -183,7 +177,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -192,7 +185,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           loading
         />
         <ListItemNav
@@ -201,7 +193,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           hideChevron
         />
         <ListItemNav
@@ -210,7 +201,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -224,7 +214,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -239,7 +228,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             dateValue: "14/04/2024"
           }}

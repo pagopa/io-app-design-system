@@ -50,7 +50,7 @@ type ListItemNavPartialProps = WithTestID<{
   loading?: boolean;
   onPress: (event: GestureResponderEvent) => void;
   // Accessibility
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
   hideChevron?: boolean;
   topElement?: ListItemTopElementProps;
 }>;
@@ -197,6 +197,7 @@ export const ListItemNav = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       accessible={true}
+      accessibilityState={{ busy: loading }}
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
       testID={testID}
