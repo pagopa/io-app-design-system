@@ -57,9 +57,7 @@ type Props = WithTestID<{
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type ListItemRadioProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
@@ -91,7 +89,7 @@ export const ListItemRadio = ({
   accessibilityHint,
   loadingProps,
   testID
-}: OwnProps) => {
+}: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -219,7 +217,7 @@ export const ListItemRadio = ({
         checked: selected ?? toggleValue,
         disabled: !!disabled
       }}
-      accessibilityLabel={accessibilityLabel || value}
+      accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
