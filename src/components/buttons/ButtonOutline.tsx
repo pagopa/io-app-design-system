@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -36,19 +36,21 @@ import { HSpacer } from "../spacer/Spacer";
 import { buttonTextFontSize } from "../typography";
 
 type ColorButtonOutline = "primary" | "contrast" | "danger";
-export type ButtonOutline = WithTestID<{
-  color?: ColorButtonOutline;
-  label: string;
-  fullWidth?: boolean;
-  disabled?: boolean;
-  onPress: (event: GestureResponderEvent) => void;
-  // Icons
-  icon?: IOIcons;
-  iconPosition?: "start" | "end";
-  // Accessibility
-  accessibilityLabel?: string;
-  accessibilityHint?: string;
-}>;
+export type ButtonOutline = WithTestID<
+  {
+    color?: ColorButtonOutline;
+    label: string;
+    fullWidth?: boolean;
+    // Icons
+    icon?: IOIcons;
+    iconPosition?: "start" | "end";
+    // Events
+    onPress: (event: GestureResponderEvent) => void;
+  } & Pick<
+    ComponentProps<typeof Pressable>,
+    "disabled" | "accessibilityLabel" | "accessibilityHint"
+  >
+>;
 
 type ColorStates = {
   border: {
