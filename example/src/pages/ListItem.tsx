@@ -698,8 +698,8 @@ const renderListItemRadioWithAmount = () => (
       <ListItemRadioWithAmount
         label="Banca Intesa"
         formattedAmountString={"2,50 €"}
+        isSuggested
         suggestReason="Perché costa meno"
-        isSuggested={true}
       />
 
       <Divider />

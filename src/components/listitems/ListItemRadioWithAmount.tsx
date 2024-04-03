@@ -17,11 +17,11 @@ export type ListItemRadioWithAmountProps = {
   accessibilityLabel?: string;
 } & (
   | {
-      isSuggested: false;
-      suggestReason: never;
+      isSuggested?: false;
+      suggestReason?: never;
     }
   | {
-      isSuggested: true;
+      isSuggested?: true;
       suggestReason: string;
     }
 );
@@ -30,7 +30,7 @@ export const ListItemRadioWithAmount = ({
   selected,
   label,
   accessibilityLabel,
-  isSuggested,
+  isSuggested = false,
   suggestReason,
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
