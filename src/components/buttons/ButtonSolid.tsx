@@ -267,7 +267,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
         accessibilityHint={accessibilityHint}
         accessibilityState={{
           busy: loading,
-          disabled
+          disabled: disabled || false
         }}
         accessibilityRole={"button"}
         onPress={handleOnPress}
