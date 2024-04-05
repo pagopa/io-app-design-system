@@ -7,6 +7,10 @@ const APP_ROUTES = {
     LOADERS: { route: "DESIGN_SYSTEM_LOADERS", title: "Loaders" },
     ICONS: { route: "DESIGN_SYSTEM_ICONS", title: "Icons" },
     PICTOGRAMS: { route: "DESIGN_SYSTEM_PICTOGRAMS", title: "Pictograms" },
+    ANIMATED_PICTOGRAMS: {
+      route: "DESIGN_SYSTEM_ANIM_PICTOGRAMS",
+      title: "Animated Pictograms ✨"
+    },
     LOGOS: { route: "DESIGN_SYSTEM_LOGOS", title: "Logos" }
   },
   COMPONENTS: {
