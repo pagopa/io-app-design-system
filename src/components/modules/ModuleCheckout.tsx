@@ -35,7 +35,7 @@ export type ModuleCheckoutProps = ModuleCheckoutPartialProps & {
   ctaText?: string;
 };
 
-type CtaOnlyProps = { text?: string };
+type ActionOnlyProps = { text?: string };
 
 // ---------------- component ----------------
 
@@ -75,7 +75,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     return (
       <PressableModuleBase onPress={props.onPress}>
         <ModuleBaseContent />
-        {props.ctaText && <CTA text={props.ctaText} />}
+        {props.ctaText && <ModuleAction text={props.ctaText} />}
       </PressableModuleBase>
     );
   }
@@ -89,7 +89,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
 
 // ---------------- sub-components----------------
 
-const CTA = ({ text }: CtaOnlyProps) => (
+const ModuleAction = ({ text }: ActionOnlyProps) => (
   <View pointerEvents="none">
     <ButtonLink
       label={text ?? ""}
@@ -99,7 +99,7 @@ const CTA = ({ text }: CtaOnlyProps) => (
   </View>
 );
 
-const LoadingVersion = ({ text }: CtaOnlyProps) => (
+const LoadingVersion = ({ text }: ActionOnlyProps) => (
   <View style={IOModuleStyles.button}>
     <View style={styles.rowCenter}>
       <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
@@ -110,7 +110,7 @@ const LoadingVersion = ({ text }: CtaOnlyProps) => (
         <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
       </View>
     </View>
-    <CTA text={text} />
+    <ModuleAction text={text} />
   </View>
 );
 

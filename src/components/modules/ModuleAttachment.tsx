@@ -23,11 +23,11 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { Icon } from "../icons";
-import { LabelSmall } from "../typography";
-import { VSpacer } from "../spacer";
 import { Badge } from "../badge";
+import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { VSpacer } from "../spacer";
+import { LabelSmall } from "../typography";
 
 type PartialProps = WithTestID<{
   title: string;
@@ -243,6 +243,7 @@ const SkeletonComponent = ({
   <View
     style={styles.button}
     accessible={true}
+    accessibilityState={{ busy: true }}
     accessibilityLabel={loadingAccessibilityLabel}
   >
     <View style={styles.innerContent}>
