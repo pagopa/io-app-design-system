@@ -1,23 +1,28 @@
 import * as React from "react";
-import { GestureResponderEvent, Pressable } from "react-native";
+import { PropsWithChildren } from "react";
+import { Pressable } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOModuleIDPSavedVSpacing, IOModuleStyles } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { useModuleSpringAnimation } from "./hooks/useModuleSpringAnimation";
 
-export type PressableModuleBaseProps = WithTestID<{
-  accessibilityLabel?: string;
-  onPress?: (event: GestureResponderEvent) => void;
-  withLooseSpacing?: boolean;
-}>;
+export type PressableModuleBaseProps = WithTestID<
+  {
+    withLooseSpacing?: boolean;
+  } & Pick<
+    React.ComponentProps<typeof Pressable>,
+    "onPress" | "accessibilityLabel" | "accessibilityHint"
+  >
+>;
 
 export const PressableModuleBase = ({
   onPress,
-  testID,
-  accessibilityLabel,
   withLooseSpacing = false,
+  accessibilityLabel,
+  accessibilityHint,
+  testID,
   children
-}: React.PropsWithChildren<PressableModuleBaseProps>) => {
+}: PropsWithChildren<PressableModuleBaseProps>) => {
   const { handlePressIn, handlePressOut, animatedStyle } =
     useModuleSpringAnimation();
   return (
@@ -25,10 +30,11 @@ export const PressableModuleBase = ({
       onPress={onPress}
       testID={testID}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
     >
       <Animated.View

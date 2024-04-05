@@ -172,6 +172,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonExtendedOutline Sn
 
 exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] = `
 <View
+  accessibilityLabel="label"
   accessibilityRole="button"
   accessibilityState={
     {
@@ -1068,6 +1069,7 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
 
 exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
 <View
+  accessibilityLabel="label"
   accessibilityRole="button"
   accessibilityState={
     {
