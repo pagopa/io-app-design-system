@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
   Extrapolate,
@@ -9,7 +9,13 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
+import {
+  IOColors,
+  IOScaleValues,
+  IOSpringValues,
+  hexToRgba,
+  useIOExperimentalDesign
+} from "../../core";
 import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
@@ -35,6 +41,11 @@ export type TabItem = WithTestID<{
 }>;
 
 type ColorStates = {
+  border: {
+    default?: IOColors;
+    selected: IOColors;
+    disabled?: IOColors;
+  };
   background: {
     default: string;
     selected: string;
@@ -49,18 +60,64 @@ type ColorStates = {
 
 const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   light: {
+    border: {
+      default: "grey-300",
+      selected: "blueIO-500",
+      disabled: "grey-300"
+    },
     background: {
-      default: "#ffffff00",
-      selected: IOColors["grey-50"],
-      pressed: IOColors["grey-50"]
+      default: IOColors.white,
+      selected: IOColors["blueIO-50"],
+      pressed: IOColors["blueIO-50"]
     },
     foreground: {
       default: "black",
-      selected: "black",
+      selected: "blueIO-500",
       disabled: "grey-700"
     }
   },
   dark: {
+    border: {
+      selected: "grey-300"
+    },
+    background: {
+      default: "#ffffff00",
+      selected: IOColors.white,
+      pressed: IOColors.white
+    },
+    foreground: {
+      default: "white",
+      selected: "black",
+      disabled: "white"
+    }
+  }
+};
+
+const mapLegacyColorStates: Record<
+  NonNullable<TabItem["color"]>,
+  ColorStates
+> = {
+  light: {
+    border: {
+      default: "grey-300",
+      selected: "blue",
+      disabled: "grey-300"
+    },
+    background: {
+      default: IOColors.white,
+      selected: IOColors.white,
+      pressed: IOColors.blue
+    },
+    foreground: {
+      default: "black",
+      selected: "blue",
+      disabled: "grey-700"
+    }
+  },
+  dark: {
+    border: {
+      selected: "grey-300"
+    },
     background: {
       default: "#ffffff00",
       selected: IOColors.white,
@@ -93,12 +150,26 @@ const TabItem = ({
     onPressOut
   } = useSpringPressProgressValue(IOSpringValues.selection);
 
-  const colors = mapColorStates[color];
+  const { isExperimental } = useIOExperimentalDesign();
+  const colors = useMemo(
+    () =>
+      isExperimental ? mapColorStates[color] : mapLegacyColorStates[color],
+    [isExperimental, color]
+  );
 
-  const foregroundColor =
-    colors.foreground[
-      selected ? "selected" : disabled ? "disabled" : "default"
-    ];
+  const foregroundColor = useMemo(
+    () =>
+      colors.foreground[
+        selected ? "selected" : disabled ? "disabled" : "default"
+      ],
+    [selected, disabled]
+  );
+
+  const borderColor = useMemo(
+    () =>
+      colors.border[selected ? "selected" : disabled ? "disabled" : "default"],
+    [selected, disabled]
+  );
 
   const opaquePressedBackgroundColor = hexToRgba(
     colors.background.pressed,
@@ -162,6 +233,10 @@ const TabItem = ({
     >
       <Animated.View
         style={[
+          borderColor && {
+            borderColor: IOColors[borderColor],
+            borderWidth: 1
+          },
           styles.container,
           animatedStyle,
           fullWidth && styles.fullWidth,

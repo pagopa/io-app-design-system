@@ -40,7 +40,6 @@ export const TabNavigationScreen = () => {
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 onPress={handlePress}
               />
             </View>
@@ -59,7 +58,6 @@ export const TabNavigationScreen = () => {
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 selected={true}
                 onPress={handlePress}
               />
@@ -80,7 +78,6 @@ export const TabNavigationScreen = () => {
                 accessibilityLabel="Label tab"
                 disabled
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 onPress={handlePress}
               />
             </View>
@@ -103,7 +100,6 @@ export const TabNavigationScreen = () => {
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 color="dark"
                 onPress={handlePress}
               />
@@ -124,7 +120,6 @@ export const TabNavigationScreen = () => {
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 color="dark"
                 selected={true}
                 onPress={handlePress}
@@ -145,7 +140,6 @@ export const TabNavigationScreen = () => {
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon={"starEmpty"}
-                iconSelected={"starFilled"}
                 color="dark"
                 disabled={true}
                 onPress={handlePress}
@@ -182,31 +176,26 @@ export const TabNavigationScreen = () => {
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
         </TabNavigation>
       </View>
@@ -238,31 +227,26 @@ export const TabNavigationScreen = () => {
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
             icon="starEmpty"
-            iconSelected="starFilled"
           />
         </TabNavigation>
       </View>
