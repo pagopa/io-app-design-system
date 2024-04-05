@@ -7,7 +7,6 @@ import {
   View
 } from "react-native";
 import Placeholder from "rn-placeholder";
-import { WithTestID } from "src/utils/types";
 import {
   IOListItemVisualParams,
   IOModuleStyles,
@@ -15,6 +14,7 @@ import {
   IOStyles,
   useIOTheme
 } from "../../core";
+import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
