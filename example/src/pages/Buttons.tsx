@@ -60,7 +60,7 @@ export const Buttons = () => {
       />
       <ComponentViewerBox name="ButtonSolid · Primary Variant (using Pressable API)">
         <ButtonSolid
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           onPress={onButtonPress}
         />
@@ -68,7 +68,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonSolid
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="qrCode"
           onPress={onButtonPress}
@@ -77,7 +77,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonSolid
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="qrCode"
           iconPosition="end"
@@ -88,7 +88,7 @@ export const Buttons = () => {
 
         <View style={{ alignSelf: "center" }}>
           <ButtonSolid
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (centered)"}
             onPress={onButtonPress}
           />
@@ -97,7 +97,7 @@ export const Buttons = () => {
       <ComponentViewerBox name="ButtonSolid · Primary, Full width">
         <ButtonSolid
           fullWidth
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button (full width)"}
           onPress={onButtonPress}
         />
@@ -109,7 +109,7 @@ export const Buttons = () => {
         <View>
           <ButtonSolid
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             onPress={onButtonPress}
           />
@@ -118,7 +118,7 @@ export const Buttons = () => {
 
           <ButtonSolid
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             icon="qrCode"
             onPress={onButtonPress}
@@ -132,14 +132,14 @@ export const Buttons = () => {
             color="danger"
             label={"Danger button"}
             onPress={onButtonPress}
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
           />
 
           <VSpacer size={16} />
 
           <ButtonSolid
             color="danger"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button"}
             icon="trashcan"
             onPress={onButtonPress}
@@ -149,7 +149,7 @@ export const Buttons = () => {
 
           <ButtonSolid
             color="danger"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button"}
             icon="trashcan"
             iconPosition="end"
@@ -162,7 +162,7 @@ export const Buttons = () => {
           <ButtonSolid
             fullWidth
             color="danger"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Danger button (full width)"}
             onPress={onButtonPress}
           />
@@ -174,7 +174,7 @@ export const Buttons = () => {
           <ButtonSolid
             color="danger"
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Danger button (disabled)"}
             onPress={onButtonPress}
           />
@@ -184,7 +184,7 @@ export const Buttons = () => {
           <ButtonSolid
             color="danger"
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Danger button (disabled)"}
             icon="trashcan"
             onPress={onButtonPress}
@@ -204,7 +204,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -214,7 +214,7 @@ export const Buttons = () => {
               label={"Contrast button"}
               icon="add"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -225,7 +225,7 @@ export const Buttons = () => {
               icon="add"
               iconPosition="end"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -240,7 +240,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -256,7 +256,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -272,7 +272,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button (disabled)"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -283,7 +283,7 @@ export const Buttons = () => {
               label={"Contrast button (disabled)"}
               icon="add"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -300,7 +300,7 @@ export const Buttons = () => {
       </H2>
       <ComponentViewerBox name="ButtonOutline · Primary variant (using Pressable API)">
         <ButtonOutline
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           onPress={onButtonPress}
         />
@@ -308,7 +308,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonOutline
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="arrowLeft"
           onPress={onButtonPress}
@@ -317,7 +317,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonOutline
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="arrowRight"
           iconPosition="end"
@@ -328,7 +328,7 @@ export const Buttons = () => {
 
         <View style={{ alignSelf: "center" }}>
           <ButtonOutline
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (centered)"}
             onPress={onButtonPress}
           />
@@ -338,7 +338,7 @@ export const Buttons = () => {
         <View>
           <ButtonOutline
             fullWidth
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (full width)"}
             onPress={onButtonPress}
           />
@@ -348,7 +348,7 @@ export const Buttons = () => {
         <View>
           <ButtonOutline
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             onPress={onButtonPress}
           />
@@ -357,7 +357,7 @@ export const Buttons = () => {
 
           <ButtonOutline
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             icon="arrowRight"
             iconPosition="end"
@@ -378,7 +378,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -388,7 +388,7 @@ export const Buttons = () => {
               label={"Contrast button"}
               icon="arrowLeft"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -399,7 +399,7 @@ export const Buttons = () => {
               icon="arrowRight"
               iconPosition="end"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -414,7 +414,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -430,7 +430,7 @@ export const Buttons = () => {
               color="contrast"
               label={"Contrast button (disabled)"}
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
 
             <VSpacer size={16} />
@@ -442,7 +442,7 @@ export const Buttons = () => {
               icon="arrowRight"
               iconPosition="end"
               onPress={onButtonPress}
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
             />
           </View>
         </ComponentViewerBox>
@@ -459,7 +459,7 @@ export const Buttons = () => {
       </H2>
       <ComponentViewerBox name="ButtonLink · Primary variant (using Pressable API)">
         <ButtonLink
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           onPress={onButtonPress}
         />
@@ -467,7 +467,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonLink
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="starEmpty"
           onPress={onButtonPress}
@@ -476,7 +476,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonLink
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Primary button"}
           icon="starEmpty"
           iconPosition="end"
@@ -487,7 +487,7 @@ export const Buttons = () => {
 
         <View style={{ alignSelf: "center" }}>
           <ButtonLink
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (centered)"}
             onPress={onButtonPress}
           />
@@ -497,7 +497,7 @@ export const Buttons = () => {
         <View>
           <ButtonLink
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             onPress={onButtonPress}
           />
@@ -506,7 +506,7 @@ export const Buttons = () => {
 
           <ButtonLink
             disabled
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             label={"Primary button (disabled)"}
             icon="starEmpty"
             iconPosition="end"
@@ -525,7 +525,7 @@ export const Buttons = () => {
           <View>
             <ButtonLink
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
               label={"Primary button"}
               onPress={onButtonPress}
             />
@@ -534,7 +534,7 @@ export const Buttons = () => {
 
             <ButtonLink
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
               label={"Primary button"}
               icon="starEmpty"
               onPress={onButtonPress}
@@ -544,7 +544,7 @@ export const Buttons = () => {
 
             <ButtonLink
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
               label={"Primary button"}
               icon="starEmpty"
               iconPosition="end"
@@ -556,7 +556,7 @@ export const Buttons = () => {
             <View style={{ alignSelf: "center" }}>
               <ButtonLink
                 color="contrast"
-                accessibilityLabel="Tap to trigger test alert"
+                accessibilityHint="Tap to trigger test alert"
                 label={"Primary button (centered)"}
                 onPress={onButtonPress}
               />
@@ -573,7 +573,7 @@ export const Buttons = () => {
             <ButtonLink
               disabled
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
               label={"Primary button (disabled)"}
               onPress={onButtonPress}
             />
@@ -583,7 +583,7 @@ export const Buttons = () => {
             <ButtonLink
               disabled
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityHint="Tap to trigger test alert"
               label={"Primary button (disabled)"}
               icon="starEmpty"
               iconPosition="end"
@@ -605,7 +605,8 @@ export const Buttons = () => {
       <ComponentViewerBox name="IconButton · Primary variant">
         <View style={IOStyles.row}>
           <IconButton
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
+            accessibilityLabel="Search"
             icon="search"
             onPress={onButtonPress}
           />
@@ -613,7 +614,8 @@ export const Buttons = () => {
           <HSpacer size={16} />
 
           <IconButton
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
+            accessibilityLabel="Help"
             icon="help"
             onPress={onButtonPress}
           />
@@ -621,7 +623,8 @@ export const Buttons = () => {
           <HSpacer size={16} />
 
           <IconButton
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
+            accessibilityLabel="Help"
             icon="help"
             disabled
             onPress={onButtonPress}
@@ -632,8 +635,9 @@ export const Buttons = () => {
       <ComponentViewerBox name="IconButton · Neutral variant">
         <View style={IOStyles.row}>
           <IconButton
+            accessibilityLabel="Search"
             color="neutral"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             icon="search"
             onPress={onButtonPress}
           />
@@ -641,8 +645,9 @@ export const Buttons = () => {
           <HSpacer size={16} />
 
           <IconButton
+            accessibilityLabel="Help"
             color="neutral"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             onPress={onButtonPress}
           />
@@ -650,8 +655,9 @@ export const Buttons = () => {
           <HSpacer size={16} />
 
           <IconButton
+            accessibilityLabel="Help"
             color="neutral"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             disabled
             onPress={onButtonPress}
@@ -670,7 +676,8 @@ export const Buttons = () => {
           <View style={IOStyles.row}>
             <IconButton
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Search"
+              accessibilityHint="Tap to trigger test alert"
               icon="search"
               onPress={onButtonPress}
             />
@@ -679,7 +686,8 @@ export const Buttons = () => {
 
             <IconButton
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Help"
+              accessibilityHint="Tap to trigger test alert"
               icon="help"
               onPress={onButtonPress}
             />
@@ -688,7 +696,8 @@ export const Buttons = () => {
 
             <IconButton
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Help"
+              accessibilityHint="Tap to trigger test alert"
               icon="help"
               disabled
               onPress={onButtonPress}
@@ -711,7 +720,8 @@ export const Buttons = () => {
         <View style={IOStyles.row}>
           <IconButtonSolid
             color="primary"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Go down"
+            accessibilityHint="Tap to trigger test alert"
             icon="arrowBottom"
             onPress={() => {
               alert("Action triggered");
@@ -722,7 +732,8 @@ export const Buttons = () => {
 
           <IconButtonSolid
             color="primary"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Go down"
+            accessibilityHint="Tap to trigger test alert"
             icon="arrowBottom"
             disabled
             onPress={() => {
@@ -743,7 +754,8 @@ export const Buttons = () => {
           <View style={IOStyles.row}>
             <IconButtonSolid
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Go down"
+              accessibilityHint="Tap to trigger test alert"
               icon="arrowBottom"
               onPress={onButtonPress}
             />
@@ -752,7 +764,8 @@ export const Buttons = () => {
 
             <IconButtonSolid
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Go down"
+              accessibilityHint="Tap to trigger test alert"
               icon="arrowBottom"
               disabled
               onPress={onButtonPress}
@@ -773,7 +786,8 @@ export const Buttons = () => {
       <ComponentViewerBox name="IconButtonContained · Primary variant">
         <View style={IOStyles.row}>
           <IconButtonContained
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             onPress={() => {
               alert("Action triggered");
@@ -781,7 +795,8 @@ export const Buttons = () => {
           />
 
           <IconButtonContained
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             disabled
             onPress={() => {
@@ -795,7 +810,8 @@ export const Buttons = () => {
         <View style={IOStyles.row}>
           <IconButtonContained
             color="neutral"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             onPress={() => {
               alert("Action triggered");
@@ -804,7 +820,8 @@ export const Buttons = () => {
 
           <IconButtonContained
             color="neutral"
-            accessibilityLabel="Tap to trigger test alert"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
             icon="help"
             disabled
             onPress={() => {
@@ -825,14 +842,16 @@ export const Buttons = () => {
           <View style={IOStyles.row}>
             <IconButtonContained
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Help"
+              accessibilityHint="Tap to trigger test alert"
               icon="help"
               onPress={onButtonPress}
             />
 
             <IconButtonContained
               color="contrast"
-              accessibilityLabel="Tap to trigger test alert"
+              accessibilityLabel="Help"
+              accessibilityHint="Tap to trigger test alert"
               icon="help"
               disabled
               onPress={onButtonPress}
@@ -884,7 +903,7 @@ export const Buttons = () => {
 
       <ComponentViewerBox name="CalendarEventButton (using new ButtonOutline)">
         <ButtonOutline
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Aggiungi promemoria"}
           icon="add"
           onPress={onButtonPress}
@@ -893,7 +912,7 @@ export const Buttons = () => {
         <VSpacer size={16} />
 
         <ButtonOutline
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Aggiunto"}
           icon="checkTickBig"
           onPress={onButtonPress}
@@ -903,7 +922,7 @@ export const Buttons = () => {
       <ComponentViewerBox name="Login buttons">
         <ButtonSolid
           fullWidth
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Entra con SPID"}
           icon="profile"
           onPress={onButtonPress}
@@ -911,7 +930,7 @@ export const Buttons = () => {
         <VSpacer size={8} />
         <ButtonSolid
           fullWidth
-          accessibilityLabel="Tap to trigger test alert"
+          accessibilityHint="Tap to trigger test alert"
           label={"Entra con CIE"}
           icon="cie"
           onPress={onButtonPress}
@@ -930,7 +949,7 @@ const LoadingSolidButtonExample = () => {
       <ButtonSolid
         fullWidth
         loading={isEnabled}
-        accessibilityLabel="Tap to trigger test alert"
+        accessibilityHint="Tap to trigger test alert"
         label={"Primary button"}
         onPress={() => setIsEnabled(true)}
       />

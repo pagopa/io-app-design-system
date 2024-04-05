@@ -931,11 +931,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -1348,11 +1348,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -2736,11 +2736,11 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -3153,11 +3153,11 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
