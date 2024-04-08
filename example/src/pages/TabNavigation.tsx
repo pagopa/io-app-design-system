@@ -410,7 +410,7 @@ const TabNavigationState = ({ children }: TabNavigationStateProps) => {
 
 const styles = StyleSheet.create({
   default: {
-    backgroundColor: IOColors["blueIO-100"]
+    backgroundColor: IOColors.white
   },
   dark: {
     backgroundColor: IOColors["blueIO-850"]

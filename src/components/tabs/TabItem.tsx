@@ -14,7 +14,7 @@ import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressPro
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
-import { LabelHeader } from "../typography/LabelHeader";
+import { LabelSmallAlt } from "../typography";
 
 type ColorMode = "light" | "dark";
 
@@ -55,8 +55,8 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   light: {
     background: {
       default: IOColors.white,
-      selected: IOColors["grey-50"],
-      pressed: IOColors["grey-50"]
+      selected: IOColors["blueIO-50"],
+      pressed: IOColors["blueIO-50"]
     },
     foreground: {
       default: "grey-850",
@@ -189,7 +189,7 @@ const TabItem = ({
             <HSpacer size={4} />
           </>
         )}
-        <LabelHeader color={foregroundColor}>{label}</LabelHeader>
+        <LabelSmallAlt color={foregroundColor}>{label}</LabelSmallAlt>
       </Animated.View>
     </Pressable>
   );
