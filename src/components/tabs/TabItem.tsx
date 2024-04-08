@@ -45,19 +45,27 @@ type ColorStates = {
     selected: IOColors;
     disabled: IOColors;
   };
+  border: {
+    default: string;
+    selected: string;
+  };
 };
 
 const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   light: {
     background: {
-      default: "#ffffff00",
+      default: IOColors.white,
       selected: IOColors["grey-50"],
       pressed: IOColors["grey-50"]
     },
     foreground: {
-      default: "black",
-      selected: "black",
+      default: "grey-850",
+      selected: "blueIO-500",
       disabled: "grey-700"
+    },
+    border: {
+      default: IOColors["grey-300"],
+      selected: IOColors["blueIO-500"]
     }
   },
   dark: {
@@ -70,6 +78,10 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
       default: "white",
       selected: "black",
       disabled: "white"
+    },
+    border: {
+      default: "#ffffff00",
+      selected: "#ffffff00"
     }
   }
 };
@@ -99,6 +111,8 @@ const TabItem = ({
     colors.foreground[
       selected ? "selected" : disabled ? "disabled" : "default"
     ];
+
+  const borderColor = colors.border?.[selected ? "selected" : "default"];
 
   const opaquePressedBackgroundColor = hexToRgba(
     colors.background.pressed,
@@ -165,7 +179,8 @@ const TabItem = ({
           styles.container,
           animatedStyle,
           fullWidth && styles.fullWidth,
-          disabled && styles.disabled
+          disabled && styles.disabled,
+          { borderColor }
         ]}
       >
         {activeIcon && (
@@ -189,12 +204,13 @@ const styles = StyleSheet.create({
     borderRadius: 64,
     borderCurve: "continuous",
     justifyContent: "center",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
+    borderWidth: 1
   },
   fullWidth: {
     alignSelf: "auto"
   },
-  disabled: { opacity: 0.5 }
+  disabled: { opacity: 0.3 }
 });
 
 export { TabItem };
