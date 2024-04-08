@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
   Extrapolate,
@@ -9,7 +9,13 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
+import {
+  IOColors,
+  IOScaleValues,
+  IOSpringValues,
+  hexToRgba,
+  useIOExperimentalDesign
+} from "../../core";
 import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
@@ -35,6 +41,11 @@ export type TabItem = WithTestID<{
 }>;
 
 type ColorStates = {
+  border: {
+    default: string;
+    selected: string;
+    disabled: string;
+  };
   background: {
     default: string;
     selected: string;
@@ -49,18 +60,68 @@ type ColorStates = {
 
 const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   light: {
+    border: {
+      default: IOColors["grey-300"],
+      selected: IOColors["blueIO-500"],
+      disabled: IOColors["grey-300"]
+    },
     background: {
-      default: "#ffffff00",
-      selected: IOColors["grey-50"],
-      pressed: IOColors["grey-50"]
+      default: IOColors.white,
+      selected: IOColors["blueIO-50"],
+      pressed: IOColors.white
     },
     foreground: {
       default: "black",
-      selected: "black",
+      selected: "blueIO-500",
       disabled: "grey-700"
     }
   },
   dark: {
+    border: {
+      default: hexToRgba(IOColors.white, 0),
+      selected: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
+    },
+    background: {
+      default: hexToRgba(IOColors.white, 0),
+      selected: IOColors.white,
+      pressed: IOColors.white
+    },
+    foreground: {
+      default: "white",
+      selected: "black",
+      disabled: "white"
+    }
+  }
+};
+
+const mapLegacyColorStates: Record<
+  NonNullable<TabItem["color"]>,
+  ColorStates
+> = {
+  light: {
+    border: {
+      default: IOColors["grey-300"],
+      selected: IOColors.blue,
+      disabled: hexToRgba(IOColors.white)
+    },
+    background: {
+      default: IOColors.white,
+      selected: hexToRgba(IOColors.blue, 0.1),
+      pressed: IOColors.white
+    },
+    foreground: {
+      default: "black",
+      selected: "blue",
+      disabled: "grey-700"
+    }
+  },
+  dark: {
+    border: {
+      default: hexToRgba(IOColors.white, 0),
+      selected: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
+    },
     background: {
       default: "#ffffff00",
       selected: IOColors.white,
@@ -93,12 +154,26 @@ const TabItem = ({
     onPressOut
   } = useSpringPressProgressValue(IOSpringValues.selection);
 
-  const colors = mapColorStates[color];
+  const { isExperimental } = useIOExperimentalDesign();
+  const colors = useMemo(
+    () =>
+      isExperimental ? mapColorStates[color] : mapLegacyColorStates[color],
+    [isExperimental, color]
+  );
 
-  const foregroundColor =
-    colors.foreground[
-      selected ? "selected" : disabled ? "disabled" : "default"
-    ];
+  const foregroundColor = useMemo(
+    () =>
+      colors.foreground[
+        selected ? "selected" : disabled ? "disabled" : "default"
+      ],
+    [colors.foreground, selected, disabled]
+  );
+
+  const borderColor = useMemo(
+    () =>
+      colors.border[selected ? "selected" : disabled ? "disabled" : "default"],
+    [colors.border, selected, disabled]
+  );
 
   const opaquePressedBackgroundColor = hexToRgba(
     colors.background.pressed,
@@ -130,6 +205,12 @@ const TabItem = ({
       [opaquePressedBackgroundColor, colors.background.selected]
     );
 
+    const selectedBorderColor = interpolateColor(
+      progressSelected.value,
+      [0, 1],
+      [colors.border.default, colors.border.selected]
+    );
+
     // Scale down button slightly when pressed
     const scale = interpolate(
       progressPressed.value,
@@ -142,6 +223,7 @@ const TabItem = ({
       backgroundColor: selected
         ? selectedBackgroundColor
         : pressedBackgroundColor,
+      borderColor: selected ? selectedBorderColor : borderColor,
       transform: [{ scale }]
     };
   }, [progressPressed, progressSelected, selected]);
@@ -186,6 +268,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 8,
+    borderWidth: 1,
     borderRadius: 64,
     borderCurve: "continuous",
     justifyContent: "center",
