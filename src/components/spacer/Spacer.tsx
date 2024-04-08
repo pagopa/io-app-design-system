@@ -13,7 +13,7 @@ type SpacerProps = {
   size?: IOSpacer;
 };
 
-const DEFAULT_SIZE = 16;
+const DEFAULT_SIZE: IOSpacer = 16;
 
 /* Debug Mode */
 const debugMode = false;

@@ -4,7 +4,7 @@ import {
   Divider,
   H1,
   H3,
-  HSpacer,
+  HStack,
   IOAppMargin,
   IOColors,
   IOSpacer,
@@ -12,10 +12,12 @@ import {
   LabelSmall,
   VDivider,
   VSpacer,
+  VStack,
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import React from "react";
-import { StatusBar, View } from "react-native";
+import { View } from "react-native";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { NoMarginScreen } from "../components/Screen";
 import { SpacerViewerBox } from "../components/SpacerViewerBox";
 
@@ -24,10 +26,6 @@ export const Layout = () => {
 
   return (
     <NoMarginScreen>
-      <StatusBar
-        barStyle={"default"}
-        backgroundColor={IOColors.black}
-      ></StatusBar>
       <ContentWrapper>
         <H1
           color={theme["textHeading-default"]}
@@ -42,9 +40,11 @@ export const Layout = () => {
           ContentWrapper
         </H3>
       </ContentWrapper>
-      {IOAppMargin.map((value, i, arr) => (
-        <React.Fragment key={`${value}-${i}`}>
+
+      <VStack space={16}>
+        {IOAppMargin.map((value, i) => (
           <View
+            key={`${value}-${i}`}
             style={{
               backgroundColor: IOColors[theme["appBackground-tertiary"]]
             }}
@@ -68,9 +68,8 @@ export const Layout = () => {
               </View>
             </ContentWrapper>
           </View>
-          {i !== arr.length - 1 && <VSpacer size={16} />}
-        </React.Fragment>
-      ))}
+        ))}
+      </VStack>
 
       <VSpacer size={40} />
 
@@ -84,15 +83,15 @@ export const Layout = () => {
         </H3>
 
         {/* Vertical */}
-        {IOSpacer.map((spacerEntry, i, arr) => (
-          <React.Fragment key={`${spacerEntry}-${i}-vertical`}>
-            <SpacerViewerBox orientation="vertical" size={spacerEntry} />
-            {/* Don't add spacer to the last item. Quick and dirty
-        alternative to the Stack component.
-        https://stackoverflow.com/a/60975451 */}
-            {i !== arr.length - 1 && <VSpacer size={16} />}
-          </React.Fragment>
-        ))}
+        <VStack space={16}>
+          {IOSpacer.map((spacerEntry, i) => (
+            <SpacerViewerBox
+              key={`${spacerEntry}-${i}-vertical`}
+              orientation="vertical"
+              size={spacerEntry}
+            />
+          ))}
+        </VStack>
 
         <VSpacer size={24} />
 
@@ -101,17 +100,103 @@ export const Layout = () => {
         </H3>
 
         {/* Horizontal */}
-        <View style={{ flexDirection: "row" }}>
-          {IOSpacer.map((spacerEntry, i, arr) => (
-            <React.Fragment key={`${spacerEntry}-${i}-horizontal`}>
-              <SpacerViewerBox orientation="horizontal" size={spacerEntry} />
-              {i !== arr.length - 1 && <HSpacer size={8} />}
-            </React.Fragment>
+        <HStack space={8}>
+          {IOSpacer.map((spacerEntry, i) => (
+            <SpacerViewerBox
+              key={`${spacerEntry}-${i}-horizontal`}
+              orientation="horizontal"
+              size={spacerEntry}
+            />
           ))}
-        </View>
+        </HStack>
 
         <VSpacer size={48} />
+
+        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
+          Stack
+        </H3>
+
+        <ComponentViewerBox name="VStack, space 16">
+          <View
+            style={{
+              backgroundColor: IOColors[theme["appBackground-secondary"]]
+            }}
+          >
+            <VStack space={16}>
+              {[...Array(3)].map((_el, i) => (
+                <View
+                  key={`block-${i}`}
+                  style={{
+                    height: 32,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: IOColors[theme["appBackground-tertiary"]]
+                  }}
+                >
+                  <LabelSmall
+                    weight="Regular"
+                    color={theme["textBody-tertiary"]}
+                  >{`Block n.${i + 1}`}</LabelSmall>
+                </View>
+              ))}
+              <View
+                style={{
+                  height: 72,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: IOColors[theme["appBackground-tertiary"]]
+                }}
+              >
+                <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+                  Different height
+                </LabelSmall>
+              </View>
+            </VStack>
+          </View>
+        </ComponentViewerBox>
+
+        <ComponentViewerBox name="HStack, space 16">
+          <View
+            style={{
+              backgroundColor: IOColors[theme["appBackground-secondary"]]
+            }}
+          >
+            <HStack space={16}>
+              {[...Array(3)].map((_el, i) => (
+                <View
+                  key={`block-${i}`}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: IOColors[theme["appBackground-tertiary"]]
+                  }}
+                >
+                  <LabelSmall
+                    weight="Regular"
+                    color={theme["textBody-tertiary"]}
+                  >{`${i + 1}`}</LabelSmall>
+                </View>
+              ))}
+              <View
+                style={{
+                  flexGrow: 1,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: IOColors[theme["appBackground-tertiary"]]
+                }}
+              >
+                <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+                  Different width
+                </LabelSmall>
+              </View>
+            </HStack>
+          </View>
+        </ComponentViewerBox>
       </ContentWrapper>
+
+      <VSpacer size={24} />
 
       <ContentWrapper>
         <H1 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
