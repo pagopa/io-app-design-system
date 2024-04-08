@@ -188,7 +188,7 @@ export const Layout = () => {
                 }}
               >
                 <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-                  Different width
+                  Growing block
                 </LabelSmall>
               </View>
             </HStack>
