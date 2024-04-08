@@ -42,9 +42,9 @@ export type TabItem = WithTestID<{
 
 type ColorStates = {
   border: {
-    default?: IOColors;
-    selected: IOColors;
-    disabled?: IOColors;
+    default: string;
+    selected: string;
+    disabled: string;
   };
   background: {
     default: string;
@@ -61,14 +61,14 @@ type ColorStates = {
 const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   light: {
     border: {
-      default: "grey-300",
-      selected: "blueIO-500",
-      disabled: "grey-300"
+      default: IOColors["grey-300"],
+      selected: IOColors["blueIO-500"],
+      disabled: IOColors["grey-300"]
     },
     background: {
       default: IOColors.white,
       selected: IOColors["blueIO-50"],
-      pressed: IOColors["blueIO-50"]
+      pressed: IOColors.white
     },
     foreground: {
       default: "black",
@@ -78,10 +78,12 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
   },
   dark: {
     border: {
-      selected: "grey-300"
+      default: hexToRgba(IOColors.white, 0),
+      selected: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
     },
     background: {
-      default: "#ffffff00",
+      default: hexToRgba(IOColors.white, 0),
       selected: IOColors.white,
       pressed: IOColors.white
     },
@@ -99,14 +101,14 @@ const mapLegacyColorStates: Record<
 > = {
   light: {
     border: {
-      default: "grey-300",
-      selected: "blue",
-      disabled: "grey-300"
+      default: IOColors["grey-300"],
+      selected: IOColors.blue,
+      disabled: hexToRgba(IOColors.white)
     },
     background: {
       default: IOColors.white,
-      selected: IOColors.white,
-      pressed: IOColors.blue
+      selected: hexToRgba(IOColors.blue, 0.1),
+      pressed: IOColors.white
     },
     foreground: {
       default: "black",
@@ -116,7 +118,9 @@ const mapLegacyColorStates: Record<
   },
   dark: {
     border: {
-      selected: "grey-300"
+      default: hexToRgba(IOColors.white, 0),
+      selected: IOColors.white,
+      disabled: hexToRgba(IOColors.white, 0.5)
     },
     background: {
       default: "#ffffff00",
@@ -162,13 +166,13 @@ const TabItem = ({
       colors.foreground[
         selected ? "selected" : disabled ? "disabled" : "default"
       ],
-    [selected, disabled]
+    [colors.foreground, selected, disabled]
   );
 
   const borderColor = useMemo(
     () =>
       colors.border[selected ? "selected" : disabled ? "disabled" : "default"],
-    [selected, disabled]
+    [colors.border, selected, disabled]
   );
 
   const opaquePressedBackgroundColor = hexToRgba(
@@ -201,6 +205,12 @@ const TabItem = ({
       [opaquePressedBackgroundColor, colors.background.selected]
     );
 
+    const selectedBorderColor = interpolateColor(
+      progressSelected.value,
+      [0, 1],
+      [colors.border.default, colors.border.selected]
+    );
+
     // Scale down button slightly when pressed
     const scale = interpolate(
       progressPressed.value,
@@ -213,6 +223,7 @@ const TabItem = ({
       backgroundColor: selected
         ? selectedBackgroundColor
         : pressedBackgroundColor,
+      borderColor: selected ? selectedBorderColor : borderColor,
       transform: [{ scale }]
     };
   }, [progressPressed, progressSelected, selected]);
@@ -233,10 +244,6 @@ const TabItem = ({
     >
       <Animated.View
         style={[
-          borderColor && {
-            borderColor: IOColors[borderColor],
-            borderWidth: 1
-          },
           styles.container,
           animatedStyle,
           fullWidth && styles.fullWidth,
@@ -261,6 +268,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 8,
+    borderWidth: 1,
     borderRadius: 64,
     borderCurve: "continuous",
     justifyContent: "center",
