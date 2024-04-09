@@ -20,7 +20,7 @@ import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressPro
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
-import { LabelSmallAlt } from "../typography";
+import { LabelHeader } from "../typography/LabelHeader";
 
 type ColorMode = "light" | "dark";
 
@@ -55,10 +55,6 @@ type ColorStates = {
     default: IOColors;
     selected: IOColors;
     disabled: IOColors;
-  };
-  border: {
-    default: string;
-    selected: string;
   };
 };
 
@@ -118,10 +114,6 @@ const mapLegacyColorStates: Record<
       default: "black",
       selected: "blue",
       disabled: "grey-700"
-    },
-    border: {
-      default: IOColors["grey-300"],
-      selected: IOColors["blueIO-500"]
     }
   },
   dark: {
@@ -139,10 +131,6 @@ const mapLegacyColorStates: Record<
       default: "white",
       selected: "black",
       disabled: "white"
-    },
-    border: {
-      default: "#ffffff00",
-      selected: "#ffffff00"
     }
   }
 };
@@ -186,8 +174,6 @@ const TabItem = ({
       colors.border[selected ? "selected" : disabled ? "disabled" : "default"],
     [colors.border, selected, disabled]
   );
-
-  const borderColor = colors.border?.[selected ? "selected" : "default"];
 
   const opaquePressedBackgroundColor = hexToRgba(
     colors.background.pressed,
@@ -261,8 +247,7 @@ const TabItem = ({
           styles.container,
           animatedStyle,
           fullWidth && styles.fullWidth,
-          disabled && styles.disabled,
-          { borderColor }
+          disabled && styles.disabled
         ]}
       >
         {activeIcon && (
@@ -271,7 +256,7 @@ const TabItem = ({
             <HSpacer size={4} />
           </>
         )}
-        <LabelSmallAlt color={foregroundColor}>{label}</LabelSmallAlt>
+        <LabelHeader color={foregroundColor}>{label}</LabelHeader>
       </Animated.View>
     </Pressable>
   );
@@ -287,13 +272,12 @@ const styles = StyleSheet.create({
     borderRadius: 64,
     borderCurve: "continuous",
     justifyContent: "center",
-    alignSelf: "flex-start",
-    borderWidth: 1
+    alignSelf: "flex-start"
   },
   fullWidth: {
     alignSelf: "auto"
   },
-  disabled: { opacity: 0.3 }
+  disabled: { opacity: 0.5 }
 });
 
 export { TabItem };
