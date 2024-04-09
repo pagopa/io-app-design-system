@@ -156,22 +156,22 @@ export const TabNavigationScreen = () => {
         <VSpacer size={16} />
       </ContentWrapper>
       <View>
-        <TabNavigation>
+        <TabNavigationWithState>
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigation>
+        <TabNavigationWithState>
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigation>
+        <TabNavigationWithState>
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
@@ -202,7 +202,7 @@ export const TabNavigationScreen = () => {
             icon="starEmpty"
             iconSelected="starFilled"
           />
-        </TabNavigation>
+        </TabNavigationWithState>
       </View>
 
       <ContentWrapper>
@@ -212,22 +212,22 @@ export const TabNavigationScreen = () => {
       </ContentWrapper>
 
       <View style={[styles.dark, { paddingVertical: 24 }]}>
-        <TabNavigation color="dark">
+        <TabNavigationWithState color="dark">
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigation color="dark">
+        <TabNavigationWithState color="dark">
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
           <TabItem label="Label tab" accessibilityLabel="Label tab" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigation color="dark">
+        <TabNavigationWithState color="dark">
           <TabItem
             label="Label tab"
             accessibilityLabel="Label tab"
@@ -253,7 +253,7 @@ export const TabNavigationScreen = () => {
             accessibilityLabel="Label tab"
             icon="starEmpty"
           />
-        </TabNavigation>
+        </TabNavigationWithState>
       </View>
 
       <ContentWrapper>
@@ -269,11 +269,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigation>
+        <TabNavigationWithState>
           <TabItem label="Long label" accessibilityLabel="Long label" />
           <TabItem label="Label" accessibilityLabel="Label" />
           <TabItem label="Label" accessibilityLabel="Label" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -283,11 +283,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigation tabAlignment="start">
+        <TabNavigationWithState tabAlignment="start">
           <TabItem label="Long label" accessibilityLabel="Long label" />
           <TabItem label="Label" accessibilityLabel="Label" />
           <TabItem label="Label" accessibilityLabel="Label" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -297,11 +297,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigation tabAlignment="end">
+        <TabNavigationWithState tabAlignment="end">
           <TabItem label="Long label" accessibilityLabel="Long label" />
           <TabItem label="Label" accessibilityLabel="Label" />
           <TabItem label="Label" accessibilityLabel="Label" />
-        </TabNavigation>
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -311,14 +311,24 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigation tabAlignment="stretch">
+        <TabNavigationWithState tabAlignment="stretch">
           <TabItem label="Long label" accessibilityLabel="Long label" />
           <TabItem label="Label" accessibilityLabel="Label" />
           <TabItem label="Label" accessibilityLabel="Label" />
-        </TabNavigation>
+        </TabNavigationWithState>
       </View>
       <VSpacer size={40} />
     </NoMarginScreen>
+  );
+};
+
+const TabNavigationWithState = (props: TabNavigation) => {
+  const [index, setIndex] = React.useState(0);
+
+  return (
+    <TabNavigation {...props} selectedIndex={index} onItemPress={setIndex}>
+      {props.children}
+    </TabNavigation>
   );
 };
 
