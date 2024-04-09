@@ -333,6 +333,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
+        accessibilityState={{ disabled: disabled || false }}
         testID={testID}
         onPress={onPress}
         onPressIn={onPressIn}

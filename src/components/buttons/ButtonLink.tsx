@@ -215,6 +215,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
+        accessibilityState={{ disabled }}
         testID={testID}
         onPress={onPress}
         onPressIn={onPressIn}

@@ -265,7 +265,10 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
         // Using || operator because empty string is not an accepted value
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
-        accessibilityState={{ busy: loading }}
+        accessibilityState={{
+          busy: loading,
+          disabled: disabled || false
+        }}
         accessibilityRole={"button"}
         onPress={handleOnPress}
         onPressIn={onPressIn}

@@ -98,6 +98,7 @@ export const ListItemSwitch = React.memo(
                   : "no-hide-descendants"
               }
             })}
+            accessibilityState={{ disabled }}
           >
             {icon && (
               <View
