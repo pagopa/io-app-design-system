@@ -156,65 +156,53 @@ export const TabNavigationScreen = () => {
         <VSpacer size={16} />
       </ContentWrapper>
       <View>
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation selectedIndex={index} onItemPress={setIndex}>
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState>
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation selectedIndex={index} onItemPress={setIndex}>
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState>
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation selectedIndex={index} onItemPress={setIndex}>
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-                iconSelected="starFilled"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-                iconSelected="starFilled"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-                iconSelected="starFilled"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-                iconSelected="starFilled"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-                iconSelected="starFilled"
-              />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState>
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+            iconSelected="starFilled"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+            iconSelected="starFilled"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+            iconSelected="starFilled"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+            iconSelected="starFilled"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+            iconSelected="starFilled"
+          />
+        </TabNavigationWithState>
       </View>
 
       <ContentWrapper>
@@ -224,72 +212,48 @@ export const TabNavigationScreen = () => {
       </ContentWrapper>
 
       <View style={[styles.dark, { paddingVertical: 24 }]}>
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              color="dark"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState color="dark">
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              color="dark"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-              <TabItem label="Label tab" accessibilityLabel="Label tab" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState color="dark">
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+          <TabItem label="Label tab" accessibilityLabel="Label tab" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              color="dark"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-              />
-              <TabItem
-                label="Label tab"
-                accessibilityLabel="Label tab"
-                icon="starEmpty"
-              />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState color="dark">
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+          />
+          <TabItem
+            label="Label tab"
+            accessibilityLabel="Label tab"
+            icon="starEmpty"
+          />
+        </TabNavigationWithState>
       </View>
 
       <ContentWrapper>
@@ -305,15 +269,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation selectedIndex={index} onItemPress={setIndex}>
-              <TabItem label="Long label" accessibilityLabel="Long label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState>
+          <TabItem label="Long label" accessibilityLabel="Long label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -323,19 +283,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              tabAlignment="start"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem label="Long label" accessibilityLabel="Long label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState tabAlignment="start">
+          <TabItem label="Long label" accessibilityLabel="Long label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -345,19 +297,11 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              tabAlignment="end"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem label="Long label" accessibilityLabel="Long label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState tabAlignment="end">
+          <TabItem label="Long label" accessibilityLabel="Long label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+        </TabNavigationWithState>
 
         <VSpacer size={24} />
 
@@ -367,35 +311,25 @@ export const TabNavigationScreen = () => {
 
         <VSpacer size={16} />
 
-        <TabNavigationState>
-          {([index, setIndex]) => (
-            <TabNavigation
-              tabAlignment="stretch"
-              selectedIndex={index}
-              onItemPress={setIndex}
-            >
-              <TabItem label="Long label" accessibilityLabel="Long label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-              <TabItem label="Label" accessibilityLabel="Label" />
-            </TabNavigation>
-          )}
-        </TabNavigationState>
+        <TabNavigationWithState tabAlignment="stretch">
+          <TabItem label="Long label" accessibilityLabel="Long label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+          <TabItem label="Label" accessibilityLabel="Label" />
+        </TabNavigationWithState>
       </View>
       <VSpacer size={40} />
     </NoMarginScreen>
   );
 };
 
-type TabNavigationStateProps = {
-  children: (
-    tabIndexState: [number, React.Dispatch<React.SetStateAction<number>>]
-  ) => React.ReactElement;
-};
+const TabNavigationWithState = (props: TabNavigation) => {
+  const [index, setIndex] = React.useState(0);
 
-const TabNavigationState = ({ children }: TabNavigationStateProps) => {
-  const tabIndexState = React.useState(0);
-
-  return children(tabIndexState);
+  return (
+    <TabNavigation {...props} selectedIndex={index} onItemPress={setIndex}>
+      {props.children}
+    </TabNavigation>
+  );
 };
 
 const styles = StyleSheet.create({
