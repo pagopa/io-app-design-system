@@ -155,7 +155,7 @@ export const TabNavigationScreen = () => {
         <H3>Light</H3>
         <VSpacer size={16} />
       </ContentWrapper>
-      <View style={[styles.default, { paddingVertical: 24 }]}>
+      <View>
         <TabNavigationState>
           {([index, setIndex]) => (
             <TabNavigation selectedIndex={index} onItemPress={setIndex}>
@@ -262,7 +262,7 @@ export const TabNavigationScreen = () => {
               selectedIndex={index}
               onItemPress={setIndex}
             >
-               <TabItem
+              <TabItem
                 label="Label tab"
                 accessibilityLabel="Label tab"
                 icon="starEmpty"
@@ -399,9 +399,6 @@ const TabNavigationState = ({ children }: TabNavigationStateProps) => {
 };
 
 const styles = StyleSheet.create({
-  default: {
-    backgroundColor: IOColors.white
-  },
   dark: {
     backgroundColor: IOColors["blueIO-850"]
   }
