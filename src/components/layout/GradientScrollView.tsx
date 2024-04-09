@@ -221,14 +221,21 @@ export const GradientScrollView = ({
           style={[
             styles.gradientContainer,
             debugMode && {
-              borderTopColor: IOColors["error-500"],
-              borderTopWidth: 1,
-              backgroundColor: hexToRgba(IOColors["error-500"], 0.5)
+              backgroundColor: hexToRgba(IOColors["error-500"], 0.15)
             }
           ]}
           pointerEvents="none"
         >
-          <Animated.View style={opacityTransition}>
+          <Animated.View
+            style={[
+              opacityTransition,
+              debugMode && {
+                borderTopColor: IOColors["error-500"],
+                borderTopWidth: 1,
+                backgroundColor: hexToRgba(IOColors["error-500"], 0.4)
+              }
+            ]}
+          >
             {/* 100% opacity bg color fills at least 45% of the area */}
             <LinearGradient
               style={{ height: gradientAreaHeight * 0.55 }}
