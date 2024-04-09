@@ -128,11 +128,6 @@ export const GradientScrollView = ({
     [needSafeAreaMargin, excludeSafeAreaMargins, safeAreaMargin]
   );
 
-  // eslint-disable-next-line no-console
-  console.log(
-    `${needSafeAreaMargin} - Safe margin: ${safeAreaMargin} — Bottom margin: ${bottomMargin}`
-  );
-
   /* GENERATE EASING GRADIENT
      Background color should be app main background
      (both light and dark themes) */
@@ -154,10 +149,10 @@ export const GradientScrollView = ({
     [needSafeAreaMargin, secondaryAction]
   );
 
-  /* Safe background block. Learn more below where the
-     block is placed */
+  /* Safe background block. Cover at least 85% of the space
+     to avoid glitchy elements underneath */
   const safeBackgroundBlockHeight: number = useMemo(
-    () => bottomMargin + actionBlockHeight,
+    () => (bottomMargin + actionBlockHeight) * 0.85,
     [actionBlockHeight, bottomMargin]
   );
 
@@ -240,7 +235,7 @@ export const GradientScrollView = ({
             ]}
           >
             <LinearGradient
-              style={{ height: gradientAreaHeight * 0.6 }}
+              style={{ height: gradientAreaHeight - safeBackgroundBlockHeight }}
               locations={locations}
               colors={colors}
             />
