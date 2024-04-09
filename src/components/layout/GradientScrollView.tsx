@@ -59,7 +59,7 @@ export const gradientSafeAreaHeight: IOSpacingScale = 96;
 // End content margin before the actions
 const contentEndMargin: IOSpacingScale = 32;
 // Margin between primary action and secondary one
-const spaceBetweenActions: IOSpacer = 24;
+const spaceBetweenActions: IOSpacer = 16;
 // Extra bottom margin for iPhone bottom handle
 const extraSafeAreaMargin: IOSpacingScale = 8;
 
@@ -77,12 +77,6 @@ const styles = StyleSheet.create({
   },
   gradientContainer: {
     ...StyleSheet.absoluteFillObject
-  },
-  safeBackgroundBlock: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0
   }
 });
 
@@ -161,16 +155,6 @@ export const GradientScrollView = ({
     [actionBlockHeight, bottomMargin]
   );
 
-  /* Safe background block. It's added because when
-     you swipe up quickly, the content below is visible
-     for about 100ms. Without this block, the content
-     appears glitchy. */
-
-  const safeBackgroundHeight = useMemo(
-    () => actionBlockHeight * 0.5 + bottomMargin,
-    [actionBlockHeight, bottomMargin]
-  );
-
   const handleScroll = useAnimatedScrollHandler(
     ({ contentOffset, layoutMeasurement, contentSize }) => {
       /* We use Math.floor because decimals used on Android
@@ -236,31 +220,26 @@ export const GradientScrollView = ({
               }
             ]}
           >
-            {/* 100% opacity bg color fills at least 45% of the area */}
+            {/* 100% opacity bg color fills at least 40% of the area */}
             <LinearGradient
-              style={{ height: gradientAreaHeight * 0.55 }}
+              style={{ height: gradientAreaHeight * 0.6 }}
               locations={locations}
               colors={colors}
             />
           </Animated.View>
+
+          {/* Safe background block. It's added because when you swipe up
+          quickly, the content below is visible for about 100ms. Without this
+          block, the content appears glitchy. */}
           <View
             style={{
               bottom: 0,
-              height: gradientAreaHeight * 0.45,
+              height: gradientAreaHeight * 0.4,
               backgroundColor: HEADER_BG_COLOR
             }}
           />
         </Animated.View>
 
-        <View
-          style={[
-            styles.safeBackgroundBlock,
-            {
-              height: safeBackgroundHeight,
-              backgroundColor: HEADER_BG_COLOR
-            }
-          ]}
-        />
         <View
           style={styles.buttonContainer}
           onLayout={getActionBlockHeight}

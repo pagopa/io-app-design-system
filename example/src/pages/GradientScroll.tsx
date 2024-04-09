@@ -26,11 +26,11 @@ export const GradientScroll = () => {
           primary: {
             label: "Primary action",
             onPress: () => Alert.alert("Primary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
-          },
-          secondary: {
-            label: "Secondary",
-            onPress: () => Alert.alert("Secondary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
           }
+          // secondary: {
+          //   label: "Secondary",
+          //   onPress: () => Alert.alert("Secondary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
+          // }
         }}
       >
         <H2>Start</H2>
