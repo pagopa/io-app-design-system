@@ -4,50 +4,60 @@ import {
   GradientScrollView,
   H2,
   IOColors,
-  VSpacer
+  VSpacer,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
 
-export const GradientScroll = () => (
-  <View
-    style={{
-      flexGrow: 1,
-      backgroundColor: IOColors.white
-    }}
-  >
-    <GradientScrollView
-      // debugMode
-      primaryActionProps={{
-        label: "Primary action",
-        accessibilityLabel: "",
-        onPress: () => Alert.alert("Primary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
+export const GradientScroll = () => {
+  const theme = useIOTheme();
+
+  return (
+    <View
+      style={{
+        flexGrow: 1,
+        backgroundColor: IOColors[theme["appBackground-primary"]]
       }}
     >
-      <H2>Start</H2>
-      {[...Array(50)].map((_el, i) => (
-        <Body key={`body-${i}`}>Repeated text</Body>
-      ))}
-      <VSpacer />
-      <View
-        style={{
-          width: "100%",
-          aspectRatio: 16 / 9,
-          borderRadius: 32,
-          borderCurve: "continuous",
-          backgroundColor: IOColors["blueIO-850"]
+      <GradientScrollView
+        debugMode
+        actionsProps={{
+          primary: {
+            label: "Primary action",
+            onPress: () => Alert.alert("Primary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
+          },
+          secondary: {
+            label: "Secondary",
+            onPress: () => Alert.alert("Secondary action pressed! (⁠⁠ꈍ⁠ᴗ⁠ꈍ⁠)")
+          }
         }}
-      />
-      <VSpacer />
-      <ButtonOutline
-        label="Test"
-        accessibilityLabel={""}
-        onPress={() => Alert.alert("Test button")}
-      />
-      {[...Array(2)].map((_el, i) => (
-        <Body key={`body-${i}`}>Repeated text</Body>
-      ))}
-      <H2>End</H2>
-    </GradientScrollView>
-  </View>
-);
+      >
+        <H2>Start</H2>
+        {[...Array(50)].map((_el, i) => (
+          <Body key={`body-${i}`}>Repeated text</Body>
+        ))}
+        <VSpacer />
+        <View
+          style={{
+            width: "100%",
+            aspectRatio: 16 / 9,
+            borderRadius: 32,
+            borderCurve: "continuous",
+            backgroundColor: IOColors["blueIO-850"]
+          }}
+        />
+        <VSpacer />
+        <ButtonOutline
+          label="Test"
+          accessibilityLabel={""}
+          onPress={() => Alert.alert("Test button")}
+        />
+        {[...Array(2)].map((_el, i) => (
+          <Body key={`body-${i}`}>Repeated text</Body>
+        ))}
+        <H2>End</H2>
+      </GradientScrollView>
+    </View>
+  );
+};

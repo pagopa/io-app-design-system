@@ -1,5 +1,8 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { ComponentProps, PropsWithChildren, useMemo } from "react";
+import { ColorValue, StyleSheet, View } from "react-native";
+import { easeGradient } from "react-native-easing-gradient";
+import LinearGradient from "react-native-linear-gradient";
 import Animated, {
   Easing,
   useAnimatedScrollHandler,
@@ -9,23 +12,42 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
+  IOColors,
   IOSpacer,
   IOSpacingScale,
   IOVisualCostants,
-  buttonSolidHeight
+  buttonSolidHeight,
+  hexToRgba,
+  useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import GradientBottomActions from "./GradientBottomActions";
+import { ButtonLink, ButtonOutline, ButtonSolid } from "../buttons";
+import { VSpacer } from "../spacer";
 
-export type GradientScrollView = WithTestID<{
-  children: React.ReactNode;
-  excludeSafeAreaMargins?: boolean;
-  debugMode?: boolean;
-  // Accepted components: ButtonSolid, ButtonLink
-  // Don't use any components other than this, please.
-  primaryActionProps: GradientBottomActions["primaryActionProps"];
-  secondaryActionProps?: GradientBottomActions["secondaryActionProps"];
-}>;
+type GradientScrollActions =
+  | {
+      primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+      secondary?: never;
+      tertiary?: never;
+    }
+  | {
+      primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+      secondary: ComponentProps<typeof ButtonLink>;
+      tertiary?: never;
+    }
+  | {
+      primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+      secondary: Omit<ComponentProps<typeof ButtonOutline>, "fullWidth">;
+      tertiary: ComponentProps<typeof ButtonLink>;
+    };
+
+type GradientScrollView = WithTestID<
+  PropsWithChildren<{
+    excludeSafeAreaMargins?: boolean;
+    debugMode?: boolean;
+    actionsProps: GradientScrollActions;
+  }>
+>;
 
 // Extended gradient area above the actions
 export const gradientSafeArea: IOSpacingScale = 96;
@@ -38,17 +60,40 @@ const secondaryActionEstHeight: number = 20;
 // Extra bottom margin for iPhone bottom handle
 const extraSafeAreaMargin: IOSpacingScale = 8;
 
+const styles = StyleSheet.create({
+  buttonContainer: {
+    paddingHorizontal: IOVisualCostants.appMarginDefault,
+    width: "100%",
+    flex: 1,
+    flexShrink: 0,
+    justifyContent: "flex-end"
+  },
+  gradientContainer: {
+    ...StyleSheet.absoluteFillObject
+  },
+  safeBackgroundBlock: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0
+  }
+});
+
 export const GradientScrollView = ({
   children,
-  primaryActionProps: primaryActionProps,
-  secondaryActionProps: secondaryActionProps,
+  actionsProps: { primary: primaryAction, secondary: secondaryAction },
   // Don't include safe area insets
   excludeSafeAreaMargins = false,
   debugMode = false,
   testID
 }: GradientScrollView) => {
   const gradientOpacity = useSharedValue(1);
+
+  const theme = useIOTheme();
+
   const insets = useSafeAreaInsets();
+  const isSafeAreaMarginNeeded = useMemo(() => insets.bottom !== 0, [insets]);
+  const safeAreaMargin = useMemo(() => insets.bottom, [insets]);
 
   /* Check if the iPhone bottom handle is present.
   If not, or if you don't need safe area insets,
@@ -56,30 +101,42 @@ export const GradientScrollView = ({
   from sticking to the bottom. */
   const bottomMargin: number = useMemo(
     () =>
-      insets.bottom === 0 || excludeSafeAreaMargins
+      isSafeAreaMarginNeeded || excludeSafeAreaMargins
         ? IOVisualCostants.appMarginDefault
-        : insets.bottom,
-    [insets, excludeSafeAreaMargins]
+        : safeAreaMargin,
+    [isSafeAreaMarginNeeded, excludeSafeAreaMargins, safeAreaMargin]
   );
+
+  // GENERATE EASING GRADIENT
+  // Background color should be app main background (both light and dark themes)
+  const HEADER_BG_COLOR: ColorValue = IOColors[theme["appBackground-primary"]];
+
+  const { colors, locations } = easeGradient({
+    colorStops: {
+      0: { color: hexToRgba(HEADER_BG_COLOR, 0) },
+      1: { color: HEADER_BG_COLOR }
+    },
+    easing: Easing.ease,
+    extraColorStopsPerTransition: 20
+  });
 
   /* When the secondary action is visible, add extra margin
 to avoid little space from iPhone bottom handle */
   const extraBottomMargin: number = useMemo(
-    () =>
-      secondaryActionProps && insets.bottom !== 0 ? extraSafeAreaMargin : 0,
-    [insets.bottom, secondaryActionProps]
+    () => (secondaryAction && isSafeAreaMarginNeeded ? extraSafeAreaMargin : 0),
+    [isSafeAreaMarginNeeded, secondaryAction]
   );
 
   /* Total height of actions */
   const actionsArea: number = useMemo(
     () =>
-      primaryActionProps && secondaryActionProps
+      primaryAction && secondaryAction
         ? (buttonSolidHeight as number) +
           spaceBetweenActions +
           secondaryActionEstHeight +
           extraBottomMargin
         : buttonSolidHeight,
-    [extraBottomMargin, primaryActionProps, secondaryActionProps]
+    [extraBottomMargin, primaryAction, secondaryAction]
   );
 
   /* Total height of "Actions + Gradient" area */
@@ -104,13 +161,13 @@ to avoid little space from iPhone bottom handle */
 
   const safeBackgroundHeight = useMemo(
     () =>
-      secondaryActionProps
+      secondaryAction
         ? spaceBetweenActions +
           secondaryActionEstHeight +
           extraBottomMargin +
           bottomMargin
         : bottomMargin,
-    [bottomMargin, extraBottomMargin, secondaryActionProps]
+    [bottomMargin, extraBottomMargin, secondaryAction]
   );
 
   const handleScroll = useAnimatedScrollHandler(
@@ -148,7 +205,73 @@ to avoid little space from iPhone bottom handle */
       >
         {children}
       </Animated.ScrollView>
-      <GradientBottomActions
+      <View
+        style={{
+          width: "100%",
+          position: "absolute",
+          bottom: 0,
+          height: gradientAreaHeight,
+          paddingBottom: bottomMargin
+        }}
+        testID={testID}
+        pointerEvents="box-none"
+      >
+        <Animated.View
+          style={[
+            styles.gradientContainer,
+            debugMode && {
+              borderTopColor: IOColors["error-500"],
+              borderTopWidth: 1,
+              backgroundColor: hexToRgba(IOColors["error-500"], 0.5)
+            }
+          ]}
+          pointerEvents="none"
+        >
+          <Animated.View style={opacityTransition}>
+            {/* 100% opacity bg color fills at least 45% of the area */}
+            <LinearGradient
+              style={{ height: gradientAreaHeight * 0.55 }}
+              locations={locations}
+              colors={colors}
+            />
+          </Animated.View>
+          <View
+            style={{
+              bottom: 0,
+              height: gradientAreaHeight * 0.45,
+              backgroundColor: HEADER_BG_COLOR
+            }}
+          />
+        </Animated.View>
+
+        <View
+          style={[
+            styles.safeBackgroundBlock,
+            {
+              height: safeBackgroundHeight,
+              backgroundColor: HEADER_BG_COLOR
+            }
+          ]}
+        />
+        <View style={styles.buttonContainer} pointerEvents="box-none">
+          {primaryAction && (
+            <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
+          )}
+
+          {secondaryAction && (
+            <View
+              style={{
+                alignSelf: "center",
+                marginBottom: extraBottomMargin
+              }}
+            >
+              <VSpacer size={spaceBetweenActions} />
+              {<ButtonLink {...secondaryAction}></ButtonLink>}
+            </View>
+          )}
+        </View>
+      </View>
+      {/* <GradientBottomActions
         debugMode={debugMode}
         primaryActionProps={primaryActionProps}
         secondaryActionProps={secondaryActionProps}
@@ -160,7 +283,7 @@ to avoid little space from iPhone bottom handle */
           spaceBetweenActions,
           safeBackgroundHeight
         }}
-      />
+      /> */}
     </>
   );
 };
