@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -44,16 +44,19 @@ type ListItemTopElementProps =
       dateValue: string;
     };
 
-type ListItemNavPartialProps = WithTestID<{
-  value: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  loading?: boolean;
-  onPress: (event: GestureResponderEvent) => void;
-  // Accessibility
-  accessibilityLabel: string;
-  hideChevron?: boolean;
-  topElement?: ListItemTopElementProps;
-}>;
+type ListItemNavPartialProps = WithTestID<
+  {
+    value: string | React.ReactNode;
+    description?: string | React.ReactNode;
+    loading?: boolean;
+    onPress: (event: GestureResponderEvent) => void;
+    hideChevron?: boolean;
+    topElement?: ListItemTopElementProps;
+  } & Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >
+>;
 
 export type ListItemNavGraphicProps =
   | { icon?: never; iconColor?: never; paymentLogoUri: string }
@@ -77,6 +80,7 @@ export const ListItemNav = ({
   iconColor = "grey-450",
   paymentLogoUri,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   hideChevron = false,
   topElement,
@@ -197,7 +201,9 @@ export const ListItemNav = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       accessible={true}
+      accessibilityState={{ busy: loading }}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >

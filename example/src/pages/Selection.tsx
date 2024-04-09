@@ -94,23 +94,15 @@ const renderCheckboxLabel = () => (
 const renderListItemCheckbox = () => (
   <>
     <ComponentViewerBox name="ListItemCheckbox">
-      <ListItemCheckbox
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox value="Usa configurazione rapida" />
       <Divider />
-      <ListItemCheckbox
-        icon="coggle"
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox icon="coggle" value="Usa configurazione rapida" />
       <Divider />
       <ListItemCheckbox
         value="Usa configurazione rapida"
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -118,7 +110,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -127,7 +118,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -136,15 +126,10 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti."
         }
-        accessibilityLabel={""}
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemCheckbox (disabled)">
-      <ListItemCheckbox
-        disabled
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox disabled value="Usa configurazione rapida" />
       <Divider />
       <ListItemCheckbox
         disabled
@@ -153,7 +138,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -161,7 +145,6 @@ const renderListItemCheckbox = () => (
         selected={true}
         icon="coggle"
         value="Usa configurazione rapida"
-        accessibilityLabel={""}
       />
     </ComponentViewerBox>
   </>

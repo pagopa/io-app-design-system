@@ -14,24 +14,32 @@ export type ListItemRadioWithAmountProps = {
   selected?: boolean;
   label: string;
   formattedAmountString: string;
+  accessibilityLabel?: string;
 } & (
   | {
       isSuggested?: false;
+      suggestReason?: never;
     }
   | {
-      isSuggested: true;
+      isSuggested?: true;
       suggestReason: string;
     }
 );
-export const ListItemRadioWithAmount = (
-  props: ListItemRadioWithAmountProps
-) => {
-  const [toggleValue, setToggleValue] = React.useState(props.selected ?? false);
+export const ListItemRadioWithAmount = ({
+  onValueChange,
+  selected,
+  label,
+  accessibilityLabel,
+  isSuggested = false,
+  suggestReason,
+  formattedAmountString
+}: ListItemRadioWithAmountProps) => {
+  const [toggleValue, setToggleValue] = React.useState(selected ?? false);
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
     setToggleValue(val => !val);
-    if (props.onValueChange !== undefined) {
-      props.onValueChange(!toggleValue);
+    if (onValueChange !== undefined) {
+      onValueChange(!toggleValue);
     }
   };
   const theme = useIOTheme();
@@ -39,19 +47,26 @@ export const ListItemRadioWithAmount = (
   const suggestColor: IOColors = "hanPurple-500";
 
   return (
-    <PressableListItemBase onPress={pressHandler}>
+    <PressableListItemBase
+      onPress={pressHandler}
+      accessibilityRole="radio"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{
+        checked: selected ?? toggleValue
+      }}
+    >
       <View style={{ flexShrink: 1 }}>
         <LabelSmallAlt numberOfLines={1} color={theme["textBody-default"]}>
-          {props.label} con nome molto molto lungo
+          {label} con nome molto molto lungo
         </LabelSmallAlt>
-        {props.isSuggested && (
+        {isSuggested && (
           <>
             <VSpacer size={4} />
             <View style={styles.rowCenter}>
               <Icon name="sparkles" size={16} color={suggestColor} />
               <HSpacer size={4} />
               <LabelSmall weight="Regular" color={suggestColor}>
-                {props.suggestReason}
+                {suggestReason}
               </LabelSmall>
             </View>
           </>
@@ -60,10 +75,10 @@ export const ListItemRadioWithAmount = (
       <View pointerEvents="none" style={{ flexDirection: "row" }}>
         <HSpacer size={8} />
         <H6 color={theme["interactiveElem-default"]}>
-          {props.formattedAmountString}
+          {formattedAmountString}
         </H6>
         <HSpacer size={8} />
-        <AnimatedRadio checked={props.selected ?? toggleValue} />
+        <AnimatedRadio checked={selected ?? toggleValue} />
       </View>
     </PressableListItemBase>
   );
