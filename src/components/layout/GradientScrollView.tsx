@@ -1,6 +1,12 @@
 import * as React from "react";
-import { ComponentProps, PropsWithChildren, useMemo } from "react";
-import { ColorValue, StyleSheet, View } from "react-native";
+import { ComponentProps, PropsWithChildren, useMemo, useState } from "react";
+import {
+  ColorValue,
+  LayoutChangeEvent,
+  LayoutRectangle,
+  StyleSheet,
+  View
+} from "react-native";
 import { easeGradient } from "react-native-easing-gradient";
 import LinearGradient from "react-native-linear-gradient";
 import Animated, {
@@ -16,7 +22,6 @@ import {
   IOSpacer,
   IOSpacingScale,
   IOVisualCostants,
-  buttonSolidHeight,
   hexToRgba,
   useIOTheme
 } from "../../core";
@@ -43,30 +48,32 @@ type GradientScrollActions =
 
 type GradientScrollView = WithTestID<
   PropsWithChildren<{
+    actionsProps: GradientScrollActions;
     excludeSafeAreaMargins?: boolean;
     debugMode?: boolean;
-    actionsProps: GradientScrollActions;
   }>
 >;
 
 // Extended gradient area above the actions
-export const gradientSafeArea: IOSpacingScale = 96;
+export const gradientSafeAreaHeight: IOSpacingScale = 96;
 // End content margin before the actions
 const contentEndMargin: IOSpacingScale = 32;
 // Margin between primary action and secondary one
 const spaceBetweenActions: IOSpacer = 24;
-// Estimated height of the secondary action
-const secondaryActionEstHeight: number = 20;
 // Extra bottom margin for iPhone bottom handle
 const extraSafeAreaMargin: IOSpacingScale = 8;
 
 const styles = StyleSheet.create({
+  gradientBottomActions: {
+    width: "100%",
+    position: "absolute",
+    bottom: 0,
+    justifyContent: "flex-end"
+  },
   buttonContainer: {
     paddingHorizontal: IOVisualCostants.appMarginDefault,
     width: "100%",
-    flex: 1,
-    flexShrink: 0,
-    justifyContent: "flex-end"
+    flexShrink: 0
   },
   gradientContainer: {
     ...StyleSheet.absoluteFillObject
@@ -81,24 +88,37 @@ const styles = StyleSheet.create({
 
 export const GradientScrollView = ({
   children,
-  actionsProps: { primary: primaryAction, secondary: secondaryAction },
+  actionsProps: {
+    primary: primaryAction,
+    secondary: secondaryAction,
+    tertiary: tertiaryAction
+  },
   // Don't include safe area insets
   excludeSafeAreaMargins = false,
   debugMode = false,
   testID
 }: GradientScrollView) => {
+  const theme = useIOTheme();
+
+  /* Shared Values for `reanimated` */
   const gradientOpacity = useSharedValue(1);
 
-  const theme = useIOTheme();
+  /* Total height of actions */
+  const [actionBlockHeight, setActionBlockHeight] =
+    useState<LayoutRectangle["height"]>(0);
+
+  const getActionBlockHeight = (event: LayoutChangeEvent) => {
+    setActionBlockHeight(event.nativeEvent.layout.height);
+  };
 
   const insets = useSafeAreaInsets();
   const isSafeAreaMarginNeeded = useMemo(() => insets.bottom !== 0, [insets]);
   const safeAreaMargin = useMemo(() => insets.bottom, [insets]);
 
   /* Check if the iPhone bottom handle is present.
-  If not, or if you don't need safe area insets,
-  add a default margin to prevent the button
-  from sticking to the bottom. */
+     If not, or if you don't need safe area insets,
+     add a default margin to prevent the button
+     from sticking to the bottom. */
   const bottomMargin: number = useMemo(
     () =>
       isSafeAreaMarginNeeded || excludeSafeAreaMargins
@@ -107,8 +127,9 @@ export const GradientScrollView = ({
     [isSafeAreaMarginNeeded, excludeSafeAreaMargins, safeAreaMargin]
   );
 
-  // GENERATE EASING GRADIENT
-  // Background color should be app main background (both light and dark themes)
+  /* GENERATE EASING GRADIENT
+     Background color should be app main background
+     (both light and dark themes) */
   const HEADER_BG_COLOR: ColorValue = IOColors[theme["appBackground-primary"]];
 
   const { colors, locations } = easeGradient({
@@ -121,53 +142,33 @@ export const GradientScrollView = ({
   });
 
   /* When the secondary action is visible, add extra margin
-to avoid little space from iPhone bottom handle */
+     to avoid little space from iPhone bottom handle */
   const extraBottomMargin: number = useMemo(
     () => (secondaryAction && isSafeAreaMarginNeeded ? extraSafeAreaMargin : 0),
     [isSafeAreaMarginNeeded, secondaryAction]
   );
 
-  /* Total height of actions */
-  const actionsArea: number = useMemo(
-    () =>
-      primaryAction && secondaryAction
-        ? (buttonSolidHeight as number) +
-          spaceBetweenActions +
-          secondaryActionEstHeight +
-          extraBottomMargin
-        : buttonSolidHeight,
-    [extraBottomMargin, primaryAction, secondaryAction]
-  );
-
   /* Total height of "Actions + Gradient" area */
   const gradientAreaHeight: number = useMemo(
-    () => bottomMargin + actionsArea + gradientSafeArea,
-    [actionsArea, bottomMargin]
+    () => bottomMargin + actionBlockHeight + gradientSafeAreaHeight,
+    [actionBlockHeight, bottomMargin]
   );
 
   /* Height of the safe bottom area, applied to the ScrollView:
-  Actions + Content end margin */
+     Actions + Content end margin */
   const safeBottomAreaHeight: number = useMemo(
-    () => bottomMargin + actionsArea + contentEndMargin,
-    [actionsArea, bottomMargin]
+    () => bottomMargin + actionBlockHeight + contentEndMargin,
+    [actionBlockHeight, bottomMargin]
   );
 
-  {
-    /* Safe background block. It's added because when
-    you swipe up quickly, the content below is visible
-    for about 100ms. Without this block, the content
-    appears glitchy. */
-  }
+  /* Safe background block. It's added because when
+     you swipe up quickly, the content below is visible
+     for about 100ms. Without this block, the content
+     appears glitchy. */
 
   const safeBackgroundHeight = useMemo(
-    () =>
-      secondaryAction
-        ? spaceBetweenActions +
-          secondaryActionEstHeight +
-          extraBottomMargin +
-          bottomMargin
-        : bottomMargin,
-    [bottomMargin, extraBottomMargin, secondaryAction]
+    () => actionBlockHeight * 0.5 + bottomMargin,
+    [actionBlockHeight, bottomMargin]
   );
 
   const handleScroll = useAnimatedScrollHandler(
@@ -206,13 +207,13 @@ to avoid little space from iPhone bottom handle */
         {children}
       </Animated.ScrollView>
       <View
-        style={{
-          width: "100%",
-          position: "absolute",
-          bottom: 0,
-          height: gradientAreaHeight,
-          paddingBottom: bottomMargin
-        }}
+        style={[
+          styles.gradientBottomActions,
+          {
+            height: gradientAreaHeight,
+            paddingBottom: bottomMargin
+          }
+        ]}
         testID={testID}
         pointerEvents="box-none"
       >
@@ -253,7 +254,11 @@ to avoid little space from iPhone bottom handle */
             }
           ]}
         />
-        <View style={styles.buttonContainer} pointerEvents="box-none">
+        <View
+          style={styles.buttonContainer}
+          onLayout={getActionBlockHeight}
+          pointerEvents="box-none"
+        >
           {primaryAction && (
             <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
           )}
