@@ -31,16 +31,19 @@ import { VSpacer } from "../spacer";
 
 type GradientScrollActions =
   | {
+      type: "SingleButton";
       primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
       secondary?: never;
       tertiary?: never;
     }
   | {
+      type: "TwoButtons";
       primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
       secondary: ComponentProps<typeof ButtonLink>;
       tertiary?: never;
     }
   | {
+      type: "ThreeButtons";
       primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
       secondary: Omit<ComponentProps<typeof ButtonOutline>, "fullWidth">;
       tertiary: ComponentProps<typeof ButtonLink>;
@@ -54,13 +57,16 @@ type GradientScrollView = WithTestID<
   }>
 >;
 
-// Extended gradient area above the actions
+/* Extended gradient area above the actions */
 export const gradientSafeAreaHeight: IOSpacingScale = 96;
-// End content margin before the actions
+/* End content margin before the actions */
 const contentEndMargin: IOSpacingScale = 32;
-// Margin between primary action and secondary one
-const spaceBetweenActions: IOSpacer = 16;
-// Extra bottom margin for iPhone bottom handle
+/* Margin between ButtonSolid and ButtonOutline */
+const spaceBetweenActions: IOSpacer = 8;
+/* Margin between ButtonSolid and ButtonLink */
+const spaceBetweenActionAndLink: IOSpacer = 16;
+/* Extra bottom margin for iPhone bottom handle because
+   ButtonLink doesn't have a fixed height */
 const extraSafeAreaMargin: IOSpacingScale = 8;
 
 const styles = StyleSheet.create({
@@ -83,6 +89,7 @@ const styles = StyleSheet.create({
 export const GradientScrollView = ({
   children,
   actionsProps: {
+    type,
     primary: primaryAction,
     secondary: secondaryAction,
     tertiary: tertiaryAction
@@ -106,7 +113,7 @@ export const GradientScrollView = ({
   };
 
   const insets = useSafeAreaInsets();
-  const isSafeAreaMarginNeeded = useMemo(() => insets.bottom !== 0, [insets]);
+  const needSafeAreaMargin = useMemo(() => insets.bottom !== 0, [insets]);
   const safeAreaMargin = useMemo(() => insets.bottom, [insets]);
 
   /* Check if the iPhone bottom handle is present.
@@ -115,10 +122,15 @@ export const GradientScrollView = ({
      from sticking to the bottom. */
   const bottomMargin: number = useMemo(
     () =>
-      isSafeAreaMarginNeeded || excludeSafeAreaMargins
+      !needSafeAreaMargin || excludeSafeAreaMargins
         ? IOVisualCostants.appMarginDefault
         : safeAreaMargin,
-    [isSafeAreaMarginNeeded, excludeSafeAreaMargins, safeAreaMargin]
+    [needSafeAreaMargin, excludeSafeAreaMargins, safeAreaMargin]
+  );
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `${needSafeAreaMargin} - Safe margin: ${safeAreaMargin} — Bottom margin: ${bottomMargin}`
   );
 
   /* GENERATE EASING GRADIENT
@@ -138,8 +150,15 @@ export const GradientScrollView = ({
   /* When the secondary action is visible, add extra margin
      to avoid little space from iPhone bottom handle */
   const extraBottomMargin: number = useMemo(
-    () => (secondaryAction && isSafeAreaMarginNeeded ? extraSafeAreaMargin : 0),
-    [isSafeAreaMarginNeeded, secondaryAction]
+    () => (secondaryAction && needSafeAreaMargin ? extraSafeAreaMargin : 0),
+    [needSafeAreaMargin, secondaryAction]
+  );
+
+  /* Safe background block. Learn more below where the
+     block is placed */
+  const safeBackgroundBlockHeight: number = useMemo(
+    () => bottomMargin + actionBlockHeight,
+    [actionBlockHeight, bottomMargin]
   );
 
   /* Total height of "Actions + Gradient" area */
@@ -220,7 +239,6 @@ export const GradientScrollView = ({
               }
             ]}
           >
-            {/* 100% opacity bg color fills at least 40% of the area */}
             <LinearGradient
               style={{ height: gradientAreaHeight * 0.6 }}
               locations={locations}
@@ -234,7 +252,7 @@ export const GradientScrollView = ({
           <View
             style={{
               bottom: 0,
-              height: gradientAreaHeight * 0.4,
+              height: safeBackgroundBlockHeight,
               backgroundColor: HEADER_BG_COLOR
             }}
           />
@@ -245,36 +263,43 @@ export const GradientScrollView = ({
           onLayout={getActionBlockHeight}
           pointerEvents="box-none"
         >
-          {primaryAction && (
-            <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
-          )}
+          {primaryAction && <ButtonSolid fullWidth {...primaryAction} />}
 
-          {secondaryAction && (
+          {type === "TwoButtons" && secondaryAction && (
             <View
               style={{
                 alignSelf: "center",
                 marginBottom: extraBottomMargin
               }}
             >
-              <VSpacer size={spaceBetweenActions} />
-              {<ButtonLink {...secondaryAction}></ButtonLink>}
+              <VSpacer size={spaceBetweenActionAndLink} />
+              <ButtonLink {...secondaryAction} />
             </View>
+          )}
+
+          {type === "ThreeButtons" && (
+            <>
+              {secondaryAction && (
+                <>
+                  <VSpacer size={spaceBetweenActions} />
+                  <ButtonOutline fullWidth {...secondaryAction} />
+                </>
+              )}
+              {tertiaryAction && (
+                <View
+                  style={{
+                    alignSelf: "center",
+                    marginBottom: extraBottomMargin
+                  }}
+                >
+                  <VSpacer size={spaceBetweenActionAndLink} />
+                  <ButtonLink {...tertiaryAction} />
+                </View>
+              )}
+            </>
           )}
         </View>
       </View>
-      {/* <GradientBottomActions
-        debugMode={debugMode}
-        primaryActionProps={primaryActionProps}
-        secondaryActionProps={secondaryActionProps}
-        transitionAnimStyle={opacityTransition}
-        dimensions={{
-          bottomMargin,
-          extraBottomMargin,
-          gradientAreaHeight,
-          spaceBetweenActions,
-          safeBackgroundHeight
-        }}
-      /> */}
     </>
   );
 };
