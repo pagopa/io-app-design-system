@@ -34,20 +34,12 @@ const itemsJustify: Record<TabAlignment, FlexStyle["justifyContent"]> = {
 
 const TabNavigation = ({
   color = "light",
-  selectedIndex: forceSelectedIndex,
+  selectedIndex,
   tabAlignment = "center",
   onItemPress,
   children
 }: TabNavigation) => {
   const [itemMinWidth, setItemMinWidth] = React.useState<number>(0);
-  const [selectedIndex, setSelectedIndex] = React.useState(
-    forceSelectedIndex ?? 0
-  );
-
-  const handleItemPress = (index: number) => {
-    setSelectedIndex(forceSelectedIndex ?? index);
-    onItemPress?.(index);
-  };
 
   const handleItemOnLayout = (event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout;
@@ -73,7 +65,7 @@ const TabNavigation = ({
       {React.cloneElement<TabItem>(child, {
         onPress: event => {
           child.props.onPress?.(event);
-          handleItemPress(index);
+          onItemPress?.(index);
         },
         selected: selectedIndex === index,
         color
