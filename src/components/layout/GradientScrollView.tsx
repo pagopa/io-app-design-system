@@ -11,10 +11,11 @@ import { easeGradient } from "react-native-easing-gradient";
 import LinearGradient from "react-native-linear-gradient";
 import Animated, {
   Easing,
+  Extrapolate,
+  interpolate,
   useAnimatedScrollHandler,
   useAnimatedStyle,
-  useSharedValue,
-  withTiming
+  useSharedValue
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
@@ -57,8 +58,11 @@ type GradientScrollView = WithTestID<
   }>
 >;
 
+/* Percentage of scrolled content that triggers
+   the gradient opaciy transition */
+const gradientOpacityScrollTrigger = 0.85;
 /* Extended gradient area above the actions */
-export const gradientSafeAreaHeight: IOSpacingScale = 96;
+const gradientSafeAreaHeight: IOSpacingScale = 96;
 /* End content margin before the actions */
 const contentEndMargin: IOSpacingScale = 32;
 /* Margin between ButtonSolid and ButtonOutline */
@@ -102,7 +106,7 @@ export const GradientScrollView = ({
   const theme = useIOTheme();
 
   /* Shared Values for `reanimated` */
-  const gradientOpacity = useSharedValue(1);
+  const scrollPositionPercentage = useSharedValue(0); /* Scroll position */
 
   /* Total height of actions */
   const [actionBlockHeight, setActionBlockHeight] =
@@ -171,24 +175,22 @@ export const GradientScrollView = ({
 
   const handleScroll = useAnimatedScrollHandler(
     ({ contentOffset, layoutMeasurement, contentSize }) => {
-      /* We use Math.floor because decimals used on Android
-      devices never change the `isEndReached` boolean value.
-      We have more consistent behavior across platforms
-      if we round these calculations ¯\_(ツ)_/¯ */
-      const isEndReached =
-        Math.floor(layoutMeasurement.height + contentOffset.y) >=
-        Math.floor(contentSize.height);
+      const scrollPosition = contentOffset.y;
+      const maxScrollHeight = contentSize.height - layoutMeasurement.height;
+      const scrollPercentage = scrollPosition / maxScrollHeight;
 
       // eslint-disable-next-line functional/immutable-data
-      gradientOpacity.value = isEndReached ? 0 : 1;
+      scrollPositionPercentage.value = scrollPercentage;
     }
   );
 
   const opacityTransition = useAnimatedStyle(() => ({
-    opacity: withTiming(gradientOpacity.value, {
-      duration: 200,
-      easing: Easing.ease
-    })
+    opacity: interpolate(
+      scrollPositionPercentage.value,
+      [0, gradientOpacityScrollTrigger, 1],
+      [1, 1, 0],
+      Extrapolate.CLAMP
+    )
   }));
 
   return (
@@ -196,7 +198,7 @@ export const GradientScrollView = ({
       <Animated.ScrollView
         testID={testID}
         onScroll={handleScroll}
-        scrollEventThrottle={16}
+        scrollEventThrottle={8}
         contentContainerStyle={{
           paddingHorizontal: IOVisualCostants.appMarginDefault,
           paddingBottom: safeBottomAreaHeight
