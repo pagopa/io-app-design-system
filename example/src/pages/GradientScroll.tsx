@@ -21,7 +21,7 @@ export const GradientScroll = () => {
       }}
     >
       <GradientScrollView
-        debugMode
+        // debugMode
         actionsProps={{
           type: "TwoButtons",
           primary: {
@@ -38,7 +38,7 @@ export const GradientScroll = () => {
           // }
         }}
       >
-        <H2>Start</H2>
+        <H2 color={theme["textHeading-default"]}>Start</H2>
         {[...Array(50)].map((_el, i) => (
           <Body key={`body-${i}`}>Repeated text</Body>
         ))}
@@ -61,7 +61,7 @@ export const GradientScroll = () => {
         {[...Array(2)].map((_el, i) => (
           <Body key={`body-${i}`}>Repeated text</Body>
         ))}
-        <H2>End</H2>
+        <H2 color={theme["textHeading-default"]}>End</H2>
       </GradientScrollView>
     </View>
   );
