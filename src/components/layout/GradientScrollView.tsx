@@ -27,7 +27,12 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink, ButtonOutline, ButtonSolid } from "../buttons";
+import {
+  ButtonLink,
+  ButtonLinkProps,
+  ButtonOutline,
+  ButtonSolid
+} from "../buttons";
 import { VSpacer } from "../spacer";
 
 type GradientScrollActions =
@@ -52,9 +57,10 @@ type GradientScrollActions =
 
 type GradientScrollView = WithTestID<
   PropsWithChildren<{
-    actionsProps: GradientScrollActions;
-    excludeSafeAreaMargins?: boolean;
+    actionsProps?: GradientScrollActions;
     debugMode?: boolean;
+    /* Don't include safe area insets */
+    excludeSafeAreaMargins?: boolean;
   }>
 >;
 
@@ -92,18 +98,17 @@ const styles = StyleSheet.create({
 
 export const GradientScrollView = ({
   children,
-  actionsProps: {
-    type,
-    primary: primaryAction,
-    secondary: secondaryAction,
-    tertiary: tertiaryAction
-  },
-  // Don't include safe area insets
+  actionsProps,
   excludeSafeAreaMargins = false,
   debugMode = false,
   testID
 }: GradientScrollView) => {
   const theme = useIOTheme();
+
+  const type = actionsProps?.type;
+  const primaryAction = actionsProps?.primary;
+  const secondaryAction = actionsProps?.secondary;
+  const tertiaryAction = actionsProps?.tertiary;
 
   /* Shared Values for `reanimated` */
   const scrollPositionPercentage = useSharedValue(0); /* Scroll position */
@@ -201,102 +206,108 @@ export const GradientScrollView = ({
         scrollEventThrottle={8}
         contentContainerStyle={{
           paddingHorizontal: IOVisualCostants.appMarginDefault,
-          paddingBottom: safeBottomAreaHeight
+          paddingBottom: actionsProps
+            ? safeBottomAreaHeight
+            : bottomMargin + contentEndMargin
         }}
       >
         {children}
       </Animated.ScrollView>
-      <View
-        style={[
-          styles.gradientBottomActions,
-          {
-            height: gradientAreaHeight,
-            paddingBottom: bottomMargin
-          }
-        ]}
-        testID={testID}
-        pointerEvents="box-none"
-      >
-        <Animated.View
+      {actionsProps && (
+        <View
           style={[
-            styles.gradientContainer,
-            debugMode && {
-              backgroundColor: hexToRgba(IOColors["error-500"], 0.15)
+            styles.gradientBottomActions,
+            {
+              height: gradientAreaHeight,
+              paddingBottom: bottomMargin
             }
           ]}
-          pointerEvents="none"
+          testID={testID}
+          pointerEvents="box-none"
         >
           <Animated.View
             style={[
-              opacityTransition,
+              styles.gradientContainer,
               debugMode && {
-                borderTopColor: IOColors["error-500"],
-                borderTopWidth: 1,
-                backgroundColor: hexToRgba(IOColors["error-500"], 0.4)
+                backgroundColor: hexToRgba(IOColors["error-500"], 0.15)
               }
             ]}
+            pointerEvents="none"
           >
-            <LinearGradient
-              style={{ height: gradientAreaHeight - safeBackgroundBlockHeight }}
-              locations={locations}
-              colors={colors}
+            <Animated.View
+              style={[
+                opacityTransition,
+                debugMode && {
+                  borderTopColor: IOColors["error-500"],
+                  borderTopWidth: 1,
+                  backgroundColor: hexToRgba(IOColors["error-500"], 0.4)
+                }
+              ]}
+            >
+              <LinearGradient
+                style={{
+                  height: gradientAreaHeight - safeBackgroundBlockHeight
+                }}
+                locations={locations}
+                colors={colors}
+              />
+            </Animated.View>
+
+            {/* Safe background block. It's added because when you swipe up
+          quickly, the content below is visible for about 100ms. Without this
+          block, the content appears glitchy. */}
+            <View
+              style={{
+                bottom: 0,
+                height: safeBackgroundBlockHeight,
+                backgroundColor: HEADER_BG_COLOR
+              }}
             />
           </Animated.View>
 
-          {/* Safe background block. It's added because when you swipe up
-          quickly, the content below is visible for about 100ms. Without this
-          block, the content appears glitchy. */}
           <View
-            style={{
-              bottom: 0,
-              height: safeBackgroundBlockHeight,
-              backgroundColor: HEADER_BG_COLOR
-            }}
-          />
-        </Animated.View>
+            style={styles.buttonContainer}
+            onLayout={getActionBlockHeight}
+            pointerEvents="box-none"
+          >
+            {primaryAction && <ButtonSolid fullWidth {...primaryAction} />}
 
-        <View
-          style={styles.buttonContainer}
-          onLayout={getActionBlockHeight}
-          pointerEvents="box-none"
-        >
-          {primaryAction && <ButtonSolid fullWidth {...primaryAction} />}
+            {type === "TwoButtons" && secondaryAction && (
+              <View
+                style={{
+                  alignSelf: "center",
+                  marginBottom: extraBottomMargin
+                }}
+              >
+                <VSpacer size={spaceBetweenActionAndLink} />
+                <ButtonLink {...(secondaryAction as ButtonLinkProps)} />
+              </View>
+            )}
 
-          {type === "TwoButtons" && secondaryAction && (
-            <View
-              style={{
-                alignSelf: "center",
-                marginBottom: extraBottomMargin
-              }}
-            >
-              <VSpacer size={spaceBetweenActionAndLink} />
-              <ButtonLink {...secondaryAction} />
-            </View>
-          )}
-
-          {type === "ThreeButtons" && (
-            <>
-              {secondaryAction && (
-                <>
-                  <VSpacer size={spaceBetweenActions} />
-                  <ButtonOutline fullWidth {...secondaryAction} />
-                </>
-              )}
-              {tertiaryAction && (
-                <View
-                  style={{
-                    alignSelf: "center",
-                    marginBottom: extraBottomMargin
-                  }}
-                >
-                  <VSpacer size={spaceBetweenActionAndLink} />
-                  <ButtonLink {...tertiaryAction} />
-                </View>
-              )}
-            </>
-          )}
+            {type === "ThreeButtons" && (
+              <>
+                {secondaryAction && (
+                  <>
+                    <VSpacer size={spaceBetweenActions} />
+                    <ButtonOutline fullWidth {...secondaryAction} />
+                  </>
+                )}
+                {tertiaryAction && (
+                  <View
+                    style={{
+                      alignSelf: "center",
+                      marginBottom: extraBottomMargin
+                    }}
+                  >
+                    <VSpacer size={spaceBetweenActionAndLink} />
+                    <ButtonLink {...tertiaryAction} />
+                  </View>
+                )}
+              </>
+            )}
+          </View>
         </View>
-      </View>
+      )}
     </>
   );
 };
