@@ -319,8 +319,8 @@ export const IOThemeLight: IOTheme = {
   // Layout
   "divider-default": "grey-200",
   // Status
-  errorIcon: "error-500",
-  errorText: "error-850",
+  errorIcon: "error-600",
+  errorText: "error-600",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
