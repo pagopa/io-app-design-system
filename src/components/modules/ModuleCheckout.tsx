@@ -1,8 +1,15 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import Placeholder from "rn-placeholder";
 import {
   IOModuleStyles,
+  IOSelectionListItemVisualParams,
   IOSpacingScale,
   IOStyles,
   useIOTheme
@@ -13,31 +20,28 @@ import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 import { PressableModuleBase } from "./PressableModuleBase";
 
-// ---------------- types ----------------
-
-type ModuleCheckoutPartialProps =
-  | {
-      isLoading?: false;
-      paymentLogo?: IOLogoPaymentType;
-      title: string;
-      subtitle?: string;
-      onPress: () => void;
-    }
-  | {
-      isLoading: true;
-      paymentLogo?: never;
-      title?: never;
-      subtitle?: never;
-      onPress?: never;
-    };
-
-export type ModuleCheckoutProps = ModuleCheckoutPartialProps & {
+type LoadingProps = {
+  isLoading: true;
   ctaText?: string;
 };
 
-type ActionOnlyProps = { text?: string };
+type ImageProps =
+  | { paymentLogo: IOLogoPaymentType; image?: never }
+  | { paymentLogo?: never; image: ImageURISource | ImageSourcePropType }
+  | { paymentLogo?: never; image?: never };
 
-// ---------------- component ----------------
+type BaseProps = {
+  isLoading?: false;
+  paymentLogo?: IOLogoPaymentType;
+  title: string;
+  subtitle?: string;
+  ctaText?: string;
+  onPress: () => void;
+} & ImageProps;
+
+export type ModuleCheckoutProps = LoadingProps | BaseProps;
+
+type ActionOnlyProps = { text?: string };
 
 export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const theme = useIOTheme();
@@ -46,21 +50,29 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     return <LoadingVersion text={props.ctaText} />;
   }
 
-  const paymentLogoEndMargin: IOSpacingScale = 12;
+  const { paymentLogo, image } = props;
 
-  const ModuleBaseContent = () => (
-    <View style={styles.rowCenter}>
-      {/*
-          we don't want to let the `space-between`
-          handle spacing for the logo/text section,
-          so we use a row and a marginEnd on the logo
-        */}
-      {props.paymentLogo && (
-        <View style={{ marginEnd: paymentLogoEndMargin }}>
-          <LogoPayment name={props.paymentLogo} />
+  const imageComponent = (
+    <>
+      {paymentLogo && (
+        <View style={styles.imageWrapper}>
+          <LogoPayment name={paymentLogo} />
         </View>
       )}
-      <View style={IOStyles.flex}>
+      {image && (
+        <Image
+          source={image}
+          style={[styles.imageWrapper, styles.image]}
+          accessibilityIgnoresInvertColors={true}
+        />
+      )}
+    </>
+  );
+
+  const ModuleBaseContent = () => (
+    <>
+      {imageComponent}
+      <View style={styles.content}>
         <H6>{props.title}</H6>
         {props.subtitle && (
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
@@ -68,7 +80,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
           </LabelSmall>
         )}
       </View>
-    </View>
+    </>
   );
 
   if (props.ctaText) {
@@ -87,8 +99,6 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   );
 };
 
-// ---------------- sub-components----------------
-
 const ModuleAction = ({ text }: ActionOnlyProps) => (
   <View pointerEvents="none">
     <ButtonLink
@@ -101,7 +111,7 @@ const ModuleAction = ({ text }: ActionOnlyProps) => (
 
 const LoadingVersion = ({ text }: ActionOnlyProps) => (
   <View style={IOModuleStyles.button}>
-    <View style={styles.rowCenter}>
+    <View style={[IOStyles.row, IOStyles.alignCenter]}>
       <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
       <HSpacer size={8} />
       <View>
@@ -114,12 +124,19 @@ const LoadingVersion = ({ text }: ActionOnlyProps) => (
   </View>
 );
 
-// ---------------- styles ----------------
+const imageMarginRight: IOSpacingScale = 12;
 
 const styles = StyleSheet.create({
-  rowCenter: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1
+  imageWrapper: {
+    marginRight: imageMarginRight
+  },
+  image: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
+  },
+  content: {
+    flexGrow: 1,
+    flexShrink: 1
   }
 });
