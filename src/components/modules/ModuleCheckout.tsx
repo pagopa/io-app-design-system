@@ -41,13 +41,11 @@ type BaseProps = {
 
 export type ModuleCheckoutProps = LoadingProps | BaseProps;
 
-type ActionOnlyProps = { text?: string };
-
 export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const theme = useIOTheme();
 
   if (props.isLoading) {
-    return <LoadingVersion text={props.ctaText} />;
+    return <LoadingVersion {...props} />;
   }
 
   const { paymentLogo, image } = props;
@@ -87,7 +85,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     return (
       <PressableModuleBase onPress={props.onPress}>
         <ModuleBaseContent />
-        {props.ctaText && <ModuleAction text={props.ctaText} />}
+        {props.ctaText && <ModuleAction ctaText={props.ctaText} />}
       </PressableModuleBase>
     );
   }
@@ -99,17 +97,17 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   );
 };
 
-const ModuleAction = ({ text }: ActionOnlyProps) => (
+const ModuleAction = ({ ctaText }: Pick<ModuleCheckoutProps, "ctaText">) => (
   <View pointerEvents="none">
     <ButtonLink
-      label={text ?? ""}
-      accessibilityLabel={text}
+      label={ctaText ?? ""}
+      accessibilityLabel={ctaText}
       onPress={() => null}
     />
   </View>
 );
 
-const LoadingVersion = ({ text }: ActionOnlyProps) => (
+const LoadingVersion = ({ ctaText }: LoadingProps) => (
   <View style={IOModuleStyles.button}>
     <View style={[IOStyles.row, IOStyles.alignCenter]}>
       <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
@@ -120,7 +118,7 @@ const LoadingVersion = ({ text }: ActionOnlyProps) => (
         <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
       </View>
     </View>
-    <ModuleAction text={text} />
+    <ModuleAction ctaText={ctaText} />
   </View>
 );
 
