@@ -107,8 +107,8 @@ const mapColorStates: Record<
   },
   // Danger button
   danger: {
-    default: IOColors["error-850"],
-    pressed: IOColors["error-600"],
+    default: IOColors["error-600"],
+    pressed: IOColors["error-500"],
     label: {
       default: "white",
       disabled: "grey-700"
