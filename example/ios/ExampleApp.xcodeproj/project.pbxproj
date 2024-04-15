@@ -40,6 +40,7 @@
 		E8EF3336542140A88B10BFF7 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16CF61663EAF4B46B3B81980 /* TitilliumWeb-Regular.ttf */; };
 		EC846EA2DBCB4719B953F423 /* TitilliumSansPro-Thin-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3DE40C756739486AA1D51FCE /* TitilliumSansPro-Thin-Italic.otf */; };
 		ECADF86EA3F140C6A74EFA09 /* TitilliumSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FBA458C5509E42A59CD6F632 /* TitilliumSansPro-Regular.otf */; };
+		2097F76B68D349EFBD2A8A4C /* ReadexPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2473ADE2FEB04232B7E24471 /* ReadexPro-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		EC225F8C27DC4CB7A37B9FF3 /* TitilliumWeb-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-SemiBold.ttf"; path = "../assets/fonts/TitilliumWeb/TitilliumWeb-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FBA458C5509E42A59CD6F632 /* TitilliumSansPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-Regular.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-Regular.otf"; sourceTree = "<group>"; };
+		2473ADE2FEB04232B7E24471 /* ReadexPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "ReadexPro-SemiBold.ttf"; path = "../assets/fonts/ReadexPro/ReadexPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				3DE40C756739486AA1D51FCE /* TitilliumSansPro-Thin-Italic.otf */,
 				4FC6145EC4A14796982CAE22 /* TitilliumSansPro-Thin.otf */,
 				1CFF1D50D36F43F2BC0D124F /* LICENSE.txt */,
+				2473ADE2FEB04232B7E24471 /* ReadexPro-SemiBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -357,6 +360,7 @@
 				EC846EA2DBCB4719B953F423 /* TitilliumSansPro-Thin-Italic.otf in Resources */,
 				116E6480B9914941A6254F71 /* TitilliumSansPro-Thin.otf in Resources */,
 				493FA456AB57478891021E84 /* LICENSE.txt in Resources */,
+				2097F76B68D349EFBD2A8A4C /* ReadexPro-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
