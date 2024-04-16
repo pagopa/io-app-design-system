@@ -188,6 +188,19 @@ const renderListItemNav = () => (
           loading
         />
         <ListItemNav
+          avatarProps={{
+            size: "small",
+            logoUri: {
+              uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+            }
+          }}
+          description="Description"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          value={"Value"}
+        />
+        <ListItemNav
           value={"Value"}
           description="This is a list item nav without chevron icon"
           onPress={() => {

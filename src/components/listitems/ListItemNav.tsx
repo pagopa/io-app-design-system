@@ -28,6 +28,7 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
+import { Avatar } from "../avatar";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
@@ -59,9 +60,30 @@ type ListItemNavPartialProps = WithTestID<
 >;
 
 export type ListItemNavGraphicProps =
-  | { icon?: never; iconColor?: never; paymentLogoUri: string }
-  | { icon: IOIcons; iconColor?: IOColors; paymentLogoUri?: never }
-  | { icon?: never; iconColor?: never; paymentLogoUri?: never };
+  | {
+      avatarProps: React.ComponentProps<typeof Avatar>;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri?: never;
+    }
+  | {
+      avatarProps?: never;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri: string;
+    }
+  | {
+      avatarProps?: never;
+      icon: IOIcons;
+      iconColor?: IOColors;
+      paymentLogoUri?: never;
+    }
+  | {
+      avatarProps?: never;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri?: never;
+    };
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
@@ -78,6 +100,7 @@ export const ListItemNav = ({
   onPress,
   icon,
   iconColor = "grey-450",
+  avatarProps: avatar,
   paymentLogoUri,
   accessibilityLabel,
   accessibilityHint,
@@ -233,6 +256,11 @@ export const ListItemNav = ({
                 name={paymentLogoUri}
                 size={IOListItemVisualParams.iconSize}
               /> */}
+            </View>
+          )}
+          {avatar && (
+            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+              <Avatar {...avatar} />
             </View>
           )}
           <View style={IOStyles.flex}>{listItemNavContent}</View>
