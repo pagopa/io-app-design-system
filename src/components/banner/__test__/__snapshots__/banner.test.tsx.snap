@@ -119,6 +119,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
           }
         />
         <View
+          accessibilityLabel="Action text"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -475,6 +476,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
           }
         />
         <View
+          accessibilityLabel="Action text"
           accessibilityRole="button"
           accessibilityState={
             {

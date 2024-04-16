@@ -57,18 +57,17 @@ type Props = WithTestID<{
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type ListItemRadioProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 
 const styles = StyleSheet.create({
   imageSize: {
     width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
   }
 });
 
@@ -86,9 +85,11 @@ export const ListItemRadio = ({
   selected,
   disabled,
   onValueChange,
+  accessibilityLabel,
+  accessibilityHint,
   loadingProps,
   testID
-}: OwnProps) => {
+}: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -211,6 +212,13 @@ export const ListItemRadio = ({
     <SkeletonComponent />
   ) : (
     <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
@@ -246,7 +254,11 @@ export const ListItemRadio = ({
                     />
                   )}
                   {startImage.uri && (
-                    <Image source={startImage} style={styles.imageSize} />
+                    <Image
+                      accessibilityIgnoresInvertColors
+                      source={startImage}
+                      style={styles.imageSize}
+                    />
                   )}
                   {startImage.paymentLogo && (
                     <LogoPayment

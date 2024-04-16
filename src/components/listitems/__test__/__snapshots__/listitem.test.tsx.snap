@@ -179,6 +179,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -776,7 +777,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -785,7 +786,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               },
             ]
           }
-          tintColor="#FE6666"
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
@@ -930,11 +931,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -1214,7 +1215,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1347,11 +1348,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -1521,7 +1522,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1983,6 +1984,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -2580,7 +2582,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -2589,7 +2591,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          tintColor="#FE6666"
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
@@ -2734,11 +2736,11 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -3018,7 +3020,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -3151,11 +3153,11 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -3325,7 +3327,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}

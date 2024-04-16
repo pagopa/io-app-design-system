@@ -36,12 +36,10 @@ type Props = {
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type ListItemCheckboxProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 
 /**
@@ -57,9 +55,10 @@ export const ListItemCheckbox = ({
   icon,
   selected,
   accessibilityLabel,
+  accessibilityHint,
   disabled,
   onValueChange
-}: OwnProps) => {
+}: ListItemCheckboxProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -73,6 +72,12 @@ export const ListItemCheckbox = ({
 
   // Theme
   const theme = useIOTheme();
+
+  // Accessibility
+  // Comma = Small pause when announcing content
+  const fallbackAccessibilityLabel = description
+    ? `${value}, ${description}`
+    : value;
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -130,7 +135,8 @@ export const ListItemCheckbox = ({
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel || fallbackAccessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="checkbox"
       accessibilityState={{
         checked: selected ?? toggleValue,

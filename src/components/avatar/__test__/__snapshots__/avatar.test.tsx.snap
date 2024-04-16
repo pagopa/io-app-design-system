@@ -2,6 +2,7 @@
 
 exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
 <View
+  accessibilityIgnoresInvertColors={true}
   style={
     [
       {
@@ -27,7 +28,6 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
           "backgroundColor": "#FFFFFF",
           "borderCurve": "continuous",
           "overflow": "hidden",
-          "resizeMode": "contain",
         },
         {
           "borderRadius": 2,
@@ -36,6 +36,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
     }
   >
     <Image
+      accessibilityIgnoresInvertColors={true}
       onError={[Function]}
       source={
         {
@@ -45,6 +46,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
       style={
         {
           "height": "100%",
+          "resizeMode": "contain",
           "width": "100%",
         }
       }
@@ -55,6 +57,7 @@ exports[`Test Avatar Components - Experimental Enabled Avatar Snapshot 1`] = `
 
 exports[`Test Avatar Components Avatar Snapshot 1`] = `
 <View
+  accessibilityIgnoresInvertColors={true}
   style={
     [
       {
@@ -80,7 +83,6 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
           "backgroundColor": "#FFFFFF",
           "borderCurve": "continuous",
           "overflow": "hidden",
-          "resizeMode": "contain",
         },
         {
           "borderRadius": 2,
@@ -89,6 +91,7 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
     }
   >
     <Image
+      accessibilityIgnoresInvertColors={true}
       onError={[Function]}
       source={
         {
@@ -98,6 +101,7 @@ exports[`Test Avatar Components Avatar Snapshot 1`] = `
       style={
         {
           "height": "100%",
+          "resizeMode": "contain",
           "width": "100%",
         }
       }

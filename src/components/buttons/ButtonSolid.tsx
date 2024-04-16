@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -65,33 +65,32 @@ const styles = StyleSheet.create({
   }
 });
 
-export type ButtonSolidProps = WithTestID<{
-  /**
-   * @default primary
-   */
-  color?: ButtonSolidColor;
-  label: string;
-  /**
-   * @default false
-   */
-  fullWidth?: boolean;
-  /**
-   * @default false
-   */
-  loading?: boolean;
-  /**
-   * @default false
-   */
-  disabled?: boolean;
-  icon?: IOIcons;
-  /**
-   * @default start
-   */
-  iconPosition?: "start" | "end";
-  accessibilityLabel: string;
-  accessibilityHint?: string;
-  onPress: (event: GestureResponderEvent) => void;
-}>;
+export type ButtonSolidProps = WithTestID<
+  {
+    /**
+     * @default primary
+     */
+    color?: ButtonSolidColor;
+    label: string;
+    /**
+     * @default false
+     */
+    fullWidth?: boolean;
+    /**
+     * @default false
+     */
+    loading?: boolean;
+    icon?: IOIcons;
+    /**
+     * @default start
+     */
+    iconPosition?: "start" | "end";
+    onPress: (event: GestureResponderEvent) => void;
+  } & Pick<
+    ComponentProps<typeof Pressable>,
+    "disabled" | "accessibilityLabel" | "accessibilityHint"
+  >
+>;
 
 const mapColorStates: Record<
   NonNullable<ButtonSolidProps["color"]>,
@@ -108,8 +107,8 @@ const mapColorStates: Record<
   },
   // Danger button
   danger: {
-    default: IOColors["error-850"],
-    pressed: IOColors["error-600"],
+    default: IOColors["error-600"],
+    pressed: IOColors["error-500"],
     label: {
       default: "white",
       disabled: "grey-700"
@@ -263,9 +262,13 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
         testID={testID}
         ref={ref}
         accessible={true}
-        accessibilityLabel={accessibilityLabel}
+        // Using || operator because empty string is not an accepted value
+        accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
-        accessibilityState={{ busy: loading }}
+        accessibilityState={{
+          busy: loading,
+          disabled: disabled || false
+        }}
         accessibilityRole={"button"}
         onPress={handleOnPress}
         onPressIn={onPressIn}

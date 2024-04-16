@@ -16,11 +16,12 @@ type Props = {
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type RadioButtonLabelProps = Props &
   Pick<React.ComponentProps<typeof AnimatedRadio>, "disabled" | "checked"> &
-  Pick<React.ComponentProps<typeof Pressable>, "onPress">;
+  Pick<
+    React.ComponentProps<typeof Pressable>,
+    "onPress" | "accessibilityLabel" | "accessibilityHint"
+  >;
 
 /**
  * A radio button with the automatic state management that uses a {@link AnimatedRadio}
@@ -33,8 +34,10 @@ export const RadioButtonLabel = ({
   label,
   checked,
   disabled,
-  onValueChange
-}: OwnProps) => {
+  onValueChange,
+  accessibilityLabel,
+  accessibilityHint
+}: RadioButtonLabelProps) => {
   const theme = useIOTheme();
 
   const [toggleValue, setToggleValue] = useState(checked ?? false);
@@ -49,13 +52,20 @@ export const RadioButtonLabel = ({
 
   return (
     <Pressable
-      disabled={disabled}
       onPress={toggleRadioButton}
-      testID="AnimatedRadioButton"
       style={{
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      disabled={disabled}
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      testID="AnimatedRadioButton"
     >
       <View
         style={[

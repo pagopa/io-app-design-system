@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Image, ImageURISource, StyleSheet, View } from "react-native";
+import {
+  Image,
+  ImageRequireSource,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import { Icon } from "../../components/icons";
 import {
   IOColors,
@@ -11,13 +17,12 @@ import {
 import { addCacheTimestampToUri } from "../../utils/image";
 
 type Avatar = {
-  imageSource?: ImageURISource | ReadonlyArray<ImageURISource>;
   /**
    * @deprecated Only `square` shape variant accepted
    */
   shape?: "circle" | "square";
   size: "small" | "medium";
-  logoUri?: ImageURISource | ReadonlyArray<ImageURISource>;
+  logoUri?: ImageRequireSource | ImageURISource | ReadonlyArray<ImageURISource>;
 };
 
 const internalSpaceDefaultSize: number = 6;
@@ -50,11 +55,11 @@ const styles = StyleSheet.create({
   },
   avatarInnerWrapper: {
     overflow: "hidden",
-    resizeMode: "contain",
     backgroundColor: IOColors.white,
     borderCurve: "continuous"
   },
   avatarImage: {
+    resizeMode: "contain",
     height: "100%",
     width: "100%"
   }
@@ -77,6 +82,8 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
       ? undefined
       : Array.isArray(logoUri)
       ? addCacheTimestampToUri(logoUri[0])
+      : typeof logoUri === "number"
+      ? logoUri
       : addCacheTimestampToUri(logoUri as ImageURISource)
   );
 
@@ -92,6 +99,7 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
 
   return (
     <View
+      accessibilityIgnoresInvertColors
       style={[
         styles.avatarWrapper,
         {
@@ -124,6 +132,7 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
           ]}
         >
           <Image
+            accessibilityIgnoresInvertColors
             source={imageSource}
             style={styles.avatarImage}
             onError={onError}

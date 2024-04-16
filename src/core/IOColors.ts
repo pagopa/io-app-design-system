@@ -56,11 +56,11 @@ export const IOColors = asIOColors({
   "turquoise-150": "#AAEEEF",
   "turquoise-100": "#C2F3F4",
   "turquoise-50": "#DBF9FA",
-  "error-850": "#761F1F",
-  "error-600": "#D75252",
-  "error-500": "#FE6666",
-  "error-400": "#FE8585" /* Dark mode */,
-  "error-100": "#FFE0E0",
+  "error-850": "#5D1313",
+  "error-600": "#D13333",
+  "error-500": "#FF4040",
+  "error-400": "#FF6666" /* Dark mode */,
+  "error-100": "#FFD9D9",
   "warning-850": "#614C15",
   "warning-700": "#A5822A",
   "warning-500": "#FFCB46",
@@ -319,8 +319,8 @@ export const IOThemeLight: IOTheme = {
   // Layout
   "divider-default": "grey-200",
   // Status
-  errorIcon: "error-500",
-  errorText: "error-850",
+  errorIcon: "error-600",
+  errorText: "error-600",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",

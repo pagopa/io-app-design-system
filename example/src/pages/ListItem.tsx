@@ -9,6 +9,7 @@ import {
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadio,
   ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
@@ -104,6 +105,14 @@ export const ListItems = () => {
         weight={"SemiBold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
+        ListItemRadio
+      </H2>
+      {renderListItemRadio()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
         ListItemRadioWithAmount
       </H2>
       {renderListItemRadioWithAmount()}
@@ -121,7 +130,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -129,7 +137,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value="A looong looooong looooooooong looooooooooong title"
@@ -137,7 +144,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
 
         <ListItemNav
@@ -146,7 +152,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -155,7 +160,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -165,7 +169,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -174,7 +177,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -183,7 +185,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           loading
         />
         <ListItemNav
@@ -192,7 +193,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           hideChevron
         />
         <ListItemNav
@@ -201,7 +201,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -215,7 +214,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -230,7 +228,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             dateValue: "14/04/2024"
           }}
@@ -668,14 +665,41 @@ const renderListItemTransaction = () => (
   </ComponentViewerBox>
 );
 
+const renderListItemRadio = () => (
+  <ComponentViewerBox name="ListItemRadio">
+    <View>
+      <ListItemRadio value="Item (selected)" selected={true} />
+      <Divider />
+      <ListItemRadio value="Item" selected={false} />
+      <Divider />
+      <ListItemRadio
+        value="Item with square icon"
+        selected={false}
+        startImage={{
+          uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+        }}
+      />
+      <Divider />
+      <ListItemRadio
+        value="Item with rectangular icon"
+        selected={false}
+        startImage={{
+          uri: "https://raw.githubusercontent.com/slaterjohn/payment-logos/master/Rounded%20Corners/PNG/medium/visa.png?raw=true"
+        }}
+      />
+      <Divider />
+    </View>
+  </ComponentViewerBox>
+);
+
 const renderListItemRadioWithAmount = () => (
   <ComponentViewerBox name="ListItemRadioWithAmount">
     <View>
       <ListItemRadioWithAmount
         label="Banca Intesa"
         formattedAmountString={"2,50 €"}
+        isSuggested
         suggestReason="Perché costa meno"
-        isSuggested={true}
       />
 
       <Divider />
