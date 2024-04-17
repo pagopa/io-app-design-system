@@ -777,7 +777,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -786,7 +786,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               },
             ]
           }
-          tintColor="#FE6666"
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
@@ -2582,7 +2582,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -2591,7 +2591,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          tintColor="#FE6666"
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
