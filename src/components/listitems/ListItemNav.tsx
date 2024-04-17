@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, ReactNode, useCallback } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -61,7 +61,7 @@ type ListItemNavPartialProps = WithTestID<
 
 export type ListItemNavGraphicProps =
   | {
-      avatarProps: React.ComponentProps<typeof Avatar>;
+      avatarProps: ComponentProps<typeof Avatar>;
       icon?: never;
       iconColor?: never;
       paymentLogoUri?: never;
@@ -112,6 +112,12 @@ export const ListItemNav = ({
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const withMargin = (GraphicalAsset: ReactNode) => (
+    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+      {GraphicalAsset}
+    </View>
+  );
 
   const listItemNavContent = (
     <>
@@ -236,33 +242,29 @@ export const ListItemNav = ({
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
         >
-          {icon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+          {/* Possibile graphical assets
+          - Icon
+          - Image URL (for payment logos)
+          - Avatar
+          */}
+          {icon &&
+            withMargin(
               <Icon
                 name={icon}
                 color={iconColor}
                 size={IOListItemVisualParams.iconSize}
               />
-            </View>
-          )}
-          {paymentLogoUri && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+            )}
+          {paymentLogoUri &&
+            withMargin(
               <Image
                 accessibilityIgnoresInvertColors
                 source={{ uri: paymentLogoUri }}
                 style={styles.paymentLogoSize}
               />
-              {/* <LogoPayment
-                name={paymentLogoUri}
-                size={IOListItemVisualParams.iconSize}
-              /> */}
-            </View>
-          )}
-          {avatar && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <Avatar {...avatar} />
-            </View>
-          )}
+            )}
+          {avatar && withMargin(<Avatar {...avatar} />)}
+
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}
           {!loading && !hideChevron && (

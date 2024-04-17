@@ -191,7 +191,7 @@ const renderListItemNav = () => (
           avatarProps={{
             size: "small",
             logoUri: {
-              uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+              uri: "https://assets.cdn.io.italia.it/logos/organizations/82003830161.png"
             }
           }}
           description="Description"
