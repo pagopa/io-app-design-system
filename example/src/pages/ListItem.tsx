@@ -189,7 +189,6 @@ const renderListItemNav = () => (
         />
         <ListItemNav
           avatarProps={{
-            size: "small",
             logoUri: {
               uri: "https://assets.cdn.io.italia.it/logos/organizations/82003830161.png"
             }

@@ -61,7 +61,7 @@ type ListItemNavPartialProps = WithTestID<
 
 export type ListItemNavGraphicProps =
   | {
-      avatarProps: ComponentProps<typeof Avatar>;
+      avatarProps: Omit<ComponentProps<typeof Avatar>, "size">;
       icon?: never;
       iconColor?: never;
       paymentLogoUri?: never;
@@ -263,7 +263,7 @@ export const ListItemNav = ({
                 style={styles.paymentLogoSize}
               />
             )}
-          {avatar && withMargin(<Avatar {...avatar} />)}
+          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}
