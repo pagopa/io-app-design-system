@@ -188,6 +188,18 @@ const renderListItemNav = () => (
           loading
         />
         <ListItemNav
+          avatarProps={{
+            logoUri: {
+              uri: "https://assets.cdn.io.italia.it/logos/organizations/82003830161.png"
+            }
+          }}
+          description="Description"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          value={"Value"}
+        />
+        <ListItemNav
           value={"Value"}
           description="This is a list item nav without chevron icon"
           onPress={() => {
