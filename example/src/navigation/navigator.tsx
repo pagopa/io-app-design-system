@@ -24,10 +24,10 @@ import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
-import { IOScrollViewScreen } from "../pages/IOScrollViewScreen";
 import { Icons } from "../pages/Icons";
 import { ImageScreen } from "../pages/Image";
 import { Layout } from "../pages/Layout";
@@ -48,7 +48,6 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
-import { IOScrollViewScreenWithoutActions } from "../pages/IOScrollViewScreenWithoutActions";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -375,19 +374,10 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
-            name={APP_ROUTES.SCREENS.IOSCROLLVIEW.route}
-            component={IOScrollViewScreen}
+            name={APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.route}
+            component={GradientScroll}
             options={{
-              headerTitle: APP_ROUTES.SCREENS.IOSCROLLVIEW.title,
-              headerBackTitleVisible: false
-            }}
-          />
-
-          <Stack.Screen
-            name={APP_ROUTES.SCREENS.IOSCROLLVIEW_WO_ACTIONS.route}
-            component={IOScrollViewScreenWithoutActions}
-            options={{
-              headerTitle: APP_ROUTES.SCREENS.IOSCROLLVIEW_WO_ACTIONS.title,
+              headerTitle: APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.title,
               headerBackTitleVisible: false
             }}
           />

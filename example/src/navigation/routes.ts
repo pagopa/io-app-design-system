@@ -78,13 +78,9 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
       title: "Footer with button"
     },
-    IOSCROLLVIEW: {
-      route: "DS_IOSCROLLVIEW",
-      title: "IO ScrollView"
-    },
-    IOSCROLLVIEW_WO_ACTIONS: {
-      route: "DS_IOSCROLLVIEW_WO_ACTIONS",
-      title: "IO ScrollView (w/o actions)"
+    GRADIENT_SCROLLVIEW: {
+      route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
+      title: "Gradient ScrollView"
     }
   },
   SANDBOX: {

@@ -5,6 +5,5 @@ export * from "./GradientBottomActions";
 export * from "./GradientScrollView";
 export * from "./HeaderFirstLevel";
 export * from "./HeaderSecondLevel";
-export * from "./IOScrollView";
 export * from "./ModalBSHeader";
 export * from "./common";
