@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, ReactNode, useCallback } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -28,6 +28,7 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
+import { Avatar } from "../avatar";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
@@ -59,9 +60,30 @@ type ListItemNavPartialProps = WithTestID<
 >;
 
 export type ListItemNavGraphicProps =
-  | { icon?: never; iconColor?: never; paymentLogoUri: string }
-  | { icon: IOIcons; iconColor?: IOColors; paymentLogoUri?: never }
-  | { icon?: never; iconColor?: never; paymentLogoUri?: never };
+  | {
+      avatarProps: Omit<ComponentProps<typeof Avatar>, "size">;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri?: never;
+    }
+  | {
+      avatarProps?: never;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri: string;
+    }
+  | {
+      avatarProps?: never;
+      icon: IOIcons;
+      iconColor?: IOColors;
+      paymentLogoUri?: never;
+    }
+  | {
+      avatarProps?: never;
+      icon?: never;
+      iconColor?: never;
+      paymentLogoUri?: never;
+    };
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
@@ -78,6 +100,7 @@ export const ListItemNav = ({
   onPress,
   icon,
   iconColor = "grey-450",
+  avatarProps: avatar,
   paymentLogoUri,
   accessibilityLabel,
   accessibilityHint,
@@ -89,6 +112,12 @@ export const ListItemNav = ({
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const withMargin = (GraphicalAsset: ReactNode) => (
+    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+      {GraphicalAsset}
+    </View>
+  );
 
   const listItemNavContent = (
     <>
@@ -213,28 +242,29 @@ export const ListItemNav = ({
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
         >
-          {icon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+          {/* Possibile graphical assets
+          - Icon
+          - Image URL (for payment logos)
+          - Avatar
+          */}
+          {icon &&
+            withMargin(
               <Icon
                 name={icon}
                 color={iconColor}
                 size={IOListItemVisualParams.iconSize}
               />
-            </View>
-          )}
-          {paymentLogoUri && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+            )}
+          {paymentLogoUri &&
+            withMargin(
               <Image
                 accessibilityIgnoresInvertColors
                 source={{ uri: paymentLogoUri }}
                 style={styles.paymentLogoSize}
               />
-              {/* <LogoPayment
-                name={paymentLogoUri}
-                size={IOListItemVisualParams.iconSize}
-              /> */}
-            </View>
-          )}
+            )}
+          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
+
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}
           {!loading && !hideChevron && (
