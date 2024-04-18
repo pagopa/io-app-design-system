@@ -66,11 +66,14 @@ export const OTPInput = ({
       // eslint-disable-next-line functional/immutable-data
       timerRef.current = setTimeout(() => {
         setHasError(false);
-        setInputValue("");
         onValueChange("");
       }, 500);
     }
   };
+
+  React.useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   React.useEffect(() => () => clearTimeout(timerRef.current), []);
 
@@ -78,7 +81,6 @@ export const OTPInput = ({
     if (value.length > length) {
       return;
     }
-    setInputValue(value);
     onValueChange(value);
     handleValidate(value);
   };
