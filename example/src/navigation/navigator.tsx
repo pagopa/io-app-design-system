@@ -1,18 +1,18 @@
 import {
   HeaderSecondLevel,
-  ModalBSHeader,
   IOStyles,
   IOThemeDark,
   IOThemeLight,
+  ModalBSHeader,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer
 } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
@@ -28,6 +28,7 @@ import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
+import { IOScrollViewScreen } from "../pages/IOScrollViewScreen";
 import { Icons } from "../pages/Icons";
 import { ImageScreen } from "../pages/Image";
 import { Layout } from "../pages/Layout";
@@ -378,6 +379,15 @@ const AppNavigator = () => {
             component={GradientScroll}
             options={{
               headerTitle: APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.IOSCROLLVIEW.route}
+            component={IOScrollViewScreen}
+            options={{
+              headerTitle: APP_ROUTES.SCREENS.IOSCROLLVIEW.title,
               headerBackTitleVisible: false
             }}
           />

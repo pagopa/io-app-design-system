@@ -81,6 +81,10 @@ const APP_ROUTES = {
     GRADIENT_SCROLLVIEW: {
       route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
       title: "Gradient ScrollView"
+    },
+    IOSCROLLVIEW: {
+      route: "DS_IOSCROLLVIEW",
+      title: "IO ScrollView"
     }
   },
   SANDBOX: {
