@@ -1,5 +1,11 @@
 import * as React from "react";
-import { ComponentProps, PropsWithChildren, useMemo, useState } from "react";
+import {
+  ComponentProps,
+  Fragment,
+  PropsWithChildren,
+  useMemo,
+  useState
+} from "react";
 import {
   ColorValue,
   LayoutChangeEvent,
@@ -194,12 +200,13 @@ export const IOScrollView = ({
   }));
 
   return (
-    <>
+    <Fragment>
       <Animated.ScrollView
         testID={testID}
         onScroll={handleScroll}
         scrollEventThrottle={8}
         contentContainerStyle={{
+          backgroundColor: IOColors[theme["appBackground-primary"]],
           paddingHorizontal: IOVisualCostants.appMarginDefault,
           paddingBottom: actions
             ? safeBottomAreaHeight
@@ -267,7 +274,7 @@ export const IOScrollView = ({
           >
             {primaryAction && <ButtonSolid fullWidth {...primaryAction} />}
 
-            {type === "TwoButtons" && secondaryAction && (
+            {type === "TwoButtons" && (
               <View
                 style={{
                   alignSelf: "center",
@@ -275,20 +282,23 @@ export const IOScrollView = ({
                 }}
               >
                 <VSpacer size={spaceBetweenActionAndLink} />
-                <ButtonLink
-                  {...(secondaryAction as ComponentProps<typeof ButtonLink>)}
-                />
+                {secondaryAction && (
+                  <ButtonLink
+                    {...(secondaryAction as ComponentProps<typeof ButtonLink>)}
+                  />
+                )}
               </View>
             )}
 
             {type === "ThreeButtons" && (
-              <>
+              <Fragment>
                 {secondaryAction && (
-                  <>
+                  <Fragment>
                     <VSpacer size={spaceBetweenActions} />
                     <ButtonOutline fullWidth {...secondaryAction} />
-                  </>
+                  </Fragment>
                 )}
+
                 {tertiaryAction && (
                   <View
                     style={{
@@ -300,11 +310,11 @@ export const IOScrollView = ({
                     <ButtonLink {...tertiaryAction} />
                   </View>
                 )}
-              </>
+              </Fragment>
             )}
           </View>
         </View>
       )}
-    </>
+    </Fragment>
   );
 };
