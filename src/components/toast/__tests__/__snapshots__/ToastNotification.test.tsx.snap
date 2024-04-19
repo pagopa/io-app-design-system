@@ -142,8 +142,8 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "padding": 16,
       },
       {
-        "backgroundColor": "#FFE0E0",
-        "borderColor": "#761F1F",
+        "backgroundColor": "#FFD9D9",
+        "borderColor": "#5D1313",
       },
     ]
   }
@@ -169,7 +169,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
           "fontSize": 16,
         },
         {
-          "color": "#761F1F",
+          "color": "#5D1313",
           "fontFamily": "Readex Pro",
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -557,8 +557,8 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "padding": 16,
       },
       {
-        "backgroundColor": "#FFE0E0",
-        "borderColor": "#761F1F",
+        "backgroundColor": "#FFD9D9",
+        "borderColor": "#5D1313",
       },
     ]
   }
@@ -584,7 +584,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
           "fontSize": 16,
         },
         {
-          "color": "#761F1F",
+          "color": "#5D1313",
           "fontFamily": "Titillium Web",
           "fontStyle": "normal",
           "fontWeight": "700",
