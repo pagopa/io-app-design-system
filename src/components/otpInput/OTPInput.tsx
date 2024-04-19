@@ -44,7 +44,6 @@ export const OTPInput = ({
 }: Props) => {
   const [hasFocus, setHasFocus] = React.useState(false);
   const [hasError, setHasError] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState(value);
 
   const { translate, animatedStyle, shakeAnimation } = useErrorShakeAnimation();
 
@@ -73,10 +72,6 @@ export const OTPInput = ({
     }
   };
 
-  React.useEffect(() => {
-    setInputValue(value);
-  }, [value]);
-
   React.useEffect(() => () => clearTimeout(timerRef.current), []);
 
   const handleChange = (value: string) => {
@@ -97,10 +92,10 @@ export const OTPInput = ({
         style={[IOStyles.row, { justifyContent: "space-around" }]}
         accessible={true}
         accessibilityLabel={accessibilityLabel}
-        accessibilityValue={{ text: inputValue }}
+        accessibilityValue={{ text: value }}
       >
         <TextInput
-          value={inputValue}
+          value={value}
           onChangeText={handleChange}
           style={{ position: "absolute", opacity: 0 }}
           maxLength={length}
@@ -119,12 +114,12 @@ export const OTPInput = ({
             status={
               hasError
                 ? "error"
-                : hasFocus && inputValue.length === i
+                : hasFocus && value.length === i
                 ? "focus"
                 : "default"
             }
             secret={secret}
-            value={inputValue[i]}
+            value={value[i]}
           />
         ))}
       </Pressable>
