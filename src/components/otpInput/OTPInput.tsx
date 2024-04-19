@@ -10,6 +10,7 @@ import { BoxedInput } from "./BoxedInput";
 
 type Props = {
   value: string;
+  accessibilityLabel: string;
   onValueChange: (value: string) => void;
   length: number;
   secret?: boolean;
@@ -35,6 +36,7 @@ export const OTPInput = ({
   value,
   onValueChange,
   length,
+  accessibilityLabel,
   onValidate,
   errorMessage = "",
   secret = false,
@@ -94,7 +96,7 @@ export const OTPInput = ({
         }}
         style={[IOStyles.row, { justifyContent: "space-around" }]}
         accessible={true}
-        accessibilityLabel="OTP Input"
+        accessibilityLabel={accessibilityLabel}
         accessibilityValue={{ text: inputValue }}
       >
         <TextInput
