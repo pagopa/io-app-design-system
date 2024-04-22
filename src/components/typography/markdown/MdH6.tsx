@@ -6,20 +6,20 @@ import { useTypographyFactory } from "../Factory";
 type AllowedColors = Extract<IOTheme, "textHeading-default"> | IOColors;
 type AllowedWeight = Extract<IOFontWeight, "Regular">;
 
-type MdH1Props = ExternalTypographyProps<
+type MdH6Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
-const fontSize = 20;
-const lineHeight = 24;
+const fontSize = 10;
+const lineHeight = 14;
 const font: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
+const defaultColor: AllowedColors = "grey-700";
 const defaultWeight: AllowedWeight = "Regular";
 
 /**
- * `MdH1` typographic style
+ * `MdH5` typographic style
  */
-export const MdH1 = (props: MdH1Props) =>
+export const MdH6 = (props: MdH6Props) =>
   useTypographyFactory<AllowedWeight, AllowedColors>({
     ...props,
     defaultWeight,
@@ -27,6 +27,7 @@ export const MdH1 = (props: MdH1Props) =>
     font,
     fontStyle: {
       fontSize,
-      lineHeight
+      lineHeight,
+      letterSpacing: 0.5
     }
   });

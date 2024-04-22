@@ -28,6 +28,7 @@ export const MdH4 = (props: MdH4Props) =>
     fontStyle: {
       fontSize,
       textTransform: "uppercase",
+      letterSpacing: 0.5,
       lineHeight
     }
   });

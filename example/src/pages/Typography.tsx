@@ -23,6 +23,7 @@ import {
   MdH3,
   MdH4,
   MdH5,
+  MdH6,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
@@ -80,12 +81,13 @@ export const Typography = () => (
 
     <Divider />
     <VSpacer size={24} />
-    <VStack space={40}>
+    <VStack space={32}>
       <MdH1Row />
       <MdH2Row />
       <MdH3Row />
       <MdH4Row />
       <MdH5Row />
+      <MdH6Row />
     </VStack>
 
     <VSpacer size={40} />
@@ -269,5 +271,12 @@ export const MdH5Row = () => (
   <VStack space={4}>
     <MdH5>{getTitle("Markdown H5")}</MdH5>
     <MdH5 style={styles.distancedTitle}>{getLongerTitle("Markdown H5")}</MdH5>
+  </VStack>
+);
+
+export const MdH6Row = () => (
+  <VStack space={4}>
+    <MdH6>{getTitle("Markdown H6")}</MdH6>
+    <MdH6 style={styles.distancedTitle}>{getLongerTitle("Markdown H6")}</MdH6>
   </VStack>
 );
