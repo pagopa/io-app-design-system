@@ -14,6 +14,7 @@ module.exports = {
     "./assets/fonts/TitilliumWeb",
     "./assets/fonts/TitilliumSansPro",
     "./assets/fonts/ReadexPro",
-    "./assets/fonts/DMMono"
+    "./assets/fonts/DMMono",
+    "./assets/animated-pictograms"
   ]
 };

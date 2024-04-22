@@ -15,9 +15,7 @@ export const AnimatedPictograms = () => (
         Animated pictograms
       </H2> */}
     <Rive
-      url="https://public.rive.app/community/runtime-files/2195-4346-avatar-pack-use-case.riv"
-      artboardName="Avatar 1"
-      stateMachineName="avatar"
+      resourceName="umbrella"
       style={{
         aspectRatio: "1",
         width: 200,

@@ -104,6 +104,10 @@
     {
       "path": "assets/fonts/DMMono/DMMono-Medium.ttf",
       "sha1": "0ceec76262c08cec6c956e1ffe2bfc60321e8f58"
+    },
+    {
+      "path": "assets/animated-pictograms/umbrella.riv",
+      "sha1": "60b9b7f80dace88630bc26fecee60a33ed85aeb0"
     }
   ]
 }
