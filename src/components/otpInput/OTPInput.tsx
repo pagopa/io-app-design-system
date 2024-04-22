@@ -10,14 +10,15 @@ import { BoxedInput } from "./BoxedInput";
 
 type Props = {
   value: string;
-  accessibilityLabel?: string;
-  accessibilityHint?: string;
   onValueChange: (value: string) => void;
   length: number;
   secret?: boolean;
   autocomplete?: boolean;
   onValidate?: (value: string) => boolean;
   errorMessage?: string;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+  inputAccessoryViewID?: string;
 };
 
 /**
@@ -44,7 +45,8 @@ export const OTPInput = React.forwardRef<View, Props>(
       onValidate,
       errorMessage = "",
       secret = false,
-      autocomplete = false
+      autocomplete = false,
+      inputAccessoryViewID
     },
     ref
   ) => {
@@ -115,6 +117,7 @@ export const OTPInput = React.forwardRef<View, Props>(
             returnKeyType="done"
             textContentType="oneTimeCode"
             autoComplete={autocomplete ? "sms-otp" : undefined}
+            inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
           />
           {[...Array(length)].map((_, i) => (
