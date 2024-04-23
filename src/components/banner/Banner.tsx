@@ -81,7 +81,6 @@ type BaseBannerProps = WithTestID<{
   size: "big" | "small";
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
-  viewRef: React.RefObject<View>;
   // A11y related props
   accessibilityLabel?: string;
   accessibilityHint?: string;
@@ -145,7 +144,6 @@ const mapBackgroundColor: Record<
 };
 
 export const Banner = ({
-  viewRef,
   size,
   color,
   pictogramName,
@@ -252,7 +250,6 @@ export const Banner = ({
 
   const PressableButton = () => (
     <Pressable
-      ref={viewRef}
       testID={testID}
       onPress={onPress}
       onPressIn={onPressIn}
@@ -273,7 +270,6 @@ export const Banner = ({
 
   const StaticComponent = () => (
     <View
-      ref={viewRef}
       testID={testID}
       style={[styles.container, dynamicContainerStyles(size, color)]}
       // A11y related props
