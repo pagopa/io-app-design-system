@@ -6,7 +6,8 @@ import {
   IOStyles,
   VSpacer,
   OTPInput,
-  LabelSmall
+  LabelSmall,
+  ButtonSolid
 } from "@pagopa/io-app-design-system";
 import { useState } from "react";
 import { Screen } from "../components/Screen";
@@ -30,14 +31,19 @@ const OTPWrapper = ({ secret = false, validation = false }: WrapperProps) => {
   const onValidate = (v: string) => !validation || v === OTP_COMPARE;
 
   return (
-    <OTPInput
-      value={value}
-      onValueChange={onValueChange}
-      length={OTP_LENGTH}
-      secret={secret}
-      onValidate={onValidate}
-      errorMessage={"Wrong OTP"}
-    />
+    <>
+      <OTPInput
+        value={value}
+        accessibilityLabel={"OTP Input"}
+        onValueChange={onValueChange}
+        length={OTP_LENGTH}
+        secret={secret}
+        onValidate={onValidate}
+        errorMessage={"Wrong OTP"}
+      />
+      <VSpacer />
+      <ButtonSolid onPress={() => setValue("")} label={"Pulisci valore"} />
+    </>
   );
 };
 /**

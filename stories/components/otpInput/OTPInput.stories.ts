@@ -22,6 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Empty: Story = {
   args: {
     length: 8,
+    accessibilityLabel: "OTP Input",
     onValidate: v => v === "12345678",
     value: ""
   }
@@ -30,6 +31,7 @@ export const Empty: Story = {
 export const Filled: Story = {
   args: {
     length: 8,
+    accessibilityLabel: "OTP Input",
     value: "123456"
   }
 };
@@ -37,6 +39,7 @@ export const Filled: Story = {
 export const FilledSecret: Story = {
   args: {
     length: 8,
+    accessibilityLabel: "OTP Input",
     value: "1234",
     secret: true
   }
