@@ -57,7 +57,7 @@ export const ListItemRadioWithAmount = ({
     >
       <View style={{ flexShrink: 1 }}>
         <LabelSmallAlt numberOfLines={1} color={theme["textBody-default"]}>
-          {label} con nome molto molto lungo
+          {label}
         </LabelSmallAlt>
         {isSuggested && (
           <>
