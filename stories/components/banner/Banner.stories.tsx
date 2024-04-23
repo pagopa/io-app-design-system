@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
+import { View } from "react-native";
 import { Banner, IOPictogramsBleed } from "../../../src/components";
 import { withMaxWitdth } from "../../utils";
 
@@ -51,6 +52,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Partial<Story> = {
   render: args => {
     const { size, color, title, content, pictogramName } = args;
+    const viewRef = React.createRef<View>();
     return (
       <Banner
         content={content}
@@ -58,6 +60,7 @@ export const Primary: Partial<Story> = {
         size={size}
         color={color}
         pictogramName={pictogramName}
+        viewRef={viewRef}
       />
     );
   }
