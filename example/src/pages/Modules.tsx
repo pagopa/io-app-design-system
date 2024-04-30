@@ -5,6 +5,7 @@ import {
   ModuleCheckout,
   ModuleCredential,
   ModuleIDP,
+  ModuleNavigation,
   ModulePaymentNotice,
   useIOExperimentalDesign,
   useIOTheme
@@ -256,6 +257,41 @@ const renderModuleCredential = () => (
   </>
 );
 
+const renderModuleNavigation = () => (
+  <>
+    <ComponentViewerBox name="ModuleNavigation">
+      <View>
+        <ModuleNavigation
+          icon="spid"
+          title="SPID"
+          subtitle="Usa credenziali e app (o SMS)"
+          onPress={mockFn}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigation, with Badge">
+      <View>
+        <ModuleNavigation
+          icon="spid"
+          title="SPID"
+          subtitle="Usa credenziali e app (o SMS)"
+          onPress={mockFn}
+          badge={{
+            text: "IN arrivo",
+            variant: "blue",
+            outline: true
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigation, loading">
+      <View>
+        <ModuleNavigation isLoading={true} />
+      </View>
+    </ComponentViewerBox>
+  </>
+);
+
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
@@ -306,6 +342,14 @@ const Modules = () => {
         ModuleCredential
       </H2>
       {renderModuleCredential()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleNavigation
+      </H2>
+      {renderModuleNavigation()}
     </Screen>
   );
 };
