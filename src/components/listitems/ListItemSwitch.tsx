@@ -20,6 +20,7 @@ type PartialProps = {
   action?: SwitchAction;
   isLoading?: boolean;
   badge?: Badge;
+  testID?: string;
 };
 
 export type SwitchAction = {
@@ -53,7 +54,8 @@ export const ListItemSwitch = React.memo(
     action,
     isLoading,
     badge,
-    onSwitchValueChange
+    onSwitchValueChange,
+    testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
 
@@ -66,7 +68,7 @@ export const ListItemSwitch = React.memo(
 
     return (
       <View
-        testID="ListItemSwitch"
+        testID={testID ?? "ListItemSwitch"}
         style={[
           IOSelectionListItemStyles.listItem,
           {
