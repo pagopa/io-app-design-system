@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
-import { WithTestID } from "src/utils/types";
+import { WithTestID } from "../../utils/types";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
