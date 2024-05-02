@@ -21,6 +21,7 @@ type PartialProps = WithTestID<{
   action?: SwitchAction;
   isLoading?: boolean;
   badge?: Badge;
+  switchTestID?: string;
 }>;
 
 export type SwitchAction = {
@@ -55,6 +56,7 @@ export const ListItemSwitch = React.memo(
     isLoading,
     badge,
     onSwitchValueChange,
+    switchTestID,
     testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
@@ -167,6 +169,7 @@ export const ListItemSwitch = React.memo(
                 value={value}
                 accessibilityLabel={label}
                 onValueChange={onSwitchValueChange}
+                testID={switchTestID}
               />
             )}
           </View>
