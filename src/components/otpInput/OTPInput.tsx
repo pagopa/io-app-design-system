@@ -19,6 +19,7 @@ type Props = {
   accessibilityLabel?: string;
   accessibilityHint?: string;
   inputAccessoryViewID?: string;
+  autoFocus?: boolean;
 };
 
 /**
@@ -46,7 +47,8 @@ export const OTPInput = React.forwardRef<View, Props>(
       errorMessage = "",
       secret = false,
       autocomplete = false,
-      inputAccessoryViewID
+      inputAccessoryViewID,
+      autoFocus = false
     },
     ref
   ) => {
@@ -91,6 +93,12 @@ export const OTPInput = React.forwardRef<View, Props>(
       handleValidate(value);
     };
 
+    React.useEffect(() => {
+      if (autoFocus) {
+        setHasFocus(true);
+      }
+    }, [autoFocus]);
+
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
         <Pressable
@@ -119,6 +127,7 @@ export const OTPInput = React.forwardRef<View, Props>(
             autoComplete={autocomplete ? "sms-otp" : undefined}
             inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
+            autoFocus={autoFocus}
           />
           {[...Array(length)].map((_, i) => (
             <BoxedInput
