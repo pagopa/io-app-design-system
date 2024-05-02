@@ -52,7 +52,7 @@ export const OTPInput = React.forwardRef<View, Props>(
     },
     ref
   ) => {
-    const [hasFocus, setHasFocus] = React.useState(false);
+    const [hasFocus, setHasFocus] = React.useState(autoFocus);
     const [hasError, setHasError] = React.useState(false);
 
     const { translate, animatedStyle, shakeAnimation } =
@@ -92,12 +92,6 @@ export const OTPInput = React.forwardRef<View, Props>(
       onValueChange(value);
       handleValidate(value);
     };
-
-    React.useEffect(() => {
-      if (autoFocus) {
-        setHasFocus(true);
-      }
-    }, [autoFocus]);
 
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
