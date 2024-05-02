@@ -80,6 +80,7 @@ export const ModuleIDP = ({
           styles.idpName,
           isExperimental ? styles.idpNameFont : styles.idpLegacyNameFont
         ]}
+        accessibilityLabel={name}
       >
         {name}
       </Text>
