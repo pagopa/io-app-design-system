@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
+import { WithTestID } from "../../utils/types";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
@@ -13,14 +14,15 @@ import { HSpacer, VSpacer } from "../spacer";
 import { NativeSwitch } from "../switch/NativeSwitch";
 import { H6, LabelLink, LabelSmall } from "../typography";
 
-type PartialProps = {
+type PartialProps = WithTestID<{
   label: string;
   onSwitchValueChange?: (newValue: boolean) => void;
   description?: string;
   action?: SwitchAction;
   isLoading?: boolean;
   badge?: Badge;
-};
+  switchTestID?: string;
+}>;
 
 export type SwitchAction = {
   label: string;
@@ -53,7 +55,9 @@ export const ListItemSwitch = React.memo(
     action,
     isLoading,
     badge,
-    onSwitchValueChange
+    onSwitchValueChange,
+    switchTestID,
+    testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
 
@@ -66,7 +70,7 @@ export const ListItemSwitch = React.memo(
 
     return (
       <View
-        testID="ListItemSwitch"
+        testID={testID ?? "ListItemSwitch"}
         style={[
           IOSelectionListItemStyles.listItem,
           {
@@ -165,6 +169,7 @@ export const ListItemSwitch = React.memo(
                 value={value}
                 accessibilityLabel={label}
                 onValueChange={onSwitchValueChange}
+                testID={switchTestID}
               />
             )}
           </View>

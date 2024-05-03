@@ -1032,7 +1032,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           weight="Regular"
         >
           label
-           con nome molto molto lungo
         </Text>
         <View
           style={
@@ -1449,7 +1448,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           weight="Regular"
         >
           label
-           con nome molto molto lungo
         </Text>
       </View>
       <View
@@ -2837,7 +2835,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           weight="SemiBold"
         >
           label
-           con nome molto molto lungo
         </Text>
         <View
           style={
@@ -3254,7 +3251,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           weight="SemiBold"
         >
           label
-           con nome molto molto lungo
         </Text>
       </View>
       <View
