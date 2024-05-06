@@ -81,6 +81,9 @@ export const IOColors = asIOColors({
   "blueItalia-500": "#0066CC" /* pagoPA service */,
   "blueItalia-100": "#C4DCF5",
   "blueItalia-50": "#DDEBFA",
+  /* Temporary scale based on legacy Blue */
+  "blue-600": "#0353A3",
+  "blue-50": "#EFF7FF",
   /* Legacy */
   greyUltraLight: "#F5F6F7",
   greyLight: "#E6E9F2",
@@ -243,7 +246,9 @@ export const IOColorsExtra = {
   "blueItalia-600": IOColors["blueItalia-600"],
   "blueItalia-500": IOColors["blueItalia-500"],
   "blueItalia-100": IOColors["blueItalia-100"],
-  "blueItalia-50": IOColors["blueItalia-50"]
+  "blueItalia-50": IOColors["blueItalia-50"],
+  "blue-600": IOColors["blue-600"],
+  "blue-50": IOColors["blue-50"]
 };
 export type IOColorsExtra = keyof typeof IOColorsExtra;
 
