@@ -14,7 +14,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
@@ -27,7 +27,7 @@ import { IOStyles } from "../../core/IOStyles";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { HSpacer, VSpacer } from "../spacer";
+import { VSpacer } from "../spacer";
 import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
 
@@ -163,12 +163,13 @@ export const Alert = ({
 
   const renderMainBlock = () => (
     <>
-      <Icon
-        name={mapVariantStates[variant].icon}
-        size={iconSize}
-        color={mapVariantStates[variant].foreground}
-      />
-      <HSpacer />
+      <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+        <Icon
+          name={mapVariantStates[variant].icon}
+          size={iconSize}
+          color={mapVariantStates[variant].foreground}
+        />
+      </View>
       <View style={IOStyles.flex}>
         {title && (
           <>

@@ -12,12 +12,12 @@ import {
   IOModuleStyles,
   IOSelectionListItemVisualParams,
   IOStyles,
+  IOVisualCostants,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
-import { HSpacer } from "../spacer";
 import { LabelSmallAlt } from "../typography";
 import {
   PressableModuleBase,
@@ -51,7 +51,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
   const { icon, image, label, onPress, badge, ...pressableProps } = props;
 
   const iconComponent = (
-    <>
+    <View style={{ marginRight: IOVisualCostants.iconMargin }}>
       {icon && <Icon name={icon} size={24} color="grey-300" />}
       {image && (
         <Image
@@ -60,13 +60,13 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           accessibilityIgnoresInvertColors={true}
         />
       )}
-    </>
+    </View>
   );
 
   return (
     <PressableModuleBase {...pressableProps} onPress={onPress}>
-      <View>{iconComponent}</View>
-      <View style={{ flexGrow: 1, flexShrink: 1, paddingHorizontal: 8 }}>
+      {(icon || image) && iconComponent}
+      <View style={{ flexGrow: 1, flexShrink: 1, paddingRight: 8 }}>
         <LabelSmallAlt
           color="blueIO-500"
           numberOfLines={2}
@@ -92,8 +92,9 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
 const ModuleCredentialSkeleton = () => (
   <View style={IOModuleStyles.button}>
     <View style={[IOStyles.row, IOStyles.alignCenter]}>
-      <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-      <HSpacer size={8} />
+      <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
+      </View>
       <Placeholder.Box animate="fade" width={96} height={19} radius={8} />
     </View>
     <Placeholder.Box animate="fade" width={64} height={22} radius={8} />
