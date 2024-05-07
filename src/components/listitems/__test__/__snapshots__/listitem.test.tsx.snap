@@ -437,7 +437,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -614,7 +614,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -753,7 +753,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
       <View
         style={
           {
-            "marginRight": 16,
+            "marginRight": 12,
           }
         }
       >
@@ -859,7 +859,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -1613,7 +1613,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     <View
       style={
         {
-          "marginRight": 16,
+          "marginRight": 12,
         }
       }
     >
@@ -1702,7 +1702,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     <View
       style={
         {
-          "marginLeft": 16,
+          "marginLeft": 12,
         }
       }
     >
@@ -2240,7 +2240,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -2417,7 +2417,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -2556,7 +2556,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
       <View
         style={
           {
-            "marginRight": 16,
+            "marginRight": 12,
           }
         }
       >
@@ -2662,7 +2662,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -3416,7 +3416,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     <View
       style={
         {
-          "marginRight": 16,
+          "marginRight": 12,
         }
       }
     >
@@ -3505,7 +3505,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     <View
       style={
         {
-          "marginLeft": 16,
+          "marginLeft": 12,
         }
       }
     >
