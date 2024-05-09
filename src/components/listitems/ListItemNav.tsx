@@ -268,13 +268,11 @@ export const ListItemNav = ({
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}
           {!loading && !hideChevron && (
-            <View>
-              <Icon
-                name="chevronRightListItem"
-                color={navIconColor}
-                size={IOListItemVisualParams.chevronSize}
-              />
-            </View>
+            <Icon
+              name="chevronRightListItem"
+              color={navIconColor}
+              size={IOListItemVisualParams.chevronSize}
+            />
           )}
         </Animated.View>
       </Animated.View>
