@@ -133,7 +133,7 @@ export const ListItemInfo = ({
     >
       <View style={IOListItemStyles.listItemInner}>
         {icon && (
-          <View style={{ marginRight: IOListItemVisualParams.actionMargin }}>
+          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
             <Icon
               name={icon}
               color="grey-450"

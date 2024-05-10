@@ -26,6 +26,7 @@ interface IOVisualCostants {
   iconContainedSizeDefault: number;
   scrollDownButtonRight: number;
   scrollDownButtonBottom: number;
+  iconMargin: IOSpacingScale;
 }
 
 export const IOVisualCostants: IOVisualCostants = {
@@ -37,7 +38,8 @@ export const IOVisualCostants: IOVisualCostants = {
   avatarRadiusSizeMedium: 12,
   iconContainedSizeDefault: 44,
   scrollDownButtonRight: 24,
-  scrollDownButtonBottom: 24
+  scrollDownButtonBottom: 24,
+  iconMargin: 12
 };
 
 export const IOStyles = StyleSheet.create({
@@ -269,7 +271,7 @@ interface IOListItemVisualParams {
 export const IOListItemVisualParams: IOListItemVisualParams = {
   paddingVertical: 12,
   paddingHorizontal: IOVisualCostants.appMarginDefault,
-  iconMargin: 16,
+  iconMargin: IOVisualCostants.iconMargin,
   actionMargin: 16,
   iconSize: 24,
   chevronSize: 24
@@ -368,7 +370,7 @@ export const IOSelectionListItemVisualParams: IOSelectionListItemVisualParams =
   {
     paddingVertical: 16,
     paddingHorizontal: IOVisualCostants.appMarginDefault,
-    iconMargin: 8,
+    iconMargin: IOVisualCostants.iconMargin,
     iconSize: 24,
     actionMargin: 8,
     descriptionMargin: 4
