@@ -611,74 +611,66 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           testValue
         </Text>
       </View>
-      <View
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight={24}
+        bbWidth={24}
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
         style={
-          {
-            "marginLeft": 12,
-          }
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0B3EE3",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
         }
+        tintColor="#0B3EE3"
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "color": "#0B3EE3",
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
-              },
-            ]
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
           }
-          tintColor="#0B3EE3"
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
-          <RNSVGGroup
+          <RNSVGPath
+            clipRule={0}
+            d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
             fill={
               {
-                "payload": 4278190080,
-                "type": 0,
+                "type": 2,
               }
             }
-          >
-            <RNSVGPath
-              clipRule={0}
-              d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
-              fill={
-                {
-                  "type": 2,
-                }
-              }
-              fillRule={0}
-              propList={
-                [
-                  "fill",
-                  "fillRule",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
     </View>
   </View>
 </View>
@@ -2414,74 +2406,66 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           testValue
         </Text>
       </View>
-      <View
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight={24}
+        bbWidth={24}
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
         style={
-          {
-            "marginLeft": 12,
-          }
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0073E6",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
         }
+        tintColor="#0073E6"
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "color": "#0073E6",
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
-              },
-            ]
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
           }
-          tintColor="#0073E6"
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
-          <RNSVGGroup
+          <RNSVGPath
+            clipRule={0}
+            d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
             fill={
               {
-                "payload": 4278190080,
-                "type": 0,
+                "type": 2,
               }
             }
-          >
-            <RNSVGPath
-              clipRule={0}
-              d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
-              fill={
-                {
-                  "type": 2,
-                }
-              }
-              fillRule={0}
-              propList={
-                [
-                  "fill",
-                  "fillRule",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
     </View>
   </View>
 </View>
