@@ -161,7 +161,8 @@ export const TextInputBase = ({
   onBlur,
   onFocus,
   isPassword,
-  autoFocus
+  autoFocus,
+  testID
 }: InputTextProps) => {
   const theme = useIOTheme();
 
@@ -279,6 +280,7 @@ export const TextInputBase = ({
           </>
         )}
         <TextInput
+          testID={testID}
           {...(derivedInputProps
             ? derivedInputProps.textInputProps
             : textInputProps)}
