@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { StyleProp, Text, TextStyle } from "react-native";
+import { StyleProp, Text, TextStyle, View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import {
   IOFontFamily,
@@ -43,7 +43,10 @@ const calculateTextStyle = (
  * @param props
  * @constructor
  */
-export const BaseTypography: React.FC<OwnProps> = props => {
+export const BaseTypography: React.FC<OwnProps> = React.forwardRef<
+  View,
+  OwnProps
+>((props, ref) => {
   const fontStyle = useMemo(
     () =>
       calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
@@ -54,8 +57,8 @@ export const BaseTypography: React.FC<OwnProps> = props => {
     : [props.fontStyle, fontStyle];
 
   return (
-    <Text allowFontScaling={false} {...props} style={style}>
+    <Text ref={ref} allowFontScaling={false} {...props} style={style}>
       {props.children}
     </Text>
   );
-};
+});

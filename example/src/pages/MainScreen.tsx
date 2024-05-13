@@ -9,7 +9,8 @@ import {
   ListItemNav,
   useIOExperimentalDesign,
   ListItemSwitch,
-  useIOThemeContext
+  useIOThemeContext,
+  H3
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -87,9 +88,16 @@ const MainScreen = (props: Props) => {
 
   const renderDSSectionFooter = () => <VSpacer size={24} />;
 
+  const mRef = React.useRef(null);
+  React.useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(`=== MainScreen ref (${mRef}) current (${mRef.current})`);
+  }, []);
+
   return (
     <>
       <View style={IOStyles.horizontalContentPadding}>
+        <H3 ref={mRef}>{"Mio titolo"}</H3>
         <ListItemSwitch
           label="Abilita Design Sperimentale"
           value={isExperimental}
