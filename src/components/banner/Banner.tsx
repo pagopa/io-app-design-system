@@ -81,7 +81,7 @@ type BaseBannerProps = WithTestID<{
   size: "big" | "small";
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
-  viewRef: React.RefObject<View>;
+  viewRef?: React.RefObject<View>;
   // A11y related props
   accessibilityLabel?: string;
   accessibilityHint?: string;

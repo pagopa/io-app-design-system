@@ -4,11 +4,14 @@ import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
 
 import PictogramAbacus from "./svg/PictogramAbacus";
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";
+import PictogramActivate from "./svg/PictogramActivate";
 import PictogramAirBaloon from "./svg/PictogramAirBaloon";
 import PictogramAirship from "./svg/PictogramAirship";
+import PictogramAttachment from "./svg/PictogramAttachment";
 import PictogramAttention from "./svg/PictogramAttention";
 import PictogramBaloons from "./svg/PictogramBaloons";
 import PictogramBeerMug from "./svg/PictogramBeerMug";
+import PictogramBiometric from "./svg/PictogramBiometric";
 import PictogramCameraDenied from "./svg/PictogramCameraDenied";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
 import PictogramCharity from "./svg/PictogramCharity";
@@ -67,10 +70,8 @@ import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
 /* Bleed Pictograms */
-import PictogramActivate from "./svg/PictogramActivate";
-import PictogramAttachment from "./svg/PictogramAttachment";
-import PictogramBiometric from "./svg/PictogramBiometric";
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
+import PictogramBleedActivate from "./svg/PictogramBleedActivate";
 import PictogramBleedAttention from "./svg/PictogramBleedAttention";
 import PictogramBleedCameraDenied from "./svg/PictogramBleedCameraDenied";
 import PictogramBleedCameraRequest from "./svg/PictogramBleedCameraRequest";
@@ -100,6 +101,7 @@ import PictogramBleedPasscode from "./svg/PictogramBleedPasscode";
 import PictogramBleedPayments from "./svg/PictogramBleedPayments";
 import PictogramBleedPending from "./svg/PictogramBleedPending";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
+import PictogramBleedReactivate from "./svg/PictogramBleedReactivate";
 import PictogramBleedSearch from "./svg/PictogramBleedSearch";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedStar from "./svg/PictogramBleedStar";
@@ -107,6 +109,7 @@ import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
 import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
 import PictogramBleedTime from "./svg/PictogramBleedTime";
 import PictogramBleedTiming from "./svg/PictogramBleedTiming";
+/* End Bleed Pictograms */
 import PictogramCardAdd from "./svg/PictogramCardAdd";
 import PictogramCardFavourite from "./svg/PictogramCardFavourite";
 import PictogramCardIssue from "./svg/PictogramCardIssue";
@@ -330,7 +333,9 @@ export type IOPictogramsBleed = Extract<
   | "star"
   | "qrCode"
   | "lostConnection"
-  | "payments",
+  | "payments"
+  | "activate"
+  | "reactivate",
   IOPictograms
 >;
 
@@ -373,7 +378,9 @@ export const IOPictogramsBleed: {
   doc: PictogramBleedDoc,
   qrCode: PictogramBleedQrCode,
   lostConnection: PictogramBleedLostConnection,
-  payments: PictogramBleedPayments
+  payments: PictogramBleedPayments,
+  activate: PictogramBleedActivate,
+  reactivate: PictogramBleedReactivate
 };
 
 export const PictogramBleed = ({

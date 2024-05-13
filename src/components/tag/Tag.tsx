@@ -12,58 +12,32 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 
-export type Tag = WithTestID<{
-  text?: string;
-  variant:
-    | "qrCode"
-    | "legalMessage"
-    | "info"
-    | "warning"
-    | "error"
-    | "success"
-    | "attachment"
-    | "noIcon";
-  iconAccessibilityLabel?: string;
-}>;
+export type Tag = WithTestID<
+  | {
+      text?: string;
+      variant:
+        | "qrCode"
+        | "legalMessage"
+        | "info"
+        | "warning"
+        | "error"
+        | "success"
+        | "attachment"
+        | "noIcon";
+      iconAccessibilityLabel?: string;
+      customIconProps?: never;
+    }
+  | {
+      text?: string;
+      variant: "customIcon";
+      customIconProps: VariantProps;
+      iconAccessibilityLabel?: string;
+    }
+>;
 
 type VariantProps = {
   iconColor: IOColors;
   iconName: IOIcons;
-};
-
-const mapVariants: Record<
-  NonNullable<Tag["variant"]>,
-  VariantProps | undefined
-> = {
-  qrCode: {
-    iconColor: "blueIO-500",
-    iconName: "qrCode"
-  },
-  attachment: {
-    iconColor: "grey-700",
-    iconName: "attachment"
-  },
-  legalMessage: {
-    iconColor: "blueIO-500",
-    iconName: "legalValue"
-  },
-  info: {
-    iconColor: "info-700",
-    iconName: "info"
-  },
-  warning: {
-    iconColor: "warning-700",
-    iconName: "warningFilled"
-  },
-  error: {
-    iconColor: "error-600",
-    iconName: "errorFilled"
-  },
-  success: {
-    iconColor: "success-700",
-    iconName: "success"
-  },
-  noIcon: undefined
 };
 
 const IOTagIconMargin: IOSpacingScale = 6;
@@ -111,15 +85,73 @@ const styles = StyleSheet.create({
   }
 });
 
+const getVariantProps = (
+  variant: NonNullable<Tag["variant"]>,
+  customIconProps?: VariantProps
+): VariantProps | undefined => {
+  switch (variant) {
+    case "customIcon":
+      return customIconProps;
+    case "qrCode":
+      return {
+        iconColor: "blueIO-500",
+        iconName: "qrCode"
+      };
+    case "attachment":
+      return {
+        iconColor: "grey-700",
+        iconName: "attachment"
+      };
+    case "legalMessage":
+      return {
+        iconColor: "blueIO-500",
+        iconName: "legalValue"
+      };
+    case "info":
+      return {
+        iconColor: "info-700",
+        iconName: "info"
+      };
+    case "warning":
+      return {
+        iconColor: "warning-700",
+        iconName: "warningFilled"
+      };
+    case "error":
+      return {
+        iconColor: "error-600",
+        iconName: "errorFilled"
+      };
+    case "success":
+      return {
+        iconColor: "success-700",
+        iconName: "success"
+      };
+    case "noIcon":
+      return undefined;
+    default:
+      return undefined;
+  }
+};
+
 /**
  * Tag component, used mainly for message list and details
  */
-export const Tag = ({ text, variant, testID, iconAccessibilityLabel }: Tag) => {
+export const Tag = ({
+  text,
+  variant,
+  testID,
+  customIconProps,
+  iconAccessibilityLabel
+}: Tag) => {
   const { isExperimental } = useIOExperimentalDesign();
+
+  const variantProps = getVariantProps(variant, customIconProps);
+
   return (
     <View testID={testID} style={styles.tag}>
       {pipe(
-        mapVariants[variant],
+        variantProps,
         O.fromNullable,
         O.fold(
           () => null,
@@ -136,7 +168,7 @@ export const Tag = ({ text, variant, testID, iconAccessibilityLabel }: Tag) => {
           )
         )
       )}
-      {mapVariants[variant] && text && <View style={styles.spacer} />}
+      {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <Text
           numberOfLines={1}

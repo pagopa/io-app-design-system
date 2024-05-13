@@ -18,7 +18,8 @@ import {
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
-import { LabelSmallAlt } from "../typography";
+import { VSpacer } from "../spacer";
+import { Chip, LabelSmallAlt } from "../typography";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -34,21 +35,23 @@ type ImageProps =
 
 type BaseProps = {
   isLoading?: false;
-  label: string;
+  title: string;
+  subtitle?: string;
   badge?: Badge;
 } & ImageProps &
   PressableModuleBaseProps;
 
-type ModuleCredentialProps = LoadingProps | BaseProps;
+type ModuleNavigationProps = LoadingProps | BaseProps;
 
-const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
+export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
   const theme = useIOTheme();
 
   if (props.isLoading) {
-    return <ModuleCredentialSkeleton />;
+    return <ModuleNavigationSkeleton />;
   }
 
-  const { icon, image, label, onPress, badge, ...pressableProps } = props;
+  const { icon, image, title, subtitle, onPress, badge, ...pressableProps } =
+    props;
 
   const iconComponent = (
     <View style={{ marginRight: IOVisualCostants.iconMargin }}>
@@ -72,30 +75,36 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           numberOfLines={2}
           lineBreakMode="middle"
         >
-          {label}
+          {title}
         </LabelSmallAlt>
+        {subtitle && <Chip color="grey-700">{subtitle}</Chip>}
       </View>
-      <View style={IOStyles.row}>
-        {badge && <Badge {...badge} />}
-        {onPress && (
+      <View>
+        {badge ? (
+          <Badge {...badge} />
+        ) : onPress ? (
           <Icon
             name="chevronRightListItem"
             color={theme["interactiveElem-default"]}
             size={IOListItemVisualParams.chevronSize}
           />
-        )}
+        ) : null}
       </View>
     </PressableModuleBase>
   );
 };
 
-const ModuleCredentialSkeleton = () => (
+const ModuleNavigationSkeleton = () => (
   <View style={IOModuleStyles.button}>
     <View style={[IOStyles.row, IOStyles.alignCenter]}>
       <View style={{ marginRight: IOVisualCostants.iconMargin }}>
         <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
       </View>
-      <Placeholder.Box animate="fade" width={96} height={19} radius={8} />
+      <View style={{ paddingRight: 8 }}>
+        <Placeholder.Box animate="fade" width={96} height={19} radius={8} />
+        <VSpacer size={4} />
+        <Placeholder.Box animate="fade" width={180} height={16} radius={8} />
+      </View>
     </View>
     <Placeholder.Box animate="fade" width={64} height={22} radius={8} />
   </View>
@@ -108,5 +117,3 @@ const styles = StyleSheet.create({
     resizeMode: "contain"
   }
 });
-
-export { ModuleCredential };

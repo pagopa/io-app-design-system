@@ -117,6 +117,15 @@ const renderTag = () => (
       <Tag variant="attachment" />
       <VSpacer size={8} />
       <Tag text={"No icon"} variant="noIcon" />
+      <VSpacer size={8} />
+      <Tag
+        text={"Custom icon"}
+        variant="customIcon"
+        customIconProps={{
+          iconName: "categTravel",
+          iconColor: "grey-700"
+        }}
+      />
     </ComponentViewerBox>
     <ComponentViewerBox name={"Tag, stress test"}>
       <View

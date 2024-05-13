@@ -1,5 +1,5 @@
 import React from "react";
-import { Path, Svg } from "react-native-svg";
+import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../types";
 
 const PictogramHello = ({ size, colorValues, ...props }: SVGPictogramProps) => (

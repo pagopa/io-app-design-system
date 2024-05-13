@@ -19,6 +19,7 @@ type Props = {
   accessibilityLabel?: string;
   accessibilityHint?: string;
   inputAccessoryViewID?: string;
+  autoFocus?: boolean;
 };
 
 /**
@@ -46,11 +47,12 @@ export const OTPInput = React.forwardRef<View, Props>(
       errorMessage = "",
       secret = false,
       autocomplete = false,
-      inputAccessoryViewID
+      inputAccessoryViewID,
+      autoFocus = false
     },
     ref
   ) => {
-    const [hasFocus, setHasFocus] = React.useState(false);
+    const [hasFocus, setHasFocus] = React.useState(autoFocus);
     const [hasError, setHasError] = React.useState(false);
 
     const { translate, animatedStyle, shakeAnimation } =
@@ -119,6 +121,7 @@ export const OTPInput = React.forwardRef<View, Props>(
             autoComplete={autocomplete ? "sms-otp" : undefined}
             inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
+            autoFocus={autoFocus}
           />
           {[...Array(length)].map((_, i) => (
             <BoxedInput
