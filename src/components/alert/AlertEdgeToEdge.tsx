@@ -1,12 +1,15 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, StyleSheet, Text, View } from "react-native";
-import Animated, {
-  Easing,
-  SlideInUp,
-  SlideOutUp
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
+import {
+  IOVisualCostants,
+  enterTransitionAlertEdgeToEdge,
+  enterTransitionAlertEdgeToEdgeContent,
+  exitTransitionAlertEdgeToEdge,
+  exitTransitionAlertEdgeToEdgeContent,
+  useIOExperimentalDesign
+} from "../../core";
 import {
   IOColors,
   IOColorsStatusBackground,
@@ -116,62 +119,61 @@ export const AlertEdgeToEdge = ({
 
   return (
     <Animated.View
-      entering={SlideInUp.duration(300).easing(Easing.inOut(Easing.exp))}
-      exiting={SlideOutUp.duration(300).easing(Easing.inOut(Easing.exp))}
+      entering={enterTransitionAlertEdgeToEdge}
+      exiting={exitTransitionAlertEdgeToEdge}
+      style={[
+        styles.container,
+        {
+          paddingTop: insets.top,
+          backgroundColor
+        }
+      ]}
     >
       <Animated.View
-        style={[
-          styles.container,
-          {
-            paddingTop: insets.top,
-            backgroundColor
-          }
-        ]}
+        entering={enterTransitionAlertEdgeToEdgeContent}
+        exiting={exitTransitionAlertEdgeToEdgeContent}
+        // ref={viewRef}
+        style={styles.alert}
+        testID={testID}
+        accessible={false}
+        accessibilityRole="alert"
+        accessibilityHint={accessibilityHint}
       >
         <View
-          ref={viewRef}
-          style={styles.alert}
-          testID={testID}
-          accessible={false}
-          accessibilityRole="alert"
-          accessibilityHint={accessibilityHint}
+          style={{
+            marginRight: IOVisualCostants.iconMargin,
+            alignSelf: "center"
+          }}
         >
-          <View
-            style={{
-              marginRight: IOVisualCostants.iconMargin,
-              alignSelf: "center"
-            }}
+          <Icon
+            name={mapVariantStates[variant].icon}
+            size={iconSize}
+            color={mapVariantStates[variant].foreground}
+          />
+        </View>
+        <View style={IOStyles.flex}>
+          <Label
+            color={mapVariantStates[variant].foreground}
+            weight={"Regular"}
+            accessibilityRole="text"
           >
-            <Icon
-              name={mapVariantStates[variant].icon}
-              size={iconSize}
-              color={mapVariantStates[variant].foreground}
-            />
-          </View>
-          <View style={IOStyles.flex}>
-            <Label
-              color={mapVariantStates[variant].foreground}
-              weight={"Regular"}
-              accessibilityRole="text"
-            >
-              {content}
-            </Label>
-            {action && (
-              <>
-                <VSpacer size={8} />
-                <Text
-                  style={[
-                    isExperimental ? styles.label : styles.labelLegacy,
-                    { color: IOColors[mapVariantStates[variant].foreground] }
-                  ]}
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                >
-                  {action}
-                </Text>
-              </>
-            )}
-          </View>
+            {content}
+          </Label>
+          {action && (
+            <>
+              <VSpacer size={8} />
+              <Text
+                style={[
+                  isExperimental ? styles.label : styles.labelLegacy,
+                  { color: IOColors[mapVariantStates[variant].foreground] }
+                ]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {action}
+              </Text>
+            </>
+          )}
         </View>
       </Animated.View>
     </Animated.View>

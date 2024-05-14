@@ -20,8 +20,8 @@ export const DSAlert = () => {
 
   const handleShowAlert = () => {
     showAlert({
-      variant: "info",
-      content: "Error content that is very long and should be truncated"
+      variant: "error",
+      content: "Error content that is very long and shouldn't be truncated"
     });
   };
 
