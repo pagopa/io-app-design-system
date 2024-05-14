@@ -19,16 +19,16 @@ type AlertProviderProps = {
 
 type AlertEdgeToEdgeProps = ComponentProps<typeof AlertEdgeToEdge>;
 
-type AlertContext = {
+type AlertEdgeToEdgeContext = {
   showAlert: (alert: AlertEdgeToEdgeProps) => void;
   removeAlert: () => void;
 };
-export const AlertContext = createContext<AlertContext>({
+export const AlertEdgeToEdgeContext = createContext<AlertEdgeToEdgeContext>({
   showAlert: (alert: AlertEdgeToEdgeProps) => alert,
   removeAlert: () => undefined
 });
 
-export const AlertProvider = ({ children }: AlertProviderProps) => {
+export const AlertEdgeToEdgeProvider = ({ children }: AlertProviderProps) => {
   const [alert, setAlert] = useState<AlertEdgeToEdgeProps | null>(null);
 
   const show = useCallback((alert: AlertEdgeToEdgeProps) => {
@@ -48,19 +48,16 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
   );
 
   return (
-    <AlertContext.Provider value={contextValue as AlertContext}>
+    <AlertEdgeToEdgeContext.Provider
+      value={contextValue as AlertEdgeToEdgeContext}
+    >
       {alert && (
         <View style={styles.container} pointerEvents="box-none">
-          <Animated.View
-            entering={SlideInUp.duration(300).easing(Easing.inOut(Easing.exp))}
-            exiting={SlideOutUp.duration(300).easing(Easing.inOut(Easing.exp))}
-          >
-            <AlertEdgeToEdge {...alert} />
-          </Animated.View>
+          <AlertEdgeToEdge {...alert} />
         </View>
       )}
       {children}
-    </AlertContext.Provider>
+    </AlertEdgeToEdgeContext.Provider>
   );
 };
 

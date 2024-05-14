@@ -1,3 +1,3 @@
 export * from "./Alert";
-export * from "./AlertProvider";
+export * from "./AlertEdgeToEdgeProvider";
 export * from "./AlertEdgeToEdge";

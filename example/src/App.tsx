@@ -1,5 +1,5 @@
 import {
-  AlertProvider,
+  AlertEdgeToEdgeProvider,
   IODSExperimentalContextProvider,
   IOThemeContextProvider,
   ToastProvider
@@ -7,6 +7,7 @@ import {
 import * as React from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppNavigator from "./navigation/navigator";
 
 export default function App() {
@@ -14,17 +15,19 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <IODSExperimentalContextProvider>
-        <IOThemeContextProvider
-          theme={colorScheme === "dark" ? "dark" : "light"}
-        >
-          <ToastProvider>
-            <AlertProvider>
-              <AppNavigator />
-            </AlertProvider>
-          </ToastProvider>
-        </IOThemeContextProvider>
-      </IODSExperimentalContextProvider>
+      <SafeAreaProvider>
+        <IODSExperimentalContextProvider>
+          <IOThemeContextProvider
+            theme={colorScheme === "dark" ? "dark" : "light"}
+          >
+            <ToastProvider>
+              <AlertEdgeToEdgeProvider>
+                <AppNavigator />
+              </AlertEdgeToEdgeProvider>
+            </ToastProvider>
+          </IOThemeContextProvider>
+        </IODSExperimentalContextProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

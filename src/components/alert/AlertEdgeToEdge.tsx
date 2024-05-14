@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { GestureResponderEvent, StyleSheet, Text, View } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, {
+  Easing,
+  SlideInUp,
+  SlideOutUp
+} from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import {
   IOColors,
@@ -13,7 +18,6 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { VSpacer } from "../spacer";
-import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
 
 const iconSize: IOIconSizeScale = 24;
@@ -21,14 +25,14 @@ const iconSize: IOIconSizeScale = 24;
 const [spacingDefault] = IOAlertSpacing;
 
 const styles = StyleSheet.create({
-  fixedWrapper: {
+  container: {
     zIndex: 1000,
     position: "absolute",
-    top: -40,
+    top: 0,
     left: 0,
     right: 0
   },
-  container: {
+  alert: {
     flexDirection: "row",
     alignItems: "flex-start",
     alignContent: "center",
@@ -46,7 +50,6 @@ const styles = StyleSheet.create({
 
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info";
-  title?: string;
   content: string;
   viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
@@ -97,7 +100,6 @@ const mapVariantStates: Record<
 export const AlertEdgeToEdge = ({
   viewRef,
   variant,
-  title,
   content,
   action,
   accessibilityHint,
@@ -105,57 +107,73 @@ export const AlertEdgeToEdge = ({
 }: AlertType): JSX.Element => {
   const { isExperimental } = useIOExperimentalDesign();
 
+  const insets = useSafeAreaInsets();
+
+  const backgroundColor = useMemo(
+    () => IOColors[mapVariantStates[variant].background],
+    [variant]
+  );
+
   return (
-    <Animated.View style={styles.fixedWrapper}>
-      <View
-        ref={viewRef}
+    <Animated.View
+      entering={SlideInUp.duration(300).easing(Easing.inOut(Easing.exp))}
+      exiting={SlideOutUp.duration(300).easing(Easing.inOut(Easing.exp))}
+    >
+      <Animated.View
         style={[
           styles.container,
-          { backgroundColor: IOColors[mapVariantStates[variant].background] }
+          {
+            paddingTop: insets.top,
+            backgroundColor
+          }
         ]}
-        testID={testID}
-        accessible={false}
-        accessibilityRole="alert"
-        accessibilityHint={accessibilityHint}
       >
-        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
-          <Icon
-            name={mapVariantStates[variant].icon}
-            size={iconSize}
-            color={mapVariantStates[variant].foreground}
-          />
-        </View>
-        <View style={IOStyles.flex}>
-          {title && (
-            <>
-              <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
-              <VSpacer size={8} />
-            </>
-          )}
-          <Label
-            color={mapVariantStates[variant].foreground}
-            weight={"Regular"}
-            accessibilityRole="text"
+        <View
+          ref={viewRef}
+          style={styles.alert}
+          testID={testID}
+          accessible={false}
+          accessibilityRole="alert"
+          accessibilityHint={accessibilityHint}
+        >
+          <View
+            style={{
+              marginRight: IOVisualCostants.iconMargin,
+              alignSelf: "center"
+            }}
           >
-            {content}
-          </Label>
-          {action && (
-            <>
-              <VSpacer size={8} />
-              <Text
-                style={[
-                  isExperimental ? styles.label : styles.labelLegacy,
-                  { color: IOColors[mapVariantStates[variant].foreground] }
-                ]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {action}
-              </Text>
-            </>
-          )}
+            <Icon
+              name={mapVariantStates[variant].icon}
+              size={iconSize}
+              color={mapVariantStates[variant].foreground}
+            />
+          </View>
+          <View style={IOStyles.flex}>
+            <Label
+              color={mapVariantStates[variant].foreground}
+              weight={"Regular"}
+              accessibilityRole="text"
+            >
+              {content}
+            </Label>
+            {action && (
+              <>
+                <VSpacer size={8} />
+                <Text
+                  style={[
+                    isExperimental ? styles.label : styles.labelLegacy,
+                    { color: IOColors[mapVariantStates[variant].foreground] }
+                  ]}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {action}
+                </Text>
+              </>
+            )}
+          </View>
         </View>
-      </View>
+      </Animated.View>
     </Animated.View>
   );
 };

@@ -1,29 +1,59 @@
 import {
   Alert,
+  AlertEdgeToEdgeContext,
+  ButtonSolid,
   H2,
+  H3,
+  HStack,
   IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import React, { useContext } from "react";
 import { View } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
+
 export const DSAlert = () => {
   const viewRef = React.createRef<View>();
 
+  const { showAlert, removeAlert } = useContext(AlertEdgeToEdgeContext);
+
+  const handleShowAlert = () => {
+    showAlert({
+      variant: "info",
+      content: "Error content that is very long and should be truncated"
+    });
+  };
+
   return (
     <Screen>
-      {/* Content only */}
-      <H2
+      <H3
         color={"bluegrey"}
         weight={"SemiBold"}
         style={{
-          marginBottom: 16,
-          paddingTop: IOVisualCostants.appMarginDefault
+          paddingTop: IOVisualCostants.appMarginDefault,
+          marginBottom: 16
+        }}
+      >
+        Edge to edge
+      </H3>
+      <HStack space={8}>
+        <ButtonSolid label="Show alert" onPress={handleShowAlert} />
+        <ButtonSolid label="Hide alert" onPress={removeAlert} />
+      </HStack>
+
+      <VSpacer size={24} />
+
+      {/* Content only */}
+      <H3
+        color={"bluegrey"}
+        weight={"SemiBold"}
+        style={{
+          marginBottom: 16
         }}
       >
         Content only
-      </H2>
+      </H3>
       <Alert
         viewRef={viewRef as React.RefObject<any>}
         variant="error"
@@ -56,9 +86,9 @@ export const DSAlert = () => {
 
       <VSpacer size={40} />
 
-      <H2 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
+      <H3 color={"bluegrey"} weight={"SemiBold"} style={{ marginBottom: 16 }}>
         Title + Content
-      </H2>
+      </H3>
 
       <Alert
         viewRef={viewRef as React.RefObject<any>}
