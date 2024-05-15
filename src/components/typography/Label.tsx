@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import {
   IOColors,
   IOColorsStatusForeground,
@@ -28,19 +30,26 @@ const labelDefaultcolor = "black";
 /**
  * `Label` typographic style
  */
-export const Label = ({ fontSize, ...props }: LabelProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const Label = React.forwardRef<View, LabelProps>(
+  ({ fontSize, ...props }, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: labelDefaultWeight,
-    defaultColor: labelDefaultcolor,
-    font: isExperimental ? fontName : legacyFontName,
-    fontStyle: {
-      fontSize: fontSize ? fontSizeMapping[fontSize] : fontSizeMapping.regular,
-      lineHeight: fontSize
-        ? lineHeightMapping[fontSize]
-        : lineHeightMapping.regular
-    }
-  });
-};
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
+      {
+        ...props,
+        defaultWeight: labelDefaultWeight,
+        defaultColor: labelDefaultcolor,
+        font: isExperimental ? fontName : legacyFontName,
+        fontStyle: {
+          fontSize: fontSize
+            ? fontSizeMapping[fontSize]
+            : fontSizeMapping.regular,
+          lineHeight: fontSize
+            ? lineHeightMapping[fontSize]
+            : lineHeightMapping.regular
+        }
+      },
+      ref
+    );
+  }
+);

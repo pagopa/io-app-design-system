@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -25,14 +27,17 @@ export const bodyDefaultWeight: AllowedWeight = "Regular";
 /**
  * `Body` typographic style
  */
-export const Body = (props: BodyProps) => {
+export const Body = React.forwardRef<View, BodyProps>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: bodyDefaultWeight,
-    defaultColor: bodyDefaultColor,
-    font: isExperimental ? fontName : legacyFontName,
-    fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: bodyDefaultWeight,
+      defaultColor: bodyDefaultColor,
+      font: isExperimental ? fontName : legacyFontName,
+      fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
+    },
+    ref
+  );
+});

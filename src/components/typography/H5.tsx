@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -20,19 +22,22 @@ const defaultWeight: AllowedWeight = "SemiBold";
 /**
  * `H5` typographic style
  */
-export const H5 = (props: H5Props) => {
+export const H5 = React.forwardRef<View, H5Props>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: {
-      fontSize: h5FontSize,
-      lineHeight: h5LineHeight,
-      textTransform: "uppercase",
-      letterSpacing: 0.5
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: {
+        fontSize: h5FontSize,
+        lineHeight: h5LineHeight,
+        textTransform: "uppercase",
+        letterSpacing: 0.5
+      }
+    },
+    ref
+  );
+});
