@@ -6,11 +6,8 @@ import React, {
   useState
 } from "react";
 import { StyleSheet, View } from "react-native";
-import Animated, {
-  Easing,
-  SlideInUp,
-  SlideOutUp
-} from "react-native-reanimated";
+import { HapticFeedbackTypes } from "react-native-haptic-feedback";
+import { triggerHaptic } from "../../functions";
 import { AlertEdgeToEdge } from "./AlertEdgeToEdge";
 
 type AlertProviderProps = {
@@ -23,15 +20,27 @@ type AlertEdgeToEdgeContext = {
   showAlert: (alert: AlertEdgeToEdgeProps) => void;
   removeAlert: () => void;
 };
+
 export const AlertEdgeToEdgeContext = createContext<AlertEdgeToEdgeContext>({
   showAlert: (alert: AlertEdgeToEdgeProps) => alert,
   removeAlert: () => undefined
 });
 
+const hapticFeedbackMap: Record<
+  NonNullable<ComponentProps<typeof AlertEdgeToEdge>["variant"]>,
+  keyof typeof HapticFeedbackTypes
+> = {
+  error: "notificationError",
+  warning: "notificationWarning",
+  // There isn't a `notificationInfo` haptic feedback type, so we use a generic one
+  info: "impactMedium"
+};
+
 export const AlertEdgeToEdgeProvider = ({ children }: AlertProviderProps) => {
   const [alert, setAlert] = useState<AlertEdgeToEdgeProps | null>(null);
 
   const show = useCallback((alert: AlertEdgeToEdgeProps) => {
+    triggerHaptic(hapticFeedbackMap[alert.variant]);
     setAlert(alert);
   }, []);
 

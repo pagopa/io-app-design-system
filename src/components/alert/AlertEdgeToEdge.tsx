@@ -7,7 +7,6 @@ import {
   enterTransitionAlertEdgeToEdge,
   enterTransitionAlertEdgeToEdgeContent,
   exitTransitionAlertEdgeToEdge,
-  exitTransitionAlertEdgeToEdgeContent,
   useIOExperimentalDesign
 } from "../../core";
 import {
@@ -69,7 +68,7 @@ type AlertActionProps =
       onPress?: never;
     };
 
-type AlertType = AlertProps & AlertActionProps;
+type AlertEdgeToEdgeProps = AlertProps & AlertActionProps;
 
 type VariantStates = {
   icon: IOIcons;
@@ -80,7 +79,7 @@ type VariantStates = {
 // COMPONENT CONFIGURATION
 
 const mapVariantStates: Record<
-  NonNullable<AlertType["variant"]>,
+  NonNullable<AlertEdgeToEdgeProps["variant"]>,
   VariantStates
 > = {
   error: {
@@ -101,13 +100,12 @@ const mapVariantStates: Record<
 };
 
 export const AlertEdgeToEdge = ({
-  viewRef,
   variant,
   content,
   action,
   accessibilityHint,
   testID
-}: AlertType): JSX.Element => {
+}: AlertEdgeToEdgeProps) => {
   const { isExperimental } = useIOExperimentalDesign();
 
   const insets = useSafeAreaInsets();
@@ -131,7 +129,6 @@ export const AlertEdgeToEdge = ({
     >
       <Animated.View
         entering={enterTransitionAlertEdgeToEdgeContent}
-        // ref={viewRef}
         style={styles.alert}
         testID={testID}
         accessible={false}
