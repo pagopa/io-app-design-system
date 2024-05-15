@@ -131,7 +131,6 @@ export const AlertEdgeToEdge = ({
     >
       <Animated.View
         entering={enterTransitionAlertEdgeToEdgeContent}
-        exiting={exitTransitionAlertEdgeToEdgeContent}
         // ref={viewRef}
         style={styles.alert}
         testID={testID}

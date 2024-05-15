@@ -21,7 +21,8 @@ export const DSAlert = () => {
   const handleShowAlert = () => {
     showAlert({
       variant: "error",
-      content: "Error content that is very long and shouldn't be truncated"
+      content:
+        "Error content that is very long and shouldn't be truncated. Another line of text because I need to test a looooonger text"
     });
   };
 

@@ -173,13 +173,13 @@ export const exitTransitionAlertEdgeToEdge = (values: {
   const animations = {
     opacity: withTiming(0, {
       duration: alertEdgeToEdgeExitTransitionDuration,
-      easing: Easing.in(Easing.cubic)
+      easing: Easing.in(Easing.exp)
     }),
     transform: [
       {
-        translateY: withTiming(-values.currentHeight, {
+        translateY: withTiming(-values.currentHeight * 0.5, {
           duration: alertEdgeToEdgeExitTransitionDuration,
-          easing: Easing.in(Easing.cubic)
+          easing: Easing.in(Easing.exp)
         })
       }
     ]
@@ -187,26 +187,6 @@ export const exitTransitionAlertEdgeToEdge = (values: {
   const initialValues = {
     opacity: 1,
     transform: [{ translateY: 0 }]
-  };
-  return {
-    initialValues,
-    animations
-  };
-};
-
-/**
-A custom exit transition designed for the `AlertEdgeToEdge` content (icon and text).
-*/
-export const exitTransitionAlertEdgeToEdgeContent = () => {
-  "worklet";
-  const animations = {
-    opacity: withTiming(0, {
-      duration: 300,
-      easing: Easing.inOut(Easing.ease)
-    })
-  };
-  const initialValues = {
-    opacity: 1
   };
   return {
     initialValues,
