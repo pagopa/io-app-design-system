@@ -22,7 +22,11 @@ export const DSAlert = () => {
     showAlert({
       variant: "error",
       content:
-        "Error content that is very long and shouldn't be truncated. Another line of text because I need to test a looooonger text"
+        "Error content that is very long and shouldn't be truncated. Another line of text because I need to test a looooonger text.",
+      action: "Alert action that's very long",
+      onPress: () => {
+        alert("Action triggered");
+      }
     });
   };
 

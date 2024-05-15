@@ -6,8 +6,7 @@ import {
   IOVisualCostants,
   enterTransitionAlertEdgeToEdge,
   enterTransitionAlertEdgeToEdgeContent,
-  exitTransitionAlertEdgeToEdge,
-  useIOExperimentalDesign
+  exitTransitionAlertEdgeToEdge
 } from "../../core";
 import {
   IOColors,
@@ -19,7 +18,6 @@ import { IOStyles } from "../../core/IOStyles";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { VSpacer } from "../spacer";
 import { Label } from "../typography/Label";
 
 const iconSize: IOIconSizeScale = 24;
@@ -40,11 +38,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     padding: spacingDefault
   },
-  label: {
-    fontSize: 16,
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  labelLegacy: {
+  labelAction: {
     fontSize: 16,
     ...makeFontStyleObject("Bold", false, "TitilliumWeb")
   }
@@ -106,8 +100,6 @@ export const AlertEdgeToEdge = ({
   accessibilityHint,
   testID
 }: AlertEdgeToEdgeProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
-
   const insets = useSafeAreaInsets();
 
   const backgroundColor = useMemo(
@@ -154,22 +146,21 @@ export const AlertEdgeToEdge = ({
             accessibilityRole="text"
           >
             {content}
-          </Label>
-          {action && (
-            <>
-              <VSpacer size={8} />
+            {action && (
               <Text
                 style={[
-                  isExperimental ? styles.label : styles.labelLegacy,
-                  { color: IOColors[mapVariantStates[variant].foreground] }
+                  styles.labelAction,
+                  {
+                    color: IOColors[mapVariantStates[variant].foreground]
+                  }
                 ]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
-                {action}
+                {` ${action}`}
               </Text>
-            </>
-          )}
+            )}
+          </Label>
         </View>
       </Animated.View>
     </Animated.View>
