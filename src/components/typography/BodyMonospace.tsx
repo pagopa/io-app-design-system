@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import type { IOColors } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -19,11 +21,16 @@ const monospaceDefaultcolor = "bluegrey";
 /**
  * `BodyMonospace` typographic style
  */
-export const BodyMonospace = (props: BodyMonospaceProps) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: monospaceDefaultWeight,
-    defaultColor: monospaceDefaultcolor,
-    font: fontName,
-    fontStyle: { fontSize, lineHeight }
-  });
+export const BodyMonospace = React.forwardRef<View, BodyMonospaceProps>(
+  (props, ref) =>
+    useTypographyFactory<AllowedWeight, AllowedColors>(
+      {
+        ...props,
+        defaultWeight: monospaceDefaultWeight,
+        defaultColor: monospaceDefaultcolor,
+        font: fontName,
+        fontStyle: { fontSize, lineHeight }
+      },
+      ref
+    )
+);
