@@ -1,15 +1,19 @@
 import {
   Alert,
+  AlertEdgeToEdge,
   AlertEdgeToEdgeContext,
+  ButtonOutline,
   ButtonSolid,
   H2,
   H3,
+  H6,
   HStack,
   IOVisualCostants,
-  VSpacer
+  VSpacer,
+  VStack
 } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
-import { View } from "react-native";
+import React, { ComponentProps, useContext } from "react";
+import { View, Alert as RNAlert } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 
@@ -18,16 +22,21 @@ export const DSAlert = () => {
 
   const { showAlert, removeAlert } = useContext(AlertEdgeToEdgeContext);
 
-  const handleShowAlert = () => {
-    showAlert({
-      variant: "error",
-      content:
-        "Error content that is very long and shouldn't be truncated. Another line of text because I need to test a looooonger text.",
-      action: "Alert action that's very long",
-      onPress: () => {
-        alert("Action triggered");
-      }
-    });
+  const handleShowAlert = (
+    variant: ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    enableAction = true
+  ) => {
+    const content =
+      "Alert content that is very long. And here's another line of text because I need to test a looooonger text.";
+    const actionProps = {
+      action: "Action text that's very long and could be placed on a new line",
+      onPress: () => RNAlert.alert("Action triggered")
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    enableAction
+      ? showAlert({ variant, content, ...actionProps })
+      : showAlert({ variant, content });
   };
 
   return (
@@ -42,10 +51,44 @@ export const DSAlert = () => {
       >
         Edge to edge
       </H3>
-      <HStack space={8}>
-        <ButtonSolid label="Show alert" onPress={handleShowAlert} />
-        <ButtonSolid label="Hide alert" onPress={removeAlert} />
-      </HStack>
+
+      <VStack space={8}>
+        {["info", "warning", "error"].map(variant => (
+          <VStack space={4} key={variant}>
+            <H6
+              color={"bluegrey"}
+              weight={"SemiBold"}
+              style={{ textTransform: "capitalize" }}
+            >
+              {variant}
+            </H6>
+            <HStack space={4}>
+              <ButtonSolid
+                label="w/ Action"
+                onPress={() =>
+                  handleShowAlert(
+                    variant as ComponentProps<
+                      keyof typeof AlertEdgeToEdge
+                    >["variant"]
+                  )
+                }
+              />
+              <ButtonSolid
+                label="w/o Action"
+                onPress={() =>
+                  handleShowAlert(
+                    variant as ComponentProps<
+                      keyof typeof AlertEdgeToEdge
+                    >["variant"],
+                    false
+                  )
+                }
+              />
+            </HStack>
+            <ButtonOutline label="Hide" onPress={removeAlert} />
+          </VStack>
+        ))}
+      </VStack>
 
       <VSpacer size={24} />
 
