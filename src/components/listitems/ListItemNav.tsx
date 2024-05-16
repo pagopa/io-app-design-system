@@ -48,6 +48,10 @@ type ListItemTopElementProps =
 type ListItemNavPartialProps = WithTestID<
   {
     value: string | React.ReactNode;
+    /**
+     * The maximum number of lines to display for the value.
+     */
+    numberOfLines?: number;
     description?: string | React.ReactNode;
     loading?: boolean;
     onPress: (event: GestureResponderEvent) => void;
@@ -107,7 +111,8 @@ export const ListItemNav = ({
   testID,
   hideChevron = false,
   topElement,
-  loading
+  loading,
+  numberOfLines
 }: ListItemNav) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
@@ -147,7 +152,9 @@ export const ListItemNav = ({
       )}
       {/* Let developer using a custom component (e.g: skeleton) */}
       {typeof value === "string" ? (
-        <H6 color={theme["textBody-default"]}>{value}</H6>
+        <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
+          {value}
+        </H6>
       ) : (
         value
       )}
