@@ -1,22 +1,23 @@
 import {
   HeaderSecondLevel,
-  ModalBSHeader,
   IOStyles,
   IOThemeDark,
   IOThemeLight,
+  ModalBSHeader,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer
 } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
+import { AnimatedPictograms } from "../pages/AnimatedPictograms";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
@@ -136,6 +137,14 @@ const AppNavigator = () => {
             component={Pictograms}
             options={{
               headerTitle: APP_ROUTES.FOUNDATION.PICTOGRAMS.title,
+              headerBackTitleVisible: false
+            }}
+          />
+          <Stack.Screen
+            name={APP_ROUTES.FOUNDATION.ANIMATED_PICTOGRAMS.route}
+            component={AnimatedPictograms}
+            options={{
+              headerTitle: APP_ROUTES.FOUNDATION.ANIMATED_PICTOGRAMS.title,
               headerBackTitleVisible: false
             }}
           />
