@@ -13,7 +13,7 @@ type H4Props = ExternalTypographyProps<
 >;
 
 export const h4FontSize = 20;
-export const h4LineHeight = 30;
+export const h4LineHeight = 24;
 const font: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";

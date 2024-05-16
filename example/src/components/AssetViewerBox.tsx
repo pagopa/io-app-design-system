@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     top: 4
   },
   pillRaster: {
-    backgroundColor: IOColors.yellow,
+    backgroundColor: IOColors["warning-500"],
     color: IOColors.black
   },
   pillBleed: {
