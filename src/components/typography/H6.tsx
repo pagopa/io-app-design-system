@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -26,17 +28,20 @@ const legacyDefaultWeight: AllowedWeight = "SemiBold";
 /**
  * `H6` typographic style
  */
-export const H6 = (props: H6Props) => {
+export const H6 = React.forwardRef<View, H6Props>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
-    defaultColor: h6DefaultColor,
-    font: isExperimental ? fontName : legacyFontName,
-    fontStyle: {
-      fontSize: isExperimental ? h6FontSize : legacyFontSize,
-      lineHeight: isExperimental ? h6LineHeight : legacyLineHeight
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
+      defaultColor: h6DefaultColor,
+      font: isExperimental ? fontName : legacyFontName,
+      fontStyle: {
+        fontSize: isExperimental ? h6FontSize : legacyFontSize,
+        lineHeight: isExperimental ? h6LineHeight : legacyLineHeight
+      }
+    },
+    ref
+  );
+});

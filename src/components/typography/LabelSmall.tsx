@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -41,21 +43,26 @@ const labelDefaultcolor = "blue";
 /**
  * `LabelSmall` typographic style
  */
-export const LabelSmall = (props: LabelSmallProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: labelDefaultWeight,
-    defaultColor: labelDefaultcolor,
-    font: isExperimental ? fontName : legacyFontName,
-    fontStyle: {
-      fontSize: props.fontSize
-        ? fontSizeMapping[props.fontSize]
-        : fontSizeMapping.regular,
-      lineHeight: props.fontSize
-        ? lineHeightMapping[props.fontSize]
-        : lineHeightMapping.regular
-    }
-  });
-};
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
+      {
+        ...props,
+        defaultWeight: labelDefaultWeight,
+        defaultColor: labelDefaultcolor,
+        font: isExperimental ? fontName : legacyFontName,
+        fontStyle: {
+          fontSize: props.fontSize
+            ? fontSizeMapping[props.fontSize]
+            : fontSizeMapping.regular,
+          lineHeight: props.fontSize
+            ? lineHeightMapping[props.fontSize]
+            : lineHeightMapping.regular
+        }
+      },
+      ref
+    );
+  }
+);

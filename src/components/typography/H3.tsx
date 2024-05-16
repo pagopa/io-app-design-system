@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -26,17 +28,20 @@ const legacyH3LineHeight = 34;
 /**
  * `H3` typographic style
  */
-export const H3 = (props: H3Props) => {
+export const H3 = React.forwardRef<View, H3Props>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-    defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
-    font: isExperimental ? font : legacyFontName,
-    fontStyle: {
-      fontSize: isExperimental ? h3FontSize : legacyH3FontSize,
-      lineHeight: isExperimental ? h3LineHeight : legacyH3LineHeight
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+      defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
+      font: isExperimental ? font : legacyFontName,
+      fontStyle: {
+        fontSize: isExperimental ? h3FontSize : legacyH3FontSize,
+        lineHeight: isExperimental ? h3LineHeight : legacyH3LineHeight
+      }
+    },
+    ref
+  );
+});

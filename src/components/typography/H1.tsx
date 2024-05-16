@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -25,17 +27,20 @@ const legacyH1LineHeight = 43;
 /**
  * `H1` typographic style
  */
-export const H1 = (props: H1Props) => {
+export const H1 = React.forwardRef<View, H1Props>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: {
-      fontSize: isExperimental ? h1FontSize : legacyH1FontSize,
-      lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: {
+        fontSize: isExperimental ? h1FontSize : legacyH1FontSize,
+        lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight
+      }
+    },
+    ref
+  );
+});
