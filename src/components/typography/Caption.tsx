@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -21,17 +23,20 @@ const legacyFont: FontFamily = "TitilliumWeb";
 /**
  * `Caption` typographic style
  */
-export const Caption = (props: CaptionProps) => {
+export const Caption = React.forwardRef<View, CaptionProps>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: {
-      fontSize: captionFontSize,
-      textTransform: "uppercase"
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: {
+        fontSize: captionFontSize,
+        textTransform: "uppercase"
+      }
+    },
+    ref
+  );
+});
