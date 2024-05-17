@@ -1,18 +1,18 @@
 import {
   HeaderSecondLevel,
-  ModalBSHeader,
   IOStyles,
   IOThemeDark,
   IOThemeLight,
+  ModalBSHeader,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer
 } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
