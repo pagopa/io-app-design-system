@@ -79,7 +79,7 @@ export const ListItemHeader = ({
           endElement !== undefined && endElement.type !== "badge"
         }
       >
-        <H6 weight="Regular" color={theme["textBody-tertiary"]}>
+        <H6 role="heading" weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
         </H6>
       </View>
