@@ -63,6 +63,10 @@ const styles = StyleSheet.create({
   }
 });
 
+/**
+ * @deprecated This component has been included in the new `IOScrollView` after a proper refactor. It will be removed in a future release.
+ * @see IOScrollView
+ */
 export const GradientBottomActions = ({
   primaryActionProps: primaryAction,
   secondaryActionProps: secondaryAction,
