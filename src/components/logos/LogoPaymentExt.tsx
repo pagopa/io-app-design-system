@@ -1,20 +1,21 @@
 import React from "react";
 
 /* Logos */
-import LogoPaymentExtMaestro from "./svg/LogoPaymentExtMaestro";
-import LogoPaymentExtMastercard from "./svg/LogoPaymentExtMastercard";
-import LogoPaymentExtVisa from "./svg/LogoPaymentExtVisa";
-import LogoPaymentExtVisaElectron from "./svg/LogoPaymentExtVisaElectron";
-import LogoPaymentExtVPay from "./svg/LogoPaymentExtVPay";
+import LogoPaymentExtAmex from "./svg/LogoPaymentExtAmex";
+import LogoPaymentExtApplePay from "./svg/LogoPaymentExtApplePay";
+import LogoPaymentExtBancomatPay from "./svg/LogoPaymentExtBancomatPay";
 import LogoPaymentExtDiners from "./svg/LogoPaymentExtDiners";
 import LogoPaymentExtJCB from "./svg/LogoPaymentExtJCB";
-import LogoPaymentExtUnionPay from "./svg/LogoPaymentExtUnionPay";
-import LogoPaymentExtPayPal from "./svg/LogoPaymentExtPayPal";
-import LogoPaymentExtBancomatPay from "./svg/LogoPaymentExtBancomatPay";
-import LogoPaymentExtPostepay from "./svg/LogoPaymentExtPostepay";
+import LogoPaymentExtMaestro from "./svg/LogoPaymentExtMaestro";
+import LogoPaymentExtMastercard from "./svg/LogoPaymentExtMastercard";
 import LogoPaymentExtPagoBancomat from "./svg/LogoPaymentExtPagoBancomat";
-import LogoPaymentExtApplePay from "./svg/LogoPaymentExtApplePay";
-import LogoPaymentExtAmex from "./svg/LogoPaymentExtAmex";
+import LogoPaymentExtPayPal from "./svg/LogoPaymentExtPayPal";
+import LogoPaymentExtPostepay from "./svg/LogoPaymentExtPostepay";
+import LogoPaymentExtSatispay from "./svg/LogoPaymentExtSatispay";
+import LogoPaymentExtUnionPay from "./svg/LogoPaymentExtUnionPay";
+import LogoPaymentExtVPay from "./svg/LogoPaymentExtVPay";
+import LogoPaymentExtVisa from "./svg/LogoPaymentExtVisa";
+import LogoPaymentExtVisaElectron from "./svg/LogoPaymentExtVisaElectron";
 
 export const IOPaymentExtLogos = {
   maestro: LogoPaymentExtMaestro,
@@ -27,6 +28,7 @@ export const IOPaymentExtLogos = {
   jcb: LogoPaymentExtJCB,
   unionPay: LogoPaymentExtUnionPay,
   payPal: LogoPaymentExtPayPal,
+  satispay: LogoPaymentExtSatispay,
   bancomatPay: LogoPaymentExtBancomatPay,
   postepay: LogoPaymentExtPostepay,
   pagoBancomat: LogoPaymentExtPagoBancomat,
