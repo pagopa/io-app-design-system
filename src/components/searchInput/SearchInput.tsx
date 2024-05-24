@@ -1,12 +1,17 @@
-import React, { useMemo, useState } from "react";
+import React, { ComponentProps, useMemo, useState } from "react";
 import {
   Dimensions,
   LayoutChangeEvent,
   LayoutRectangle,
+  Text,
+  Pressable,
   StyleSheet,
   TextInput,
+  TextInputChangeEventData,
   TextInputProps,
-  View
+  View,
+  NativeSyntheticEvent,
+  Platform
 } from "react-native";
 import Animated, {
   Easing,
@@ -21,33 +26,39 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
+  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { ButtonLink, ButtonSolid } from "../buttons";
-import { Icon } from "../icons";
+import { ButtonLink, ButtonSolid, IconButton } from "../buttons";
+import { IOIconSizeScale, Icon } from "../icons";
 import { VSpacer } from "../spacer";
 import { HStack } from "../stack";
 
 /* Component visual attributes */
 const inputPaddingVertical: IOSpacingScale = 8;
 const inputPaddingHorizontal: IOSpacingScale = 12;
+const inputPaddingClearButton: IOSpacingScale = 4;
 const inputRadius: number = 8;
 const inputBgColorDefault = IOColors["grey-50"];
 const inputBgColorFocused = IOColors["grey-100"];
 const inputColorPlaceholder = IOColors["grey-700"];
 const iconMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-700";
+const iconSize: IOIconSizeScale = 16;
 const inputFontSizePlaceholder = 14;
 const cancelButtonMargin: IOSpacingScale = 8;
-const inputTransitionDuration = 400;
+const inputTransitionDuration = 250;
 const inputHeightIOS = 36;
 const inputHeightAndroid = 48;
 
 type SearchInputProps = {
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
+  clearAccessibilityLabel: ComponentProps<
+    typeof IconButton
+  >["accessibilityLabel"];
   cancelButtonLabel: string;
 };
 
@@ -61,6 +72,7 @@ const inputWithTimingConfig = {
 export const SearchInput = ({
   placeholder,
   accessibilityLabel,
+  clearAccessibilityLabel,
   cancelButtonLabel
 }: SearchInputProps) => {
   const theme = useIOTheme();
@@ -78,6 +90,7 @@ export const SearchInput = ({
   const getCancelButtonWidth = ({ nativeEvent }: LayoutChangeEvent) => {
     setCancelButtonWidth(nativeEvent.layout.width);
   };
+
   const inputWidth: number = useMemo(
     () =>
       Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 4,
@@ -94,6 +107,8 @@ export const SearchInput = ({
   // const [focused, setFocused] = React.useState(false);
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
   const isFocused = useSharedValue(0);
+  const showClearButton = useSharedValue(0);
+  const [searchText, setSearchText] = useState("");
 
   const animatedStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
@@ -130,6 +145,10 @@ export const SearchInput = ({
   };
 
   const handleBlur = () => {
+    if (searchInputRef.current) {
+      /* Clear the text input when blurring */
+      searchInputRef.current.clear();
+    }
     // setFocused(false);
     // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(0, inputWithTimingConfig);
@@ -145,9 +164,24 @@ export const SearchInput = ({
 
   const blur = () => {
     if (searchInputRef.current) {
+      /* Clear the text input before blurring */
       searchInputRef.current.blur();
     }
   };
+
+  // const handleClearButton = (text: string) => {
+  //   // eslint-disable-next-line functional/immutable-data
+  //   showClearButton.value = text.length >= 0;
+  //   setSearchText(text);
+  //   // eslint-disable-next-line no-console
+  //   console.log(
+  //     `showClearButton: ${showClearButton.value}, text: ${text.length}`
+  //   );
+  // };
+
+  // const handleClearSearch = () => {
+  //   setSearchText("");
+  // };
 
   const clear = () => {
     if (searchInputRef.current) {
@@ -161,9 +195,17 @@ export const SearchInput = ({
   return (
     <>
       <Animated.View style={styles.searchBar}>
-        <Animated.View style={[styles.searchInput, animatedStyle]}>
+        <Animated.View
+          style={[
+            styles.searchInput,
+            Platform.OS === "ios"
+              ? styles.searchInputIOS
+              : styles.searchInputAndroid,
+            animatedStyle
+          ]}
+        >
           <View style={styles.iconContainer}>
-            <Icon name="search" size={16} color={iconColor} />
+            <Icon name="search" size={iconSize} color={iconColor} />
           </View>
           <AnimatedTextInput
             ref={searchInputRef}
@@ -171,7 +213,7 @@ export const SearchInput = ({
             returnKeyType="search"
             accessibilityLabel={accessibilityLabel}
             style={[
-              styles.textInput,
+              // styles.textInput,
               isExperimental ? styles.placeholder : styles.placeholderLegacy,
               animatedInputStyle
             ]}
@@ -181,17 +223,20 @@ export const SearchInput = ({
             placeholderTextColor={inputColorPlaceholder}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            // onChangeText={handleClearButton}
+            clearButtonMode="while-editing"
           />
+          {/* <Pressable
+            onPress={clear}
+            accessibilityLabel={clearAccessibilityLabel}
+            accessibilityRole="button"
+          >
+            <Icon name="closeMedium" size={iconSize} color={iconColor} />
+          </Pressable> */}
         </Animated.View>
         <Animated.View
           onLayout={getCancelButtonWidth}
           style={[styles.cancelButton, cancelAnimatedStyle]}
-          // exiting={SlideOutRight.duration(inputTransitionDuration).easing(
-          //   Easing.in(Easing.ease)
-          // )}
-          // entering={SlideInRight.duration(inputTransitionDuration).easing(
-          //   Easing.out(Easing.ease)
-          // )}
         >
           <ButtonLink label={cancelButtonLabel} onPress={blur} />
         </Animated.View>
@@ -202,6 +247,7 @@ export const SearchInput = ({
         <ButtonSolid label={"Blur"} onPress={blur} />
         <ButtonSolid label={"Clear"} onPress={clear} />
       </HStack>
+      <Text>{showClearButton.value ? "Show" : "Hide"}</Text>
     </>
   );
 };
@@ -214,7 +260,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   searchInput: {
-    // flexGrow: 1,
     flexShrink: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -222,11 +267,14 @@ const styles = StyleSheet.create({
     borderCurve: "continuous",
     // borderColor: hexToRgba(IOColors.black, 0.1),
     // borderWidth: 1,
-    // paddingVertical: inputPaddingVertical,
-    paddingHorizontal: inputPaddingHorizontal
+    paddingVertical: inputPaddingVertical
   },
-  textInput: {
-    height: inputHeightIOS
+  searchInputIOS: {
+    paddingLeft: inputPaddingHorizontal,
+    paddingRight: inputPaddingClearButton
+  },
+  searchInputAndroid: {
+    paddingHorizontal: inputPaddingHorizontal
   },
   iconContainer: {
     marginRight: iconMargin
