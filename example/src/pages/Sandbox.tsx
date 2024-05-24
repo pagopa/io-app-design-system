@@ -29,6 +29,7 @@ export const Sandbox = () => (
       <H5>{"Insert here the component you're willing to test"}</H5>
       <VSpacer />
       <SearchInput
+        clearAccessibilityLabel="Cancella"
         placeholder="Cerca nei messaggi"
         accessibilityLabel="Search input"
         cancelButtonLabel="Annulla"

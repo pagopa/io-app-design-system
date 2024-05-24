@@ -58,6 +58,7 @@ type SearchInputProps = {
 };
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const inputWithTimingConfig = {
   duration: inputTransitionDuration,
@@ -97,11 +98,9 @@ export const SearchInput = ({
     [inputWidth, cancelButtonWidth]
   );
 
-  // const [focused, setFocused] = React.useState(false);
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
   const isFocused = useSharedValue(0);
-  // const showClearButton = useSharedValue(0);
-  // const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   const animatedStyle = useAnimatedStyle(() => ({
     width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig),
@@ -112,9 +111,7 @@ export const SearchInput = ({
     )
   }));
 
-  // const animatedInputStyle = useAnimatedStyle(() => ({}));
-
-  const cancelAnimatedStyle = useAnimatedStyle(() => ({
+  const cancelButtonAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
         translateX: interpolate(
@@ -126,6 +123,18 @@ export const SearchInput = ({
       }
     ],
     opacity: interpolate(isFocused.value, [0, 1], [0.5, 1])
+  }));
+
+  const clearButtonAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        scale:
+          searchText.length > 0
+            ? withTiming(1, inputWithTimingConfig)
+            : withTiming(0.5, inputWithTimingConfig)
+      }
+    ],
+    opacity: withTiming(searchText.length > 0 ? 1 : 0, inputWithTimingConfig)
   }));
 
   const handleFocus = () => {
@@ -155,27 +164,19 @@ export const SearchInput = ({
   };
 
   const cancel = () => {
+    setSearchText("");
     if (searchInputRef.current) {
-      searchInputRef.current.blur();
       searchInputRef.current.clear();
+      searchInputRef.current.blur();
     }
   };
 
-  // const handleClearButton = (text: string) => {
-  //   // eslint-disable-next-line functional/immutable-data
-  //   showClearButton.value = text.length >= 0;
-  //   setSearchText(text);
-  //   // eslint-disable-next-line no-console
-  //   console.log(
-  //     `showClearButton: ${showClearButton.value}, text: ${text.length}`
-  //   );
-  // };
-
-  // const handleClearSearch = () => {
-  //   setSearchText("");
-  // };
+  const handleClearButton = (text: string) => {
+    setSearchText(text);
+  };
 
   const clear = () => {
+    setSearchText("");
     if (searchInputRef.current) {
       searchInputRef.current.clear();
     }
@@ -206,21 +207,22 @@ export const SearchInput = ({
             placeholderTextColor={inputColorPlaceholder}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            // onChangeText={handleClearButton}
+            onChangeText={handleClearButton}
+            clearButtonMode="while-editing"
           />
-          <Pressable
-            style={styles.clearButton}
+          <AnimatedPressable
+            style={[styles.clearButton, clearButtonAnimatedStyle]}
             onPress={clear}
             accessibilityLabel={clearAccessibilityLabel}
             accessibilityRole="button"
-            hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
+            hitSlop={16}
           >
             <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
-          </Pressable>
+          </AnimatedPressable>
         </Animated.View>
         <Animated.View
           onLayout={getCancelButtonWidth}
-          style={[styles.cancelButton, cancelAnimatedStyle]}
+          style={[styles.cancelButton, cancelButtonAnimatedStyle]}
         >
           <ButtonLink label={cancelButtonLabel} onPress={cancel} />
         </Animated.View>
