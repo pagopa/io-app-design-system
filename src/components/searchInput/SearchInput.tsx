@@ -1,9 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import {
   Dimensions,
+  Keyboard,
   LayoutChangeEvent,
   LayoutRectangle,
   Platform,
+  Pressable,
   StyleSheet,
   TextInput,
   TextInputProps,
@@ -20,21 +22,23 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
+  IOSpacer,
   IOSpacingScale,
   IOVisualCostants,
+  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { ButtonLink, ButtonSolid } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
-import { VSpacer } from "../spacer";
+import { HSpacer, VSpacer } from "../spacer";
 import { HStack } from "../stack";
 
 /* Component visual attributes */
 // const inputPaddingVertical: IOSpacingScale = 8;
 const inputPaddingHorizontal: IOSpacingScale = 12;
-const inputPaddingClearButton: IOSpacingScale = 4;
+const inputPaddingClearButton: IOSpacingScale = 8;
 const inputRadius: number = 8;
 const inputBgColorDefault = IOColors["grey-50"];
 const inputBgColorFocused = IOColors["grey-100"];
@@ -42,15 +46,17 @@ const inputColorPlaceholder = IOColors["grey-700"];
 const iconMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-700";
 const iconSize: IOIconSizeScale = 16;
+const iconCloseSize: IOIconSizeScale = 24;
 const inputFontSizePlaceholder = 12;
-const cancelButtonMargin: IOSpacingScale = 8;
+const cancelButtonMargin: IOSpacingScale = 16;
 const inputTransitionDuration = 250;
 const inputHeightIOS = 36;
-const inputHeightAndroid = 48;
+const inputHeightAndroid = 42;
 
 type SearchInputProps = {
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
+  clearAccessibilityLabel: string;
   cancelButtonLabel: string;
 };
 
@@ -64,6 +70,7 @@ const inputWithTimingConfig = {
 export const SearchInput = ({
   placeholder,
   accessibilityLabel,
+  clearAccessibilityLabel,
   cancelButtonLabel
 }: SearchInputProps) => {
   const theme = useIOTheme();
@@ -72,7 +79,7 @@ export const SearchInput = ({
   /* Component visual attributes */
   const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
-  const searchInputRef = React.useRef<TextInput>(null);
+  const searchInputRef = useRef<TextInput>(null);
 
   /* Width of the `Cancel` button */
   const [cancelButtonWidth, setCancelButtonWidth] =
@@ -84,24 +91,23 @@ export const SearchInput = ({
 
   const inputWidth: number = useMemo(
     () =>
-      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 4,
+      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2,
     []
   );
 
-  const inputWidthWithCancel = useMemo(
+  const inputWidthWithCancel: number = useMemo(
     () => inputWidth - cancelButtonWidth,
-    [cancelButtonWidth, inputWidth]
+    [inputWidth, cancelButtonWidth]
   );
 
-  // eslint-disable-next-line no-console
-  console.log(`inputWidth: ${inputWidth}`);
   // const [focused, setFocused] = React.useState(false);
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
   const isFocused = useSharedValue(0);
-  const showClearButton = useSharedValue(0);
-  const [searchText, setSearchText] = useState("");
+  // const showClearButton = useSharedValue(0);
+  // const [searchText, setSearchText] = useState("");
 
   const animatedStyle = useAnimatedStyle(() => ({
+    width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig),
     backgroundColor: interpolateColor(
       isFocused.value,
       [0, 1],
@@ -109,9 +115,7 @@ export const SearchInput = ({
     )
   }));
 
-  const animatedInputStyle = useAnimatedStyle(() => ({
-    width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig)
-  }));
+  // const animatedInputStyle = useAnimatedStyle(() => ({}));
 
   const cancelAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -128,21 +132,23 @@ export const SearchInput = ({
   }));
 
   const handleFocus = () => {
-    // setFocused(true);
     // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(1, inputWithTimingConfig);
+    // eslint-disable-next-line no-console
+    console.log(`inputWidthWithCancel: ${inputWidthWithCancel}`);
     // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidthWithCancel;
   };
 
   const handleBlur = () => {
-    if (searchInputRef.current) {
-      /* Clear the text input when blurring */
-      searchInputRef.current.clear();
-    }
-    // setFocused(false);
+    // if (searchInputRef.current) {
+    //   /* Clear the text input when blurring */
+    //   searchInputRef.current.clear();
+    // }
     // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(0, inputWithTimingConfig);
+    // eslint-disable-next-line no-console
+    console.log(`inputWidth: ${inputWidth}`);
     // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidth;
   };
@@ -186,15 +192,7 @@ export const SearchInput = ({
   return (
     <>
       <Animated.View style={styles.searchBar}>
-        <Animated.View
-          style={[
-            styles.searchInput,
-            Platform.OS === "ios"
-              ? styles.searchInputIOS
-              : styles.searchInputAndroid,
-            animatedStyle
-          ]}
-        >
+        <Animated.View style={[styles.searchInput, animatedStyle]}>
           <View style={styles.iconContainer}>
             <Icon name="search" size={iconSize} color={iconColor} />
           </View>
@@ -204,11 +202,11 @@ export const SearchInput = ({
             returnKeyType="search"
             accessibilityLabel={accessibilityLabel}
             style={[
+              styles.textInput,
               Platform.OS === "ios"
                 ? styles.textInputIOS
                 : styles.textInputAndroid,
-              isExperimental ? styles.placeholder : styles.placeholderLegacy,
-              animatedInputStyle
+              isExperimental ? styles.placeholder : styles.placeholderLegacy
             ]}
             selectionColor={inputCaretColor}
             cursorColor={inputCaretColor}
@@ -217,15 +215,16 @@ export const SearchInput = ({
             onFocus={handleFocus}
             onBlur={handleBlur}
             // onChangeText={handleClearButton}
-            clearButtonMode="while-editing"
           />
-          {/* <Pressable
+          <Pressable
+            style={styles.clearButton}
             onPress={clear}
             accessibilityLabel={clearAccessibilityLabel}
             accessibilityRole="button"
+            hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
           >
-            <Icon name="closeMedium" size={iconSize} color={iconColor} />
-          </Pressable> */}
+            <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
+          </Pressable>
         </Animated.View>
         <Animated.View
           onLayout={getCancelButtonWidth}
@@ -252,21 +251,19 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   searchInput: {
-    flexShrink: 1,
+    flexShrink: 0,
+    borderRadius: inputRadius,
+    borderCurve: "continuous",
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: inputRadius,
-    borderCurve: "continuous"
-    // borderColor: hexToRgba(IOColors.black, 0.1),
-    // borderWidth: 1,
-    // paddingVertical: inputPaddingVertical
-  },
-  searchInputIOS: {
     paddingLeft: inputPaddingHorizontal,
     paddingRight: inputPaddingClearButton
   },
-  searchInputAndroid: {
-    paddingHorizontal: inputPaddingHorizontal
+  textInput: {
+    flexShrink: 1,
+    flexGrow: 1,
+    borderColor: hexToRgba(IOColors.red, 0.2),
+    borderWidth: 1
   },
   textInputIOS: {
     height: inputHeightIOS
@@ -275,6 +272,8 @@ const styles = StyleSheet.create({
     height: inputHeightAndroid
   },
   iconContainer: {
+    borderColor: hexToRgba(IOColors.red, 0.2),
+    borderWidth: 1,
     marginRight: iconMargin
   },
   placeholder: {
@@ -288,7 +287,11 @@ const styles = StyleSheet.create({
   cancelButton: {
     position: "absolute",
     right: 0,
-    paddingLeft: cancelButtonMargin,
-    flexShrink: 0
+    paddingLeft: cancelButtonMargin
+  },
+  clearButton: {
+    borderColor: hexToRgba(IOColors.red, 0.2),
+    borderWidth: 1,
+    marginLeft: iconMargin
   }
 });
