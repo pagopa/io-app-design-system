@@ -67,17 +67,7 @@ export const ListItemInfo = ({
 
   const itemInfoTextComponent = useMemo(
     () => (
-      <View
-        accessible={endElement === undefined ? true : false}
-        importantForAccessibility={
-          endElement === undefined || endElement.type === "badge"
-            ? "yes"
-            : "no-hide-descendants"
-        }
-        accessibilityElementsHidden={
-          endElement !== undefined && endElement.type !== "badge"
-        }
-      >
+      <View>
         <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
         </LabelSmall>
@@ -90,7 +80,7 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, endElement]
+    [label, numberOfLines, theme, value]
   );
 
   const listItemInfoAction = useCallback(() => {
