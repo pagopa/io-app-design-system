@@ -48,7 +48,6 @@ import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
 import PictogramObjKey from "./svg/PictogramObjKey";
 import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
-import PictogramObjWorkInProgress from "./svg/PictogramObjWorkInProgress";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
 import PictogramPiggyBank from "./svg/PictogramPiggyBank";
@@ -70,6 +69,7 @@ import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
 import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
+import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
 /* Bleed Pictograms */
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
 import PictogramBleedActivate from "./svg/PictogramBleedActivate";
@@ -219,6 +219,7 @@ export const IOPictograms = {
   hello: PictogramHello,
   comunicationProblem: PictogramComunicationProblem,
   payments: PictogramPayments,
+  workInProgress: PictogramWorkInProgress,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -226,8 +227,7 @@ export const IOPictograms = {
   trash: PictogramObjTrash,
   clock: PictogramObjClock,
   key: PictogramObjKey,
-  flyingMessage: PictogramObjFlyingMessage,
-  workInProgress: PictogramObjWorkInProgress
+  flyingMessage: PictogramObjFlyingMessage
   // End Objects Pictogram
 };
 
