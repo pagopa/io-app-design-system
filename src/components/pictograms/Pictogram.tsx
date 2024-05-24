@@ -132,6 +132,8 @@ import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
+import PictogramObjWorkInProgress from "./svg/PictogramObjWorkInProgress";
+import PictogramBleedWorkInProgress from "./svg/PictogramBleedWorkInProgress";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -224,7 +226,8 @@ export const IOPictograms = {
   trash: PictogramObjTrash,
   clock: PictogramObjClock,
   key: PictogramObjKey,
-  flyingMessage: PictogramObjFlyingMessage
+  flyingMessage: PictogramObjFlyingMessage,
+  workInProgress: PictogramObjWorkInProgress
   // End Objects Pictogram
 };
 
@@ -335,7 +338,8 @@ export type IOPictogramsBleed = Extract<
   | "lostConnection"
   | "payments"
   | "activate"
-  | "reactivate",
+  | "reactivate"
+  | "workInProgress",
   IOPictograms
 >;
 
@@ -380,7 +384,8 @@ export const IOPictogramsBleed: {
   lostConnection: PictogramBleedLostConnection,
   payments: PictogramBleedPayments,
   activate: PictogramBleedActivate,
-  reactivate: PictogramBleedReactivate
+  reactivate: PictogramBleedReactivate,
+  workInProgress: PictogramBleedWorkInProgress
 };
 
 export const PictogramBleed = ({
