@@ -1,17 +1,13 @@
-import React, { ComponentProps, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Dimensions,
   LayoutChangeEvent,
   LayoutRectangle,
-  Text,
-  Pressable,
+  Platform,
   StyleSheet,
   TextInput,
-  TextInputChangeEventData,
   TextInputProps,
-  View,
-  NativeSyntheticEvent,
-  Platform
+  View
 } from "react-native";
 import Animated, {
   Easing,
@@ -26,18 +22,17 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
-  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { ButtonLink, ButtonSolid, IconButton } from "../buttons";
+import { ButtonLink, ButtonSolid } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
 import { VSpacer } from "../spacer";
 import { HStack } from "../stack";
 
 /* Component visual attributes */
-const inputPaddingVertical: IOSpacingScale = 8;
+// const inputPaddingVertical: IOSpacingScale = 8;
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputPaddingClearButton: IOSpacingScale = 4;
 const inputRadius: number = 8;
@@ -47,7 +42,7 @@ const inputColorPlaceholder = IOColors["grey-700"];
 const iconMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-700";
 const iconSize: IOIconSizeScale = 16;
-const inputFontSizePlaceholder = 14;
+const inputFontSizePlaceholder = 12;
 const cancelButtonMargin: IOSpacingScale = 8;
 const inputTransitionDuration = 250;
 const inputHeightIOS = 36;
@@ -56,9 +51,6 @@ const inputHeightAndroid = 48;
 type SearchInputProps = {
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
-  clearAccessibilityLabel: ComponentProps<
-    typeof IconButton
-  >["accessibilityLabel"];
   cancelButtonLabel: string;
 };
 
@@ -72,7 +64,6 @@ const inputWithTimingConfig = {
 export const SearchInput = ({
   placeholder,
   accessibilityLabel,
-  clearAccessibilityLabel,
   cancelButtonLabel
 }: SearchInputProps) => {
   const theme = useIOTheme();
@@ -213,7 +204,9 @@ export const SearchInput = ({
             returnKeyType="search"
             accessibilityLabel={accessibilityLabel}
             style={[
-              // styles.textInput,
+              Platform.OS === "ios"
+                ? styles.textInputIOS
+                : styles.textInputAndroid,
               isExperimental ? styles.placeholder : styles.placeholderLegacy,
               animatedInputStyle
             ]}
@@ -247,7 +240,6 @@ export const SearchInput = ({
         <ButtonSolid label={"Blur"} onPress={blur} />
         <ButtonSolid label={"Clear"} onPress={clear} />
       </HStack>
-      <Text>{showClearButton.value ? "Show" : "Hide"}</Text>
     </>
   );
 };
@@ -264,10 +256,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: inputRadius,
-    borderCurve: "continuous",
+    borderCurve: "continuous"
     // borderColor: hexToRgba(IOColors.black, 0.1),
     // borderWidth: 1,
-    paddingVertical: inputPaddingVertical
+    // paddingVertical: inputPaddingVertical
   },
   searchInputIOS: {
     paddingLeft: inputPaddingHorizontal,
@@ -275,6 +267,12 @@ const styles = StyleSheet.create({
   },
   searchInputAndroid: {
     paddingHorizontal: inputPaddingHorizontal
+  },
+  textInputIOS: {
+    height: inputHeightIOS
+  },
+  textInputAndroid: {
+    height: inputHeightAndroid
   },
   iconContainer: {
     marginRight: iconMargin
