@@ -1,7 +1,6 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   Dimensions,
-  Keyboard,
   LayoutChangeEvent,
   LayoutRectangle,
   Platform,
@@ -22,17 +21,15 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
-  IOSpacer,
   IOSpacingScale,
   IOVisualCostants,
-  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { ButtonLink, ButtonSolid } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
-import { HSpacer, VSpacer } from "../spacer";
+import { VSpacer } from "../spacer";
 import { HStack } from "../stack";
 
 /* Component visual attributes */
@@ -134,21 +131,13 @@ export const SearchInput = ({
   const handleFocus = () => {
     // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(1, inputWithTimingConfig);
-    // eslint-disable-next-line no-console
-    console.log(`inputWidthWithCancel: ${inputWidthWithCancel}`);
     // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidthWithCancel;
   };
 
   const handleBlur = () => {
-    // if (searchInputRef.current) {
-    //   /* Clear the text input when blurring */
-    //   searchInputRef.current.clear();
-    // }
     // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(0, inputWithTimingConfig);
-    // eslint-disable-next-line no-console
-    console.log(`inputWidth: ${inputWidth}`);
     // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidth;
   };
@@ -161,8 +150,14 @@ export const SearchInput = ({
 
   const blur = () => {
     if (searchInputRef.current) {
-      /* Clear the text input before blurring */
       searchInputRef.current.blur();
+    }
+  };
+
+  const cancel = () => {
+    if (searchInputRef.current) {
+      searchInputRef.current.blur();
+      searchInputRef.current.clear();
     }
   };
 
@@ -185,9 +180,6 @@ export const SearchInput = ({
       searchInputRef.current.clear();
     }
   };
-
-  // eslint-disable-next-line no-console
-  console.log(`cancelButtonWidth: ${cancelButtonWidth}`);
 
   return (
     <>
@@ -230,7 +222,7 @@ export const SearchInput = ({
           onLayout={getCancelButtonWidth}
           style={[styles.cancelButton, cancelAnimatedStyle]}
         >
-          <ButtonLink label={cancelButtonLabel} onPress={blur} />
+          <ButtonLink label={cancelButtonLabel} onPress={cancel} />
         </Animated.View>
       </Animated.View>
       <VSpacer size={16} />
@@ -261,9 +253,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flexShrink: 1,
-    flexGrow: 1,
-    borderColor: hexToRgba(IOColors.red, 0.2),
-    borderWidth: 1
+    flexGrow: 1
+    // borderColor: hexToRgba(IOColors.red, 0.2),
+    // borderWidth: 1
   },
   textInputIOS: {
     height: inputHeightIOS
@@ -272,8 +264,8 @@ const styles = StyleSheet.create({
     height: inputHeightAndroid
   },
   iconContainer: {
-    borderColor: hexToRgba(IOColors.red, 0.2),
-    borderWidth: 1,
+    // borderColor: hexToRgba(IOColors.red, 0.2),
+    // borderWidth: 1,
     marginRight: iconMargin
   },
   placeholder: {
@@ -290,8 +282,8 @@ const styles = StyleSheet.create({
     paddingLeft: cancelButtonMargin
   },
   clearButton: {
-    borderColor: hexToRgba(IOColors.red, 0.2),
-    borderWidth: 1,
+    // borderColor: hexToRgba(IOColors.red, 0.2),
+    // borderWidth: 1,
     marginLeft: iconMargin
   }
 });
