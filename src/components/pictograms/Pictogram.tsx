@@ -48,6 +48,7 @@ import PictogramObjIbanCard from "./svg/PictogramObjIbanCard";
 import PictogramObjKey from "./svg/PictogramObjKey";
 import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
+import PictogramObjWorkInProgress from "./svg/PictogramObjWorkInProgress";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
 import PictogramPiggyBank from "./svg/PictogramPiggyBank";
@@ -109,6 +110,7 @@ import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
 import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
 import PictogramBleedTime from "./svg/PictogramBleedTime";
 import PictogramBleedTiming from "./svg/PictogramBleedTiming";
+import PictogramBleedWorkInProgress from "./svg/PictogramBleedWorkInProgress";
 /* End Bleed Pictograms */
 import PictogramCardAdd from "./svg/PictogramCardAdd";
 import PictogramCardFavourite from "./svg/PictogramCardFavourite";
@@ -132,8 +134,6 @@ import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
-import PictogramObjWorkInProgress from "./svg/PictogramObjWorkInProgress";
-import PictogramBleedWorkInProgress from "./svg/PictogramBleedWorkInProgress";
 
 export const IOPictograms = {
   // Start legacy pictograms //
