@@ -3,6 +3,7 @@ import React, { useMemo, useRef, useState } from "react";
 import {
   ColorValue,
   Dimensions,
+  GestureResponderEvent,
   LayoutChangeEvent,
   LayoutRectangle,
   Platform,
@@ -29,10 +30,8 @@ import {
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
-import { ButtonLink, ButtonSolid } from "../buttons";
+import { ButtonLink } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
-import { VSpacer } from "../spacer";
-import { HStack } from "../stack";
 
 /* Component visual attributes */
 // const inputPaddingVertical: IOSpacingScale = 8;
@@ -52,8 +51,12 @@ const inputTransitionDuration: number = 250;
 const inputHeightIOS: number = 36;
 const inputHeightAndroid: number = 42;
 
+type SearchInputPressableProps = {
+  onPress: (event: GestureResponderEvent) => void;
+};
+
 type SearchInputProps = {
-  pressable?: boolean;
+  pressable?: SearchInputPressableProps;
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
   clearAccessibilityLabel: string;
@@ -69,7 +72,7 @@ const inputWithTimingConfig = {
 };
 
 export const SearchInput = ({
-  pressable = false,
+  pressable,
   placeholder,
   accessibilityLabel,
   clearAccessibilityLabel,
@@ -83,7 +86,7 @@ export const SearchInput = ({
   const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
   /* Widths used for the transition:
-     - Entire `SearchInput`
+     - `SearchInput` entire width
      - `Cancel` button */
   const inputWidth: number = useMemo(
     () =>
@@ -160,18 +163,6 @@ export const SearchInput = ({
     inputAnimatedWidth.value = inputWidth;
   };
 
-  const focus = () => {
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  };
-
-  const blur = () => {
-    if (searchInputRef.current) {
-      searchInputRef.current.blur();
-    }
-  };
-
   const cancel = () => {
     setSearchText("");
     if (searchInputRef.current) {
@@ -191,58 +182,65 @@ export const SearchInput = ({
     }
   };
 
-  return (
-    <>
-      <Animated.View style={styles.searchBar}>
-        <Animated.View style={[styles.searchInput, animatedStyle]}>
-          <View style={styles.iconContainer}>
-            <Icon name="search" size={iconSize} color={iconColor} />
-          </View>
-          <AnimatedTextInput
-            ref={searchInputRef}
-            inputMode="search"
-            returnKeyType="search"
-            accessibilityRole={"search"}
-            accessibilityLabel={accessibilityLabel}
-            style={[
-              styles.textInput,
-              Platform.OS === "ios"
-                ? styles.textInputIOS
-                : styles.textInputAndroid,
-              isExperimental ? styles.placeholder : styles.placeholderLegacy
-            ]}
-            selectionColor={inputCaretColor}
-            cursorColor={inputCaretColor}
-            placeholder={placeholder}
-            placeholderTextColor={inputColorPlaceholder}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            onChangeText={handleClearButton}
-          />
-          <AnimatedPressable
-            style={[styles.clearButton, clearButtonAnimatedStyle]}
-            onPress={clear}
-            accessibilityLabel={clearAccessibilityLabel}
-            accessibilityRole="button"
-            hitSlop={16}
-          >
-            <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
-          </AnimatedPressable>
-        </Animated.View>
-        <Animated.View
-          onLayout={getCancelButtonWidth}
-          style={[styles.cancelButton, cancelButtonAnimatedStyle]}
+  const renderSearchBar = () => (
+    <Animated.View style={styles.searchBar}>
+      <Animated.View
+        style={[styles.searchInput, animatedStyle]}
+        pointerEvents={pressable ? "none" : "auto"}
+      >
+        <View style={styles.iconContainer}>
+          <Icon name="search" size={iconSize} color={iconColor} />
+        </View>
+        <AnimatedTextInput
+          ref={searchInputRef}
+          inputMode="search"
+          returnKeyType="search"
+          accessibilityRole={"search"}
+          accessibilityLabel={accessibilityLabel}
+          style={[
+            styles.textInput,
+            Platform.OS === "ios"
+              ? styles.textInputIOS
+              : styles.textInputAndroid,
+            isExperimental ? styles.placeholder : styles.placeholderLegacy
+          ]}
+          selectionColor={inputCaretColor}
+          cursorColor={inputCaretColor}
+          placeholder={placeholder}
+          placeholderTextColor={inputColorPlaceholder}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChangeText={handleClearButton}
+        />
+        <AnimatedPressable
+          style={[styles.clearButton, clearButtonAnimatedStyle]}
+          onPress={clear}
+          accessibilityLabel={clearAccessibilityLabel}
+          accessibilityRole="button"
+          hitSlop={16}
         >
-          <ButtonLink label={cancelButtonLabel} onPress={cancel} />
-        </Animated.View>
+          <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
+        </AnimatedPressable>
       </Animated.View>
-      <VSpacer size={16} />
-      <HStack space={8}>
-        <ButtonSolid label={"Focus"} onPress={focus} />
-        <ButtonSolid label={"Blur"} onPress={blur} />
-        <ButtonSolid label={"Clear"} onPress={clear} />
-      </HStack>
-    </>
+      <Animated.View
+        onLayout={getCancelButtonWidth}
+        style={[styles.cancelButton, cancelButtonAnimatedStyle]}
+      >
+        <ButtonLink label={cancelButtonLabel} onPress={cancel} />
+      </Animated.View>
+    </Animated.View>
+  );
+
+  return pressable ? (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={placeholder}
+      onPress={pressable?.onPress}
+    >
+      {renderSearchBar()}
+    </Pressable>
+  ) : (
+    renderSearchBar()
   );
 };
 
