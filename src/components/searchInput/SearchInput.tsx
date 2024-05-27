@@ -1,5 +1,7 @@
+/* eslint-disable functional/immutable-data */
 import React, { useMemo, useRef, useState } from "react";
 import {
+  ColorValue,
   Dimensions,
   LayoutChangeEvent,
   LayoutRectangle,
@@ -37,18 +39,18 @@ import { HStack } from "../stack";
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputPaddingClearButton: IOSpacingScale = 8;
 const inputRadius: number = 8;
-const inputBgColorDefault = IOColors["grey-50"];
-const inputBgColorFocused = IOColors["grey-100"];
-const inputColorPlaceholder = IOColors["grey-700"];
+const inputBgColorDefault: ColorValue = IOColors["grey-50"];
+const inputBgColorFocused: ColorValue = IOColors["grey-100"];
+const inputColorPlaceholder: ColorValue = IOColors["grey-700"];
 const iconMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-700";
 const iconSize: IOIconSizeScale = 16;
 const iconCloseSize: IOIconSizeScale = 24;
-const inputFontSizePlaceholder = 12;
+const inputFontSizePlaceholder: number = 12;
 const cancelButtonMargin: IOSpacingScale = 16;
-const inputTransitionDuration = 250;
-const inputHeightIOS = 36;
-const inputHeightAndroid = 42;
+const inputTransitionDuration: number = 250;
+const inputHeightIOS: number = 36;
+const inputHeightAndroid: number = 42;
 
 type SearchInputProps = {
   placeholder: TextInputProps["placeholder"];
@@ -71,15 +73,22 @@ export const SearchInput = ({
   clearAccessibilityLabel,
   cancelButtonLabel
 }: SearchInputProps) => {
-  const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-
-  /* Component visual attributes */
-  const inputCaretColor = IOColors[theme["interactiveElem-default"]];
-
   const searchInputRef = useRef<TextInput>(null);
 
-  /* Width of the `Cancel` button */
+  /* Component visual attributes */
+  const theme = useIOTheme();
+  const { isExperimental } = useIOExperimentalDesign();
+  const inputCaretColor = IOColors[theme["interactiveElem-default"]];
+
+  /* Widths used for the transition:
+     - Entire `SearchInput`
+     - `Cancel` button */
+  const inputWidth: number = useMemo(
+    () =>
+      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2,
+    []
+  );
+
   const [cancelButtonWidth, setCancelButtonWidth] =
     useState<LayoutRectangle["width"]>(0);
 
@@ -87,21 +96,17 @@ export const SearchInput = ({
     setCancelButtonWidth(nativeEvent.layout.width);
   };
 
-  const inputWidth: number = useMemo(
-    () =>
-      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2,
-    []
-  );
-
   const inputWidthWithCancel: number = useMemo(
     () => inputWidth - cancelButtonWidth,
     [inputWidth, cancelButtonWidth]
   );
 
+  /* Reanimated styles */
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
   const isFocused = useSharedValue(0);
   const [searchText, setSearchText] = useState("");
 
+  /* Applied to the `SearchInput` */
   const animatedStyle = useAnimatedStyle(() => ({
     width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig),
     backgroundColor: interpolateColor(
@@ -111,6 +116,7 @@ export const SearchInput = ({
     )
   }));
 
+  /* Applied to the `Cancel` button */
   const cancelButtonAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
@@ -125,6 +131,7 @@ export const SearchInput = ({
     opacity: interpolate(isFocused.value, [0, 1], [0.5, 1])
   }));
 
+  /* Applied to the `Clear` button inside the `SearchInput` */
   const clearButtonAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
@@ -137,17 +144,14 @@ export const SearchInput = ({
     opacity: withTiming(searchText.length > 0 ? 1 : 0, inputWithTimingConfig)
   }));
 
+  /* Related event handlers */
   const handleFocus = () => {
-    // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(1, inputWithTimingConfig);
-    // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidthWithCancel;
   };
 
   const handleBlur = () => {
-    // eslint-disable-next-line functional/immutable-data
     isFocused.value = withTiming(0, inputWithTimingConfig);
-    // eslint-disable-next-line functional/immutable-data
     inputAnimatedWidth.value = inputWidth;
   };
 
@@ -193,6 +197,7 @@ export const SearchInput = ({
             ref={searchInputRef}
             inputMode="search"
             returnKeyType="search"
+            accessibilityRole={"search"}
             accessibilityLabel={accessibilityLabel}
             style={[
               styles.textInput,
