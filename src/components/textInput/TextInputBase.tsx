@@ -1,6 +1,9 @@
 /* eslint-disable functional/immutable-data */
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import {
+  ColorValue,
+  LayoutChangeEvent,
+  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -10,21 +13,22 @@ import {
 import Animated, {
   Easing,
   WithTimingConfig,
+  interpolateColor,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
 import {
   IOColors,
   IOSpacingScale,
-  IOStyles,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
-import { IOIcons, Icon } from "../icons";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { LabelSmall } from "../typography";
 
@@ -50,24 +54,47 @@ type InputTextProps = WithTestID<{
   autoFocus?: boolean;
 }>;
 
-const inputMarginTop: IOSpacingScale = 8;
+const inputMarginTop: IOSpacingScale = 16;
+const inputHeight: number = 60;
+const inputPaddingHorizontal: IOSpacingScale = 12;
+const inputRadius: number = 8;
+const inputTransitionDuration: number = 250;
+const inputLabelScaleFactor: number = 0.8;
+const inputDisabledOpacity: number = 0.5;
+const iconSize: IOIconSizeScale = 24;
+const iconMargin: IOSpacingScale = 8;
+const inputLabelColor: ColorValue = IOColors["grey-700"];
 
 const styles = StyleSheet.create({
   textInput: {
-    ...IOStyles.row,
+    flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 8,
-    height: 60,
+    paddingVertical: inputRadius,
+    height: inputHeight,
     borderRadius: 8,
     borderCurve: "continuous",
-    paddingHorizontal: 12
+    paddingHorizontal: inputPaddingHorizontal
+  },
+  textInputOuterBorder: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: inputRadius,
+    borderCurve: "continuous",
+    borderWidth: 1
+  },
+  textInputInnerBorder: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: inputRadius,
+    borderCurve: "continuous",
+    borderWidth: 2
   },
   textInputStyle: {
-    ...IOStyles.flex,
+    flexGrow: 1,
     fontSize: 16,
     marginTop: inputMarginTop,
-    lineHeight: 24,
-    height: "100%"
+    height: "100%",
+    /* Slightly move the input on the left on Android
+       to align to the label */
+    ...(Platform.OS === "android" && { marginLeft: -4 })
   },
   textInputStyleFont: {
     ...makeFontStyleObject("Regular", false, "ReadexPro")
@@ -78,11 +105,15 @@ const styles = StyleSheet.create({
   },
   textInputLabelWrapper: {
     position: "absolute",
-    paddingHorizontal: 12,
+    paddingHorizontal: inputPaddingHorizontal,
     zIndex: 10,
     bottom: 0,
     top: 0,
     justifyContent: "center"
+  },
+  textInputLabel: {
+    ...makeFontStyleObject("Regular", false, "TitilliumWeb"),
+    color: inputLabelColor
   }
 });
 
@@ -121,10 +152,10 @@ const HelperRow = ({
   return (
     <View
       style={[
-        IOStyles.row,
         {
+          flexDirection: "row",
           alignItems: "center",
-          paddingHorizontal: 10
+          paddingHorizontal: inputPaddingHorizontal
         },
         helperRowStyle
       ]}
@@ -166,12 +197,20 @@ export const TextInputBase = ({
 }: InputTextProps) => {
   const theme = useIOTheme();
 
-  const labelSharedValue = useSharedValue<boolean>(false);
+  const focusedState = useSharedValue<number>(0);
+
   const [inputStatus, setInputStatus] = React.useState<InputStatus>(
     disabled ? "disabled" : "initial"
   );
   const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const inputRef = useRef<TextInput>(null);
+
+  /* Get the label width to enable the correct translation */
+  const [labelWidth, setLabelWidth] = React.useState<number>(0);
+
+  const getLabelWidth = ({ nativeEvent }: LayoutChangeEvent) => {
+    setLabelWidth(nativeEvent.layout.width);
+  };
 
   useEffect(() => {
     if (status) {
@@ -179,52 +218,90 @@ export const TextInputBase = ({
     }
   }, [status]);
 
+  // Visual attributes
+  const borderColorMap = {
+    default: IOColors["grey-200"],
+    focused: IOColors[theme["interactiveElem-default"]]
+  };
+
   const boxStyle: ViewStyle = useMemo(() => {
     if (inputStatus === "focused") {
       return {
-        borderColor: IOColors[theme["interactiveElem-default"]],
-        borderWidth: 2
+        borderColor: borderColorMap.focused,
+        borderWidth: 0
       };
     }
     if (inputStatus === "error") {
       return {
         borderColor: IOColors["error-600"],
-        borderWidth: 1
+        borderWidth: 0
       };
     }
     return {
-      borderColor: IOColors["grey-200"],
-      borderWidth: 1
+      borderColor: borderColorMap.default,
+      borderWidth: 0
     };
-  }, [inputStatus, theme]);
+  }, [borderColorMap.default, borderColorMap.focused, inputStatus]);
 
   const easingConf: WithTimingConfig = {
-    duration: 300,
-    easing: Easing.elastic(0.85)
+    duration: inputTransitionDuration,
+    easing: Easing.inOut(Easing.cubic)
   };
 
-  const animatedLabelProps = useAnimatedStyle(() => ({
-    fontSize: withTiming(labelSharedValue.value ? 12 : 16, easingConf),
+  // Used for color interpolation
+  const progressFocused = useDerivedValue(() =>
+    withTiming(focusedState.value, easingConf)
+  );
+
+  const animatedLabelStyle = useAnimatedStyle(() => ({
     transform: [
-      { translateY: withTiming(labelSharedValue.value ? -14 : 0, easingConf) }
+      {
+        /* Since we can't have RN 0.73 yet, we use this calculation
+        to simulate `transformOrigin: left` */
+        translateX: withTiming(
+          focusedState.value
+            ? (-labelWidth * (1 - inputLabelScaleFactor)) / 2
+            : 0,
+          easingConf
+        )
+      },
+      { translateY: withTiming(focusedState.value ? -12 : 0, easingConf) },
+      {
+        scale: withTiming(
+          focusedState.value ? inputLabelScaleFactor : 1,
+          easingConf
+        )
+      }
     ]
   }));
 
-  useEffect(() => {
-    if (value.length > 0) {
-      labelSharedValue.value = true;
-    } else {
-      if (inputStatus !== "focused") {
-        labelSharedValue.value = false;
-      }
-    }
-  }, [labelSharedValue, value, inputStatus]);
+  const animatedOuterBorderStyle = useAnimatedStyle(() => ({
+    borderColor: interpolateColor(
+      progressFocused.value,
+      [0, 1],
+      [borderColorMap.default, borderColorMap.focused]
+    )
+  }));
+
+  const animatedInnerBorderStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(focusedState.value ? 1 : 0, easingConf)
+  }));
+
+  // useEffect(() => {
+  //   if (value.length > 0) {
+  //     focusedState.value = 1;
+  //   } else {
+  //     if (inputStatus !== "focused") {
+  //       focusedState.value = 0;
+  //     }
+  //   }
+  // }, [focusedState, value, inputStatus]);
 
   const onTextInputPress = () => {
     if (disabled) {
       return;
     }
-    labelSharedValue.value = true;
+    // focusedState.value = 1;
     setInputStatus("focused");
     inputRef?.current?.focus();
   };
@@ -240,12 +317,16 @@ export const TextInputBase = ({
   );
 
   const onBlurHandler = useCallback(() => {
-    if (!value) {
-      labelSharedValue.value = false;
-    }
+    focusedState.value = 0;
     onBlur?.();
     setInputStatus("initial");
-  }, [value, labelSharedValue, onBlur]);
+  }, [onBlur, focusedState]);
+
+  const onFocusHandler = () => {
+    setInputStatus("focused");
+    focusedState.value = 1;
+    onFocus?.();
+  };
 
   const derivedInputProps = useMemo(
     () => getInputPropsByType(inputType),
@@ -261,25 +342,46 @@ export const TextInputBase = ({
   );
 
   const { isExperimental } = useIOExperimentalDesign();
+
   return (
     <>
       <Pressable
         onPress={onTextInputPress}
         style={[
-          inputStatus === "disabled" ? { opacity: 0.5 } : {},
+          inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
           boxStyle,
           styles.textInput
         ]}
         accessible={false}
         accessibilityRole={"none"}
       >
+        {/* Fake border managed with Animated.View to avoid
+            little jumps when the border is animated */}
+        <Animated.View
+          style={[
+            { borderColor: borderColorMap.default },
+            styles.textInputOuterBorder,
+            !disabled && animatedOuterBorderStyle
+          ]}
+        />
+        {!disabled && (
+          <Animated.View
+            style={[
+              { borderColor: borderColorMap.focused },
+              styles.textInputInnerBorder,
+              animatedInnerBorderStyle
+            ]}
+          />
+        )}
+
         {icon && (
           <>
-            <Icon name={icon} color="grey-300" size={24} />
-            <HSpacer size={8} />
+            <Icon name={icon} color="grey-300" size={iconSize} />
+            <HSpacer size={iconMargin} />
           </>
         )}
         <TextInput
+          ref={inputRef}
           testID={testID}
           {...(derivedInputProps
             ? derivedInputProps.textInputProps
@@ -288,20 +390,14 @@ export const TextInputBase = ({
           editable={!disabled}
           secureTextEntry={isSecretInput}
           disableFullscreenUI={true}
-          blurOnSubmit={true}
-          ref={inputRef}
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
-          onFocus={() => {
-            setInputStatus("focused");
-            labelSharedValue.value = true;
-            onFocus?.();
-          }}
-          selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret iOS
+          selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={counterLimit}
           onBlur={onBlurHandler}
-          value={inputValue}
+          onFocus={onFocusHandler}
+          blurOnSubmit={true}
           onChangeText={onChangeTextHandler}
           style={[
             styles.textInputStyle,
@@ -310,24 +406,22 @@ export const TextInputBase = ({
               : styles.textInputStyleLegacyFont
           ]}
           autoFocus={autoFocus}
+          value={inputValue}
         />
-        {/** Left value is due to the absolute position of the label in order to let it
-         * translate to top on focus
-         */}
+        {/* We translate the label to the right if icon is present
+            to align it to the `TextInput` */}
         <Animated.View
           pointerEvents={"none"}
-          style={[styles.textInputLabelWrapper, icon ? { left: 32 } : {}]}
+          style={[
+            styles.textInputLabelWrapper,
+            icon ? { left: iconSize + iconMargin } : {}
+          ]}
         >
           <Animated.Text
+            onLayout={getLabelWidth}
             numberOfLines={1}
             accessible={false}
-            style={[
-              animatedLabelProps,
-              {
-                ...makeFontStyleObject("Regular", false, "TitilliumWeb"),
-                color: IOColors["grey-700"]
-              }
-            ]}
+            style={[animatedLabelStyle, styles.textInputLabel]}
           >
             {placeholder}
           </Animated.Text>
@@ -339,6 +433,7 @@ export const TextInputBase = ({
           </View>
         )}
       </Pressable>
+
       {(bottomMessage || counterLimit) && (
         <HelperRow
           value={value}
