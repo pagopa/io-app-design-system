@@ -165,10 +165,8 @@ export const SearchInput = ({
 
   const cancel = () => {
     setSearchText("");
-    if (searchInputRef.current) {
-      searchInputRef.current.clear();
-      searchInputRef.current.blur();
-    }
+    searchInputRef.current?.clear();
+    searchInputRef.current?.blur();
   };
 
   const handleClearButton = (text: string) => {
@@ -177,9 +175,7 @@ export const SearchInput = ({
 
   const clear = () => {
     setSearchText("");
-    if (searchInputRef.current) {
-      searchInputRef.current.clear();
-    }
+    searchInputRef.current?.clear();
   };
 
   const renderSearchBar = () => (
