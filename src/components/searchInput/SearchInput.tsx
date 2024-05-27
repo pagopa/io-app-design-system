@@ -53,6 +53,7 @@ const inputHeightIOS: number = 36;
 const inputHeightAndroid: number = 42;
 
 type SearchInputProps = {
+  pressable?: boolean;
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
   clearAccessibilityLabel: string;
@@ -68,6 +69,7 @@ const inputWithTimingConfig = {
 };
 
 export const SearchInput = ({
+  pressable = false,
   placeholder,
   accessibilityLabel,
   clearAccessibilityLabel,
@@ -132,17 +134,20 @@ export const SearchInput = ({
   }));
 
   /* Applied to the `Clear` button inside the `SearchInput` */
-  const clearButtonAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        scale:
-          searchText.length > 0
+  const clearButtonAnimatedStyle = useAnimatedStyle(() => {
+    const showClearButton = searchText.length > 0;
+
+    return {
+      transform: [
+        {
+          scale: showClearButton
             ? withTiming(1, inputWithTimingConfig)
             : withTiming(0.5, inputWithTimingConfig)
-      }
-    ],
-    opacity: withTiming(searchText.length > 0 ? 1 : 0, inputWithTimingConfig)
-  }));
+        }
+      ],
+      opacity: withTiming(showClearButton ? 1 : 0, inputWithTimingConfig)
+    };
+  });
 
   /* Related event handlers */
   const handleFocus = () => {
