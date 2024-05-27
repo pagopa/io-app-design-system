@@ -219,10 +219,14 @@ export const TextInputBase = ({
   }, [status]);
 
   // Visual attributes
-  const borderColorMap = {
-    default: IOColors["grey-200"],
-    focused: IOColors[theme["interactiveElem-default"]]
-  };
+  const borderColorMap = useMemo(
+    () => ({
+      default: IOColors["grey-200"],
+      focused: IOColors[theme["interactiveElem-default"]],
+      error: IOColors["error-600"]
+    }),
+    [theme]
+  );
 
   const boxStyle: ViewStyle = useMemo(() => {
     if (inputStatus === "focused") {
@@ -233,7 +237,7 @@ export const TextInputBase = ({
     }
     if (inputStatus === "error") {
       return {
-        borderColor: IOColors["error-600"],
+        borderColor: borderColorMap.error,
         borderWidth: 0
       };
     }
@@ -241,7 +245,7 @@ export const TextInputBase = ({
       borderColor: borderColorMap.default,
       borderWidth: 0
     };
-  }, [borderColorMap.default, borderColorMap.focused, inputStatus]);
+  }, [borderColorMap, inputStatus]);
 
   const easingConf: WithTimingConfig = {
     duration: inputTransitionDuration,
