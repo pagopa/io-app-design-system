@@ -7,10 +7,12 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { IOIcons, Icon } from "../icons";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";
 import { ButtonLink, IconButton } from "../buttons";
 import { Badge } from "../badge";
+import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
+import { IOLogoPaymentType } from "../logos";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -36,17 +38,29 @@ export type ListItemInfo = WithTestID<{
   label: string;
   value: string | React.ReactNode;
   numberOfLines?: number;
-  icon?: IOIcons;
   endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
-}>;
+}> &
+  (
+    | {
+        paymentLogoIcon?: IOLogoPaymentType;
+        icon?: never;
+      }
+    | {
+        icon?: IOIcons;
+        paymentLogoIcon?: never;
+      }
+  );
+
+const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
 export const ListItemInfo = ({
   label,
   value,
   numberOfLines = 2,
   icon,
+  paymentLogoIcon,
   endElement,
   accessibilityLabel,
   testID
@@ -138,6 +152,14 @@ export const ListItemInfo = ({
               name={icon}
               color="grey-450"
               size={IOListItemVisualParams.iconSize}
+            />
+          </View>
+        )}
+        {paymentLogoIcon && (
+          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+            <LogoPaymentWithFallback
+              brand={paymentLogoIcon}
+              size={PAYMENT_LOGO_SIZE}
             />
           </View>
         )}
