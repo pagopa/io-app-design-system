@@ -208,7 +208,6 @@ export const SearchInput = ({
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChangeText={handleClearButton}
-            clearButtonMode="while-editing"
           />
           <AnimatedPressable
             style={[styles.clearButton, clearButtonAnimatedStyle]}
@@ -256,8 +255,6 @@ const styles = StyleSheet.create({
   textInput: {
     flexShrink: 1,
     flexGrow: 1
-    // borderColor: hexToRgba(IOColors.red, 0.2),
-    // borderWidth: 1
   },
   textInputIOS: {
     height: inputHeightIOS
@@ -266,8 +263,6 @@ const styles = StyleSheet.create({
     height: inputHeightAndroid
   },
   iconContainer: {
-    // borderColor: hexToRgba(IOColors.red, 0.2),
-    // borderWidth: 1,
     marginRight: iconMargin
   },
   placeholder: {
@@ -284,8 +279,6 @@ const styles = StyleSheet.create({
     paddingLeft: cancelButtonMargin
   },
   clearButton: {
-    // borderColor: hexToRgba(IOColors.red, 0.2),
-    // borderWidth: 1,
     marginLeft: iconMargin
   }
 });
