@@ -1,13 +1,12 @@
-import * as React from "react";
-import { View } from "react-native";
 import {
   H1,
   H5,
-  IOVisualCostants,
   IOStyles,
-  VSpacer,
-  SearchInput
+  IOVisualCostants,
+  VSpacer
 } from "@pagopa/io-app-design-system";
+import * as React from "react";
+import { View } from "react-native";
 import { Screen } from "../components/Screen";
 
 /**
@@ -28,13 +27,6 @@ export const Sandbox = () => (
       <H1>Sandbox</H1>
       <H5>{"Insert here the component you're willing to test"}</H5>
       <VSpacer />
-      <SearchInput
-        clearAccessibilityLabel="Cancella"
-        placeholder="Cerca nei messaggi"
-        accessibilityLabel="Search input"
-        cancelButtonLabel="Annulla"
-      />
-
       {/* Insert here the component you're willing to test */}
     </View>
   </Screen>
