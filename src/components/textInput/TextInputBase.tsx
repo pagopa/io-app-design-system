@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textInputLabel: {
-    ...makeFontStyleObject("Regular", false, "TitilliumWeb"),
+    ...makeFontStyleObject("Regular", false, "TitilliumSansPro"),
     color: inputLabelColor
   }
 });
@@ -194,15 +194,13 @@ export const TextInputBase = ({
   autoFocus,
   testID
 }: InputTextProps) => {
-  const theme = useIOTheme();
-
-  const focusedState = useSharedValue<number>(0);
-
+  const inputRef = useRef<TextInput>(null);
+  const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const [inputStatus, setInputStatus] = React.useState<InputStatus>(
     disabled ? "disabled" : "initial"
   );
-  const isSecretInput = useMemo(() => isPassword, [isPassword]);
-  const inputRef = useRef<TextInput>(null);
+  const focusedState = useSharedValue<number>(0);
+  const theme = useIOTheme();
 
   /* Get the label width to enable the correct translation */
   const [labelWidth, setLabelWidth] = React.useState<number>(0);
@@ -211,47 +209,31 @@ export const TextInputBase = ({
     setLabelWidth(nativeEvent.layout.width);
   };
 
+  /* Set `inputStatus` when `status` changes
+     (e.g. when it's passed as a prop) */
   useEffect(() => {
     if (status) {
       setInputStatus(status);
     }
   }, [status]);
 
-  // Visual attributes
-  const borderColorMap = useMemo(
+  /* Visual attributes */
+  const borderColorMap: Record<InputStatus, string> = useMemo(
     () => ({
-      default: IOColors["grey-200"],
+      initial: IOColors["grey-200"],
+      disabled: IOColors["grey-200"],
       focused: IOColors[theme["interactiveElem-default"]],
       error: IOColors["error-600"]
     }),
     [theme]
   );
 
-  const boxStyle: ViewStyle = useMemo(() => {
-    if (inputStatus === "focused") {
-      return {
-        borderColor: borderColorMap.focused,
-        borderWidth: 0
-      };
-    }
-    if (inputStatus === "error") {
-      return {
-        borderColor: borderColorMap.error,
-        borderWidth: 0
-      };
-    }
-    return {
-      borderColor: borderColorMap.default,
-      borderWidth: 0
-    };
-  }, [borderColorMap, inputStatus]);
-
   const easingConf: WithTimingConfig = {
     duration: inputTransitionDuration,
     easing: Easing.inOut(Easing.cubic)
   };
 
-  // Used for color interpolation
+  /* Used for color interpolation */
   const progressFocused = useDerivedValue(() =>
     withTiming(focusedState.value, easingConf)
   );
@@ -288,7 +270,7 @@ export const TextInputBase = ({
     borderColor: interpolateColor(
       progressFocused.value,
       [0, 1],
-      [borderColorMap.default, borderColorMap.focused]
+      [borderColorMap.initial, borderColorMap.focused]
     )
   }));
 
@@ -348,7 +330,6 @@ export const TextInputBase = ({
         onPress={onTextInputPress}
         style={[
           inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
-          boxStyle,
           styles.textInput
         ]}
         accessible={false}
@@ -358,9 +339,9 @@ export const TextInputBase = ({
             little jumps when the border is animated */}
         <Animated.View
           style={[
-            { borderColor: borderColorMap.default },
             styles.textInputOuterBorder,
-            !disabled && animatedOuterBorderStyle
+            !disabled && animatedOuterBorderStyle,
+            { borderColor: borderColorMap[inputStatus] }
           ]}
         />
         {!disabled && (
