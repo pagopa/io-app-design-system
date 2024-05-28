@@ -76,26 +76,41 @@ exports[`Test Avatar Components - Experimental Enabled AvatarSearch Snapshot 1`]
     ]
   }
 >
-  <Image
-    accessibilityIgnoresInvertColors={true}
-    defaultSource={
-      {
-        "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
-      }
-    }
-    source={
-      {
-        "uri": "",
-      }
-    }
+  <View
     style={
-      {
-        "height": "100%",
-        "resizeMode": "contain",
-        "width": "100%",
-      }
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderCurve": "continuous",
+          "overflow": "hidden",
+        },
+        {
+          "borderRadius": 2,
+        },
+      ]
     }
-  />
+  >
+    <Image
+      accessibilityIgnoresInvertColors={true}
+      defaultSource={
+        {
+          "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
+        }
+      }
+      source={
+        {
+          "uri": "",
+        }
+      }
+      style={
+        {
+          "height": "100%",
+          "resizeMode": "contain",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
 </View>
 `;
 
@@ -175,25 +190,40 @@ exports[`Test Avatar Components AvatarSearch Snapshot 1`] = `
     ]
   }
 >
-  <Image
-    accessibilityIgnoresInvertColors={true}
-    defaultSource={
-      {
-        "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
-      }
-    }
-    source={
-      {
-        "uri": "",
-      }
-    }
+  <View
     style={
-      {
-        "height": "100%",
-        "resizeMode": "contain",
-        "width": "100%",
-      }
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderCurve": "continuous",
+          "overflow": "hidden",
+        },
+        {
+          "borderRadius": 2,
+        },
+      ]
     }
-  />
+  >
+    <Image
+      accessibilityIgnoresInvertColors={true}
+      defaultSource={
+        {
+          "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
+        }
+      }
+      source={
+        {
+          "uri": "",
+        }
+      }
+      style={
+        {
+          "height": "100%",
+          "resizeMode": "contain",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
 </View>
 `;

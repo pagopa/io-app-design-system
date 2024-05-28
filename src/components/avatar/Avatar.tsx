@@ -170,14 +170,24 @@ export const AvatarSearch = React.memo(
         }
       ]}
     >
-      <Image
-        accessibilityIgnoresInvertColors
-        source={source}
-        style={styles.avatarImage}
-        defaultSource={
-          defaultSource ?? require("./placeholder/avatar-placeholder.png")
-        }
-      />
+      <View
+        style={[
+          styles.avatarInnerWrapper,
+          {
+            borderRadius:
+              dimensionsMap[size].radius - dimensionsMap[size].internalSpace
+          }
+        ]}
+      >
+        <Image
+          accessibilityIgnoresInvertColors
+          source={source}
+          style={styles.avatarImage}
+          defaultSource={
+            defaultSource ?? require("./placeholder/avatar-placeholder.png")
+          }
+        />
+      </View>
     </View>
   )
 );
