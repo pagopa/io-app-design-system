@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Image,
   ImageRequireSource,
@@ -142,3 +142,42 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
     </View>
   );
 };
+
+export type AvatarSearchProps = {
+  size: "small" | "medium";
+} & Pick<React.ComponentProps<typeof Image>, "source" | "defaultSource">;
+
+/**
+ * AvatarSearch component is used to display the logo of an institution in the search results.
+ * A placeholder is displayed if the logo is not available.
+ * Note: On Android, the default source prop is ignored on debug builds.
+ *
+ * @param AvatarSearchProps
+ * @returns
+ */
+export const AvatarSearch = React.memo(
+  ({ size, defaultSource, source }: AvatarSearchProps) => (
+    <View
+      accessibilityIgnoresInvertColors
+      style={[
+        styles.avatarWrapper,
+        {
+          height: dimensionsMap[size].size,
+          width: dimensionsMap[size].size,
+          borderRadius: dimensionsMap[size].radius,
+          backgroundColor: IOColors.white,
+          padding: dimensionsMap[size].internalSpace
+        }
+      ]}
+    >
+      <Image
+        accessibilityIgnoresInvertColors
+        source={source}
+        style={styles.avatarImage}
+        defaultSource={
+          defaultSource ?? require("./placeholder/avatar-placeholder.png")
+        }
+      />
+    </View>
+  )
+);
