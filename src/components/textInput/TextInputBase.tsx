@@ -18,9 +18,11 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
+import LinearGradient from "react-native-linear-gradient";
 import {
   IOColors,
   IOSpacingScale,
+  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -56,11 +58,14 @@ type InputTextProps = WithTestID<{
 const inputMarginTop: IOSpacingScale = Platform.OS === "ios" ? 16 : 20;
 const inputHeight: number = 60;
 const inputPaddingHorizontal: IOSpacingScale = 12;
+const inputPaddingVertical: IOSpacingScale = 8;
 const inputRadius: number = 8;
 const inputTransitionDuration: number = 250;
 const inputLabelScaleFactor: number = 0.75; /* 16pt becomes 12pt */
 const inputLabelFontSize: number = 16;
 const inputDisabledOpacity: number = 0.5;
+const inputRightElementMargin: IOSpacingScale = 8;
+const iconColor: IOColors = "grey-300";
 const iconSize: IOIconSizeScale = 24;
 const iconMargin: IOSpacingScale = 8;
 const inputLabelColor: ColorValue = IOColors["grey-700"];
@@ -71,8 +76,8 @@ const styles = StyleSheet.create({
   textInput: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: inputRadius,
     height: inputHeight,
+    paddingVertical: inputPaddingVertical,
     paddingHorizontal: inputPaddingHorizontal
   },
   textInputOuterBorder: {
@@ -89,9 +94,12 @@ const styles = StyleSheet.create({
   },
   textInputStyle: {
     flexGrow: 1,
+    flexShrink: 1,
     fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
+    borderColor: hexToRgba(IOColors["error-600"], 0.3),
+    borderWidth: 1,
     /* Slightly move the input on the left on Android
        to align to the label */
     ...(Platform.OS === "android" && { marginLeft: -4 })
@@ -220,6 +228,8 @@ export const TextInputBase = ({
   }, [status]);
 
   /* Visual attributes */
+  const appBackground: ColorValue = IOColors[theme["appBackground-primary"]];
+
   const borderColorMap: Record<InputStatus, string> = useMemo(
     () => ({
       initial: IOColors["grey-200"],
@@ -356,7 +366,7 @@ export const TextInputBase = ({
 
         {icon && (
           <>
-            <Icon name={icon} color="grey-300" size={iconSize} />
+            <Icon name={icon} color={iconColor} size={iconSize} />
             <HSpacer size={iconMargin} />
           </>
         )}
@@ -410,10 +420,28 @@ export const TextInputBase = ({
           </Animated.Text>
         </Animated.View>
         {rightElement && (
-          <View style={{ marginLeft: "auto" }}>
-            <HSpacer size={8} />
+          <Animated.View
+            style={{
+              alignSelf: "stretch",
+              overflow: "visible",
+              justifyContent: "center"
+            }}
+          >
+            <LinearGradient
+              useAngle={true}
+              angle={90}
+              style={{
+                width: inputRightElementMargin * 3,
+                position: "absolute",
+                left: -inputRightElementMargin * 3,
+                top: 0,
+                bottom: 0
+              }}
+              colors={[hexToRgba(appBackground, 0), appBackground]}
+            />
+            <HSpacer size={inputRightElementMargin} />
             {rightElement}
-          </View>
+          </Animated.View>
         )}
       </Pressable>
 
