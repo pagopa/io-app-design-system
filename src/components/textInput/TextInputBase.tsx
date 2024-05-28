@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
+    color: IOColors.black,
     /* Slightly move the input on the left on Android
        to align to the label */
     ...(Platform.OS === "android" && { marginLeft: -4 })
