@@ -54,7 +54,7 @@ type InputTextProps = WithTestID<{
   autoFocus?: boolean;
 }>;
 
-const inputMarginTop: IOSpacingScale = 16;
+const inputMarginTop: IOSpacingScale = Platform.OS === "ios" ? 16 : 20;
 const inputHeight: number = 60;
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputRadius: number = 8;
@@ -71,8 +71,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: inputRadius,
     height: inputHeight,
-    borderRadius: 8,
-    borderCurve: "continuous",
     paddingHorizontal: inputPaddingHorizontal
   },
   textInputOuterBorder: {
@@ -257,27 +255,33 @@ export const TextInputBase = ({
     withTiming(focusedState.value, easingConf)
   );
 
-  const animatedLabelStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        /* Since we can't have RN 0.73 yet, we use this calculation
-        to simulate `transformOrigin: left` */
-        translateX: withTiming(
-          focusedState.value
-            ? (-labelWidth * (1 - inputLabelScaleFactor)) / 2
-            : 0,
-          easingConf
-        )
-      },
-      { translateY: withTiming(focusedState.value ? -12 : 0, easingConf) },
-      {
-        scale: withTiming(
-          focusedState.value ? inputLabelScaleFactor : 1,
-          easingConf
-        )
-      }
-    ]
-  }));
+  const animatedLabelStyle = useAnimatedStyle(() => {
+    const enableTransition = focusedState.value || value.length > 0;
+
+    return {
+      transform: [
+        {
+          /* Since we can't have RN 0.73 yet, we use this calculation
+          to simulate `transformOrigin: left` */
+          translateX: withTiming(
+            enableTransition
+              ? (-labelWidth * (1 - inputLabelScaleFactor)) / 2
+              : 0,
+            easingConf
+          )
+        },
+        {
+          translateY: withTiming(enableTransition ? -12 : 0, easingConf)
+        },
+        {
+          scale: withTiming(
+            enableTransition ? inputLabelScaleFactor : 1,
+            easingConf
+          )
+        }
+      ]
+    };
+  });
 
   const animatedOuterBorderStyle = useAnimatedStyle(() => ({
     borderColor: interpolateColor(
@@ -291,21 +295,11 @@ export const TextInputBase = ({
     opacity: withTiming(focusedState.value ? 1 : 0, easingConf)
   }));
 
-  // useEffect(() => {
-  //   if (value.length > 0) {
-  //     focusedState.value = 1;
-  //   } else {
-  //     if (inputStatus !== "focused") {
-  //       focusedState.value = 0;
-  //     }
-  //   }
-  // }, [focusedState, value, inputStatus]);
-
   const onTextInputPress = () => {
     if (disabled) {
       return;
     }
-    // focusedState.value = 1;
+    focusedState.value = 1;
     setInputStatus("focused");
     inputRef?.current?.focus();
   };
@@ -324,12 +318,12 @@ export const TextInputBase = ({
     focusedState.value = 0;
     onBlur?.();
     setInputStatus("initial");
-  }, [onBlur, focusedState]);
+  }, [focusedState, onBlur]);
 
   const onFocusHandler = () => {
-    setInputStatus("focused");
     focusedState.value = 1;
     onFocus?.();
+    setInputStatus("focused");
   };
 
   const derivedInputProps = useMemo(
