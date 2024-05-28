@@ -15,7 +15,6 @@ import Animated, {
   WithTimingConfig,
   interpolateColor,
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
@@ -59,11 +58,14 @@ const inputHeight: number = 60;
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputRadius: number = 8;
 const inputTransitionDuration: number = 250;
-const inputLabelScaleFactor: number = 0.8;
+const inputLabelScaleFactor: number = 0.75; /* 16pt becomes 12pt */
+const inputLabelFontSize: number = 16;
 const inputDisabledOpacity: number = 0.5;
 const iconSize: IOIconSizeScale = 24;
 const iconMargin: IOSpacingScale = 8;
 const inputLabelColor: ColorValue = IOColors["grey-700"];
+const inputTextColor: ColorValue = IOColors.black;
+const inputDisabledTextColor: ColorValue = IOColors["grey-850"];
 
 const styles = StyleSheet.create({
   textInput: {
@@ -90,7 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
-    color: IOColors.black,
     /* Slightly move the input on the left on Android
        to align to the label */
     ...(Platform.OS === "android" && { marginLeft: -4 })
@@ -112,7 +113,8 @@ const styles = StyleSheet.create({
   },
   textInputLabel: {
     ...makeFontStyleObject("Regular", false, "TitilliumSansPro"),
-    color: inputLabelColor
+    color: inputLabelColor,
+    fontSize: inputLabelFontSize
   }
 });
 
@@ -233,11 +235,6 @@ export const TextInputBase = ({
     easing: Easing.inOut(Easing.cubic)
   };
 
-  /* Used for color interpolation */
-  const progressFocused = useDerivedValue(() =>
-    withTiming(focusedState.value, easingConf)
-  );
-
   const animatedLabelStyle = useAnimatedStyle(() => {
     const enableTransition = focusedState.value || value.length > 0;
 
@@ -266,12 +263,19 @@ export const TextInputBase = ({
     };
   });
 
+  /* Interpolate border color based on input status,
+     but not apply the transition on `focus` state
+     because it's already managed by the
+     `animatedInnerBorderStyle` */
   const animatedOuterBorderStyle = useAnimatedStyle(() => ({
-    borderColor: interpolateColor(
-      progressFocused.value,
-      [0, 1],
-      [borderColorMap.initial, borderColorMap.focused]
-    )
+    borderColor:
+      inputStatus !== "focused"
+        ? interpolateColor(
+            1,
+            [0, 1],
+            [borderColorMap.initial, borderColorMap[inputStatus]]
+          )
+        : borderColorMap.initial
   }));
 
   const animatedInnerBorderStyle = useAnimatedStyle(() => ({
@@ -338,11 +342,7 @@ export const TextInputBase = ({
         {/* Fake border managed with Animated.View to avoid
             little jumps when the border is animated */}
         <Animated.View
-          style={[
-            styles.textInputOuterBorder,
-            !disabled && animatedOuterBorderStyle,
-            { borderColor: borderColorMap[inputStatus] }
-          ]}
+          style={[styles.textInputOuterBorder, animatedOuterBorderStyle]}
         />
         {!disabled && (
           <Animated.View
@@ -383,7 +383,10 @@ export const TextInputBase = ({
             styles.textInputStyle,
             isExperimental
               ? styles.textInputStyleFont
-              : styles.textInputStyleLegacyFont
+              : styles.textInputStyleLegacyFont,
+            !disabled
+              ? { color: inputTextColor }
+              : { color: inputDisabledTextColor }
           ]}
           autoFocus={autoFocus}
           value={inputValue}
@@ -401,7 +404,7 @@ export const TextInputBase = ({
             onLayout={getLabelWidth}
             numberOfLines={1}
             accessible={false}
-            style={[animatedLabelStyle, styles.textInputLabel]}
+            style={[styles.textInputLabel, animatedLabelStyle]}
           >
             {placeholder}
           </Animated.Text>

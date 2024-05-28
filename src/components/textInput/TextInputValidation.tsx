@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useCallback, useMemo, useState } from "react";
 import { IOIcons, Icon } from "../icons";
 import { IOColors } from "../../core/IOColors";
 import { triggerHaptic } from "../../functions";
@@ -15,9 +16,9 @@ type TextInputValidationProps = Omit<
 export const TextInputValidation = (props: TextInputValidationProps) => {
   const { onValidate, errorMessage, value, bottomMessage, onBlur, onFocus } =
     props;
-  const [isValid, setIsValid] = React.useState<boolean | undefined>(undefined);
+  const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
 
-  const onBlurHandler = React.useCallback(() => {
+  const onBlurHandler = useCallback(() => {
     const validation = onValidate(value);
     setIsValid(validation);
     if (!validation) {
@@ -28,17 +29,17 @@ export const TextInputValidation = (props: TextInputValidationProps) => {
     onBlur?.();
   }, [onValidate, value, onBlur]);
 
-  const onFocusHandler = React.useCallback(() => {
+  const onFocusHandler = useCallback(() => {
     setIsValid(undefined);
     onFocus?.();
   }, [onFocus]);
 
-  const labelError = React.useMemo(
+  const labelError = useMemo(
     () => (isValid === false && errorMessage ? errorMessage : bottomMessage),
     [isValid, errorMessage, bottomMessage]
   );
 
-  const labelErrorColor: IOColors | undefined = React.useMemo(
+  const labelErrorColor: IOColors | undefined = useMemo(
     () => (isValid === false && errorMessage ? "error-600" : undefined),
     [isValid, errorMessage]
   );
