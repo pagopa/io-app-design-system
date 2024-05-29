@@ -1,8 +1,14 @@
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
-import { IOIcons, Icon } from "../icons";
+import { View } from "react-native";
+import Animated from "react-native-reanimated";
 import { IOColors } from "../../core/IOColors";
+import {
+  enterTransitionInputIcon,
+  exitTransitionInputIcon
+} from "../../core/IOTransitions";
 import { triggerHaptic } from "../../functions";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { TextInputBase } from "./TextInputBase";
 
 type TextInputValidationProps = Omit<
@@ -13,9 +19,17 @@ type TextInputValidationProps = Omit<
   errorMessage?: string;
 };
 
-export const TextInputValidation = (props: TextInputValidationProps) => {
-  const { onValidate, errorMessage, value, bottomMessage, onBlur, onFocus } =
-    props;
+const feedbackIconSize: IOIconSizeScale = 24;
+
+export const TextInputValidation = ({
+  onValidate,
+  errorMessage,
+  value,
+  bottomMessage,
+  onBlur,
+  onFocus,
+  ...props
+}: TextInputValidationProps) => {
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
 
   const onBlurHandler = useCallback(() => {
@@ -44,25 +58,50 @@ export const TextInputValidation = (props: TextInputValidationProps) => {
     [isValid, errorMessage]
   );
 
-  const rightIcon = React.useMemo(
-    () =>
-      isValid !== undefined && (
-        <Icon
-          name={(isValid ? "success" : "errorFilled") as IOIcons}
-          color={(isValid ? "green" : "error-600") as IOColors}
-          size={24}
-        />
-      ),
-    [isValid]
+  const feedbackIconAttrMap: Record<
+    string,
+    { name: IOIcons; color: IOColors }
+  > = useMemo(
+    () => ({
+      valid: {
+        name: "success",
+        color: "green"
+      },
+      notValid: {
+        name: "errorFilled",
+        color: "error-600"
+      }
+    }),
+    []
   );
+
+  const feedbackIcon = useMemo(() => {
+    const validationStatus = isValid ? "valid" : "notValid";
+
+    return isValid !== undefined ? (
+      <Animated.View
+        entering={enterTransitionInputIcon}
+        exiting={exitTransitionInputIcon}
+      >
+        <Icon
+          name={feedbackIconAttrMap[validationStatus].name}
+          color={feedbackIconAttrMap[validationStatus].color}
+          size={feedbackIconSize}
+        />
+      </Animated.View>
+    ) : (
+      <View style={{ width: feedbackIconSize, height: feedbackIconSize }} />
+    );
+  }, [feedbackIconAttrMap, isValid]);
 
   return (
     <TextInputBase
       {...props}
+      value={value}
       status={isValid === false ? "error" : undefined}
       bottomMessage={labelError}
       bottomMessageColor={labelErrorColor}
-      rightElement={rightIcon}
+      rightElement={feedbackIcon}
       onBlur={onBlurHandler}
       onFocus={onFocusHandler}
     />

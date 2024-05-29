@@ -10,6 +10,7 @@ import {
   View,
   ViewStyle
 } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import Animated, {
   Easing,
   WithTimingConfig,
@@ -18,7 +19,6 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import LinearGradient from "react-native-linear-gradient";
 import {
   IOColors,
   IOSpacingScale,
@@ -98,8 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
-    borderColor: hexToRgba(IOColors["error-600"], 0.3),
-    borderWidth: 1,
     /* Slightly move the input on the left on Android
        to align to the label */
     ...(Platform.OS === "android" && { marginLeft: -4 })
