@@ -6,14 +6,14 @@ import { Avatar, AvatarSearch } from "../Avatar";
 describe("Test Avatar Components", () => {
   it("Avatar Snapshot", () => {
     const avatar = TestRenderer.create(
-      <Avatar shape={"circle"} size={"small"} logoUri={{ uri: "" }} />
+      <Avatar size={"small"} logoUri={{ uri: "" }} />
     ).toJSON();
     expect(avatar).toMatchSnapshot();
   });
 
   it("AvatarSearch Snapshot", () => {
     const avatar = TestRenderer.create(
-      <AvatarSearch size={"small"} source={{ uri: "" }} />
+      <AvatarSearch source={{ uri: "" }} />
     ).toJSON();
     expect(avatar).toMatchSnapshot();
   });
@@ -22,14 +22,14 @@ describe("Test Avatar Components", () => {
 describe("Test Avatar Components - Experimental Enabled", () => {
   it("Avatar Snapshot", () => {
     const avatar = TestRendererWithExperimentalEnabledContextProvider(
-      <Avatar shape={"circle"} size={"small"} logoUri={{ uri: "" }} />
+      <Avatar size={"small"} logoUri={{ uri: "" }} />
     ).toJSON();
     expect(avatar).toMatchSnapshot();
   });
 
   it("AvatarSearch Snapshot", () => {
     const avatar = TestRendererWithExperimentalEnabledContextProvider(
-      <AvatarSearch size={"small"} source={{ uri: "" }} />
+      <AvatarSearch source={{ uri: "" }} />
     ).toJSON();
     expect(avatar).toMatchSnapshot();
   });

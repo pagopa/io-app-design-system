@@ -97,7 +97,7 @@ const MUNICIPALITY_LOGO_SIZE = 44;
 
 const LeftComponent = ({ logoIcon }: LeftComponentProps) => {
   if (isImageUri(logoIcon)) {
-    return <Avatar logoUri={logoIcon} size="small" shape="circle" />;
+    return <Avatar logoUri={logoIcon} size="small" />;
   }
   if (React.isValidElement(logoIcon)) {
     return <>{logoIcon}</>;
@@ -250,7 +250,7 @@ const SkeletonComponent = () => (
           animate="fade"
           height={IOVisualCostants.avatarSizeSmall}
           width={IOVisualCostants.avatarSizeSmall}
-          radius={100}
+          radius={IOVisualCostants.avatarRadiusSizeSmall}
         />
       </View>
       <View style={IOStyles.flex}>
