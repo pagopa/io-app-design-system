@@ -36,10 +36,12 @@ type BackProps =
   | {
       goBack: () => void;
       backAccessibilityLabel: string;
+      backTestID?: string;
     }
   | {
       goBack?: never;
       backAccessibilityLabel?: never;
+      backTestID?: never;
     };
 
 type CommonProps = WithTestID<{
@@ -121,6 +123,7 @@ export const HeaderSecondLevel = ({
   scrollValues = undefined,
   goBack,
   backAccessibilityLabel,
+  backTestID,
   title,
   type,
   transparent = false,
@@ -197,6 +200,7 @@ export const HeaderSecondLevel = ({
             color="neutral"
             onPress={goBack}
             accessibilityLabel={backAccessibilityLabel}
+            testID={backTestID}
           />
         ) : (
           <HSpacer size={32} />
