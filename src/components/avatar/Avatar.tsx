@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import {
   Image,
   ImageRequireSource,
@@ -15,12 +15,9 @@ import {
   useIOTheme
 } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
+import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";
 
 type Avatar = {
-  /**
-   * @deprecated Only `square` shape variant accepted
-   */
-  shape?: "circle" | "square";
   size: "small" | "medium";
   logoUri?: ImageRequireSource | ImageURISource | ReadonlyArray<ImageURISource>;
 };
@@ -143,9 +140,10 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
   );
 };
 
-export type AvatarSearchProps = {
-  size: "small" | "medium";
-} & Pick<React.ComponentProps<typeof Image>, "source" | "defaultSource">;
+export type AvatarSearchProps = Pick<
+  ComponentProps<typeof Image>,
+  "source" | "defaultSource"
+>;
 
 /**
  * AvatarSearch component is used to display the logo of an institution in the search results.
@@ -156,38 +154,38 @@ export type AvatarSearchProps = {
  * @returns
  */
 export const AvatarSearch = React.memo(
-  ({ size, defaultSource, source }: AvatarSearchProps) => (
-    <View
-      accessibilityIgnoresInvertColors
-      style={[
-        styles.avatarWrapper,
-        {
-          height: dimensionsMap[size].size,
-          width: dimensionsMap[size].size,
-          borderRadius: dimensionsMap[size].radius,
-          backgroundColor: IOColors.white,
-          padding: dimensionsMap[size].internalSpace
-        }
-      ]}
-    >
+  ({ defaultSource, source }: AvatarSearchProps) => {
+    // Visual attributes
+    const avatarSize = dimensionsMap.small.size;
+    const borderRadius = dimensionsMap.small.radius;
+    const internalSpace = dimensionsMap.small.internalSpace;
+    const innerRadius = borderRadius - internalSpace;
+
+    return (
       <View
+        accessibilityIgnoresInvertColors
         style={[
-          styles.avatarInnerWrapper,
+          styles.avatarWrapper,
           {
-            borderRadius:
-              dimensionsMap[size].radius - dimensionsMap[size].internalSpace
+            borderRadius,
+            height: avatarSize,
+            width: avatarSize,
+            backgroundColor: IOColors.white,
+            padding: internalSpace
           }
         ]}
       >
-        <Image
-          accessibilityIgnoresInvertColors
-          source={source}
-          style={styles.avatarImage}
-          defaultSource={
-            defaultSource ?? require("./placeholder/avatar-placeholder.png")
-          }
-        />
+        <View
+          style={[styles.avatarInnerWrapper, { borderRadius: innerRadius }]}
+        >
+          <Image
+            accessibilityIgnoresInvertColors
+            source={source}
+            style={styles.avatarImage}
+            defaultSource={defaultSource ?? avatarSearchPlaceholder}
+          />
+        </View>
       </View>
-    </View>
-  )
+    );
+  }
 );
