@@ -20,7 +20,6 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    shape: "circle",
     size: "medium"
   }
 };
@@ -28,7 +27,6 @@ export const Primary: Story = {
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const EnitityLogo: Story = {
   args: {
-    shape: "circle",
     size: "medium",
     logoUri: {
       uri: "https://assets.cdn.io.italia.it/logos/organizations/80078750587.png"
@@ -39,7 +37,6 @@ export const EnitityLogo: Story = {
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const EnitityLogoWithFallback: Story = {
   args: {
-    shape: "circle",
     size: "medium",
     logoUri: [
       { uri: "https://wrongUri.png" },
