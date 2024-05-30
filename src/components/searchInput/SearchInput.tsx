@@ -22,6 +22,7 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
+import { WithTestID } from "src/utils/types";
 import {
   IOColors,
   IOSpacingScale,
@@ -55,13 +56,14 @@ type SearchInputPressableProps = {
   onPress: (event: GestureResponderEvent) => void;
 };
 
-type SearchInputProps = {
+type SearchInputProps = WithTestID<{
   pressable?: SearchInputPressableProps;
   placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
   clearAccessibilityLabel: string;
   cancelButtonLabel: string;
-};
+  autoFocus?: TextInputProps["autoFocus"];
+}>;
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -76,7 +78,9 @@ export const SearchInput = ({
   placeholder,
   accessibilityLabel,
   clearAccessibilityLabel,
-  cancelButtonLabel
+  cancelButtonLabel,
+  autoFocus,
+  testID
 }: SearchInputProps) => {
   const searchInputRef = useRef<TextInput>(null);
 
@@ -188,6 +192,7 @@ export const SearchInput = ({
           <Icon name="search" size={iconSize} color={iconColor} />
         </View>
         <AnimatedTextInput
+          testID={testID}
           ref={searchInputRef}
           inputMode="search"
           returnKeyType="search"
@@ -207,6 +212,7 @@ export const SearchInput = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChangeText={handleClearButton}
+          autoFocus={autoFocus}
         />
         <AnimatedPressable
           style={[styles.clearButton, clearButtonAnimatedStyle]}
