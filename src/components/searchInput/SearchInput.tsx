@@ -57,13 +57,13 @@ type SearchInputPressableProps = {
 
 type SearchInputActionProps =
   | {
-      onChangeText?: never;
       pressable: SearchInputPressableProps;
+      onChangeText?: never;
       value?: never;
     }
   | {
-      onChangeText: (value: string) => void;
       pressable?: never;
+      onChangeText: (value: string) => void;
       value: string;
     };
 
