@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React, { useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   ColorValue,
   Dimensions,
@@ -35,7 +35,6 @@ import { ButtonLink } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
 
 /* Component visual attributes */
-// const inputPaddingVertical: IOSpacingScale = 8;
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputPaddingClearButton: IOSpacingScale = 8;
 const inputRadius: number = 8;
@@ -56,14 +55,26 @@ type SearchInputPressableProps = {
   onPress: (event: GestureResponderEvent) => void;
 };
 
+type SearchInputActionProps =
+  | {
+      onChangeText?: never;
+      pressable: SearchInputPressableProps;
+      value?: never;
+    }
+  | {
+      onChangeText: (value: string) => void;
+      pressable?: never;
+      value: string;
+    };
+
 type SearchInputProps = WithTestID<{
-  pressable?: SearchInputPressableProps;
-  placeholder: TextInputProps["placeholder"];
   accessibilityLabel: TextInputProps["accessibilityLabel"];
-  clearAccessibilityLabel: string;
   cancelButtonLabel: string;
+  clearAccessibilityLabel: string;
+  placeholder: TextInputProps["placeholder"];
   autoFocus?: TextInputProps["autoFocus"];
-}>;
+}> &
+  SearchInputActionProps;
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -74,12 +85,14 @@ const inputWithTimingConfig = {
 };
 
 export const SearchInput = ({
-  pressable,
-  placeholder,
   accessibilityLabel,
-  clearAccessibilityLabel,
   cancelButtonLabel,
+  clearAccessibilityLabel,
+  onChangeText,
+  placeholder,
+  value = "",
   autoFocus,
+  pressable,
   testID
 }: SearchInputProps) => {
   const searchInputRef = useRef<TextInput>(null);
@@ -113,7 +126,6 @@ export const SearchInput = ({
   /* Reanimated styles */
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
   const isFocused = useSharedValue(0);
-  const [searchText, setSearchText] = useState("");
 
   /* Applied to the `SearchInput` */
   const animatedStyle = useAnimatedStyle(() => ({
@@ -142,7 +154,7 @@ export const SearchInput = ({
 
   /* Applied to the `Clear` button inside the `SearchInput` */
   const clearButtonAnimatedStyle = useAnimatedStyle(() => {
-    const showClearButton = searchText.length > 0;
+    const showClearButton = value.length > 0;
 
     return {
       transform: [
@@ -154,7 +166,7 @@ export const SearchInput = ({
       ],
       opacity: withTiming(showClearButton ? 1 : 0, inputWithTimingConfig)
     };
-  });
+  }, [value]);
 
   /* Related event handlers */
   const handleFocus = () => {
@@ -167,20 +179,21 @@ export const SearchInput = ({
     inputAnimatedWidth.value = inputWidth;
   };
 
-  const cancel = () => {
-    setSearchText("");
+  const cancel = useCallback(() => {
+    onChangeText?.("");
     searchInputRef.current?.clear();
     searchInputRef.current?.blur();
-  };
+  }, [onChangeText]);
 
-  const handleClearButton = (text: string) => {
-    setSearchText(text);
-  };
-
-  const clear = () => {
-    setSearchText("");
+  const clear = useCallback(() => {
+    onChangeText?.("");
     searchInputRef.current?.clear();
-  };
+  }, [onChangeText]);
+
+  const handleChangeText = useCallback(
+    (text: string) => onChangeText?.(text),
+    [onChangeText]
+  );
 
   const renderSearchBar = () => (
     <Animated.View style={styles.searchBar}>
@@ -211,7 +224,8 @@ export const SearchInput = ({
           placeholderTextColor={inputColorPlaceholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onChangeText={handleClearButton}
+          onChangeText={handleChangeText}
+          value={value}
           autoFocus={autoFocus}
         />
         <AnimatedPressable
