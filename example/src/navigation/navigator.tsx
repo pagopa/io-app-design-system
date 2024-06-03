@@ -20,7 +20,6 @@ import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
-import { EndOfPageScreen, EndOfPageScreenWithCTA } from "../pages/EndOfPage";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
@@ -299,23 +298,6 @@ const AppNavigator = () => {
             }}
           />
 
-          <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.END_OF_PAGE.route}
-            component={EndOfPageScreen}
-            options={{
-              headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE.title,
-              headerBackTitleVisible: false
-            }}
-          />
-
-          <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.route}
-            component={EndOfPageScreenWithCTA}
-            options={{
-              headerTitle: APP_ROUTES.COMPONENTS.END_OF_PAGE_WITH_CTA.title,
-              headerBackTitleVisible: false
-            }}
-          />
           <Stack.Screen
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
             component={HeaderFirstLevelScreen}
