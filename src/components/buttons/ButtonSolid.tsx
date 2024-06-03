@@ -210,7 +210,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
-      const bgColor = interpolateColor(
+      const backgroundColor = interpolateColor(
         progressPressed.value,
         [0, 1],
         [colorMap[color].default, colorMap[color].pressed]
@@ -225,7 +225,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       );
 
       return {
-        backgroundColor: bgColor,
+        backgroundColor,
         transform: [{ scale }]
       };
     });
