@@ -3,7 +3,7 @@
 There are different kinds of layout components:
 * **ContentWrapper**: it is a simple `<View>` component with a default `paddingHorizontal` of `16` (defined as a style constant in `IOVisualConstants`). It is used to wrap the content of a screen to the fixed spacing. The value of the padding can be overridden by passing a `margin` prop that accepts values defined in `IOAppMargin`.
 * **Spacer**: there are two spacer components, `VSpacer` and `HSpacer`, which are used to add vertical and horizontal spacing between components. They are defined as `<View>` components with a fixed height or width, respectively.
-* **Divider**: there are two divider components, `Divider` and `VDivider`, which are used to add a dividing bar between components.
+* **Divider**: used to add a divider between components.
 
 ## Examples
 <br />
@@ -55,7 +55,7 @@ Example for **Spacers** can be found in related stories of [HSpacer](/docs/found
 ### Divider
 
 ```
-import { Divider, VDivider } from '@pagopa/io-app-design-system';
+import { Divider } from '@pagopa/io-app-design-system';
 
 const Component = () => (
   <>
@@ -64,15 +64,5 @@ const Component = () => (
     {// your content here}
   </>
 );
-
-const ComponentWithVDivider = () => (
-  <View style={{
-    flexDirection: 'row'
-  }}>
-    {// your content here}
-    <VDivider />
-    {// your content here}
-  </ View>
-);
 ```
-Example for **Dividers** can be found in related stories of [Divider](/docs/foundation-layout-divider--docs) and [VDivider](/docs/foundation-layout-vdivider--docs).
+Example for **Divider** can be found in the [Divider](/docs/foundation-layout-divider--docs) relative story.
