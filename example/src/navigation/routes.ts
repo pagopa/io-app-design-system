@@ -23,6 +23,10 @@ const APP_ROUTES = {
     STEPPER: { route: "DESIGN_SYSTEM_STEPPER", title: "Stepper" },
     ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" },
     TEXT_INPUT: { route: "DESIGN_SYSTEM_TEXT_INPUT", title: "Text Inputs" },
+    SEARCH_INPUT: {
+      route: "DESIGN_SYSTEM_SEARCH_INPUT",
+      title: "Search Input"
+    },
     TAB_NAVIGATION: {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"

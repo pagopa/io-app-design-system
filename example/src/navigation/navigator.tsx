@@ -39,7 +39,7 @@ import { NumberPadScreen } from "../pages/NumberPad";
 import { OTPInputScreen } from "../pages/OTPInput";
 import { Pictograms } from "../pages/Pictograms";
 import { Sandbox } from "../pages/Sandbox";
-import { Search } from "../pages/Search";
+import { SearchNative } from "../pages/SearchNative";
 import { Selection } from "../pages/Selection";
 import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
 import { StepperPage } from "../pages/Stepper";
@@ -47,6 +47,7 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
+import { SearchCustom } from "../pages/SearchCustom";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -347,8 +348,17 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.SEARCH_INPUT.route}
+            component={SearchCustom}
+            options={{
+              headerTitle: APP_ROUTES.COMPONENTS.SEARCH_INPUT.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
             name={APP_ROUTES.SCREENS.SEARCH.route}
-            component={Search}
+            component={SearchNative}
             options={{
               headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
               headerBackTitleVisible: false
