@@ -8,7 +8,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native";
 
-export const Search = () => {
+export const SearchNative = () => {
   const navigation = useNavigation();
   const theme = useIOTheme();
 

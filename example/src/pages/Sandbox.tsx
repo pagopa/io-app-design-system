@@ -1,12 +1,12 @@
-import * as React from "react";
-import { View } from "react-native";
 import {
   H1,
   H5,
-  IOVisualCostants,
   IOStyles,
+  IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
+import * as React from "react";
+import { View } from "react-native";
 import { Screen } from "../components/Screen";
 
 /**
