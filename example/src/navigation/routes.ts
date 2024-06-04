@@ -31,14 +31,6 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
     },
-    END_OF_PAGE: {
-      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE",
-      title: "End of Page"
-    },
-    END_OF_PAGE_WITH_CTA: {
-      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE_WITH_CTA",
-      title: "End of Page (with CTA)"
-    },
     HEADER_FIRST_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
       title: "Header First Level"
