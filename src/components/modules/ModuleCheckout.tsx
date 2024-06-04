@@ -1,88 +1,115 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import Placeholder from "rn-placeholder";
-import { IOModuleStyles, IOSpacingScale, useIOTheme } from "../../core";
+import {
+  IOModuleStyles,
+  IOSelectionListItemVisualParams,
+  IOSpacingScale,
+  IOStyles,
+  useIOTheme
+} from "../../core";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
 import { PressableModuleBase } from "./PressableModuleBase";
 
-// ---------------- types ----------------
+type LoadingProps = {
+  isLoading: true;
+  ctaText?: string;
+};
 
-type ModuleCheckoutPartialProps =
-  | {
-      isLoading?: false;
-      paymentLogo?: IOLogoPaymentType;
-      title: string;
-      subtitle: string;
-      onPress: () => void;
-    }
-  | {
-      isLoading: true;
-      paymentLogo?: never;
-      title?: never;
-      subtitle?: never;
-      onPress?: never;
-    };
+type ImageProps =
+  | { paymentLogo: IOLogoPaymentType; image?: never }
+  | { paymentLogo?: never; image: ImageURISource | ImageSourcePropType }
+  | { paymentLogo?: never; image?: never };
 
-export type ModuleCheckoutProps = {
-  ctaText: string;
-} & ModuleCheckoutPartialProps;
+type BaseProps = {
+  isLoading?: false;
+  paymentLogo?: IOLogoPaymentType;
+  title: string;
+  subtitle?: string;
+  ctaText?: string;
+  onPress: () => void;
+} & ImageProps;
 
-type CtaOnlyProps = { text?: string };
-
-// ---------------- component ----------------
+export type ModuleCheckoutProps = LoadingProps | BaseProps;
 
 export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const theme = useIOTheme();
 
   if (props.isLoading) {
-    return <LoadingVersion text={props.ctaText} />;
+    return <LoadingVersion {...props} />;
   }
 
-  const paymentLogoEndMargin: IOSpacingScale = 12;
+  const { paymentLogo, image } = props;
 
-  return (
-    <PressableModuleBase onPress={props.onPress}>
-      {/*
-        we don't want to let the `space-between`
-        handle spacing for the logo/text section,
-        so we use a row and a marginEnd on the logo
-      */}
-      <View style={styles.rowCenter}>
-        {props.paymentLogo && (
-          <View style={{ marginEnd: paymentLogoEndMargin }}>
-            <LogoPayment name={props.paymentLogo} />
-          </View>
-        )}
-        <View>
-          <H6>{props.title}</H6>
+  const imageComponent = (
+    <>
+      {paymentLogo && (
+        <View style={styles.imageWrapper}>
+          <LogoPayment name={paymentLogo} />
+        </View>
+      )}
+      {image && (
+        <Image
+          source={image}
+          style={[styles.imageWrapper, styles.image]}
+          accessibilityIgnoresInvertColors={true}
+        />
+      )}
+    </>
+  );
+
+  const ModuleBaseContent = () => (
+    <>
+      {imageComponent}
+      <View style={styles.content}>
+        <H6>{props.title}</H6>
+        {props.subtitle && (
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
             {props.subtitle}
           </LabelSmall>
-        </View>
+        )}
       </View>
-      <CTA text={props.ctaText} />
-    </PressableModuleBase>
+    </>
+  );
+
+  if (props.ctaText) {
+    return (
+      <PressableModuleBase onPress={props.onPress}>
+        <ModuleBaseContent />
+        {props.ctaText && <ModuleAction ctaText={props.ctaText} />}
+      </PressableModuleBase>
+    );
+  }
+
+  return (
+    <View style={IOModuleStyles.button}>
+      <ModuleBaseContent />
+    </View>
   );
 };
 
-// ---------------- sub-components----------------
-
-const CTA = ({ text }: CtaOnlyProps) => (
+const ModuleAction = ({ ctaText }: Pick<ModuleCheckoutProps, "ctaText">) => (
   <View pointerEvents="none">
     <ButtonLink
-      label={text ?? ""}
-      accessibilityLabel={text}
+      label={ctaText ?? ""}
+      accessibilityLabel={ctaText}
       onPress={() => null}
     />
   </View>
 );
 
-const LoadingVersion = ({ text }: CtaOnlyProps) => (
+const LoadingVersion = ({ ctaText }: LoadingProps) => (
   <View style={IOModuleStyles.button}>
-    <View style={styles.rowCenter}>
+    <View style={[IOStyles.row, IOStyles.alignCenter]}>
       <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
       <HSpacer size={8} />
       <View>
@@ -91,15 +118,23 @@ const LoadingVersion = ({ text }: CtaOnlyProps) => (
         <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
       </View>
     </View>
-    <CTA text={text} />
+    <ModuleAction ctaText={ctaText} />
   </View>
 );
 
-// ---------------- styles ----------------
+const imageMarginRight: IOSpacingScale = 12;
 
 const styles = StyleSheet.create({
-  rowCenter: {
-    flexDirection: "row",
-    alignItems: "center"
+  imageWrapper: {
+    marginRight: imageMarginRight
+  },
+  image: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
+  },
+  content: {
+    flexGrow: 1,
+    flexShrink: 1
   }
 });

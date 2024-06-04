@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { useIOExperimentalDesign } from "../../core";
@@ -25,18 +27,23 @@ const legacyTextDefaultWeight: AllowedWeight = "Bold";
 /**
  * `ButtonText` typographic style
  */
-export const ButtonText = (props: ButtonTextProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const ButtonText = React.forwardRef<View, ButtonTextProps>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>({
-    ...props,
-    defaultWeight: isExperimental
-      ? buttonTextDefaultWeight
-      : legacyTextDefaultWeight,
-    defaultColor: buttonTextDefaultColor,
-    font: isExperimental ? buttonTextFontName : legacyTextFontName,
-    fontStyle: {
-      fontSize: buttonTextFontSize
-    }
-  });
-};
+    return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>(
+      {
+        ...props,
+        defaultWeight: isExperimental
+          ? buttonTextDefaultWeight
+          : legacyTextDefaultWeight,
+        defaultColor: buttonTextDefaultColor,
+        font: isExperimental ? buttonTextFontName : legacyTextFontName,
+        fontStyle: {
+          fontSize: buttonTextFontSize
+        }
+      },
+      ref
+    );
+  }
+);

@@ -100,148 +100,134 @@ const renderFeatureInfo = () => (
   </>
 );
 
-const renderBanner = () => {
-  const viewRef = React.createRef<View>();
-
-  return (
-    <>
-      <H2
-        color={"bluegrey"}
-        weight={"SemiBold"}
-        style={{
-          marginBottom: 16,
-          paddingTop: IOVisualCostants.appMarginDefault
-        }}
-      >
-        Banner
-      </H2>
-      {bannerBackgroundColours.map(color => (
-        <React.Fragment key={`${color}-block`}>
-          <ComponentViewerBox name={`Banner · Big size, ${color} variant`}>
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              title="Banner title"
-              pictogramName="charity"
-              action="Action text"
-              onPress={onLinkPress}
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-              action="Dona anche tu"
-              onPress={onLinkPress}
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              title="Banner title"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              title="Banner title"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-              action="Dona anche tu"
-              onPress={onLinkPress}
-            />
-          </ComponentViewerBox>
-          <ComponentViewerBox
-            name={`Banner · Big size, ${color} variant, close action`}
-          >
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              title="Banner title"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-              onClose={onClose}
-              labelClose="Nascondi questo banner"
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="big"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              action="Dona anche tu"
-              onPress={onLinkPress}
-              pictogramName="charity"
-              onClose={onClose}
-              labelClose="Nascondi questo banner"
-            />
-          </ComponentViewerBox>
-          <ComponentViewerBox name={`Banner · Small size, ${color} variant`}>
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="small"
-              title="Banner title"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-              action="Dona anche tu"
-              onPress={onLinkPress}
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="small"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              action="Dona anche tu"
-              onPress={onLinkPress}
-              pictogramName="charity"
-            />
-            <VSpacer size={24} />
-            <Banner
-              viewRef={viewRef as React.RefObject<any>}
-              color={color}
-              size="small"
-              content={
-                "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
-              }
-              pictogramName="charity"
-            />
-          </ComponentViewerBox>
-        </React.Fragment>
-      ))}
-    </>
-  );
-};
+const renderBanner = () => (
+  <>
+    <H2
+      color={"bluegrey"}
+      weight={"SemiBold"}
+      style={{
+        marginBottom: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
+    >
+      Banner
+    </H2>
+    {bannerBackgroundColours.map(color => (
+      <React.Fragment key={`${color}-block`}>
+        <ComponentViewerBox name={`Banner · Big size, ${color} variant`}>
+          <Banner
+            color={color}
+            size="big"
+            title="Banner title"
+            pictogramName="charity"
+            action="Action text"
+            onPress={onLinkPress}
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="big"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="big"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+            action="Dona anche tu"
+            onPress={onLinkPress}
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="big"
+            title="Banner title"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="big"
+            title="Banner title"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+            action="Dona anche tu"
+            onPress={onLinkPress}
+          />
+        </ComponentViewerBox>
+        <ComponentViewerBox
+          name={`Banner · Big size, ${color} variant, close action`}
+        >
+          <Banner
+            color={color}
+            size="big"
+            title="Banner title"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+            onClose={onClose}
+            labelClose="Nascondi questo banner"
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="big"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            action="Dona anche tu"
+            onPress={onLinkPress}
+            pictogramName="charity"
+            onClose={onClose}
+            labelClose="Nascondi questo banner"
+          />
+        </ComponentViewerBox>
+        <ComponentViewerBox name={`Banner · Small size, ${color} variant`}>
+          <Banner
+            color={color}
+            size="small"
+            title="Banner title"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+            action="Dona anche tu"
+            onPress={onLinkPress}
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="small"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            action="Dona anche tu"
+            onPress={onLinkPress}
+            pictogramName="charity"
+          />
+          <VSpacer size={24} />
+          <Banner
+            color={color}
+            size="small"
+            content={
+              "Fai una donazione alle organizzazioni umanitarie che assistono le vittime civile della crisi in Ucraina"
+            }
+            pictogramName="charity"
+          />
+        </ComponentViewerBox>
+      </React.Fragment>
+    ))}
+  </>
+);

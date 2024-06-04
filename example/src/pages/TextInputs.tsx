@@ -81,6 +81,12 @@ export const TextInputs = () => (
     >
       <H4>Base input</H4>
       <InputComponentWrapper placeholder={"Base input"} />
+      <H5>Base input with autofocus</H5>
+      <InputComponentWrapper
+        placeholder={"Focused base input"}
+        bottomMessage="A normal input, but it focuses on page open!"
+        autoFocus
+      />
       <H5>Base input with value formatted</H5>
       <InputComponentWrapper
         placeholder={"Base input"}

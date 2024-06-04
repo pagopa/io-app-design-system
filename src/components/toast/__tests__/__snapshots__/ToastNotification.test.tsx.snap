@@ -9,6 +9,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -36,6 +37,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -53,6 +55,13 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   >
     Hello
   </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
   <RNSVGSvgView
     accessibilityElementsHidden={true}
     accessibilityLabel=""
@@ -60,7 +69,6 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     align="xMidYMid"
     bbHeight={24}
     bbWidth={24}
-    color={4278205245}
     focusable={false}
     height={24}
     importantForAccessibility="no-hide-descendants"
@@ -83,19 +91,26 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         },
       ]
     }
-    tintColor={4278205245}
+    tintColor="#003B3D"
     vbHeight={24}
     vbWidth={24}
     width={24}
   >
-    <RNSVGGroup>
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+    >
       <RNSVGPath
         clipRule={0}
         d="M17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L11.4142 17C10.6332 17.781 9.36684 17.7811 8.58579 17L5.29289 13.7071C4.90237 13.3166 4.90237 12.6834 5.29289 12.2929C5.68342 11.9024 6.31658 11.9024 6.70711 12.2929L10 15.5858L16.2929 9.29289C16.6834 8.90237 17.3166 8.90237 17.7071 9.29289Z"
         fill={
-          [
-            2,
-          ]
+          {
+            "type": 2,
+          }
         }
         fillRule={0}
         propList={
@@ -119,6 +134,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -126,8 +142,8 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "padding": 16,
       },
       {
-        "backgroundColor": "#FFE0E0",
-        "borderColor": "#761F1F",
+        "backgroundColor": "#FFD9D9",
+        "borderColor": "#5D1313",
       },
     ]
   }
@@ -146,13 +162,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
           "fontSize": 16,
         },
         {
-          "color": "#761F1F",
+          "color": "#5D1313",
           "fontFamily": "Readex Pro",
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -175,6 +192,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -202,6 +220,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -231,6 +250,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -258,6 +278,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -287,6 +308,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -314,6 +336,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -343,6 +366,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -370,6 +394,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -399,6 +424,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -426,6 +452,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -443,6 +470,13 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   >
     Hello
   </Text>
+  <View
+    style={
+      {
+        "width": 16,
+      }
+    }
+  />
   <RNSVGSvgView
     accessibilityElementsHidden={true}
     accessibilityLabel=""
@@ -450,7 +484,6 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     align="xMidYMid"
     bbHeight={24}
     bbWidth={24}
-    color={4278205245}
     focusable={false}
     height={24}
     importantForAccessibility="no-hide-descendants"
@@ -473,19 +506,26 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
       ]
     }
-    tintColor={4278205245}
+    tintColor="#003B3D"
     vbHeight={24}
     vbWidth={24}
     width={24}
   >
-    <RNSVGGroup>
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+    >
       <RNSVGPath
         clipRule={0}
         d="M17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071L11.4142 17C10.6332 17.781 9.36684 17.7811 8.58579 17L5.29289 13.7071C4.90237 13.3166 4.90237 12.6834 5.29289 12.2929C5.68342 11.9024 6.31658 11.9024 6.70711 12.2929L10 15.5858L16.2929 9.29289C16.6834 8.90237 17.3166 8.90237 17.7071 9.29289Z"
         fill={
-          [
-            2,
-          ]
+          {
+            "type": 2,
+          }
         }
         fillRule={0}
         propList={
@@ -509,6 +549,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -516,8 +557,8 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "padding": 16,
       },
       {
-        "backgroundColor": "#FFE0E0",
-        "borderColor": "#761F1F",
+        "backgroundColor": "#FFD9D9",
+        "borderColor": "#5D1313",
       },
     ]
   }
@@ -536,13 +577,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
           "fontSize": 16,
         },
         {
-          "color": "#761F1F",
+          "color": "#5D1313",
           "fontFamily": "Titillium Web",
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -565,6 +607,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -592,6 +635,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -621,6 +665,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -648,6 +693,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -677,6 +723,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -704,6 +751,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {
@@ -733,6 +781,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 8,
         "borderWidth": 1,
         "flexDirection": "row",
@@ -760,6 +809,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     style={
       [
         {
+          "flexShrink": 1,
           "paddingVertical": 2,
         },
         {

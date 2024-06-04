@@ -1,21 +1,23 @@
 import {
   Divider,
   H2,
-  IOThemeContext,
   Icon,
   ListItemAction,
+  ListItemAmount,
   ListItemHeader,
   ListItemInfo,
   ListItemInfoCopy,
   ListItemNav,
   ListItemNavAlert,
+  ListItemRadio,
   ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
   VSpacer,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
@@ -28,80 +30,94 @@ const onButtonPress = () => {
 
 export const ListItems = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
   return (
-    <IOThemeContext.Consumer>
-      {theme => (
-        <Screen>
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemNav
-          </H2>
-          <ListItemSwitch
-            label="Abilita Design Sperimentale"
-            value={isExperimental}
-            onSwitchValueChange={setExperimental}
-          />
-          {renderListItemNav()}
+    <Screen>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemNav
+      </H2>
+      <ListItemSwitch
+        label="Abilita Design Sperimentale"
+        value={isExperimental}
+        onSwitchValueChange={setExperimental}
+      />
+      {renderListItemNav()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemInfoCopy
-          </H2>
-          {renderListItemInfoCopy()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemInfoCopy
+      </H2>
+      {renderListItemInfoCopy()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemInfo
-          </H2>
-          {renderListItemInfo()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemInfo
+      </H2>
+      {renderListItemInfo()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemHeader
-          </H2>
-          {renderListItemHeader()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemHeader
+      </H2>
+      {renderListItemHeader()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemAction
-          </H2>
-          {renderListItemAction()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemAmount
+      </H2>
+      {renderListItemAmount()}
 
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemTransaction
-          </H2>
-          {renderListItemTransaction()}
-          <H2
-            color={theme["textHeading-default"]}
-            weight={"SemiBold"}
-            style={{ marginBottom: 16, marginTop: 16 }}
-          >
-            ListItemRadioWithAmount
-          </H2>
-          {renderListItemRadioWithAmount()}
-          <VSpacer size={40} />
-        </Screen>
-      )}
-    </IOThemeContext.Consumer>
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemAction
+      </H2>
+      {renderListItemAction()}
+
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemTransaction
+      </H2>
+      {renderListItemTransaction()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemRadio
+      </H2>
+      {renderListItemRadio()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"SemiBold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ListItemRadioWithAmount
+      </H2>
+      {renderListItemRadioWithAmount()}
+      <VSpacer size={40} />
+    </Screen>
   );
 };
 
@@ -114,7 +130,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -122,7 +137,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value="A looong looooong looooooooong looooooooooong title"
@@ -130,7 +144,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
 
         <ListItemNav
@@ -139,7 +152,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -148,7 +160,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
@@ -158,16 +169,35 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with a payment logo"
-          paymentLogo="bancomatPay"
+          paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
+        />
+        <ListItemNav
+          value={"Value"}
+          description="This is a list item nav with a loading indicator"
+          paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          loading
+        />
+        <ListItemNav
+          avatarProps={{
+            logoUri: {
+              uri: "https://assets.cdn.io.italia.it/logos/organizations/82003830161.png"
+            }
+          }}
+          description="Description"
+          onPress={() => {
+            alert("Action triggered");
+          }}
+          value={"Value"}
         />
         <ListItemNav
           value={"Value"}
@@ -175,7 +205,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           hideChevron
         />
         <ListItemNav
@@ -184,7 +213,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -198,7 +226,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -213,7 +240,6 @@ const renderListItemNav = () => (
           onPress={() => {
             alert("Action triggered");
           }}
-          accessibilityLabel="Empty just for testing purposes"
           topElement={{
             dateValue: "14/04/2024"
           }}
@@ -425,6 +451,12 @@ const renderListItemInfo = () => (
         icon="gallery"
         accessibilityLabel="Empty just for testing purposes"
       />
+      <ListItemInfo
+        label="Label"
+        value={"Value"}
+        paymentLogoIcon="payPal"
+        accessibilityLabel="Empty just for testing purposes"
+      />
     </View>
   </ComponentViewerBox>
 );
@@ -486,6 +518,17 @@ const renderListItemHeader = () => (
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
+  </ComponentViewerBox>
+);
+
+const renderListItemAmount = () => (
+  <ComponentViewerBox name="ListItemAmount">
+    <ListItemAmount label="Amount" valueString="€ 1.000,00" />
+    <ListItemAmount
+      iconName="creditCard"
+      label="Amount with card "
+      valueString="€ 1.000,00"
+    />
   </ComponentViewerBox>
 );
 
@@ -640,19 +683,51 @@ const renderListItemTransaction = () => (
   </ComponentViewerBox>
 );
 
+const renderListItemRadio = () => (
+  <ComponentViewerBox name="ListItemRadio">
+    <View>
+      <ListItemRadio value="Item (selected)" selected={true} />
+      <Divider />
+      <ListItemRadio value="Item" selected={false} />
+      <Divider />
+      <ListItemRadio
+        value="Item with square icon"
+        selected={false}
+        startImage={{
+          uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+        }}
+      />
+      <Divider />
+      <ListItemRadio
+        value="Item with rectangular icon"
+        selected={false}
+        startImage={{
+          uri: "https://raw.githubusercontent.com/slaterjohn/payment-logos/master/Rounded%20Corners/PNG/medium/visa.png?raw=true"
+        }}
+      />
+      <Divider />
+    </View>
+  </ComponentViewerBox>
+);
+
 const renderListItemRadioWithAmount = () => (
   <ComponentViewerBox name="ListItemRadioWithAmount">
     <View>
       <ListItemRadioWithAmount
         label="Banca Intesa"
         formattedAmountString={"2,50 €"}
+        isSuggested
         suggestReason="Perché costa meno"
-        isSuggested={true}
       />
 
       <Divider />
       <ListItemRadioWithAmount
         label="Banca Malintesa"
+        formattedAmountString={"4,50 €"}
+      />
+      <Divider />
+      <ListItemRadioWithAmount
+        label="Banca Malintesa con un testo molto ma molto lungo"
         formattedAmountString={"4,50 €"}
       />
     </View>

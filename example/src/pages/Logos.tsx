@@ -1,7 +1,9 @@
 import {
   Avatar,
+  AvatarSearch,
   H2,
   HSpacer,
+  HStack,
   IOColors,
   IOLogoPaymentCardType,
   IOLogoPaymentExtType,
@@ -99,6 +101,14 @@ const organizationsURIs = [
     name: "Placeholder"
   },
   {
+    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}1199250158.png`],
+    name: "Multi image uris"
+  },
+  {
+    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}wrongUri.pg`],
+    name: "Multi image uris both bad uris"
+  },
+  {
     imageSource: `${cdnPath}1199250158.png`,
     name: "Comune di Milano"
   },
@@ -134,76 +144,82 @@ const organizationsURIs = [
 
 const renderAvatar = () => (
   <>
-    <ComponentViewerBox name={`Avatar, small size, circle shape`}>
+    <ComponentViewerBox name={`Avatar, small size`}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={styles.horizontalScroll}
       >
-        {organizationsURIs.map(({ imageSource }, i) => (
-          <React.Fragment key={i}>
-            <Avatar
-              shape="circle"
-              size="small"
-              logoUri={
-                imageSource
-                  ? {
-                      uri: imageSource
-                    }
-                  : undefined
-              }
-            />
-            {i < organizationsURIs.length - 1 && <HSpacer size={4} />}
-          </React.Fragment>
-        ))}
+        <HStack space={8}>
+          {organizationsURIs.map(({ imageSource }, i) => (
+            <React.Fragment key={i}>
+              <Avatar
+                size="small"
+                logoUri={
+                  imageSource
+                    ? Array.isArray(imageSource)
+                      ? imageSource.map(s => ({ uri: s }))
+                      : {
+                          uri: imageSource
+                        }
+                    : undefined
+                }
+              />
+              {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
+            </React.Fragment>
+          ))}
+        </HStack>
       </ScrollView>
     </ComponentViewerBox>
-    <ComponentViewerBox name={`Avatar, small size, square shape`}>
+    <ComponentViewerBox name={`Avatar, medium size`}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={styles.horizontalScroll}
       >
-        {organizationsURIs.map(({ imageSource }, i) => (
-          <React.Fragment key={i}>
-            <Avatar
-              shape="square"
-              size="small"
-              logoUri={
-                imageSource
-                  ? {
-                      uri: imageSource
-                    }
-                  : undefined
-              }
-            />
-            {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
-          </React.Fragment>
-        ))}
+        <HStack space={8}>
+          {organizationsURIs.map(({ imageSource }, i) => (
+            <React.Fragment key={i}>
+              <Avatar
+                size="medium"
+                logoUri={
+                  imageSource
+                    ? Array.isArray(imageSource)
+                      ? imageSource.map(s => ({ uri: s }))
+                      : {
+                          uri: imageSource
+                        }
+                    : undefined
+                }
+              />
+              {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
+            </React.Fragment>
+          ))}
+        </HStack>
       </ScrollView>
     </ComponentViewerBox>
-    <ComponentViewerBox name={`Avatar, medium size, square shape`}>
+    <ComponentViewerBox name={`AvatarSearch`}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={styles.horizontalScroll}
       >
-        {organizationsURIs.map(({ imageSource }, i) => (
-          <React.Fragment key={i}>
-            <Avatar
-              shape="square"
-              size="medium"
-              logoUri={
-                imageSource
-                  ? {
-                      uri: imageSource
-                    }
-                  : undefined
-              }
-            />
-            {i < organizationsURIs.length - 1 && <HSpacer size={8} />}
-          </React.Fragment>
-        ))}
+        <HStack space={8}>
+          {organizationsURIs.map(({ imageSource }, i) => (
+            <React.Fragment key={i}>
+              <AvatarSearch
+                source={
+                  imageSource
+                    ? Array.isArray(imageSource)
+                      ? imageSource.map(s => ({ uri: s }))
+                      : [{ uri: imageSource }]
+                    : []
+                }
+              />
+              {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
+            </React.Fragment>
+          ))}
+        </HStack>
       </ScrollView>
     </ComponentViewerBox>
   </>
@@ -251,9 +267,11 @@ const renderPaymentLogosCard = () => (
         size="full"
         image={
           <LogoPaymentCard
+            accessibilityLabel={logoItemName}
             align="start"
             height={32}
             name={logoItemName as IOLogoPaymentCardType}
+            testID={`${logoItemName}-testID`}
           />
         }
       />
@@ -272,11 +290,29 @@ const renderPaymentLogosCard = () => (
           borderWidth: 1
         }}
       >
-        <LogoPaymentCard debugMode height={32} name="payPal" align="start" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="start"
+        />
         <VSpacer size={8} />
-        <LogoPaymentCard debugMode height={32} name="payPal" align="center" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="center"
+        />
         <VSpacer size={8} />
-        <LogoPaymentCard debugMode height={32} name="payPal" align="end" />
+        <LogoPaymentCard
+          debugMode
+          height={32}
+          name="payPal"
+          accessibilityLabel="PayPal"
+          align="end"
+        />
       </View>
     </ComponentViewerBox>
   </View>

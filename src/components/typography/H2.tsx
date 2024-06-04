@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -25,17 +27,20 @@ const legacyH2LineHeight = 40;
 /**
  * `H2` typographic style
  */
-export const H2 = (props: H2Props) => {
+export const H2 = React.forwardRef<View, H2Props>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: {
-      fontSize: isExperimental ? h2FontSize : legacyH2FontSize,
-      lineHeight: isExperimental ? h2LineHeight : legacyH2LineHeight
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: {
+        fontSize: isExperimental ? h2FontSize : legacyH2FontSize,
+        lineHeight: isExperimental ? h2LineHeight : legacyH2LineHeight
+      }
+    },
+    ref
+  );
+});

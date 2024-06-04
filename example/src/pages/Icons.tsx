@@ -12,14 +12,14 @@ import {
   IOProductIcons,
   IOStyles,
   IOSystemIcons,
-  IOThemeContext,
   IOVisualCostants,
   Icon,
   IconContained,
   SVGIconProps,
-  IOIconsNew
+  IOIconsNew,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";
 import { Screen } from "../components/Screen";
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 });
 
 export const Icons = () => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
   return (
     <Screen>
       <View style={styles.itemsWrapper}>

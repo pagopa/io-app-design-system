@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Path, Svg } from "react-native-svg";
-import { SVGIconProps } from "../Icon";
+import { SVGIconProps } from "../types";
 
 const IconSparkles = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 16 17" style={style} {...props}>

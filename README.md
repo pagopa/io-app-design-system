@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; align-items: center">
 
-<img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /></br>
+<img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
 <h3 align="center" style="width: 100%">A comprehensive library of components specifically designed for <a href="https://github.com/pagopa/io-app">IO App</a></h3>
 <!-- NPM Badge -->
 <div align="center">
@@ -22,6 +22,15 @@ To add the component library to the main app run:
 
 ```bash
 yarn add @pagopa/io-app-design-system
+```
+
+Remember to encapsulate the app container with the `SafeAreaProvider` from [`react-native-safe-area-context`](https://github.com/th3rdwave/react-native-safe-area-context?tab=readme-ov-file#safeareaprovider) in your `App.tsx` file. Also, remember to apply this wrapper in other relevant places such as the root components of modals and routes when utilizing [`react-native-screens`](https://github.com/software-mansion/react-native-screens):
+```js
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+function App() {
+  return <SafeAreaProvider>...</SafeAreaProvider>;
+}
 ```
 
 ## Launch the example app
@@ -52,7 +61,6 @@ A [Storybook](https://storybook.js.org/) playground is also available to help de
 ```bash
 yarn storybook
 ```
-> [!note]
 > Storybook documentation is a work in progress
 
 # Usage
@@ -144,6 +152,7 @@ Common functions used to wrap up external libraries and utilities
 * [`react-native-haptic-feedback`](https://github.com/mkuczera/react-native-haptic-feedback): Handles all the haptic feedbacks
 * [`react-native-safe-area-context`](https://github.com/th3rdwave/react-native-safe-area-context): Handles all safe area spacing attributes
 * [`react-native-linear-gradient`](https://github.com/react-native-linear-gradient/react-native-linear-gradient)
+* [`react-native-easing-gradient`](https://github.com/phamfoo/react-native-easing-gradient): Generates easing gradients
 * [`react-native-gesture-handler`](https://github.com/software-mansion/react-native-gesture-handler)
 
 ---

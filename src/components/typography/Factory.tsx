@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { View } from "react-native";
 import { IOColors } from "../../core";
 import { IOFontWeight } from "../../utils/fonts";
 import { XOR } from "../../utils/types";
@@ -74,7 +75,10 @@ function isDefaultFactoryProps<WeightPropsType, ColorsPropsType>(
 export function useTypographyFactory<
   WeightPropsType extends IOFontWeight,
   ColorsPropsType extends IOColors
->(props: FactoryProps<WeightPropsType, ColorsPropsType>) {
+>(
+  props: FactoryProps<WeightPropsType, ColorsPropsType>,
+  ref?: React.ForwardedRef<View>
+) {
   // Use different strategy to calculate the default values, based on DefaultProps
   const { weight, color } = useMemo(
     () =>
@@ -89,5 +93,5 @@ export function useTypographyFactory<
     [props]
   );
 
-  return <BaseTypography weight={weight} color={color} {...props} />;
+  return <BaseTypography weight={weight} color={color} {...props} ref={ref} />;
 }

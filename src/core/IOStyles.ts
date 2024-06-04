@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
+import { IOModuleIDPRadius } from "./IOShapes";
 import {
   IOAppMargin,
   IOModuleIDPHSpacing,
@@ -8,7 +9,6 @@ import {
   IOSpacer,
   IOSpacingScale
 } from "./IOSpacing";
-import { IOModuleIDPRadius } from "./IOShapes";
 
 /**
  * A collection of default styles used within IO App.
@@ -21,9 +21,12 @@ interface IOVisualCostants {
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
+  avatarRadiusSizeSmall: number;
+  avatarRadiusSizeMedium: number;
   iconContainedSizeDefault: number;
   scrollDownButtonRight: number;
   scrollDownButtonBottom: number;
+  iconMargin: IOSpacingScale;
 }
 
 export const IOVisualCostants: IOVisualCostants = {
@@ -31,9 +34,12 @@ export const IOVisualCostants: IOVisualCostants = {
   headerHeight: 56,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
+  avatarRadiusSizeSmall: 8,
+  avatarRadiusSizeMedium: 12,
   iconContainedSizeDefault: 44,
   scrollDownButtonRight: 24,
-  scrollDownButtonBottom: 24
+  scrollDownButtonBottom: 24,
+  iconMargin: 12
 };
 
 export const IOStyles = StyleSheet.create({
@@ -162,6 +168,7 @@ export const IOButtonStyles = StyleSheet.create({
     /* Legacy visual properties. They will be replaced with
     dynamic ones once NativeBase is gone */
     borderRadius: btnBorderRadius,
+    borderCurve: "continuous",
     paddingHorizontal: 24,
     // Reset default visual parameters
     elevation: 0
@@ -264,7 +271,7 @@ interface IOListItemVisualParams {
 export const IOListItemVisualParams: IOListItemVisualParams = {
   paddingVertical: 12,
   paddingHorizontal: IOVisualCostants.appMarginDefault,
-  iconMargin: 16,
+  iconMargin: IOVisualCostants.iconMargin,
   actionMargin: 16,
   iconSize: 24,
   chevronSize: 24
@@ -288,6 +295,7 @@ export const IOModuleStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
     borderRadius: IOModuleIDPRadius,
+    borderCurve: "continuous",
     backgroundColor: IOColors.white,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -362,9 +370,9 @@ export const IOSelectionListItemVisualParams: IOSelectionListItemVisualParams =
   {
     paddingVertical: 16,
     paddingHorizontal: IOVisualCostants.appMarginDefault,
-    iconMargin: 8,
+    iconMargin: IOVisualCostants.iconMargin,
     iconSize: 24,
-    actionMargin: 16,
+    actionMargin: 8,
     descriptionMargin: 4
   };
 

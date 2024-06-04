@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { IOColors } from "../../core";
 import { BaseTypography, H6 } from "../typography";
 
@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 35,
     height: 60,
-    borderRadius: 8
+    borderRadius: 8,
+    borderCurve: "continuous"
   },
   defaultBox: {
     borderWidth: 1,

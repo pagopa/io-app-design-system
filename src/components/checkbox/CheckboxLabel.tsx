@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
+import { useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { HSpacer } from "../spacer/Spacer";
@@ -34,6 +35,8 @@ export const CheckboxLabel = ({
   disabled,
   onValueChange
 }: OwnProps) => {
+  const theme = useIOTheme();
+
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
   const toggleCheckbox = () => {
@@ -53,6 +56,11 @@ export const CheckboxLabel = ({
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      accessibilityRole="checkbox"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
       // This is required to avoid opacity
       // inheritance on Android
       needsOffscreenAlphaCompositing={true}
@@ -67,7 +75,7 @@ export const CheckboxLabel = ({
           <AnimatedCheckbox checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
-        <H6 style={{ flexShrink: 1 }} color={"black"}>
+        <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
         </H6>
       </View>

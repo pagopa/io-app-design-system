@@ -1,104 +1,191 @@
-// A component to provide organization logo
-import * as React from "react";
-import { Image, ImageURISource, StyleSheet, View } from "react-native";
+import React, { ComponentProps } from "react";
+import {
+  Image,
+  ImageRequireSource,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import { Icon } from "../../components/icons";
 import {
   IOColors,
   IOSpacingScale,
-  IOThemeContext,
   IOVisualCostants,
-  hexToRgba
+  hexToRgba,
+  useIOTheme
 } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
+import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";
 
 type Avatar = {
-  shape: "circle" | "square";
   size: "small" | "medium";
-  logoUri?: ImageURISource;
+  logoUri?: ImageRequireSource | ImageURISource | ReadonlyArray<ImageURISource>;
 };
 
-const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
 const internalSpaceDefaultSize: number = 6;
 const internalSpaceLargeSize: number = 9;
-const radiusDefaultSize: number = 8;
 const internalSpacePlaceholderDefaultSize: IOSpacingScale = 12;
 const internalSpacePlaceholderLargeSize: IOSpacingScale = 16;
+const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
 
 const dimensionsMap = {
   small: {
     size: IOVisualCostants.avatarSizeSmall,
     internalSpace: internalSpaceDefaultSize,
     internalSpacePlaceholder: internalSpacePlaceholderDefaultSize,
-    radius: radiusDefaultSize
+    radius: IOVisualCostants.avatarRadiusSizeSmall
   },
   medium: {
     size: IOVisualCostants.avatarSizeMedium,
     internalSpace: internalSpaceLargeSize,
     internalSpacePlaceholder: internalSpacePlaceholderLargeSize,
-    radius: radiusDefaultSize
+    radius: IOVisualCostants.avatarRadiusSizeMedium
   }
 };
-
-const getAvatarCircleShape = (size: Avatar["size"]) =>
-  dimensionsMap[size].size / 2;
 
 const styles = StyleSheet.create({
   avatarWrapper: {
     overflow: "hidden",
-    resizeMode: "contain",
     borderColor: avatarBorderLightMode,
-    borderWidth: 1
+    borderWidth: 1,
+    borderCurve: "continuous"
+  },
+  avatarInnerWrapper: {
+    overflow: "hidden",
+    backgroundColor: IOColors.white,
+    borderCurve: "continuous"
   },
   avatarImage: {
+    resizeMode: "contain",
     height: "100%",
     width: "100%"
   }
 });
 
-export const Avatar = ({ logoUri, shape, size }: Avatar) => {
-  const theme = React.useContext(IOThemeContext);
+/**
+ * Avatar component is used to display the logo of an organization. It accepts the following props:
+ * - `logoUri`: the uri of the image to display. If not provided, a placeholder icon will be displayed. It can be a single uri or an array of uris, in which case the first one that is available will be used.
+ * - `shape`: the shape of the avatar, can be "circle" or "square"
+ * - `size`: the size of the avatar, can be "small" or "medium"
+ * @param AvatarProps
+ * @returns
+ */
+export const Avatar = ({ logoUri, size }: Avatar) => {
+  const theme = useIOTheme();
+  const indexValue = React.useRef<number>(0);
 
   const [imageSource, setImageSource] = React.useState(
-    !logoUri ? undefined : addCacheTimestampToUri(logoUri)
+    logoUri === undefined
+      ? undefined
+      : Array.isArray(logoUri)
+      ? addCacheTimestampToUri(logoUri[0])
+      : typeof logoUri === "number"
+      ? logoUri
+      : addCacheTimestampToUri(logoUri as ImageURISource)
   );
 
-  const isPlaceholder = !imageSource;
-
   const onError = () => {
+    if (Array.isArray(logoUri) && indexValue.current + 1 < logoUri.length) {
+      // eslint-disable-next-line functional/immutable-data
+      indexValue.current = indexValue.current + 1;
+      setImageSource(addCacheTimestampToUri(logoUri[indexValue.current]));
+      return;
+    }
     setImageSource(undefined);
   };
 
   return (
     <View
+      accessibilityIgnoresInvertColors
       style={[
         styles.avatarWrapper,
         {
           height: dimensionsMap[size].size,
           width: dimensionsMap[size].size,
-          borderRadius:
-            shape === "circle"
-              ? getAvatarCircleShape(size)
-              : dimensionsMap[size].radius,
-          backgroundColor: isPlaceholder ? IOColors["grey-50"] : IOColors.white,
-          padding: isPlaceholder
-            ? dimensionsMap[size].internalSpacePlaceholder
-            : dimensionsMap[size].internalSpace
+          borderRadius: dimensionsMap[size].radius,
+          backgroundColor:
+            imageSource === undefined ? IOColors["grey-50"] : IOColors.white,
+          padding:
+            imageSource === undefined
+              ? dimensionsMap[size].internalSpacePlaceholder
+              : dimensionsMap[size].internalSpace
         }
       ]}
     >
-      {isPlaceholder ? (
+      {imageSource === undefined ? (
         <Icon
           name="institution"
           color={theme["icon-decorative"]}
           size={"100%"}
         />
       ) : (
-        <Image
-          source={imageSource}
-          style={styles.avatarImage}
-          onError={onError}
-        />
+        <View
+          style={[
+            styles.avatarInnerWrapper,
+            {
+              borderRadius:
+                dimensionsMap[size].radius - dimensionsMap[size].internalSpace
+            }
+          ]}
+        >
+          <Image
+            accessibilityIgnoresInvertColors
+            source={imageSource}
+            style={styles.avatarImage}
+            onError={onError}
+          />
+        </View>
       )}
     </View>
   );
 };
+
+export type AvatarSearchProps = Pick<
+  ComponentProps<typeof Image>,
+  "source" | "defaultSource"
+>;
+
+/**
+ * AvatarSearch component is used to display the logo of an institution in the search results.
+ * A placeholder is displayed if the logo is not available.
+ * Note: On Android, the default source prop is ignored on debug builds.
+ *
+ * @param AvatarSearchProps
+ * @returns
+ */
+export const AvatarSearch = React.memo(
+  ({ defaultSource, source }: AvatarSearchProps) => {
+    // Visual attributes
+    const avatarSize = dimensionsMap.small.size;
+    const borderRadius = dimensionsMap.small.radius;
+    const internalSpace = dimensionsMap.small.internalSpace;
+    const innerRadius = borderRadius - internalSpace;
+
+    return (
+      <View
+        accessibilityIgnoresInvertColors
+        style={[
+          styles.avatarWrapper,
+          {
+            borderRadius,
+            height: avatarSize,
+            width: avatarSize,
+            backgroundColor: IOColors.white,
+            padding: internalSpace
+          }
+        ]}
+      >
+        <View
+          style={[styles.avatarInnerWrapper, { borderRadius: innerRadius }]}
+        >
+          <Image
+            accessibilityIgnoresInvertColors
+            source={source}
+            style={styles.avatarImage}
+            defaultSource={defaultSource ?? avatarSearchPlaceholder}
+          />
+        </View>
+      </View>
+    );
+  }
+);

@@ -1,5 +1,5 @@
-import React from "react";
 import { ButtonSolid, VSpacer, useIOToast } from "@pagopa/io-app-design-system";
+import React from "react";
 import { Screen } from "../components/Screen";
 
 export const Toasts = () => {
@@ -14,7 +14,7 @@ export const Toasts = () => {
       <VSpacer />
       <ButtonSolid
         accessibilityLabel=""
-        onPress={() => info("Info Toast")}
+        onPress={() => info("Info Toast with a looooooooooong title")}
         label="Toast Info"
       />
       <VSpacer />

@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     borderColor: IOColors[accordionBorder],
     borderWidth: 1,
     borderRadius: IOAccordionRadius,
+    borderCurve: "continuous",
     backgroundColor: IOColors[accordionBackground]
   },
   accordionCollapsableContainer: {
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     color: IOColors["grey-700"],
-    ...makeFontStyleObject("Regular", undefined, "TitilliumWeb")
+    ...makeFontStyleObject("Regular", undefined, "TitilliumSansPro")
   },
   textContainer: {
     padding: accordionBodySpacing,

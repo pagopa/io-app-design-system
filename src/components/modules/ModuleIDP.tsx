@@ -22,6 +22,7 @@ interface ModuleIDP extends PressableModuleBaseProps {
   name: string;
   localLogo: ImageSourcePropType;
   logo: ImageSourcePropType;
+  accessibilityLabel?: string;
 }
 
 const styles = StyleSheet.create({
@@ -59,7 +60,8 @@ export const ModuleIDP = ({
   logo,
   withLooseSpacing = false,
   onPress,
-  testID
+  testID,
+  accessibilityLabel
 }: ModuleIDP) => {
   const { isExperimental } = useIOExperimentalDesign();
 
@@ -80,10 +82,15 @@ export const ModuleIDP = ({
           styles.idpName,
           isExperimental ? styles.idpNameFont : styles.idpLegacyNameFont
         ]}
+        accessibilityLabel={accessibilityLabel ?? name}
       >
         {name}
       </Text>
-      <Image source={urlLogoIDP} style={styles.idpLogo} />
+      <Image
+        accessibilityIgnoresInvertColors
+        source={urlLogoIDP}
+        style={styles.idpLogo}
+      />
     </PressableModuleBase>
   );
 };

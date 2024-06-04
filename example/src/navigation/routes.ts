@@ -4,6 +4,7 @@ const APP_ROUTES = {
     COLOR: { route: "DESIGN_SYSTEM_COLOR", title: "Colors" },
     TYPOGRAPHY: { route: "DESIGN_SYSTEM_TYPOGRAPHY", title: "Typography" },
     LAYOUT: { route: "DESIGN_SYSTEM_LAYOUT", title: "Layout" },
+    LOADERS: { route: "DESIGN_SYSTEM_LOADERS", title: "Loaders" },
     ICONS: { route: "DESIGN_SYSTEM_ICONS", title: "Icons" },
     PICTOGRAMS: { route: "DESIGN_SYSTEM_PICTOGRAMS", title: "Pictograms" },
     LOGOS: { route: "DESIGN_SYSTEM_LOGOS", title: "Logos" }
@@ -26,17 +27,13 @@ const APP_ROUTES = {
       route: "DYNAMIC_CARD_ROTATION",
       title: "Dynamic Card based on rotation"
     },
+    SEARCH_INPUT: {
+      route: "DESIGN_SYSTEM_SEARCH_INPUT",
+      title: "Search Input"
+    },
     TAB_NAVIGATION: {
       route: "DESIGN_SYSTEM_TAB_NAVIGATION",
       title: "Tab Navigation"
-    },
-    END_OF_PAGE: {
-      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE",
-      title: "End of Page"
-    },
-    END_OF_PAGE_WITH_CTA: {
-      route: "DESIGN_SYSTEM_HEADER_END_OF_PAGE_WITH_CTA",
-      title: "End of Page (with CTA)"
     },
     HEADER_FIRST_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
@@ -61,10 +58,6 @@ const APP_ROUTES = {
     TOASTS: {
       route: "DESIGN_SYSTEM_TOASTS",
       title: "Toasts"
-    },
-    FOOTER_WITH_BUTTON: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
-      title: "Footer with button"
     }
   },
   SCREENS: {
@@ -72,7 +65,23 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FULLSCR_MODAL",
       title: "Full screen modal"
     },
-    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" }
+    FULL_SCREEN_MODAL_2: {
+      route: "DESIGN_SYSTEM_FULLSCR_MODAL_2",
+      title: "Full screen modal (second example)"
+    },
+    SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" },
+    FOOTER_WITH_BUTTON_EMPTY: {
+      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
+      title: "Footer with button (Empty state)"
+    },
+    FOOTER_WITH_BUTTON: {
+      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
+      title: "Footer with button"
+    },
+    GRADIENT_SCROLLVIEW: {
+      route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
+      title: "Gradient ScrollView"
+    }
   },
   SANDBOX: {
     SANDBOX_SCREEN: {

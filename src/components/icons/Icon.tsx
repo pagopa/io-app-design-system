@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorValue, StyleProp } from "react-native";
+import { ColorValue } from "react-native";
 import { IOColors } from "../../core/IOColors";
 
 /* Icons */
@@ -400,20 +400,6 @@ export type IOIconsProps = {
   accessibilityLabel?: string;
 };
 
-export type SVGIconProps = {
-  size: number | "100%";
-  style: StyleProp<any>;
-  accessible: boolean;
-  accessibilityElementsHidden: boolean;
-  accessibilityLabel: string;
-  importantForAccessibility:
-    | "auto"
-    | "yes"
-    | "no"
-    | "no-hide-descendants"
-    | undefined;
-};
-
 /*
 Static icon component. Use it when you need an ion that doesn't
 change its color values. It accepts `IOColors` values only.
@@ -427,15 +413,16 @@ export const Icon = ({
   ...props
 }: IOIconsProps) => {
   const IconElement = IOIcons[name];
+  const isAccessible = accessible && accessibilityLabel.trim().length > 0;
   return (
     <IconElement
       {...props}
       style={{ color: IOColors[color] }}
       size={size}
-      accessible={accessible}
-      accessibilityElementsHidden={true}
+      accessible={isAccessible}
+      accessibilityElementsHidden={!isAccessible}
       accessibilityLabel={accessibilityLabel}
-      importantForAccessibility={"no-hide-descendants"}
+      importantForAccessibility={isAccessible ? "auto" : "no-hide-descendants"}
     />
   );
 };

@@ -2,11 +2,11 @@ import {
   HSpacer,
   IOColors,
   IOSpacer,
-  IOThemeContext,
   SpacerOrientation,
-  VSpacer
+  VSpacer,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
-import React, { useContext } from "react";
+import React from "react";
 import { Text, View } from "react-native";
 
 type SpacerViewerBoxProps = {
@@ -15,7 +15,7 @@ type SpacerViewerBoxProps = {
 };
 
 const SpacerLabel = ({ value }: { value: IOSpacer }) => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
   return (
     <Text
       numberOfLines={1}
@@ -31,7 +31,7 @@ export const SpacerViewerBox = ({
   size,
   orientation = "vertical"
 }: SpacerViewerBoxProps) => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
   return (
     <>
       {orientation === "vertical" ? (

@@ -36,6 +36,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
   onTouchEnd={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -139,6 +140,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
           "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "borderWidth": 1,
           "flexDirection": "row",
@@ -177,6 +179,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -233,7 +236,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
           color="grey-700"
           defaultColor="blue"
           defaultWeight="Bold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 14,
@@ -248,7 +251,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               },
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "400",
               },
@@ -330,6 +333,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
   onStartShouldSetResponder={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -373,7 +377,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           color="grey-700"
           defaultColor="blue"
           defaultWeight="Bold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 14,
@@ -388,7 +392,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               },
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "400",
               },
@@ -433,7 +437,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -444,7 +448,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4278927075}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -467,19 +470,26 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               },
             ]
           }
-          tintColor={4278927075}
+          tintColor="#0B3EE3"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M12 18h8a2 2 0 0 0 2-2V9h-4a3 3 0 0 1-3-3V2h-3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Zm9.332-11.987a2 2 0 0 1 .603.987H18a1 1 0 0 1-1-1V2.227a2 2 0 0 1 .406.281l3.926 3.505ZM14 20h-2a4 4 0 0 1-4-4V6H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2Zm2 0h4a4 4 0 0 0 4-4V7.505a4 4 0 0 0-1.336-2.984l-3.926-3.505A4 4 0 0 0 16.074 0H12a4 4 0 0 0-4 4H4a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -601,68 +611,66 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           testValue
         </Text>
       </View>
-      <View
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight={24}
+        bbWidth={24}
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
         style={
-          {
-            "marginLeft": 16,
-          }
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0B3EE3",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
         }
+        tintColor="#0B3EE3"
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color={4278927075}
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "color": "#0B3EE3",
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
-              },
-            ]
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
           }
-          tintColor={4278927075}
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
-          <RNSVGGroup>
-            <RNSVGPath
-              clipRule={0}
-              d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
-              fill={
-                [
-                  2,
-                ]
+          <RNSVGPath
+            clipRule={0}
+            d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
+            fill={
+              {
+                "type": 2,
               }
-              fillRule={0}
-              propList={
-                [
-                  "fill",
-                  "fillRule",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
+            }
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
     </View>
   </View>
 </View>
@@ -737,7 +745,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
       <View
         style={
           {
-            "marginRight": 16,
+            "marginRight": 12,
           }
         }
       >
@@ -748,7 +756,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4294862438}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -762,7 +769,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -771,19 +778,26 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               },
             ]
           }
-          tintColor={4294862438}
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M7.00702 1c-.73494 0-1.41405.39209-1.78152 1.02856L.2756 11.0274c-.36747.6365-.36747 1.4206 0 2.0571l4.9499 8.8783c.36747.6365 1.04658 1.0286 1.78152 1.0286h9.94288c.7349 0 1.414-.3921 1.7815-1.0286l4.993-8.8783c.3675-.6365.3675-1.4206 0-2.0571l-4.993-8.99884C18.3639 1.39209 17.6848 1 16.9499 1H7.00702Zm5.02608 13.5549c.5676 0 1.0283-.4601 1.0283-1.0277V5.52583c0-.56758-.4601-1.02769-1.0277-1.02769-.5676 0-1.0282.46011-1.0282 1.02769v8.00137c0 .5676.4601 1.0277 1.0276 1.0277Zm0 1.9431c.8436 0 1.5275.6839 1.5275 1.5275 0 .8436-.6839 1.5275-1.5275 1.5275-.8436 0-1.5274-.6839-1.5274-1.5275 0-.8436.6838-1.5275 1.5274-1.5275Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -837,7 +851,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -848,7 +862,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4278927075}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -871,19 +884,26 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               },
             ]
           }
-          tintColor={4278927075}
+          tintColor="#0B3EE3"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -903,11 +923,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -967,7 +987,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -980,6 +1006,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -1020,7 +1047,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
-            color={4283766755}
             focusable={false}
             height={16}
             importantForAccessibility="no-hide-descendants"
@@ -1043,18 +1069,25 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
               ]
             }
-            tintColor={4283766755}
+            tintColor="#5517E3"
             vbHeight={17}
             vbWidth={16}
             width={16}
           >
-            <RNSVGGroup>
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
               <RNSVGPath
                 d="M5.64418.97979c.23675-.63972 1.14156-.63972 1.37831 0l1.27772 3.45256a.73476.73476 0 0 0 .43411.43411l3.45258 1.27772c.6397.23675.6397 1.14156 0 1.37831L8.73432 8.80021a.73476.73476 0 0 0-.43411.43411L7.02249 12.6869c-.23675.6397-1.14156.6397-1.37831 0L4.36646 9.23432a.73476.73476 0 0 0-.43411-.43411L.47979 7.52249c-.63972-.23675-.63972-1.14156 0-1.37831l3.45256-1.27772a.73476.73476 0 0 0 .43411-.43411L5.64418.97979Zm6.65942 9.10601c.1246-.33665.6008-.33665.7255 0l.6724 1.8172a.38723.38723 0 0 0 .2285.2285l1.8172.6725c.3366.1246.3366.6008 0 .7254l-1.8172.6725a.3868.3868 0 0 0-.2285.2284l-.6724 1.8172c-.1247.3367-.6009.3367-.7255 0l-.6725-1.8172a.38638.38638 0 0 0-.2284-.2284l-1.81717-.6725c-.3367-.1246-.3367-.6008 0-.7254l1.81717-.6725a.3868.3868 0 0 0 .2284-.2285l.6725-1.8172Z"
                 fill={
-                  [
-                    2,
-                  ]
+                  {
+                    "type": 2,
+                  }
                 }
                 propList={
                   [
@@ -1076,7 +1109,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             color="hanPurple-500"
             defaultColor="blue"
             defaultWeight="Bold"
-            font="TitilliumWeb"
+            font="TitilliumSansPro"
             fontStyle={
               {
                 "fontSize": 14,
@@ -1091,7 +1124,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
                 {
                   "color": "#5517E3",
-                  "fontFamily": "Titillium Web",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontStyle": "normal",
                   "fontWeight": "400",
                 },
@@ -1111,6 +1144,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
@@ -1166,7 +1206,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1254,7 +1294,14 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               vbHeight={24}
               vbWidth={24}
             >
-              <RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
@@ -1269,7 +1316,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                       "strokeLinejoin",
                     ]
                   }
-                  stroke={4294967295}
+                  stroke={
+                    {
+                      "payload": 4294967295,
+                      "type": 0,
+                    }
+                  }
                   strokeDasharray={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
@@ -1287,11 +1339,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -1351,7 +1403,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -1364,6 +1422,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -1391,6 +1450,13 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
           color="blueIO-500"
@@ -1446,7 +1512,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -1539,7 +1605,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     <View
       style={
         {
-          "marginRight": 16,
+          "marginRight": 12,
         }
       }
     >
@@ -1553,11 +1619,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
       >
         <View
           height={44}
-          radius={100}
+          radius={8}
           style={
             {
               "backgroundColor": "#efefef",
-              "borderRadius": 100,
+              "borderRadius": 8,
               "height": 44,
               "width": 44,
             }
@@ -1628,7 +1694,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     <View
       style={
         {
-          "marginLeft": 16,
+          "marginLeft": 12,
         }
       }
     >
@@ -1765,6 +1831,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -1868,6 +1935,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
           "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
           "borderRadius": 8,
           "borderWidth": 1,
           "flexDirection": "row",
@@ -1906,6 +1974,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
       }
     />
     <Image
+      accessibilityIgnoresInvertColors={true}
       source={
         {
           "uri": "undefined",
@@ -2059,6 +2128,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
 >
   <View
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -2162,7 +2232,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -2173,7 +2243,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4278219750}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -2196,19 +2265,26 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               },
             ]
           }
-          tintColor={4278219750}
+          tintColor="#0073E6"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M12 18h8a2 2 0 0 0 2-2V9h-4a3 3 0 0 1-3-3V2h-3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Zm9.332-11.987a2 2 0 0 1 .603.987H18a1 1 0 0 1-1-1V2.227a2 2 0 0 1 .406.281l3.926 3.505ZM14 20h-2a4 4 0 0 1-4-4V6H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2Zm2 0h4a4 4 0 0 0 4-4V7.505a4 4 0 0 0-1.336-2.984l-3.926-3.505A4 4 0 0 0 16.074 0H12a4 4 0 0 0-4 4H4a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -2330,68 +2406,66 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           testValue
         </Text>
       </View>
-      <View
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        accessibilityLabel=""
+        accessible={false}
+        align="xMidYMid"
+        bbHeight={24}
+        bbWidth={24}
+        focusable={false}
+        height={24}
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
         style={
-          {
-            "marginLeft": 16,
-          }
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "color": "#0073E6",
+            },
+            {
+              "flex": 0,
+              "height": 24,
+              "width": 24,
+            },
+          ]
         }
+        tintColor="#0073E6"
+        vbHeight={24}
+        vbWidth={24}
+        width={24}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color={4278219750}
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            [
-              {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "color": "#0073E6",
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
-              },
-            ]
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
           }
-          tintColor={4278219750}
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
-          <RNSVGGroup>
-            <RNSVGPath
-              clipRule={0}
-              d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
-              fill={
-                [
-                  2,
-                ]
+          <RNSVGPath
+            clipRule={0}
+            d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
+            fill={
+              {
+                "type": 2,
               }
-              fillRule={0}
-              propList={
-                [
-                  "fill",
-                  "fillRule",
-                ]
-              }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
+            }
+            fillRule={0}
+            propList={
+              [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
     </View>
   </View>
 </View>
@@ -2466,7 +2540,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
       <View
         style={
           {
-            "marginRight": 16,
+            "marginRight": 12,
           }
         }
       >
@@ -2477,7 +2551,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4294862438}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -2491,7 +2564,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
                 "borderWidth": 0,
               },
               {
-                "color": "#FE6666",
+                "color": "#D13333",
               },
               {
                 "flex": 0,
@@ -2500,19 +2573,26 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          tintColor={4294862438}
+          tintColor="#D13333"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M7.00702 1c-.73494 0-1.41405.39209-1.78152 1.02856L.2756 11.0274c-.36747.6365-.36747 1.4206 0 2.0571l4.9499 8.8783c.36747.6365 1.04658 1.0286 1.78152 1.0286h9.94288c.7349 0 1.414-.3921 1.7815-1.0286l4.993-8.8783c.3675-.6365.3675-1.4206 0-2.0571l-4.993-8.99884C18.3639 1.39209 17.6848 1 16.9499 1H7.00702Zm5.02608 13.5549c.5676 0 1.0283-.4601 1.0283-1.0277V5.52583c0-.56758-.4601-1.02769-1.0277-1.02769-.5676 0-1.0282.46011-1.0282 1.02769v8.00137c0 .5676.4601 1.0277 1.0276 1.0277Zm0 1.9431c.8436 0 1.5275.6839 1.5275 1.5275 0 .8436-.6839 1.5275-1.5275 1.5275-.8436 0-1.5274-.6839-1.5274-1.5275 0-.8436.6838-1.5275 1.5274-1.5275Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -2566,7 +2646,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
       <View
         style={
           {
-            "marginLeft": 16,
+            "marginLeft": 12,
           }
         }
       >
@@ -2577,7 +2657,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          color={4278219750}
           focusable={false}
           height={24}
           importantForAccessibility="no-hide-descendants"
@@ -2600,19 +2679,26 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          tintColor={4278219750}
+          tintColor="#0073E6"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
-          <RNSVGGroup>
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
             <RNSVGPath
               clipRule={0}
               d="M16.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0l6 6.00001c.3905.3905.3905 1.0237 0 1.4142l-6 6c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L21.5858 12l-5.2929-5.29289c-.3905-.39053-.3905-1.02369 0-1.41422Z"
               fill={
-                [
-                  2,
-                ]
+                {
+                  "type": 2,
+                }
               }
               fillRule={0}
               propList={
@@ -2632,11 +2718,11 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": true,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -2696,7 +2782,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -2709,6 +2801,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -2749,7 +2842,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
-            color={4283766755}
             focusable={false}
             height={16}
             importantForAccessibility="no-hide-descendants"
@@ -2772,18 +2864,25 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 },
               ]
             }
-            tintColor={4283766755}
+            tintColor="#5517E3"
             vbHeight={17}
             vbWidth={16}
             width={16}
           >
-            <RNSVGGroup>
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
               <RNSVGPath
                 d="M5.64418.97979c.23675-.63972 1.14156-.63972 1.37831 0l1.27772 3.45256a.73476.73476 0 0 0 .43411.43411l3.45258 1.27772c.6397.23675.6397 1.14156 0 1.37831L8.73432 8.80021a.73476.73476 0 0 0-.43411.43411L7.02249 12.6869c-.23675.6397-1.14156.6397-1.37831 0L4.36646 9.23432a.73476.73476 0 0 0-.43411-.43411L.47979 7.52249c-.63972-.23675-.63972-1.14156 0-1.37831l3.45256-1.27772a.73476.73476 0 0 0 .43411-.43411L5.64418.97979Zm6.65942 9.10601c.1246-.33665.6008-.33665.7255 0l.6724 1.8172a.38723.38723 0 0 0 .2285.2285l1.8172.6725c.3366.1246.3366.6008 0 .7254l-1.8172.6725a.3868.3868 0 0 0-.2285.2284l-.6724 1.8172c-.1247.3367-.6009.3367-.7255 0l-.6725-1.8172a.38638.38638 0 0 0-.2284-.2284l-1.81717-.6725c-.3367-.1246-.3367-.6008 0-.7254l1.81717-.6725a.3868.3868 0 0 0 .2284-.2285l.6725-1.8172Z"
                 fill={
-                  [
-                    2,
-                  ]
+                  {
+                    "type": 2,
+                  }
                 }
                 propList={
                   [
@@ -2840,9 +2939,16 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
-          color="blue"
+          color="blueIO-500"
           defaultColor="black"
           defaultWeight="SemiBold"
           font="TitilliumWeb"
@@ -2859,7 +2965,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 "lineHeight": 25,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
                 "fontWeight": "600",
@@ -2895,7 +3001,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -2983,7 +3089,14 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               vbHeight={24}
               vbWidth={24}
             >
-              <RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
@@ -2998,7 +3111,12 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                       "strokeLinejoin",
                     ]
                   }
-                  stroke={4294967295}
+                  stroke={
+                    {
+                      "payload": 4294967295,
+                      "type": 0,
+                    }
+                  }
                   strokeDasharray={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
@@ -3016,11 +3134,11 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
 <View
-  accessibilityRole="button"
+  accessibilityRole="radio"
   accessibilityState={
     {
       "busy": undefined,
-      "checked": undefined,
+      "checked": false,
       "disabled": undefined,
       "expanded": undefined,
       "selected": undefined,
@@ -3080,7 +3198,13 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         ]
       }
     >
-      <View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           allowFontScaling={false}
           color="black"
@@ -3093,6 +3217,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               "lineHeight": 21,
             }
           }
+          numberOfLines={1}
           style={
             [
               {
@@ -3120,9 +3245,16 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           }
         }
       >
+        <View
+          style={
+            {
+              "width": 8,
+            }
+          }
+        />
         <Text
           allowFontScaling={false}
-          color="blue"
+          color="blueIO-500"
           defaultColor="black"
           defaultWeight="SemiBold"
           font="TitilliumWeb"
@@ -3139,7 +3271,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                 "lineHeight": 25,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Web",
                 "fontStyle": "normal",
                 "fontWeight": "600",
@@ -3175,7 +3307,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onBlur={[Function]}
@@ -3268,7 +3400,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     <View
       style={
         {
-          "marginRight": 16,
+          "marginRight": 12,
         }
       }
     >
@@ -3282,11 +3414,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
       >
         <View
           height={44}
-          radius={100}
+          radius={8}
           style={
             {
               "backgroundColor": "#efefef",
-              "borderRadius": 100,
+              "borderRadius": 8,
               "height": 44,
               "width": 44,
             }
@@ -3357,7 +3489,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     <View
       style={
         {
-          "marginLeft": 16,
+          "marginLeft": 12,
         }
       }
     >

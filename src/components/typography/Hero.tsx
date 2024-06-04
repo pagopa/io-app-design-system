@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { useIOExperimentalDesign, IOTheme } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -25,17 +27,20 @@ const legacyHeroLineHeight = 49;
 /**
  * `Hero` typographic style
  */
-export const Hero = (props: HeroProps) => {
+export const Hero = React.forwardRef<View, HeroProps>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: {
-      fontSize: isExperimental ? heroFontSize : legacyHeroFontSize,
-      lineHeight: isExperimental ? heroLineHeight : legacyHeroLineHeight
-    }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight: isExperimental ? defaultWeight : legacyWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: {
+        fontSize: isExperimental ? heroFontSize : legacyHeroFontSize,
+        lineHeight: isExperimental ? heroLineHeight : legacyHeroLineHeight
+      }
+    },
+    ref
+  );
+});

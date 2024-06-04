@@ -28,7 +28,7 @@ export type GradientScrollView = WithTestID<{
 }>;
 
 // Extended gradient area above the actions
-export const gradientSafeArea: IOSpacingScale = 80;
+export const gradientSafeArea: IOSpacingScale = 96;
 // End content margin before the actions
 const contentEndMargin: IOSpacingScale = 32;
 // Margin between primary action and secondary one
@@ -38,6 +38,10 @@ const secondaryActionEstHeight: number = 20;
 // Extra bottom margin for iPhone bottom handle
 const extraSafeAreaMargin: IOSpacingScale = 8;
 
+/**
+ * @deprecated This component has been deprecated. It will be removed in a future release.
+ * @see IOScrollView
+ */
 export const GradientScrollView = ({
   children,
   primaryActionProps: primaryActionProps,

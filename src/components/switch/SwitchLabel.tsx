@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -48,10 +48,11 @@ export const SwitchLabel = ({
   onValueChange
 }: OwnProps) => {
   const [toggleValue, setToggleValue] = useState(checked ?? false);
+  const theme = useIOTheme();
 
   const { isExperimental } = useIOExperimentalDesign();
   const switchLabelText = (
-    <H6 style={{ flexShrink: 1 }} color={"black"}>
+    <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
       {label}
     </H6>
   );
@@ -77,11 +78,16 @@ export const SwitchLabel = ({
     <Pressable
       disabled={disabled}
       onPress={toggleCheckbox}
-      testID="AnimatedCheckbox"
+      accessibilityRole="switch"
+      accessibilityState={{
+        checked: checked ?? toggleValue,
+        disabled: !!disabled
+      }}
       style={{
         alignSelf: "flex-start",
         opacity: disabled ? DISABLED_OPACITY : 1
       }}
+      testID="SwitchLabel"
     >
       <View
         style={[

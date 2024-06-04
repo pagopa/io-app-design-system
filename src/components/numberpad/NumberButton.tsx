@@ -13,7 +13,9 @@ import {
   IOColors,
   IONumberPadButtonStyles,
   IOScaleValues,
-  IOSpringValues
+  IOSpringValues,
+  hexToRgba,
+  useIOExperimentalDesign
 } from "../../core";
 import { H3 } from "../typography";
 
@@ -26,20 +28,33 @@ type NumberButtonProps = {
 };
 
 type ColorMapVariant = {
-  background: IOColors;
-  pressed: IOColors;
+  background: string;
+  pressed: string;
   foreground: IOColors;
 };
 
 const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   light: {
-    background: "grey-50",
-    pressed: "grey-200",
+    background: IOColors["grey-50"],
+    pressed: IOColors["grey-200"],
     foreground: "blueIO-500"
   },
   dark: {
-    background: "blueIO-400",
-    pressed: "blueIO-200",
+    background: IOColors["blueIO-400"],
+    pressed: IOColors["blueIO-200"],
+    foreground: "white"
+  }
+};
+
+const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
+  light: {
+    background: IOColors["grey-100"],
+    pressed: IOColors["grey-200"],
+    foreground: "blue"
+  },
+  dark: {
+    background: hexToRgba(IOColors.black, 0.1),
+    pressed: hexToRgba(IOColors.white, 0.5),
     foreground: "white"
   }
 };
@@ -49,7 +64,12 @@ export const NumberButton = ({
   variant,
   onPress
 }: NumberButtonProps) => {
-  const colors = useMemo(() => colorMap[variant], [variant]);
+  const { isExperimental } = useIOExperimentalDesign();
+
+  const colors = useMemo(
+    () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
+    [variant, isExperimental]
+  );
   const isPressed = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -64,7 +84,7 @@ export const NumberButton = ({
     const bgColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [IOColors[colors.background], IOColors[colors.pressed]]
+      [colors.background, colors.pressed]
     );
 
     // Scale down button slightly when pressed

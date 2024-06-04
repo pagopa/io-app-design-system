@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Pressable, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -24,14 +24,15 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
+import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
-import { AnimatedRadio } from "../radio/AnimatedRadio";
-import { IOLogoPaymentType, LogoPayment } from "../logos";
 
 type ListItemRadioGraphicProps =
-  | { icon?: never; paymentLogo: IOLogoPaymentType }
-  | { icon: IOIcons; paymentLogo?: never };
+  | { icon?: never; paymentLogo: IOLogoPaymentType; uri?: never }
+  | { icon?: never; paymentLogo?: never; uri: string }
+  | { icon: IOIcons; paymentLogo?: never; uri?: never };
 
 type ListItemRadioLoadingProps =
   | {
@@ -47,7 +48,7 @@ type ListItemRadioLoadingProps =
 
 type Props = WithTestID<{
   value: string;
-  description?: string;
+  description?: string | React.ReactNode;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
   startImage?: ListItemRadioGraphicProps;
@@ -56,13 +57,19 @@ type Props = WithTestID<{
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type ListItemRadioProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
+
+const styles = StyleSheet.create({
+  imageSize: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
+  }
+});
 
 /**
  * `ListItemRadio` component with the automatic state management that uses a {@link AnimatedCheckBox}
@@ -78,9 +85,11 @@ export const ListItemRadio = ({
   selected,
   disabled,
   onValueChange,
+  accessibilityLabel,
+  accessibilityHint,
   loadingProps,
   testID
-}: OwnProps) => {
+}: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -203,6 +212,13 @@ export const ListItemRadio = ({
     <SkeletonComponent />
   ) : (
     <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
@@ -237,6 +253,13 @@ export const ListItemRadio = ({
                       size={IOSelectionListItemVisualParams.iconSize}
                     />
                   )}
+                  {startImage.uri && (
+                    <Image
+                      accessibilityIgnoresInvertColors
+                      source={startImage}
+                      style={styles.imageSize}
+                    />
+                  )}
                   {startImage.paymentLogo && (
                     <LogoPayment
                       name={startImage.paymentLogo}
@@ -246,7 +269,7 @@ export const ListItemRadio = ({
                 </View>
               )}
 
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
+              <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
             </View>

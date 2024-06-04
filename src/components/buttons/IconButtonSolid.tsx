@@ -160,6 +160,7 @@ export const IconButtonSolid = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole={"button"}
+      accessibilityState={{ disabled }}
       testID={testID}
       onPress={onPress}
       onPressIn={handlePressIn}

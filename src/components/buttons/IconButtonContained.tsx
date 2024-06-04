@@ -11,7 +11,6 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
   IOIcons,
@@ -26,6 +25,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
+import { WithTestID } from "../../utils/types";
 
 export type IconButtonContained = WithTestID<{
   icon: IOIcons;
@@ -215,6 +215,7 @@ export const IconButtonContained = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole={"button"}
+      accessibilityState={{ disabled }}
       testID={testID}
       onPress={onPress}
       onPressIn={handlePressIn}

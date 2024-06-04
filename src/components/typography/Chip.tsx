@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { IOColors, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -20,14 +22,17 @@ const legacyFont: FontFamily = "TitilliumWeb";
 /**
  * `Chip` typographic style
  */
-export const Chip = (props: ChipProps) => {
+export const Chip = React.forwardRef<View, ChipProps>((props, ref) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight,
-    defaultColor,
-    font: isExperimental ? font : legacyFont,
-    fontStyle: { fontSize: chipFontSize }
-  });
-};
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
+    {
+      ...props,
+      defaultWeight,
+      defaultColor,
+      font: isExperimental ? font : legacyFont,
+      fontStyle: { fontSize: chipFontSize }
+    },
+    ref
+  );
+});

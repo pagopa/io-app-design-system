@@ -2,7 +2,7 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore (ignore Path unused component)
 import { Svg, Path } from "react-native-svg";
-import { SVGPictogramProps } from "../Pictogram";
+import { SVGPictogramProps } from "../types";
 
 // The `generateNewPictograms.js`s script uses this template to generate
 // the new `Pictogram…` component. Don't edit this file to avoid

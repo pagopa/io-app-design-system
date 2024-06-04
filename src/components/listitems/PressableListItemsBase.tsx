@@ -5,15 +5,23 @@ import { IOListItemStyles } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { useListItemSpringAnimation } from "./hooks/useListItemSpringAnimation";
 
-export type PressableBaseProps = WithTestID<{
-  accessibilityLabel?: string;
-  onPress?: () => void;
-}>;
+export type PressableBaseProps = WithTestID<
+  Pick<
+    React.ComponentProps<typeof Pressable>,
+    | "onPress"
+    | "accessibilityLabel"
+    | "accessibilityHint"
+    | "accessibilityState"
+    | "accessibilityRole"
+  >
+>;
+
 export const PressableListItemBase = ({
   onPress,
   testID,
-  accessibilityLabel,
-  children
+  children,
+  accessibilityRole,
+  ...props
 }: React.PropsWithChildren<PressableBaseProps>) => {
   const { onPressIn, onPressOut, animatedScaleStyle, animatedBackgroundStyle } =
     useListItemSpringAnimation();
@@ -22,11 +30,11 @@ export const PressableListItemBase = ({
       onPress={onPress}
       testID={testID}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       onTouchEnd={onPressOut}
-      accessibilityRole="button"
+      accessibilityRole={accessibilityRole || "button"}
+      {...props}
     >
       <Animated.View
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}

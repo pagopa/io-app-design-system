@@ -6,6 +6,7 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 24,
         "flexDirection": "row",
         "justifyContent": "center",
@@ -52,6 +53,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
     [
       {
         "alignItems": "center",
+        "borderCurve": "continuous",
         "borderRadius": 24,
         "flexDirection": "row",
         "justifyContent": "center",

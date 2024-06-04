@@ -79,7 +79,7 @@ export const ListItemHeader = ({
           endElement !== undefined && endElement.type !== "badge"
         }
       >
-        <H6 weight="Regular" color={theme["textBody-tertiary"]}>
+        <H6 role="heading" weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
         </H6>
       </View>
@@ -125,7 +125,10 @@ export const ListItemHeader = ({
       accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
     >
-      <View style={IOListItemStyles.listItemInner}>
+      <View
+        style={IOListItemStyles.listItemInner}
+        importantForAccessibility={endElement ? "auto" : "no-hide-descendants"}
+      >
         {iconName && (
           <View style={{ marginRight: iconMargin }}>
             <Icon

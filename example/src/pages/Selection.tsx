@@ -1,8 +1,13 @@
 import {
+  AnimatedMessageCheckbox,
   CheckboxLabel,
   Divider,
   H2,
+  HSpacer,
+  IOColors,
+  IOStyles,
   IOVisualCostants,
+  LabelSmall,
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
@@ -12,18 +17,22 @@ import {
   RadioItemWithAmount,
   SwitchLabel,
   VSpacer,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
 export const Selection = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const theme = useIOTheme();
+
   return (
     <Screen>
       <H2
+        color={theme["textBody-default"]}
         style={{
           marginVertical: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -40,14 +49,23 @@ export const Selection = () => {
       {renderCheckboxLabel()}
       {/* ListItemCheckbox */}
       {renderListItemCheckbox()}
-      <H2 style={{ marginVertical: 16 }}>Radio</H2>
+      {/* AnimatedMessageCheckbox */}
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Checkbox (Messages)
+      </H2>
+      <AnimatedMessageCheckboxShowroom />
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Radio
+      </H2>
       {/* RadioButtonLabel */}
       {renderRadioButtonLabel()}
       {/* RadioListItem */}
       <RadioListItemsShowroom />
       {/* RadioListItemWithAmount */}
       <RadioListItemsWithAmountShowroom />
-      <H2 style={{ marginVertical: 16 }}>Switch</H2>
+      <H2 color={theme["textBody-default"]} style={{ marginVertical: 16 }}>
+        Switch
+      </H2>
       {/* Native Switch */}
       <NativeSwitchShowroom />
       {/* ListItemSwitch */}
@@ -76,23 +94,15 @@ const renderCheckboxLabel = () => (
 const renderListItemCheckbox = () => (
   <>
     <ComponentViewerBox name="ListItemCheckbox">
-      <ListItemCheckbox
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox value="Usa configurazione rapida" />
       <Divider />
-      <ListItemCheckbox
-        icon="coggle"
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox icon="coggle" value="Usa configurazione rapida" />
       <Divider />
       <ListItemCheckbox
         value="Usa configurazione rapida"
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -100,7 +110,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -109,7 +118,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -118,15 +126,10 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti."
         }
-        accessibilityLabel={""}
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemCheckbox (disabled)">
-      <ListItemCheckbox
-        disabled
-        value="Usa configurazione rapida"
-        accessibilityLabel={""}
-      />
+      <ListItemCheckbox disabled value="Usa configurazione rapida" />
       <Divider />
       <ListItemCheckbox
         disabled
@@ -135,7 +138,6 @@ const renderListItemCheckbox = () => (
         description={
           "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti."
         }
-        accessibilityLabel={""}
       />
       <Divider />
       <ListItemCheckbox
@@ -143,12 +145,27 @@ const renderListItemCheckbox = () => (
         selected={true}
         icon="coggle"
         value="Usa configurazione rapida"
-        accessibilityLabel={""}
       />
     </ComponentViewerBox>
   </>
 );
 
+const AnimatedMessageCheckboxShowroom = () => {
+  const [isEnabled, setIsEnabled] = useState(true);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  return (
+    <>
+      <ComponentViewerBox name="AnimatedMessageCheckbox">
+        <View style={[IOStyles.row, IOStyles.alignCenter]}>
+          <AnimatedMessageCheckbox checked={isEnabled} />
+          <HSpacer size={24} />
+          <NativeSwitch onValueChange={toggleSwitch} value={isEnabled} />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
 // RADIO ITEMS
 
 const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
@@ -160,11 +177,24 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     id: "example-icon"
   },
   {
-    startImage: { paymentLogo: "myBank" },
-    value: "Let's try with a basic title",
-    description:
-      "Ti contatteranno solo i servizi che hanno qualcosa di importante da dirti. Potrai sempre disattivare le comunicazioni che non ti interessano.",
-    id: "example-paymentLogo"
+    value: "Let's try with JSX description",
+    description: (
+      <LabelSmall color="grey-700" weight="Regular">
+        Ti contatteranno solo i servizi che hanno qualcosa di importante da
+        dirti.{" "}
+        <Text style={{ color: IOColors["grey-700"], fontWeight: "600" }}>
+          Potrai sempre disattivare le comunicazioni che non ti interessano.
+        </Text>
+      </LabelSmall>
+    ),
+    id: "example-jsx-element"
+  },
+  {
+    startImage: {
+      uri: "https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
+    },
+    value: "PayPal",
+    id: "example-paypal"
   },
   {
     value: "Let's try with a basic title",

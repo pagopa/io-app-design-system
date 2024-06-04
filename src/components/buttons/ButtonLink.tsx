@@ -1,5 +1,10 @@
 import React, { useCallback, useMemo } from "react";
-import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  View
+} from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -112,18 +117,21 @@ const IOButtonLegacyStylesLocal = StyleSheet.create({
   }
 });
 
-export const ButtonLink = React.memo(
-  ({
-    color = "primary",
-    label,
-    disabled = false,
-    icon,
-    iconPosition = "start",
-    onPress,
-    accessibilityLabel,
-    accessibilityHint,
-    testID
-  }: ButtonLinkProps) => {
+export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
+  (
+    {
+      color = "primary",
+      label,
+      disabled = false,
+      icon,
+      iconPosition = "start",
+      onPress,
+      accessibilityLabel,
+      accessibilityHint,
+      testID
+    },
+    ref
+  ) => {
     const isPressed = useSharedValue(0);
     const { isExperimental } = useIOExperimentalDesign();
 
@@ -203,9 +211,11 @@ export const ButtonLink = React.memo(
 
     return (
       <Pressable
-        accessibilityLabel={accessibilityLabel}
+        ref={ref}
+        accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
+        accessibilityState={{ disabled }}
         testID={testID}
         onPress={onPress}
         onPressIn={onPressIn}
@@ -246,6 +256,9 @@ export const ButtonLink = React.memo(
             </>
           )}
           <Animated.Text
+            accessible={false}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
             style={[
               buttonStylesLocal.label,
               disabled

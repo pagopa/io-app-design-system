@@ -1,6 +1,6 @@
 import React from "react";
 import { Svg, Path } from "react-native-svg";
-import { SVGPictogramProps } from "../Pictogram";
+import { SVGPictogramProps } from "../types";
 
 const PictogramMessages = ({ size, color, ...props }: SVGPictogramProps) => (
   <Svg fill="none" width={size} height={size} viewBox="0 0 48 48" {...props}>

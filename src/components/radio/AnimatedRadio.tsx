@@ -101,6 +101,7 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
 
   return (
     <Pressable
+      accessible={false}
       disabled={disabled}
       testID="AnimatedRadioInput"
       onPress={onPress}

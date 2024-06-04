@@ -1,3 +1,5 @@
+import React from "react";
+import { View } from "react-native";
 import { useIOExperimentalDesign } from "../../core";
 import type { IOColors, IOTheme } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
@@ -35,17 +37,22 @@ const legacyDefaultWeight: AllowedWeight = "SemiBold";
 /**
  * `LabelSmallAlt` typographic style. It's referenced as `LabelSmallReadex` in the design projects.
  */
-export const LabelSmallAlt = (props: LabelSmallAltProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const LabelSmallAlt = React.forwardRef<View, LabelSmallAltProps>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-    defaultColor,
-    font: isExperimental ? fontName : legacyFontName,
-    fontStyle: {
-      fontSize: isExperimental ? labelFontSize : legacyLabelFontSize,
-      lineHeight: labelLineHeight
-    }
-  });
-};
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
+      {
+        ...props,
+        defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
+        defaultColor,
+        font: isExperimental ? fontName : legacyFontName,
+        fontStyle: {
+          fontSize: isExperimental ? labelFontSize : legacyLabelFontSize,
+          lineHeight: labelLineHeight
+        }
+      },
+      ref
+    );
+  }
+);

@@ -1,3 +1,5 @@
+import { View } from "react-native";
+import React from "react";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
@@ -29,21 +31,26 @@ const legacyLabelHeaderLineHeight = 20;
 /**
  * `LabelHeader` typographic style
  */
-export const LabelHeader = (props: LabelHeaderProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
-  // console.log("isExperimental", isExperimental);
-  return useTypographyFactory<AllowedWeight, AllowedColors>({
-    ...props,
-    defaultWeight: isExperimental
-      ? labelHeaderDefaultWeight
-      : legacyLabelHeaderWeight,
-    defaultColor: labelHeaderDefaultColor,
-    font: isExperimental ? labelHeaderFontName : legacyLabelHeaderFontName,
-    fontStyle: {
-      fontSize: labelHeaderFontSize,
-      lineHeight: isExperimental
-        ? labelHeaderLineHeight
-        : legacyLabelHeaderLineHeight
-    }
-  });
-};
+export const LabelHeader = React.forwardRef<View, LabelHeaderProps>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
+    // console.log("isExperimental", isExperimental);
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
+      {
+        ...props,
+        defaultWeight: isExperimental
+          ? labelHeaderDefaultWeight
+          : legacyLabelHeaderWeight,
+        defaultColor: labelHeaderDefaultColor,
+        font: isExperimental ? labelHeaderFontName : legacyLabelHeaderFontName,
+        fontStyle: {
+          fontSize: labelHeaderFontSize,
+          lineHeight: isExperimental
+            ? labelHeaderLineHeight
+            : legacyLabelHeaderLineHeight
+        }
+      },
+      ref
+    );
+  }
+);

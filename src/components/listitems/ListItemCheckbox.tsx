@@ -21,10 +21,10 @@ import {
   hexToRgba,
   useIOTheme
 } from "../../core";
+import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
-import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 
 type Props = {
   value: string;
@@ -36,12 +36,10 @@ type Props = {
 
 const DISABLED_OPACITY = 0.5;
 
-// disabled: the component is no longer touchable
-// onPress:
-type OwnProps = Props &
+type ListItemCheckboxProps = Props &
   Pick<
     React.ComponentProps<typeof Pressable>,
-    "onPress" | "accessibilityLabel" | "disabled"
+    "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 
 /**
@@ -56,9 +54,11 @@ export const ListItemCheckbox = ({
   description,
   icon,
   selected,
+  accessibilityLabel,
+  accessibilityHint,
   disabled,
   onValueChange
-}: OwnProps) => {
+}: ListItemCheckboxProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -72,6 +72,12 @@ export const ListItemCheckbox = ({
 
   // Theme
   const theme = useIOTheme();
+
+  // Accessibility
+  // Comma = Small pause when announcing content
+  const fallbackAccessibilityLabel = description
+    ? `${value}, ${description}`
+    : value;
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -128,6 +134,14 @@ export const ListItemCheckbox = ({
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
       testID="ListItemCheckbox"
+      accessible={true}
+      accessibilityLabel={accessibilityLabel || fallbackAccessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole="checkbox"
+      accessibilityState={{
+        checked: selected ?? toggleValue,
+        disabled: !!disabled
+      }}
       disabled={disabled}
     >
       <Animated.View
@@ -156,7 +170,7 @@ export const ListItemCheckbox = ({
                   />
                 </View>
               )}
-              <H6 color={"black"} style={{ flexShrink: 1 }}>
+              <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
             </View>

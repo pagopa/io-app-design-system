@@ -2,14 +2,14 @@ import { SectionList, View } from "react-native";
 import * as React from "react";
 import {
   IOStyles,
-  useIOTheme,
   Divider,
   H1,
   LabelSmall,
   VSpacer,
   ListItemNav,
   useIOExperimentalDesign,
-  ListItemSwitch
+  ListItemSwitch,
+  useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -55,7 +55,7 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 ];
 
 const MainScreen = (props: Props) => {
-  const theme = useIOTheme();
+  const { setTheme, themeType, theme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const renderDSNavItem = ({
     item: { title, route }
@@ -94,6 +94,14 @@ const MainScreen = (props: Props) => {
           label="Abilita Design Sperimentale"
           value={isExperimental}
           onSwitchValueChange={setExperimental}
+        />
+        <VSpacer size={4} />
+        <ListItemSwitch
+          label="Abilita Dark Mode"
+          value={themeType === "dark"}
+          onSwitchValueChange={() =>
+            setTheme(themeType === "dark" ? "light" : "dark")
+          }
         />
         <VSpacer size={4} />
       </View>

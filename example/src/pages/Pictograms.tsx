@@ -6,15 +6,14 @@ import {
   IOPictogramsBleed,
   IOPictogramsLegacy,
   IOPictogramsObject,
-  IOThemeContext,
   IOVisualCostants,
   Pictogram,
   PictogramBleed,
   SVGPictogramProps,
-  hexToRgba
+  hexToRgba,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { AssetViewerBox, assetItemGutter } from "../components/AssetViewerBox";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
@@ -73,7 +72,7 @@ const sortedIOPictogramsObject = sortPictogramSet(IOPictogramsObject);
 const sortedIOPictogramsLegacy = sortPictogramSet(IOPictogramsLegacy);
 
 export const Pictograms = () => {
-  const theme = useContext(IOThemeContext);
+  const theme = useIOTheme();
   return (
     <Screen>
       <H2

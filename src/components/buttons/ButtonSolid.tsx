@@ -1,5 +1,10 @@
-import React, { useCallback } from "react";
-import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  View
+} from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   Extrapolate,
@@ -60,33 +65,32 @@ const styles = StyleSheet.create({
   }
 });
 
-export type ButtonSolidProps = WithTestID<{
-  /**
-   * @default primary
-   */
-  color?: ButtonSolidColor;
-  label: string;
-  /**
-   * @default false
-   */
-  fullWidth?: boolean;
-  /**
-   * @default false
-   */
-  loading?: boolean;
-  /**
-   * @default false
-   */
-  disabled?: boolean;
-  icon?: IOIcons;
-  /**
-   * @default start
-   */
-  iconPosition?: "start" | "end";
-  accessibilityLabel: string;
-  accessibilityHint?: string;
-  onPress: (event: GestureResponderEvent) => void;
-}>;
+export type ButtonSolidProps = WithTestID<
+  {
+    /**
+     * @default primary
+     */
+    color?: ButtonSolidColor;
+    label: string;
+    /**
+     * @default false
+     */
+    fullWidth?: boolean;
+    /**
+     * @default false
+     */
+    loading?: boolean;
+    icon?: IOIcons;
+    /**
+     * @default start
+     */
+    iconPosition?: "start" | "end";
+    onPress: (event: GestureResponderEvent) => void;
+  } & Pick<
+    ComponentProps<typeof Pressable>,
+    "disabled" | "accessibilityLabel" | "accessibilityHint"
+  >
+>;
 
 const mapColorStates: Record<
   NonNullable<ButtonSolidProps["color"]>,
@@ -103,8 +107,8 @@ const mapColorStates: Record<
   },
   // Danger button
   danger: {
-    default: IOColors["error-850"],
-    pressed: IOColors["error-600"],
+    default: IOColors["error-600"],
+    pressed: IOColors["error-500"],
     label: {
       default: "white",
       disabled: "grey-700"
@@ -155,24 +159,38 @@ const mapLegacyColorStates: Record<
   }
 };
 
-export const ButtonSolid = React.memo(
-  ({
-    color = "primary",
-    label,
-    fullWidth = false,
-    disabled = false,
-    loading = false,
-    icon,
-    iconPosition = "start",
-    onPress,
-    accessibilityLabel,
-    accessibilityHint,
-    testID
-  }: ButtonSolidProps) => {
+export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
+  (
+    {
+      color = "primary",
+      label,
+      fullWidth = false,
+      disabled = false,
+      loading = false,
+      icon,
+      iconPosition = "start",
+      onPress,
+      accessibilityLabel,
+      accessibilityHint,
+      testID
+    },
+    ref
+  ) => {
     const isPressed = useSharedValue(0);
     const { isExperimental } = useIOExperimentalDesign();
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+
+    /* Prevent the component from triggering the `isEntering' transition
+       on the on the first render. Solution from this discussion:
+       https://github.com/software-mansion/react-native-reanimated/discussions/2513
+    */
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isMounted.current = true;
+    }, []);
 
     const colorMap = React.useMemo(
       () => (isExperimental ? mapColorStates : mapLegacyColorStates),
@@ -192,7 +210,7 @@ export const ButtonSolid = React.memo(
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
-      const bgColor = interpolateColor(
+      const backgroundColor = interpolateColor(
         progressPressed.value,
         [0, 1],
         [colorMap[color].default, colorMap[color].pressed]
@@ -207,7 +225,7 @@ export const ButtonSolid = React.memo(
       );
 
       return {
-        backgroundColor: bgColor,
+        backgroundColor,
         transform: [{ scale }]
       };
     });
@@ -242,10 +260,15 @@ export const ButtonSolid = React.memo(
     return (
       <Pressable
         testID={testID}
+        ref={ref}
         accessible={true}
-        accessibilityLabel={accessibilityLabel}
+        // Using || operator because empty string is not an accepted value
+        accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
-        accessibilityState={{ busy: loading }}
+        accessibilityState={{
+          busy: loading,
+          disabled: disabled || false
+        }}
         accessibilityRole={"button"}
         onPress={handleOnPress}
         onPressIn={onPressIn}
@@ -272,7 +295,9 @@ export const ButtonSolid = React.memo(
           {loading && (
             <Animated.View
               style={buttonStyles.buttonInner}
-              entering={enterTransitionInnerContentSmall}
+              entering={
+                isMounted.current ? enterTransitionInnerContentSmall : undefined
+              }
               exiting={exitTransitionInnerContent}
             >
               <LoadingSpinner color={foregroundColor} />
@@ -285,8 +310,12 @@ export const ButtonSolid = React.memo(
                 buttonStyles.buttonInner,
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
-              entering={enterTransitionInnerContent}
-              exiting={exitTransitionInnerContent}
+              entering={
+                isMounted.current ? enterTransitionInnerContent : undefined
+              }
+              /* Temporarily disable the exiting transition because it caused
+              a weird glitch on page exit */
+              // exiting={exitTransitionInnerContent}
             >
               {icon && (
                 <>
@@ -305,6 +334,9 @@ export const ButtonSolid = React.memo(
                 ellipsizeMode="tail"
                 allowFontScaling={isExperimental}
                 maxFontSizeMultiplier={1.3}
+                accessible={false}
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
               >
                 {label}
               </ButtonText>

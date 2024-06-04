@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     width: IOSelectionTickVisualParams.size,
     height: IOSelectionTickVisualParams.size,
     borderWidth: IOSelectionTickVisualParams.borderWidth,
-    borderRadius: checkBoxRadius
+    borderRadius: checkBoxRadius,
+    borderCurve: "continuous"
   },
   checkBoxSquare: {
     position: "absolute",
@@ -45,7 +46,8 @@ const styles = StyleSheet.create({
     top: 0,
     width: IOSelectionTickVisualParams.size,
     height: IOSelectionTickVisualParams.size,
-    borderRadius: checkBoxRadius
+    borderRadius: checkBoxRadius,
+    borderCurve: "continuous"
   }
 });
 
@@ -103,10 +105,11 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
 
   return (
     <Pressable
+      accessible={false}
       disabled={disabled}
-      testID="AnimatedCheckboxInput"
       onPress={onPress}
       style={styles.checkBoxWrapper}
+      testID="AnimatedCheckboxInput"
     >
       <View
         style={[

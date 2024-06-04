@@ -1,6 +1,5 @@
 import type { ComponentProps } from "react";
-import * as React from "react";
-import { Appearance, ColorValue } from "react-native";
+import { ColorValue } from "react-native";
 import type LinearGradient from "react-native-linear-gradient"; // Used by `getGradientColorValues` function
 
 /*
@@ -57,11 +56,11 @@ export const IOColors = asIOColors({
   "turquoise-150": "#AAEEEF",
   "turquoise-100": "#C2F3F4",
   "turquoise-50": "#DBF9FA",
-  "error-850": "#761F1F",
-  "error-600": "#D75252",
-  "error-500": "#FE6666",
-  "error-400": "#FE8585" /* Dark mode */,
-  "error-100": "#FFE0E0",
+  "error-850": "#5D1313",
+  "error-600": "#D13333",
+  "error-500": "#FF4040",
+  "error-400": "#FF6666" /* Dark mode */,
+  "error-100": "#FFD9D9",
   "warning-850": "#614C15",
   "warning-700": "#A5822A",
   "warning-500": "#FFCB46",
@@ -77,7 +76,6 @@ export const IOColors = asIOColors({
   "info-500": "#6BCFFB",
   "info-400": "#89D9FC" /* Dark mode */,
   "info-100": "#E1F5FE",
-  cobalt: "#2C489D" /* used in the `Bonus Vacanze` only */,
   "blueItalia-850": "#001F3D",
   "blueItalia-600": "#0052A3",
   "blueItalia-500": "#0066CC" /* pagoPA service */,
@@ -91,16 +89,13 @@ export const IOColors = asIOColors({
   greyLight: "#E6E9F2",
   bluegreyLight: "#CCD4DC",
   grey: "#909DA8",
-  milderGray: "#5F6F80",
   bluegrey: "#475A6D",
   bluegreyDark: "#17324D",
-  noCieButton: "#789CCD" /* Half-disabled noCIE CTA BG, LandingScreen.tsx */,
   blue: "#0073E6",
   blueUltraLight: "#99CCFF" /* Almost deprecated, avoid if possible */,
   aqua: "#00C5CA",
   aquaUltraLight: "#C1F4F2",
   antiqueFuchsia: "#9B5897" /* used in the CgnDiscountValueBox only */,
-  yellow: "#FFC824" /* Almost deprecated, used in `PaymentHistoryList` only */,
   orange: "#EA7614",
   red: "#C02927",
   green: "#005C3C",
@@ -146,18 +141,14 @@ const {
   greyLight,
   bluegreyLight,
   grey,
-  milderGray,
   bluegrey,
   bluegreyDark,
   black,
-  noCieButton,
   blue,
   blueUltraLight,
   aqua,
   aquaUltraLight,
-  cobalt,
   antiqueFuchsia,
-  yellow,
   orange,
   red,
   green,
@@ -170,18 +161,14 @@ export const IOColorsLegacy = {
   greyLight,
   bluegreyLight,
   grey,
-  milderGray,
   bluegrey,
   bluegreyDark,
   black,
-  noCieButton,
   blue,
   blueUltraLight,
   aqua,
   aquaUltraLight,
-  cobalt,
   antiqueFuchsia,
-  yellow,
   orange,
   red,
   green,
@@ -255,7 +242,6 @@ export type IOColorsStatusBackground = Extract<
 >;
 
 export const IOColorsExtra = {
-  cobalt: IOColors.cobalt,
   "blueItalia-850": IOColors["blueItalia-850"],
   "blueItalia-600": IOColors["blueItalia-600"],
   "blueItalia-500": IOColors["blueItalia-500"],
@@ -275,6 +261,7 @@ export type IOTheme = {
   "appBackground-primary": IOColors;
   "appBackground-secondary": IOColors;
   "appBackground-tertiary": IOColors;
+  "appBackground-accent": IOColors;
   "interactiveElem-default": IOColors;
   "interactiveElem-pressed": IOColors;
   "listItem-pressed": IOColors;
@@ -303,6 +290,7 @@ export const IOThemeLight: IOTheme = {
   "appBackground-primary": "white",
   "appBackground-secondary": "grey-50",
   "appBackground-tertiary": "grey-100",
+  "appBackground-accent": "blueIO-500",
   "interactiveElem-default": "blueIO-500",
   "interactiveElem-pressed": "blueIO-600",
   "listItem-pressed": "grey-50",
@@ -318,12 +306,18 @@ export const IOThemeLight: IOTheme = {
   // Layout
   "divider-default": "grey-200",
   // Status
-  errorIcon: "error-500",
-  errorText: "error-850",
+  errorIcon: "error-600",
+  errorText: "error-600",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
   "pictogram-tint-secondary": "turquoise-500"
+};
+
+export const IOThemeLightLegacy: IOTheme = {
+  ...IOThemeLight,
+  "appBackground-accent": "blue",
+  "interactiveElem-default": "blue"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -399,15 +393,6 @@ export const themeStatusColorsDarkMode: Record<
 };
 
 export type themeStatusColorsDarkMode = keyof typeof themeStatusColorsDarkMode;
-
-/*
-THEME CONTEXT
-*/
-export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
-export const IOThemeContext: React.Context<IOTheme> = React.createContext(
-  Appearance.getColorScheme() === "dark" ? IOThemes.dark : IOThemes.light
-);
-export const useIOTheme = () => React.useContext(IOThemeContext);
 
 /*
 UTILS

@@ -5,7 +5,7 @@ import { ListItemRadio, ListItemRadioWithAmount } from "../listitems";
 export type RadioItem<T> = {
   id: T;
   value: string;
-  description?: string;
+  description?: string | React.ReactNode;
   disabled?: boolean;
   startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
   loadingProps?: ComponentProps<typeof ListItemRadio>["loadingProps"];
@@ -73,14 +73,24 @@ const RadioListItemWithAmount = <T,>(
   <>
     {props.items.map((item, index) => (
       <React.Fragment key={`radio_item_${item.id}`}>
-        <ListItemRadioWithAmount
-          label={item.label}
-          formattedAmountString={item.formattedAmountString}
-          suggestReason={item.isSuggested ? item.suggestReason : ""}
-          isSuggested={item.isSuggested}
-          onValueChange={() => props.onPress(item.id)}
-          selected={props.selectedItem === item.id}
-        />
+        {item.isSuggested ? (
+          <ListItemRadioWithAmount
+            label={item.label}
+            formattedAmountString={item.formattedAmountString}
+            suggestReason={item.suggestReason}
+            isSuggested={item.isSuggested}
+            onValueChange={() => props.onPress(item.id)}
+            selected={props.selectedItem === item.id}
+          />
+        ) : (
+          <ListItemRadioWithAmount
+            label={item.label}
+            formattedAmountString={item.formattedAmountString}
+            onValueChange={() => props.onPress(item.id)}
+            selected={props.selectedItem === item.id}
+          />
+        )}
+
         {index < props.items.length - 1 && <Divider />}
       </React.Fragment>
     ))}
