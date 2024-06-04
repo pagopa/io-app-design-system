@@ -10,7 +10,6 @@ import {
   IOSpacer,
   IOVisualCostants,
   LabelSmall,
-  VDivider,
   VSpacer,
   VStack,
   useIOTheme
@@ -212,17 +211,6 @@ export const Layout = () => {
       </ContentWrapper>
       <Divider />
       <VSpacer size={48} />
-
-      <ContentWrapper>
-        <H3 color={theme["textHeading-default"]} style={{ marginBottom: 16 }}>
-          Vertical
-        </H3>
-
-        <View style={{ flexDirection: "row", height: 100 }}>
-          <VDivider />
-        </View>
-        <VSpacer size={48} />
-      </ContentWrapper>
     </NoMarginScreen>
   );
 };
