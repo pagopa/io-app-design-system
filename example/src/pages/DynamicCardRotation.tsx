@@ -216,16 +216,16 @@ const DynamicCardRotation = () => {
   });
 
   // Total card (border included)
-  const CardMask = () => (
-    <RoundedRect
-      x={0}
-      y={0}
-      width={cardSize?.width ?? 0}
-      height={cardSize?.height ?? 0}
-      r={cardBorderRadius}
-      color={IOColors.black}
-    />
-  );
+  // const CardMask = () => (
+  //   <RoundedRect
+  //     x={0}
+  //     y={0}
+  //     width={cardSize?.width ?? 0}
+  //     height={cardSize?.height ?? 0}
+  //     r={cardBorderRadius}
+  //     color={IOColors.black}
+  //   />
+  // );
 
   // Inner card (border excluded)
   const CardInnerMask = () => (
