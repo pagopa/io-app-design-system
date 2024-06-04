@@ -77,6 +77,10 @@ const APP_ROUTES = {
     GRADIENT_SCROLLVIEW: {
       route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
       title: "Gradient ScrollView"
+    },
+    DYNAMIC_BACKGROUND: {
+      route: "DESIGN_SYSTEM_DYNAMIC_BACKGROUND",
+      title: "Dynamic Background"
     }
   },
   SANDBOX: {

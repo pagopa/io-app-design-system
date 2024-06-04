@@ -48,6 +48,7 @@ import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
 import { SearchCustom } from "../pages/SearchCustom";
+import { DynamicBackground } from "../pages/DynamicBackground";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -286,6 +287,16 @@ const AppNavigator = () => {
             options={{
               headerShown: false,
               headerTitle: APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.DYNAMIC_BACKGROUND.route}
+            component={DynamicBackground}
+            options={{
+              headerShown: false,
+              headerTitle: APP_ROUTES.SCREENS.DYNAMIC_BACKGROUND.title,
               headerBackTitleVisible: false
             }}
           />
