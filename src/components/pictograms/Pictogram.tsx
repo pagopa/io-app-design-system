@@ -69,6 +69,7 @@ import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
 import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramUploadFile from "./svg/PictogramUploadFile";
+import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
 /* Bleed Pictograms */
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
 import PictogramBleedActivate from "./svg/PictogramBleedActivate";
@@ -109,6 +110,7 @@ import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
 import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
 import PictogramBleedTime from "./svg/PictogramBleedTime";
 import PictogramBleedTiming from "./svg/PictogramBleedTiming";
+import PictogramBleedWorkInProgress from "./svg/PictogramBleedWorkInProgress";
 /* End Bleed Pictograms */
 import PictogramCardAdd from "./svg/PictogramCardAdd";
 import PictogramCardFavourite from "./svg/PictogramCardFavourite";
@@ -217,6 +219,7 @@ export const IOPictograms = {
   hello: PictogramHello,
   comunicationProblem: PictogramComunicationProblem,
   payments: PictogramPayments,
+  workInProgress: PictogramWorkInProgress,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -335,7 +338,8 @@ export type IOPictogramsBleed = Extract<
   | "lostConnection"
   | "payments"
   | "activate"
-  | "reactivate",
+  | "reactivate"
+  | "workInProgress",
   IOPictograms
 >;
 
@@ -380,7 +384,8 @@ export const IOPictogramsBleed: {
   lostConnection: PictogramBleedLostConnection,
   payments: PictogramBleedPayments,
   activate: PictogramBleedActivate,
-  reactivate: PictogramBleedReactivate
+  reactivate: PictogramBleedReactivate,
+  workInProgress: PictogramBleedWorkInProgress
 };
 
 export const PictogramBleed = ({

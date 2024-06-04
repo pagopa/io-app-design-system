@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { ComponentProps } from "react";
 import {
   Image,
   ImageRequireSource,
@@ -15,12 +15,9 @@ import {
   useIOTheme
 } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
+import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";
 
 type Avatar = {
-  /**
-   * @deprecated Only `square` shape variant accepted
-   */
-  shape?: "circle" | "square";
   size: "small" | "medium";
   logoUri?: ImageRequireSource | ImageURISource | ReadonlyArray<ImageURISource>;
 };
@@ -142,3 +139,53 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
     </View>
   );
 };
+
+export type AvatarSearchProps = Pick<
+  ComponentProps<typeof Image>,
+  "source" | "defaultSource"
+>;
+
+/**
+ * AvatarSearch component is used to display the logo of an institution in the search results.
+ * A placeholder is displayed if the logo is not available.
+ * Note: On Android, the default source prop is ignored on debug builds.
+ *
+ * @param AvatarSearchProps
+ * @returns
+ */
+export const AvatarSearch = React.memo(
+  ({ defaultSource, source }: AvatarSearchProps) => {
+    // Visual attributes
+    const avatarSize = dimensionsMap.small.size;
+    const borderRadius = dimensionsMap.small.radius;
+    const internalSpace = dimensionsMap.small.internalSpace;
+    const innerRadius = borderRadius - internalSpace;
+
+    return (
+      <View
+        accessibilityIgnoresInvertColors
+        style={[
+          styles.avatarWrapper,
+          {
+            borderRadius,
+            height: avatarSize,
+            width: avatarSize,
+            backgroundColor: IOColors.white,
+            padding: internalSpace
+          }
+        ]}
+      >
+        <View
+          style={[styles.avatarInnerWrapper, { borderRadius: innerRadius }]}
+        >
+          <Image
+            accessibilityIgnoresInvertColors
+            source={source}
+            style={styles.avatarImage}
+            defaultSource={defaultSource ?? avatarSearchPlaceholder}
+          />
+        </View>
+      </View>
+    );
+  }
+);

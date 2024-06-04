@@ -1619,11 +1619,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
       >
         <View
           height={44}
-          radius={100}
+          radius={8}
           style={
             {
               "backgroundColor": "#efefef",
-              "borderRadius": 100,
+              "borderRadius": 8,
               "height": 44,
               "width": 44,
             }
@@ -3414,11 +3414,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
       >
         <View
           height={44}
-          radius={100}
+          radius={8}
           style={
             {
               "backgroundColor": "#efefef",
-              "borderRadius": 100,
+              "borderRadius": 8,
               "height": 44,
               "width": 44,
             }
