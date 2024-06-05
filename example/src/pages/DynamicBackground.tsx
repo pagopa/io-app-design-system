@@ -11,14 +11,15 @@ import {
   LabelSmall,
   RadioGroup,
   VStack,
-  hexToRgba
+  hexToRgba,
+  useIOTheme
 } from "@pagopa/io-app-design-system";
 import {
   Blur,
   Canvas,
   Group,
   Image,
-  LinearGradient,
+  LinearGradient as SkiaLinearGradient,
   Mask,
   Rect,
   useImage,
@@ -28,6 +29,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Dimensions, Platform, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import LinearGradient from "react-native-linear-gradient";
 
 const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
 
@@ -68,8 +70,12 @@ const organizationsURIs = [
  */
 export const DynamicBackground = () => {
   const insets = useSafeAreaInsets();
+  const theme = useIOTheme();
+
   const screenSize = Dimensions.get("screen").width;
-  const gradientHeight: number = 350 + insets.top;
+  const heroHeight: number = 350 + insets.top;
+  const scrollGradientHeight: number = 32;
+  const headerHeight: number = 60;
   // const heroOffset: number = 50;
 
   const renderedOrganizationsURIs: Array<{
@@ -97,17 +103,17 @@ export const DynamicBackground = () => {
       <Canvas
         style={{
           width: screenSize,
-          height: gradientHeight,
+          minHeight: heroHeight,
           position: "absolute",
           top: 0
         }}
       >
         <Mask
           mask={
-            <Rect x={0} y={0} width={screenSize} height={gradientHeight}>
-              <LinearGradient
+            <Rect x={0} y={0} width={screenSize} height={heroHeight}>
+              <SkiaLinearGradient
                 start={vec(0, 0)}
-                end={vec(0, gradientHeight)}
+                end={vec(0, heroHeight)}
                 colors={["black", "black", "transparent"]}
               />
             </Rect>
@@ -119,7 +125,7 @@ export const DynamicBackground = () => {
               x: screenSize,
               y: insets.top
             }}
-            transform={[{ rotate: 45 }, { scale: 2 }]}
+            transform={[{ rotate: 45 }, { scale: 1.75 }]}
           >
             <Image
               image={useImage(entityData?.imageSource)}
@@ -136,59 +142,76 @@ export const DynamicBackground = () => {
           </Group>
         </Mask>
       </Canvas>
-      <ScrollView
-        contentInsetAdjustmentBehavior="always"
-        contentOffset={{ x: 0, y: 300 }}
+      <View
+        style={{
+          zIndex: 10,
+          marginTop: headerHeight + insets.top,
+          marginHorizontal: IOVisualCostants.appMarginDefault
+        }}
       >
-        <View
-          style={{
-            position: "relative",
-            top: 30,
-            marginHorizontal: IOVisualCostants.appMarginDefault
-          }}
-        >
-          <VStack space={24}>
-            <HStack space={16}>
-              <Avatar
-                key={entityData?.name}
-                size="medium"
-                logoUri={{ uri: entityData?.imageSource }}
-              />
-              <View style={{ alignSelf: "center" }}>
-                <H3 color="grey-850">{entityData?.name}</H3>
-                <LabelSmall
-                  fontSize="regular"
-                  weight="Regular"
-                  color="grey-850"
-                  style={{ opacity: 0.8 }}
-                >
-                  {entityData?.name}
-                </LabelSmall>
-              </View>
-            </HStack>
-
-            <View
-              style={{
-                borderRadius: IOVisualCostants.avatarRadiusSizeMedium,
-                borderCurve: "continuous",
-                backgroundColor: IOColors.white,
-                borderWidth: 1,
-                borderColor: hexToRgba(IOColors["grey-850"], 0.1),
-                padding: 24
-              }}
-            >
-              <Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                interdum fringilla ex id viverra. In fringilla, orci sed
-                placerat egestas, nibh ligula pellentesque ex, ac ultrices orci
-                massa efficitur neque. Nunc congue sagittis felis ut fringilla.
-                Integer lacinia vehicula lacus vitae aliquam. Pellentesque
-                feugiat pellentesque laoreet. Nunc congue facilisis leo, eu
-                condimentum est lobortis vel.
-              </Body>
+        <VStack space={24}>
+          <HStack space={16}>
+            <Avatar
+              key={entityData?.name}
+              size="medium"
+              logoUri={{ uri: entityData?.imageSource }}
+            />
+            <View style={{ alignSelf: "center" }}>
+              <H3 color="grey-850">{entityData?.name}</H3>
+              <LabelSmall
+                fontSize="regular"
+                weight="Regular"
+                color="grey-850"
+                style={{ opacity: 0.8 }}
+              >
+                {entityData?.name}
+              </LabelSmall>
             </View>
-          </VStack>
-        </View>
+          </HStack>
+
+          <View
+            style={{
+              borderRadius: IOVisualCostants.avatarRadiusSizeMedium,
+              borderCurve: "continuous",
+              backgroundColor: IOColors.white,
+              borderWidth: 1,
+              borderColor: hexToRgba(IOColors["grey-850"], 0.1),
+              padding: 24
+            }}
+          >
+            <Body>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              interdum fringilla ex id viverra. In fringilla, orci sed placerat
+              egestas, nibh ligula pellentesque ex, ac ultrices orci massa
+              efficitur neque. Nunc congue sagittis felis ut fringilla. Integer
+              lacinia vehicula lacus vitae aliquam. Pellentesque feugiat
+              pellentesque laoreet. Nunc congue facilisis leo, eu condimentum
+              est lobortis vel.
+            </Body>
+          </View>
+        </VStack>
+
+        <LinearGradient
+          style={{
+            height: scrollGradientHeight,
+            position: "absolute",
+            left: -IOVisualCostants.appMarginDefault,
+            right: -IOVisualCostants.appMarginDefault,
+            bottom: -scrollGradientHeight
+          }}
+          colors={[
+            IOColors[theme["appBackground-primary"]],
+            hexToRgba(IOColors[theme["appBackground-primary"]], 0)
+          ]}
+        />
+      </View>
+
+      <ScrollView
+        contentContainerStyle={{
+          paddingTop: scrollGradientHeight,
+          paddingBottom: 32 + insets.bottom
+        }}
+      >
         <ContentWrapper>
           <RadioGroup<string>
             type="radioListItem"
