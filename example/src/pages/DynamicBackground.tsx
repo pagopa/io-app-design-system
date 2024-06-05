@@ -1,8 +1,12 @@
 import * as React from "react";
 
 import {
+  Mask,
   Blur,
   Group,
+  Rect,
+  LinearGradient,
+  vec,
   ImageShader,
   BackdropBlur,
   Canvas,
@@ -17,10 +21,11 @@ import {
   HStack,
   IOColors,
   IOVisualCostants,
+  LabelSmall,
   VStack,
   hexToRgba
 } from "@pagopa/io-app-design-system";
-import { Dimensions, View } from "react-native";
+import { Dimensions, Platform, View } from "react-native";
 import {
   SafeAreaView,
   useSafeAreaInsets
@@ -33,6 +38,8 @@ import {
 export const DynamicBackground = () => {
   const insets = useSafeAreaInsets();
   const screenSize = Dimensions.get("screen").width;
+  const gradientHeight: number = 350 + insets.top;
+  const heroOffset: number = 50;
 
   const logoURL =
     "https://assets.cdn.io.italia.it/logos/organizations/1199250158.png";
@@ -43,29 +50,46 @@ export const DynamicBackground = () => {
 
   return (
     <>
-      <Canvas style={{ width: screenSize, height: 256 }}>
-        <Group
-          opacity={0.5}
-          origin={{ x: screenSize / 2, y: 128 }}
-          transform={[{ rotate: -30 }, { scale: 1.5 }]}
+      <Canvas style={{ width: screenSize, height: gradientHeight }}>
+        <Mask
+          mask={
+            <Rect x={0} y={0} width={screenSize} height={gradientHeight}>
+              <LinearGradient
+                start={vec(0, 0)}
+                end={vec(0, gradientHeight)}
+                colors={["black", "black", "transparent"]}
+              />
+            </Rect>
+          }
         >
-          <Image
-            image={logo}
-            fit="cover"
-            rect={{ x: 0, y: 0, width: screenSize, height: screenSize }}
+          <Group
+            opacity={Platform.OS === "android" ? 0.6 : 0.7}
+            origin={{
+              x: screenSize,
+              y: insets.top
+            }}
+            transform={[{ rotate: 45 }, { scale: 2 }]}
           >
-            <Blur blur={35} />
-          </Image>
-        </Group>
-        {/* <BackdropBlur blur={120} clip={{ x: 0, y: 128, width: 256, height: 128 }}>
-        <Fill color="rgba(255, 255, 255, 0.5)" />
-      </BackdropBlur> */}
+            <Image
+              image={logo}
+              fit="cover"
+              rect={{
+                x: screenSize / 2,
+                y: 0,
+                width: screenSize,
+                height: screenSize
+              }}
+            >
+              <Blur blur={40} />
+            </Image>
+          </Group>
+        </Mask>
       </Canvas>
       <SafeAreaView>
         <View
           style={{
             position: "relative",
-            top: -150 - insets.top,
+            top: -gradientHeight + heroOffset,
             marginHorizontal: IOVisualCostants.appMarginDefault
           }}
         >
@@ -73,7 +97,15 @@ export const DynamicBackground = () => {
             <HStack space={16}>
               <Avatar size="medium" logoUri={{ uri: logoURL }} />
               <View style={{ alignSelf: "center" }}>
-                <H3>Comune di Milano</H3>
+                <H3 color="grey-850">Service name</H3>
+                <LabelSmall
+                  fontSize="regular"
+                  weight="Regular"
+                  color="grey-850"
+                  style={{ opacity: 0.8 }}
+                >
+                  Comune di Milano
+                </LabelSmall>
               </View>
             </HStack>
 
