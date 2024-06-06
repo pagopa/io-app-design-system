@@ -68,7 +68,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
       {(icon || image) && iconComponent}
       <View style={{ flexGrow: 1, flexShrink: 1, paddingRight: 8 }}>
         <LabelSmallAlt
-          color="blueIO-500"
+          color={theme["interactiveElem-default"]}
           numberOfLines={2}
           lineBreakMode="middle"
         >
