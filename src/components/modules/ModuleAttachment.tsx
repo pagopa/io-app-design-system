@@ -27,7 +27,7 @@ import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { VSpacer } from "../spacer";
-import { LabelSmall } from "../typography";
+import { LabelSmallAlt } from "../typography";
 
 type PartialProps = WithTestID<{
   title: string;
@@ -103,14 +103,9 @@ const ModuleAttachmentContent = ({
   return (
     <>
       <View style={styles.innerContent}>
-        <LabelSmall
-          numberOfLines={1}
-          weight="SemiBold"
-          font="ReadexPro"
-          color="blueIO-500"
-        >
+        <LabelSmallAlt numberOfLines={1} color="blueIO-500">
           {title}
-        </LabelSmall>
+        </LabelSmallAlt>
         <VSpacer size={4} />
         <View style={{ width: 44 }}>
           <Badge text={format.toUpperCase()} variant="default" />
