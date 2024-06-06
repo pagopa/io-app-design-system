@@ -88,7 +88,12 @@ const ModuleAttachmentContent = ({
       const activityIndicatorTestId = testID
         ? `${testID}_activityIndicator`
         : undefined;
-      return <LoadingSpinner testID={activityIndicatorTestId} />;
+      return (
+        <LoadingSpinner
+          testID={activityIndicatorTestId}
+          color={theme["interactiveElem-default"]}
+        />
+      );
     }
 
     return (
@@ -103,7 +108,10 @@ const ModuleAttachmentContent = ({
   return (
     <>
       <View style={styles.innerContent}>
-        <LabelSmallAlt numberOfLines={1} color="blueIO-500">
+        <LabelSmallAlt
+          numberOfLines={1}
+          color={theme["interactiveElem-default"]}
+        >
           {title}
         </LabelSmallAlt>
         <VSpacer size={4} />
