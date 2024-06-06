@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, FontType, TypographyProps } from "./common";
+import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type PartialAllowedColors = Extract<
   IOColors,
@@ -24,8 +24,7 @@ type AllowedFontSize = { fontSize?: FontSize };
 type LabelSmallProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 > &
-  AllowedFontSize &
-  FontType;
+  AllowedFontSize;
 
 const fontName: FontFamily = "TitilliumSansPro";
 const legacyFontName: FontFamily = "TitilliumWeb";
