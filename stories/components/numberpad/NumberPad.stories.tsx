@@ -1,6 +1,4 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
 import { withMaxWitdth } from "../../utils";
 import { NumberPad } from "../../../src/components";
 
@@ -14,14 +12,7 @@ const meta = {
     layout: "padded"
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
-  render: function Render(args) {
-    const [{ value }, updateargs] = useArgs();
-    const onChange = (value: string) => {
-      updateargs({ value });
-    };
-    return <NumberPad {...args} value={value} onValueChange={onChange} />;
-  }
+  tags: ["autodocs"]
 } satisfies Meta<typeof NumberPad>;
 
 export default meta;
@@ -30,7 +21,6 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Light: Story = {
   args: {
-    value: "",
     deleteAccessibilityLabel: "Delete",
     variant: "light"
   }
