@@ -77,7 +77,7 @@ export const NumberPad = ({
   onNumberPress,
   onBiometricPress,
   onDeletePress
-}: NumberPadProps) => {
+}: NumberPadProps): JSX.Element => {
   /** 
    * Renders the buttons row from a given array.
   */
