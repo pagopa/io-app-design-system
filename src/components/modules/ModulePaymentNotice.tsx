@@ -70,6 +70,7 @@ const ModulePaymentNoticeContent = ({
           <H6
             accessibilityLabel={getAccessibleAmountText(paymentNoticeAmount)}
             color={isExperimental ? "blueIO-500" : "blue"}
+            numberOfLines={1}
           >
             {paymentNoticeAmount}
           </H6>
@@ -107,7 +108,7 @@ const ModulePaymentNoticeContent = ({
           </LabelSmall>
         )}
       </View>
-      <View style={[styles.rightSection, { flexShrink: 1 }]}>
+      <View style={styles.rightSection}>
         <AmountOrBadgeComponent />
         <Icon
           name="chevronRightListItem"
