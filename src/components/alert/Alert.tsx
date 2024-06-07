@@ -23,7 +23,6 @@ import {
 } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { IOStyles } from "../../core/IOStyles";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -170,7 +169,13 @@ export const Alert = ({
           color={mapVariantStates[variant].foreground}
         />
       </View>
-      <View style={IOStyles.flex}>
+      {/* Sadly we don't have specific alignments style for text
+      in React Native, like `text-box-trim` for CSS. So we
+      have to put these magic numbers after manual adjustments.
+      Tested on both Android and iOS. */}
+      <View
+        style={[!title && { marginTop: -5 }, { marginBottom: -4, flex: 1 }]}
+      >
         {title && (
           <>
             <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
