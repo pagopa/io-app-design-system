@@ -28,7 +28,7 @@ export const NumberPadScreen = () => {
   const [value, setValue] = useState("");
   const [blueBackground, setBlueBackground] = useState(false);
 
-  const onPinChange = useCallback((v: number) => {
+  const onNumberPress = useCallback((v: number) => {
     setValue((prev) => prev.length < PIN_LENGTH ? `${prev}${v}` : prev);
   }, []);
 
@@ -84,7 +84,7 @@ export const NumberPadScreen = () => {
         <VSpacer size={48} />
         <NumberPad
           deleteAccessibilityLabel="Delete"
-          onValueChange={onPinChange}
+          onNumberPress={onNumberPress}
           onDeletePress={onDeletePress}
           variant={blueBackground ? "dark" : "light"}
           biometricType="FACE_ID"

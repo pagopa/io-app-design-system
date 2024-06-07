@@ -1,6 +1,6 @@
 import React, { ComponentProps, Fragment, useCallback, useMemo } from "react";
-import { View } from "react-native";
-import { BiometricsValidType } from "../../utils/types";
+import { StyleSheet, View } from "react-native";
+import { BiometricsValidType, Optional } from "../../utils/types";
 import { IONumberPadButtonStyles, IOStyles } from "../../core";
 import { VSpacer } from "../spacer";
 import { IconButton } from "../buttons";
@@ -9,8 +9,18 @@ import { NumberButton } from "./NumberButton";
 
 type BiometricAuthProps =
   | {
+    /**
+     * Type of device biometric.
+     */
     biometricType: BiometricsValidType;
+    /**
+    * Function to be executed when the biometric button is pressed.
+    * @returns void
+    */
     onBiometricPress: () => void;
+    /**
+    * This label will be read from ScreenReaders and give informations about biometric button.
+    */
     biometricAccessibilityLabel: string;
   }
   | {
@@ -20,10 +30,28 @@ type BiometricAuthProps =
   };
 
 type NumberPadProps = {
-  onValueChange: (value: number) => void;
-  onDeletePress: () => void;
-  variant: ComponentProps<typeof NumberButton>["variant"];
+  /**
+   * Used to choose the component color variant between `dark` and `light`.
+   * 
+   * The default value is `dark`.
+   */
+  variant?: ComponentProps<typeof NumberButton>["variant"];
+  /**
+    * This label will be read  from ScreenReaders and give informations about delete button.
+    */
   deleteAccessibilityLabel: string;
+  /**
+  * This function is passed to all numeric buttons to handle their press action.
+  * @param value 
+  * @returns void
+  */
+  onNumberPress: (value: number) => void;
+  /**
+ * This function is passed to the delete button to handle the action to trigger when it's pressed.
+ * 
+ * @returns void
+ */
+  onDeletePress: () => void;
 } & BiometricAuthProps;
 
 const mapIconSpecByBiometric: Record<
@@ -35,35 +63,33 @@ const mapIconSpecByBiometric: Record<
   BIOMETRICS: { icon: "fingerprint", size: 24 }
 };
 
-const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
-  <View
-    style={[
-      IONumberPadButtonStyles.buttonSize,
-      IOStyles.alignCenter,
-      IOStyles.centerJustified
-    ]}
-  >
-    {children}
-  </View>
-);
+/**
+ * This component displays a numeric custom keyboard, thought to use in combination with `CodeInput` component.
+ * 
+ * It accepts an optional `biometricType` prop which enables an extra keyboard button that accepts a `onBiometricPress` prop used to handle the action to be executed when it's pressed.
+ * @returns {JSX.Element} The rendered numeric keyboard component.
+ */
 export const NumberPad = ({
   variant = "dark",
-  onValueChange,
   biometricType,
-  onBiometricPress,
-  onDeletePress,
   biometricAccessibilityLabel,
-  deleteAccessibilityLabel
+  deleteAccessibilityLabel,
+  onNumberPress,
+  onBiometricPress,
+  onDeletePress
 }: NumberPadProps) => {
+  /** 
+   * Renders the buttons row from a given array.
+  */
   // eslint-disable-next-line arrow-body-style
-  const renderButtons = useCallback((row: Array<any>) => {
+  const renderButtonsRow = useCallback((row: Array<Optional<number | string>>) => {
     return row.map((item) => {
       if (typeof item === "number") {
         return (
           <NumberButton
             key={item}
             number={item}
-            onPress={onValueChange}
+            onPress={onNumberPress}
             variant={variant}
           />
         );
@@ -81,7 +107,7 @@ export const NumberPad = ({
           </ButtonWrapper>
         );
       }
-      if (biometricType) {
+      if (biometricType && mapIconSpecByBiometric[biometricType]) {
         return (
           <ButtonWrapper key={item}>
             <IconButton
@@ -94,10 +120,10 @@ export const NumberPad = ({
           </ButtonWrapper>
         );
       }
-      
+
       return <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />;
     });
-  }, [biometricAccessibilityLabel, biometricType, deleteAccessibilityLabel, onBiometricPress, onDeletePress, onValueChange, variant]);
+  }, [biometricAccessibilityLabel, biometricType, deleteAccessibilityLabel, onBiometricPress, onDeletePress, onNumberPress, variant]);
 
   // eslint-disable-next-line arrow-body-style
   const numberPad = useMemo(() => {
@@ -106,19 +132,15 @@ export const NumberPad = ({
         <View
           style={[
             IOStyles.rowSpaceBetween,
-            {
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexGrow: 1
-            }
+            styles.numberPad
           ]}
         >
-          {renderButtons(row)}
+          {renderButtonsRow(row)}
         </View>
         {i < self.length - 1 && <VSpacer />}
       </Fragment>
     );
-  }, [biometricType, renderButtons]);
+  }, [biometricType, renderButtonsRow]);
 
   return (
     <View style={IOStyles.horizontalContentPadding}>
@@ -126,3 +148,23 @@ export const NumberPad = ({
     </View>
   );
 };
+
+const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
+  <View
+    style={[
+      IONumberPadButtonStyles.buttonSize,
+      IOStyles.alignCenter,
+      IOStyles.centerJustified
+    ]}
+  >
+    {children}
+  </View>
+);
+
+const styles = StyleSheet.create({
+  numberPad: {
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexGrow: 1
+  }
+});
