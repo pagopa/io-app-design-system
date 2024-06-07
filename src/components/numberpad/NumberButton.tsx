@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { Pressable } from "react-native";
 import Animated, {
   Extrapolate,
@@ -59,7 +59,7 @@ const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   }
 };
 
-export const NumberButton = ({
+export const NumberButton = memo(({
   number,
   variant,
   onPress
@@ -110,13 +110,17 @@ export const NumberButton = ({
     isPressed.value = 0;
   }, [isPressed]);
 
+  const handleOnPress = useCallback(() => {
+    onPress(number);
+  }, [number, onPress]);
+
   return (
     <Pressable
-      accessible={true}
-      accessibilityRole={"button"}
+      accessible
+      accessibilityRole="button"
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      onPress={() => onPress(number)}
+      onPress={handleOnPress}
     >
       <Animated.View
         style={[
@@ -130,4 +134,4 @@ export const NumberButton = ({
       </Animated.View>
     </Pressable>
   );
-};
+});

@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, Fragment, useCallback, useMemo } from "react";
 import { View } from "react-native";
 import { BiometricsValidType } from "../../utils/types";
 import { IONumberPadButtonStyles, IOStyles } from "../../core";
@@ -9,19 +9,19 @@ import { NumberButton } from "./NumberButton";
 
 type BiometricAuthProps =
   | {
-      biometricType: BiometricsValidType;
-      onBiometricPress: () => void;
-      biometricAccessibilityLabel: string;
-    }
+    biometricType: BiometricsValidType;
+    onBiometricPress: () => void;
+    biometricAccessibilityLabel: string;
+  }
   | {
-      biometricType?: never;
-      onBiometricPress?: never;
-      biometricAccessibilityLabel?: never;
-    };
+    biometricType?: never;
+    onBiometricPress?: never;
+    biometricAccessibilityLabel?: never;
+  };
 
 type NumberPadProps = {
-  value: string;
-  onValueChange: (value: string) => void;
+  onValueChange: (value: number) => void;
+  onDeletePress: () => void;
   variant: ComponentProps<typeof NumberButton>["variant"];
   deleteAccessibilityLabel: string;
 } & BiometricAuthProps;
@@ -47,67 +47,43 @@ const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
   </View>
 );
 export const NumberPad = ({
-  value,
   variant = "dark",
   onValueChange,
   biometricType,
   onBiometricPress,
+  onDeletePress,
   biometricAccessibilityLabel,
   deleteAccessibilityLabel
 }: NumberPadProps) => {
-  const numberPadPress = (number: number) => {
-    const newValue = `${value}${number}`;
-    onValueChange(newValue);
-  };
+  // eslint-disable-next-line arrow-body-style
+  const renderButtons = useCallback((row: Array<any>) => {
+    return row.map((item) => {
+      if (typeof item === "number") {
+        return (
+          <NumberButton
+            key={item}
+            number={item}
+            onPress={onValueChange}
+            variant={variant}
+          />
+        );
+      }
 
-  const onDeletePress = () => {
-    const newValue = value.slice(0, -1);
-    onValueChange(newValue);
-  };
-
-  type ButtonType = "biometric" | "delete";
-
-  const RowButtons = ({
-    buttons
-  }: {
-    buttons: ReadonlyArray<number | ButtonType>;
-  }) => (
-    <View
-      style={[
-        IOStyles.rowSpaceBetween,
-        {
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexGrow: 1
-        }
-      ]}
-    >
-      {buttons.map(elem => {
-        if (typeof elem === "number") {
-          return (
-            <NumberButton
-              key={elem}
-              number={elem}
-              onPress={numberPadPress}
-              variant={variant}
+      if (item === "delete") {
+        return (
+          <ButtonWrapper key={item}>
+            <IconButton
+              icon="cancel"
+              color={variant === "dark" ? "contrast" : "primary"}
+              onPress={onDeletePress}
+              accessibilityLabel={deleteAccessibilityLabel}
             />
-          );
-        }
-
-        if (elem === "delete") {
-          return (
-            <ButtonWrapper key={elem}>
-              <IconButton
-                icon="cancel"
-                color={variant === "dark" ? "contrast" : "primary"}
-                onPress={onDeletePress}
-                accessibilityLabel={deleteAccessibilityLabel}
-              />
-            </ButtonWrapper>
-          );
-        }
-        return biometricType ? (
-          <ButtonWrapper key={elem}>
+          </ButtonWrapper>
+        );
+      }
+      if (biometricType) {
+        return (
+          <ButtonWrapper key={item}>
             <IconButton
               icon={mapIconSpecByBiometric[biometricType].icon}
               iconSize={mapIconSpecByBiometric[biometricType].size}
@@ -116,22 +92,37 @@ export const NumberPad = ({
               accessibilityLabel={biometricAccessibilityLabel}
             />
           </ButtonWrapper>
-        ) : (
-          <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />
         );
-      })}
-    </View>
-  );
+      }
+      
+      return <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />;
+    });
+  }, [biometricAccessibilityLabel, biometricType, deleteAccessibilityLabel, onBiometricPress, onDeletePress, onValueChange, variant]);
+
+  // eslint-disable-next-line arrow-body-style
+  const numberPad = useMemo(() => {
+    return [[1, 2, 3], [4, 5, 6], [7, 8, 9], [biometricType, 0, 'delete']].map((row, i, self) =>
+      <Fragment key={i}>
+        <View
+          style={[
+            IOStyles.rowSpaceBetween,
+            {
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexGrow: 1
+            }
+          ]}
+        >
+          {renderButtons(row)}
+        </View>
+        {i < self.length - 1 && <VSpacer />}
+      </Fragment>
+    );
+  }, [biometricType, renderButtons]);
 
   return (
     <View style={IOStyles.horizontalContentPadding}>
-      <RowButtons buttons={[1, 2, 3]} />
-      <VSpacer />
-      <RowButtons buttons={[4, 5, 6]} />
-      <VSpacer />
-      <RowButtons buttons={[7, 8, 9]} />
-      <VSpacer />
-      <RowButtons buttons={["biometric", 0, "delete"]} />
+      {numberPad}
     </View>
   );
 };
