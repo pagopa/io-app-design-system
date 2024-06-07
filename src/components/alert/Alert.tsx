@@ -23,7 +23,6 @@ import {
 } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { IOStyles } from "../../core/IOStyles";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
