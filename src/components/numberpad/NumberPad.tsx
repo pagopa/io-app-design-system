@@ -66,8 +66,6 @@ const mapIconSpecByBiometric: Record<
 /**
  * This component displays a custom numeric keyboard. 
  * 
- * It's developed to be used in combination with the `CodeInput` component.
- * 
  * It accepts an optional `biometricType` prop which enables an extra keyboard button that accepts a `onBiometricPress` prop used to handle the action to be executed when it's pressed.
  * @returns {JSX.Element} The rendered numeric keyboard component.
  */
