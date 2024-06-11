@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   ColorValue,
   Dimensions,
@@ -58,11 +58,13 @@ type SearchInputPressableProps = {
 type SearchInputActionProps =
   | {
       pressable: SearchInputPressableProps;
+      onCancel?: never;
       onChangeText?: never;
       value?: never;
     }
   | {
       pressable?: never;
+      onCancel: (event: GestureResponderEvent) => void;
       onChangeText: (value: string) => void;
       value: string;
     };
@@ -88,6 +90,7 @@ export const SearchInput = ({
   accessibilityLabel,
   cancelButtonLabel,
   clearAccessibilityLabel,
+  onCancel,
   onChangeText,
   placeholder,
   value = "",
@@ -105,11 +108,8 @@ export const SearchInput = ({
   /* Widths used for the transition:
      - `SearchInput` entire width
      - `Cancel` button */
-  const inputWidth: number = useMemo(
-    () =>
-      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2,
-    []
-  );
+  const inputWidth: number =
+    Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
 
   const [cancelButtonWidth, setCancelButtonWidth] =
     useState<LayoutRectangle["width"]>(0);
@@ -118,10 +118,7 @@ export const SearchInput = ({
     setCancelButtonWidth(nativeEvent.layout.width);
   };
 
-  const inputWidthWithCancel: number = useMemo(
-    () => inputWidth - cancelButtonWidth,
-    [inputWidth, cancelButtonWidth]
-  );
+  const inputWidthWithCancel: number = inputWidth - cancelButtonWidth;
 
   /* Reanimated styles */
   const inputAnimatedWidth = useSharedValue<number>(inputWidth);
@@ -179,11 +176,13 @@ export const SearchInput = ({
     inputAnimatedWidth.value = inputWidth;
   };
 
-  const cancel = useCallback(() => {
-    onChangeText?.("");
-    searchInputRef.current?.clear();
-    searchInputRef.current?.blur();
-  }, [onChangeText]);
+  const cancel = useCallback(
+    (event: GestureResponderEvent) => {
+      onChangeText?.("");
+      onCancel?.(event);
+    },
+    [onCancel, onChangeText]
+  );
 
   const clear = useCallback(() => {
     onChangeText?.("");
