@@ -7,6 +7,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
+import { useHeaderHeight } from "@react-navigation/elements";
 import * as React from "react";
 import { useState } from "react";
 import { Alert, LayoutChangeEvent, View } from "react-native";
@@ -25,6 +26,7 @@ export const HeaderSecondLevelCustomBackground = () => {
   );
   const translationY = useSharedValue(0);
 
+  const headerHeight = useHeaderHeight();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
@@ -83,7 +85,7 @@ export const HeaderSecondLevelCustomBackground = () => {
   return (
     <Animated.ScrollView
       contentContainerStyle={{
-        marginTop: insets.top + IOVisualCostants.headerHeight,
+        paddingTop: headerHeight,
         paddingBottom: insets.bottom,
         paddingHorizontal: IOVisualCostants.appMarginDefault
       }}
@@ -98,7 +100,7 @@ export const HeaderSecondLevelCustomBackground = () => {
           backgroundColor: IOColors["blueIO-600"],
           height: 400,
           position: "absolute",
-          top: -320,
+          top: -400 + headerHeight + triggerOffsetValue * 2,
           left: 0,
           right: 0
         }}
