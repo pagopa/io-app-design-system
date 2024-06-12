@@ -4,10 +4,12 @@ import {
   SearchInput,
   VStack
 } from "@pagopa/io-app-design-system";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Alert, ScrollView } from "react-native";
 
 export const SearchCustom = () => {
+  const navigation = useNavigation();
   const [inputValue, setInputValue] = React.useState("");
 
   return (
@@ -26,6 +28,7 @@ export const SearchCustom = () => {
             accessibilityLabel="Search input"
             cancelButtonLabel="Annulla"
             value={inputValue}
+            onCancel={() => navigation.goBack()}
             onChangeText={setInputValue}
           />
         </VStack>
