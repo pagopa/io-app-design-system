@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "1.38.5",
+  "version": "1.39.0",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -32,6 +32,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prettify": "prettier --write \"src/**/*.(ts|tsx)\"",
     "prepack": "bob build",
+    "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",

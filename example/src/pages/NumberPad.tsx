@@ -13,7 +13,7 @@ import {
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 
 const PIN_LENGTH = 6;
@@ -25,16 +25,20 @@ export const NumberPadScreen = () => {
   const theme = useIOTheme();
   const navigation = useNavigation();
 
-  const [value, setValue] = React.useState("");
-  const [blueBackground, setBlueBackground] = React.useState(false);
+  const [value, setValue] = useState("");
+  const [blueBackground, setBlueBackground] = useState(false);
 
-  const onValueChange = (v: string) => {
-    if (v.length <= PIN_LENGTH) {
-      setValue(v);
-    }
-  };
+  const onNumberPress = useCallback((v: number) => {
+    setValue((prev) => prev.length < PIN_LENGTH ? `${prev}${v}` : prev);
+  }, []);
 
-  React.useEffect(() => {
+  const onDeletePress = useCallback(() => {
+    setValue((prev) => prev.slice(0, -1));
+  }, []);
+
+  const onBiometricPress = useCallback(() => Alert.alert("biometric"),[]);
+
+  useEffect(() => {
     navigation.setOptions({
       headerStyle: {
         backgroundColor: blueBackground
@@ -74,18 +78,18 @@ export const NumberPadScreen = () => {
           value={value}
           length={PIN_LENGTH}
           variant={blueBackground ? "light" : "dark"}
-          onValueChange={onValueChange}
+          onValueChange={setValue}
           onValidate={v => v === "123456"}
         />
         <VSpacer size={48} />
         <NumberPad
-          value={value}
           deleteAccessibilityLabel="Delete"
-          onValueChange={onValueChange}
+          onNumberPress={onNumberPress}
+          onDeletePress={onDeletePress}
           variant={blueBackground ? "dark" : "light"}
           biometricType="FACE_ID"
           biometricAccessibilityLabel="Face ID"
-          onBiometricPress={() => Alert.alert("biometric")}
+          onBiometricPress={onBiometricPress}
         />
       </ContentWrapper>
     </View>
