@@ -85,7 +85,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -100,7 +100,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -174,7 +174,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -189,7 +189,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -263,7 +263,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -278,7 +278,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -375,7 +375,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -390,7 +390,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -464,7 +464,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -479,7 +479,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -553,7 +553,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -568,7 +568,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -665,7 +665,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -680,7 +680,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -754,7 +754,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -769,7 +769,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -843,7 +843,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -858,7 +858,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
@@ -1096,7 +1096,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          font="TitilliumSansPro"
           fontStyle={
             {
               "fontSize": 24,
@@ -1111,7 +1111,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
