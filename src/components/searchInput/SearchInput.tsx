@@ -1,5 +1,11 @@
 /* eslint-disable functional/immutable-data */
-import React, { useCallback, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+  useState
+} from "react";
 import {
   ColorValue,
   Dimensions,
@@ -78,6 +84,10 @@ type SearchInputProps = WithTestID<{
 }> &
   SearchInputActionProps;
 
+export type SearchInputRef = {
+  focus: () => void;
+};
+
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -86,178 +96,193 @@ const inputWithTimingConfig = {
   easing: Easing.inOut(Easing.cubic)
 };
 
-export const SearchInput = ({
-  accessibilityLabel,
-  cancelButtonLabel,
-  clearAccessibilityLabel,
-  onCancel,
-  onChangeText,
-  placeholder,
-  value = "",
-  autoFocus,
-  pressable,
-  testID
-}: SearchInputProps) => {
-  const searchInputRef = useRef<TextInput>(null);
+export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
+  (
+    {
+      accessibilityLabel,
+      cancelButtonLabel,
+      clearAccessibilityLabel,
+      onCancel,
+      onChangeText,
+      placeholder,
+      value = "",
+      autoFocus,
+      pressable,
+      testID
+    },
+    ref
+  ) => {
+    const searchInputRef = useRef<TextInput>(null);
 
-  /* Component visual attributes */
-  const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-  const inputCaretColor = IOColors[theme["interactiveElem-default"]];
+    /* Component visual attributes */
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
+    const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
-  /* Widths used for the transition:
-     - `SearchInput` entire width
-     - `Cancel` button */
-  const inputWidth: number =
-    Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
+    /* Widths used for the transition:
+       - `SearchInput` entire width
+       - `Cancel` button */
+    const inputWidth: number =
+      Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
 
-  const [cancelButtonWidth, setCancelButtonWidth] =
-    useState<LayoutRectangle["width"]>(0);
+    const [cancelButtonWidth, setCancelButtonWidth] =
+      useState<LayoutRectangle["width"]>(0);
 
-  const getCancelButtonWidth = ({ nativeEvent }: LayoutChangeEvent) => {
-    setCancelButtonWidth(nativeEvent.layout.width);
-  };
+    const getCancelButtonWidth = ({ nativeEvent }: LayoutChangeEvent) => {
+      setCancelButtonWidth(nativeEvent.layout.width);
+    };
 
-  const inputWidthWithCancel: number = inputWidth - cancelButtonWidth;
+    const inputWidthWithCancel: number = inputWidth - cancelButtonWidth;
 
-  /* Reanimated styles */
-  const inputAnimatedWidth = useSharedValue<number>(inputWidth);
-  const isFocused = useSharedValue(0);
+    useImperativeHandle(
+      ref,
+      () => ({
+        focus() {
+          searchInputRef.current?.focus();
+        }
+      }),
+      []
+    );
 
-  /* Applied to the `SearchInput` */
-  const animatedStyle = useAnimatedStyle(() => ({
-    width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig),
-    backgroundColor: interpolateColor(
-      isFocused.value,
-      [0, 1],
-      [inputBgColorDefault, inputBgColorFocused]
-    )
-  }));
+    /* Reanimated styles */
+    const inputAnimatedWidth = useSharedValue<number>(inputWidth);
+    const isFocused = useSharedValue(0);
 
-  /* Applied to the `Cancel` button */
-  const cancelButtonAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateX: interpolate(
-          isFocused.value,
-          [0, 1],
-          [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
-          Extrapolate.CLAMP
-        )
-      }
-    ],
-    opacity: interpolate(isFocused.value, [0, 1], [0.5, 1])
-  }));
+    /* Applied to the `SearchInput` */
+    const animatedStyle = useAnimatedStyle(() => ({
+      width: withTiming(inputAnimatedWidth.value, inputWithTimingConfig),
+      backgroundColor: interpolateColor(
+        isFocused.value,
+        [0, 1],
+        [inputBgColorDefault, inputBgColorFocused]
+      )
+    }));
 
-  /* Applied to the `Clear` button inside the `SearchInput` */
-  const clearButtonAnimatedStyle = useAnimatedStyle(() => {
-    const showClearButton = value.length > 0;
-
-    return {
+    /* Applied to the `Cancel` button */
+    const cancelButtonAnimatedStyle = useAnimatedStyle(() => ({
       transform: [
         {
-          scale: showClearButton
-            ? withTiming(1, inputWithTimingConfig)
-            : withTiming(0.5, inputWithTimingConfig)
+          translateX: interpolate(
+            isFocused.value,
+            [0, 1],
+            [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
+            Extrapolate.CLAMP
+          )
         }
       ],
-      opacity: withTiming(showClearButton ? 1 : 0, inputWithTimingConfig)
+      opacity: interpolate(isFocused.value, [0, 1], [0.5, 1])
+    }));
+
+    /* Applied to the `Clear` button inside the `SearchInput` */
+    const clearButtonAnimatedStyle = useAnimatedStyle(() => {
+      const showClearButton = value.length > 0;
+
+      return {
+        transform: [
+          {
+            scale: showClearButton
+              ? withTiming(1, inputWithTimingConfig)
+              : withTiming(0.5, inputWithTimingConfig)
+          }
+        ],
+        opacity: withTiming(showClearButton ? 1 : 0, inputWithTimingConfig)
+      };
+    }, [value]);
+
+    /* Related event handlers */
+    const handleFocus = () => {
+      isFocused.value = withTiming(1, inputWithTimingConfig);
+      inputAnimatedWidth.value = inputWidthWithCancel;
     };
-  }, [value]);
 
-  /* Related event handlers */
-  const handleFocus = () => {
-    isFocused.value = withTiming(1, inputWithTimingConfig);
-    inputAnimatedWidth.value = inputWidthWithCancel;
-  };
+    const handleBlur = () => {
+      isFocused.value = withTiming(0, inputWithTimingConfig);
+      inputAnimatedWidth.value = inputWidth;
+    };
 
-  const handleBlur = () => {
-    isFocused.value = withTiming(0, inputWithTimingConfig);
-    inputAnimatedWidth.value = inputWidth;
-  };
+    const cancel = useCallback(
+      (event: GestureResponderEvent) => {
+        onChangeText?.("");
+        onCancel?.(event);
+      },
+      [onCancel, onChangeText]
+    );
 
-  const cancel = useCallback(
-    (event: GestureResponderEvent) => {
+    const clear = useCallback(() => {
       onChangeText?.("");
-      onCancel?.(event);
-    },
-    [onCancel, onChangeText]
-  );
+      searchInputRef.current?.clear();
+    }, [onChangeText]);
 
-  const clear = useCallback(() => {
-    onChangeText?.("");
-    searchInputRef.current?.clear();
-  }, [onChangeText]);
+    const handleChangeText = useCallback(
+      (text: string) => onChangeText?.(text),
+      [onChangeText]
+    );
 
-  const handleChangeText = useCallback(
-    (text: string) => onChangeText?.(text),
-    [onChangeText]
-  );
-
-  const renderSearchBar = () => (
-    <Animated.View style={styles.searchBar}>
-      <Animated.View
-        style={[styles.searchInput, animatedStyle]}
-        pointerEvents={pressable ? "none" : "auto"}
-      >
-        <View style={styles.iconContainer}>
-          <Icon name="search" size={iconSize} color={iconColor} />
-        </View>
-        <AnimatedTextInput
-          testID={testID}
-          ref={searchInputRef}
-          inputMode="search"
-          returnKeyType="search"
-          accessibilityRole={"search"}
-          accessibilityLabel={accessibilityLabel}
-          style={[
-            styles.textInput,
-            Platform.OS === "ios"
-              ? styles.textInputIOS
-              : styles.textInputAndroid,
-            isExperimental ? styles.placeholder : styles.placeholderLegacy
-          ]}
-          selectionColor={inputCaretColor}
-          cursorColor={inputCaretColor}
-          placeholder={placeholder}
-          placeholderTextColor={inputColorPlaceholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChangeText={handleChangeText}
-          value={value}
-          autoFocus={autoFocus}
-        />
-        <AnimatedPressable
-          style={[styles.clearButton, clearButtonAnimatedStyle]}
-          onPress={clear}
-          accessibilityLabel={clearAccessibilityLabel}
-          accessibilityRole="button"
-          hitSlop={16}
+    const renderSearchBar = () => (
+      <Animated.View style={styles.searchBar}>
+        <Animated.View
+          style={[styles.searchInput, animatedStyle]}
+          pointerEvents={pressable ? "none" : "auto"}
         >
-          <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
-        </AnimatedPressable>
+          <View style={styles.iconContainer}>
+            <Icon name="search" size={iconSize} color={iconColor} />
+          </View>
+          <AnimatedTextInput
+            testID={testID}
+            ref={searchInputRef}
+            inputMode="search"
+            returnKeyType="search"
+            accessibilityRole={"search"}
+            accessibilityLabel={accessibilityLabel}
+            style={[
+              styles.textInput,
+              Platform.OS === "ios"
+                ? styles.textInputIOS
+                : styles.textInputAndroid,
+              isExperimental ? styles.placeholder : styles.placeholderLegacy
+            ]}
+            selectionColor={inputCaretColor}
+            cursorColor={inputCaretColor}
+            placeholder={placeholder}
+            placeholderTextColor={inputColorPlaceholder}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChangeText={handleChangeText}
+            value={value}
+            autoFocus={autoFocus}
+          />
+          <AnimatedPressable
+            style={[styles.clearButton, clearButtonAnimatedStyle]}
+            onPress={clear}
+            accessibilityLabel={clearAccessibilityLabel}
+            accessibilityRole="button"
+            hitSlop={16}
+          >
+            <Icon name="closeSmall" size={iconCloseSize} color={iconColor} />
+          </AnimatedPressable>
+        </Animated.View>
+        <Animated.View
+          onLayout={getCancelButtonWidth}
+          style={[styles.cancelButton, cancelButtonAnimatedStyle]}
+        >
+          <ButtonLink label={cancelButtonLabel} onPress={cancel} />
+        </Animated.View>
       </Animated.View>
-      <Animated.View
-        onLayout={getCancelButtonWidth}
-        style={[styles.cancelButton, cancelButtonAnimatedStyle]}
-      >
-        <ButtonLink label={cancelButtonLabel} onPress={cancel} />
-      </Animated.View>
-    </Animated.View>
-  );
+    );
 
-  return pressable ? (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={placeholder}
-      onPress={pressable?.onPress}
-    >
-      {renderSearchBar()}
-    </Pressable>
-  ) : (
-    renderSearchBar()
-  );
-};
+    return pressable ? (
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={placeholder}
+        onPress={pressable?.onPress}
+      >
+        {renderSearchBar()}
+      </Pressable>
+    ) : (
+      renderSearchBar()
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   searchBar: {

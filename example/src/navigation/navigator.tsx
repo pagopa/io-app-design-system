@@ -48,6 +48,7 @@ import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
 import { SearchCustom } from "../pages/SearchCustom";
+import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -320,6 +321,16 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_CUSTOM_BG.route}
+            component={HeaderSecondLevelCustomBackground}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_CUSTOM_BG.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
             name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.route}
             component={StaticHeaderSecondLevelScreen}
             options={{
@@ -392,7 +403,6 @@ const AppNavigator = () => {
                 header: ({ navigation }) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
-                    transparent
                     isModal
                     type="singleAction"
                     firstAction={{
