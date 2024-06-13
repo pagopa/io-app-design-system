@@ -23,7 +23,7 @@
 
 @font-face {
     font-family: "TitilliumSansPro";
-    src: url('TitilliumSansPro-Thin-Italic.otf') format("opentype");
+    src: url('TitilliumSansPro-ThinItalic.otf') format("opentype");
     font-weight: 200;
     font-style: italic;
 }
@@ -37,7 +37,7 @@
 
 @font-face {
     font-family: "TitilliumSansPro";
-    src: url('TitilliumSansPro-Light-Italic.otf') format("opentype");
+    src: url('TitilliumSansPro-LightItalic.otf') format("opentype");
     font-weight: 300;
     font-style: italic;
 }
@@ -51,7 +51,7 @@
 
 @font-face {
     font-family: "TitilliumSansPro";
-    src: url('TitilliumSansPro-Regular-Italic.otf') format("opentype");
+    src: url('TitilliumSansPro-Italic.otf') format("opentype");
     font-weight: 400;
     font-style: italic;
 }
@@ -65,7 +65,7 @@
 
 @font-face {
     font-family: "TitilliumSansPro";
-    src: url('TitilliumSansPro-Semibold-Italic.otf') format("opentype");
+    src: url('TitilliumSansPro-SemiboldItalic.otf') format("opentype");
     font-weight: 600;
     font-style: italic;
 }
@@ -79,7 +79,7 @@
 
 @font-face {
     font-family: "TitilliumSansPro";
-    src: url('TitilliumSansPro-Bold-Italic.otf') format("opentype");
+    src: url('TitilliumSansPro-BoldItalic.otf') format("opentype");
     font-weight: 700;
     font-style: italic;
 }

@@ -57,19 +57,19 @@
 	<array>
 		<string>ReadexPro-Regular.ttf</string>
 		<string>DMMono-Medium.ttf</string>
-		<string>TitilliumSansPro-Black-Italic.otf</string>
-		<string>TitilliumSansPro-Black.otf</string>
-		<string>TitilliumSansPro-Bold-Italic.otf</string>
-		<string>TitilliumSansPro-Bold.otf</string>
-		<string>TitilliumSansPro-Light-Italic.otf</string>
-		<string>TitilliumSansPro-Light.otf</string>
-		<string>TitilliumSansPro-Regular-Italic.otf</string>
-		<string>TitilliumSansPro-Regular.otf</string>
-		<string>TitilliumSansPro-Semibold-Italic.otf</string>
-		<string>TitilliumSansPro-Semibold.otf</string>
-		<string>TitilliumSansPro-Thin-Italic.otf</string>
-		<string>TitilliumSansPro-Thin.otf</string>
 		<string>ReadexPro-SemiBold.ttf</string>
+		<string>TitilliumSansPro-Black.otf</string>
+		<string>TitilliumSansPro-BlackItalic.otf</string>
+		<string>TitilliumSansPro-Bold.otf</string>
+		<string>TitilliumSansPro-BoldItalic.otf</string>
+		<string>TitilliumSansPro-Italic.otf</string>
+		<string>TitilliumSansPro-Light.otf</string>
+		<string>TitilliumSansPro-LightItalic.otf</string>
+		<string>TitilliumSansPro-Regular.otf</string>
+		<string>TitilliumSansPro-Semibold.otf</string>
+		<string>TitilliumSansPro-SemiboldItalic.otf</string>
+		<string>TitilliumSansPro-Thin.otf</string>
+		<string>TitilliumSansPro-ThinItalic.otf</string>
 	</array>
 </dict>
 </plist>
