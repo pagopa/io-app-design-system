@@ -34,3 +34,13 @@ export type InputType = "credit-card" | "default";
 // Biometrics type used in io-app code base
 // https://github.com/pagopa/io-app/blob/master/ts/utils/biometrics.ts#L31
 export type BiometricsValidType = "BIOMETRICS" | "FACE_ID" | "TOUCH_ID";
+
+/**
+ * Returns a type with the desired type or null
+ */
+export type Nullable<T> = T | null;
+
+/**
+ * Returns a type with the desired type or undefined
+ */
+export type Optional<T> = T | undefined;
