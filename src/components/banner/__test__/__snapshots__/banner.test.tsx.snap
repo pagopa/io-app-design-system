@@ -433,7 +433,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         color="blueIO-850"
         defaultColor="black"
         defaultWeight="SemiBold"
-        font="TitilliumWeb"
+        font="TitilliumSansPro"
         fontStyle={
           {
             "fontSize": 18,
@@ -448,7 +448,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             },
             {
               "color": "#031344",
-              "fontFamily": "Titillium Web",
+              "fontFamily": "Titillium Sans Pro",
               "fontStyle": "normal",
               "fontWeight": "600",
             },
@@ -555,7 +555,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               style={
                 [
                   {
-                    "fontFamily": "Titillium Web",
+                    "fontFamily": "Titillium Sans Pro",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "700",

@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
+import { IOColors, IOTheme } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -17,7 +17,6 @@ type BodyProps = ExternalTypographyProps<
 >;
 
 const fontName: FontFamily = "TitilliumSansPro";
-const legacyFontName: FontFamily = "TitilliumWeb";
 
 export const bodyFontSize = 16;
 export const bodyLineHeight = 24;
@@ -27,17 +26,15 @@ export const bodyDefaultWeight: AllowedWeight = "Regular";
 /**
  * `Body` typographic style
  */
-export const Body = React.forwardRef<View, BodyProps>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
-
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
+export const Body = React.forwardRef<View, BodyProps>((props, ref) =>
+  useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
       defaultWeight: bodyDefaultWeight,
       defaultColor: bodyDefaultColor,
-      font: isExperimental ? fontName : legacyFontName,
+      font: fontName,
       fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
     },
     ref
-  );
-});
+  )
+);

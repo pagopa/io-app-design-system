@@ -443,7 +443,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -460,7 +460,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#003B3D",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },
@@ -568,7 +568,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="error-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -585,7 +585,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#5D1313",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },
@@ -626,7 +626,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="info-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -643,7 +643,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#215C76",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },
@@ -684,7 +684,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -701,7 +701,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#003B3D",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },
@@ -742,7 +742,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="success-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -759,7 +759,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#224021",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },
@@ -800,7 +800,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     color="warning-850"
     defaultColor="white"
     defaultWeight="Bold"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -817,7 +817,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
         {
           "color": "#614C15",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "700",
         },

@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   textInputStyleLegacyFont: {
-    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+    ...makeFontStyleObject("SemiBold", false, "TitilliumSansPro")
   },
   textInputLabelWrapper: {
     position: "absolute",
@@ -324,7 +324,7 @@ export const TextInputBase = ({
             style={[
               animatedLabelProps,
               {
-                ...makeFontStyleObject("Regular", false, "TitilliumWeb"),
+                ...makeFontStyleObject("Regular", false, "TitilliumSansPro"),
                 color: IOColors["grey-700"]
               }
             ]}

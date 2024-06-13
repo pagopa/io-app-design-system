@@ -7,10 +7,10 @@ Each component has its own font size and line height and a set of accepted weigh
 
 ## Fonts
 
-The app uses `TitilliumWeb` as main font. Font object mapping and definition can be located at [fonts.ts](https://github.com/pagopa/io-app-design-system/blob/main/src/utils/fonts.ts).
+The app uses `TitilliumSansPro` as main font. Font object mapping and definition can be located at [fonts.ts](https://github.com/pagopa/io-app-design-system/blob/main/src/utils/fonts.ts).
 
 The library supports three different font families:
-- `TitilliumWeb`
+- `TitilliumSansPro`
 - `ReadexPro`
 - `DMMono`
 

@@ -25,7 +25,7 @@ const labelHeaderFontName: IOFontFamily = "ReadexPro";
 const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
+const legacyLabelHeaderFontName: IOFontFamily = "TitilliumSansPro";
 const legacyLabelHeaderWeight: AllowedWeight = "SemiBold";
 const legacyLabelHeaderLineHeight = 20;
 /**

@@ -113,7 +113,7 @@ const IOButtonStylesLocal = StyleSheet.create({
 const IOButtonLegacyStylesLocal = StyleSheet.create({
   label: {
     fontSize: 16,
-    ...makeFontStyleObject("Bold", false, "TitilliumWeb")
+    ...makeFontStyleObject("Bold", false, "TitilliumSansPro")
   }
 });
 

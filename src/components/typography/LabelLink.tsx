@@ -20,11 +20,9 @@ type LinkProps = ExternalTypographyProps<
 > &
   AllowedFontSize;
 
-const fontName: IOFontFamily = "TitilliumSansPro";
-const legacyFontName: IOFontFamily = "TitilliumWeb";
+const font: IOFontFamily = "TitilliumSansPro";
 
 export const linkLegacyDefaultColor: AllowedColors = "blue";
-
 export const linkDefaultColor: AllowedColors = "blueIO-500";
 export const linkDefaultWeight: AllowedWeight = "SemiBold";
 
@@ -40,7 +38,7 @@ export const LabelLink = React.forwardRef<View, LinkProps>((props, ref) => {
       ...props,
       defaultWeight: linkDefaultWeight,
       defaultColor: isExperimental ? linkDefaultColor : linkLegacyDefaultColor,
-      font: isExperimental ? fontName : legacyFontName,
+      font,
       fontStyle: {
         fontSize: props.fontSize
           ? fontSizeMapping[props.fontSize]

@@ -18,7 +18,7 @@ const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumWeb";
+const legacyFont: FontFamily = "TitilliumSansPro";
 /**
  * `Chip` typographic style
  */

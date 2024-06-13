@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   },
   placeholderLegacy: {
     fontSize: inputFontSizePlaceholder,
-    ...makeFontStyleObject("Regular", false, "TitilliumWeb")
+    ...makeFontStyleObject("Regular", false, "TitilliumSansPro")
   },
   cancelButton: {
     position: "absolute",

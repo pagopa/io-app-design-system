@@ -79,7 +79,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
           "textTransform": "uppercase",
         },
         {
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "600",
         },

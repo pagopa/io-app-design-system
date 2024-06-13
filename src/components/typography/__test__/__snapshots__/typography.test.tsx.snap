@@ -6,7 +6,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Regular"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -21,7 +21,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -72,7 +72,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
   color="white"
   defaultColor="white"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -85,7 +85,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -103,7 +103,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 31,
@@ -118,7 +118,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -136,7 +136,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
   color="white"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 31,
@@ -151,7 +151,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -169,7 +169,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 28,
@@ -184,7 +184,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -202,7 +202,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 24,
@@ -217,7 +217,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -235,7 +235,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 24,
@@ -250,7 +250,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -268,7 +268,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 24,
@@ -283,7 +283,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -301,7 +301,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 24,
@@ -316,7 +316,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -334,7 +334,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 24,
@@ -349,7 +349,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -367,7 +367,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -382,7 +382,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -400,7 +400,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   color="blue"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -415,7 +415,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -433,7 +433,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -448,7 +448,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -466,7 +466,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -481,7 +481,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -499,7 +499,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   color="bluegrey"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -514,7 +514,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -532,7 +532,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -547,7 +547,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -565,7 +565,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 22,
@@ -580,7 +580,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -598,7 +598,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -617,7 +617,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -635,7 +635,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
   color="bluegrey"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -654,7 +654,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -672,7 +672,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
   color="blue"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -691,7 +691,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -709,7 +709,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
   color="white"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -728,7 +728,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -746,7 +746,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 18,
@@ -761,7 +761,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
@@ -779,7 +779,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -794,7 +794,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -812,7 +812,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -827,7 +827,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -845,7 +845,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -860,7 +860,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -878,7 +878,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -893,7 +893,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -911,7 +911,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
   color="bluegrey"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -926,7 +926,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -944,7 +944,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
   color="red"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -959,7 +959,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
       },
       {
         "color": "#C02927",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -977,7 +977,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
   color="white"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -992,7 +992,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -1010,7 +1010,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -1027,7 +1027,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
