@@ -106,7 +106,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       clearAccessibilityLabel,
       placeholder,
       autoFocus,
-      keepCancelVisible = true,
+      keepCancelVisible = false,
       onCancel,
       onChangeText,
       pressable,
