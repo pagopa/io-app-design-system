@@ -55,7 +55,7 @@ type InputTextProps = WithTestID<{
   autoFocus?: boolean;
 }>;
 
-const inputMarginTop: IOSpacingScale = Platform.OS === "ios" ? 16 : 20;
+const inputMarginTop: IOSpacingScale = 16;
 const inputHeight: number = 60;
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputPaddingVertical: IOSpacingScale = 8;
@@ -95,6 +95,10 @@ const styles = StyleSheet.create({
   textInputStyle: {
     flexGrow: 1,
     flexShrink: 1,
+    /* The following `paddingVertical` property fixes a weird bug on
+    Android where the text input scrolls, if the user apply some
+    gestures on it with keyboard open */
+    paddingVertical: 0,
     fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
