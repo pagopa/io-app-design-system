@@ -6,7 +6,7 @@ import {
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Alert, ScrollView } from "react-native";
+import { Alert, Platform, ScrollView } from "react-native";
 
 export const SearchCustom = () => {
   const navigation = useNavigation();
@@ -14,36 +14,42 @@ export const SearchCustom = () => {
 
   return (
     <ScrollView
-      keyboardShouldPersistTaps="always"
       contentContainerStyle={{
         padding: IOVisualCostants.appMarginDefault
       }}
+      keyboardDismissMode={Platform.select({
+        ios: "interactive",
+        default: "on-drag"
+      })}
+      keyboardShouldPersistTaps="handled"
     >
       <VStack space={32}>
         <VStack space={8}>
           <H4>Basic behavior</H4>
           <SearchInput
-            clearAccessibilityLabel="Cancella"
-            placeholder="Cerca nei messaggi"
+            autoFocus
             accessibilityLabel="Search input"
             cancelButtonLabel="Annulla"
-            value={inputValue}
+            clearAccessibilityLabel="Cancella"
+            keepCancelVisible
             onCancel={() => navigation.goBack()}
             onChangeText={setInputValue}
+            placeholder="Cerca nei messaggi"
+            value={inputValue}
           />
         </VStack>
         <VStack space={8}>
           <H4>Pressable behavior</H4>
           <SearchInput
+            accessibilityLabel="Search input"
+            cancelButtonLabel="Annulla"
+            clearAccessibilityLabel="Cancella"
+            placeholder="Cerca nei messaggi"
             pressable={{
               onPress: () => {
                 Alert.alert("Pressed");
               }
             }}
-            clearAccessibilityLabel="Cancella"
-            placeholder="Cerca nei messaggi"
-            accessibilityLabel="Search input"
-            cancelButtonLabel="Annulla"
           />
         </VStack>
       </VStack>
