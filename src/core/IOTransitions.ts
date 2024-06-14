@@ -92,3 +92,58 @@ export const exitTransitionInnerContent = () => {
     animations
   };
 };
+
+/**
+A custom enter/exit transition designed for icons
+in `TextInput`.
+*/
+
+const iconTransitionWithTimingConfig = {
+  duration: 250,
+  easing: Easing.inOut(Easing.cubic)
+};
+
+const iconTransitionScaleFactor: number = 0.75;
+
+export const enterTransitionInputIcon = () => {
+  "worklet";
+  const animations = {
+    opacity: withTiming(1, iconTransitionWithTimingConfig),
+    transform: [
+      {
+        scale: withTiming(1, iconTransitionWithTimingConfig)
+      }
+    ]
+  };
+  const initialValues = {
+    opacity: 0,
+    transform: [{ scale: iconTransitionScaleFactor }]
+  };
+  return {
+    initialValues,
+    animations
+  };
+};
+
+export const exitTransitionInputIcon = () => {
+  "worklet";
+  const animations = {
+    opacity: withTiming(0, iconTransitionWithTimingConfig),
+    transform: [
+      {
+        scale: withTiming(
+          iconTransitionScaleFactor,
+          iconTransitionWithTimingConfig
+        )
+      }
+    ]
+  };
+  const initialValues = {
+    opacity: 1,
+    transform: [{ scale: 1 }]
+  };
+  return {
+    initialValues,
+    animations
+  };
+};
