@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import {
   IOBadgeHSpacing,
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -31,88 +32,9 @@ type SolidVariantProps = {
   foreground: IOColors;
 };
 
-const mapVariants: Record<NonNullable<Badge["variant"]>, SolidVariantProps> = {
-  default: {
-    foreground: "grey-700",
-    background: "grey-50"
-  },
-  info: {
-    foreground: "info-850",
-    background: "info-100"
-  },
-  warning: {
-    foreground: "warning-850",
-    background: "warning-100"
-  },
-  success: {
-    foreground: "success-850",
-    background: "success-100"
-  },
-  error: {
-    foreground: "error-850",
-    background: "error-100"
-  },
-  purple: {
-    foreground: "hanPurple-850",
-    background: "hanPurple-100"
-  },
-  lightBlue: {
-    foreground: "blueIO-850",
-    background: "blueIO-50"
-  },
-  blue: {
-    foreground: "white",
-    background: "blueIO-500"
-  },
-  turquoise: {
-    foreground: "turquoise-850",
-    background: "turquoise-50"
-  },
-  contrast: {
-    foreground: "grey-700",
-    background: "white"
-  }
-};
-
 type OutlinedVariantProps = {
   foreground: IOColors;
   background?: never;
-};
-
-const mapOutlineVariants: Record<
-  NonNullable<Badge["variant"]>,
-  OutlinedVariantProps
-> = {
-  default: {
-    foreground: "grey-700"
-  },
-  info: {
-    foreground: "info-850"
-  },
-  warning: {
-    foreground: "warning-850"
-  },
-  success: {
-    foreground: "success-850"
-  },
-  error: {
-    foreground: "error-850"
-  },
-  purple: {
-    foreground: "hanPurple-850"
-  },
-  lightBlue: {
-    foreground: "blueIO-850"
-  },
-  blue: {
-    foreground: "blueIO-500"
-  },
-  turquoise: {
-    foreground: "turquoise-850"
-  },
-  contrast: {
-    foreground: "grey-850"
-  }
 };
 
 const styles = StyleSheet.create({
@@ -151,10 +73,93 @@ const styles = StyleSheet.create({
  */
 export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
-  const { background, foreground } = useMemo(
-    () => (outline ? mapOutlineVariants : mapVariants)[variant],
-    [outline, variant]
-  );
+  const theme = useIOTheme();
+
+  const mapVariants: Record<
+    NonNullable<Badge["variant"]>,
+    SolidVariantProps
+  > = {
+    default: {
+      foreground: "grey-700",
+      background: "grey-50"
+    },
+    info: {
+      foreground: "info-850",
+      background: "info-100"
+    },
+    warning: {
+      foreground: "warning-850",
+      background: "warning-100"
+    },
+    success: {
+      foreground: "success-850",
+      background: "success-100"
+    },
+    error: {
+      foreground: "error-850",
+      background: "error-100"
+    },
+    purple: {
+      foreground: "hanPurple-850",
+      background: "hanPurple-100"
+    },
+    lightBlue: {
+      foreground: "blueIO-850",
+      background: "blueIO-50"
+    },
+    blue: {
+      foreground: "white",
+      background: theme["interactiveElem-default"]
+    },
+    turquoise: {
+      foreground: "turquoise-850",
+      background: "turquoise-50"
+    },
+    contrast: {
+      foreground: "grey-700",
+      background: "white"
+    }
+  };
+
+  const mapOutlineVariants: Record<
+    NonNullable<Badge["variant"]>,
+    OutlinedVariantProps
+  > = {
+    default: {
+      foreground: "grey-700"
+    },
+    info: {
+      foreground: "info-850"
+    },
+    warning: {
+      foreground: "warning-850"
+    },
+    success: {
+      foreground: "success-850"
+    },
+    error: {
+      foreground: "error-850"
+    },
+    purple: {
+      foreground: "hanPurple-850"
+    },
+    lightBlue: {
+      foreground: "blueIO-850"
+    },
+    blue: {
+      foreground: theme["interactiveElem-default"]
+    },
+    turquoise: {
+      foreground: "turquoise-850"
+    },
+    contrast: {
+      foreground: "grey-850"
+    }
+  };
+
+  const { background, foreground } = (
+    outline ? mapOutlineVariants : mapVariants
+  )[variant];
 
   return (
     <View

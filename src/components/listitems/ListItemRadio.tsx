@@ -274,7 +274,10 @@ export const ListItemRadio = ({
               </H6>
             </View>
             <HSpacer size={8} />
-            <View pointerEvents="none">
+            <View
+              pointerEvents="none"
+              importantForAccessibility="no-hide-descendants"
+            >
               <AnimatedRadio checked={selected ?? toggleValue} />
             </View>
           </View>

@@ -27,7 +27,7 @@ import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { VSpacer } from "../spacer";
-import { LabelSmall } from "../typography";
+import { LabelSmallAlt } from "../typography";
 
 type PartialProps = WithTestID<{
   title: string;
@@ -88,7 +88,12 @@ const ModuleAttachmentContent = ({
       const activityIndicatorTestId = testID
         ? `${testID}_activityIndicator`
         : undefined;
-      return <LoadingSpinner testID={activityIndicatorTestId} />;
+      return (
+        <LoadingSpinner
+          testID={activityIndicatorTestId}
+          color={theme["interactiveElem-default"]}
+        />
+      );
     }
 
     return (
@@ -103,14 +108,12 @@ const ModuleAttachmentContent = ({
   return (
     <>
       <View style={styles.innerContent}>
-        <LabelSmall
+        <LabelSmallAlt
           numberOfLines={1}
-          weight="SemiBold"
-          font="ReadexPro"
-          color="blueIO-500"
+          color={theme["interactiveElem-default"]}
         >
           {title}
-        </LabelSmall>
+        </LabelSmallAlt>
         <VSpacer size={4} />
         <View style={{ width: 44 }}>
           <Badge text={format.toUpperCase()} variant="default" />
