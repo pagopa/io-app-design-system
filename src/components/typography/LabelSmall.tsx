@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
+import { IOColors, IOTheme } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -26,8 +26,7 @@ type LabelSmallProps = ExternalTypographyProps<
 > &
   AllowedFontSize;
 
-const fontName: FontFamily = "TitilliumSansPro";
-const legacyFontName: FontFamily = "TitilliumWeb";
+const font: FontFamily = "TitilliumSansPro";
 const fontSizeMapping: Record<FontSize, number> = {
   regular: 14,
   small: 12
@@ -43,15 +42,13 @@ const labelDefaultcolor = "blue";
  * `LabelSmall` typographic style
  */
 export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
-  (props, ref) => {
-    const { isExperimental } = useIOExperimentalDesign();
-
-    return useTypographyFactory<AllowedWeight, AllowedColors>(
+  (props, ref) =>
+    useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
         defaultWeight: labelDefaultWeight,
         defaultColor: labelDefaultcolor,
-        font: isExperimental ? fontName : legacyFontName,
+        font,
         fontStyle: {
           fontSize: props.fontSize
             ? fontSizeMapping[props.fontSize]
@@ -62,6 +59,5 @@ export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
         }
       },
       ref
-    );
-  }
+    )
 );

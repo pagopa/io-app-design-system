@@ -204,7 +204,7 @@ exports[`Test Advice Components Advice Snapshot 1`] = `
     color="bluegrey"
     defaultColor="bluegrey"
     defaultWeight="Regular"
-    font="TitilliumWeb"
+    font="TitilliumSansPro"
     fontStyle={
       {
         "fontSize": 16,
@@ -219,7 +219,7 @@ exports[`Test Advice Components Advice Snapshot 1`] = `
         },
         {
           "color": "#475A6D",
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "400",
         },

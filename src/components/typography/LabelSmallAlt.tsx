@@ -31,7 +31,7 @@ const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyLabelFontSize = 16;
-const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultWeight: AllowedWeight = "SemiBold";
 
 /**

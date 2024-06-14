@@ -20,7 +20,7 @@ const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultColor: AllowedColors = "bluegreyDark";
 const legacyDefaultWeight: AllowedWeight = "SemiBold";
 const legacyH3FontSize = 24;

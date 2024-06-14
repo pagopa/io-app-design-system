@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   labelLegacy: {
     fontSize: 16,
-    ...makeFontStyleObject("Bold", false, "TitilliumWeb")
+    ...makeFontStyleObject("Bold", false, "TitilliumSansPro")
   }
 });
 

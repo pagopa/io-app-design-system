@@ -21,7 +21,7 @@ const buttonTextFontName: IOFontFamily = "ReadexPro";
 const buttonTextDefaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyTextFontName: IOFontFamily = "TitilliumWeb";
+const legacyTextFontName: IOFontFamily = "TitilliumSansPro";
 const legacyTextDefaultWeight: AllowedWeight = "Bold";
 
 /**

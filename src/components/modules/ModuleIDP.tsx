@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     ...makeFontStyleObject("Regular", false, "ReadexPro")
   },
   idpLegacyNameFont: {
-    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+    ...makeFontStyleObject("SemiBold", false, "TitilliumSansPro")
   },
   idpLogo: {
     marginStart: IOListItemLogoMargin,

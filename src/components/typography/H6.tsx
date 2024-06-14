@@ -22,7 +22,7 @@ const fontName: FontFamily = "ReadexPro";
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFontSize = 18;
 const legacyLineHeight = 25;
-const legacyFontName: FontFamily = "TitilliumWeb";
+const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultWeight: AllowedWeight = "SemiBold";
 
 /**
