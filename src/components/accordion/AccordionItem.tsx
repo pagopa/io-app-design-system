@@ -19,7 +19,6 @@ import { IOIconSizeScale, IOIcons, Icon } from "../icons/Icon";
 import { H6 } from "../typography";
 
 export type AccordionItem = {
-  id: number;
   title: string;
   body: string | React.ReactNode;
   icon?: IOIcons;

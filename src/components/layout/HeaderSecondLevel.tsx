@@ -207,9 +207,8 @@ export const HeaderSecondLevel = ({
       style={[
         { borderBottomWidth: 1, borderColor: borderColorTransparentState },
         isModal ? { borderColor: borderColorSolidState } : {},
-        transparent
-          ? headerWrapperAnimatedStyle
-          : { backgroundColor: headerBgColorSolidState }
+        !transparent ? { backgroundColor: headerBgColorSolidState } : {},
+        headerWrapperAnimatedStyle
       ]}
     >
       <Animated.View
