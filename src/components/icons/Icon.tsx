@@ -646,7 +646,11 @@ const {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } = IOIcons;
 
 export const IOSystemIcons = {
@@ -658,7 +662,11 @@ export const IOSystemIcons = {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } as const;
 
 export type IOSystemIcons = keyof typeof IOSystemIcons;
