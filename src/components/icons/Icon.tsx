@@ -190,6 +190,10 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconSystemBiometricRecognitionOS from './svg/IconSystemBiometricRecognitionOS';
+import IconSystemNFC from './svg/IconSystemNFC';
+import IconSystemPasswordAndroid from './svg/IconSystemPasswordAndroid';
+import IconSystemPasswordiOS from './svg/IconSystemPasswordiOS';
 
 export const IOIcons = {
   spid: IconSpid,
@@ -379,7 +383,11 @@ export const IOIcons = {
   systemPermissionsAndroid: IconSystemPermissionsAndroid,
   systemLocationiOS: IconSystemLocationiOS,
   systemPhotosiOS: IconSystemPhotosiOS,
-  systemPrivacyiOS: IconSystemPrivacyiOS
+  systemPrivacyiOS: IconSystemPrivacyiOS,
+  systemBiometricRecognitionOS: IconSystemBiometricRecognitionOS,
+  systemNFC: IconSystemNFC,
+  systemPasswordAndroid: IconSystemPasswordAndroid,
+  systemPasswordiOS: IconSystemPasswordiOS
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
