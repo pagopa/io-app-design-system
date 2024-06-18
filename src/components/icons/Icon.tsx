@@ -170,8 +170,12 @@ import IconStarFilled from "./svg/IconStarFilled";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
+import IconSystemBiometricRecognitionOS from "./svg/IconSystemBiometricRecognitionOS";
 import IconSystemLocationiOS from "./svg/IconSystemLocationiOS";
+import IconSystemNFC from "./svg/IconSystemNFC";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
+import IconSystemPasswordAndroid from "./svg/IconSystemPasswordAndroid";
+import IconSystemPasswordiOS from "./svg/IconSystemPasswordiOS";
 import IconSystemPermissionsAndroid from "./svg/IconSystemPermissionsAndroid";
 import IconSystemPhotosiOS from "./svg/IconSystemPhotosiOS";
 import IconSystemPrivacyiOS from "./svg/IconSystemPrivacyiOS";
@@ -190,10 +194,6 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconSystemBiometricRecognitionOS from './svg/IconSystemBiometricRecognitionOS';
-import IconSystemNFC from './svg/IconSystemNFC';
-import IconSystemPasswordAndroid from './svg/IconSystemPasswordAndroid';
-import IconSystemPasswordiOS from './svg/IconSystemPasswordiOS';
 
 export const IOIcons = {
   spid: IconSpid,
