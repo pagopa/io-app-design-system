@@ -265,7 +265,7 @@ export const Colors = () => (
     {/* Gradients */}
     <H2
       color={"bluegrey"}
-      weight={"SemiBold"}
+      weight={"Semibold"}
       style={{ marginBottom: sectionTitleMargin }}
     >
       Gradients

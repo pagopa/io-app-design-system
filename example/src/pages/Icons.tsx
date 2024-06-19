@@ -102,7 +102,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Navigation
@@ -125,7 +125,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         System
@@ -148,7 +148,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Biometric
@@ -171,7 +171,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Categories
@@ -194,7 +194,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Product

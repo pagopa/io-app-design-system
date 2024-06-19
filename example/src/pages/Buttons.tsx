@@ -45,7 +45,7 @@ export const Buttons = () => {
       {/* The title should be dynamic, got from the route object */}
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -293,7 +293,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ButtonOutline
@@ -452,7 +452,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ButtonLink
@@ -597,7 +597,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButton
@@ -710,7 +710,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButtonSolid
@@ -778,7 +778,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButtonContained (Icebox)
@@ -864,7 +864,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ButtonExtendedOutline
@@ -895,7 +895,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         Specific buttons

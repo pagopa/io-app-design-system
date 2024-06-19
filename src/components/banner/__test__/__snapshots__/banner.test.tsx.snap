@@ -432,7 +432,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         allowFontScaling={false}
         color="blueIO-850"
         defaultColor="black"
-        defaultWeight="SemiBold"
+        defaultWeight="Semibold"
         font="TitilliumSansPro"
         fontStyle={
           {
@@ -454,7 +454,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             },
           ]
         }
-        weight="SemiBold"
+        weight="Semibold"
       >
         Banner title
       </Text>

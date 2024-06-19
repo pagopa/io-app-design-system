@@ -968,7 +968,7 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
         allowFontScaling={false}
         color="black"
         defaultColor="black"
-        defaultWeight="SemiBold"
+        defaultWeight="Semibold"
         font="TitilliumSansPro"
         fontStyle={
           {
@@ -990,7 +990,7 @@ exports[`Test Buttons Components ButtonExtendedOutline Snapshot 1`] = `
             },
           ]
         }
-        weight="SemiBold"
+        weight="Semibold"
       >
         label
       </Text>

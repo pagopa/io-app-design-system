@@ -17,7 +17,7 @@ type PartialAllowedColors = Extract<
   | "grey-200"
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-tertiary"];
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
 
 type LabelSmallAltProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -32,7 +32,7 @@ const defaultWeight: AllowedWeight = "Regular";
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyLabelFontSize = 16;
 const legacyFontName: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `LabelSmallAlt` typographic style. It's referenced as `LabelSmallReadex` in the design projects.

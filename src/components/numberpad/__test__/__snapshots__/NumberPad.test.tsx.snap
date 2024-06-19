@@ -84,7 +84,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -106,7 +106,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           1
         </Text>
@@ -173,7 +173,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -195,7 +195,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           2
         </Text>
@@ -262,7 +262,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -284,7 +284,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           3
         </Text>
@@ -374,7 +374,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -396,7 +396,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           4
         </Text>
@@ -463,7 +463,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -485,7 +485,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           5
         </Text>
@@ -552,7 +552,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -574,7 +574,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           6
         </Text>
@@ -664,7 +664,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -686,7 +686,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           7
         </Text>
@@ -753,7 +753,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -775,7 +775,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           8
         </Text>
@@ -842,7 +842,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -864,7 +864,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           9
         </Text>
@@ -1095,7 +1095,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -1117,7 +1117,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           0
         </Text>

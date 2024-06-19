@@ -29,7 +29,7 @@ const fonts = {
 
 export type IOFontFamily = keyof typeof fonts;
 
-const weights = ["Light", "Regular", "Medium", "SemiBold", "Bold"] as const;
+const weights = ["Light", "Regular", "Medium", "Semibold", "Bold"] as const;
 export type IOFontWeight = (typeof weights)[number];
 
 const weightValues = ["300", "400", "500", "600", "700"] as const;
@@ -43,7 +43,7 @@ export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
   Medium: "500",
-  SemiBold: "600",
+  Semibold: "600",
   Bold: "700"
 };
 
@@ -58,7 +58,7 @@ export const fontWeightsMap: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
   Medium: "500",
-  SemiBold: "600",
+  Semibold: "600",
   Bold: "700"
 };
 

@@ -6,7 +6,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type HeroProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -14,13 +14,13 @@ type HeroProps = ExternalTypographyProps<
 
 export const heroFontSize = 32;
 export const heroLineHeight = 48;
-const font: FontFamily = "ReadexPro";
+const fontName: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFont: FontFamily = "TitilliumSansPro";
-const legacyWeight: AllowedWeight = "SemiBold";
+const legacyWeight: AllowedWeight = "Semibold";
 const legacyHeroFontSize = 35;
 const legacyHeroLineHeight = 49;
 
@@ -35,7 +35,7 @@ export const Hero = React.forwardRef<View, HeroProps>((props, ref) => {
       ...props,
       defaultWeight: isExperimental ? defaultWeight : legacyWeight,
       defaultColor,
-      font: isExperimental ? font : legacyFont,
+      font: isExperimental ? fontName : legacyFont,
       fontStyle: {
         fontSize: isExperimental ? heroFontSize : legacyHeroFontSize,
         lineHeight: isExperimental ? heroLineHeight : legacyHeroLineHeight

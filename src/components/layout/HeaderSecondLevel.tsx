@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     ...makeFontStyleObject("Regular", false, "ReadexPro")
   },
   headerTitleLegacyFont: {
-    ...makeFontStyleObject("SemiBold", false, "TitilliumSansPro")
+    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 
