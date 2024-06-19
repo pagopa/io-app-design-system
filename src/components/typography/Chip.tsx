@@ -6,7 +6,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular">;
 
 type ChipProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>

@@ -7,7 +7,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 export type ButtonTextAllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular" | "Bold">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular" | "Bold">;
 
 type ButtonTextProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, ButtonTextAllowedColors>

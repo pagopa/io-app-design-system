@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 const SecretValue = () => (
   <BaseTypography
     font="DMMono"
-    weight="SemiBold"
+    weight="Semibold"
     color="bluegreyDark"
     fontStyle={{ fontSize: 22, lineHeight: 33 }}
     accessible={false}

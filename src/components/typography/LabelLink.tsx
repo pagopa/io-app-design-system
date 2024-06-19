@@ -12,7 +12,7 @@ import {
 } from "./common";
 
 type AllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold">;
 type AllowedFontSize = { fontSize?: FontSize };
 
 type LinkProps = ExternalTypographyProps<
@@ -24,7 +24,7 @@ const font: IOFontFamily = "TitilliumSansPro";
 
 export const linkLegacyDefaultColor: AllowedColors = "blue";
 export const linkDefaultColor: AllowedColors = "blueIO-500";
-export const linkDefaultWeight: AllowedWeight = "SemiBold";
+export const linkDefaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `Link` typographic style

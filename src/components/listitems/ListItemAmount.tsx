@@ -78,7 +78,7 @@ export const ListItemAmount = ({
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         <H3
-          weight={"SemiBold"}
+          weight={"Semibold"}
           color={"black"}
           {...valueElementProps}
           accessibilityLabel={`${listItemAccessibilityLabel}; ${

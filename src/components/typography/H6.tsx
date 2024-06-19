@@ -7,7 +7,7 @@ import { ExternalTypographyProps, TypographyProps } from "./common";
 
 // when the weight is bold, only these color are allowed
 type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type H6Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -23,7 +23,7 @@ const fontName: FontFamily = "ReadexPro";
 const legacyFontSize = 18;
 const legacyLineHeight = 25;
 const legacyFontName: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `H6` typographic style

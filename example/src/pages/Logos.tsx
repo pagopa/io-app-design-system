@@ -51,7 +51,7 @@ export const Logos = () => {
     <Screen>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 12,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -65,7 +65,7 @@ export const Logos = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Payment Networks (Small)
@@ -74,7 +74,7 @@ export const Logos = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Payment Networks (Big)
@@ -83,7 +83,7 @@ export const Logos = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Payment Networks (Card)

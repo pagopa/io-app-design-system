@@ -6,7 +6,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type H1Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -14,13 +14,13 @@ type H1Props = ExternalTypographyProps<
 
 export const h1FontSize = 28;
 export const h1LineHeight = 42;
-const font: FontFamily = "ReadexPro";
+const fontName: FontFamily = "ReadexPro";
 const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFont: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 const legacyH1FontSize = 31;
 const legacyH1LineHeight = 43;
 
@@ -35,7 +35,7 @@ export const H1 = React.forwardRef<View, H1Props>((props, ref) => {
       ...props,
       defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
       defaultColor,
-      font: isExperimental ? font : legacyFont,
+      font: isExperimental ? fontName : legacyFont,
       fontStyle: {
         fontSize: isExperimental ? h1FontSize : legacyH1FontSize,
         lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight

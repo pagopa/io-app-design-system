@@ -6,7 +6,7 @@ import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type H4Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -21,7 +21,7 @@ const defaultWeight: AllowedWeight = "Regular";
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultColor: AllowedColors = "bluegreyDark";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 const legacyH4FontSize = 22;
 
 /**

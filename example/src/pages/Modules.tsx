@@ -304,7 +304,7 @@ const Modules = () => {
       />
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleIDP
@@ -312,7 +312,7 @@ const Modules = () => {
       {renderModuleIDP()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModulePaymentNotice
@@ -320,7 +320,7 @@ const Modules = () => {
       {renderModulePaymentNotice()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleCheckout
@@ -328,7 +328,7 @@ const Modules = () => {
       {renderModuleCheckout()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleAttachment
@@ -336,7 +336,7 @@ const Modules = () => {
       {renderModuleAttachment()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleCredential
@@ -344,7 +344,7 @@ const Modules = () => {
       {renderModuleCredential()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleNavigation

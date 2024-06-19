@@ -103,7 +103,7 @@ const ModulePaymentNoticeContent = ({
             {subtitle}
           </LabelSmallAlt>
         ) : (
-          <LabelSmall weight="SemiBold" color={"bluegrey"} numberOfLines={2}>
+          <LabelSmall weight="Semibold" color={"bluegrey"} numberOfLines={2}>
             {subtitle}
           </LabelSmall>
         )}

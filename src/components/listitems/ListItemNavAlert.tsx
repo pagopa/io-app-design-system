@@ -58,7 +58,7 @@ export const ListItemNavAlert = ({
       {description && (
         <>
           {typeof description === "string" ? (
-            <LabelSmall weight="SemiBold" color={theme.errorText}>
+            <LabelSmall weight="Semibold" color={theme.errorText}>
               {description}
             </LabelSmall>
           ) : (

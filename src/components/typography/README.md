@@ -2,11 +2,11 @@
 
 ## Handling font files
 
-The application uses the font _Titillium Sans Pro_. Fonts are handled differently than Android and iOS. To use the font, `TitilliumSansPro-SemiBold` example, you must apply the following properties for Android:
+The application uses the font _Titillium Sans Pro_. Fonts are handled differently than Android and iOS. To use the font, `TitilliumSansPro-Semibold` example, you must apply the following properties for Android:
 
 ```css
 {
-  fontFamily: 'TitilliumSansPro-SemiBold'
+  fontFamily: 'TitilliumSansPro-Semibold'
 }
 ```
 

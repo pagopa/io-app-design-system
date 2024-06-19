@@ -77,7 +77,7 @@ export const Pictograms = () => {
     <Screen>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -104,7 +104,7 @@ export const Pictograms = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -131,7 +131,7 @@ export const Pictograms = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -156,7 +156,7 @@ export const Pictograms = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -202,7 +202,7 @@ export const Pictograms = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
