@@ -170,8 +170,12 @@ import IconStarFilled from "./svg/IconStarFilled";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
+import IconSystemBiometricRecognitionOS from "./svg/IconSystemBiometricRecognitionOS";
 import IconSystemLocationiOS from "./svg/IconSystemLocationiOS";
+import IconSystemNFC from "./svg/IconSystemNFC";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
+import IconSystemPasswordAndroid from "./svg/IconSystemPasswordAndroid";
+import IconSystemPasswordiOS from "./svg/IconSystemPasswordiOS";
 import IconSystemPermissionsAndroid from "./svg/IconSystemPermissionsAndroid";
 import IconSystemPhotosiOS from "./svg/IconSystemPhotosiOS";
 import IconSystemPrivacyiOS from "./svg/IconSystemPrivacyiOS";
@@ -379,7 +383,11 @@ export const IOIcons = {
   systemPermissionsAndroid: IconSystemPermissionsAndroid,
   systemLocationiOS: IconSystemLocationiOS,
   systemPhotosiOS: IconSystemPhotosiOS,
-  systemPrivacyiOS: IconSystemPrivacyiOS
+  systemPrivacyiOS: IconSystemPrivacyiOS,
+  systemBiometricRecognitionOS: IconSystemBiometricRecognitionOS,
+  systemNFC: IconSystemNFC,
+  systemPasswordAndroid: IconSystemPasswordAndroid,
+  systemPasswordiOS: IconSystemPasswordiOS
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
@@ -638,7 +646,11 @@ const {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } = IOIcons;
 
 export const IOSystemIcons = {
@@ -650,7 +662,11 @@ export const IOSystemIcons = {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } as const;
 
 export type IOSystemIcons = keyof typeof IOSystemIcons;
