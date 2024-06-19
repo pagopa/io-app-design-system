@@ -2060,7 +2060,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
           allowFontScaling={false}
           color="black"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2083,7 +2083,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           testValue
         </Text>
@@ -2201,7 +2201,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           allowFontScaling={false}
           color="blue"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2224,7 +2224,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           testValue
         </Text>
@@ -2379,7 +2379,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           allowFontScaling={false}
           color="black"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2401,7 +2401,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           testValue
         </Text>
@@ -2616,7 +2616,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           allowFontScaling={false}
           color="black"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2638,7 +2638,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           testValue
         </Text>
@@ -2793,7 +2793,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           allowFontScaling={false}
           color="black"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2816,7 +2816,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           label
         </Text>
@@ -2950,7 +2950,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           allowFontScaling={false}
           color="blueIO-500"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -2972,7 +2972,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           € 1.000,00
         </Text>
@@ -3209,7 +3209,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           allowFontScaling={false}
           color="black"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -3232,7 +3232,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           label
         </Text>
@@ -3256,7 +3256,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           allowFontScaling={false}
           color="blueIO-500"
           defaultColor="black"
-          defaultWeight="SemiBold"
+          defaultWeight="Semibold"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -3278,7 +3278,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           € 1.000,00
         </Text>
