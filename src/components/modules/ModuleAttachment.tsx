@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     borderRadius: 8,
-    borderColor: IOColors.bluegreyLight,
-    backgroundColor: IOColors.white,
     borderStyle: "solid",
     borderWidth: 1
   },
@@ -154,6 +152,7 @@ export const ModuleAttachment = ({
   testID,
   title
 }: ModuleAttachmentProps) => {
+  const theme = useIOTheme();
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
@@ -225,7 +224,11 @@ export const ModuleAttachment = ({
         style={[
           styles.button,
           animatedStyle,
-          { opacity: disabled ? DISABLED_OPACITY : 1 }
+          {
+            opacity: disabled ? DISABLED_OPACITY : 1,
+            borderColor: IOColors[theme["cardBorder-default"]],
+            backgroundColor: IOColors[theme["appBackground-primary"]]
+          }
         ]}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
@@ -242,17 +245,27 @@ export const ModuleAttachment = ({
 
 const SkeletonComponent = ({
   loadingAccessibilityLabel
-}: SkeletonComponentProps) => (
-  <View
-    style={styles.button}
-    accessible={true}
-    accessibilityState={{ busy: true }}
-    accessibilityLabel={loadingAccessibilityLabel}
-  >
-    <View style={styles.innerContent}>
-      <Placeholder.Box animate="fade" radius={8} width={107} height={22} />
-      <VSpacer size={4} />
-      <Placeholder.Box animate="fade" radius={8} width={44} height={22} />
+}: SkeletonComponentProps) => {
+  const theme = useIOTheme();
+
+  return (
+    <View
+      style={[
+        styles.button,
+        {
+          borderColor: IOColors[theme["cardBorder-default"]],
+          backgroundColor: IOColors[theme["appBackground-primary"]]
+        }
+      ]}
+      accessible={true}
+      accessibilityState={{ busy: true }}
+      accessibilityLabel={loadingAccessibilityLabel}
+    >
+      <View style={styles.innerContent}>
+        <Placeholder.Box animate="fade" radius={8} width={107} height={22} />
+        <VSpacer size={4} />
+        <Placeholder.Box animate="fade" radius={8} width={44} height={22} />
+      </View>
     </View>
-  </View>
-);
+  );
+};
