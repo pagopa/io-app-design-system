@@ -1,6 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme } from "../../core";
+import {
+  IOColors,
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -42,10 +47,15 @@ const labelDefaultcolor = "blue";
  * `LabelSmall` typographic style
  */
 export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
-  (props, ref) =>
-    useTypographyFactory<AllowedWeight, AllowedColors>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
+
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "footnote" /* iOS only */,
         defaultWeight: labelDefaultWeight,
         defaultColor: labelDefaultcolor,
         font,
@@ -59,5 +69,6 @@ export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
         }
       },
       ref
-    )
+    );
+  }
 );
