@@ -85,6 +85,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -92,6 +93,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -174,6 +176,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -181,6 +184,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -263,6 +267,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -270,6 +275,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -375,6 +381,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -382,6 +389,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -464,6 +472,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -471,6 +480,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -553,6 +563,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -560,6 +571,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -665,6 +677,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -672,6 +685,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -754,6 +768,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -761,6 +776,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -843,6 +859,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -850,6 +867,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
@@ -1096,6 +1114,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           color="white"
           defaultColor="bluegreyDark"
           defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
           font="TitilliumSansPro"
           fontStyle={
             {
@@ -1103,6 +1122,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               "lineHeight": 34,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {

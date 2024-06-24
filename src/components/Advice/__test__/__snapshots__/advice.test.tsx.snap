@@ -84,10 +84,11 @@ exports[`Test Advice Components - Experimental Enabled Advice Snapshot 1`] = `
     }
   />
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="bluegrey"
     defaultColor="bluegrey"
     defaultWeight="Regular"
+    dynamicTypeRamp="body"
     font="TitilliumSansPro"
     fontStyle={
       {
@@ -95,6 +96,7 @@ exports[`Test Advice Components - Experimental Enabled Advice Snapshot 1`] = `
         "lineHeight": 24,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -204,6 +206,7 @@ exports[`Test Advice Components Advice Snapshot 1`] = `
     color="bluegrey"
     defaultColor="bluegrey"
     defaultWeight="Regular"
+    dynamicTypeRamp="body"
     font="TitilliumSansPro"
     fontStyle={
       {
@@ -211,6 +214,7 @@ exports[`Test Advice Components Advice Snapshot 1`] = `
         "lineHeight": 24,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
