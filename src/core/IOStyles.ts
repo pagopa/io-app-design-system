@@ -300,7 +300,6 @@ export const IOModuleStyles = StyleSheet.create({
     borderColor: IOColors["grey-100"],
     borderRadius: IOModuleIDPRadius,
     borderCurve: "continuous",
-    backgroundColor: IOColors.white,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
