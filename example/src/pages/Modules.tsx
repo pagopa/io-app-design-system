@@ -163,6 +163,16 @@ const renderModuleCheckout = () => (
         onPress={modulePress}
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no CTA, with image">
+      <ModuleCheckout
+        image={{
+          uri: "https://assets.cdn.platform.pagopa.it/apm/bancomatpay.png"
+        }}
+        title="3,50 $"
+        subtitle="Piú o meno"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
       <ModuleCheckout isLoading ctaText="Loading" />
     </ComponentViewerBox>

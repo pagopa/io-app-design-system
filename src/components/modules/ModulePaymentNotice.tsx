@@ -3,8 +3,6 @@ import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
-  IOModuleStyles,
-  IOStyles,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -14,8 +12,8 @@ import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall, LabelSmallAlt } from "../typography";
+import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
-import { ModuleSkeleton } from "./ModuleSkeleton";
 
 export type PaymentNoticeStatus =
   | "default"
@@ -161,7 +159,7 @@ export const ModulePaymentNotice = ({
 };
 
 const ModulePaymentNoticeSkeleton = () => (
-  <ModuleSkeleton
+  <ModuleStatic
     startBlock={
       <React.Fragment>
         {/* Rewrite it using HStack and VStack */}

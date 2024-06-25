@@ -8,16 +8,15 @@ import {
 } from "react-native";
 import Placeholder from "rn-placeholder";
 import {
-  IOModuleStyles,
   IOSelectionListItemVisualParams,
   IOSpacingScale,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
+import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
 type LoadingProps = {
@@ -45,7 +44,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const theme = useIOTheme();
 
   if (props.isLoading) {
-    return <LoadingVersion {...props} />;
+    return <ModuleCheckoutSkeleton />;
   }
 
   const { paymentLogo, image } = props;
@@ -71,7 +70,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     <>
       {imageComponent}
       <View style={styles.content}>
-        <H6>{props.title}</H6>
+        <H6 color={theme["textBody-default"]}>{props.title}</H6>
         {props.subtitle && (
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
             {props.subtitle}
@@ -95,11 +94,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     );
   }
 
-  return (
-    <View style={IOModuleStyles.button}>
-      <ModuleBaseContent />
-    </View>
-  );
+  return <ModuleStatic startBlock={<ModuleBaseContent />} />;
 };
 
 const ModuleAction = ({ ctaText }: Pick<ModuleCheckoutProps, "ctaText">) => (
@@ -112,19 +107,24 @@ const ModuleAction = ({ ctaText }: Pick<ModuleCheckoutProps, "ctaText">) => (
   </View>
 );
 
-const LoadingVersion = ({ ctaText }: LoadingProps) => (
-  <View style={IOModuleStyles.button}>
-    <View style={[IOStyles.row, IOStyles.alignCenter]}>
-      <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
-      <HSpacer size={8} />
-      <View>
-        <Placeholder.Box animate="fade" radius={8} height={20} width={170} />
-        <VSpacer size={8} />
-        <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
-      </View>
-    </View>
-    <ModuleAction ctaText={ctaText} />
-  </View>
+const ModuleCheckoutSkeleton = () => (
+  <ModuleStatic
+    startBlock={
+      <React.Fragment>
+        {/* Rewrite it using HStack and VStack */}
+        <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
+        <HSpacer size={8} />
+        <View>
+          <Placeholder.Box animate="fade" radius={8} height={20} width={170} />
+          <VSpacer size={8} />
+          <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
+        </View>
+      </React.Fragment>
+    }
+    endBlock={
+      <Placeholder.Box animate="fade" width={64} height={16} radius={8} />
+    }
+  />
 );
 
 const imageMarginRight: IOSpacingScale = 12;

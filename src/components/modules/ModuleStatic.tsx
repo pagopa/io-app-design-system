@@ -2,15 +2,12 @@ import * as React from "react";
 import { View } from "react-native";
 import { IOColors, IOModuleStyles, useIOTheme } from "../../core";
 
-type ModuleSkeletonProps = {
+type ModuleStaticProps = {
   startBlock: React.ReactNode;
   endBlock?: React.ReactNode;
 };
 
-export const ModuleSkeleton = ({
-  startBlock,
-  endBlock
-}: ModuleSkeletonProps) => {
+export const ModuleStatic = ({ startBlock, endBlock }: ModuleStaticProps) => {
   const theme = useIOTheme();
 
   return (

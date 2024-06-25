@@ -18,7 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LabelSmallAlt } from "../typography";
-import { ModuleSkeleton } from "./ModuleSkeleton";
+import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -90,7 +90,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
 };
 
 const ModuleCredentialSkeleton = () => (
-  <ModuleSkeleton
+  <ModuleStatic
     startBlock={
       <>
         {/* Rewrite it using HStack and VStack, when 0.72 will be used in the main app:
