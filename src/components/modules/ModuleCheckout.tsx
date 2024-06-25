@@ -21,7 +21,6 @@ import { PressableModuleBase } from "./PressableModuleBase";
 
 type LoadingProps = {
   isLoading: true;
-  ctaText?: string;
 };
 
 type ImageProps =
@@ -47,7 +46,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     return <ModuleCheckoutSkeleton />;
   }
 
-  const { paymentLogo, image } = props;
+  const { paymentLogo, image, title, subtitle, ctaText, onPress } = props;
 
   const imageComponent = (
     <>
@@ -70,42 +69,30 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     <>
       {imageComponent}
       <View style={styles.content}>
-        <H6 color={theme["textBody-default"]}>{props.title}</H6>
-        {props.subtitle && (
+        <H6 color={theme["textBody-default"]}>{title}</H6>
+        {subtitle && (
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {props.subtitle}
+            {subtitle}
           </LabelSmall>
         )}
       </View>
     </>
   );
 
-  if (props.ctaText) {
-    return (
-      <PressableModuleBase onPress={props.onPress}>
-        <ModuleBaseContent />
-        {props.ctaText && (
-          <>
-            <HSpacer size={4} />
-            <ModuleAction ctaText={props.ctaText} />
-          </>
-        )}
-      </PressableModuleBase>
-    );
-  }
-
-  return <ModuleStatic startBlock={<ModuleBaseContent />} />;
+  return ctaText ? (
+    <PressableModuleBase onPress={onPress}>
+      <ModuleBaseContent />
+      <HSpacer size={4} />
+      <View pointerEvents="none">
+        <ButtonLink label={ctaText} onPress={() => null} />
+      </View>
+    </PressableModuleBase>
+  ) : (
+    <ModuleStatic>
+      <ModuleBaseContent />
+    </ModuleStatic>
+  );
 };
-
-const ModuleAction = ({ ctaText }: Pick<ModuleCheckoutProps, "ctaText">) => (
-  <View pointerEvents="none">
-    <ButtonLink
-      label={ctaText ?? ""}
-      accessibilityLabel={ctaText}
-      onPress={() => null}
-    />
-  </View>
-);
 
 const ModuleCheckoutSkeleton = () => (
   <ModuleStatic

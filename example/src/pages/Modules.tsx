@@ -174,7 +174,7 @@ const renderModuleCheckout = () => (
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
-      <ModuleCheckout isLoading ctaText="Loading" />
+      <ModuleCheckout isLoading />
     </ComponentViewerBox>
   </>
 );
@@ -183,7 +183,7 @@ const renderModuleAttachment = () => (
   <>
     <ComponentViewerBox name="ModuleAttachment, pdf variant">
       <ModuleAttachment
-        title="Documento.pdf"
+        title="Documento dal nome molto molto molto lungo.pdf"
         format="pdf"
         onPress={modulePress}
       />
