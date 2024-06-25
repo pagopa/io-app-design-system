@@ -27,7 +27,6 @@ export const Primary: Story = {
     title: "Title",
     format: "pdf",
     accessibilityLabel: "accessibilityLabel",
-    loadingAccessibilityLabel: "loadingAccessibilityLabel",
     isFetching: false,
     fetchingAccessibilityLabel: "fetchingAccessibilityLabel",
     disabled: false,
