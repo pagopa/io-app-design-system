@@ -1,39 +1,20 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  PressableProps,
-  StyleSheet,
-  View
-} from "react-native";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import { GestureResponderEvent, PressableProps, View } from "react-native";
 import Placeholder from "rn-placeholder";
-import {
-  IOColors,
-  IOListItemVisualParams,
-  IOScaleValues,
-  IOSpringValues,
-  useIOTheme
-} from "../../core";
+import { IOListItemVisualParams, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { VSpacer } from "../spacer";
 import { LabelSmallAlt } from "../typography";
+import { ModuleStatic } from "./ModuleStatic";
+import { PressableModuleBase } from "./PressableModuleBase";
 
 type PartialProps = WithTestID<{
   title: string;
   format: "doc" | "pdf";
   isLoading?: boolean;
-  loadingAccessibilityLabel?: string;
   isFetching?: boolean;
   fetchingAccessibilityLabel?: string;
   onPress: (event: GestureResponderEvent) => void;
@@ -45,35 +26,6 @@ export type ModuleAttachmentProps = PartialProps &
     "onPress" | "accessibilityLabel" | "disabled" | "testID"
   >;
 
-type SkeletonComponentProps = {
-  loadingAccessibilityLabel?: string;
-};
-
-const styles = StyleSheet.create({
-  button: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderRadius: 8,
-    borderColor: IOColors.bluegreyLight,
-    backgroundColor: IOColors.white,
-    borderStyle: "solid",
-    borderWidth: 1
-  },
-  innerContent: {
-    alignItems: "flex-start",
-    flex: 1,
-    flexDirection: "column"
-  },
-  rightSection: {
-    marginLeft: IOListItemVisualParams.iconMargin,
-    alignItems: "center"
-  }
-});
-
-const DISABLED_OPACITY = 0.5;
-
 const ModuleAttachmentContent = ({
   isFetching,
   format,
@@ -84,11 +36,13 @@ const ModuleAttachmentContent = ({
   "isFetching" | "format" | "title" | "testID"
 >) => {
   const theme = useIOTheme();
+
   const IconOrActivityIndicatorComponent = () => {
     if (isFetching) {
       const activityIndicatorTestId = testID
         ? `${testID}_activityIndicator`
         : undefined;
+
       return (
         <LoadingSpinner
           testID={activityIndicatorTestId}
@@ -108,9 +62,9 @@ const ModuleAttachmentContent = ({
 
   return (
     <>
-      <View style={styles.innerContent}>
+      <View style={{ alignItems: "flex-start", flexShrink: 1 }}>
         <LabelSmallAlt
-          numberOfLines={1}
+          numberOfLines={2}
           color={theme["interactiveElem-default"]}
         >
           {title}
@@ -118,7 +72,7 @@ const ModuleAttachmentContent = ({
         <VSpacer size={4} />
         <Badge text={format.toUpperCase()} variant="default" />
       </View>
-      <View style={styles.rightSection}>
+      <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
         <IconOrActivityIndicatorComponent />
       </View>
     </>
@@ -135,7 +89,6 @@ const ModuleAttachmentContent = ({
  * @param {string}   format - Badge content. PDF or DOC.
  * @param {boolean}  isLoading - If true, displays a skeleton loading component.
  * @param {boolean}  isFetching - If true, displays an activity indicator.
- * @param {string}   loadingAccessibilityLabel - Optional accessibility label to use during loading.
  * @param {function} onPress - The function to be executed when the item is pressed.
  * @param {string}   testID - The test ID for testing purposes.
  * @param {string}   title - The title text to display.
@@ -148,44 +101,10 @@ export const ModuleAttachment = ({
   format,
   isLoading = false,
   isFetching = false,
-  loadingAccessibilityLabel,
   onPress,
   testID,
   title
 }: ModuleAttachmentProps) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
-
-  const scaleTraversed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      scaleTraversed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
-
   const handleOnPress = useCallback(
     (event: GestureResponderEvent) => {
       if (isFetching) {
@@ -197,61 +116,46 @@ export const ModuleAttachment = ({
   );
 
   if (isLoading) {
-    return (
-      <SkeletonComponent
-        loadingAccessibilityLabel={loadingAccessibilityLabel}
-      />
-    );
+    return <ModuleAttachmentSkeleton />;
   }
 
   const pressableAccessibilityLabel =
     (isFetching && !!fetchingAccessibilityLabel
       ? fetchingAccessibilityLabel
       : accessibilityLabel) ?? title;
-  return (
-    <Pressable
+
+  return disabled || isFetching ? (
+    <ModuleStatic disabled={disabled}>
+      <ModuleAttachmentContent
+        isFetching={isFetching}
+        title={title}
+        format={format}
+      />
+    </ModuleStatic>
+  ) : (
+    <PressableModuleBase
       testID={testID}
       onPress={handleOnPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      accessible={true}
-      accessibilityRole={"button"}
       accessibilityHint={format}
       accessibilityLabel={pressableAccessibilityLabel}
-      disabled={disabled || isFetching}
     >
-      <Animated.View
-        style={[
-          styles.button,
-          animatedStyle,
-          { opacity: disabled ? DISABLED_OPACITY : 1 }
-        ]}
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-      >
-        <ModuleAttachmentContent
-          isFetching={isFetching}
-          title={title}
-          format={format}
-        />
-      </Animated.View>
-    </Pressable>
+      <ModuleAttachmentContent
+        isFetching={isFetching}
+        title={title}
+        format={format}
+      />
+    </PressableModuleBase>
   );
 };
 
-const SkeletonComponent = ({
-  loadingAccessibilityLabel
-}: SkeletonComponentProps) => (
-  <View
-    style={styles.button}
-    accessible={true}
-    accessibilityState={{ busy: true }}
-    accessibilityLabel={loadingAccessibilityLabel}
-  >
-    <View style={styles.innerContent}>
-      <Placeholder.Box animate="fade" radius={8} width={107} height={22} />
-      <VSpacer size={4} />
-      <Placeholder.Box animate="fade" radius={8} width={44} height={22} />
-    </View>
-  </View>
+const ModuleAttachmentSkeleton = () => (
+  <ModuleStatic
+    startBlock={
+      <View>
+        <Placeholder.Box animate="fade" radius={8} width={107} height={16} />
+        <VSpacer size={4} />
+        <Placeholder.Box animate="fade" radius={16} width={44} height={20} />
+      </View>
+    }
+  />
 );
