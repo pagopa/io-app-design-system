@@ -102,6 +102,18 @@ const renderModulePaymentNotice = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModulePaymentNotice, default variant, loading">
+      <View>
+        <ModulePaymentNotice
+          isLoading
+          onPress={mockFn}
+          paymentNoticeStatus="default"
+          paymentNoticeAmount="100,00 €"
+          title="Codice avviso"
+          subtitle="302012131232131"
+        />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
