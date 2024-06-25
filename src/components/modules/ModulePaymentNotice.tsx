@@ -171,7 +171,7 @@ const ModulePaymentNoticeSkeleton = () => (
       </React.Fragment>
     }
     endBlock={
-      <Placeholder.Box animate="fade" radius={8} width={62} height={16} />
+      <Placeholder.Box animate="fade" radius={16} width={62} height={24} />
     }
   />
 );

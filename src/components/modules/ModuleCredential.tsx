@@ -106,7 +106,7 @@ const ModuleCredentialSkeleton = () => (
       </>
     }
     endBlock={
-      <Placeholder.Box animate="fade" width={64} height={24} radius={8} />
+      <Placeholder.Box animate="fade" width={64} height={24} radius={16} />
     }
   />
 );
