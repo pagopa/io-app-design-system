@@ -5,7 +5,8 @@ import {
   IOListItemVisualParams,
   IOModuleStyles,
   IOStyles,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { getAccessibleAmountText } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
@@ -14,6 +15,7 @@ import { Icon } from "../icons";
 import { VSpacer } from "../spacer";
 import { H6, LabelSmall, LabelSmallAlt } from "../typography";
 import { PressableModuleBase } from "./PressableModuleBase";
+import { ModuleSkeleton } from "./ModuleSkeleton";
 
 export type PaymentNoticeStatus =
   | "default"
@@ -61,6 +63,7 @@ const ModulePaymentNoticeContent = ({
   paymentNoticeAmount,
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
+  const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
 
   const AmountOrBadgeComponent = () => {
@@ -94,18 +97,21 @@ const ModulePaymentNoticeContent = ({
     <>
       <View style={{ flexGrow: 1, flexShrink: 1, paddingEnd: 8 }}>
         {title && (
-          <LabelSmall numberOfLines={1} weight="Regular" color="bluegrey">
+          <LabelSmall
+            numberOfLines={1}
+            weight="Regular"
+            color={theme["textBody-tertiary"]}
+          >
             {title}
           </LabelSmall>
         )}
-        {isExperimental ? (
-          <LabelSmallAlt color={"blueIO-500"} numberOfLines={2}>
+        {subtitle && (
+          <LabelSmallAlt
+            color={theme["interactiveElem-default"]}
+            numberOfLines={2}
+          >
             {subtitle}
           </LabelSmallAlt>
-        ) : (
-          <LabelSmall weight="Semibold" color={"bluegrey"} numberOfLines={2}>
-            {subtitle}
-          </LabelSmall>
         )}
       </View>
       <View style={styles.rightSection}>
@@ -140,7 +146,7 @@ export const ModulePaymentNotice = ({
   ...rest
 }: ModulePaymentNoticeProps) => {
   if (isLoading) {
-    return <SkeletonComponent />;
+    return <ModulePaymentNoticeSkeleton />;
   }
 
   return (
@@ -154,15 +160,20 @@ export const ModulePaymentNotice = ({
   );
 };
 
-const SkeletonComponent = () => (
-  <View style={IOModuleStyles.button} accessible={false}>
-    <View style={IOStyles.flex}>
-      <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
-      <VSpacer size={4} />
-      <Placeholder.Box animate="fade" radius={8} width={121} height={13} />
-    </View>
-    <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
+const ModulePaymentNoticeSkeleton = () => (
+  <ModuleSkeleton
+    startBlock={
+      <React.Fragment>
+        {/* Rewrite it using HStack and VStack */}
+        <View>
+          <Placeholder.Box animate="fade" radius={8} width={121} height={13} />
+          <VSpacer size={8} />
+          <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
+        </View>
+      </React.Fragment>
+    }
+    endBlock={
       <Placeholder.Box animate="fade" radius={8} width={62} height={16} />
-    </View>
-  </View>
+    }
+  />
 );

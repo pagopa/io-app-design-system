@@ -9,7 +9,6 @@ import {
 import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
-  IOModuleStyles,
   IOSelectionListItemVisualParams,
   IOStyles,
   IOVisualCostants,
@@ -19,6 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LabelSmallAlt } from "../typography";
+import { ModuleSkeleton } from "./ModuleSkeleton";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -90,15 +90,25 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
 };
 
 const ModuleCredentialSkeleton = () => (
-  <View style={IOModuleStyles.button}>
-    <View style={[IOStyles.row, IOStyles.alignCenter]}>
-      <View style={{ marginRight: IOVisualCostants.iconMargin }}>
-        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-      </View>
-      <Placeholder.Box animate="fade" width={96} height={19} radius={8} />
-    </View>
-    <Placeholder.Box animate="fade" width={64} height={22} radius={8} />
-  </View>
+  <ModuleSkeleton
+    startBlock={
+      <>
+        {/* Rewrite it using HStack and VStack, when 0.72 will be used in the main app:
+            <HStack alignItems="center" space={IOVisualCostants.iconMargin as IOSpacer}>
+              <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
+              <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
+            </HStack>
+      */}
+        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+          <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
+        </View>
+        <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
+      </>
+    }
+    endBlock={
+      <Placeholder.Box animate="fade" width={64} height={24} radius={8} />
+    }
+  />
 );
 
 const styles = StyleSheet.create({
