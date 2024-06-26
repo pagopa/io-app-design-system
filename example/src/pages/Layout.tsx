@@ -122,34 +122,20 @@ export const Layout = () => {
             }}
           >
             <VStack space={16}>
-              {[...Array(3)].map((_el, i) => (
-                <View
-                  key={`block-${i}`}
-                  style={{
-                    height: 32,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: IOColors[theme["appBackground-tertiary"]]
-                  }}
-                >
-                  <LabelSmall
-                    weight="Regular"
-                    color={theme["textBody-tertiary"]}
-                  >{`Block n.${i + 1}`}</LabelSmall>
-                </View>
-              ))}
-              <View
-                style={{
-                  height: 72,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: IOColors[theme["appBackground-tertiary"]]
-                }}
-              >
-                <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-                  Different height
-                </LabelSmall>
-              </View>
+              <VStackBlocks />
+            </VStack>
+          </View>
+        </ComponentViewerBox>
+
+        <ComponentViewerBox name="VStack, space 16, centered">
+          <View
+            style={{
+              alignSelf: "flex-start",
+              backgroundColor: IOColors[theme["appBackground-secondary"]]
+            }}
+          >
+            <VStack space={16} alignItems="center">
+              <VStackBlocks />
             </VStack>
           </View>
         </ComponentViewerBox>
@@ -161,35 +147,19 @@ export const Layout = () => {
             }}
           >
             <HStack space={16}>
-              {[...Array(3)].map((_el, i) => (
-                <View
-                  key={`block-${i}`}
-                  style={{
-                    width: 48,
-                    height: 48,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: IOColors[theme["appBackground-tertiary"]]
-                  }}
-                >
-                  <LabelSmall
-                    weight="Regular"
-                    color={theme["textBody-tertiary"]}
-                  >{`${i + 1}`}</LabelSmall>
-                </View>
-              ))}
-              <View
-                style={{
-                  flexGrow: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: IOColors[theme["appBackground-tertiary"]]
-                }}
-              >
-                <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-                  Growing block
-                </LabelSmall>
-              </View>
+              <HStackBlocks />
+            </HStack>
+          </View>
+        </ComponentViewerBox>
+
+        <ComponentViewerBox name="HStack, space 16, centered">
+          <View
+            style={{
+              backgroundColor: IOColors[theme["appBackground-secondary"]]
+            }}
+          >
+            <HStack space={16} alignItems="center">
+              <HStackBlocks />
             </HStack>
           </View>
         </ComponentViewerBox>
@@ -212,5 +182,82 @@ export const Layout = () => {
       <Divider />
       <VSpacer size={48} />
     </NoMarginScreen>
+  );
+};
+
+const VStackBlocks = () => {
+  const theme = useIOTheme();
+
+  return (
+    <>
+      {[...Array(3)].map((_el, i) => (
+        <View
+          key={`block-${i}`}
+          style={{
+            height: 32,
+            paddingHorizontal: 8,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: IOColors[theme["appBackground-tertiary"]]
+          }}
+        >
+          <LabelSmall
+            weight="Regular"
+            color={theme["textBody-tertiary"]}
+          >{`Block n.${i + 1}`}</LabelSmall>
+        </View>
+      ))}
+      <View
+        style={{
+          height: 72,
+          paddingHorizontal: 16,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: IOColors[theme["appBackground-tertiary"]]
+        }}
+      >
+        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          Different height
+        </LabelSmall>
+      </View>
+    </>
+  );
+};
+
+const HStackBlocks = () => {
+  const theme = useIOTheme();
+
+  return (
+    <>
+      {[...Array(3)].map((_el, i) => (
+        <View
+          key={`block-${i}`}
+          style={{
+            width: 48,
+            paddingVertical: 8,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: IOColors[theme["appBackground-tertiary"]]
+          }}
+        >
+          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>{`${
+            i + 1
+          }`}</LabelSmall>
+        </View>
+      ))}
+      <View
+        style={{
+          flexGrow: 1,
+          paddingVertical: 16,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: IOColors[theme["appBackground-tertiary"]]
+        }}
+      >
+        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          Growing block
+        </LabelSmall>
+      </View>
+    </>
   );
 };
