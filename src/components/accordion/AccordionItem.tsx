@@ -11,7 +11,12 @@ import Animated, {
   useAnimatedStyle,
   withSpring
 } from "react-native-reanimated";
-import { IOAccordionRadius, IOStyles, type IOSpacingScale } from "../../core";
+import {
+  IOAccordionRadius,
+  IOStyles,
+  useIOTheme,
+  type IOSpacingScale
+} from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -32,8 +37,6 @@ type AccordionBody = {
 const accordionBodySpacing: IOSpacingScale = 16;
 const accordionIconMargin: IOSpacingScale = 12;
 const accordionChevronMargin: IOSpacingScale = 8;
-const accordionBorder: IOColors = "grey-200";
-const accordionBackground: IOColors = "white";
 
 // Icon size
 const iconSize: IOIconSizeScale = 24;
@@ -73,7 +76,13 @@ export const AccordionBody = ({ children, expanded }: AccordionBody) => {
 };
 
 export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
+  const theme = useIOTheme();
   const [expanded, setExpanded] = useState(false);
+
+  // Visual attributes
+  const accordionBackground: IOColors = theme["appBackground-primary"];
+  const accordionBorder: IOColors = theme["cardBorder-default"];
+  const accordionIconColor: IOColors = theme["icon-default"];
 
   const onItemPress = () => {
     setExpanded(!expanded);
@@ -93,7 +102,15 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
   );
 
   return (
-    <View style={styles.accordionWrapper}>
+    <View
+      style={[
+        styles.accordionWrapper,
+        {
+          backgroundColor: IOColors[accordionBackground],
+          borderColor: IOColors[accordionBorder]
+        }
+      ]}
+    >
       <TouchableWithoutFeedback
         accessible={true}
         accessibilityRole="button"
@@ -113,15 +130,18 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
           >
             {icon && (
               <View style={{ marginRight: accordionIconMargin }}>
-                <Icon name={icon} size={iconSize} color="black" />
+                <Icon name={icon} size={iconSize} color={accordionIconColor} />
               </View>
             )}
             <View style={{ flexShrink: 1 }}>
-              <H6 color="black">{title}</H6>
+              <H6 color={theme["textBody-default"]}>{title}</H6>
             </View>
           </View>
           <Animated.View style={animatedChevron}>
-            <Icon name="chevronBottom" color="blueIO-500" />
+            <Icon
+              name="chevronBottom"
+              color={theme["interactiveElem-default"]}
+            />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
@@ -156,11 +176,9 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
 
 const styles = StyleSheet.create({
   accordionWrapper: {
-    borderColor: IOColors[accordionBorder],
     borderWidth: 1,
     borderRadius: IOAccordionRadius,
-    borderCurve: "continuous",
-    backgroundColor: IOColors[accordionBackground]
+    borderCurve: "continuous"
   },
   accordionCollapsableContainer: {
     overflow: "hidden"
