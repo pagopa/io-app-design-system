@@ -317,7 +317,8 @@ export const IOThemeLight: IOTheme = {
 export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
   "appBackground-accent": "blue",
-  "interactiveElem-default": "blue"
+  "interactiveElem-default": "blue",
+  "pictogram-hands": "blue"
 };
 
 export const IOThemeDark: IOTheme = {
