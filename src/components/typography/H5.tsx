@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IOTheme } from "../../core";
+import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -21,10 +21,15 @@ const defaultWeight: AllowedWeight = "Semibold";
 /**
  * `H5` typographic style
  */
-export const H5 = React.forwardRef<View, H5Props>((props, ref) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>(
+export const H5 = React.forwardRef<View, H5Props>((props, ref) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "subheadline" /* iOS only */,
       defaultWeight,
       defaultColor,
       font,
@@ -36,5 +41,5 @@ export const H5 = React.forwardRef<View, H5Props>((props, ref) =>
       }
     },
     ref
-  )
-);
+  );
+});

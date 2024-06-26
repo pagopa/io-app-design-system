@@ -85,7 +85,12 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     return (
       <PressableModuleBase onPress={props.onPress}>
         <ModuleBaseContent />
-        {props.ctaText && <ModuleAction ctaText={props.ctaText} />}
+        {props.ctaText && (
+          <>
+            <HSpacer size={4} />
+            <ModuleAction ctaText={props.ctaText} />
+          </>
+        )}
       </PressableModuleBase>
     );
   }

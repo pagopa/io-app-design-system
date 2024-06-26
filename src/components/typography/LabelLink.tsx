@@ -1,6 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, type IOColors } from "../../core";
+import {
+  IOVisualCostants,
+  useIOExperimentalDesign,
+  type IOColors
+} from "../../core";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import {
@@ -36,6 +40,9 @@ export const LabelLink = React.forwardRef<View, LinkProps>((props, ref) => {
     {
       accessibilityRole: props.onPress ? "link" : undefined,
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "footnote" /* iOS only */,
       defaultWeight: linkDefaultWeight,
       defaultColor: isExperimental ? linkDefaultColor : linkLegacyDefaultColor,
       font,

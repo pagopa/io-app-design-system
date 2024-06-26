@@ -6,6 +6,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Regular"
+  dynamicTypeRamp="body"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -13,6 +14,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -39,6 +41,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Medium"
+  dynamicTypeRamp="body"
   font="DMMono"
   fontStyle={
     {
@@ -46,6 +49,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -78,6 +82,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       "fontSize": 16,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -103,6 +108,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="largeTitle"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -110,6 +116,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       "lineHeight": 43,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -136,6 +143,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
   color="white"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="largeTitle"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -143,6 +151,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       "lineHeight": 43,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -169,6 +178,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title1"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -176,6 +186,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       "lineHeight": 40,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -202,6 +213,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -209,6 +221,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
       "lineHeight": 34,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -235,6 +248,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -242,6 +256,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
       "lineHeight": 34,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -268,6 +283,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -275,6 +291,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
       "lineHeight": 34,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -301,6 +318,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -308,6 +326,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
       "lineHeight": 34,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -334,6 +353,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -341,6 +361,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
       "lineHeight": 34,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -367,6 +388,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -374,6 +396,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -400,6 +423,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   color="blue"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -407,6 +431,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -433,6 +458,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -440,6 +466,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -466,6 +493,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
   color="bluegreyDark"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -473,6 +501,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -499,6 +528,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   color="bluegrey"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -506,6 +536,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -532,6 +563,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
   color="bluegreyLight"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -539,6 +571,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -565,6 +598,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   color="white"
   defaultColor="bluegreyDark"
   defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -572,6 +606,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -598,6 +633,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -607,6 +643,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -635,6 +672,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
   color="bluegrey"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -644,6 +682,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -672,6 +711,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
   color="blue"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -681,6 +721,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -709,6 +750,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
   color="white"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -718,6 +760,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -746,6 +789,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Semibold"
+  dynamicTypeRamp="headline"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -753,6 +797,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       "lineHeight": 25,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -779,6 +824,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -786,6 +832,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -812,6 +859,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -819,6 +867,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -845,6 +894,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -852,6 +902,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -878,6 +929,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -885,6 +937,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -911,6 +964,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
   color="bluegrey"
   defaultColor="blue"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -918,6 +972,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -944,6 +999,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
   color="red"
   defaultColor="blue"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -951,6 +1007,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -977,6 +1034,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
   color="white"
   defaultColor="blue"
   defaultWeight="Bold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -984,6 +1042,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -1010,6 +1069,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Semibold"
+  dynamicTypeRamp="footnote"
   font="TitilliumSansPro"
   fontStyle={
     {
@@ -1018,6 +1078,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
       "textDecorationLine": "underline",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {

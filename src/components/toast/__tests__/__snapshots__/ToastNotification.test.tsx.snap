@@ -24,7 +24,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -34,6 +34,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -149,7 +150,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="error-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -159,6 +160,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -207,7 +209,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="info-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -217,6 +219,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -265,7 +268,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="turquoise-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -275,6 +278,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -323,7 +327,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="success-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -333,6 +337,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -381,7 +386,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     color="warning-850"
     defaultColor="white"
     defaultWeight="Regular"
@@ -391,6 +396,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -449,6 +455,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -574,6 +581,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -632,6 +640,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -690,6 +699,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -748,6 +758,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {
@@ -806,6 +817,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "fontSize": 16,
       }
     }
+    maxFontSizeMultiplier={1.25}
     style={
       [
         {

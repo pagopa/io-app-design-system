@@ -72,10 +72,11 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       }
     >
       <Text
-        allowFontScaling={false}
+        allowFontScaling={true}
         color="blueIO-850"
         defaultColor="black"
         defaultWeight="Regular"
+        dynamicTypeRamp="headline"
         font="ReadexPro"
         fontStyle={
           {
@@ -83,6 +84,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             "lineHeight": 24,
           }
         }
+        maxFontSizeMultiplier={1.25}
         style={
           [
             {
@@ -433,6 +435,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         color="blueIO-850"
         defaultColor="black"
         defaultWeight="Semibold"
+        dynamicTypeRamp="headline"
         font="TitilliumSansPro"
         fontStyle={
           {
@@ -440,6 +443,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             "lineHeight": 25,
           }
         }
+        maxFontSizeMultiplier={1.25}
         style={
           [
             {

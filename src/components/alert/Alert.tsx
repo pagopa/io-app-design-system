@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import {
   GestureResponderEvent,
+  PixelRatio,
   Pressable,
   StyleSheet,
   Text,
@@ -174,7 +175,10 @@ export const Alert = ({
       have to put these magic numbers after manual adjustments.
       Tested on both Android and iOS. */}
       <View
-        style={[!title && { marginTop: -5 }, { marginBottom: -4, flex: 1 }]}
+        style={[
+          !title && { marginTop: -5 * PixelRatio.getFontScale() },
+          { marginBottom: -3 * PixelRatio.getFontScale(), flex: 1 }
+        ]}
       >
         {title && (
           <>

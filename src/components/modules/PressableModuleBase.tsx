@@ -2,7 +2,12 @@ import * as React from "react";
 import { PropsWithChildren } from "react";
 import { Pressable } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOModuleIDPSavedVSpacing, IOModuleStyles } from "../../core";
+import {
+  IOColors,
+  IOModuleIDPSavedVSpacing,
+  IOModuleStyles,
+  useIOTheme
+} from "../../core";
 import { WithTestID } from "../../utils/types";
 import { useModuleSpringAnimation } from "./hooks/useModuleSpringAnimation";
 
@@ -23,8 +28,10 @@ export const PressableModuleBase = ({
   testID,
   children
 }: PropsWithChildren<PressableModuleBaseProps>) => {
+  const theme = useIOTheme();
   const { handlePressIn, handlePressOut, animatedStyle } =
     useModuleSpringAnimation();
+
   return (
     <Pressable
       onPress={onPress}
@@ -40,6 +47,7 @@ export const PressableModuleBase = ({
       <Animated.View
         style={[
           IOModuleStyles.button,
+          { borderColor: IOColors[theme["cardBorder-default"]] },
           withLooseSpacing && { paddingVertical: IOModuleIDPSavedVSpacing },
           animatedStyle
         ]}
