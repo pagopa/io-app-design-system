@@ -1,6 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import {
+  IOColors,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -28,6 +32,9 @@ export const Chip = React.forwardRef<View, ChipProps>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "caption2" /* iOS only */,
       defaultWeight,
       defaultColor,
       font: isExperimental ? font : legacyFont,

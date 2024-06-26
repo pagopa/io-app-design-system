@@ -5,6 +5,7 @@ import {
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
+  IOVisualCostants,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -179,6 +180,8 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       <Text
         numberOfLines={1}
         ellipsizeMode="tail"
+        allowFontScaling={isExperimental}
+        maxFontSizeMultiplier={IOVisualCostants.maxFontSizeMultiplier}
         style={[
           styles.label,
           isExperimental ? styles.labelFont : styles.legacyLabelFont,

@@ -332,8 +332,6 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
                 style={IOButtonStyles.label}
                 numberOfLines={1}
                 ellipsizeMode="tail"
-                allowFontScaling={isExperimental}
-                maxFontSizeMultiplier={1.3}
                 accessible={false}
                 accessibilityElementsHidden
                 importantForAccessibility="no-hide-descendants"

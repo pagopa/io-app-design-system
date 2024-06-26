@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IOTheme, useIOExperimentalDesign } from "../../core";
+import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -34,6 +34,9 @@ export const H3 = React.forwardRef<View, H3Props>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "title2" /* iOS only */,
       defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
       defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
       font: isExperimental ? fontName : legacyFontName,

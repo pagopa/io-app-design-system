@@ -526,7 +526,7 @@ const renderListItemAmount = () => (
     <ListItemAmount label="Amount" valueString="€ 1.000,00" />
     <ListItemAmount
       iconName="creditCard"
-      label="Amount with card "
+      label="Amount with card"
       valueString="€ 1.000,00"
     />
   </ComponentViewerBox>

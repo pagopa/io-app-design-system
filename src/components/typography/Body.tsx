@@ -1,6 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme } from "../../core";
+import {
+  IOColors,
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -26,15 +31,20 @@ export const bodyDefaultWeight: AllowedWeight = "Regular";
 /**
  * `Body` typographic style
  */
-export const Body = React.forwardRef<View, BodyProps>((props, ref) =>
-  useTypographyFactory<AllowedWeight, AllowedColors>(
+export const Body = React.forwardRef<View, BodyProps>((props, ref) => {
+  const { isExperimental } = useIOExperimentalDesign();
+
+  return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "body" /* iOS only */,
       defaultWeight: bodyDefaultWeight,
       defaultColor: bodyDefaultColor,
       font: fontName,
       fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
     },
     ref
-  )
-);
+  );
+});
