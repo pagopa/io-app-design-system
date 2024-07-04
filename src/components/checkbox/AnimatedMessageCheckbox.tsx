@@ -52,7 +52,7 @@ export const AnimatedMessageCheckbox = ({
   checked,
   onPress
 }: AnimatedMessageCheckbox) => {
-  const isChecked = checked ?? true;
+  const isChecked = !!checked;
   const { isExperimental } = useIOExperimentalDesign();
 
   const shapeAnimationProgress = useSharedValue(checked ? 1 : 0);
