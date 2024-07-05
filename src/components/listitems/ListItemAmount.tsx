@@ -9,6 +9,7 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
+import { HSpacer } from "../spacer";
 import { H3, H6 } from "../typography";
 
 type ValueProps = ComponentProps<typeof H3>;
@@ -77,6 +78,7 @@ export const ListItemAmount = ({
           </View>
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
+        <HSpacer size={4} />
         <H3
           weight={"Semibold"}
           color={"black"}

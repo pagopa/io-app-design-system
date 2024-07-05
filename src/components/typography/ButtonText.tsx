@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
-import { useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
@@ -34,6 +34,8 @@ export const ButtonText = React.forwardRef<View, ButtonTextProps>(
     return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
         defaultWeight: isExperimental
           ? buttonTextDefaultWeight
           : legacyTextDefaultWeight,

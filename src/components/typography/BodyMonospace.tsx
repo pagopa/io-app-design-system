@@ -1,6 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import type { IOColors } from "../../core/IOColors";
+import {
+  IOVisualCostants,
+  useIOExperimentalDesign,
+  type IOColors
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -22,15 +26,21 @@ const monospaceDefaultcolor = "bluegrey";
  * `BodyMonospace` typographic style
  */
 export const BodyMonospace = React.forwardRef<View, BodyMonospaceProps>(
-  (props, ref) =>
-    useTypographyFactory<AllowedWeight, AllowedColors>(
+  (props, ref) => {
+    const { isExperimental } = useIOExperimentalDesign();
+
+    return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "body" /* iOS only */,
         defaultWeight: monospaceDefaultWeight,
         defaultColor: monospaceDefaultcolor,
         font: fontName,
         fontStyle: { fontSize, lineHeight }
       },
       ref
-    )
+    );
+  }
 );
