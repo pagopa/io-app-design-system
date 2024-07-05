@@ -249,6 +249,16 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, fetching">
+      <View>
+        <ModuleCredential
+          icon="fingerprint"
+          label="Identità digitale"
+          onPress={mockFn}
+          isFetching={true}
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCredential, loading">
       <View>
         <ModuleCredential isLoading={true} />
