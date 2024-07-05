@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import type { IOColors, IOTheme } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -44,6 +44,9 @@ export const LabelSmallAlt = React.forwardRef<View, LabelSmallAltProps>(
     return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "footnote" /* iOS only */,
         defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
         defaultColor,
         font: isExperimental ? fontName : legacyFontName,

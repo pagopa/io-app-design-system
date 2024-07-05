@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   innerContent: {
+    alignItems: "flex-start",
     flex: 1,
     flexDirection: "column"
   },
@@ -113,9 +114,7 @@ const ModuleAttachmentContent = ({
           {title}
         </LabelSmallAlt>
         <VSpacer size={4} />
-        <View style={{ width: 44 }}>
-          <Badge text={format.toUpperCase()} variant="default" />
-        </View>
+        <Badge text={format.toUpperCase()} variant="default" />
       </View>
       <View style={styles.rightSection}>
         <IconOrActivityIndicatorComponent />
