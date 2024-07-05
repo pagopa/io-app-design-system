@@ -39,9 +39,9 @@ const filterIconSet = (
   iconSetObject: IconSetObject
 ): IconSetObject =>
   Object.fromEntries(
-    Object.entries(iconSetObject)
-      .filter(([key]) => !Object.keys(iconSubsetObject).includes(key))
-      .sort(([l], [r]) => l.localeCompare(r))
+    Object.entries(iconSetObject).filter(
+      ([key]) => !Object.keys(iconSubsetObject).includes(key)
+    )
   );
 
 const filteredIOIcons = filterIconSet(
