@@ -1,22 +1,24 @@
 import React, { ReactNode } from "react";
-import { View } from "react-native";
+import { View, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 
 type Stack = {
   space?: IOSpacer;
   children: ReactNode;
+  alignItems?: ViewStyle["alignItems"];
 };
 
 /**
 Horizontal Stack component
 @param {IOSpacer} space
  */
-export const HStack = ({ space, children }: Stack) => (
+export const HStack = ({ space, children, alignItems }: Stack) => (
   <View
     style={{
       display: "flex",
       flexDirection: "row",
-      columnGap: space
+      columnGap: space,
+      alignItems
     }}
   >
     {children}
@@ -28,12 +30,13 @@ Vertical Stack component
 @param {IOSpacer} space
  */
 
-export const VStack = ({ space, children }: Stack) => (
+export const VStack = ({ space, children, alignItems }: Stack) => (
   <View
     style={{
       display: "flex",
       flexDirection: "column",
-      rowGap: space
+      rowGap: space,
+      alignItems
     }}
   >
     {children}
