@@ -4,6 +4,7 @@ import { IOColors } from "../../core/IOColors";
 
 /* Icons */
 import IconAbacus from "./svg/IconAbacus";
+import IconAccessibility from "./svg/IconAccessibility";
 import IconAdd from "./svg/IconAdd";
 import IconAddSmall from "./svg/IconAddSmall";
 import IconAmount from "./svg/IconAmount";
@@ -26,6 +27,7 @@ import IconBonus from "./svg/IconBonus";
 import IconCalendar from "./svg/IconCalendar";
 import IconCancel from "./svg/IconCancel";
 import IconCanceled from "./svg/IconCanceled";
+import IconCar from "./svg/IconCar";
 import IconCategCulture from "./svg/IconCategCulture";
 import IconCategFinance from "./svg/IconCategFinance";
 import IconCategHome from "./svg/IconCategHome";
@@ -196,6 +198,8 @@ import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
 
 export const IOIcons = {
+  accessibility: IconAccessibility,
+  car: IconCar,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   qrCode: IconQrCode,

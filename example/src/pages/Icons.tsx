@@ -8,6 +8,7 @@ import {
   IOColors,
   IOIconSizeScale,
   IOIcons,
+  IOIconsNew,
   IONavIcons,
   IOProductIcons,
   IOStyles,
@@ -16,14 +17,13 @@ import {
   Icon,
   IconContained,
   SVGIconProps,
-  IOIconsNew,
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";
 import { Screen } from "../components/Screen";
-import { ComponentViewerBox } from "../components/ComponentViewerBox";
 
 // Filter the main object, removing already displayed icons in the other sets
 type IconSubsetObject = Record<
@@ -39,9 +39,9 @@ const filterIconSet = (
   iconSetObject: IconSetObject
 ): IconSetObject =>
   Object.fromEntries(
-    Object.entries(iconSetObject).filter(
-      ([key]) => !Object.keys(iconSubsetObject).includes(key)
-    )
+    Object.entries(iconSetObject)
+      .filter(([key]) => !Object.keys(iconSubsetObject).includes(key))
+      .sort(([l], [r]) => l.localeCompare(r))
   );
 
 const filteredIOIcons = filterIconSet(
