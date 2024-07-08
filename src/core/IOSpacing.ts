@@ -23,9 +23,12 @@ export type IOSpacingScale =
   | 96;
 
 // Values used in the new `<Spacer>` component
-export type IOSpacer = Extract<IOSpacingScale, 4 | 8 | 16 | 24 | 32 | 40 | 48>;
+export type IOSpacer = Extract<
+  IOSpacingScale,
+  4 | 8 | 12 | 16 | 24 | 32 | 40 | 48
+>;
 export const IOSpacer: ReadonlyArray<IOSpacer> = [
-  4, 8, 16, 24, 32, 40, 48
+  4, 8, 12, 16, 24, 32, 40, 48
 ] as const;
 
 // Margin values used in the new `<ContentWrapper>` component
