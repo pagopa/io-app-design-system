@@ -392,7 +392,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -400,7 +400,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -427,7 +427,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -435,7 +435,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -462,7 +462,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -470,7 +470,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -497,7 +497,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -505,7 +505,7 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -532,7 +532,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -540,7 +540,7 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -567,7 +567,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -575,7 +575,7 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
@@ -602,7 +602,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
@@ -610,7 +610,7 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
