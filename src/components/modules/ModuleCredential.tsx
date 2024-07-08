@@ -64,25 +64,31 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
     ...pressableProps
   } = props;
 
+  const iconComponent = icon && (
+    <Icon
+      name={icon}
+      size={IOSelectionListItemVisualParams.iconSize}
+      color="grey-300"
+    />
+  );
+
+  const imageComponent = image && (
+    <Image
+      source={image}
+      style={styles.image}
+      accessibilityIgnoresInvertColors={true}
+    />
+  );
+
   const ModuleContent = () => (
     <HStack space={8} style={{ alignItems: "center" }}>
       <HStack
         space={IOVisualCostants.iconMargin as IOSpacer}
         style={{ flexGrow: 1, flexShrink: 1, alignItems: "center" }}
       >
-        {icon ? (
-          <Icon
-            name={icon}
-            size={IOSelectionListItemVisualParams.iconSize}
-            color="grey-300"
-          />
-        ) : image ? (
-          <Image
-            source={image}
-            style={styles.image}
-            accessibilityIgnoresInvertColors={true}
-          />
-        ) : null}
+        {/* Graphical assets */}
+        {iconComponent ?? imageComponent}
+
         <LabelSmallAlt
           color={theme["interactiveElem-default"]}
           numberOfLines={2}
