@@ -17,6 +17,7 @@ import {
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { LoadingSpinner } from "../loadingSpinner";
 import { LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
@@ -24,22 +25,24 @@ import {
   PressableModuleBaseProps
 } from "./PressableModuleBase";
 
-type LoadingProps = {
-  isLoading: true;
-};
-
 type ImageProps =
   | { icon: IOIcons; image?: never }
   | { icon?: never; image: ImageURISource | ImageSourcePropType };
 
-type BaseProps = {
+type LoadingModuleProps = {
+  isLoading: true;
+};
+
+type BaseModuleProps = {
   isLoading?: false;
   label: string;
   badge?: Badge;
-} & ImageProps &
-  PressableModuleBaseProps;
+  isFetching?: boolean;
+};
 
-type ModuleCredentialProps = LoadingProps | BaseProps;
+type ModuleCredentialProps =
+  | LoadingModuleProps
+  | (BaseModuleProps & ImageProps & PressableModuleBaseProps);
 
 const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
   const theme = useIOTheme();
@@ -48,25 +51,31 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
     return <ModuleCredentialSkeleton />;
   }
 
-  const { icon, image, label, onPress, badge, ...pressableProps } = props;
+  const {
+    testID,
+    icon,
+    image,
+    label,
+    onPress,
+    badge,
+    isFetching,
+    ...pressableProps
+  } = props;
 
-  const iconComponent = (
-    <View style={{ marginRight: IOVisualCostants.iconMargin }}>
-      {icon && <Icon name={icon} size={24} color="grey-300" />}
-      {image && (
+  const ModuleContent = () => (
+    <>
+      {icon ? (
+        <View style={styles.icon}>
+          <Icon name={icon} size={24} color="grey-300" />
+        </View>
+      ) : image ? (
         <Image
           source={image}
           style={styles.image}
           accessibilityIgnoresInvertColors={true}
         />
-      )}
-    </View>
-  );
-
-  return (
-    <PressableModuleBase {...pressableProps} onPress={onPress}>
-      {(icon || image) && iconComponent}
-      <View style={{ flexGrow: 1, flexShrink: 1, paddingRight: 8 }}>
+      ) : null}
+      <View style={styles.label}>
         <LabelSmallAlt
           color={theme["interactiveElem-default"]}
           numberOfLines={2}
@@ -76,16 +85,34 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
         </LabelSmallAlt>
       </View>
       <View style={IOStyles.row}>
-        {badge && <Badge {...badge} />}
-        {onPress && (
+        {badge ? (
+          <Badge {...badge} testID={testID ? `${testID}_badge` : undefined} />
+        ) : null}
+        {isFetching ? (
+          <LoadingSpinner
+            testID={testID ? `${testID}_activityIndicator` : undefined}
+            color={theme["interactiveElem-default"]}
+          />
+        ) : onPress ? (
           <Icon
+            testID={testID ? `${testID}_icon` : undefined}
             name="chevronRightListItem"
             color={theme["interactiveElem-default"]}
             size={IOListItemVisualParams.chevronSize}
           />
-        )}
+        ) : null}
       </View>
+    </>
+  );
+
+  return onPress ? (
+    <PressableModuleBase {...pressableProps} testID={testID} onPress={onPress}>
+      <ModuleContent />
     </PressableModuleBase>
+  ) : (
+    <ModuleStatic>
+      <ModuleContent />
+    </ModuleStatic>
   );
 };
 
@@ -115,8 +142,13 @@ const styles = StyleSheet.create({
   image: {
     width: IOSelectionListItemVisualParams.iconSize,
     height: IOSelectionListItemVisualParams.iconSize,
+    marginRight: IOVisualCostants.iconMargin,
     resizeMode: "contain"
-  }
+  },
+  icon: {
+    marginRight: IOVisualCostants.iconMargin
+  },
+  label: { flexGrow: 1, flexShrink: 1, paddingRight: 8 }
 });
 
 export { ModuleCredential };
