@@ -77,8 +77,7 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
           style={{ alignItems: "center", flexGrow: 1, flexShrink: 1 }}
         >
           {/* Graphical elements */}
-          {icon && iconComponent}
-          {image && imageComponent}
+          {iconComponent ?? imageComponent}
 
           <View style={{ flexShrink: 1 }}>
             <LabelSmallAlt

@@ -14,7 +14,7 @@ import {
 } from "../../core";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
-import { HSpacer, VSpacer } from "../spacer";
+import { HStack, VStack } from "../stack";
 import { H6, LabelSmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
@@ -42,33 +42,32 @@ export type ModuleCheckoutProps = LoadingProps | BaseProps;
 export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const theme = useIOTheme();
 
+  const imageMargin: IOSpacingScale = 12;
+
   if (props.isLoading) {
     return <ModuleCheckoutSkeleton />;
   }
 
   const { paymentLogo, image, title, subtitle, ctaText, onPress } = props;
 
-  const imageComponent = (
-    <>
-      {paymentLogo && (
-        <View style={styles.imageWrapper}>
-          <LogoPayment name={paymentLogo} />
-        </View>
-      )}
-      {image && (
-        <Image
-          source={image}
-          style={[styles.imageWrapper, styles.image]}
-          accessibilityIgnoresInvertColors={true}
-        />
-      )}
-    </>
+  const paymentLogoComponent = paymentLogo && (
+    <LogoPayment name={paymentLogo} />
+  );
+
+  const imageComponent = image && (
+    <Image
+      source={image}
+      style={styles.image}
+      accessibilityIgnoresInvertColors={true}
+    />
   );
 
   const ModuleBaseContent = () => (
-    <>
-      {imageComponent}
-      <View style={styles.content}>
+    <HStack space={imageMargin} style={{ alignItems: "center", flexShrink: 1 }}>
+      {/* Graphical elements */}
+      {paymentLogoComponent ?? imageComponent}
+
+      <View style={{ flexGrow: 1, flexShrink: 1 }}>
         <H6 color={theme["textBody-default"]}>{title}</H6>
         {subtitle && (
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
@@ -76,16 +75,17 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
           </LabelSmall>
         )}
       </View>
-    </>
+    </HStack>
   );
 
   return ctaText ? (
     <PressableModuleBase onPress={onPress}>
-      <ModuleBaseContent />
-      <HSpacer size={4} />
-      <View pointerEvents="none">
-        <ButtonLink label={ctaText} onPress={() => null} />
-      </View>
+      <HStack space={4} style={{ alignItems: "center" }}>
+        <ModuleBaseContent />
+        <View pointerEvents="none">
+          <ButtonLink label={ctaText} onPress={() => null} />
+        </View>
+      </HStack>
     </PressableModuleBase>
   ) : (
     <ModuleStatic>
@@ -97,16 +97,13 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
 const ModuleCheckoutSkeleton = () => (
   <ModuleStatic
     startBlock={
-      <React.Fragment>
-        {/* Rewrite it using HStack and VStack */}
+      <HStack space={8} style={{ alignItems: "center" }}>
         <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
-        <HSpacer size={8} />
-        <View>
+        <VStack space={8}>
           <Placeholder.Box animate="fade" radius={8} height={20} width={170} />
-          <VSpacer size={8} />
-          <Placeholder.Box animate="fade" radius={8} height={16} width={116} />
-        </View>
-      </React.Fragment>
+          <Placeholder.Box animate="fade" radius={8} height={16} width={110} />
+        </VStack>
+      </HStack>
     }
     endBlock={
       <Placeholder.Box animate="fade" width={64} height={16} radius={8} />
@@ -114,19 +111,10 @@ const ModuleCheckoutSkeleton = () => (
   />
 );
 
-const imageMarginRight: IOSpacingScale = 12;
-
 const styles = StyleSheet.create({
-  imageWrapper: {
-    marginRight: imageMarginRight
-  },
   image: {
     width: IOSelectionListItemVisualParams.iconSize,
     height: IOSelectionListItemVisualParams.iconSize,
     resizeMode: "contain"
-  },
-  content: {
-    flexGrow: 1,
-    flexShrink: 1
   }
 });
