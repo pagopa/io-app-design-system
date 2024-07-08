@@ -102,6 +102,18 @@ const renderModulePaymentNotice = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModulePaymentNotice, default variant, loading">
+      <View>
+        <ModulePaymentNotice
+          isLoading
+          onPress={mockFn}
+          paymentNoticeStatus="default"
+          paymentNoticeAmount="100,00 €"
+          title="Codice avviso"
+          subtitle="302012131232131"
+        />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
@@ -151,8 +163,18 @@ const renderModuleCheckout = () => (
         onPress={modulePress}
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no CTA, with image">
+      <ModuleCheckout
+        image={{
+          uri: "https://assets.cdn.platform.pagopa.it/apm/bancomatpay.png"
+        }}
+        title="3,50 $"
+        subtitle="Piú o meno"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
-      <ModuleCheckout isLoading ctaText="Loading" />
+      <ModuleCheckout isLoading />
     </ComponentViewerBox>
   </>
 );
@@ -161,7 +183,7 @@ const renderModuleAttachment = () => (
   <>
     <ComponentViewerBox name="ModuleAttachment, pdf variant">
       <ModuleAttachment
-        title="Documento.pdf"
+        title="Documento dal nome molto molto molto lungo.pdf"
         format="pdf"
         onPress={modulePress}
       />
