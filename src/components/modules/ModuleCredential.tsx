@@ -62,8 +62,8 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
     ...pressableProps
   } = props;
 
-  return (
-    <PressableModuleBase {...pressableProps} testID={testID} onPress={onPress}>
+  const ModuleContent = () => (
+    <>
       {icon ? (
         <View style={styles.icon}>
           <Icon name={icon} size={24} color="grey-300" />
@@ -102,7 +102,17 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           />
         ) : null}
       </View>
+    </>
+  );
+
+  return onPress ? (
+    <PressableModuleBase {...pressableProps} testID={testID} onPress={onPress}>
+      <ModuleContent />
     </PressableModuleBase>
+  ) : (
+    <ModuleStatic>
+      <ModuleContent />
+    </ModuleStatic>
   );
 };
 
