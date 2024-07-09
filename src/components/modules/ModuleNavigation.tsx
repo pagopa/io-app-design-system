@@ -1,5 +1,11 @@
 import React from "react";
-import { View } from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  ImageURISource,
+  StyleSheet,
+  View
+} from "react-native";
 import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
@@ -23,13 +29,17 @@ type LoadingProps = {
   isLoading: true;
 };
 
+type ImageProps =
+  | { icon: IOIcons; image?: never }
+  | { icon?: never; image: ImageURISource | ImageSourcePropType };
+
 type BaseProps = {
   isLoading?: false;
   title: string;
   subtitle?: string;
   badge?: Badge;
-  icon: IOIcons;
-} & PressableModuleBaseProps;
+} & ImageProps &
+  PressableModuleBaseProps;
 
 type ModuleNavigationProps = LoadingProps | BaseProps;
 
@@ -40,7 +50,24 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
     return <ModuleNavigationSkeleton />;
   }
 
-  const { icon, title, subtitle, onPress, badge, ...pressableProps } = props;
+  const { icon, image, title, subtitle, onPress, badge, ...pressableProps } =
+    props;
+
+  const iconComponent = icon && (
+    <Icon
+      name={icon}
+      size={IOSelectionListItemVisualParams.iconSize}
+      color="grey-300"
+    />
+  );
+
+  const imageComponent = image && (
+    <Image
+      source={image}
+      style={styles.image}
+      accessibilityIgnoresInvertColors={true}
+    />
+  );
 
   return (
     <PressableModuleBase {...pressableProps} onPress={onPress}>
@@ -49,13 +76,7 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
           space={IOVisualCostants.iconMargin as IOSpacer}
           style={{ alignItems: "center", flexGrow: 1, flexShrink: 1 }}
         >
-          {icon && (
-            <Icon
-              name={icon}
-              size={IOSelectionListItemVisualParams.iconSize}
-              color="grey-300"
-            />
-          )}
+          {iconComponent ?? imageComponent}
 
           <View style={{ flexShrink: 1 }}>
             <LabelSmallAlt
@@ -104,3 +125,11 @@ const ModuleNavigationSkeleton = () => (
     }
   />
 );
+
+const styles = StyleSheet.create({
+  image: {
+    width: IOSelectionListItemVisualParams.iconSize,
+    height: IOSelectionListItemVisualParams.iconSize,
+    resizeMode: "contain"
+  }
+});
