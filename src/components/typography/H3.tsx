@@ -23,8 +23,6 @@ const defaultWeight: AllowedWeight = "Regular";
 const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultColor: AllowedColors = "bluegreyDark";
 const legacyDefaultWeight: AllowedWeight = "Semibold";
-const legacyH3FontSize = 24;
-const legacyH3LineHeight = 34;
 /**
  * `H3` typographic style
  */
@@ -41,8 +39,8 @@ export const H3 = React.forwardRef<View, H3Props>((props, ref) => {
       defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
       font: isExperimental ? fontName : legacyFontName,
       fontStyle: {
-        fontSize: isExperimental ? h3FontSize : legacyH3FontSize,
-        lineHeight: isExperimental ? h3LineHeight : legacyH3LineHeight
+        fontSize: h3FontSize,
+        lineHeight: h3LineHeight
       }
     },
     ref
