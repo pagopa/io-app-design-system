@@ -1,4 +1,3 @@
-export * from "./ButtonExtendedOutline";
 export * from "./ButtonLink";
 export * from "./ButtonOutline";
 export * from "./ButtonSolid";

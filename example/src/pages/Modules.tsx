@@ -7,6 +7,7 @@ import {
   ModuleIDP,
   ModuleNavigation,
   ModulePaymentNotice,
+  ModuleSummaryItem,
   useIOExperimentalDesign,
   useIOTheme
 } from "@pagopa/io-app-design-system";
@@ -324,6 +325,34 @@ const renderModuleNavigation = () => (
   </>
 );
 
+const renderModuleSummaryItem = () => (
+  <>
+    <ComponentViewerBox name="ModuleSummaryItem, default variant">
+      <ModuleSummaryItem
+        label={"Label name"}
+        description={"This is a description of the element"}
+        onPress={mockFn}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleSummaryItem, custom icon, label only">
+      <View>
+        <ModuleSummaryItem
+          icon="chevronRightListItem"
+          label={"Label only"}
+          onPress={mockFn}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleSummaryItem, stress test">
+      <ModuleSummaryItem
+        label={"A very looong loooooooong looooooooooooooong label"}
+        description={"This is a very looooooong description of the element"}
+        onPress={mockFn}
+      />
+    </ComponentViewerBox>
+  </>
+);
+
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
@@ -350,6 +379,14 @@ const Modules = () => {
         ModulePaymentNotice
       </H2>
       {renderModulePaymentNotice()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"Semibold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleSummaryItem
+      </H2>
+      {renderModuleSummaryItem()}
       <H2
         color={theme["textHeading-default"]}
         weight={"Semibold"}
