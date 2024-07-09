@@ -24,15 +24,15 @@ type NumberButtonVariantType = "light" | "dark";
 type NumberButtonProps = {
   /**
    * Used to choose the component color variant between `dark` and `light`.
-  */
+   */
   variant: NumberButtonVariantType;
   /**
    * The button value.
-  */
+   */
   number: number;
   /**
    * The action to be executed when the button is pressed.
-   * @param number 
+   * @param number
    * @returns void
    */
   onPress: (number: number) => void;
@@ -71,82 +71,80 @@ const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
 };
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
- * 
+ *
  * @returns {JSX.Element} The rendered `NumberButton`
  */
-export const NumberButton = memo(({
-  number,
-  variant,
-  onPress
-}: NumberButtonProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const NumberButton = memo(
+  ({ number, variant, onPress }: NumberButtonProps) => {
+    const { isExperimental } = useIOExperimentalDesign();
 
-  const colors = useMemo(
-    () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
-    [variant, isExperimental]
-  );
-  const isPressed = useSharedValue(0);
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
-    const bgColor = interpolateColor(
-      progressPressed.value,
-      [0, 1],
-      [colors.background, colors.pressed]
+    const colors = useMemo(
+      () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
+      [variant, isExperimental]
+    );
+    const isPressed = useSharedValue(0);
+    // Scaling transformation applied when the button is pressed
+    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+    // Using a spring-based animation for our interpolations
+    const progressPressed = useDerivedValue(() =>
+      withSpring(isPressed.value, IOSpringValues.button)
     );
 
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
+    // Interpolate animation values from `isPressed` values
+    const pressedAnimationStyle = useAnimatedStyle(() => {
+      // Link color states to the pressed states
+      const bgColor = interpolateColor(
+        progressPressed.value,
+        [0, 1],
+        [colors.background, colors.pressed]
+      );
 
-    return {
-      backgroundColor: bgColor,
-      transform: [{ scale }]
-    };
-  });
+      // Scale down button slightly when pressed
+      const scale = interpolate(
+        progressPressed.value,
+        [0, 1],
+        [1, animationScaleValue],
+        Extrapolate.CLAMP
+      );
 
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+      return {
+        backgroundColor: bgColor,
+        transform: [{ scale }]
+      };
+    });
 
-  const handleOnPress = useCallback(() => {
-    onPress(number);
-  }, [number, onPress]);
+    const onPressIn = useCallback(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isPressed.value = 1;
+    }, [isPressed]);
+    const onPressOut = useCallback(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isPressed.value = 0;
+    }, [isPressed]);
 
-  return (
-    <Pressable
-      accessible
-      accessibilityRole="button"
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      onPress={handleOnPress}
-    >
-      <Animated.View
-        style={[
-          IONumberPadButtonStyles.button,
-          IONumberPadButtonStyles.circularShape,
-          IONumberPadButtonStyles.buttonSize,
-          pressedAnimationStyle
-        ]}
+    const handleOnPress = useCallback(() => {
+      onPress(number);
+    }, [number, onPress]);
+
+    return (
+      <Pressable
+        accessible
+        accessibilityRole="button"
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        onPress={handleOnPress}
       >
-        <H3 color={colors.foreground}>{number}</H3>
-      </Animated.View>
-    </Pressable>
-  );
-});
+        <Animated.View
+          style={[
+            IONumberPadButtonStyles.button,
+            IONumberPadButtonStyles.circularShape,
+            IONumberPadButtonStyles.buttonSize,
+            pressedAnimationStyle
+          ]}
+        >
+          <H3 color={colors.foreground}>{number}</H3>
+        </Animated.View>
+      </Pressable>
+    );
+  }
+);

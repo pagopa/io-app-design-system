@@ -35,12 +35,7 @@ const meta = {
     const { title, content, variant } = args;
     const viewRef = React.createRef<View>();
     return (
-      <Alert
-        content={content}
-        title={title}
-        viewRef={viewRef}
-        variant={variant}
-      />
+      <Alert content={content} title={title} ref={viewRef} variant={variant} />
     );
   }
 } satisfies Meta<typeof Alert>;

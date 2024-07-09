@@ -5,11 +5,10 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import React from "react";
-import { View } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 export const DSAlert = () => {
-  const viewRef = React.createRef<View>();
+  const viewRef = React.useRef(null);
 
   return (
     <Screen>
@@ -25,7 +24,7 @@ export const DSAlert = () => {
         Content only
       </H2>
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="error"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
@@ -33,7 +32,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="warning"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
@@ -41,7 +40,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="info"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
@@ -49,7 +48,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="success"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
@@ -61,7 +60,7 @@ export const DSAlert = () => {
       </H2>
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="error"
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
@@ -70,7 +69,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="warning"
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
@@ -79,7 +78,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="info"
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
@@ -88,7 +87,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="success"
         title="Alert title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
@@ -97,7 +96,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="info"
         title="A very very very looooooooooong title"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
@@ -110,7 +109,7 @@ export const DSAlert = () => {
       </H2>
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="error"
         action="Alert action"
         onPress={() => {
@@ -122,7 +121,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="warning"
         action="Alert action"
         onPress={() => {
@@ -134,7 +133,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="info"
         action="Alert action"
         onPress={() => {
@@ -146,7 +145,7 @@ export const DSAlert = () => {
       <VSpacer />
 
       <Alert
-        viewRef={viewRef as React.RefObject<any>}
+        ref={viewRef}
         variant="success"
         action="Alert action"
         onPress={() => {
@@ -164,7 +163,7 @@ export const DSAlert = () => {
       <FullWidthComponent>
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="error"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
@@ -173,7 +172,7 @@ export const DSAlert = () => {
 
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="warning"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
@@ -182,7 +181,7 @@ export const DSAlert = () => {
 
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="info"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
@@ -191,7 +190,7 @@ export const DSAlert = () => {
 
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="success"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
@@ -200,7 +199,7 @@ export const DSAlert = () => {
 
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="info"
           title="Alert title"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
@@ -210,7 +209,7 @@ export const DSAlert = () => {
 
         <Alert
           fullWidth
-          viewRef={viewRef as React.RefObject<any>}
+          ref={viewRef}
           variant="info"
           action="Alert action"
           onPress={() => {
