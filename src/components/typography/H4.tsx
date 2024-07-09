@@ -22,7 +22,6 @@ const defaultWeight: AllowedWeight = "Regular";
 const legacyFontName: FontFamily = "TitilliumSansPro";
 const legacyDefaultColor: AllowedColors = "bluegreyDark";
 const legacyDefaultWeight: AllowedWeight = "Semibold";
-const legacyH4FontSize = 22;
 
 /**
  * `H4` typographic style
@@ -39,7 +38,7 @@ export const H4 = React.forwardRef<View, H4Props>((props, ref) => {
       defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
       font: isExperimental ? font : legacyFontName,
       fontStyle: {
-        fontSize: isExperimental ? h4FontSize : legacyH4FontSize,
+        fontSize: h4FontSize,
         lineHeight: h4LineHeight
       }
     },
