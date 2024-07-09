@@ -217,16 +217,16 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#17324D",
@@ -252,16 +252,16 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#CCD4DC",
@@ -287,16 +287,16 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
@@ -322,16 +322,16 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
@@ -357,16 +357,16 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
   font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#17324D",
