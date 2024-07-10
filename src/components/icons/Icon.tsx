@@ -24,6 +24,7 @@ import IconBell from "./svg/IconBell";
 import IconBiomFaceID from "./svg/IconBiomFaceID";
 import IconBiomFingerprint from "./svg/IconBiomFingerprint";
 import IconBonus from "./svg/IconBonus";
+import IconBonusFilled from "./svg/IconBonusFilled";
 import IconCalendar from "./svg/IconCalendar";
 import IconCancel from "./svg/IconCancel";
 import IconCanceled from "./svg/IconCanceled";
@@ -59,6 +60,7 @@ import IconCompare from "./svg/IconCompare";
 import IconContactless from "./svg/IconContactless";
 import IconCopy from "./svg/IconCopy";
 import IconCreditCard from "./svg/IconCreditCard";
+import IconCreditCardFilled from "./svg/IconCreditCardFilled";
 import IconCreditCardOff from "./svg/IconCreditCardOff";
 import IconDevice from "./svg/IconDevice";
 import IconDeviceVibration from "./svg/IconDeviceVibration";
@@ -90,8 +92,9 @@ import IconFornitori from "./svg/IconFornitori";
 import IconForward from "./svg/IconForward";
 import IconGallery from "./svg/IconGallery";
 import IconHealthCard from "./svg/IconHealthCard";
-import IconHearthEmpty from "./svg/IconHearthEmpty";
-import IconHearthFilled from "./svg/IconHearthFilled";
+import IconHeartEmpty from "./svg/IconHeartEmpty";
+import IconHeartFilled from "./svg/IconHeartFilled";
+import IconHeartOff from "./svg/IconHeartOff";
 import IconHistory from "./svg/IconHistory";
 import IconHome from "./svg/IconHome";
 import IconHomeFill from "./svg/IconHomeFill";
@@ -167,6 +170,7 @@ import IconSparkles from "./svg/IconSparkles";
 import IconSpid from "./svg/IconSpid";
 import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
+import IconStarOff from "./svg/IconStarOff";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
@@ -194,8 +198,6 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconBonusFilled from "./svg/IconBonusFilled";
-import IconCreditCardFilled from "./svg/IconCreditCardFilled";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -293,10 +295,12 @@ export const IOIcons = {
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
   sparkles: IconSparkles,
-  starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
-  hearthEmpty: IconHearthEmpty,
-  hearthFilled: IconHearthFilled,
+  starFilled: IconStarFilled,
+  starOff: IconStarOff,
+  heartEmpty: IconHeartEmpty,
+  heartFilled: IconHeartFilled,
+  heartOff: IconHeartOff,
   switchOff: IconSwitchOff,
   fingerprint: IconFingerprint,
   touch: IconTouch,
@@ -489,11 +493,13 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 */
 
 /* New icons */
-const { bonusFilled, creditCardFilled } = IOIcons;
+const { bonusFilled, creditCardFilled, heartOff, starOff } = IOIcons;
 
 export const IOIconsNew = {
   bonusFilled,
-  creditCardFilled
+  creditCardFilled,
+  heartOff,
+  starOff
 };
 
 /* Navigation */
