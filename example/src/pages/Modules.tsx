@@ -7,7 +7,7 @@ import {
   ModuleIDP,
   ModuleNavigation,
   ModulePaymentNotice,
-  ModuleSummaryItem,
+  ModuleSummary,
   useIOExperimentalDesign,
   useIOTheme
 } from "@pagopa/io-app-design-system";
@@ -325,26 +325,26 @@ const renderModuleNavigation = () => (
   </>
 );
 
-const renderModuleSummaryItem = () => (
+const renderModuleSummary = () => (
   <>
-    <ComponentViewerBox name="ModuleSummaryItem, default variant">
-      <ModuleSummaryItem
+    <ComponentViewerBox name="ModuleSummary, default variant">
+      <ModuleSummary
         label={"Label name"}
         description={"This is a description of the element"}
         onPress={mockFn}
       />
     </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleSummaryItem, custom icon, label only">
+    <ComponentViewerBox name="ModuleSummary, custom icon, label only">
       <View>
-        <ModuleSummaryItem
+        <ModuleSummary
           icon="chevronRightListItem"
           label={"Label only"}
           onPress={mockFn}
         />
       </View>
     </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleSummaryItem, stress test">
-      <ModuleSummaryItem
+    <ComponentViewerBox name="ModuleSummary, stress test">
+      <ModuleSummary
         label={"A very looong loooooooong looooooooooooooong label"}
         description={"This is a very looooooong description of the element"}
         onPress={mockFn}
@@ -384,9 +384,9 @@ const Modules = () => {
         weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
-        ModuleSummaryItem
+        ModuleSummary
       </H2>
-      {renderModuleSummaryItem()}
+      {renderModuleSummary()}
       <H2
         color={theme["textHeading-default"]}
         weight={"Semibold"}

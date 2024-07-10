@@ -15,7 +15,7 @@ type Props = {
   icon?: IOIcons;
 };
 
-export const ModuleSummaryItem = ({
+export const ModuleSummary = ({
   label,
   description,
   onPress,

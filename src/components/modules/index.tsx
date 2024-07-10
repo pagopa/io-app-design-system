@@ -5,4 +5,4 @@ export * from "./ModuleIDP";
 export * from "./ModuleNavigation";
 export * from "./ModulePaymentNotice";
 export * from "./PressableModuleBase";
-export * from "./ModuleSummaryItem";
+export * from "./ModuleSummary";
