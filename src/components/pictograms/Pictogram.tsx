@@ -134,6 +134,7 @@ import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
+import PictogramSettingsHand from "./svg/PictogramSettingsHand";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -188,6 +189,7 @@ export const IOPictograms = {
   identityRefresh: PictogramIdentityRefresh,
   identityCheck: PictogramIdentityCheck,
   accessDenied: PictogramAccessDenied,
+  settingsHand: PictogramSettingsHand,
   stopSecurity: PictogramStopSecurity,
   security: PictogramSecurity,
   cie: PictogramCie,
