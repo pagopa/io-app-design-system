@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGIconProps } from "../types";
 
-const IconHearthFilled = ({ size, style, ...props }: SVGIconProps) => (
+const IconHeartFilled = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     <Path
       fillRule="evenodd"
@@ -13,4 +13,4 @@ const IconHearthFilled = ({ size, style, ...props }: SVGIconProps) => (
   </Svg>
 );
 
-export default IconHearthFilled;
+export default IconHeartFilled;
