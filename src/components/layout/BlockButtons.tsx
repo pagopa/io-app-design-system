@@ -77,6 +77,7 @@ export type BlockButtonsProps = Props;
 
 /**
  * Implements a component that show buttons on a line on 1, 2 or 3 buttons
+ * @deprecated This component is deprecated.
  */
 export const BlockButtons = (props: Props) => {
   const renderRightButton = () => {
