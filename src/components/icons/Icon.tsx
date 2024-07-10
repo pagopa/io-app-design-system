@@ -62,14 +62,12 @@ import IconCreditCard from "./svg/IconCreditCard";
 import IconCreditCardOff from "./svg/IconCreditCardOff";
 import IconDevice from "./svg/IconDevice";
 import IconDeviceVibration from "./svg/IconDeviceVibration";
-import IconDisabilityCard from "./svg/IconDisabilityCard";
 import IconDocGiacenza from "./svg/IconDocGiacenza";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
 import IconDotMenu from "./svg/IconDotMenu";
-import IconDriverLicense from "./svg/IconDriverLicense";
 import IconEdit from "./svg/IconEdit";
 import IconEmail from "./svg/IconEmail";
 import IconEmailFill from "./svg/IconEmailFill";
@@ -196,10 +194,10 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconBonusFilled from "./svg/IconBonusFilled";
+import IconCreditCardFilled from "./svg/IconCreditCardFilled";
 
 export const IOIcons = {
-  accessibility: IconAccessibility,
-  car: IconCar,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   qrCode: IconQrCode,
@@ -262,7 +260,9 @@ export const IOIcons = {
   entityCode: IconEntityCode,
   creditCard: IconCreditCard,
   creditCardOff: IconCreditCardOff,
+  creditCardFilled: IconCreditCardFilled,
   bonus: IconBonus,
+  bonusFilled: IconBonusFilled,
   transactionsBoxed: IconTransactionsBoxed,
   transactions: IconTransactions,
   amount: IconAmount,
@@ -324,8 +324,8 @@ export const IOIcons = {
   terms: IconTerms,
   help: IconQuestion,
   search: IconSearch,
-  disabilityCard: IconDisabilityCard,
-  driverLicense: IconDriverLicense,
+  accessibility: IconAccessibility,
+  car: IconCar,
   healthCard: IconHealthCard,
   chevronRight: IconChevronRight,
   chevronLeft: IconChevronLeft,
@@ -489,72 +489,11 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 */
 
 /* New icons */
-const {
-  filterOniOS,
-  filterOffiOS,
-  filterAndroid,
-  archiveFilled,
-  inbox,
-  inboxFilled,
-  docGiacenza,
-  docPaymentTitle,
-  folder,
-  receiptOn,
-  receiptOff,
-  print,
-  addSmall,
-  creditCardOff,
-  mapPin,
-  noticePlain,
-  familySharing,
-  hearthEmpty,
-  hearthFilled,
-  fingerprint,
-  touch,
-  deviceVibration,
-  signal,
-  keyboardDown,
-  externalLinkSmall,
-  forward,
-  compare,
-  instruction,
-  terms,
-  read,
-  code
-} = IOIcons;
+const { bonusFilled, creditCardFilled } = IOIcons;
 
 export const IOIconsNew = {
-  filterOniOS,
-  filterOffiOS,
-  filterAndroid,
-  archiveFilled,
-  inbox,
-  inboxFilled,
-  docGiacenza,
-  docPaymentTitle,
-  folder,
-  receiptOn,
-  receiptOff,
-  print,
-  addSmall,
-  creditCardOff,
-  mapPin,
-  noticePlain,
-  familySharing,
-  hearthEmpty,
-  hearthFilled,
-  fingerprint,
-  touch,
-  deviceVibration,
-  signal,
-  keyboardDown,
-  externalLinkSmall,
-  forward,
-  compare,
-  instruction,
-  terms,
-  read,
-  code
+  bonusFilled,
+  creditCardFilled
 };
 
 /* Navigation */
