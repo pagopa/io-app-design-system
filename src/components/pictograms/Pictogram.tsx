@@ -134,7 +134,8 @@ import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
-import PictogramSettingsHand from "./svg/PictogramSettingsHand";
+import PictogramSettings from "./svg/PictogramSettings";
+import PictogramBleedSettings from "./svg/PictogramBleedSettings";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -189,8 +190,8 @@ export const IOPictograms = {
   identityRefresh: PictogramIdentityRefresh,
   identityCheck: PictogramIdentityCheck,
   accessDenied: PictogramAccessDenied,
-  settingsHand: PictogramSettingsHand,
   stopSecurity: PictogramStopSecurity,
+  settings: PictogramSettings,
   security: PictogramSecurity,
   cie: PictogramCie,
   pending: PictogramPending,
@@ -322,6 +323,7 @@ export type IOPictogramsBleed = Extract<
   | "cardQuestion"
   | "cardIssue"
   | "accessDenied"
+  | "settings"
   | "stopSecurity"
   | "time"
   | "pending"
@@ -371,6 +373,7 @@ export const IOPictogramsBleed: {
   cardIssue: PictogramBleedCardIssue,
   accessDenied: PictogramBleedAccessDenied,
   stopSecurity: PictogramBleedStopSecurity,
+  settings: PictogramBleedSettings,
   time: PictogramBleedTime,
   pending: PictogramBleedPending,
   ended: PictogramBleedEnded,

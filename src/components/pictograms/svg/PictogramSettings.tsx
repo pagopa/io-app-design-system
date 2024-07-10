@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGPictogramProps } from "../types";
 
-const PictogramSettingsHand = ({
+const PictogramSettings = ({
   size,
   colorValues,
   ...props
@@ -31,4 +31,4 @@ const PictogramSettingsHand = ({
   </Svg>
 );
 
-export default PictogramSettingsHand;
+export default PictogramSettings;
