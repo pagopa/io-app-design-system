@@ -4,7 +4,7 @@ import { IOSpacer } from "../../core";
 
 type AllowedStyleProps = Pick<
   ViewStyle,
-  "alignItems" | "flexShrink" | "flexGrow" | "flex"
+  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap"
 >;
 
 type Stack = {
