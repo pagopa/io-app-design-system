@@ -4,73 +4,69 @@
  * README file included in this repository.
  */
 
-import { Platform } from "react-native";
+import { Platform, TextStyle } from "react-native";
 
 /**
  * Choose the font name based on the platform
  */
-const fonts = {
+const fonts: Record<string, string> = {
   TitilliumSansPro: Platform.select({
     android: "TitilliumSansPro",
     web: "TitilliumSansPro",
-    ios: "Titillium Sans Pro"
+    ios: "Titillium Sans Pro",
+    default: "TitilliumSansPro"
   }),
   ReadexPro: Platform.select({
     android: "ReadexPro",
     web: "ReadexPro",
-    ios: "Readex Pro"
+    ios: "Readex Pro",
+    default: "ReadexPro"
   }),
   DMMono: Platform.select({
     android: "DMMono",
     web: "DMMono",
-    ios: "DM Mono"
+    ios: "DM Mono",
+    default: "DMMono"
   })
 };
 
 export type IOFontFamily = keyof typeof fonts;
 
+/*
+ * Font Sizes
+ */
+export const fontSizes: Array<number> = [
+  12, 14, 16, 18, 20, 24, 28, 32, 36, 40
+];
+export type IOFontSize = (typeof fontSizes)[number];
+
+/*
+ * Font Weights
+ */
+
 const weights = ["Light", "Regular", "Medium", "Semibold", "Bold"] as const;
 export type IOFontWeight = (typeof weights)[number];
 
 const weightValues = ["300", "400", "500", "600", "700"] as const;
-export type FontWeightValue = (typeof weightValues)[number];
+export type IOFontWeightNumeric = (typeof weightValues)[number];
 
 /**
  * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value
  * used on iOS
  */
-export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
+export const fontWeights: Record<IOFontWeight, IOFontWeightNumeric> = {
   Light: "300",
   Regular: "400",
   Medium: "500",
   Semibold: "600",
   Bold: "700"
 };
-
-export type FontFamily = keyof typeof fonts;
-export type FontWeight = keyof typeof fontWeights;
-
-/**
- * Mapping between the nominal description of the weight (also the postfix used on Android) and the numeric value
- * used on iOS
- */
-export const fontWeightsMap: Record<IOFontWeight, FontWeightValue> = {
-  Light: "300",
-  Regular: "400",
-  Medium: "500",
-  Semibold: "600",
-  Bold: "700"
-};
-
-export enum FontStyle {
-  "normal" = "normal",
-  "italic" = "italic"
-}
 
 type FontStyleObject = {
-  fontFamily: string;
-  fontWeight?: FontWeightValue;
-  fontStyle?: FontStyle;
+  fontSize: IOFontSize;
+  fontFamily: IOFontFamily;
+  fontWeight?: IOFontWeightNumeric;
+  fontStyle?: TextStyle["fontStyle"];
 };
 
 /**
@@ -80,42 +76,63 @@ type FontStyleObject = {
  * @param isItalic
  */
 export const makeFontFamilyName = (
-  font: FontFamily,
+  font: IOFontFamily,
   weight?: IOFontWeight,
-  isItalic: boolean = false
-): string =>
+  fontStyle: TextStyle["fontStyle"] = "normal"
+): IOFontFamily =>
   Platform.select({
     web: fonts[font],
-    android: `${fonts[font]}-${weight || "Regular"}${isItalic ? "Italic" : ""}`,
+    android: `${fonts[font]}-${weight || "Regular"}${
+      fontStyle === "italic" ? "Italic" : ""
+    }`,
     ios: fonts[font],
-    default: "undefined"
+    default: fonts[font]
   });
 
 /**
- * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
- * @param weight
- * @param isItalic
- * @param font
+ * Default `IOText` typography style
  */
+const defaultFont: IOFontFamily = "TitilliumSansPro";
+const defaultWeight: IOFontWeight = "Regular";
+const defaultFontSize: IOFontSize = 16;
+
+/**
+ * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
+ * @param size
+ * @param font
+ * @param weight
+ * @param fontStyle
+ */
+
 export const makeFontStyleObject = (
-  weight: IOFontWeight | undefined = undefined,
-  isItalic: boolean | undefined = false,
-  font: FontFamily | undefined = "TitilliumSansPro"
+  size: IOFontSize = defaultFontSize,
+  font: IOFontFamily = defaultFont,
+  weight: IOFontWeight = defaultWeight,
+  fontStyle: TextStyle["fontStyle"] = "normal"
 ): FontStyleObject =>
   Platform.select({
     web: {
-      fontFamily: makeFontFamilyName(font, weight, isItalic),
-      fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
-      fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
+      fontSize: size,
+      fontFamily: makeFontFamilyName(font, weight, fontStyle),
+      fontWeight: fontWeights[weight],
+      fontStyle
     },
+    // On Android other type attributes, like `fontWeight` or `fontStyle`
+    // are directly managed through the `fontFamily` name, so we dont' need to
+    // include them in the object.
     android: {
-      includeFontPadding: false,
-      fontFamily: makeFontFamilyName(font, weight, isItalic)
+      fontSize: size,
+      fontFamily: makeFontFamilyName(font, weight, fontStyle),
+      includeFontPadding: false
     },
     ios: {
-      fontFamily: makeFontFamilyName(font, weight, isItalic),
-      fontWeight: weight !== undefined ? fontWeightsMap[weight] : weight,
-      fontStyle: isItalic ? FontStyle.italic : FontStyle.normal
+      fontSize: size,
+      fontFamily: makeFontFamilyName(font, weight, fontStyle),
+      fontWeight: fontWeights[weight],
+      fontStyle
     },
-    default: { fontFamily: "undefined" }
+    default: {
+      fontSize: size,
+      fontFamily: makeFontFamilyName(font, weight, fontStyle)
+    }
   });
