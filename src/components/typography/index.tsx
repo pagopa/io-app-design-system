@@ -1,4 +1,5 @@
 export * from "./BaseTypography";
+export * from "./IOText";
 export * from "./Body";
 export * from "./Caption";
 export * from "./Chip";

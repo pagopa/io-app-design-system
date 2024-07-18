@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithRef, forwardRef, useMemo } from "react";
-import { StyleProp, Text, TextStyle, View } from "react-native";
-import { IOColors } from "../../core/IOColors";
+import React, { ComponentProps, forwardRef, useMemo } from "react";
+import { Text, TextStyle, View } from "react-native";
+import { IOColors, useIOTheme } from "../../core";
 import {
   IOFontFamily,
   IOFontSize,
@@ -13,15 +13,32 @@ import {
  * cannot be included in the default StyleProp<TextStyle>
  */
 type IOTextBaseProps = {
-  size: IOFontSize;
-  weight: IOFontWeight;
-  color: IOColors;
+  size?: IOFontSize;
+  weight?: IOFontWeight;
+  color?: IOColors;
   font?: IOFontFamily;
+  lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
-  style?: StyleProp<TextStyle>;
 };
 
-type IOTextProps = IOTextBaseProps & ComponentPropsWithRef<typeof Text>;
+type IOTextProps = IOTextBaseProps & ComponentProps<typeof Text>;
+
+/**
+ * We exclude all of the following props when we define a new
+ * typographic style in which all of these visual attributes
+ * are already defined.
+ */
+export type IOTextStyle = Omit<
+  TextStyle,
+  "fontFamily" | "fontSize" | "fontWeight" | "color" | "lineHeight"
+>;
+
+export type TypographicStyleProps = Omit<
+  IOTextProps,
+  "style" | "font" | "size" | "weight" | "color" | "lineHeight" | "fontStyle"
+> & { style?: IOTextStyle } & {
+  color?: IOTextBaseProps["color"];
+};
 
 /**
  * Decorate the function {@link makeFontStyleObject} with the additional color calculation.
@@ -45,16 +62,36 @@ const calculateTextStyle = (
  */
 export const IOText = forwardRef<View, IOTextProps>(
   (
-    { color, size, font, weight, fontStyle, style, children, ...props },
+    {
+      color,
+      size,
+      font,
+      lineHeight,
+      weight,
+      fontStyle,
+      style,
+      children,
+      ...props
+    },
     ref
   ) => {
+    const theme = useIOTheme();
+
     const fontStyleObj = useMemo(
-      () => calculateTextStyle(color, size, font, weight, fontStyle),
-      [color, size, font, weight, fontStyle]
+      () =>
+        calculateTextStyle(
+          color ?? theme["textBody-default"],
+          size,
+          font,
+          lineHeight,
+          weight,
+          fontStyle
+        ),
+      [color, theme, size, font, lineHeight, weight, fontStyle]
     );
 
     return (
-      <Text {...props} ref={ref} style={[style, fontStyleObj]}>
+      <Text ref={ref} style={[style ?? {}, fontStyleObj]} {...props}>
         {children}
       </Text>
     );

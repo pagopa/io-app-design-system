@@ -256,33 +256,37 @@ export type IOColorsExtra = keyof typeof IOColorsExtra;
 ░░░ THEME COLORS ░░░
 */
 
-export type IOTheme = {
+const themeKeys = [
   // General
-  "appBackground-primary": IOColors;
-  "appBackground-secondary": IOColors;
-  "appBackground-tertiary": IOColors;
-  "appBackground-accent": IOColors;
-  "interactiveElem-default": IOColors;
-  "interactiveElem-pressed": IOColors;
-  "listItem-pressed": IOColors;
+  "appBackground-primary",
+  "appBackground-secondary",
+  "appBackground-tertiary",
+  "appBackground-accent",
+  "interactiveElem-default",
+  "interactiveElem-pressed",
+  "listItem-pressed",
   // Typography
-  "textHeading-default": IOColors;
-  "textBody-default": IOColors;
-  "textBody-secondary": IOColors;
-  "textBody-tertiary": IOColors;
+  "textHeading-default",
+  "textBody-default",
+  "textBody-secondary",
+  "textBody-tertiary",
   // Design System related
-  "cardBorder-default": IOColors;
-  "icon-default": IOColors;
-  "icon-decorative": IOColors;
+  "cardBorder-default",
+  "icon-default",
+  "icon-decorative",
   // Layout
-  "divider-default": IOColors;
+  "divider-default",
   // Status
-  errorIcon: IOColors;
-  errorText: IOColors;
+  "errorIcon",
+  "errorText",
   // Pictograms
-  "pictogram-hands": IOColors;
-  "pictogram-tint-main": IOColors;
-  "pictogram-tint-secondary": IOColors;
+  "pictogram-hands",
+  "pictogram-tint-main",
+  "pictogram-tint-secondary"
+] as const;
+
+export type IOTheme = {
+  [K in (typeof themeKeys)[number]]: IOColors;
 };
 
 export const IOThemeLight: IOTheme = {

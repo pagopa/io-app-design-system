@@ -9,7 +9,8 @@ import {
   ListItemNav,
   useIOExperimentalDesign,
   ListItemSwitch,
-  useIOThemeContext
+  useIOThemeContext,
+  IOText
 } from "@pagopa/io-app-design-system";
 import APP_ROUTES from "../navigation/routes";
 import { AppParamsList } from "../navigation/params";
@@ -76,7 +77,23 @@ const MainScreen = (props: Props) => {
     section: { title: string; description?: string };
   }) => (
     <View style={{ marginTop: 24, marginBottom: 8 }}>
-      <H1 color={theme["textHeading-default"]}>{title}</H1>
+      <H1
+        style={{
+          marginBottom: 16
+        }}
+        color={theme["textBody-tertiary"]}
+      >
+        {title}
+      </H1>
+      <H1>{title}</H1>
+      <IOText
+        size={23}
+        weight="Bold"
+        color={theme["textBody-tertiary"]}
+        style={{ marginBottom: 16 }}
+      >
+        {"Bla Bla bla"}
+      </IOText>
       {description && (
         <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>
           {description}

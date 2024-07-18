@@ -1,49 +1,50 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import {
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign,
+  useIOTheme
+} from "../../core";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { IOText, TypographicStyleProps } from "./IOText";
 
-type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
-
-type H1Props = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
+const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h1FontSize = 28;
 export const h1LineHeight = 42;
-const fontName: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "Regular";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "Semibold";
 const legacyH1FontSize = 31;
 const legacyH1LineHeight = 43;
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `H1` typographic style
  */
-export const H1 = React.forwardRef<View, H1Props>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const H1 = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const H1Props = {
       ...props,
+      font: isExperimental ? fontName : legacyFontName,
+      size: isExperimental ? h1FontSize : legacyH1FontSize,
+      weight: isExperimental ? fontWeight : legacyFontWeight,
+      color: customColor ?? theme[defaultColor],
+      lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight,
       allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "largeTitle" /* iOS only */,
-      defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-      defaultColor,
-      font: isExperimental ? fontName : legacyFont,
-      fontStyle: {
-        fontSize: isExperimental ? h1FontSize : legacyH1FontSize,
-        lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight
-      }
-    },
-    ref
-  );
-});
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+    };
+
+    return (
+      <IOText ref={ref} {...H1Props} dynamicTypeRamp="largeTitle">
+        {props.children}
+      </IOText>
+    );
+  }
+);

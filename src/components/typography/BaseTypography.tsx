@@ -46,7 +46,16 @@ const calculateTextStyle = (
 export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
   const fontStyle = useMemo(
     () =>
-      calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
+      calculateTextStyle(
+        props.color,
+        props.fontStyle && props.fontStyle.fontSize
+          ? props.fontStyle.fontSize
+          : undefined,
+        props.font,
+        props.fontStyle?.lineHeight,
+        props.weight,
+        props.isItalic ? "italic" : "normal"
+      ),
     [props.color, props.weight, props.isItalic, props.font]
   );
   const style = props.style

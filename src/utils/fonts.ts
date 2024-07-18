@@ -66,6 +66,7 @@ type FontStyleObject = {
   fontSize: IOFontSize;
   fontFamily: IOFontFamily;
   fontWeight?: IOFontWeightNumeric;
+  lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
 };
 
@@ -107,6 +108,7 @@ const defaultFontSize: IOFontSize = 16;
 export const makeFontStyleObject = (
   size: IOFontSize = defaultFontSize,
   font: IOFontFamily = defaultFont,
+  lineHeight: TextStyle["lineHeight"],
   weight: IOFontWeight = defaultWeight,
   fontStyle: TextStyle["fontStyle"] = "normal"
 ): FontStyleObject =>
@@ -115,6 +117,7 @@ export const makeFontStyleObject = (
       fontSize: size,
       fontFamily: makeFontFamilyName(font, weight, fontStyle),
       fontWeight: fontWeights[weight],
+      lineHeight,
       fontStyle
     },
     // On Android other type attributes, like `fontWeight` or `fontStyle`
@@ -123,12 +126,14 @@ export const makeFontStyleObject = (
     android: {
       fontSize: size,
       fontFamily: makeFontFamilyName(font, weight, fontStyle),
+      lineHeight,
       includeFontPadding: false
     },
     ios: {
       fontSize: size,
       fontFamily: makeFontFamilyName(font, weight, fontStyle),
       fontWeight: fontWeights[weight],
+      lineHeight,
       fontStyle
     },
     default: {
