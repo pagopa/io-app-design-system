@@ -170,6 +170,11 @@ const HelperRow = ({
         },
         helperRowStyle
       ]}
+      // in case of error message the element should be ignored by VO or Talkback
+      accessibilityElementsHidden={bottomMessageColor === "error-600"}
+      importantForAccessibility={
+        bottomMessageColor === "error-600" ? "no-hide-descendants" : "auto"
+      }
     >
       {bottomMessage && (
         <LabelSmall weight="Regular" color={bottomMessageColor}>
@@ -350,6 +355,8 @@ export const TextInputBase = ({
         ]}
         accessible={false}
         accessibilityRole={"none"}
+        accessibilityElementsHidden
+        importantForAccessibility="no"
       >
         {/* Fake border managed with Animated.View to avoid
             little jumps when the border is animated */}
@@ -379,6 +386,8 @@ export const TextInputBase = ({
             ? derivedInputProps.textInputProps
             : textInputProps)}
           accessible
+          importantForAccessibility="yes"
+          accessibilityElementsHidden={false}
           editable={!disabled}
           secureTextEntry={isSecretInput}
           disableFullscreenUI={true}

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
-import { View } from "react-native";
+import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOColors } from "../../core/IOColors";
 import {
@@ -16,7 +16,7 @@ type TextInputValidationProps = Omit<
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
   onValidate: (value: string) => boolean;
-  errorMessage?: string;
+  errorMessage: string;
 };
 
 const feedbackIconSize: IOIconSizeScale = 24;
@@ -37,11 +37,14 @@ export const TextInputValidation = ({
     setIsValid(validation);
     if (!validation) {
       triggerHaptic("notificationError");
+      AccessibilityInfo.announceForAccessibilityWithOptions(errorMessage, {
+        queue: true
+      });
     } else {
       triggerHaptic("notificationSuccess");
     }
     onBlur?.();
-  }, [onValidate, value, onBlur]);
+  }, [onValidate, value, onBlur, errorMessage]);
 
   const onFocusHandler = useCallback(() => {
     setIsValid(undefined);
