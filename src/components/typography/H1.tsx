@@ -1,5 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
+import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOTheme,
   IOVisualCostants,
@@ -21,12 +22,14 @@ const legacyH1FontSize = 31;
 const legacyH1LineHeight = 43;
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
 const legacyFontWeight: IOFontWeight = "Semibold";
+const legacyFontWeightBold: IOFontWeight = "Bold";
 
 /**
  * `H1` typographic style
  */
 export const H1 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const isBoldEnabled = useBoldTextEnabled();
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
@@ -34,7 +37,11 @@ export const H1 = forwardRef<View, TypographicStyleProps>(
       ...props,
       font: isExperimental ? fontName : legacyFontName,
       size: isExperimental ? h1FontSize : legacyH1FontSize,
-      weight: isExperimental ? fontWeight : legacyFontWeight,
+      weight: isExperimental
+        ? fontWeight
+        : isBoldEnabled
+        ? legacyFontWeightBold
+        : legacyFontWeight,
       color: customColor ?? theme[defaultColor],
       lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight,
       allowFontScaling: isExperimental,
