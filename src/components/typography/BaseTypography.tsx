@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { StyleProp, Text, TextStyle, View } from "react-native";
+import { Text, TextStyle, View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import {
   IOFontFamily,
@@ -19,7 +19,7 @@ type BaseTypographyProps = {
 };
 
 type OwnProps = BaseTypographyProps & {
-  fontStyle?: StyleProp<TextStyle>;
+  fontStyle?: TextStyle;
 } & React.ComponentPropsWithRef<typeof Text>;
 
 /**
@@ -48,15 +48,13 @@ export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
     () =>
       calculateTextStyle(
         props.color,
-        props.fontStyle && props.fontStyle.fontSize
-          ? props.fontStyle.fontSize
-          : undefined,
+        props.fontStyle?.fontSize,
         props.font,
         props.fontStyle?.lineHeight,
         props.weight,
         props.isItalic ? "italic" : "normal"
       ),
-    [props.color, props.weight, props.isItalic, props.font]
+    [props.color, props.fontStyle, props.font, props.weight, props.isItalic]
   );
   const style = props.style
     ? [props.style, props.fontStyle, fontStyle]
