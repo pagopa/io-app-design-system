@@ -26,6 +26,7 @@ import { H6 } from "../typography";
 export type AccordionItem = {
   title: string;
   body: string | React.ReactNode;
+  accessibilityLabel?: string;
   icon?: IOIcons;
 };
 
@@ -75,7 +76,12 @@ export const AccordionBody = ({ children, expanded }: AccordionBody) => {
   );
 };
 
-export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
+export const AccordionItem = ({
+  title,
+  accessibilityLabel,
+  body,
+  icon
+}: AccordionItem) => {
   const theme = useIOTheme();
   const [expanded, setExpanded] = useState(false);
 
@@ -115,6 +121,7 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
         accessible={true}
         accessibilityRole="button"
         accessibilityState={{ expanded }}
+        accessibilityLabel={accessibilityLabel ?? title}
         onPress={onItemPress}
       >
         <View style={styles.textContainer}>
@@ -133,7 +140,11 @@ export const AccordionItem = ({ title, body, icon }: AccordionItem) => {
                 <Icon name={icon} size={iconSize} color={accordionIconColor} />
               </View>
             )}
-            <View style={{ flexShrink: 1 }}>
+            <View
+              style={{ flexShrink: 1 }}
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+            >
               <H6 color={theme["textBody-default"]}>{title}</H6>
             </View>
           </View>

@@ -73,7 +73,11 @@ export const RadioButtonLabel = ({
           { alignItems: "flex-start", flexShrink: 1, width: "100%" }
         ]}
       >
-        <View pointerEvents="none">
+        <View
+          pointerEvents="none"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
           <AnimatedRadio checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
