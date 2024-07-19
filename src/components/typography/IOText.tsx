@@ -1,6 +1,7 @@
 import React, { ComponentProps, forwardRef, useMemo } from "react";
 import { Text, TextStyle, View } from "react-native";
 import { IOColors, useIOTheme } from "../../core";
+import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
   IOFontSize,
@@ -76,6 +77,7 @@ export const IOText = forwardRef<View, IOTextProps>(
     ref
   ) => {
     const theme = useIOTheme();
+    const boldEnabled = useBoldTextEnabled();
 
     const fontStyleObj = useMemo(
       () =>
@@ -85,9 +87,10 @@ export const IOText = forwardRef<View, IOTextProps>(
           font,
           lineHeight,
           weight,
-          fontStyle
+          fontStyle,
+          boldEnabled
         ),
-      [color, theme, size, font, lineHeight, weight, fontStyle]
+      [color, theme, size, font, lineHeight, weight, fontStyle, boldEnabled]
     );
 
     return (

@@ -35,9 +35,7 @@ export type IOFontFamily = keyof typeof fonts;
 /*
  * Font Sizes
  */
-export const fontSizes: Array<number> = [
-  12, 14, 16, 18, 20, 24, 28, 32, 36, 40
-];
+export const fontSizes = [12, 14, 16, 18, 20, 24, 28, 31, 32, 36, 40] as const;
 export type IOFontSize = (typeof fontSizes)[number];
 
 /*
@@ -68,6 +66,20 @@ type FontStyleObject = {
   fontWeight?: IOFontWeightNumeric;
   lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
+  boldEnabled?: boolean;
+};
+
+/* Function that, given a certain weight, returns the next
+available `FontWeight` value. 
+For example, if I set it to `Regular`, the function 
+should return `Medium`, and so on. If I set it to the last `FontWeight`
+value, the function will return the same value.
+*/
+const getBolderFontWeight = (weight: IOFontWeight): IOFontWeight => {
+  const currentWeight = weights.indexOf(weight);
+  return currentWeight === weights.length - 1
+    ? weight
+    : weights[currentWeight + 1];
 };
 
 /**
@@ -78,7 +90,7 @@ type FontStyleObject = {
  */
 export const makeFontFamilyName = (
   font: IOFontFamily,
-  weight?: IOFontWeight,
+  weight: IOFontWeight = defaultWeight,
   fontStyle: TextStyle["fontStyle"] = "normal"
 ): IOFontFamily =>
   Platform.select({
@@ -110,13 +122,18 @@ export const makeFontStyleObject = (
   font: IOFontFamily = defaultFont,
   lineHeight: TextStyle["lineHeight"],
   weight: IOFontWeight = defaultWeight,
-  fontStyle: TextStyle["fontStyle"] = "normal"
-): FontStyleObject =>
-  Platform.select({
+  fontStyle: TextStyle["fontStyle"] = "normal",
+  boldEnabled: boolean = false
+): FontStyleObject => {
+  /* If bold text is currently enabled, we select the next
+     available `IOFontWeight` value */
+  const dynamicWeight = boldEnabled ? getBolderFontWeight(weight) : weight;
+
+  return Platform.select({
     web: {
       fontSize: size,
-      fontFamily: makeFontFamilyName(font, weight, fontStyle),
-      fontWeight: fontWeights[weight],
+      fontFamily: makeFontFamilyName(font, dynamicWeight, fontStyle),
+      fontWeight: fontWeights[dynamicWeight],
       lineHeight,
       fontStyle
     },
@@ -125,19 +142,20 @@ export const makeFontStyleObject = (
     // include them in the object.
     android: {
       fontSize: size,
-      fontFamily: makeFontFamilyName(font, weight, fontStyle),
+      fontFamily: makeFontFamilyName(font, dynamicWeight, fontStyle),
       lineHeight,
       includeFontPadding: false
     },
     ios: {
       fontSize: size,
-      fontFamily: makeFontFamilyName(font, weight, fontStyle),
-      fontWeight: fontWeights[weight],
+      fontFamily: makeFontFamilyName(font, dynamicWeight, fontStyle),
+      fontWeight: fontWeights[dynamicWeight],
       lineHeight,
       fontStyle
     },
     default: {
       fontSize: size,
-      fontFamily: makeFontFamilyName(font, weight, fontStyle)
+      fontFamily: makeFontFamilyName(font, dynamicWeight, fontStyle)
     }
   });
+};
