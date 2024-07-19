@@ -56,6 +56,7 @@ export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
       ),
     [props.color, props.fontStyle, props.font, props.weight, props.isItalic]
   );
+
   const style = props.style
     ? [props.style, props.fontStyle, fontStyle]
     : [props.fontStyle, fontStyle];

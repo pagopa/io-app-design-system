@@ -1,6 +1,11 @@
 import { throttle } from "lodash";
 import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import {
+  AccessibilityInfo,
+  SafeAreaView,
+  StyleSheet,
+  View
+} from "react-native";
 import Animated, {
   Easing,
   SequencedTransition,
@@ -85,6 +90,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     if (toast.hapticFeedback) {
       triggerHaptic(toast.hapticFeedback);
     }
+
+    AccessibilityInfo.announceForAccessibilityWithOptions(toast.message, {
+      queue: true
+    });
 
     return id;
   }, []);

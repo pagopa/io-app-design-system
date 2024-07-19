@@ -224,7 +224,11 @@ export const Banner = ({
         {action && (
           /* Disable pointer events to avoid
                       pressed state on the button */
-          <View pointerEvents="none">
+          <View
+            pointerEvents="none"
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+          >
             <VSpacer size={4} />
             <ButtonLink color="primary" onPress={onPress} label={action} />
           </View>

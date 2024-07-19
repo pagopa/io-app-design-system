@@ -98,6 +98,7 @@ export const TextInputs = () => (
         placeholder={"Base input"}
         onValidate={value => value.length > 2}
         bottomMessage="Inserisci almeno 3 caratteri"
+        errorMessage="Inserisci almeno 3 caratteri"
       />
       <H5>Base input with validation and error</H5>
       <InputValidationComponentWrapper
@@ -125,6 +126,7 @@ export const TextInputs = () => (
         disabled
         placeholder={"Validation input (Disabled)"}
         onValidate={value => value.length > 2}
+        errorMessage="C'è stato un errore"
       />
       <VSpacer />
     </View>

@@ -392,21 +392,15 @@ const renderListItemAction = () => (
 const renderListItemInfo = () => (
   <ComponentViewerBox name="ListItemInfo">
     <View>
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemInfo label="Label" value={"Value"} />
       <ListItemInfo
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
       />
       <ListItemInfo
         icon="creditCard"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "buttonLink",
           componentProps: {
@@ -420,7 +414,6 @@ const renderListItemInfo = () => (
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "iconButton",
           componentProps: {
@@ -435,7 +428,6 @@ const renderListItemInfo = () => (
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "badge",
           componentProps: {
@@ -445,18 +437,8 @@ const renderListItemInfo = () => (
         }}
       />
 
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        icon="gallery"
-        accessibilityLabel="Empty just for testing purposes"
-      />
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        paymentLogoIcon="payPal"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemInfo label="Label" value={"Value"} icon="gallery" />
+      <ListItemInfo label="Label" value={"Value"} paymentLogoIcon="payPal" />
     </View>
   </ComponentViewerBox>
 );
@@ -464,18 +446,11 @@ const renderListItemInfo = () => (
 const renderListItemHeader = () => (
   <ComponentViewerBox name="ListItemHeader">
     <View>
-      <ListItemHeader
-        label="Label"
-        accessibilityLabel="Empty just for testing purposes"
-      />
-      <ListItemHeader
-        label="Label"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemHeader label="Label" />
+      <ListItemHeader label="Label" />
       <ListItemHeader
         iconName="creditCard"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "buttonLink",
           componentProps: {
@@ -488,7 +463,6 @@ const renderListItemHeader = () => (
       <ListItemHeader
         iconName="psp"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "iconButton",
           componentProps: {
@@ -502,7 +476,6 @@ const renderListItemHeader = () => (
       <ListItemHeader
         iconName="psp"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "badge",
           componentProps: {
@@ -512,11 +485,7 @@ const renderListItemHeader = () => (
         }}
       />
 
-      <ListItemHeader
-        label="Label"
-        iconName="gallery"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemHeader label="Label" iconName="gallery" />
     </View>
   </ComponentViewerBox>
 );
