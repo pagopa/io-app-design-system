@@ -1159,6 +1159,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         </View>
       </View>
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={
           {
@@ -1469,6 +1471,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         </Text>
       </View>
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={
           {
@@ -2982,6 +2986,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         </View>
       </View>
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={
           {
@@ -3292,6 +3298,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         </Text>
       </View>
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={
           {

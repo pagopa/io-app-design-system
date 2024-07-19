@@ -71,9 +71,9 @@ export const ListItemHeader = ({
       <View
         accessible={endElement === undefined ? true : false}
         importantForAccessibility={
-          endElement === undefined || endElement.type === "badge"
-            ? "yes"
-            : "no-hide-descendants"
+          endElement !== undefined && endElement.type !== "badge"
+            ? "no-hide-descendants"
+            : "yes"
         }
         accessibilityElementsHidden={
           endElement !== undefined && endElement.type !== "badge"

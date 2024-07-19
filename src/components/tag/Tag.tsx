@@ -12,33 +12,40 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 
-export type Tag = WithTestID<
-  | {
-      text?: string;
-      variant:
-        | "qrCode"
-        | "legalMessage"
-        | "info"
-        | "warning"
-        | "error"
-        | "success"
-        | "attachment"
-        | "noIcon";
-      iconAccessibilityLabel?: string;
-      customIconProps?: never;
-    }
-  | {
-      text?: string;
-      variant: "customIcon";
-      customIconProps: VariantProps;
-      iconAccessibilityLabel?: string;
-    }
->;
-
 type VariantProps = {
   iconColor: IOColors;
   iconName: IOIcons;
 };
+
+type TextProps =
+  | {
+      text: string;
+      iconAccessibilityLabel?: string;
+    }
+  | {
+      text?: never;
+      iconAccessibilityLabel: string;
+    };
+
+export type Tag = TextProps &
+  WithTestID<
+    | {
+        variant:
+          | "qrCode"
+          | "legalMessage"
+          | "info"
+          | "warning"
+          | "error"
+          | "success"
+          | "attachment"
+          | "noIcon";
+        customIconProps?: never;
+      }
+    | {
+        variant: "customIcon";
+        customIconProps: VariantProps;
+      }
+  >;
 
 const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;

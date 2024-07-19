@@ -111,6 +111,8 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         }
       />
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
         <View
@@ -470,6 +472,8 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         }
       />
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
         <View

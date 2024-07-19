@@ -68,6 +68,8 @@ export const CheckboxLabel = ({
       <View style={[IOStyles.row, { alignItems: "center", width: "100%" }]}>
         <View
           pointerEvents="none"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
           style={{
             alignSelf: "flex-start"
           }}
