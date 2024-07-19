@@ -38,9 +38,6 @@ export const LabelLink = React.forwardRef<View, LinkProps>((props, ref) => {
 
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
-      accessible: true,
-      importantForAccessibility: "yes",
-      accessibilityElementsHidden: false,
       accessibilityRole: props.onPress ? "link" : undefined,
       ...props,
       allowFontScaling: isExperimental,
