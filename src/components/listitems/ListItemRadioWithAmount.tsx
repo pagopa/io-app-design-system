@@ -72,7 +72,12 @@ export const ListItemRadioWithAmount = ({
           </>
         )}
       </View>
-      <View pointerEvents="none" style={{ flexDirection: "row" }}>
+      <View
+        pointerEvents="none"
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+        style={{ flexDirection: "row" }}
+      >
         <HSpacer size={8} />
         <H6 color={theme["interactiveElem-default"]}>
           {formattedAmountString}

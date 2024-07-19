@@ -49,6 +49,7 @@ export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
       calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
     [props.color, props.weight, props.isItalic, props.font]
   );
+
   const style = props.style
     ? [props.style, props.fontStyle, fontStyle]
     : [props.fontStyle, fontStyle];

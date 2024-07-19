@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 
 export type ProgressLoader = {
   progress: number;
+  accessibilityLabel?: string;
   color?: IOColors;
 };
 
@@ -27,6 +28,7 @@ export type ProgressLoader = {
  */
 export const ProgressLoader = ({
   progress,
+  accessibilityLabel,
   color = "blueIO-500"
 }: ProgressLoader) => {
   const [width, setWidth] = React.useState(0);
@@ -48,6 +50,7 @@ export const ProgressLoader = ({
     <View
       style={styles.container}
       onLayout={e => setWidth(e.nativeEvent.layout.width)}
+      accessibilityLabel={accessibilityLabel}
     >
       <Animated.View
         style={[
