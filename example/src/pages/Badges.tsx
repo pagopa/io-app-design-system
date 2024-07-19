@@ -114,7 +114,7 @@ const renderTag = () => (
         <Tag text={"Valore legale"} variant="legalMessage" />
       </View>
       <VSpacer size={8} />
-      <Tag variant="attachment" iconAccessibilityLabel="Attachement" />
+      <Tag variant="attachment" iconAccessibilityLabel="Attachment" />
       <VSpacer size={8} />
       <Tag text={"No icon"} variant="noIcon" />
       <VSpacer size={8} />
