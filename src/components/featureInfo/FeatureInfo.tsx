@@ -75,7 +75,13 @@ export const FeatureInfo = ({
           This verbose code could be deleted once we got "gap"
           property support */}
           {body && <VSpacer size={4} />}
-          <LabelLink fontSize="regular" onPress={actionOnPress}>
+          <LabelLink
+            fontSize="regular"
+            onPress={actionOnPress}
+            accessible
+            importantForAccessibility={"yes"}
+            accessibilityElementsHidden={false}
+          >
             {actionLabel}
           </LabelLink>
         </>

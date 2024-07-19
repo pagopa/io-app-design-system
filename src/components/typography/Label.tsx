@@ -16,7 +16,7 @@ import {
   lineHeightMapping
 } from "./common";
 
-type PartialAllowedColors = Extract<IOColors, "black" | "white">;
+type PartialAllowedColors = Extract<IOColors, "black" | "white" | "grey-700">;
 type AllowedColors = PartialAllowedColors | IOColorsStatusForeground;
 type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
 type LabelProps = ExternalTypographyProps<

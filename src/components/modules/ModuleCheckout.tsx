@@ -82,7 +82,11 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     <PressableModuleBase onPress={onPress}>
       <HStack space={4} style={{ alignItems: "center" }}>
         <ModuleBaseContent />
-        <View pointerEvents="none">
+        <View
+          pointerEvents="none"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
           <ButtonLink label={ctaText} onPress={() => null} />
         </View>
       </HStack>

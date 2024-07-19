@@ -175,7 +175,11 @@ export const ListItemCheckbox = ({
               </H6>
             </View>
             <HSpacer size={8} />
-            <View pointerEvents="none">
+            <View
+              pointerEvents="none"
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+            >
               <AnimatedCheckbox checked={selected ?? toggleValue} />
             </View>
           </View>
