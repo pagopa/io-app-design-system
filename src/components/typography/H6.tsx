@@ -1,55 +1,50 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
 import {
   IOTheme,
-  IOThemeLight,
   IOVisualCostants,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
+import { IOText, TypographicStyleProps } from "./IOText";
 
-// when the weight is bold, only these color are allowed
-type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
+const defaultColor: keyof IOTheme = "textHeading-default";
 
-type H6Props = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-export const h6FontSize = 16;
+export const h6FontSize: IOFontSize = 16;
 export const h6LineHeight = 24;
-const h6DefaultColor: AllowedColors = IOThemeLight["textBody-default"];
-const h6DefaultWeight: AllowedWeight = "Regular";
-const fontName: FontFamily = "ReadexPro";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFontSize = 18;
+const legacyFontSize: IOFontSize = 18;
 const legacyLineHeight = 25;
-const legacyFontName: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "Semibold";
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `H6` typographic style
  */
-export const H6 = React.forwardRef<View, H6Props>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const H6 = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const H6Props = {
       ...props,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "headline" /* iOS only */,
-      defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
-      defaultColor: h6DefaultColor,
       font: isExperimental ? fontName : legacyFontName,
-      fontStyle: {
-        fontSize: isExperimental ? h6FontSize : legacyFontSize,
-        lineHeight: isExperimental ? h6LineHeight : legacyLineHeight
-      }
-    },
-    ref
-  );
-});
+      size: isExperimental ? h6FontSize : legacyFontSize,
+      lineHeight: isExperimental ? h6LineHeight : legacyLineHeight,
+      weight: isExperimental ? fontWeight : legacyFontWeight,
+      color: customColor ?? theme[defaultColor],
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+    };
+
+    return (
+      <IOText ref={ref} {...H6Props} dynamicTypeRamp="headline">
+        {props.children}
+      </IOText>
+    );
+  }
+);
