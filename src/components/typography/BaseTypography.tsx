@@ -41,6 +41,7 @@ const calculateTextStyle = (
  * used to calculate at runtime the platform-dependent styles.
  * This component shouldn't be used in the application but only to compose others `Typography elements`.
  * @param props
+ * @deprecated Use {@link IOText} instead
  * @constructor
  */
 export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {

@@ -56,7 +56,7 @@ const calculateTextStyle = (
 
 /**
  * `IOText` is the core Typography component used to render a text.
- * It accepts all the default text style `StyleProp<TextStyle>` in addition with {@link IOTextBaseProps}
+ * It accepts all the default text style `StyleProp<TextStyle>` (excluding the ones already applied) in addition with {@link IOTextBaseProps}
  * used to calculate at runtime the platform-dependent styles.
  * @param props
  * @constructor
