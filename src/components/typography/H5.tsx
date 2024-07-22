@@ -1,20 +1,13 @@
 import React, { ForwardedRef, forwardRef } from "react";
-import { TextStyle, View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
-import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { View } from "react-native";
+import { IOTheme, useIOTheme } from "../../core";
+import { IOFontSize } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h5FontSize: IOFontSize = 14;
 export const h5LineHeight = 16;
-const fontName: IOFontFamily = "TitilliumSansPro";
-const fontWeight: IOFontWeight = "Semibold";
 
 /**
  * `H5` typographic style
@@ -22,25 +15,23 @@ const fontWeight: IOFontWeight = "Semibold";
 export const H5 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
 
-    const H5Props = {
+    const H5Props: IOTextProps = {
       ...props,
-      font: fontName,
+      dynamicTypeRamp: "subheadline", // iOS only
+      font: "TitilliumSansPro",
+      weight: "Semibold",
       size: h5FontSize,
       lineHeight: h5LineHeight,
-      weight: fontWeight,
       color: customColor ?? theme[defaultColor],
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
       textStyle: {
         textTransform: "uppercase",
         letterSpacing: 0.5
-      } as TextStyle
+      }
     };
 
     return (
-      <IOText ref={ref} {...H5Props} dynamicTypeRamp="subheadline">
+      <IOText ref={ref} {...H5Props}>
         {props.children}
       </IOText>
     );

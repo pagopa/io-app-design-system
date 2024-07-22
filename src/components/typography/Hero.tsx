@@ -1,13 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
@@ -30,15 +25,13 @@ export const Hero = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const HeroProps = {
+    const HeroProps: IOTextProps = {
       ...props,
       font: isExperimental ? fontName : legacyFontName,
-      size: isExperimental ? heroFontSize : legacyHeroFontSize,
       weight: isExperimental ? fontWeight : legacyFontWeight,
-      color: customColor ?? theme[defaultColor],
+      size: isExperimental ? heroFontSize : legacyHeroFontSize,
       lineHeight: isExperimental ? heroLineHeight : legacyHeroLineHeight,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      color: customColor ?? theme[defaultColor]
     };
 
     return (

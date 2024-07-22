@@ -1,13 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
@@ -30,19 +25,18 @@ export const H1 = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const H1Props = {
+    const H1Props: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "largeTitle", // iOS only
       font: isExperimental ? fontName : legacyFontName,
-      size: isExperimental ? h1FontSize : legacyH1FontSize,
       weight: isExperimental ? fontWeight : legacyFontWeight,
-      color: customColor ?? theme[defaultColor],
+      size: isExperimental ? h1FontSize : legacyH1FontSize,
       lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      color: customColor ?? theme[defaultColor]
     };
 
     return (
-      <IOText ref={ref} {...H1Props} dynamicTypeRamp="largeTitle">
+      <IOText ref={ref} {...H1Props}>
         {props.children}
       </IOText>
     );

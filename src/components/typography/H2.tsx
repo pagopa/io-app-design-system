@@ -1,13 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
@@ -30,19 +25,18 @@ export const H2 = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const H2Props = {
+    const H2Props: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "title1", // iOS only
       font: isExperimental ? fontName : legacyFontName,
       size: isExperimental ? h2FontSize : legacyH2FontSize,
       weight: isExperimental ? fontWeight : legacyFontWeight,
       color: customColor ?? theme[defaultColor],
-      lineHeight: isExperimental ? h2LineHeight : legacyH2LineHeight,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      lineHeight: isExperimental ? h2LineHeight : legacyH2LineHeight
     };
 
     return (
-      <IOText ref={ref} {...H2Props} dynamicTypeRamp="title1">
+      <IOText ref={ref} {...H2Props}>
         {props.children}
       </IOText>
     );

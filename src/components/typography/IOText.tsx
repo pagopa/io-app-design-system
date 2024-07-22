@@ -1,6 +1,6 @@
 import React, { ComponentProps, forwardRef, useMemo } from "react";
 import { Text, TextStyle, View } from "react-native";
-import { IOColors, useIOTheme } from "../../core";
+import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
@@ -23,7 +23,11 @@ type IOTextBaseProps = {
   textStyle?: IOTextStyle;
 };
 
-export type IOTextProps = IOTextBaseProps & ComponentProps<typeof Text>;
+export type IOTextProps = IOTextBaseProps &
+  Omit<
+    ComponentProps<typeof Text>,
+    "allowFontScaling" | "maxFontSizeMultiplier"
+  >;
 
 /**
  * We exclude all of the following props when we define a new
@@ -81,6 +85,8 @@ export const IOText = forwardRef<View, IOTextProps>(
     const theme = useIOTheme();
     const boldEnabled = useBoldTextEnabled();
 
+    const { isExperimental } = useIOExperimentalDesign();
+
     const fontStyleObj = useMemo(
       () =>
         calculateTextStyle(
@@ -105,8 +111,14 @@ export const IOText = forwardRef<View, IOTextProps>(
       ? [style, textStyle ?? {}, fontStyleObj ?? {}]
       : [textStyle ?? {}, fontStyleObj ?? {}];
 
+    /* Accessible typography based on the `fontScale` parameter */
+    const accessibleFontSizeProps: ComponentProps<typeof Text> = {
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: 1.25
+    };
+
     return (
-      <Text ref={ref} style={styleObj} {...props}>
+      <Text ref={ref} style={styleObj} {...props} {...accessibleFontSizeProps}>
         {children}
       </Text>
     );

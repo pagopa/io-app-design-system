@@ -7,7 +7,7 @@ import {
   useIOTheme
 } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
@@ -28,19 +28,18 @@ export const H4 = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const H4Props = {
+    const H4Props: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "title3", // iOS only
       font: isExperimental ? fontName : legacyFontName,
       size: h4FontSize,
       weight: isExperimental ? fontWeight : legacyFontWeight,
       color: customColor ?? theme[defaultColor],
-      lineHeight: h4LineHeight,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      lineHeight: h4LineHeight
     };
 
     return (
-      <IOText ref={ref} {...H4Props} dynamicTypeRamp="title3">
+      <IOText ref={ref} {...H4Props}>
         {props.children}
       </IOText>
     );

@@ -1,10 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -21,16 +17,15 @@ export const Chip = forwardRef<View, TypographicStyleProps>(
 
     const ChipProps: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "caption2", // iOS only
       font: isExperimental ? fontName : legacyFontName,
-      size: 12,
       weight: "Regular",
-      color: customColor ?? theme["textBody-default"],
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      size: 12,
+      color: customColor ?? theme["textBody-default"]
     };
 
     return (
-      <IOText ref={ref} {...ChipProps} dynamicTypeRamp="caption2">
+      <IOText ref={ref} {...ChipProps}>
         {props.children}
       </IOText>
     );

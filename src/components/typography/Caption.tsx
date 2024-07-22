@@ -1,13 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
-import { TextStyle, View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { View } from "react-native";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textBody-default";
 
@@ -26,21 +21,21 @@ export const Caption = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const CaptionProps = {
+    const CaptionProps: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "caption1", // iOS only
       font: isExperimental ? fontName : legacyFontName,
       size: captionFontSize,
       weight: fontWeight,
       color: customColor ?? theme[defaultColor],
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
       textStyle: {
-        textTransform: "uppercase"
-      } as TextStyle
+        textTransform: "uppercase",
+        letterSpacing: 0.5
+      }
     };
 
     return (
-      <IOText ref={ref} {...CaptionProps} dynamicTypeRamp="caption1">
+      <IOText ref={ref} {...CaptionProps}>
         {props.children}
       </IOText>
     );

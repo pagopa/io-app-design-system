@@ -1,9 +1,9 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
+import { useIOExperimentalDesign } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 export const buttonTextFontSize: IOFontSize = 16;
 /* Needed to render `ButtonOutline` and`ButtonLink` because they use
@@ -23,14 +23,12 @@ export const ButtonText = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const { isExperimental } = useIOExperimentalDesign();
 
-    const ButtonTextProps = {
+    const ButtonTextProps: IOTextProps = {
       ...props,
       font: isExperimental ? fontName : legacyFontName,
-      size: buttonTextFontSize,
       weight: isExperimental ? fontWeight : legacyFontWeight,
-      color: customColor ?? defaultColor,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      size: buttonTextFontSize,
+      color: customColor ?? defaultColor
     };
 
     return (

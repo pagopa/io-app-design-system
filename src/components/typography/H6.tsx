@@ -1,13 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
-import { IOText, TypographicStyleProps } from "./IOText";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
@@ -30,19 +25,18 @@ export const H6 = forwardRef<View, TypographicStyleProps>(
     const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    const H6Props = {
+    const H6Props: IOTextProps = {
       ...props,
+      dynamicTypeRamp: "headline", // iOS only
       font: isExperimental ? fontName : legacyFontName,
       size: isExperimental ? h6FontSize : legacyFontSize,
       lineHeight: isExperimental ? h6LineHeight : legacyLineHeight,
       weight: isExperimental ? fontWeight : legacyFontWeight,
-      color: customColor ?? theme[defaultColor],
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+      color: customColor ?? theme[defaultColor]
     };
 
     return (
-      <IOText ref={ref} {...H6Props} dynamicTypeRamp="headline">
+      <IOText ref={ref} {...H6Props}>
         {props.children}
       </IOText>
     );
