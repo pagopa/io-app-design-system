@@ -35,8 +35,8 @@ export type IOFontFamily = keyof typeof fonts;
 /*
  * Font Sizes
  */
-const fontSizes = [16, 22, 26, 28, 32] as const;
-const fontSizesLegacy = [16, 28, 31, 35] as const;
+const fontSizes = [16, 20, 22, 26, 28, 32] as const;
+const fontSizesLegacy = [28, 31, 35] as const;
 const allFontSizes = [...new Set([...fontSizes, ...fontSizesLegacy])];
 export type IOFontSize = (typeof allFontSizes)[number];
 
