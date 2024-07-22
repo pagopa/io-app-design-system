@@ -1,46 +1,30 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  type IOColors
-} from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
-
-type AllowedColors = Extract<IOColors, "bluegreyDark" | "bluegrey">;
-type AllowedWeight = Extract<IOFontWeight, "Medium">;
-
-type BodyMonospaceProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-const fontName: FontFamily = "DMMono";
-const fontSize = 16;
-const lineHeight = 24;
-const monospaceDefaultWeight = "Medium";
-const monospaceDefaultcolor = "bluegrey";
+import { useIOTheme } from "../../core";
+import { bodyFontSize, bodyLineHeight } from "./Body";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 /**
  * `BodyMonospace` typographic style
  */
-export const BodyMonospace = React.forwardRef<View, BodyMonospaceProps>(
-  (props, ref) => {
-    const { isExperimental } = useIOExperimentalDesign();
+export const BodyMonospace = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>(
-      {
-        ...props,
-        allowFontScaling: isExperimental,
-        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-        dynamicTypeRamp: "body" /* iOS only */,
-        defaultWeight: monospaceDefaultWeight,
-        defaultColor: monospaceDefaultcolor,
-        font: fontName,
-        fontStyle: { fontSize, lineHeight }
-      },
-      ref
+    const BodyProps: IOTextProps = {
+      ...props,
+      dynamicTypeRamp: "body", // iOS only
+      font: "DMMono",
+      weight: "Medium",
+      size: bodyFontSize,
+      lineHeight: bodyLineHeight,
+      color: customColor ?? theme["textBody-tertiary"]
+    };
+
+    return (
+      <IOText ref={ref} {...BodyProps}>
+        {props.children}
+      </IOText>
     );
   }
 );
