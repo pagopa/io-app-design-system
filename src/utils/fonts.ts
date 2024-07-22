@@ -35,7 +35,9 @@ export type IOFontFamily = keyof typeof fonts;
 /*
  * Font Sizes
  */
-export const fontSizes = [12, 14, 16, 18, 20, 24, 28, 31, 32, 36, 40] as const;
+export const fontSizes = [
+  12, 14, 16, 18, 20, 24, 28, 31, 32, 35, 36, 40
+] as const;
 export type IOFontSize = (typeof fontSizes)[number];
 
 /*
