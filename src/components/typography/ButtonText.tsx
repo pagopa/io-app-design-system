@@ -1,51 +1,42 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOColors } from "../../core/IOColors";
-import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { IOColors } from "../../core/IOColors";
+import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
+import { IOText, TypographicStyleProps } from "./IOText";
 
-export type ButtonTextAllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular" | "Bold">;
-
-type ButtonTextProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, ButtonTextAllowedColors>
->;
-
-export const buttonTextFontSize = 16;
+export const buttonTextFontSize: IOFontSize = 16;
 /* Needed to render `ButtonOutline` and`ButtonLink` because they use
 `AnimatedText` for color transition through Reanimated */
-const buttonTextDefaultColor: ButtonTextAllowedColors = "white";
-const buttonTextFontName: IOFontFamily = "ReadexPro";
-const buttonTextDefaultWeight: AllowedWeight = "Regular";
+const defaultColor: IOColors = "white";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyTextFontName: IOFontFamily = "TitilliumSansPro";
-const legacyTextDefaultWeight: AllowedWeight = "Bold";
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `ButtonText` typographic style
  */
-export const ButtonText = React.forwardRef<View, ButtonTextProps>(
-  (props, ref) => {
+export const ButtonText = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const { isExperimental } = useIOExperimentalDesign();
 
-    return useTypographyFactory<AllowedWeight, ButtonTextAllowedColors>(
-      {
-        ...props,
-        allowFontScaling: isExperimental,
-        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-        defaultWeight: isExperimental
-          ? buttonTextDefaultWeight
-          : legacyTextDefaultWeight,
-        defaultColor: buttonTextDefaultColor,
-        font: isExperimental ? buttonTextFontName : legacyTextFontName,
-        fontStyle: {
-          fontSize: buttonTextFontSize
-        }
-      },
-      ref
+    const ButtonTextProps = {
+      ...props,
+      font: isExperimental ? fontName : legacyFontName,
+      size: buttonTextFontSize,
+      weight: isExperimental ? fontWeight : legacyFontWeight,
+      color: customColor ?? defaultColor,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+    };
+
+    return (
+      <IOText ref={ref} {...ButtonTextProps}>
+        {props.children}
+      </IOText>
     );
   }
 );
