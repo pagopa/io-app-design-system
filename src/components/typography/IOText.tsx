@@ -20,6 +20,7 @@ type IOTextBaseProps = {
   font?: IOFontFamily;
   lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
+  textStyle?: IOTextStyle;
 };
 
 type IOTextProps = IOTextBaseProps & ComponentProps<typeof Text>;
@@ -37,7 +38,7 @@ export type IOTextStyle = Omit<
 export type TypographicStyleProps = Omit<
   IOTextProps,
   "style" | "font" | "size" | "weight" | "color" | "lineHeight" | "fontStyle"
-> & { style?: IOTextStyle } & {
+> & { textStyle?: IOTextStyle; style?: IOTextStyle } & {
   color?: IOTextBaseProps["color"];
 };
 
@@ -70,6 +71,7 @@ export const IOText = forwardRef<View, IOTextProps>(
       lineHeight,
       weight,
       fontStyle,
+      textStyle,
       style,
       children,
       ...props
@@ -93,8 +95,18 @@ export const IOText = forwardRef<View, IOTextProps>(
       [color, theme, size, font, lineHeight, weight, fontStyle, boldEnabled]
     );
 
+    /* Some typographic styles like `H5` have certain `TextStyle` properties
+     like `textTransform` or `letterSpacing` that we want to apply to the text.
+     We use the `textStyle` prop to pass these properties to the `IOText`
+     component and preserve the ability to define the `style` prop as well.
+     */
+
+    const styleObj = style
+      ? [style, textStyle ?? {}, fontStyleObj ?? {}]
+      : [textStyle ?? {}, fontStyleObj ?? {}];
+
     return (
-      <Text ref={ref} style={[style ?? {}, fontStyleObj]} {...props}>
+      <Text ref={ref} style={styleObj} {...props}>
         {children}
       </Text>
     );
