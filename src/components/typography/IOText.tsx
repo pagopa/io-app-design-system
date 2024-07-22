@@ -23,7 +23,7 @@ type IOTextBaseProps = {
   textStyle?: IOTextStyle;
 };
 
-type IOTextProps = IOTextBaseProps & ComponentProps<typeof Text>;
+export type IOTextProps = IOTextBaseProps & ComponentProps<typeof Text>;
 
 /**
  * We exclude all of the following props when we define a new

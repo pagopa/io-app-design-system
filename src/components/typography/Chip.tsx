@@ -1,45 +1,38 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
 import {
-  IOColors,
   IOVisualCostants,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { IOFontFamily } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
-type AllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular">;
-
-type ChipProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-const chipFontSize = 12;
-const font: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "Regular";
-
+const fontName: IOFontFamily = "ReadexPro";
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumSansPro";
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
 /**
  * `Chip` typographic style
  */
-export const Chip = React.forwardRef<View, ChipProps>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const Chip = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const ChipProps: IOTextProps = {
       ...props,
+      font: isExperimental ? fontName : legacyFontName,
+      size: 12,
+      weight: "Regular",
+      color: customColor ?? theme["textBody-default"],
       allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "caption2" /* iOS only */,
-      defaultWeight,
-      defaultColor,
-      font: isExperimental ? font : legacyFont,
-      fontStyle: { fontSize: chipFontSize }
-    },
-    ref
-  );
-});
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+    };
+
+    return (
+      <IOText ref={ref} {...ChipProps} dynamicTypeRamp="caption2">
+        {props.children}
+      </IOText>
+    );
+  }
+);
