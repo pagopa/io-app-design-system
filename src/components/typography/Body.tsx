@@ -1,50 +1,34 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOColors,
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign
-} from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
-
-type PartialAllowedColors = Extract<
-  IOColors,
-  "bluegreyDark" | "white" | "blue" | "bluegrey" | "bluegreyLight"
->;
-type AllowedColors = PartialAllowedColors | IOTheme["textBody-default"];
-type AllowedWeight = IOFontWeight | "Regular" | "Semibold";
-
-type BodyProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-const fontName: FontFamily = "TitilliumSansPro";
+import { useIOTheme } from "../../core";
+import { IOFontWeight } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 export const bodyFontSize = 16;
 export const bodyLineHeight = 24;
-export const bodyDefaultColor: AllowedColors = "bluegrey";
-export const bodyDefaultWeight: AllowedWeight = "Regular";
+export const bodyFontWeight: IOFontWeight = "Regular";
 
 /**
  * `Body` typographic style
  */
-export const Body = React.forwardRef<View, BodyProps>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const Body = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const BodyProps: IOTextProps = {
       ...props,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "body" /* iOS only */,
-      defaultWeight: bodyDefaultWeight,
-      defaultColor: bodyDefaultColor,
-      font: fontName,
-      fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
-    },
-    ref
-  );
-});
+      dynamicTypeRamp: "body", // iOS only
+      font: "TitilliumSansPro",
+      weight: "Regular",
+      size: bodyFontSize,
+      lineHeight: bodyLineHeight,
+      color: customColor ?? theme["textBody-tertiary"]
+    };
+
+    return (
+      <IOText ref={ref} {...BodyProps}>
+        {props.children}
+      </IOText>
+    );
+  }
+);
