@@ -88,11 +88,14 @@ const MainScreen = (props: Props) => {
       <H1>{title}</H1>
       <IOText
         size={20}
+        lineHeight={26}
         weight="Light"
         color={theme["textBody-tertiary"]}
         style={{ marginBottom: 16 }}
       >
-        {"Bla Bla bla"}
+        {
+          "Bla Bla bla, bla bla bla, bla bla bla, bla bla bla, bla bla bla, bla bla bla"
+        }
       </IOText>
       {description && (
         <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>

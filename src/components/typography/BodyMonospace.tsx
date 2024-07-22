@@ -18,7 +18,10 @@ export const BodyMonospace = forwardRef<View, TypographicStyleProps>(
       weight: "Medium",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,
-      color: customColor ?? theme["textBody-tertiary"]
+      color: customColor ?? theme["textBody-tertiary"],
+      textStyle: {
+        letterSpacing: 0.5
+      }
     };
 
     return (

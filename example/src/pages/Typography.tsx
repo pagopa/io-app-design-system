@@ -65,6 +65,8 @@ export const Typography = () => (
           lorem aliquam, aliquam massa eget, commodo erat. Maecenas finibus dui
           massa, eget pharetra mauris posuere semper.
         </Body>
+        <Body weight="Semibold">Body Semibold</Body>
+        <Body weight="Bold">Body Bold</Body>
         <BodyMonospace>BodyMonoSpace</BodyMonospace>
       </VStack>
       <VStack space={16}>
