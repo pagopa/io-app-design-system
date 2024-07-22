@@ -1,48 +1,49 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import {
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign,
+  useIOTheme
+} from "../../core";
+import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
+import { IOText, TypographicStyleProps } from "./IOText";
 
-type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular">;
-
-type H3Props = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
+const defaultColor: keyof IOTheme = "textHeading-default";
 
 /* Common typographic styles */
-export const h3FontSize = 22;
+export const h3FontSize: IOFontSize = 22;
 export const h3LineHeight = 33;
-const fontName: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "Regular";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFontName: FontFamily = "TitilliumSansPro";
-const legacyDefaultColor: AllowedColors = "bluegreyDark";
-const legacyDefaultWeight: AllowedWeight = "Semibold";
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
+
 /**
  * `H3` typographic style
  */
-export const H3 = React.forwardRef<View, H3Props>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const H3 = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const H3Props = {
       ...props,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "title2" /* iOS only */,
-      defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-      defaultColor: isExperimental ? defaultColor : legacyDefaultColor,
       font: isExperimental ? fontName : legacyFontName,
-      fontStyle: {
-        fontSize: h3FontSize,
-        lineHeight: h3LineHeight
-      }
-    },
-    ref
-  );
-});
+      size: h3FontSize,
+      weight: isExperimental ? fontWeight : legacyFontWeight,
+      color: customColor ?? theme[defaultColor],
+      lineHeight: h3LineHeight,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier
+    };
+
+    return (
+      <IOText ref={ref} {...H3Props} dynamicTypeRamp="title2">
+        {props.children}
+      </IOText>
+    );
+  }
+);
