@@ -51,6 +51,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STATIC",
       title: "Header Second Level (Static)"
     },
+    HEADER_SECOND_LEVEL_BANNER: {
+      route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_BANNER",
+      title: "Header Second Level (Banner)"
+    },
     HEADER_SECOND_LEVEL_STEPPER: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_STEPPER",
       title: "Header Second Level (Stepper)"

@@ -45,6 +45,10 @@ export const StaticHeaderSecondLevelScreen = () => {
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
           type="singleAction"
+          // alertProps={{
+          //   variant: "warning",
+          //   content: "Ci sono problemi con la sezione pagamenti"
+          // }}
           firstAction={{
             icon: "help",
             onPress: () => {

@@ -49,6 +49,7 @@ import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
 import { SearchCustom } from "../pages/SearchCustom";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
+import { HeaderSecondLevelWithBannerScreen } from "../pages/HeaderSecondLevelWithBanner";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -336,6 +337,15 @@ const AppNavigator = () => {
             options={{
               headerTitle:
                 APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
+              headerBackTitleVisible: false
+            }}
+          />
+          <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_BANNER.route}
+            component={HeaderSecondLevelWithBannerScreen}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_BANNER.title,
               headerBackTitleVisible: false
             }}
           />

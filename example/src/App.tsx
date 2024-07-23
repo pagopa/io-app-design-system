@@ -1,5 +1,4 @@
 import {
-  AlertEdgeToEdgeProvider,
   IODSExperimentalContextProvider,
   IOThemeContextProvider,
   ToastProvider
@@ -21,9 +20,7 @@ export default function App() {
             theme={colorScheme === "dark" ? "dark" : "light"}
           >
             <ToastProvider>
-              <AlertEdgeToEdgeProvider>
-                <AppNavigator />
-              </AlertEdgeToEdgeProvider>
+              <AppNavigator />
             </ToastProvider>
           </IOThemeContextProvider>
         </IODSExperimentalContextProvider>

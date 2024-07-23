@@ -41,8 +41,6 @@ const [spacingDefault] = IOAlertSpacing;
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: 1000,
-    position: "absolute",
     top: 0,
     left: 0,
     right: 0
@@ -58,7 +56,6 @@ const styles = StyleSheet.create({
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info";
   content: string;
-  viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
   accessibilityHint?: string;
 }>;
@@ -104,139 +101,140 @@ const mapVariantStates: Record<
   }
 };
 
-export const AlertEdgeToEdge = ({
-  variant,
-  content,
-  action,
-  onPress,
-  accessibilityHint,
-  testID
-}: AlertEdgeToEdgeProps) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+export const AlertEdgeToEdge = React.forwardRef<View, AlertEdgeToEdgeProps>(
+  (
+    { variant, content, action, onPress, accessibilityHint, testID },
+    viewRef
+  ) => {
+    const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
-  const insets = useSafeAreaInsets();
+    const insets = useSafeAreaInsets();
 
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+    // Scaling transformation applied when the button is pressed
+    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
+    // Using a spring-based animation for our interpolations
+    const progressPressed = useDerivedValue(() =>
+      withSpring(isPressed.value, IOSpringValues.button)
     );
 
-    return {
-      transform: [{ scale }]
-    };
-  });
+    // Interpolate animation values from `isPressed` values
+    const pressedAnimationStyle = useAnimatedStyle(() => {
+      // Scale down button slightly when pressed
+      const scale = interpolate(
+        progressPressed.value,
+        [0, 1],
+        [1, animationScaleValue],
+        Extrapolate.CLAMP
+      );
 
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+      return {
+        transform: [{ scale }]
+      };
+    });
 
-  const backgroundColor = useMemo(
-    () => IOColors[mapVariantStates[variant].background],
-    [variant]
-  );
+    const onPressIn = useCallback(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isPressed.value = 1;
+    }, [isPressed]);
+    const onPressOut = useCallback(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isPressed.value = 0;
+    }, [isPressed]);
 
-  const renderMainBlock = () => (
-    <>
-      <View
-        style={{
-          marginRight: IOVisualCostants.iconMargin,
-          alignSelf: "center"
-        }}
-      >
-        <Icon
-          name={mapVariantStates[variant].icon}
-          size={iconSize}
-          color={mapVariantStates[variant].foreground}
-        />
-      </View>
-      <View style={IOStyles.flex}>
-        <Label
-          color={mapVariantStates[variant].foreground}
-          weight={"Regular"}
-          accessibilityRole="text"
+    const backgroundColor = useMemo(
+      () => IOColors[mapVariantStates[variant].background],
+      [variant]
+    );
+
+    const renderMainBlock = () => (
+      <>
+        <View
+          style={{
+            marginRight: IOVisualCostants.iconMargin,
+            alignSelf: "center"
+          }}
         >
-          {content}
-          {action && (
-            <Text
-              style={{
-                ...makeFontStyleObject("Bold", false, "TitilliumWeb"),
-                fontSize: 16,
-                color: IOColors[mapVariantStates[variant].foreground]
-              }}
-            >
-              {` ${action}`}
-            </Text>
-          )}
-        </Label>
-      </View>
-    </>
-  );
+          <Icon
+            name={mapVariantStates[variant].icon}
+            size={iconSize}
+            color={mapVariantStates[variant].foreground}
+          />
+        </View>
+        <View style={IOStyles.flex}>
+          <Label
+            color={mapVariantStates[variant].foreground}
+            weight={"Regular"}
+            accessibilityRole="text"
+          >
+            {content}
+            {action && (
+              <Text
+                style={{
+                  ...makeFontStyleObject("Bold", false, "TitilliumSansPro"),
+                  fontSize: 16,
+                  color: IOColors[mapVariantStates[variant].foreground]
+                }}
+              >
+                {` ${action}`}
+              </Text>
+            )}
+          </Label>
+        </View>
+      </>
+    );
 
-  const PressableButton = () => (
-    <Pressable
-      testID={testID}
-      onPress={onPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      onTouchEnd={onPressOut}
-      // A11y related props
-      accessible={true}
-      accessibilityHint={accessibilityHint}
-      accessibilityRole={"button"}
-    >
-      <Animated.View
-        entering={enterTransitionAlertEdgeToEdgeContent}
-        style={[styles.alert, pressedAnimationStyle]}
+    const PressableButton = () => (
+      <Pressable
+        testID={testID}
+        onPress={onPress}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        onTouchEnd={onPressOut}
+        // A11y related props
+        accessible={true}
+        accessibilityHint={accessibilityHint}
+        accessibilityRole={"button"}
+        ref={viewRef}
       >
-        {renderMainBlock()}
+        <Animated.View
+          entering={enterTransitionAlertEdgeToEdgeContent}
+          style={[styles.alert, pressedAnimationStyle]}
+        >
+          {renderMainBlock()}
+        </Animated.View>
+      </Pressable>
+    );
+
+    const StaticComponent = () => (
+      <View ref={viewRef}>
+        <Animated.View
+          entering={enterTransitionAlertEdgeToEdgeContent}
+          style={styles.alert}
+          testID={testID}
+          accessible={false}
+          accessibilityRole="alert"
+          accessibilityHint={accessibilityHint}
+        >
+          {renderMainBlock()}
+        </Animated.View>
+      </View>
+    );
+
+    return (
+      <Animated.View
+        entering={enterTransitionAlertEdgeToEdge}
+        exiting={exitTransitionAlertEdgeToEdge}
+        style={[
+          styles.container,
+          {
+            paddingTop: insets.top,
+            backgroundColor
+          }
+        ]}
+      >
+        {action ? PressableButton() : StaticComponent()}
       </Animated.View>
-    </Pressable>
-  );
-
-  const StaticComponent = () => (
-    <Animated.View
-      entering={enterTransitionAlertEdgeToEdgeContent}
-      style={styles.alert}
-      testID={testID}
-      accessible={false}
-      accessibilityRole="alert"
-      accessibilityHint={accessibilityHint}
-    >
-      {renderMainBlock()}
-    </Animated.View>
-  );
-
-  return (
-    <Animated.View
-      entering={enterTransitionAlertEdgeToEdge}
-      exiting={exitTransitionAlertEdgeToEdge}
-      style={[
-        styles.container,
-        {
-          paddingTop: insets.top,
-          backgroundColor
-        }
-      ]}
-    >
-      {action ? PressableButton() : StaticComponent()}
-    </Animated.View>
-  );
-};
+    );
+  }
+);

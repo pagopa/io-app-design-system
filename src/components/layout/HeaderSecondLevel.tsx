@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps } from "react";
+import { ComponentProps, ComponentPropsWithRef } from "react";
 import {
   AccessibilityInfo,
   ColorValue,
@@ -28,6 +28,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { HSpacer } from "../spacer";
+import { AlertEdgeToEdge } from "../alert/AlertEdgeToEdge";
 import { ActionProp } from "./common";
 
 type ScrollValues = {
@@ -55,6 +56,7 @@ type CommonProps = WithTestID<{
   variant?: "neutral" | "contrast";
   backgroundColor?: string;
   isModal?: boolean;
+  alertProps?: ComponentPropsWithRef<typeof AlertEdgeToEdge>;
 }>;
 
 interface Base extends CommonProps {
@@ -135,7 +137,8 @@ export const HeaderSecondLevel = ({
   testID,
   firstAction,
   secondAction,
-  thirdAction
+  thirdAction,
+  alertProps
 }: HeaderSecondLevel) => {
   const titleRef = React.createRef<View>();
 
@@ -211,9 +214,13 @@ export const HeaderSecondLevel = ({
         headerWrapperAnimatedStyle
       ]}
     >
+      {alertProps && <AlertEdgeToEdge {...alertProps} />}
       <Animated.View
         testID={testID}
-        style={[isModal ? {} : { marginTop: insets.top }, styles.headerInner]}
+        style={[
+          isModal || alertProps ? {} : { marginTop: insets.top },
+          styles.headerInner
+        ]}
       >
         {goBack ? (
           <IconButton
