@@ -15,7 +15,7 @@ export * from "./Hero";
 export * from "./Label";
 export * from "./LabelSmall";
 export * from "./LabelSmallAlt";
-export * from "./LabelLink";
+export * from "./LabelMini";
 export * from "./BodyMonospace";
 export * from "./common";
 export * from "./markdown/MdH1";

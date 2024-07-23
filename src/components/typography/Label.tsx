@@ -1,58 +1,50 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOColors,
-  IOColorsStatusForeground,
-  IOVisualCostants,
-  useIOExperimentalDesign
-} from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import {
-  ExternalTypographyProps,
-  FontSize,
-  TypographyProps,
-  fontSizeMapping,
-  lineHeightMapping
-} from "./common";
+import { IOColors, useIOTheme } from "../../core";
+import { IOFontWeight } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
-type PartialAllowedColors = Extract<IOColors, "black" | "white" | "grey-700">;
-type AllowedColors = PartialAllowedColors | IOColorsStatusForeground;
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
-type LabelProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
-> & { fontSize?: FontSize };
+type LabelLinkProps =
+  | { color?: never; asLink: true }
+  | { color?: IOColors; asLink?: false };
 
-const font: FontFamily = "TitilliumSansPro";
-const labelDefaultWeight = "Bold";
-const labelDefaultcolor = "black";
+type LabelProps = TypographicStyleProps & {
+  weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
+} & LabelLinkProps;
 
 /**
- * `Label` typographic style
+ * `LabelSmall` typographic style
  */
-export const Label = React.forwardRef<View, LabelProps>(
-  ({ fontSize, ...props }, ref) => {
-    const { isExperimental } = useIOExperimentalDesign();
+export const Label = forwardRef<View, LabelProps>(
+  (
+    { weight: customWeight, color: customColor, asLink, ...props },
+    ref?: ForwardedRef<View>
+  ) => {
+    const theme = useIOTheme();
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>(
-      {
-        ...props,
-        allowFontScaling: isExperimental,
-        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-        dynamicTypeRamp: "footnote" /* iOS only */,
-        defaultWeight: labelDefaultWeight,
-        defaultColor: labelDefaultcolor,
-        font,
-        fontStyle: {
-          fontSize: fontSize
-            ? fontSizeMapping[fontSize]
-            : fontSizeMapping.regular,
-          lineHeight: fontSize
-            ? lineHeightMapping[fontSize]
-            : lineHeightMapping.regular
-        }
-      },
-      ref
+    const defaultColor = asLink
+      ? theme["interactiveElem-default"]
+      : theme["textBody-tertiary"];
+
+    const LabelProps: IOTextProps = {
+      ...props,
+      font: "TitilliumSansPro",
+      weight: customWeight ?? "Bold",
+      size: 16,
+      lineHeight: 24,
+      color: customColor ?? defaultColor,
+      ...(asLink
+        ? {
+            accessibilityRole: "link",
+            textStyle: { textDecorationLine: "underline" }
+          }
+        : {})
+    };
+
+    return (
+      <IOText ref={ref} {...LabelProps}>
+        {props.children}
+      </IOText>
     );
   }
 );
