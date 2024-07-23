@@ -11,12 +11,14 @@ import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { HSpacer } from "../spacer";
 import { H3 } from "../typography";
+import { AlertEdgeToEdge } from "../alert/AlertEdgeToEdge";
 import { ActionProp } from "./common";
 
 type CommonProps = WithTestID<{
   title: string;
   // This Prop will be removed once all the screens on the first level routing will be refactored
   backgroundColor?: "light" | "dark";
+  alertProps?: React.ComponentPropsWithRef<typeof AlertEdgeToEdge>;
 }>;
 
 interface Base extends CommonProps {
@@ -67,6 +69,7 @@ export const HeaderFirstLevel = ({
   type,
   testID,
   backgroundColor = "light",
+  alertProps,
   firstAction,
   secondAction,
   thirdAction
@@ -94,6 +97,7 @@ export const HeaderFirstLevel = ({
       accessibilityRole="header"
       testID={testID}
     >
+      {alertProps && <AlertEdgeToEdge {...alertProps} />}
       <View style={styles.headerInner}>
         <View ref={titleRef} accessible accessibilityRole="header">
           <H3
