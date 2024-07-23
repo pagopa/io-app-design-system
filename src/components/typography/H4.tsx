@@ -1,11 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import {
-  IOTheme,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 

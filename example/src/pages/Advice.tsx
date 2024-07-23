@@ -48,9 +48,7 @@ export const DSAdvice = () => (
 
 const renderFeatureInfo = () => (
   <>
-    <H2 color={"bluegrey"} weight={"Semibold"} style={{ marginBottom: 16 }}>
-      FeatureInfo
-    </H2>
+    <H2 style={{ marginBottom: 16 }}>FeatureInfo</H2>
     <ComponentViewerBox name="FeatureInfo · with Icon">
       <FeatureInfo
         iconName="info"
@@ -103,8 +101,6 @@ const renderFeatureInfo = () => (
 const renderBanner = () => (
   <>
     <H2
-      color={"bluegrey"}
-      weight={"Semibold"}
       style={{
         marginBottom: 16,
         paddingTop: IOVisualCostants.appMarginDefault

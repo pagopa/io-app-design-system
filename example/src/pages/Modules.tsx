@@ -8,8 +8,7 @@ import {
   ModuleNavigation,
   ModulePaymentNotice,
   ModuleSummary,
-  useIOExperimentalDesign,
-  useIOTheme
+  useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, ImageSourcePropType, View } from "react-native";
@@ -355,7 +354,7 @@ const renderModuleSummary = () => (
 
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
-  const theme = useIOTheme();
+
   return (
     <Screen>
       <ListItemSwitch
@@ -363,61 +362,19 @@ const Modules = () => {
         value={isExperimental}
         onSwitchValueChange={setExperimental}
       />
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleIDP
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
       {renderModuleIDP()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModulePaymentNotice
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
       {renderModulePaymentNotice()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleSummary
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
       {renderModuleSummary()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleCheckout
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
       {renderModuleCheckout()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleAttachment
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
       {renderModuleAttachment()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleCredential
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
       {renderModuleCredential()}
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ModuleNavigation
-      </H2>
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
     </Screen>
   );
