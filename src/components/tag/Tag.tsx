@@ -1,16 +1,21 @@
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
 import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import { IOColors, IOTagRadius, useIOExperimentalDesign } from "../../core";
+import { Platform, StyleSheet, View } from "react-native";
+import {
+  IOColors,
+  IOTagRadius,
+  useIOExperimentalDesign,
+  useIOTheme
+} from "../../core";
 import {
   IOSpacingScale,
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import { IOText } from "../typography";
 
 type VariantProps = {
   iconColor: IOColors;
@@ -74,21 +79,6 @@ const styles = StyleSheet.create({
   },
   spacer: {
     width: IOTagIconMargin
-  },
-  label: {
-    fontSize: 12,
-    lineHeight: 16,
-    alignSelf: "center",
-    textTransform: "uppercase",
-    color: IOColors["grey-700"],
-    flexShrink: 1
-  },
-  labelFont: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  legacyLabelFont: {
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 
@@ -151,6 +141,7 @@ export const Tag = ({
   customIconProps,
   iconAccessibilityLabel
 }: Tag) => {
+  const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, customIconProps);
@@ -177,16 +168,23 @@ export const Tag = ({
       )}
       {variantProps && text && <View style={styles.spacer} />}
       {text && (
-        <Text
+        <IOText
+          font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+          weight={isExperimental ? "Regular" : "Semibold"}
+          size={12}
+          lineHeight={16}
+          color={theme["textBody-tertiary"]}
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={[
-            styles.label,
-            isExperimental ? styles.labelFont : styles.legacyLabelFont
-          ]}
+          style={{
+            alignSelf: "center",
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+            flexShrink: 1
+          }}
         >
           {text}
-        </Text>
+        </IOText>
       )}
     </View>
   );

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   LayoutChangeEvent,
   StyleSheet,
-  Text,
   TouchableWithoutFeedback,
   View
 } from "react-native";
@@ -19,9 +18,8 @@ import {
 } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors, hexToRgba } from "../../core/IOColors";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons/Icon";
-import { H6 } from "../typography";
+import { Body, H6 } from "../typography";
 
 export type AccordionItem = {
   title: string;
@@ -158,11 +156,7 @@ export const AccordionItem = ({
       </TouchableWithoutFeedback>
 
       <AccordionBody expanded={expanded}>
-        {typeof body === "string" ? (
-          <Text style={styles.accordionBodyText}>{body}</Text>
-        ) : (
-          body
-        )}
+        {typeof body === "string" ? <Body>{body}</Body> : body}
       </AccordionBody>
       {/* This gradient adds a smooth end to the content. If it is missing,
       the content will be cut sharply during the height transition. */}
@@ -198,12 +192,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     padding: accordionBodySpacing,
     paddingTop: 0
-  },
-  accordionBodyText: {
-    fontSize: 14,
-    lineHeight: 21,
-    color: IOColors["grey-700"],
-    ...makeFontStyleObject("Regular", undefined, "TitilliumSansPro")
   },
   textContainer: {
     padding: accordionBodySpacing,
