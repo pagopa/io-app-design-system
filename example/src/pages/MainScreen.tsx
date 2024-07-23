@@ -1,19 +1,19 @@
-import { SectionList, View } from "react-native";
-import * as React from "react";
 import {
-  IOStyles,
   Divider,
   H1,
+  IOStyles,
+  IOText,
   LabelSmall,
-  VSpacer,
   ListItemNav,
-  useIOExperimentalDesign,
   ListItemSwitch,
-  useIOThemeContext,
-  IOText
+  VSpacer,
+  useIOExperimentalDesign,
+  useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import APP_ROUTES from "../navigation/routes";
+import * as React from "react";
+import { SectionList, View } from "react-native";
 import { AppParamsList } from "../navigation/params";
+import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
 
 type Props = IOStackNavigationRouteProps<AppParamsList, "DESIGN_SYSTEM_MAIN">;
@@ -77,26 +77,7 @@ const MainScreen = (props: Props) => {
     section: { title: string; description?: string };
   }) => (
     <View style={{ marginTop: 24, marginBottom: 8 }}>
-      {/* <H1
-        style={{
-          marginBottom: 16
-        }}
-        color={theme["textBody-tertiary"]}
-      >
-        {title}
-      </H1> */}
       <H1>{title}</H1>
-      <IOText
-        size={20}
-        lineHeight={26}
-        weight="Light"
-        color={theme["textBody-tertiary"]}
-        style={{ marginBottom: 16 }}
-      >
-        {
-          "Bla Bla bla, bla bla bla, bla bla bla, bla bla bla, bla bla bla, bla bla bla"
-        }
-      </IOText>
       {description && (
         <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>
           {description}

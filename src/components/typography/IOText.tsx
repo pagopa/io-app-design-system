@@ -1,5 +1,11 @@
 import React, { ComponentProps, forwardRef, useMemo } from "react";
-import { GestureResponderEvent, Text, TextStyle, View } from "react-native";
+import {
+  ColorValue,
+  GestureResponderEvent,
+  Text,
+  TextStyle,
+  View
+} from "react-native";
 import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
@@ -8,6 +14,23 @@ import {
   IOFontWeight,
   makeFontStyleObject
 } from "../../utils/fonts";
+
+/**
+ * We exclude all of the following props when we define a new
+ * typographic style in which all of these visual attributes
+ * are already defined.
+ */
+export type IOTextStyle = Omit<
+  TextStyle,
+  "fontFamily" | "fontSize" | "fontWeight" | "lineHeight" | "fontStyle"
+>;
+
+export type TypographicStyleProps = Omit<
+  IOTextProps,
+  "style" | "font" | "size" | "weight" | "color" | "lineHeight" | "fontStyle"
+> & { textStyle?: IOTextStyle; style?: IOTextStyle } & {
+  color?: IOTextBaseProps["color"];
+};
 
 /**
  * The specific properties needed to calculate the font style using {@link makeFontStyleObject} (these information
@@ -21,30 +44,15 @@ type IOTextBaseProps = {
   lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
   textStyle?: IOTextStyle;
+  style?: IOTextStyle;
 };
 
-export type IOTextProps = IOTextBaseProps &
-  Omit<
-    ComponentProps<typeof Text>,
-    "allowFontScaling" | "maxFontSizeMultiplier"
-  >;
-
-/**
- * We exclude all of the following props when we define a new
- * typographic style in which all of these visual attributes
- * are already defined.
- */
-export type IOTextStyle = Omit<
-  TextStyle,
-  "fontFamily" | "fontSize" | "fontWeight" | "color" | "lineHeight"
+type IOTextExcludedProps = Omit<
+  ComponentProps<typeof Text>,
+  "allowFontScaling" | "maxFontSizeMultiplier" | "style"
 >;
 
-export type TypographicStyleProps = Omit<
-  IOTextProps,
-  "style" | "font" | "size" | "weight" | "color" | "lineHeight" | "fontStyle"
-> & { textStyle?: IOTextStyle; style?: IOTextStyle } & {
-  color?: IOTextBaseProps["color"];
-};
+export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
 
 /**
  * Extend `TypographicStyleProps` with extra props for styles that
@@ -99,7 +107,7 @@ export const IOText = forwardRef<View, IOTextProps>(
 
     const { isExperimental } = useIOExperimentalDesign();
 
-    const fontStyleObj = useMemo(
+    const computedStyleObj = useMemo(
       () =>
         calculateTextStyle(
           color ?? theme["textBody-default"],
@@ -113,12 +121,23 @@ export const IOText = forwardRef<View, IOTextProps>(
       [color, theme, size, font, lineHeight, weight, fontStyle, boldEnabled]
     );
 
+    /* In some cases, for example when we use color transitions with
+    `reanimated` we need to manage chromatic values as `ColorValue`
+    or `string` (not `IOColors`). So we keep a way to override
+    the the `color' attribute without giving the ability to
+    override all other all other typographic attributes
+    through the `style' prop. */
+    const fontStyleObj = style?.color
+      ? [{ ...computedStyleObj, color: style?.color }]
+      : computedStyleObj;
+
     /* Some typographic styles like `H5` have certain `TextStyle` properties
      like `textTransform` or `letterSpacing` that we want to apply to the text.
      We use the `textStyle` prop to pass these properties to the `IOText`
      component and preserve the ability to define the `style` prop as well.
+     The `style` prop is the last one to be applied, so we can properly
+     override the `color` attribute.
      */
-
     const styleObj = style
       ? [textStyle ?? {}, fontStyleObj ?? {}, style]
       : [textStyle ?? {}, fontStyleObj ?? {}];
