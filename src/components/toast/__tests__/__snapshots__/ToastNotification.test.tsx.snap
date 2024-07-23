@@ -446,34 +446,24 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
 >
   <Text
     allowFontScaling={false}
-    color="turquoise-850"
-    defaultColor="white"
-    defaultWeight="Bold"
-    font="TitilliumSansPro"
-    fontStyle={
-      {
-        "fontSize": 16,
-      }
-    }
     maxFontSizeMultiplier={1.25}
     style={
       [
+        {},
+        {
+          "color": "#003B3D",
+          "fontFamily": "Titillium Sans Pro",
+          "fontSize": 16,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 20,
+        },
         {
           "flexShrink": 1,
           "paddingVertical": 2,
         },
-        {
-          "fontSize": 16,
-        },
-        {
-          "color": "#003B3D",
-          "fontFamily": "Titillium Sans Pro",
-          "fontStyle": "normal",
-          "fontWeight": "700",
-        },
       ]
     }
-    weight="Bold"
   >
     Hello
   </Text>

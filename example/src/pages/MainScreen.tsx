@@ -2,7 +2,6 @@ import {
   Divider,
   H1,
   IOStyles,
-  IOText,
   LabelSmall,
   ListItemNav,
   ListItemSwitch,

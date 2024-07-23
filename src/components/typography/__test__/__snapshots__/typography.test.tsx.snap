@@ -105,33 +105,21 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
 exports[`Test Typography Components H1 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="largeTitle"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 31,
-      "lineHeight": 43,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 31,
-        "lineHeight": 43,
-      },
+      {},
       {
         "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 31,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 43,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
