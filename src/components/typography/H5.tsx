@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import { IOTheme, useIOExperimentalDesign } from "../../core";
+import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold">;
 
 type H5Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -15,9 +15,8 @@ type H5Props = ExternalTypographyProps<
 export const h5FontSize = 14;
 export const h5LineHeight = 16;
 const font: FontFamily = "TitilliumSansPro";
-const legacyFont: FontFamily = "TitilliumWeb";
 const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "SemiBold";
+const defaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `H5` typographic style
@@ -28,9 +27,12 @@ export const H5 = React.forwardRef<View, H5Props>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "subheadline" /* iOS only */,
       defaultWeight,
       defaultColor,
-      font: isExperimental ? font : legacyFont,
+      font,
       fontStyle: {
         fontSize: h5FontSize,
         lineHeight: h5LineHeight,

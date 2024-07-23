@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import type { IOColors, IOTheme } from "../../core/IOColors";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
@@ -17,7 +17,7 @@ type PartialAllowedColors = Extract<
   | "grey-200"
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-tertiary"];
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
 
 type LabelSmallAltProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -31,8 +31,8 @@ const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyLabelFontSize = 16;
-const legacyFontName: FontFamily = "TitilliumWeb";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyFontName: FontFamily = "TitilliumSansPro";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `LabelSmallAlt` typographic style. It's referenced as `LabelSmallReadex` in the design projects.
@@ -44,6 +44,9 @@ export const LabelSmallAlt = React.forwardRef<View, LabelSmallAltProps>(
     return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "footnote" /* iOS only */,
         defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
         defaultColor,
         font: isExperimental ? fontName : legacyFontName,

@@ -8,6 +8,7 @@ import {
   IOColors,
   IOIconSizeScale,
   IOIcons,
+  IOIconsNew,
   IONavIcons,
   IOProductIcons,
   IOStyles,
@@ -16,14 +17,13 @@ import {
   Icon,
   IconContained,
   SVGIconProps,
-  IOIconsNew,
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";
 import { Screen } from "../components/Screen";
-import { ComponentViewerBox } from "../components/ComponentViewerBox";
 
 // Filter the main object, removing already displayed icons in the other sets
 type IconSubsetObject = Record<
@@ -102,7 +102,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Navigation
@@ -125,7 +125,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         System
@@ -148,7 +148,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Biometric
@@ -171,7 +171,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Categories
@@ -194,7 +194,7 @@ export const Icons = () => {
       </View>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 12 }}
       >
         Product

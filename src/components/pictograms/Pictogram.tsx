@@ -105,6 +105,7 @@ import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramBleedReactivate from "./svg/PictogramBleedReactivate";
 import PictogramBleedSearch from "./svg/PictogramBleedSearch";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
+import PictogramBleedSettings from "./svg/PictogramBleedSettings";
 import PictogramBleedStar from "./svg/PictogramBleedStar";
 import PictogramBleedStopSecurity from "./svg/PictogramBleedStopSecurity";
 import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
@@ -131,6 +132,7 @@ import PictogramPending from "./svg/PictogramPending";
 import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramReactivate from "./svg/PictogramReactivate";
 import PictogramSearchLens from "./svg/PictogramSearchLens";
+import PictogramSettings from "./svg/PictogramSettings";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
@@ -189,6 +191,7 @@ export const IOPictograms = {
   identityCheck: PictogramIdentityCheck,
   accessDenied: PictogramAccessDenied,
   stopSecurity: PictogramStopSecurity,
+  settings: PictogramSettings,
   security: PictogramSecurity,
   cie: PictogramCie,
   pending: PictogramPending,
@@ -320,6 +323,7 @@ export type IOPictogramsBleed = Extract<
   | "cardQuestion"
   | "cardIssue"
   | "accessDenied"
+  | "settings"
   | "stopSecurity"
   | "time"
   | "pending"
@@ -369,6 +373,7 @@ export const IOPictogramsBleed: {
   cardIssue: PictogramBleedCardIssue,
   accessDenied: PictogramBleedAccessDenied,
   stopSecurity: PictogramBleedStopSecurity,
+  settings: PictogramBleedSettings,
   time: PictogramBleedTime,
   pending: PictogramBleedPending,
   ended: PictogramBleedEnded,

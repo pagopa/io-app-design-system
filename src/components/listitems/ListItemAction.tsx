@@ -53,7 +53,7 @@ const legacyStyles = StyleSheet.create({
   labelLegacy: {
     fontSize: buttonTextFontSize,
     lineHeight: 20,
-    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 

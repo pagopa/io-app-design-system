@@ -84,29 +84,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           1
         </Text>
@@ -173,29 +175,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           2
         </Text>
@@ -262,29 +266,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           3
         </Text>
@@ -374,29 +380,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           4
         </Text>
@@ -463,29 +471,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           5
         </Text>
@@ -552,29 +562,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           6
         </Text>
@@ -664,29 +676,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           7
         </Text>
@@ -753,29 +767,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           8
         </Text>
@@ -842,29 +858,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           9
         </Text>
@@ -1095,29 +1113,31 @@ exports[`NumberPad Should match the snapshot 1`] = `
           allowFontScaling={false}
           color="white"
           defaultColor="bluegreyDark"
-          defaultWeight="SemiBold"
-          font="TitilliumWeb"
+          defaultWeight="Semibold"
+          dynamicTypeRamp="title2"
+          font="TitilliumSansPro"
           fontStyle={
             {
-              "fontSize": 24,
-              "lineHeight": 34,
+              "fontSize": 22,
+              "lineHeight": 33,
             }
           }
+          maxFontSizeMultiplier={1.25}
           style={
             [
               {
-                "fontSize": 24,
-                "lineHeight": 34,
+                "fontSize": 22,
+                "lineHeight": 33,
               },
               {
                 "color": "#FFFFFF",
-                "fontFamily": "Titillium Web",
+                "fontFamily": "Titillium Sans Pro",
                 "fontStyle": "normal",
                 "fontWeight": "600",
               },
             ]
           }
-          weight="SemiBold"
+          weight="Semibold"
         >
           0
         </Text>

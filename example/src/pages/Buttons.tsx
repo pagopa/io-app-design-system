@@ -1,5 +1,4 @@
 import {
-  ButtonExtendedOutline,
   ButtonLink,
   ButtonOutline,
   ButtonSolid,
@@ -45,7 +44,7 @@ export const Buttons = () => {
       {/* The title should be dynamic, got from the route object */}
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -293,7 +292,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ButtonOutline
@@ -452,7 +451,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ButtonLink
@@ -597,7 +596,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButton
@@ -710,7 +709,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButtonSolid
@@ -778,7 +777,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         IconButtonContained (Icebox)
@@ -864,38 +863,7 @@ export const Buttons = () => {
 
       <H2
         color={"bluegrey"}
-        weight={"SemiBold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
-        ButtonExtendedOutline
-      </H2>
-      <ComponentViewerBox name="ButtonExtendedOutline (using Pressable API)">
-        <View>
-          <ButtonExtendedOutline
-            label={"Label name"}
-            description={"This is a description of the element"}
-            onPress={() => {
-              alert("Action triggered");
-            }}
-          />
-        </View>
-        <VSpacer size={16} />
-        <View>
-          <ButtonExtendedOutline
-            icon="chevronRightListItem"
-            label={"Label only"}
-            onPress={() => {
-              alert("Action triggered");
-            }}
-          />
-        </View>
-      </ComponentViewerBox>
-
-      <VSpacer size={24} />
-
-      <H2
-        color={"bluegrey"}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         Specific buttons

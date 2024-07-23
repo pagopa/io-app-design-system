@@ -168,6 +168,7 @@ export const ListItemSwitch = React.memo(
               <NativeSwitch
                 value={value}
                 accessibilityLabel={label}
+                disabled={disabled}
                 onValueChange={onSwitchValueChange}
                 testID={switchTestID}
               />

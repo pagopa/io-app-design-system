@@ -64,12 +64,14 @@ type SearchInputPressableProps = {
 type SearchInputActionProps =
   | {
       pressable: SearchInputPressableProps;
+      keepCancelVisible?: never;
       onCancel?: never;
       onChangeText?: never;
       value?: never;
     }
   | {
       pressable?: never;
+      keepCancelVisible?: boolean;
       onCancel: (event: GestureResponderEvent) => void;
       onChangeText: (value: string) => void;
       value: string;
@@ -102,13 +104,14 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       accessibilityLabel,
       cancelButtonLabel,
       clearAccessibilityLabel,
+      placeholder,
+      autoFocus,
+      keepCancelVisible = false,
       onCancel,
       onChangeText,
-      placeholder,
-      value = "",
-      autoFocus,
       pressable,
-      testID
+      testID,
+      value = ""
     },
     ref
   ) => {
@@ -159,19 +162,24 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     }));
 
     /* Applied to the `Cancel` button */
-    const cancelButtonAnimatedStyle = useAnimatedStyle(() => ({
-      transform: [
-        {
-          translateX: interpolate(
-            isFocused.value,
-            [0, 1],
-            [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
-            Extrapolate.CLAMP
-          )
-        }
-      ],
-      opacity: interpolate(isFocused.value, [0, 1], [0.5, 1])
-    }));
+    const cancelButtonAnimatedStyle = useAnimatedStyle(() => {
+      const showCancelButton =
+        !pressable && keepCancelVisible ? 1 : isFocused.value;
+
+      return {
+        transform: [
+          {
+            translateX: interpolate(
+              showCancelButton,
+              [0, 1],
+              [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
+              Extrapolate.CLAMP
+            )
+          }
+        ],
+        opacity: interpolate(showCancelButton, [0, 1], [0.5, 1])
+      };
+    });
 
     /* Applied to the `Clear` button inside the `SearchInput` */
     const clearButtonAnimatedStyle = useAnimatedStyle(() => {
@@ -197,7 +205,9 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
 
     const handleBlur = () => {
       isFocused.value = withTiming(0, inputWithTimingConfig);
-      inputAnimatedWidth.value = inputWidth;
+      inputAnimatedWidth.value = keepCancelVisible
+        ? inputWidthWithCancel
+        : inputWidth;
     };
 
     const cancel = useCallback(
@@ -319,7 +329,7 @@ const styles = StyleSheet.create({
   },
   placeholderLegacy: {
     fontSize: inputFontSizePlaceholder,
-    ...makeFontStyleObject("Regular", false, "TitilliumWeb")
+    ...makeFontStyleObject("Regular", false, "TitilliumSansPro")
   },
   cancelButton: {
     position: "absolute",

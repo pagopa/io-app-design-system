@@ -4,6 +4,7 @@ import { IOColors } from "../../core/IOColors";
 
 /* Icons */
 import IconAbacus from "./svg/IconAbacus";
+import IconAccessibility from "./svg/IconAccessibility";
 import IconAdd from "./svg/IconAdd";
 import IconAddSmall from "./svg/IconAddSmall";
 import IconAmount from "./svg/IconAmount";
@@ -23,9 +24,11 @@ import IconBell from "./svg/IconBell";
 import IconBiomFaceID from "./svg/IconBiomFaceID";
 import IconBiomFingerprint from "./svg/IconBiomFingerprint";
 import IconBonus from "./svg/IconBonus";
+import IconBonusFilled from "./svg/IconBonusFilled";
 import IconCalendar from "./svg/IconCalendar";
 import IconCancel from "./svg/IconCancel";
 import IconCanceled from "./svg/IconCanceled";
+import IconCar from "./svg/IconCar";
 import IconCategCulture from "./svg/IconCategCulture";
 import IconCategFinance from "./svg/IconCategFinance";
 import IconCategHome from "./svg/IconCategHome";
@@ -57,17 +60,16 @@ import IconCompare from "./svg/IconCompare";
 import IconContactless from "./svg/IconContactless";
 import IconCopy from "./svg/IconCopy";
 import IconCreditCard from "./svg/IconCreditCard";
+import IconCreditCardFilled from "./svg/IconCreditCardFilled";
 import IconCreditCardOff from "./svg/IconCreditCardOff";
 import IconDevice from "./svg/IconDevice";
 import IconDeviceVibration from "./svg/IconDeviceVibration";
-import IconDisabilityCard from "./svg/IconDisabilityCard";
 import IconDocGiacenza from "./svg/IconDocGiacenza";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
 import IconDotMenu from "./svg/IconDotMenu";
-import IconDriverLicense from "./svg/IconDriverLicense";
 import IconEdit from "./svg/IconEdit";
 import IconEmail from "./svg/IconEmail";
 import IconEmailFill from "./svg/IconEmailFill";
@@ -90,8 +92,9 @@ import IconFornitori from "./svg/IconFornitori";
 import IconForward from "./svg/IconForward";
 import IconGallery from "./svg/IconGallery";
 import IconHealthCard from "./svg/IconHealthCard";
-import IconHearthEmpty from "./svg/IconHearthEmpty";
-import IconHearthFilled from "./svg/IconHearthFilled";
+import IconHeartEmpty from "./svg/IconHeartEmpty";
+import IconHeartFilled from "./svg/IconHeartFilled";
+import IconHeartOff from "./svg/IconHeartOff";
 import IconHistory from "./svg/IconHistory";
 import IconHome from "./svg/IconHome";
 import IconHomeFill from "./svg/IconHomeFill";
@@ -167,11 +170,16 @@ import IconSparkles from "./svg/IconSparkles";
 import IconSpid from "./svg/IconSpid";
 import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
+import IconStarOff from "./svg/IconStarOff";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
+import IconSystemBiometricRecognitionOS from "./svg/IconSystemBiometricRecognitionOS";
 import IconSystemLocationiOS from "./svg/IconSystemLocationiOS";
+import IconSystemNFC from "./svg/IconSystemNFC";
 import IconSystemNotificationsInstructions from "./svg/IconSystemNotificationsInstructions";
+import IconSystemPasswordAndroid from "./svg/IconSystemPasswordAndroid";
+import IconSystemPasswordiOS from "./svg/IconSystemPasswordiOS";
 import IconSystemPermissionsAndroid from "./svg/IconSystemPermissionsAndroid";
 import IconSystemPhotosiOS from "./svg/IconSystemPhotosiOS";
 import IconSystemPrivacyiOS from "./svg/IconSystemPrivacyiOS";
@@ -254,7 +262,9 @@ export const IOIcons = {
   entityCode: IconEntityCode,
   creditCard: IconCreditCard,
   creditCardOff: IconCreditCardOff,
+  creditCardFilled: IconCreditCardFilled,
   bonus: IconBonus,
+  bonusFilled: IconBonusFilled,
   transactionsBoxed: IconTransactionsBoxed,
   transactions: IconTransactions,
   amount: IconAmount,
@@ -285,10 +295,12 @@ export const IOIcons = {
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
   sparkles: IconSparkles,
-  starFilled: IconStarFilled,
   starEmpty: IconStarEmpty,
-  hearthEmpty: IconHearthEmpty,
-  hearthFilled: IconHearthFilled,
+  starFilled: IconStarFilled,
+  starOff: IconStarOff,
+  heartEmpty: IconHeartEmpty,
+  heartFilled: IconHeartFilled,
+  heartOff: IconHeartOff,
   switchOff: IconSwitchOff,
   fingerprint: IconFingerprint,
   touch: IconTouch,
@@ -316,8 +328,8 @@ export const IOIcons = {
   terms: IconTerms,
   help: IconQuestion,
   search: IconSearch,
-  disabilityCard: IconDisabilityCard,
-  driverLicense: IconDriverLicense,
+  accessibility: IconAccessibility,
+  car: IconCar,
   healthCard: IconHealthCard,
   chevronRight: IconChevronRight,
   chevronLeft: IconChevronLeft,
@@ -379,7 +391,11 @@ export const IOIcons = {
   systemPermissionsAndroid: IconSystemPermissionsAndroid,
   systemLocationiOS: IconSystemLocationiOS,
   systemPhotosiOS: IconSystemPhotosiOS,
-  systemPrivacyiOS: IconSystemPrivacyiOS
+  systemPrivacyiOS: IconSystemPrivacyiOS,
+  systemBiometricRecognitionOS: IconSystemBiometricRecognitionOS,
+  systemNFC: IconSystemNFC,
+  systemPasswordAndroid: IconSystemPasswordAndroid,
+  systemPasswordiOS: IconSystemPasswordiOS
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
@@ -477,72 +493,13 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 */
 
 /* New icons */
-const {
-  filterOniOS,
-  filterOffiOS,
-  filterAndroid,
-  archiveFilled,
-  inbox,
-  inboxFilled,
-  docGiacenza,
-  docPaymentTitle,
-  folder,
-  receiptOn,
-  receiptOff,
-  print,
-  addSmall,
-  creditCardOff,
-  mapPin,
-  noticePlain,
-  familySharing,
-  hearthEmpty,
-  hearthFilled,
-  fingerprint,
-  touch,
-  deviceVibration,
-  signal,
-  keyboardDown,
-  externalLinkSmall,
-  forward,
-  compare,
-  instruction,
-  terms,
-  read,
-  code
-} = IOIcons;
+const { bonusFilled, creditCardFilled, heartOff, starOff } = IOIcons;
 
 export const IOIconsNew = {
-  filterOniOS,
-  filterOffiOS,
-  filterAndroid,
-  archiveFilled,
-  inbox,
-  inboxFilled,
-  docGiacenza,
-  docPaymentTitle,
-  folder,
-  receiptOn,
-  receiptOff,
-  print,
-  addSmall,
-  creditCardOff,
-  mapPin,
-  noticePlain,
-  familySharing,
-  hearthEmpty,
-  hearthFilled,
-  fingerprint,
-  touch,
-  deviceVibration,
-  signal,
-  keyboardDown,
-  externalLinkSmall,
-  forward,
-  compare,
-  instruction,
-  terms,
-  read,
-  code
+  bonusFilled,
+  creditCardFilled,
+  heartOff,
+  starOff
 };
 
 /* Navigation */
@@ -638,7 +595,11 @@ const {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } = IOIcons;
 
 export const IOSystemIcons = {
@@ -650,7 +611,11 @@ export const IOSystemIcons = {
   systemPermissionsAndroid,
   systemLocationiOS,
   systemPhotosiOS,
-  systemPrivacyiOS
+  systemPrivacyiOS,
+  systemBiometricRecognitionOS,
+  systemNFC,
+  systemPasswordAndroid,
+  systemPasswordiOS
 } as const;
 
 export type IOSystemIcons = keyof typeof IOSystemIcons;

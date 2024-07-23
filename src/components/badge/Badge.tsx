@@ -5,6 +5,7 @@ import {
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
+  IOVisualCostants,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   },
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   legacyLabelFont: {
-    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 
@@ -179,6 +180,8 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       <Text
         numberOfLines={1}
         ellipsizeMode="tail"
+        allowFontScaling={isExperimental}
+        maxFontSizeMultiplier={IOVisualCostants.maxFontSizeMultiplier}
         style={[
           styles.label,
           isExperimental ? styles.labelFont : styles.legacyLabelFont,

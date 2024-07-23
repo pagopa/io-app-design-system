@@ -23,7 +23,6 @@ type Story = StoryObj<typeof meta>;
 export const BaseAccordion: Story = {
   args: {
     title: "Accordion Title",
-    id: 1,
     body: <Caption>{"Accordion body"}</Caption>
   }
 };

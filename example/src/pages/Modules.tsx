@@ -7,6 +7,7 @@ import {
   ModuleIDP,
   ModuleNavigation,
   ModulePaymentNotice,
+  ModuleSummary,
   useIOExperimentalDesign,
   useIOTheme
 } from "@pagopa/io-app-design-system";
@@ -102,6 +103,18 @@ const renderModulePaymentNotice = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModulePaymentNotice, default variant, loading">
+      <View>
+        <ModulePaymentNotice
+          isLoading
+          onPress={mockFn}
+          paymentNoticeStatus="default"
+          paymentNoticeAmount="100,00 €"
+          title="Codice avviso"
+          subtitle="302012131232131"
+        />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
@@ -151,8 +164,18 @@ const renderModuleCheckout = () => (
         onPress={modulePress}
       />
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCheckout, no CTA, with image">
+      <ModuleCheckout
+        image={{
+          uri: "https://assets.cdn.platform.pagopa.it/apm/bancomatpay.png"
+        }}
+        title="3,50 $"
+        subtitle="Piú o meno"
+        onPress={modulePress}
+      />
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
-      <ModuleCheckout isLoading ctaText="Loading" />
+      <ModuleCheckout isLoading />
     </ComponentViewerBox>
   </>
 );
@@ -161,7 +184,7 @@ const renderModuleAttachment = () => (
   <>
     <ComponentViewerBox name="ModuleAttachment, pdf variant">
       <ModuleAttachment
-        title="Documento.pdf"
+        title="Documento dal nome molto molto molto lungo.pdf"
         format="pdf"
         onPress={modulePress}
       />
@@ -249,6 +272,16 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, fetching">
+      <View>
+        <ModuleCredential
+          icon="fingerprint"
+          label="Identità digitale"
+          onPress={mockFn}
+          isFetching={true}
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCredential, loading">
       <View>
         <ModuleCredential isLoading={true} />
@@ -292,6 +325,34 @@ const renderModuleNavigation = () => (
   </>
 );
 
+const renderModuleSummary = () => (
+  <>
+    <ComponentViewerBox name="ModuleSummary, default variant">
+      <ModuleSummary
+        label={"Label name"}
+        description={"This is a description of the element"}
+        onPress={mockFn}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleSummary, custom icon, label only">
+      <View>
+        <ModuleSummary
+          icon="chevronRightListItem"
+          label={"Label only"}
+          onPress={mockFn}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleSummary, stress test">
+      <ModuleSummary
+        label={"A very looong loooooooong looooooooooooooong label"}
+        description={"This is a very looooooong description of the element"}
+        onPress={mockFn}
+      />
+    </ComponentViewerBox>
+  </>
+);
+
 const Modules = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
@@ -304,7 +365,7 @@ const Modules = () => {
       />
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleIDP
@@ -312,7 +373,7 @@ const Modules = () => {
       {renderModuleIDP()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModulePaymentNotice
@@ -320,7 +381,15 @@ const Modules = () => {
       {renderModulePaymentNotice()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
+        style={{ marginBottom: 16, marginTop: 16 }}
+      >
+        ModuleSummary
+      </H2>
+      {renderModuleSummary()}
+      <H2
+        color={theme["textHeading-default"]}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleCheckout
@@ -328,7 +397,7 @@ const Modules = () => {
       {renderModuleCheckout()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleAttachment
@@ -336,7 +405,7 @@ const Modules = () => {
       {renderModuleAttachment()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleCredential
@@ -344,7 +413,7 @@ const Modules = () => {
       {renderModuleCredential()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ModuleNavigation

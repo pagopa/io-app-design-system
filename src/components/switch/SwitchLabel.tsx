@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: IOColors.bluegreyDark,
     flexShrink: 1,
-    ...makeFontStyleObject("SemiBold", undefined, "TitilliumWeb")
+    ...makeFontStyleObject("Semibold", undefined, "TitilliumSansPro")
   }
 });
 

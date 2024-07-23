@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react-native';
-import React from 'react';
-import { NumberPad } from '../NumberPad';
+import { fireEvent, render } from "@testing-library/react-native";
+import React from "react";
+import { NumberPad } from "../NumberPad";
 
 const mockOnDelete = jest.fn();
 const mockOnNumberPress = jest.fn();
@@ -12,15 +12,15 @@ describe(NumberPad, () => {
     jest.restoreAllMocks();
   });
 
-  it('Should match the snapshot', () => {
+  it("Should match the snapshot", () => {
     const component = renderNumberPad();
     expect(component).toMatchSnapshot();
   });
-  it('Should properly call onNumberPress without side effects', () => {
+  it("Should properly call onNumberPress without side effects", () => {
     const { getByText } = renderNumberPad();
-    const one = getByText('1');
-    const nine = getByText('9');
-    const reactCreatElement = jest.spyOn(React, 'createElement');
+    const one = getByText("1");
+    const nine = getByText("9");
+    const reactCreatElement = jest.spyOn(React, "createElement");
 
     // Press one
     fireEvent.press(one);
@@ -37,10 +37,10 @@ describe(NumberPad, () => {
     expect(mockOnDelete).not.toHaveBeenCalled();
     expect(mockOnBiometricPress).not.toHaveBeenCalled();
   });
-  it('Should properly call onDeletePress without side effects', () => {
+  it("Should properly call onDeletePress without side effects", () => {
     const { getByLabelText } = renderNumberPad();
-    const deleteButton = getByLabelText('delete');
-    const reactCreatElement = jest.spyOn(React, 'createElement');
+    const deleteButton = getByLabelText("delete");
+    const reactCreatElement = jest.spyOn(React, "createElement");
 
     fireEvent.press(deleteButton);
 
@@ -49,10 +49,10 @@ describe(NumberPad, () => {
     expect(mockOnNumberPress).not.toHaveBeenCalled();
     expect(mockOnBiometricPress).not.toHaveBeenCalled();
   });
-  it('Should properly call onBiometricPress without side effects', () => {
+  it("Should properly call onBiometricPress without side effects", () => {
     const { getByLabelText } = renderNumberPad();
-    const biometricButton = getByLabelText('touch id trigger');
-    const reactCreatElement = jest.spyOn(React, 'createElement');
+    const biometricButton = getByLabelText("touch id trigger");
+    const reactCreatElement = jest.spyOn(React, "createElement");
 
     fireEvent.press(biometricButton);
 
@@ -68,9 +68,9 @@ function renderNumberPad() {
     <NumberPad
       onDeletePress={mockOnDelete}
       onNumberPress={mockOnNumberPress}
-      deleteAccessibilityLabel='delete'
-      biometricType='TOUCH_ID'
-      biometricAccessibilityLabel='touch id trigger'
+      deleteAccessibilityLabel="delete"
+      biometricType="TOUCH_ID"
+      biometricAccessibilityLabel="touch id trigger"
       onBiometricPress={mockOnBiometricPress}
     />
   );

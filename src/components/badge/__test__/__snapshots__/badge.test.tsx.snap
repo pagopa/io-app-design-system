@@ -20,7 +20,9 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
   }
 >
   <Text
+    allowFontScaling={true}
     ellipsizeMode="tail"
+    maxFontSizeMultiplier={1.25}
     numberOfLines={1}
     style={
       [
@@ -67,7 +69,9 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
   }
 >
   <Text
+    allowFontScaling={false}
     ellipsizeMode="tail"
+    maxFontSizeMultiplier={1.25}
     numberOfLines={1}
     style={
       [
@@ -79,7 +83,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
           "textTransform": "uppercase",
         },
         {
-          "fontFamily": "Titillium Web",
+          "fontFamily": "Titillium Sans Pro",
           "fontStyle": "normal",
           "fontWeight": "600",
         },

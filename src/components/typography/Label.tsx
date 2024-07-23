@@ -3,6 +3,7 @@ import { View } from "react-native";
 import {
   IOColors,
   IOColorsStatusForeground,
+  IOVisualCostants,
   useIOExperimentalDesign
 } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
@@ -15,15 +16,14 @@ import {
   lineHeightMapping
 } from "./common";
 
-type PartialAllowedColors = Extract<IOColors, "black" | "white">;
+type PartialAllowedColors = Extract<IOColors, "black" | "white" | "grey-700">;
 type AllowedColors = PartialAllowedColors | IOColorsStatusForeground;
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
 type LabelProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 > & { fontSize?: FontSize };
 
-const fontName: FontFamily = "TitilliumSansPro";
-const legacyFontName: FontFamily = "TitilliumWeb";
+const font: FontFamily = "TitilliumSansPro";
 const labelDefaultWeight = "Bold";
 const labelDefaultcolor = "black";
 
@@ -37,9 +37,12 @@ export const Label = React.forwardRef<View, LabelProps>(
     return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "footnote" /* iOS only */,
         defaultWeight: labelDefaultWeight,
         defaultColor: labelDefaultcolor,
-        font: isExperimental ? fontName : legacyFontName,
+        font,
         fontStyle: {
           fontSize: fontSize
             ? fontSizeMapping[fontSize]

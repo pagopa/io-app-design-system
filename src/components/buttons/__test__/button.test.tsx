@@ -2,7 +2,6 @@ import React from "react";
 import { Alert } from "react-native";
 import * as TestRenderer from "react-test-renderer";
 import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
-import ButtonExtendedOutline from "../ButtonExtendedOutline";
 import ButtonLink from "../ButtonLink";
 import ButtonOutline from "../ButtonOutline";
 import ButtonSolid from "../ButtonSolid";
@@ -41,16 +40,6 @@ describe("Test Buttons Components", () => {
       ></ButtonOutline>
     ).toJSON();
     expect(buttonOutline).toMatchSnapshot();
-  });
-
-  it("ButtonExtendedOutline Snapshot", () => {
-    const buttonExtendedOutline = TestRenderer.create(
-      <ButtonExtendedOutline
-        label={"label"}
-        onPress={onButtonPress}
-      ></ButtonExtendedOutline>
-    ).toJSON();
-    expect(buttonExtendedOutline).toMatchSnapshot();
   });
 
   it("IconButtonSolid Snapshot", () => {
@@ -115,17 +104,6 @@ describe("Test Buttons Components - Experimental Enabled", () => {
       ></ButtonOutline>
     ).toJSON();
     expect(buttonOutline).toMatchSnapshot();
-  });
-
-  it("ButtonExtendedOutline Snapshot", () => {
-    const buttonExtendedOutline =
-      TestRendererWithExperimentalEnabledContextProvider(
-        <ButtonExtendedOutline
-          label={"label"}
-          onPress={onButtonPress}
-        ></ButtonExtendedOutline>
-      ).toJSON();
-    expect(buttonExtendedOutline).toMatchSnapshot();
   });
 
   it("IconButtonSolid Snapshot", () => {

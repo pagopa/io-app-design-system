@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { IOTheme, useIOExperimentalDesign } from "../../core";
+import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -18,7 +18,7 @@ const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumWeb";
+const legacyFont: FontFamily = "TitilliumSansPro";
 
 /**
  * `Caption` typographic style
@@ -29,6 +29,9 @@ export const Caption = React.forwardRef<View, CaptionProps>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "caption1" /* iOS only */,
       defaultWeight,
       defaultColor,
       font: isExperimental ? font : legacyFont,

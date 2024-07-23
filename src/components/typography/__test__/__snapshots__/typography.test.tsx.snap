@@ -6,13 +6,15 @@ exports[`Test Typography Components Body Snapshot 1`] = `
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Regular"
-  font="TitilliumWeb"
+  dynamicTypeRamp="body"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -21,7 +23,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -39,6 +41,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
   color="bluegrey"
   defaultColor="bluegrey"
   defaultWeight="Medium"
+  dynamicTypeRamp="body"
   font="DMMono"
   fontStyle={
     {
@@ -46,6 +49,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -72,12 +76,13 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
   color="white"
   defaultColor="white"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -85,7 +90,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -102,14 +107,16 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
   allowFontScaling={false}
   color="black"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="largeTitle"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 31,
       "lineHeight": 43,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -118,13 +125,13 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -135,14 +142,16 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="largeTitle"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 31,
       "lineHeight": 43,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -151,13 +160,13 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -168,14 +177,16 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
   allowFontScaling={false}
   color="black"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title1"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 28,
       "lineHeight": 40,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -184,13 +195,13 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -201,29 +212,31 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
   allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -234,29 +247,31 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
   allowFontScaling={false}
   color="bluegreyLight"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -267,29 +282,31 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -300,29 +317,31 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -333,29 +352,31 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
   allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title2"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 24,
-      "lineHeight": 34,
+      "fontSize": 22,
+      "lineHeight": 33,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 24,
-        "lineHeight": 34,
+        "fontSize": 22,
+        "lineHeight": 33,
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -366,29 +387,31 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
   allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -399,29 +422,31 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
   allowFontScaling={false}
   color="blue"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -432,29 +457,31 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -465,23 +492,25 @@ exports[`Test Typography Components H4 Snapshot 4`] = `
   allowFontScaling={false}
   color="bluegreyDark"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#17324D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -498,23 +527,25 @@ exports[`Test Typography Components H4 Snapshot 5`] = `
   allowFontScaling={false}
   color="bluegrey"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -531,23 +562,25 @@ exports[`Test Typography Components H4 Snapshot 6`] = `
   allowFontScaling={false}
   color="bluegreyLight"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -564,23 +597,25 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="bluegreyDark"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="title3"
+  font="TitilliumSansPro"
   fontStyle={
     {
-      "fontSize": 22,
+      "fontSize": 20,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 22,
+        "fontSize": 20,
         "lineHeight": 24,
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "400",
       },
@@ -597,8 +632,9 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
   allowFontScaling={false}
   color="black"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -607,6 +643,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -617,13 +654,13 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -634,8 +671,9 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
   allowFontScaling={false}
   color="bluegrey"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -644,6 +682,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -654,13 +693,13 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -671,8 +710,9 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
   allowFontScaling={false}
   color="blue"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -681,6 +721,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -691,13 +732,13 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -708,8 +749,9 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
   allowFontScaling={false}
   color="white"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="subheadline"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
@@ -718,6 +760,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
       "textTransform": "uppercase",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -728,13 +771,13 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -745,14 +788,16 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
   allowFontScaling={false}
   color="black"
   defaultColor="black"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="headline"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 18,
       "lineHeight": 25,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -761,13 +806,13 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>
@@ -779,13 +824,15 @@ exports[`Test Typography Components Label Snapshot 1`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -794,7 +841,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -812,13 +859,15 @@ exports[`Test Typography Components Label Snapshot 2`] = `
   color="black"
   defaultColor="black"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
       "lineHeight": 24,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -827,7 +876,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -845,13 +894,15 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -860,7 +911,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -878,13 +929,15 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
   color="blue"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -893,7 +946,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -911,13 +964,15 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
   color="bluegrey"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -926,7 +981,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
       },
       {
         "color": "#475A6D",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -944,13 +999,15 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
   color="red"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -959,7 +1016,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
       },
       {
         "color": "#C02927",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -977,13 +1034,15 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
   color="white"
   defaultColor="blue"
   defaultWeight="Bold"
-  font="TitilliumWeb"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 14,
       "lineHeight": 21,
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -992,7 +1051,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "700",
       },
@@ -1009,8 +1068,9 @@ exports[`Test Typography Components Link Snapshot 1`] = `
   allowFontScaling={false}
   color="blue"
   defaultColor="blue"
-  defaultWeight="SemiBold"
-  font="TitilliumWeb"
+  defaultWeight="Semibold"
+  dynamicTypeRamp="footnote"
+  font="TitilliumSansPro"
   fontStyle={
     {
       "fontSize": 16,
@@ -1018,6 +1078,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
       "textDecorationLine": "underline",
     }
   }
+  maxFontSizeMultiplier={1.25}
   style={
     [
       {
@@ -1027,13 +1088,13 @@ exports[`Test Typography Components Link Snapshot 1`] = `
       },
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Web",
+        "fontFamily": "Titillium Sans Pro",
         "fontStyle": "normal",
         "fontWeight": "600",
       },
     ]
   }
-  weight="SemiBold"
+  weight="Semibold"
 >
   Text
 </Text>

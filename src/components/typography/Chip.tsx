@@ -1,12 +1,16 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, useIOExperimentalDesign } from "../../core";
+import {
+  IOColors,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 type AllowedColors = IOColors;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold" | "Regular">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold" | "Regular">;
 
 type ChipProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -18,7 +22,7 @@ const defaultColor: AllowedColors = "black";
 const defaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumWeb";
+const legacyFont: FontFamily = "TitilliumSansPro";
 /**
  * `Chip` typographic style
  */
@@ -28,6 +32,9 @@ export const Chip = React.forwardRef<View, ChipProps>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "caption2" /* iOS only */,
       defaultWeight,
       defaultColor,
       font: isExperimental ? font : legacyFont,

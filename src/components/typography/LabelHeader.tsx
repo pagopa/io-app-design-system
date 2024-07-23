@@ -11,7 +11,7 @@ type AllowedColors =
   | "grey-850"
   | "white"
   | "black";
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type LabelHeaderProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -25,8 +25,8 @@ const labelHeaderFontName: IOFontFamily = "ReadexPro";
 const labelHeaderDefaultWeight: AllowedWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyLabelHeaderFontName: IOFontFamily = "TitilliumWeb";
-const legacyLabelHeaderWeight: AllowedWeight = "SemiBold";
+const legacyLabelHeaderFontName: IOFontFamily = "TitilliumSansPro";
+const legacyLabelHeaderWeight: AllowedWeight = "Semibold";
 const legacyLabelHeaderLineHeight = 20;
 /**
  * `LabelHeader` typographic style

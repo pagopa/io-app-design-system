@@ -1,6 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
+import {
+  IOColors,
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -16,7 +21,7 @@ type PartialAllowedColors = Extract<
   | "grey-200"
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-tertiary"];
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
 
 type FontSize = "regular" | "small";
 type AllowedFontSize = { fontSize?: FontSize };
@@ -26,8 +31,7 @@ type LabelSmallProps = ExternalTypographyProps<
 > &
   AllowedFontSize;
 
-const fontName: FontFamily = "TitilliumSansPro";
-const legacyFontName: FontFamily = "TitilliumWeb";
+const font: FontFamily = "TitilliumSansPro";
 const fontSizeMapping: Record<FontSize, number> = {
   regular: 14,
   small: 12
@@ -49,9 +53,12 @@ export const LabelSmall = React.forwardRef<View, LabelSmallProps>(
     return useTypographyFactory<AllowedWeight, AllowedColors>(
       {
         ...props,
+        allowFontScaling: isExperimental,
+        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+        dynamicTypeRamp: "footnote" /* iOS only */,
         defaultWeight: labelDefaultWeight,
         defaultColor: labelDefaultcolor,
-        font: isExperimental ? fontName : legacyFontName,
+        font,
         fontStyle: {
           fontSize: props.fontSize
             ? fontSizeMapping[props.fontSize]

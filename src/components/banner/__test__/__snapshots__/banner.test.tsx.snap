@@ -72,10 +72,11 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       }
     >
       <Text
-        allowFontScaling={false}
+        allowFontScaling={true}
         color="blueIO-850"
         defaultColor="black"
         defaultWeight="Regular"
+        dynamicTypeRamp="headline"
         font="ReadexPro"
         fontStyle={
           {
@@ -83,6 +84,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             "lineHeight": 24,
           }
         }
+        maxFontSizeMultiplier={1.25}
         style={
           [
             {
@@ -109,6 +111,8 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         }
       />
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
         <View
@@ -432,14 +436,16 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         allowFontScaling={false}
         color="blueIO-850"
         defaultColor="black"
-        defaultWeight="SemiBold"
-        font="TitilliumWeb"
+        defaultWeight="Semibold"
+        dynamicTypeRamp="headline"
+        font="TitilliumSansPro"
         fontStyle={
           {
             "fontSize": 18,
             "lineHeight": 25,
           }
         }
+        maxFontSizeMultiplier={1.25}
         style={
           [
             {
@@ -448,13 +454,13 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             },
             {
               "color": "#031344",
-              "fontFamily": "Titillium Web",
+              "fontFamily": "Titillium Sans Pro",
               "fontStyle": "normal",
               "fontWeight": "600",
             },
           ]
         }
-        weight="SemiBold"
+        weight="Semibold"
       >
         Banner title
       </Text>
@@ -466,6 +472,8 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         }
       />
       <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
         <View
@@ -555,7 +563,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               style={
                 [
                   {
-                    "fontFamily": "Titillium Web",
+                    "fontFamily": "Titillium Sans Pro",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "700",

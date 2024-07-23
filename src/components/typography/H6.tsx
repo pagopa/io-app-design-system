@@ -1,13 +1,18 @@
 import React from "react";
 import { View } from "react-native";
-import { IOTheme, IOThemeLight, useIOExperimentalDesign } from "../../core";
+import {
+  IOTheme,
+  IOThemeLight,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
 
 // when the weight is bold, only these color are allowed
 type AllowedColors = IOTheme["textBody-default"] | "blueIO-850";
-type AllowedWeight = Extract<IOFontWeight, "Regular" | "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Regular" | "Semibold">;
 
 type H6Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -22,8 +27,8 @@ const fontName: FontFamily = "ReadexPro";
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFontSize = 18;
 const legacyLineHeight = 25;
-const legacyFontName: FontFamily = "TitilliumWeb";
-const legacyDefaultWeight: AllowedWeight = "SemiBold";
+const legacyFontName: FontFamily = "TitilliumSansPro";
+const legacyDefaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `H6` typographic style
@@ -34,6 +39,9 @@ export const H6 = React.forwardRef<View, H6Props>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "headline" /* iOS only */,
       defaultWeight: isExperimental ? h6DefaultWeight : legacyDefaultWeight,
       defaultColor: h6DefaultColor,
       font: isExperimental ? fontName : legacyFontName,

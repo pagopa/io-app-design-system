@@ -10,11 +10,6 @@ import { Platform } from "react-native";
  * Choose the font name based on the platform
  */
 const fonts = {
-  TitilliumWeb: Platform.select({
-    android: "TitilliumWeb",
-    web: "TitilliumWeb",
-    ios: "Titillium Web"
-  }),
   TitilliumSansPro: Platform.select({
     android: "TitilliumSansPro",
     web: "TitilliumSansPro",
@@ -34,7 +29,7 @@ const fonts = {
 
 export type IOFontFamily = keyof typeof fonts;
 
-const weights = ["Light", "Regular", "Medium", "SemiBold", "Bold"] as const;
+const weights = ["Light", "Regular", "Medium", "Semibold", "Bold"] as const;
 export type IOFontWeight = (typeof weights)[number];
 
 const weightValues = ["300", "400", "500", "600", "700"] as const;
@@ -48,7 +43,7 @@ export const fontWeights: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
   Medium: "500",
-  SemiBold: "600",
+  Semibold: "600",
   Bold: "700"
 };
 
@@ -63,7 +58,7 @@ export const fontWeightsMap: Record<IOFontWeight, FontWeightValue> = {
   Light: "300",
   Regular: "400",
   Medium: "500",
-  SemiBold: "600",
+  Semibold: "600",
   Bold: "700"
 };
 
@@ -105,7 +100,7 @@ export const makeFontFamilyName = (
 export const makeFontStyleObject = (
   weight: IOFontWeight | undefined = undefined,
   isItalic: boolean | undefined = false,
-  font: FontFamily | undefined = "TitilliumWeb"
+  font: FontFamily | undefined = "TitilliumSansPro"
 ): FontStyleObject =>
   Platform.select({
     web: {

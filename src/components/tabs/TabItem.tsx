@@ -235,6 +235,7 @@ const TabItem = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole={"button"}
+      accessibilityState={{ selected }}
       testID={testID}
       onPress={onPress}
       onPressIn={onPressIn}

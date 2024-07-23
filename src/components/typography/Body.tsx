@@ -1,6 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { IOColors, IOTheme, useIOExperimentalDesign } from "../../core";
+import {
+  IOColors,
+  IOTheme,
+  IOVisualCostants,
+  useIOExperimentalDesign
+} from "../../core";
 import { FontFamily, IOFontWeight } from "../../utils/fonts";
 import { useTypographyFactory } from "./Factory";
 import { ExternalTypographyProps, TypographyProps } from "./common";
@@ -10,14 +15,13 @@ type PartialAllowedColors = Extract<
   "bluegreyDark" | "white" | "blue" | "bluegrey" | "bluegreyLight"
 >;
 type AllowedColors = PartialAllowedColors | IOTheme["textBody-default"];
-type AllowedWeight = IOFontWeight | "Regular" | "SemiBold";
+type AllowedWeight = IOFontWeight | "Regular" | "Semibold";
 
 type BodyProps = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
 >;
 
 const fontName: FontFamily = "TitilliumSansPro";
-const legacyFontName: FontFamily = "TitilliumWeb";
 
 export const bodyFontSize = 16;
 export const bodyLineHeight = 24;
@@ -33,9 +37,12 @@ export const Body = React.forwardRef<View, BodyProps>((props, ref) => {
   return useTypographyFactory<AllowedWeight, AllowedColors>(
     {
       ...props,
+      allowFontScaling: isExperimental,
+      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
+      dynamicTypeRamp: "body" /* iOS only */,
       defaultWeight: bodyDefaultWeight,
       defaultColor: bodyDefaultColor,
-      font: isExperimental ? fontName : legacyFontName,
+      font: fontName,
       fontStyle: { fontSize: bodyFontSize, lineHeight: bodyLineHeight }
     },
     ref

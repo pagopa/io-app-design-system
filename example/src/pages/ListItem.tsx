@@ -35,7 +35,7 @@ export const ListItems = () => {
     <Screen>
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemNav
@@ -49,7 +49,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemInfoCopy
@@ -58,7 +58,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemInfo
@@ -67,7 +67,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemHeader
@@ -76,7 +76,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemAmount
@@ -85,7 +85,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemAction
@@ -94,7 +94,7 @@ export const ListItems = () => {
 
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemTransaction
@@ -102,7 +102,7 @@ export const ListItems = () => {
       {renderListItemTransaction()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemRadio
@@ -110,7 +110,7 @@ export const ListItems = () => {
       {renderListItemRadio()}
       <H2
         color={theme["textHeading-default"]}
-        weight={"SemiBold"}
+        weight={"Semibold"}
         style={{ marginBottom: 16, marginTop: 16 }}
       >
         ListItemRadioWithAmount
@@ -392,21 +392,15 @@ const renderListItemAction = () => (
 const renderListItemInfo = () => (
   <ComponentViewerBox name="ListItemInfo">
     <View>
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemInfo label="Label" value={"Value"} />
       <ListItemInfo
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
       />
       <ListItemInfo
         icon="creditCard"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "buttonLink",
           componentProps: {
@@ -420,7 +414,6 @@ const renderListItemInfo = () => (
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "iconButton",
           componentProps: {
@@ -435,7 +428,6 @@ const renderListItemInfo = () => (
         icon="psp"
         label="Label"
         value="A looong looooong looooooooong looooooooooong title"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "badge",
           componentProps: {
@@ -445,18 +437,8 @@ const renderListItemInfo = () => (
         }}
       />
 
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        icon="gallery"
-        accessibilityLabel="Empty just for testing purposes"
-      />
-      <ListItemInfo
-        label="Label"
-        value={"Value"}
-        paymentLogoIcon="payPal"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemInfo label="Label" value={"Value"} icon="gallery" />
+      <ListItemInfo label="Label" value={"Value"} paymentLogoIcon="payPal" />
     </View>
   </ComponentViewerBox>
 );
@@ -464,18 +446,11 @@ const renderListItemInfo = () => (
 const renderListItemHeader = () => (
   <ComponentViewerBox name="ListItemHeader">
     <View>
-      <ListItemHeader
-        label="Label"
-        accessibilityLabel="Empty just for testing purposes"
-      />
-      <ListItemHeader
-        label="Label"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemHeader label="Label" />
+      <ListItemHeader label="Label" />
       <ListItemHeader
         iconName="creditCard"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "buttonLink",
           componentProps: {
@@ -488,7 +463,6 @@ const renderListItemHeader = () => (
       <ListItemHeader
         iconName="psp"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "iconButton",
           componentProps: {
@@ -502,7 +476,6 @@ const renderListItemHeader = () => (
       <ListItemHeader
         iconName="psp"
         label="Label"
-        accessibilityLabel="Empty just for testing purposes"
         endElement={{
           type: "badge",
           componentProps: {
@@ -512,11 +485,7 @@ const renderListItemHeader = () => (
         }}
       />
 
-      <ListItemHeader
-        label="Label"
-        iconName="gallery"
-        accessibilityLabel="Empty just for testing purposes"
-      />
+      <ListItemHeader label="Label" iconName="gallery" />
     </View>
   </ComponentViewerBox>
 );
@@ -526,7 +495,7 @@ const renderListItemAmount = () => (
     <ListItemAmount label="Amount" valueString="€ 1.000,00" />
     <ListItemAmount
       iconName="creditCard"
-      label="Amount with card "
+      label="Amount with card"
       valueString="€ 1.000,00"
     />
   </ComponentViewerBox>

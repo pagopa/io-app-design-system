@@ -9,7 +9,9 @@ import {
 import {
   IOColors,
   IOListItemLogoMargin,
-  useIOExperimentalDesign
+  IOVisualCostants,
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { makeFontStyleObject } from "../../utils/fonts";
@@ -27,7 +29,6 @@ interface ModuleIDP extends PressableModuleBaseProps {
 
 const styles = StyleSheet.create({
   idpName: {
-    color: IOColors["grey-700"],
     fontSize: 12,
     lineHeight: 16,
     alignSelf: "center",
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     ...makeFontStyleObject("Regular", false, "ReadexPro")
   },
   idpLegacyNameFont: {
-    ...makeFontStyleObject("SemiBold", false, "TitilliumWeb")
+    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   },
   idpLogo: {
     marginStart: IOListItemLogoMargin,
@@ -63,6 +64,7 @@ export const ModuleIDP = ({
   testID,
   accessibilityLabel
 }: ModuleIDP) => {
+  const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
 
   // eslint-disable-next-line no-console
@@ -78,8 +80,11 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <Text
+        allowFontScaling={isExperimental}
+        maxFontSizeMultiplier={IOVisualCostants.maxFontSizeMultiplier}
         style={[
           styles.idpName,
+          { color: IOColors[theme["textBody-tertiary"]] },
           isExperimental ? styles.idpNameFont : styles.idpLegacyNameFont
         ]}
         accessibilityLabel={accessibilityLabel ?? name}

@@ -12,6 +12,7 @@ export type RNTextInputProps = Pick<
   | "returnKeyType"
   | "autoCapitalize"
   | "autoCorrect"
+  | "inputAccessoryViewID"
 >;
 
 type InputProps = Pick<

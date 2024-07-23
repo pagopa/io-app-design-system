@@ -119,7 +119,7 @@ Essential atomic components:
 
 ## Components
 
-* [**Buttons**](/docs/components-buttons-buttonextendedoutline--docs)
+* [**Buttons**](/docs/components-buttons-buttonlink--docs)
 * [**TextInput**](/docs/components-text-input-textinput--docs)
 * [**List Items**](/docs/components-list-items-listitemcheckbox--docs)
 * [**Badges**](/docs/components-badge-badge--docs) & [**Tags**](/docs/components-tag-tag--docs)

@@ -4,7 +4,7 @@ import { ExternalTypographyProps, TypographyProps } from "../common";
 import { useTypographyFactory } from "../Factory";
 
 type AllowedColors = Extract<IOTheme, "textHeading-default"> | IOColors;
-type AllowedWeight = Extract<IOFontWeight, "SemiBold">;
+type AllowedWeight = Extract<IOFontWeight, "Semibold">;
 
 type MdH4Props = ExternalTypographyProps<
   TypographyProps<AllowedWeight, AllowedColors>
@@ -14,7 +14,7 @@ const fontSize = 14;
 const lineHeight = 24;
 const font: FontFamily = "TitilliumSansPro";
 const defaultColor: AllowedColors = "grey-700";
-const defaultWeight: AllowedWeight = "SemiBold";
+const defaultWeight: AllowedWeight = "Semibold";
 
 /**
  * `MdH4` typographic style

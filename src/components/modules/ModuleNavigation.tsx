@@ -9,9 +9,7 @@ import {
 import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
-  IOModuleStyles,
   IOSelectionListItemVisualParams,
-  IOStyles,
   IOVisualCostants,
   useIOTheme
 } from "../../core";
@@ -20,6 +18,7 @@ import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { VSpacer } from "../spacer";
 import { Chip, LabelSmallAlt } from "../typography";
+import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -77,7 +76,7 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
         >
           {title}
         </LabelSmallAlt>
-        {subtitle && <Chip color="grey-700">{subtitle}</Chip>}
+        {subtitle && <Chip color={theme["textBody-tertiary"]}>{subtitle}</Chip>}
       </View>
       <View>
         {badge ? (
@@ -95,19 +94,23 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
 };
 
 const ModuleNavigationSkeleton = () => (
-  <View style={IOModuleStyles.button}>
-    <View style={[IOStyles.row, IOStyles.alignCenter]}>
-      <View style={{ marginRight: IOVisualCostants.iconMargin }}>
-        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-      </View>
-      <View style={{ paddingRight: 8 }}>
-        <Placeholder.Box animate="fade" width={96} height={19} radius={8} />
-        <VSpacer size={4} />
-        <Placeholder.Box animate="fade" width={180} height={16} radius={8} />
-      </View>
-    </View>
-    <Placeholder.Box animate="fade" width={64} height={22} radius={8} />
-  </View>
+  <ModuleStatic
+    startBlock={
+      <>
+        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+          <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
+        </View>
+        <View style={{ paddingRight: 8 }}>
+          <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
+          <VSpacer size={4} />
+          <Placeholder.Box animate="fade" width={160} height={12} radius={8} />
+        </View>
+      </>
+    }
+    endBlock={
+      <Placeholder.Box animate="fade" width={64} height={24} radius={16} />
+    }
+  />
 );
 
 const styles = StyleSheet.create({
