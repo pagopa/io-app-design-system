@@ -21,9 +21,6 @@ import {
   MdH1,
   MdH2,
   MdH3,
-  MdH4,
-  MdH5,
-  MdH6,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
@@ -90,9 +87,6 @@ export const Typography = () => (
       <MdH1Row />
       <MdH2Row />
       <MdH3Row />
-      <MdH4Row />
-      <MdH5Row />
-      <MdH6Row />
     </VStack>
 
     <VSpacer size={40} />
@@ -372,26 +366,5 @@ export const MdH3Row = () => (
   <VStack space={4}>
     <MdH3>{getTitle("Markdown H3")}</MdH3>
     <MdH3 style={styles.distancedTitle}>{getLongerTitle("Markdown H3")}</MdH3>
-  </VStack>
-);
-
-export const MdH4Row = () => (
-  <VStack space={4}>
-    <MdH4>{getTitle("Markdown H4")}</MdH4>
-    <MdH4 style={styles.distancedTitle}>{getLongerTitle("Markdown H4")}</MdH4>
-  </VStack>
-);
-
-export const MdH5Row = () => (
-  <VStack space={4}>
-    <MdH5>{getTitle("Markdown H5")}</MdH5>
-    <MdH5 style={styles.distancedTitle}>{getLongerTitle("Markdown H5")}</MdH5>
-  </VStack>
-);
-
-export const MdH6Row = () => (
-  <VStack space={4}>
-    <MdH6>{getTitle("Markdown H6")}</MdH6>
-    <MdH6 style={styles.distancedTitle}>{getLongerTitle("Markdown H6")}</MdH6>
   </VStack>
 );

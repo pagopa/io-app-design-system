@@ -21,6 +21,3 @@ export * from "./common";
 export * from "./markdown/MdH1";
 export * from "./markdown/MdH2";
 export * from "./markdown/MdH3";
-export * from "./markdown/MdH4";
-export * from "./markdown/MdH5";
-export * from "./markdown/MdH6";

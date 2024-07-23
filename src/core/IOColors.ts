@@ -267,6 +267,8 @@ const themeKeys = [
   "listItem-pressed",
   // Typography
   "textHeading-default",
+  "textHeading-secondary",
+  "textHeading-tertiary",
   "textBody-default",
   "textBody-secondary",
   "textBody-tertiary",
@@ -300,6 +302,8 @@ export const IOThemeLight: IOTheme = {
   "listItem-pressed": "grey-50",
   // Typography
   "textHeading-default": "black",
+  "textHeading-secondary": "grey-850",
+  "textHeading-tertiary": "grey-700",
   "textBody-default": "black",
   "textBody-secondary": "grey-850",
   "textBody-tertiary": "grey-700",
@@ -336,6 +340,8 @@ export const IOThemeDark: IOTheme = {
   "listItem-pressed": "grey-850",
   // Typography
   "textHeading-default": "grey-200",
+  "textHeading-secondary": "grey-300",
+  "textHeading-tertiary": "grey-450",
   "textBody-default": "white",
   "textBody-secondary": "grey-100",
   "textBody-tertiary": "grey-450",
