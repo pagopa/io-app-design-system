@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -21,15 +15,12 @@ import {
   IOListItemVisualParams,
   IOScaleValues,
   IOSpringValues,
-  IOStyles,
   hexToRgba,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
-import { AnimatedIcon, IOIcons, Icon } from "../icons";
-import { buttonTextFontSize } from "../typography/ButtonText";
+import { AnimatedIcon, IOIcons } from "../icons";
+import { ButtonText } from "../typography/ButtonText";
 
 export type ListItemAction = WithTestID<{
   label: string;
@@ -39,23 +30,6 @@ export type ListItemAction = WithTestID<{
   // Accessibility
   accessibilityLabel: string;
 }>;
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: buttonTextFontSize,
-    lineHeight: 20,
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  }
-});
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyStyles = StyleSheet.create({
-  labelLegacy: {
-    fontSize: buttonTextFontSize,
-    lineHeight: 20,
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
-  }
-});
 
 export const ListItemAction = ({
   variant,
@@ -67,7 +41,6 @@ export const ListItemAction = ({
 }: ListItemAction) => {
   const isPressed = useSharedValue(0);
 
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const mapBackgroundStates: Record<string, string> = {
@@ -75,52 +48,13 @@ export const ListItemAction = ({
     pressed: IOColors[theme["listItem-pressed"]]
   };
 
-  const mapLegacyForegroundColor: Record<
+  const mapForegroundColor: Record<
     NonNullable<ListItemAction["variant"]>,
     IOColors
   > = {
-    primary: "blue",
-    danger: "error-600"
+    primary: theme["interactiveElem-default"],
+    danger: theme.errorText
   };
-
-  const mapForegroundColor: Record<
-    NonNullable<ListItemAction["variant"]>,
-    string
-  > = {
-    primary: IOColors[theme["interactiveElem-default"]],
-    danger: IOColors[theme.errorText]
-  };
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyItemActionIcon = (icon: IOIcons) => (
-    <Icon
-      name={icon}
-      color={mapLegacyForegroundColor[variant]}
-      size={IOListItemVisualParams.iconSize}
-    />
-  );
-
-  const itemActionIcon = (icon: IOIcons) => (
-    <>
-      <AnimatedIcon
-        name={icon}
-        color={mapForegroundColor[variant] as IOColors}
-        size={IOListItemVisualParams.iconSize}
-      />
-    </>
-  );
-
-  const itemActionIconComponent = (icon: IOIcons) =>
-    isExperimental ? itemActionIcon(icon) : legacyItemActionIcon(icon);
-
-  const textStyle = [styles.label, { color: mapForegroundColor[variant] }];
-
-  const legacyTextStyle = [
-    legacyStyles.labelLegacy,
-    { color: IOColors[mapLegacyForegroundColor[variant]] }
-  ];
-
-  const textStyleComponent = isExperimental ? textStyle : legacyTextStyle;
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -184,11 +118,15 @@ export const ListItemAction = ({
         >
           {icon && (
             <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              {itemActionIconComponent(icon)}
+              <AnimatedIcon
+                name={icon}
+                color={IOColors[mapForegroundColor[variant]]}
+                size={IOListItemVisualParams.iconSize}
+              />
             </View>
           )}
-          <View style={IOStyles.flex}>
-            <Text style={textStyleComponent}>{label}</Text>
+          <View style={{ flexGrow: 1 }}>
+            <ButtonText color={mapForegroundColor[variant]}>{label}</ButtonText>
           </View>
         </Animated.View>
       </Animated.View>

@@ -24,10 +24,10 @@ import {
   useIOTheme
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { HSpacer } from "../spacer";
+import { IOText } from "../typography";
 import { ActionProp } from "./common";
 
 type ScrollValues = {
@@ -103,16 +103,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     marginHorizontal: titleHorizontalMargin
-  },
-  headerTitle: {
-    fontSize: 14,
-    textAlign: "center"
-  },
-  headerTitleFont: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  headerTitleLegacyFont: {
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 
@@ -143,6 +133,8 @@ export const HeaderSecondLevel = ({
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
+
+  const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
   const iconButtonColor: ComponentProps<typeof IconButton>["color"] =
     variant === "neutral" ? "neutral" : "contrast";
@@ -240,20 +232,19 @@ export const HeaderSecondLevel = ({
           accessibilityRole="header"
           style={styles.titleContainer}
         >
-          <Animated.Text
+          <AnimatedIOText
+            size={14}
             numberOfLines={1}
             accessible={false}
+            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+            weight={isExperimental ? "Regular" : "Semibold"}
             style={[
-              styles.headerTitle,
-              { color: titleColor },
-              isExperimental
-                ? styles.headerTitleFont
-                : styles.headerTitleLegacyFont,
+              { color: titleColor, textAlign: "center" },
               titleAnimatedStyle
             ]}
           >
             {title}
-          </Animated.Text>
+          </AnimatedIOText>
         </View>
         <View style={[IOStyles.row, { flexShrink: 0 }]}>
           {type === "threeActions" && (

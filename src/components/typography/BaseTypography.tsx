@@ -3,6 +3,7 @@ import { Text, TextStyle, View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import {
   IOFontFamily,
+  IOFontSize,
   IOFontWeight,
   makeFontStyleObject
 } from "../../utils/fonts";
@@ -49,7 +50,7 @@ export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
     () =>
       calculateTextStyle(
         props.color,
-        props.fontStyle?.fontSize,
+        props.fontStyle?.fontSize as IOFontSize,
         props.font,
         props.fontStyle?.lineHeight,
         props.weight,

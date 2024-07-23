@@ -28,6 +28,7 @@ export const ButtonText = forwardRef<View, TypographicStyleProps>(
       font: isExperimental ? fontName : legacyFontName,
       weight: isExperimental ? fontWeight : legacyFontWeight,
       size: buttonTextFontSize,
+      lineHeight: 20,
       color: customColor ?? defaultColor
     };
 
