@@ -47,6 +47,14 @@ export type TypographicStyleProps = Omit<
 };
 
 /**
+ * Extend `TypographicStyleProps` with extra props for styles that
+ * can be used as links
+ */
+export type TypographicStyleAsLinkProps =
+  | { color?: never; asLink: true; onPress: () => void }
+  | { color?: IOColors; asLink?: false };
+
+/**
  * Decorate the function {@link makeFontStyleObject} with the additional color calculation.
  * @param color A value key from {@link IOColors}, transformed here in {@link ColorValue}
  * @param args the args of the function {@link makeFontStyleObject}

@@ -1,16 +1,17 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOColors, useIOTheme } from "../../core";
+import { useIOTheme } from "../../core";
 import { IOFontWeight } from "../../utils/fonts";
-import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
-
-type LabelLinkProps =
-  | { color?: never; asLink: true }
-  | { color?: IOColors; asLink?: false };
+import {
+  IOText,
+  IOTextProps,
+  TypographicStyleAsLinkProps,
+  TypographicStyleProps
+} from "./IOText";
 
 type LabelProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
-} & LabelLinkProps;
+} & TypographicStyleAsLinkProps;
 
 /**
  * `LabelSmall` typographic style

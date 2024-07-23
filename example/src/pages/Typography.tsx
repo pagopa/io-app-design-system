@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const labelLinkOnPress = () => Alert.alert("onPress LabelLink!");
+const linkOnPress = () => Alert.alert("onPress triggered");
 
 export const Typography = () => (
   <Screen>
@@ -69,6 +69,9 @@ export const Typography = () => (
         </Body>
         <Body weight="Semibold">Body Semibold</Body>
         <Body weight="Bold">Body Bold</Body>
+        <Body asLink onPress={linkOnPress}>
+          Body asLink
+        </Body>
         <BodyMonospace>BodyMonoSpace</BodyMonospace>
       </VStack>
       <VStack space={16}>
@@ -218,7 +221,7 @@ export const LabelSmallRow = () => (
         <LabelSmall color={"white"}>Label small</LabelSmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={labelLinkOnPress}>
+      <LabelSmall asLink onPress={linkOnPress}>
         Label small asLink
       </LabelSmall>
     </View>
@@ -239,7 +242,7 @@ export const LabelSmallRow = () => (
         </LabelSmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={labelLinkOnPress} weight="Semibold">
+      <LabelSmall asLink onPress={linkOnPress} weight="Semibold">
         Label small SB asLink
       </LabelSmall>
     </View>
@@ -260,7 +263,7 @@ export const LabelSmallRow = () => (
         </LabelSmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={labelLinkOnPress} weight="Regular">
+      <LabelSmall asLink onPress={linkOnPress} weight="Regular">
         Label small Regular asLink
       </LabelSmall>
     </View>

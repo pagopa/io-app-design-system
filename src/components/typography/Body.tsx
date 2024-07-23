@@ -2,11 +2,16 @@ import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../core";
 import { IOFontWeight } from "../../utils/fonts";
-import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
+import {
+  IOText,
+  IOTextProps,
+  TypographicStyleAsLinkProps,
+  TypographicStyleProps
+} from "./IOText";
 
 type BodyStyleProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
-};
+} & TypographicStyleAsLinkProps;
 
 export const bodyFontSize = 16;
 export const bodyLineHeight = 24;
@@ -16,10 +21,14 @@ export const bodyLineHeight = 24;
  */
 export const Body = forwardRef<View, BodyStyleProps>(
   (
-    { weight: customWeight, color: customColor, ...props },
+    { weight: customWeight, color: customColor, asLink, ...props },
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
+
+    const defaultColor = asLink
+      ? theme["interactiveElem-default"]
+      : theme["textBody-tertiary"];
 
     const BodyProps: IOTextProps = {
       ...props,
@@ -28,7 +37,13 @@ export const Body = forwardRef<View, BodyStyleProps>(
       weight: customWeight ?? "Regular",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,
-      color: customColor ?? theme["textBody-tertiary"]
+      color: customColor ?? defaultColor,
+      ...(asLink
+        ? {
+            accessibilityRole: "link",
+            textStyle: { textDecorationLine: "underline" }
+          }
+        : {})
     };
 
     return (
