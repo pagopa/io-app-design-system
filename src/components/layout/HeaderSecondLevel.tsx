@@ -141,7 +141,6 @@ export const HeaderSecondLevel = ({
   alertProps
 }: HeaderSecondLevel) => {
   const titleRef = React.createRef<View>();
-
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();

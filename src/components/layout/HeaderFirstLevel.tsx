@@ -87,13 +87,15 @@ export const HeaderFirstLevel = ({
 
   return (
     <View
-      style={{
-        paddingTop: insets.top,
-        backgroundColor:
-          backgroundColor === "light"
-            ? IOColors[theme["appBackground-primary"]]
-            : IOColors[HEADER_BG_COLOR_DARK]
-      }}
+      style={[
+        alertProps ? {} : { paddingTop: insets.top },
+        {
+          backgroundColor:
+            backgroundColor === "light"
+              ? IOColors[theme["appBackground-primary"]]
+              : IOColors[HEADER_BG_COLOR_DARK]
+        }
+      ]}
       accessibilityRole="header"
       testID={testID}
     >

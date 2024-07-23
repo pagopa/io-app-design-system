@@ -35,6 +35,10 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
       title: "Header First Level"
     },
+    HEADER_FIRST_LEVEL_BANNER: {
+      route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL_BANNER",
+      title: "Header First Level (Banner)"
+    },
     FORCE_SCROLL_DOWN: {
       route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN",
       title: "Force Scroll Down"

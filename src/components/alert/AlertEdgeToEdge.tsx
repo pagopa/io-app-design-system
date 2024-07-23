@@ -41,9 +41,8 @@ const [spacingDefault] = IOAlertSpacing;
 
 const styles = StyleSheet.create({
   container: {
-    top: 0,
-    left: 0,
-    right: 0
+    zIndex: 2,
+    elevation: 2
   },
   alert: {
     flexDirection: "row",
