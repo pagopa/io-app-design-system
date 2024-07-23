@@ -1,5 +1,5 @@
 import React, { ComponentProps, forwardRef, useMemo } from "react";
-import { Text, TextStyle, View } from "react-native";
+import { GestureResponderEvent, Text, TextStyle, View } from "react-native";
 import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
@@ -51,7 +51,11 @@ export type TypographicStyleProps = Omit<
  * can be used as links
  */
 export type TypographicStyleAsLinkProps =
-  | { color?: never; asLink: true; onPress: () => void }
+  | {
+      color?: never;
+      asLink: true;
+      onPress: (event: GestureResponderEvent) => void;
+    }
   | { color?: IOColors; asLink?: false };
 
 /**
@@ -116,7 +120,7 @@ export const IOText = forwardRef<View, IOTextProps>(
      */
 
     const styleObj = style
-      ? [style, textStyle ?? {}, fontStyleObj ?? {}]
+      ? [textStyle ?? {}, fontStyleObj ?? {}, style]
       : [textStyle ?? {}, fontStyleObj ?? {}];
 
     /* Accessible typography based on the `fontScale` parameter */

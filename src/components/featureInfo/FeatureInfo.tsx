@@ -8,7 +8,7 @@ import {
   IOPictogramSizeScale,
   IOPictograms,
   Icon,
-  LabelLink,
+  Label,
   Pictogram,
   VSpacer
 } from "../../components";
@@ -21,12 +21,13 @@ type PartialFeatureInfo = {
 
 type FeatureInfoActionProps =
   | {
-      actionLabel?: string;
-      actionOnPress: (event: GestureResponderEvent) => void;
+      action: {
+        label: string;
+        onPress: (event: GestureResponderEvent) => void;
+      };
     }
   | {
-      actionLabel?: never;
-      actionOnPress?: never;
+      action?: never;
     };
 
 type FeatureInfoGraphicProps =
@@ -56,8 +57,7 @@ export const FeatureInfo = ({
   iconName,
   pictogramName,
   body,
-  actionLabel,
-  actionOnPress
+  action
 }: FeatureInfoProps) => (
   <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
     {iconName && (
@@ -69,21 +69,21 @@ export const FeatureInfo = ({
     <HSpacer size={24} />
     <View style={{ flexShrink: 1 }}>
       {renderNode(body)}
-      {actionLabel && actionOnPress && (
+      {action && (
         <>
           {/* Add "marginTop" equivalent if body text is present.
           This verbose code could be deleted once we got "gap"
           property support */}
           {body && <VSpacer size={4} />}
-          <LabelLink
-            fontSize="regular"
-            onPress={actionOnPress}
+          <Label
+            asLink
+            onPress={action.onPress}
             accessible
             importantForAccessibility={"yes"}
             accessibilityElementsHidden={false}
           >
-            {actionLabel}
-          </LabelLink>
+            {action.label}
+          </Label>
         </>
       )}
     </View>

@@ -14,7 +14,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants } from "../../core";
 import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
@@ -120,7 +120,6 @@ export const Alert = React.forwardRef<View, AlertType>(
     viewRef
   ): JSX.Element => {
     const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-    const { isExperimental } = useIOExperimentalDesign();
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
