@@ -5,7 +5,7 @@ import {
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export const iconItemGutter = 8;
 

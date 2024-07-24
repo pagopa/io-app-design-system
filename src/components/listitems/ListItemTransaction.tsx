@@ -24,7 +24,7 @@ import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { VSpacer } from "../spacer";
-import { H6, LabelSmall, LabelSmallAlt } from "../typography";
+import { H6, LabelSmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
@@ -189,12 +189,13 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={IOStyles.flex}>
-          <LabelSmallAlt
+          <LabelSmall
+            weight="Semibold"
             numberOfLines={numberOfLines}
             color={theme["textBody-default"]}
           >
             {title}
-          </LabelSmallAlt>
+          </LabelSmall>
           <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
           </LabelSmall>

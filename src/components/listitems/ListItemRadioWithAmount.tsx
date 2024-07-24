@@ -5,8 +5,7 @@ import { IOColors, useIOTheme } from "../../core";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmallAlt } from "../typography";
-import { LabelSmall } from "../typography/LabelSmall";
+import { H6, LabelSmall } from "../typography";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
 export type ListItemRadioWithAmountProps = {
@@ -56,9 +55,13 @@ export const ListItemRadioWithAmount = ({
       }}
     >
       <View style={{ flexShrink: 1 }}>
-        <LabelSmallAlt numberOfLines={1} color={theme["textBody-default"]}>
+        <LabelSmall
+          weight="Semibold"
+          numberOfLines={1}
+          color={theme["textBody-default"]}
+        >
           {label}
-        </LabelSmallAlt>
+        </LabelSmall>
         {isSuggested && (
           <>
             <VSpacer size={4} />
