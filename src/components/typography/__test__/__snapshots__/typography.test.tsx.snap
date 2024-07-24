@@ -3,33 +3,21 @@
 exports[`Test Typography Components Body Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="bluegrey"
-  defaultColor="bluegrey"
-  defaultWeight="Regular"
   dynamicTypeRamp="body"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 16,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#475A6D",
+        "color": "#555C70",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Regular"
 >
   Text
 </Text>
@@ -38,33 +26,23 @@ exports[`Test Typography Components Body Snapshot 1`] = `
 exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="bluegrey"
-  defaultColor="bluegrey"
-  defaultWeight="Medium"
   dynamicTypeRamp="body"
-  font="DMMono"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 16,
-        "lineHeight": 24,
+        "letterSpacing": 0.5,
       },
       {
-        "color": "#475A6D",
+        "color": "#555C70",
         "fontFamily": "DM Mono",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "500",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Medium"
 >
   Text
 </Text>
@@ -73,30 +51,20 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="white"
-  defaultWeight="Bold"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 16,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 16,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 20,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -128,33 +96,21 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
 exports[`Test Typography Components H1 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="largeTitle"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 31,
-      "lineHeight": 43,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 31,
-        "lineHeight": 43,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 31,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 43,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -163,33 +119,21 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
 exports[`Test Typography Components H2 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title1"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 28,
-      "lineHeight": 40,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 28,
-        "lineHeight": 40,
-      },
+      {},
       {
         "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 28,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 40,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -198,33 +142,21 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 exports[`Test Typography Components H3 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="bluegreyDark"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title2"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 22,
-      "lineHeight": 33,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 22,
-        "lineHeight": 33,
-      },
-      {
-        "color": "#17324D",
+        "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 33,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -233,33 +165,21 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
 exports[`Test Typography Components H3 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="bluegreyLight"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title2"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 22,
-      "lineHeight": 33,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 22,
-        "lineHeight": 33,
-      },
+      {},
       {
         "color": "#CCD4DC",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 33,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -268,33 +188,21 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
 exports[`Test Typography Components H3 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title2"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 22,
-      "lineHeight": 33,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 22,
-        "lineHeight": 33,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 33,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -303,33 +211,21 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
 exports[`Test Typography Components H3 Snapshot 4`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title2"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 22,
-      "lineHeight": 33,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 22,
-        "lineHeight": 33,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 33,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -338,33 +234,21 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
 exports[`Test Typography Components H3 Snapshot 5`] = `
 <Text
   allowFontScaling={false}
-  color="bluegreyDark"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title2"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 22,
-      "lineHeight": 33,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 22,
-        "lineHeight": 33,
-      },
-      {
-        "color": "#17324D",
+        "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 33,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -373,33 +257,21 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
 exports[`Test Typography Components H4 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="bluegreyDark"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#17324D",
+        "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -408,33 +280,21 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
 exports[`Test Typography Components H4 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="blue"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
+      {},
       {
         "color": "#0073E6",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -443,173 +303,21 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
 exports[`Test Typography Components H4 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
   dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
-      },
-    ]
-  }
-  weight="Semibold"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 4`] = `
-<Text
-  allowFontScaling={false}
-  color="bluegreyDark"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
-  dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {
-        "fontSize": 20,
         "lineHeight": 24,
       },
-      {
-        "color": "#17324D",
-        "fontFamily": "Titillium Sans Pro",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
     ]
   }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 5`] = `
-<Text
-  allowFontScaling={false}
-  color="bluegrey"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
-  dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#475A6D",
-        "fontFamily": "Titillium Sans Pro",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 6`] = `
-<Text
-  allowFontScaling={false}
-  color="bluegreyLight"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
-  dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#CCD4DC",
-        "fontFamily": "Titillium Sans Pro",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components H4 Snapshot 7`] = `
-<Text
-  allowFontScaling={false}
-  color="white"
-  defaultColor="bluegreyDark"
-  defaultWeight="Semibold"
-  dynamicTypeRamp="title3"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 20,
-      "lineHeight": 24,
-    }
-  }
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {
-        "fontSize": 20,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
-        "fontStyle": "normal",
-        "fontWeight": "400",
-      },
-    ]
-  }
-  weight="Regular"
 >
   Text
 </Text>
@@ -618,37 +326,24 @@ exports[`Test Typography Components H4 Snapshot 7`] = `
 exports[`Test Typography Components H5 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="subheadline"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "letterSpacing": 0.5,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 14,
         "letterSpacing": 0.5,
-        "lineHeight": 16,
         "textTransform": "uppercase",
       },
       {
         "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 16,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -657,37 +352,24 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
 exports[`Test Typography Components H5 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="bluegrey"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="subheadline"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "letterSpacing": 0.5,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 14,
         "letterSpacing": 0.5,
-        "lineHeight": 16,
         "textTransform": "uppercase",
       },
       {
         "color": "#475A6D",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 16,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -696,37 +378,24 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
 exports[`Test Typography Components H5 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
-  color="blue"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="subheadline"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "letterSpacing": 0.5,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 14,
         "letterSpacing": 0.5,
-        "lineHeight": 16,
         "textTransform": "uppercase",
       },
       {
         "color": "#0073E6",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 16,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -735,37 +404,24 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
 exports[`Test Typography Components H5 Snapshot 4`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="subheadline"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "letterSpacing": 0.5,
-      "lineHeight": 16,
-      "textTransform": "uppercase",
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
       {
-        "fontSize": 14,
         "letterSpacing": 0.5,
-        "lineHeight": 16,
         "textTransform": "uppercase",
       },
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 16,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -774,33 +430,21 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
 exports[`Test Typography Components H6 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Semibold"
   dynamicTypeRamp="headline"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 18,
-      "lineHeight": 25,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 18,
-        "lineHeight": 25,
-      },
+      {},
       {
         "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 18,
         "fontStyle": "normal",
         "fontWeight": "600",
+        "lineHeight": 25,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>
@@ -809,33 +453,20 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
 exports[`Test Typography Components Label Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Bold"
-  dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 16,
-        "lineHeight": 24,
-      },
-      {
-        "color": "#0E0F13",
+        "color": "#555C70",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -844,33 +475,20 @@ exports[`Test Typography Components Label Snapshot 1`] = `
 exports[`Test Typography Components Label Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="black"
-  defaultColor="black"
-  defaultWeight="Bold"
-  dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 16,
-        "lineHeight": 24,
-      },
+      {},
       {
         "color": "#0E0F13",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -879,33 +497,21 @@ exports[`Test Typography Components Label Snapshot 2`] = `
 exports[`Test Typography Components LabelSmall Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  color="blue"
-  defaultColor="blue"
-  defaultWeight="Bold"
   dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 21,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
+      {},
       {
-        "fontSize": 14,
-        "lineHeight": 21,
-      },
-      {
-        "color": "#0073E6",
+        "color": "#555C70",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 21,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -914,33 +520,21 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
 exports[`Test Typography Components LabelSmall Snapshot 2`] = `
 <Text
   allowFontScaling={false}
-  color="blue"
-  defaultColor="blue"
-  defaultWeight="Bold"
   dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 21,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 14,
-        "lineHeight": 21,
-      },
+      {},
       {
         "color": "#0073E6",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 21,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -949,33 +543,21 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
 exports[`Test Typography Components LabelSmall Snapshot 3`] = `
 <Text
   allowFontScaling={false}
-  color="bluegrey"
-  defaultColor="blue"
-  defaultWeight="Bold"
   dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 21,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 14,
-        "lineHeight": 21,
-      },
+      {},
       {
         "color": "#475A6D",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 21,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -984,33 +566,21 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
 exports[`Test Typography Components LabelSmall Snapshot 4`] = `
 <Text
   allowFontScaling={false}
-  color="red"
-  defaultColor="blue"
-  defaultWeight="Bold"
   dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 21,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 14,
-        "lineHeight": 21,
-      },
+      {},
       {
         "color": "#C02927",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 21,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -1019,33 +589,21 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
 exports[`Test Typography Components LabelSmall Snapshot 5`] = `
 <Text
   allowFontScaling={false}
-  color="white"
-  defaultColor="blue"
-  defaultWeight="Bold"
   dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 14,
-      "lineHeight": 21,
-    }
-  }
   maxFontSizeMultiplier={1.25}
   style={
     [
-      {
-        "fontSize": 14,
-        "lineHeight": 21,
-      },
+      {},
       {
         "color": "#FFFFFF",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "700",
+        "lineHeight": 21,
       },
     ]
   }
-  weight="Bold"
 >
   Text
 </Text>
@@ -1053,36 +611,25 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
 
 exports[`Test Typography Components Link Snapshot 1`] = `
 <Text
+  accessibilityRole="link"
   allowFontScaling={false}
-  color="blue"
-  defaultColor="blue"
-  defaultWeight="Semibold"
-  dynamicTypeRamp="footnote"
-  font="TitilliumSansPro"
-  fontStyle={
-    {
-      "fontSize": 16,
-      "lineHeight": 24,
-      "textDecorationLine": "underline",
-    }
-  }
   maxFontSizeMultiplier={1.25}
+  onPress={[Function]}
   style={
     [
       {
-        "fontSize": 16,
-        "lineHeight": 24,
         "textDecorationLine": "underline",
       },
       {
-        "color": "#0073E6",
+        "color": "#0B3EE3",
         "fontFamily": "Titillium Sans Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "700",
+        "lineHeight": 24,
       },
     ]
   }
-  weight="Semibold"
 >
   Text
 </Text>

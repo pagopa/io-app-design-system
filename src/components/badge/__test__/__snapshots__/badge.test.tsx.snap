@@ -26,20 +26,20 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
     numberOfLines={1}
     style={
       [
+        {},
+        {
+          "color": "#555C70",
+          "fontFamily": "Readex Pro",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 16,
+        },
         {
           "alignSelf": "center",
           "flexShrink": 1,
-          "fontSize": 12,
-          "lineHeight": 16,
+          "letterSpacing": 0.5,
           "textTransform": "uppercase",
-        },
-        {
-          "fontFamily": "Readex Pro",
-          "fontStyle": "normal",
-          "fontWeight": "400",
-        },
-        {
-          "color": "#555C70",
         },
       ]
     }
