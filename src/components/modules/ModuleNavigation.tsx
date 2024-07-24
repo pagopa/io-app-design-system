@@ -17,7 +17,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { VSpacer } from "../spacer";
-import { Chip, LabelSmallAlt } from "../typography";
+import { Chip, LabelSmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -69,13 +69,14 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
     <PressableModuleBase {...pressableProps} onPress={onPress}>
       {(icon || image) && iconComponent}
       <View style={{ flexGrow: 1, flexShrink: 1, paddingRight: 8 }}>
-        <LabelSmallAlt
+        <LabelSmall
           color={theme["interactiveElem-default"]}
           numberOfLines={2}
           lineBreakMode="middle"
+          weight="Semibold"
         >
           {title}
-        </LabelSmallAlt>
+        </LabelSmall>
         {subtitle && <Chip color={theme["textBody-tertiary"]}>{subtitle}</Chip>}
       </View>
       <View>

@@ -374,8 +374,8 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             </>
           )}
           <AnimatedIOText
-            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-            weight={isExperimental ? "Regular" : "Bold"}
+            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            weight={isExperimental ? "Semibold" : "Bold"}
             size={buttonTextFontSize}
             accessible={false}
             accessibilityElementsHidden

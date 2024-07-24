@@ -16,11 +16,11 @@ const fonts: Record<string, string> = {
     ios: "Titillium Sans Pro",
     default: "TitilliumSansPro"
   }),
-  ReadexPro: Platform.select({
-    android: "ReadexPro",
-    web: "ReadexPro",
-    ios: "Readex Pro",
-    default: "ReadexPro"
+  Titillio: Platform.select({
+    android: "Titillio3",
+    web: "Titillio3",
+    ios: "Titillio 3",
+    default: "Titillio3"
   }),
   DMMono: Platform.select({
     android: "DMMono",
@@ -44,10 +44,18 @@ export type IOFontSize = (typeof allFontSizes)[number];
  * Font Weights
  */
 
-const weights = ["Light", "Regular", "Medium", "Semibold", "Bold"] as const;
+const weights = [
+  "Thin",
+  "Light",
+  "Regular",
+  "Medium",
+  "Semibold",
+  "Bold",
+  "Black"
+] as const;
 export type IOFontWeight = (typeof weights)[number];
 
-const weightValues = ["300", "400", "500", "600", "700"] as const;
+const weightValues = ["200", "300", "400", "500", "600", "700", "900"] as const;
 export type IOFontWeightNumeric = (typeof weightValues)[number];
 
 /**
@@ -55,11 +63,13 @@ export type IOFontWeightNumeric = (typeof weightValues)[number];
  * used on iOS
  */
 export const fontWeights: Record<IOFontWeight, IOFontWeightNumeric> = {
+  Thin: "200",
   Light: "300",
   Regular: "400",
   Medium: "500",
   Semibold: "600",
-  Bold: "700"
+  Bold: "700",
+  Black: "900"
 };
 
 type FontStyleObject = {
