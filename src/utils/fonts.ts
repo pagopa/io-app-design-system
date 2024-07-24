@@ -17,7 +17,7 @@ const fonts: Record<string, string> = {
     default: "TitilliumSansPro"
   }),
   Titillio: Platform.select({
-    android: "Titillio3",
+    android: "Titillio",
     web: "Titillio3",
     ios: "Titillio 3",
     default: "Titillio3"
