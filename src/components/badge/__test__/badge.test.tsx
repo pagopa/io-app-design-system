@@ -6,7 +6,7 @@ import { Badge } from "../Badge";
 describe("Test Badge Components", () => {
   it("Badge Snapshot", () => {
     const badge = TestRenderer.create(
-      <Badge text={"text"} variant={"default"}></Badge>
+      <Badge text={"text"} variant={"default"} />
     ).toJSON();
     expect(badge).toMatchSnapshot();
   });
@@ -15,7 +15,7 @@ describe("Test Badge Components", () => {
 describe("Test Badge Components - Experimental Enabled", () => {
   it("Badge Snapshot", () => {
     const badge = TestRendererWithExperimentalEnabledContextProvider(
-      <Badge text={"text"} variant={"default"}></Badge>
+      <Badge text={"text"} variant={"default"} />
     ).toJSON();
     expect(badge).toMatchSnapshot();
   });

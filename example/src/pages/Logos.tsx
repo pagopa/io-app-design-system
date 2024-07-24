@@ -16,8 +16,7 @@ import {
   LogoPaymentCard,
   LogoPaymentExt,
   VSpacer,
-  hexToRgba,
-  useIOTheme
+  hexToRgba
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -44,54 +43,30 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Logos = () => {
-  const theme = useIOTheme();
+export const Logos = () => (
+  <Screen>
+    <H2
+      style={{
+        marginBottom: 12,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
+    >
+      Avatar
+    </H2>
+    {renderAvatar()}
 
-  return (
-    <Screen>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{
-          marginBottom: 12,
-          paddingTop: IOVisualCostants.appMarginDefault
-        }}
-      >
-        Avatar
-      </H2>
-      {renderAvatar()}
+    <VSpacer size={24} />
 
-      <VSpacer size={24} />
+    <H2 style={{ marginBottom: 12 }}>Payment Networks (Small)</H2>
+    {renderPaymentLogosSmall()}
 
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
-        Payment Networks (Small)
-      </H2>
-      {renderPaymentLogosSmall()}
+    <H2 style={{ marginBottom: 12 }}>Payment Networks (Big)</H2>
+    {renderPaymentLogosBig()}
 
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
-        Payment Networks (Big)
-      </H2>
-      {renderPaymentLogosBig()}
-
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
-        Payment Networks (Card)
-      </H2>
-      {renderPaymentLogosCard()}
-    </Screen>
-  );
-};
+    <H2 style={{ marginBottom: 12 }}>Payment Networks (Card)</H2>
+    {renderPaymentLogosCard()}
+  </Screen>
+);
 
 const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
 

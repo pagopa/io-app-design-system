@@ -20,7 +20,7 @@ import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressPro
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
-import { LabelHeader } from "../typography/LabelHeader";
+import { LabelSmall } from "../typography";
 
 type ColorMode = "light" | "dark";
 
@@ -257,7 +257,9 @@ const TabItem = ({
             <HSpacer size={4} />
           </>
         )}
-        <LabelHeader color={foregroundColor}>{label}</LabelHeader>
+        <LabelSmall weight="Semibold" color={foregroundColor}>
+          {label}
+        </LabelSmall>
       </Animated.View>
     </Pressable>
   );

@@ -1,45 +1,43 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOTheme, IOVisualCostants, useIOExperimentalDesign } from "../../core";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
+import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
-type AllowedColors = IOTheme["textHeading-default"];
-type AllowedWeight = Extract<IOFontWeight, "Regular">;
+const defaultColor: keyof IOTheme = "textBody-default";
 
-type CaptionProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-export const captionFontSize = 12;
-const font: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "Regular";
+export const captionFontSize: IOFontSize = 12;
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFont: FontFamily = "TitilliumSansPro";
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
 
 /**
  * `Caption` typographic style
  */
-export const Caption = React.forwardRef<View, CaptionProps>((props, ref) => {
-  const { isExperimental } = useIOExperimentalDesign();
+export const Caption = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
-  return useTypographyFactory<AllowedWeight, AllowedColors>(
-    {
+    const CaptionProps: IOTextProps = {
       ...props,
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-      dynamicTypeRamp: "caption1" /* iOS only */,
-      defaultWeight,
-      defaultColor,
-      font: isExperimental ? font : legacyFont,
-      fontStyle: {
-        fontSize: captionFontSize,
-        textTransform: "uppercase"
+      dynamicTypeRamp: "caption1", // iOS only
+      font: isExperimental ? fontName : legacyFontName,
+      size: captionFontSize,
+      weight: fontWeight,
+      color: customColor ?? theme[defaultColor],
+      textStyle: {
+        textTransform: "uppercase",
+        letterSpacing: 0.5
       }
-    },
-    ref
-  );
-});
+    };
+
+    return (
+      <IOText ref={ref} {...CaptionProps}>
+        {props.children}
+      </IOText>
+    );
+  }
+);

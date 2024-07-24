@@ -100,11 +100,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H2 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Navigation
       </H2>
       <View style={styles.itemsWrapper}>
@@ -123,11 +119,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H2 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         System
       </H2>
       <View style={styles.itemsWrapper}>
@@ -146,11 +138,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H2 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Biometric
       </H2>
       <View style={styles.itemsWrapper}>
@@ -169,11 +157,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
+      <H2 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
         Categories
       </H2>
       <View style={styles.itemsWrapper}>
@@ -192,13 +176,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H2
-        color={theme["textHeading-default"]}
-        weight={"Semibold"}
-        style={{ marginBottom: 12 }}
-      >
-        Product
-      </H2>
+      <H2 style={{ marginBottom: 12 }}>Product</H2>
       <View style={styles.itemsWrapper}>
         {Object.entries(IOProductIcons).map(([iconItemName]) => (
           <IconViewerBox
@@ -216,9 +194,7 @@ export const Icons = () => {
         ))}
       </View>
 
-      <H4 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
-        IconContained
-      </H4>
+      <H4 style={{ marginBottom: 12 }}>IconContained</H4>
       <ComponentViewerBox name={"IconContained, default variant"}>
         <View style={IOStyles.row}>
           <IconContained icon="device" variant="tonal" color="neutral" />
@@ -227,9 +203,7 @@ export const Icons = () => {
         </View>
       </ComponentViewerBox>
 
-      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
-        Sizes
-      </H3>
+      <H3 style={{ marginBottom: 12 }}>Sizes</H3>
       <View style={styles.itemsWrapper}>
         {/* If you want to render another icon in different sizes,
       just change the name below */}
@@ -247,9 +221,7 @@ export const Icons = () => {
           />
         ))}
       </View>
-      <H3 color={theme["textHeading-default"]} style={{ marginBottom: 12 }}>
-        Colors
-      </H3>
+      <H3 style={{ marginBottom: 12 }}>Colors</H3>
       <View style={styles.itemsWrapper}>
         {IOIconColors.map(color => (
           <IconViewerBox
