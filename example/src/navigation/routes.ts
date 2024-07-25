@@ -70,6 +70,18 @@ const APP_ROUTES = {
       title: "Full screen modal (second example)"
     },
     SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" },
+    FOOTER_ACTIONS: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS",
+      title: "Footer actions"
+    },
+    FOOTER_ACTIONS_STICKY: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_STICKY",
+      title: "Footer actions (sticky)"
+    },
+    FOOTER_ACTIONS_NOT_FIXED: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_NOT_FIXED",
+      title: "Footer actions (not fixed)"
+    },
     FOOTER_WITH_BUTTON_EMPTY: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
       title: "Footer with button (Empty state)"

@@ -20,12 +20,16 @@ import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
+import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
+import { FooterActionsScreen } from "../pages/FooterActionsScreen";
+import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { FooterWithButton } from "../pages/FooterWithButton";
 import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
+import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { Icons } from "../pages/Icons";
 import { ImageScreen } from "../pages/Image";
@@ -39,6 +43,7 @@ import { NumberPadScreen } from "../pages/NumberPad";
 import { OTPInputScreen } from "../pages/OTPInput";
 import { Pictograms } from "../pages/Pictograms";
 import { Sandbox } from "../pages/Sandbox";
+import { SearchCustom } from "../pages/SearchCustom";
 import { SearchNative } from "../pages/SearchNative";
 import { Selection } from "../pages/Selection";
 import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
@@ -47,8 +52,6 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
-import { SearchCustom } from "../pages/SearchCustom";
-import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -268,6 +271,33 @@ const AppNavigator = () => {
             component={TextInputs}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.TEXT_INPUT.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS.route}
+            component={FooterActionsScreen}
+            options={{
+              headerTitle: APP_ROUTES.SCREENS.FOOTER_ACTIONS.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS_STICKY.route}
+            component={FooterActionsStickyScreen}
+            options={{
+              headerTitle: APP_ROUTES.SCREENS.FOOTER_ACTIONS_STICKY.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS_NOT_FIXED.route}
+            component={FooterActionsNotFixed}
+            options={{
+              headerTitle: APP_ROUTES.SCREENS.FOOTER_ACTIONS_NOT_FIXED.title,
               headerBackTitleVisible: false
             }}
           />
