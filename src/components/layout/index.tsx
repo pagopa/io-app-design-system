@@ -1,4 +1,5 @@
 export * from "./BlockButtons";
+export * from "./FooterActions";
 export * from "./FooterWithButtons";
 export * from "./ForceScrollDownView";
 export * from "./GradientBottomActions";
@@ -7,3 +8,4 @@ export * from "./HeaderFirstLevel";
 export * from "./HeaderSecondLevel";
 export * from "./ModalBSHeader";
 export * from "./common";
+export * from "./hooks";
