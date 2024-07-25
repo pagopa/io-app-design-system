@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pressable, TextInput, View } from "react-native";
+import { AccessibilityInfo, NativeSyntheticEvent, Pressable, TextInput, TextInputKeyPressEventData, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
 import { LabelSmall } from "../typography";
@@ -17,6 +17,7 @@ type Props = {
   onValidate?: (value: string) => boolean;
   errorMessage?: string;
   accessibilityLabel?: string;
+  deleteAccessibilityLabel?: string;
   accessibilityHint?: string;
   inputAccessoryViewID?: string;
   autoFocus?: boolean;
@@ -48,7 +49,8 @@ export const OTPInput = React.forwardRef<View, Props>(
       secret = false,
       autocomplete = false,
       inputAccessoryViewID,
-      autoFocus = false
+      autoFocus = false,
+      deleteAccessibilityLabel
     },
     ref
   ) => {
@@ -93,6 +95,19 @@ export const OTPInput = React.forwardRef<View, Props>(
       handleValidate(value);
     };
 
+    const handleKeyPress = ({ nativeEvent }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
+      switch (nativeEvent.key) {
+        case 'Backspace':
+          if (deleteAccessibilityLabel && value.length > 0) {
+            AccessibilityInfo.announceForAccessibility(deleteAccessibilityLabel);
+          }
+          break;
+        default:
+          AccessibilityInfo.announceForAccessibility(nativeEvent.key);
+          break;
+      }
+    };
+
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
         <Pressable
@@ -110,6 +125,7 @@ export const OTPInput = React.forwardRef<View, Props>(
           <TextInput
             value={value}
             onChangeText={handleChange}
+            onKeyPress={handleKeyPress}
             style={{ position: "absolute", opacity: 0 }}
             maxLength={length}
             ref={inputRef}
