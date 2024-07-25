@@ -24,7 +24,6 @@ import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateS
 import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
-import { FooterWithButton } from "../pages/FooterWithButton";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
@@ -52,6 +51,8 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
+import { FooterActionsInlineScreen } from "../pages/FooterActionsInlineScreen";
+import { FooterActionsInlineNotFixed } from "../pages/FooterActionsInlineNotFixed";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -303,10 +304,20 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
-            name={APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.route}
-            component={FooterWithButton}
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS_INLINE.route}
+            component={FooterActionsInlineScreen}
             options={{
-              headerTitle: APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.title,
+              headerTitle: APP_ROUTES.SCREENS.FOOTER_ACTIONS_INLINE.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS_INLINE_NOT_FIXED.route}
+            component={FooterActionsInlineNotFixed}
+            options={{
+              headerTitle:
+                APP_ROUTES.SCREENS.FOOTER_ACTIONS_INLINE_NOT_FIXED.title,
               headerBackTitleVisible: false
             }}
           />

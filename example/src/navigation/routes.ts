@@ -86,9 +86,13 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FOOTER_ACTIONS_EMPTY_STATE",
       title: "Footer actions (Empty state)"
     },
-    FOOTER_WITH_BUTTON: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
-      title: "Footer with button"
+    FOOTER_ACTIONS_INLINE: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_INLINE",
+      title: "Footer actions (inline)"
+    },
+    FOOTER_ACTIONS_INLINE_NOT_FIXED: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_INLINE_NOT_FIXED",
+      title: "Footer actions (inline, not fixed)"
     },
     GRADIENT_SCROLLVIEW: {
       route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",

@@ -276,6 +276,7 @@ export type IOTheme = {
   "icon-decorative": IOColors;
   // Layout
   "divider-default": IOColors;
+  "divider-bottomBar": IOColors;
   // Status
   errorIcon: IOColors;
   errorText: IOColors;
@@ -305,6 +306,7 @@ export const IOThemeLight: IOTheme = {
   "icon-decorative": "grey-300",
   // Layout
   "divider-default": "grey-200",
+  "divider-bottomBar": "grey-200",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
@@ -340,6 +342,7 @@ export const IOThemeDark: IOTheme = {
   "icon-default": "grey-450",
   // Layout
   "divider-default": "grey-850",
+  "divider-bottomBar": "grey-850",
   // Status
   errorIcon: "error-400",
   errorText: "error-400",

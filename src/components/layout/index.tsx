@@ -1,5 +1,6 @@
 export * from "./BlockButtons";
 export * from "./FooterActions";
+export * from "./FooterActionsInline";
 export * from "./FooterWithButtons";
 export * from "./ForceScrollDownView";
 export * from "./GradientBottomActions";
