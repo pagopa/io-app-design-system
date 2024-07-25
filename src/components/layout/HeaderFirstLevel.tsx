@@ -6,6 +6,7 @@ import {
   findNodeHandle
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Animated, { CurvedTransition } from "react-native-reanimated";
 import { IOColors, IOStyles, IOVisualCostants, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
@@ -87,20 +88,23 @@ export const HeaderFirstLevel = ({
 
   return (
     <View
-      style={[
-        alertProps ? {} : { paddingTop: insets.top },
-        {
-          backgroundColor:
-            backgroundColor === "light"
-              ? IOColors[theme["appBackground-primary"]]
-              : IOColors[HEADER_BG_COLOR_DARK]
-        }
-      ]}
+      style={alertProps ? {} : { paddingTop: insets.top }}
       accessibilityRole="header"
       testID={testID}
     >
       {alertProps && <AlertEdgeToEdge {...alertProps} />}
-      <View style={styles.headerInner}>
+      <Animated.View
+        layout={CurvedTransition}
+        style={[
+          styles.headerInner,
+          {
+            backgroundColor:
+              backgroundColor === "light"
+                ? IOColors[theme["appBackground-primary"]]
+                : IOColors[HEADER_BG_COLOR_DARK]
+          }
+        ]}
+      >
         <View ref={titleRef} accessible accessibilityRole="header">
           <H3
             style={{ flexShrink: 1 }}
@@ -141,7 +145,7 @@ export const HeaderFirstLevel = ({
             />
           )}
         </View>
-      </View>
+      </Animated.View>
     </View>
   );
 };

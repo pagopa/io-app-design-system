@@ -306,8 +306,8 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
             component={HeaderFirstLevelScreen}
             options={{
-              statusBarTranslucent: true,
-              statusBarStyle: "light",
+              // statusBarTranslucent: true,
+              // statusBarStyle: "light",
               headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
               headerBackTitleVisible: false
             }}
@@ -316,8 +316,8 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL_BANNER.route}
             component={HeaderFirstLevelBannerScreen}
             options={{
-              statusBarTranslucent: true,
-              statusBarStyle: "light",
+              // statusBarTranslucent: true,
+              // statusBarStyle: "light",
               headerTitle:
                 APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL_BANNER.title,
               headerBackTitleVisible: false

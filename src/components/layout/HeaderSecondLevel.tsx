@@ -9,6 +9,7 @@ import {
   findNodeHandle
 } from "react-native";
 import Animated, {
+  CurvedTransition,
   interpolate,
   interpolateColor,
   useAnimatedStyle
@@ -216,6 +217,7 @@ export const HeaderSecondLevel = ({
       {alertProps && <AlertEdgeToEdge {...alertProps} />}
       <Animated.View
         testID={testID}
+        layout={CurvedTransition}
         style={[
           isModal || alertProps ? {} : { marginTop: insets.top },
           styles.headerInner
