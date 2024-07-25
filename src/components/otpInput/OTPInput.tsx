@@ -17,7 +17,7 @@ type Props = {
   onValidate?: (value: string) => boolean;
   errorMessage?: string;
   accessibilityLabel?: string;
-  deleteAccessibilityLabel?: string;
+  deleteButtonAccessibilityLabel?: string;
   accessibilityHint?: string;
   inputAccessoryViewID?: string;
   autoFocus?: boolean;
@@ -50,7 +50,7 @@ export const OTPInput = React.forwardRef<View, Props>(
       autocomplete = false,
       inputAccessoryViewID,
       autoFocus = false,
-      deleteAccessibilityLabel
+      deleteButtonAccessibilityLabel
     },
     ref
   ) => {
@@ -98,8 +98,8 @@ export const OTPInput = React.forwardRef<View, Props>(
     const handleKeyPress = ({ nativeEvent }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
       switch (nativeEvent.key) {
         case 'Backspace':
-          if (deleteAccessibilityLabel && value.length > 0) {
-            AccessibilityInfo.announceForAccessibility(deleteAccessibilityLabel);
+          if (deleteButtonAccessibilityLabel && value.length > 0) {
+            AccessibilityInfo.announceForAccessibility(deleteButtonAccessibilityLabel);
           }
           break;
         default:
