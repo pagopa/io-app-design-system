@@ -3,7 +3,6 @@ import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import {
-  Body,
   ButtonSolid,
   H3,
   HeaderFirstLevel,
