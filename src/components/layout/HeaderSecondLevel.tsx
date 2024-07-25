@@ -28,7 +28,7 @@ import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { HSpacer } from "../spacer";
-import { ActionProp } from "./common";
+import { HeaderActionProps } from "./common";
 
 type ScrollValues = {
   contentOffsetY: Animated.SharedValue<number>;
@@ -66,23 +66,23 @@ interface Base extends CommonProps {
 
 interface OneAction extends CommonProps {
   type: "singleAction";
-  firstAction: ActionProp;
+  firstAction: HeaderActionProps;
   secondAction?: never;
   thirdAction?: never;
 }
 
 interface TwoActions extends CommonProps {
   type: "twoActions";
-  firstAction: ActionProp;
-  secondAction: ActionProp;
+  firstAction: HeaderActionProps;
+  secondAction: HeaderActionProps;
   thirdAction?: never;
 }
 
 interface ThreeActions extends CommonProps {
   type: "threeActions";
-  firstAction: ActionProp;
-  secondAction: ActionProp;
-  thirdAction: ActionProp;
+  firstAction: HeaderActionProps;
+  secondAction: HeaderActionProps;
+  thirdAction: HeaderActionProps;
 }
 
 export type HeaderSecondLevel = BackProps &
