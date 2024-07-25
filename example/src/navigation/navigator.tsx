@@ -20,11 +20,11 @@ import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
+import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateScreen";
 import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { FooterWithButton } from "../pages/FooterWithButton";
-import { FooterWithButtonEmptyState } from "../pages/FooterWithButtonEmptyState";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
 import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
@@ -312,11 +312,11 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
-            name={APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON_EMPTY.route}
-            component={FooterWithButtonEmptyState}
+            name={APP_ROUTES.SCREENS.FOOTER_ACTIONS_EMPTY_STATE.route}
+            component={FooterActionsEmptyStateScreen}
             options={{
               headerShown: false,
-              headerTitle: APP_ROUTES.SCREENS.FOOTER_WITH_BUTTON.title,
+              headerTitle: APP_ROUTES.SCREENS.FOOTER_ACTIONS_EMPTY_STATE.title,
               headerBackTitleVisible: false
             }}
           />

@@ -82,9 +82,9 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FOOTER_ACTIONS_NOT_FIXED",
       title: "Footer actions (not fixed)"
     },
-    FOOTER_WITH_BUTTON_EMPTY: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
-      title: "Footer with button (Empty state)"
+    FOOTER_ACTIONS_EMPTY_STATE: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_EMPTY_STATE",
+      title: "Footer actions (Empty state)"
     },
     FOOTER_WITH_BUTTON: {
       route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
