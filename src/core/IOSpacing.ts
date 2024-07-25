@@ -49,3 +49,15 @@ export const IOModuleIDPHSpacing: IOModuleIDPSpacing = 16;
 export const IOModuleIDPVSpacing: IOModuleIDPSpacing = 16;
 export const IOModuleIDPSavedVSpacing: IOModuleIDPSpacing = 24;
 export const IOListItemLogoMargin: IOModuleIDPSpacing = 8;
+
+/*
+░░░ SPACING CONSTANTS ░░░
+*/
+
+const spacingConstantKeys = ["screenEndMargin"] as const;
+
+export type IOSpacingConstants = {
+  [K in (typeof spacingConstantKeys)[number]]: IOSpacingScale;
+};
+
+export const IOSpacing: IOSpacingConstants = { screenEndMargin: 32 };

@@ -4,6 +4,7 @@ import { ColorValue, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import {
   IOColors,
   IOSpacer,
+  IOSpacing,
   IOSpacingScale,
   IOVisualCostants,
   useIOTheme,
@@ -38,8 +39,6 @@ type FooterActionsInline = WithTestID<
   }>
 >;
 
-/* End content margin before the actions */
-const contentEndMargin: IOSpacingScale = 32;
 /* Margin between ButtonSolid and ButtonOutline */
 const spaceBetweenActions: IOSpacer = 16;
 
@@ -88,8 +87,9 @@ export const FooterActionsInline = ({
   const getActionBlockMeasurements = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
     /* Height of the safe bottom area, applied to the ScrollView:
-       Actions + Content end margin */
-    const safeBottomAreaHeight = bottomMargin + height + contentEndMargin;
+       Actions + Screen end margin */
+    const safeBottomAreaHeight =
+      bottomMargin + height + IOSpacing.screenEndMargin;
     onMeasure?.({ safeBottomAreaHeight });
   };
 
@@ -106,7 +106,7 @@ export const FooterActionsInline = ({
               bottom: 0,
               backgroundColor: HEADER_BG_COLOR
             }
-          : { marginTop: contentEndMargin },
+          : { marginTop: IOSpacing.screenEndMargin },
         /* Apply shadow only on light theme OR if fixed */
         fixed || themeType === "light" ? styles.blockShadow : {},
         /* Apply bottom border only on dark theme */

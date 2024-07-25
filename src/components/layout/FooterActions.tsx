@@ -13,7 +13,7 @@ import Animated from "react-native-reanimated";
 import {
   IOColors,
   IOSpacer,
-  IOSpacingScale,
+  IOSpacing,
   IOVisualCostants,
   buttonSolidHeight,
   hexToRgba,
@@ -87,8 +87,6 @@ type FooterActionsProps = WithTestID<
   }>
 >;
 
-/* End content margin before the actions */
-const contentEndMargin: IOSpacingScale = 32;
 /* Margin between ButtonSolid and ButtonOutline */
 const spaceBetweenActions: IOSpacer = 16;
 /* Margin between ButtonSolid and ButtonLink */
@@ -158,7 +156,8 @@ export const FooterActions = ({
     setActionBlockHeight(height);
     /* Height of the safe bottom area, applied to the ScrollView:
        Actions + Content end margin */
-    const safeBottomAreaHeight = bottomMargin + height + contentEndMargin;
+    const safeBottomAreaHeight =
+      bottomMargin + height + IOSpacing.screenEndMargin;
     onMeasure?.({ actionBlockHeight: height, safeBottomAreaHeight });
   };
 
@@ -171,7 +170,7 @@ export const FooterActions = ({
         },
         fixed
           ? { position: "absolute", bottom: 0 }
-          : { marginTop: contentEndMargin },
+          : { marginTop: IOSpacing.screenEndMargin },
         debugMode && {
           backgroundColor: hexToRgba(IOColors["error-500"], 0.15)
         },
