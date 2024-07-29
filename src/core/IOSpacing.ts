@@ -60,4 +60,6 @@ export type IOSpacingConstants = {
   [K in (typeof spacingConstantKeys)[number]]: IOSpacingScale;
 };
 
-export const IOSpacing: IOSpacingConstants = { screenEndMargin: 32 };
+export const IOSpacing = {
+  screenEndMargin: 32
+} as const satisfies IOSpacingConstants;
