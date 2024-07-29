@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
@@ -30,9 +30,11 @@ export type ListItemInfoCopy = WithTestID<{
   numberOfLines?: number;
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 export const ListItemInfoCopy = ({
   label,
@@ -41,6 +43,7 @@ export const ListItemInfoCopy = ({
   onPress,
   icon,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemInfoCopy) => {
   const isPressed = useSharedValue(0);
@@ -121,6 +124,7 @@ export const ListItemInfoCopy = ({
       onPressOut={handlePressOut}
       accessible={true}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >

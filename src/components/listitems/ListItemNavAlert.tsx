@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
@@ -29,9 +29,11 @@ export type ListItemNavAlert = WithTestID<{
   description?: string | React.ReactNode;
   withoutIcon?: boolean;
   onPress: (event: GestureResponderEvent) => void;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 export const ListItemNavAlert = ({
   value,
@@ -39,6 +41,7 @@ export const ListItemNavAlert = ({
   withoutIcon = false,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemNavAlert) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -125,6 +128,7 @@ export const ListItemNavAlert = ({
       onPressOut={handlePressOut}
       accessible={true}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >

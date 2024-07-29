@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -36,9 +36,11 @@ export type ListItemAction = WithTestID<{
   variant: "primary" | "danger";
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 const styles = StyleSheet.create({
   label: {
@@ -63,6 +65,7 @@ export const ListItemAction = ({
   onPress,
   icon,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemAction) => {
   const isPressed = useSharedValue(0);
@@ -172,6 +175,7 @@ export const ListItemAction = ({
       onTouchEnd={handlePressOut}
       accessible={true}
       accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >
