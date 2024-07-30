@@ -36,6 +36,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
   onTouchEnd={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
     importantForAccessibility="no-hide-descendants"
     style={
       [
@@ -343,6 +344,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
   onStartShouldSetResponder={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
     importantForAccessibility="no-hide-descendants"
     style={
       [
@@ -727,6 +729,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
   onStartShouldSetResponder={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
@@ -1863,6 +1867,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
     importantForAccessibility="no-hide-descendants"
     style={
       [
@@ -2170,6 +2175,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
     importantForAccessibility="no-hide-descendants"
     style={
       [
@@ -2554,6 +2560,8 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
 >
   <View
+    accessibilityElementsHidden={true}
+    importantForAccessibility="no-hide-descendants"
     style={
       [
         {
