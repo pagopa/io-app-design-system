@@ -2,15 +2,10 @@ import React, { useMemo } from "react";
 import { ColorValue } from "react-native";
 import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
 
-import PictogramAbacus from "./svg/PictogramAbacus";
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";
 import PictogramActivate from "./svg/PictogramActivate";
-import PictogramAirBaloon from "./svg/PictogramAirBaloon";
-import PictogramAirship from "./svg/PictogramAirship";
 import PictogramAttachment from "./svg/PictogramAttachment";
 import PictogramAttention from "./svg/PictogramAttention";
-import PictogramBaloons from "./svg/PictogramBaloons";
-import PictogramBeerMug from "./svg/PictogramBeerMug";
 import PictogramBiometric from "./svg/PictogramBiometric";
 import PictogramCameraDenied from "./svg/PictogramCameraDenied";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
@@ -18,28 +13,18 @@ import PictogramCharity from "./svg/PictogramCharity";
 import PictogramCie from "./svg/PictogramCie";
 import PictogramCompleted from "./svg/PictogramCompleted";
 import PictogramComunicationProblem from "./svg/PictogramComunicationProblem";
-import PictogramEmailToValidate from "./svg/PictogramEmailToValidate";
-import PictogramEmailValidation from "./svg/PictogramEmailValidation";
 import PictogramEmpty from "./svg/PictogramEmpty";
 import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
-import PictogramError from "./svg/PictogramError";
 import PictogramFatalError from "./svg/PictogramFatalError";
 import PictogramFeature from "./svg/PictogramFeature";
 import PictogramFeedback from "./svg/PictogramFeedback";
-import PictogramFireworks from "./svg/PictogramFireworks";
-import PictogramHeart from "./svg/PictogramHeart";
 import PictogramHello from "./svg/PictogramHello";
 import PictogramHelp from "./svg/PictogramHelp";
-import PictogramHourglass from "./svg/PictogramHourglass";
 import PictogramITWallet from "./svg/PictogramITWallet";
 import PictogramIdentity from "./svg/PictogramIdentity";
 import PictogramIdentityAdd from "./svg/PictogramIdentityAdd";
 import PictogramIdentityCheck from "./svg/PictogramIdentityCheck";
 import PictogramIdentityRefresh from "./svg/PictogramIdentityRefresh";
-import PictogramInProgress from "./svg/PictogramInProgress";
-import PictogramInbox from "./svg/PictogramInbox";
-import PictogramMessages from "./svg/PictogramMessages";
-import PictogramNotAvailable from "./svg/PictogramNotAvailable";
 import PictogramNotification from "./svg/PictogramNotification";
 import PictogramObjClock from "./svg/PictogramObjClock";
 import PictogramObjFlyingMessage from "./svg/PictogramObjFlyingMessage";
@@ -50,25 +35,13 @@ import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
-import PictogramPiggyBank from "./svg/PictogramPiggyBank";
-import PictogramPin from "./svg/PictogramPin";
-import PictogramPlaces from "./svg/PictogramPlaces";
 import PictogramProcessing from "./svg/PictogramProcessing";
-import PictogramPuzzle from "./svg/PictogramPuzzle";
-import PictogramQuestion from "./svg/PictogramQuestion";
-import PictogramSearch from "./svg/PictogramSearch";
 import PictogramSecurity from "./svg/PictogramSecurity";
-import PictogramSms from "./svg/PictogramSms";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSuccess from "./svg/PictogramSuccess";
-import PictogramTeaBreak from "./svg/PictogramTeaBreak";
 import PictogramTime from "./svg/PictogramTime";
-import PictogramTimeout from "./svg/PictogramTimeout";
-import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
-import PictogramUnrecognized from "./svg/PictogramUnrecognized";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
-import PictogramUploadFile from "./svg/PictogramUploadFile";
 import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
 /* Bleed Pictograms */
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
@@ -139,34 +112,7 @@ import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
   // Start legacy pictograms //
-  messages: PictogramMessages,
-  airBaloon: PictogramAirBaloon,
-  abacus: PictogramAbacus,
-  emailValidation: PictogramEmailValidation,
-  emailToValidate: PictogramEmailToValidate,
-  inbox: PictogramInbox,
-  piggyBank: PictogramPiggyBank,
   processing: PictogramProcessing,
-  baloons: PictogramBaloons,
-  places: PictogramPlaces,
-  notAvailable: PictogramNotAvailable,
-  airship: PictogramAirship,
-  search: PictogramSearch,
-  unrecognized: PictogramUnrecognized,
-  error: PictogramError,
-  umbrella: PictogramUmbrella,
-  inProgress: PictogramInProgress,
-  fireworks: PictogramFireworks,
-  puzzle: PictogramPuzzle,
-  question: PictogramQuestion,
-  pin: PictogramPin,
-  timeout: PictogramTimeout,
-  uploadFile: PictogramUploadFile,
-  hourglass: PictogramHourglass,
-  teaBreak: PictogramTeaBreak,
-  beerMug: PictogramBeerMug,
-  sms: PictogramSms,
-  heart: PictogramHeart,
   completed: PictogramCompleted,
   // End legacy pictograms
   empty: PictogramEmpty,
@@ -453,67 +399,10 @@ export type IOPictogramsObject = keyof typeof IOPictogramsObject;
 
 /* Legacy pictograms */
 
-const {
-  messages,
-  airBaloon,
-  abacus,
-  emailValidation,
-  emailToValidate,
-  inbox,
-  piggyBank,
-  processing,
-  baloons,
-  places,
-  notAvailable,
-  airship,
-  search,
-  unrecognized,
-  error,
-  umbrella,
-  inProgress,
-  fireworks,
-  puzzle,
-  question,
-  pin,
-  timeout,
-  uploadFile,
-  hourglass,
-  teaBreak,
-  beerMug,
-  sms,
-  heart,
-  completed
-} = IOPictograms;
+const { processing, completed } = IOPictograms;
 
 export const IOPictogramsLegacy = {
-  messages,
-  airBaloon,
-  abacus,
-  emailValidation,
-  emailToValidate,
-  inbox,
-  piggyBank,
   processing,
-  baloons,
-  places,
-  notAvailable,
-  airship,
-  search,
-  unrecognized,
-  error,
-  umbrella,
-  inProgress,
-  fireworks,
-  puzzle,
-  question,
-  pin,
-  timeout,
-  uploadFile,
-  hourglass,
-  teaBreak,
-  beerMug,
-  sms,
-  heart,
   completed
 } as const;
 
