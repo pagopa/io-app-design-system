@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback, useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -36,9 +36,11 @@ export type ListItemAction = WithTestID<{
   variant: "primary" | "danger";
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 const styles = StyleSheet.create({
   label: {
@@ -63,12 +65,18 @@ export const ListItemAction = ({
   onPress,
   icon,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemAction) => {
   const isPressed = useSharedValue(0);
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const listItemAccessibilityLabel = useMemo(
+    () => (accessibilityLabel ? accessibilityLabel : `${label}`),
+    [label, accessibilityLabel]
+  );
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -171,13 +179,15 @@ export const ListItemAction = ({
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={listItemAccessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >
       <Animated.View
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
         importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden
       >
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
