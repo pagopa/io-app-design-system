@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, useCallback, useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -72,6 +72,11 @@ export const ListItemAction = ({
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const listItemAccessibilityLabel = useMemo(
+    () => (accessibilityLabel ? accessibilityLabel : `${label}`),
+    [label, accessibilityLabel]
+  );
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -174,7 +179,7 @@ export const ListItemAction = ({
       onPressOut={handlePressOut}
       onTouchEnd={handlePressOut}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={listItemAccessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
@@ -182,6 +187,7 @@ export const ListItemAction = ({
       <Animated.View
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
         importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden
       >
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
