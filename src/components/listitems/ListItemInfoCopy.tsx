@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
@@ -30,9 +30,11 @@ export type ListItemInfoCopy = WithTestID<{
   numberOfLines?: number;
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 export const ListItemInfoCopy = ({
   label,
@@ -41,11 +43,25 @@ export const ListItemInfoCopy = ({
   onPress,
   icon,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemInfoCopy) => {
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const componentValueToAccessibility = useMemo(
+    () => (typeof value === "string" ? value : ""),
+    [value]
+  );
+
+  const listItemAccessibilityLabel = useMemo(
+    () =>
+      accessibilityLabel
+        ? accessibilityLabel
+        : `${label}; ${componentValueToAccessibility}`,
+    [label, componentValueToAccessibility, accessibilityLabel]
+  );
 
   const foregroundColor = isExperimental
     ? theme["interactiveElem-default"]
@@ -120,12 +136,14 @@ export const ListItemInfoCopy = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={listItemAccessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >
       <Animated.View
         importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
