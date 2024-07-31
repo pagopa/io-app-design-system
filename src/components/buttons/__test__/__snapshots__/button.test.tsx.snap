@@ -83,10 +83,10 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillio 3",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "600",
             "lineHeight": undefined,
           },
           {
@@ -190,10 +190,10 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillio 3",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "600",
             "lineHeight": undefined,
           },
           [
@@ -311,10 +311,10 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
             {},
             {
               "color": "#FFFFFF",
-              "fontFamily": "Readex Pro",
+              "fontFamily": "Titillio 3",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "400",
+              "fontWeight": "600",
               "lineHeight": 20,
             },
             {

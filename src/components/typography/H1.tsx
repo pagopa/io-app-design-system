@@ -8,12 +8,10 @@ const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h1FontSize: IOFontSize = 28;
 export const h1LineHeight = 42;
-const fontName: IOFontFamily = "ReadexPro";
-const fontWeight: IOFontWeight = "Regular";
+const fontName: IOFontFamily = "Titillio";
+const fontWeight: IOFontWeight = "Semibold";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyH1FontSize: IOFontSize = 31;
-const legacyH1LineHeight = 43;
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
 const legacyFontWeight: IOFontWeight = "Semibold";
 
@@ -30,8 +28,8 @@ export const H1 = forwardRef<View, TypographicStyleProps>(
       dynamicTypeRamp: "largeTitle", // iOS only
       font: isExperimental ? fontName : legacyFontName,
       weight: isExperimental ? fontWeight : legacyFontWeight,
-      size: isExperimental ? h1FontSize : legacyH1FontSize,
-      lineHeight: isExperimental ? h1LineHeight : legacyH1LineHeight,
+      size: h1FontSize,
+      lineHeight: h1LineHeight,
       color: customColor ?? theme[defaultColor]
     };
 
