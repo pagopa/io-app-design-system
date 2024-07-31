@@ -9,6 +9,8 @@ import {
 import Animated, {
   Extrapolate,
   interpolate,
+  SlideInDown,
+  SlideOutUp,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -40,13 +42,6 @@ const iconSize: IOIconSizeScale = 24;
 const [spacingDefault] = IOAlertSpacing;
 
 const styles = StyleSheet.create({
-  container: {
-    zIndex: 1000,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0
-  },
   alert: {
     flexDirection: "row",
     alignItems: "flex-start",
@@ -177,7 +172,7 @@ export const AlertEdgeToEdge = ({
           {action && (
             <Text
               style={{
-                ...makeFontStyleObject("Bold", false, "TitilliumWeb"),
+                ...makeFontStyleObject("Bold", false, "TitilliumSansPro"),
                 fontSize: 16,
                 color: IOColors[mapVariantStates[variant].foreground]
               }}
@@ -203,7 +198,7 @@ export const AlertEdgeToEdge = ({
       accessibilityRole={"button"}
     >
       <Animated.View
-        entering={enterTransitionAlertEdgeToEdgeContent}
+        entering={SlideInDown}
         style={[styles.alert, pressedAnimationStyle]}
       >
         {renderMainBlock()}
@@ -213,7 +208,7 @@ export const AlertEdgeToEdge = ({
 
   const StaticComponent = () => (
     <Animated.View
-      entering={enterTransitionAlertEdgeToEdgeContent}
+      entering={SlideInDown}
       style={styles.alert}
       testID={testID}
       accessible={false}
@@ -226,15 +221,12 @@ export const AlertEdgeToEdge = ({
 
   return (
     <Animated.View
-      entering={enterTransitionAlertEdgeToEdge}
-      exiting={exitTransitionAlertEdgeToEdge}
-      style={[
-        styles.container,
-        {
-          paddingTop: insets.top,
-          backgroundColor
-        }
-      ]}
+      entering={SlideInDown}
+      exiting={SlideOutUp}
+      style={{
+        paddingTop: insets.top,
+        backgroundColor
+      }}
     >
       {action ? PressableButton() : StaticComponent()}
     </Animated.View>

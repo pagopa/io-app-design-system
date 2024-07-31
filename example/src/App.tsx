@@ -1,5 +1,4 @@
 import {
-  AlertEdgeToEdgeProvider,
   IODSExperimentalContextProvider,
   IOThemeContextProvider,
   ToastProvider
@@ -9,6 +8,7 @@ import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppNavigator from "./navigation/navigator";
+import { StatusBannerProvider } from "./components/StatusBannerProvider";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -20,11 +20,11 @@ export default function App() {
           <IOThemeContextProvider
             theme={colorScheme === "dark" ? "dark" : "light"}
           >
-            <ToastProvider>
-              <AlertEdgeToEdgeProvider>
+            <StatusBannerProvider>
+              <ToastProvider>
                 <AppNavigator />
-              </AlertEdgeToEdgeProvider>
-            </ToastProvider>
+              </ToastProvider>
+            </StatusBannerProvider>
           </IOThemeContextProvider>
         </IODSExperimentalContextProvider>
       </SafeAreaProvider>

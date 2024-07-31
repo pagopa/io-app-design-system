@@ -1,7 +1,6 @@
 import {
   Alert,
   AlertEdgeToEdge,
-  AlertEdgeToEdgeContext,
   ButtonOutline,
   ButtonSolid,
   H2,
@@ -16,11 +15,12 @@ import React, { ComponentProps, useContext } from "react";
 import { Alert as RNAlert } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
+import { StatusBannerContext } from "../components/StatusBannerProvider";
 
 export const DSAlert = () => {
   const viewRef = React.useRef(null);
 
-  const { showAlert, removeAlert } = useContext(AlertEdgeToEdgeContext);
+  const { showAlert, removeAlert } = useContext(StatusBannerContext);
 
   const handleShowAlert = (
     variant: ComponentProps<typeof AlertEdgeToEdge>["variant"],
