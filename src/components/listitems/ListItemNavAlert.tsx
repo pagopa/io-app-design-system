@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { ComponentProps, useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
@@ -29,9 +29,11 @@ export type ListItemNavAlert = WithTestID<{
   description?: string | React.ReactNode;
   withoutIcon?: boolean;
   onPress: (event: GestureResponderEvent) => void;
-  // Accessibility
-  accessibilityLabel: string;
-}>;
+}> &
+  Pick<
+    ComponentProps<typeof Pressable>,
+    "accessibilityLabel" | "accessibilityHint"
+  >;
 
 export const ListItemNavAlert = ({
   value,
@@ -39,11 +41,33 @@ export const ListItemNavAlert = ({
   withoutIcon = false,
   onPress,
   accessibilityLabel,
+  accessibilityHint,
   testID
 }: ListItemNavAlert) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
 
+  const componentValueToAccessibility = useMemo(
+    () => (typeof value === "string" ? value : ""),
+    [value]
+  );
+
+  const componentDescriptionToAccessibility = useMemo(
+    () => (typeof description === "string" ? description : ""),
+    [description]
+  );
+
+  const listItemAccessibilityLabel = useMemo(
+    () =>
+      accessibilityLabel
+        ? accessibilityLabel
+        : `${componentValueToAccessibility}; ${componentDescriptionToAccessibility}`,
+    [
+      componentDescriptionToAccessibility,
+      componentValueToAccessibility,
+      accessibilityLabel
+    ]
+  );
   const theme = useIOTheme();
 
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
@@ -124,12 +148,15 @@ export const ListItemNavAlert = ({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       accessible={true}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={listItemAccessibilityLabel}
+      accessibilityHint={accessibilityHint}
       accessibilityRole="button"
       testID={testID}
     >
       <Animated.View
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
+        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden
       >
         <Animated.View
           style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
