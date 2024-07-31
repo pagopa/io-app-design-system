@@ -14,10 +14,10 @@ type LabelMiniProps = TypographicStyleProps & {
 } & TypographicStyleAsLinkProps;
 
 const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Bold";
+const fontWeight: IOFontWeight = "Semibold";
 
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
-const legacyFontWeight: IOFontWeight = "Bold";
+const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `LabelMini` typographic style
