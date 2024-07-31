@@ -9,7 +9,8 @@ import { Platform, TextStyle } from "react-native";
 /**
  * Choose the font name based on the platform
  */
-const fonts: Record<string, string> = {
+
+const fonts = {
   TitilliumSansPro: Platform.select({
     android: "TitilliumSansPro",
     web: "TitilliumSansPro",
@@ -28,7 +29,7 @@ const fonts: Record<string, string> = {
     ios: "DM Mono",
     default: "DMMono"
   })
-};
+} as const;
 
 export type IOFontFamily = keyof typeof fonts;
 
@@ -74,7 +75,9 @@ export const fontWeights: Record<IOFontWeight, IOFontWeightNumeric> = {
 
 type FontStyleObject = {
   fontSize: IOFontSize;
-  fontFamily: IOFontFamily;
+  /* We also accept `string` because Android needs a composed 
+  fontFamily name, like `TitilliumSansPro-Regular` */
+  fontFamily: string | IOFontFamily;
   fontWeight?: IOFontWeightNumeric;
   lineHeight?: TextStyle["lineHeight"];
   fontStyle?: TextStyle["fontStyle"];
@@ -104,7 +107,7 @@ export const makeFontFamilyName = (
   font: IOFontFamily,
   weight: IOFontWeight = defaultWeight,
   fontStyle: TextStyle["fontStyle"] = "normal"
-): IOFontFamily =>
+): string =>
   Platform.select({
     web: fonts[font],
     android: `${fonts[font]}-${weight || "Regular"}${
