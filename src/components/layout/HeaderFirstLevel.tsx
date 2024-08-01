@@ -1,18 +1,24 @@
 import * as React from "react";
+import { useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
+  findNodeHandle,
   StyleSheet,
-  View,
-  findNodeHandle
+  View
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import { IOColors, IOStyles, IOVisualCostants, useIOTheme } from "../../core";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  alertEdgeToEdgeInsetTransitionConfig,
+  IOColors,
+  IOStyles,
+  IOVisualCostants,
+  useIOTheme
+} from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { HSpacer } from "../spacer";
@@ -84,19 +90,19 @@ export const HeaderFirstLevel = ({
   const theme = useIOTheme();
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
     if (reactNode !== null) {
       AccessibilityInfo.setAccessibilityFocus(reactNode);
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
-    paddingTop.value = withTiming(ignoreSafeAreaMargin ? 0 : insets.top, {
-      duration: 400,
-      easing: Easing.elastic(1)
-    });
+    paddingTop.value = withTiming(
+      ignoreSafeAreaMargin ? 0 : insets.top,
+      alertEdgeToEdgeInsetTransitionConfig
+    );
   }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
 
   const animatedStyle = useAnimatedStyle(() => ({

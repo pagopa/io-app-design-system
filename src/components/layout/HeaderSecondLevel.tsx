@@ -9,7 +9,6 @@ import {
   findNodeHandle
 } from "react-native";
 import Animated, {
-  Easing,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -21,6 +20,7 @@ import {
   IOColors,
   IOStyles,
   IOVisualCostants,
+  alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
   iconBtnSizeSmall,
   useIOExperimentalDesign,
@@ -180,10 +180,10 @@ export const HeaderSecondLevel = ({
 
   React.useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
-    paddingTop.value = withTiming(ignoreSafeAreaMargin ? 0 : insets.top, {
-      duration: 400,
-      easing: Easing.elastic(1)
-    });
+    paddingTop.value = withTiming(
+      ignoreSafeAreaMargin ? 0 : insets.top,
+      alertEdgeToEdgeInsetTransitionConfig
+    );
   }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
 
   const animatedPaddingStyle = useAnimatedStyle(() => ({

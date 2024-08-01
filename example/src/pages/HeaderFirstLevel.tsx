@@ -15,14 +15,14 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
+import { useContext, useLayoutEffect } from "react";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
 
 export const HeaderFirstLevelScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
-  const { showAlert, removeAlert, alert } =
-    React.useContext(StatusBannerContext);
+  const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
   const handleShowAlert = (
     variant: React.ComponentProps<typeof AlertEdgeToEdge>["variant"],
@@ -40,7 +40,8 @@ export const HeaderFirstLevelScreen = () => {
       ? showAlert({ variant, content, ...actionProps })
       : showAlert({ variant, content });
   };
-  React.useLayoutEffect(() => {
+
+  useLayoutEffect(() => {
     navigation.setOptions({
       header: () => (
         <HeaderFirstLevel
@@ -67,8 +68,6 @@ export const HeaderFirstLevelScreen = () => {
         paddingHorizontal: IOVisualCostants.appMarginDefault
       }}
       scrollEventThrottle={8}
-      snapToEnd={false}
-      decelerationRate="normal"
     >
       <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
       <VSpacer />

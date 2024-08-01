@@ -1,4 +1,9 @@
-import { Easing, withDelay, withTiming } from "react-native-reanimated";
+import {
+  Easing,
+  withDelay,
+  withTiming,
+  WithTimingConfig
+} from "react-native-reanimated";
 
 /**
 A custom enter transition designed for the average size
@@ -99,6 +104,11 @@ A custom enter transition designed for the `AlertEdgeToEdge` component.
 
 const alertEdgeToEdgeEnterTransitionDuration: number = 500; /* in ms */
 const alertEdgeToEdgeExitTransitionDuration: number = 400; /* in ms */
+
+export const alertEdgeToEdgeInsetTransitionConfig: WithTimingConfig = {
+  duration: 400,
+  easing: Easing.inOut(Easing.ease)
+};
 
 export const enterTransitionAlertEdgeToEdge = (values: {
   targetHeight: number;
