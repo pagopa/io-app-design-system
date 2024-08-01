@@ -28,7 +28,7 @@ const fonts = {
     ios: "DM Mono",
     default: "DMMono"
   })
-} as const;
+};
 
 export type IOFontFamily = keyof typeof fonts;
 
