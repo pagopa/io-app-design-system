@@ -6,13 +6,17 @@ import {
   H2,
   H3,
   H6,
+  HSpacer,
   HStack,
+  IconButton,
+  IOStyles,
   IOVisualCostants,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
 import React, { ComponentProps, useContext } from "react";
-import { Alert as RNAlert } from "react-native";
+import { Platform, Alert as RNAlert, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
@@ -21,6 +25,65 @@ export const DSAlert = () => {
   const viewRef = React.useRef(null);
 
   const { showAlert, removeAlert } = useContext(StatusBannerContext);
+
+  const navigation = useNavigation();
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShadowVisible: false,
+      headerTitle: () => (
+        <View
+          style={{ paddingTop: 10, height: IOVisualCostants.headerHeight }}
+        />
+      ),
+      headerLeft: () => (
+        <IconButton
+          icon={Platform.select({
+            android: "backAndroid",
+            default: "backiOS"
+          })}
+          color={"neutral"}
+          onPress={navigation.goBack}
+          accessibilityLabel={"back"}
+          testID={"back-button-header"}
+        />
+      ),
+      headerRight: () => (
+        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+          <IconButton
+            accessibilityLabel="coggle"
+            icon="coggle"
+            color={"primary"}
+            onPress={() => {
+              RNAlert.alert("coggle");
+            }}
+          />
+          {/* Same as above */}
+          <HSpacer size={16} />
+
+          <IconButton
+            accessibilityLabel="add"
+            icon="add"
+            color={"primary"}
+            onPress={() => {
+              RNAlert.alert("add");
+            }}
+          />
+          {/* Ideally, with the "gap" flex property,
+              we can get rid of these ugly constructs */}
+          <HSpacer size={16} />
+          <IconButton
+            accessibilityLabel="help"
+            icon="help"
+            color={"primary"}
+            onPress={() => {
+              RNAlert.alert("help");
+            }}
+          />
+        </View>
+      )
+    });
+  });
 
   const handleShowAlert = (
     variant: ComponentProps<typeof AlertEdgeToEdge>["variant"],

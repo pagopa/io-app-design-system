@@ -8,12 +8,19 @@ import Animated, {
 } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
 import {
+  AlertEdgeToEdge,
   Body,
+  ButtonOutline,
+  ButtonSolid,
   H3,
+  H6,
   HeaderSecondLevel,
+  HStack,
   IOVisualCostants,
-  VSpacer
+  VSpacer,
+  VStack
 } from "@pagopa/io-app-design-system";
+import { StatusBannerContext } from "../components/StatusBannerProvider";
 
 // This is defined as about the half of a default ListItem… component
 const defaultTriggerOffsetValue: number = 32;
@@ -23,6 +30,26 @@ export const HeaderSecondLevelScreen = () => {
     defaultTriggerOffsetValue
   );
   const translationY = useSharedValue(0);
+
+  const { showAlert, removeAlert, alert } =
+    React.useContext(StatusBannerContext);
+
+  const handleShowAlert = (
+    variant: React.ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    enableAction = true
+  ) => {
+    const content =
+      "Alert content that is very long. And here's another line of text because I need to test a looooonger text.";
+    const actionProps = {
+      action: "Action text that's very long and could be placed on a new line",
+      onPress: () => Alert.alert("Action triggered")
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    enableAction
+      ? showAlert({ variant, content, ...actionProps })
+      : showAlert({ variant, content });
+  };
 
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -42,6 +69,7 @@ export const HeaderSecondLevelScreen = () => {
       headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
+          isModal={alert !== undefined}
           scrollValues={{
             contentOffsetY: translationY,
             triggerOffset: triggerOffsetValue
@@ -75,7 +103,7 @@ export const HeaderSecondLevelScreen = () => {
         />
       )
     });
-  }, [navigation, translationY, triggerOffsetValue]);
+  }, [navigation, translationY, triggerOffsetValue, alert]);
 
   return (
     <Animated.ScrollView
@@ -97,6 +125,37 @@ export const HeaderSecondLevelScreen = () => {
         <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
       </View>
       <VSpacer />
+      {["info", "warning", "error"].map(variant => (
+        <VStack space={4} key={variant}>
+          <H6 color={"bluegrey"} style={{ textTransform: "capitalize" }}>
+            {variant}
+          </H6>
+          <HStack space={4}>
+            <ButtonSolid
+              label="w/ Action"
+              onPress={() =>
+                handleShowAlert(
+                  variant as React.ComponentProps<
+                    keyof typeof AlertEdgeToEdge
+                  >["variant"]
+                )
+              }
+            />
+            <ButtonSolid
+              label="w/o Action"
+              onPress={() =>
+                handleShowAlert(
+                  variant as React.ComponentProps<
+                    keyof typeof AlertEdgeToEdge
+                  >["variant"],
+                  false
+                )
+              }
+            />
+          </HStack>
+          <ButtonOutline label="Hide" onPress={removeAlert} />
+        </VStack>
+      ))}
       {[...Array(50)].map((_el, i) => (
         <Body key={`body-${i}`}>Repeated text</Body>
       ))}

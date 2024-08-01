@@ -21,9 +21,11 @@ type AlertEdgeToEdgeProps = ComponentProps<typeof AlertEdgeToEdge>;
 type StatusBannerContext = {
   showAlert: (alert: AlertEdgeToEdgeProps) => void;
   removeAlert: () => void;
+  alert?: AlertEdgeToEdgeProps;
 };
 
 export const StatusBannerContext = createContext<StatusBannerContext>({
+  alert: undefined,
   showAlert: (alert: AlertEdgeToEdgeProps) => alert,
   removeAlert: () => undefined
 });
@@ -52,10 +54,11 @@ export const StatusBannerProvider = ({ children }: AlertProviderProps) => {
 
   const contextValue = useMemo(
     () => ({
+      alert,
       showAlert: show,
       removeAlert: remove
     }),
-    [show, remove]
+    [show, remove, alert]
   );
 
   return (

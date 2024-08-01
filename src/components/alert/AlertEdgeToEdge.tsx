@@ -9,8 +9,6 @@ import {
 import Animated, {
   Extrapolate,
   interpolate,
-  SlideInDown,
-  SlideOutUp,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -198,7 +196,7 @@ export const AlertEdgeToEdge = ({
       accessibilityRole={"button"}
     >
       <Animated.View
-        entering={SlideInDown}
+        entering={enterTransitionAlertEdgeToEdgeContent}
         style={[styles.alert, pressedAnimationStyle]}
       >
         {renderMainBlock()}
@@ -208,7 +206,7 @@ export const AlertEdgeToEdge = ({
 
   const StaticComponent = () => (
     <Animated.View
-      entering={SlideInDown}
+      entering={enterTransitionAlertEdgeToEdgeContent}
       style={styles.alert}
       testID={testID}
       accessible={false}
@@ -221,8 +219,8 @@ export const AlertEdgeToEdge = ({
 
   return (
     <Animated.View
-      entering={SlideInDown}
-      exiting={SlideOutUp}
+      entering={enterTransitionAlertEdgeToEdge}
+      exiting={exitTransitionAlertEdgeToEdge}
       style={{
         paddingTop: insets.top,
         backgroundColor
