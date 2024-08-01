@@ -90,7 +90,7 @@ export const ModalVersion: Story = {
   args: {
     title: "Header Second Level",
     type: "singleAction",
-    isModal: true,
+    ignoreSafeAreaMargin: true,
     firstAction: {
       icon: "closeMedium",
       accessibilityLabel: "close",

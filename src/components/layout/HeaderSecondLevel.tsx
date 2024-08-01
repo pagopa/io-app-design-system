@@ -54,7 +54,7 @@ type CommonProps = WithTestID<{
   transparent?: boolean;
   variant?: "neutral" | "contrast";
   backgroundColor?: string;
-  isModal?: boolean;
+  ignoreSafeAreaMargin?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -131,7 +131,7 @@ export const HeaderSecondLevel = ({
   variant = "neutral",
   backgroundColor,
   transparent = false,
-  isModal = false,
+  ignoreSafeAreaMargin = false,
   testID,
   firstAction,
   secondAction,
@@ -206,14 +206,17 @@ export const HeaderSecondLevel = ({
       accessibilityRole="header"
       style={[
         { borderBottomWidth: 1, borderColor: borderColorTransparentState },
-        isModal ? { borderColor: borderColorSolidState } : {},
+        ignoreSafeAreaMargin ? { borderColor: borderColorSolidState } : {},
         !transparent ? { backgroundColor: headerBgColorSolidState } : {},
         headerWrapperAnimatedStyle
       ]}
     >
       <Animated.View
         testID={testID}
-        style={[isModal ? {} : { marginTop: insets.top }, styles.headerInner]}
+        style={[
+          ignoreSafeAreaMargin ? {} : { marginTop: insets.top },
+          styles.headerInner
+        ]}
       >
         {goBack ? (
           <IconButton

@@ -403,7 +403,7 @@ const AppNavigator = () => {
                 header: ({ navigation }) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
-                    isModal
+                    ignoreSafeAreaMargin
                     type="singleAction"
                     firstAction={{
                       icon: "closeMedium",

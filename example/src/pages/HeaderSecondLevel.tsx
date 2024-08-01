@@ -69,7 +69,7 @@ export const HeaderSecondLevelScreen = () => {
       headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
-          isModal={alert !== undefined}
+          ignoreSafeAreaMargin={alert !== undefined}
           scrollValues={{
             contentOffsetY: translationY,
             triggerOffset: triggerOffsetValue
