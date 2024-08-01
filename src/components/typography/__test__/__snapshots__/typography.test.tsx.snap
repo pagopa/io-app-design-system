@@ -462,7 +462,7 @@ exports[`Test Typography Components Label Snapshot 1`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 24,
       },
     ]
@@ -484,7 +484,7 @@ exports[`Test Typography Components Label Snapshot 2`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 24,
       },
     ]
@@ -507,7 +507,7 @@ exports[`Test Typography Components LabelSmall Snapshot 1`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 21,
       },
     ]
@@ -530,7 +530,7 @@ exports[`Test Typography Components LabelSmall Snapshot 2`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 21,
       },
     ]
@@ -553,7 +553,7 @@ exports[`Test Typography Components LabelSmall Snapshot 3`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 21,
       },
     ]
@@ -576,7 +576,7 @@ exports[`Test Typography Components LabelSmall Snapshot 4`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 21,
       },
     ]
@@ -599,7 +599,7 @@ exports[`Test Typography Components LabelSmall Snapshot 5`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 14,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 21,
       },
     ]
@@ -625,7 +625,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 24,
       },
     ]

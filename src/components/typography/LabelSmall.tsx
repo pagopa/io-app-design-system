@@ -31,7 +31,7 @@ export const LabelSmall = forwardRef<View, LabelSmallProps>(
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
       font: "TitilliumSansPro",
-      weight: customWeight ?? "Bold",
+      weight: customWeight ?? "Semibold",
       size: 14,
       lineHeight: 21,
       color: customColor ?? defaultColor,
