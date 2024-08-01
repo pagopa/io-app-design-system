@@ -6,6 +6,12 @@ import {
   findNodeHandle
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from "react-native-reanimated";
 import { IOColors, IOStyles, IOVisualCostants, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
@@ -76,6 +82,7 @@ export const HeaderFirstLevel = ({
   const titleRef = React.createRef<View>();
   const insets = useSafeAreaInsets();
   const theme = useIOTheme();
+  const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   React.useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
@@ -84,16 +91,28 @@ export const HeaderFirstLevel = ({
     }
   });
 
+  React.useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    paddingTop.value = withTiming(ignoreSafeAreaMargin ? 0 : insets.top, {
+      duration: 400,
+      easing: Easing.elastic(1)
+    });
+  }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    paddingTop: paddingTop.value
+  }));
+
   return (
-    <View
+    <Animated.View
       style={[
-        ignoreSafeAreaMargin ? {} : { paddingTop: insets.top },
         {
           backgroundColor:
             backgroundColor === "light"
               ? IOColors[theme["appBackground-primary"]]
               : IOColors[HEADER_BG_COLOR_DARK]
-        }
+        },
+        animatedStyle
       ]}
       accessibilityRole="header"
       testID={testID}
@@ -140,7 +159,7 @@ export const HeaderFirstLevel = ({
           )}
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

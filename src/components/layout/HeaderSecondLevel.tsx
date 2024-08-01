@@ -9,9 +9,12 @@ import {
   findNodeHandle
 } from "react-native";
 import Animated, {
+  Easing,
   interpolate,
   interpolateColor,
-  useAnimatedStyle
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
@@ -143,6 +146,7 @@ export const HeaderSecondLevel = ({
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
+  const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   const iconButtonColor: ComponentProps<typeof IconButton>["color"] =
     variant === "neutral" ? "neutral" : "contrast";
@@ -173,6 +177,18 @@ export const HeaderSecondLevel = ({
       }
     }
   });
+
+  React.useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    paddingTop.value = withTiming(ignoreSafeAreaMargin ? 0 : insets.top, {
+      duration: 400,
+      easing: Easing.elastic(1)
+    });
+  }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
+
+  const animatedPaddingStyle = useAnimatedStyle(() => ({
+    marginTop: paddingTop.value
+  }));
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
     backgroundColor: scrollValues
@@ -213,10 +229,7 @@ export const HeaderSecondLevel = ({
     >
       <Animated.View
         testID={testID}
-        style={[
-          ignoreSafeAreaMargin ? {} : { marginTop: insets.top },
-          styles.headerInner
-        ]}
+        style={[animatedPaddingStyle, styles.headerInner]}
       >
         {goBack ? (
           <IconButton
