@@ -3,22 +3,48 @@ import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import {
+  AlertEdgeToEdge,
   Body,
+  ButtonOutline,
   ButtonSolid,
   H3,
+  H6,
   HeaderFirstLevel,
+  HStack,
   IOVisualCostants,
-  VSpacer
+  VSpacer,
+  VStack
 } from "@pagopa/io-app-design-system";
+import { StatusBannerContext } from "../components/StatusBannerProvider";
 
 export const HeaderFirstLevelScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
+  const { showAlert, removeAlert, alert } =
+    React.useContext(StatusBannerContext);
+
+  const handleShowAlert = (
+    variant: React.ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    enableAction = true
+  ) => {
+    const content =
+      "Alert content that is very long. And here's another line of text because I need to test a looooonger text.";
+    const actionProps = {
+      action: "Action text that's very long and could be placed on a new line",
+      onPress: () => Alert.alert("Action triggered")
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    enableAction
+      ? showAlert({ variant, content, ...actionProps })
+      : showAlert({ variant, content });
+  };
   React.useLayoutEffect(() => {
     navigation.setOptions({
       header: () => (
         <HeaderFirstLevel
+          ignoreSafeAreaMargin={alert !== undefined}
           backgroundColor="light"
           title={"Pagina"}
           type="singleAction"
@@ -32,7 +58,7 @@ export const HeaderFirstLevelScreen = () => {
         />
       )
     });
-  }, [navigation]);
+  }, [navigation, alert]);
 
   return (
     <ScrollView
@@ -52,6 +78,37 @@ export const HeaderFirstLevelScreen = () => {
         accessibilityLabel=""
       />
       <VSpacer />
+      {["info", "warning", "error"].map(variant => (
+        <VStack space={4} key={variant}>
+          <H6 color={"bluegrey"} style={{ textTransform: "capitalize" }}>
+            {variant}
+          </H6>
+          <HStack space={4}>
+            <ButtonSolid
+              label="w/ Action"
+              onPress={() =>
+                handleShowAlert(
+                  variant as React.ComponentProps<
+                    keyof typeof AlertEdgeToEdge
+                  >["variant"]
+                )
+              }
+            />
+            <ButtonSolid
+              label="w/o Action"
+              onPress={() =>
+                handleShowAlert(
+                  variant as React.ComponentProps<
+                    keyof typeof AlertEdgeToEdge
+                  >["variant"],
+                  false
+                )
+              }
+            />
+          </HStack>
+          <ButtonOutline label="Hide" onPress={removeAlert} />
+        </VStack>
+      ))}
       {[...Array(50)].map((_el, i) => (
         <Body key={`body-${i}`}>Repeated text</Body>
       ))}

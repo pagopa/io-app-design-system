@@ -17,6 +17,7 @@ type CommonProps = WithTestID<{
   title: string;
   // This Prop will be removed once all the screens on the first level routing will be refactored
   backgroundColor?: "light" | "dark";
+  ignoreSafeAreaMargin?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -67,6 +68,7 @@ export const HeaderFirstLevel = ({
   type,
   testID,
   backgroundColor = "light",
+  ignoreSafeAreaMargin = false,
   firstAction,
   secondAction,
   thirdAction
@@ -84,13 +86,15 @@ export const HeaderFirstLevel = ({
 
   return (
     <View
-      style={{
-        paddingTop: insets.top,
-        backgroundColor:
-          backgroundColor === "light"
-            ? IOColors[theme["appBackground-primary"]]
-            : IOColors[HEADER_BG_COLOR_DARK]
-      }}
+      style={[
+        ignoreSafeAreaMargin ? {} : { paddingTop: insets.top },
+        {
+          backgroundColor:
+            backgroundColor === "light"
+              ? IOColors[theme["appBackground-primary"]]
+              : IOColors[HEADER_BG_COLOR_DARK]
+        }
+      ]}
       accessibilityRole="header"
       testID={testID}
     >
