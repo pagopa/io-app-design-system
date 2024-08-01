@@ -30,7 +30,7 @@ export const Label = forwardRef<View, LabelProps>(
     const LabelProps: IOTextProps = {
       ...props,
       font: "TitilliumSansPro",
-      weight: customWeight ?? "Bold",
+      weight: customWeight ?? "Semibold",
       size: 16,
       lineHeight: 24,
       color: customColor ?? defaultColor,
