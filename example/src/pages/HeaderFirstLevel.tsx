@@ -3,7 +3,7 @@ import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import {
-  AlertEdgeToEdge,
+  AlertEdgeToEdgeProps,
   Body,
   ButtonOutline,
   ButtonSolid,
@@ -25,7 +25,7 @@ export const HeaderFirstLevelScreen = () => {
   const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
   const handleShowAlert = (
-    variant: React.ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    variant: AlertEdgeToEdgeProps["variant"],
     enableAction = true
   ) => {
     const content =
@@ -86,20 +86,14 @@ export const HeaderFirstLevelScreen = () => {
             <ButtonSolid
               label="w/ Action"
               onPress={() =>
-                handleShowAlert(
-                  variant as React.ComponentProps<
-                    keyof typeof AlertEdgeToEdge
-                  >["variant"]
-                )
+                handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
               }
             />
             <ButtonSolid
               label="w/o Action"
               onPress={() =>
                 handleShowAlert(
-                  variant as React.ComponentProps<
-                    keyof typeof AlertEdgeToEdge
-                  >["variant"],
+                  variant as AlertEdgeToEdgeProps["variant"],
                   false
                 )
               }

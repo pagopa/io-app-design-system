@@ -1,3 +1,3 @@
 export * from "./Alert";
-export * from "./AlertEdgeToEdge";
+export { type AlertEdgeToEdgeProps } from "./AlertEdgeToEdge";
 export * from "./AlertEdgeToEdgeWrapper";

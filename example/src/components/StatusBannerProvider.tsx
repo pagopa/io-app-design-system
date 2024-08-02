@@ -1,22 +1,14 @@
 import {
   triggerHaptic,
-  AlertEdgeToEdgeWrapper,
-  AlertEdgeToEdge
+  AlertEdgeToEdgeProps,
+  AlertEdgeToEdgeWrapper
 } from "@pagopa/io-app-design-system";
-import React, {
-  ComponentProps,
-  createContext,
-  useCallback,
-  useMemo,
-  useState
-} from "react";
+import React, { createContext, useCallback, useMemo, useState } from "react";
 import { HapticFeedbackTypes } from "react-native-haptic-feedback";
 
 type AlertProviderProps = {
   children: React.ReactNode;
 };
-
-type AlertEdgeToEdgeProps = ComponentProps<typeof AlertEdgeToEdge>;
 
 type StatusBannerContext = {
   showAlert: (alert: AlertEdgeToEdgeProps) => void;
@@ -31,7 +23,7 @@ export const StatusBannerContext = createContext<StatusBannerContext>({
 });
 
 const hapticFeedbackMap: Record<
-  NonNullable<ComponentProps<typeof AlertEdgeToEdge>["variant"]>,
+  NonNullable<AlertEdgeToEdgeProps["variant"]>,
   keyof typeof HapticFeedbackTypes
 > = {
   error: "notificationError",

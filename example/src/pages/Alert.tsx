@@ -1,6 +1,6 @@
 import {
   Alert,
-  AlertEdgeToEdge,
+  AlertEdgeToEdgeProps,
   ButtonOutline,
   ButtonSolid,
   H2,
@@ -14,7 +14,7 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
-import React, { ComponentProps, useContext } from "react";
+import React, { useContext } from "react";
 import { Platform, Alert as RNAlert, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
@@ -86,7 +86,7 @@ export const DSAlert = () => {
   });
 
   const handleShowAlert = (
-    variant: ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    variant: AlertEdgeToEdgeProps["variant"],
     enableAction = true
   ) => {
     const content =
@@ -125,20 +125,14 @@ export const DSAlert = () => {
               <ButtonSolid
                 label="w/ Action"
                 onPress={() =>
-                  handleShowAlert(
-                    variant as ComponentProps<
-                      keyof typeof AlertEdgeToEdge
-                    >["variant"]
-                  )
+                  handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
                 }
               />
               <ButtonSolid
                 label="w/o Action"
                 onPress={() =>
                   handleShowAlert(
-                    variant as ComponentProps<
-                      keyof typeof AlertEdgeToEdge
-                    >["variant"],
+                    variant as AlertEdgeToEdgeProps["variant"],
                     false
                   )
                 }

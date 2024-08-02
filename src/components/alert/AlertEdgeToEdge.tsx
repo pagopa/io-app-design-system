@@ -66,7 +66,7 @@ type AlertActionProps =
       onPress?: never;
     };
 
-type AlertEdgeToEdgeProps = AlertProps & AlertActionProps;
+export type AlertEdgeToEdgeProps = AlertProps & AlertActionProps;
 
 type VariantStates = {
   icon: IOIcons;

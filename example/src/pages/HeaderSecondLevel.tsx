@@ -8,7 +8,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
 import {
-  AlertEdgeToEdge,
+  AlertEdgeToEdgeProps,
   Body,
   ButtonOutline,
   ButtonSolid,
@@ -35,7 +35,7 @@ export const HeaderSecondLevelScreen = () => {
     React.useContext(StatusBannerContext);
 
   const handleShowAlert = (
-    variant: React.ComponentProps<typeof AlertEdgeToEdge>["variant"],
+    variant: AlertEdgeToEdgeProps["variant"],
     enableAction = true
   ) => {
     const content =
@@ -134,20 +134,14 @@ export const HeaderSecondLevelScreen = () => {
             <ButtonSolid
               label="w/ Action"
               onPress={() =>
-                handleShowAlert(
-                  variant as React.ComponentProps<
-                    keyof typeof AlertEdgeToEdge
-                  >["variant"]
-                )
+                handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
               }
             />
             <ButtonSolid
               label="w/o Action"
               onPress={() =>
                 handleShowAlert(
-                  variant as React.ComponentProps<
-                    keyof typeof AlertEdgeToEdge
-                  >["variant"],
+                  variant as AlertEdgeToEdgeProps["variant"],
                   false
                 )
               }
