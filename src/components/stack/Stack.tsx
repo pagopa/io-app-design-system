@@ -2,23 +2,28 @@ import React, { ReactNode } from "react";
 import { View, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 
+type AllowedStyleProps = Pick<
+  ViewStyle,
+  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap"
+>;
+
 type Stack = {
   space?: IOSpacer;
   children: ReactNode;
-  alignItems?: ViewStyle["alignItems"];
+  style?: AllowedStyleProps;
 };
 
 /**
 Horizontal Stack component
 @param {IOSpacer} space
  */
-export const HStack = ({ space, children, alignItems }: Stack) => (
+export const HStack = ({ space, children, style }: Stack) => (
   <View
     style={{
       display: "flex",
       flexDirection: "row",
       columnGap: space,
-      alignItems
+      ...style
     }}
   >
     {children}
@@ -30,13 +35,13 @@ Vertical Stack component
 @param {IOSpacer} space
  */
 
-export const VStack = ({ space, children, alignItems }: Stack) => (
+export const VStack = ({ space, children, style }: Stack) => (
   <View
     style={{
       display: "flex",
       flexDirection: "column",
       rowGap: space,
-      alignItems
+      ...style
     }}
   >
     {children}
