@@ -26,6 +26,7 @@ export const Sandbox = () => (
     >
       <H1>Sandbox</H1>
       <H5>{"Insert here the component you're willing to test"}</H5>
+
       <VSpacer />
       {/* Insert here the component you're willing to test */}
     </View>
