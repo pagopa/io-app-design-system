@@ -1,12 +1,24 @@
 import * as React from "react";
+import { useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
+  findNodeHandle,
   StyleSheet,
-  View,
-  findNodeHandle
+  View
 } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IOColors, IOStyles, IOVisualCostants, useIOTheme } from "../../core";
+import {
+  alertEdgeToEdgeInsetTransitionConfig,
+  IOColors,
+  IOStyles,
+  IOVisualCostants,
+  useIOTheme
+} from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { HSpacer } from "../spacer";
@@ -17,6 +29,7 @@ type CommonProps = WithTestID<{
   title: string;
   // This Prop will be removed once all the screens on the first level routing will be refactored
   backgroundColor?: "light" | "dark";
+  ignoreSafeAreaMargin?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -67,6 +80,7 @@ export const HeaderFirstLevel = ({
   type,
   testID,
   backgroundColor = "light",
+  ignoreSafeAreaMargin = false,
   firstAction,
   secondAction,
   thirdAction
@@ -74,23 +88,38 @@ export const HeaderFirstLevel = ({
   const titleRef = React.createRef<View>();
   const insets = useSafeAreaInsets();
   const theme = useIOTheme();
+  const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
     if (reactNode !== null) {
       AccessibilityInfo.setAccessibilityFocus(reactNode);
     }
   });
 
+  useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    paddingTop.value = withTiming(
+      ignoreSafeAreaMargin ? 0 : insets.top,
+      alertEdgeToEdgeInsetTransitionConfig
+    );
+  }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    paddingTop: paddingTop.value
+  }));
+
   return (
-    <View
-      style={{
-        paddingTop: insets.top,
-        backgroundColor:
-          backgroundColor === "light"
-            ? IOColors[theme["appBackground-primary"]]
-            : IOColors[HEADER_BG_COLOR_DARK]
-      }}
+    <Animated.View
+      style={[
+        {
+          backgroundColor:
+            backgroundColor === "light"
+              ? IOColors[theme["appBackground-primary"]]
+              : IOColors[HEADER_BG_COLOR_DARK]
+        },
+        animatedStyle
+      ]}
       accessibilityRole="header"
       testID={testID}
     >
@@ -136,7 +165,7 @@ export const HeaderFirstLevel = ({
           )}
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

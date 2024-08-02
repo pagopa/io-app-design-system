@@ -11,13 +11,16 @@ import {
 import Animated, {
   interpolate,
   interpolateColor,
-  useAnimatedStyle
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   IOColors,
   IOStyles,
   IOVisualCostants,
+  alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
   iconBtnSizeSmall,
   useIOExperimentalDesign,
@@ -54,7 +57,7 @@ type CommonProps = WithTestID<{
   transparent?: boolean;
   variant?: "neutral" | "contrast";
   backgroundColor?: string;
-  isModal?: boolean;
+  ignoreSafeAreaMargin?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -131,7 +134,7 @@ export const HeaderSecondLevel = ({
   variant = "neutral",
   backgroundColor,
   transparent = false,
-  isModal = false,
+  ignoreSafeAreaMargin = false,
   testID,
   firstAction,
   secondAction,
@@ -143,6 +146,7 @@ export const HeaderSecondLevel = ({
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
+  const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   const iconButtonColor: ComponentProps<typeof IconButton>["color"] =
     variant === "neutral" ? "neutral" : "contrast";
@@ -173,6 +177,18 @@ export const HeaderSecondLevel = ({
       }
     }
   });
+
+  React.useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    paddingTop.value = withTiming(
+      ignoreSafeAreaMargin ? 0 : insets.top,
+      alertEdgeToEdgeInsetTransitionConfig
+    );
+  }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
+
+  const animatedPaddingStyle = useAnimatedStyle(() => ({
+    marginTop: paddingTop.value
+  }));
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
     backgroundColor: scrollValues
@@ -206,14 +222,14 @@ export const HeaderSecondLevel = ({
       accessibilityRole="header"
       style={[
         { borderBottomWidth: 1, borderColor: borderColorTransparentState },
-        isModal ? { borderColor: borderColorSolidState } : {},
+        ignoreSafeAreaMargin ? { borderColor: borderColorSolidState } : {},
         !transparent ? { backgroundColor: headerBgColorSolidState } : {},
         headerWrapperAnimatedStyle
       ]}
     >
       <Animated.View
         testID={testID}
-        style={[isModal ? {} : { marginTop: insets.top }, styles.headerInner]}
+        style={[animatedPaddingStyle, styles.headerInner]}
       >
         {goBack ? (
           <IconButton

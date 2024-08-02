@@ -6,22 +6,28 @@ import {
 import * as React from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppNavigator from "./navigation/navigator";
+import { StatusBannerProvider } from "./components/StatusBannerProvider";
 
 export default function App() {
   const colorScheme = useColorScheme();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <IODSExperimentalContextProvider>
-        <IOThemeContextProvider
-          theme={colorScheme === "dark" ? "dark" : "light"}
-        >
-          <ToastProvider>
-            <AppNavigator />
-          </ToastProvider>
-        </IOThemeContextProvider>
-      </IODSExperimentalContextProvider>
+      <SafeAreaProvider>
+        <IODSExperimentalContextProvider>
+          <IOThemeContextProvider
+            theme={colorScheme === "dark" ? "dark" : "light"}
+          >
+            <StatusBannerProvider>
+              <ToastProvider>
+                <AppNavigator />
+              </ToastProvider>
+            </StatusBannerProvider>
+          </IOThemeContextProvider>
+        </IODSExperimentalContextProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }
