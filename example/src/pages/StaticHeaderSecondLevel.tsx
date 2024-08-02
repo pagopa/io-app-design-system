@@ -41,12 +41,19 @@ export const StaticHeaderSecondLevelScreen = () => {
     navigation.setOptions({
       header: () => (
         <HeaderSecondLevel
-          title=""
+          title="Some title"
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
-          type="singleAction"
+          type="twoActions"
           firstAction={{
             icon: "help",
+            onPress: () => {
+              Alert.alert("Contextual Help");
+            },
+            accessibilityLabel: ""
+          }}
+          secondAction={{
+            icon: "add",
             onPress: () => {
               Alert.alert("Contextual Help");
             },

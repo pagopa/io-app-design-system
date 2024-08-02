@@ -1,4 +1,9 @@
-import { Easing, withTiming } from "react-native-reanimated";
+import {
+  Easing,
+  withDelay,
+  withTiming,
+  WithTimingConfig
+} from "react-native-reanimated";
 
 /**
 A custom enter transition designed for the average size
@@ -94,6 +99,45 @@ export const exitTransitionInnerContent = () => {
 };
 
 /**
+A custom enter transition designed for the `AlertEdgeToEdge` component.
+*/
+
+const alertEdgeToEdgeEnterTransitionDuration: number = 500; /* in ms */
+const alertEdgeToEdgeExitTransitionDuration: number = 400; /* in ms */
+
+export const alertEdgeToEdgeInsetTransitionConfig: WithTimingConfig = {
+  duration: 400,
+  easing: Easing.inOut(Easing.ease)
+};
+
+export const enterTransitionAlertEdgeToEdge = (values: {
+  targetHeight: number;
+}) => {
+  "worklet";
+  const animations = {
+    opacity: withTiming(1, {
+      duration: alertEdgeToEdgeEnterTransitionDuration,
+      easing: Easing.out(Easing.exp)
+    }),
+    transform: [
+      {
+        translateY: withTiming(0, {
+          duration: alertEdgeToEdgeEnterTransitionDuration,
+          easing: Easing.out(Easing.exp)
+        })
+      }
+    ]
+  };
+  const initialValues = {
+    opacity: 0,
+    transform: [{ translateY: -values.targetHeight * 0.5 }]
+  };
+  return {
+    initialValues,
+    animations
+  };
+};
+/**
 A custom enter/exit transition designed for icons
 in `TextInput`.
 */
@@ -118,6 +162,72 @@ export const enterTransitionInputIcon = () => {
   const initialValues = {
     opacity: 0,
     transform: [{ scale: iconTransitionScaleFactor }]
+  };
+  return {
+    initialValues,
+    animations
+  };
+};
+
+/**
+A custom enter transition designed for the `AlertEdgeToEdge` content (icon and text).
+*/
+export const enterTransitionAlertEdgeToEdgeContent = () => {
+  "worklet";
+  const animations = {
+    opacity: withDelay(
+      alertEdgeToEdgeEnterTransitionDuration * 0.2,
+      withTiming(1, {
+        duration: alertEdgeToEdgeEnterTransitionDuration * 0.7,
+        easing: Easing.out(Easing.ease)
+      })
+    ),
+    transform: [
+      {
+        scaleY: withDelay(
+          alertEdgeToEdgeEnterTransitionDuration * 0.2,
+          withTiming(1, {
+            duration: alertEdgeToEdgeEnterTransitionDuration * 0.7,
+            easing: Easing.out(Easing.exp)
+          })
+        )
+      }
+    ]
+  };
+  const initialValues = {
+    opacity: 0,
+    transform: [{ scaleY: 0.7 }]
+  };
+  return {
+    initialValues,
+    animations
+  };
+};
+
+/**
+A custom exit transition designed for the `AlertEdgeToEdge` component.
+*/
+export const exitTransitionAlertEdgeToEdge = (values: {
+  currentHeight: number;
+}) => {
+  "worklet";
+  const animations = {
+    opacity: withTiming(0, {
+      duration: alertEdgeToEdgeExitTransitionDuration,
+      easing: Easing.in(Easing.exp)
+    }),
+    transform: [
+      {
+        translateY: withTiming(-values.currentHeight * 0.5, {
+          duration: alertEdgeToEdgeExitTransitionDuration,
+          easing: Easing.in(Easing.exp)
+        })
+      }
+    ]
+  };
+  const initialValues = {
+    opacity: 1,
+    transform: [{ translateY: 0 }]
   };
   return {
     initialValues,

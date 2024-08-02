@@ -304,8 +304,6 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
             component={HeaderFirstLevelScreen}
             options={{
-              statusBarTranslucent: true,
-              statusBarStyle: "light",
               headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
               headerBackTitleVisible: false
             }}
@@ -403,7 +401,7 @@ const AppNavigator = () => {
                 header: ({ navigation }) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
-                    isModal
+                    ignoreSafeAreaMargin
                     type="singleAction"
                     firstAction={{
                       icon: "closeMedium",
