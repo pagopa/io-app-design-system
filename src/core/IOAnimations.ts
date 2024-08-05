@@ -19,6 +19,11 @@ export const IOSpringValues = {
     damping: 10,
     mass: 0.5,
     stiffness: 200
+  },
+  header: {
+    damping: 10,
+    mass: 0.5,
+    stiffness: 200
   }
 };
 
