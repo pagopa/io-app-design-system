@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useMemo } from "react";
+import { RefreshControl, RefreshControlProps } from "react-native";
 import Animated, {
   Easing,
   useAnimatedScrollHandler,
@@ -25,6 +26,7 @@ export type GradientScrollView = WithTestID<{
   // Don't use any components other than this, please.
   primaryActionProps: GradientBottomActions["primaryActionProps"];
   secondaryActionProps?: GradientBottomActions["secondaryActionProps"];
+  refreshControl?: RefreshControlProps;
 }>;
 
 // Extended gradient area above the actions
@@ -49,7 +51,8 @@ export const GradientScrollView = ({
   // Don't include safe area insets
   excludeSafeAreaMargins = false,
   debugMode = false,
-  testID
+  testID,
+  refreshControl
 }: GradientScrollView) => {
   const gradientOpacity = useSharedValue(1);
   const insets = useSafeAreaInsets();
@@ -139,6 +142,10 @@ to avoid little space from iPhone bottom handle */
     })
   }));
 
+  const RefreshControlComponent = refreshControl ? (
+    <RefreshControl {...refreshControl} />
+  ) : undefined;
+
   return (
     <>
       <Animated.ScrollView
@@ -149,6 +156,7 @@ to avoid little space from iPhone bottom handle */
           paddingHorizontal: IOVisualCostants.appMarginDefault,
           paddingBottom: safeBottomAreaHeight
         }}
+        refreshControl={RefreshControlComponent}
       >
         {children}
       </Animated.ScrollView>

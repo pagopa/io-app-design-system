@@ -31,6 +31,7 @@ const MyComponent = () => (
 |`debugMode`  |`boolean`  | N | If true, the component will apply a red border to the sticky footer (useful for debug purposes) |
 | `primaryActionProps` | `ButtonSolidProps` | Y | The props to pass to the primary action button to help creating a button (for specific details see the [ButtonSolid](/docs/components-buttons-buttonsolid--docs) component documentation) |
 | `secondaryActionProps` | `ButtonLinkProps` | N | The props to pass to the secondary action button to help creating a button (for specific details see the [ButtonLink](/docs/components-buttons-buttonlink--docs) component documentation) |
+|`refreshControl`  |`RefreshControlProps`  | N | The props to pass to the refresh control, for specific details see the [RefreshControl](https://reactnative.dev/docs/refreshcontrol) of React Native |
 <br/>
 
 <div style="display: flex; flex-direction: column; align-items: center">
