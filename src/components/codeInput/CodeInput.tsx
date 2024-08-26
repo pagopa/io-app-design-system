@@ -3,8 +3,8 @@ import { StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOColors, IOStyles } from "../../core";
 import { triggerHaptic } from "../../functions";
-import { HSpacer } from "../spacer";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
+import { HStack } from "../stack";
 
 type CodeInputProps = {
   value: string;
@@ -86,21 +86,13 @@ export const CodeInput = ({
 
   return (
     <Animated.View style={[IOStyles.row, styles.wrapper, animatedStyle]}>
-      {[...Array(length)].map((_, i, arr) => (
-        <React.Fragment key={i}>
-          {value[i] ? (
-            <>
-              <FilletDot color={fillColor} />
-              {i !== arr.length - 1 && <HSpacer size={DOT_SIZE} />}
-            </>
-          ) : (
-            <>
-              <EmptyDot />
-              {i !== arr.length - 1 && <HSpacer size={DOT_SIZE} />}
-            </>
-          )}
-        </React.Fragment>
-      ))}
+      <HStack space={DOT_SIZE}>
+        {[...Array(length)].map((_, i) => (
+          <React.Fragment key={i}>
+            {value[i] ? <FilletDot color={fillColor} /> : <EmptyDot />}
+          </React.Fragment>
+        ))}
+      </HStack>
     </Animated.View>
   );
 };

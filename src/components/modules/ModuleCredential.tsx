@@ -10,6 +10,7 @@ import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
+  IOSpacer,
   IOStyles,
   IOVisualCostants,
   useIOTheme
@@ -18,6 +19,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { HStack } from "../stack/Stack";
 import { LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
@@ -62,28 +64,40 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
     ...pressableProps
   } = props;
 
+  const iconComponent = icon && (
+    <Icon
+      name={icon}
+      size={IOSelectionListItemVisualParams.iconSize}
+      color="grey-300"
+    />
+  );
+
+  const imageComponent = image && (
+    <Image
+      source={image}
+      style={styles.image}
+      accessibilityIgnoresInvertColors={true}
+    />
+  );
+
   const ModuleContent = () => (
-    <>
-      {icon ? (
-        <View style={styles.icon}>
-          <Icon name={icon} size={24} color="grey-300" />
-        </View>
-      ) : image ? (
-        <Image
-          source={image}
-          style={styles.image}
-          accessibilityIgnoresInvertColors={true}
-        />
-      ) : null}
-      <View style={styles.label}>
+    <HStack space={8} style={{ alignItems: "center" }}>
+      <HStack
+        space={IOVisualCostants.iconMargin as IOSpacer}
+        style={{ flexGrow: 1, flexShrink: 1, alignItems: "center" }}
+      >
+        {/* Graphical assets */}
+        {iconComponent ?? imageComponent}
+
         <LabelSmallAlt
           color={theme["interactiveElem-default"]}
           numberOfLines={2}
           lineBreakMode="middle"
+          style={{ flexShrink: 1 }}
         >
           {label}
         </LabelSmallAlt>
-      </View>
+      </HStack>
       <View style={IOStyles.row}>
         {badge ? (
           <Badge {...badge} testID={testID ? `${testID}_badge` : undefined} />
@@ -102,7 +116,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           />
         ) : null}
       </View>
-    </>
+    </HStack>
   );
 
   return onPress ? (
@@ -119,18 +133,13 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
 const ModuleCredentialSkeleton = () => (
   <ModuleStatic
     startBlock={
-      <>
-        {/* Rewrite it using HStack and VStack, when 0.72 will be used in the main app:
-            <HStack alignItems="center" space={IOVisualCostants.iconMargin as IOSpacer}>
-              <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-              <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
-            </HStack>
-      */}
-        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
-          <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-        </View>
+      <HStack
+        style={{ alignItems: "center" }}
+        space={IOVisualCostants.iconMargin as IOSpacer}
+      >
+        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
         <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
-      </>
+      </HStack>
     }
     endBlock={
       <Placeholder.Box animate="fade" width={64} height={24} radius={16} />
@@ -142,13 +151,8 @@ const styles = StyleSheet.create({
   image: {
     width: IOSelectionListItemVisualParams.iconSize,
     height: IOSelectionListItemVisualParams.iconSize,
-    marginRight: IOVisualCostants.iconMargin,
     resizeMode: "contain"
-  },
-  icon: {
-    marginRight: IOVisualCostants.iconMargin
-  },
-  label: { flexGrow: 1, flexShrink: 1, paddingRight: 8 }
+  }
 });
 
 export { ModuleCredential };
