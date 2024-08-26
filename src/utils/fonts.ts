@@ -9,7 +9,6 @@ import { Platform, TextStyle } from "react-native";
 /**
  * Choose the font name based on the platform
  */
-
 const fonts = {
   TitilliumSansPro: Platform.select({
     android: "TitilliumSansPro",
