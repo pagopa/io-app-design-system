@@ -355,7 +355,6 @@ export const TextInputBase = ({
         ]}
         accessible={false}
         accessibilityRole={"none"}
-        accessibilityElementsHidden
         importantForAccessibility="no"
       >
         {/* Fake border managed with Animated.View to avoid
