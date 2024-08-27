@@ -1,10 +1,10 @@
-import React, { ComponentProps, Fragment, useCallback, useMemo } from "react";
+import React, { ComponentProps, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import { BiometricsValidType, Optional } from "../../utils/types";
 import { IONumberPadButtonStyles, IOStyles } from "../../core";
-import { VSpacer } from "../spacer";
+import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { IOIconSizeScale, IOIcons } from "../icons";
+import { VStack } from "../stack";
 import { NumberButton } from "./NumberButton";
 
 type BiometricAuthProps =
@@ -138,21 +138,23 @@ export const NumberPad = ({
   );
 
   // eslint-disable-next-line arrow-body-style
-  const numberPad = useMemo(() => {
-    return [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-      [biometricType, 0, "delete"]
-    ].map((row, i, self) => (
-      <Fragment key={i}>
-        <View style={[IOStyles.rowSpaceBetween, styles.numberPad]}>
-          {renderButtonsRow(row)}
-        </View>
-        {i < self.length - 1 && <VSpacer />}
-      </Fragment>
-    ));
-  }, [biometricType, renderButtonsRow]);
+  const numberPad = useMemo(
+    () => (
+      <VStack space={16}>
+        {[
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+          [biometricType, 0, "delete"]
+        ].map((row, i) => (
+          <View key={i} style={[IOStyles.rowSpaceBetween, styles.numberPad]}>
+            {renderButtonsRow(row)}
+          </View>
+        ))}
+      </VStack>
+    ),
+    [biometricType, renderButtonsRow]
+  );
 
   return <View style={IOStyles.horizontalContentPadding}>{numberPad}</View>;
 };

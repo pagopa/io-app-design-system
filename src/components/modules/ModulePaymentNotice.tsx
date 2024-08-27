@@ -1,16 +1,12 @@
 import * as React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
-import {
-  IOListItemVisualParams,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOListItemVisualParams, IOSpacer, useIOTheme } from "../../core";
 import { getAccessibleAmountText } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
-import { VSpacer } from "../spacer";
+import { HStack, VStack } from "../stack";
 import { H6, LabelSmall, LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
@@ -46,8 +42,7 @@ export type ModulePaymentNoticeProps = WithTestID<
 >;
 
 const styles = StyleSheet.create({
-  rightSection: {
-    marginLeft: IOListItemVisualParams.iconMargin,
+  endBlock: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end"
@@ -62,7 +57,6 @@ const ModulePaymentNoticeContent = ({
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
 
   const AmountOrBadgeComponent = () => {
     switch (paymentNoticeStatus) {
@@ -70,7 +64,7 @@ const ModulePaymentNoticeContent = ({
         return (
           <H6
             accessibilityLabel={getAccessibleAmountText(paymentNoticeAmount)}
-            color={isExperimental ? "blueIO-500" : "blue"}
+            color={theme["interactiveElem-default"]}
             numberOfLines={1}
           >
             {paymentNoticeAmount}
@@ -92,8 +86,8 @@ const ModulePaymentNoticeContent = ({
   };
 
   return (
-    <>
-      <View style={{ flexGrow: 1, flexShrink: 1, paddingEnd: 8 }}>
+    <HStack space={IOListItemVisualParams.iconMargin as IOSpacer}>
+      <View style={{ flexGrow: 1, flexShrink: 1 }}>
         {title && (
           <LabelSmall
             numberOfLines={1}
@@ -112,15 +106,15 @@ const ModulePaymentNoticeContent = ({
           </LabelSmallAlt>
         )}
       </View>
-      <View style={styles.rightSection}>
+      <View style={styles.endBlock}>
         <AmountOrBadgeComponent />
         <Icon
           name="chevronRightListItem"
-          color={isExperimental ? "blueIO-500" : "blue"}
+          color={theme["interactiveElem-default"]}
           size={IOListItemVisualParams.chevronSize}
         />
       </View>
-    </>
+    </HStack>
   );
 };
 
@@ -161,17 +155,13 @@ export const ModulePaymentNotice = ({
 const ModulePaymentNoticeSkeleton = () => (
   <ModuleStatic
     startBlock={
-      <React.Fragment>
-        {/* Rewrite it using HStack and VStack */}
-        <View>
-          <Placeholder.Box animate="fade" radius={8} width={121} height={13} />
-          <VSpacer size={8} />
-          <Placeholder.Box animate="fade" radius={8} width={179} height={16} />
-        </View>
-      </React.Fragment>
+      <VStack space={4}>
+        <Placeholder.Box animate="fade" radius={8} width={120} height={12} />
+        <Placeholder.Box animate="fade" radius={8} width={180} height={16} />
+      </VStack>
     }
     endBlock={
-      <Placeholder.Box animate="fade" radius={16} width={62} height={24} />
+      <Placeholder.Box animate="fade" radius={16} width={64} height={24} />
     }
   />
 );
