@@ -12,6 +12,7 @@ import Animated, {
   SlideInUp,
   SlideOutUp
 } from "react-native-reanimated";
+import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { Dismissable } from "../layout/Dismissable";
 import { ToastNotification } from "./ToastNotification";
@@ -49,9 +50,9 @@ const ToastNotificationStackItem = ({
   ...toast
 }: ToastNotificationStackItemProps) => (
   <Animated.View
-    entering={SlideInUp.duration(300).easing(Easing.inOut(Easing.exp))}
-    exiting={SlideOutUp.duration(300).easing(Easing.inOut(Easing.exp))}
-    layout={SequencedTransition.duration(300)}
+    entering={SlideInUp.springify().damping(16).mass(0.9).stiffness(90)}
+    exiting={SlideOutUp.duration(700).easing(Easing.inOut(Easing.exp))}
+    layout={SequencedTransition.duration(500).delay(50)}
     style={{ paddingBottom: 8 }}
   >
     <Dismissable onDismiss={onDismiss}>
@@ -119,7 +120,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     <ToastContext.Provider value={contextValue as ToastContext}>
       <InitializeToastRef />
       <SafeAreaView style={styles.container} pointerEvents="box-none">
-        <View style={styles.list} pointerEvents="box-none">
+        <View
+          style={{ padding: IOVisualCostants.appMarginDefault }}
+          pointerEvents="box-none"
+        >
           {toasts.map(toast => (
             <ToastNotificationStackItem
               key={toast.id}
@@ -150,8 +154,5 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     overflow: "visible"
-  },
-  list: {
-    padding: 24
   }
 });
