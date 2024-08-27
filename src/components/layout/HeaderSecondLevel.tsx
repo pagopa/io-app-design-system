@@ -236,8 +236,8 @@ export const HeaderSecondLevel = ({
             size={14}
             numberOfLines={1}
             accessible={false}
-            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-            weight={isExperimental ? "Regular" : "Semibold"}
+            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            weight={"Semibold"}
             style={[
               { color: titleColor, textAlign: "center" },
               titleAnimatedStyle
