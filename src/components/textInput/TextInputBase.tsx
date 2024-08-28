@@ -392,6 +392,7 @@ export const TextInputBase = ({
           disableFullscreenUI={true}
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
+          accessibilityHint={status === 'error' ? bottomMessage : ''}
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={counterLimit}
