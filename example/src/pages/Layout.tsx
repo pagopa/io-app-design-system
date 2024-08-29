@@ -134,7 +134,7 @@ export const Layout = () => {
               backgroundColor: IOColors[theme["appBackground-secondary"]]
             }}
           >
-            <VStack space={16} alignItems="center">
+            <VStack space={16} style={{ alignItems: "center" }}>
               <VStackBlocks />
             </VStack>
           </View>
@@ -158,7 +158,7 @@ export const Layout = () => {
               backgroundColor: IOColors[theme["appBackground-secondary"]]
             }}
           >
-            <HStack space={16} alignItems="center">
+            <HStack space={16} style={{ alignItems: "center" }}>
               <HStackBlocks />
             </HStack>
           </View>

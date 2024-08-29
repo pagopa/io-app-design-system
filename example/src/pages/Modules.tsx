@@ -310,6 +310,21 @@ const renderModuleNavigation = () => (
           subtitle="Usa credenziali e app (o SMS)"
           onPress={mockFn}
           badge={{
+            text: "In arrivo",
+            variant: "blue",
+            outline: true
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigation, with Badge">
+      <View>
+        <ModuleNavigation
+          icon="spid"
+          title="Testo relativo allo SPID davvero molto lungo"
+          subtitle="Usa credenziali e app (o SMS), ma anche qui il testo è molto lungo"
+          onPress={mockFn}
+          badge={{
             text: "IN arrivo",
             variant: "blue",
             outline: true

@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
-import { GestureResponderEvent, PressableProps, View } from "react-native";
+import { GestureResponderEvent, PressableProps } from "react-native";
 import Placeholder from "rn-placeholder";
 import { IOListItemVisualParams, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { VSpacer } from "../spacer";
+import { HStack, VStack } from "../stack";
 import { LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
@@ -61,21 +61,21 @@ const ModuleAttachmentContent = ({
   };
 
   return (
-    <>
-      <View style={{ alignItems: "flex-start", flexShrink: 1 }}>
+    <HStack space={8} style={{ alignItems: "center" }}>
+      <VStack
+        space={4}
+        style={{ alignItems: "flex-start", flexShrink: 1, flexGrow: 1 }}
+      >
         <LabelSmallAlt
           numberOfLines={2}
           color={theme["interactiveElem-default"]}
         >
           {title}
         </LabelSmallAlt>
-        <VSpacer size={4} />
         <Badge text={format.toUpperCase()} variant="default" />
-      </View>
-      <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-        <IconOrActivityIndicatorComponent />
-      </View>
-    </>
+      </VStack>
+      <IconOrActivityIndicatorComponent />
+    </HStack>
   );
 };
 
@@ -151,11 +151,10 @@ export const ModuleAttachment = ({
 const ModuleAttachmentSkeleton = () => (
   <ModuleStatic
     startBlock={
-      <View>
-        <Placeholder.Box animate="fade" radius={8} width={107} height={16} />
-        <VSpacer size={4} />
-        <Placeholder.Box animate="fade" radius={16} width={44} height={20} />
-      </View>
+      <VStack space={4}>
+        <Placeholder.Box animate="fade" radius={8} width={114} height={16} />
+        <Placeholder.Box animate="fade" radius={16} width={42} height={20} />
+      </VStack>
     }
   />
 );
