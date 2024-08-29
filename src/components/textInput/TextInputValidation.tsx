@@ -11,13 +11,19 @@ import { triggerHaptic } from "../../functions";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { TextInputBase } from "./TextInputBase";
 
+export type ValidationWithOptions = { isValid: boolean; errorMessage: string };
+
 type TextInputValidationProps = Omit<
   React.ComponentProps<typeof TextInputBase>,
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
-  onValidate: (value: string) => boolean;
+  onValidate: (value: string) => boolean | ValidationWithOptions;
   errorMessage: string;
 };
+
+function isValidationWithOptions(validation: boolean | ValidationWithOptions): validation is ValidationWithOptions {
+  return typeof validation === 'object' && 'isValid' in validation && 'errorMessage' in validation;
+}
 
 const feedbackIconSize: IOIconSizeScale = 24;
 
@@ -31,20 +37,34 @@ export const TextInputValidation = ({
   ...props
 }: TextInputValidationProps) => {
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
+  const [errMessage, setErrMessage] = useState(errorMessage);
 
-  const onBlurHandler = useCallback(() => {
-    const validation = onValidate(value);
-    setIsValid(validation);
-    if (!validation) {
+  const getErrorFeedback = useCallback((isValid: boolean, message: string) => {
+    if (!isValid) {
       triggerHaptic("notificationError");
-      AccessibilityInfo.announceForAccessibilityWithOptions(errorMessage, {
+      AccessibilityInfo.announceForAccessibilityWithOptions(message, {
         queue: true
       });
     } else {
       triggerHaptic("notificationSuccess");
     }
+  }, []);
+
+  const onBlurHandler = useCallback(() => {
+    const validation = onValidate(value);
+
+    if (isValidationWithOptions(validation)) {
+      setIsValid(validation.isValid);
+      setErrMessage(validation.errorMessage);
+      getErrorFeedback(validation.isValid, validation.errorMessage);
+    } else {
+      setIsValid(validation);
+      setErrMessage(errorMessage);
+      getErrorFeedback(validation, errorMessage);
+    }
+
     onBlur?.();
-  }, [onValidate, value, onBlur, errorMessage]);
+  }, [value, errorMessage, onBlur, onValidate, getErrorFeedback]);
 
   const onFocusHandler = useCallback(() => {
     setIsValid(undefined);
@@ -52,13 +72,13 @@ export const TextInputValidation = ({
   }, [onFocus]);
 
   const labelError = useMemo(
-    () => (isValid === false && errorMessage ? errorMessage : bottomMessage),
-    [isValid, errorMessage, bottomMessage]
+    () => (isValid === false && errMessage ? errMessage : bottomMessage),
+    [isValid, errMessage, bottomMessage]
   );
 
   const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errorMessage ? "error-600" : undefined),
-    [isValid, errorMessage]
+    () => (isValid === false && errMessage ? "error-600" : undefined),
+    [isValid, errMessage]
   );
 
   const feedbackIconAttrMap: Record<
