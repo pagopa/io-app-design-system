@@ -164,6 +164,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
 
   return (
     <View
+      accessible={true}
       testID={testID}
       style={[
         styles.badge,
@@ -178,6 +179,9 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       ]}
     >
       <Text
+        accessibilityLabel={text}
+        importantForAccessibility="yes"
+        accessibilityRole="text"
         numberOfLines={1}
         ellipsizeMode="tail"
         allowFontScaling={isExperimental}
