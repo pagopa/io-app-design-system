@@ -15,7 +15,7 @@ export type ValidationWithOptions = { isValid: boolean; errorMessage: string };
 
 type TextInputValidationProps = Omit<
   React.ComponentProps<typeof TextInputBase>,
-  "rightElement" | "status" | "bottomMessageColor" | "isPassword"
+  "rightElement" | "status" | "bottomMessageColor" | "isPassword" | "accessibilityHint"
 > & {
   onValidate: (value: string) => boolean | ValidationWithOptions;
   errorMessage: string;
@@ -38,6 +38,7 @@ export const TextInputValidation = ({
 }: TextInputValidationProps) => {
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
   const [errMessage, setErrMessage] = useState(errorMessage);
+  const inputNotValid = isValid === false;
 
   const getErrorFeedback = useCallback((isValid: boolean, message: string) => {
     if (!isValid) {
@@ -121,7 +122,8 @@ export const TextInputValidation = ({
     <TextInputBase
       {...props}
       value={value}
-      status={isValid === false ? "error" : undefined}
+      status={inputNotValid ? "error" : undefined}
+      accessibilityHint={inputNotValid ? labelError : undefined}
       bottomMessage={labelError}
       bottomMessageColor={labelErrorColor}
       rightElement={feedbackIcon}
