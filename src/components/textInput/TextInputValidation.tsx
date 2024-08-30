@@ -11,13 +11,27 @@ import { triggerHaptic } from "../../functions";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { TextInputBase } from "./TextInputBase";
 
+export type ValidationWithOptions = { isValid: boolean; errorMessage: string };
+
 type TextInputValidationProps = Omit<
   React.ComponentProps<typeof TextInputBase>,
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
-  onValidate: (value: string) => boolean;
+  /**
+   * This function can return either a `boolean` or a `ValidationWithOptions` object. 
+   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced. 
+   * If a `ValidationWithOptions` object is returned and the field is not valid, the value displayed/announced will be the one contained within this object.
+   */
+  onValidate: (value: string) => boolean | ValidationWithOptions;
+  /**
+   * In case of a dynamic `errorMessage`, use the `onValidate` function with a `ValidationWithOptions` object as the return value to ensure that screen readers announce the correct value.
+   */
   errorMessage: string;
 };
+
+function isValidationWithOptions(validation: boolean | ValidationWithOptions): validation is ValidationWithOptions {
+  return typeof validation === 'object' && 'isValid' in validation && 'errorMessage' in validation;
+}
 
 const feedbackIconSize: IOIconSizeScale = 24;
 
@@ -31,20 +45,32 @@ export const TextInputValidation = ({
   ...props
 }: TextInputValidationProps) => {
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
+  const [errMessage, setErrMessage] = useState(errorMessage);
 
-  const onBlurHandler = useCallback(() => {
-    const validation = onValidate(value);
-    setIsValid(validation);
-    if (!validation) {
+  const getErrorFeedback = useCallback((isValid: boolean, message: string) => {
+    setIsValid(isValid);
+    setErrMessage(message);
+
+    if (!isValid) {
       triggerHaptic("notificationError");
-      AccessibilityInfo.announceForAccessibilityWithOptions(errorMessage, {
+      AccessibilityInfo.announceForAccessibilityWithOptions(message, {
         queue: true
       });
     } else {
       triggerHaptic("notificationSuccess");
     }
+  }, []);
+
+  const onBlurHandler = useCallback(() => {
+    const validation = onValidate(value);
+
+    if (isValidationWithOptions(validation)) {
+      getErrorFeedback(validation.isValid, validation.errorMessage);
+    } else {
+      getErrorFeedback(validation, errorMessage);
+    }
     onBlur?.();
-  }, [onValidate, value, onBlur, errorMessage]);
+  }, [value, errorMessage, onBlur, onValidate, getErrorFeedback]);
 
   const onFocusHandler = useCallback(() => {
     setIsValid(undefined);
@@ -52,13 +78,13 @@ export const TextInputValidation = ({
   }, [onFocus]);
 
   const labelError = useMemo(
-    () => (isValid === false && errorMessage ? errorMessage : bottomMessage),
-    [isValid, errorMessage, bottomMessage]
+    () => (isValid === false && errMessage ? errMessage : bottomMessage),
+    [isValid, errMessage, bottomMessage]
   );
 
   const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errorMessage ? "error-600" : undefined),
-    [isValid, errorMessage]
+    () => (isValid === false && errMessage ? "error-600" : undefined),
+    [isValid, errMessage]
   );
 
   const feedbackIconAttrMap: Record<
