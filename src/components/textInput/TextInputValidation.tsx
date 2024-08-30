@@ -17,7 +17,15 @@ type TextInputValidationProps = Omit<
   React.ComponentProps<typeof TextInputBase>,
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
+  /**
+   * This function can return either a `boolean` or a `ValidationWithOptions` object. 
+   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced. 
+   * If a `ValidationWithOptions` object is returned and the field is not valid, the value displayed/announced will be the one contained within this object.
+   */
   onValidate: (value: string) => boolean | ValidationWithOptions;
+  /**
+   * In case of a dynamic `errorMessage`, use the `onValidate` function with a `ValidationWithOptions` object as the return value to ensure that screen readers announce the correct value.
+   */
   errorMessage: string;
 };
 
@@ -40,6 +48,9 @@ export const TextInputValidation = ({
   const [errMessage, setErrMessage] = useState(errorMessage);
 
   const getErrorFeedback = useCallback((isValid: boolean, message: string) => {
+    setIsValid(isValid);
+    setErrMessage(message);
+
     if (!isValid) {
       triggerHaptic("notificationError");
       AccessibilityInfo.announceForAccessibilityWithOptions(message, {
@@ -54,15 +65,10 @@ export const TextInputValidation = ({
     const validation = onValidate(value);
 
     if (isValidationWithOptions(validation)) {
-      setIsValid(validation.isValid);
-      setErrMessage(validation.errorMessage);
       getErrorFeedback(validation.isValid, validation.errorMessage);
     } else {
-      setIsValid(validation);
-      setErrMessage(errorMessage);
       getErrorFeedback(validation, errorMessage);
     }
-
     onBlur?.();
   }, [value, errorMessage, onBlur, onValidate, getErrorFeedback]);
 
