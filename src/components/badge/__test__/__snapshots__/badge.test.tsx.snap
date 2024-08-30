@@ -2,6 +2,7 @@
 
 exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
 <View
+  accessible={true}
   style={
     [
       {
@@ -20,8 +21,11 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
   }
 >
   <Text
+    accessibilityLabel="text"
+    accessibilityRole="text"
     allowFontScaling={true}
     ellipsizeMode="tail"
+    importantForAccessibility="yes"
     maxFontSizeMultiplier={1.25}
     numberOfLines={1}
     style={
@@ -51,6 +55,7 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
 
 exports[`Test Badge Components Badge Snapshot 1`] = `
 <View
+  accessible={true}
   style={
     [
       {
@@ -69,8 +74,11 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
   }
 >
   <Text
+    accessibilityLabel="text"
+    accessibilityRole="text"
     allowFontScaling={false}
     ellipsizeMode="tail"
+    importantForAccessibility="yes"
     maxFontSizeMultiplier={1.25}
     numberOfLines={1}
     style={

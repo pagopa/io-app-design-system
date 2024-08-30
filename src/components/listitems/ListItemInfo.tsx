@@ -1,5 +1,5 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
@@ -81,17 +81,7 @@ export const ListItemInfo = ({
 
   const itemInfoTextComponent = useMemo(
     () => (
-      <View
-        accessible={endElement === undefined ? true : false}
-        importantForAccessibility={
-          endElement !== undefined && endElement.type !== "badge"
-            ? "no-hide-descendants"
-            : "yes"
-        }
-        accessibilityElementsHidden={
-          endElement !== undefined && endElement.type !== "badge"
-        }
-      >
+      <View accessible={Platform.OS === "ios"}>
         <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
         </LabelSmall>
@@ -104,7 +94,7 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, endElement]
+    [label, value, numberOfLines, theme]
   );
 
   const listItemInfoAction = useCallback(() => {
@@ -113,7 +103,9 @@ export const ListItemInfo = ({
 
       switch (type) {
         case "buttonLink":
-          const buttonLinkAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
+          const buttonLinkAccessibilityLabel = `${
+            componentProps.accessibilityLabel ?? componentProps.label
+          }`;
 
           return (
             <ButtonLink
@@ -122,7 +114,7 @@ export const ListItemInfo = ({
             />
           );
         case "iconButton":
-          const iconButtonAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
+          const iconButtonAccessibilityLabel = `${componentProps.accessibilityLabel}`;
           return (
             <IconButton
               {...componentProps}
@@ -136,7 +128,7 @@ export const ListItemInfo = ({
       }
     }
     return <></>;
-  }, [endElement, listItemAccessibilityLabel]);
+  }, [endElement]);
 
   return (
     <View
