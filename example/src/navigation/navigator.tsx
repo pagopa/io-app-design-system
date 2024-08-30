@@ -21,6 +21,8 @@ import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Colors } from "../pages/Colors";
 import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateScreen";
+import { FooterActionsInlineNotFixed } from "../pages/FooterActionsInlineNotFixed";
+import { FooterActionsInlineScreen } from "../pages/FooterActionsInlineScreen";
 import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
@@ -29,6 +31,8 @@ import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
+import { HeaderSecondLevelScreenDiscreteTransition } from "../pages/HeaderSecondLevelDiscreteTransition";
+import { HeaderSecondLevelScreenDiscreteTransitionCustomBg } from "../pages/HeaderSecondLevelScreenDiscreteTransitionCustomBg";
 import { HeaderSecondLevelWithStepper } from "../pages/HeaderSecondLevelWithStepper";
 import { Icons } from "../pages/Icons";
 import { ImageScreen } from "../pages/Image";
@@ -51,8 +55,6 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
-import { FooterActionsInlineScreen } from "../pages/FooterActionsInlineScreen";
-import { FooterActionsInlineNotFixed } from "../pages/FooterActionsInlineNotFixed";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -355,6 +357,34 @@ const AppNavigator = () => {
             component={HeaderSecondLevelScreen}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_DISCRETE_TRANSITION
+                .route
+            }
+            component={HeaderSecondLevelScreenDiscreteTransition}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_DISCRETE_TRANSITION
+                  .title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS
+                .HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG.route
+            }
+            component={HeaderSecondLevelScreenDiscreteTransitionCustomBg}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS
+                  .HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG.title,
               headerBackTitleVisible: false
             }}
           />
