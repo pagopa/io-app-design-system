@@ -172,6 +172,7 @@ import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
 import IconStarOff from "./svg/IconStarOff";
 import IconSuccess from "./svg/IconSuccess";
+import IconSwitchCard from "./svg/IconSwitchCard";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
 import IconSystemBiometricRecognitionOS from "./svg/IconSystemBiometricRecognitionOS";
@@ -302,6 +303,7 @@ export const IOIcons = {
   heartFilled: IconHeartFilled,
   heartOff: IconHeartOff,
   switchOff: IconSwitchOff,
+  switchCard: IconSwitchCard,
   fingerprint: IconFingerprint,
   touch: IconTouch,
   device: IconDevice,
