@@ -92,7 +92,7 @@ exports[`Test Advice Components - Experimental Enabled Advice Snapshot 1`] = `
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillio 3",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",

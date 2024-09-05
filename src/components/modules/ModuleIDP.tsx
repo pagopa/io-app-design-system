@@ -59,8 +59,8 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-        weight={"Semibold"}
+        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+        weight={isExperimental ? "Regular" : "Semibold"}
         size={12}
         lineHeight={16}
         color={theme["textBody-tertiary"]}

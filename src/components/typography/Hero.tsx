@@ -8,8 +8,8 @@ const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const heroFontSize: IOFontSize = 32;
 export const heroLineHeight = 48;
-const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Semibold";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyHeroFontSize: IOFontSize = 35;

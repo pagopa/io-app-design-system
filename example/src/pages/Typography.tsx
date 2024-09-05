@@ -17,6 +17,7 @@ import {
   Label,
   LabelMini,
   LabelSmall,
+  LabelSmallAlt,
   MdH1,
   MdH2,
   MdH3,
@@ -72,6 +73,7 @@ export const Typography = () => (
       </VStack>
       <VStack space={16}>
         <LabelSmallRow />
+        <LabelSmallAltRow />
         <LabelMiniRow />
         <LabelRow />
       </VStack>
@@ -310,6 +312,18 @@ export const LabelMiniRow = () => (
       </View>
     </View>
   </>
+);
+
+export const LabelSmallAltRow = () => (
+  <View style={styles.row}>
+    <LabelSmallAlt>Label small alt</LabelSmallAlt>
+    <HSpacer size={16} />
+    <LabelSmallAlt color={"bluegrey"}>Label small alt</LabelSmallAlt>
+    <HSpacer size={16} />
+    <View style={{ backgroundColor: IOColors["grey-700"] }}>
+      <LabelSmallAlt color={"white"}>Label small alt</LabelSmallAlt>
+    </View>
+  </View>
 );
 
 export const LabelRow = () => (

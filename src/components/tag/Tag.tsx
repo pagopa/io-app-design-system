@@ -169,8 +169,8 @@ export const Tag = ({
       {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <IOText
-          font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-          weight={"Semibold"}
+          font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+          weight={isExperimental ? "Regular" : "Semibold"}
           size={12}
           lineHeight={16}
           color={theme["textBody-tertiary"]}

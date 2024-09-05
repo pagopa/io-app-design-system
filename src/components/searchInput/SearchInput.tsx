@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
   placeholder: {
     ...makeFontStyleObject(
       inputFontSizePlaceholder,
-      "Titillio",
+      "ReadexPro",
       undefined,
       "Regular"
     )

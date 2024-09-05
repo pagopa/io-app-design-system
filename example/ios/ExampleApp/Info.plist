@@ -55,7 +55,9 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>ReadexPro-Regular.ttf</string>
 		<string>DMMono-Medium.ttf</string>
+		<string>ReadexPro-SemiBold.ttf</string>
 		<string>TitilliumSansPro-Black.otf</string>
 		<string>TitilliumSansPro-BlackItalic.otf</string>
 		<string>TitilliumSansPro-Bold.otf</string>
@@ -68,12 +70,6 @@
 		<string>TitilliumSansPro-SemiboldItalic.otf</string>
 		<string>TitilliumSansPro-Thin.otf</string>
 		<string>TitilliumSansPro-ThinItalic.otf</string>
-		<string>Titillio-Black.otf</string>
-		<string>Titillio-Bold.otf</string>
-		<string>Titillio-Light.otf</string>
-		<string>Titillio-Regular.otf</string>
-		<string>Titillio-Semibold.otf</string>
-		<string>Titillio-Thin.otf</string>
 	</array>
 </dict>
 </plist>

@@ -237,8 +237,8 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-            weight={isExperimental ? "Semibold" : "Bold"}
+            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+            weight={isExperimental ? "Regular" : "Bold"}
             size={buttonTextFontSize}
             style={
               disabled
