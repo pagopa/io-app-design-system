@@ -54,28 +54,12 @@
       "sha1": "6bb6bf0c5d7a7f50606cc276cc4ef1787f52a928"
     },
     {
-      "path": "assets/fonts/Titillio/Titillio-Black.otf",
-      "sha1": "8dfd8a6e9f8fadb290a346f1e66db4ad649b5d89"
+      "path": "assets/fonts/ReadexPro/ReadexPro-Regular.ttf",
+      "sha1": "93e4080794b725f216a94b57ed62a51bc77bce91"
     },
     {
-      "path": "assets/fonts/Titillio/Titillio-Bold.otf",
-      "sha1": "2d927e9c2e67e1998d2920134e030c6afb7e0186"
-    },
-    {
-      "path": "assets/fonts/Titillio/Titillio-Light.otf",
-      "sha1": "a45f2f9ab5d561d30ef0b56a9b768e0a2953da60"
-    },
-    {
-      "path": "assets/fonts/Titillio/Titillio-Regular.otf",
-      "sha1": "4e174fe900e7c80161a371500582d81c08d2c641"
-    },
-    {
-      "path": "assets/fonts/Titillio/Titillio-Semibold.otf",
-      "sha1": "d0b2a56269c66d5c99b9e0075091d7cc02cafe5f"
-    },
-    {
-      "path": "assets/fonts/Titillio/Titillio-Thin.otf",
-      "sha1": "91ac3f7e483eaaf0c3d6b65609b336a13ebf4730"
+      "path": "assets/fonts/ReadexPro/ReadexPro-SemiBold.ttf",
+      "sha1": "b4ec28a6b1ba6ed730beb37f06b1b81c5e2163a3"
     },
     {
       "path": "assets/fonts/DMMono/DMMono-Medium.ttf",

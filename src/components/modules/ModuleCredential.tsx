@@ -18,7 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { LabelSmall } from "../typography";
+import { LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -76,14 +76,13 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
         />
       ) : null}
       <View style={styles.label}>
-        <LabelSmall
+        <LabelSmallAlt
           color={theme["interactiveElem-default"]}
           numberOfLines={2}
           lineBreakMode="middle"
-          weight="Semibold"
         >
           {label}
-        </LabelSmall>
+        </LabelSmallAlt>
       </View>
       <View style={IOStyles.row}>
         {badge ? (

@@ -106,7 +106,12 @@ const styles = StyleSheet.create({
     ...(Platform.OS === "android" && { marginLeft: -4 })
   },
   textInputStyleFont: {
-    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
+    ...makeFontStyleObject(
+      inputLabelFontSize,
+      "ReadexPro",
+      undefined,
+      "Regular"
+    )
   },
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   textInputStyleLegacyFont: {

@@ -11,7 +11,7 @@ The app uses `TitilliumSansPro` as main font. Font object mapping and definition
 
 The library supports three different font families:
 - `TitilliumSansPro`
-- `Titillio`
+- `ReadexPro`
 - `DMMono`
 
-The `Titillio` font is visible only enabling the experimental features of the library for more information see the [IODSExperimentalContext](/docs/core-core--docs#iodsexperimentalcontext) section.
+The `ReadexPro` font is visible only enabling the experimental features of the library for more information see the [IODSExperimentalContext](/docs/core-core--docs#iodsexperimentalcontext) section.

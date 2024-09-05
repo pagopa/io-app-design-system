@@ -7,7 +7,7 @@ import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { VSpacer } from "../spacer";
-import { LabelSmall } from "../typography";
+import { LabelSmallAlt } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -63,13 +63,12 @@ const ModuleAttachmentContent = ({
   return (
     <>
       <View style={{ alignItems: "flex-start", flexShrink: 1 }}>
-        <LabelSmall
-          weight="Semibold"
+        <LabelSmallAlt
           numberOfLines={2}
           color={theme["interactiveElem-default"]}
         >
           {title}
-        </LabelSmall>
+        </LabelSmallAlt>
         <VSpacer size={4} />
         <Badge text={format.toUpperCase()} variant="default" />
       </View>

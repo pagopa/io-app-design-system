@@ -1,46 +1,9 @@
 @font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Thin.otf') format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Light.otf') format("truetype");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Regular.otf') format("truetype");
+    font-family: 'ReadexPro';
+    src: url('ReadexPro-Regular.ttf') format("truetype");
     font-weight: 400;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Semibold.otf') format("truetype");
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Bold.otf') format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Titillio 3';
-    src: url('Titillio-Black.otf') format("truetype");
-    font-weight: 900;
-    font-style: normal;
-}
-
-
 
 /* DM MONO */
 @font-face {

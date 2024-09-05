@@ -8,8 +8,8 @@ const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h4FontSize: IOFontSize = 20;
 export const h4LineHeight = 24;
-const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Semibold";
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFontName: IOFontFamily = "TitilliumSansPro";

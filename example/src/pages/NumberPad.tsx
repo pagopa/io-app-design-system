@@ -6,7 +6,7 @@ import {
   IOColors,
   IOStyles,
   IOVisualCostants,
-  LabelSmall,
+  LabelSmallAlt,
   ListItemSwitch,
   NumberPad,
   VSpacer,
@@ -29,14 +29,14 @@ export const NumberPadScreen = () => {
   const [blueBackground, setBlueBackground] = useState(false);
 
   const onNumberPress = useCallback((v: number) => {
-    setValue(prev => (prev.length < PIN_LENGTH ? `${prev}${v}` : prev));
+    setValue((prev) => prev.length < PIN_LENGTH ? `${prev}${v}` : prev);
   }, []);
 
   const onDeletePress = useCallback(() => {
-    setValue(prev => prev.slice(0, -1));
+    setValue((prev) => prev.slice(0, -1));
   }, []);
 
-  const onBiometricPress = useCallback(() => Alert.alert("biometric"), []);
+  const onBiometricPress = useCallback(() => Alert.alert("biometric"),[]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -69,12 +69,9 @@ export const NumberPadScreen = () => {
           <H5>{"Value Typed on the NumberPad component"}</H5>
           <VSpacer />
 
-          <LabelSmall
-            weight="Semibold"
-            color={blueBackground ? "white" : "black"}
-          >
+          <LabelSmallAlt color={blueBackground ? "white" : "black"}>
             {value}
-          </LabelSmall>
+          </LabelSmallAlt>
         </View>
         <VSpacer />
         <CodeInput

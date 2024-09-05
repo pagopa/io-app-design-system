@@ -163,8 +163,8 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       ]}
     >
       <IOText
-        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-        weight={"Semibold"}
+        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+        weight={isExperimental ? "Regular" : "Semibold"}
         size={12}
         lineHeight={16}
         color={foreground}

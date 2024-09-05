@@ -1,11 +1,6 @@
-import {
-  IOColors,
-  IOFontSize,
-  IOText,
-  useIOTheme
-} from "@pagopa/io-app-design-system";
+import { IOColors, useIOTheme } from "@pagopa/io-app-design-system";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export const iconItemGutter = 8;
 
@@ -46,6 +41,15 @@ const styles = StyleSheet.create({
   iconItemLarger: {
     padding: 12
   },
+  iconLabelSmall: {
+    fontSize: 8
+  },
+  iconLabelMedium: {
+    fontSize: 10
+  },
+  iconLabelLarge: {
+    fontSize: 11
+  },
   signalDot: {
     position: "absolute",
     right: 4,
@@ -68,17 +72,17 @@ const sizeMap = {
   small: {
     wrapper: styles.iconWrapperSmall,
     item: styles.iconItemLarger,
-    label: 9 as IOFontSize
+    label: styles.iconLabelSmall
   },
   medium: {
     wrapper: styles.iconWrapperMedium,
     item: null,
-    label: 10 as IOFontSize
+    label: styles.iconLabelMedium
   },
   large: {
     wrapper: styles.iconWrapperLarge,
     item: styles.iconItemLarger,
-    label: 11 as IOFontSize
+    label: styles.iconLabelLarge
   }
 };
 
@@ -108,14 +112,16 @@ export const IconViewerBox = ({
       </View>
       <View style={styles.nameWrapper}>
         {name && (
-          <IOText
+          <Text
             numberOfLines={1}
             ellipsizeMode="tail"
-            size={size ? sizeMap[size].label : sizeMap.medium.label}
-            style={{ color: IOColors[theme["textBody-tertiary"]] }}
+            style={[
+              { color: IOColors[theme["textBody-secondary"]] },
+              size ? sizeMap[size].label : styles.iconLabelMedium
+            ]}
           >
             {name}
-          </IOText>
+          </Text>
         )}
       </View>
     </View>
