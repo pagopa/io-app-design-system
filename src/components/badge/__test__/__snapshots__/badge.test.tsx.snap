@@ -2,6 +2,7 @@
 
 exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
 <View
+  accessible={true}
   style={
     [
       {
@@ -51,6 +52,7 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
 
 exports[`Test Badge Components Badge Snapshot 1`] = `
 <View
+  accessible={true}
   style={
     [
       {

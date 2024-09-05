@@ -43,6 +43,14 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL",
       title: "Header Second Level"
     },
+    HEADER_SECOND_LEVEL_DISCRETE_TRANSITION: {
+      route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_DISCRETE_TRANSITION",
+      title: "Header Second Level (Discrete transition, default)"
+    },
+    HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG: {
+      route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG",
+      title: "Header Second Level (Discrete transition, custom background)"
+    },
     HEADER_SECOND_LEVEL_CUSTOM_BG: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL_CUSTOM_BG",
       title: "Header Second Level (Custom Background)"

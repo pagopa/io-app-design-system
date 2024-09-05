@@ -234,9 +234,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
       }
     >
       <View
-        accessibilityElementsHidden={false}
         accessible={true}
-        importantForAccessibility="yes"
       >
         <Text
           allowFontScaling={true}
@@ -1933,9 +1931,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={false}
         accessible={true}
-        importantForAccessibility="yes"
       >
         <Text
           allowFontScaling={false}

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { PressableProps, View } from "react-native";
 import { IOColors, IOModuleStyles, useIOTheme } from "../../core";
+import { HStack } from "../stack";
 
 type ModuleStaticProps =
   | ModuleStaticSingleBlockProps
@@ -42,12 +43,14 @@ export const ModuleStatic = ({
       accessible={false}
     >
       {startBlock && (
-        <React.Fragment>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <HStack space={8} style={{ alignItems: "center" }}>
+          <View
+            style={{ flexDirection: "row", alignItems: "center", flexGrow: 1 }}
+          >
             {startBlock}
           </View>
           {endBlock}
-        </React.Fragment>
+        </HStack>
       )}
 
       {children}

@@ -40,6 +40,7 @@ type InputTextProps = WithTestID<{
   value: string;
   onChangeText: (value: string) => void;
   accessibilityLabel?: string;
+  accessibilityHint?: string;
   textInputProps?: RNTextInputProps;
   inputType?: InputType;
   status?: InputStatus;
@@ -210,6 +211,7 @@ export const TextInputBase = ({
   value = "",
   onChangeText,
   accessibilityLabel,
+  accessibilityHint,
   textInputProps,
   inputType = "default",
   status,
@@ -368,7 +370,6 @@ export const TextInputBase = ({
         ]}
         accessible={false}
         accessibilityRole={"none"}
-        accessibilityElementsHidden
         importantForAccessibility="no"
       >
         {/* Fake border managed with Animated.View to avoid
@@ -406,6 +407,7 @@ export const TextInputBase = ({
           disableFullscreenUI={true}
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
+          accessibilityHint={accessibilityHint}
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={counterLimit}

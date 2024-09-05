@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps } from "react";
+import { ComponentProps, useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
   ColorValue,
@@ -9,15 +9,24 @@ import {
   findNodeHandle
 } from "react-native";
 import Animated, {
+  AnimatedRef,
+  SharedValue,
   interpolate,
   interpolateColor,
-  useAnimatedStyle
+  useAnimatedStyle,
+  useDerivedValue,
+  useScrollViewOffset,
+  useSharedValue,
+  withSpring,
+  withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   IOColors,
+  IOSpringValues,
   IOStyles,
   IOVisualCostants,
+  alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
   iconBtnSizeSmall,
   useIOExperimentalDesign,
@@ -31,9 +40,19 @@ import { IOText } from "../typography";
 import { ActionProp } from "./common";
 
 type ScrollValues = {
-  contentOffsetY: Animated.SharedValue<number>;
+  contentOffsetY: SharedValue<number>;
   triggerOffset: number;
 };
+
+type DiscreteTransitionProps =
+  | {
+      enableDiscreteTransition: true;
+      animatedRef: AnimatedRef<Animated.ScrollView>;
+    }
+  | {
+      enableDiscreteTransition?: false;
+      animatedRef?: never;
+    };
 
 type BackProps =
   | {
@@ -54,7 +73,7 @@ type CommonProps = WithTestID<{
   transparent?: boolean;
   variant?: "neutral" | "contrast";
   backgroundColor?: string;
-  isModal?: boolean;
+  ignoreSafeAreaMargin?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -86,6 +105,7 @@ interface ThreeActions extends CommonProps {
 }
 
 export type HeaderSecondLevel = BackProps &
+  DiscreteTransitionProps &
   (Base | OneAction | TwoActions | ThreeActions);
 
 const titleHorizontalMargin: IOSpacingScale = 16;
@@ -121,18 +141,24 @@ export const HeaderSecondLevel = ({
   variant = "neutral",
   backgroundColor,
   transparent = false,
-  isModal = false,
+  ignoreSafeAreaMargin = false,
+  enableDiscreteTransition = false,
+  animatedRef,
   testID,
   firstAction,
   secondAction,
   thirdAction
 }: HeaderSecondLevel) => {
+  const scrollOffset = useScrollViewOffset(
+    animatedRef as AnimatedRef<Animated.ScrollView>
+  );
   const titleRef = React.createRef<View>();
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
+  const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -148,7 +174,10 @@ export const HeaderSecondLevel = ({
 
   const headerBgColorTransparentState = backgroundColor
     ? hexToRgba(backgroundColor, 0)
-    : hexToRgba(IOColors[HEADER_DEFAULT_BG_COLOR], 0);
+    : transparent
+    ? hexToRgba(IOColors[HEADER_DEFAULT_BG_COLOR], 0)
+    : IOColors[HEADER_DEFAULT_BG_COLOR];
+
   const headerBgColorSolidState =
     backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
 
@@ -157,7 +186,7 @@ export const HeaderSecondLevel = ({
     : hexToRgba(IOColors["grey-100"], 0);
   const borderColorSolidState = backgroundColor ?? IOColors["grey-100"];
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (isTitleAccessible) {
       const reactNode = findNodeHandle(titleRef.current);
       if (reactNode !== null) {
@@ -166,15 +195,43 @@ export const HeaderSecondLevel = ({
     }
   });
 
+  const bgColorDiscreteTransition = useDerivedValue(() =>
+    withSpring(scrollOffset.value > 0 ? 1 : 0, IOSpringValues.header)
+  );
+
+  useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    paddingTop.value = withTiming(
+      ignoreSafeAreaMargin ? 0 : insets.top,
+      alertEdgeToEdgeInsetTransitionConfig
+    );
+  }, [ignoreSafeAreaMargin, insets.top, paddingTop]);
+
+  const animatedPaddingStyle = useAnimatedStyle(() => ({
+    marginTop: paddingTop.value
+  }));
+
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
-    backgroundColor: scrollValues
+    backgroundColor: enableDiscreteTransition
+      ? interpolateColor(
+          bgColorDiscreteTransition.value,
+          [0, 1],
+          [headerBgColorTransparentState, headerBgColorSolidState]
+        )
+      : scrollValues
       ? interpolateColor(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
           [headerBgColorTransparentState, headerBgColorSolidState]
         )
       : headerBgColorSolidState,
-    borderColor: scrollValues
+    borderColor: enableDiscreteTransition
+      ? interpolateColor(
+          bgColorDiscreteTransition.value,
+          [0, 1],
+          [borderColorTransparentState, borderColorSolidState]
+        )
+      : scrollValues
       ? interpolateColor(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
@@ -184,7 +241,9 @@ export const HeaderSecondLevel = ({
   }));
 
   const titleAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: scrollValues
+    opacity: enableDiscreteTransition
+      ? interpolate(bgColorDiscreteTransition.value, [0, 1], [0, 1])
+      : scrollValues
       ? interpolate(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
@@ -198,14 +257,14 @@ export const HeaderSecondLevel = ({
       accessibilityRole="header"
       style={[
         { borderBottomWidth: 1, borderColor: borderColorTransparentState },
-        isModal ? { borderColor: borderColorSolidState } : {},
+        ignoreSafeAreaMargin ? { borderColor: borderColorSolidState } : {},
         !transparent ? { backgroundColor: headerBgColorSolidState } : {},
         headerWrapperAnimatedStyle
       ]}
     >
       <Animated.View
         testID={testID}
-        style={[isModal ? {} : { marginTop: insets.top }, styles.headerInner]}
+        style={[animatedPaddingStyle, styles.headerInner]}
       >
         {goBack ? (
           <IconButton

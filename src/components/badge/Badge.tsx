@@ -149,6 +149,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
 
   return (
     <View
+      accessible={true}
       testID={testID}
       style={[
         styles.badge,

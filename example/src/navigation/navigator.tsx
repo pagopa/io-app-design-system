@@ -49,6 +49,8 @@ import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
 import { SearchCustom } from "../pages/SearchCustom";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
+import { HeaderSecondLevelScreenDiscreteTransition } from "../pages/HeaderSecondLevelDiscreteTransition";
+import { HeaderSecondLevelScreenDiscreteTransitionCustomBg } from "../pages/HeaderSecondLevelScreenDiscreteTransitionCustomBg";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -304,8 +306,6 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
             component={HeaderFirstLevelScreen}
             options={{
-              statusBarTranslucent: true,
-              statusBarStyle: "light",
               headerTitle: APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.title,
               headerBackTitleVisible: false
             }}
@@ -316,6 +316,34 @@ const AppNavigator = () => {
             component={HeaderSecondLevelScreen}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_DISCRETE_TRANSITION
+                .route
+            }
+            component={HeaderSecondLevelScreenDiscreteTransition}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_DISCRETE_TRANSITION
+                  .title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS
+                .HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG.route
+            }
+            component={HeaderSecondLevelScreenDiscreteTransitionCustomBg}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS
+                  .HEADER_SECOND_LEVEL_DISCRETE_TRANSITION_CUSTOM_BG.title,
               headerBackTitleVisible: false
             }}
           />
@@ -403,7 +431,7 @@ const AppNavigator = () => {
                 header: ({ navigation }) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
-                    isModal
+                    ignoreSafeAreaMargin
                     type="singleAction"
                     firstAction={{
                       icon: "closeMedium",
