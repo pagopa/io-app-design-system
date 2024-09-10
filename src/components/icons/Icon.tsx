@@ -199,10 +199,12 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconCieLetter from './svg/IconCieLetter';
 
 export const IOIcons = {
   spid: IconSpid,
   cie: IconCie /* io-cie */,
+  cieLetter: IconCieLetter,
   qrCode: IconQrCode,
   bell: IconBell,
   website: IconWebsite,
