@@ -202,6 +202,7 @@ type PictogramPalette = {
   hands: ColorValue;
   main: ColorValue;
   secondary: ColorValue;
+  tertiary: ColorValue;
 };
 
 export const Pictogram = ({
@@ -229,7 +230,8 @@ export const Pictogram = ({
     () => ({
       hands: IOColors[themeObj["pictogram-hands"]],
       main: IOColors[themeObj["pictogram-tint-main"]],
-      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]],
+      tertiary: IOColors[themeObj["pictogram-tint-tertiary"]]
     }),
     [themeObj]
   );
@@ -371,7 +373,8 @@ export const PictogramBleed = ({
     () => ({
       hands: IOColors[themeObj["pictogram-hands"]],
       main: IOColors[themeObj["pictogram-tint-main"]],
-      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]],
+      tertiary: IOColors[themeObj["pictogram-tint-tertiary"]]
     }),
     [themeObj]
   );
