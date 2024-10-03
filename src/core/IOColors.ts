@@ -284,6 +284,7 @@ export type IOTheme = {
   "pictogram-hands": IOColors;
   "pictogram-tint-main": IOColors;
   "pictogram-tint-secondary": IOColors;
+  "pictogram-tint-tertiary": IOColors;
 };
 
 export const IOThemeLight: IOTheme = {
@@ -313,7 +314,8 @@ export const IOThemeLight: IOTheme = {
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
-  "pictogram-tint-secondary": "turquoise-500"
+  "pictogram-tint-secondary": "turquoise-500",
+  "pictogram-tint-tertiary": "blueIO-400"
 };
 
 export const IOThemeLightLegacy: IOTheme = {

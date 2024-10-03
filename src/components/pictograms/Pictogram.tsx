@@ -95,6 +95,7 @@ import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
 import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
 import PictogramEnded from "./svg/PictogramEnded";
 import PictogramEventClose from "./svg/PictogramEventClose";
+import PictogramFingerprint from "./svg/PictogramFingerprint";
 import PictogramIdea from "./svg/PictogramIdea";
 import PictogramLostConnection from "./svg/PictogramLostConnection";
 import PictogramMessage from "./svg/PictogramMessage";
@@ -106,8 +107,10 @@ import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramReactivate from "./svg/PictogramReactivate";
 import PictogramSearchLens from "./svg/PictogramSearchLens";
 import PictogramSettings from "./svg/PictogramSettings";
+import PictogramSmile from "./svg/PictogramSmile";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
+import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
@@ -169,6 +172,9 @@ export const IOPictograms = {
   comunicationProblem: PictogramComunicationProblem,
   payments: PictogramPayments,
   workInProgress: PictogramWorkInProgress,
+  smile: PictogramSmile,
+  fingerprint: PictogramFingerprint,
+  walletDoc: PictogramWalletDoc,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -196,6 +202,7 @@ type PictogramPalette = {
   hands: ColorValue;
   main: ColorValue;
   secondary: ColorValue;
+  tertiary: ColorValue;
 };
 
 export const Pictogram = ({
@@ -223,7 +230,8 @@ export const Pictogram = ({
     () => ({
       hands: IOColors[themeObj["pictogram-hands"]],
       main: IOColors[themeObj["pictogram-tint-main"]],
-      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]],
+      tertiary: IOColors[themeObj["pictogram-tint-tertiary"]]
     }),
     [themeObj]
   );
@@ -365,7 +373,8 @@ export const PictogramBleed = ({
     () => ({
       hands: IOColors[themeObj["pictogram-hands"]],
       main: IOColors[themeObj["pictogram-tint-main"]],
-      secondary: IOColors[themeObj["pictogram-tint-secondary"]]
+      secondary: IOColors[themeObj["pictogram-tint-secondary"]],
+      tertiary: IOColors[themeObj["pictogram-tint-tertiary"]]
     }),
     [themeObj]
   );

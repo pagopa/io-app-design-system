@@ -172,6 +172,7 @@ import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
 import IconStarOff from "./svg/IconStarOff";
 import IconSuccess from "./svg/IconSuccess";
+import IconSwitchCard from "./svg/IconSwitchCard";
 import IconSwitchOff from "./svg/IconSwitchOff";
 import IconSystemAppsAndroid from "./svg/IconSystemAppsAndroid";
 import IconSystemBiometricRecognitionOS from "./svg/IconSystemBiometricRecognitionOS";
@@ -198,10 +199,12 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconCieLetter from './svg/IconCieLetter';
 
 export const IOIcons = {
   spid: IconSpid,
   cie: IconCie /* io-cie */,
+  cieLetter: IconCieLetter,
   qrCode: IconQrCode,
   bell: IconBell,
   website: IconWebsite,
@@ -302,6 +305,7 @@ export const IOIcons = {
   heartFilled: IconHeartFilled,
   heartOff: IconHeartOff,
   switchOff: IconSwitchOff,
+  switchCard: IconSwitchCard,
   fingerprint: IconFingerprint,
   touch: IconTouch,
   device: IconDevice,

@@ -101,7 +101,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       background: "error-100"
     },
     purple: {
-      foreground: "hanPurple-850",
+      foreground: "hanPurple-500",
       background: "hanPurple-100"
     },
     lightBlue: {
@@ -142,7 +142,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       foreground: "error-850"
     },
     purple: {
-      foreground: "hanPurple-850"
+      foreground: "hanPurple-500"
     },
     lightBlue: {
       foreground: "blueIO-850"
