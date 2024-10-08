@@ -7,7 +7,7 @@ import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 const defaultColor: keyof IOTheme = "textBody-default";
 
 export const captionFontSize: IOFontSize = 12;
-const fontName: IOFontFamily = "ReadexPro";
+const fontName: IOFontFamily = "Titillio";
 const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153

@@ -9,8 +9,8 @@ const defaultColor: keyof IOTheme = "textHeading-default";
 /* Common typographic styles */
 export const h3FontSize: IOFontSize = 22;
 export const h3LineHeight = 33;
-const fontName: IOFontFamily = "ReadexPro";
-const fontWeight: IOFontWeight = "Regular";
+const fontName: IOFontFamily = "Titillio";
+const fontWeight: IOFontWeight = "Semibold";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyFontName: IOFontFamily = "TitilliumSansPro";

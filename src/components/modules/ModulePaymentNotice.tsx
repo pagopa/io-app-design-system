@@ -7,7 +7,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { H6, LabelSmall, LabelSmallAlt } from "../typography";
+import { H6, LabelSmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -98,12 +98,13 @@ const ModulePaymentNoticeContent = ({
           </LabelSmall>
         )}
         {subtitle && (
-          <LabelSmallAlt
+          <LabelSmall
             color={theme["interactiveElem-default"]}
             numberOfLines={2}
+            weight="Semibold"
           >
             {subtitle}
-          </LabelSmallAlt>
+          </LabelSmall>
         )}
       </View>
       <View style={styles.endBlock}>
