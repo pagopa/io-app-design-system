@@ -44,7 +44,9 @@ const verticalSpacing: IOSpacingScale = 16;
 /**
  * Implements a component that show buttons as sticky footer
  * It can include 1, 2 or 3 buttons. If they are 2, they can have the inlineHalf  or the inlineOneThird style
- * @deprecated This component is deprecated. Use `FooterActions` in the main `io-app` repo instead.
+ * @deprecated This component is deprecated. Use `FooterActions` or `FooterActionsInline` instead.
+ * `FooterActionsInline` is the official replacement for `FooterWithButtons`, but use it only
+ * if explicitly required.
  */
 export const FooterWithButtons = ({
   sticky = false,

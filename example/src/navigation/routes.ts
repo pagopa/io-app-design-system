@@ -78,13 +78,29 @@ const APP_ROUTES = {
       title: "Full screen modal (second example)"
     },
     SEARCH: { route: "DESIGN_SYSTEM_SEARCHBAR", title: "Search" },
-    FOOTER_WITH_BUTTON_EMPTY: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON_EMPTY",
-      title: "Footer with button (Empty state)"
+    FOOTER_ACTIONS: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS",
+      title: "Footer actions"
     },
-    FOOTER_WITH_BUTTON: {
-      route: "DESIGN_SYSTEM_FOOTER_WITH_BUTTON",
-      title: "Footer with button"
+    FOOTER_ACTIONS_STICKY: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_STICKY",
+      title: "Footer actions (sticky)"
+    },
+    FOOTER_ACTIONS_NOT_FIXED: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_NOT_FIXED",
+      title: "Footer actions (not fixed)"
+    },
+    FOOTER_ACTIONS_EMPTY_STATE: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_EMPTY_STATE",
+      title: "Footer actions (Empty state)"
+    },
+    FOOTER_ACTIONS_INLINE: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_INLINE",
+      title: "Footer actions (inline)"
+    },
+    FOOTER_ACTIONS_INLINE_NOT_FIXED: {
+      route: "DESIGN_SYSTEM_FOOTER_ACTIONS_INLINE_NOT_FIXED",
+      title: "Footer actions (inline, not fixed)"
     },
     GRADIENT_SCROLLVIEW: {
       route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
