@@ -49,7 +49,7 @@ import { Sandbox } from "../pages/Sandbox";
 import { SearchCustom } from "../pages/SearchCustom";
 import { SearchNative } from "../pages/SearchNative";
 import { Selection } from "../pages/Selection";
-import { StaticHeaderSecondLevelScreen } from "../pages/StaticHeaderSecondLevel";
+import { HeaderSecondLevelScreenStatic } from "../pages/StaticHeaderSecondLevel";
 import { StepperPage } from "../pages/Stepper";
 import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
@@ -401,7 +401,7 @@ const AppNavigator = () => {
 
           <Stack.Screen
             name={APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.route}
-            component={StaticHeaderSecondLevelScreen}
+            component={HeaderSecondLevelScreenStatic}
             options={{
               headerTitle:
                 APP_ROUTES.COMPONENTS.HEADER_SECOND_LEVEL_STATIC.title,
