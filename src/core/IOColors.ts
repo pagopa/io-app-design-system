@@ -275,6 +275,7 @@ export type IOTheme = {
   "icon-default": IOColors;
   "icon-decorative": IOColors;
   // Layout
+  "divider-header": IOColors;
   "divider-default": IOColors;
   "divider-bottomBar": IOColors;
   // Status
@@ -306,6 +307,7 @@ export const IOThemeLight: IOTheme = {
   "icon-default": "grey-650",
   "icon-decorative": "grey-300",
   // Layout
+  "divider-header": "grey-100",
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
   // Status
@@ -343,6 +345,7 @@ export const IOThemeDark: IOTheme = {
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
   // Layout
+  "divider-header": "grey-850",
   "divider-default": "grey-850",
   "divider-bottomBar": "grey-850",
   // Status

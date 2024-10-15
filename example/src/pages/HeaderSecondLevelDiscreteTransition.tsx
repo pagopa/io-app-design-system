@@ -3,6 +3,7 @@ import {
   H3,
   HeaderSecondLevel,
   IOVisualCostants,
+  useIOTheme,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
@@ -15,6 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 export const HeaderSecondLevelScreenDiscreteTransition = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const theme = useIOTheme();
 
   const animatedScrollViewRef = useAnimatedRef<Animated.ScrollView>();
 
@@ -63,7 +65,9 @@ export const HeaderSecondLevelScreenDiscreteTransition = () => {
       }}
       scrollEventThrottle={8}
     >
-      <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
+      <H3 color={theme["textHeading-default"]}>
+        Questo è un titolo lungo, ma lungo lungo davvero, eh!
+      </H3>
       <VSpacer />
       {[...Array(50)].map((_el, i) => (
         <Body key={`body-${i}`}>Repeated text</Body>

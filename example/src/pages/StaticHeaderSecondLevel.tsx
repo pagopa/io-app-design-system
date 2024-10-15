@@ -12,13 +12,14 @@ import {
   H3,
   HeaderSecondLevel,
   IOVisualCostants,
+  useIOTheme,
   VSpacer
 } from "@pagopa/io-app-design-system";
 
 // This is defined as about the half of a default ListItem… component
 const defaultTriggerOffsetValue: number = 32;
 
-export const StaticHeaderSecondLevelScreen = () => {
+export const HeaderSecondLevelScreenStatic = () => {
   const [triggerOffsetValue, setTriggerOffsetValue] = useState(
     defaultTriggerOffsetValue
   );
@@ -26,6 +27,7 @@ export const StaticHeaderSecondLevelScreen = () => {
 
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const theme = useIOTheme();
 
   const getTitleHeight = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
@@ -77,7 +79,9 @@ export const StaticHeaderSecondLevelScreen = () => {
       decelerationRate="normal"
     >
       <View onLayout={getTitleHeight}>
-        <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
+        <H3 color={theme["textHeading-default"]}>
+          Questo è un titolo lungo, ma lungo lungo davvero, eh!
+        </H3>
       </View>
       <VSpacer />
       {[...Array(50)].map((_el, i) => (
