@@ -142,6 +142,9 @@ export const ListItemTransaction = ({
     ? theme["interactiveElem-default"]
     : "blue";
 
+  const amountColor: IOColors = theme["textBody-default"];
+  const successColor: IOColors = theme.successText;
+
   const ListItemTransactionContent = () => {
     const TransactionAmountOrBadgeComponent = () => {
       switch (transactionStatus) {
@@ -149,7 +152,7 @@ export const ListItemTransaction = ({
           return (
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
-              color={hasChevronRight ? interactiveColor : "black"}
+              color={hasChevronRight ? interactiveColor : amountColor}
               numberOfLines={numberOfLines}
             >
               {transactionAmount || ""}
@@ -159,7 +162,7 @@ export const ListItemTransaction = ({
           return (
             <H6
               accessibilityLabel={getAccessibleAmountText(transactionAmount)}
-              color={hasChevronRight ? interactiveColor : "success-700"}
+              color={hasChevronRight ? interactiveColor : successColor}
               numberOfLines={numberOfLines}
             >
               {transactionAmount || ""}
