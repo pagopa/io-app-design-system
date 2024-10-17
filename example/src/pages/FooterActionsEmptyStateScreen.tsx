@@ -1,21 +1,22 @@
 import {
   Body,
   ContentWrapper,
-  FooterWithButtons,
+  FooterActions,
   H2,
   IOColors,
-  VSpacer
+  VSpacer,
+  useFooterActionsMeasurements
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { useState } from "react";
 import { Alert, Platform, ScrollView, View } from "react-native";
 
 /**
  * This Screen is used to test components in isolation while developing.
  * @returns a screen with a flexed view where you can test components
  */
-export const FooterWithButtonEmptyState = () => {
-  const [footerHeight, setFooterHeight] = useState(0);
+export const FooterActionsEmptyStateScreen = () => {
+  const { footerActionsMeasurements, handleFooterActionsMeasurements } =
+    useFooterActionsMeasurements();
 
   return (
     <View
@@ -27,7 +28,12 @@ export const FooterWithButtonEmptyState = () => {
       {/* This extra View is mandatory when you have a fixed
         bottom component to get a consistent behavior
         across platforms */}
-      <View style={{ flexGrow: 1, paddingBottom: footerHeight }}>
+      <View
+        style={{
+          flexGrow: 1,
+          paddingBottom: footerActionsMeasurements.safeBottomAreaHeight
+        }}
+      >
         <ScrollView
           centerContent
           contentContainerStyle={[
@@ -49,28 +55,15 @@ export const FooterWithButtonEmptyState = () => {
           </ContentWrapper>
         </ScrollView>
       </View>
-      <FooterWithButtons
-        onLayoutChange={setFooterHeight}
-        sticky={true}
-        primary={{
-          type: "Solid",
-          buttonProps: {
-            color: "primary",
-            accessibilityLabel: "primary button",
-            onPress: () => Alert.alert("Button pressed"),
-            label: "Primary button"
+      <FooterActions
+        onMeasure={handleFooterActionsMeasurements}
+        actions={{
+          type: "SingleButton",
+          primary: {
+            label: "Pay button",
+            onPress: () => Alert.alert("Button pressed")
           }
         }}
-        // secondary={{
-        //   type: "Outline",
-        //   buttonProps: {
-        //     color: "primary",
-        //     accessibilityLabel: "secondary button",
-        //     onPress: () => Alert.alert("Button pressed"),
-        //     label: "Secondary button"
-        //   }
-        // }}
-        type="SingleButton"
       />
     </View>
   );

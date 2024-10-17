@@ -30,14 +30,15 @@ import {
   hexToRgba,
   iconBtnSizeSmall,
   useIOExperimentalDesign,
-  useIOTheme
+  useIOTheme,
+  useIOThemeContext
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { HSpacer } from "../spacer";
 import { IOText } from "../typography";
-import { ActionProp } from "./common";
+import { HeaderActionProps } from "./common";
 
 type ScrollValues = {
   contentOffsetY: SharedValue<number>;
@@ -85,23 +86,23 @@ interface Base extends CommonProps {
 
 interface OneAction extends CommonProps {
   type: "singleAction";
-  firstAction: ActionProp;
+  firstAction: HeaderActionProps;
   secondAction?: never;
   thirdAction?: never;
 }
 
 interface TwoActions extends CommonProps {
   type: "twoActions";
-  firstAction: ActionProp;
-  secondAction: ActionProp;
+  firstAction: HeaderActionProps;
+  secondAction: HeaderActionProps;
   thirdAction?: never;
 }
 
 interface ThreeActions extends CommonProps {
   type: "threeActions";
-  firstAction: ActionProp;
-  secondAction: ActionProp;
-  thirdAction: ActionProp;
+  firstAction: HeaderActionProps;
+  secondAction: HeaderActionProps;
+  thirdAction: HeaderActionProps;
 }
 
 export type HeaderSecondLevel = BackProps &
@@ -156,21 +157,26 @@ export const HeaderSecondLevel = ({
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+  const { themeType } = useIOThemeContext();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
+  const iconButtonColorDefault: ComponentProps<typeof IconButton>["color"] =
+    themeType === "dark" ? "contrast" : "neutral";
+
   const iconButtonColor: ComponentProps<typeof IconButton>["color"] =
-    variant === "neutral" ? "neutral" : "contrast";
+    variant === "contrast" ? "contrast" : iconButtonColorDefault;
+
   const titleColor: ColorValue =
     variant === "neutral"
       ? IOColors[theme["textHeading-default"]]
       : IOColors.white;
 
   /* Visual attributes when there are transitions between states */
-  const HEADER_DEFAULT_BG_COLOR: IOColors = "white";
+  const HEADER_DEFAULT_BG_COLOR: IOColors = theme["appBackground-primary"];
 
   const headerBgColorTransparentState = backgroundColor
     ? hexToRgba(backgroundColor, 0)
@@ -181,10 +187,12 @@ export const HeaderSecondLevel = ({
   const headerBgColorSolidState =
     backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
 
+  const borderColorDefault = IOColors[theme["divider-default"]];
+
   const borderColorTransparentState = backgroundColor
     ? hexToRgba(backgroundColor, 0)
-    : hexToRgba(IOColors["grey-100"], 0);
-  const borderColorSolidState = backgroundColor ?? IOColors["grey-100"];
+    : hexToRgba(borderColorDefault, 0);
+  const borderColorSolidState = backgroundColor ?? borderColorDefault;
 
   useLayoutEffect(() => {
     if (isTitleAccessible) {

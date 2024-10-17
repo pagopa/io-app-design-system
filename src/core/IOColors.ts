@@ -277,14 +277,17 @@ const themeKeys = [
   "icon-default",
   "icon-decorative",
   // Layout
+  "divider-header",
   "divider-default",
+  "divider-bottomBar",
   // Status
   "errorIcon",
   "errorText",
   // Pictograms
   "pictogram-hands",
   "pictogram-tint-main",
-  "pictogram-tint-secondary"
+  "pictogram-tint-secondary",
+  "pictogram-tint-tertiary"
 ] as const;
 
 export type IOTheme = {
@@ -312,14 +315,17 @@ export const IOThemeLight: IOTheme = {
   "icon-default": "grey-650",
   "icon-decorative": "grey-300",
   // Layout
+  "divider-header": "grey-100",
   "divider-default": "grey-200",
+  "divider-bottomBar": "grey-200",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
-  "pictogram-tint-secondary": "turquoise-500"
+  "pictogram-tint-secondary": "turquoise-500",
+  "pictogram-tint-tertiary": "blueIO-400"
 };
 
 export const IOThemeLightLegacy: IOTheme = {
@@ -349,7 +355,9 @@ export const IOThemeDark: IOTheme = {
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
   // Layout
+  "divider-header": "grey-850",
   "divider-default": "grey-850",
+  "divider-bottomBar": "grey-850",
   // Status
   errorIcon: "error-400",
   errorText: "error-400",
