@@ -48,9 +48,7 @@ export const DSAdvice = () => (
 
 const renderFeatureInfo = () => (
   <>
-    <H2 color={"bluegrey"} weight={"Semibold"} style={{ marginBottom: 16 }}>
-      FeatureInfo
-    </H2>
+    <H2 style={{ marginBottom: 16 }}>FeatureInfo</H2>
     <ComponentViewerBox name="FeatureInfo · with Icon">
       <FeatureInfo
         iconName="info"
@@ -68,8 +66,11 @@ const renderFeatureInfo = () => (
       <VSpacer size={24} />
       <FeatureInfo
         iconName="security"
-        actionLabel="Si applicano i Termini e condizioni d’uso e l’Informativa Privacy di Paytipper"
-        actionOnPress={onLinkPress}
+        action={{
+          label:
+            "Si applicano i Termini e condizioni d’uso e l’Informativa Privacy di Paytipper",
+          onPress: onLinkPress
+        }}
       />
     </ComponentViewerBox>
     <VSpacer size={16} />
@@ -93,8 +94,10 @@ const renderFeatureInfo = () => (
         body={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
         }
-        actionLabel="Scopri di più"
-        actionOnPress={onLinkPress}
+        action={{
+          label: "Scopri di più",
+          onPress: onLinkPress
+        }}
       />
     </ComponentViewerBox>
   </>
@@ -103,8 +106,6 @@ const renderFeatureInfo = () => (
 const renderBanner = () => (
   <>
     <H2
-      color={"bluegrey"}
-      weight={"Semibold"}
       style={{
         marginBottom: 16,
         paddingTop: IOVisualCostants.appMarginDefault

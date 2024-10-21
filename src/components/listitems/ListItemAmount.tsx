@@ -54,9 +54,7 @@ export const ListItemAmount = ({
       importantForAccessibility={"no-hide-descendants"}
       accessibilityElementsHidden={false}
     >
-      <H6 weight="Regular" color={theme["textBody-tertiary"]}>
-        {label}
-      </H6>
+      <H6 color={theme["textBody-tertiary"]}>{label}</H6>
     </View>
   );
 
@@ -80,9 +78,8 @@ export const ListItemAmount = ({
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         <HSpacer size={4} />
         <H3
-          weight={"Semibold"}
-          color={"black"}
           {...valueElementProps}
+          color={theme["textBody-default"]}
           accessibilityLabel={`${listItemAccessibilityLabel}; ${
             valueElementProps?.accessibilityLabel ?? ""
           }`}

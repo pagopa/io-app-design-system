@@ -1,10 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
+import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -23,7 +18,6 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -32,7 +26,7 @@ import {
   IconClassComponent
 } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
-import { buttonTextFontSize } from "../typography";
+import { IOText, buttonTextFontSize } from "../typography";
 
 export type ColorButtonLink = "primary" | "contrast";
 
@@ -102,20 +96,6 @@ const mapLegacyColorStates: Record<
 };
 
 const DISABLED_OPACITY = 0.5;
-const IOButtonStylesLocal = StyleSheet.create({
-  label: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro"),
-    fontSize: buttonTextFontSize
-  }
-});
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const IOButtonLegacyStylesLocal = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    ...makeFontStyleObject("Bold", false, "TitilliumSansPro")
-  }
-});
 
 export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
   (
@@ -139,10 +119,8 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
       () => (isExperimental ? mapColorStates : mapLegacyColorStates),
       [isExperimental]
     );
-    const buttonStylesLocal = useMemo(
-      () => (isExperimental ? IOButtonStylesLocal : IOButtonLegacyStylesLocal),
-      [isExperimental]
-    );
+
+    const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
@@ -255,24 +233,23 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
               <HSpacer size={8} />
             </>
           )}
-          <Animated.Text
+          <AnimatedIOText
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            style={[
-              buttonStylesLocal.label,
+            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+            weight={isExperimental ? "Regular" : "Bold"}
+            size={buttonTextFontSize}
+            style={
               disabled
                 ? { color: colorMap[color]?.label?.disabled }
-                : { color: colorMap[color]?.label?.default },
-              !disabled && pressedColorLabelAnimationStyle
-            ]}
+                : { ...pressedColorLabelAnimationStyle }
+            }
             numberOfLines={1}
             ellipsizeMode="tail"
-            allowFontScaling={isExperimental}
-            maxFontSizeMultiplier={1.3}
           >
             {label}
-          </Animated.Text>
+          </AnimatedIOText>
         </Animated.View>
       </Pressable>
     );

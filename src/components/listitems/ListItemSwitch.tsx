@@ -12,7 +12,7 @@ import { LoadingSpinner } from "../loadingSpinner";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { NativeSwitch } from "../switch/NativeSwitch";
-import { H6, LabelLink, LabelSmall } from "../typography";
+import { H6, LabelMini, LabelSmall } from "../typography";
 
 type PartialProps = WithTestID<{
   label: string;
@@ -186,9 +186,9 @@ export const ListItemSwitch = React.memo(
         {action && (
           <>
             <VSpacer size={IOSelectionListItemVisualParams.actionMargin} />
-            <LabelLink fontSize="small" onPress={action.onPress}>
+            <LabelMini asLink onPress={action.onPress}>
               {action.label}
-            </LabelLink>
+            </LabelMini>
           </>
         )}
       </View>

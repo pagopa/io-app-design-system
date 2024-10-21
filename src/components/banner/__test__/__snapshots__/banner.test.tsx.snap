@@ -73,33 +73,21 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
     >
       <Text
         allowFontScaling={true}
-        color="blueIO-850"
-        defaultColor="black"
-        defaultWeight="Regular"
         dynamicTypeRamp="headline"
-        font="ReadexPro"
-        fontStyle={
-          {
-            "fontSize": 16,
-            "lineHeight": 24,
-          }
-        }
         maxFontSizeMultiplier={1.25}
         style={
           [
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
+            {},
             {
               "color": "#031344",
               "fontFamily": "Readex Pro",
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "lineHeight": 24,
             },
           ]
         }
-        weight="Regular"
       >
         Banner title
       </Text>
@@ -197,18 +185,18 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
               importantForAccessibility="no-hide-descendants"
-              maxFontSizeMultiplier={1.3}
+              maxFontSizeMultiplier={1.25}
               numberOfLines={1}
               style={
                 [
+                  {},
                   {
+                    "color": "#0E0F13",
                     "fontFamily": "Readex Pro",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                  },
-                  {
-                    "color": "#0B3EE3",
+                    "lineHeight": undefined,
                   },
                   {
                     "color": undefined,
@@ -434,33 +422,21 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
     >
       <Text
         allowFontScaling={false}
-        color="blueIO-850"
-        defaultColor="black"
-        defaultWeight="Semibold"
         dynamicTypeRamp="headline"
-        font="TitilliumSansPro"
-        fontStyle={
-          {
-            "fontSize": 18,
-            "lineHeight": 25,
-          }
-        }
         maxFontSizeMultiplier={1.25}
         style={
           [
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            },
+            {},
             {
               "color": "#031344",
               "fontFamily": "Titillium Sans Pro",
+              "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "600",
+              "lineHeight": 25,
             },
           ]
         }
-        weight="Semibold"
       >
         Banner title
       </Text>
@@ -558,18 +534,18 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               allowFontScaling={false}
               ellipsizeMode="tail"
               importantForAccessibility="no-hide-descendants"
-              maxFontSizeMultiplier={1.3}
+              maxFontSizeMultiplier={1.25}
               numberOfLines={1}
               style={
                 [
+                  {},
                   {
+                    "color": "#0E0F13",
                     "fontFamily": "Titillium Sans Pro",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "700",
-                  },
-                  {
-                    "color": "#0073E6",
+                    "lineHeight": undefined,
                   },
                   {
                     "color": undefined,
