@@ -154,6 +154,11 @@ export const DSAlert = () => {
       >
         Content only
       </H3>
+
+      <Alert ref={viewRef} variant="error" content="Ut enim ad minim veniam" />
+
+      <VSpacer />
+
       <Alert
         ref={viewRef}
         variant="error"
@@ -183,6 +188,10 @@ export const DSAlert = () => {
         variant="success"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
+
+      <VSpacer />
+
+      <Alert ref={viewRef} variant="success" content="Single line" />
 
       <VSpacer size={40} />
 
