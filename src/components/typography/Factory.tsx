@@ -71,6 +71,7 @@ function isDefaultFactoryProps<WeightPropsType, ColorsPropsType>(
  * The default values can be calculated specifying some fallback values using {@link DefaultArgumentProps}
  * or with a factory function to define some custom behaviour using {@link DefaultFactoryProps}
  * @param props
+ * @deprecated Use `IOText` instead. Or use the new typographic styles that use it.
  */
 export function useTypographyFactory<
   WeightPropsType extends IOFontWeight,

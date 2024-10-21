@@ -1,16 +1,15 @@
 import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import {
   IOBadgeHSpacing,
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
-  IOVisualCostants,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
+import { IOText } from "../typography";
 
 export type Badge = WithTestID<{
   outline?: boolean;
@@ -52,20 +51,6 @@ const styles = StyleSheet.create({
     borderRadius: IOBadgeRadius,
     paddingHorizontal: IOBadgeHSpacing,
     paddingVertical: IOBadgeVSpacing
-  },
-  label: {
-    fontSize: 12,
-    lineHeight: 16,
-    alignSelf: "center",
-    textTransform: "uppercase",
-    flexShrink: 1
-  },
-  labelFont: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  legacyLabelFont: {
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
   }
 });
 
@@ -178,24 +163,23 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
             }
       ]}
     >
-      <Text
-        accessibilityLabel={text}
-        importantForAccessibility="yes"
-        accessibilityRole="text"
+      <IOText
+        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+        weight={isExperimental ? "Regular" : "Semibold"}
+        size={12}
+        lineHeight={16}
+        color={foreground}
         numberOfLines={1}
         ellipsizeMode="tail"
-        allowFontScaling={isExperimental}
-        maxFontSizeMultiplier={IOVisualCostants.maxFontSizeMultiplier}
-        style={[
-          styles.label,
-          isExperimental ? styles.labelFont : styles.legacyLabelFont,
-          {
-            color: IOColors[foreground]
-          }
-        ]}
+        style={{
+          alignSelf: "center",
+          textTransform: "uppercase",
+          letterSpacing: 0.5,
+          flexShrink: 1
+        }}
       >
         {text}
-      </Text>
+      </IOText>
     </View>
   );
 };

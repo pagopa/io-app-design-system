@@ -256,37 +256,43 @@ export type IOColorsExtra = keyof typeof IOColorsExtra;
 ░░░ THEME COLORS ░░░
 */
 
-export type IOTheme = {
+const themeKeys = [
   // General
-  "appBackground-primary": IOColors;
-  "appBackground-secondary": IOColors;
-  "appBackground-tertiary": IOColors;
-  "appBackground-accent": IOColors;
-  "interactiveElem-default": IOColors;
-  "interactiveElem-pressed": IOColors;
-  "listItem-pressed": IOColors;
+  "appBackground-primary",
+  "appBackground-secondary",
+  "appBackground-tertiary",
+  "appBackground-accent",
+  "interactiveElem-default",
+  "interactiveElem-pressed",
+  "listItem-pressed",
   // Typography
-  "textHeading-default": IOColors;
-  "textBody-default": IOColors;
-  "textBody-secondary": IOColors;
-  "textBody-tertiary": IOColors;
+  "textHeading-default",
+  "textHeading-secondary",
+  "textHeading-tertiary",
+  "textBody-default",
+  "textBody-secondary",
+  "textBody-tertiary",
   // Design System related
-  "cardBorder-default": IOColors;
-  "icon-default": IOColors;
-  "icon-decorative": IOColors;
+  "cardBorder-default",
+  "icon-default",
+  "icon-decorative",
   // Layout
-  "divider-header": IOColors;
-  "divider-default": IOColors;
-  "divider-bottomBar": IOColors;
+  "divider-header",
+  "divider-default",
+  "divider-bottomBar",
   // Status
-  errorIcon: IOColors;
-  errorText: IOColors;
-  successText: IOColors;
+  "errorIcon",
+  "errorText",
+  "successText",
   // Pictograms
-  "pictogram-hands": IOColors;
-  "pictogram-tint-main": IOColors;
-  "pictogram-tint-secondary": IOColors;
-  "pictogram-tint-tertiary": IOColors;
+  "pictogram-hands",
+  "pictogram-tint-main",
+  "pictogram-tint-secondary",
+  "pictogram-tint-tertiary"
+] as const;
+
+export type IOTheme = {
+  [K in (typeof themeKeys)[number]]: IOColors;
 };
 
 export const IOThemeLight: IOTheme = {
@@ -300,6 +306,8 @@ export const IOThemeLight: IOTheme = {
   "listItem-pressed": "grey-50",
   // Typography
   "textHeading-default": "black",
+  "textHeading-secondary": "grey-850",
+  "textHeading-tertiary": "grey-700",
   "textBody-default": "black",
   "textBody-secondary": "grey-850",
   "textBody-tertiary": "grey-700",
@@ -340,6 +348,8 @@ export const IOThemeDark: IOTheme = {
   "listItem-pressed": "grey-850",
   // Typography
   "textHeading-default": "grey-200",
+  "textHeading-secondary": "grey-300",
+  "textHeading-tertiary": "grey-450",
   "textBody-default": "white",
   "textBody-secondary": "grey-100",
   "textBody-tertiary": "grey-450",

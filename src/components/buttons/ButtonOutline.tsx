@@ -24,7 +24,6 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core/";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -33,7 +32,7 @@ import {
   IconClassComponent
 } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
-import { buttonTextFontSize } from "../typography";
+import { IOText, buttonTextFontSize } from "../typography";
 
 type ColorButtonOutline = "primary" | "contrast" | "danger";
 export type ButtonOutline = WithTestID<
@@ -193,11 +192,6 @@ const mapLegacyColorStates: Record<
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const IOButtonLegacyStylesLocal = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-unused-styles
-  label: {
-    ...makeFontStyleObject("Bold")
-  },
-  // eslint-disable-next-line react-native/no-unused-styles
   buttonWithBorder: {
     borderWidth: 1
   }
@@ -209,12 +203,6 @@ const iconSize: IOIconSizeScale = 20;
 const DISABLED_OPACITY = 0.5;
 
 const IOButtonStylesLocal = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-unused-styles
-  label: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro"),
-    fontSize: buttonTextFontSize
-  },
-  // eslint-disable-next-line react-native/no-unused-styles
   buttonWithBorder: {
     borderWidth: 2
   }
@@ -238,6 +226,8 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
     const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+
+    const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
     const colorMap = React.useMemo(
       () => (isExperimental ? mapColorStates : mapLegacyColorStates),
@@ -383,25 +373,24 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
               <HSpacer size={8} />
             </>
           )}
-          <Animated.Text
-            style={[
-              buttonStylesLocal.label,
-              buttonStyles.label,
-              disabled
-                ? { color: colorMap[color]?.label?.disabled }
-                : { color: colorMap[color]?.label?.default },
-              !disabled && pressedColorLabelAnimationStyle
-            ]}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            allowFontScaling={isExperimental}
-            maxFontSizeMultiplier={1.3}
+          <AnimatedIOText
+            font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+            weight={isExperimental ? "Regular" : "Bold"}
+            size={buttonTextFontSize}
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={[
+              buttonStyles.label,
+              disabled
+                ? { color: colorMap[color]?.label?.disabled }
+                : { ...pressedColorLabelAnimationStyle }
+            ]}
           >
             {label}
-          </Animated.Text>
+          </AnimatedIOText>
         </Animated.View>
       </Pressable>
     );
