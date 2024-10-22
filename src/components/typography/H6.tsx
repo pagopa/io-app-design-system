@@ -6,7 +6,7 @@ import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
-export const h6FontSize: IOFontSize = 16;
+export const h6FontSize: IOFontSize = 18;
 export const h6LineHeight = 24;
 const fontName: IOFontFamily = "Titillio";
 const fontWeight: IOFontWeight = "Semibold";
