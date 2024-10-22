@@ -12,6 +12,7 @@ import {
   H3,
   HeaderSecondLevel,
   IOVisualCostants,
+  useIOTheme,
   VSpacer
 } from "@pagopa/io-app-design-system";
 
@@ -26,6 +27,7 @@ export const HeaderSecondLevelScreen = () => {
 
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const theme = useIOTheme();
 
   const getTitleHeight = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
@@ -94,7 +96,9 @@ export const HeaderSecondLevelScreen = () => {
         onLayout={getTitleHeight}
         // style={{ backgroundColor: IOColors["hanPurple-500"] }}
       >
-        <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
+        <H3 color={theme["textHeading-default"]}>
+          Questo è un titolo lungo, ma lungo lungo davvero, eh!
+        </H3>
       </View>
       <VSpacer />
       {[...Array(50)].map((_el, i) => (

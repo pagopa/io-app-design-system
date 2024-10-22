@@ -1,12 +1,3 @@
-import * as React from "react";
-import { useState } from "react";
-import { Alert, View, LayoutChangeEvent } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Animated, {
-  useAnimatedScrollHandler,
-  useSharedValue
-} from "react-native-reanimated";
-import { useNavigation } from "@react-navigation/native";
 import {
   AlertEdgeToEdgeProps,
   Body,
@@ -17,9 +8,19 @@ import {
   HeaderSecondLevel,
   HStack,
   IOVisualCostants,
+  useIOTheme,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
+import { useNavigation } from "@react-navigation/native";
+import * as React from "react";
+import { useState } from "react";
+import { Alert, LayoutChangeEvent, View } from "react-native";
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue
+} from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
 
 // This is defined as about the half of a default ListItem… component
@@ -53,6 +54,7 @@ export const HeaderSecondLevelScreen = () => {
 
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const theme = useIOTheme();
 
   const getTitleHeight = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
@@ -122,7 +124,9 @@ export const HeaderSecondLevelScreen = () => {
         onLayout={getTitleHeight}
         // style={{ backgroundColor: IOColors["hanPurple-500"] }}
       >
-        <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
+        <H3 color={theme["textHeading-default"]}>
+          Questo è un titolo lungo, ma lungo lungo davvero, eh!
+        </H3>
       </View>
       <VSpacer />
       {["info", "warning", "error"].map(variant => (
