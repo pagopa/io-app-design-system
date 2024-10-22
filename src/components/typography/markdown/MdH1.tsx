@@ -14,8 +14,8 @@ export const MdH1 = forwardRef<View, TypographicStyleProps>(
 
     const MdH1Props: IOTextProps = {
       ...props,
-      font: isExperimental ? "ReadexPro" : "TitilliumSansPro",
-      weight: isExperimental ? "Regular" : "Semibold",
+      font: isExperimental ? "Titillio" : "TitilliumSansPro",
+      weight: "Semibold",
       size: 20,
       lineHeight: 24,
       color: customColor ?? theme["textHeading-tertiary"]

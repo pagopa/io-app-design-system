@@ -31,10 +31,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
@@ -147,10 +147,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#5D1313",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
@@ -196,10 +196,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#215C76",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
@@ -245,10 +245,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
@@ -294,10 +294,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#224021",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
@@ -343,10 +343,10 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         {},
         {
           "color": "#614C15",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 20,
         },
         {
