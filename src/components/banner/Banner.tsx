@@ -85,7 +85,7 @@ type BaseBannerProps = WithTestID<{
   // A11y related props
   accessibilityLabel?: string;
   accessibilityHint?: string;
-  actionAccessibility?: boolean
+  actionAccessibility?: boolean;
 }>;
 
 /* Description only */
