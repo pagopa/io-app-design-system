@@ -93,30 +93,23 @@ const renderBadge = () => (
 const renderTag = () => (
   <View>
     <ComponentViewerBox name={"Tag, different variants"}>
-      <Tag text={"Entro il 30 mag"} variant="warning" />
-      <VSpacer size={8} />
-      <Tag text={"Completato"} variant="success" />
-      <VSpacer size={8} />
-      <Tag text={"Scaduto"} variant="error" />
-      <VSpacer size={8} />
-      <View style={IOStyles.row}>
-        <Tag text={"Certificato"} variant="qrCode" />
-        <HSpacer size={8} />
-        <Tag text={"Valore legale"} variant="legalMessage" />
-      </View>
-      <VSpacer size={8} />
-      <Tag variant="attachment" iconAccessibilityLabel="Attachment" />
-      <VSpacer size={8} />
-      <Tag text={"No icon"} variant="noIcon" />
-      <VSpacer size={8} />
-      <Tag
-        text={"Custom icon"}
-        variant="customIcon"
-        customIconProps={{
-          iconName: "categTravel",
-          iconColor: "grey-700"
-        }}
-      />
+      <VStack space={8}>
+        <Tag text={"Entro il 30 mag"} variant="warning" iconName="infoFilled" />
+        <Tag text={"Completato"} variant="success" />
+        <Tag text={"Scaduto"} variant="error" />
+        <Tag text={"Informazione"} variant="info" />
+        <HStack space={8}>
+          <Tag text={"Certificato"} variant="qrCode" />
+          <Tag text={"Valore legale"} variant="legalMessage" />
+        </HStack>
+        <Tag variant="attachment" iconAccessibilityLabel="Attachment" />
+        <Tag text={"No icon"} variant="noIcon" />
+        <Tag
+          text={"Custom icon"}
+          variant="custom"
+          icon={{ name: "categTravel", color: "grey" }}
+        />
+      </VStack>
     </ComponentViewerBox>
     <ComponentViewerBox name={"Tag, stress test"}>
       <View
