@@ -159,7 +159,7 @@ export const Banner = ({
   accessibilityHint,
   accessibilityLabel,
   testID,
-  actionAccessibility = false
+  actionAccessibility = false,
 }: Banner) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
