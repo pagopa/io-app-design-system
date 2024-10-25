@@ -182,7 +182,11 @@ export const Tag = ({
             <View style={styles.iconWrapper}>
               <Icon
                 name={name}
-                color={theme[IconColorsMap[color]]}
+                color={
+                  forceLightMode
+                    ? IOThemeLight[IconColorsMap[color]]
+                    : theme[IconColorsMap[color]]
+                }
                 size={IOTagIconSize}
                 accessible={!!iconAccessibilityLabel}
                 accessibilityLabel={iconAccessibilityLabel}
