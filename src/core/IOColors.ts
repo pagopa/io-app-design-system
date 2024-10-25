@@ -53,6 +53,7 @@ export const IOColors = asIOColors({
   "turquoise-850": "#003B3D",
   "turquoise-500": "#00C5CA",
   "turquoise-450": "#19CBCF" /* Dark mode */,
+  "turquoise-300": "#61DCDF",
   "turquoise-150": "#AAEEEF",
   "turquoise-100": "#C2F3F4",
   "turquoise-50": "#DBF9FA",

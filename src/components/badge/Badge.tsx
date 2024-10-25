@@ -64,7 +64,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const theme = useIOTheme();
   const { themeType } = useIOThemeContext();
 
-  const bgOpacityDarkMode = 0.4;
+  const bgOpacityDarkMode = 0.2;
 
   const mapVariantsLightMode: Record<
     NonNullable<Badge["variant"]>,
@@ -118,27 +118,27 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   > = {
     default: {
       foreground: "grey-50",
-      background: hexToRgba(IOColors["grey-700"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["grey-50"], bgOpacityDarkMode)
     },
     info: {
       foreground: "info-400",
-      background: hexToRgba(IOColors["info-850"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["info-400"], bgOpacityDarkMode)
     },
     warning: {
       foreground: "warning-400",
-      background: hexToRgba(IOColors["warning-850"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["warning-400"], bgOpacityDarkMode)
     },
     success: {
       foreground: "success-400",
-      background: hexToRgba(IOColors["success-850"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["success-400"], bgOpacityDarkMode)
     },
     error: {
       foreground: "error-400",
-      background: hexToRgba(IOColors["error-850"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["error-400"], bgOpacityDarkMode)
     },
     purple: {
       foreground: "hanPurple-250",
-      background: hexToRgba(IOColors["hanPurple-500"], bgOpacityDarkMode)
+      background: hexToRgba(IOColors["hanPurple-250"], bgOpacityDarkMode)
     },
     lightBlue: {
       foreground: "blueIO-200",
@@ -149,8 +149,8 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       background: IOColors[theme["interactiveElem-default"]]
     },
     turquoise: {
-      foreground: "turquoise-150",
-      background: hexToRgba(IOColors["turquoise-850"], bgOpacityDarkMode)
+      foreground: "turquoise-300",
+      background: hexToRgba(IOColors["turquoise-300"], bgOpacityDarkMode)
     },
     contrast: {
       foreground: "grey-700",
@@ -211,7 +211,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       foreground: "success-400"
     },
     error: {
-      foreground: "error-100"
+      foreground: "error-400"
     },
     purple: {
       foreground: "hanPurple-250"
@@ -223,7 +223,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       foreground: theme["interactiveElem-default"]
     },
     turquoise: {
-      foreground: "turquoise-150"
+      foreground: "turquoise-300"
     },
     contrast: {
       foreground: "grey-100"
