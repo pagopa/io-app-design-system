@@ -202,7 +202,11 @@ export const Tag = ({
           weight={isExperimental ? "Regular" : "Semibold"}
           size={12}
           lineHeight={16}
-          color={theme["textBody-tertiary"]}
+          color={
+            forceLightMode
+              ? IOThemeLight["textBody-tertiary"]
+              : theme["textBody-tertiary"]
+          }
           numberOfLines={1}
           ellipsizeMode="tail"
           style={{
