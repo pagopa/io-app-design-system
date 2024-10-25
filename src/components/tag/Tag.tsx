@@ -6,6 +6,7 @@ import {
   IOColors,
   IOTagRadius,
   IOTheme,
+  IOThemeLight,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -45,8 +46,7 @@ type TextProps =
       iconAccessibilityLabel: string;
     };
 
-export type Tag = TextProps &
-  WithTestID<
+export type Tag = TextProps & { forceLightMode?: boolean } & WithTestID<
     | {
         variant:
           | "qrCode"
@@ -57,7 +57,7 @@ export type Tag = TextProps &
           | "success"
           | "attachment"
           | "noIcon";
-        iconName?: IOIcons;
+        iconName?: never;
         icon?: never;
       }
     | {
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
       }
     }),
     borderWidth: 1,
-    borderColor: IOColors["grey-100"],
     borderRadius: IOTagRadius,
     borderCurve: "continuous",
     paddingHorizontal: IOTagHSpacing,
@@ -153,20 +152,26 @@ export const Tag = ({
   variant,
   testID,
   icon,
-  iconAccessibilityLabel
+  iconAccessibilityLabel,
+  forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, icon);
 
+  const borderColor = forceLightMode
+    ? IOColors[IOThemeLight["cardBorder-default"]]
+    : IOColors[theme["cardBorder-default"]];
+
+  const backgroundColor = forceLightMode
+    ? IOColors[IOThemeLight["appBackground-primary"]]
+    : IOColors[theme["appBackground-primary"]];
+
   return (
     <View
       testID={testID}
-      style={[
-        styles.tag,
-        { borderColor: IOColors[theme["cardBorder-default"]] }
-      ]}
+      style={[styles.tag, { borderColor, backgroundColor }]}
     >
       {pipe(
         variantProps,
