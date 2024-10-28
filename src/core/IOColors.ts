@@ -53,6 +53,7 @@ export const IOColors = asIOColors({
   "turquoise-850": "#003B3D",
   "turquoise-500": "#00C5CA",
   "turquoise-450": "#19CBCF" /* Dark mode */,
+  "turquoise-300": "#61DCDF",
   "turquoise-150": "#AAEEEF",
   "turquoise-100": "#C2F3F4",
   "turquoise-50": "#DBF9FA",
@@ -232,6 +233,15 @@ export const IOColorsStatus = asIOColors({
 });
 
 export type IOColorsStatus = keyof typeof IOColorsStatus;
+
+export type IOColorsStatusForeground = Extract<
+  IOColorsStatus,
+  "error-850" | "warning-850" | "info-850" | "success-850"
+>;
+export type IOColorsStatusBackground = Extract<
+  IOColorsStatus,
+  "error-100" | "warning-100" | "info-100" | "success-100"
+>;
 
 export const IOColorsExtra = {
   "blueItalia-850": IOColors["blueItalia-850"],
