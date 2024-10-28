@@ -348,6 +348,7 @@ export const IOThemeDark: IOTheme = {
   // Design System related
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
+  "icon-decorative": "grey-650",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",
