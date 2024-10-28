@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { GestureResponderEvent, View } from "react-native";
 import {
   Body,
@@ -16,7 +16,7 @@ import { IOStyles } from "../../core";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
-  body?: string | React.ReactNode;
+  body?: string | ReactNode;
 };
 
 type FeatureInfoActionProps =
