@@ -792,7 +792,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
     <Text
       accessibilityElementsHidden={true}
       accessible={false}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
       maxFontSizeMultiplier={1.25}
@@ -899,7 +899,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
     <Text
       accessibilityElementsHidden={true}
       accessible={false}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
       maxFontSizeMultiplier={1.25}
@@ -1020,7 +1020,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
       <Text
         accessibilityElementsHidden={true}
         accessible={false}
-        allowFontScaling={false}
+        allowFontScaling={true}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
         maxFontSizeMultiplier={1.25}

@@ -2,7 +2,7 @@
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, auto text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -26,7 +26,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, auto text alig
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, center text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -50,7 +50,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, center text al
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, default text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -74,7 +74,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, default text a
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, justify text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -98,7 +98,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, justify text a
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, left text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -122,7 +122,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, left text alig
 
 exports[`ComposedBodyFromArray should match snapshot, empty body, right text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -146,7 +146,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, right text ali
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -167,7 +167,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -187,7 +187,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -207,7 +207,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -227,7 +227,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -247,7 +247,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -271,7 +271,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, center text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -292,7 +292,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -312,7 +312,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -332,7 +332,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -352,7 +352,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -372,7 +372,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -396,7 +396,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, default text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -417,7 +417,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -437,7 +437,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -457,7 +457,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -477,7 +477,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -497,7 +497,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -521,7 +521,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, justify text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -542,7 +542,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -562,7 +562,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -582,7 +582,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -602,7 +602,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -622,7 +622,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -646,7 +646,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, left text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -667,7 +667,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -687,7 +687,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -707,7 +707,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -727,7 +727,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -747,7 +747,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -771,7 +771,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
 
 exports[`ComposedBodyFromArray should match snapshot, multiple items body, right text align 1`] = `
 <Text
-  allowFontScaling={false}
+  allowFontScaling={true}
   dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   style={
@@ -792,7 +792,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -812,7 +812,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
     Multiple 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -832,7 +832,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
     styles
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -852,7 +852,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
      text 
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
@@ -872,7 +872,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
     just
   </Text>
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={
