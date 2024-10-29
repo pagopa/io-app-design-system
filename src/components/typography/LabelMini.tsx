@@ -9,17 +9,14 @@ import {
   TypographicStyleProps
 } from "./IOText";
 
-type BodyStyleProps = TypographicStyleProps & {
+type LabelMiniProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
 } & TypographicStyleAsLinkProps;
 
-export const bodyFontSize = 16;
-export const bodyLineHeight = 24;
-
 /**
- * `Body` typographic style
+ * `LabelMini` typographic style
  */
-export const Body = forwardRef<View, BodyStyleProps>(
+export const LabelMini = forwardRef<View, LabelMiniProps>(
   (
     { weight: customWeight, color: customColor, asLink, ...props },
     ref?: ForwardedRef<View>
@@ -30,13 +27,13 @@ export const Body = forwardRef<View, BodyStyleProps>(
       ? theme["interactiveElem-default"]
       : theme["textBody-tertiary"];
 
-    const BodyProps: IOTextProps = {
+    const LabelMiniProps: IOTextProps = {
       ...props,
-      dynamicTypeRamp: "body", // iOS only
+      dynamicTypeRamp: "footnote" /* iOS only */,
       font: "TitilliumSansPro",
-      weight: customWeight ?? "Regular",
-      size: bodyFontSize,
-      lineHeight: bodyLineHeight,
+      weight: customWeight ?? "Semibold",
+      size: 12,
+      lineHeight: 18,
       color: customColor ?? defaultColor,
       ...(asLink
         ? {
@@ -47,7 +44,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
     };
 
     return (
-      <IOText ref={ref} {...BodyProps}>
+      <IOText ref={ref} {...LabelMiniProps}>
         {props.children}
       </IOText>
     );

@@ -11,6 +11,7 @@ import {
   IOThemeDark,
   IOThemeLight,
   IOVisualCostants,
+  LabelMini,
   LabelSmall,
   VSpacer,
   hexToRgba,
@@ -263,11 +264,7 @@ export const Colors = () => (
     )}
 
     {/* Gradients */}
-    <H2
-      color={"bluegrey"}
-      weight={"Semibold"}
-      style={{ marginBottom: sectionTitleMargin }}
-    >
+    <H2 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
       Gradients
     </H2>
     <View style={styles.gradientItemsWrapper}>
@@ -309,14 +306,13 @@ const ColorBox = ({
     </View>
 
     {name && (
-      <LabelSmall
-        fontSize="small"
+      <LabelMini
         numberOfLines={1}
         color={mode === "dark" ? "grey-200" : "bluegrey"}
         weight={"Regular"}
       >
         {name}
-      </LabelSmall>
+      </LabelMini>
     )}
   </View>
 );

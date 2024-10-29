@@ -1,20 +1,12 @@
 import * as React from "react";
+import { Image, ImageSourcePropType, Platform, StyleSheet } from "react-native";
 import {
-  Image,
-  ImageSourcePropType,
-  Platform,
-  StyleSheet,
-  Text
-} from "react-native";
-import {
-  IOColors,
   IOListItemLogoMargin,
-  IOVisualCostants,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { toAndroidCacheTimestamp } from "../../utils/dates";
-import { makeFontStyleObject } from "../../utils/fonts";
+import { IOText } from "../typography";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -28,19 +20,6 @@ interface ModuleIDP extends PressableModuleBaseProps {
 }
 
 const styles = StyleSheet.create({
-  idpName: {
-    fontSize: 12,
-    lineHeight: 16,
-    alignSelf: "center",
-    textTransform: "uppercase",
-    flexShrink: 1
-  },
-  idpNameFont: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  idpLegacyNameFont: {
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
-  },
   idpLogo: {
     marginStart: IOListItemLogoMargin,
     width: 120,
@@ -79,18 +58,22 @@ export const ModuleIDP = ({
       testID={testID}
       withLooseSpacing={withLooseSpacing}
     >
-      <Text
-        allowFontScaling={isExperimental}
-        maxFontSizeMultiplier={IOVisualCostants.maxFontSizeMultiplier}
-        style={[
-          styles.idpName,
-          { color: IOColors[theme["textBody-tertiary"]] },
-          isExperimental ? styles.idpNameFont : styles.idpLegacyNameFont
-        ]}
+      <IOText
+        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+        weight={isExperimental ? "Regular" : "Semibold"}
+        size={12}
+        lineHeight={16}
+        color={theme["textBody-tertiary"]}
+        textStyle={{
+          alignSelf: "center",
+          textTransform: "uppercase",
+          letterSpacing: 0.5,
+          flexShrink: 1
+        }}
         accessibilityLabel={accessibilityLabel ?? name}
       >
         {name}
-      </Text>
+      </IOText>
       <Image
         accessibilityIgnoresInvertColors
         source={urlLogoIDP}

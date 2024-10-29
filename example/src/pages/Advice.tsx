@@ -1,6 +1,8 @@
 import {
-  FeatureInfo,
   Banner,
+  BodyProps,
+  ComposedBodyFromArray,
+  FeatureInfo,
   H2,
   IOPictogramsBleed,
   IOVisualCostants,
@@ -46,65 +48,79 @@ export const DSAdvice = () => (
   </Screen>
 );
 
-const renderFeatureInfo = () => (
-  <>
-    <H2 color={"bluegrey"} weight={"Semibold"} style={{ marginBottom: 16 }}>
-      FeatureInfo
-    </H2>
-    <ComponentViewerBox name="FeatureInfo · with Icon">
-      <FeatureInfo
-        iconName="info"
-        body={
-          "Dopo questo passaggio non sarà più possibile annullare il pagamento"
-        }
-      />
-      <VSpacer size={24} />
-      <FeatureInfo
-        iconName="gallery"
-        body={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua"
-        }
-      />
-      <VSpacer size={24} />
-      <FeatureInfo
-        iconName="security"
-        actionLabel="Si applicano i Termini e condizioni d’uso e l’Informativa Privacy di Paytipper"
-        actionOnPress={onLinkPress}
-      />
-    </ComponentViewerBox>
-    <VSpacer size={16} />
-    <ComponentViewerBox name="FeatureInfo · with Pictogram">
-      <FeatureInfo
-        pictogramName="clock"
-        body={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
-        }
-      />
-      <VSpacer size={24} />
-      <FeatureInfo
-        pictogramName="manual"
-        body={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua"
-        }
-      />
-      <VSpacer size={24} />
-      <FeatureInfo
-        pictogramName="followMessage"
-        body={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
-        }
-        actionLabel="Scopri di più"
-        actionOnPress={onLinkPress}
-      />
-    </ComponentViewerBox>
-  </>
-);
+const renderFeatureInfo = () => {
+  const composedBody: Array<BodyProps> = [
+    {
+      text: "Questa è la prima parte del testo. "
+    },
+    {
+      text: "Questa la seconda parte in grassetto. ",
+      weight: "Bold"
+    },
+    {
+      text: "Questa la terza parte che torna "
+    }
+  ];
+
+  return (
+    <>
+      <H2 style={{ marginBottom: 16 }}>FeatureInfo</H2>
+      <ComponentViewerBox name="FeatureInfo · with Icon">
+        <FeatureInfo
+          iconName="info"
+          body={
+            "Dopo questo passaggio non sarà più possibile annullare il pagamento"
+          }
+        />
+        <VSpacer size={24} />
+        <FeatureInfo
+          iconName="gallery"
+          body={<ComposedBodyFromArray textAlign="left" body={composedBody} />}
+        />
+        <VSpacer size={24} />
+        <FeatureInfo
+          iconName="security"
+          action={{
+            label:
+              "Si applicano i Termini e condizioni d’uso e l’Informativa Privacy di Paytipper",
+            onPress: onLinkPress
+          }}
+        />
+      </ComponentViewerBox>
+      <VSpacer size={16} />
+      <ComponentViewerBox name="FeatureInfo · with Pictogram">
+        <FeatureInfo
+          pictogramName="clock"
+          body={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
+          }
+        />
+        <VSpacer size={24} />
+        <FeatureInfo
+          pictogramName="manual"
+          body={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua"
+          }
+        />
+        <VSpacer size={24} />
+        <FeatureInfo
+          pictogramName="followMessage"
+          body={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
+          }
+          action={{
+            label: "Scopri di più",
+            onPress: onLinkPress
+          }}
+        />
+      </ComponentViewerBox>
+    </>
+  );
+};
 
 const renderBanner = () => (
   <>
     <H2
-      color={"bluegrey"}
-      weight={"Semibold"}
       style={{
         marginBottom: 16,
         paddingTop: IOVisualCostants.appMarginDefault

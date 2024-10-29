@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
-import { StyleProp, Text, TextStyle, View } from "react-native";
+import { Text, TextStyle, View } from "react-native";
 import { IOColors } from "../../core/IOColors";
 import {
   IOFontFamily,
+  IOFontSize,
   IOFontWeight,
   makeFontStyleObject
 } from "../../utils/fonts";
@@ -19,7 +20,7 @@ type BaseTypographyProps = {
 };
 
 type OwnProps = BaseTypographyProps & {
-  fontStyle?: StyleProp<TextStyle>;
+  fontStyle?: TextStyle;
 } & React.ComponentPropsWithRef<typeof Text>;
 
 /**
@@ -41,13 +42,21 @@ const calculateTextStyle = (
  * used to calculate at runtime the platform-dependent styles.
  * This component shouldn't be used in the application but only to compose others `Typography elements`.
  * @param props
+ * @deprecated Use {@link IOText} instead
  * @constructor
  */
 export const BaseTypography = React.forwardRef<View, OwnProps>((props, ref) => {
   const fontStyle = useMemo(
     () =>
-      calculateTextStyle(props.color, props.weight, props.isItalic, props.font),
-    [props.color, props.weight, props.isItalic, props.font]
+      calculateTextStyle(
+        props.color,
+        props.fontStyle?.fontSize as IOFontSize,
+        props.font,
+        props.fontStyle?.lineHeight,
+        props.weight,
+        props.isItalic ? "italic" : "normal"
+      ),
+    [props.color, props.fontStyle, props.font, props.weight, props.isItalic]
   );
 
   const style = props.style

@@ -1,8 +1,10 @@
 import React from "react";
 import * as TestRenderer from "react-test-renderer";
+import { Alert } from "react-native";
 import type { IOColors } from "../../../core/IOColors";
 import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
+import { BodyMonospace } from "../BodyMonospace";
 import { ButtonText } from "../ButtonText";
 import { H1 } from "../H1";
 import { H2 } from "../H2";
@@ -12,8 +14,6 @@ import { H5 } from "../H5";
 import { H6 } from "../H6";
 import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
-import { LabelLink } from "../LabelLink";
-import { BodyMonospace } from "../BodyMonospace";
 import { calculateWeightColor } from "../common";
 
 describe("Test Typography Components", () => {
@@ -54,34 +54,6 @@ describe("Test Typography Components", () => {
     expect(h4Dblue).toMatchSnapshot();
     const h4white = TestRenderer.create(<H4 color={"white"}>Text</H4>).toJSON();
     expect(h4white).toMatchSnapshot();
-
-    // Regular weight
-    // with regular weight, default color is bluegreydark
-    const h4Regular = TestRenderer.create(
-      <H4 weight={"Regular"}>Text</H4>
-    ).toJSON();
-    expect(h4Regular).toMatchSnapshot();
-
-    const h4Regularbluegrey = TestRenderer.create(
-      <H4 weight={"Regular"} color={"bluegrey"}>
-        Text
-      </H4>
-    ).toJSON();
-    expect(h4Regularbluegrey).toMatchSnapshot();
-
-    const h4RegularbluegreyLight = TestRenderer.create(
-      <H4 weight={"Regular"} color={"bluegreyLight"}>
-        Text
-      </H4>
-    ).toJSON();
-    expect(h4RegularbluegreyLight).toMatchSnapshot();
-
-    const h4Regularwhite = TestRenderer.create(
-      <H4 weight={"Regular"} color={"white"}>
-        Text
-      </H4>
-    ).toJSON();
-    expect(h4Regularwhite).toMatchSnapshot();
   });
   it("H5 Snapshot", () => {
     // SemiBold weight, default
@@ -151,7 +123,11 @@ describe("Test Typography Components", () => {
     });
   });
   it("Link Snapshot", () => {
-    const link = TestRenderer.create(<LabelLink>Text</LabelLink>).toJSON();
+    const link = TestRenderer.create(
+      <Label asLink onPress={() => Alert.alert("Pressed")}>
+        Text
+      </Label>
+    ).toJSON();
     expect(link).toMatchSnapshot();
   });
   it("BodyMonospace Snapshot", () => {

@@ -72,22 +72,23 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
       <View
         style={
           {
-            "flex": 1,
+            "flexGrow": 1,
           }
         }
       >
         <Text
+          allowFontScaling={true}
+          maxFontSizeMultiplier={1.25}
           style={
             [
+              {},
               {
+                "color": "#0B3EE3",
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "lineHeight": 20,
-              },
-              {
-                "color": "#0B3EE3",
               },
             ]
           }
@@ -170,17 +171,16 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
           {
             "alignSelf": "center",
             "flexShrink": 1,
-            "fontSize": 12,
-            "lineHeight": 16,
+            "letterSpacing": 0.5,
             "textTransform": "uppercase",
           },
           {
             "color": "#555C70",
-          },
-          {
             "fontFamily": "Readex Pro",
+            "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "400",
+            "lineHeight": 16,
           },
         ]
       }
@@ -238,66 +238,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
       >
         <Text
           allowFontScaling={true}
-          color="grey-700"
-          defaultColor="blue"
-          defaultWeight="Bold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#555C70",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
         <Text
           allowFontScaling={true}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           testValue
         </Text>
@@ -384,66 +360,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
       >
         <Text
           allowFontScaling={true}
-          color="grey-700"
-          defaultColor="blue"
-          defaultWeight="Bold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#555C70",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
         <Text
           allowFontScaling={true}
-          color="blueIO-500"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           testValue
         </Text>
@@ -596,33 +548,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
       >
         <Text
           allowFontScaling={true}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           testValue
         </Text>
@@ -837,33 +777,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
       >
         <Text
           allowFontScaling={true}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           testValue
         </Text>
@@ -1016,34 +944,22 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
       >
         <Text
           allowFontScaling={true}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="footnote"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Readex Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
@@ -1128,33 +1044,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           />
           <Text
             allowFontScaling={true}
-            color="hanPurple-500"
-            defaultColor="blue"
-            defaultWeight="Bold"
             dynamicTypeRamp="footnote"
-            font="TitilliumSansPro"
-            fontStyle={
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              }
-            }
             maxFontSizeMultiplier={1.25}
             style={
               [
-                {
-                  "fontSize": 14,
-                  "lineHeight": 21,
-                },
+                {},
                 {
                   "color": "#5517E3",
                   "fontFamily": "Titillium Sans Pro",
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "lineHeight": 21,
                 },
               ]
             }
-            weight="Regular"
           >
             suggestReason
           </Text>
@@ -1179,33 +1083,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         />
         <Text
           allowFontScaling={true}
-          color="blueIO-500"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           € 1.000,00
         </Text>
@@ -1440,34 +1332,22 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
       >
         <Text
           allowFontScaling={true}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="footnote"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Readex Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
@@ -1491,33 +1371,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         />
         <Text
           allowFontScaling={true}
-          color="blueIO-500"
-          defaultColor="black"
-          defaultWeight="Regular"
           dynamicTypeRamp="headline"
-          font="ReadexPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 24,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
+              {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
-          weight="Regular"
         >
           € 1.000,00
         </Text>
@@ -1901,22 +1769,23 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
       <View
         style={
           {
-            "flex": 1,
+            "flexGrow": 1,
           }
         }
       >
         <Text
+          allowFontScaling={false}
+          maxFontSizeMultiplier={1.25}
           style={
             [
+              {},
               {
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
+                "fontWeight": "700",
                 "lineHeight": 20,
-              },
-              {
-                "color": "#0073E6",
               },
             ]
           }
@@ -1999,17 +1868,16 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
           {
             "alignSelf": "center",
             "flexShrink": 1,
-            "fontSize": 12,
-            "lineHeight": 16,
+            "letterSpacing": 0.5,
             "textTransform": "uppercase",
           },
           {
             "color": "#555C70",
-          },
-          {
             "fontFamily": "Titillium Sans Pro",
+            "fontSize": 12,
             "fontStyle": "normal",
             "fontWeight": "600",
+            "lineHeight": 16,
           },
         ]
       }
@@ -2067,66 +1935,42 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="grey-700"
-          defaultColor="blue"
-          defaultWeight="Bold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#555C70",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
         <Text
           allowFontScaling={false}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           testValue
         </Text>
@@ -2213,66 +2057,42 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="grey-700"
-          defaultColor="blue"
-          defaultWeight="Bold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 14,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#555C70",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Regular"
         >
           label
         </Text>
         <Text
           allowFontScaling={false}
-          color="blue"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0073E6",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           testValue
         </Text>
@@ -2425,33 +2245,21 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           testValue
         </Text>
@@ -2666,33 +2474,21 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           testValue
         </Text>
@@ -2845,34 +2641,22 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Semibold"
         >
           label
         </Text>
@@ -2957,33 +2741,21 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           />
           <Text
             allowFontScaling={false}
-            color="hanPurple-500"
-            defaultColor="blue"
-            defaultWeight="Bold"
             dynamicTypeRamp="footnote"
-            font="TitilliumSansPro"
-            fontStyle={
-              {
-                "fontSize": 14,
-                "lineHeight": 21,
-              }
-            }
             maxFontSizeMultiplier={1.25}
             style={
               [
-                {
-                  "fontSize": 14,
-                  "lineHeight": 21,
-                },
+                {},
                 {
                   "color": "#5517E3",
                   "fontFamily": "Titillium Sans Pro",
+                  "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "lineHeight": 21,
                 },
               ]
             }
-            weight="Regular"
           >
             suggestReason
           </Text>
@@ -3008,33 +2780,21 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         />
         <Text
           allowFontScaling={false}
-          color="blueIO-500"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           € 1.000,00
         </Text>
@@ -3269,34 +3029,22 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
       >
         <Text
           allowFontScaling={false}
-          color="black"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="footnote"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 16,
-              "lineHeight": 21,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
             [
-              {
-                "fontSize": 16,
-                "lineHeight": 21,
-              },
+              {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 21,
               },
             ]
           }
-          weight="Semibold"
         >
           label
         </Text>
@@ -3320,33 +3068,21 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         />
         <Text
           allowFontScaling={false}
-          color="blueIO-500"
-          defaultColor="black"
-          defaultWeight="Semibold"
           dynamicTypeRamp="headline"
-          font="TitilliumSansPro"
-          fontStyle={
-            {
-              "fontSize": 18,
-              "lineHeight": 25,
-            }
-          }
           maxFontSizeMultiplier={1.25}
           style={
             [
-              {
-                "fontSize": 18,
-                "lineHeight": 25,
-              },
+              {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
+                "lineHeight": 25,
               },
             ]
           }
-          weight="Semibold"
         >
           € 1.000,00
         </Text>

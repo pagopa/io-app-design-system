@@ -44,7 +44,6 @@ export const Buttons = () => {
       {/* The title should be dynamic, got from the route object */}
       <H2
         color={"bluegrey"}
-        weight={"Semibold"}
         style={{
           marginBottom: 16,
           paddingTop: IOVisualCostants.appMarginDefault
@@ -290,11 +289,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         ButtonOutline
       </H2>
       <ComponentViewerBox name="ButtonOutline · Primary variant (using Pressable API)">
@@ -449,11 +444,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         ButtonLink
       </H2>
       <ComponentViewerBox name="ButtonLink · Primary variant (using Pressable API)">
@@ -594,11 +585,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         IconButton
       </H2>
       <ComponentViewerBox name="IconButton · Primary variant">
@@ -707,11 +694,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         IconButtonSolid
       </H2>
 
@@ -775,11 +758,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         IconButtonContained (Icebox)
       </H2>
       <ComponentViewerBox name="IconButtonContained · Primary variant">
@@ -861,11 +840,7 @@ export const Buttons = () => {
 
       <VSpacer size={40} />
 
-      <H2
-        color={"bluegrey"}
-        weight={"Semibold"}
-        style={{ marginBottom: 16, marginTop: 16 }}
-      >
+      <H2 color={"bluegrey"} style={{ marginBottom: 16, marginTop: 16 }}>
         Specific buttons
       </H2>
 
