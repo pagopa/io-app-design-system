@@ -1,10 +1,8 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOTheme, useIOTheme } from "../../core";
+import { useIOTheme } from "../../core";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
-
-const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h5FontSize: IOFontSize = 14;
 export const h5LineHeight = 16;
@@ -23,7 +21,7 @@ export const H5 = forwardRef<View, TypographicStyleProps>(
       weight: "Semibold",
       size: h5FontSize,
       lineHeight: h5LineHeight,
-      color: customColor ?? theme[defaultColor],
+      color: customColor ?? theme["textHeading-default"],
       textStyle: {
         textTransform: "uppercase",
         letterSpacing: 0.5
