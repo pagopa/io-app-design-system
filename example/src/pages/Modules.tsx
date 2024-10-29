@@ -1,14 +1,12 @@
 import {
   H2,
-  ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
   ModuleCredential,
   ModuleIDP,
   ModuleNavigation,
   ModulePaymentNotice,
-  ModuleSummary,
-  useIOExperimentalDesign
+  ModuleSummary
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, ImageSourcePropType, View } from "react-native";
@@ -367,32 +365,23 @@ const renderModuleSummary = () => (
   </>
 );
 
-const Modules = () => {
-  const { isExperimental, setExperimental } = useIOExperimentalDesign();
-
-  return (
-    <Screen>
-      <ListItemSwitch
-        label="Abilita Design Sperimentale"
-        value={isExperimental}
-        onSwitchValueChange={setExperimental}
-      />
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
-      {renderModuleIDP()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
-      {renderModulePaymentNotice()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
-      {renderModuleSummary()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
-      {renderModuleCheckout()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
-      {renderModuleAttachment()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
-      {renderModuleCredential()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
-      {renderModuleNavigation()}
-    </Screen>
-  );
-};
+const Modules = () => (
+  <Screen>
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
+    {renderModuleIDP()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
+    {renderModulePaymentNotice()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
+    {renderModuleSummary()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
+    {renderModuleCheckout()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
+    {renderModuleAttachment()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
+    {renderModuleCredential()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
+    {renderModuleNavigation()}
+  </Screen>
+);
 
 export default Modules;

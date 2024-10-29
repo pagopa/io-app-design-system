@@ -5,7 +5,6 @@ import {
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
  * Official badge component
  */
 export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const mapVariants: Record<
@@ -164,8 +162,8 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       ]}
     >
       <IOText
-        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-        weight={isExperimental ? "Regular" : "Semibold"}
+        font={"ReadexPro"}
+        weight={"Regular"}
         size={12}
         lineHeight={16}
         color={foreground}
