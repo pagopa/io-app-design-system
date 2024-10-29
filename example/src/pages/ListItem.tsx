@@ -11,12 +11,10 @@ import {
   ListItemNavAlert,
   ListItemRadio,
   ListItemRadioWithAmount,
-  ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionLogo,
   ListItemTransactionStatusWithBadge,
-  VSpacer,
-  useIOExperimentalDesign
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
@@ -27,46 +25,35 @@ const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
 
-export const ListItems = () => {
-  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+export const ListItems = () => (
+  <Screen>
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemNav</H2>
+    {renderListItemNav()}
 
-  return (
-    <Screen>
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemNav</H2>
-      <ListItemSwitch
-        label="Abilita Design Sperimentale"
-        value={isExperimental}
-        onSwitchValueChange={setExperimental}
-      />
-      {renderListItemNav()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfoCopy</H2>
+    {renderListItemInfoCopy()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfoCopy</H2>
-      {renderListItemInfoCopy()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfo</H2>
+    {renderListItemInfo()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfo</H2>
-      {renderListItemInfo()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemHeader</H2>
+    {renderListItemHeader()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemHeader</H2>
-      {renderListItemHeader()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAmount</H2>
+    {renderListItemAmount()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAmount</H2>
-      {renderListItemAmount()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAction</H2>
+    {renderListItemAction()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAction</H2>
-      {renderListItemAction()}
-
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemTransaction</H2>
-      {renderListItemTransaction()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadio</H2>
-      {renderListItemRadio()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>
-        ListItemRadioWithAmount
-      </H2>
-      {renderListItemRadioWithAmount()}
-      <VSpacer size={40} />
-    </Screen>
-  );
-};
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemTransaction</H2>
+    {renderListItemTransaction()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadio</H2>
+    {renderListItemRadio()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadioWithAmount</H2>
+    {renderListItemRadioWithAmount()}
+    <VSpacer size={40} />
+  </Screen>
+);
 
 const renderListItemNav = () => (
   <>
