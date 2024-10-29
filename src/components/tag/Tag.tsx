@@ -2,12 +2,7 @@ import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
-import {
-  IOColors,
-  IOTagRadius,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOColors, IOTagRadius, useIOTheme } from "../../core";
 import {
   IOSpacingScale,
   IOTagHSpacing,
@@ -142,8 +137,6 @@ export const Tag = ({
   iconAccessibilityLabel
 }: Tag) => {
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-
   const variantProps = getVariantProps(variant, customIconProps);
 
   return (
@@ -169,8 +162,8 @@ export const Tag = ({
       {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <IOText
-          font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-          weight={isExperimental ? "Regular" : "Semibold"}
+          font={"ReadexPro"}
+          weight={"Regular"}
           size={12}
           lineHeight={16}
           color={theme["textBody-tertiary"]}

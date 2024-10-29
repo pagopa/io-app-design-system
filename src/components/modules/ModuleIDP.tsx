@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Image, ImageSourcePropType, Platform, StyleSheet } from "react-native";
-import {
-  IOListItemLogoMargin,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOListItemLogoMargin, useIOTheme } from "../../core";
 import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { IOText } from "../typography";
 import {
@@ -44,8 +40,6 @@ export const ModuleIDP = ({
   accessibilityLabel
 }: ModuleIDP) => {
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-
   // eslint-disable-next-line no-console
   const urlLogoIDP = localLogo
     ? localLogo
@@ -59,8 +53,8 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-        weight={isExperimental ? "Regular" : "Semibold"}
+        font={"ReadexPro"}
+        weight={"Regular"}
         size={12}
         lineHeight={16}
         color={theme["textBody-tertiary"]}

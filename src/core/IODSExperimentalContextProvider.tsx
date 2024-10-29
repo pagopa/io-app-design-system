@@ -1,5 +1,5 @@
 import { constVoid } from "fp-ts/function";
-import React from "react";
+import React, { useState } from "react";
 
 type IOExperimentalContextType = {
   isExperimental: boolean;
@@ -25,7 +25,7 @@ export const IODSExperimentalContextProvider = ({
   children,
   isExperimentaEnabled
 }: React.PropsWithChildren<IOExperimentalContextProviderProps>) => {
-  const [isExperimental, setExperimental] = React.useState(
+  const [isExperimental, setExperimental] = useState(
     isExperimentaEnabled ?? false
   );
 

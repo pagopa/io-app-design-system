@@ -9,13 +9,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IOScaleValues,
-  IOSpringValues,
-  hexToRgba,
-  useIOExperimentalDesign
-} from "../../core";
+import { IOColors, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
 import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
@@ -154,29 +148,24 @@ const TabItem = ({
     onPressOut
   } = useSpringPressProgressValue(IOSpringValues.selection);
 
-  const { isExperimental } = useIOExperimentalDesign();
-  const colors = useMemo(
-    () =>
-      isExperimental ? mapColorStates[color] : mapLegacyColorStates[color],
-    [isExperimental, color]
-  );
-
   const foregroundColor = useMemo(
     () =>
-      colors.foreground[
+      mapColorStates[color].foreground[
         selected ? "selected" : disabled ? "disabled" : "default"
       ],
-    [colors.foreground, selected, disabled]
+    [color, selected, disabled]
   );
 
   const borderColor = useMemo(
     () =>
-      colors.border[selected ? "selected" : disabled ? "disabled" : "default"],
-    [colors.border, selected, disabled]
+      mapColorStates[color].border[
+        selected ? "selected" : disabled ? "disabled" : "default"
+      ],
+    [color, selected, disabled]
   );
 
   const opaquePressedBackgroundColor = hexToRgba(
-    colors.background.pressed,
+    mapColorStates[color].background.pressed,
     0.1
   );
 
@@ -196,19 +185,22 @@ const TabItem = ({
     const pressedBackgroundColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [colors.background.default, opaquePressedBackgroundColor]
+      [mapColorStates[color].background.default, opaquePressedBackgroundColor]
     );
 
     const selectedBackgroundColor = interpolateColor(
       progressSelected.value,
       [0, 1],
-      [opaquePressedBackgroundColor, colors.background.selected]
+      [opaquePressedBackgroundColor, mapColorStates[color].background.selected]
     );
 
     const selectedBorderColor = interpolateColor(
       progressSelected.value,
       [0, 1],
-      [colors.border.default, colors.border.selected]
+      [
+        mapColorStates[color].border.default,
+        mapColorStates[color].border.selected
+      ]
     );
 
     // Scale down button slightly when pressed

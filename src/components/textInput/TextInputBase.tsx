@@ -19,13 +19,7 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IOSpacingScale,
-  hexToRgba,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
+import { IOColors, IOSpacingScale, hexToRgba, useIOTheme } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
@@ -112,15 +106,6 @@ const styles = StyleSheet.create({
       "ReadexPro",
       undefined,
       "Regular"
-    )
-  },
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  textInputStyleLegacyFont: {
-    ...makeFontStyleObject(
-      inputLabelFontSize,
-      "TitilliumSansPro",
-      undefined,
-      "Semibold"
     )
   },
   textInputLabelWrapper: {
@@ -358,8 +343,6 @@ export const TextInputBase = ({
     [value, derivedInputProps]
   );
 
-  const { isExperimental } = useIOExperimentalDesign();
-
   return (
     <>
       <Pressable
@@ -417,9 +400,7 @@ export const TextInputBase = ({
           onChangeText={onChangeTextHandler}
           style={[
             styles.textInputStyle,
-            isExperimental
-              ? styles.textInputStyleFont
-              : styles.textInputStyleLegacyFont,
+            styles.textInputStyleFont,
             !disabled
               ? { color: inputTextColor }
               : { color: inputDisabledTextColor }

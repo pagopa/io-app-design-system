@@ -21,7 +21,7 @@ import {
 } from "react-native";
 import Animated, {
   Easing,
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -33,7 +33,6 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
@@ -119,7 +118,6 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
 
     /* Component visual attributes */
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
     const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
     /* Widths used for the transition:
@@ -173,7 +171,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
               showCancelButton,
               [0, 1],
               [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
-              Extrapolate.CLAMP
+              Extrapolation.CLAMP
             )
           }
         ],
@@ -246,10 +244,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             accessibilityLabel={accessibilityLabel}
             style={[
               styles.textInput,
+              styles.placeholder,
               Platform.OS === "ios"
                 ? styles.textInputIOS
-                : styles.textInputAndroid,
-              isExperimental ? styles.placeholder : styles.placeholderLegacy
+                : styles.textInputAndroid
             ]}
             selectionColor={inputCaretColor}
             cursorColor={inputCaretColor}
@@ -327,14 +325,6 @@ const styles = StyleSheet.create({
     ...makeFontStyleObject(
       inputFontSizePlaceholder,
       "ReadexPro",
-      undefined,
-      "Regular"
-    )
-  },
-  placeholderLegacy: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "TitilliumSansPro",
       undefined,
       "Regular"
     )
