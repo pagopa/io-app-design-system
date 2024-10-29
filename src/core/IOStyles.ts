@@ -285,11 +285,6 @@ interface IOSwitchVisualParams {
   padding: number;
 }
 
-interface IOSelectionTickLegacyVisualParams {
-  borderColorOffState: IOColors;
-  bgColorOnState: IOColors;
-}
-
 export const IOSelectionTickVisualParams: IOSelectionTickVisualParams = {
   size: 24,
   borderWidth: 2,
@@ -308,12 +303,6 @@ export const IOSwitchVisualParams: IOSwitchVisualParams = {
   // Space between the circle and the main shape
   padding: 2
 };
-
-export const IOSelectionTickLegacyVisualParams: IOSelectionTickLegacyVisualParams =
-  {
-    borderColorOffState: "bluegrey",
-    bgColorOnState: "blue"
-  };
 
 interface IOSelectionListItemVisualParams {
   paddingVertical: IOSpacingScale;
