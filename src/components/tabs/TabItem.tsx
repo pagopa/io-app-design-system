@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -78,46 +78,6 @@ const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
     },
     background: {
       default: hexToRgba(IOColors.white, 0),
-      selected: IOColors.white,
-      pressed: IOColors.white
-    },
-    foreground: {
-      default: "white",
-      selected: "black",
-      disabled: "white"
-    }
-  }
-};
-
-const mapLegacyColorStates: Record<
-  NonNullable<TabItem["color"]>,
-  ColorStates
-> = {
-  light: {
-    border: {
-      default: IOColors["grey-300"],
-      selected: IOColors.blue,
-      disabled: hexToRgba(IOColors.white)
-    },
-    background: {
-      default: IOColors.white,
-      selected: hexToRgba(IOColors.blue, 0.1),
-      pressed: IOColors.white
-    },
-    foreground: {
-      default: "black",
-      selected: "blue",
-      disabled: "grey-700"
-    }
-  },
-  dark: {
-    border: {
-      default: hexToRgba(IOColors.white, 0),
-      selected: IOColors.white,
-      disabled: hexToRgba(IOColors.white, 0.5)
-    },
-    background: {
-      default: "#ffffff00",
       selected: IOColors.white,
       pressed: IOColors.white
     },
@@ -208,7 +168,7 @@ const TabItem = ({
       progressPressed.value,
       [0, 1],
       [1, IOScaleValues?.basicButton?.pressedState],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {

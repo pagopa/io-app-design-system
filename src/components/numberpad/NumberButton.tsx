@@ -13,8 +13,7 @@ import {
   IOColors,
   IONumberPadButtonStyles,
   IOScaleValues,
-  IOSpringValues,
-  hexToRgba
+  IOSpringValues
 } from "../../core";
 import { H3 } from "../typography";
 
@@ -56,18 +55,6 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   }
 };
 
-const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
-  light: {
-    background: IOColors["grey-100"],
-    pressed: IOColors["grey-200"],
-    foreground: "blue"
-  },
-  dark: {
-    background: hexToRgba(IOColors.black, 0.1),
-    pressed: hexToRgba(IOColors.white, 0.5),
-    foreground: "white"
-  }
-};
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
  *
