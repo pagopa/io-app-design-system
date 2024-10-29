@@ -11,7 +11,6 @@ import {
   IOListItemVisualParams,
   IOStyles,
   IOVisualCostants,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 
@@ -125,7 +124,6 @@ export const ListItemTransaction = ({
   numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const maybeBadgeText = pipe(
@@ -138,9 +136,7 @@ export const ListItemTransaction = ({
     return <SkeletonComponent />;
   }
 
-  const interactiveColor: IOColors = isExperimental
-    ? theme["interactiveElem-default"]
-    : "blue";
+  const interactiveColor: IOColors = theme["interactiveElem-default"];
 
   const amountColor: IOColors = theme["textBody-default"];
   const successColor: IOColors = theme.successText;

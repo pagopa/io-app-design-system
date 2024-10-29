@@ -17,7 +17,6 @@ import {
   IOSpringValues,
   IOStyles,
   hexToRgba,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -45,7 +44,6 @@ export const ListItemNavAlert = ({
   testID
 }: ListItemNavAlert) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-  const { isExperimental } = useIOExperimentalDesign();
 
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
@@ -92,8 +90,6 @@ export const ListItemNavAlert = ({
       )}
     </>
   );
-
-  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
 
   const mapBackgroundStates: Record<string, string> = {
     default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
@@ -174,7 +170,7 @@ export const ListItemNavAlert = ({
           <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
             <Icon
               name="chevronRightListItem"
-              color={iconColor}
+              color={theme["interactiveElem-default"]}
               size={IOListItemVisualParams.chevronSize}
             />
           </View>

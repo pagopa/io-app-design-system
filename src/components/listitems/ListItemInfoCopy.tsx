@@ -17,7 +17,6 @@ import {
   IOSpringValues,
   IOStyles,
   hexToRgba,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -47,7 +46,6 @@ export const ListItemInfoCopy = ({
   testID
 }: ListItemInfoCopy) => {
   const isPressed = useSharedValue(0);
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const componentValueToAccessibility = useMemo(
@@ -63,9 +61,7 @@ export const ListItemInfoCopy = ({
     [label, componentValueToAccessibility, accessibilityLabel]
   );
 
-  const foregroundColor = isExperimental
-    ? theme["interactiveElem-default"]
-    : "blue";
+  const foregroundColor = theme["interactiveElem-default"];
 
   const listItemInfoCopyContent = (
     <>

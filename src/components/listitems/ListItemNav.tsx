@@ -7,7 +7,7 @@ import {
   View
 } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -24,7 +24,6 @@ import {
   IOSpringValues,
   IOStyles,
   hexToRgba,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -115,7 +114,6 @@ export const ListItemNav = ({
   numberOfLines
 }: ListItemNav) => {
   const isPressed = useSharedValue(0);
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   const withMargin = (GraphicalAsset: ReactNode) => (
@@ -177,10 +175,6 @@ export const ListItemNav = ({
     pressed: IOColors[theme["listItem-pressed"]]
   };
 
-  const navIconColor = isExperimental
-    ? theme["interactiveElem-default"]
-    : "blue";
-
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -194,7 +188,7 @@ export const ListItemNav = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -228,8 +222,6 @@ export const ListItemNav = ({
       onPress(event);
     }
   };
-
-  const primaryColor: IOColors = isExperimental ? "blueIO-500" : "blue";
 
   return (
     <Pressable
@@ -273,11 +265,13 @@ export const ListItemNav = ({
           {avatar && withMargin(<Avatar size="small" {...avatar} />)}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
-          {loading && <LoadingSpinner color={primaryColor} />}
+          {loading && (
+            <LoadingSpinner color={theme["interactiveElem-default"]} />
+          )}
           {!loading && !hideChevron && (
             <Icon
               name="chevronRightListItem"
-              color={navIconColor}
+              color={theme["interactiveElem-default"]}
               size={IOListItemVisualParams.chevronSize}
             />
           )}
