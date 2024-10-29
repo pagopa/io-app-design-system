@@ -2,7 +2,7 @@ import * as React from "react";
 import { useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -14,8 +14,7 @@ import {
   IOButtonStyles,
   IOIconButtonStyles,
   IOScaleValues,
-  IOSpringValues,
-  useIOExperimentalDesign
+  IOSpringValues
 } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
@@ -71,36 +70,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<IconButtonSolid["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: IOColors.blue,
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-100"]
-    },
-    icon: {
-      default: IOColors.white,
-      disabled: IOColors["grey-450"]
-    }
-  },
-  contrast: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["blue-50"],
-      disabled: hexToRgba(IOColors.white, 0.25)
-    },
-    icon: {
-      default: IOColors.blue,
-      disabled: IOColors.blue
-    }
-  }
-};
-
 export const IconButtonSolid = ({
   icon,
   color = "primary",
@@ -111,7 +80,6 @@ export const IconButtonSolid = ({
   testID
 }: IconButtonSolid) => {
   const isPressed = useSharedValue(0);
-  const { isExperimental } = useIOExperimentalDesign();
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.exaggeratedButton?.pressedState;
 
@@ -120,16 +88,15 @@ export const IconButtonSolid = ({
     withSpring(isPressed.value, IOSpringValues.button)
   );
 
-  const colorMap = React.useMemo(
-    () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-    [isExperimental]
-  );
   // Interpolate animation values from `isPressed` values
   const pressedAnimationStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       progressPressed.value,
       [0, 1],
-      [colorMap[color].background.default, colorMap[color].background.pressed]
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.pressed
+      ]
     );
 
     // Scale down button slightly when pressed
@@ -137,7 +104,7 @@ export const IconButtonSolid = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -176,10 +143,10 @@ export const IconButtonSolid = ({
           !disabled && pressedAnimationStyle,
           disabled
             ? {
-                backgroundColor: colorMap[color]?.background?.disabled
+                backgroundColor: mapColorStates[color]?.background?.disabled
               }
             : {
-                backgroundColor: colorMap[color]?.background?.default
+                backgroundColor: mapColorStates[color]?.background?.default
               }
         ]}
       >
@@ -187,8 +154,8 @@ export const IconButtonSolid = ({
           name={icon}
           color={
             !disabled
-              ? colorMap[color]?.icon?.default
-              : colorMap[color]?.icon?.disabled
+              ? mapColorStates[color]?.icon?.default
+              : mapColorStates[color]?.icon?.disabled
           }
         />
       </Animated.View>
