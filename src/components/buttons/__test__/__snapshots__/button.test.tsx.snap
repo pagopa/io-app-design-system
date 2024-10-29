@@ -153,13 +153,13 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
           "paddingHorizontal": 24,
           "textAlignVertical": "center",
         },
-        false,
-        {
-          "borderWidth": 2,
-        },
         {
           "height": 48,
         },
+        {
+          "borderWidth": 2,
+        },
+        false,
         false,
         {
           "backgroundColor": "rgba(231,236,252,0)",
@@ -266,12 +266,12 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           "textAlignVertical": "center",
         },
         {
+          "height": 48,
+        },
+        {
           "overflow": "hidden",
         },
         false,
-        {
-          "height": 48,
-        },
         {
           "backgroundColor": "#0B3EE3",
         },
@@ -802,10 +802,10 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Titillium Sans Pro",
+            "fontFamily": "Readex Pro",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
+            "fontWeight": "400",
             "lineHeight": undefined,
           },
           {
@@ -864,24 +864,25 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 4,
+          "borderCurve": "continuous",
+          "borderRadius": 8,
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingHorizontal": 16,
+          "paddingHorizontal": 24,
           "textAlignVertical": "center",
         },
-        false,
         {
-          "borderWidth": 1,
+          "height": 48,
         },
         {
-          "height": 40,
+          "borderWidth": 2,
         },
         false,
+        false,
         {
-          "backgroundColor": "rgba(0,115,230,0)",
-          "borderColor": "#0073E6",
+          "backgroundColor": "rgba(231,236,252,0)",
+          "borderColor": "#0B3EE3",
         },
         {
           "backgroundColor": undefined,
@@ -908,10 +909,10 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Titillium Sans Pro",
+            "fontFamily": "Readex Pro",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
+            "fontWeight": "400",
             "lineHeight": undefined,
           },
           [
@@ -975,22 +976,23 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 4,
+          "borderCurve": "continuous",
+          "borderRadius": 8,
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingHorizontal": 16,
+          "paddingHorizontal": 24,
           "textAlignVertical": "center",
+        },
+        {
+          "height": 48,
         },
         {
           "overflow": "hidden",
         },
         false,
         {
-          "height": 40,
-        },
-        {
-          "backgroundColor": "#0073E6",
+          "backgroundColor": "#0B3EE3",
         },
         {
           "backgroundColor": undefined,
@@ -1028,10 +1030,10 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             {},
             {
               "color": "#FFFFFF",
-              "fontFamily": "Titillium Sans Pro",
+              "fontFamily": "Readex Pro",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
               "lineHeight": 20,
             },
             {
@@ -1130,7 +1132,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0073E6",
+            "color": "#0B3EE3",
           },
           {
             "flex": 0,
@@ -1139,7 +1141,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
           },
         ]
       }
-      tintColor="#0073E6"
+      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
@@ -1262,7 +1264,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0073E6",
+            "color": "#0B3EE3",
           },
           {
             "flex": 0,
@@ -1271,7 +1273,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           },
         ]
       }
-      tintColor="#0073E6"
+      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
@@ -1367,7 +1369,7 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
           ],
         },
         {
-          "backgroundColor": "#0073E6",
+          "backgroundColor": "#0B3EE3",
         },
       ]
     }

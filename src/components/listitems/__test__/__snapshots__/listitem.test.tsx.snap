@@ -1781,10 +1781,10 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "400",
                 "lineHeight": 20,
               },
             ]
@@ -1963,11 +1963,11 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
@@ -2085,11 +2085,11 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               {},
               {
                 "color": "#0073E6",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
@@ -2252,11 +2252,11 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
@@ -2481,11 +2481,11 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
@@ -2787,11 +2787,11 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }
@@ -3075,11 +3075,11 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontFamily": "Readex Pro",
+                "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 25,
+                "fontWeight": "400",
+                "lineHeight": 24,
               },
             ]
           }

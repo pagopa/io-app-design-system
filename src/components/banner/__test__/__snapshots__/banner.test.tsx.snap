@@ -429,11 +429,11 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             {},
             {
               "color": "#031344",
-              "fontFamily": "Titillium Sans Pro",
-              "fontSize": 18,
+              "fontFamily": "Readex Pro",
+              "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "600",
-              "lineHeight": 25,
+              "fontWeight": "400",
+              "lineHeight": 24,
             },
           ]
         }
@@ -541,10 +541,10 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
                   {},
                   {
                     "color": "#0E0F13",
-                    "fontFamily": "Titillium Sans Pro",
+                    "fontFamily": "Readex Pro",
                     "fontSize": 16,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
+                    "fontWeight": "400",
                     "lineHeight": undefined,
                   },
                   {

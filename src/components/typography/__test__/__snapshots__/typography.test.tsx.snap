@@ -57,10 +57,10 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "400",
         "lineHeight": 20,
       },
     ]
@@ -80,11 +80,11 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 31,
+        "fontFamily": "Readex Pro",
+        "fontSize": 28,
         "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 43,
+        "fontWeight": "400",
+        "lineHeight": 42,
       },
     ]
   }
@@ -103,11 +103,11 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 31,
+        "fontFamily": "Readex Pro",
+        "fontSize": 28,
         "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 43,
+        "fontWeight": "400",
+        "lineHeight": 42,
       },
     ]
   }
@@ -126,11 +126,11 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 28,
+        "fontFamily": "Readex Pro",
+        "fontSize": 26,
         "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 40,
+        "fontWeight": "400",
+        "lineHeight": 39,
       },
     ]
   }
@@ -149,10 +149,10 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 22,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 33,
       },
     ]
@@ -172,10 +172,10 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
       {},
       {
         "color": "#CCD4DC",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 22,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 33,
       },
     ]
@@ -195,10 +195,10 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 22,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 33,
       },
     ]
@@ -218,10 +218,10 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 22,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 33,
       },
     ]
@@ -241,10 +241,10 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 22,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 33,
       },
     ]
@@ -264,10 +264,10 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 20,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 24,
       },
     ]
@@ -287,10 +287,10 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
       {},
       {
         "color": "#0073E6",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 20,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 24,
       },
     ]
@@ -310,10 +310,10 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Readex Pro",
         "fontSize": 20,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 24,
       },
     ]
@@ -437,11 +437,11 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 18,
+        "fontFamily": "Readex Pro",
+        "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 25,
+        "fontWeight": "400",
+        "lineHeight": 24,
       },
     ]
   }

@@ -98,10 +98,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -177,10 +177,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -256,10 +256,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -351,10 +351,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -430,10 +430,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -509,10 +509,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -604,10 +604,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -683,10 +683,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -762,10 +762,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
@@ -998,10 +998,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Readex Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "400",
                   "lineHeight": 33,
                 },
               ]
