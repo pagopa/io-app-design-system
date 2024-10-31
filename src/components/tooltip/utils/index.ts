@@ -1,8 +1,19 @@
 import { ScaledSize } from 'react-native';
-import { ChildrenCoords, DisplayInsets, Placement } from './types';
+import { IOVisualCostants } from '../../../core';
+import { ChildrenCoords, DisplayInsets, Placement, TooltipLayout } from './types';
 
 const ARROW_WIDTH = 24;
 const ARROW_HEIGHT = 14;
+const DEFAULT_INSETS: DisplayInsets = {
+  top: 0,
+  bottom: 0,
+  left: IOVisualCostants.appMarginDefault,
+  right: IOVisualCostants.appMarginDefault,
+};
+
+export const getDisplayInsets = (
+  displayInsets: Partial<DisplayInsets>
+): DisplayInsets => ({ ...DEFAULT_INSETS, ...displayInsets });
 
 export const getArrowBoxByPlacement = (placement: Placement) => {
   switch (placement) {
@@ -96,4 +107,18 @@ export const getArrowCoords = (
     default:
       return {};
   }
+};
+
+export const getTooltipVerticalAlignment = (placement: Placement, childrenCoords: ChildrenCoords, tooltipLayout?: TooltipLayout) => {
+  if ((placement === "left" || placement === "right") && tooltipLayout) {
+    return {
+      transform: [
+        {
+          translateY:
+            -tooltipLayout.height / 2 + childrenCoords.height / 2
+        }
+      ]
+    };
+  }
+  return null;
 };

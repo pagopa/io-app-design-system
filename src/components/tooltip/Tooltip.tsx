@@ -7,22 +7,17 @@ import React, {
   JSXElementConstructor
 } from "react";
 import { View, Modal, Dimensions, LayoutChangeEvent } from "react-native";
-import { IOColors, IOVisualCostants } from '../../core';
+import { IOColors } from '../../core';
 import { Body, H6 } from '../typography';
 import { IconButton } from '../buttons';
 import { BottomArrow, LeftArrow, RightArrow, TopArrow } from './Arrows';
-import { getArrowBoxByPlacement, getArrowCoords, getTooltipCoords } from './utils';
+import { getArrowBoxByPlacement, getArrowCoords, getDisplayInsets, getTooltipCoords, getTooltipVerticalAlignment } from './utils';
 import { getChildrenPosition, tooltipStyles } from './styles';
 import { ChildrenCoords, DisplayInsets, Placement, TooltipLayout } from './utils/types';
 
 
 const screenDimensions = Dimensions.get("screen");
-const DEFAULT_INSETS: DisplayInsets = {
-  top: 0,
-  bottom: 0,
-  left: IOVisualCostants.appMarginDefault,
-  right: IOVisualCostants.appMarginDefault,
-};
+
 const ARROWS_BY_PLACEMENT: Record<Placement, JSXElementConstructor<{ color: string }>> = {
   top: TopArrow,
   bottom: BottomArrow,
@@ -33,10 +28,10 @@ const ARROWS_BY_PLACEMENT: Record<Placement, JSXElementConstructor<{ color: stri
 type Props = {
   title: string;
   content: string;
-  placement?: Placement;
-  closeIconAccessibilityLabel: string;
   isVisible: boolean;
+  placement?: Placement;
   displayInsets?: Partial<DisplayInsets>;
+  closeIconAccessibilityLabel: string;
   onClose: () => void;
 };
 
@@ -81,7 +76,6 @@ export const Tooltip = ({
           visible={isVisible}
         >
           <View
-            
             pointerEvents="none"
             style={[tooltipStyles.childrenContainer, getChildrenPosition(childrenCoords)]}
           >
@@ -92,19 +86,8 @@ export const Tooltip = ({
             onLayout={handleTooltipOnLayout}
             style={[
               tooltipStyles.tooltipContainer,
-              getTooltipCoords(placement, childrenCoords, { ...DEFAULT_INSETS, ...displayInsets }, screenDimensions),
-              ...((placement === "left" || placement === "right") && tooltipLayout
-                ? [
-                  {
-                    transform: [
-                      {
-                        translateY:
-                          -tooltipLayout.height / 2 + childrenCoords.height / 2
-                      }
-                    ]
-                  }
-                ]
-                : [])
+              getTooltipCoords(placement, childrenCoords, getDisplayInsets(displayInsets), screenDimensions),
+              getTooltipVerticalAlignment(placement, childrenCoords, tooltipLayout)
             ]}
           >
             <View
