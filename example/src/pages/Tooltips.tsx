@@ -8,6 +8,8 @@ const Tooltips = () => {
   const [isBottomVisible, setIsBottomVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
   const [isLeftVisible, setIsLeftVisible] = useState(false);
+  const [isTopLeftVisible, setIsTopLefttVisible] = useState(false);
+  const [isBottomRightVisible, setIsBottomRighttVisible] = useState(false);
 
   return (
     <Screen>
@@ -53,6 +55,29 @@ const Tooltips = () => {
             closeIconAccessibilityLabel=''
           >
             <ButtonSolid fullWidth label='Left' onPress={() => setIsLeftVisible(true)} />
+          </Tooltip>
+        </View>
+        <VSpacer />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Tooltip
+            placement='top'
+            isVisible={isTopLeftVisible}
+            title='Top Tooltip'
+            content='Some top tooltip content'
+            onClose={() => setIsTopLefttVisible(false)}
+            closeIconAccessibilityLabel=''
+          >
+            <ButtonSolid fullWidth label='Top' onPress={() => setIsTopLefttVisible(true)} />
+          </Tooltip>
+          <Tooltip
+            placement='bottom'
+            isVisible={isBottomRightVisible}
+            title='Bottom Tooltip'
+            content='Some bottom tooltip content'
+            onClose={() => setIsBottomRighttVisible(false)}
+            closeIconAccessibilityLabel=''
+          >
+            <ButtonSolid fullWidth label='Bottom' onPress={() => setIsBottomRighttVisible(true)} />
           </Tooltip>
         </View>
       </View>
