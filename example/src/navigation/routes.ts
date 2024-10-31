@@ -66,6 +66,10 @@ const APP_ROUTES = {
     TOASTS: {
       route: "DESIGN_SYSTEM_TOASTS",
       title: "Toasts"
+    },
+    TOOLTIPS: {
+      route: "DESIGN_SYSTEM_TOOLTIPS",
+      title: "Tooltips"
     }
   },
   SCREENS: {
