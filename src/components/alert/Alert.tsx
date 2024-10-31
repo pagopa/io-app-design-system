@@ -1,13 +1,16 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import {
   GestureResponderEvent,
+  NativeSyntheticEvent,
   PixelRatio,
   Pressable,
   StyleSheet,
+  TextLayoutEventData,
   View
 } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
+  SharedValue,
   interpolate,
   useAnimatedStyle,
   useDerivedValue,
@@ -119,7 +122,16 @@ export const Alert = React.forwardRef<View, AlertType>(
     }: AlertType,
     viewRef
   ): JSX.Element => {
-    const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+    const isPressed: SharedValue<number> = useSharedValue(0);
+
+    const [isMultiline, setIsMultiline] = useState(false);
+
+    const onTextLayout = useCallback(
+      (event: NativeSyntheticEvent<TextLayoutEventData>) => {
+        setIsMultiline(event.nativeEvent.lines.length > 1);
+      },
+      []
+    );
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -136,7 +148,7 @@ export const Alert = React.forwardRef<View, AlertType>(
         progressPressed.value,
         [0, 1],
         [1, animationScaleValue],
-        Extrapolate.CLAMP
+        Extrapolation.CLAMP
       );
 
       return {
@@ -155,7 +167,12 @@ export const Alert = React.forwardRef<View, AlertType>(
 
     const renderMainBlock = () => (
       <>
-        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+        <View
+          style={{
+            marginRight: IOVisualCostants.iconMargin,
+            alignSelf: "flex-start"
+          }}
+        >
           <Icon
             name={mapVariantStates[variant].icon}
             size={iconSize}
@@ -168,8 +185,10 @@ export const Alert = React.forwardRef<View, AlertType>(
       Tested on both Android and iOS. */}
         <View
           style={[
-            !title && { marginTop: -5 * PixelRatio.getFontScale() },
-            { marginBottom: -3 * PixelRatio.getFontScale(), flex: 1 }
+            !title &&
+              isMultiline && { marginTop: -5 * PixelRatio.getFontScale() },
+            isMultiline && { marginBottom: -3 * PixelRatio.getFontScale() },
+            { flex: 1 }
           ]}
         >
           {title && (
@@ -182,6 +201,7 @@ export const Alert = React.forwardRef<View, AlertType>(
             color={mapVariantStates[variant].foreground}
             weight={"Regular"}
             accessibilityRole="text"
+            onTextLayout={onTextLayout}
           >
             {content}
           </Label>
