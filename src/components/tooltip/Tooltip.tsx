@@ -50,25 +50,32 @@ export const Tooltip = ({
   const childRef = useRef<View>(null);
   const Arrow = ARROWS_BY_PLACEMENT[placement];
 
-  useEffect(() => {
-    if (childRef.current) {
-      childRef.current.measure((_, __, width, height, px, py) => {
-        setChildrenCoords({
-          x: px,
-          y: py,
-          width,
-          height
-        });
+
+  const measureChildrenCoords = useCallback(() => {
+    childRef.current?.measure((_, __, width, height, px, py) => {
+      setChildrenCoords({
+        x: px,
+        y: py,
+        width,
+        height
       });
-    }
+    });
   }, []);
+
+  useEffect(() => {
+    if (childRef.current && isVisible) {
+      measureChildrenCoords();
+    } else {
+      setChildrenCoords(undefined);
+    }
+  }, [isVisible, measureChildrenCoords]);
 
   const handleTooltipOnLayout = useCallback(({ nativeEvent }: LayoutChangeEvent) => {
     setTooltipLayout(nativeEvent.layout);
   }, []);
 
   return (
-    <View>
+    <>
       <View ref={childRef}>{children}</View>
       {childrenCoords && (
         <Modal
@@ -81,7 +88,7 @@ export const Tooltip = ({
           >
             {children}
           </View>
-          <View style={tooltipStyles.overlay} />
+            <View style={tooltipStyles.overlay} />
           <View
             onLayout={handleTooltipOnLayout}
             style={[
@@ -114,7 +121,7 @@ export const Tooltip = ({
           </View>
         </Modal>
       )}
-    </View>
+    </>
   );
 };
 

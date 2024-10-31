@@ -4,6 +4,7 @@ import { ChildrenCoords, DisplayInsets, Placement, TooltipLayout } from './types
 
 const ARROW_WIDTH = 24;
 const ARROW_HEIGHT = 14;
+const EMPTY_SPACE = 8;
 const DEFAULT_INSETS: DisplayInsets = {
   top: 0,
   bottom: 0,
@@ -42,13 +43,13 @@ export const getTooltipCoords = (
   switch (placement) {
     case "top":
       return {
-        bottom: screenHeight - childrenCoords.y + ARROW_HEIGHT,
+        bottom: screenHeight - childrenCoords.y + ARROW_HEIGHT + EMPTY_SPACE,
         left: displayInsets.left,
         width: screenWidth - displayInsets.left - displayInsets.right
       };
     case "bottom":
       return {
-        top: childrenCoords.y + childrenCoords.height + ARROW_HEIGHT,
+        top: childrenCoords.y + childrenCoords.height + ARROW_HEIGHT + EMPTY_SPACE,
         left: displayInsets.left,
         width: screenWidth - displayInsets.left - displayInsets.right
       };
@@ -57,17 +58,17 @@ export const getTooltipCoords = (
         top: childrenCoords.y,
         left: displayInsets.left,
         width:
-          screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT - displayInsets.left
+          screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT - displayInsets.left - EMPTY_SPACE
       };
     case "right":
-      const elementSize = childrenCoords.width + childrenCoords.x + ARROW_HEIGHT;
+      const elementSize = childrenCoords.width + childrenCoords.x + ARROW_HEIGHT + EMPTY_SPACE;
 
       return {
         top: childrenCoords.y,
         left: elementSize,
         width:
           screenWidth -
-          (elementSize + displayInsets.right)
+          (elementSize + displayInsets.right) - EMPTY_SPACE
       };
     default:
       return {};
@@ -84,24 +85,24 @@ export const getArrowCoords = (
   switch (placement) {
     case "top":
       return {
-        bottom: screenHeight - childrenCoords.y,
+        bottom: screenHeight - childrenCoords.y + EMPTY_SPACE,
         left: childrenCoords.x + childrenCoords.width / 2 - ARROW_WIDTH / 2
       };
     case "bottom":
       return {
-        top: childrenCoords.y + childrenCoords.height,
+        top: childrenCoords.y + childrenCoords.height + EMPTY_SPACE,
         left: childrenCoords.x + childrenCoords.width / 2 - ARROW_WIDTH / 2
       };
     case "left":
       return {
         top: childrenCoords.y,
-        left: screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT,
+        left: screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT - EMPTY_SPACE - 1, // This `-1` is necessary because of the Svg size doesn't match the box size
         transform: [{ translateY: ARROW_WIDTH / 2 }]
       };
     case "right":
       return {
         top: childrenCoords.y,
-        left: childrenCoords.width + childrenCoords.x,
+        left: childrenCoords.width + childrenCoords.x + EMPTY_SPACE,
         transform: [{ translateY: ARROW_WIDTH / 2 }]
       };
     default:
