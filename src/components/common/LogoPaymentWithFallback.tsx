@@ -1,7 +1,4 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import * as React from "react";
-import { findFirstCaseInsensitive } from "../../utils/object";
 import { IOColors } from "../../core";
 import { IOIconSizeScale, Icon } from "../icons";
 import {
@@ -12,6 +9,7 @@ import {
   LogoPayment,
   LogoPaymentExt
 } from "../logos";
+import { findFirstCaseInsensitive } from "../../utils/object";
 
 export type LogoPaymentWithFallback = {
   brand?: string;
@@ -42,19 +40,19 @@ export const LogoPaymentWithFallback = ({
 }: LogoPaymentWithFallback) => {
   const logos = isExtended ? IOPaymentExtLogos : IOPaymentLogos;
 
-  return pipe(
-    brand,
-    O.fromNullable,
-    O.chain(findFirstCaseInsensitive(logos)),
-    O.map(([brand]) => brand),
-    O.fold(
-      () => <Icon name="creditCard" size={size} color={fallbackIconColor} />,
-      brand =>
-        isExtended ? (
-          <LogoPaymentExt name={brand as IOLogoPaymentExtType} size={size} />
-        ) : (
-          <LogoPayment name={brand as IOLogoPaymentType} size={size} />
-        )
-    )
+  if (!brand) {
+    return <Icon name="creditCard" size={size} color={fallbackIconColor} />;
+  }
+
+  const findCase = findFirstCaseInsensitive(logos, brand);
+
+  if (!findCase) {
+    return <Icon name="creditCard" size={size} color={fallbackIconColor} />;
+  }
+
+  return isExtended ? (
+    <LogoPaymentExt name={findCase as IOLogoPaymentExtType} size={size} />
+  ) : (
+    <LogoPayment name={findCase as IOLogoPaymentType} size={size} />
   );
 };
