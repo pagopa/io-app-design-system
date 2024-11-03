@@ -82,6 +82,7 @@ describe("Test List Item Components", () => {
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         isLoading={true}
         onPress={onButtonPress}
       />
@@ -182,6 +183,7 @@ describe("Test List Item Components - Experimental Enabled ", () => {
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         isLoading={true}
         onPress={onButtonPress}
       />

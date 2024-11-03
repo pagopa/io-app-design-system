@@ -86,6 +86,7 @@ const renderModulePaymentNotice = () => (
           onPress={mockFn}
           paymentNoticeStatus="default"
           paymentNoticeAmount="100,00 €"
+          paymentNoticeAmountAccessibilityLabel="100,00 €"
           subtitle="F24"
           title="Codice avviso"
         />
@@ -109,6 +110,7 @@ const renderModulePaymentNotice = () => (
           onPress={mockFn}
           paymentNoticeStatus="default"
           paymentNoticeAmount="100,00 €"
+          paymentNoticeAmountAccessibilityLabel="100,00 €"
           title="Codice avviso"
           subtitle="302012131232131"
         />

@@ -489,6 +489,7 @@ const renderListItemTransaction = () => (
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         isLoading={true}
         onPress={onButtonPress}
       />
@@ -516,6 +517,7 @@ const renderListItemTransaction = () => (
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         onPress={onButtonPress}
       />
 
@@ -526,6 +528,7 @@ const renderListItemTransaction = () => (
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         paymentLogoIcon={"mastercard"}
         onPress={onButtonPress}
       />
@@ -537,6 +540,7 @@ const renderListItemTransaction = () => (
         subtitle="subtitle"
         transactionStatus="success"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         hasChevronRight={true}
         onPress={onButtonPress}
       />
@@ -557,6 +561,7 @@ const renderListItemTransaction = () => (
         title="This one is clickable but has a very long title"
         subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
         transactionStatus="success"
@@ -570,6 +575,7 @@ const renderListItemTransaction = () => (
         transactionStatus="success"
         paymentLogoIcon={<Icon name="notice" color="red" />}
         transactionAmount=""
+        transactionAmountAccessibilityLabel=""
         onPress={onButtonPress}
       />
 
@@ -581,6 +587,7 @@ const renderListItemTransaction = () => (
         transactionStatus="refunded"
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         transactionAmount="€ 100"
+        transactionAmountAccessibilityLabel="€ 100"
         onPress={onButtonPress}
       />
 
@@ -591,6 +598,7 @@ const renderListItemTransaction = () => (
         numberOfLines={1}
         subtitle="Subtitle"
         transactionAmount="€ 1.000,00"
+        transactionAmountAccessibilityLabel="€ 1.000,00"
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
         transactionStatus="success"

@@ -39,7 +39,8 @@ describe("addCacheTimestampToUri", () => {
       const testUri = { uri: "test" };
       const res = addCacheTimestampToUri(testUri);
       const uriRegex = /test\?ts=\d+/;
-      expect(res.uri).toMatch(uriRegex);
+      expect(res?.uri).toBeDefined();
+      expect(res?.uri).toMatch(uriRegex);
     });
 
     it("shouldn't edit the object if no uri is provided", () => {

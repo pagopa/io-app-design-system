@@ -27,6 +27,7 @@ export const Primary: Story = {
     title: "Title",
     paymentNoticeStatus: "default",
     paymentNoticeAmount: "100,00€",
+    paymentNoticeAmountAccessibilityLabel: "100,00€",
     subtitle: "Subtitle",
     accessibilityLabel: "accessibilityLabel",
     onPress: () => action("clicked")()
