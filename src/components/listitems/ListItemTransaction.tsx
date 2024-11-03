@@ -1,5 +1,3 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import React from "react";
 import { ImageURISource, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
@@ -14,8 +12,6 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-
-import { getAccessibleAmountText } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
@@ -76,11 +72,13 @@ export type ListItemTransaction = WithTestID<
           transactionStatus: ListItemTransactionStatusWithoutBadge;
           badgeText?: string;
           transactionAmount: string;
+          transactionAmountAccessibilityLabel: string;
         }
       | {
           transactionStatus: ListItemTransactionStatusWithBadge;
           badgeText: string;
           transactionAmount?: string;
+          transactionAmountAccessibilityLabel?: string;
         }
     )
 >;
@@ -120,6 +118,7 @@ export const ListItemTransaction = ({
   testID,
   title,
   transactionAmount,
+  transactionAmountAccessibilityLabel,
   badgeText,
   transactionStatus = "success",
   numberOfLines = 2,
@@ -128,11 +127,7 @@ export const ListItemTransaction = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  const maybeBadgeText = pipe(
-    badgeText,
-    O.fromNullable,
-    O.getOrElse(() => "-")
-  );
+  const maybeBadgeText = badgeText ?? "-";
 
   if (isLoading) {
     return <SkeletonComponent />;
@@ -151,7 +146,7 @@ export const ListItemTransaction = ({
         case "success":
           return (
             <H6
-              accessibilityLabel={getAccessibleAmountText(transactionAmount)}
+              accessibilityLabel={transactionAmountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : amountColor}
               numberOfLines={numberOfLines}
             >
@@ -161,7 +156,7 @@ export const ListItemTransaction = ({
         case "refunded":
           return (
             <H6
-              accessibilityLabel={getAccessibleAmountText(transactionAmount)}
+              accessibilityLabel={transactionAmountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : successColor}
               numberOfLines={numberOfLines}
             >
@@ -216,33 +211,30 @@ export const ListItemTransaction = ({
     );
   };
 
-  return pipe(
-    onPress,
-    O.fromNullable,
-    O.fold(
-      () => (
-        <View
-          style={IOListItemStyles.listItem}
-          testID={testID}
-          accessible={accessible}
-          accessibilityLabel={accessibilityLabel}
-        >
-          <View style={IOListItemStyles.listItemInner}>
-            <ListItemTransactionContent />
-          </View>
-        </View>
-      ),
-      onPress => (
-        <PressableListItemBase
-          onPress={onPress}
-          testID={testID}
-          accessibilityLabel={accessibilityLabel}
-        >
+  if (onPress) {
+    return (
+      <PressableListItemBase
+        onPress={onPress}
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
+      >
+        <ListItemTransactionContent />
+      </PressableListItemBase>
+    );
+  } else {
+    return (
+      <View
+        style={IOListItemStyles.listItem}
+        testID={testID}
+        accessible={accessible}
+        accessibilityLabel={accessibilityLabel}
+      >
+        <View style={IOListItemStyles.listItemInner}>
           <ListItemTransactionContent />
-        </PressableListItemBase>
-      )
-    )
-  );
+        </View>
+      </View>
+    );
+  }
 };
 
 const SkeletonComponent = () => (
