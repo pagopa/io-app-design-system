@@ -2,7 +2,6 @@ import * as React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { IOListItemVisualParams, IOSpacer, useIOTheme } from "../../core";
-import { getAccessibleAmountText } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
@@ -31,11 +30,13 @@ export type ModulePaymentNoticeProps = WithTestID<
     | {
         paymentNoticeStatus: Extract<PaymentNoticeStatus, "default">;
         paymentNoticeAmount: string;
+        paymentNoticeAmountAccessibilityLabel: string;
         badgeText?: never;
       }
     | {
         paymentNoticeStatus: Exclude<PaymentNoticeStatus, "default">;
         paymentNoticeAmount?: never;
+        paymentNoticeAmountAccessibilityLabel?: never;
         badgeText: string;
       }
   )
@@ -54,6 +55,7 @@ const ModulePaymentNoticeContent = ({
   subtitle,
   paymentNoticeStatus,
   paymentNoticeAmount,
+  paymentNoticeAmountAccessibilityLabel,
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const theme = useIOTheme();
@@ -63,7 +65,7 @@ const ModulePaymentNoticeContent = ({
       case "default":
         return (
           <H6
-            accessibilityLabel={getAccessibleAmountText(paymentNoticeAmount)}
+            accessibilityLabel={paymentNoticeAmountAccessibilityLabel}
             color={theme["interactiveElem-default"]}
             numberOfLines={1}
           >
