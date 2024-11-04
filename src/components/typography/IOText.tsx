@@ -47,10 +47,7 @@ type IOTextBaseProps = {
   style?: IOTextStyle;
 };
 
-type IOTextExcludedProps = Omit<
-  ComponentProps<typeof Text>,
-  "allowFontScaling" | "maxFontSizeMultiplier" | "style"
->;
+type IOTextExcludedProps = Omit<ComponentProps<typeof Text>, "style">;
 
 export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
 
@@ -98,6 +95,8 @@ export const IOText = forwardRef<View, IOTextProps>(
       textStyle,
       style,
       children,
+      allowFontScaling,
+      maxFontSizeMultiplier,
       ...props
     },
     ref
@@ -144,8 +143,8 @@ export const IOText = forwardRef<View, IOTextProps>(
 
     /* Accessible typography based on the `fontScale` parameter */
     const accessibleFontSizeProps: ComponentProps<typeof Text> = {
-      allowFontScaling: isExperimental,
-      maxFontSizeMultiplier: 1.25
+      allowFontScaling: allowFontScaling ?? isExperimental,
+      maxFontSizeMultiplier: maxFontSizeMultiplier ?? 1.25
     };
 
     return (
