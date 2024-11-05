@@ -13,6 +13,7 @@ import {
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOText } from "../typography";
@@ -69,16 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: IOColors.white,
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
-    borderRadius: IOTagRadius,
-    borderCurve: "continuous",
-    paddingHorizontal: IOTagHSpacing,
-    paddingVertical: IOTagVSpacing
+    borderCurve: "continuous"
   },
   iconWrapper: {
     flexShrink: 1
-  },
-  spacer: {
-    width: IOTagIconMargin
   }
 });
 
@@ -142,12 +137,24 @@ export const Tag = ({
   iconAccessibilityLabel
 }: Tag) => {
   const theme = useIOTheme();
+  const fontScale = useIOFontDynamicScale();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, customIconProps);
 
   return (
-    <View testID={testID} style={styles.tag}>
+    <View
+      testID={testID}
+      style={[
+        styles.tag,
+        {
+          paddingHorizontal: IOTagHSpacing * fontScale,
+          paddingVertical: IOTagVSpacing * fontScale,
+          columnGap: IOTagIconMargin * fontScale,
+          borderRadius: IOTagRadius * fontScale
+        }
+      ]}
+    >
       {pipe(
         variantProps,
         O.fromNullable,
@@ -156,6 +163,7 @@ export const Tag = ({
           ({ iconColor, iconName }) => (
             <View style={styles.iconWrapper}>
               <Icon
+                allowFontScaling
                 name={iconName}
                 color={iconColor}
                 size={IOTagIconSize}
@@ -166,7 +174,6 @@ export const Tag = ({
           )
         )
       )}
-      {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <IOText
           font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}

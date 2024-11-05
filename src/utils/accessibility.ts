@@ -2,7 +2,9 @@ import { pipe } from "fp-ts/lib/function";
 import * as O from "fp-ts/lib/Option";
 import I18n from "i18n-js";
 import { useEffect, useState } from "react";
-import { AccessibilityInfo, Platform } from "react-native";
+import { AccessibilityInfo, PixelRatio, Platform } from "react-native";
+import { useIOExperimentalDesign } from "../core";
+import { IOFontSizeMultiplier } from "./fonts";
 
 /**
  * This function is used to get the text that will be read by the screen reader
@@ -48,4 +50,16 @@ export const useBoldTextEnabled = () => {
   }, []);
 
   return boldTextEnabled;
+};
+
+/**
+ * Returns a font size multiplier based on the font scale of the device,
+ * but limited to the `IOFontSizeMultiplier` value.
+ * @returns number
+ */
+export const useIOFontDynamicScale = (): number => {
+  const { isExperimental } = useIOExperimentalDesign();
+  const deviceFontScale = isExperimental ? PixelRatio.getFontScale() : 1;
+
+  return Math.min(deviceFontScale, IOFontSizeMultiplier);
 };

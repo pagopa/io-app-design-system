@@ -8,6 +8,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOText } from "../typography";
 
@@ -42,15 +43,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    borderCurve: "continuous",
     ...Platform.select({
       android: {
         textAlignVertical: "center"
       }
-    }),
-    borderCurve: "continuous",
-    borderRadius: IOBadgeRadius,
-    paddingHorizontal: IOBadgeHSpacing,
-    paddingVertical: IOBadgeVSpacing
+    })
   }
 });
 
@@ -60,6 +58,7 @@ const styles = StyleSheet.create({
 export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+  const fontScale = useIOFontDynamicScale();
 
   const mapVariants: Record<
     NonNullable<Badge["variant"]>,
@@ -153,6 +152,11 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       testID={testID}
       style={[
         styles.badge,
+        {
+          borderRadius: IOBadgeRadius * fontScale,
+          paddingHorizontal: IOBadgeHSpacing * fontScale,
+          paddingVertical: IOBadgeVSpacing * fontScale
+        },
         outline
           ? {
               borderWidth: 1,
