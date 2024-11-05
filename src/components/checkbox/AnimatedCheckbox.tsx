@@ -25,6 +25,7 @@ import {
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
+  size: number;
   checked?: boolean;
 };
 
@@ -52,8 +53,13 @@ const styles = StyleSheet.create({
  * An animated checkbox. This can be used to implement a
  * standard {@link CheckBox} or other composite components.
  */
-export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
-  const fontScale = useIOFontDynamicScale();
+export const AnimatedCheckbox = ({
+  size,
+  checked,
+  onPress,
+  disabled
+}: OwnProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const isChecked = checked ?? false;
 
   const { isExperimental } = useIOExperimentalDesign();
@@ -79,14 +85,14 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
 
   const checkboxSizeStyle: ViewStyle = {
-    width: IOSelectionTickVisualParams.size * fontScale,
-    height: IOSelectionTickVisualParams.size * fontScale,
-    borderRadius: checkBoxRadius * fontScale
+    width: size,
+    height: size,
+    borderRadius: checkBoxRadius * dynamicFontScale
   };
 
   const checkboxWrapperSizeStyle: ViewStyle = {
-    width: IOSelectionTickVisualParams.size * fontScale,
-    height: IOSelectionTickVisualParams.size * fontScale
+    width: size,
+    height: size
   };
 
   useEffect(() => {
@@ -142,7 +148,7 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
       {isChecked && (
         <View style={{ zIndex: 1 }}>
           <AnimatedTick
-            size={IOSelectionTickVisualParams.size * fontScale}
+            size={size}
             progress={tickAnimationProgress}
             stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
           />

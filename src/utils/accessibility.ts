@@ -2,7 +2,7 @@ import { pipe } from "fp-ts/lib/function";
 import * as O from "fp-ts/lib/Option";
 import I18n from "i18n-js";
 import { useEffect, useState } from "react";
-import { AccessibilityInfo, PixelRatio, Platform } from "react-native";
+import { AccessibilityInfo, Platform, useWindowDimensions } from "react-native";
 import { useIOExperimentalDesign } from "../core";
 import { IOFontSizeMultiplier } from "./fonts";
 
@@ -57,9 +57,19 @@ export const useBoldTextEnabled = () => {
  * but limited to the `IOFontSizeMultiplier` value.
  * @returns number
  */
-export const useIOFontDynamicScale = (): number => {
+export const useIOFontDynamicScale = (): {
+  dynamicFontScale: number;
+  spacingScaleMultiplier: number;
+} => {
   const { isExperimental } = useIOExperimentalDesign();
-  const deviceFontScale = isExperimental ? PixelRatio.getFontScale() : 1;
+  const { fontScale } = useWindowDimensions();
 
-  return Math.min(deviceFontScale, IOFontSizeMultiplier);
+  const deviceFontScale = isExperimental ? fontScale : 1;
+
+  return {
+    dynamicFontScale: Math.min(deviceFontScale, IOFontSizeMultiplier),
+    /* We make the spacing dynamic based on the font scale, but we multiply
+    this value to limit the amount of scaling applied to the spacing */
+    spacingScaleMultiplier: 0.75
+  };
 };

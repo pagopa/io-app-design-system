@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
-  const fontScale = useIOFontDynamicScale();
+  const { dynamicFontScale } = useIOFontDynamicScale();
 
   const mapVariants: Record<
     NonNullable<Badge["variant"]>,
@@ -153,9 +153,9 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       style={[
         styles.badge,
         {
-          borderRadius: IOBadgeRadius * fontScale,
-          paddingHorizontal: IOBadgeHSpacing * fontScale,
-          paddingVertical: IOBadgeVSpacing * fontScale
+          borderRadius: IOBadgeRadius * dynamicFontScale,
+          paddingHorizontal: IOBadgeHSpacing * dynamicFontScale,
+          paddingVertical: IOBadgeVSpacing * dynamicFontScale
         },
         outline
           ? {

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOColors, useIOTheme } from "../../core";
+import { IOColors, IOSelectionTickVisualParams, useIOTheme } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
@@ -34,6 +35,7 @@ export const ListItemRadioWithAmount = ({
   suggestReason,
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const [toggleValue, setToggleValue] = React.useState(selected ?? false);
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
@@ -83,7 +85,10 @@ export const ListItemRadioWithAmount = ({
           {formattedAmountString}
         </H6>
         <HSpacer size={8} />
-        <AnimatedRadio checked={selected ?? toggleValue} />
+        <AnimatedRadio
+          size={IOSelectionTickVisualParams.size * dynamicFontScale}
+          checked={selected ?? toggleValue}
+        />
       </View>
     </PressableListItemBase>
   );

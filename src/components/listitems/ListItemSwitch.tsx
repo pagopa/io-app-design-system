@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
 import { WithTestID } from "../../utils/types";
 import {
@@ -42,7 +42,7 @@ const ESTIMATED_SWITCH_HEIGHT: number = 32;
 
 export type ListItemSwitchProps = PartialProps &
   ListItemSwitchGraphicProps &
-  Pick<React.ComponentProps<typeof Switch>, "value" | "disabled">;
+  Pick<ComponentProps<typeof Switch>, "value" | "disabled">;
 
 export const ListItemSwitch = React.memo(
   ({
@@ -112,6 +112,7 @@ export const ListItemSwitch = React.memo(
                 }}
               >
                 <Icon
+                  allowFontScaling
                   name={icon}
                   color="grey-300"
                   size={IOSelectionListItemVisualParams.iconSize}

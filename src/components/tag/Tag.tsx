@@ -137,7 +137,7 @@ export const Tag = ({
   iconAccessibilityLabel
 }: Tag) => {
   const theme = useIOTheme();
-  const fontScale = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, customIconProps);
@@ -148,10 +148,11 @@ export const Tag = ({
       style={[
         styles.tag,
         {
-          paddingHorizontal: IOTagHSpacing * fontScale,
-          paddingVertical: IOTagVSpacing * fontScale,
-          columnGap: IOTagIconMargin * fontScale,
-          borderRadius: IOTagRadius * fontScale
+          paddingHorizontal: IOTagHSpacing * dynamicFontScale,
+          paddingVertical: IOTagVSpacing * dynamicFontScale,
+          columnGap:
+            IOTagIconMargin * dynamicFontScale * spacingScaleMultiplier,
+          borderRadius: IOTagRadius * dynamicFontScale
         }
       ]}
     >

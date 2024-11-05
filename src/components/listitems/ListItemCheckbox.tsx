@@ -16,11 +16,13 @@ import {
   IOScaleValues,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  IOSelectionTickVisualParams,
   IOSpringValues,
   IOStyles,
   hexToRgba,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
@@ -59,6 +61,8 @@ export const ListItemCheckbox = ({
   disabled,
   onValueChange
 }: ListItemCheckboxProps) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
@@ -161,7 +165,10 @@ export const ListItemCheckbox = ({
                 IOStyles.row,
                 {
                   flexShrink: 1,
-                  columnGap: IOSelectionListItemVisualParams.iconMargin
+                  columnGap:
+                    IOSelectionListItemVisualParams.iconMargin *
+                    dynamicFontScale *
+                    spacingScaleMultiplier
                 }
               ]}
             >
@@ -183,7 +190,10 @@ export const ListItemCheckbox = ({
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
             >
-              <AnimatedCheckbox checked={selected ?? toggleValue} />
+              <AnimatedCheckbox
+                size={IOSelectionTickVisualParams.size * dynamicFontScale}
+                checked={selected ?? toggleValue}
+              />
             </View>
           </View>
           {description && (

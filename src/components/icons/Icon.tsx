@@ -432,12 +432,14 @@ export const Icon = ({
   allowFontScaling = false,
   ...props
 }: IOIconsProps) => {
-  const fontScale = useIOFontDynamicScale();
+  const { dynamicFontScale } = useIOFontDynamicScale();
 
   const IconElement = IOIcons[name];
   const isAccessible = accessible && accessibilityLabel.trim().length > 0;
   const iconSize =
-    allowFontScaling && typeof size === "number" ? size * fontScale : size;
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale
+      : size;
 
   return (
     <IconElement

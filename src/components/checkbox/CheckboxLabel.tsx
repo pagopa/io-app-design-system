@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
-import { useIOTheme } from "../../core";
+import { IOSelectionTickVisualParams, useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
@@ -36,7 +36,7 @@ export const CheckboxLabel = ({
   onValueChange
 }: OwnProps) => {
   const theme = useIOTheme();
-  const fontScale = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
@@ -72,7 +72,7 @@ export const CheckboxLabel = ({
           {
             alignItems: "center",
             width: "100%",
-            columnGap: 8 * fontScale
+            columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
           }
         ]}
       >
@@ -84,7 +84,10 @@ export const CheckboxLabel = ({
             alignSelf: "flex-start"
           }}
         >
-          <AnimatedCheckbox checked={checked ?? toggleValue} />
+          <AnimatedCheckbox
+            size={IOSelectionTickVisualParams.size * dynamicFontScale}
+            checked={checked ?? toggleValue}
+          />
         </View>
         <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
