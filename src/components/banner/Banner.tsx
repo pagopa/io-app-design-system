@@ -85,7 +85,6 @@ type BaseBannerProps = WithTestID<{
   // A11y related props
   accessibilityLabel?: string;
   accessibilityHint?: string;
-  actionAccessibility?: boolean;
 }>;
 
 /* Description only */
@@ -159,7 +158,6 @@ export const Banner = ({
   accessibilityHint,
   accessibilityLabel,
   testID,
-  actionAccessibility = false,
 }: Banner) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
@@ -197,13 +195,9 @@ export const Banner = ({
     isPressed.value = 0;
   }, [isPressed]);
 
-   /* Generates a complete accessibilityLabel by concatenating the title, content, and action
-    if they are present. */
-  const completeAccessibilityLabel = [
-    title,
-    content,
-    action
-  ].filter(Boolean).join(" ");
+  /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
+   if they are present. */
+  const fallbackAccessibilityLabel = [title, content, action].filter(Boolean).join(" ");
 
   const renderMainBlock = () => (
     <>
@@ -211,7 +205,7 @@ export const Banner = ({
         style={[IOStyles.flex, IOStyles.selfCenter]}
         accessible={true}
         // A11y related props
-        accessibilityLabel={actionAccessibility ? completeAccessibilityLabel : accessibilityLabel}
+        accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
         accessibilityHint={accessibilityHint}
         accessibilityRole={action !== undefined ? "button" : undefined}
       >
