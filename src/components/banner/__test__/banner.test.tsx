@@ -18,6 +18,7 @@ describe("Test Banner Components", () => {
         pictogramName="charity"
         action="Action text"
         onPress={onLinkPress}
+        accessibilityLabel="Action text"
       />
     ).toJSON();
     expect(advice).toMatchSnapshot();
@@ -34,6 +35,7 @@ describe("Test Banner Components - Experimental Enabled", () => {
         pictogramName="charity"
         action="Action text"
         onPress={onLinkPress}
+        accessibilityLabel="Action text"
       />
     ).toJSON();
     expect(advice).toMatchSnapshot();
