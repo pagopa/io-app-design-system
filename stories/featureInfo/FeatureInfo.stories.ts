@@ -27,9 +27,11 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     body: "Dopo questo passaggio non sarà più possibile annullare il pagamento",
-    actionLabel: "Conferma",
-    actionOnPress: e => {
-      action("clicked")(e);
+    action: {
+      label: "Conferma",
+      onPress: e => {
+        action("clicked")(e);
+      }
     }
   }
 };

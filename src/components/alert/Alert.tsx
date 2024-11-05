@@ -1,21 +1,23 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import {
   GestureResponderEvent,
+  NativeSyntheticEvent,
   PixelRatio,
   Pressable,
   StyleSheet,
-  Text,
+  TextLayoutEventData,
   View
 } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
+  SharedValue,
   interpolate,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
+import { IOVisualCostants } from "../../core";
 import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
@@ -24,10 +26,10 @@ import {
 } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { VSpacer } from "../spacer";
+import { ButtonText } from "../typography";
 import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
 
@@ -48,14 +50,6 @@ const styles = StyleSheet.create({
   },
   spacingFullWidth: {
     padding: spacingFullWidth
-  },
-  label: {
-    fontSize: 16,
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
-  },
-  labelLegacy: {
-    fontSize: 16,
-    ...makeFontStyleObject("Bold", false, "TitilliumSansPro")
   }
 });
 
@@ -128,8 +122,16 @@ export const Alert = React.forwardRef<View, AlertType>(
     }: AlertType,
     viewRef
   ): JSX.Element => {
-    const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-    const { isExperimental } = useIOExperimentalDesign();
+    const isPressed: SharedValue<number> = useSharedValue(0);
+
+    const [isMultiline, setIsMultiline] = useState(false);
+
+    const onTextLayout = useCallback(
+      (event: NativeSyntheticEvent<TextLayoutEventData>) => {
+        setIsMultiline(event.nativeEvent.lines.length > 1);
+      },
+      []
+    );
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -146,7 +148,7 @@ export const Alert = React.forwardRef<View, AlertType>(
         progressPressed.value,
         [0, 1],
         [1, animationScaleValue],
-        Extrapolate.CLAMP
+        Extrapolation.CLAMP
       );
 
       return {
@@ -165,7 +167,12 @@ export const Alert = React.forwardRef<View, AlertType>(
 
     const renderMainBlock = () => (
       <>
-        <View style={{ marginRight: IOVisualCostants.iconMargin }}>
+        <View
+          style={{
+            marginRight: IOVisualCostants.iconMargin,
+            alignSelf: "flex-start"
+          }}
+        >
           <Icon
             name={mapVariantStates[variant].icon}
             size={iconSize}
@@ -178,8 +185,10 @@ export const Alert = React.forwardRef<View, AlertType>(
       Tested on both Android and iOS. */}
         <View
           style={[
-            !title && { marginTop: -5 * PixelRatio.getFontScale() },
-            { marginBottom: -3 * PixelRatio.getFontScale(), flex: 1 }
+            !title &&
+              isMultiline && { marginTop: -5 * PixelRatio.getFontScale() },
+            isMultiline && { marginBottom: -3 * PixelRatio.getFontScale() },
+            { flex: 1 }
           ]}
         >
           {title && (
@@ -192,22 +201,20 @@ export const Alert = React.forwardRef<View, AlertType>(
             color={mapVariantStates[variant].foreground}
             weight={"Regular"}
             accessibilityRole="text"
+            onTextLayout={onTextLayout}
           >
             {content}
           </Label>
           {action && (
             <>
               <VSpacer size={8} />
-              <Text
-                style={[
-                  isExperimental ? styles.label : styles.labelLegacy,
-                  { color: IOColors[mapVariantStates[variant].foreground] }
-                ]}
+              <ButtonText
+                color={mapVariantStates[variant].foreground}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
                 {action}
-              </Text>
+              </ButtonText>
             </>
           )}
         </View>

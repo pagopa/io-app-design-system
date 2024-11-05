@@ -170,8 +170,12 @@ export const AlertEdgeToEdge = ({
           {action && (
             <Text
               style={{
-                ...makeFontStyleObject("Bold", false, "TitilliumSansPro"),
-                fontSize: 16,
+                ...makeFontStyleObject(
+                  16,
+                  "TitilliumSansPro",
+                  undefined,
+                  "Bold"
+                ),
                 color: IOColors[mapVariantStates[variant].foreground]
               }}
             >

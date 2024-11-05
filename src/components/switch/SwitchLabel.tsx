@@ -1,10 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
+import { Pressable, View } from "react-native";
+import { useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
-import { makeFontStyleObject } from "../../utils/fonts";
 import { HSpacer } from "../spacer/Spacer";
 import { H6 } from "../typography/H6";
 import { AnimatedSwitch } from "./AnimatedSwitch";
@@ -23,17 +22,6 @@ type OwnProps = Props &
   Pick<React.ComponentProps<typeof AnimatedSwitch>, "disabled" | "checked"> &
   Pick<React.ComponentProps<typeof Pressable>, "onPress">;
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const styles = StyleSheet.create({
-  legacyTextValue: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: IOColors.bluegreyDark,
-    flexShrink: 1,
-    ...makeFontStyleObject("Semibold", undefined, "TitilliumSansPro")
-  }
-});
-
 /**
  * A checkbox with the automatic state management that uses a {@link AnimatedCheckBox}
  * The toggleValue change when a `onPress` event is received and dispatch the `onValueChange`.
@@ -47,24 +35,8 @@ export const SwitchLabel = ({
   disabled,
   onValueChange
 }: OwnProps) => {
-  const [toggleValue, setToggleValue] = useState(checked ?? false);
   const theme = useIOTheme();
-
-  const { isExperimental } = useIOExperimentalDesign();
-  const switchLabelText = (
-    <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
-      {label}
-    </H6>
-  );
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacySwitchlabelText = (
-    <Text style={styles.legacyTextValue}>{label}</Text>
-  );
-
-  const switchLabelTextComponent = isExperimental
-    ? switchLabelText
-    : legacySwitchlabelText;
+  const [toggleValue, setToggleValue] = useState(checked ?? false);
 
   const toggleCheckbox = () => {
     triggerHaptic("impactLight");
@@ -99,7 +71,9 @@ export const SwitchLabel = ({
           <AnimatedSwitch checked={checked ?? toggleValue} />
         </View>
         <HSpacer size={8} />
-        {switchLabelTextComponent}
+        <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
+          {label}
+        </H6>
       </View>
     </Pressable>
   );

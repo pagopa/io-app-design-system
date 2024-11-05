@@ -26,7 +26,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
+import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -63,7 +63,7 @@ const inputPaddingVertical: IOSpacingScale = 8;
 const inputRadius: number = 8;
 const inputTransitionDuration: number = 250;
 const inputLabelScaleFactor: number = 0.75; /* 16pt becomes 12pt */
-const inputLabelFontSize: number = 16;
+const inputLabelFontSize: IOFontSize = 16;
 const inputDisabledOpacity: number = 0.5;
 const inputRightElementMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-300";
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     Android where the text input scrolls, if the user apply some
     gestures on it with keyboard open */
     paddingVertical: 0,
-    fontSize: 16,
     marginTop: inputMarginTop,
     height: "100%",
     /* Slightly move the input on the left on Android
@@ -108,11 +107,21 @@ const styles = StyleSheet.create({
     ...(Platform.OS === "android" && { marginLeft: -4 })
   },
   textInputStyleFont: {
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
+    ...makeFontStyleObject(
+      inputLabelFontSize,
+      "ReadexPro",
+      undefined,
+      "Regular"
+    )
   },
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   textInputStyleLegacyFont: {
-    ...makeFontStyleObject("Semibold", false, "TitilliumSansPro")
+    ...makeFontStyleObject(
+      inputLabelFontSize,
+      "TitilliumSansPro",
+      undefined,
+      "Semibold"
+    )
   },
   textInputLabelWrapper: {
     position: "absolute",
@@ -123,9 +132,13 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textInputLabel: {
-    ...makeFontStyleObject("Regular", false, "TitilliumSansPro"),
-    color: inputLabelColor,
-    fontSize: inputLabelFontSize
+    ...makeFontStyleObject(
+      inputLabelFontSize,
+      "TitilliumSansPro",
+      undefined,
+      "Regular"
+    ),
+    color: inputLabelColor
   }
 });
 

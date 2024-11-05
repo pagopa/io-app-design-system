@@ -9,6 +9,7 @@ import {
   IOColors,
   IOSpacer,
   IOVisualCostants,
+  LabelMini,
   LabelSmall,
   VSpacer,
   VStack,
@@ -56,14 +57,13 @@ export const Layout = () => {
                 }}
               >
                 <Body color={theme["textBody-secondary"]}>Content example</Body>
-                <LabelSmall
+                <LabelMini
                   style={{ position: "absolute", right: 4, top: 4 }}
-                  fontSize="small"
                   weight="Regular"
                   color={theme["textBody-tertiary"]}
                 >
                   {value}
-                </LabelSmall>
+                </LabelMini>
               </View>
             </ContentWrapper>
           </View>

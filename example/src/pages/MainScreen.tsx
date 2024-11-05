@@ -1,18 +1,18 @@
-import { SectionList, View } from "react-native";
-import * as React from "react";
 import {
-  IOStyles,
   Divider,
   H1,
+  IOStyles,
   LabelSmall,
-  VSpacer,
   ListItemNav,
-  useIOExperimentalDesign,
   ListItemSwitch,
+  VSpacer,
+  useIOExperimentalDesign,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import APP_ROUTES from "../navigation/routes";
+import * as React from "react";
+import { SectionList, View } from "react-native";
 import { AppParamsList } from "../navigation/params";
+import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
 
 type Props = IOStackNavigationRouteProps<AppParamsList, "DESIGN_SYSTEM_MAIN">;
@@ -76,7 +76,7 @@ const MainScreen = (props: Props) => {
     section: { title: string; description?: string };
   }) => (
     <View style={{ marginTop: 24, marginBottom: 8 }}>
-      <H1 color={theme["textHeading-default"]}>{title}</H1>
+      <H1>{title}</H1>
       {description && (
         <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>
           {description}

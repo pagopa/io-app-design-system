@@ -36,7 +36,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { makeFontStyleObject } from "../../utils/fonts";
+import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { ButtonLink } from "../buttons";
 import { IOIconSizeScale, Icon } from "../icons";
 
@@ -51,7 +51,7 @@ const iconMargin: IOSpacingScale = 8;
 const iconColor: IOColors = "grey-700";
 const iconSize: IOIconSizeScale = 16;
 const iconCloseSize: IOIconSizeScale = 24;
-const inputFontSizePlaceholder: number = 14;
+const inputFontSizePlaceholder: IOFontSize = 14;
 const cancelButtonMargin: IOSpacingScale = 16;
 const inputTransitionDuration: number = 250;
 const inputHeightIOS: number = 36;
@@ -324,12 +324,20 @@ const styles = StyleSheet.create({
     marginRight: iconMargin
   },
   placeholder: {
-    fontSize: inputFontSizePlaceholder,
-    ...makeFontStyleObject("Regular", false, "ReadexPro")
+    ...makeFontStyleObject(
+      inputFontSizePlaceholder,
+      "ReadexPro",
+      undefined,
+      "Regular"
+    )
   },
   placeholderLegacy: {
-    fontSize: inputFontSizePlaceholder,
-    ...makeFontStyleObject("Regular", false, "TitilliumSansPro")
+    ...makeFontStyleObject(
+      inputFontSizePlaceholder,
+      "TitilliumSansPro",
+      undefined,
+      "Regular"
+    )
   },
   cancelButton: {
     position: "absolute",

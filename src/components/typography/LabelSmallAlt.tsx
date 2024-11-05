@@ -1,61 +1,41 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { IOVisualCostants, useIOExperimentalDesign } from "../../core";
-import type { IOColors, IOTheme } from "../../core/IOColors";
-import { FontFamily, IOFontWeight } from "../../utils/fonts";
-import { useTypographyFactory } from "./Factory";
-import { ExternalTypographyProps, TypographyProps } from "./common";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
-type PartialAllowedColors = Extract<
-  IOColors,
-  | "blue"
-  | "bluegrey"
-  | "red"
-  | "white"
-  | "bluegreyDark"
-  | "grey-700"
-  | "grey-200"
->;
-type AllowedColors = PartialAllowedColors | IOTheme["textBody-tertiary"];
-type AllowedWeight = Extract<IOFontWeight, "Bold" | "Regular" | "Semibold">;
-
-type LabelSmallAltProps = ExternalTypographyProps<
-  TypographyProps<AllowedWeight, AllowedColors>
->;
-
-const labelFontSize = 14;
-const labelLineHeight = 21;
-const fontName: FontFamily = "ReadexPro";
-const defaultColor: AllowedColors = "black";
-const defaultWeight: AllowedWeight = "Regular";
+const fontSize = 14;
+const lineHeight = 21;
+const fontName: IOFontFamily = "ReadexPro";
+const fontWeight: IOFontWeight = "Regular";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyLabelFontSize = 16;
-const legacyFontName: FontFamily = "TitilliumSansPro";
-const legacyDefaultWeight: AllowedWeight = "Semibold";
+const legacyFontSize = 16;
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `LabelSmallAlt` typographic style. It's referenced as `LabelSmallReadex` in the design projects.
  */
-export const LabelSmallAlt = React.forwardRef<View, LabelSmallAltProps>(
-  (props, ref) => {
+export const LabelSmallAlt = forwardRef<View, TypographicStyleProps>(
+  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
+    const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
 
-    return useTypographyFactory<AllowedWeight, AllowedColors>(
-      {
-        ...props,
-        allowFontScaling: isExperimental,
-        maxFontSizeMultiplier: IOVisualCostants.maxFontSizeMultiplier,
-        dynamicTypeRamp: "footnote" /* iOS only */,
-        defaultWeight: isExperimental ? defaultWeight : legacyDefaultWeight,
-        defaultColor,
-        font: isExperimental ? fontName : legacyFontName,
-        fontStyle: {
-          fontSize: isExperimental ? labelFontSize : legacyLabelFontSize,
-          lineHeight: labelLineHeight
-        }
-      },
-      ref
+    const LabelSmallAltProps: IOTextProps = {
+      ...props,
+      dynamicTypeRamp: "footnote" /* iOS only */,
+      font: isExperimental ? fontName : legacyFontName,
+      weight: isExperimental ? fontWeight : legacyFontWeight,
+      size: isExperimental ? fontSize : legacyFontSize,
+      lineHeight,
+      color: customColor ?? theme["textBody-tertiary"]
+    };
+
+    return (
+      <IOText ref={ref} {...LabelSmallAltProps}>
+        {props.children}
+      </IOText>
     );
   }
 );

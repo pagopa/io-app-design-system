@@ -106,7 +106,6 @@ export const DSAlert = () => {
     <Screen>
       <H3
         color={"bluegrey"}
-        weight={"Semibold"}
         style={{
           paddingTop: IOVisualCostants.appMarginDefault,
           marginBottom: 16
@@ -154,6 +153,11 @@ export const DSAlert = () => {
       >
         Content only
       </H3>
+
+      <Alert ref={viewRef} variant="error" content="Ut enim ad minim veniam" />
+
+      <VSpacer />
+
       <Alert
         ref={viewRef}
         variant="error"
@@ -183,6 +187,10 @@ export const DSAlert = () => {
         variant="success"
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
+
+      <VSpacer />
+
+      <Alert ref={viewRef} variant="success" content="Single line" />
 
       <VSpacer size={40} />
 
@@ -235,7 +243,7 @@ export const DSAlert = () => {
 
       <VSpacer size={40} />
 
-      <H2 color={"bluegrey"} weight={"Semibold"} style={{ marginBottom: 16 }}>
+      <H2 color={"bluegrey"} style={{ marginBottom: 16 }}>
         Content + Action
       </H2>
 
@@ -288,7 +296,7 @@ export const DSAlert = () => {
       <VSpacer size={40} />
 
       {/* Full width */}
-      <H2 color={"bluegrey"} weight={"Semibold"} style={{ marginBottom: 16 }}>
+      <H2 color={"bluegrey"} style={{ marginBottom: 16 }}>
         Full width
       </H2>
       <FullWidthComponent>

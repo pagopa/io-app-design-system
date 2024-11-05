@@ -1,5 +1,4 @@
-import { Platform, StyleSheet, Text } from "react-native";
-import { ComponentProps } from "react";
+import { Platform, StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
 import { IOModuleIDPRadius } from "./IOShapes";
@@ -19,8 +18,6 @@ interface IOVisualCostants {
   appMarginDefault: IOAppMargin;
   // Header
   headerHeight: number;
-  // Typography
-  maxFontSizeMultiplier: ComponentProps<typeof Text>["maxFontSizeMultiplier"];
   // Dimensions
   avatarSizeSmall: number;
   avatarSizeMedium: number;
@@ -35,7 +32,6 @@ interface IOVisualCostants {
 export const IOVisualCostants: IOVisualCostants = {
   appMarginDefault: 24,
   headerHeight: 56,
-  maxFontSizeMultiplier: 1.25,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
   avatarRadiusSizeSmall: 8,
