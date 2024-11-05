@@ -156,19 +156,22 @@ export const ListItemCheckbox = ({
       >
         <Animated.View style={animatedScaleStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
-            <View style={[IOStyles.row, { flexShrink: 1 }]}>
+            <View
+              style={[
+                IOStyles.row,
+                {
+                  flexShrink: 1,
+                  columnGap: IOSelectionListItemVisualParams.iconMargin
+                }
+              ]}
+            >
               {icon && (
-                <View
-                  style={{
-                    marginRight: IOSelectionListItemVisualParams.iconMargin
-                  }}
-                >
-                  <Icon
-                    name={icon}
-                    color="grey-300"
-                    size={IOSelectionListItemVisualParams.iconSize}
-                  />
-                </View>
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  color="grey-300"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                />
               )}
               <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
