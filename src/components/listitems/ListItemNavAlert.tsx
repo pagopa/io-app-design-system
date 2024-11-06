@@ -1,25 +1,27 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
+  SharedValue,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
 import {
+  hexToRgba,
   IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
   IOScaleValues,
   IOSpringValues,
   IOStyles,
-  hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";
@@ -44,7 +46,9 @@ export const ListItemNavAlert = ({
   accessibilityHint,
   testID
 }: ListItemNavAlert) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  const isPressed: SharedValue<number> = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
 
   const componentValueToAccessibility = useMemo(
@@ -113,7 +117,7 @@ export const ListItemNavAlert = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -159,25 +163,31 @@ export const ListItemNavAlert = ({
         accessibilityElementsHidden
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            animatedScaleStyle
+          ]}
         >
           {!withoutIcon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <Icon
-                name="errorFilled"
-                color={theme.errorIcon}
-                size={IOListItemVisualParams.iconSize}
-              />
-            </View>
+            <Icon
+              name="errorFilled"
+              color={theme.errorIcon}
+              size={IOListItemVisualParams.iconSize}
+            />
           )}
           <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
-          <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name="chevronRightListItem"
-              color={iconColor}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          </View>
+
+          <Icon
+            name="chevronRightListItem"
+            color={iconColor}
+            size={IOListItemVisualParams.chevronSize}
+          />
         </Animated.View>
       </Animated.View>
     </Pressable>

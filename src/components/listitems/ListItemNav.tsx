@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, useCallback } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -27,6 +27,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Avatar } from "../avatar";
 import { Badge } from "../badge";
@@ -118,11 +119,7 @@ export const ListItemNav = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  const withMargin = (GraphicalAsset: ReactNode) => (
-    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-      {GraphicalAsset}
-    </View>
-  );
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -247,30 +244,37 @@ export const ListItemNav = ({
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            animatedScaleStyle
+          ]}
         >
           {/* Possibile graphical assets
           - Icon
           - Image URL (for payment logos)
           - Avatar
           */}
-          {icon &&
-            withMargin(
-              <Icon
-                name={icon}
-                color={iconColor}
-                size={IOListItemVisualParams.iconSize}
-              />
-            )}
-          {paymentLogoUri &&
-            withMargin(
-              <Image
-                accessibilityIgnoresInvertColors
-                source={{ uri: paymentLogoUri }}
-                style={styles.paymentLogoSize}
-              />
-            )}
-          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
+          {icon && (
+            <Icon
+              name={icon}
+              color={iconColor}
+              size={IOListItemVisualParams.iconSize}
+            />
+          )}
+          {paymentLogoUri && (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={{ uri: paymentLogoUri }}
+              style={styles.paymentLogoSize}
+            />
+          )}
+          {avatar && <Avatar size="small" {...avatar} />}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}
