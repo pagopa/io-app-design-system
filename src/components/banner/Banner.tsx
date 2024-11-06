@@ -157,7 +157,7 @@ export const Banner = ({
   onClose,
   accessibilityHint,
   accessibilityLabel,
-  testID
+  testID,
 }: Banner) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
@@ -195,13 +195,17 @@ export const Banner = ({
     isPressed.value = 0;
   }, [isPressed]);
 
+  /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
+   if they are present. */
+  const fallbackAccessibilityLabel = [title, content, action].filter(Boolean).join(" ");
+
   const renderMainBlock = () => (
     <>
       <View
         style={[IOStyles.flex, IOStyles.selfCenter]}
         accessible={true}
         // A11y related props
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
         accessibilityHint={accessibilityHint}
         accessibilityRole={action !== undefined ? "button" : undefined}
       >
