@@ -1,11 +1,12 @@
 import React, { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
-import { WithTestID } from "../../utils/types";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
+import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
@@ -60,6 +61,8 @@ export const ListItemSwitch = React.memo(
     testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
+    const { dynamicFontScale, spacingScaleMultiplier } =
+      useIOFontDynamicScale();
 
     // If we have a badge or we are loading, we can't render the switch
     // this affects the accessibility tree and the rendering of the component
@@ -92,7 +95,11 @@ export const ListItemSwitch = React.memo(
             style={{
               flex: 1,
               flexDirection: "row",
-              alignItems: "center"
+              alignItems: icon ? "flex-start" : "center",
+              columnGap:
+                IOSelectionListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
             }}
             accessible={!canRenderSwitch}
             {...Platform.select({
@@ -105,32 +112,18 @@ export const ListItemSwitch = React.memo(
             accessibilityState={{ disabled }}
           >
             {icon && (
-              <View
-                style={{
-                  marginRight: IOSelectionListItemVisualParams.iconMargin,
-                  alignSelf: "flex-start"
-                }}
-              >
-                <Icon
-                  allowFontScaling
-                  name={icon}
-                  color="grey-300"
-                  size={IOSelectionListItemVisualParams.iconSize}
-                />
-              </View>
+              <Icon
+                allowFontScaling
+                name={icon}
+                color="grey-300"
+                size={IOSelectionListItemVisualParams.iconSize}
+              />
             )}
             {paymentLogo && (
-              <View
-                style={{
-                  marginRight: IOSelectionListItemVisualParams.iconMargin,
-                  alignSelf: "center"
-                }}
-              >
-                <LogoPayment
-                  name={paymentLogo}
-                  size={IOSelectionListItemVisualParams.iconSize}
-                />
-              </View>
+              <LogoPayment
+                name={paymentLogo}
+                size={IOSelectionListItemVisualParams.iconSize}
+              />
             )}
 
             <H6
