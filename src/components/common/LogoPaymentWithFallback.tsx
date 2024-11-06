@@ -12,6 +12,7 @@ import {
   LogoPayment,
   LogoPaymentExt
 } from "../logos";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 export type LogoPaymentWithFallback = {
   brand?: string;
@@ -40,6 +41,7 @@ export const LogoPaymentWithFallback = ({
   isExtended = false,
   size = isExtended ? 48 : 24
 }: LogoPaymentWithFallback) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const logos = isExtended ? IOPaymentExtLogos : IOPaymentLogos;
 
   return pipe(
@@ -48,12 +50,25 @@ export const LogoPaymentWithFallback = ({
     O.chain(findFirstCaseInsensitive(logos)),
     O.map(([brand]) => brand),
     O.fold(
-      () => <Icon name="creditCard" size={size} color={fallbackIconColor} />,
+      () => (
+        <Icon
+          allowFontScaling
+          name="creditCard"
+          size={size}
+          color={fallbackIconColor}
+        />
+      ),
       brand =>
         isExtended ? (
-          <LogoPaymentExt name={brand as IOLogoPaymentExtType} size={size} />
+          <LogoPaymentExt
+            name={brand as IOLogoPaymentExtType}
+            size={size * dynamicFontScale}
+          />
         ) : (
-          <LogoPayment name={brand as IOLogoPaymentType} size={size} />
+          <LogoPayment
+            name={brand as IOLogoPaymentType}
+            size={size * dynamicFontScale}
+          />
         )
     )
   );

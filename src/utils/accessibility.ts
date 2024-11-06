@@ -66,10 +66,14 @@ export const useIOFontDynamicScale = (): {
 
   const deviceFontScale = isExperimental ? fontScale : 1;
 
-  return {
-    dynamicFontScale: Math.min(deviceFontScale, IOFontSizeMultiplier),
-    /* We make the spacing dynamic based on the font scale, but we multiply
+  const dynamicFontScale = Math.min(deviceFontScale, IOFontSizeMultiplier);
+  /* We make the spacing dynamic based on the font scale, but we multiply
     this value to limit the amount of scaling applied to the spacing */
-    spacingScaleMultiplier: 0.85
+  const spacingScaleMultiplier =
+    dynamicFontScale <= IOFontSizeMultiplier ? 1 : 0.8;
+
+  return {
+    dynamicFontScale,
+    spacingScaleMultiplier
   };
 };

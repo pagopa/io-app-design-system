@@ -15,7 +15,10 @@ import {
   useIOTheme
 } from "../../core";
 
-import { getAccessibleAmountText } from "../../utils/accessibility";
+import {
+  getAccessibleAmountText,
+  useIOFontDynamicScale
+} from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
@@ -128,6 +131,8 @@ export const ListItemTransaction = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const maybeBadgeText = pipe(
     badgeText,
     O.fromNullable,
@@ -179,11 +184,18 @@ export const ListItemTransaction = ({
     };
 
     return (
-      <>
+      <View
+        style={[
+          IOListItemStyles.listItemInner,
+          {
+            columnGap:
+              IOListItemLogoMargin * dynamicFontScale * spacingScaleMultiplier
+          }
+        ]}
+      >
         {paymentLogoIcon && (
           <View
             style={{
-              marginRight: IOListItemLogoMargin,
               width: MUNICIPALITY_LOGO_SIZE,
               alignItems: "center"
             }}
@@ -202,7 +214,7 @@ export const ListItemTransaction = ({
             {subtitle}
           </LabelSmall>
         </View>
-        <View style={Styles.rightSection}>
+        <View style={styles.rightSection}>
           <TransactionAmountOrBadgeComponent />
           {hasChevronRight && (
             <Icon
@@ -212,7 +224,7 @@ export const ListItemTransaction = ({
             />
           )}
         </View>
-      </>
+      </View>
     );
   };
 
@@ -227,9 +239,7 @@ export const ListItemTransaction = ({
           accessible={accessible}
           accessibilityLabel={accessibilityLabel}
         >
-          <View style={IOListItemStyles.listItemInner}>
-            <ListItemTransactionContent />
-          </View>
+          <ListItemTransactionContent />
         </View>
       ),
       onPress => (
@@ -268,9 +278,8 @@ const SkeletonComponent = () => (
   </View>
 );
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   rightSection: {
-    marginLeft: IOListItemVisualParams.iconMargin,
     flexDirection: "row",
     alignItems: "center",
     height: "100%"

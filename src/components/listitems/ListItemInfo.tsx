@@ -6,13 +6,14 @@ import {
   IOStyles,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
-import { ButtonLink, IconButton } from "../buttons";
 import { Badge } from "../badge";
+import { ButtonLink, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
+import { H6, LabelSmall } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -66,6 +67,8 @@ export const ListItemInfo = ({
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
     [value]
@@ -137,30 +140,33 @@ export const ListItemInfo = ({
       accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
     >
-      <View style={IOListItemStyles.listItemInner}>
+      <View
+        style={[
+          IOListItemStyles.listItemInner,
+          {
+            columnGap:
+              IOListItemVisualParams.iconMargin *
+              dynamicFontScale *
+              spacingScaleMultiplier
+          }
+        ]}
+      >
         {icon && (
-          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name={icon}
-              color="grey-450"
-              size={IOListItemVisualParams.iconSize}
-            />
-          </View>
+          <Icon
+            allowFontScaling
+            name={icon}
+            color="grey-450"
+            size={IOListItemVisualParams.iconSize}
+          />
         )}
         {paymentLogoIcon && (
-          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-            <LogoPaymentWithFallback
-              brand={paymentLogoIcon}
-              size={PAYMENT_LOGO_SIZE}
-            />
-          </View>
+          <LogoPaymentWithFallback
+            brand={paymentLogoIcon}
+            size={PAYMENT_LOGO_SIZE}
+          />
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        {endElement && (
-          <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
-            {listItemInfoAction()}
-          </View>
-        )}
+        {endElement && <View>{listItemInfoAction()}</View>}
       </View>
     </View>
   );

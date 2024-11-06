@@ -176,6 +176,7 @@ export const ListItemNavAlert = ({
         >
           {!withoutIcon && (
             <Icon
+              allowFontScaling
               name="errorFilled"
               color={theme.errorIcon}
               size={IOListItemVisualParams.iconSize}

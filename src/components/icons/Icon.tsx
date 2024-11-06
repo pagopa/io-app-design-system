@@ -464,6 +464,7 @@ type IOAnimatedIconsProps = {
   color?: ColorValue;
   size?: IOIconSizeScale | "100%";
   accessible?: boolean;
+  allowFontScaling?: boolean;
 };
 
 export const AnimatedIcon = ({
@@ -471,14 +472,22 @@ export const AnimatedIcon = ({
   color = IOColors.bluegrey,
   size = 24,
   accessible = false,
+  allowFontScaling = false,
   ...props
 }: IOAnimatedIconsProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
+
   const IconElement = IOIcons[name];
+  const iconSize =
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale
+      : size;
+
   return (
     <IconElement
       {...props}
       style={{ color }}
-      size={size}
+      size={iconSize}
       accessible={accessible}
       accessibilityElementsHidden={true}
       accessibilityLabel={""}

@@ -1,11 +1,5 @@
 import React, { ComponentProps, useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Image,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
+import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -92,13 +86,6 @@ export type ListItemNavGraphicProps =
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
-const styles = StyleSheet.create({
-  paymentLogoSize: {
-    width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
-  }
-});
-
 export const ListItemNav = ({
   value,
   description,
@@ -136,7 +123,12 @@ export const ListItemNav = ({
           {topElement.dateValue && (
             <>
               <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
-                <Icon name="calendar" size={16} color="grey-300" />
+                <Icon
+                  allowFontScaling
+                  name="calendar"
+                  size={16}
+                  color="grey-300"
+                />
                 <HSpacer size={4} />
                 <Caption color={theme["textBody-tertiary"]}>
                   {topElement.dateValue}
@@ -262,6 +254,7 @@ export const ListItemNav = ({
           */}
           {icon && (
             <Icon
+              allowFontScaling
               name={icon}
               color={iconColor}
               size={IOListItemVisualParams.iconSize}
@@ -271,7 +264,12 @@ export const ListItemNav = ({
             <Image
               accessibilityIgnoresInvertColors
               source={{ uri: paymentLogoUri }}
-              style={styles.paymentLogoSize}
+              style={{
+                width:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                height:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+              }}
             />
           )}
           {avatar && <Avatar size="small" {...avatar} />}
