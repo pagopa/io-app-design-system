@@ -8,8 +8,9 @@ import {
   ViewStyle
 } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
+  SharedValue,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -41,7 +42,7 @@ const colorContent: IOColors = "grey-700";
 const colorCloseButton: IconButton["color"] = "neutral";
 const sizePictogramBig: IOPictogramSizeScale = 80;
 const sizePictogramSmall: IOPictogramSizeScale = 64;
-const closeButtonDistanceFromEdge: number = 4;
+const closeButtonDistanceFromEdge: number = 6;
 const closeButtonOpacity = 0.6;
 const sizeBigPadding = IOBannerBigSpacing;
 const sizeSmallHPadding = IOBannerSmallHSpacing;
@@ -157,9 +158,9 @@ export const Banner = ({
   onClose,
   accessibilityHint,
   accessibilityLabel,
-  testID,
+  testID
 }: Banner) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  const isPressed: SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -178,7 +179,7 @@ export const Banner = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -197,7 +198,9 @@ export const Banner = ({
 
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
-  const fallbackAccessibilityLabel = [title, content, action].filter(Boolean).join(" ");
+  const fallbackAccessibilityLabel = [title, content, action]
+    .filter(Boolean)
+    .join(" ");
 
   const renderMainBlock = () => (
     <>
@@ -211,8 +214,6 @@ export const Banner = ({
       >
         {title && (
           <>
-            {/* Once we get 'gap' property, we can get rid of
-          these <VSpacer> components */}
             <H6 color={colorTitle}>{title}</H6>
             <VSpacer size={4} />
           </>
@@ -227,7 +228,7 @@ export const Banner = ({
         )}
         {action && (
           /* Disable pointer events to avoid
-                      pressed state on the button */
+             pressed state on the button */
           <View
             pointerEvents="none"
             accessibilityElementsHidden

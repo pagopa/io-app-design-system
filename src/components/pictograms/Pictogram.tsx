@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { ColorValue } from "react-native";
 import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";
 import PictogramActivate from "./svg/PictogramActivate";
@@ -111,7 +112,7 @@ import PictogramSmile from "./svg/PictogramSmile";
 import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
-import { IOPictogramSizeScale, SVGPictogramProps } from "./types";
+import { SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
   // Start legacy pictograms //
@@ -188,6 +189,8 @@ export const IOPictograms = {
 
 export type IOPictograms = keyof typeof IOPictograms;
 
+export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
+
 type IOPictogramsProps = {
   name: IOPictograms;
   color?: IOColors;
@@ -196,6 +199,7 @@ type IOPictogramsProps = {
   component props. */
   pictogramStyle?: "default" | "light-content" | "dark-content";
   size?: IOPictogramSizeScale | "100%";
+  allowFontScaling?: boolean;
 };
 
 type PictogramPalette = {
@@ -210,10 +214,18 @@ export const Pictogram = ({
   color = "aqua",
   pictogramStyle = "default",
   size = 120,
+  allowFontScaling = false,
   ...props
 }: IOPictogramsProps) => {
-  const PictogramElement = IOPictograms[name];
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  const PictogramElement = IOPictograms[name];
+
+  const pictogramSize =
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale * spacingScaleMultiplier
+      : size;
 
   const themeObj = useMemo(() => {
     switch (pictogramStyle) {
@@ -239,7 +251,7 @@ export const Pictogram = ({
   return (
     <PictogramElement
       {...props}
-      size={size}
+      size={pictogramSize}
       color={IOColors[color]}
       colorValues={colorValues}
     />
@@ -352,11 +364,18 @@ export const PictogramBleed = ({
   color = "aqua",
   size = 80,
   pictogramStyle = "default",
+  allowFontScaling = false,
   ...props
 }: IOPictogramsProps) => {
+  const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const PictogramElement = IOPictogramsBleed[name as IOPictogramsBleed];
 
-  const theme = useIOTheme();
+  const pictogramSize =
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale * spacingScaleMultiplier
+      : size;
 
   const themeObj = useMemo(() => {
     switch (pictogramStyle) {
@@ -382,7 +401,7 @@ export const PictogramBleed = ({
   return (
     <PictogramElement
       {...props}
-      size={size}
+      size={pictogramSize}
       color={IOColors[color]}
       colorValues={colorValues}
     />
