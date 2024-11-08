@@ -100,7 +100,6 @@
     "react-dom": "^18.2.0",
     "react-native": "0.71.8",
     "react-native-builder-bob": "^0.20.0",
-    "react-native-i18n": "^2.0.15",
     "react-native-web": "^0.18.12",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "^18.2.0",
@@ -182,7 +181,6 @@
   },
   "dependencies": {
     "@testing-library/jest-native": "^5.4.2",
-    "@types/react-native-i18n": "2.0.0",
     "@types/react-test-renderer": "^18.0.0",
     "auto-changelog": "^2.4.0",
     "lodash": "^4.17.21",

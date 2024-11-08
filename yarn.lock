@@ -4234,11 +4234,6 @@
   resolved "https://registry.npmjs.org/@types/http-errors/-/http-errors-2.0.1.tgz#20172f9578b225f6c7da63446f56d4ce108d5a65"
   integrity sha512-/K3ds8TRAfBvi5vfjuz8y6+GiAYBZ0x4tXv1Av6CWBWn0IlADc+ZX9pMq7oU0fNQPnBwIZl3rmeLp6SBApbxSQ==
 
-"@types/i18n-js@*":
-  version "3.8.5"
-  resolved "https://registry.npmjs.org/@types/i18n-js/-/i18n-js-3.8.5.tgz#ce0e29611e5e0e00998b764e8c55cc4a4e48cdf6"
-  integrity sha512-6LlMVfkAW8gwcgxIRjxuWxjhD+hw4Mj2VC609FpYCG5n8usb2GE2xbKsEQXWmAIe6LBN2OOw7HnSjZqMDHVtDw==
-
 "@types/is-function@^1.0.0":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@types/is-function/-/is-function-1.0.3.tgz#548f851db5d30a12abeea2569ba75890dbf89425"
@@ -4368,13 +4363,6 @@
   version "1.2.4"
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
-
-"@types/react-native-i18n@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@types/react-native-i18n/-/react-native-i18n-2.0.0.tgz#2df92b3392d813b39530bd126aad429eedc9c3de"
-  integrity sha512-JwSsjGw99Kk7kMg2R1YPAby7v7dw4rHGDTc3WsLtQuw0DeyMRLLPNdmjg85RP3BVX94F/SU+eef65DUsUzc9fQ==
-  dependencies:
-    "@types/i18n-js" "*"
 
 "@types/react-native@0.71.3":
   version "0.71.3"
@@ -8885,11 +8873,6 @@ hyphenate-style-name@^1.0.3:
   resolved "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
-i18n-js@3.0.11:
-  version "3.0.11"
-  resolved "https://registry.npmjs.org/i18n-js/-/i18n-js-3.0.11.tgz#f9e96bdb641c5b9d6be12759d7c422089987ef02"
-  integrity sha512-v7dG3kYJTQTyox3NqDabPDE/ZotWntyMI9kh4cYi+XlCSnsIR+KBTS2opPyObL8WndnklcLzbNU92FP/mLge3Q==
-
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -12792,13 +12775,6 @@ react-native-haptic-feedback@^2.0.2:
   version "2.0.3"
   resolved "https://registry.npmjs.org/react-native-haptic-feedback/-/react-native-haptic-feedback-2.0.3.tgz#09133b2175503831c04798cb0dc63ae91e3959c1"
   integrity sha512-7+qvcxXZts/hA+HOOIFyM1x9m9fn/TJVSTgXaoQ8uT4gLc97IMvqHQ559tDmnlth+hHMzd3HRMpmRLWoKPL0DA==
-
-react-native-i18n@^2.0.15:
-  version "2.0.15"
-  resolved "https://registry.npmjs.org/react-native-i18n/-/react-native-i18n-2.0.15.tgz#09b5a9836116fa7dbd0054c46e2d1014c1ef3c65"
-  integrity sha512-V8VwUP0TLda3oJvgt5tdnFaOV7WXPhTjCTLO7sXI3C2SHggSbD4bCUryMzNJhesimJidH21V2Owvj4zAylHoQQ==
-  dependencies:
-    i18n-js "3.0.11"
 
 react-native-linear-gradient@^2.5.6:
   version "2.8.2"

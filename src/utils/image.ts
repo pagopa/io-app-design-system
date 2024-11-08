@@ -1,4 +1,4 @@
-import { ImageURISource, Platform } from "react-native";
+import { ImageSourcePropType, Platform } from "react-native";
 
 /**
  * Adds a locale timestamp to the image URI to invalidate cache on the following day if the current platform is Android.
@@ -7,21 +7,32 @@ import { ImageURISource, Platform } from "react-native";
  * @returns a new source with a modified URI which includes the actual timestamp in the locale format without slashes
  * if the platform is Android and the source contains an URI. The same source otherwise.
  */
-export const addCacheTimestampToUri = (source: ImageURISource) => {
-  if (source === undefined) {
-    return undefined;
+export const addCacheTimestampToUri = (source: ImageSourcePropType) => {
+  // If the platform is not Android, return the source as is
+  if (Platform.OS !== "android") {
+    return source;
   }
 
-  if (Platform.OS === "android" && source.uri) {
-    const date = new Date();
-    const cacheBurstParam = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
+  // If the source is a number, it's a local image return as is
+  if (typeof source === "number") {
+    return source;
+  }
+
+  // This invalidates the cache on the following day
+  const cacheBurstParam = new Date()
+    .toISOString()
+    .split("T")[0]
+    .replace(/-/g, "");
+
+  if (Array.isArray(source)) {
+    return source.map(image =>
+      image.uri
+        ? { ...image, uri: `${image.uri}?ts=${cacheBurstParam}` }
+        : image
+    );
+  } else {
     return source.uri
-      ? {
-          ...source,
-          uri: `${source.uri}?ts=${cacheBurstParam}`
-        }
+      ? { ...source, uri: `${source.uri}?ts=${cacheBurstParam}` }
       : source;
   }
-
-  return source;
 };
