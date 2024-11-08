@@ -21,8 +21,7 @@ export const tooltipStyles = StyleSheet.create({
   },
   tooltipContainer: {
     position: "absolute",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    padding: 16,
     backgroundColor: IOColors.white,
     borderRadius: 8,
     zIndex: 2000,
@@ -32,6 +31,12 @@ export const tooltipStyles = StyleSheet.create({
     position: "absolute",
     display: 'flex',
     zIndex: 3000
+  },
+  closeIcon: {
+    position: 'absolute',
+    right: 8,
+    top: 8,
+    zIndex: 2001
   }
 });
 
