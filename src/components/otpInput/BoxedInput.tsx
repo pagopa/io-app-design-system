@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   defaultBox: {
     borderWidth: 1,
-    borderColor: IOColors["grey-200"]
+    borderColor: IOColors["grey-650"]
   },
   focusedBox: {
     borderWidth: 2,
