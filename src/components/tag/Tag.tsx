@@ -1,7 +1,7 @@
 import * as O from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/function";
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
   IOColors,
   IOTagRadius,
@@ -51,7 +51,9 @@ export type Tag = TextProps &
         variant: "customIcon";
         customIconProps: VariantProps;
       }
-  >;
+  > & {
+    allowFontScaling?: boolean;
+  };
 
 const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;
@@ -71,6 +73,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
     borderCurve: "continuous"
+  },
+  tagStatic: {
+    paddingHorizontal: IOTagHSpacing,
+    paddingVertical: IOTagVSpacing,
+    columnGap: IOTagIconMargin,
+    borderRadius: IOTagRadius
   },
   iconWrapper: {
     flexShrink: 1
@@ -134,7 +142,8 @@ export const Tag = ({
   variant,
   testID,
   customIconProps,
-  iconAccessibilityLabel
+  iconAccessibilityLabel,
+  allowFontScaling = true
 }: Tag) => {
   const theme = useIOTheme();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
@@ -142,19 +151,17 @@ export const Tag = ({
 
   const variantProps = getVariantProps(variant, customIconProps);
 
+  const tagDynamic: ViewStyle = {
+    paddingHorizontal: IOTagHSpacing * dynamicFontScale,
+    paddingVertical: IOTagVSpacing * dynamicFontScale,
+    columnGap: IOTagIconMargin * dynamicFontScale * spacingScaleMultiplier,
+    borderRadius: IOTagRadius * dynamicFontScale
+  };
+
   return (
     <View
       testID={testID}
-      style={[
-        styles.tag,
-        {
-          paddingHorizontal: IOTagHSpacing * dynamicFontScale,
-          paddingVertical: IOTagVSpacing * dynamicFontScale,
-          columnGap:
-            IOTagIconMargin * dynamicFontScale * spacingScaleMultiplier,
-          borderRadius: IOTagRadius * dynamicFontScale
-        }
-      ]}
+      style={[styles.tag, allowFontScaling ? tagDynamic : styles.tagStatic]}
     >
       {pipe(
         variantProps,
@@ -164,7 +171,7 @@ export const Tag = ({
           ({ iconColor, iconName }) => (
             <View style={styles.iconWrapper}>
               <Icon
-                allowFontScaling
+                allowFontScaling={allowFontScaling}
                 name={iconName}
                 color={iconColor}
                 size={IOTagIconSize}
@@ -177,6 +184,7 @@ export const Tag = ({
       )}
       {text && (
         <IOText
+          allowFontScaling={allowFontScaling}
           font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
           weight={isExperimental ? "Regular" : "Semibold"}
           size={12}

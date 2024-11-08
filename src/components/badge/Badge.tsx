@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
   IOBadgeHSpacing,
   IOBadgeRadius,
@@ -15,6 +15,7 @@ import { IOText } from "../typography";
 export type Badge = WithTestID<{
   outline?: boolean;
   text: string;
+  allowFontScaling?: boolean;
   variant:
     | "default"
     | "info"
@@ -49,13 +50,24 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
       }
     })
+  },
+  badgeStaticStyle: {
+    borderRadius: IOBadgeRadius,
+    paddingHorizontal: IOBadgeHSpacing,
+    paddingVertical: IOBadgeVSpacing
   }
 });
 
 /**
  * Official badge component
  */
-export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
+export const Badge = ({
+  text,
+  outline = false,
+  allowFontScaling = true,
+  variant,
+  testID
+}: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
   const { dynamicFontScale } = useIOFontDynamicScale();
@@ -146,17 +158,19 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
     outline ? mapOutlineVariants : mapVariants
   )[variant];
 
+  const dynamicStyle: ViewStyle = {
+    borderRadius: IOBadgeRadius * dynamicFontScale,
+    paddingHorizontal: IOBadgeHSpacing * dynamicFontScale,
+    paddingVertical: IOBadgeVSpacing * dynamicFontScale
+  };
+
   return (
     <View
       accessible={true}
       testID={testID}
       style={[
         styles.badge,
-        {
-          borderRadius: IOBadgeRadius * dynamicFontScale,
-          paddingHorizontal: IOBadgeHSpacing * dynamicFontScale,
-          paddingVertical: IOBadgeVSpacing * dynamicFontScale
-        },
+        allowFontScaling ? dynamicStyle : styles.badgeStaticStyle,
         outline
           ? {
               borderWidth: 1,
@@ -168,6 +182,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       ]}
     >
       <IOText
+        allowFontScaling={allowFontScaling}
         font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
         weight={isExperimental ? "Regular" : "Semibold"}
         size={12}
