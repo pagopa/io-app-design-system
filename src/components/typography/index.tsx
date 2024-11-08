@@ -1,6 +1,7 @@
 export * from "./BaseTypography";
 export * from "./IOText";
 export * from "./Body";
+export * from "./ComposedBodyFromArray";
 export * from "./Caption";
 export * from "./Chip";
 export * from "./ButtonText";

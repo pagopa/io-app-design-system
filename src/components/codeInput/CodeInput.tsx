@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderWidth: 2
   },
   dotEmpty: {
-    borderColor: IOColors["grey-200"]
+    borderColor: IOColors["grey-650"]
   },
   wrapper: {
     justifyContent: "center"

@@ -130,7 +130,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
         "fontSize": 28,
         "fontStyle": "normal",
         "fontWeight": "600",
-        "lineHeight": 40,
+        "lineHeight": 34,
       },
     ]
   }
