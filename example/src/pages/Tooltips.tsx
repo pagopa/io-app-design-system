@@ -25,6 +25,7 @@ const Tooltips = () => {
           <ButtonSolid fullWidth label='Bottom' onPress={() => setIsBottomVisible(true)} />
         </Tooltip>
         <VSpacer />
+
         <Tooltip
           isVisible={isTopVisible}
           title='Top Tooltip'
