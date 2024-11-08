@@ -75,7 +75,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     ellipsizeMode="tail"
     maxFontSizeMultiplier={1.25}
     numberOfLines={1}
