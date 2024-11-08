@@ -94,12 +94,14 @@ import PictogramCardQuestion from "./svg/PictogramCardQuestion";
 import PictogramDoc from "./svg/PictogramDoc";
 import PictogramEmailDotCheck from "./svg/PictogramEmailDotCheck";
 import PictogramEmailDotNotif from "./svg/PictogramEmailDotNotif";
+import PictogramEmptyWallet from "./svg/PictogramEmptyWallet";
 import PictogramEnded from "./svg/PictogramEnded";
 import PictogramEventClose from "./svg/PictogramEventClose";
 import PictogramFingerprint from "./svg/PictogramFingerprint";
 import PictogramIdea from "./svg/PictogramIdea";
 import PictogramLostConnection from "./svg/PictogramLostConnection";
 import PictogramMessage from "./svg/PictogramMessage";
+import PictogramMeterLimit from "./svg/PictogramMeterLimit";
 import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
@@ -176,6 +178,8 @@ export const IOPictograms = {
   smile: PictogramSmile,
   fingerprint: PictogramFingerprint,
   walletDoc: PictogramWalletDoc,
+  emptyWallet: PictogramEmptyWallet,
+  meterLimit: PictogramMeterLimit,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
