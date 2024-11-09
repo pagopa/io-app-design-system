@@ -69,16 +69,20 @@ export type ListItemTransaction = WithTestID<
     accessible?: boolean;
   } & (
       | {
-          transactionStatus: ListItemTransactionStatusWithoutBadge;
+          transaction: {
+            amount: string;
+            amountAccessibilityLabel: string;
+            status: ListItemTransactionStatusWithoutBadge;
+          };
           badgeText?: string;
-          transactionAmount: string;
-          transactionAmountAccessibilityLabel: string;
         }
       | {
-          transactionStatus: ListItemTransactionStatusWithBadge;
+          transaction: {
+            amount?: string;
+            amountAccessibilityLabel?: string;
+            status: ListItemTransactionStatusWithBadge;
+          };
           badgeText: string;
-          transactionAmount?: string;
-          transactionAmountAccessibilityLabel?: string;
         }
     )
 >;
@@ -117,10 +121,8 @@ export const ListItemTransaction = ({
   subtitle,
   testID,
   title,
-  transactionAmount,
-  transactionAmountAccessibilityLabel,
+  transaction: { amount, amountAccessibilityLabel, status = "success" },
   badgeText,
-  transactionStatus = "success",
   numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
@@ -142,25 +144,25 @@ export const ListItemTransaction = ({
 
   const ListItemTransactionContent = () => {
     const TransactionAmountOrBadgeComponent = () => {
-      switch (transactionStatus) {
+      switch (status) {
         case "success":
           return (
             <H6
-              accessibilityLabel={transactionAmountAccessibilityLabel}
+              accessibilityLabel={amountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : amountColor}
               numberOfLines={numberOfLines}
             >
-              {transactionAmount || ""}
+              {amount || ""}
             </H6>
           );
         case "refunded":
           return (
             <H6
-              accessibilityLabel={transactionAmountAccessibilityLabel}
+              accessibilityLabel={amountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : successColor}
               numberOfLines={numberOfLines}
             >
-              {transactionAmount || ""}
+              {amount || ""}
             </H6>
           );
         case "failure":

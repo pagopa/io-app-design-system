@@ -487,9 +487,11 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         isLoading={true}
         onPress={onButtonPress}
       />
@@ -503,7 +505,7 @@ const renderListItemTransaction = () => (
               title="Title"
               subtitle="subtitle"
               paymentLogoIcon={asset}
-              transactionStatus={status}
+              transaction={{ status }}
               badgeText={status}
               onPress={onButtonPress}
             />
@@ -515,9 +517,11 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         onPress={onButtonPress}
       />
 
@@ -526,9 +530,11 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"mastercard"}
         onPress={onButtonPress}
       />
@@ -538,9 +544,11 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         hasChevronRight={true}
         onPress={onButtonPress}
       />
@@ -550,7 +558,7 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="This one is not clickable"
         subtitle="subtitle"
-        transactionStatus="failure"
+        transaction={{ status: "failure" }}
         badgeText={"Failure"}
         paymentLogoIcon={"postepay"}
       />
@@ -560,11 +568,13 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="This one is clickable but has a very long title"
         subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
-        transactionStatus="success"
       />
 
       <Divider />
@@ -572,10 +582,12 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Custom icon"
         subtitle="This one has a custom icon on the left"
-        transactionStatus="success"
+        transaction={{
+          status: "success",
+          amount: "",
+          amountAccessibilityLabel: ""
+        }}
         paymentLogoIcon={<Icon name="notice" color="red" />}
-        transactionAmount=""
-        transactionAmountAccessibilityLabel=""
         onPress={onButtonPress}
       />
 
@@ -584,10 +596,12 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Refunded transaction"
         subtitle="This one has a custom icon and transaction amount with a green color"
-        transactionStatus="refunded"
+        transaction={{
+          status: "refunded",
+          amount: "€ 100",
+          amountAccessibilityLabel: "€ 100"
+        }}
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
-        transactionAmount="€ 100"
-        transactionAmountAccessibilityLabel="€ 100"
         onPress={onButtonPress}
       />
 
@@ -597,11 +611,13 @@ const renderListItemTransaction = () => (
         title="Long text truncated by ellipsis"
         numberOfLines={1}
         subtitle="Subtitle"
-        transactionAmount="€ 1.000,00"
-        transactionAmountAccessibilityLabel="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
-        transactionStatus="success"
       />
     </View>
   </ComponentViewerBox>

@@ -28,15 +28,19 @@ export type ModulePaymentNoticeProps = WithTestID<
     onPress: (event: GestureResponderEvent) => void;
   } & (
     | {
-        paymentNoticeStatus: Extract<PaymentNoticeStatus, "default">;
-        paymentNoticeAmount: string;
-        paymentNoticeAmountAccessibilityLabel: string;
+        paymentNotice: {
+          status: Extract<PaymentNoticeStatus, "default">;
+          amount: string;
+          amountAccessibilityLabel: string;
+        };
         badgeText?: never;
       }
     | {
-        paymentNoticeStatus: Exclude<PaymentNoticeStatus, "default">;
-        paymentNoticeAmount?: never;
-        paymentNoticeAmountAccessibilityLabel?: never;
+        paymentNotice: {
+          status: Exclude<PaymentNoticeStatus, "default">;
+          amount?: string;
+          amountAccessibilityLabel?: string;
+        };
         badgeText: string;
       }
   )
@@ -53,23 +57,21 @@ const styles = StyleSheet.create({
 const ModulePaymentNoticeContent = ({
   title,
   subtitle,
-  paymentNoticeStatus,
-  paymentNoticeAmount,
-  paymentNoticeAmountAccessibilityLabel,
+  paymentNotice: { status, amount, amountAccessibilityLabel },
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const theme = useIOTheme();
 
   const AmountOrBadgeComponent = () => {
-    switch (paymentNoticeStatus) {
+    switch (status) {
       case "default":
         return (
           <H6
-            accessibilityLabel={paymentNoticeAmountAccessibilityLabel}
+            accessibilityLabel={amountAccessibilityLabel}
             color={theme["interactiveElem-default"]}
             numberOfLines={1}
           >
-            {paymentNoticeAmount}
+            {amount}
           </H6>
         );
       case "paid":
