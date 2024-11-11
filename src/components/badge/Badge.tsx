@@ -183,8 +183,8 @@ export const Badge = ({
     >
       <IOText
         allowFontScaling={allowFontScaling}
-        font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
-        weight={isExperimental ? "Regular" : "Semibold"}
+        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+        weight={"Semibold"}
         size={12}
         lineHeight={16}
         color={foreground}
