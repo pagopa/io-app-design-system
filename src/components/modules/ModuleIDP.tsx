@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Image, ImageSourcePropType, Platform, StyleSheet } from "react-native";
+import { Image, ImageSourcePropType, StyleSheet } from "react-native";
+import { addCacheTimestampToUri } from "../../utils/image";
 import {
   IOListItemLogoMargin,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
-import { toAndroidCacheTimestamp } from "../../utils/dates";
 import { IOText } from "../typography";
 import {
   PressableModuleBase,
@@ -28,12 +28,6 @@ const styles = StyleSheet.create({
   }
 });
 
-// https://github.com/facebook/react-native/issues/12606
-// Image cache forced refresh for Android by appending
-// the `ts` query parameter as DDMMYYYY to simulate a 24h TTL.
-const androidIdpLogoForcedRefreshed = () =>
-  Platform.OS === "android" ? `?ts=${toAndroidCacheTimestamp()}` : "";
-
 export const ModuleIDP = ({
   name,
   localLogo,
@@ -47,11 +41,8 @@ export const ModuleIDP = ({
   const { isExperimental } = useIOExperimentalDesign();
 
   // eslint-disable-next-line no-console
-  const urlLogoIDP = localLogo
-    ? localLogo
-    : {
-        uri: `${logo}${androidIdpLogoForcedRefreshed()}`
-      };
+  const urlLogoIDP = localLogo ? localLogo : addCacheTimestampToUri(logo);
+
   return (
     <PressableModuleBase
       onPress={onPress}
