@@ -91,7 +91,7 @@ const AppNavigator = () => {
           initialRouteName={APP_ROUTES.MAIN}
           screenOptions={{
             headerTitleStyle: {
-              fontFamily: "Readex Pro",
+              fontFamily: "Titillio",
               fontSize: 14,
               fontWeight: "normal"
             },
