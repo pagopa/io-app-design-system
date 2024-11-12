@@ -13,8 +13,8 @@ import {
   ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
+  ListItemTransactionBadge,
   ListItemTransactionLogo,
-  ListItemTransactionStatusWithBadge,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -458,25 +458,37 @@ const organizationLogoURI = {
 };
 
 type mockTransactionStatusData = {
-  status: ListItemTransactionStatusWithBadge;
+  badge: ListItemTransactionBadge;
   asset: ListItemTransactionLogo;
 };
 
 const transactionStatusArray: Array<mockTransactionStatusData> = [
   {
-    status: "failure",
+    badge: {
+      variant: "error",
+      text: "failure"
+    },
     asset: "amex"
   },
   {
-    status: "pending",
+    badge: {
+      variant: "info",
+      text: "pending"
+    },
     asset: { uri: organizationLogoURI.imageSource }
   },
   {
-    status: "cancelled",
+    badge: {
+      variant: "error",
+      text: "cancelled"
+    },
     asset: "unionPay"
   },
   {
-    status: "reversal",
+    badge: {
+      variant: "lightBlue",
+      text: "reversal"
+    },
     asset: "applePay"
   }
 ];
@@ -488,7 +500,6 @@ const renderListItemTransaction = () => (
         title="Title"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
@@ -499,14 +510,13 @@ const renderListItemTransaction = () => (
       <Divider />
 
       {transactionStatusArray.map(
-        ({ status, asset }: mockTransactionStatusData) => (
-          <React.Fragment key={`transactionStatus-${status}`}>
+        ({ badge, asset }: mockTransactionStatusData) => (
+          <React.Fragment key={`transactionStatus-${badge?.text}`}>
             <ListItemTransaction
               title="Title"
               subtitle="subtitle"
               paymentLogoIcon={asset}
-              transaction={{ status }}
-              badgeText={status}
+              transaction={{ hideAmount: true, badge }}
               onPress={onButtonPress}
             />
             <Divider />
@@ -518,7 +528,6 @@ const renderListItemTransaction = () => (
         title="Title"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
@@ -531,7 +540,6 @@ const renderListItemTransaction = () => (
         title="Title"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
@@ -542,14 +550,13 @@ const renderListItemTransaction = () => (
       <Divider />
 
       <ListItemTransaction
+        showChevron
         title="Title"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
-        hasChevronRight={true}
         onPress={onButtonPress}
       />
 
@@ -558,8 +565,10 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="This one is not clickable"
         subtitle="subtitle"
-        transaction={{ status: "failure" }}
-        badgeText={"Failure"}
+        transaction={{
+          hideAmount: true,
+          badge: { variant: "error", text: "failure" }
+        }}
         paymentLogoIcon={"postepay"}
       />
 
@@ -569,7 +578,6 @@ const renderListItemTransaction = () => (
         title="This one is clickable but has a very long title"
         subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
@@ -583,7 +591,6 @@ const renderListItemTransaction = () => (
         title="Custom icon"
         subtitle="This one has a custom icon on the left"
         transaction={{
-          status: "success",
           amount: "",
           amountAccessibilityLabel: ""
         }}
@@ -597,9 +604,9 @@ const renderListItemTransaction = () => (
         title="Refunded transaction"
         subtitle="This one has a custom icon and transaction amount with a green color"
         transaction={{
-          status: "refunded",
           amount: "€ 100",
-          amountAccessibilityLabel: "€ 100"
+          amountAccessibilityLabel: "€ 100",
+          refund: true
         }}
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
         onPress={onButtonPress}
@@ -612,7 +619,6 @@ const renderListItemTransaction = () => (
         numberOfLines={1}
         subtitle="Subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}

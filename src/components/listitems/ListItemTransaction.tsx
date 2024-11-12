@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { ImageURISource, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 
@@ -26,32 +26,19 @@ import {
   PressableListItemBase
 } from "./PressableListItemsBase";
 
-export type ListItemTransactionStatus =
-  | "success"
-  | "failure"
-  | "pending"
-  | "cancelled"
-  | "refunded"
-  | "reversal";
-
-export type ListItemTransactionStatusWithoutBadge = Extract<
-  ListItemTransactionStatus,
-  "success" | "refunded"
->;
-
-export type ListItemTransactionStatusWithBadge = Exclude<
-  ListItemTransactionStatus,
-  "success" | "refunded"
->;
+export type ListItemTransactionBadge = {
+  text: string;
+  variant: Badge["variant"];
+};
 
 export type ListItemTransactionLogo =
   | IOLogoPaymentType
   | ImageURISource
-  | React.ReactNode;
+  | ReactNode;
 
 export type ListItemTransaction = WithTestID<
   PressableBaseProps & {
-    hasChevronRight?: boolean;
+    showChevron?: boolean;
     isLoading?: boolean;
     /**
      * A logo that will be displayed on the left of the list item.
@@ -72,24 +59,22 @@ export type ListItemTransaction = WithTestID<
           transaction: {
             amount: string;
             amountAccessibilityLabel: string;
-            status: ListItemTransactionStatusWithoutBadge;
+            hideAmount?: false;
+            badge?: never;
+            refund?: boolean;
           };
-          badgeText?: string;
         }
       | {
           transaction: {
             amount?: string;
             amountAccessibilityLabel?: string;
-            status: ListItemTransactionStatusWithBadge;
+            hideAmount: true;
+            badge: ListItemTransactionBadge;
+            refund?: never;
           };
-          badgeText: string;
         }
     )
 >;
-
-type LeftComponentProps = {
-  logoIcon: ListItemTransactionLogo;
-};
 
 const CARD_LOGO_SIZE: IOIconSizeScale = 24;
 const MUNICIPALITY_LOGO_SIZE = 44;
@@ -97,7 +82,11 @@ const MUNICIPALITY_LOGO_SIZE = 44;
 // since it is bigger than the card logos, we use
 // it as a base size for homogeneous sizing via container size.
 
-const LeftComponent = ({ logoIcon }: LeftComponentProps) => {
+const StartComponent = ({
+  logoIcon
+}: {
+  logoIcon: ListItemTransactionLogo;
+}) => {
   if (isImageUri(logoIcon)) {
     return <Avatar logoUri={logoIcon} size="small" />;
   }
@@ -114,22 +103,19 @@ const LeftComponent = ({ logoIcon }: LeftComponentProps) => {
 
 export const ListItemTransaction = ({
   accessibilityLabel,
-  hasChevronRight = false,
+  showChevron = false,
   isLoading = false,
   paymentLogoIcon,
   onPress,
   subtitle,
   testID,
   title,
-  transaction: { amount, amountAccessibilityLabel, status = "success" },
-  badgeText,
+  transaction: { amount, amountAccessibilityLabel, hideAmount, badge, refund },
   numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
-
-  const maybeBadgeText = badgeText ?? "-";
 
   if (isLoading) {
     return <SkeletonComponent />;
@@ -139,80 +125,58 @@ export const ListItemTransaction = ({
     ? theme["interactiveElem-default"]
     : "blue";
 
-  const amountColor: IOColors = theme["textBody-default"];
-  const successColor: IOColors = theme.successText;
+  const amountColorDefault: IOColors = theme["textBody-default"];
+  const amountColorRefund: IOColors = theme.successText;
 
-  const ListItemTransactionContent = () => {
-    const TransactionAmountOrBadgeComponent = () => {
-      switch (status) {
-        case "success":
-          return (
-            <H6
-              accessibilityLabel={amountAccessibilityLabel}
-              color={hasChevronRight ? interactiveColor : amountColor}
-              numberOfLines={numberOfLines}
-            >
-              {amount || ""}
-            </H6>
-          );
-        case "refunded":
-          return (
-            <H6
-              accessibilityLabel={amountAccessibilityLabel}
-              color={hasChevronRight ? interactiveColor : successColor}
-              numberOfLines={numberOfLines}
-            >
-              {amount || ""}
-            </H6>
-          );
-        case "failure":
-        case "cancelled":
-          return <Badge variant="error" text={maybeBadgeText} />;
-        case "reversal":
-          return <Badge variant="lightBlue" text={maybeBadgeText} />;
-        case "pending":
-          return <Badge variant="info" text={maybeBadgeText} />;
-      }
-    };
+  const amountColor = refund ? amountColorRefund : amountColorDefault;
 
-    return (
-      <>
-        {paymentLogoIcon && (
-          <View
-            style={{
-              marginRight: IOListItemLogoMargin,
-              width: MUNICIPALITY_LOGO_SIZE,
-              alignItems: "center"
-            }}
-          >
-            <LeftComponent logoIcon={paymentLogoIcon} />
-          </View>
-        )}
-        <View style={IOStyles.flex}>
-          <LabelSmall
+  const ListItemTransactionContent = () => (
+    <>
+      {paymentLogoIcon && (
+        <View
+          style={{
+            marginRight: IOListItemLogoMargin,
+            width: MUNICIPALITY_LOGO_SIZE,
+            alignItems: "center"
+          }}
+        >
+          <StartComponent logoIcon={paymentLogoIcon} />
+        </View>
+      )}
+      <View style={IOStyles.flex}>
+        <LabelSmall
+          numberOfLines={numberOfLines}
+          color={theme["textBody-default"]}
+          weight="Semibold"
+        >
+          {title}
+        </LabelSmall>
+        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          {subtitle}
+        </LabelSmall>
+      </View>
+      <View style={Styles.endBlock}>
+        {hideAmount ? (
+          <Badge variant={badge?.variant} text={badge?.text} />
+        ) : (
+          <H6
+            accessibilityLabel={amountAccessibilityLabel}
+            color={showChevron ? interactiveColor : amountColor}
             numberOfLines={numberOfLines}
-            color={theme["textBody-default"]}
-            weight="Semibold"
           >
-            {title}
-          </LabelSmall>
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {subtitle}
-          </LabelSmall>
-        </View>
-        <View style={Styles.rightSection}>
-          <TransactionAmountOrBadgeComponent />
-          {hasChevronRight && (
-            <Icon
-              name="chevronRightListItem"
-              color={interactiveColor}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          )}
-        </View>
-      </>
-    );
-  };
+            {amount || ""}
+          </H6>
+        )}
+        {showChevron && (
+          <Icon
+            name="chevronRightListItem"
+            color={interactiveColor}
+            size={IOListItemVisualParams.chevronSize}
+          />
+        )}
+      </View>
+    </>
+  );
 
   if (onPress) {
     return (
@@ -264,7 +228,7 @@ const SkeletonComponent = () => (
 );
 
 const Styles = StyleSheet.create({
-  rightSection: {
+  endBlock: {
     marginLeft: IOListItemVisualParams.iconMargin,
     flexDirection: "row",
     alignItems: "center",
