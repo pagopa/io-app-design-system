@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOTheme } from "../../core";
-import { IOFontWeight } from "../../utils/fonts";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import {
   IOText,
   IOTextProps,
@@ -13,6 +13,12 @@ type LabelProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
 } & TypographicStyleAsLinkProps;
 
+const fontName: IOFontFamily = "Titillio";
+const fontWeight: IOFontWeight = "Semibold";
+
+const legacyFontName: IOFontFamily = "TitilliumSansPro";
+const legacyFontWeight: IOFontWeight = "Semibold";
+
 /**
  * `LabelSmall` typographic style
  */
@@ -22,6 +28,7 @@ export const Label = forwardRef<View, LabelProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -29,8 +36,12 @@ export const Label = forwardRef<View, LabelProps>(
 
     const LabelProps: IOTextProps = {
       ...props,
-      font: "TitilliumSansPro",
-      weight: customWeight ?? "Semibold",
+      font: isExperimental ? fontName : legacyFontName,
+      weight: customWeight
+        ? customWeight
+        : isExperimental
+        ? fontWeight
+        : legacyFontWeight,
       size: 16,
       lineHeight: 24,
       color: customColor ?? defaultColor,

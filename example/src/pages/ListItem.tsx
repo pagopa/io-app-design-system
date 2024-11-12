@@ -13,8 +13,8 @@ import {
   ListItemRadioWithAmount,
   ListItemSwitch,
   ListItemTransaction,
+  ListItemTransactionBadge,
   ListItemTransactionLogo,
-  ListItemTransactionStatusWithBadge,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -458,25 +458,37 @@ const organizationLogoURI = {
 };
 
 type mockTransactionStatusData = {
-  status: ListItemTransactionStatusWithBadge;
+  badge: ListItemTransactionBadge;
   asset: ListItemTransactionLogo;
 };
 
 const transactionStatusArray: Array<mockTransactionStatusData> = [
   {
-    status: "failure",
+    badge: {
+      variant: "error",
+      text: "failure"
+    },
     asset: "amex"
   },
   {
-    status: "pending",
+    badge: {
+      variant: "info",
+      text: "pending"
+    },
     asset: { uri: organizationLogoURI.imageSource }
   },
   {
-    status: "cancelled",
+    badge: {
+      variant: "error",
+      text: "cancelled"
+    },
     asset: "unionPay"
   },
   {
-    status: "reversal",
+    badge: {
+      variant: "lightBlue",
+      text: "reversal"
+    },
     asset: "applePay"
   }
 ];
@@ -487,8 +499,10 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         isLoading={true}
         onPress={onButtonPress}
       />
@@ -496,14 +510,13 @@ const renderListItemTransaction = () => (
       <Divider />
 
       {transactionStatusArray.map(
-        ({ status, asset }: mockTransactionStatusData) => (
-          <React.Fragment key={`transactionStatus-${status}`}>
+        ({ badge, asset }: mockTransactionStatusData) => (
+          <React.Fragment key={`transactionStatus-${badge?.text}`}>
             <ListItemTransaction
               title="Title"
               subtitle="subtitle"
               paymentLogoIcon={asset}
-              transactionStatus={status}
-              badgeText={status}
+              transaction={{ badge }}
               onPress={onButtonPress}
             />
             <Divider />
@@ -514,8 +527,10 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         onPress={onButtonPress}
       />
 
@@ -524,8 +539,10 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"mastercard"}
         onPress={onButtonPress}
       />
@@ -533,11 +550,13 @@ const renderListItemTransaction = () => (
       <Divider />
 
       <ListItemTransaction
+        showChevron
         title="Title"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
-        hasChevronRight={true}
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         onPress={onButtonPress}
       />
 
@@ -546,8 +565,9 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="This one is not clickable"
         subtitle="subtitle"
-        transactionStatus="failure"
-        badgeText={"Failure"}
+        transaction={{
+          badge: { variant: "error", text: "failure" }
+        }}
         paymentLogoIcon={"postepay"}
       />
 
@@ -556,10 +576,12 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="This one is clickable but has a very long title"
         subtitle="very long subtitle, the kind of subtitle you'd never wish to see in the app, like a very long one"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
-        transactionStatus="success"
       />
 
       <Divider />
@@ -567,9 +589,11 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Custom icon"
         subtitle="This one has a custom icon on the left"
-        transactionStatus="success"
+        transaction={{
+          amount: "",
+          amountAccessibilityLabel: ""
+        }}
         paymentLogoIcon={<Icon name="notice" color="red" />}
-        transactionAmount=""
         onPress={onButtonPress}
       />
 
@@ -578,22 +602,27 @@ const renderListItemTransaction = () => (
       <ListItemTransaction
         title="Refunded transaction"
         subtitle="This one has a custom icon and transaction amount with a green color"
-        transactionStatus="refunded"
+        transaction={{
+          amount: "€ 100",
+          amountAccessibilityLabel: "€ 100",
+          refund: true
+        }}
         paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
-        transactionAmount="€ 100"
         onPress={onButtonPress}
       />
 
       <Divider />
 
       <ListItemTransaction
-        title="Long text truncated by ellipsis"
+        title="Long long text truncated by ellipsis"
         numberOfLines={1}
         subtitle="Subtitle"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         paymentLogoIcon={"postepay"}
         onPress={onButtonPress}
-        transactionStatus="success"
       />
     </View>
   </ComponentViewerBox>

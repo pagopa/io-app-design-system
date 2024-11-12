@@ -1,4 +1,3 @@
-import { constVoid } from "fp-ts/function";
 import React, { useMemo } from "react";
 import { Appearance } from "react-native";
 import {
@@ -24,7 +23,7 @@ export const IOThemeContext: React.Context<IOThemeContextType> =
     themeType: Appearance.getColorScheme() === "dark" ? "dark" : "light",
     theme:
       Appearance.getColorScheme() === "dark" ? IOThemes.dark : IOThemes.light,
-    setTheme: constVoid
+    setTheme: () => void 0
   });
 
 export const useIOThemeContext = () => React.useContext(IOThemeContext);
