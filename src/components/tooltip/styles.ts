@@ -15,13 +15,10 @@ export const tooltipStyles = StyleSheet.create({
     position: "absolute",
     zIndex: 1000
   },
-  tooltipHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
   tooltipContainer: {
     position: "absolute",
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
     backgroundColor: IOColors.white,
     borderRadius: 8,
     zIndex: 2000,
@@ -35,8 +32,7 @@ export const tooltipStyles = StyleSheet.create({
   closeIcon: {
     position: 'absolute',
     right: 8,
-    top: 8,
-    zIndex: 2001
+    top: 9 // It's been used `9` instead of `8` to fix accessibility focus order. In this way title is read before close icon.
   }
 });
 

@@ -161,7 +161,7 @@ export const getTooltipVerticalAlignment = (placement: Placement, childrenHeight
  * @param placement The `Tooltip` placement in relation of its children
  * @param childrenHeight The `Tooltip`'s children height
 */
-export const getArrowVerticalAlignment = (placement: Placement, childrenHeight: number)=> {
+export const getArrowVerticalAlignment = (placement: Placement, childrenHeight: number) => {
   if (placement === "left" || placement === "right") {
     return {
       transform: [
@@ -174,3 +174,6 @@ export const getArrowVerticalAlignment = (placement: Placement, childrenHeight: 
   }
   return null;
 };
+
+export const isDefined = <T>(v: T) => v !== undefined;
+export const isNotZero = (v: number) => v !== 0;
