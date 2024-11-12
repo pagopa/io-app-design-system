@@ -58,18 +58,18 @@ export type ListItemTransaction = WithTestID<
   } & (
       | {
           transaction: {
+            hideAmount?: false;
             amount: string;
             amountAccessibilityLabel: string;
-            hideAmount?: false;
             badge?: never;
             refund?: boolean;
           };
         }
       | {
           transaction: {
+            hideAmount: true;
             amount?: string;
             amountAccessibilityLabel?: string;
-            hideAmount: true;
             badge: ListItemTransactionBadge;
             refund?: never;
           };
@@ -160,7 +160,7 @@ export const ListItemTransaction = ({
           </LabelSmall>
         </View>
       </HStack>
-      <HStack style={{ alignItems: "center" }} space={4}>
+      <HStack style={{ alignItems: "center" }}>
         {hideAmount ? (
           <Badge variant={badge?.variant} text={badge?.text} />
         ) : (
@@ -169,7 +169,7 @@ export const ListItemTransaction = ({
             color={showChevron ? interactiveColor : amountColor}
             numberOfLines={numberOfLines}
           >
-            {amount || ""}
+            {amount}
           </H6>
         )}
         {showChevron && (
