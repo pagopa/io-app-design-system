@@ -135,6 +135,7 @@ import IconNavServices from "./svg/IconNavServices";
 import IconNavServicesFocused from "./svg/IconNavServicesFocused";
 import IconNavWallet from "./svg/IconNavWallet";
 import IconNavWalletFocused from "./svg/IconNavWalletFocused";
+import IconNavQrWallet from "./svg/IconNavQrWallet";
 import IconNotes from "./svg/IconNotes";
 import IconNotice from "./svg/IconNotice";
 import IconNoticeFilled from "./svg/IconNoticeFilled";
@@ -199,7 +200,7 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconCieLetter from './svg/IconCieLetter';
+import IconCieLetter from "./svg/IconCieLetter";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -360,6 +361,7 @@ export const IOIcons = {
   navMessagesFocused: IconNavMessagesFocused,
   navWallet: IconNavWallet,
   navWalletFocused: IconNavWalletFocused,
+  navQrWallet: IconNavQrWallet,
   navScan: IconNavScan,
   navServices: IconNavServices,
   navServicesFocused: IconNavServicesFocused,
@@ -517,7 +519,8 @@ const {
   navMessagesFocused,
   navWalletFocused,
   navServicesFocused,
-  navProfileFocused
+  navProfileFocused,
+  navQrWallet
 } = IOIcons;
 
 export const IONavIcons = {
@@ -530,7 +533,8 @@ export const IONavIcons = {
   navMessagesFocused,
   navWalletFocused,
   navServicesFocused,
-  navProfileFocused
+  navProfileFocused,
+  navQrWallet
 } as const;
 
 export type IONavIcons = keyof typeof IONavIcons;

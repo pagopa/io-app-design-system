@@ -215,13 +215,19 @@ export const Banner = ({
     isPressed.value = 0;
   }, [isPressed]);
 
+  /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
+   if they are present. */
+  const fallbackAccessibilityLabel = [title, content, action]
+    .filter(Boolean)
+    .join(" ");
+
   const renderMainBlock = () => (
     <>
       <View
         style={[IOStyles.flex, IOStyles.selfCenter]}
         accessible={true}
         // A11y related props
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
         accessibilityHint={accessibilityHint}
         accessibilityRole={action !== undefined ? "button" : undefined}
       >
@@ -251,7 +257,7 @@ export const Banner = ({
           >
             <VSpacer size={4} />
             <IOText
-              font={isExperimental ? "ReadexPro" : "TitilliumSansPro"}
+              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
               weight={isExperimental ? "Regular" : "Bold"}
               color={colorMainButton}
               size={buttonTextFontSize}

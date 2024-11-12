@@ -7,13 +7,13 @@ import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 const defaultColor: keyof IOTheme = "textHeading-default";
 
 export const h2FontSize: IOFontSize = 26;
-export const h2LineHeight = 39;
-const fontName: IOFontFamily = "ReadexPro";
-const fontWeight: IOFontWeight = "Regular";
+export const h2LineHeight = 34;
+const fontName: IOFontFamily = "Titillio";
+const fontWeight: IOFontWeight = "Semibold";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const legacyH2FontSize: IOFontSize = 28;
-const legacyH2LineHeight = 40;
+const legacyH2LineHeight = 34;
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
 const legacyFontWeight: IOFontWeight = "Semibold";
 
