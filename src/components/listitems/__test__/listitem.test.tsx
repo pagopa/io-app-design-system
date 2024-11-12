@@ -81,7 +81,6 @@ describe("Test List Item Components", () => {
         title="TITLE"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}
@@ -184,7 +183,6 @@ describe("Test List Item Components - Experimental Enabled ", () => {
         title="TITLE"
         subtitle="subtitle"
         transaction={{
-          status: "success",
           amount: "€ 1.000,00",
           amountAccessibilityLabel: "€ 1.000,00"
         }}

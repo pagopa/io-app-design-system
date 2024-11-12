@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Pressable } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOListItemStyles } from "../../core";
+import { IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { useListItemSpringAnimation } from "./hooks/useListItemSpringAnimation";
 
@@ -40,7 +40,11 @@ export const PressableListItemBase = ({
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            { columnGap: IOListItemVisualParams.iconMargin },
+            animatedScaleStyle
+          ]}
         >
           {children}
         </Animated.View>
