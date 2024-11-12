@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ImageURISource, StyleSheet, View } from "react-native";
+import { ImageURISource, View } from "react-native";
 import Placeholder from "rn-placeholder";
 
 import {
@@ -20,6 +20,7 @@ import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { VSpacer } from "../spacer";
+import { HStack } from "../stack";
 import { H6, LabelSmall } from "../typography";
 import {
   PressableBaseProps,
@@ -132,30 +133,34 @@ export const ListItemTransaction = ({
 
   const ListItemTransactionContent = () => (
     <>
-      {paymentLogoIcon && (
-        <View
-          style={{
-            marginRight: IOListItemLogoMargin,
-            width: MUNICIPALITY_LOGO_SIZE,
-            alignItems: "center"
-          }}
-        >
-          <StartComponent logoIcon={paymentLogoIcon} />
+      <HStack
+        space={IOListItemLogoMargin}
+        style={{ alignItems: "center", flexShrink: 1 }}
+      >
+        {paymentLogoIcon && (
+          <View
+            style={{
+              width: MUNICIPALITY_LOGO_SIZE,
+              alignItems: "center"
+            }}
+          >
+            <StartComponent logoIcon={paymentLogoIcon} />
+          </View>
+        )}
+        <View style={{ flexShrink: 1 }}>
+          <LabelSmall
+            numberOfLines={numberOfLines}
+            color={theme["textBody-default"]}
+            weight="Semibold"
+          >
+            {title}
+          </LabelSmall>
+          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+            {subtitle}
+          </LabelSmall>
         </View>
-      )}
-      <View style={IOStyles.flex}>
-        <LabelSmall
-          numberOfLines={numberOfLines}
-          color={theme["textBody-default"]}
-          weight="Semibold"
-        >
-          {title}
-        </LabelSmall>
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
-          {subtitle}
-        </LabelSmall>
-      </View>
-      <View style={Styles.endBlock}>
+      </HStack>
+      <HStack style={{ alignItems: "center" }} space={4}>
         {hideAmount ? (
           <Badge variant={badge?.variant} text={badge?.text} />
         ) : (
@@ -174,7 +179,7 @@ export const ListItemTransaction = ({
             size={IOListItemVisualParams.chevronSize}
           />
         )}
-      </View>
+      </HStack>
     </>
   );
 
@@ -196,7 +201,12 @@ export const ListItemTransaction = ({
         accessible={accessible}
         accessibilityLabel={accessibilityLabel}
       >
-        <View style={IOListItemStyles.listItemInner}>
+        <View
+          style={[
+            IOListItemStyles.listItemInner,
+            { columnGap: IOListItemVisualParams.iconMargin }
+          ]}
+        >
           <ListItemTransactionContent />
         </View>
       </View>
@@ -226,12 +236,3 @@ const SkeletonComponent = () => (
     </View>
   </View>
 );
-
-const Styles = StyleSheet.create({
-  endBlock: {
-    marginLeft: IOListItemVisualParams.iconMargin,
-    flexDirection: "row",
-    alignItems: "center",
-    height: "100%"
-  }
-});

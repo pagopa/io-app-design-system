@@ -615,7 +615,7 @@ const renderListItemTransaction = () => (
       <Divider />
 
       <ListItemTransaction
-        title="Long text truncated by ellipsis"
+        title="Long long text truncated by ellipsis"
         numberOfLines={1}
         subtitle="Subtitle"
         transaction={{
