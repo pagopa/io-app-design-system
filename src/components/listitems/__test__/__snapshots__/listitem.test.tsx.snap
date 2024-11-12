@@ -921,6 +921,9 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -1069,13 +1072,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -1309,6 +1305,9 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -1357,13 +1356,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -1677,6 +1669,9 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
           },
           {
             "transform": [
@@ -2613,6 +2608,9 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -2761,13 +2759,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
@@ -3001,6 +2992,9 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -3049,13 +3043,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
@@ -3369,6 +3356,9 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
           },
           {
             "transform": [
