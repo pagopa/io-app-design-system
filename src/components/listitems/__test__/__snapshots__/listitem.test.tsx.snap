@@ -191,11 +191,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
     />
     <Image
       accessibilityIgnoresInvertColors={true}
-      source={
-        {
-          "uri": "undefined",
-        }
-      }
       style={
         {
           "height": 30,
@@ -1892,11 +1887,6 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
     />
     <Image
       accessibilityIgnoresInvertColors={true}
-      source={
-        {
-          "uri": "undefined",
-        }
-      }
       style={
         {
           "height": 30,

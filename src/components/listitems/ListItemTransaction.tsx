@@ -1,5 +1,3 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import React from "react";
 import { ImageURISource, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
@@ -15,10 +13,7 @@ import {
   useIOTheme
 } from "../../core";
 
-import {
-  getAccessibleAmountText,
-  useIOFontDynamicScale
-} from "../../utils/accessibility";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
@@ -76,14 +71,20 @@ export type ListItemTransaction = WithTestID<
     accessible?: boolean;
   } & (
       | {
-          transactionStatus: ListItemTransactionStatusWithoutBadge;
+          transaction: {
+            amount: string;
+            amountAccessibilityLabel: string;
+            status: ListItemTransactionStatusWithoutBadge;
+          };
           badgeText?: string;
-          transactionAmount: string;
         }
       | {
-          transactionStatus: ListItemTransactionStatusWithBadge;
+          transaction: {
+            amount?: string;
+            amountAccessibilityLabel?: string;
+            status: ListItemTransactionStatusWithBadge;
+          };
           badgeText: string;
-          transactionAmount?: string;
         }
     )
 >;
@@ -122,9 +123,8 @@ export const ListItemTransaction = ({
   subtitle,
   testID,
   title,
-  transactionAmount,
+  transaction: { amount, amountAccessibilityLabel, status = "success" },
   badgeText,
-  transactionStatus = "success",
   numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
@@ -133,11 +133,7 @@ export const ListItemTransaction = ({
 
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
-  const maybeBadgeText = pipe(
-    badgeText,
-    O.fromNullable,
-    O.getOrElse(() => "-")
-  );
+  const maybeBadgeText = badgeText ?? "-";
 
   if (isLoading) {
     return <SkeletonComponent />;
@@ -152,25 +148,25 @@ export const ListItemTransaction = ({
 
   const ListItemTransactionContent = () => {
     const TransactionAmountOrBadgeComponent = () => {
-      switch (transactionStatus) {
+      switch (status) {
         case "success":
           return (
             <H6
-              accessibilityLabel={getAccessibleAmountText(transactionAmount)}
+              accessibilityLabel={amountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : amountColor}
               numberOfLines={numberOfLines}
             >
-              {transactionAmount || ""}
+              {amount || ""}
             </H6>
           );
         case "refunded":
           return (
             <H6
-              accessibilityLabel={getAccessibleAmountText(transactionAmount)}
+              accessibilityLabel={amountAccessibilityLabel}
               color={hasChevronRight ? interactiveColor : successColor}
               numberOfLines={numberOfLines}
             >
-              {transactionAmount || ""}
+              {amount || ""}
             </H6>
           );
         case "failure":
@@ -229,31 +225,30 @@ export const ListItemTransaction = ({
     );
   };
 
-  return pipe(
-    onPress,
-    O.fromNullable,
-    O.fold(
-      () => (
-        <View
-          style={IOListItemStyles.listItem}
-          testID={testID}
-          accessible={accessible}
-          accessibilityLabel={accessibilityLabel}
-        >
+  if (onPress) {
+    return (
+      <PressableListItemBase
+        onPress={onPress}
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
+      >
+        <ListItemTransactionContent />
+      </PressableListItemBase>
+    );
+  } else {
+    return (
+      <View
+        style={IOListItemStyles.listItem}
+        testID={testID}
+        accessible={accessible}
+        accessibilityLabel={accessibilityLabel}
+      >
+        <View style={IOListItemStyles.listItemInner}>
           <ListItemTransactionContent />
         </View>
-      ),
-      onPress => (
-        <PressableListItemBase
-          onPress={onPress}
-          testID={testID}
-          accessibilityLabel={accessibilityLabel}
-        >
-          <ListItemTransactionContent />
-        </PressableListItemBase>
-      )
-    )
-  );
+      </View>
+    );
+  }
 };
 
 const SkeletonComponent = () => (

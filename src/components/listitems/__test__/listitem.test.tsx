@@ -80,8 +80,11 @@ describe("Test List Item Components", () => {
       <ListItemTransaction
         title="TITLE"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         isLoading={true}
         onPress={onButtonPress}
       />
@@ -180,8 +183,11 @@ describe("Test List Item Components - Experimental Enabled ", () => {
       <ListItemTransaction
         title="TITLE"
         subtitle="subtitle"
-        transactionStatus="success"
-        transactionAmount="€ 1.000,00"
+        transaction={{
+          status: "success",
+          amount: "€ 1.000,00",
+          amountAccessibilityLabel: "€ 1.000,00"
+        }}
         isLoading={true}
         onPress={onButtonPress}
       />

@@ -1,5 +1,3 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import React from "react";
 import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
@@ -163,24 +161,17 @@ export const Tag = ({
       testID={testID}
       style={[styles.tag, allowFontScaling ? tagDynamic : styles.tagStatic]}
     >
-      {pipe(
-        variantProps,
-        O.fromNullable,
-        O.fold(
-          () => null,
-          ({ iconColor, iconName }) => (
-            <View style={styles.iconWrapper}>
-              <Icon
-                allowFontScaling={allowFontScaling}
-                name={iconName}
-                color={iconColor}
-                size={IOTagIconSize}
-                accessible={!!iconAccessibilityLabel}
-                accessibilityLabel={iconAccessibilityLabel}
-              />
-            </View>
-          )
-        )
+      {variantProps && (
+        <View style={styles.iconWrapper}>
+          <Icon
+            allowFontScaling={allowFontScaling}
+            name={variantProps.iconName}
+            color={variantProps.iconColor}
+            size={IOTagIconSize}
+            accessible={!!iconAccessibilityLabel}
+            accessibilityLabel={iconAccessibilityLabel}
+          />
+        </View>
       )}
       {text && (
         <IOText

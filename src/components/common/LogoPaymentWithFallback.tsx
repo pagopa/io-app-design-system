@@ -1,8 +1,7 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import * as React from "react";
-import { findFirstCaseInsensitive } from "../../utils/object";
 import { IOColors } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
+import { findFirstCaseInsensitive } from "../../utils/object";
 import { IOIconSizeScale, Icon } from "../icons";
 import {
   IOLogoPaymentExtType,
@@ -12,7 +11,6 @@ import {
   LogoPayment,
   LogoPaymentExt
 } from "../logos";
-import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 export type LogoPaymentWithFallback = {
   brand?: string;
@@ -44,32 +42,39 @@ export const LogoPaymentWithFallback = ({
   const { dynamicFontScale } = useIOFontDynamicScale();
   const logos = isExtended ? IOPaymentExtLogos : IOPaymentLogos;
 
-  return pipe(
-    brand,
-    O.fromNullable,
-    O.chain(findFirstCaseInsensitive(logos)),
-    O.map(([brand]) => brand),
-    O.fold(
-      () => (
-        <Icon
-          allowFontScaling
-          name="creditCard"
-          size={size}
-          color={fallbackIconColor}
-        />
-      ),
-      brand =>
-        isExtended ? (
-          <LogoPaymentExt
-            name={brand as IOLogoPaymentExtType}
-            size={size * dynamicFontScale}
-          />
-        ) : (
-          <LogoPayment
-            name={brand as IOLogoPaymentType}
-            size={size * dynamicFontScale}
-          />
-        )
-    )
+  if (!brand) {
+    return (
+      <Icon
+        allowFontScaling
+        name="creditCard"
+        size={size}
+        color={fallbackIconColor}
+      />
+    );
+  }
+
+  const findCase = findFirstCaseInsensitive(logos, brand);
+
+  if (!findCase) {
+    return (
+      <Icon
+        allowFontScaling
+        name="creditCard"
+        size={size}
+        color={fallbackIconColor}
+      />
+    );
+  }
+
+  return isExtended ? (
+    <LogoPaymentExt
+      name={findCase as IOLogoPaymentExtType}
+      size={size * dynamicFontScale}
+    />
+  ) : (
+    <LogoPayment
+      name={findCase as IOLogoPaymentType}
+      size={size * dynamicFontScale}
+    />
   );
 };

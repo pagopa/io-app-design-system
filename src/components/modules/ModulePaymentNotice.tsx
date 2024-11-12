@@ -2,7 +2,6 @@ import * as React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import Placeholder from "rn-placeholder";
 import { IOListItemVisualParams, IOSpacer, useIOTheme } from "../../core";
-import { getAccessibleAmountText } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
@@ -29,13 +28,19 @@ export type ModulePaymentNoticeProps = WithTestID<
     onPress: (event: GestureResponderEvent) => void;
   } & (
     | {
-        paymentNoticeStatus: Extract<PaymentNoticeStatus, "default">;
-        paymentNoticeAmount: string;
+        paymentNotice: {
+          status: Extract<PaymentNoticeStatus, "default">;
+          amount: string;
+          amountAccessibilityLabel: string;
+        };
         badgeText?: never;
       }
     | {
-        paymentNoticeStatus: Exclude<PaymentNoticeStatus, "default">;
-        paymentNoticeAmount?: never;
+        paymentNotice: {
+          status: Exclude<PaymentNoticeStatus, "default">;
+          amount?: string;
+          amountAccessibilityLabel?: string;
+        };
         badgeText: string;
       }
   )
@@ -52,22 +57,21 @@ const styles = StyleSheet.create({
 const ModulePaymentNoticeContent = ({
   title,
   subtitle,
-  paymentNoticeStatus,
-  paymentNoticeAmount,
+  paymentNotice: { status, amount, amountAccessibilityLabel },
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const theme = useIOTheme();
 
   const AmountOrBadgeComponent = () => {
-    switch (paymentNoticeStatus) {
+    switch (status) {
       case "default":
         return (
           <H6
-            accessibilityLabel={getAccessibleAmountText(paymentNoticeAmount)}
+            accessibilityLabel={amountAccessibilityLabel}
             color={theme["interactiveElem-default"]}
             numberOfLines={1}
           >
-            {paymentNoticeAmount}
+            {amount}
           </H6>
         );
       case "paid":
