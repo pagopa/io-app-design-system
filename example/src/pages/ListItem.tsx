@@ -516,7 +516,7 @@ const renderListItemTransaction = () => (
               title="Title"
               subtitle="subtitle"
               paymentLogoIcon={asset}
-              transaction={{ hideAmount: true, badge }}
+              transaction={{ badge }}
               onPress={onButtonPress}
             />
             <Divider />
@@ -566,7 +566,6 @@ const renderListItemTransaction = () => (
         title="This one is not clickable"
         subtitle="subtitle"
         transaction={{
-          hideAmount: true,
           badge: { variant: "error", text: "failure" }
         }}
         paymentLogoIcon={"postepay"}
