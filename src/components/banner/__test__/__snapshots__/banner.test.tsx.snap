@@ -121,7 +121,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -130,57 +130,8 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "elevation": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "textAlignVertical": "center",
-                },
-                false,
-                {},
-                {
-                  "transform": [
-                    {
-                      "scale": undefined,
-                    },
-                  ],
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              accessible={false}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              importantForAccessibility="no-hide-descendants"
-              maxFontSizeMultiplier={1.25}
-              numberOfLines={1}
-              style={
-                [
-                  {},
-                  {
-                    "color": "#0E0F13",
-                    "fontFamily": "Titillio",
-                    "fontSize": 16,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "lineHeight": undefined,
-                  },
-                  {
-                    "color": undefined,
-                  },
-                ]
-              }
-            >
-              Action text
-            </Text>
-          </View>
-        </View>
+          Action text
+        </Text>
       </View>
     </View>
     <View
