@@ -1,5 +1,3 @@
-import * as O from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/function";
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import {
@@ -173,27 +171,20 @@ export const Tag = ({
       testID={testID}
       style={[styles.tag, { borderColor, backgroundColor }]}
     >
-      {pipe(
-        variantProps,
-        O.fromNullable,
-        O.fold(
-          () => null,
-          ({ color, name }) => (
-            <View style={styles.iconWrapper}>
-              <Icon
-                name={name}
-                color={
-                  forceLightMode
-                    ? IOThemeLight[IconColorsMap[color]]
-                    : theme[IconColorsMap[color]]
-                }
-                size={IOTagIconSize}
-                accessible={!!iconAccessibilityLabel}
-                accessibilityLabel={iconAccessibilityLabel}
-              />
-            </View>
-          )
-        )
+      {variantProps && (
+        <View style={styles.iconWrapper}>
+          <Icon
+            name={variantProps.name}
+            color={
+              forceLightMode
+                ? IOThemeLight[IconColorsMap[variantProps.color]]
+                : theme[IconColorsMap[variantProps.color]]
+            }
+            size={IOTagIconSize}
+            accessible={!!iconAccessibilityLabel}
+            accessibilityLabel={iconAccessibilityLabel}
+          />
+        </View>
       )}
       {variantProps && text && <View style={styles.spacer} />}
       {text && (
