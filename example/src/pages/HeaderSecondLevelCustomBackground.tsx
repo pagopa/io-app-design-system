@@ -42,7 +42,6 @@ export const HeaderSecondLevelCustomBackground = () => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
           scrollValues={{
@@ -52,7 +51,6 @@ export const HeaderSecondLevelCustomBackground = () => {
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
-          transparent={true}
           variant="contrast"
           backgroundColor={IOColors["blueIO-500"]}
           type="threeActions"
@@ -97,7 +95,7 @@ export const HeaderSecondLevelCustomBackground = () => {
     >
       <View
         style={{
-          backgroundColor: IOColors["blueIO-600"],
+          backgroundColor: IOColors["blueIO-500"],
           height: 400,
           position: "absolute",
           top: -400 + headerHeight + triggerOffsetValue * 2,
