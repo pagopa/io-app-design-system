@@ -16,9 +16,9 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { every, some } from "lodash";
-import { IOColors } from '../../core';
-import { Body, H6 } from '../typography';
-import { IconButton } from '../buttons';
+import { IOColors } from "../../core";
+import { Body, H6 } from "../typography";
+import { IconButton } from "../buttons";
 import { BottomArrow, LeftArrow, RightArrow, TopArrow } from "./Arrows";
 import {
   ARROW_HEIGHT,
