@@ -77,8 +77,22 @@ type CloseWithBackgroundTapDisabled = {
 type Props = CommonProps & (CloseWithTapOnBackground | CloseWithBackgroundTapDisabled);
 
 /**
- * This component prompts a tooltip around its children in relation to the given `placement`.
- * When `isVisible` is `true`
+ * Tooltip component that displays a contextual tooltip around its children.
+ * The tooltip position is controlled by the `placement` prop and can adjust
+ * dynamically if there is insufficient space.
+ *
+ * @param {React.ReactNode} children - The element around which the tooltip will be displayed.
+ * @param {string} title - The title text displayed at the top of the tooltip.
+ * @param {string} content - The main content text of the tooltip.
+ * @param {Placement} [placement="top"] - Initial position of the tooltip; can be 'top', 'bottom', 'left', or 'right'.
+ * @param {string} closeIconAccessibilityLabel - Accessibility label for the close icon button.
+ * @param {boolean} isVisible - Controls the visibility of the tooltip.
+ * @param {Partial<DisplayInsets>} [displayInsets={}] - Insets for adjusting tooltip position within screen boundaries.
+ * @param {boolean} [allowCloseOnBackgroundTap=false] - Allows closing the tooltip by tapping outside of it.
+ * @param {boolean} [childrenInteractionsEnabled=true] - Controls whether the tooltip interacts with accessibility tools.
+ * @param {() => void} onClose - Callback function triggered when the tooltip is closed.
+ *
+ * @returns {React.ReactElement} A tooltip component rendered around the specified children.
  */
 export const Tooltip = ({
   children,
