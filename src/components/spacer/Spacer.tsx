@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View } from "react-native";
 import { hexToRgba, IOColors, IOSpacer } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 export type SpacerOrientation = "vertical" | "horizontal";
 
 type BaseSpacerProps = {
   orientation: SpacerOrientation;
   size: IOSpacer;
+  allowScaleSpacing?: boolean;
 };
 
 type SpacerProps = {
   size?: IOSpacer;
+  allowScaleSpacing?: boolean;
 };
 
 const DEFAULT_SIZE: IOSpacer = 16;
@@ -24,20 +27,32 @@ Native `Spacer` component
 @param  {SpacerOrientation} orientation 
 @param {IOSpacer} size
  */
-const Spacer = ({ orientation, size }: BaseSpacerProps) => {
-  const style = React.useMemo(
+const Spacer = ({ allowScaleSpacing, orientation, size }: BaseSpacerProps) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  const style = useMemo(
     () => ({
       ...(orientation === "vertical" && {
-        height: size
+        height: allowScaleSpacing
+          ? size * dynamicFontScale * spacingScaleMultiplier
+          : size
       }),
       ...(orientation === "horizontal" && {
-        width: size
+        width: allowScaleSpacing
+          ? size * dynamicFontScale * spacingScaleMultiplier
+          : size
       }),
       ...((debugMode as boolean) && {
         backgroundColor: debugBg
       })
     }),
-    [orientation, size]
+    [
+      allowScaleSpacing,
+      dynamicFontScale,
+      orientation,
+      size,
+      spacingScaleMultiplier
+    ]
   );
 
   return <View style={style} />;
