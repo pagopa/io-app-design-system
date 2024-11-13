@@ -1,6 +1,7 @@
 import React from "react";
 import { ColorValue } from "react-native";
 import { IOColors } from "../../core/IOColors";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 /* Icons */
 import IconAbacus from "./svg/IconAbacus";
@@ -51,6 +52,7 @@ import IconChevronRight from "./svg/IconChevronRight";
 import IconChevronRightListItem from "./svg/IconChevronRightListItem";
 import IconChevronTop from "./svg/IconChevronTop";
 import IconCie from "./svg/IconCie";
+import IconCieLetter from "./svg/IconCieLetter";
 import IconCloseLarge from "./svg/IconCloseLarge";
 import IconCloseMedium from "./svg/IconCloseMedium";
 import IconCloseSmall from "./svg/IconCloseSmall";
@@ -200,7 +202,6 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconCieLetter from "./svg/IconCieLetter";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -406,10 +407,7 @@ export const IOIcons = {
 
 export type IOIcons = keyof typeof IOIcons;
 
-/* The following values should be deleted: 12, 30 */
-/* 96 is too big for an icon, it should be replaced
-with a Pictogram instead */
-export type IOIconSizeScale = 12 | 16 | 20 | 24 | 30 | 32 | 48 | 96;
+export type IOIconSizeScale = 16 | 20 | 24 | 32 | 48;
 /* Sizes used exclusively for the Checkbox component */
 export type IOIconSizeScaleCheckbox = 14 | 18;
 
@@ -420,6 +418,7 @@ export type IOIconsProps = {
   testID?: string;
   accessible?: boolean;
   accessibilityLabel?: string;
+  allowFontScaling?: boolean;
 };
 
 /*
@@ -432,15 +431,23 @@ export const Icon = ({
   size = 24,
   accessible = false,
   accessibilityLabel = "",
+  allowFontScaling = false,
   ...props
 }: IOIconsProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
+
   const IconElement = IOIcons[name];
   const isAccessible = accessible && accessibilityLabel.trim().length > 0;
+  const iconSize =
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale
+      : size;
+
   return (
     <IconElement
       {...props}
       style={{ color: IOColors[color] }}
-      size={size}
+      size={iconSize}
       accessible={isAccessible}
       accessibilityElementsHidden={!isAccessible}
       accessibilityLabel={accessibilityLabel}
@@ -459,6 +466,7 @@ type IOAnimatedIconsProps = {
   color?: ColorValue;
   size?: IOIconSizeScale | "100%";
   accessible?: boolean;
+  allowFontScaling?: boolean;
 };
 
 export const AnimatedIcon = ({
@@ -466,14 +474,22 @@ export const AnimatedIcon = ({
   color = IOColors.bluegrey,
   size = 24,
   accessible = false,
+  allowFontScaling = false,
   ...props
 }: IOAnimatedIconsProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
+
   const IconElement = IOIcons[name];
+  const iconSize =
+    allowFontScaling && typeof size === "number"
+      ? size * dynamicFontScale
+      : size;
+
   return (
     <IconElement
       {...props}
       style={{ color }}
-      size={size}
+      size={iconSize}
       accessible={accessible}
       accessibilityElementsHidden={true}
       accessibilityLabel={""}

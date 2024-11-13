@@ -1,5 +1,7 @@
 import * as React from "react";
 import { IOColors } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
+import { findFirstCaseInsensitive } from "../../utils/object";
 import { IOIconSizeScale, Icon } from "../icons";
 import {
   IOLogoPaymentExtType,
@@ -9,7 +11,6 @@ import {
   LogoPayment,
   LogoPaymentExt
 } from "../logos";
-import { findFirstCaseInsensitive } from "../../utils/object";
 
 export type LogoPaymentWithFallback = {
   brand?: string;
@@ -38,21 +39,42 @@ export const LogoPaymentWithFallback = ({
   isExtended = false,
   size = isExtended ? 48 : 24
 }: LogoPaymentWithFallback) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const logos = isExtended ? IOPaymentExtLogos : IOPaymentLogos;
 
   if (!brand) {
-    return <Icon name="creditCard" size={size} color={fallbackIconColor} />;
+    return (
+      <Icon
+        allowFontScaling
+        name="creditCard"
+        size={size}
+        color={fallbackIconColor}
+      />
+    );
   }
 
   const findCase = findFirstCaseInsensitive(logos, brand);
 
   if (!findCase) {
-    return <Icon name="creditCard" size={size} color={fallbackIconColor} />;
+    return (
+      <Icon
+        allowFontScaling
+        name="creditCard"
+        size={size}
+        color={fallbackIconColor}
+      />
+    );
   }
 
   return isExtended ? (
-    <LogoPaymentExt name={findCase as IOLogoPaymentExtType} size={size} />
+    <LogoPaymentExt
+      name={findCase as IOLogoPaymentExtType}
+      size={size * dynamicFontScale}
+    />
   ) : (
-    <LogoPayment name={findCase as IOLogoPaymentType} size={size} />
+    <LogoPayment
+      name={findCase as IOLogoPaymentType}
+      size={size * dynamicFontScale}
+    />
   );
 };

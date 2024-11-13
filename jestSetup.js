@@ -28,7 +28,7 @@ jest.mock("react-native-reanimated", () => {
   // The mock misses the `addWhitelistedUIProps` implementation
   // So we override it with a no-op
   // eslint-disable-next-line functional/immutable-data,@typescript-eslint/no-empty-function
-  Reanimated.default.addWhitelistedUIProps = () => {};
+  Reanimated.default.addWhitelistedUIProps = () => { };
 
   return Reanimated;
 });
@@ -46,5 +46,9 @@ global.AbortController = AbortController;
 global.__reanimatedWorkletInit = jest.fn();
 
 jest.mock("./src/utils/accessibility", () => ({
-  useBoldTextEnabled: () => false
+  useBoldTextEnabled: () => false,
+  useIOFontDynamicScale: () => ({
+    dynamicFontScale: 1,
+    spacingScaleMultiplier: 1
+  })
 }));

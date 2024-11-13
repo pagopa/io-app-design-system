@@ -2,7 +2,6 @@ import React, { useCallback, useState } from "react";
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
-  PixelRatio,
   Pressable,
   StyleSheet,
   TextLayoutEventData,
@@ -25,10 +24,11 @@ import {
   IOColorsStatusForeground
 } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
-import { IOAlertSpacing } from "../../core/IOSpacing";
+import { IOAlertSpacing, IOSpacer } from "../../core/IOSpacing";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { VSpacer } from "../spacer";
+import { HStack, VStack } from "../stack";
 import { ButtonText } from "../typography";
 import { H4 } from "../typography/H4";
 import { Label } from "../typography/Label";
@@ -38,16 +38,6 @@ const iconSize: IOIconSizeScale = 24;
 const [spacingDefault, spacingFullWidth] = IOAlertSpacing;
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    alignContent: "center"
-  },
-  spacingDefault: {
-    padding: spacingDefault,
-    borderRadius: IOAlertRadius,
-    borderCurve: "continuous"
-  },
   spacingFullWidth: {
     padding: spacingFullWidth
   }
@@ -123,6 +113,8 @@ export const Alert = React.forwardRef<View, AlertType>(
     viewRef
   ): JSX.Element => {
     const isPressed: SharedValue<number> = useSharedValue(0);
+    const { dynamicFontScale, spacingScaleMultiplier } =
+      useIOFontDynamicScale();
 
     const [isMultiline, setIsMultiline] = useState(false);
 
@@ -132,6 +124,12 @@ export const Alert = React.forwardRef<View, AlertType>(
       },
       []
     );
+
+    const spacingDefaultVariant = {
+      padding: spacingDefault,
+      borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
+      borderCurve: "continuous"
+    };
 
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -166,48 +164,41 @@ export const Alert = React.forwardRef<View, AlertType>(
     }, [isPressed]);
 
     const renderMainBlock = () => (
-      <>
-        <View
-          style={{
-            marginRight: IOVisualCostants.iconMargin,
-            alignSelf: "flex-start"
-          }}
-        >
-          <Icon
-            name={mapVariantStates[variant].icon}
-            size={iconSize}
-            color={mapVariantStates[variant].foreground}
-          />
-        </View>
+      <HStack
+        space={IOVisualCostants.iconMargin as IOSpacer}
+        allowScaleSpacing
+        style={{ alignItems: isMultiline ? "flex-start" : "center" }}
+      >
+        <Icon
+          allowFontScaling
+          name={mapVariantStates[variant].icon}
+          size={iconSize}
+          color={mapVariantStates[variant].foreground}
+        />
         {/* Sadly we don't have specific alignments style for text
       in React Native, like `text-box-trim` for CSS. So we
       have to put these magic numbers after manual adjustments.
       Tested on both Android and iOS. */}
         <View
           style={[
-            !title &&
-              isMultiline && { marginTop: -5 * PixelRatio.getFontScale() },
-            isMultiline && { marginBottom: -3 * PixelRatio.getFontScale() },
+            !title && isMultiline && { marginTop: -6 * dynamicFontScale },
+            isMultiline && { marginBottom: -4 * dynamicFontScale },
             { flex: 1 }
           ]}
         >
-          {title && (
-            <>
+          <VStack space={8} allowScaleSpacing>
+            {title && (
               <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
-              <VSpacer size={8} />
-            </>
-          )}
-          <Label
-            color={mapVariantStates[variant].foreground}
-            weight={"Regular"}
-            accessibilityRole="text"
-            onTextLayout={onTextLayout}
-          >
-            {content}
-          </Label>
-          {action && (
-            <>
-              <VSpacer size={8} />
+            )}
+            <Label
+              color={mapVariantStates[variant].foreground}
+              weight={"Regular"}
+              accessibilityRole="text"
+              onTextLayout={onTextLayout}
+            >
+              {content}
+            </Label>
+            {action && (
               <ButtonText
                 color={mapVariantStates[variant].foreground}
                 numberOfLines={1}
@@ -215,18 +206,17 @@ export const Alert = React.forwardRef<View, AlertType>(
               >
                 {action}
               </ButtonText>
-            </>
-          )}
+            )}
+          </VStack>
         </View>
-      </>
+      </HStack>
     );
 
     const StaticComponent = () => (
       <View
         ref={viewRef}
         style={[
-          styles.container,
-          fullWidth ? styles.spacingFullWidth : styles.spacingDefault,
+          fullWidth ? styles.spacingFullWidth : spacingDefaultVariant,
           { backgroundColor: IOColors[mapVariantStates[variant].background] }
         ]}
         testID={testID}
@@ -253,8 +243,7 @@ export const Alert = React.forwardRef<View, AlertType>(
       >
         <Animated.View
           style={[
-            styles.container,
-            fullWidth ? styles.spacingFullWidth : styles.spacingDefault,
+            fullWidth ? styles.spacingFullWidth : spacingDefaultVariant,
             { backgroundColor: IOColors[mapVariantStates[variant].background] },
             // Disable pressed animation when component is full width
             !fullWidth && pressedAnimationStyle

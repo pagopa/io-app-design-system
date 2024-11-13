@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Animated, {
+  SharedValue,
   useAnimatedProps,
   useAnimatedRef
 } from "react-native-reanimated";
@@ -8,7 +9,8 @@ import Svg, { Path, PathProps } from "react-native-svg";
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 interface AnimatedTickProps extends PathProps {
-  progress: Animated.SharedValue<number>;
+  size?: number;
+  progress: SharedValue<number>;
   onLayout?: () => void;
 }
 
@@ -20,7 +22,11 @@ const TickSVGPath = "m7 12 4 4 7-7";
  * It comes without any state logic.
  *
  */
-export const AnimatedTick = ({ progress, ...pathProps }: AnimatedTickProps) => {
+export const AnimatedTick = ({
+  size,
+  progress,
+  ...pathProps
+}: AnimatedTickProps) => {
   const [length, setLength] = useState(0);
   const ref = useAnimatedRef();
 
@@ -38,7 +44,7 @@ export const AnimatedTick = ({ progress, ...pathProps }: AnimatedTickProps) => {
   };
 
   return (
-    <Svg viewBox="0 0 24 24">
+    <Svg viewBox={`0 0 24 24`} {...(size ? { width: size, height: size } : {})}>
       <AnimatedPath
         ref={ref}
         onLayout={onLayout}

@@ -7,9 +7,9 @@ import {
   IOStyles,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { HSpacer } from "../spacer";
 import { H3, H6 } from "../typography";
 
 type ValueProps = ComponentProps<typeof H3>;
@@ -42,6 +42,7 @@ export const ListItemAmount = ({
   testID
 }: ListItemAmount) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -65,18 +66,21 @@ export const ListItemAmount = ({
       accessible
       accessibilityLabel={listItemAccessibilityLabel}
     >
-      <View style={IOListItemStyles.listItemInner}>
+      <View
+        style={[
+          IOListItemStyles.listItemInner,
+          { columnGap: iconMargin * dynamicFontScale * spacingScaleMultiplier }
+        ]}
+      >
         {iconName && (
-          <View style={{ marginRight: iconMargin }}>
-            <Icon
-              name={iconName}
-              color={iconColor ?? theme["icon-decorative"]}
-              size={IOListItemVisualParams.iconSize}
-            />
-          </View>
+          <Icon
+            allowFontScaling
+            name={iconName}
+            color={iconColor ?? theme["icon-decorative"]}
+            size={IOListItemVisualParams.iconSize}
+          />
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        <HSpacer size={4} />
         <H3
           {...valueElementProps}
           color={theme["textBody-default"]}
