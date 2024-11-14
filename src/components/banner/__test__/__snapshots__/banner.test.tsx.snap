@@ -169,6 +169,9 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
                   "textAlignVertical": "center",
                 },
                 false,
+                {
+                  "columnGap": 8,
+                },
                 {},
                 {
                   "transform": [
@@ -519,6 +522,9 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
                   "textAlignVertical": "center",
                 },
                 false,
+                {
+                  "columnGap": 8,
+                },
                 {},
                 {
                   "transform": [
