@@ -16,7 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   IOVisualCostants,
   enterTransitionAlertEdgeToEdge,
@@ -110,7 +110,7 @@ export const AlertEdgeToEdge = ({
   const insets = useSafeAreaInsets();
 
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.slight;
 
   // Using a spring-based animation for our interpolations
   const progressPressed = useDerivedValue(() =>

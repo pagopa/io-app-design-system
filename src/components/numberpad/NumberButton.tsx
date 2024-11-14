@@ -12,7 +12,7 @@ import Animated, {
 import {
   IOColors,
   IONumberPadButtonStyles,
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   hexToRgba,
   useIOExperimentalDesign
@@ -84,7 +84,7 @@ export const NumberButton = memo(
     );
     const isPressed = useSharedValue(0);
     // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+    const animationScaleValue = IOScaleEffect?.slight;
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>
       withSpring(isPressed.value, IOSpringValues.button)

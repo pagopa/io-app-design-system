@@ -10,7 +10,7 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   hexToRgba,
   useIOTheme
@@ -27,7 +27,7 @@ export const useListItemSpringAnimation = () => {
   };
 
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.slight;
 
   const progressPressed = useDerivedValue(() =>
     withSpring(isPressed.value, IOSpringValues.button)

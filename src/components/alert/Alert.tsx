@@ -18,7 +18,7 @@ import Animated, {
   withSpring
 } from "react-native-reanimated";
 import { IOVisualCostants } from "../../core";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
+import { IOScaleEffect, IOSpringValues } from "../../core/IOAnimations";
 import {
   IOColors,
   IOColorsStatusBackground,
@@ -134,7 +134,7 @@ export const Alert = React.forwardRef<View, AlertType>(
     );
 
     // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
+    const animationScaleValue = IOScaleEffect?.medium;
 
     // Using a spring-based animation for our interpolations
     const progressPressed = useDerivedValue(() =>

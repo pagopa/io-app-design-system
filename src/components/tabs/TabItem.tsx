@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -11,7 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   hexToRgba,
   useIOExperimentalDesign
@@ -215,8 +215,8 @@ const TabItem = ({
     const scale = interpolate(
       progressPressed.value,
       [0, 1],
-      [1, IOScaleValues?.basicButton?.pressedState],
-      Extrapolate.CLAMP
+      [1, IOScaleEffect?.slight],
+      Extrapolation.CLAMP
     );
 
     return {

@@ -6,6 +6,7 @@ import Animated, {
   Extrapolate,
   interpolate,
   interpolateColor,
+  SharedValue,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -14,7 +15,7 @@ import Animated, {
 import Placeholder from "rn-placeholder";
 import {
   IOColors,
-  IOScaleValues,
+  IOScaleEffect,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSpringValues,
@@ -92,9 +93,9 @@ export const ListItemRadio = ({
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  const isPressed: SharedValue<number> = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.slight;
 
   const progressPressed = useDerivedValue(() =>
     withSpring(isPressed.value, IOSpringValues.button)

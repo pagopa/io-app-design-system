@@ -20,7 +20,7 @@ import {
   IOBannerRadius,
   IOBannerSmallHSpacing,
   IOBannerSmallVSpacing,
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   IOStyles
 } from "../../core";
@@ -157,12 +157,12 @@ export const Banner = ({
   onClose,
   accessibilityHint,
   accessibilityLabel,
-  testID,
+  testID
 }: Banner) => {
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.medium;
 
   // Using a spring-based animation for our interpolations
   const progressPressed = useDerivedValue(() =>
@@ -197,7 +197,9 @@ export const Banner = ({
 
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
-  const fallbackAccessibilityLabel = [title, content, action].filter(Boolean).join(" ");
+  const fallbackAccessibilityLabel = [title, content, action]
+    .filter(Boolean)
+    .join(" ");
 
   const renderMainBlock = () => (
     <>

@@ -13,7 +13,7 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   IOColors,
-  IOScaleValues,
+  IOScaleEffect,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSpringValues,
@@ -64,7 +64,7 @@ export const ListItemCheckbox = ({
   const isPressed: Animated.SharedValue<number> = useSharedValue(0);
 
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.slight;
 
   const progressPressed = useDerivedValue(() =>
     withSpring(isPressed.value, IOSpringValues.button)

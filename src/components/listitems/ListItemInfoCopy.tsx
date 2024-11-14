@@ -13,7 +13,7 @@ import {
   IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
-  IOScaleValues,
+  IOScaleEffect,
   IOSpringValues,
   IOStyles,
   hexToRgba,
@@ -89,7 +89,7 @@ export const ListItemInfoCopy = ({
   };
 
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.slight;
 
   const progressPressed = useDerivedValue(() =>
     withSpring(isPressed.value, IOSpringValues.button)

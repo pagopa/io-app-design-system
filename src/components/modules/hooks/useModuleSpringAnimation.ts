@@ -7,12 +7,12 @@ import {
   withSpring
 } from "react-native-reanimated";
 import { useCallback } from "react";
-import { IOScaleValues, IOSpringValues } from "../../../core";
+import { IOScaleEffect, IOSpringValues } from "../../../core";
 
 export const useModuleSpringAnimation = () => {
   const isPressed = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
+  const animationScaleValue = IOScaleEffect?.medium;
 
   const scaleTraversed = useDerivedValue(() =>
     withSpring(isPressed.value, IOSpringValues.button)
