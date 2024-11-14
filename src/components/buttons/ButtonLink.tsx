@@ -12,6 +12,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
+import { useScaleAnimation } from "../../utils/hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -20,7 +21,6 @@ import {
   IconClassComponent
 } from "../icons";
 import { IOText, buttonTextFontSize } from "../typography";
-import { useAnimatedButton } from "./useScaleButton";
 
 export type ColorButtonLink = "primary" | "contrast";
 
@@ -107,8 +107,8 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const { progressPressed, onPressIn, onPressOut, scaleAnimationStyle } =
-      useAnimatedButton();
+    const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+      useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
     const colorMap = useMemo(
@@ -118,17 +118,13 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
-    const pressedColorAnimationStyle = useAnimatedStyle(() => {
-      const labelColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorAnimationStyle = useAnimatedStyle(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[color].label.default, colorMap[color].label.pressed]
-      );
-
-      return {
-        color: labelColor
-      };
-    });
+      )
+    }));
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);

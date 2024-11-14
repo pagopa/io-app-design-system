@@ -18,6 +18,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core/";
+import { useScaleAnimation } from "../../utils/hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -27,7 +28,6 @@ import {
 } from "../icons";
 import { HSpacer } from "../spacer/Spacer";
 import { IOText, buttonTextFontSize } from "../typography";
-import { useAnimatedButton } from "./useScaleButton";
 
 type ColorButtonOutline = "primary" | "contrast" | "danger";
 export type ButtonOutline = WithTestID<
@@ -220,8 +220,8 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const { progressPressed, onPressIn, onPressOut, scaleAnimationStyle } =
-      useAnimatedButton();
+    const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+      useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
@@ -245,13 +245,13 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
       const backgroundColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [colorMap[color].background.default, colorMap[color].background.pressed]
       );
 
       const borderColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [colorMap[color].border.default, colorMap[color].border.pressed]
       );
@@ -262,28 +262,22 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
       };
     });
 
-    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-      const labelColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[color].border.default, colorMap[color].border.pressed]
-      );
-
-      return {
-        color: labelColor
-      };
-    });
+      )
+    }));
 
     // Animate the <Icon> color prop
-    const pressedColorIconAnimationStyle = useAnimatedProps(() => {
-      const iconColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorIconAnimationStyle = useAnimatedProps(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[color].label.default, colorMap[color].label.pressed]
-      );
-      return { color: iconColor };
-    });
+      )
+    }));
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);

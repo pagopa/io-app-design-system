@@ -11,9 +11,9 @@ import {
   useIOExperimentalDesign
 } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
+import { useScaleAnimation } from "../../utils/hooks";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons } from "../icons";
-import { useAnimatedButton } from "./useScaleButton";
 
 export type IconButtonSolid = WithTestID<{
   icon: IOIcons;
@@ -106,8 +106,8 @@ export const IconButtonSolid = ({
 }: IconButtonSolid) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  const { progressPressed, onPressIn, onPressOut, scaleAnimationStyle } =
-    useAnimatedButton("exaggerated");
+  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+    useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
   const colorMap = React.useMemo(
@@ -117,7 +117,7 @@ export const IconButtonSolid = ({
 
   const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
-      progressPressed.value,
+      progress.value,
       [0, 1],
       [colorMap[color].background.default, colorMap[color].background.pressed]
     )

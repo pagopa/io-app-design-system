@@ -27,6 +27,8 @@ export const IOSpringValues = {
   }
 };
 
+export type IOSpringValues = keyof typeof IOSpringValues;
+
 export const IOScaleEffect = {
   // Slight scale effect
   slight: 0.99,

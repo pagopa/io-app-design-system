@@ -12,6 +12,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
+import { useScaleAnimation } from "../../utils/hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -19,7 +20,6 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { useAnimatedButton } from "./useScaleButton";
 
 export type IconButton = WithTestID<{
   color?: "primary" | "neutral" | "contrast";
@@ -110,8 +110,8 @@ export const IconButton = ({
   accessibilityHint,
   testID
 }: IconButton) => {
-  const { progressPressed, onPressIn, onPressOut, scaleAnimationStyle } =
-    useAnimatedButton("exaggerated");
+  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+    useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
   const { isExperimental } = useIOExperimentalDesign();
@@ -124,7 +124,7 @@ export const IconButton = ({
   // Animate the <Icon> color prop
   const animatedColor = useAnimatedProps(() => {
     const iconColor = interpolateColor(
-      progressPressed.value,
+      progress.value,
       [0, 1],
       [colorMap[color].icon.default, colorMap[color].icon.pressed]
     );

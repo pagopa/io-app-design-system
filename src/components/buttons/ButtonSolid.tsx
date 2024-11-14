@@ -20,12 +20,12 @@ import {
   exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
+import { useScaleAnimation } from "../../utils/hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HSpacer } from "../spacer/Spacer";
 import { ButtonText } from "../typography/ButtonText";
-import { useAnimatedButton } from "./useScaleButton";
 
 export type ButtonSolidColor = "primary" | "danger" | "contrast";
 
@@ -172,8 +172,8 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const { progressPressed, onPressIn, onPressOut, scaleAnimationStyle } =
-      useAnimatedButton();
+    const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+      useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
     const colorMap = React.useMemo(
@@ -190,7 +190,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
       const backgroundColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [colorMap[color].default, colorMap[color].pressed]
       );

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
   Extrapolation,
@@ -152,7 +152,7 @@ const TabItem = ({
     progress: progressPressed,
     onPressIn,
     onPressOut
-  } = useSpringPressProgressValue(IOSpringValues.selection);
+  } = useSpringPressProgressValue("selection");
 
   const { isExperimental } = useIOExperimentalDesign();
   const colors = useMemo(
@@ -185,7 +185,7 @@ const TabItem = ({
     withSpring(isSelected.value, IOSpringValues.selection)
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
     isSelected.value = selected ? 1 : 0;
   }, [isSelected, selected]);
