@@ -43,7 +43,7 @@ export const NumberPadScreen = () => {
       headerStyle: {
         backgroundColor: blueBackground
           ? IOColors[theme["appBackground-accent"]]
-          : IOColors.white
+          : IOColors[theme["appBackground-primary"]]
       }
     });
   }, [blueBackground, navigation, theme]);
@@ -55,7 +55,7 @@ export const NumberPadScreen = () => {
         paddingVertical: IOVisualCostants.appMarginDefault,
         backgroundColor: blueBackground
           ? IOColors[theme["appBackground-accent"]]
-          : IOColors.white
+          : IOColors[theme["appBackground-primary"]]
       }}
     >
       <ContentWrapper>
