@@ -173,7 +173,7 @@ export const Tooltip = ({
       // A new measure is executed every time the `Tooltip` is visible
       // This is required for use within ScrollView components.
       // eslint-disable-next-line functional/immutable-data
-      timeoutRef.current = setTimeout(measureChildrenCoords, 1000);
+      timeoutRef.current = setTimeout(measureChildrenCoords, 100);
     } else {
       setChildrenCoords(INITIAL_COORDS);
       setCurrentPlacement(initialPlacement);
