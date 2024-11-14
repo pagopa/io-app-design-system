@@ -5,7 +5,8 @@ import React, {
   useEffect,
   useCallback,
   JSXElementConstructor,
-  useMemo
+  useMemo,
+  ReactElement
 } from "react";
 import {
   View,
@@ -58,17 +59,50 @@ const ARROWS_BY_PLACEMENT: Record<
 };
 
 type CommonProps = {
+  /**
+   * The title text displayed at the top of the tooltip.
+   */
   title: string;
+  /**
+   * The tooltip text content.
+   */
   content: string;
+  /**
+   * Controls the visibility of the tooltip.
+   */
   isVisible: boolean;
+  /**
+   * Initial tooltip position; can be 'top', 'bottom', 'left', or 'right'.
+   * @default top
+   */
   placement?: Placement;
+  /**
+   * Insets for adjusting tooltip position within screen boundaries.
+   * @default {}
+   */
   displayInsets?: Partial<DisplayInsets>;
+  /**
+   * Accessibility label for the close icon button.
+   */
   closeIconAccessibilityLabel: string;
+  /**
+   * Determines whether interactions with the tooltip's children are allowed when `isVisible` is set to true.
+   * @default false
+   */
   childrenInteractionsEnabled?: boolean;
+  /**
+   *  Callback function triggered when the tooltip is closed.
+   */
   onClose: () => void;
 };
 type CloseWithTapOnBackground = {
+  /**
+   * Allows closing the tooltip by tapping outside of it.
+   */
   allowCloseOnBackgroundTap: true;
+  /**
+   * Accessibility label for the tooltip background mask.
+   */
   backgroundAccessibilityLabel: string;
 };
 type CloseWithBackgroundTapDisabled = {
@@ -80,19 +114,9 @@ type Props = CommonProps & (CloseWithTapOnBackground | CloseWithBackgroundTapDis
  * Tooltip component that displays a contextual tooltip around its children.
  * The tooltip position is controlled by the `placement` prop and can adjust
  * dynamically if there is insufficient space.
+ * @param {Props} props - The component props
  *
- * @param {React.ReactNode} children - The element around which the tooltip will be displayed.
- * @param {string} title - The title text displayed at the top of the tooltip.
- * @param {string} content - The main content text of the tooltip.
- * @param {Placement} [placement="top"] - Initial position of the tooltip; can be 'top', 'bottom', 'left', or 'right'.
- * @param {string} closeIconAccessibilityLabel - Accessibility label for the close icon button.
- * @param {boolean} isVisible - Controls the visibility of the tooltip.
- * @param {Partial<DisplayInsets>} [displayInsets={}] - Insets for adjusting tooltip position within screen boundaries.
- * @param {boolean} [allowCloseOnBackgroundTap=false] - Allows closing the tooltip by tapping outside of it.
- * @param {boolean} [childrenInteractionsEnabled=true] - Controls whether the tooltip interacts with accessibility tools.
- * @param {() => void} onClose - Callback function triggered when the tooltip is closed.
- *
- * @returns {React.ReactElement} A tooltip component rendered around the specified children.
+ * @returns {ReactElement} A tooltip component rendered around the specified children.
  */
 export const Tooltip = ({
   children,
@@ -103,9 +127,9 @@ export const Tooltip = ({
   isVisible,
   displayInsets = {},
   allowCloseOnBackgroundTap,
-  childrenInteractionsEnabled,
+  childrenInteractionsEnabled = false,
   onClose
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props>): ReactElement => {
   const insets = useSafeAreaInsets();
   const [currentPlacement, setCurrentPlacement] =
     useState<Placement>(initialPlacement);
@@ -113,6 +137,8 @@ export const Tooltip = ({
   const [tooltipLayout, setTooltipLayout] = useState<TooltipLayout>();
   const childRef = useRef<View>(null);
   const titleRef = useRef<View>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+
   const Arrow = useMemo(
     () => ARROWS_BY_PLACEMENT[currentPlacement],
     [currentPlacement]
@@ -146,11 +172,18 @@ export const Tooltip = ({
     if (isVisible) {
       // A new measure is executed every time the `Tooltip` is visible
       // This is required for use within ScrollView components.
-      setTimeout(measureChildrenCoords, 100);
+      // eslint-disable-next-line functional/immutable-data
+      timeoutRef.current = setTimeout(measureChildrenCoords, 1000);
     } else {
       setChildrenCoords(INITIAL_COORDS);
       setCurrentPlacement(initialPlacement);
     }
+
+    return () => {
+      if (isVisible) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [isVisible, initialPlacement, measureChildrenCoords]);
 
   /**
