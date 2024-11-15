@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -6,18 +6,9 @@ import {
   Text,
   View
 } from "react-native";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
-  IOScaleEffect,
-  IOSpringValues,
   IOVisualCostants,
   enterTransitionAlertEdgeToEdge,
   enterTransitionAlertEdgeToEdgeContent,
@@ -30,6 +21,7 @@ import {
 } from "../../core/IOColors";
 import { IOAlertSpacing } from "../../core/IOSpacing";
 import { IOStyles } from "../../core/IOStyles";
+import { useScaleAnimation } from "../../hooks";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -105,41 +97,9 @@ export const AlertEdgeToEdge = ({
   accessibilityHint,
   testID
 }: AlertEdgeToEdgeProps) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("slight");
   const insets = useSafeAreaInsets();
-
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleEffect?.slight;
-
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
 
   const backgroundColor = useMemo(
     () => IOColors[mapVariantStates[variant].background],
@@ -201,7 +161,7 @@ export const AlertEdgeToEdge = ({
     >
       <Animated.View
         entering={enterTransitionAlertEdgeToEdgeContent}
-        style={[styles.alert, pressedAnimationStyle]}
+        style={[styles.alert, scaleAnimatedStyle]}
       >
         {renderMainBlock()}
       </Animated.View>

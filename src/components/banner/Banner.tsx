@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import {
   AccessibilityRole,
   GestureResponderEvent,
@@ -7,24 +7,16 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import {
   IOBannerBigSpacing,
   IOBannerRadius,
   IOBannerSmallHSpacing,
   IOBannerSmallVSpacing,
-  IOScaleEffect,
-  IOSpringValues,
   IOStyles
 } from "../../core";
 import { IOColors } from "../../core/IOColors";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { ButtonLink, IconButton } from "../buttons";
 import {
@@ -159,41 +151,8 @@ export const Banner = ({
   accessibilityLabel,
   testID
 }: Banner) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleEffect?.medium;
-
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
-
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
 
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
@@ -273,7 +232,7 @@ export const Banner = ({
         style={[
           styles.container,
           dynamicContainerStyles(size, color),
-          pressedAnimationStyle
+          scaleAnimatedStyle
         ]}
       >
         {renderMainBlock()}
