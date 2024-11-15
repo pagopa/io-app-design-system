@@ -10,4 +10,4 @@ export * from "./ListItemCheckbox";
 export * from "./ListItemRadio";
 export * from "./ListItemRadioWithAmount";
 export * from "./ListItemAmount";
-export * from "./PressableListItemsBase";
+export * from "./PressableListItemBase";

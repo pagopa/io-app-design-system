@@ -6,7 +6,7 @@ import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
-import { PressableListItemBase } from "./PressableListItemsBase";
+import { PressableListItemBase } from "./PressableListItemBase";
 
 export type ListItemRadioWithAmountProps = {
   onValueChange?: (newValue: boolean) => void;

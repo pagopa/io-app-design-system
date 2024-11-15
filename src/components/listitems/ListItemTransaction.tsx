@@ -25,7 +25,7 @@ import { H6, LabelSmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
-} from "./PressableListItemsBase";
+} from "./PressableListItemBase";
 
 export type ListItemTransactionBadge = {
   text: string;
