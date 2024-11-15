@@ -11,7 +11,7 @@ import {
   useIOExperimentalDesign
 } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
-import { useScaleAnimation } from "../../utils/hooks";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons } from "../icons";
 

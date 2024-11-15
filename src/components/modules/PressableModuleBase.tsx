@@ -2,7 +2,7 @@ import * as React from "react";
 import { PropsWithChildren } from "react";
 import { Pressable } from "react-native";
 import Animated, { useReducedMotion } from "react-native-reanimated";
-import { useScaleAnimation } from "../../utils/hooks";
+import { useScaleAnimation } from "../../hooks";
 import {
   IOColors,
   IOModuleIDPSavedVSpacing,

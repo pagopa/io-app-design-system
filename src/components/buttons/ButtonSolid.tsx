@@ -20,7 +20,7 @@ import {
   exitTransitionInnerContent,
   useIOExperimentalDesign
 } from "../../core";
-import { useScaleAnimation } from "../../utils/hooks";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";

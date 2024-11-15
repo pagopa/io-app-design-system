@@ -15,7 +15,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
-import { useScaleAnimation } from "../../utils/hooks";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { LabelSmall } from "../typography";

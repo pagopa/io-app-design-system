@@ -18,7 +18,7 @@ import {
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core";
-import { useScaleAnimation } from "../../utils/hooks";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 
 export type IconButtonContained = WithTestID<{
