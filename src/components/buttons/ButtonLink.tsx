@@ -107,7 +107,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
@@ -158,7 +158,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
-            !disabled && !reducedMotion && scaleAnimationStyle
+            !disabled && !reducedMotion && scaleAnimatedStyle
           ]}
         >
           {icon &&

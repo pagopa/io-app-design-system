@@ -146,7 +146,7 @@ const TabItem = ({
   icon,
   iconSelected
 }: TabItem) => {
-  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation();
   const reducedMotion = useReducedMotion();
 
@@ -234,7 +234,7 @@ const TabItem = ({
         style={[
           styles.container,
           { columnGap: 4 },
-          !reducedMotion && scaleAnimationStyle,
+          !reducedMotion && scaleAnimatedStyle,
           animatedStyle,
           fullWidth && styles.fullWidth,
           disabled && styles.disabled

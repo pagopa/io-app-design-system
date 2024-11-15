@@ -147,7 +147,7 @@ export const IconButtonContained = ({
 }: IconButtonContained) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
@@ -191,7 +191,7 @@ export const IconButtonContained = ({
         style={[
           IOIconButtonStyles.button,
           IOIconButtonStyles.buttonSizeDefault,
-          !disabled && !reducedMotion && scaleAnimationStyle,
+          !disabled && !reducedMotion && scaleAnimatedStyle,
           !disabled && backgroundColorAnimationStyle
         ]}
       >

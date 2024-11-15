@@ -34,6 +34,7 @@ export const ListItemRadioWithAmount = ({
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
   const [toggleValue, setToggleValue] = React.useState(selected ?? false);
+
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
     setToggleValue(val => !val);

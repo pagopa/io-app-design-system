@@ -110,7 +110,7 @@ export const IconButton = ({
   accessibilityHint,
   testID
 }: IconButton) => {
-  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
@@ -155,7 +155,7 @@ export const IconButton = ({
           IOIconButtonStyles.buttonSizeSmall,
           IOStyles.alignCenter,
           IOStyles.centerJustified,
-          !disabled && !reducedMotion && scaleAnimationStyle
+          !disabled && !reducedMotion && scaleAnimatedStyle
         ]}
       >
         {!disabled ? (

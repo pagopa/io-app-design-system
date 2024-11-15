@@ -15,7 +15,7 @@ export const useScaleAnimation = (
   progress: SharedValue<number>;
   onPressIn: (event: GestureResponderEvent) => void;
   onPressOut: (event: GestureResponderEvent) => void;
-  scaleAnimationStyle: AnimatedStyle<ViewStyle>;
+  scaleAnimatedStyle: AnimatedStyle<ViewStyle>;
 } => {
   const { progress, onPressIn, onPressOut } =
     useSpringPressProgressValue("button");
@@ -23,7 +23,7 @@ export const useScaleAnimation = (
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleEffect[magnitude];
 
-  const scaleAnimationStyle = useAnimatedStyle(() => {
+  const scaleAnimatedStyle = useAnimatedStyle(() => {
     // Scale down button slightly when pressed
     const scale = interpolate(
       progress.value,
@@ -37,5 +37,5 @@ export const useScaleAnimation = (
     };
   });
 
-  return { progress, onPressIn, onPressOut, scaleAnimationStyle };
+  return { progress, onPressIn, onPressOut, scaleAnimatedStyle };
 };

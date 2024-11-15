@@ -1,34 +1,23 @@
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  interpolateColor,
-  SharedValue,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import Placeholder from "rn-placeholder";
 import {
-  IOColors,
-  IOScaleEffect,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
-  IOSpringValues,
   IOStyles,
-  hexToRgba,
   useIOTheme
 } from "../../core";
+import { useListItemAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
 import { H6, LabelSmall } from "../typography";
+import { VStack } from "../stack";
 
 type ListItemRadioGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType; uri?: never }
@@ -92,57 +81,9 @@ export const ListItemRadio = ({
   testID
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
-  // Animations
-  const isPressed: SharedValue<number> = useSharedValue(0);
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleEffect?.slight;
-
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Theme
+  const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
+    useListItemAnimation();
   const theme = useIOTheme();
-
-  const mapBackgroundStates: Record<string, string> = {
-    default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
-    pressed: IOColors[theme["listItem-pressed"]]
-  };
-
-  // Interpolate animation values from `isPressed` values
-  const animatedScaleStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const handlePressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const handlePressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
-
-  const animatedBackgroundStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      progressPressed.value,
-      [0, 1],
-      [mapBackgroundStates.default, mapBackgroundStates.pressed]
-    );
-
-    return {
-      backgroundColor
-    };
-  });
 
   const toggleRadioItem = () => {
     ReactNativeHapticFeedback.trigger("impactLight");
@@ -155,14 +96,11 @@ export const ListItemRadio = ({
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
   const SkeletonDescriptionLines = () => (
-    <>
-      <VSpacer size={8} />
+    <VStack space={8}>
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-    </>
+    </VStack>
   );
 
   const SkeletonIcon = () => (
@@ -181,7 +119,7 @@ export const ListItemRadio = ({
   );
 
   const SkeletonComponent = () => (
-    <View style={IOSelectionListItemStyles.listItem}>
+    <View style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}>
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
           style={[
@@ -221,23 +159,23 @@ export const ListItemRadio = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      onTouchEnd={handlePressOut}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      onTouchEnd={onPressOut}
       testID={testID}
       disabled={disabled}
     >
       <Animated.View
         style={[
           IOSelectionListItemStyles.listItem,
-          animatedBackgroundStyle,
+          backgroundAnimatedStyle,
           disabledStyle
         ]}
         // This is required to avoid opacity
         // inheritance on Android
         needsOffscreenAlphaCompositing={true}
       >
-        <Animated.View style={animatedScaleStyle}>
+        <Animated.View style={scaleAnimatedStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
             <View style={[IOStyles.row, { flexShrink: 1 }]}>
               {startImage && (

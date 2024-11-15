@@ -30,7 +30,7 @@ export const PressableModuleBase = ({
 }: PropsWithChildren<PressableModuleBaseProps>) => {
   const theme = useIOTheme();
   const reducedMotion = useReducedMotion();
-  const { onPressIn, onPressOut, scaleAnimationStyle } = useScaleAnimation(
+  const { onPressIn, onPressOut, scaleAnimatedStyle } = useScaleAnimation(
     reducedMotion ? "slight" : "medium"
   );
   /* We use a slight scaleEffect if `reducedMotion` is enabled.
@@ -56,7 +56,7 @@ export const PressableModuleBase = ({
           IOModuleStyles.button,
           { borderColor: IOColors[theme["cardBorder-default"]] },
           withLooseSpacing && { paddingVertical: IOModuleIDPSavedVSpacing },
-          scaleAnimationStyle
+          scaleAnimatedStyle
         ]}
       >
         {children}

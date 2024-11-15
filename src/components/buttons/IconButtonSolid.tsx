@@ -106,7 +106,7 @@ export const IconButtonSolid = ({
 }: IconButtonSolid) => {
   const { isExperimental } = useIOExperimentalDesign();
 
-  const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
@@ -141,7 +141,7 @@ export const IconButtonSolid = ({
         style={[
           IOIconButtonStyles.button,
           IOIconButtonStyles.buttonSizeLarge,
-          !disabled && !reducedMotion && scaleAnimationStyle,
+          !disabled && !reducedMotion && scaleAnimatedStyle,
           !disabled && backgroundColorAnimationStyle,
           disabled
             ? {

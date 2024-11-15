@@ -220,7 +220,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const { progress, onPressIn, onPressOut, scaleAnimationStyle } =
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
@@ -316,7 +316,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
                 },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
-            !reducedMotion && !disabled && scaleAnimationStyle,
+            !reducedMotion && !disabled && scaleAnimatedStyle,
             !disabled && pressedAnimationStyle
           ]}
         >
