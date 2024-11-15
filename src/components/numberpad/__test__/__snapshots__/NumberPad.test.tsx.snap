@@ -80,6 +80,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -159,6 +161,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -238,6 +242,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -333,6 +339,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -412,6 +420,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -491,6 +501,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -586,6 +598,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -665,6 +679,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -744,6 +760,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -980,6 +998,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
