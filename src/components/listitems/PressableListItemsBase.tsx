@@ -1,4 +1,5 @@
 import * as React from "react";
+import { PropsWithChildren } from "react";
 import { Pressable } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -22,7 +23,7 @@ export const PressableListItemBase = ({
   children,
   accessibilityRole,
   ...props
-}: React.PropsWithChildren<PressableBaseProps>) => {
+}: PropsWithChildren<PressableBaseProps>) => {
   const { onPressIn, onPressOut, animatedScaleStyle, animatedBackgroundStyle } =
     useListItemSpringAnimation();
   return (

@@ -6,8 +6,8 @@ import {
   SharedValue,
   useAnimatedStyle
 } from "react-native-reanimated";
-import { IOScaleEffect } from "../../core";
-import { useSpringPressProgressValue } from "./useSpringPressProgressValue";
+import { IOScaleEffect } from "../core";
+import { useSpringPressProgressValue } from "../utils/hooks";
 
 export const useScaleAnimation = (
   magnitude: IOScaleEffect = "slight"
