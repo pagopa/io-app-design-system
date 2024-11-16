@@ -26,6 +26,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
@@ -78,8 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: inputHeight,
-    paddingVertical: inputPaddingVertical,
-    paddingHorizontal: inputPaddingHorizontal
+    paddingVertical: inputPaddingVertical
   },
   textInputOuterBorder: {
     ...StyleSheet.absoluteFillObject,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     ...(Platform.OS === "android" && { marginLeft: -4 })
   },
   textInputStyleFont: {
-    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
+    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Medium")
   },
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   textInputStyleLegacyFont: {
@@ -120,20 +120,23 @@ const styles = StyleSheet.create({
   },
   textInputLabelWrapper: {
     position: "absolute",
-    paddingHorizontal: inputPaddingHorizontal,
     zIndex: 10,
     bottom: 0,
     top: 0,
     justifyContent: "center"
   },
   textInputLabel: {
+    color: inputLabelColor,
+    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
+  },
+  textInputLabelLegacyFont: {
+    color: inputLabelColor,
     ...makeFontStyleObject(
       inputLabelFontSize,
       "TitilliumSansPro",
       undefined,
       "Regular"
-    ),
-    color: inputLabelColor
+    )
   }
 });
 
@@ -227,6 +230,9 @@ export const TextInputBase = ({
     disabled ? "disabled" : "initial"
   );
   const focusedState = useSharedValue<number>(0);
+
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const theme = useIOTheme();
 
   /* Get the label width to enable the correct translation */
@@ -361,7 +367,11 @@ export const TextInputBase = ({
         onPress={onTextInputPress}
         style={[
           inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
-          styles.textInput
+          styles.textInput,
+          {
+            paddingHorizontal:
+              inputPaddingHorizontal * dynamicFontScale * spacingScaleMultiplier
+          }
         ]}
         accessible={false}
         accessibilityRole={"none"}
@@ -384,8 +394,13 @@ export const TextInputBase = ({
 
         {icon && (
           <>
-            <Icon name={icon} color={iconColor} size={iconSize} />
-            <HSpacer size={iconMargin} />
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={iconSize}
+            />
+            <HSpacer allowScaleSpacing size={iconMargin} />
           </>
         )}
         <TextInput
@@ -428,14 +443,32 @@ export const TextInputBase = ({
           pointerEvents={"none"}
           style={[
             styles.textInputLabelWrapper,
-            icon ? { left: iconSize + iconMargin } : {}
+            {
+              paddingHorizontal:
+                inputPaddingHorizontal *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            icon
+              ? {
+                  left:
+                    (iconSize + iconMargin) *
+                    dynamicFontScale *
+                    spacingScaleMultiplier
+                }
+              : {}
           ]}
         >
           <Animated.Text
             onLayout={getLabelWidth}
             numberOfLines={1}
             accessible={false}
-            style={[styles.textInputLabel, animatedLabelStyle]}
+            style={[
+              isExperimental
+                ? styles.textInputLabel
+                : styles.textInputLabelLegacyFont,
+              animatedLabelStyle
+            ]}
           >
             {placeholder}
           </Animated.Text>

@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { View, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 type AllowedStyleProps = Pick<
   ViewStyle,
@@ -11,39 +12,64 @@ type Stack = {
   space?: IOSpacer;
   children: ReactNode;
   style?: AllowedStyleProps;
+  allowScaleSpacing?: boolean;
 };
+
+const DEFAULT_SPACING_VALUE: IOSpacer = 16;
 
 /**
 Horizontal Stack component
 @param {IOSpacer} space
  */
-export const HStack = ({ space, children, style }: Stack) => (
-  <View
-    style={{
-      display: "flex",
-      flexDirection: "row",
-      columnGap: space,
-      ...style
-    }}
-  >
-    {children}
-  </View>
-);
+export const HStack = ({
+  space = DEFAULT_SPACING_VALUE,
+  children,
+  style,
+  allowScaleSpacing
+}: Stack) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  return (
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        columnGap: allowScaleSpacing
+          ? space * dynamicFontScale * spacingScaleMultiplier
+          : space,
+        ...style
+      }}
+    >
+      {children}
+    </View>
+  );
+};
 
 /**
 Vertical Stack component
 @param {IOSpacer} space
  */
 
-export const VStack = ({ space, children, style }: Stack) => (
-  <View
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      rowGap: space,
-      ...style
-    }}
-  >
-    {children}
-  </View>
-);
+export const VStack = ({
+  space = DEFAULT_SPACING_VALUE,
+  children,
+  style,
+  allowScaleSpacing
+}: Stack) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  return (
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        rowGap: allowScaleSpacing
+          ? space * dynamicFontScale * spacingScaleMultiplier
+          : space,
+        ...style
+      }}
+    >
+      {children}
+    </View>
+  );
+};

@@ -1,8 +1,9 @@
 import * as React from "react";
+import { ComponentProps } from "react";
 import { TextInputBase } from "./TextInputBase";
 
 type TextInputProps = Omit<
-  React.ComponentProps<typeof TextInputBase>,
+  ComponentProps<typeof TextInputBase>,
   | "rightElement"
   | "status"
   | "bottomMessageColor"

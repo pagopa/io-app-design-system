@@ -1,10 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
-import { useIOTheme } from "../../core";
+import { IOSelectionTickVisualParams, useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
-import { HSpacer } from "../spacer/Spacer";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { H6 } from "../typography/H6";
 import { AnimatedRadio } from "./AnimatedRadio";
 
@@ -17,9 +17,9 @@ type Props = {
 const DISABLED_OPACITY = 0.5;
 
 type RadioButtonLabelProps = Props &
-  Pick<React.ComponentProps<typeof AnimatedRadio>, "disabled" | "checked"> &
+  Pick<ComponentProps<typeof AnimatedRadio>, "disabled" | "checked"> &
   Pick<
-    React.ComponentProps<typeof Pressable>,
+    ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "accessibilityHint"
   >;
 
@@ -38,6 +38,7 @@ export const RadioButtonLabel = ({
   accessibilityLabel,
   accessibilityHint
 }: RadioButtonLabelProps) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   const theme = useIOTheme();
 
   const [toggleValue, setToggleValue] = useState(checked ?? false);
@@ -70,7 +71,12 @@ export const RadioButtonLabel = ({
       <View
         style={[
           IOStyles.row,
-          { alignItems: "flex-start", flexShrink: 1, width: "100%" }
+          {
+            alignItems: "flex-start",
+            flexShrink: 1,
+            width: "100%",
+            columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
+          }
         ]}
       >
         <View
@@ -78,9 +84,11 @@ export const RadioButtonLabel = ({
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"
         >
-          <AnimatedRadio checked={checked ?? toggleValue} />
+          <AnimatedRadio
+            size={IOSelectionTickVisualParams.size * dynamicFontScale}
+            checked={checked ?? toggleValue}
+          />
         </View>
-        <HSpacer size={8} />
         <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
         </H6>

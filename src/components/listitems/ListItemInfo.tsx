@@ -6,6 +6,7 @@ import {
   IOStyles,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { ButtonLink, IconButton } from "../buttons";
@@ -68,6 +69,8 @@ export const ListItemInfo = ({
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
     [value]
@@ -140,30 +143,33 @@ export const ListItemInfo = ({
       accessibilityLabel={listItemAccessibilityLabel}
       accessibilityRole={accessibilityRole}
     >
-      <View style={IOListItemStyles.listItemInner}>
+      <View
+        style={[
+          IOListItemStyles.listItemInner,
+          {
+            columnGap:
+              IOListItemVisualParams.iconMargin *
+              dynamicFontScale *
+              spacingScaleMultiplier
+          }
+        ]}
+      >
         {icon && (
-          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name={icon}
-              color="grey-450"
-              size={IOListItemVisualParams.iconSize}
-            />
-          </View>
+          <Icon
+            allowFontScaling
+            name={icon}
+            color="grey-450"
+            size={IOListItemVisualParams.iconSize}
+          />
         )}
         {paymentLogoIcon && (
-          <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-            <LogoPaymentWithFallback
-              brand={paymentLogoIcon}
-              size={PAYMENT_LOGO_SIZE}
-            />
-          </View>
+          <LogoPaymentWithFallback
+            brand={paymentLogoIcon}
+            size={PAYMENT_LOGO_SIZE}
+          />
         )}
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        {endElement && (
-          <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
-            {listItemInfoAction()}
-          </View>
-        )}
+        {endElement && <View>{listItemInfoAction()}</View>}
       </View>
     </View>
   );

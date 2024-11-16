@@ -1,7 +1,7 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -20,6 +20,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { H6, LabelSmall } from "../typography";
@@ -49,6 +50,8 @@ export const ListItemInfoCopy = ({
   const isPressed = useSharedValue(0);
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
@@ -101,7 +104,7 @@ export const ListItemInfoCopy = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -147,25 +150,32 @@ export const ListItemInfoCopy = ({
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            animatedScaleStyle
+          ]}
         >
           {icon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <Icon
-                name={icon}
-                color="grey-450"
-                size={IOListItemVisualParams.iconSize}
-              />
-            </View>
+            <Icon
+              allowFontScaling
+              name={icon}
+              color="grey-450"
+              size={IOListItemVisualParams.iconSize}
+            />
           )}
           <View style={IOStyles.flex}>{listItemInfoCopyContent}</View>
-          <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name="copy"
-              color={foregroundColor}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          </View>
+          <Icon
+            allowFontScaling
+            name="copy"
+            color={foregroundColor}
+            size={IOListItemVisualParams.chevronSize}
+          />
         </Animated.View>
       </Animated.View>
     </Pressable>

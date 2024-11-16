@@ -1,10 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
-import { useIOTheme } from "../../core";
+import { IOSelectionTickVisualParams, useIOTheme } from "../../core";
 import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
-import { HSpacer } from "../spacer/Spacer";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { H6 } from "../typography/H6";
 import { AnimatedCheckbox } from "./AnimatedCheckbox";
 
@@ -19,8 +19,8 @@ const DISABLED_OPACITY = 0.5;
 // disabled: the component is no longer touchable
 // onPress:
 type OwnProps = Props &
-  Pick<React.ComponentProps<typeof AnimatedCheckbox>, "disabled" | "checked"> &
-  Pick<React.ComponentProps<typeof Pressable>, "onPress">;
+  Pick<ComponentProps<typeof AnimatedCheckbox>, "disabled" | "checked"> &
+  Pick<ComponentProps<typeof Pressable>, "onPress">;
 
 /**
  * A checkbox with the automatic state management that uses a {@link AnimatedCheckBox}
@@ -36,6 +36,7 @@ export const CheckboxLabel = ({
   onValueChange
 }: OwnProps) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
@@ -65,7 +66,16 @@ export const CheckboxLabel = ({
       // inheritance on Android
       needsOffscreenAlphaCompositing={true}
     >
-      <View style={[IOStyles.row, { alignItems: "center", width: "100%" }]}>
+      <View
+        style={[
+          IOStyles.row,
+          {
+            alignItems: "center",
+            width: "100%",
+            columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
+          }
+        ]}
+      >
         <View
           pointerEvents="none"
           accessibilityElementsHidden
@@ -74,9 +84,11 @@ export const CheckboxLabel = ({
             alignSelf: "flex-start"
           }}
         >
-          <AnimatedCheckbox checked={checked ?? toggleValue} />
+          <AnimatedCheckbox
+            size={IOSelectionTickVisualParams.size * dynamicFontScale}
+            checked={checked ?? toggleValue}
+          />
         </View>
-        <HSpacer size={8} />
         <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
         </H6>

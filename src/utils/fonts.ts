@@ -122,6 +122,7 @@ export const makeFontFamilyName = (
 const defaultFont: IOFontFamily = "TitilliumSansPro";
 const defaultWeight: IOFontWeight = "Regular";
 const defaultFontSize: IOFontSize = 16;
+export const IOFontSizeMultiplier = 1.25;
 
 /**
  * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).

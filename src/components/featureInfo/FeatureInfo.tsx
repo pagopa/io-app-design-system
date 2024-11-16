@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
-import { GestureResponderEvent, View } from "react-native";
+import { GestureResponderEvent } from "react-native";
 import {
   Body,
-  HSpacer,
+  HStack,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
@@ -10,9 +10,8 @@ import {
   Icon,
   Label,
   Pictogram,
-  VSpacer
+  VStack
 } from "../../components";
-import { IOStyles } from "../../core";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
@@ -59,33 +58,35 @@ export const FeatureInfo = ({
   body,
   action
 }: FeatureInfoProps) => (
-  <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
+  <HStack style={{ alignItems: "center" }} space={24}>
     {iconName && (
-      <Icon name={iconName} size={DEFAULT_ICON_SIZE} color="grey-300" />
+      <Icon
+        allowFontScaling
+        name={iconName}
+        size={DEFAULT_ICON_SIZE}
+        color="grey-300"
+      />
     )}
     {pictogramName && (
-      <Pictogram name={pictogramName} size={DEFAULT_PICTOGRAM_SIZE} />
+      <Pictogram
+        allowFontScaling
+        name={pictogramName}
+        size={DEFAULT_PICTOGRAM_SIZE}
+      />
     )}
-    <HSpacer size={24} />
-    <View style={{ flexShrink: 1 }}>
+    <VStack allowScaleSpacing space={4} style={{ flexShrink: 1 }}>
       {renderNode(body)}
       {action && (
-        <>
-          {/* Add "marginTop" equivalent if body text is present.
-          This verbose code could be deleted once we got "gap"
-          property support */}
-          {body && <VSpacer size={4} />}
-          <Label
-            asLink
-            onPress={action.onPress}
-            accessible
-            importantForAccessibility={"yes"}
-            accessibilityElementsHidden={false}
-          >
-            {action.label}
-          </Label>
-        </>
+        <Label
+          asLink
+          onPress={action.onPress}
+          accessible
+          importantForAccessibility={"yes"}
+          accessibilityElementsHidden={false}
+        >
+          {action.label}
+        </Label>
       )}
-    </View>
-  </View>
+    </VStack>
+  </HStack>
 );

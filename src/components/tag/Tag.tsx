@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
   IOColors,
   IOTagRadius,
@@ -11,6 +11,7 @@ import {
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOText } from "../typography";
@@ -48,7 +49,9 @@ export type Tag = TextProps &
         variant: "customIcon";
         customIconProps: VariantProps;
       }
-  >;
+  > & {
+    allowFontScaling?: boolean;
+  };
 
 const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;
@@ -67,16 +70,16 @@ const styles = StyleSheet.create({
     backgroundColor: IOColors.white,
     borderWidth: 1,
     borderColor: IOColors["grey-100"],
-    borderRadius: IOTagRadius,
-    borderCurve: "continuous",
+    borderCurve: "continuous"
+  },
+  tagStatic: {
     paddingHorizontal: IOTagHSpacing,
-    paddingVertical: IOTagVSpacing
+    paddingVertical: IOTagVSpacing,
+    columnGap: IOTagIconMargin,
+    borderRadius: IOTagRadius
   },
   iconWrapper: {
     flexShrink: 1
-  },
-  spacer: {
-    width: IOTagIconMargin
   }
 });
 
@@ -137,18 +140,31 @@ export const Tag = ({
   variant,
   testID,
   customIconProps,
-  iconAccessibilityLabel
+  iconAccessibilityLabel,
+  allowFontScaling = true
 }: Tag) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, customIconProps);
 
+  const tagDynamic: ViewStyle = {
+    paddingHorizontal: IOTagHSpacing * dynamicFontScale,
+    paddingVertical: IOTagVSpacing * dynamicFontScale,
+    columnGap: IOTagIconMargin * dynamicFontScale * spacingScaleMultiplier,
+    borderRadius: IOTagRadius * dynamicFontScale
+  };
+
   return (
-    <View testID={testID} style={styles.tag}>
+    <View
+      testID={testID}
+      style={[styles.tag, allowFontScaling ? tagDynamic : styles.tagStatic]}
+    >
       {variantProps && (
         <View style={styles.iconWrapper}>
           <Icon
+            allowFontScaling={allowFontScaling}
             name={variantProps.iconName}
             color={variantProps.iconColor}
             size={IOTagIconSize}
@@ -157,9 +173,9 @@ export const Tag = ({
           />
         </View>
       )}
-      {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <IOText
+          allowFontScaling={allowFontScaling}
           font={isExperimental ? "Titillio" : "TitilliumSansPro"}
           weight={"Semibold"}
           size={12}

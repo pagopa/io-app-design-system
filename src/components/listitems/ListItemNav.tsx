@@ -1,11 +1,5 @@
-import React, { ComponentProps, ReactNode, useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Image,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
+import React, { ComponentProps, useCallback } from "react";
+import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -27,6 +21,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Avatar } from "../avatar";
 import { Badge } from "../badge";
@@ -91,13 +86,6 @@ export type ListItemNavGraphicProps =
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
-const styles = StyleSheet.create({
-  paymentLogoSize: {
-    width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
-  }
-});
-
 export const ListItemNav = ({
   value,
   description,
@@ -118,11 +106,7 @@ export const ListItemNav = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  const withMargin = (GraphicalAsset: ReactNode) => (
-    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-      {GraphicalAsset}
-    </View>
-  );
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -139,7 +123,12 @@ export const ListItemNav = ({
           {topElement.dateValue && (
             <>
               <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
-                <Icon name="calendar" size={16} color="grey-300" />
+                <Icon
+                  allowFontScaling
+                  name="calendar"
+                  size={16}
+                  color="grey-300"
+                />
                 <HSpacer size={4} />
                 <Caption color={theme["textBody-tertiary"]}>
                   {topElement.dateValue}
@@ -247,30 +236,43 @@ export const ListItemNav = ({
         style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            animatedScaleStyle
+          ]}
         >
           {/* Possibile graphical assets
           - Icon
           - Image URL (for payment logos)
           - Avatar
           */}
-          {icon &&
-            withMargin(
-              <Icon
-                name={icon}
-                color={iconColor}
-                size={IOListItemVisualParams.iconSize}
-              />
-            )}
-          {paymentLogoUri &&
-            withMargin(
-              <Image
-                accessibilityIgnoresInvertColors
-                source={{ uri: paymentLogoUri }}
-                style={styles.paymentLogoSize}
-              />
-            )}
-          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
+          {icon && (
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={IOListItemVisualParams.iconSize}
+            />
+          )}
+          {paymentLogoUri && (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={{ uri: paymentLogoUri }}
+              style={{
+                width:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                height:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+              }}
+            />
+          )}
+          {avatar && <Avatar size="small" {...avatar} />}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={primaryColor} />}

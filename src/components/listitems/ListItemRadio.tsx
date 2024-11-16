@@ -3,7 +3,8 @@ import { useCallback, useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
+  SharedValue,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -17,11 +18,13 @@ import {
   IOScaleValues,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  IOSelectionTickVisualParams,
   IOSpringValues,
   IOStyles,
   hexToRgba,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
@@ -91,8 +94,9 @@ export const ListItemRadio = ({
   testID
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   // Animations
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  const isPressed: SharedValue<number> = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -114,7 +118,7 @@ export const ListItemRadio = ({
       progressPressed.value,
       [0, 1],
       [1, animationScaleValue],
-      Extrapolate.CLAMP
+      Extrapolation.CLAMP
     );
 
     return {
@@ -200,7 +204,10 @@ export const ListItemRadio = ({
           </View>
           <HSpacer size={8} />
           <View pointerEvents="none" style={disabledStyle}>
-            <AnimatedRadio checked={toggleValue} />
+            <AnimatedRadio
+              size={IOSelectionTickVisualParams.size * dynamicFontScale}
+              checked={toggleValue}
+            />
           </View>
         </View>
       </View>
@@ -238,37 +245,41 @@ export const ListItemRadio = ({
       >
         <Animated.View style={animatedScaleStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
-            <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {startImage && (
-                <View
-                  style={{
-                    marginRight: IOSelectionListItemVisualParams.iconMargin
-                  }}
-                >
-                  {/* icon or paymentLogo props are mutually exclusive */}
-                  {startImage.icon && (
-                    <Icon
-                      name={startImage.icon}
-                      color="grey-300"
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
-                  {startImage.uri && (
-                    <Image
-                      accessibilityIgnoresInvertColors
-                      source={startImage}
-                      style={styles.imageSize}
-                    />
-                  )}
-                  {startImage.paymentLogo && (
-                    <LogoPayment
-                      name={startImage.paymentLogo}
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
+            <View
+              style={{
+                flexDirection: "row",
+                flexShrink: 1,
+                columnGap:
+                  IOSelectionListItemVisualParams.iconMargin *
+                  dynamicFontScale *
+                  spacingScaleMultiplier
+              }}
+            >
+              {startImage?.icon && (
+                <Icon
+                  allowFontScaling
+                  name={startImage.icon}
+                  color="grey-300"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                />
+              )}
+              {startImage?.uri && (
+                <View style={{ alignSelf: "center" }}>
+                  <Image
+                    accessibilityIgnoresInvertColors
+                    source={startImage}
+                    style={styles.imageSize}
+                  />
                 </View>
               )}
-
+              {startImage?.paymentLogo && (
+                <View style={{ alignSelf: "center" }}>
+                  <LogoPayment
+                    name={startImage.paymentLogo}
+                    size={IOSelectionListItemVisualParams.iconSize}
+                  />
+                </View>
+              )}
               <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
@@ -279,7 +290,10 @@ export const ListItemRadio = ({
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
             >
-              <AnimatedRadio checked={selected ?? toggleValue} />
+              <AnimatedRadio
+                size={IOSelectionTickVisualParams.size * dynamicFontScale}
+                checked={selected ?? toggleValue}
+              />
             </View>
           </View>
           {description && (
