@@ -1764,7 +1764,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           maxFontSizeMultiplier={1.25}
           style={
             [
@@ -1851,7 +1851,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
     }
   >
     <Text
-      allowFontScaling={false}
+      allowFontScaling={true}
       maxFontSizeMultiplier={1.25}
       style={
         [
@@ -1919,7 +1919,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         accessible={true}
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           style={
@@ -1939,7 +1939,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
           label
         </Text>
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
@@ -2041,7 +2041,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2061,7 +2061,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           label
         </Text>
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
@@ -2229,7 +2229,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2458,7 +2458,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2628,7 +2628,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
@@ -2728,7 +2728,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             }
           />
           <Text
-            allowFontScaling={false}
+            allowFontScaling={true}
             dynamicTypeRamp="footnote"
             maxFontSizeMultiplier={1.25}
             style={
@@ -2760,7 +2760,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -3012,7 +3012,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
@@ -3044,7 +3044,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         }
       >
         <Text
-          allowFontScaling={false}
+          allowFontScaling={true}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
