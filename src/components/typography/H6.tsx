@@ -11,6 +11,7 @@ export const h6LineHeight = 24;
 const fontName: IOFontFamily = "Titillio";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontSize: IOFontSize = 18;
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
 
 /**
@@ -25,7 +26,7 @@ export const H6 = forwardRef<View, TypographicStyleProps>(
       ...props,
       dynamicTypeRamp: "headline", // iOS only
       font: isExperimental ? fontName : legacyFontName,
-      size: h6FontSize,
+      size: isExperimental ? h6FontSize : legacyFontSize,
       lineHeight: h6LineHeight,
       weight: "Semibold",
       color: customColor ?? theme[defaultColor]

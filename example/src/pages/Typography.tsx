@@ -62,7 +62,6 @@ export const Typography = () => (
           massa, eget pharetra mauris posuere semper.
         </Body>
         <Body weight="Semibold">Body Semibold</Body>
-        <Body weight="Bold">Body Bold</Body>
         <Body asLink onPress={linkOnPress}>
           Body asLink
         </Body>
