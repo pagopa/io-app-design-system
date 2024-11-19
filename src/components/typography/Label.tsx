@@ -10,7 +10,7 @@ import {
 } from "./IOText";
 
 type LabelProps = TypographicStyleProps & {
-  weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
+  weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
 const fontName: IOFontFamily = "Titillio";
