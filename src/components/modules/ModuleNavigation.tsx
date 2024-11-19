@@ -18,7 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { LabelMini, LabelSmall } from "../typography";
+import { LabelMini, BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -79,7 +79,7 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
           {iconComponent ?? imageComponent}
 
           <View style={{ flexShrink: 1 }}>
-            <LabelSmall
+            <BodySmall
               color={theme["interactiveElem-default"]}
               weight="Semibold"
               numberOfLines={2}
@@ -87,7 +87,7 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
               style={{ flexShrink: 1 }}
             >
               {title}
-            </LabelSmall>
+            </BodySmall>
             {subtitle && (
               <LabelMini weight="Regular" color={theme["textBody-tertiary"]}>
                 {subtitle}

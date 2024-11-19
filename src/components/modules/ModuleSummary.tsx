@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../core";
 import { IOIcons, Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
@@ -28,9 +28,9 @@ export const ModuleSummary = ({
       <View style={{ flexGrow: 1, flexShrink: 1 }}>
         <H6 color={theme["textBody-default"]}>{label}</H6>
         {description && (
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {description}
-          </LabelSmall>
+          </BodySmall>
         )}
       </View>
       <View style={{ marginLeft: 8 }}>

@@ -15,7 +15,7 @@ import {
   Hero,
   IOColors,
   LabelMini,
-  LabelSmall,
+  BodySmall,
   MdH1,
   MdH2,
   MdH3,
@@ -68,7 +68,7 @@ export const Typography = () => (
         <BodyMonospace>BodyMonoSpace</BodyMonospace>
       </VStack>
       <VStack space={16}>
-        <LabelSmallRow />
+        <BodySmallRow />
         <LabelMiniRow />
       </VStack>
     </VStack>
@@ -185,64 +185,64 @@ export const CaptionRow = () => (
   </View>
 );
 
-export const LabelSmallRow = () => (
+export const BodySmallRow = () => (
   <>
     <View style={styles.row}>
-      <LabelSmall>Label small</LabelSmall>
+      <BodySmall>Body small</BodySmall>
       <HSpacer size={16} />
-      <LabelSmall color="grey-700">Label small</LabelSmall>
+      <BodySmall color="grey-700">Body small</BodySmall>
       <HSpacer size={16} />
-      <LabelSmall color={"red"}>Label small</LabelSmall>
+      <BodySmall color={"red"}>Body small</BodySmall>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors["grey-700"] }}>
-        <LabelSmall color={"white"}>Label small</LabelSmall>
+        <BodySmall color={"white"}>Body small</BodySmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={linkOnPress}>
-        Label small asLink
-      </LabelSmall>
+      <BodySmall asLink onPress={linkOnPress}>
+        Body small asLink
+      </BodySmall>
     </View>
     <View style={styles.row}>
-      <LabelSmall weight="Semibold">Label small SB</LabelSmall>
+      <BodySmall weight="Semibold">Body small SB</BodySmall>
       <HSpacer size={16} />
-      <LabelSmall weight="Semibold" color="grey-700">
-        Label small SB
-      </LabelSmall>
+      <BodySmall weight="Semibold" color="grey-700">
+        Body small SB
+      </BodySmall>
       <HSpacer size={16} />
-      <LabelSmall weight="Semibold" color={"red"}>
-        Label small SB
-      </LabelSmall>
+      <BodySmall weight="Semibold" color={"red"}>
+        Body small SB
+      </BodySmall>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors["grey-700"] }}>
-        <LabelSmall weight="Semibold" color={"white"}>
-          Label small SB
-        </LabelSmall>
+        <BodySmall weight="Semibold" color={"white"}>
+          Body small SB
+        </BodySmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={linkOnPress} weight="Semibold">
-        Label small SB asLink
-      </LabelSmall>
+      <BodySmall asLink onPress={linkOnPress} weight="Semibold">
+        Body small SB asLink
+      </BodySmall>
     </View>
     <View style={styles.row}>
-      <LabelSmall weight="Regular">Label small Regular</LabelSmall>
+      <BodySmall weight="Regular">Body small Regular</BodySmall>
       <HSpacer size={16} />
-      <LabelSmall weight="Regular" color="grey-700">
-        Label small Regular
-      </LabelSmall>
+      <BodySmall weight="Regular" color="grey-700">
+        Body small Regular
+      </BodySmall>
       <HSpacer size={16} />
-      <LabelSmall weight="Regular" color={"red"}>
-        Label small Regular
-      </LabelSmall>
+      <BodySmall weight="Regular" color={"red"}>
+        Body small Regular
+      </BodySmall>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors["grey-700"] }}>
-        <LabelSmall weight="Regular" color={"white"}>
-          Label small Regular
-        </LabelSmall>
+        <BodySmall weight="Regular" color={"white"}>
+          Body small Regular
+        </BodySmall>
       </View>
       <HSpacer size={16} />
-      <LabelSmall asLink onPress={linkOnPress} weight="Regular">
-        Label small Regular asLink
-      </LabelSmall>
+      <BodySmall asLink onPress={linkOnPress} weight="Regular">
+        Body small Regular asLink
+      </BodySmall>
     </View>
   </>
 );

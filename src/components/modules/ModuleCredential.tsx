@@ -20,7 +20,7 @@ import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HStack } from "../stack/Stack";
-import { LabelSmall } from "../typography";
+import { BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -89,7 +89,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
         {/* Graphical assets */}
         {iconComponent ?? imageComponent}
 
-        <LabelSmall
+        <BodySmall
           color={theme["interactiveElem-default"]}
           weight="Semibold"
           numberOfLines={2}
@@ -97,7 +97,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           style={{ flexShrink: 1 }}
         >
           {label}
-        </LabelSmall>
+        </BodySmall>
       </HStack>
       <View style={IOStyles.row}>
         {badge ? (
