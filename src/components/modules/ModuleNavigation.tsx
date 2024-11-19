@@ -18,7 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { Chip, LabelSmall } from "../typography";
+import { LabelMini, LabelSmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -89,7 +89,9 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
               {title}
             </LabelSmall>
             {subtitle && (
-              <Chip color={theme["textBody-tertiary"]}>{subtitle}</Chip>
+              <LabelMini weight="Regular" color={theme["textBody-tertiary"]}>
+                {subtitle}
+              </LabelMini>
             )}
           </View>
         </HStack>
