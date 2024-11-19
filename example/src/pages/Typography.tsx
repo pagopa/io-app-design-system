@@ -11,6 +11,7 @@ import {
   H5,
   H6,
   HSpacer,
+  HStack,
   Hero,
   IOColors,
   LabelMini,
@@ -119,15 +120,14 @@ export const H2Row = () => (
 );
 
 export const H3Row = () => (
-  <View style={styles.row}>
+  <HStack space={16} style={{ flexWrap: "wrap" }}>
     <H3>Header H3</H3>
-    <HSpacer size={16} />
     <H3 color="grey-650">Header H3</H3>
-    <HSpacer size={16} />
     <View style={{ backgroundColor: IOColors["grey-700"] }}>
       <H3 color={"white"}>Header H3</H3>
     </View>
-  </View>
+    <H3 weight="Bold">Header H3 Bold</H3>
+  </HStack>
 );
 
 export const H4Row = () => (
