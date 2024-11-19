@@ -8,7 +8,6 @@ import {
   IOPictogramSizeScale,
   IOPictograms,
   Icon,
-  Label,
   Pictogram,
   VSpacer
 } from "../../components";
@@ -75,7 +74,7 @@ export const FeatureInfo = ({
           This verbose code could be deleted once we got "gap"
           property support */}
           {body && <VSpacer size={4} />}
-          <Label
+          <Body
             asLink
             onPress={action.onPress}
             accessible
@@ -83,7 +82,7 @@ export const FeatureInfo = ({
             accessibilityElementsHidden={false}
           >
             {action.label}
-          </Label>
+          </Body>
         </>
       )}
     </View>

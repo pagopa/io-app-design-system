@@ -1,6 +1,6 @@
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
 import { Alert } from "react-native";
+import * as TestRenderer from "react-test-renderer";
 import type { IOColors } from "../../../core/IOColors";
 import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
@@ -12,7 +12,6 @@ import { H3 } from "../H3";
 import { H4 } from "../H4";
 import { H5 } from "../H5";
 import { H6 } from "../H6";
-import { Label } from "../Label";
 import { LabelSmall } from "../LabelSmall";
 import { calculateWeightColor } from "../common";
 
@@ -107,26 +106,11 @@ describe("Test Typography Components", () => {
       expect(labelSmall).toMatchSnapshot();
     });
   });
-  it("Label Snapshot", () => {
-    const labelDefault = TestRenderer.create(<Label>Text</Label>).toJSON();
-    expect(labelDefault).toMatchSnapshot();
-
-    type BodyColors = React.ComponentProps<typeof Label>["color"];
-
-    const allowedColors: ReadonlyArray<BodyColors> = ["black"];
-
-    allowedColors.map(color => {
-      const label = TestRenderer.create(
-        <Label color={color}>Text</Label>
-      ).toJSON();
-      expect(label).toMatchSnapshot();
-    });
-  });
   it("Link Snapshot", () => {
     const link = TestRenderer.create(
-      <Label asLink onPress={() => Alert.alert("Pressed")}>
+      <Body asLink onPress={() => Alert.alert("Pressed")}>
         Text
-      </Label>
+      </Body>
     ).toJSON();
     expect(link).toMatchSnapshot();
   });

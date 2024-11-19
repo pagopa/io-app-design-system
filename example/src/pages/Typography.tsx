@@ -13,7 +13,6 @@ import {
   HSpacer,
   Hero,
   IOColors,
-  Label,
   LabelMini,
   LabelSmall,
   MdH1,
@@ -70,7 +69,6 @@ export const Typography = () => (
       <VStack space={16}>
         <LabelSmallRow />
         <LabelMiniRow />
-        <LabelRow />
       </VStack>
     </VStack>
 
@@ -297,28 +295,6 @@ export const LabelMiniRow = () => (
       </View>
     </View>
   </>
-);
-
-export const LabelRow = () => (
-  <View style={styles.row}>
-    <Label>Label</Label>
-    <HSpacer size={16} />
-    <View style={{ backgroundColor: IOColors["grey-700"] }}>
-      <Label color={"white"}>Label</Label>
-    </View>
-    <HSpacer size={16} />
-    <Label asLink onPress={() => Alert.alert("onPress LabelLink!")}>
-      Label asLink
-    </Label>
-    <HSpacer size={16} />
-    <Label
-      weight="Regular"
-      asLink
-      onPress={() => Alert.alert("onPress LabelLink!")}
-    >
-      Label Regular asLink
-    </Label>
-  </View>
 );
 
 export const MdH1Row = () => (

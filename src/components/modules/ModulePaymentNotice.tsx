@@ -6,7 +6,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { H6, Label, LabelSmall } from "../typography";
+import { Body, H6, LabelSmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -102,13 +102,13 @@ const ModulePaymentNoticeContent = ({
           </LabelSmall>
         )}
         {subtitle && (
-          <Label
+          <Body
             color={theme["interactiveElem-default"]}
             numberOfLines={2}
             weight="Semibold"
           >
             {subtitle}
-          </Label>
+          </Body>
         )}
       </View>
       <View style={styles.endBlock}>
