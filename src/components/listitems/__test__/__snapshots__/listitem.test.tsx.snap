@@ -262,7 +262,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -384,7 +384,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -551,7 +551,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -780,7 +780,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -1082,7 +1082,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -1366,7 +1366,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -1774,7 +1774,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "600",
                 "lineHeight": 20,
               },
             ]
@@ -1949,7 +1949,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2071,7 +2071,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               {
                 "color": "#0073E6",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2238,7 +2238,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2467,7 +2467,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2769,7 +2769,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -3053,7 +3053,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
