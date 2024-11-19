@@ -3,7 +3,6 @@ import {
   BodyMonospace,
   ButtonText,
   Caption,
-  Chip,
   Divider,
   H1,
   H2,
@@ -52,7 +51,6 @@ export const Typography = () => (
 
       <ButtonTextRow />
       <CaptionRow />
-      <ChipRow />
 
       <VStack space={16}>
         <Body>Body</Body>
@@ -187,16 +185,6 @@ export const CaptionRow = () => (
     <Caption color="grey-650">Caption</Caption>
     <HSpacer size={16} />
     <Caption color={"blueIO-500"}>Caption</Caption>
-  </View>
-);
-
-export const ChipRow = () => (
-  <View style={styles.row}>
-    <Chip>Chip</Chip>
-    <HSpacer size={16} />
-    <Chip color="grey-650">Chip</Chip>
-    <HSpacer size={16} />
-    <Chip color={"blueIO-500"}>Chip</Chip>
   </View>
 );
 
