@@ -178,21 +178,18 @@ export const HeaderSecondLevel = ({
   /* Visual attributes when there are transitions between states */
   const HEADER_DEFAULT_BG_COLOR: IOColors = theme["appBackground-primary"];
 
-  const headerBgColorTransparentState = backgroundColor
-    ? hexToRgba(backgroundColor, 0)
-    : transparent
-    ? hexToRgba(IOColors[HEADER_DEFAULT_BG_COLOR], 0)
-    : IOColors[HEADER_DEFAULT_BG_COLOR];
-
   const headerBgColorSolidState =
     backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
 
+  const headerBgColorTransparentState = transparent
+    ? hexToRgba(headerBgColorSolidState, 0)
+    : headerBgColorSolidState;
+
   const borderColorDefault = IOColors[theme["divider-default"]];
 
-  const borderColorTransparentState = backgroundColor
-    ? hexToRgba(backgroundColor, 0)
-    : hexToRgba(borderColorDefault, 0);
   const borderColorSolidState = backgroundColor ?? borderColorDefault;
+
+  const borderColorTransparentState = hexToRgba(borderColorSolidState, 0);
 
   useLayoutEffect(() => {
     if (isTitleAccessible) {

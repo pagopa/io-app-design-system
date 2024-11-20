@@ -2,7 +2,7 @@ import {
   Divider,
   H1,
   IOStyles,
-  LabelSmall,
+  BodySmall,
   ListItemNav,
   ListItemSwitch,
   VSpacer,
@@ -78,9 +78,9 @@ const MainScreen = (props: Props) => {
     <View style={{ marginTop: 24, marginBottom: 8 }}>
       <H1>{title}</H1>
       {description && (
-        <LabelSmall weight={"Regular"} color={theme["textBody-tertiary"]}>
+        <BodySmall weight={"Regular"} color={theme["textBody-tertiary"]}>
           {description}
-        </LabelSmall>
+        </BodySmall>
       )}
     </View>
   );
