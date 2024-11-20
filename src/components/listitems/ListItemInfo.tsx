@@ -1,5 +1,5 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
-import { Platform, View } from "react-native";
+import { AccessibilityRole, Platform, View } from "react-native";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
@@ -42,6 +42,7 @@ export type ListItemInfo = WithTestID<{
   endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
+  accessibilityRole?: AccessibilityRole;
 }> &
   (
     | {
@@ -64,6 +65,7 @@ export const ListItemInfo = ({
   paymentLogoIcon,
   endElement,
   accessibilityLabel,
+  accessibilityRole,
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
@@ -139,6 +141,7 @@ export const ListItemInfo = ({
       testID={testID}
       accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
+      accessibilityRole={accessibilityRole}
     >
       <View
         style={[
