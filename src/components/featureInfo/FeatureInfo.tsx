@@ -1,14 +1,13 @@
 import React, { ReactNode } from "react";
 import { GestureResponderEvent, View } from "react-native";
 import {
-  Body,
+  BodySmall,
   HSpacer,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
   IOPictograms,
   Icon,
-  Label,
   Pictogram,
   VSpacer
 } from "../../components";
@@ -44,9 +43,9 @@ const DEFAULT_PICTOGRAM_SIZE: IOPictogramSizeScale = 48;
 const renderNode = (body: FeatureInfoProps["body"]) => {
   if (typeof body === "string") {
     return (
-      <Body color="grey-700" testID="infoScreenBody">
+      <BodySmall color="grey-700" testID="infoScreenBody">
         {body}
-      </Body>
+      </BodySmall>
     );
   }
 
@@ -75,7 +74,8 @@ export const FeatureInfo = ({
           This verbose code could be deleted once we got "gap"
           property support */}
           {body && <VSpacer size={4} />}
-          <Label
+          <BodySmall
+            weight="Semibold"
             asLink
             onPress={action.onPress}
             accessible
@@ -83,7 +83,7 @@ export const FeatureInfo = ({
             accessibilityElementsHidden={false}
           >
             {action.label}
-          </Label>
+          </BodySmall>
         </>
       )}
     </View>

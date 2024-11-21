@@ -1,11 +1,18 @@
 import * as React from "react";
-import { AccessibilityInfo, NativeSyntheticEvent, Pressable, TextInput, TextInputKeyPressEventData, View } from "react-native";
+import {
+  AccessibilityInfo,
+  NativeSyntheticEvent,
+  Pressable,
+  TextInput,
+  TextInputKeyPressEventData,
+  View
+} from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
-import { LabelSmall } from "../typography";
 import { triggerHaptic } from "../../functions";
-import { VSpacer } from "../spacer";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
+import { VSpacer } from "../spacer";
+import { BodySmall } from "../typography";
 import { BoxedInput } from "./BoxedInput";
 
 type Props = {
@@ -95,11 +102,15 @@ export const OTPInput = React.forwardRef<View, Props>(
       handleValidate(value);
     };
 
-    const handleKeyPress = ({ nativeEvent }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
+    const handleKeyPress = ({
+      nativeEvent
+    }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
       switch (nativeEvent.key) {
-        case 'Backspace':
+        case "Backspace":
           if (deleteButtonAccessibilityLabel && value.length > 0) {
-            AccessibilityInfo.announceForAccessibility(deleteButtonAccessibilityLabel);
+            AccessibilityInfo.announceForAccessibility(
+              deleteButtonAccessibilityLabel
+            );
           }
           break;
         default:
@@ -156,9 +167,13 @@ export const OTPInput = React.forwardRef<View, Props>(
         </Pressable>
         <VSpacer size={4} />
         {hasError && errorMessage && (
-          <LabelSmall color="error-850" style={{ textAlign: "center" }}>
+          <BodySmall
+            weight="Semibold"
+            color="error-850"
+            style={{ textAlign: "center" }}
+          >
             {errorMessage}
-          </LabelSmall>
+          </BodySmall>
         )}
       </Animated.View>
     );

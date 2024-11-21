@@ -25,7 +25,7 @@ import {
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 
 /* Styles */
 const colorTitle: IOColors = "blueIO-850";
@@ -180,9 +180,9 @@ export const Banner = ({
         )}
         {content && (
           <>
-            <LabelSmall color={colorContent} weight={"Regular"}>
+            <BodySmall color={colorContent} weight={"Regular"}>
               {content}
-            </LabelSmall>
+            </BodySmall>
             {action && <VSpacer size={8} />}
           </>
         )}

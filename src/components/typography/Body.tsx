@@ -10,7 +10,7 @@ import {
 } from "./IOText";
 
 type BodyStyleProps = TypographicStyleProps & {
-  weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
+  weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
 export const bodyFontSize = 16;

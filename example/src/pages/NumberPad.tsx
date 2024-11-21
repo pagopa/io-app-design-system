@@ -1,4 +1,5 @@
 import {
+  BodySmall,
   CodeInput,
   ContentWrapper,
   H1,
@@ -6,7 +7,6 @@ import {
   IOColors,
   IOStyles,
   IOVisualCostants,
-  LabelSmall,
   ListItemSwitch,
   NumberPad,
   VSpacer,
@@ -69,12 +69,12 @@ export const NumberPadScreen = () => {
           <H5>{"Value Typed on the NumberPad component"}</H5>
           <VSpacer />
 
-          <LabelSmall
+          <BodySmall
             weight="Semibold"
             color={blueBackground ? "white" : "black"}
           >
             {value}
-          </LabelSmall>
+          </BodySmall>
         </View>
         <VSpacer />
         <CodeInput

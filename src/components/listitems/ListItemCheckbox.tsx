@@ -13,7 +13,7 @@ import { useListItemAnimation } from "../../hooks";
 import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 
 type Props = {
   value: string;
@@ -130,9 +130,9 @@ export const ListItemCheckbox = ({
               <VSpacer
                 size={IOSelectionListItemVisualParams.descriptionMargin}
               />
-              <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+              <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
                 {description}
-              </LabelSmall>
+              </BodySmall>
             </View>
           )}
         </Animated.View>

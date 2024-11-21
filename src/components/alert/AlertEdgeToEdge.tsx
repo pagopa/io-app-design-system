@@ -25,7 +25,7 @@ import { useScaleAnimation } from "../../hooks";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { Label } from "../typography/Label";
+import { Body } from "../typography";
 
 const iconSize: IOIconSizeScale = 24;
 
@@ -121,7 +121,7 @@ export const AlertEdgeToEdge = ({
         />
       </View>
       <View style={IOStyles.flex}>
-        <Label
+        <Body
           color={mapVariantStates[variant].foreground}
           weight={"Regular"}
           accessibilityRole="text"
@@ -142,7 +142,7 @@ export const AlertEdgeToEdge = ({
               {` ${action}`}
             </Text>
           )}
-        </Label>
+        </Body>
       </View>
     </>
   );

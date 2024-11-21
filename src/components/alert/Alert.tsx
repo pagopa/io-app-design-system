@@ -21,9 +21,8 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { VSpacer } from "../spacer";
-import { ButtonText } from "../typography";
+import { Body, ButtonText } from "../typography";
 import { H4 } from "../typography/H4";
-import { Label } from "../typography/Label";
 
 const iconSize: IOIconSizeScale = 24;
 
@@ -157,14 +156,14 @@ export const Alert = forwardRef<View, AlertType>(
               <VSpacer size={8} />
             </>
           )}
-          <Label
+          <Body
             color={mapVariantStates[variant].foreground}
             weight={"Regular"}
             accessibilityRole="text"
             onTextLayout={onTextLayout}
           >
             {content}
-          </Label>
+          </Body>
           {action && (
             <>
               <VSpacer size={8} />

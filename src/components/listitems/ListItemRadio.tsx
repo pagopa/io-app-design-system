@@ -16,7 +16,7 @@ import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import { VStack } from "../stack";
 
 type ListItemRadioGraphicProps =
@@ -226,9 +226,9 @@ export const ListItemRadio = ({
               <VSpacer
                 size={IOSelectionListItemVisualParams.descriptionMargin}
               />
-              <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+              <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
                 {description}
-              </LabelSmall>
+              </BodySmall>
             </View>
           )}
         </Animated.View>
