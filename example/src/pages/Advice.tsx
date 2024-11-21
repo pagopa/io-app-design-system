@@ -55,7 +55,7 @@ const renderFeatureInfo = () => {
     },
     {
       text: "Questa la seconda parte in grassetto. ",
-      weight: "Bold"
+      weight: "Semibold"
     },
     {
       text: "Questa la terza parte che torna "

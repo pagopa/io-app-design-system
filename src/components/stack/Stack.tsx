@@ -22,7 +22,7 @@ export const HStack = ({ space, children, style }: Stack) => (
     style={{
       display: "flex",
       flexDirection: "row",
-      columnGap: space,
+      gap: space,
       ...style
     }}
   >
@@ -40,7 +40,7 @@ export const VStack = ({ space, children, style }: Stack) => (
     style={{
       display: "flex",
       flexDirection: "column",
-      rowGap: space,
+      gap: space,
       ...style
     }}
   >

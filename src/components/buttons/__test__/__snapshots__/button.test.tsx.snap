@@ -805,7 +805,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
             "fontFamily": "Titillium Sans Pro",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
+            "fontWeight": "600",
             "lineHeight": undefined,
           },
           {
@@ -911,7 +911,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
             "fontFamily": "Titillium Sans Pro",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
+            "fontWeight": "600",
             "lineHeight": undefined,
           },
           [
@@ -1031,7 +1031,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
               "fontFamily": "Titillium Sans Pro",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "lineHeight": 20,
             },
             {
