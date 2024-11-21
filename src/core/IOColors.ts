@@ -233,6 +233,7 @@ export const IOColorsStatus = asIOColors({
 });
 
 export type IOColorsStatus = keyof typeof IOColorsStatus;
+
 export type IOColorsStatusForeground = Extract<
   IOColorsStatus,
   "error-850" | "warning-850" | "info-850" | "success-850"
