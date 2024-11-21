@@ -37,7 +37,7 @@ import {
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { buttonTextFontSize, H6, IOText, LabelSmall } from "../typography";
+import { buttonTextFontSize, H6, IOText, BodySmall } from "../typography";
 
 /* Styles */
 const sizePictogramBig: IOPictogramSizeScale = 80;
@@ -241,9 +241,9 @@ export const Banner = ({
         )}
         {content && (
           <>
-            <LabelSmall color={theme["textBody-tertiary"]} weight={"Regular"}>
+            <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
               {content}
-            </LabelSmall>
+            </BodySmall>
             {action && <VSpacer size={8} />}
           </>
         )}

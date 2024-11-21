@@ -1,18 +1,18 @@
 import React, { useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
-import { WithTestID } from "../../utils/types";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   useIOTheme
 } from "../../core";
+import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { NativeSwitch } from "../switch/NativeSwitch";
-import { H6, LabelMini, LabelSmall } from "../typography";
+import { BodySmall, H6, LabelMini } from "../typography";
 
 type PartialProps = WithTestID<{
   label: string;
@@ -178,9 +178,9 @@ export const ListItemSwitch = React.memo(
         {description && (
           <>
             <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
-            <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+            <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
               {description}
-            </LabelSmall>
+            </BodySmall>
           </>
         )}
         {action && (

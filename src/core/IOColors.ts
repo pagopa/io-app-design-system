@@ -285,7 +285,10 @@ const themeKeys = [
   // Status
   "errorIcon",
   "errorText",
+  "successIcon",
   "successText",
+  "warningIcon",
+  "infoIcon",
   // Pictograms
   "pictogram-hands",
   "pictogram-tint-main",
@@ -324,7 +327,10 @@ export const IOThemeLight: IOTheme = {
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
+  successIcon: "success-700",
   successText: "success-700",
+  warningIcon: "warning-700",
+  infoIcon: "info-700",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
@@ -367,6 +373,9 @@ export const IOThemeDark: IOTheme = {
   errorIcon: "error-400",
   errorText: "error-400",
   successText: "success-400",
+  successIcon: "success-500",
+  warningIcon: "warning-500",
+  infoIcon: "info-500",
   // Pictograms
   "pictogram-hands": "white",
   "pictogram-tint-main": "turquoise-150",

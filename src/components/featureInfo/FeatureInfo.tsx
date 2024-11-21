@@ -1,14 +1,13 @@
 import React, { ReactNode } from "react";
 import { GestureResponderEvent, View } from "react-native";
 import {
-  Body,
+  BodySmall,
   HSpacer,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
   IOPictograms,
   Icon,
-  Label,
   Pictogram,
   VStack
 } from "../../components";
@@ -43,7 +42,7 @@ const DEFAULT_PICTOGRAM_SIZE: IOPictogramSizeScale = 48;
 
 const renderNode = (body: FeatureInfoProps["body"]) => {
   if (typeof body === "string") {
-    return <Body testID="infoScreenBody">{body}</Body>;
+    return <BodySmall testID="infoScreenBody">{body}</BodySmall>;
   }
 
   return body;
@@ -73,7 +72,8 @@ export const FeatureInfo = ({
       <VStack space={4} style={{ flexShrink: 1 }}>
         {renderNode(body)}
         {action && (
-          <Label
+          <BodySmall
+            weight="Semibold"
             asLink
             onPress={action.onPress}
             accessible
@@ -81,7 +81,7 @@ export const FeatureInfo = ({
             accessibilityElementsHidden={false}
           >
             {action.label}
-          </Label>
+          </BodySmall>
         )}
       </VStack>
     </View>

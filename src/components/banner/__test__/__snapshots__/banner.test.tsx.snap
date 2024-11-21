@@ -82,7 +82,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             {
               "color": "#031344",
               "fontFamily": "Titillio",
-              "fontSize": 18,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
               "lineHeight": 24,

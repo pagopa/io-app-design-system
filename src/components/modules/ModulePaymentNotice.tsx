@@ -6,7 +6,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { H6, Label, LabelSmall } from "../typography";
+import { Body, H6, BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -93,22 +93,22 @@ const ModulePaymentNoticeContent = ({
     <HStack space={IOListItemVisualParams.iconMargin as IOSpacer}>
       <View style={{ flexGrow: 1, flexShrink: 1 }}>
         {title && (
-          <LabelSmall
+          <BodySmall
             numberOfLines={1}
             weight="Regular"
             color={theme["textBody-tertiary"]}
           >
             {title}
-          </LabelSmall>
+          </BodySmall>
         )}
         {subtitle && (
-          <Label
+          <Body
             color={theme["interactiveElem-default"]}
             numberOfLines={2}
             weight="Semibold"
           >
             {subtitle}
-          </Label>
+          </Body>
         )}
       </View>
       <View style={styles.endBlock}>
