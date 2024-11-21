@@ -73,7 +73,7 @@ export const fontWeights: Record<IOFontWeight, IOFontWeightNumeric> = {
 };
 
 type FontStyleObject = {
-  fontSize: IOFontSize;
+  fontSize: IOFontSize | number;
   /* We also accept `string` because Android needs a composed 
   fontFamily name, like `TitilliumSansPro-Regular` */
   fontFamily: string | IOFontFamily;
@@ -132,7 +132,7 @@ const defaultFontSize: IOFontSize = 16;
  */
 
 export const makeFontStyleObject = (
-  size: IOFontSize = defaultFontSize,
+  size: number = defaultFontSize,
   font: IOFontFamily = defaultFont,
   lineHeight: TextStyle["lineHeight"],
   weight: IOFontWeight = defaultWeight,
