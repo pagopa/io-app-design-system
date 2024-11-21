@@ -1,4 +1,5 @@
 import {
+  BodySmall,
   H2,
   H3,
   IOColorGradients,
@@ -12,7 +13,6 @@ import {
   IOThemeLight,
   IOVisualCostants,
   LabelMini,
-  LabelSmall,
   VSpacer,
   hexToRgba,
   themeStatusColorsDarkMode,
@@ -336,9 +336,9 @@ const GradientBox = ({ name, colors }: GradientBoxProps) => {
         {last && <Text style={styles.colorPill}>{last}</Text>}
       </LinearGradient>
       {name && (
-        <LabelSmall weight="Regular" color="grey-700">
+        <BodySmall weight="Regular" color="grey-700">
           {name}
-        </LabelSmall>
+        </BodySmall>
       )}
     </View>
   );

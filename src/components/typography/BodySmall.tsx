@@ -9,20 +9,17 @@ import {
   TypographicStyleProps
 } from "./IOText";
 
-type LabelSmallProps = TypographicStyleProps & {
-  weight?: Extract<IOFontWeight, "Regular" | "Semibold" | "Bold">;
+type BodySmallProps = TypographicStyleProps & {
+  weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
 const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Semibold";
-
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
-const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
- * `LabelSmall` typographic style
+ * `BodySmall` typographic style
  */
-export const LabelSmall = forwardRef<View, LabelSmallProps>(
+export const BodySmall = forwardRef<View, BodySmallProps>(
   (
     { weight: customWeight, color: customColor, asLink, ...props },
     ref?: ForwardedRef<View>
@@ -34,15 +31,11 @@ export const LabelSmall = forwardRef<View, LabelSmallProps>(
       ? theme["interactiveElem-default"]
       : theme["textBody-tertiary"];
 
-    const LabelSmallProps: IOTextProps = {
+    const BodySmallProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
       font: isExperimental ? fontName : legacyFontName,
-      weight: customWeight
-        ? customWeight
-        : isExperimental
-        ? fontWeight
-        : legacyFontWeight,
+      weight: customWeight ?? "Regular",
       size: 14,
       lineHeight: 21,
       color: customColor ?? defaultColor,
@@ -55,7 +48,7 @@ export const LabelSmall = forwardRef<View, LabelSmallProps>(
     };
 
     return (
-      <IOText ref={ref} {...LabelSmallProps}>
+      <IOText ref={ref} {...BodySmallProps}>
         {props.children}
       </IOText>
     );

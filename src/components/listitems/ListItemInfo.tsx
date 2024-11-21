@@ -13,7 +13,7 @@ import { ButtonLink, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -87,9 +87,9 @@ export const ListItemInfo = ({
   const itemInfoTextComponent = useMemo(
     () => (
       <View accessible={Platform.OS === "ios"}>
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
-        </LabelSmall>
+        </BodySmall>
         {typeof value === "string" ? (
           <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
             {value}

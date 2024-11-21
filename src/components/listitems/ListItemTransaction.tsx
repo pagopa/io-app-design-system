@@ -22,7 +22,7 @@ import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { VSpacer } from "../spacer";
 import { HStack } from "../stack";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
@@ -148,16 +148,16 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={{ flexShrink: 1 }}>
-          <LabelSmall
+          <BodySmall
             numberOfLines={numberOfLines}
             color={theme["textBody-default"]}
             weight="Semibold"
           >
             {title}
-          </LabelSmall>
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          </BodySmall>
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
-          </LabelSmall>
+          </BodySmall>
         </View>
       </HStack>
       <HStack style={{ alignItems: "center" }}>

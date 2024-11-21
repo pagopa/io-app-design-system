@@ -6,7 +6,7 @@ import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import { PressableListItemBase } from "./PressableListItemsBase";
 
 export type ListItemRadioWithAmountProps = {
@@ -57,22 +57,22 @@ export const ListItemRadioWithAmount = ({
       }}
     >
       <View style={{ flexShrink: 1 }}>
-        <LabelSmall
+        <BodySmall
           weight="Semibold"
           numberOfLines={1}
           color={theme["textBody-default"]}
         >
           {label}
-        </LabelSmall>
+        </BodySmall>
         {isSuggested && (
           <>
             <VSpacer size={4} />
             <View style={styles.rowCenter}>
               <Icon name="sparkles" size={16} color={suggestColor} />
               <HSpacer size={4} />
-              <LabelSmall weight="Regular" color={suggestColor}>
+              <BodySmall weight="Regular" color={suggestColor}>
                 {suggestReason}
-              </LabelSmall>
+              </BodySmall>
             </View>
           </>
         )}

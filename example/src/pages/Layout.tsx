@@ -10,7 +10,7 @@ import {
   IOSpacer,
   IOVisualCostants,
   LabelMini,
-  LabelSmall,
+  BodySmall,
   VSpacer,
   VStack,
   useIOTheme
@@ -201,10 +201,10 @@ const VStackBlocks = () => {
             backgroundColor: IOColors[theme["appBackground-tertiary"]]
           }}
         >
-          <LabelSmall
+          <BodySmall
             weight="Regular"
             color={theme["textBody-tertiary"]}
-          >{`Block n.${i + 1}`}</LabelSmall>
+          >{`Block n.${i + 1}`}</BodySmall>
         </View>
       ))}
       <View
@@ -216,9 +216,9 @@ const VStackBlocks = () => {
           backgroundColor: IOColors[theme["appBackground-tertiary"]]
         }}
       >
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
           Different height
-        </LabelSmall>
+        </BodySmall>
       </View>
     </>
   );
@@ -240,9 +240,9 @@ const HStackBlocks = () => {
             backgroundColor: IOColors[theme["appBackground-tertiary"]]
           }}
         >
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>{`${
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>{`${
             i + 1
-          }`}</LabelSmall>
+          }`}</BodySmall>
         </View>
       ))}
       <View
@@ -254,9 +254,9 @@ const HStackBlocks = () => {
           backgroundColor: IOColors[theme["appBackground-tertiary"]]
         }}
       >
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
           Growing block
-        </LabelSmall>
+        </BodySmall>
       </View>
     </>
   );

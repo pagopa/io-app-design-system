@@ -34,7 +34,7 @@ export const HStack = ({
       style={{
         display: "flex",
         flexDirection: "row",
-        columnGap: allowScaleSpacing
+        gap: allowScaleSpacing
           ? space * dynamicFontScale * spacingScaleMultiplier
           : space,
         ...style
@@ -63,7 +63,7 @@ export const VStack = ({
       style={{
         display: "flex",
         flexDirection: "column",
-        rowGap: allowScaleSpacing
+        gap: allowScaleSpacing
           ? space * dynamicFontScale * spacingScaleMultiplier
           : space,
         ...style

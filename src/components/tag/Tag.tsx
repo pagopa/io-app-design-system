@@ -3,6 +3,8 @@ import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
   IOColors,
   IOTagRadius,
+  IOTheme,
+  IOThemeLight,
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
@@ -16,9 +18,21 @@ import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOText } from "../typography";
 
+const IconColorsMap: Record<string, keyof IOTheme> = {
+  primary: "interactiveElem-default",
+  warning: "warningIcon",
+  error: "errorIcon",
+  success: "successIcon",
+  info: "infoIcon",
+  grey: "icon-default",
+  lightGrey: "icon-decorative"
+};
+
+type IconColorVariant = keyof typeof IconColorsMap;
+
 type VariantProps = {
-  iconColor: IOColors;
-  iconName: IOIcons;
+  color: IconColorVariant;
+  name: IOIcons;
 };
 
 type TextProps =
@@ -31,8 +45,7 @@ type TextProps =
       iconAccessibilityLabel: string;
     };
 
-export type Tag = TextProps &
-  WithTestID<
+export type Tag = TextProps & { forceLightMode?: boolean } & WithTestID<
     | {
         variant:
           | "qrCode"
@@ -43,11 +56,12 @@ export type Tag = TextProps &
           | "success"
           | "attachment"
           | "noIcon";
-        customIconProps?: never;
+        iconName?: never;
+        icon?: never;
       }
     | {
-        variant: "customIcon";
-        customIconProps: VariantProps;
+        variant: "custom";
+        icon: VariantProps;
       }
   > & {
     allowFontScaling?: boolean;
@@ -67,16 +81,15 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
       }
     }),
-    backgroundColor: IOColors.white,
     borderWidth: 1,
-    borderColor: IOColors["grey-100"],
     borderCurve: "continuous"
   },
   tagStatic: {
+    borderRadius: IOTagRadius,
+    borderCurve: "continuous",
     paddingHorizontal: IOTagHSpacing,
     paddingVertical: IOTagVSpacing,
-    columnGap: IOTagIconMargin,
-    borderRadius: IOTagRadius
+    columnGap: IOTagIconMargin
   },
   iconWrapper: {
     flexShrink: 1
@@ -85,45 +98,46 @@ const styles = StyleSheet.create({
 
 const getVariantProps = (
   variant: NonNullable<Tag["variant"]>,
-  customIconProps?: VariantProps
+  customIcon?: VariantProps
 ): VariantProps | undefined => {
+  if (variant === "custom" && customIcon) {
+    return customIcon;
+  }
   switch (variant) {
-    case "customIcon":
-      return customIconProps;
     case "qrCode":
       return {
-        iconColor: "blueIO-500",
-        iconName: "qrCode"
+        color: "primary",
+        name: "qrCode"
       };
     case "attachment":
       return {
-        iconColor: "grey-700",
-        iconName: "attachment"
+        color: "grey",
+        name: "attachment"
       };
     case "legalMessage":
       return {
-        iconColor: "blueIO-500",
-        iconName: "legalValue"
+        color: "primary",
+        name: "legalValue"
       };
     case "info":
       return {
-        iconColor: "info-700",
-        iconName: "info"
+        color: "info",
+        name: "infoFilled"
       };
     case "warning":
       return {
-        iconColor: "warning-700",
-        iconName: "warningFilled"
+        color: "warning",
+        name: "warningFilled"
       };
     case "error":
       return {
-        iconColor: "error-600",
-        iconName: "errorFilled"
+        color: "error",
+        name: "errorFilled"
       };
     case "success":
       return {
-        iconColor: "success-700",
-        iconName: "success"
+        color: "success",
+        name: "success"
       };
     case "noIcon":
       return undefined;
@@ -139,15 +153,24 @@ export const Tag = ({
   text,
   variant,
   testID,
-  customIconProps,
+  icon,
   iconAccessibilityLabel,
-  allowFontScaling = true
+  allowFontScaling = true,
+  forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   const { isExperimental } = useIOExperimentalDesign();
 
-  const variantProps = getVariantProps(variant, customIconProps);
+  const variantProps = getVariantProps(variant, icon);
+
+  const borderColor = forceLightMode
+    ? IOColors[IOThemeLight["cardBorder-default"]]
+    : IOColors[theme["cardBorder-default"]];
+
+  const backgroundColor = forceLightMode
+    ? IOColors[IOThemeLight["appBackground-primary"]]
+    : IOColors[theme["appBackground-primary"]];
 
   const tagDynamic: ViewStyle = {
     paddingHorizontal: IOTagHSpacing * dynamicFontScale,
@@ -159,14 +182,22 @@ export const Tag = ({
   return (
     <View
       testID={testID}
-      style={[styles.tag, allowFontScaling ? tagDynamic : styles.tagStatic]}
+      style={[
+        styles.tag,
+        allowFontScaling ? tagDynamic : styles.tagStatic,
+        { borderColor, backgroundColor }
+      ]}
     >
       {variantProps && (
         <View style={styles.iconWrapper}>
           <Icon
             allowFontScaling={allowFontScaling}
-            name={variantProps.iconName}
-            color={variantProps.iconColor}
+            name={variantProps.name}
+            color={
+              forceLightMode
+                ? IOThemeLight[IconColorsMap[variantProps.color]]
+                : theme[IconColorsMap[variantProps.color]]
+            }
             size={IOTagIconSize}
             accessible={!!iconAccessibilityLabel}
             accessibilityLabel={iconAccessibilityLabel}
@@ -180,7 +211,11 @@ export const Tag = ({
           weight={"Semibold"}
           size={12}
           lineHeight={16}
-          color={theme["textBody-tertiary"]}
+          color={
+            forceLightMode
+              ? IOThemeLight["textBody-tertiary"]
+              : theme["textBody-tertiary"]
+          }
           numberOfLines={1}
           ellipsizeMode="tail"
           style={{

@@ -1,4 +1,4 @@
-import { IOColors, LabelSmall, hexToRgba } from "@pagopa/io-app-design-system";
+import { IOColors, BodySmall, hexToRgba } from "@pagopa/io-app-design-system";
 import React from "react";
 import {
   ImageBackground,
@@ -157,13 +157,13 @@ export const AssetViewerBox = ({
       }}
     >
       {name && (
-        <LabelSmall
+        <BodySmall
           color={"bluegrey"}
           style={{ alignSelf: "flex-start" }}
           weight={"Regular"}
         >
           {name}
-        </LabelSmall>
+        </BodySmall>
       )}
     </View>
   </View>

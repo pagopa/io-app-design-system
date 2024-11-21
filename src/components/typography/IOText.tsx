@@ -10,7 +10,6 @@ import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
-  IOFontSize,
   IOFontWeight,
   IOFontSizeMultiplier,
   makeFontStyleObject
@@ -38,7 +37,7 @@ export type TypographicStyleProps = Omit<
  * cannot be included in the default StyleProp<TextStyle>
  */
 type IOTextBaseProps = {
-  size?: IOFontSize;
+  size?: number;
   weight?: IOFontWeight;
   color?: IOColors;
   font?: IOFontFamily;

@@ -48,6 +48,121 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 </Text>
 `;
 
+exports[`Test Typography Components BodySmall Snapshot 1`] = `
+<Text
+  allowFontScaling={false}
+  dynamicTypeRamp="footnote"
+  maxFontSizeMultiplier={1.25}
+  style={
+    [
+      {},
+      {
+        "color": "#555C70",
+        "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Test Typography Components BodySmall Snapshot 2`] = `
+<Text
+  allowFontScaling={false}
+  dynamicTypeRamp="footnote"
+  maxFontSizeMultiplier={1.25}
+  style={
+    [
+      {},
+      {
+        "color": "#0073E6",
+        "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Test Typography Components BodySmall Snapshot 3`] = `
+<Text
+  allowFontScaling={false}
+  dynamicTypeRamp="footnote"
+  maxFontSizeMultiplier={1.25}
+  style={
+    [
+      {},
+      {
+        "color": "#475A6D",
+        "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Test Typography Components BodySmall Snapshot 4`] = `
+<Text
+  allowFontScaling={false}
+  dynamicTypeRamp="footnote"
+  maxFontSizeMultiplier={1.25}
+  style={
+    [
+      {},
+      {
+        "color": "#C02927",
+        "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Test Typography Components BodySmall Snapshot 5`] = `
+<Text
+  allowFontScaling={false}
+  dynamicTypeRamp="footnote"
+  maxFontSizeMultiplier={1.25}
+  style={
+    [
+      {},
+      {
+        "color": "#FFFFFF",
+        "fontFamily": "Titillium Sans Pro",
+        "fontSize": 14,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 21,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
   allowFontScaling={false}
@@ -60,7 +175,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "700",
+        "fontWeight": "600",
         "lineHeight": 20,
       },
     ]
@@ -450,169 +565,11 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
 </Text>
 `;
 
-exports[`Test Typography Components Label Snapshot 1`] = `
-<Text
-  allowFontScaling={false}
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 24,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components Label Snapshot 2`] = `
-<Text
-  allowFontScaling={false}
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 24,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components LabelSmall Snapshot 1`] = `
-<Text
-  allowFontScaling={false}
-  dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 21,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components LabelSmall Snapshot 2`] = `
-<Text
-  allowFontScaling={false}
-  dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#0073E6",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 21,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components LabelSmall Snapshot 3`] = `
-<Text
-  allowFontScaling={false}
-  dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#475A6D",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 21,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components LabelSmall Snapshot 4`] = `
-<Text
-  allowFontScaling={false}
-  dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#C02927",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 21,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
-exports[`Test Typography Components LabelSmall Snapshot 5`] = `
-<Text
-  allowFontScaling={false}
-  dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
-  style={
-    [
-      {},
-      {
-        "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 14,
-        "fontStyle": "normal",
-        "fontWeight": "600",
-        "lineHeight": 21,
-      },
-    ]
-  }
->
-  Text
-</Text>
-`;
-
 exports[`Test Typography Components Link Snapshot 1`] = `
 <Text
   accessibilityRole="link"
   allowFontScaling={false}
+  dynamicTypeRamp="body"
   maxFontSizeMultiplier={1.25}
   onPress={[Function]}
   style={
@@ -625,7 +582,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
         "fontFamily": "Titillium Sans Pro",
         "fontSize": 16,
         "fontStyle": "normal",
-        "fontWeight": "600",
+        "fontWeight": "400",
         "lineHeight": 24,
       },
     ]
