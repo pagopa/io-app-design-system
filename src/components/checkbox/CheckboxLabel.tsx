@@ -41,7 +41,7 @@ export const CheckboxLabel = ({
   onValueChange
 }: OwnProps) => {
   const theme = useIOTheme();
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale } = useIOFontDynamicScale();
 
   const [toggleValue, setToggleValue] = useState(checked ?? false);
 
