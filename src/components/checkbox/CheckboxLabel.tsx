@@ -1,10 +1,14 @@
 import * as React from "react";
 import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
-import { IOSelectionTickVisualParams, useIOTheme } from "../../core";
-import { IOStyles } from "../../core/IOStyles";
+import {
+  IOSelectionTickVisualParams,
+  IOSpacingScale,
+  useIOTheme
+} from "../../core";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
+import { HStack } from "../stack";
 import { H6 } from "../typography/H6";
 import { AnimatedCheckbox } from "./AnimatedCheckbox";
 
@@ -15,6 +19,7 @@ type Props = {
 };
 
 const DISABLED_OPACITY = 0.5;
+const CHECKBOX_MARGIN: IOSpacingScale = 8;
 
 // disabled: the component is no longer touchable
 // onPress:
@@ -66,15 +71,10 @@ export const CheckboxLabel = ({
       // inheritance on Android
       needsOffscreenAlphaCompositing={true}
     >
-      <View
-        style={[
-          IOStyles.row,
-          {
-            alignItems: "center",
-            width: "100%",
-            columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
-          }
-        ]}
+      <HStack
+        allowScaleSpacing
+        style={{ alignItems: "center", width: "100%" }}
+        space={CHECKBOX_MARGIN}
       >
         <View
           pointerEvents="none"
@@ -92,7 +92,7 @@ export const CheckboxLabel = ({
         <H6 style={{ flexShrink: 1 }} color={theme["textBody-default"]}>
           {label}
         </H6>
-      </View>
+      </HStack>
     </Pressable>
   );
 };

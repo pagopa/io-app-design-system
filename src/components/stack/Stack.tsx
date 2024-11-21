@@ -5,7 +5,7 @@ import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 type AllowedStyleProps = Pick<
   ViewStyle,
-  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap"
+  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap" | "width"
 >;
 
 type Stack = {
