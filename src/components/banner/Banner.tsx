@@ -23,23 +23,23 @@ import {
   IOBannerSmallVSpacing,
   IOScaleValues,
   IOSpringValues,
-  IOStyles
+  IOStyles,
+  useIOExperimentalDesign,
+  useIOTheme,
+  useIOThemeContext
 } from "../../core";
-import { IOColors } from "../../core/IOColors";
+import { hexToRgba, IOColors } from "../../core/IOColors";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink, IconButton } from "../buttons";
+import { IconButton } from "../buttons";
 import {
-  IOPictogramSizeScale,
   IOPictogramsBleed,
+  IOPictogramSizeScale,
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { H6, BodySmall } from "../typography";
+import { buttonTextFontSize, H6, IOText, BodySmall } from "../typography";
 
 /* Styles */
-const colorTitle: IOColors = "blueIO-850";
-const colorContent: IOColors = "grey-700";
-const colorCloseButton: IconButton["color"] = "neutral";
 const sizePictogramBig: IOPictogramSizeScale = 80;
 const sizePictogramSmall: IOPictogramSizeScale = 64;
 const closeButtonDistanceFromEdge: number = 6;
@@ -65,15 +65,6 @@ const styles = StyleSheet.create({
     top: closeButtonDistanceFromEdge,
     opacity: closeButtonOpacity
   }
-});
-
-const dynamicContainerStyles = (
-  size: BaseBannerProps["size"],
-  color: BaseBannerProps["color"]
-): ViewStyle => ({
-  backgroundColor: IOColors[mapBackgroundColor[color]],
-  paddingVertical: size === "big" ? sizeBigPadding : sizeSmallVPadding,
-  paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
 });
 
 /* Component Types */
@@ -137,12 +128,20 @@ export const bannerBackgroundColours: Array<BaseBannerProps["color"]> = [
   "turquoise"
 ];
 
-const mapBackgroundColor: Record<
+const mapBackgroundColorLightMode: Record<
   NonNullable<BaseBannerProps["color"]>,
   IOColors
 > = {
   neutral: "grey-50",
   turquoise: "turquoise-50"
+};
+
+const mapBackgroundColorDarkMode: Record<
+  NonNullable<BaseBannerProps["color"]>,
+  IOColors
+> = {
+  neutral: "grey-50",
+  turquoise: "turquoise-300"
 };
 
 export const Banner = ({
@@ -161,6 +160,26 @@ export const Banner = ({
   testID
 }: Banner) => {
   const isPressed: SharedValue<number> = useSharedValue(0);
+
+  const { isExperimental } = useIOExperimentalDesign();
+  const { themeType } = useIOThemeContext();
+  const theme = useIOTheme();
+
+  // Dynamic colors
+  const colorTitle: IOColors = themeType === "dark" ? "grey-50" : "blueIO-850";
+  const colorCloseButton: IconButton["color"] =
+    themeType === "dark" ? "contrast" : "neutral";
+  const colorMainButton =
+    themeType === "dark" ? "blueIO-200" : theme["interactiveElem-default"];
+
+  const dynamicContainerStyles: ViewStyle = {
+    backgroundColor:
+      themeType === "dark"
+        ? hexToRgba(IOColors[mapBackgroundColorDarkMode[color]], 0.1)
+        : IOColors[mapBackgroundColorLightMode[color]],
+    paddingVertical: size === "big" ? sizeBigPadding : sizeSmallVPadding,
+    paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
+  };
 
   // Scaling transformation applied when the button is pressed
   const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
@@ -220,7 +239,7 @@ export const Banner = ({
         )}
         {content && (
           <>
-            <BodySmall color={colorContent} weight={"Regular"}>
+            <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
               {content}
             </BodySmall>
             {action && <VSpacer size={8} />}
@@ -235,13 +254,21 @@ export const Banner = ({
             importantForAccessibility="no-hide-descendants"
           >
             <VSpacer size={4} />
-            <ButtonLink color="primary" onPress={onPress} label={action} />
+            <IOText
+              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+              weight={"Semibold"}
+              color={colorMainButton}
+              size={buttonTextFontSize}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {action}
+            </IOText>
           </View>
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
         <PictogramBleed
-          pictogramStyle="dark-content"
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />
@@ -271,7 +298,7 @@ export const Banner = ({
       <Animated.View
         style={[
           styles.container,
-          dynamicContainerStyles(size, color),
+          dynamicContainerStyles,
           pressedAnimationStyle
         ]}
       >
@@ -284,7 +311,7 @@ export const Banner = ({
     <View
       ref={viewRef}
       testID={testID}
-      style={[styles.container, dynamicContainerStyles(size, color)]}
+      style={[styles.container, dynamicContainerStyles]}
       // A11y related props
       accessible={false}
       accessibilityHint={accessibilityHint}
