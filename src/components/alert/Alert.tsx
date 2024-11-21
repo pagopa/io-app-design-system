@@ -1,5 +1,6 @@
 import React, { forwardRef, useCallback, useState } from "react";
 import {
+  ColorValue,
   GestureResponderEvent,
   NativeSyntheticEvent,
   PixelRatio,
@@ -9,12 +10,8 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOVisualCostants } from "../../core";
-import {
-  IOColors,
-  IOColorsStatusBackground,
-  IOColorsStatusForeground
-} from "../../core/IOColors";
+import { IOVisualCostants, useIOThemeContext } from "../../core";
+import { IOColors, hexToRgba } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing } from "../../core/IOSpacing";
 import { useScaleAnimation } from "../../hooks";
@@ -67,35 +64,63 @@ type AlertType = AlertProps & AlertActionProps;
 
 type VariantStates = {
   icon: IOIcons;
-  background: IOColorsStatusBackground;
-  foreground: IOColorsStatusForeground;
+  background: ColorValue;
+  foreground: IOColors;
 };
 
 // COMPONENT CONFIGURATION
 
-const mapVariantStates: Record<
+const mapVariantStatesLightMode: Record<
   NonNullable<AlertType["variant"]>,
   VariantStates
 > = {
   error: {
     icon: "errorFilled",
-    background: "error-100",
+    background: IOColors["error-100"],
     foreground: "error-850"
   },
   warning: {
     icon: "warningFilled",
-    background: "warning-100",
+    background: IOColors["warning-100"],
     foreground: "warning-850"
   },
   info: {
     icon: "infoFilled",
-    background: "info-100",
+    background: IOColors["info-100"],
     foreground: "info-850"
   },
   success: {
     icon: "success",
-    background: "success-100",
+    background: IOColors["success-100"],
     foreground: "success-850"
+  }
+};
+
+const bgOpacityDarkMode = 0.2;
+
+const mapVariantStatesDarkMode: Record<
+  NonNullable<AlertType["variant"]>,
+  VariantStates
+> = {
+  error: {
+    icon: "errorFilled",
+    background: hexToRgba(IOColors["error-400"], bgOpacityDarkMode),
+    foreground: "error-100"
+  },
+  warning: {
+    icon: "warningFilled",
+    background: hexToRgba(IOColors["warning-400"], bgOpacityDarkMode),
+    foreground: "warning-100"
+  },
+  info: {
+    icon: "infoFilled",
+    background: hexToRgba(IOColors["info-400"], bgOpacityDarkMode),
+    foreground: "info-100"
+  },
+  success: {
+    icon: "success",
+    background: hexToRgba(IOColors["success-400"], bgOpacityDarkMode),
+    foreground: "success-100"
   }
 };
 
@@ -115,6 +140,8 @@ export const Alert = forwardRef<View, AlertType>(
   ): JSX.Element => {
     const { onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("medium");
+    const { themeType } = useIOThemeContext();
+
     const [isMultiline, setIsMultiline] = useState(false);
 
     const onTextLayout = useCallback(
@@ -123,6 +150,11 @@ export const Alert = forwardRef<View, AlertType>(
       },
       []
     );
+
+    const mapVariantStates =
+      themeType === "light"
+        ? mapVariantStatesLightMode
+        : mapVariantStatesDarkMode;
 
     const renderMainBlock = () => (
       <>
@@ -186,7 +218,7 @@ export const Alert = forwardRef<View, AlertType>(
         style={[
           styles.container,
           fullWidth ? styles.spacingFullWidth : styles.spacingDefault,
-          { backgroundColor: IOColors[mapVariantStates[variant].background] }
+          { backgroundColor: mapVariantStates[variant].background }
         ]}
         testID={testID}
         accessible={false}
@@ -214,7 +246,7 @@ export const Alert = forwardRef<View, AlertType>(
           style={[
             styles.container,
             fullWidth ? styles.spacingFullWidth : styles.spacingDefault,
-            { backgroundColor: IOColors[mapVariantStates[variant].background] },
+            { backgroundColor: mapVariantStates[variant].background },
             // Disable pressed animation when component is full width
             !fullWidth && scaleAnimatedStyle
           ]}
