@@ -28,9 +28,9 @@ import { HStack, VStack } from "../stack";
 import { Body, ButtonText } from "../typography";
 import { H4 } from "../typography/H4";
 
-const iconSize: IOIconSizeScale = 24;
+const ICON_SIZE: IOIconSizeScale = 24;
 
-const [spacingDefault, spacingFullWidth] = IOAlertSpacing;
+const [padding, paddingFullWidth] = IOAlertSpacing;
 
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info" | "success";
@@ -143,8 +143,8 @@ export const Alert = React.forwardRef<View, AlertType>(
       []
     );
 
-    const spacingDefaultVariant = {
-      padding: spacingDefault,
+    const paddingDefaultVariant = {
+      padding,
       borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
       borderCurve: "continuous"
     };
@@ -195,7 +195,7 @@ export const Alert = React.forwardRef<View, AlertType>(
         <Icon
           allowFontScaling
           name={mapVariantStates[variant].icon}
-          size={iconSize}
+          size={ICON_SIZE}
           color={mapVariantStates[variant].foreground}
         />
         {/* Sadly we don't have specific alignments style for text
@@ -239,7 +239,7 @@ export const Alert = React.forwardRef<View, AlertType>(
       <View
         ref={viewRef}
         style={[
-          fullWidth ? { padding: spacingFullWidth } : spacingDefaultVariant,
+          fullWidth ? { padding } : paddingDefaultVariant,
           { backgroundColor: mapVariantStates[variant].background }
         ]}
         testID={testID}
@@ -266,7 +266,7 @@ export const Alert = React.forwardRef<View, AlertType>(
       >
         <Animated.View
           style={[
-            fullWidth ? { padding: spacingFullWidth } : spacingDefaultVariant,
+            fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
             { backgroundColor: mapVariantStates[variant].background },
             // Disable pressed animation when component is full width
             !fullWidth && pressedAnimationStyle
