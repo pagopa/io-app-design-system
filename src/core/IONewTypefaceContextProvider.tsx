@@ -9,7 +9,7 @@ type IONewTypefaceContextType = {
  */
 export const IONewTypefaceContext =
   React.createContext<IONewTypefaceContextType>({
-    newTypefaceEnabled: false,
+    newTypefaceEnabled: true,
     setNewTypefaceEnabled: () => void 0
   });
 

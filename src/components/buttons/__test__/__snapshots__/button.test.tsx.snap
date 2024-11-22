@@ -802,7 +802,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Titillium Sans Pro",
+            "fontFamily": "Titillio",
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
@@ -909,7 +909,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Titillium Sans Pro",
+            "fontFamily": "Titillio",
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
@@ -1030,7 +1030,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             {},
             {
               "color": "#FFFFFF",
-              "fontFamily": "Titillium Sans Pro",
+              "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",

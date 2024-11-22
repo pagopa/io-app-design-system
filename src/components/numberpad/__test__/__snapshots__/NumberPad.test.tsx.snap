@@ -98,7 +98,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -177,7 +177,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -256,7 +256,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -351,7 +351,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -430,7 +430,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -509,7 +509,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -604,7 +604,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -683,7 +683,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -762,7 +762,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
@@ -998,7 +998,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",

@@ -124,7 +124,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
                 "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": undefined,
               },
             ]
@@ -354,8 +354,8 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             {},
             {
               "color": "#031344",
-              "fontFamily": "Titillium Sans Pro",
-              "fontSize": 18,
+              "fontFamily": "Titillio",
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
               "lineHeight": 24,
@@ -394,10 +394,10 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "600",
                 "lineHeight": undefined,
               },
             ]
