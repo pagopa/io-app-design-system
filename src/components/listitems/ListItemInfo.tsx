@@ -1,5 +1,5 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
-import { Platform, View } from "react-native";
+import { AccessibilityRole, Platform, View } from "react-native";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
@@ -7,12 +7,12 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
-import { ButtonLink, IconButton } from "../buttons";
 import { Badge } from "../badge";
+import { ButtonLink, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
+import { H6, BodySmall } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -41,6 +41,7 @@ export type ListItemInfo = WithTestID<{
   endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
+  accessibilityRole?: AccessibilityRole;
 }> &
   (
     | {
@@ -63,6 +64,7 @@ export const ListItemInfo = ({
   paymentLogoIcon,
   endElement,
   accessibilityLabel,
+  accessibilityRole,
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
@@ -82,9 +84,9 @@ export const ListItemInfo = ({
   const itemInfoTextComponent = useMemo(
     () => (
       <View accessible={Platform.OS === "ios"}>
-        <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+        <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
-        </LabelSmall>
+        </BodySmall>
         {typeof value === "string" ? (
           <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
             {value}
@@ -136,6 +138,7 @@ export const ListItemInfo = ({
       testID={testID}
       accessible={endElement === undefined ? true : false}
       accessibilityLabel={listItemAccessibilityLabel}
+      accessibilityRole={accessibilityRole}
     >
       <View style={IOListItemStyles.listItemInner}>
         {icon && (

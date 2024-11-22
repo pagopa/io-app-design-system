@@ -55,6 +55,7 @@ import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
 import { Typography } from "../pages/Typography";
+import Tooltips from '../pages/Tooltips';
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -91,7 +92,7 @@ const AppNavigator = () => {
           initialRouteName={APP_ROUTES.MAIN}
           screenOptions={{
             headerTitleStyle: {
-              fontFamily: "Readex Pro",
+              fontFamily: "Titillio",
               fontSize: 14,
               fontWeight: "normal"
             },
@@ -424,6 +425,13 @@ const AppNavigator = () => {
             component={Toasts}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.TOASTS.title
+            }}
+          />
+          <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.TOOLTIPS.route}
+            component={Tooltips}
+            options={{
+              headerTitle: APP_ROUTES.COMPONENTS.TOOLTIPS.title
             }}
           />
 

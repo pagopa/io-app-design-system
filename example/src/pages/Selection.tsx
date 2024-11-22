@@ -1,5 +1,6 @@
 import {
   AnimatedMessageCheckbox,
+  BodySmall,
   CheckboxLabel,
   Divider,
   H2,
@@ -7,7 +8,6 @@ import {
   IOColors,
   IOStyles,
   IOVisualCostants,
-  LabelSmall,
   ListItemCheckbox,
   ListItemSwitch,
   NativeSwitch,
@@ -172,13 +172,13 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
   {
     value: "Let's try with JSX description",
     description: (
-      <LabelSmall color="grey-700" weight="Regular">
+      <BodySmall color="grey-700" weight="Regular">
         Ti contatteranno solo i servizi che hanno qualcosa di importante da
         dirti.{" "}
         <Text style={{ color: IOColors["grey-700"], fontWeight: "600" }}>
           Potrai sempre disattivare le comunicazioni che non ti interessano.
         </Text>
-      </LabelSmall>
+      </BodySmall>
     ),
     id: "example-jsx-element"
   },

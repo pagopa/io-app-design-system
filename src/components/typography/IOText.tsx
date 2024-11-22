@@ -6,11 +6,10 @@ import {
   TextStyle,
   View
 } from "react-native";
-import { IOColors, useIOTheme } from "../../core";
+import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
-  IOFontSize,
   IOFontWeight,
   makeFontStyleObject
 } from "../../utils/fonts";
@@ -37,7 +36,7 @@ export type TypographicStyleProps = Omit<
  * cannot be included in the default StyleProp<TextStyle>
  */
 type IOTextBaseProps = {
-  size?: IOFontSize;
+  size?: number;
   weight?: IOFontWeight;
   color?: IOColors;
   font?: IOFontFamily;
@@ -47,10 +46,7 @@ type IOTextBaseProps = {
   style?: IOTextStyle;
 };
 
-type IOTextExcludedProps = Omit<
-  ComponentProps<typeof Text>,
-  "allowFontScaling" | "maxFontSizeMultiplier" | "style"
->;
+type IOTextExcludedProps = Omit<ComponentProps<typeof Text>, "style">;
 
 export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
 
@@ -98,11 +94,14 @@ export const IOText = forwardRef<View, IOTextProps>(
       textStyle,
       style,
       children,
+      allowFontScaling,
+      maxFontSizeMultiplier,
       ...props
     },
     ref
   ) => {
     const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
     const boldEnabled = useBoldTextEnabled();
 
     const computedStyleObj = useMemo(
@@ -142,8 +141,8 @@ export const IOText = forwardRef<View, IOTextProps>(
 
     /* Accessible typography based on the `fontScale` parameter */
     const accessibleFontSizeProps: ComponentProps<typeof Text> = {
-      allowFontScaling: true,
-      maxFontSizeMultiplier: 1.25
+      allowFontScaling: allowFontScaling ?? isExperimental,
+      maxFontSizeMultiplier: maxFontSizeMultiplier ?? 1.25
     };
 
     return (

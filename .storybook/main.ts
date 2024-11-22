@@ -37,7 +37,7 @@ const config: StorybookConfig = {
   staticDirs: [
     "../example/assets/css",
     "../example/assets/fonts/TitilliumSansPro",
-    "../example/assets/fonts/ReadexPro",
+    "../example/assets/fonts/Titillio",
     "../example/assets/fonts/DMMono",
     "../repo-assets",
     "../stories/assets"

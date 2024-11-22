@@ -1,7 +1,11 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOTheme } from "../../core";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
+
+export const heroFontSize: IOFontSize = 32;
+export const heroLineHeight = 48;
 
 /**
  * `Hero` typographic style
@@ -9,11 +13,12 @@ import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 export const Hero = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
     const HeroProps: IOTextProps = {
       ...props,
-      font: "ReadexPro",
-      weight: "Regular",
+      font: isExperimental ? "Titillio" : "TitilliumSansPro",
+      weight: "Semibold",
       size: 32,
       lineHeight: 48,
       color: customColor ?? theme["textHeading-default"]

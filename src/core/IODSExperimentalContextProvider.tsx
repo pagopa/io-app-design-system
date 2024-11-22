@@ -1,4 +1,3 @@
-import { constVoid } from "fp-ts/function";
 import React, { useState } from "react";
 
 type IOExperimentalContextType = {
@@ -11,7 +10,7 @@ type IOExperimentalContextType = {
 export const IOExperimentalDesignContext =
   React.createContext<IOExperimentalContextType>({
     isExperimental: false,
-    setExperimental: constVoid
+    setExperimental: () => void 0
   });
 
 export const useIOExperimentalDesign = () =>

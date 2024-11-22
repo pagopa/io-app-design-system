@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOTheme } from "../../core";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -13,11 +13,12 @@ export const h5LineHeight = 16;
 export const H5 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
+    const { isExperimental } = useIOExperimentalDesign();
 
     const H5Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "subheadline", // iOS only
-      font: "TitilliumSansPro",
+      font: isExperimental ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: h5FontSize,
       lineHeight: h5LineHeight,

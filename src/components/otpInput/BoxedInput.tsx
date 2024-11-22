@@ -2,7 +2,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { IOColors } from "../../core";
-import { BaseTypography, H6 } from "../typography";
+import { H6, IOText } from "../typography";
 
 type Props = {
   status: "default" | "focus" | "error";
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   defaultBox: {
     borderWidth: 1,
-    borderColor: IOColors["grey-200"]
+    borderColor: IOColors["grey-650"]
   },
   focusedBox: {
     borderWidth: 2,
@@ -36,15 +36,16 @@ const styles = StyleSheet.create({
 
 // FIXME Replace this component with H3 once the legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const SecretValue = () => (
-  <BaseTypography
+  <IOText
     font="DMMono"
     weight="Semibold"
-    color="bluegreyDark"
-    fontStyle={{ fontSize: 22, lineHeight: 33 }}
+    color="grey-850"
+    size={22}
+    lineHeight={33}
     accessible={false}
   >
     {"•"}
-  </BaseTypography>
+  </IOText>
 );
 
 export const BoxedInput = ({ status, value, secret }: Props) => {

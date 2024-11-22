@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { View } from "react-native";
-import { HStack, LabelSmall } from "../../../src/components";
+import { HStack, BodySmall } from "../../../src/components";
 import { IOColors } from "../../../src/core";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -48,9 +48,9 @@ export const Base: Story = {
               backgroundColor: IOColors["grey-700"]
             }}
           >
-            <LabelSmall weight="Regular" color={"grey-200"}>{`${
+            <BodySmall weight="Regular" color={"grey-200"}>{`${
               i + 1
-            }`}</LabelSmall>
+            }`}</BodySmall>
           </View>
         ))}
         <View
@@ -63,9 +63,9 @@ export const Base: Story = {
             backgroundColor: IOColors["grey-700"]
           }}
         >
-          <LabelSmall weight="Regular" color={"grey-200"}>
+          <BodySmall weight="Regular" color={"grey-200"}>
             Growing width
-          </LabelSmall>
+          </BodySmall>
         </View>
       </React.Fragment>
     )

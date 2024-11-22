@@ -1,11 +1,14 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { ColorValue, Platform, StyleSheet, View } from "react-native";
 import {
+  hexToRgba,
   IOBadgeHSpacing,
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
-  useIOTheme
+  useIOExperimentalDesign,
+  useIOTheme,
+  useIOThemeContext
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOText } from "../typography";
@@ -27,7 +30,7 @@ export type Badge = WithTestID<{
 }>;
 
 type SolidVariantProps = {
-  background: IOColors;
+  background: ColorValue;
   foreground: IOColors;
 };
 
@@ -58,54 +61,104 @@ const styles = StyleSheet.create({
  */
 export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
   const theme = useIOTheme();
+  const { themeType } = useIOThemeContext();
+  const { isExperimental } = useIOExperimentalDesign();
 
-  const mapVariants: Record<
+  const bgOpacityDarkMode = 0.2;
+
+  const mapVariantsLightMode: Record<
     NonNullable<Badge["variant"]>,
     SolidVariantProps
   > = {
     default: {
       foreground: "grey-700",
-      background: "grey-50"
+      background: IOColors["grey-50"]
     },
     info: {
       foreground: "info-850",
-      background: "info-100"
+      background: IOColors["info-100"]
     },
     warning: {
       foreground: "warning-850",
-      background: "warning-100"
+      background: IOColors["warning-100"]
     },
     success: {
       foreground: "success-850",
-      background: "success-100"
+      background: IOColors["success-100"]
     },
     error: {
       foreground: "error-850",
-      background: "error-100"
+      background: IOColors["error-100"]
     },
     purple: {
       foreground: "hanPurple-500",
-      background: "hanPurple-100"
+      background: IOColors["hanPurple-100"]
     },
     lightBlue: {
       foreground: "blueIO-850",
-      background: "blueIO-50"
+      background: IOColors["blueIO-50"]
     },
     blue: {
       foreground: "white",
-      background: theme["interactiveElem-default"]
+      background: IOColors[theme["interactiveElem-default"]]
     },
     turquoise: {
       foreground: "turquoise-850",
-      background: "turquoise-50"
+      background: IOColors["turquoise-50"]
     },
     contrast: {
       foreground: "grey-700",
-      background: "white"
+      background: IOColors.white
     }
   };
 
-  const mapOutlineVariants: Record<
+  const mapVariantsDarkMode: Record<
+    NonNullable<Badge["variant"]>,
+    SolidVariantProps
+  > = {
+    default: {
+      foreground: "grey-50",
+      background: hexToRgba(IOColors["grey-50"], bgOpacityDarkMode)
+    },
+    info: {
+      foreground: "info-400",
+      background: hexToRgba(IOColors["info-400"], bgOpacityDarkMode)
+    },
+    warning: {
+      foreground: "warning-400",
+      background: hexToRgba(IOColors["warning-400"], bgOpacityDarkMode)
+    },
+    success: {
+      foreground: "success-400",
+      background: hexToRgba(IOColors["success-400"], bgOpacityDarkMode)
+    },
+    error: {
+      foreground: "error-400",
+      background: hexToRgba(IOColors["error-400"], bgOpacityDarkMode)
+    },
+    purple: {
+      foreground: "hanPurple-250",
+      background: hexToRgba(IOColors["hanPurple-250"], bgOpacityDarkMode)
+    },
+    lightBlue: {
+      foreground: "blueIO-200",
+      background: hexToRgba(IOColors["blueIO-600"], bgOpacityDarkMode)
+    },
+    blue: {
+      foreground: "white",
+      background: IOColors[theme["interactiveElem-default"]]
+    },
+    turquoise: {
+      foreground: "turquoise-300",
+      background: hexToRgba(IOColors["turquoise-300"], bgOpacityDarkMode)
+    },
+    contrast: {
+      foreground: "grey-700",
+      background: IOColors.white
+    }
+  };
+
+  const mapOutlineVariantsLightMode: Record<
     NonNullable<Badge["variant"]>,
     OutlinedVariantProps
   > = {
@@ -141,9 +194,48 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
     }
   };
 
-  const { background, foreground } = (
-    outline ? mapOutlineVariants : mapVariants
-  )[variant];
+  const mapOutlineVariantsDarkMode: Record<
+    NonNullable<Badge["variant"]>,
+    OutlinedVariantProps
+  > = {
+    default: {
+      foreground: "grey-100"
+    },
+    info: {
+      foreground: "info-400"
+    },
+    warning: {
+      foreground: "warning-400"
+    },
+    success: {
+      foreground: "success-400"
+    },
+    error: {
+      foreground: "error-400"
+    },
+    purple: {
+      foreground: "hanPurple-250"
+    },
+    lightBlue: {
+      foreground: "blueIO-150"
+    },
+    blue: {
+      foreground: theme["interactiveElem-default"]
+    },
+    turquoise: {
+      foreground: "turquoise-300"
+    },
+    contrast: {
+      foreground: "grey-100"
+    }
+  };
+
+  // prettier-ignore
+  const variantMap = themeType === "light"
+    ? (outline ? mapOutlineVariantsLightMode : mapVariantsLightMode)
+    : (outline ? mapOutlineVariantsDarkMode : mapVariantsDarkMode);
+
+  const { background, foreground } = variantMap[variant];
 
   return (
     <View
@@ -157,13 +249,13 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
               borderColor: IOColors[foreground]
             }
           : {
-              backgroundColor: background ? IOColors[background] : undefined
+              backgroundColor: background ?? undefined
             }
       ]}
     >
       <IOText
-        font={"ReadexPro"}
-        weight={"Regular"}
+        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+        weight={"Semibold"}
         size={12}
         lineHeight={16}
         color={foreground}

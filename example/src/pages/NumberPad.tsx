@@ -1,4 +1,5 @@
 import {
+  BodySmall,
   CodeInput,
   ContentWrapper,
   H1,
@@ -6,7 +7,6 @@ import {
   IOColors,
   IOStyles,
   IOVisualCostants,
-  LabelSmallAlt,
   ListItemSwitch,
   NumberPad,
   VSpacer,
@@ -43,7 +43,7 @@ export const NumberPadScreen = () => {
       headerStyle: {
         backgroundColor: blueBackground
           ? IOColors[theme["appBackground-accent"]]
-          : IOColors.white
+          : IOColors[theme["appBackground-primary"]]
       }
     });
   }, [blueBackground, navigation, theme]);
@@ -55,7 +55,7 @@ export const NumberPadScreen = () => {
         paddingVertical: IOVisualCostants.appMarginDefault,
         backgroundColor: blueBackground
           ? IOColors[theme["appBackground-accent"]]
-          : IOColors.white
+          : IOColors[theme["appBackground-primary"]]
       }}
     >
       <ContentWrapper>
@@ -69,9 +69,12 @@ export const NumberPadScreen = () => {
           <H5>{"Value Typed on the NumberPad component"}</H5>
           <VSpacer />
 
-          <LabelSmallAlt color={blueBackground ? "white" : "black"}>
+          <BodySmall
+            weight="Semibold"
+            color={blueBackground ? "white" : "black"}
+          >
             {value}
-          </LabelSmallAlt>
+          </BodySmall>
         </View>
         <VSpacer />
         <CodeInput

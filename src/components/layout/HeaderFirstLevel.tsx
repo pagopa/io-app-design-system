@@ -126,6 +126,7 @@ export const HeaderFirstLevel = ({
       <View style={styles.headerInner}>
         <View ref={titleRef} accessible accessibilityRole="header">
           <H3
+            weight="Bold"
             style={{ flexShrink: 1 }}
             numberOfLines={1}
             color={

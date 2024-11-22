@@ -21,7 +21,8 @@ import {
   IOColors,
   IOScaleValues,
   IOSpringValues,
-  hexToRgba
+  hexToRgba,
+  useIOExperimentalDesign
 } from "../../core/";
 import { WithTestID } from "../../utils/types";
 import {
@@ -156,6 +157,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
     ref
   ) => {
     const isPressed: SharedValue<number> = useSharedValue(0);
+    const { isExperimental } = useIOExperimentalDesign();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -302,8 +304,8 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             </>
           )}
           <AnimatedIOText
-            font={"ReadexPro"}
-            weight={"Regular"}
+            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            weight={"Semibold"}
             size={buttonTextFontSize}
             accessible={false}
             accessibilityElementsHidden

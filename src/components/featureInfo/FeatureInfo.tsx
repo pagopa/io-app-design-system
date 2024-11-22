@@ -1,18 +1,17 @@
 import React, { ReactNode } from "react";
 import { GestureResponderEvent, View } from "react-native";
 import {
-  Body,
+  BodySmall,
   HSpacer,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
   IOPictograms,
   Icon,
-  Label,
   Pictogram,
-  VSpacer
+  VStack
 } from "../../components";
-import { IOStyles } from "../../core";
+import { IOStyles, useIOTheme } from "../../core";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
@@ -43,11 +42,7 @@ const DEFAULT_PICTOGRAM_SIZE: IOPictogramSizeScale = 48;
 
 const renderNode = (body: FeatureInfoProps["body"]) => {
   if (typeof body === "string") {
-    return (
-      <Body color="grey-700" testID="infoScreenBody">
-        {body}
-      </Body>
-    );
+    return <BodySmall testID="infoScreenBody">{body}</BodySmall>;
   }
 
   return body;
@@ -58,24 +53,27 @@ export const FeatureInfo = ({
   pictogramName,
   body,
   action
-}: FeatureInfoProps) => (
-  <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
-    {iconName && (
-      <Icon name={iconName} size={DEFAULT_ICON_SIZE} color="grey-300" />
-    )}
-    {pictogramName && (
-      <Pictogram name={pictogramName} size={DEFAULT_PICTOGRAM_SIZE} />
-    )}
-    <HSpacer size={24} />
-    <View style={{ flexShrink: 1 }}>
-      {renderNode(body)}
-      {action && (
-        <>
-          {/* Add "marginTop" equivalent if body text is present.
-          This verbose code could be deleted once we got "gap"
-          property support */}
-          {body && <VSpacer size={4} />}
-          <Label
+}: FeatureInfoProps) => {
+  const theme = useIOTheme();
+
+  return (
+    <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
+      {iconName && (
+        <Icon
+          name={iconName}
+          size={DEFAULT_ICON_SIZE}
+          color={theme["icon-decorative"]}
+        />
+      )}
+      {pictogramName && (
+        <Pictogram name={pictogramName} size={DEFAULT_PICTOGRAM_SIZE} />
+      )}
+      <HSpacer size={24} />
+      <VStack space={4} style={{ flexShrink: 1 }}>
+        {renderNode(body)}
+        {action && (
+          <BodySmall
+            weight="Semibold"
             asLink
             onPress={action.onPress}
             accessible
@@ -83,9 +81,9 @@ export const FeatureInfo = ({
             accessibilityElementsHidden={false}
           >
             {action.label}
-          </Label>
-        </>
-      )}
+          </BodySmall>
+        )}
+      </VStack>
     </View>
-  </View>
-);
+  );
+};

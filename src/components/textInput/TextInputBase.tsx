@@ -25,7 +25,7 @@ import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HSpacer } from "../spacer";
-import { LabelSmall } from "../typography";
+import { BodySmall } from "../typography";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";
 
@@ -101,12 +101,7 @@ const styles = StyleSheet.create({
     ...(Platform.OS === "android" && { marginLeft: -4 })
   },
   textInputStyleFont: {
-    ...makeFontStyleObject(
-      inputLabelFontSize,
-      "ReadexPro",
-      undefined,
-      "Regular"
-    )
+    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
   },
   textInputLabelWrapper: {
     position: "absolute",
@@ -176,15 +171,15 @@ const HelperRow = ({
       }
     >
       {bottomMessage && (
-        <LabelSmall weight="Regular" color={bottomMessageColor}>
+        <BodySmall weight="Regular" color={bottomMessageColor}>
           {bottomMessage}
-        </LabelSmall>
+        </BodySmall>
       )}
       {counterLimit && (
-        <LabelSmall
+        <BodySmall
           weight="Regular"
           color="grey-700"
-        >{`${valueCount} / ${counterLimit}`}</LabelSmall>
+        >{`${valueCount} / ${counterLimit}`}</BodySmall>
       )}
     </View>
   );

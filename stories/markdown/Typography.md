@@ -1,7 +1,7 @@
 # Typography
 ## Components
 
-The library provides a set of components to manage the text rendering. Components have a predefined set of styles that can't be customized using the props. In case of need to create a new custom text component it is possible to use the `BaseTypography` component and apply the customization using its props.
+The library provides a set of components to manage the text rendering. Components have a predefined set of styles that can't be customized using the props. In case of need to create a new custom text component it is possible to use the `IOText` component and apply the customization using its props.
 
 Each component has its own font size and line height and a set of accepted weight.
 
@@ -11,7 +11,7 @@ The app uses `TitilliumSansPro` as main font. Font object mapping and definition
 
 The library supports three different font families:
 - `TitilliumSansPro`
-- `ReadexPro`
+- `Titillio`
 - `DMMono`
 
-The `ReadexPro` font is visible only enabling the experimental features of the library for more information see the [IODSExperimentalContext](/docs/core-core--docs#iodsexperimentalcontext) section.
+The `Titillio` font is visible only enabling the experimental features of the library for more information see the [IODSExperimentalContext](/docs/core-core--docs#iodsexperimentalcontext) section.

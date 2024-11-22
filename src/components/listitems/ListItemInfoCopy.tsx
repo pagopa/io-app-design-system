@@ -21,7 +21,7 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
+import { BodySmall, H6 } from "../typography";
 
 export type ListItemInfoCopy = WithTestID<{
   label: string;
@@ -65,9 +65,9 @@ export const ListItemInfoCopy = ({
 
   const listItemInfoCopyContent = (
     <>
-      <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+      <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
         {label}
-      </LabelSmall>
+      </BodySmall>
       {/* Let developer using a custom component (e.g: skeleton) */}
       {typeof value === "string" ? (
         <H6 color={foregroundColor} numberOfLines={numberOfLines}>

@@ -21,7 +21,7 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Icon } from "../icons";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 
 export type ListItemNavAlert = WithTestID<{
   value: string | React.ReactNode;
@@ -80,9 +80,9 @@ export const ListItemNavAlert = ({
       {description && (
         <>
           {typeof description === "string" ? (
-            <LabelSmall weight="Semibold" color={theme.errorText}>
+            <BodySmall weight="Semibold" color={theme.errorText}>
               {description}
-            </LabelSmall>
+            </BodySmall>
           ) : (
             description
           )}

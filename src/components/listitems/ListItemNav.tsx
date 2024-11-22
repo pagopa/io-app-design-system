@@ -32,7 +32,7 @@ import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HSpacer, VSpacer } from "../spacer";
-import { Caption, H6, LabelSmall } from "../typography";
+import { Caption, H6, BodySmall } from "../typography";
 
 type ListItemTopElementProps =
   | {
@@ -159,9 +159,9 @@ export const ListItemNav = ({
       {description && (
         <>
           {typeof description === "string" ? (
-            <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+            <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
               {description}
-            </LabelSmall>
+            </BodySmall>
           ) : (
             description
           )}

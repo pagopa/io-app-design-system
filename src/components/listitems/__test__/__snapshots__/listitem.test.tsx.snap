@@ -84,10 +84,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 20,
               },
             ]
@@ -176,10 +176,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
           },
           {
             "color": "#555C70",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillio",
             "fontSize": 12,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "600",
             "lineHeight": 16,
           },
         ]
@@ -187,11 +187,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
     />
     <Image
       accessibilityIgnoresInvertColors={true}
-      source={
-        {
-          "uri": "undefined",
-        }
-      }
       style={
         {
           "height": 30,
@@ -245,7 +240,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               {},
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -266,10 +261,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -367,7 +362,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               {},
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -388,10 +383,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -555,10 +550,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -784,10 +779,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -926,6 +921,9 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -952,10 +950,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 21,
               },
             ]
@@ -1051,7 +1049,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 {},
                 {
                   "color": "#5517E3",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
@@ -1074,13 +1072,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -1090,10 +1081,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -1314,6 +1305,9 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -1340,10 +1334,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 21,
               },
             ]
@@ -1362,13 +1356,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -1378,10 +1365,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -1684,6 +1671,9 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -1784,7 +1774,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 20,
               },
             ]
@@ -1884,11 +1874,6 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
     />
     <Image
       accessibilityIgnoresInvertColors={true}
-      source={
-        {
-          "uri": "undefined",
-        }
-      }
       style={
         {
           "height": 30,
@@ -1966,7 +1951,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -2088,7 +2073,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -2255,7 +2240,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -2484,7 +2469,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -2623,6 +2608,9 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -2649,7 +2637,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Sans Pro",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -2771,13 +2759,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -2790,7 +2771,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -3011,6 +2992,9 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
             "justifyContent": "space-between",
           },
           {
+            "columnGap": 12,
+          },
+          {
             "transform": [
               {
                 "scale": undefined,
@@ -3037,7 +3021,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Sans Pro",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -3059,13 +3043,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           }
         }
       >
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
@@ -3078,7 +3055,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                 "fontFamily": "Readex Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 24,
               },
             ]
@@ -3379,6 +3356,9 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
           },
           {
             "transform": [

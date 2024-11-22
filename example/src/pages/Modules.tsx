@@ -71,7 +71,9 @@ const renderModulePaymentNotice = () => (
       <View>
         <ModulePaymentNotice
           onPress={mockFn}
-          paymentNoticeStatus="paid"
+          paymentNotice={{
+            status: "paid"
+          }}
           badgeText="Pagato"
           subtitle="F24"
           title="Codice avviso"
@@ -82,8 +84,11 @@ const renderModulePaymentNotice = () => (
       <View>
         <ModulePaymentNotice
           onPress={mockFn}
-          paymentNoticeStatus="default"
-          paymentNoticeAmount="100,00 €"
+          paymentNotice={{
+            status: "default",
+            amount: "100,00 €",
+            amountAccessibilityLabel: "100,00 €"
+          }}
           subtitle="F24"
           title="Codice avviso"
         />
@@ -93,7 +98,9 @@ const renderModulePaymentNotice = () => (
       <View>
         <ModulePaymentNotice
           onPress={mockFn}
-          paymentNoticeStatus="error"
+          paymentNotice={{
+            status: "error"
+          }}
           badgeText="Errore"
           title="Codice avviso"
           subtitle="This is a very loooooong subtitle text"
@@ -105,8 +112,11 @@ const renderModulePaymentNotice = () => (
         <ModulePaymentNotice
           isLoading
           onPress={mockFn}
-          paymentNoticeStatus="default"
-          paymentNoticeAmount="100,00 €"
+          paymentNotice={{
+            status: "default",
+            amount: "100,00 €",
+            amountAccessibilityLabel: "100,00 €"
+          }}
           title="Codice avviso"
           subtitle="302012131232131"
         />

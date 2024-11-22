@@ -15,7 +15,7 @@ import {
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HStack, VStack } from "../stack";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -70,9 +70,9 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
       <View style={{ flexGrow: 1, flexShrink: 1 }}>
         <H6 color={theme["textBody-default"]}>{title}</H6>
         {subtitle && (
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
-          </LabelSmall>
+          </BodySmall>
         )}
       </View>
     </HStack>

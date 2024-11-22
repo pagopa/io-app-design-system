@@ -13,7 +13,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
       {
         "display": "flex",
         "flexDirection": "column",
-        "rowGap": 16,
+        "gap": 16,
       }
     }
   >
