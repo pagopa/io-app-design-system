@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, useIOTheme } from "../../../core";
+import { useIONewTypeface, useIOTheme } from "../../../core";
 import { IOText, IOTextProps, TypographicStyleProps } from "../IOText";
 
 /**
@@ -9,11 +9,11 @@ import { IOText, IOTextProps, TypographicStyleProps } from "../IOText";
 export const MdH2 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const MdH2Props: IOTextProps = {
       ...props,
-      font: isExperimental ? "Titillio" : "TitilliumSansPro",
+      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: 16,
       lineHeight: 24,

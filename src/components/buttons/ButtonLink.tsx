@@ -16,7 +16,7 @@ import {
   IOScaleValues,
   IOSpringValues,
   hexToRgba,
-  useIOExperimentalDesign
+  useIONewTypeface
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import {
@@ -91,8 +91,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const isPressed = useSharedValue(0);
-
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -217,7 +216,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             style={

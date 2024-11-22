@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign } from "../../core";
+import { useIONewTypeface } from "../../core";
 import { IOFontFamily, IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -15,11 +15,11 @@ const legacyFontName: IOFontFamily = "TitilliumSansPro";
  */
 export const ButtonText = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const ButtonTextProps: IOTextProps = {
       ...props,
-      font: isExperimental ? fontName : legacyFontName,
+      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: "Semibold",
       size: buttonTextFontSize,
       lineHeight: 20,

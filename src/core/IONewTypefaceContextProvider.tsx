@@ -2,7 +2,7 @@ import React, { PropsWithChildren, useState } from "react";
 
 type IONewTypefaceContextType = {
   newTypefaceEnabled: boolean;
-  setNewTypefaceEnabled: (isExperimental: boolean) => void;
+  setNewTypefaceEnabled: (newTypefaceEnabled: boolean) => void;
 };
 /**
  * Experimental Context for new UI Representations

@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../core";
 import { IOFontSize, IOFontWeight } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -21,12 +21,12 @@ export const H3 = forwardRef<View, H3StyleProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H3Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "title2", // iOS only
-      font: isExperimental ? "Titillio" : "TitilliumSansPro",
+      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: customWeight ?? "Semibold",
       size: h3FontSize,
       lineHeight: h3LineHeight,

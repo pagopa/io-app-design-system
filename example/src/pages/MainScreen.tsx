@@ -105,7 +105,7 @@ const MainScreen = (props: Props) => {
         <VSpacer size={4} />
         <ListItemSwitch
           label="Abilita Dark Mode"
-          value={themeType === "light"}
+          value={themeType === "dark"}
           onSwitchValueChange={() =>
             setTheme(themeType === "dark" ? "light" : "dark")
           }

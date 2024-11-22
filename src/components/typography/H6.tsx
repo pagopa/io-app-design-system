@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../core";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -16,14 +16,14 @@ const legacyFontSize: IOFontSize = 18;
 export const H6 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H6Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "headline", // iOS only
-      font: isExperimental ? "Titillio" : "TitilliumSansPro",
+      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
-      size: isExperimental ? h6FontSize : legacyFontSize,
+      size: newTypefaceEnabled ? h6FontSize : legacyFontSize,
       lineHeight: h6LineHeight,
       color: customColor ?? theme["textHeading-default"]
     };

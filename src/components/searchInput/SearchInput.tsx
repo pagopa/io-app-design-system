@@ -33,6 +33,7 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
@@ -115,6 +116,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     ref
   ) => {
     const searchInputRef = useRef<TextInput>(null);
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     /* Component visual attributes */
     const theme = useIOTheme();
@@ -243,8 +245,15 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             accessibilityRole={"search"}
             accessibilityLabel={accessibilityLabel}
             style={[
+              {
+                ...makeFontStyleObject(
+                  inputFontSizePlaceholder,
+                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  undefined,
+                  "Regular"
+                )
+              },
               styles.textInput,
-              styles.placeholder,
               Platform.OS === "ios"
                 ? styles.textInputIOS
                 : styles.textInputAndroid
@@ -320,14 +329,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: iconMargin
-  },
-  placeholder: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "Titillio",
-      undefined,
-      "Regular"
-    )
   },
   cancelButton: {
     position: "absolute",

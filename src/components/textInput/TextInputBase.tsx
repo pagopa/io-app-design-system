@@ -19,7 +19,13 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import { IOColors, IOSpacingScale, hexToRgba, useIOTheme } from "../../core";
+import {
+  IOColors,
+  IOSpacingScale,
+  hexToRgba,
+  useIONewTypeface,
+  useIOTheme
+} from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
@@ -100,9 +106,6 @@ const styles = StyleSheet.create({
        to align to the label */
     ...(Platform.OS === "android" && { marginLeft: -4 })
   },
-  textInputStyleFont: {
-    ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
-  },
   textInputLabelWrapper: {
     position: "absolute",
     paddingHorizontal: inputPaddingHorizontal,
@@ -110,15 +113,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     top: 0,
     justifyContent: "center"
-  },
-  textInputLabel: {
-    ...makeFontStyleObject(
-      inputLabelFontSize,
-      "TitilliumSansPro",
-      undefined,
-      "Regular"
-    ),
-    color: inputLabelColor
   }
 });
 
@@ -213,6 +207,7 @@ export const TextInputBase = ({
   );
   const focusedState = useSharedValue<number>(0);
   const theme = useIOTheme();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
   /* Get the label width to enable the correct translation */
   const [labelWidth, setLabelWidth] = React.useState<number>(0);
@@ -394,8 +389,15 @@ export const TextInputBase = ({
           blurOnSubmit={true}
           onChangeText={onChangeTextHandler}
           style={[
+            {
+              ...makeFontStyleObject(
+                inputLabelFontSize,
+                newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                undefined,
+                "Regular"
+              )
+            },
             styles.textInputStyle,
-            styles.textInputStyleFont,
             !disabled
               ? { color: inputTextColor }
               : { color: inputDisabledTextColor }
@@ -416,7 +418,18 @@ export const TextInputBase = ({
             onLayout={getLabelWidth}
             numberOfLines={1}
             accessible={false}
-            style={[styles.textInputLabel, animatedLabelStyle]}
+            style={[
+              {
+                ...makeFontStyleObject(
+                  inputLabelFontSize,
+                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  undefined,
+                  "Regular"
+                ),
+                color: inputLabelColor
+              },
+              animatedLabelStyle
+            ]}
           >
             {placeholder}
           </Animated.Text>

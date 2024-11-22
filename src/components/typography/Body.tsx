@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import {
   IOText,
@@ -17,10 +17,7 @@ export const bodyFontSize = 16;
 export const bodyLineHeight = 24;
 
 const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Regular";
-
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
-const legacyFontWeight: IOFontWeight = "Regular";
 
 /**
  * `Body` typographic style
@@ -31,7 +28,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -40,12 +37,8 @@ export const Body = forwardRef<View, BodyStyleProps>(
     const BodyProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "body", // iOS only
-      font: isExperimental ? fontName : legacyFontName,
-      weight: customWeight
-        ? customWeight
-        : isExperimental
-        ? fontWeight
-        : legacyFontWeight,
+      font: newTypefaceEnabled ? fontName : legacyFontName,
+      weight: customWeight ? customWeight : "Regular",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,
       color: customColor ?? defaultColor,

@@ -24,7 +24,7 @@ import {
   IOScaleValues,
   IOSpringValues,
   IOStyles,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
@@ -37,7 +37,7 @@ import {
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { buttonTextFontSize, H6, IOText, BodySmall } from "../typography";
+import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */
 const sizePictogramBig: IOPictogramSizeScale = 80;
@@ -160,8 +160,7 @@ export const Banner = ({
   testID
 }: Banner) => {
   const isPressed: SharedValue<number> = useSharedValue(0);
-
-  const { isExperimental } = useIOExperimentalDesign();
+  const { newTypefaceEnabled } = useIONewTypeface();
   const { themeType } = useIOThemeContext();
   const theme = useIOTheme();
 
@@ -257,8 +256,8 @@ export const Banner = ({
           >
             <VSpacer size={4} />
             <IOText
-              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-              weight={isExperimental ? "Regular" : "Bold"}
+              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+              weight={"Semibold"}
               color={colorMainButton}
               size={buttonTextFontSize}
               numberOfLines={1}

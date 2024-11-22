@@ -6,7 +6,7 @@ import {
   TextStyle,
   View
 } from "react-native";
-import { IOColors, useIOExperimentalDesign, useIOTheme } from "../../core";
+import { IOColors, useIONewTypeface, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
@@ -101,7 +101,7 @@ export const IOText = forwardRef<View, IOTextProps>(
     ref
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
     const boldEnabled = useBoldTextEnabled();
 
     const computedStyleObj = useMemo(
@@ -141,7 +141,7 @@ export const IOText = forwardRef<View, IOTextProps>(
 
     /* Accessible typography based on the `fontScale` parameter */
     const accessibleFontSizeProps: ComponentProps<typeof Text> = {
-      allowFontScaling: allowFontScaling ?? isExperimental,
+      allowFontScaling: allowFontScaling ?? newTypefaceEnabled,
       maxFontSizeMultiplier: maxFontSizeMultiplier ?? 1.25
     };
 
