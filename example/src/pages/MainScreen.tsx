@@ -7,7 +7,8 @@ import {
   ListItemSwitch,
   VSpacer,
   useIOExperimentalDesign,
-  useIOThemeContext
+  useIOThemeContext,
+  useIONewTypeface
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { SectionList, View } from "react-native";
@@ -57,6 +58,7 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 const MainScreen = (props: Props) => {
   const { setTheme, themeType, theme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
   const renderDSNavItem = ({
     item: { title, route }
   }: {
@@ -95,10 +97,15 @@ const MainScreen = (props: Props) => {
           value={isExperimental}
           onSwitchValueChange={setExperimental}
         />
+        <ListItemSwitch
+          label="Abilita nuovo carattere"
+          value={newTypefaceEnabled}
+          onSwitchValueChange={setNewTypefaceEnabled}
+        />
         <VSpacer size={4} />
         <ListItemSwitch
           label="Abilita Dark Mode"
-          value={themeType === "dark"}
+          value={themeType === "light"}
           onSwitchValueChange={() =>
             setTheme(themeType === "dark" ? "light" : "dark")
           }
