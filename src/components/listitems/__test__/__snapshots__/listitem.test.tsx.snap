@@ -1764,14 +1764,14 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           maxFontSizeMultiplier={1.25}
           style={
             [
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
+                "fontFamily": "Titillium Sans Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
@@ -1851,7 +1851,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
+      allowFontScaling={false}
       maxFontSizeMultiplier={1.25}
       style={
         [
@@ -1863,10 +1863,10 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
           },
           {
             "color": "#555C70",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Sans Pro",
             "fontSize": 12,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "600",
             "lineHeight": 16,
           },
         ]
@@ -1919,7 +1919,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         accessible={true}
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           style={
@@ -1939,7 +1939,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
           label
         </Text>
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
@@ -1948,8 +1948,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2041,7 +2041,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2061,7 +2061,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           label
         </Text>
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           numberOfLines={2}
@@ -2070,8 +2070,8 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2229,7 +2229,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2237,8 +2237,8 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2458,7 +2458,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2466,8 +2466,8 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2628,7 +2628,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
@@ -2640,7 +2640,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 21,
               },
             ]
@@ -2728,7 +2728,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             }
           />
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="footnote"
             maxFontSizeMultiplier={1.25}
             style={
@@ -2760,7 +2760,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -2768,8 +2768,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -3012,7 +3012,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="footnote"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
@@ -3024,7 +3024,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": 21,
               },
             ]
@@ -3044,7 +3044,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         }
       >
         <Text
-          allowFontScaling={true}
+          allowFontScaling={false}
           dynamicTypeRamp="headline"
           maxFontSizeMultiplier={1.25}
           style={
@@ -3052,8 +3052,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Readex Pro",
-                "fontSize": 16,
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,

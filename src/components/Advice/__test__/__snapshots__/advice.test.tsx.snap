@@ -190,7 +190,7 @@ exports[`Test Advice Components Advice Snapshot 1`] = `
     }
   />
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     dynamicTypeRamp="body"
     maxFontSizeMultiplier={1.25}
     style={

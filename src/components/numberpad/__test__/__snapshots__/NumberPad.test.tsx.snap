@@ -90,7 +90,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -98,10 +98,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -169,7 +169,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -177,10 +177,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -248,7 +248,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -256,10 +256,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -343,7 +343,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -351,10 +351,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -422,7 +422,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -430,10 +430,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -501,7 +501,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -509,10 +509,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -596,7 +596,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -604,10 +604,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -675,7 +675,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -683,10 +683,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -754,7 +754,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -762,10 +762,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]
@@ -990,7 +990,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           }
         >
           <Text
-            allowFontScaling={true}
+            allowFontScaling={false}
             dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.25}
             style={
@@ -998,10 +998,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {},
                 {
                   "color": "#FFFFFF",
-                  "fontFamily": "Readex Pro",
+                  "fontFamily": "Titillium Sans Pro",
                   "fontSize": 22,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
                   "lineHeight": 33,
                 },
               ]

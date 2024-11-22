@@ -71,7 +71,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     ellipsizeMode="tail"
     maxFontSizeMultiplier={1.25}
     numberOfLines={1}
@@ -80,10 +80,10 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 12,
           "fontStyle": "normal",
-          "fontWeight": "400",
+          "fontWeight": "600",
           "lineHeight": 16,
         },
         {

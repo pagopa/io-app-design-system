@@ -385,14 +385,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -501,14 +501,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#5D1313",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -550,14 +550,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#215C76",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -599,14 +599,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -648,14 +648,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#224021",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -697,14 +697,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={true}
+    allowFontScaling={false}
     maxFontSizeMultiplier={1.25}
     style={
       [
         {},
         {
           "color": "#614C15",
-          "fontFamily": "Readex Pro",
+          "fontFamily": "Titillium Sans Pro",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",

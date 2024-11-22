@@ -792,7 +792,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
     <Text
       accessibilityElementsHidden={true}
       accessible={false}
-      allowFontScaling={true}
+      allowFontScaling={false}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
       maxFontSizeMultiplier={1.25}
@@ -802,7 +802,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Sans Pro",
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
@@ -899,7 +899,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
     <Text
       accessibilityElementsHidden={true}
       accessible={false}
-      allowFontScaling={true}
+      allowFontScaling={false}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
       maxFontSizeMultiplier={1.25}
@@ -909,7 +909,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           {},
           {
             "color": "#0E0F13",
-            "fontFamily": "Readex Pro",
+            "fontFamily": "Titillium Sans Pro",
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
@@ -1020,7 +1020,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
       <Text
         accessibilityElementsHidden={true}
         accessible={false}
-        allowFontScaling={true}
+        allowFontScaling={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
         maxFontSizeMultiplier={1.25}
@@ -1030,7 +1030,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             {},
             {
               "color": "#FFFFFF",
-              "fontFamily": "Readex Pro",
+              "fontFamily": "Titillium Sans Pro",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
