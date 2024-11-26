@@ -294,6 +294,9 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
             "flexDirection": "row",
             "justifyContent": "center",
           },
+          {
+            "columnGap": 8,
+          },
           false,
         ]
       }
@@ -1010,6 +1013,9 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
           },
           false,
         ]
