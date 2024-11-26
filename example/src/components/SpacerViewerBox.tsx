@@ -2,7 +2,6 @@ import {
   HSpacer,
   IOColors,
   IOSpacer,
-  SpacerOrientation,
   VSpacer,
   useIOTheme
 } from "@pagopa/io-app-design-system";
@@ -11,7 +10,7 @@ import { Text, View } from "react-native";
 
 type SpacerViewerBoxProps = {
   size: IOSpacer;
-  orientation?: SpacerOrientation;
+  orientation?: "vertical" | "horizontal";
 };
 
 const SpacerLabel = ({ value }: { value: IOSpacer }) => {
