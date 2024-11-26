@@ -29,7 +29,6 @@ import {
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { HSpacer } from "../spacer/Spacer";
 import { ButtonText } from "../typography/ButtonText";
 
 export type ButtonSolidColor = "primary" | "danger" | "contrast";
