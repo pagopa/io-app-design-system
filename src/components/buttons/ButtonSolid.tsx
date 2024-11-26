@@ -53,6 +53,7 @@ const legacyStyles = StyleSheet.create({
 });
 
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
+const ICON_MARGIN = 8;
 const DISABLED_OPACITY = 0.5;
 
 // Icon size
@@ -308,6 +309,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
             <Animated.View
               style={[
                 buttonStyles.buttonInner,
+                { columnGap: ICON_MARGIN },
+                /* If 'iconPosition' is set to 'end', we use 
+                   reverse flex property to invert the position */
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
               entering={
@@ -318,14 +322,12 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
               // exiting={exitTransitionInnerContent}
             >
               {icon && (
-                <>
-                  {/* If 'iconPosition' is set to 'end', we use 
-            reverse flex property to invert the position */}
-                  <Icon name={icon} size={iconSize} color={foregroundColor} />
-                  {/* Once we have support for 'gap' property,
-            we can get rid of that spacer */}
-                  <HSpacer size={8} />
-                </>
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  size={iconSize}
+                  color={foregroundColor}
+                />
               )}
               <ButtonText
                 color={foregroundColor}
