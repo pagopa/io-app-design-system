@@ -61,7 +61,8 @@ export const ListItemCheckbox = ({
   disabled,
   onValueChange
 }: ListItemCheckboxProps) => {
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   // Animations
@@ -172,7 +173,7 @@ export const ListItemCheckbox = ({
                 }
               ]}
             >
-              {icon && (
+              {icon && !hugeFontEnabled && (
                 <Icon
                   allowFontScaling
                   name={icon}

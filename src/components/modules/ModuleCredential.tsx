@@ -21,6 +21,7 @@ import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HStack } from "../stack/Stack";
 import { BodySmall } from "../typography";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -49,6 +50,8 @@ type ModuleCredentialProps =
 const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
   const theme = useIOTheme();
 
+  const { hugeFontEnabled } = useIOFontDynamicScale();
+
   if (props.isLoading) {
     return <ModuleCredentialSkeleton />;
   }
@@ -64,8 +67,9 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
     ...pressableProps
   } = props;
 
-  const iconComponent = icon && (
+  const iconComponent = icon && !hugeFontEnabled && (
     <Icon
+      allowFontScaling
       name={icon}
       size={IOSelectionListItemVisualParams.iconSize}
       color="grey-300"

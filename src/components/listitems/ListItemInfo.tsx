@@ -69,7 +69,8 @@ export const ListItemInfo = ({
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
@@ -154,7 +155,7 @@ export const ListItemInfo = ({
           }
         ]}
       >
-        {icon && (
+        {icon && !hugeFontEnabled && (
           <Icon
             allowFontScaling
             name={icon}

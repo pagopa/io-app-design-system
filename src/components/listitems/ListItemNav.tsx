@@ -106,7 +106,8 @@ export const ListItemNav = ({
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -252,7 +253,7 @@ export const ListItemNav = ({
           - Image URL (for payment logos)
           - Avatar
           */}
-          {icon && (
+          {icon && !hugeFontEnabled && (
             <Icon
               allowFontScaling
               name={icon}

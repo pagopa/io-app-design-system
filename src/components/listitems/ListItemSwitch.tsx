@@ -61,7 +61,7 @@ export const ListItemSwitch = React.memo(
     testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
-    const { dynamicFontScale, spacingScaleMultiplier } =
+    const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
       useIOFontDynamicScale();
 
     // If we have a badge or we are loading, we can't render the switch
@@ -111,7 +111,7 @@ export const ListItemSwitch = React.memo(
             })}
             accessibilityState={{ disabled }}
           >
-            {icon && (
+            {icon && !hugeFontEnabled && (
               <Icon
                 allowFontScaling
                 name={icon}

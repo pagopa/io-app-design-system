@@ -43,11 +43,13 @@ export const useBoldTextEnabled = () => {
 export const useIOFontDynamicScale = (): {
   dynamicFontScale: number;
   spacingScaleMultiplier: number;
+  hugeFontEnabled: boolean;
 } => {
   const { isExperimental } = useIOExperimentalDesign();
   const { fontScale } = useWindowDimensions();
 
   const deviceFontScale = isExperimental ? fontScale : 1;
+  const hugeFontEnabled = deviceFontScale >= 1.5;
 
   const dynamicFontScale = Math.min(deviceFontScale, IOFontSizeMultiplier);
   /* We make the spacing dynamic based on the font scale, but we multiply
@@ -56,6 +58,7 @@ export const useIOFontDynamicScale = (): {
     dynamicFontScale <= IOFontSizeMultiplier ? 1 : 0.8;
 
   return {
+    hugeFontEnabled,
     dynamicFontScale,
     spacingScaleMultiplier
   };

@@ -94,7 +94,8 @@ export const ListItemRadio = ({
   testID
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
   // Animations
   const isPressed: SharedValue<number> = useSharedValue(0);
   // Scaling transformation applied when the button is pressed
@@ -255,7 +256,7 @@ export const ListItemRadio = ({
                   spacingScaleMultiplier
               }}
             >
-              {startImage?.icon && (
+              {startImage?.icon && !hugeFontEnabled && (
                 <Icon
                   allowFontScaling
                   name={startImage.icon}
