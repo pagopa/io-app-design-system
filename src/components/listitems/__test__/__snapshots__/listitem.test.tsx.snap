@@ -82,7 +82,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
       >
         <Text
           allowFontScaling={true}
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -169,7 +169,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
   >
     <Text
       allowFontScaling={true}
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       style={
         [
           {
@@ -243,7 +243,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -263,7 +263,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -368,7 +368,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -388,7 +388,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -551,7 +551,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -775,7 +775,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -937,7 +937,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -1037,7 +1037,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           <Text
             allowFontScaling={true}
             dynamicTypeRamp="footnote"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -1069,7 +1069,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1327,7 +1327,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -1359,7 +1359,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1773,7 +1773,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1860,7 +1860,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
   >
     <Text
       allowFontScaling={false}
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       style={
         [
           {
@@ -1934,7 +1934,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1954,7 +1954,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -2059,7 +2059,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -2079,7 +2079,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -2242,7 +2242,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -2466,7 +2466,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -2628,7 +2628,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -2728,7 +2728,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="footnote"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -2760,7 +2760,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -3018,7 +3018,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -3050,7 +3050,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},

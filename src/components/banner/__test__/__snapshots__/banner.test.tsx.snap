@@ -75,7 +75,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       <Text
         allowFontScaling={true}
         dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -114,7 +114,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         <Text
           allowFontScaling={true}
           ellipsizeMode="tail"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -348,7 +348,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       <Text
         allowFontScaling={false}
         dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -387,7 +387,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           ellipsizeMode="tail"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
