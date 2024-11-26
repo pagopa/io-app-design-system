@@ -184,6 +184,7 @@ export const IconButtonSolid = ({
         ]}
       >
         <AnimatedIcon
+          allowFontScaling
           name={icon}
           color={
             !disabled
