@@ -25,7 +25,6 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { HSpacer } from "../spacer/Spacer";
 import { IOText, buttonTextFontSize } from "../typography";
 
 export type ColorButtonLink = "primary" | "contrast";
@@ -96,6 +95,7 @@ const mapLegacyColorStates: Record<
 };
 
 const DISABLED_OPACITY = 0.5;
+const ICON_MARGIN = 8;
 
 export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
   (
@@ -209,30 +209,29 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
             IOButtonStyles.buttonLink,
             iconPosition === "end" && { flexDirection: "row-reverse" },
             disabled ? { opacity: DISABLED_OPACITY } : {},
+            { columnGap: ICON_MARGIN },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {!disabled ? (
-                <AnimatedIconClassComponent
-                  name={icon}
-                  animatedProps={pressedColorIconAnimationStyle}
-                  color={colorMap[color]?.label?.default}
-                  size={iconSize}
-                />
-              ) : (
-                <AnimatedIcon
-                  name={icon}
-                  color={colorMap[color]?.label?.disabled}
-                  size={iconSize}
-                />
-              )}
-              <HSpacer size={8} />
-            </>
-          )}
+          {icon &&
+            (!disabled ? (
+              <AnimatedIconClassComponent
+                allowFontScaling
+                name={icon}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={colorMap[color]?.label?.default}
+                size={iconSize}
+              />
+            ) : (
+              <AnimatedIcon
+                allowFontScaling
+                name={icon}
+                color={colorMap[color]?.label?.disabled}
+                size={iconSize}
+              />
+            ))}
           <AnimatedIOText
             accessible={false}
             accessibilityElementsHidden

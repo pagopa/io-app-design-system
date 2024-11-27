@@ -31,7 +31,6 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { HSpacer } from "../spacer/Spacer";
 import { IOText, buttonTextFontSize } from "../typography";
 
 type ColorButtonOutline = "primary" | "contrast" | "danger";
@@ -201,6 +200,7 @@ const IOButtonLegacyStylesLocal = StyleSheet.create({
 const iconSize: IOIconSizeScale = 20;
 
 const DISABLED_OPACITY = 0.5;
+const ICON_MARGIN = 8;
 
 const IOButtonStylesLocal = StyleSheet.create({
   buttonWithBorder: {
@@ -338,6 +338,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             isExperimental && fullWidth && { paddingHorizontal: 16 },
             buttonStylesLocal.buttonWithBorder,
             buttonStyles.buttonSizeDefault,
+            { columnGap: ICON_MARGIN },
             iconPosition === "end" && { flexDirection: "row-reverse" },
             disabled
               ? {
@@ -354,25 +355,23 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {!disabled ? (
-                <AnimatedIconClassComponent
-                  name={icon}
-                  animatedProps={pressedColorIconAnimationStyle}
-                  color={colorMap[color]?.label?.default}
-                  size={iconSize}
-                />
-              ) : (
-                <AnimatedIcon
-                  name={icon}
-                  color={colorMap[color]?.label?.disabled}
-                  size={iconSize}
-                />
-              )}
-              <HSpacer size={8} />
-            </>
-          )}
+          {icon &&
+            (!disabled ? (
+              <AnimatedIconClassComponent
+                allowFontScaling
+                name={icon}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={colorMap[color]?.label?.default}
+                size={iconSize}
+              />
+            ) : (
+              <AnimatedIcon
+                allowFontScaling
+                name={icon}
+                color={colorMap[color]?.label?.disabled}
+                size={iconSize}
+              />
+            ))}
           <AnimatedIOText
             font={isExperimental ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
