@@ -2,10 +2,8 @@ import React from "react";
 import { View } from "react-native";
 import { hexToRgba, IOColors, IOSpacer } from "../../core";
 
-export type SpacerOrientation = "vertical" | "horizontal";
-
 type BaseSpacerProps = {
-  orientation: SpacerOrientation;
+  orientation: "vertical" | "horizontal";
   size: IOSpacer;
 };
 
@@ -21,7 +19,7 @@ const debugBg = hexToRgba(IOColors.red, 0.2);
 
 /**
 Native `Spacer` component
-@param  {SpacerOrientation} orientation 
+@param  {string} orientation
 @param {IOSpacer} size
  */
 const Spacer = ({ orientation, size }: BaseSpacerProps) => {
