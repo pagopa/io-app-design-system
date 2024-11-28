@@ -31,9 +31,11 @@ const Stack = ({
   space,
   style,
   orientation = "vertical",
-  children
+  children,
+  ...props
 }: BaseStack) => (
   <View
+    {...props}
     style={{
       display: "flex",
       flexDirection: orientation === "horizontal" ? "row" : "column",
