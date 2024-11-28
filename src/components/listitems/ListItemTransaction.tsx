@@ -146,13 +146,9 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={{ flexShrink: 1 }}>
-          <BodySmall
-            numberOfLines={numberOfLines}
-            color={theme["textBody-default"]}
-            weight="Semibold"
-          >
+          <H6 numberOfLines={numberOfLines} color={theme["textBody-default"]}>
             {title}
-          </BodySmall>
+          </H6>
           <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
           </BodySmall>
