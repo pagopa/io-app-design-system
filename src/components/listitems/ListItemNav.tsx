@@ -279,6 +279,7 @@ export const ListItemNav = ({
           {loading && <LoadingSpinner color={primaryColor} />}
           {!loading && !hideChevron && (
             <Icon
+              allowFontScaling
               name="chevronRightListItem"
               color={navIconColor}
               size={IOListItemVisualParams.chevronSize}

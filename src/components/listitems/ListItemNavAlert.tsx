@@ -185,6 +185,7 @@ export const ListItemNavAlert = ({
           <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
 
           <Icon
+            allowFontScaling
             name="chevronRightListItem"
             color={iconColor}
             size={IOListItemVisualParams.chevronSize}

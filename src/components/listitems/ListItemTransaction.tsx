@@ -174,6 +174,7 @@ export const ListItemTransaction = ({
         )}
         {showChevron && (
           <Icon
+            allowFontScaling
             name="chevronRightListItem"
             color={interactiveColor}
             size={IOListItemVisualParams.chevronSize}

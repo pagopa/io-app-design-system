@@ -49,7 +49,7 @@ export const useIOFontDynamicScale = (): {
   const { fontScale } = useWindowDimensions();
 
   const deviceFontScale = isExperimental ? fontScale : 1;
-  const hugeFontEnabled = deviceFontScale >= 1.5;
+  const hugeFontEnabled = deviceFontScale >= 1.35;
 
   const dynamicFontScale = Math.min(deviceFontScale, IOFontSizeMultiplier);
   /* We make the spacing dynamic based on the font scale, but we multiply
