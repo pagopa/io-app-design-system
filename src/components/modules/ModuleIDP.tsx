@@ -1,11 +1,7 @@
 import * as React from "react";
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
+import { IOListItemLogoMargin, useIONewTypeface, useIOTheme } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
-import {
-  IOListItemLogoMargin,
-  useIOExperimentalDesign,
-  useIOTheme
-} from "../../core";
 import { IOText } from "../typography";
 import {
   PressableModuleBase,
@@ -38,8 +34,7 @@ export const ModuleIDP = ({
   accessibilityLabel
 }: ModuleIDP) => {
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-
+  const { newTypefaceEnabled } = useIONewTypeface();
   // eslint-disable-next-line no-console
   const urlLogoIDP = localLogo ? localLogo : addCacheTimestampToUri(logo);
 
@@ -50,7 +45,7 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}

@@ -338,13 +338,6 @@ export const IOThemeLight: IOTheme = {
   "pictogram-tint-tertiary": "blueIO-400"
 };
 
-export const IOThemeLightLegacy: IOTheme = {
-  ...IOThemeLight,
-  "appBackground-accent": "blue",
-  "interactiveElem-default": "blue",
-  "pictogram-hands": "blue"
-};
-
 export const IOThemeDark: IOTheme = {
   ...IOThemeLight,
   // General

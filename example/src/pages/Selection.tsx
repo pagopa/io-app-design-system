@@ -17,7 +17,6 @@ import {
   RadioItemWithAmount,
   SwitchLabel,
   VSpacer,
-  useIOExperimentalDesign,
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
@@ -26,7 +25,6 @@ import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
 export const Selection = () => {
-  const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   return (
@@ -40,11 +38,6 @@ export const Selection = () => {
       >
         Checkbox
       </H2>
-      <ListItemSwitch
-        label="Abilita Design Sperimentale"
-        value={isExperimental}
-        onSwitchValueChange={setExperimental}
-      />
       {/* CheckboxLabel */}
       {renderCheckboxLabel()}
       {/* ListItemCheckbox */}

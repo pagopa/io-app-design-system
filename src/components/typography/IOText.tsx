@@ -101,9 +101,8 @@ export const IOText = forwardRef<View, IOTextProps>(
     ref
   ) => {
     const theme = useIOTheme();
-    const boldEnabled = useBoldTextEnabled();
-
     const { isExperimental } = useIOExperimentalDesign();
+    const boldEnabled = useBoldTextEnabled();
 
     const computedStyleObj = useMemo(
       () =>

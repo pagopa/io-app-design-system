@@ -80,7 +80,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 12,
           "fontStyle": "normal",
           "fontWeight": "600",

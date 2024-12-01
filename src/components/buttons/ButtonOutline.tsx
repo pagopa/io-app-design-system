@@ -6,7 +6,8 @@ import {
   View
 } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
+  SharedValue,
   interpolate,
   interpolateColor,
   useAnimatedProps,
@@ -16,13 +17,12 @@ import Animated, {
   withSpring
 } from "react-native-reanimated";
 import {
-  IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
   IOScaleValues,
   IOSpringValues,
   hexToRgba,
-  useIOExperimentalDesign
+  useIONewTypeface
 } from "../../core/";
 import { WithTestID } from "../../utils/types";
 import {
@@ -129,74 +129,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonOutline["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    border: {
-      default: IOColors.blue,
-      pressed: IOColors.blue,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: hexToRgba(IOColors.blue, 0),
-      pressed: hexToRgba(IOColors.blue, 0.15),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.blue,
-      pressed: IOColors.blue,
-      disabled: IOColors.grey
-    }
-  },
-  // Contrast button
-  contrast: {
-    border: {
-      default: IOColors.white,
-      pressed: IOColors.white,
-      disabled: hexToRgba(IOColors.white, 0.5)
-    },
-    background: {
-      default: hexToRgba(IOColors.white, 0),
-      pressed: hexToRgba(IOColors.white, 0.2),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.white,
-      pressed: IOColors.white,
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  },
-  // Danger button
-  danger: {
-    border: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.bluegreyLight
-    },
-    background: {
-      default: hexToRgba(IOColors.red, 0),
-      pressed: hexToRgba(IOColors.red, 0.15),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.grey
-    }
-  }
-};
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const IOButtonLegacyStylesLocal = StyleSheet.create({
-  buttonWithBorder: {
-    borderWidth: 1
-  }
-});
-
 // Icon size
 const iconSize: IOIconSizeScale = 20;
 
@@ -224,25 +156,11 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
     },
     ref
   ) => {
-    const { isExperimental } = useIOExperimentalDesign();
-    const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+    const isPressed: SharedValue<number> = useSharedValue(0);
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
-    const colorMap = React.useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental]
-    );
-
-    const buttonStyles = React.useMemo(
-      () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
-      [isExperimental]
-    );
-
-    const buttonStylesLocal = React.useMemo(
-      () => (isExperimental ? IOButtonStylesLocal : IOButtonLegacyStylesLocal),
-      [isExperimental]
-    );
     // Scaling transformation applied when the button is pressed
     const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
 
@@ -257,13 +175,19 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       const backgroundColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].background.default, colorMap[color].background.pressed]
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.pressed
+        ]
       );
 
       const borderColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].border.default, colorMap[color].border.pressed]
+        [
+          mapColorStates[color].border.default,
+          mapColorStates[color].border.pressed
+        ]
       );
 
       // Scale down button slightly when pressed
@@ -271,7 +195,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
         progressPressed.value,
         [0, 1],
         [1, animationScaleValue],
-        Extrapolate.CLAMP
+        Extrapolation.CLAMP
       );
 
       return {
@@ -287,7 +211,10 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       const labelColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].border.default, colorMap[color].border.pressed]
+        [
+          mapColorStates[color].border.default,
+          mapColorStates[color].border.pressed
+        ]
       );
 
       return {
@@ -300,7 +227,10 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       const iconColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].label.default, colorMap[color].label.pressed]
+        [
+          mapColorStates[color].label.default,
+          mapColorStates[color].label.pressed
+        ]
       );
       return { color: iconColor };
     });
@@ -334,20 +264,20 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       >
         <Animated.View
           style={[
-            buttonStyles.button,
-            isExperimental && fullWidth && { paddingHorizontal: 16 },
-            buttonStylesLocal.buttonWithBorder,
-            buttonStyles.buttonSizeDefault,
+            IOButtonStyles.button,
+            IOButtonStyles.buttonSizeDefault,
+            IOButtonStylesLocal.buttonWithBorder,
+            fullWidth && { paddingHorizontal: 16 },
             iconPosition === "end" && { flexDirection: "row-reverse" },
             disabled
               ? {
-                  backgroundColor: colorMap[color]?.background?.disabled,
-                  borderColor: colorMap[color]?.border?.disabled,
+                  backgroundColor: mapColorStates[color]?.background?.disabled,
+                  borderColor: mapColorStates[color]?.border?.disabled,
                   opacity: DISABLED_OPACITY
                 }
               : {
-                  backgroundColor: colorMap[color]?.background?.default,
-                  borderColor: colorMap[color]?.border.default
+                  backgroundColor: mapColorStates[color]?.background?.default,
+                  borderColor: mapColorStates[color]?.border.default
                 },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
@@ -360,13 +290,13 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
                 <AnimatedIconClassComponent
                   name={icon}
                   animatedProps={pressedColorIconAnimationStyle}
-                  color={colorMap[color]?.label?.default}
+                  color={mapColorStates[color]?.label?.default}
                   size={iconSize}
                 />
               ) : (
                 <AnimatedIcon
                   name={icon}
-                  color={colorMap[color]?.label?.disabled}
+                  color={mapColorStates[color]?.label?.disabled}
                   size={iconSize}
                 />
               )}
@@ -374,7 +304,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             </>
           )}
           <AnimatedIOText
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             accessible={false}
@@ -383,9 +313,9 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             numberOfLines={1}
             ellipsizeMode="tail"
             style={[
-              buttonStyles.label,
+              IOButtonStyles.label,
               disabled
-                ? { color: colorMap[color]?.label?.disabled }
+                ? { color: mapColorStates[color]?.label?.disabled }
                 : { ...pressedColorLabelAnimationStyle }
             ]}
           >

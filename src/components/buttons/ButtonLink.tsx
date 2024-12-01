@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedProps,
@@ -16,7 +16,7 @@ import {
   IOScaleValues,
   IOSpringValues,
   hexToRgba,
-  useIOExperimentalDesign
+  useIONewTypeface
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import {
@@ -73,28 +73,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonLinkProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    label: {
-      default: IOColors.blue,
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  contrast: {
-    label: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  }
-};
-
 const DISABLED_OPACITY = 0.5;
 
 export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
@@ -113,12 +91,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const isPressed = useSharedValue(0);
-    const { isExperimental } = useIOExperimentalDesign();
-
-    const colorMap = useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental]
-    );
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -139,7 +112,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
         progressPressed.value,
         [0, 1],
         [1, animationScaleValue],
-        Extrapolate.CLAMP
+        Extrapolation.CLAMP
       );
 
       return {
@@ -153,7 +126,10 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
       const labelColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].label.default, colorMap[color].label.pressed]
+        [
+          mapColorStates[color].label.default,
+          mapColorStates[color].label.pressed
+        ]
       );
 
       return {
@@ -166,7 +142,10 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
       const iconColor = interpolateColor(
         progressPressed.value,
         [0, 1],
-        [colorMap[color].label.default, colorMap[color].label.pressed]
+        [
+          mapColorStates[color].label.default,
+          mapColorStates[color].label.pressed
+        ]
       );
 
       return { color: iconColor };
@@ -220,13 +199,13 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
                 <AnimatedIconClassComponent
                   name={icon}
                   animatedProps={pressedColorIconAnimationStyle}
-                  color={colorMap[color]?.label?.default}
+                  color={mapColorStates[color]?.label?.default}
                   size={iconSize}
                 />
               ) : (
                 <AnimatedIcon
                   name={icon}
-                  color={colorMap[color]?.label?.disabled}
+                  color={mapColorStates[color]?.label?.disabled}
                   size={iconSize}
                 />
               )}
@@ -237,12 +216,12 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             style={
               disabled
-                ? { color: colorMap[color]?.label?.disabled }
+                ? { color: mapColorStates[color]?.label?.disabled }
                 : { ...pressedColorLabelAnimationStyle }
             }
             numberOfLines={1}
