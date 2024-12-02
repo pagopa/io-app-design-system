@@ -101,6 +101,9 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       />
       <View
         accessibilityElementsHidden={true}
+        accessibilityLabel="Action text"
+        accessibilityRole="button"
+        accessible={true}
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
@@ -112,8 +115,11 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
           }
         />
         <Text
+          accessibilityElementsHidden={true}
+          accessible={false}
           allowFontScaling={true}
           ellipsizeMode="tail"
+          importantForAccessibility="no-hide-descendants"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
@@ -124,7 +130,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
                 "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
                 "lineHeight": undefined,
               },
             ]
@@ -374,6 +380,9 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       />
       <View
         accessibilityElementsHidden={true}
+        accessibilityLabel="Action text"
+        accessibilityRole="button"
+        accessible={true}
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
@@ -385,8 +394,11 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
           }
         />
         <Text
+          accessibilityElementsHidden={true}
+          accessible={false}
           allowFontScaling={true}
           ellipsizeMode="tail"
+          importantForAccessibility="no-hide-descendants"
           maxFontSizeMultiplier={1.25}
           numberOfLines={1}
           style={
@@ -397,7 +409,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "600",
                 "lineHeight": undefined,
               },
             ]

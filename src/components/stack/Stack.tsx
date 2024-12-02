@@ -1,27 +1,36 @@
-import React, { ReactNode } from "react";
+import React, { PropsWithChildren } from "react";
 import { View, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 
 type AllowedStyleProps = Pick<
   ViewStyle,
-  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap"
+  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap" | "width"
 >;
 
-type Stack = {
+type Stack = PropsWithChildren<{
   space?: IOSpacer;
-  children: ReactNode;
   style?: AllowedStyleProps;
+}>;
+
+type BaseStack = Stack & {
+  orientation: "vertical" | "horizontal";
 };
 
 /**
 Horizontal Stack component
 @param {IOSpacer} space
  */
-export const HStack = ({ space, children, style }: Stack) => (
+
+const Stack = ({
+  space,
+  style,
+  orientation = "vertical",
+  children
+}: BaseStack) => (
   <View
     style={{
       display: "flex",
-      flexDirection: "row",
+      flexDirection: orientation === "horizontal" ? "row" : "column",
       gap: space,
       ...style
     }}
@@ -30,20 +39,19 @@ export const HStack = ({ space, children, style }: Stack) => (
   </View>
 );
 
+export const HStack = ({ children, ...props }: Stack) => (
+  <Stack orientation="horizontal" {...props}>
+    {children}
+  </Stack>
+);
+
 /**
 Vertical Stack component
 @param {IOSpacer} space
  */
 
-export const VStack = ({ space, children, style }: Stack) => (
-  <View
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: space,
-      ...style
-    }}
-  >
+export const VStack = ({ children, ...props }: Stack) => (
+  <Stack orientation="vertical" {...props}>
     {children}
-  </View>
+  </Stack>
 );
