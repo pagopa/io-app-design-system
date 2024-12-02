@@ -37,7 +37,7 @@ import {
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { buttonTextFontSize, H6, IOText, BodySmall } from "../typography";
+import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */
 const sizePictogramBig: IOPictogramSizeScale = 80;
@@ -250,17 +250,24 @@ export const Banner = ({
              pressed state on the button */
           <View
             pointerEvents="none"
-            accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
+            accessible={true}
+            accessibilityElementsHidden
+            accessibilityLabel={action}
+            accessibilityRole="button"
           >
             <VSpacer size={4} />
             <IOText
               font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-              weight={"Semibold"}
+              weight="Semibold"
               color={colorMainButton}
               size={buttonTextFontSize}
               numberOfLines={1}
               ellipsizeMode="tail"
+              // A11y
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden={true}
             >
               {action}
             </IOText>
