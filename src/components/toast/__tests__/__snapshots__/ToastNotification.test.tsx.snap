@@ -385,7 +385,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
@@ -501,7 +501,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
@@ -550,7 +550,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
@@ -599,7 +599,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
@@ -648,7 +648,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
@@ -697,7 +697,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
   }
 >
   <Text
-    allowFontScaling={false}
+    allowFontScaling={true}
     maxFontSizeMultiplier={1.25}
     style={
       [
