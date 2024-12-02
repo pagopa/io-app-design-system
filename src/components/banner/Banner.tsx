@@ -207,20 +207,27 @@ export const Banner = ({
         )}
         {action && (
           /* Disable pointer events to avoid
-                      pressed state on the button */
+             pressed state on the button */
           <View
             pointerEvents="none"
-            accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
+            accessible={true}
+            accessibilityElementsHidden
+            accessibilityLabel={action}
+            accessibilityRole="button"
           >
             <VSpacer size={4} />
             <IOText
               font={isExperimental ? "Titillio" : "TitilliumSansPro"}
-              weight={"Semibold"}
+              weight="Semibold"
               color={colorMainButton}
               size={buttonTextFontSize}
               numberOfLines={1}
               ellipsizeMode="tail"
+              // A11y
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden={true}
             >
               {action}
             </IOText>
