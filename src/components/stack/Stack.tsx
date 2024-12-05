@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { View, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 type AllowedStyleProps = Pick<
   ViewStyle,
@@ -10,11 +11,14 @@ type AllowedStyleProps = Pick<
 type Stack = PropsWithChildren<{
   space?: IOSpacer;
   style?: AllowedStyleProps;
+  allowScaleSpacing?: boolean;
 }>;
 
 type BaseStack = Stack & {
   orientation: "vertical" | "horizontal";
 };
+
+const DEFAULT_SPACING_VALUE: IOSpacer = 16;
 
 /**
 Horizontal Stack component
@@ -22,22 +26,29 @@ Horizontal Stack component
  */
 
 const Stack = ({
-  space,
+  space = DEFAULT_SPACING_VALUE,
   style,
   orientation = "vertical",
+  allowScaleSpacing,
   children
-}: BaseStack) => (
-  <View
-    style={{
-      display: "flex",
-      flexDirection: orientation === "horizontal" ? "row" : "column",
-      gap: space,
-      ...style
-    }}
-  >
-    {children}
-  </View>
-);
+}: BaseStack) => {
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
+  return (
+    <View
+      style={{
+        display: "flex",
+        flexDirection: orientation === "horizontal" ? "row" : "column",
+        gap: allowScaleSpacing
+          ? space * dynamicFontScale * spacingScaleMultiplier
+          : space,
+        ...style
+      }}
+    >
+      {children}
+    </View>
+  );
+};
 
 export const HStack = ({ children, ...props }: Stack) => (
   <Stack orientation="horizontal" {...props}>

@@ -243,6 +243,7 @@ const renderListItemInfoCopy = () => (
         }}
         accessibilityLabel="Empty just for testing purposes"
       />
+      <Divider />
       <ListItemInfoCopy
         label={"Codice fiscale"}
         value="01199250158"
@@ -252,6 +253,7 @@ const renderListItemInfoCopy = () => (
         accessibilityLabel="Empty just for testing purposes"
         icon="institution"
       />
+      <Divider />
       <ListItemInfoCopy
         label={"Carta di credito"}
         value="4975 3013 5042 7899"
@@ -261,6 +263,7 @@ const renderListItemInfoCopy = () => (
         accessibilityLabel="Empty just for testing purposes"
         icon="creditCard"
       />
+      <Divider />
       <ListItemInfoCopy
         label={"Indirizzo"}
         value={`P.za Colonna, 370\n00186 Roma (RM)`}

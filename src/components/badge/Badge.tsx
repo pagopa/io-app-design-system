@@ -1,5 +1,11 @@
 import React from "react";
-import { ColorValue, Platform, StyleSheet, View } from "react-native";
+import {
+  ColorValue,
+  Platform,
+  StyleSheet,
+  View,
+  ViewStyle
+} from "react-native";
 import {
   hexToRgba,
   IOBadgeHSpacing,
@@ -10,12 +16,14 @@ import {
   useIOTheme,
   useIOThemeContext
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOText } from "../typography";
 
 export type Badge = WithTestID<{
   outline?: boolean;
   text: string;
+  allowFontScaling?: boolean;
   variant:
     | "default"
     | "info"
@@ -44,12 +52,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    borderCurve: "continuous",
     ...Platform.select({
       android: {
         textAlignVertical: "center"
       }
-    }),
-    borderCurve: "continuous",
+    })
+  },
+  badgeStaticStyle: {
     borderRadius: IOBadgeRadius,
     paddingHorizontal: IOBadgeHSpacing,
     paddingVertical: IOBadgeVSpacing
@@ -59,9 +69,16 @@ const styles = StyleSheet.create({
 /**
  * Official badge component
  */
-export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
+export const Badge = ({
+  text,
+  outline = false,
+  allowFontScaling = true,
+  variant,
+  testID
+}: Badge) => {
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const { themeType } = useIOThemeContext();
 
   const bgOpacityDarkMode = 0.2;
@@ -237,12 +254,19 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
 
   const { background, foreground } = variantMap[variant];
 
+  const dynamicStyle: ViewStyle = {
+    borderRadius: IOBadgeRadius * dynamicFontScale,
+    paddingHorizontal: IOBadgeHSpacing * dynamicFontScale,
+    paddingVertical: IOBadgeVSpacing * dynamicFontScale
+  };
+
   return (
     <View
       accessible={true}
       testID={testID}
       style={[
         styles.badge,
+        allowFontScaling ? dynamicStyle : styles.badgeStaticStyle,
         outline
           ? {
               borderWidth: 1,
@@ -254,6 +278,7 @@ export const Badge = ({ text, outline = false, variant, testID }: Badge) => {
       ]}
     >
       <IOText
+        allowFontScaling={allowFontScaling}
         font={isExperimental ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}

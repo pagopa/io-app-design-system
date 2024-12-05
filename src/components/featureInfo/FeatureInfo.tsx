@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
-import { GestureResponderEvent, View } from "react-native";
+import { GestureResponderEvent } from "react-native";
 import {
   BodySmall,
-  HSpacer,
+  HStack,
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
@@ -11,7 +11,7 @@ import {
   Pictogram,
   VStack
 } from "../../components";
-import { IOStyles, useIOTheme } from "../../core";
+import { useIOTheme } from "../../core";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
@@ -57,24 +57,28 @@ export const FeatureInfo = ({
   const theme = useIOTheme();
 
   return (
-    <View style={[IOStyles.flex, IOStyles.row, IOStyles.alignCenter]}>
+    <HStack style={{ alignItems: "center" }} space={24}>
       {iconName && (
         <Icon
+          allowFontScaling
           name={iconName}
           size={DEFAULT_ICON_SIZE}
           color={theme["icon-decorative"]}
         />
       )}
       {pictogramName && (
-        <Pictogram name={pictogramName} size={DEFAULT_PICTOGRAM_SIZE} />
+        <Pictogram
+          allowFontScaling
+          name={pictogramName}
+          size={DEFAULT_PICTOGRAM_SIZE}
+        />
       )}
-      <HSpacer size={24} />
-      <VStack space={4} style={{ flexShrink: 1 }}>
+      <VStack allowScaleSpacing space={4} style={{ flexShrink: 1 }}>
         {renderNode(body)}
         {action && (
           <BodySmall
-            weight="Semibold"
             asLink
+            weight="Semibold"
             onPress={action.onPress}
             accessible
             importantForAccessibility={"yes"}
@@ -84,6 +88,6 @@ export const FeatureInfo = ({
           </BodySmall>
         )}
       </VStack>
-    </View>
+    </HStack>
   );
 };

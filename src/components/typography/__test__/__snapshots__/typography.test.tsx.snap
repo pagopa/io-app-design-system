@@ -4,7 +4,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -27,7 +27,7 @@ exports[`Test Typography Components BodyMonospace Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {
@@ -52,7 +52,7 @@ exports[`Test Typography Components BodySmall Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -75,7 +75,7 @@ exports[`Test Typography Components BodySmall Snapshot 2`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -98,7 +98,7 @@ exports[`Test Typography Components BodySmall Snapshot 3`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -121,7 +121,7 @@ exports[`Test Typography Components BodySmall Snapshot 4`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -144,7 +144,7 @@ exports[`Test Typography Components BodySmall Snapshot 5`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="footnote"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -166,7 +166,7 @@ exports[`Test Typography Components BodySmall Snapshot 5`] = `
 exports[`Test Typography Components CTA Snapshot 1`] = `
 <Text
   allowFontScaling={false}
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -189,7 +189,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="largeTitle"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -212,7 +212,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="largeTitle"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -235,7 +235,7 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title1"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -258,7 +258,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title2"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -281,7 +281,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title2"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -304,7 +304,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title2"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -327,7 +327,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title2"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -350,7 +350,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title2"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -373,7 +373,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title3"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -396,7 +396,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title3"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -419,7 +419,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="title3"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -442,7 +442,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="subheadline"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {
@@ -468,7 +468,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="subheadline"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {
@@ -494,7 +494,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="subheadline"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {
@@ -520,7 +520,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="subheadline"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {
@@ -546,7 +546,7 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
 <Text
   allowFontScaling={false}
   dynamicTypeRamp="headline"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -570,7 +570,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
   accessibilityRole="link"
   allowFontScaling={false}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   onPress={[Function]}
   style={
     [
