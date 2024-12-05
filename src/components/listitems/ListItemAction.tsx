@@ -135,7 +135,7 @@ export const ListItemAction = ({
               />
             </View>
           )}
-          <View style={{ flexGrow: 1 }}>
+          <View style={{ flexGrow: 1, flexShrink: 1 }}>
             <ButtonText color={mapForegroundColor[variant]}>{label}</ButtonText>
           </View>
         </Animated.View>
