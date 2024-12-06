@@ -10,7 +10,7 @@ import ListItemNav from "../ListItemNav";
 import ListItemNavAlert from "../ListItemNavAlert";
 import { ListItemRadioWithAmount } from "../ListItemRadioWithAmount";
 import { ListItemTransaction } from "../ListItemTransaction";
-import { PressableListItemBase } from "../PressableListItemsBase";
+import { PressableListItemBase } from "../PressableListItemBase";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");

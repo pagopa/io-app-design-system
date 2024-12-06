@@ -1,5 +1,7 @@
-import * as React from "react";
-import Animated, {
+import { useCallback } from "react";
+import { GestureResponderEvent } from "react-native";
+import {
+  SharedValue,
   useDerivedValue,
   useSharedValue,
   withSpring
@@ -7,19 +9,23 @@ import Animated, {
 import { IOSpringValues } from "../../core";
 
 export const useSpringPressProgressValue = (
-  springValue = IOSpringValues.button
-) => {
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+  springValue: IOSpringValues = "button"
+): {
+  progress: SharedValue<number>;
+  onPressIn: (event: GestureResponderEvent) => void;
+  onPressOut: (event: GestureResponderEvent) => void;
+} => {
+  const isPressed: SharedValue<number> = useSharedValue(0);
 
   const progress = useDerivedValue(() =>
-    withSpring(isPressed.value, springValue)
+    withSpring(isPressed.value, IOSpringValues[springValue])
   );
 
-  const onPressIn = React.useCallback(() => {
+  const onPressIn = useCallback(() => {
     // eslint-disable-next-line functional/immutable-data
     isPressed.value = 1;
   }, [isPressed]);
-  const onPressOut = React.useCallback(() => {
+  const onPressOut = useCallback(() => {
     // eslint-disable-next-line functional/immutable-data
     isPressed.value = 0;
   }, [isPressed]);

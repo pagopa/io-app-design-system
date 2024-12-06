@@ -4,5 +4,5 @@ export * from "./ModuleCredential";
 export * from "./ModuleIDP";
 export * from "./ModuleNavigation";
 export * from "./ModulePaymentNotice";
-export * from "./PressableModuleBase";
 export * from "./ModuleSummary";
+export * from "./PressableModuleBase";

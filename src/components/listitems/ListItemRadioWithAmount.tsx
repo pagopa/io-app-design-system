@@ -6,7 +6,7 @@ import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
-import { PressableListItemBase } from "./PressableListItemsBase";
+import { PressableListItemBase } from "./PressableListItemBase";
 
 export type ListItemRadioWithAmountProps = {
   onValueChange?: (newValue: boolean) => void;
@@ -34,6 +34,7 @@ export const ListItemRadioWithAmount = ({
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
   const [toggleValue, setToggleValue] = React.useState(selected ?? false);
+
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
     setToggleValue(val => !val);

@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -6,24 +6,19 @@ import {
   View
 } from "react-native";
 import Animated, {
-  Extrapolate,
-  interpolate,
   interpolateColor,
   useAnimatedProps,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
 import {
   IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
-  IOScaleValues,
-  IOSpringValues,
   hexToRgba,
   useIOExperimentalDesign
 } from "../../core/";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -190,6 +185,11 @@ const mapLegacyColorStates: Record<
   }
 };
 
+// Icon size
+const iconSize: IOIconSizeScale = 20;
+
+const DISABLED_OPACITY = 0.5;
+
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const IOButtonLegacyStylesLocal = StyleSheet.create({
   buttonWithBorder: {
@@ -197,18 +197,13 @@ const IOButtonLegacyStylesLocal = StyleSheet.create({
   }
 });
 
-// Icon size
-const iconSize: IOIconSizeScale = 20;
-
-const DISABLED_OPACITY = 0.5;
-
 const IOButtonStylesLocal = StyleSheet.create({
   buttonWithBorder: {
     borderWidth: 2
   }
 });
 
-export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
+export const ButtonOutline = forwardRef<View, ButtonOutline>(
   (
     {
       color = "primary",
@@ -225,7 +220,9 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
     ref
   ) => {
     const { isExperimental } = useIOExperimentalDesign();
-    const isPressed: Animated.SharedValue<number> = useSharedValue(0);
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation();
+    const reducedMotion = useReducedMotion();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -243,79 +240,47 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       () => (isExperimental ? IOButtonStylesLocal : IOButtonLegacyStylesLocal),
       [isExperimental]
     );
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
       const backgroundColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [colorMap[color].background.default, colorMap[color].background.pressed]
       );
 
       const borderColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [colorMap[color].border.default, colorMap[color].border.pressed]
-      );
-
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolate.CLAMP
       );
 
       return {
         borderColor,
-        backgroundColor,
-        transform: [{ scale }]
+        backgroundColor
       };
     });
 
-    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-
-      const labelColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[color].border.default, colorMap[color].border.pressed]
-      );
-
-      return {
-        color: labelColor
-      };
-    });
+      )
+    }));
 
     // Animate the <Icon> color prop
-    const pressedColorIconAnimationStyle = useAnimatedProps(() => {
-      const iconColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorIconAnimationStyle = useAnimatedProps(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[color].label.default, colorMap[color].label.pressed]
-      );
-      return { color: iconColor };
-    });
+      )
+    }));
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
 
     return (
       <Pressable
@@ -351,6 +316,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
                 },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
+            !reducedMotion && !disabled && scaleAnimatedStyle,
             !disabled && pressedAnimationStyle
           ]}
         >
