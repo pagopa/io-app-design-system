@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { View, ViewStyle } from "react-native";
+import { View, ViewProps, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 
 type AllowedStyleProps = Pick<
@@ -7,10 +7,16 @@ type AllowedStyleProps = Pick<
   "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap" | "width"
 >;
 
+type A11YRelatedProps = Pick<
+  ViewProps,
+  "pointerEvents" | "accessibilityElementsHidden" | "importantForAccessibility"
+>;
+
 type Stack = PropsWithChildren<{
   space?: IOSpacer;
   style?: AllowedStyleProps;
-}>;
+}> &
+  A11YRelatedProps;
 
 type BaseStack = Stack & {
   orientation: "vertical" | "horizontal";
@@ -25,9 +31,11 @@ const Stack = ({
   space,
   style,
   orientation = "vertical",
-  children
+  children,
+  ...props
 }: BaseStack) => (
   <View
+    {...props}
     style={{
       display: "flex",
       flexDirection: orientation === "horizontal" ? "row" : "column",
