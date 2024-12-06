@@ -3,15 +3,13 @@ import {
   Image,
   ImageSourcePropType,
   ImageURISource,
-  StyleSheet,
-  View
+  StyleSheet
 } from "react-native";
 import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
   IOSpacer,
-  IOStyles,
   IOVisualCostants,
   useIOTheme
 } from "../../core";
@@ -43,26 +41,28 @@ type BaseModuleProps = {
 };
 
 type ModuleCredentialProps =
-  | LoadingModuleProps
-  | (BaseModuleProps & ImageProps & PressableModuleBaseProps);
+  | BaseModuleProps & ImageProps & PressableModuleBaseProps;
 
-const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
+const ModuleCredential = (
+  props: WithTestID<LoadingModuleProps | ModuleCredentialProps>
+) =>
+  props.isLoading ? (
+    <ModuleCredentialSkeleton />
+  ) : (
+    <ModuleCredentialContent {...props} />
+  );
+
+const ModuleCredentialContent = ({
+  testID,
+  icon,
+  image,
+  label,
+  onPress,
+  badge,
+  isFetching,
+  ...pressableProps
+}: WithTestID<ModuleCredentialProps>) => {
   const theme = useIOTheme();
-
-  if (props.isLoading) {
-    return <ModuleCredentialSkeleton />;
-  }
-
-  const {
-    testID,
-    icon,
-    image,
-    label,
-    onPress,
-    badge,
-    isFetching,
-    ...pressableProps
-  } = props;
 
   const iconComponent = icon && (
     <Icon
@@ -79,6 +79,33 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
       accessibilityIgnoresInvertColors={true}
     />
   );
+
+  const endComponent = React.useMemo(() => {
+    if (isFetching) {
+      return (
+        <LoadingSpinner
+          testID={testID ? `${testID}_activityIndicator` : undefined}
+          color={theme["interactiveElem-default"]}
+        />
+      );
+    }
+    if (badge) {
+      return (
+        <Badge {...badge} testID={testID ? `${testID}_badge` : undefined} />
+      );
+    }
+    if (onPress) {
+      return (
+        <Icon
+          testID={testID ? `${testID}_icon` : undefined}
+          name="chevronRightListItem"
+          color={theme["interactiveElem-default"]}
+          size={IOListItemVisualParams.chevronSize}
+        />
+      );
+    }
+    return null;
+  }, [testID, theme, isFetching, badge, onPress]);
 
   const ModuleContent = () => (
     <HStack space={8} style={{ alignItems: "center" }}>
@@ -99,24 +126,7 @@ const ModuleCredential = (props: WithTestID<ModuleCredentialProps>) => {
           {label}
         </BodySmall>
       </HStack>
-      <View style={IOStyles.row}>
-        {badge ? (
-          <Badge {...badge} testID={testID ? `${testID}_badge` : undefined} />
-        ) : null}
-        {isFetching ? (
-          <LoadingSpinner
-            testID={testID ? `${testID}_activityIndicator` : undefined}
-            color={theme["interactiveElem-default"]}
-          />
-        ) : onPress ? (
-          <Icon
-            testID={testID ? `${testID}_icon` : undefined}
-            name="chevronRightListItem"
-            color={theme["interactiveElem-default"]}
-            size={IOListItemVisualParams.chevronSize}
-          />
-        ) : null}
-      </View>
+      {endComponent}
     </HStack>
   );
 
