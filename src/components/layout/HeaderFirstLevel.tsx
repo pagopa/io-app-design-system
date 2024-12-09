@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useLayoutEffect } from "react";
+import { createRef, useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
   findNodeHandle,
@@ -7,7 +7,9 @@ import {
   View
 } from "react-native";
 import Animated, {
+  AnimatedRef,
   useAnimatedStyle,
+  useScrollViewOffset,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
@@ -30,6 +32,8 @@ type CommonProps = WithTestID<{
   // This Prop will be removed once all the screens on the first level routing will be refactored
   backgroundColor?: "light" | "dark";
   ignoreSafeAreaMargin?: boolean;
+  animatedRef?: AnimatedRef<Animated.ScrollView>;
+  animatedFlatListRef?: AnimatedRef<Animated.FlatList<any>>;
 }>;
 
 interface Base extends CommonProps {
@@ -72,6 +76,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  },
+  headerDivider: {
+    position: "absolute",
+    width: "100%",
+    height: StyleSheet.hairlineWidth,
+    left: 0,
+    right: 0,
+    bottom: 0
   }
 });
 
@@ -80,12 +92,14 @@ export const HeaderFirstLevel = ({
   type,
   testID,
   backgroundColor = "light",
-  ignoreSafeAreaMargin = false,
   firstAction,
   secondAction,
-  thirdAction
+  thirdAction,
+  ignoreSafeAreaMargin = false,
+  animatedRef,
+  animatedFlatListRef
 }: HeaderFirstLevel) => {
-  const titleRef = React.createRef<View>();
+  const titleRef = createRef<View>();
   const insets = useSafeAreaInsets();
   const theme = useIOTheme();
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
@@ -97,6 +111,12 @@ export const HeaderFirstLevel = ({
     }
   });
 
+  /* We show the divider only when the header is scrolled down */
+  const offset = useScrollViewOffset(
+    (animatedRef as AnimatedRef<Animated.ScrollView>) ||
+      (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
+  );
+
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
     paddingTop.value = withTiming(
@@ -107,6 +127,10 @@ export const HeaderFirstLevel = ({
 
   const animatedStyle = useAnimatedStyle(() => ({
     paddingTop: paddingTop.value
+  }));
+
+  const animatedDivider = useAnimatedStyle(() => ({
+    opacity: withTiming(offset.value > 0 ? 1 : 0, { duration: 200 })
   }));
 
   return (
@@ -123,6 +147,17 @@ export const HeaderFirstLevel = ({
       accessibilityRole="header"
       testID={testID}
     >
+      {/* Divider */}
+      <Animated.View
+        style={[
+          {
+            ...styles.headerDivider,
+            backgroundColor: IOColors[theme["divider-default"]]
+          },
+          animatedDivider
+        ]}
+      />
+
       <View style={styles.headerInner}>
         <View ref={titleRef} accessible accessibilityRole="header">
           <H3
