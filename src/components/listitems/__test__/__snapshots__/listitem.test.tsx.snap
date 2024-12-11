@@ -312,6 +312,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -502,6 +503,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     style={
@@ -661,6 +663,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -1978,6 +1981,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -2049,7 +2053,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
             [
               {},
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 17,
                 "fontStyle": "normal",
@@ -2089,7 +2093,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
                 "borderWidth": 0,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
               },
               {
                 "flex": 0,
@@ -2098,7 +2102,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               },
             ]
           }
-          tintColor="#0073E6"
+          tintColor="#0B3EE3"
           vbHeight={24}
           vbWidth={24}
           width={24}
@@ -2168,6 +2172,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     style={
@@ -2249,7 +2254,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0073E6",
+              "color": "#0B3EE3",
             },
             {
               "flex": 0,
@@ -2258,7 +2263,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0073E6"
+        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
@@ -2327,6 +2332,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -2485,7 +2491,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
                 "borderWidth": 0,
               },
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
               },
               {
                 "flex": 0,
@@ -2494,7 +2500,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               },
             ]
           }
-          tintColor="#0073E6"
+          tintColor="#0B3EE3"
           vbHeight={24}
           vbWidth={24}
           width={24}
