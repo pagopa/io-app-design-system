@@ -12,7 +12,7 @@ import {
   IOBadgeRadius,
   IOBadgeVSpacing,
   IOColors,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
@@ -76,10 +76,10 @@ export const Badge = ({
   variant,
   testID
 }: Badge) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
   const { dynamicFontScale } = useIOFontDynamicScale();
   const { themeType } = useIOThemeContext();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
   const bgOpacityDarkMode = 0.2;
 
@@ -279,7 +279,7 @@ export const Badge = ({
     >
       <IOText
         allowFontScaling={allowFontScaling}
-        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}

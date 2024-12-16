@@ -1,19 +1,14 @@
 import * as React from "react";
 import { useLayoutEffect } from "react";
 import {
-  View,
+  AccessibilityInfo,
   StyleSheet,
-  findNodeHandle,
-  AccessibilityInfo
+  View,
+  findNodeHandle
 } from "react-native";
-import {
-  IOColors,
-  IOVisualCostants,
-  useIOExperimentalDesign,
-  IOStyles
-} from "../../core";
-import { H4 } from "../typography";
+import { IOColors, IOStyles, IOVisualCostants } from "../../core";
 import { IconButton } from "../buttons";
+import { H4 } from "../typography";
 
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +40,6 @@ export const ModalBSHeader = ({
   onClose,
   closeAccessibilityLabel
 }: Props) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const headerRef = React.createRef<View>();
 
   useLayoutEffect(() => {
@@ -69,24 +63,12 @@ export const ModalBSHeader = ({
           <H4>{title}</H4>
         </View>
       )}
-      {/* ◀ REMOVE_LEGACY_COMPONENT: Remove the following condition */}
-      {isExperimental ? (
-        <IconButton
-          color="neutral"
-          onPress={onClose}
-          icon="closeMedium"
-          accessibilityLabel={closeAccessibilityLabel}
-        />
-      ) : (
-        <View style={{ opacity: 0.5 }}>
-          <IconButton
-            color="neutral"
-            onPress={onClose}
-            icon="closeMedium"
-            accessibilityLabel={closeAccessibilityLabel}
-          />
-        </View>
-      )}
+      <IconButton
+        color="neutral"
+        onPress={onClose}
+        icon="closeMedium"
+        accessibilityLabel={closeAccessibilityLabel}
+      />
     </View>
   );
 };

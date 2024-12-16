@@ -21,7 +21,7 @@ import {
 } from "react-native";
 import Animated, {
   Easing,
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -33,7 +33,7 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
@@ -116,10 +116,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     ref
   ) => {
     const searchInputRef = useRef<TextInput>(null);
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     /* Component visual attributes */
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
     const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
     /* Widths used for the transition:
@@ -173,7 +173,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
               showCancelButton,
               [0, 1],
               [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
-              Extrapolate.CLAMP
+              Extrapolation.CLAMP
             )
           }
         ],
@@ -245,11 +245,18 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             accessibilityRole={"search"}
             accessibilityLabel={accessibilityLabel}
             style={[
+              {
+                ...makeFontStyleObject(
+                  inputFontSizePlaceholder,
+                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  undefined,
+                  "Regular"
+                )
+              },
               styles.textInput,
               Platform.OS === "ios"
                 ? styles.textInputIOS
-                : styles.textInputAndroid,
-              isExperimental ? styles.placeholder : styles.placeholderLegacy
+                : styles.textInputAndroid
             ]}
             selectionColor={inputCaretColor}
             cursorColor={inputCaretColor}
@@ -322,22 +329,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: iconMargin
-  },
-  placeholder: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "Titillio",
-      undefined,
-      "Regular"
-    )
-  },
-  placeholderLegacy: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "TitilliumSansPro",
-      undefined,
-      "Regular"
-    )
   },
   cancelButton: {
     position: "absolute",

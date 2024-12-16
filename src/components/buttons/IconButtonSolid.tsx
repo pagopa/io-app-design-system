@@ -5,11 +5,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOButtonStyles,
-  IOIconButtonStyles,
-  useIOExperimentalDesign
-} from "../../core";
+import { IOButtonStyles, IOIconButtonStyles } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -65,36 +61,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<IconButtonSolid["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: IOColors.blue,
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-100"]
-    },
-    icon: {
-      default: IOColors.white,
-      disabled: IOColors["grey-450"]
-    }
-  },
-  contrast: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["blue-50"],
-      disabled: hexToRgba(IOColors.white, 0.25)
-    },
-    icon: {
-      default: IOColors.blue,
-      disabled: IOColors.blue
-    }
-  }
-};
-
 export const IconButtonSolid = ({
   icon,
   color = "primary",
@@ -104,22 +70,18 @@ export const IconButtonSolid = ({
   accessibilityHint,
   testID
 }: IconButtonSolid) => {
-  const { isExperimental } = useIOExperimentalDesign();
-
   const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
-
-  const colorMap = React.useMemo(
-    () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-    [isExperimental]
-  );
 
   const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       progress.value,
       [0, 1],
-      [colorMap[color].background.default, colorMap[color].background.pressed]
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.pressed
+      ]
     )
   }));
 
@@ -145,10 +107,10 @@ export const IconButtonSolid = ({
           !disabled && backgroundColorAnimationStyle,
           disabled
             ? {
-                backgroundColor: colorMap[color]?.background?.disabled
+                backgroundColor: mapColorStates[color]?.background?.disabled
               }
             : {
-                backgroundColor: colorMap[color]?.background?.default
+                backgroundColor: mapColorStates[color]?.background?.default
               }
         ]}
       >
@@ -157,8 +119,8 @@ export const IconButtonSolid = ({
           name={icon}
           color={
             !disabled
-              ? colorMap[color]?.icon?.default
-              : colorMap[color]?.icon?.disabled
+              ? mapColorStates[color]?.icon?.default
+              : mapColorStates[color]?.icon?.disabled
           }
         />
       </Animated.View>

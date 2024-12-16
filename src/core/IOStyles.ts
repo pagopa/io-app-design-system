@@ -104,7 +104,6 @@ export const IOStyles = StyleSheet.create({
 - Height for classic buttons
 - Width and height for icon buttons
 */
-const btnLegacySizeDefault = 40;
 const btnSizeLarge = 56;
 // NEW Design System
 const btnBorderRadius = 8;
@@ -115,46 +114,6 @@ export const buttonSolidHeight: number = btnSizeDefault;
 export const iconBtnSizeSmall: number = 24;
 
 export const numberPadBtnSize: number = 56;
-
-export const IOButtonLegacyStyles = StyleSheet.create({
-  /* BaseButton, used in the:
-  ButtonSolid, ButtonOutline
-  */
-  button: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlignVertical: "center", // Prop supported on Android only
-    /* Legacy visual properties. They will be replaced with
-    dynamic ones once NativeBase is gone */
-    borderRadius: 4,
-    paddingHorizontal: 16,
-    // Reset default visual parameters
-    elevation: 0
-    // Visual parameters based on the FontScale
-    // paddingVertical: PixelRatio.getFontScale() * 10,
-    // paddingHorizontal: PixelRatio.getFontScale() * 16,
-    // borderRadius: PixelRatio.getFontScale() * 8
-  },
-  buttonInner: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  /* Labels */
-  label: {
-    alignSelf: "center"
-  },
-  labelSizeDefault: {
-    fontSize: 16
-  },
-  /* Heights
-  Must be replaced with dynamic values, depending on the
-  fontScale parameter */
-  buttonSizeDefault: {
-    height: btnLegacySizeDefault
-  }
-});
 
 export const IOButtonStyles = StyleSheet.create({
   /* BaseButton, used in the:
@@ -326,11 +285,6 @@ interface IOSwitchVisualParams {
   padding: number;
 }
 
-interface IOSelectionTickLegacyVisualParams {
-  borderColorOffState: IOColors;
-  bgColorOnState: IOColors;
-}
-
 export const IOSelectionTickVisualParams: IOSelectionTickVisualParams = {
   size: 24,
   borderWidth: 2,
@@ -349,12 +303,6 @@ export const IOSwitchVisualParams: IOSwitchVisualParams = {
   // Space between the circle and the main shape
   padding: 2
 };
-
-export const IOSelectionTickLegacyVisualParams: IOSelectionTickLegacyVisualParams =
-  {
-    borderColorOffState: "bluegrey",
-    bgColorOnState: "blue"
-  };
 
 interface IOSelectionListItemVisualParams {
   paddingVertical: IOSpacingScale;

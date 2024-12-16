@@ -1,5 +1,6 @@
 import {
   IODSExperimentalContextProvider,
+  IONewTypefaceContextProvider,
   IOThemeContextProvider,
   ToastProvider
 } from "@pagopa/io-app-design-system";
@@ -7,8 +8,8 @@ import * as React from "react";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AppNavigator from "./navigation/navigator";
 import { StatusBannerProvider } from "./components/StatusBannerProvider";
+import AppNavigator from "./navigation/navigator";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -17,15 +18,17 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <IODSExperimentalContextProvider>
-          <IOThemeContextProvider
-            theme={colorScheme === "dark" ? "dark" : "light"}
-          >
-            <StatusBannerProvider>
-              <ToastProvider>
-                <AppNavigator />
-              </ToastProvider>
-            </StatusBannerProvider>
-          </IOThemeContextProvider>
+          <IONewTypefaceContextProvider>
+            <IOThemeContextProvider
+              theme={colorScheme === "dark" ? "dark" : "light"}
+            >
+              <StatusBannerProvider>
+                <ToastProvider>
+                  <AppNavigator />
+                </ToastProvider>
+              </StatusBannerProvider>
+            </IOThemeContextProvider>
+          </IONewTypefaceContextProvider>
         </IODSExperimentalContextProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
