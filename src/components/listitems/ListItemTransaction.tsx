@@ -12,6 +12,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
@@ -25,7 +26,7 @@ import { H6, BodySmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
-} from "./PressableListItemsBase";
+} from "./PressableListItemBase";
 
 export type ListItemTransactionBadge = {
   text: string;
@@ -132,6 +133,7 @@ export const ListItemTransaction = ({
   const ListItemTransactionContent = () => (
     <>
       <HStack
+        allowScaleSpacing
         space={IOListItemLogoMargin}
         style={{ alignItems: "center", flexShrink: 1 }}
       >
@@ -146,13 +148,9 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={{ flexShrink: 1 }}>
-          <BodySmall
-            numberOfLines={numberOfLines}
-            color={theme["textBody-default"]}
-            weight="Semibold"
-          >
+          <H6 numberOfLines={numberOfLines} color={theme["textBody-default"]}>
             {title}
-          </BodySmall>
+          </H6>
           <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
           </BodySmall>
@@ -172,6 +170,7 @@ export const ListItemTransaction = ({
         )}
         {showChevron && (
           <Icon
+            allowFontScaling
             name="chevronRightListItem"
             color={interactiveColor}
             size={IOListItemVisualParams.chevronSize}

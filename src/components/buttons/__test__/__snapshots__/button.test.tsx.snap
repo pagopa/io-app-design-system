@@ -59,7 +59,13 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
           "textAlignVertical": "center",
         },
         false,
+        {
+          "columnGap": 8,
+        },
         {},
+        {
+          "columnGap": 8,
+        },
         {
           "transform": [
             {
@@ -76,7 +82,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -160,19 +166,24 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         {
           "height": 48,
         },
+        {
+          "columnGap": 8,
+        },
         false,
         {
           "backgroundColor": "rgba(231,236,252,0)",
           "borderColor": "#0B3EE3",
         },
         {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -183,7 +194,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -276,23 +287,29 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           "backgroundColor": "#0B3EE3",
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
         },
+        {
+          "backgroundColor": undefined,
+        },
       ]
     }
   >
     <View
+      entering={[Function]}
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
           },
           false,
         ]
@@ -304,7 +321,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         allowFontScaling={true}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
           [
@@ -510,12 +527,14 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
           "width": 48,
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
         },
       ]
     }
@@ -642,12 +661,14 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
           "width": 56,
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
         },
         {
           "backgroundColor": "#0B3EE3",
@@ -778,7 +799,13 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           "textAlignVertical": "center",
         },
         false,
+        {
+          "columnGap": 8,
+        },
         {},
+        {
+          "columnGap": 8,
+        },
         {
           "transform": [
             {
@@ -795,7 +822,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -878,19 +905,24 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {
           "height": 40,
         },
+        {
+          "columnGap": 8,
+        },
         false,
         {
           "backgroundColor": "rgba(0,115,230,0)",
           "borderColor": "#0073E6",
         },
         {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -901,7 +933,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -993,23 +1025,29 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           "backgroundColor": "#0073E6",
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
         },
+        {
+          "backgroundColor": undefined,
+        },
       ]
     }
   >
     <View
+      entering={[Function]}
       style={
         [
           {
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
           },
           false,
         ]
@@ -1021,7 +1059,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
         allowFontScaling={true}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
           [
@@ -1227,12 +1265,14 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           "width": 48,
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
         },
       ]
     }
@@ -1359,12 +1399,14 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
           "width": 56,
         },
         {
-          "backgroundColor": undefined,
           "transform": [
             {
               "scale": undefined,
             },
           ],
+        },
+        {
+          "backgroundColor": undefined,
         },
         {
           "backgroundColor": "#0073E6",

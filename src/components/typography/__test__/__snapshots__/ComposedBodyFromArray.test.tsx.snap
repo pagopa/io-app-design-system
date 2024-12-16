@@ -4,7 +4,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, auto text alig
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -28,7 +28,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, center text al
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -52,7 +52,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, default text a
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -76,7 +76,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, justify text a
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -100,7 +100,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, left text alig
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -124,7 +124,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, right text ali
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -148,7 +148,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -169,7 +169,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -189,7 +189,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -209,7 +209,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -229,7 +229,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -249,7 +249,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -273,7 +273,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -294,7 +294,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -314,7 +314,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -334,7 +334,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -354,7 +354,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -374,7 +374,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -398,7 +398,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -419,7 +419,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -439,7 +439,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -459,7 +459,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -479,7 +479,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -499,7 +499,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -523,7 +523,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -544,7 +544,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -564,7 +564,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -584,7 +584,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -604,7 +604,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -624,7 +624,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -648,7 +648,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -669,7 +669,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -689,7 +689,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -709,7 +709,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -729,7 +729,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -749,7 +749,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -773,7 +773,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
 <Text
   allowFontScaling={true}
   dynamicTypeRamp="body"
-  maxFontSizeMultiplier={1.25}
+  maxFontSizeMultiplier={1.5}
   style={
     [
       {},
@@ -794,7 +794,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -814,7 +814,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -834,7 +834,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -854,7 +854,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},
@@ -874,7 +874,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
   <Text
     allowFontScaling={true}
     dynamicTypeRamp="body"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     style={
       [
         {},

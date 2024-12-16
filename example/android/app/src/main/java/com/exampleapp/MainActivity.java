@@ -5,6 +5,8 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
+import android.os.Bundle;
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -14,6 +16,16 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "ExampleApp";
+  }
+
+  /**
+   * Avoid crashing the application when the user changes the `fontScale` attribute
+   * and the UI is updated accordingly.
+   * To learn more: https://github.com/pagopa/io-app-design-system/pull/348
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(null);
   }
 
   /**

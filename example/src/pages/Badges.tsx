@@ -142,5 +142,12 @@ const renderTag = () => (
         <Tag text={"Looooooooong string"} variant="error" />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name={"Tag, font scaling not allowed"}>
+      <Tag
+        text={"Entro il 30 mag"}
+        variant="warning"
+        allowFontScaling={false}
+      />
+    </ComponentViewerBox>
   </View>
 );
