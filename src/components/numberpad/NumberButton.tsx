@@ -1,20 +1,12 @@
 import React, { memo, useCallback } from "react";
 import { Pressable } from "react-native";
 import Animated, {
-  Extrapolation,
-  interpolate,
   interpolateColor,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IONumberPadButtonStyles,
-  IOScaleValues,
-  IOSpringValues
-} from "../../core";
+import { IOColors, IONumberPadButtonStyles } from "../../core";
+import { useScaleAnimation } from "../../hooks";
 import { H3 } from "../typography";
 
 type NumberButtonVariantType = "light" | "dark";
@@ -62,45 +54,18 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
  */
 export const NumberButton = memo(
   ({ number, variant, onPress }: NumberButtonProps) => {
-    const isPressed = useSharedValue(0);
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation("slight");
+    const reducedMotion = useReducedMotion();
 
     // Interpolate animation values from `isPressed` values
-    const pressedAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-      const bgColor = interpolateColor(
-        progressPressed.value,
+    const pressedAnimationStyle = useAnimatedStyle(() => ({
+      backgroundColor: interpolateColor(
+        progress.value,
         [0, 1],
         [colorMap[variant].background, colorMap[variant].pressed]
-      );
-
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
-      );
-
-      return {
-        backgroundColor: bgColor,
-        transform: [{ scale }]
-      };
-    });
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
+      )
+    }));
 
     const handleOnPress = useCallback(() => {
       onPress(number);
@@ -119,7 +84,8 @@ export const NumberButton = memo(
             IONumberPadButtonStyles.button,
             IONumberPadButtonStyles.circularShape,
             IONumberPadButtonStyles.buttonSize,
-            pressedAnimationStyle
+            pressedAnimationStyle,
+            !reducedMotion && scaleAnimatedStyle
           ]}
         >
           <H3 color={colorMap[variant].foreground}>{number}</H3>

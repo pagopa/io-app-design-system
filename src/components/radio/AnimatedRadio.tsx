@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Pressable, PressableProps, StyleSheet, View } from "react-native";
+import {
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  View,
+  ViewStyle
+} from "react-native";
 import Animated, {
   Easing,
   interpolate,
@@ -14,32 +20,23 @@ import { IOSelectionTickVisualParams } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
+  size: number;
   checked?: boolean;
 };
 
 type OwnProps = Props & Pick<PressableProps, "disabled" | "onPress">;
 
 const styles = StyleSheet.create({
-  radioWrapper: {
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size
-  },
   radioBorder: {
     position: "absolute",
     left: 0,
     top: 0,
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size,
-    borderWidth: IOSelectionTickVisualParams.borderWidth,
-    borderRadius: IOSelectionTickVisualParams.size / 2
+    borderWidth: IOSelectionTickVisualParams.borderWidth
   },
   radioCircle: {
     position: "absolute",
     left: 0,
-    top: 0,
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size,
-    borderRadius: IOSelectionTickVisualParams.size / 2
+    top: 0
   }
 });
 
@@ -47,7 +44,12 @@ const styles = StyleSheet.create({
  * An animated checkbox. This can be used to implement a
  * standard {@link CheckBox} or other composite components.
  */
-export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
+export const AnimatedRadio = ({
+  size,
+  checked,
+  onPress,
+  disabled
+}: OwnProps) => {
   const isChecked = checked ?? false;
 
   const borderColor = IOColors[IOSelectionTickVisualParams.borderColorOffState];
@@ -55,6 +57,17 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
 
   const circleAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
+
+  const radioButtonSizeStyle: ViewStyle = {
+    width: size,
+    height: size,
+    borderRadius: size / 2
+  };
+
+  const radioButtonWrapperSizeStyle: ViewStyle = {
+    width: size,
+    height: size
+  };
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
@@ -85,12 +98,15 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
       disabled={disabled}
       testID="AnimatedRadioInput"
       onPress={onPress}
-      style={styles.radioWrapper}
+      style={radioButtonWrapperSizeStyle}
     >
-      <View style={[styles.radioBorder, { borderColor }]} />
+      <View
+        style={[styles.radioBorder, radioButtonSizeStyle, { borderColor }]}
+      />
       <Animated.View
         style={[
           styles.radioCircle,
+          radioButtonSizeStyle,
           { backgroundColor },
           animatedCheckboxSquare
         ]}
@@ -98,6 +114,7 @@ export const AnimatedRadio = ({ checked, onPress, disabled }: OwnProps) => {
       {isChecked && (
         <View>
           <AnimatedTick
+            size={size}
             progress={tickAnimationProgress}
             stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
           />

@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
+import React, { ComponentProps, useCallback } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -7,27 +7,21 @@ import {
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
-  Extrapolation,
-  interpolate,
   interpolateColor,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
 import {
   IOButtonStyles,
   IOColors,
-  IOScaleValues,
-  IOSpringValues,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
   exitTransitionInnerContent
 } from "../../core";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { HSpacer } from "../spacer/Spacer";
 import { ButtonText } from "../typography/ButtonText";
 
 export type ButtonSolidColor = "primary" | "danger" | "contrast";
@@ -42,6 +36,7 @@ type ColorStates = {
 };
 
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
+const ICON_MARGIN = 8;
 const DISABLED_OPACITY = 0.5;
 
 // Icon size
@@ -131,57 +126,21 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     },
     ref
   ) => {
-    const isPressed = useSharedValue(0);
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-    /* Prevent the component from triggering the `isEntering' transition
-       on the on the first render. Solution from this discussion:
-       https://github.com/software-mansion/react-native-reanimated/discussions/2513
-    */
-    const isMounted = useRef(false);
-
-    useEffect(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isMounted.current = true;
-    }, []);
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation();
+    const reducedMotion = useReducedMotion();
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
       const backgroundColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [mapColorStates[color].default, mapColorStates[color].pressed]
       );
 
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
-      );
-
-      return {
-        backgroundColor,
-        transform: [{ scale }]
-      };
+      return { backgroundColor };
     });
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
 
     const handleOnPress = useCallback(
       (event: GestureResponderEvent) => {
@@ -231,15 +190,14 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
               : { backgroundColor: mapColorStates[color]?.default },
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
+            !disabled && !reducedMotion && scaleAnimatedStyle,
             !disabled && pressedAnimationStyle
           ]}
         >
           {loading && (
             <Animated.View
               style={IOButtonStyles.buttonInner}
-              entering={
-                isMounted.current ? enterTransitionInnerContentSmall : undefined
-              }
+              entering={enterTransitionInnerContentSmall}
               exiting={exitTransitionInnerContent}
             >
               <LoadingSpinner color={foregroundColor} />
@@ -250,24 +208,20 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
             <Animated.View
               style={[
                 IOButtonStyles.buttonInner,
+                { columnGap: ICON_MARGIN },
+                /* If 'iconPosition' is set to 'end', we use 
+                   reverse flex property to invert the position */
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
-              entering={
-                isMounted.current ? enterTransitionInnerContent : undefined
-              }
-              /* Temporarily disable the exiting transition because it caused
-              a weird glitch on page exit */
-              // exiting={exitTransitionInnerContent}
+              entering={enterTransitionInnerContent}
             >
               {icon && (
-                <>
-                  {/* If 'iconPosition' is set to 'end', we use 
-            reverse flex property to invert the position */}
-                  <Icon name={icon} size={iconSize} color={foregroundColor} />
-                  {/* Once we have support for 'gap' property,
-            we can get rid of that spacer */}
-                  <HSpacer size={8} />
-                </>
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  size={iconSize}
+                  color={foregroundColor}
+                />
               )}
               <ButtonText
                 color={foregroundColor}

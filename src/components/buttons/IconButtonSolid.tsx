@@ -1,22 +1,13 @@
 import * as React from "react";
-import { useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
-  Extrapolation,
-  interpolate,
   interpolateColor,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOButtonStyles,
-  IOIconButtonStyles,
-  IOScaleValues,
-  IOSpringValues
-} from "../../core";
+import { IOButtonStyles, IOIconButtonStyles } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons } from "../icons";
 
@@ -79,48 +70,20 @@ export const IconButtonSolid = ({
   accessibilityHint,
   testID
 }: IconButtonSolid) => {
-  const isPressed = useSharedValue(0);
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.exaggeratedButton?.pressedState;
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("exaggerated");
+  const reducedMotion = useReducedMotion();
 
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      progressPressed.value,
+  const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      progress.value,
       [0, 1],
       [
         mapColorStates[color].background.default,
         mapColorStates[color].background.pressed
       ]
-    );
-
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolation.CLAMP
-    );
-
-    return {
-      backgroundColor,
-      transform: [{ scale }]
-    };
-  });
-
-  const handlePressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const handlePressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+    )
+  }));
 
   return (
     <Pressable
@@ -130,8 +93,8 @@ export const IconButtonSolid = ({
       accessibilityState={{ disabled }}
       testID={testID}
       onPress={onPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
       accessible={true}
       disabled={disabled}
       style={IOButtonStyles.dimensionsDefault}
@@ -140,7 +103,8 @@ export const IconButtonSolid = ({
         style={[
           IOIconButtonStyles.button,
           IOIconButtonStyles.buttonSizeLarge,
-          !disabled && pressedAnimationStyle,
+          !disabled && !reducedMotion && scaleAnimatedStyle,
+          !disabled && backgroundColorAnimationStyle,
           disabled
             ? {
                 backgroundColor: mapColorStates[color]?.background?.disabled
@@ -151,6 +115,7 @@ export const IconButtonSolid = ({
         ]}
       >
         <AnimatedIcon
+          allowFontScaling
           name={icon}
           color={
             !disabled

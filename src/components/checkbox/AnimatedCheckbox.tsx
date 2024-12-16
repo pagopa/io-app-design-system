@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Pressable, PressableProps, StyleSheet, View } from "react-native";
+import {
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  View,
+  ViewStyle
+} from "react-native";
 import Animated, {
   Easing,
   interpolate,
@@ -11,9 +17,11 @@ import Animated, {
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSelectionTickVisualParams } from "../../core/IOStyles";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
+  size: number;
   checked?: boolean;
 };
 
@@ -22,28 +30,18 @@ type OwnProps = Props & Pick<PressableProps, "disabled" | "onPress">;
 const checkBoxRadius: number = 5;
 
 const styles = StyleSheet.create({
-  checkBoxWrapper: {
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size
-  },
   checkboxBorder: {
+    borderWidth: IOSelectionTickVisualParams.borderWidth,
+    borderCurve: "continuous",
     position: "absolute",
     left: 0,
-    top: 0,
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size,
-    borderWidth: IOSelectionTickVisualParams.borderWidth,
-    borderRadius: checkBoxRadius,
-    borderCurve: "continuous"
+    top: 0
   },
   checkBoxSquare: {
+    borderCurve: "continuous",
     position: "absolute",
     left: 0,
-    top: 0,
-    width: IOSelectionTickVisualParams.size,
-    height: IOSelectionTickVisualParams.size,
-    borderRadius: checkBoxRadius,
-    borderCurve: "continuous"
+    top: 0
   }
 });
 
@@ -51,7 +49,13 @@ const styles = StyleSheet.create({
  * An animated checkbox. This can be used to implement a
  * standard {@link CheckBox} or other composite components.
  */
-export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
+export const AnimatedCheckbox = ({
+  size,
+  checked,
+  onPress,
+  disabled
+}: OwnProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const isChecked = checked ?? false;
 
   const borderColor = IOColors[IOSelectionTickVisualParams.borderColorOffState];
@@ -59,6 +63,17 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
 
   const squareAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
+
+  const checkboxSizeStyle: ViewStyle = {
+    width: size,
+    height: size,
+    borderRadius: checkBoxRadius * dynamicFontScale
+  };
+
+  const checkboxWrapperSizeStyle: ViewStyle = {
+    width: size,
+    height: size
+  };
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
@@ -88,13 +103,16 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
       accessible={false}
       disabled={disabled}
       onPress={onPress}
-      style={styles.checkBoxWrapper}
+      style={checkboxWrapperSizeStyle}
       testID="AnimatedCheckboxInput"
     >
-      <View style={[styles.checkboxBorder, { borderColor }]} />
+      <View
+        style={[styles.checkboxBorder, checkboxSizeStyle, { borderColor }]}
+      />
       <Animated.View
         style={[
           styles.checkBoxSquare,
+          checkboxSizeStyle,
           { backgroundColor },
           animatedCheckboxSquare
         ]}
@@ -102,6 +120,7 @@ export const AnimatedCheckbox = ({ checked, onPress, disabled }: OwnProps) => {
       {isChecked && (
         <View style={{ zIndex: 1 }}>
           <AnimatedTick
+            size={size}
             progress={tickAnimationProgress}
             stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
           />

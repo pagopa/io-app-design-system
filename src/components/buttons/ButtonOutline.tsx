@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -6,24 +6,18 @@ import {
   View
 } from "react-native";
 import Animated, {
-  Extrapolation,
-  SharedValue,
-  interpolate,
   interpolateColor,
   useAnimatedProps,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
 import {
   IOButtonStyles,
   IOColors,
-  IOScaleValues,
-  IOSpringValues,
   hexToRgba,
   useIONewTypeface
 } from "../../core/";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -31,7 +25,6 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { HSpacer } from "../spacer/Spacer";
 import { IOText, buttonTextFontSize } from "../typography";
 
 type ColorButtonOutline = "primary" | "contrast" | "danger";
@@ -133,6 +126,7 @@ const mapColorStates: Record<
 const iconSize: IOIconSizeScale = 20;
 
 const DISABLED_OPACITY = 0.5;
+const ICON_MARGIN = 8;
 
 const IOButtonStylesLocal = StyleSheet.create({
   buttonWithBorder: {
@@ -140,7 +134,7 @@ const IOButtonStylesLocal = StyleSheet.create({
   }
 });
 
-export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
+export const ButtonOutline = forwardRef<View, ButtonOutline>(
   (
     {
       color = "primary",
@@ -156,24 +150,18 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
     },
     ref
   ) => {
-    const isPressed: SharedValue<number> = useSharedValue(0);
     const { newTypefaceEnabled } = useIONewTypeface();
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation();
+    const reducedMotion = useReducedMotion();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
-
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
       const backgroundColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].background.default,
@@ -182,70 +170,45 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
       );
 
       const borderColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].border.default,
           mapColorStates[color].border.pressed
         ]
-      );
-
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
       );
 
       return {
         borderColor,
-        backgroundColor,
-        transform: [{ scale }]
+        backgroundColor
       };
     });
 
-    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-
-      const labelColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].border.default,
           mapColorStates[color].border.pressed
         ]
-      );
-
-      return {
-        color: labelColor
-      };
-    });
+      )
+    }));
 
     // Animate the <Icon> color prop
-    const pressedColorIconAnimationStyle = useAnimatedProps(() => {
-      const iconColor = interpolateColor(
-        progressPressed.value,
+    const pressedColorIconAnimationStyle = useAnimatedProps(() => ({
+      color: interpolateColor(
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].label.default,
           mapColorStates[color].label.pressed
         ]
-      );
-      return { color: iconColor };
-    });
+      )
+    }));
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
 
     return (
       <Pressable
@@ -268,6 +231,7 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
             IOButtonStyles.buttonSizeDefault,
             IOButtonStylesLocal.buttonWithBorder,
             fullWidth && { paddingHorizontal: 16 },
+            { columnGap: ICON_MARGIN },
             iconPosition === "end" && { flexDirection: "row-reverse" },
             disabled
               ? {
@@ -281,28 +245,27 @@ export const ButtonOutline = React.forwardRef<View, ButtonOutline>(
                 },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
+            !reducedMotion && !disabled && scaleAnimatedStyle,
             !disabled && pressedAnimationStyle
           ]}
         >
-          {icon && (
-            <>
-              {!disabled ? (
-                <AnimatedIconClassComponent
-                  name={icon}
-                  animatedProps={pressedColorIconAnimationStyle}
-                  color={mapColorStates[color]?.label?.default}
-                  size={iconSize}
-                />
-              ) : (
-                <AnimatedIcon
-                  name={icon}
-                  color={mapColorStates[color]?.label?.disabled}
-                  size={iconSize}
-                />
-              )}
-              <HSpacer size={8} />
-            </>
-          )}
+          {icon &&
+            (!disabled ? (
+              <AnimatedIconClassComponent
+                allowFontScaling
+                name={icon}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={mapColorStates[color]?.label?.default}
+                size={iconSize}
+              />
+            ) : (
+              <AnimatedIcon
+                allowFontScaling
+                name={icon}
+                color={mapColorStates[color]?.label?.disabled}
+                size={iconSize}
+              />
+            ))}
           <AnimatedIOText
             font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}

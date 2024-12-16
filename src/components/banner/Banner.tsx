@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import {
   AccessibilityRole,
   GestureResponderEvent,
@@ -7,28 +7,19 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import Animated, {
-  Extrapolation,
-  interpolate,
-  SharedValue,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import {
   IOBannerBigSpacing,
   IOBannerRadius,
   IOBannerSmallHSpacing,
   IOBannerSmallVSpacing,
-  IOScaleValues,
-  IOSpringValues,
   IOStyles,
   useIONewTypeface,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
 import { hexToRgba, IOColors } from "../../core/IOColors";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
 import {
@@ -159,8 +150,9 @@ export const Banner = ({
   accessibilityLabel,
   testID
 }: Banner) => {
-  const isPressed: SharedValue<number> = useSharedValue(0);
   const { newTypefaceEnabled } = useIONewTypeface();
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
   const { themeType } = useIOThemeContext();
   const theme = useIOTheme();
 
@@ -180,40 +172,6 @@ export const Banner = ({
     paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
   };
 
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
-
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
-
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolation.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
-
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
   const fallbackAccessibilityLabel = [title, content, action]
@@ -232,8 +190,6 @@ export const Banner = ({
       >
         {title && (
           <>
-            {/* Once we get 'gap' property, we can get rid of
-          these <VSpacer> components */}
             <H6 color={colorTitle}>{title}</H6>
             <VSpacer size={4} />
           </>
@@ -248,20 +204,27 @@ export const Banner = ({
         )}
         {action && (
           /* Disable pointer events to avoid
-                      pressed state on the button */
+             pressed state on the button */
           <View
             pointerEvents="none"
-            accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
+            accessible={true}
+            accessibilityElementsHidden
+            accessibilityLabel={action}
+            accessibilityRole="button"
           >
             <VSpacer size={4} />
             <IOText
               font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
-              weight={"Semibold"}
+              weight="Semibold"
               color={colorMainButton}
               size={buttonTextFontSize}
               numberOfLines={1}
               ellipsizeMode="tail"
+              // A11y
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden={true}
             >
               {action}
             </IOText>
@@ -297,11 +260,7 @@ export const Banner = ({
       accessible={false}
     >
       <Animated.View
-        style={[
-          styles.container,
-          dynamicContainerStyles,
-          pressedAnimationStyle
-        ]}
+        style={[styles.container, dynamicContainerStyles, scaleAnimatedStyle]}
       >
         {renderMainBlock()}
       </Animated.View>

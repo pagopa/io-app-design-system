@@ -1,23 +1,19 @@
-import React, { useCallback } from "react";
+import React, { forwardRef } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
-  Extrapolation,
-  interpolate,
   interpolateColor,
   useAnimatedProps,
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
+  useReducedMotion
 } from "react-native-reanimated";
 import {
   IOButtonStyles,
   IOColors,
-  IOScaleValues,
-  IOSpringValues,
+  IOSpacingScale,
   hexToRgba,
   useIONewTypeface
 } from "../../core";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
@@ -25,7 +21,6 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { HSpacer } from "../spacer/Spacer";
 import { IOText, buttonTextFontSize } from "../typography";
 
 export type ColorButtonLink = "primary" | "contrast";
@@ -74,8 +69,9 @@ const mapColorStates: Record<
 };
 
 const DISABLED_OPACITY = 0.5;
+const ICON_MARGIN = 8;
 
-export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
+export const ButtonLink = forwardRef<View, ButtonLinkProps>(
   (
     {
       color = "primary",
@@ -90,41 +86,18 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
     },
     ref
   ) => {
-    const isPressed = useSharedValue(0);
     const { newTypefaceEnabled } = useIONewTypeface();
+    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation();
+    const reducedMotion = useReducedMotion();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
-
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
-
-    // Interpolate animation values from `isPressed` values
-    const pressedAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
-      );
-
-      return {
-        transform: [{ scale }]
-      };
-    });
 
     const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
 
       const labelColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].label.default,
@@ -140,7 +113,7 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
     // Animate the <Icon> color prop
     const pressedColorIconAnimationStyle = useAnimatedProps(() => {
       const iconColor = interpolateColor(
-        progressPressed.value,
+        progress.value,
         [0, 1],
         [
           mapColorStates[color].label.default,
@@ -154,17 +127,9 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);
 
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
-
     // Icon size
     const iconSize: IOIconSizeScale = 24;
+    const iconMargin: IOSpacingScale = 8;
 
     return (
       <Pressable
@@ -187,31 +152,31 @@ export const ButtonLink = React.forwardRef<View, ButtonLinkProps>(
           style={[
             IOButtonStyles.buttonLink,
             iconPosition === "end" && { flexDirection: "row-reverse" },
+            { columnGap: iconMargin },
             disabled ? { opacity: DISABLED_OPACITY } : {},
+            { columnGap: ICON_MARGIN },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
-            !disabled && pressedAnimationStyle
+            !disabled && !reducedMotion && scaleAnimatedStyle
           ]}
         >
-          {icon && (
-            <>
-              {!disabled ? (
-                <AnimatedIconClassComponent
-                  name={icon}
-                  animatedProps={pressedColorIconAnimationStyle}
-                  color={mapColorStates[color]?.label?.default}
-                  size={iconSize}
-                />
-              ) : (
-                <AnimatedIcon
-                  name={icon}
-                  color={mapColorStates[color]?.label?.disabled}
-                  size={iconSize}
-                />
-              )}
-              <HSpacer size={8} />
-            </>
-          )}
+          {icon &&
+            (!disabled ? (
+              <AnimatedIconClassComponent
+                allowFontScaling
+                name={icon}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={mapColorStates[color]?.label?.default}
+                size={iconSize}
+              />
+            ) : (
+              <AnimatedIcon
+                allowFontScaling
+                name={icon}
+                color={mapColorStates[color]?.label?.disabled}
+                size={iconSize}
+              />
+            ))}
           <AnimatedIOText
             accessible={false}
             accessibilityElementsHidden

@@ -1,19 +1,18 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
 import Animated, {
-  Extrapolation,
-  interpolate,
+  SharedValue,
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
+  useReducedMotion,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOScaleValues, IOSpringValues, hexToRgba } from "../../core";
-import { useSpringPressProgressValue } from "../../utils/hooks/useSpringPressProgressValue";
+import { IOColors, IOSpringValues, hexToRgba } from "../../core";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { HSpacer } from "../spacer";
 import { BodySmall } from "../typography";
 
 type ColorMode = "light" | "dark";
@@ -102,11 +101,9 @@ const TabItem = ({
   icon,
   iconSelected
 }: TabItem) => {
-  const {
-    progress: progressPressed,
-    onPressIn,
-    onPressOut
-  } = useSpringPressProgressValue(IOSpringValues.selection);
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation();
+  const reducedMotion = useReducedMotion();
 
   const foregroundColor = useMemo(
     () =>
@@ -129,12 +126,12 @@ const TabItem = ({
     0.1
   );
 
-  const isSelected: Animated.SharedValue<number> = useSharedValue(0);
+  const isSelected: SharedValue<number> = useSharedValue(0);
   const progressSelected = useDerivedValue(() =>
     withSpring(isSelected.value, IOSpringValues.selection)
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
     isSelected.value = selected ? 1 : 0;
   }, [isSelected, selected]);
@@ -143,7 +140,7 @@ const TabItem = ({
   const animatedStyle = useAnimatedStyle(() => {
     // Link color states to the pressed states
     const pressedBackgroundColor = interpolateColor(
-      progressPressed.value,
+      progress.value,
       [0, 1],
       [mapColorStates[color].background.default, opaquePressedBackgroundColor]
     );
@@ -163,22 +160,13 @@ const TabItem = ({
       ]
     );
 
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, IOScaleValues?.basicButton?.pressedState],
-      Extrapolation.CLAMP
-    );
-
     return {
       backgroundColor: selected
         ? selectedBackgroundColor
         : pressedBackgroundColor,
-      borderColor: selected ? selectedBorderColor : borderColor,
-      transform: [{ scale }]
+      borderColor: selected ? selectedBorderColor : borderColor
     };
-  }, [progressPressed, progressSelected, selected]);
+  }, [progress, progressSelected, selected]);
 
   const activeIcon = selected ? iconSelected ?? icon : icon;
 
@@ -198,16 +186,15 @@ const TabItem = ({
       <Animated.View
         style={[
           styles.container,
+          { columnGap: 4 },
+          !reducedMotion && scaleAnimatedStyle,
           animatedStyle,
           fullWidth && styles.fullWidth,
           disabled && styles.disabled
         ]}
       >
         {activeIcon && (
-          <>
-            <Icon name={activeIcon} color={foregroundColor} size={16} />
-            <HSpacer size={4} />
-          </>
+          <Icon name={activeIcon} color={foregroundColor} size={16} />
         )}
         <BodySmall weight="Semibold" color={foregroundColor}>
           {label}

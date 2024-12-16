@@ -80,6 +80,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -92,7 +94,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -159,6 +161,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -171,7 +175,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -238,6 +242,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -250,7 +256,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -333,6 +339,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -345,7 +353,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -412,6 +420,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -424,7 +434,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -491,6 +501,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -503,7 +515,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -586,6 +598,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -598,7 +612,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -665,6 +679,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -677,7 +693,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -744,6 +760,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -756,7 +774,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -980,6 +998,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
               {
                 "backgroundColor": undefined,
+              },
+              {
                 "transform": [
                   {
                     "scale": undefined,
@@ -992,7 +1012,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="title2"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},

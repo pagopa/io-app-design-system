@@ -1,38 +1,23 @@
-import React, { ComponentProps, ReactNode, useCallback } from "react";
-import {
-  GestureResponderEvent,
-  Image,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
-import Animated, {
-  Extrapolation,
-  interpolate,
-  interpolateColor,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import React, { ComponentProps } from "react";
+import { GestureResponderEvent, Image, Pressable, View } from "react-native";
+import Animated from "react-native-reanimated";
 import {
   IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
-  IOScaleValues,
   IOSelectionListItemVisualParams,
-  IOSpringValues,
   IOStyles,
-  hexToRgba,
   useIOTheme
 } from "../../core";
+import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Avatar } from "../avatar";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HSpacer, VSpacer } from "../spacer";
-import { Caption, H6, BodySmall } from "../typography";
+import { BodySmall, Caption, H6 } from "../typography";
 
 type ListItemTopElementProps =
   | {
@@ -90,13 +75,6 @@ export type ListItemNavGraphicProps =
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
-const styles = StyleSheet.create({
-  paymentLogoSize: {
-    width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
-  }
-});
-
 export const ListItemNav = ({
   value,
   description,
@@ -113,14 +91,12 @@ export const ListItemNav = ({
   loading,
   numberOfLines
 }: ListItemNav) => {
-  const isPressed = useSharedValue(0);
+  const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
+    useListItemAnimation();
   const theme = useIOTheme();
 
-  const withMargin = (GraphicalAsset: ReactNode) => (
-    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-      {GraphicalAsset}
-    </View>
-  );
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -137,7 +113,12 @@ export const ListItemNav = ({
           {topElement.dateValue && (
             <>
               <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
-                <Icon name="calendar" size={16} color="grey-300" />
+                <Icon
+                  allowFontScaling
+                  name="calendar"
+                  size={16}
+                  color="grey-300"
+                />
                 <HSpacer size={4} />
                 <Caption color={theme["textBody-tertiary"]}>
                   {topElement.dateValue}
@@ -170,52 +151,7 @@ export const ListItemNav = ({
     </>
   );
 
-  const mapBackgroundStates: Record<string, string> = {
-    default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
-    pressed: IOColors[theme["listItem-pressed"]]
-  };
-
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Interpolate animation values from `isPressed` values
-  const animatedScaleStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolation.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const animatedBackgroundStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      progressPressed.value,
-      [0, 1],
-      [mapBackgroundStates.default, mapBackgroundStates.pressed]
-    );
-
-    return {
-      backgroundColor
-    };
-  });
-
-  const handlePressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const handlePressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+  const interactiveColor = theme["interactiveElem-default"];
 
   const handleOnPress = (event: GestureResponderEvent) => {
     if (!loading) {
@@ -226,8 +162,9 @@ export const ListItemNav = ({
   return (
     <Pressable
       onPress={handleOnPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      onTouchEnd={onPressOut}
       accessible={true}
       accessibilityState={{ busy: loading }}
       accessibilityLabel={accessibilityLabel}
@@ -236,42 +173,54 @@ export const ListItemNav = ({
       testID={testID}
     >
       <Animated.View
-        style={[IOListItemStyles.listItem, animatedBackgroundStyle]}
+        style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, animatedScaleStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            scaleAnimatedStyle
+          ]}
         >
           {/* Possibile graphical assets
           - Icon
           - Image URL (for payment logos)
           - Avatar
           */}
-          {icon &&
-            withMargin(
-              <Icon
-                name={icon}
-                color={iconColor}
-                size={IOListItemVisualParams.iconSize}
-              />
-            )}
-          {paymentLogoUri &&
-            withMargin(
-              <Image
-                accessibilityIgnoresInvertColors
-                source={{ uri: paymentLogoUri }}
-                style={styles.paymentLogoSize}
-              />
-            )}
-          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
+          {icon && !hugeFontEnabled && (
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={IOListItemVisualParams.iconSize}
+            />
+          )}
+          {paymentLogoUri && (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={{ uri: paymentLogoUri }}
+              style={{
+                width:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                height:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+              }}
+            />
+          )}
+          {avatar && <Avatar size="small" {...avatar} />}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
-          {loading && (
-            <LoadingSpinner color={theme["interactiveElem-default"]} />
-          )}
+          {loading && <LoadingSpinner color={interactiveColor} />}
           {!loading && !hideChevron && (
             <Icon
+              allowFontScaling
               name="chevronRightListItem"
-              color={theme["interactiveElem-default"]}
+              color={interactiveColor}
               size={IOListItemVisualParams.chevronSize}
             />
           )}

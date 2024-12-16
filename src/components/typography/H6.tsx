@@ -8,7 +8,7 @@ export const h6FontSize: IOFontSize = 16;
 export const h6LineHeight = 24;
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const legacyFontSize: IOFontSize = 18;
+const legacyFontSize: IOFontSize = 17;
 
 /**
  * `H6` typographic style

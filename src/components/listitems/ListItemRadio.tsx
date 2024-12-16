@@ -1,33 +1,25 @@
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import Animated, {
-  Extrapolate,
-  interpolate,
-  interpolateColor,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import Placeholder from "rn-placeholder";
 import {
-  IOColors,
-  IOScaleValues,
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
-  IOSpringValues,
+  IOSelectionTickVisualParams,
   IOStyles,
-  hexToRgba,
   useIOTheme
 } from "../../core";
+import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, BodySmall } from "../typography";
+import { VStack } from "../stack";
+import { BodySmall, H6 } from "../typography";
 
 type ListItemRadioGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType; uri?: never }
@@ -91,57 +83,11 @@ export const ListItemRadio = ({
   testID
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
-  // Animations
-  const isPressed: Animated.SharedValue<number> = useSharedValue(0);
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.basicButton?.pressedState;
-
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
-
-  // Theme
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
+  const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
+    useListItemAnimation();
   const theme = useIOTheme();
-
-  const mapBackgroundStates: Record<string, string> = {
-    default: hexToRgba(IOColors[theme["listItem-pressed"]], 0),
-    pressed: IOColors[theme["listItem-pressed"]]
-  };
-
-  // Interpolate animation values from `isPressed` values
-  const animatedScaleStyle = useAnimatedStyle(() => {
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolate.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const handlePressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const handlePressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
-
-  const animatedBackgroundStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      progressPressed.value,
-      [0, 1],
-      [mapBackgroundStates.default, mapBackgroundStates.pressed]
-    );
-
-    return {
-      backgroundColor
-    };
-  });
 
   const toggleRadioItem = () => {
     ReactNativeHapticFeedback.trigger("impactLight");
@@ -154,14 +100,11 @@ export const ListItemRadio = ({
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
   const SkeletonDescriptionLines = () => (
-    <>
-      <VSpacer size={8} />
+    <VStack space={8}>
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <VSpacer size={8} />
       <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-    </>
+    </VStack>
   );
 
   const SkeletonIcon = () => (
@@ -180,7 +123,7 @@ export const ListItemRadio = ({
   );
 
   const SkeletonComponent = () => (
-    <View style={IOSelectionListItemStyles.listItem}>
+    <View style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}>
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
           style={[
@@ -200,7 +143,10 @@ export const ListItemRadio = ({
           </View>
           <HSpacer size={8} />
           <View pointerEvents="none" style={disabledStyle}>
-            <AnimatedRadio checked={toggleValue} />
+            <AnimatedRadio
+              size={IOSelectionTickVisualParams.size * dynamicFontScale}
+              checked={toggleValue}
+            />
           </View>
         </View>
       </View>
@@ -220,55 +166,59 @@ export const ListItemRadio = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       onPress={toggleRadioItem}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      onTouchEnd={handlePressOut}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      onTouchEnd={onPressOut}
       testID={testID}
       disabled={disabled}
     >
       <Animated.View
         style={[
           IOSelectionListItemStyles.listItem,
-          animatedBackgroundStyle,
+          backgroundAnimatedStyle,
           disabledStyle
         ]}
         // This is required to avoid opacity
         // inheritance on Android
         needsOffscreenAlphaCompositing={true}
       >
-        <Animated.View style={animatedScaleStyle}>
+        <Animated.View style={scaleAnimatedStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
-            <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {startImage && (
-                <View
-                  style={{
-                    marginRight: IOSelectionListItemVisualParams.iconMargin
-                  }}
-                >
-                  {/* icon or paymentLogo props are mutually exclusive */}
-                  {startImage.icon && (
-                    <Icon
-                      name={startImage.icon}
-                      color="grey-300"
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
-                  {startImage.uri && (
-                    <Image
-                      accessibilityIgnoresInvertColors
-                      source={startImage}
-                      style={styles.imageSize}
-                    />
-                  )}
-                  {startImage.paymentLogo && (
-                    <LogoPayment
-                      name={startImage.paymentLogo}
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
+            <View
+              style={{
+                flexDirection: "row",
+                flexShrink: 1,
+                columnGap:
+                  IOSelectionListItemVisualParams.iconMargin *
+                  dynamicFontScale *
+                  spacingScaleMultiplier
+              }}
+            >
+              {startImage?.icon && !hugeFontEnabled && (
+                <Icon
+                  allowFontScaling
+                  name={startImage.icon}
+                  color="grey-300"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                />
+              )}
+              {startImage?.uri && (
+                <View style={{ alignSelf: "center" }}>
+                  <Image
+                    accessibilityIgnoresInvertColors
+                    source={startImage}
+                    style={styles.imageSize}
+                  />
                 </View>
               )}
-
+              {startImage?.paymentLogo && (
+                <View style={{ alignSelf: "center" }}>
+                  <LogoPayment
+                    name={startImage.paymentLogo}
+                    size={IOSelectionListItemVisualParams.iconSize}
+                  />
+                </View>
+              )}
               <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
@@ -279,7 +229,10 @@ export const ListItemRadio = ({
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
             >
-              <AnimatedRadio checked={selected ?? toggleValue} />
+              <AnimatedRadio
+                size={IOSelectionTickVisualParams.size * dynamicFontScale}
+                checked={selected ?? toggleValue}
+              />
             </View>
           </View>
           {description && (

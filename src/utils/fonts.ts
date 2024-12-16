@@ -36,7 +36,7 @@ export type IOFontFamily = keyof typeof fonts;
  * Font Sizes
  */
 const fontSizes = [12, 14, 16, 20, 22, 26, 28, 32] as const;
-const fontSizesLegacy = [18, 28, 31, 35] as const;
+const fontSizesLegacy = [17, 28, 31, 35] as const;
 const allFontSizes = [...new Set([...fontSizes, ...fontSizesLegacy])];
 export type IOFontSize = (typeof allFontSizes)[number];
 
@@ -122,6 +122,7 @@ export const makeFontFamilyName = (
 const defaultFont: IOFontFamily = "TitilliumSansPro";
 const defaultWeight: IOFontWeight = "Regular";
 const defaultFontSize: IOFontSize = 16;
+export const IOFontSizeMultiplier = 1.5;
 
 /**
  * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
