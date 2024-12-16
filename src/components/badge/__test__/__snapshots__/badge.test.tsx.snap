@@ -25,7 +25,7 @@ exports[`Test Badge Components - Experimental Enabled Badge Snapshot 1`] = `
   <Text
     allowFontScaling={true}
     ellipsizeMode="tail"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     numberOfLines={1}
     style={
       [
@@ -77,7 +77,7 @@ exports[`Test Badge Components Badge Snapshot 1`] = `
   <Text
     allowFontScaling={true}
     ellipsizeMode="tail"
-    maxFontSizeMultiplier={1.25}
+    maxFontSizeMultiplier={1.5}
     numberOfLines={1}
     style={
       [

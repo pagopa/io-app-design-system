@@ -15,13 +15,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   alertEdgeToEdgeInsetTransitionConfig,
   IOColors,
-  IOStyles,
   IOVisualCostants,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
-import { HSpacer } from "../spacer";
+import { HStack } from "../stack";
 import { H3 } from "../typography";
 import { HeaderActionProps } from "./common";
 
@@ -126,6 +125,7 @@ export const HeaderFirstLevel = ({
       <View style={styles.headerInner}>
         <View ref={titleRef} accessible accessibilityRole="header">
           <H3
+            weight="Bold"
             style={{ flexShrink: 1 }}
             numberOfLines={1}
             color={
@@ -135,27 +135,18 @@ export const HeaderFirstLevel = ({
             {title}
           </H3>
         </View>
-        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+        <HStack space={16} style={{ flexShrink: 0 }}>
           {type === "threeActions" && (
-            <>
-              <IconButton
-                {...thirdAction}
-                color={backgroundColor === "dark" ? "contrast" : "primary"}
-              />
-              {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-              <HSpacer size={16} />
-            </>
+            <IconButton
+              {...thirdAction}
+              color={backgroundColor === "dark" ? "contrast" : "primary"}
+            />
           )}
           {(type === "twoActions" || type === "threeActions") && (
-            <>
-              <IconButton
-                {...secondAction}
-                color={backgroundColor === "dark" ? "contrast" : "primary"}
-              />
-              {/* Same as above */}
-              <HSpacer size={16} />
-            </>
+            <IconButton
+              {...secondAction}
+              color={backgroundColor === "dark" ? "contrast" : "primary"}
+            />
           )}
           {type !== "base" && (
             <IconButton
@@ -163,7 +154,7 @@ export const HeaderFirstLevel = ({
               color={backgroundColor === "dark" ? "contrast" : "primary"}
             />
           )}
-        </View>
+        </HStack>
       </View>
     </Animated.View>
   );

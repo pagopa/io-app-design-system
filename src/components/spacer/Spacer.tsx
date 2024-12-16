@@ -3,10 +3,8 @@ import { View } from "react-native";
 import { hexToRgba, IOColors, IOSpacer } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 
-export type SpacerOrientation = "vertical" | "horizontal";
-
 type BaseSpacerProps = {
-  orientation: SpacerOrientation;
+  orientation: "vertical" | "horizontal";
   size: IOSpacer;
   allowScaleSpacing?: boolean;
 };
@@ -24,7 +22,7 @@ const debugBg = hexToRgba(IOColors.red, 0.2);
 
 /**
 Native `Spacer` component
-@param  {SpacerOrientation} orientation 
+@param  {string} orientation
 @param {IOSpacer} size
  */
 const Spacer = ({ allowScaleSpacing, orientation, size }: BaseSpacerProps) => {

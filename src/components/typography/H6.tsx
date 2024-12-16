@@ -1,19 +1,18 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
 import { IOTheme, useIOExperimentalDesign, useIOTheme } from "../../core";
-import { IOFontFamily, IOFontSize, IOFontWeight } from "../../utils/fonts";
+import { IOFontFamily, IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 const defaultColor: keyof IOTheme = "textHeading-default";
 
-export const h6FontSize: IOFontSize = 18;
+export const h6FontSize: IOFontSize = 16;
 export const h6LineHeight = 24;
 const fontName: IOFontFamily = "Titillio";
-const fontWeight: IOFontWeight = "Semibold";
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
+const legacyFontSize: IOFontSize = 17;
 const legacyFontName: IOFontFamily = "TitilliumSansPro";
-const legacyFontWeight: IOFontWeight = "Semibold";
 
 /**
  * `H6` typographic style
@@ -27,9 +26,9 @@ export const H6 = forwardRef<View, TypographicStyleProps>(
       ...props,
       dynamicTypeRamp: "headline", // iOS only
       font: isExperimental ? fontName : legacyFontName,
-      size: h6FontSize,
+      size: isExperimental ? h6FontSize : legacyFontSize,
       lineHeight: h6LineHeight,
-      weight: isExperimental ? fontWeight : legacyFontWeight,
+      weight: "Semibold",
       color: customColor ?? theme[defaultColor]
     };
 

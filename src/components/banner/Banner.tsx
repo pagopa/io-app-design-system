@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import {
   AccessibilityRole,
   GestureResponderEvent,
@@ -7,39 +7,30 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import Animated, {
-  Extrapolation,
-  interpolate,
-  SharedValue,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import {
   IOBannerBigSpacing,
   IOBannerRadius,
   IOBannerSmallHSpacing,
   IOBannerSmallVSpacing,
-  IOScaleValues,
-  IOSpringValues,
-  IOStyles
+  IOStyles,
+  useIOExperimentalDesign,
+  useIOTheme,
+  useIOThemeContext
 } from "../../core";
-import { IOColors } from "../../core/IOColors";
+import { hexToRgba, IOColors } from "../../core/IOColors";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink, IconButton } from "../buttons";
+import { IconButton } from "../buttons";
 import {
-  IOPictogramSizeScale,
   IOPictogramsBleed,
+  IOPictogramSizeScale,
   PictogramBleed
 } from "../pictograms";
 import { VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
+import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */
-const colorTitle: IOColors = "blueIO-850";
-const colorContent: IOColors = "grey-700";
-const colorCloseButton: IconButton["color"] = "neutral";
 const sizePictogramBig: IOPictogramSizeScale = 80;
 const sizePictogramSmall: IOPictogramSizeScale = 64;
 const closeButtonDistanceFromEdge: number = 6;
@@ -65,15 +56,6 @@ const styles = StyleSheet.create({
     top: closeButtonDistanceFromEdge,
     opacity: closeButtonOpacity
   }
-});
-
-const dynamicContainerStyles = (
-  size: BaseBannerProps["size"],
-  color: BaseBannerProps["color"]
-): ViewStyle => ({
-  backgroundColor: IOColors[mapBackgroundColor[color]],
-  paddingVertical: size === "big" ? sizeBigPadding : sizeSmallVPadding,
-  paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
 });
 
 /* Component Types */
@@ -137,12 +119,20 @@ export const bannerBackgroundColours: Array<BaseBannerProps["color"]> = [
   "turquoise"
 ];
 
-const mapBackgroundColor: Record<
+const mapBackgroundColorLightMode: Record<
   NonNullable<BaseBannerProps["color"]>,
   IOColors
 > = {
   neutral: "grey-50",
   turquoise: "turquoise-50"
+};
+
+const mapBackgroundColorDarkMode: Record<
+  NonNullable<BaseBannerProps["color"]>,
+  IOColors
+> = {
+  neutral: "grey-50",
+  turquoise: "turquoise-300"
 };
 
 export const Banner = ({
@@ -160,41 +150,28 @@ export const Banner = ({
   accessibilityLabel,
   testID
 }: Banner) => {
-  const isPressed: SharedValue<number> = useSharedValue(0);
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
 
-  // Scaling transformation applied when the button is pressed
-  const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
+  const { isExperimental } = useIOExperimentalDesign();
+  const { themeType } = useIOThemeContext();
+  const theme = useIOTheme();
 
-  // Using a spring-based animation for our interpolations
-  const progressPressed = useDerivedValue(() =>
-    withSpring(isPressed.value, IOSpringValues.button)
-  );
+  // Dynamic colors
+  const colorTitle: IOColors = themeType === "dark" ? "grey-50" : "blueIO-850";
+  const colorCloseButton: IconButton["color"] =
+    themeType === "dark" ? "contrast" : "neutral";
+  const colorMainButton =
+    themeType === "dark" ? "blueIO-200" : theme["interactiveElem-default"];
 
-  // Interpolate animation values from `isPressed` values
-  const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
-
-    // Scale down button slightly when pressed
-    const scale = interpolate(
-      progressPressed.value,
-      [0, 1],
-      [1, animationScaleValue],
-      Extrapolation.CLAMP
-    );
-
-    return {
-      transform: [{ scale }]
-    };
-  });
-
-  const onPressIn = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 1;
-  }, [isPressed]);
-  const onPressOut = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isPressed.value = 0;
-  }, [isPressed]);
+  const dynamicContainerStyles: ViewStyle = {
+    backgroundColor:
+      themeType === "dark"
+        ? hexToRgba(IOColors[mapBackgroundColorDarkMode[color]], 0.1)
+        : IOColors[mapBackgroundColorLightMode[color]],
+    paddingVertical: size === "big" ? sizeBigPadding : sizeSmallVPadding,
+    paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
+  };
 
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
@@ -220,9 +197,9 @@ export const Banner = ({
         )}
         {content && (
           <>
-            <LabelSmall color={colorContent} weight={"Regular"}>
+            <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
               {content}
-            </LabelSmall>
+            </BodySmall>
             {action && <VSpacer size={8} />}
           </>
         )}
@@ -231,17 +208,32 @@ export const Banner = ({
              pressed state on the button */
           <View
             pointerEvents="none"
-            accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
+            accessible={true}
+            accessibilityElementsHidden
+            accessibilityLabel={action}
+            accessibilityRole="button"
           >
             <VSpacer size={4} />
-            <ButtonLink color="primary" onPress={onPress} label={action} />
+            <IOText
+              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+              weight="Semibold"
+              color={colorMainButton}
+              size={buttonTextFontSize}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              // A11y
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden={true}
+            >
+              {action}
+            </IOText>
           </View>
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
         <PictogramBleed
-          pictogramStyle="dark-content"
           name={pictogramName}
           size={size === "big" ? sizePictogramBig : sizePictogramSmall}
         />
@@ -269,11 +261,7 @@ export const Banner = ({
       accessible={false}
     >
       <Animated.View
-        style={[
-          styles.container,
-          dynamicContainerStyles(size, color),
-          pressedAnimationStyle
-        ]}
+        style={[styles.container, dynamicContainerStyles, scaleAnimatedStyle]}
       >
         {renderMainBlock()}
       </Animated.View>
@@ -284,7 +272,7 @@ export const Banner = ({
     <View
       ref={viewRef}
       testID={testID}
-      style={[styles.container, dynamicContainerStyles(size, color)]}
+      style={[styles.container, dynamicContainerStyles]}
       // A11y related props
       accessible={false}
       accessibilityHint={accessibilityHint}

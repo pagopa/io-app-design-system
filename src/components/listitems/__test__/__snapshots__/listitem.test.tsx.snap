@@ -82,7 +82,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
       >
         <Text
           allowFontScaling={true}
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -169,7 +169,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 
   >
     <Text
       allowFontScaling={true}
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       style={
         [
           {
@@ -243,7 +243,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -263,7 +263,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -271,7 +271,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -320,6 +320,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -368,7 +369,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -388,7 +389,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -396,7 +397,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -505,6 +506,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     style={
@@ -551,14 +553,14 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -667,6 +669,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -775,14 +778,14 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -936,8 +939,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
       >
         <Text
           allowFontScaling={true}
-          dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          dynamicTypeRamp="headline"
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -945,10 +948,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 14,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "lineHeight": 21,
+                "lineHeight": 24,
               },
             ]
           }
@@ -958,15 +961,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         <View
           style={
             {
-              "height": 4,
-            }
-          }
-        />
-        <View
-          style={
-            {
               "alignItems": "center",
+              "display": "flex",
               "flexDirection": "row",
+              "gap": 4,
             }
           }
         >
@@ -1027,17 +1025,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <View
-            style={
-              {
-                "width": 4,
-              }
-            }
-          />
           <Text
             allowFontScaling={true}
             dynamicTypeRamp="footnote"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -1062,21 +1053,23 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         pointerEvents="none"
         style={
           {
+            "display": "flex",
             "flexDirection": "row",
+            "gap": 8,
           }
         }
       >
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -1086,13 +1079,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         >
           € 1.000,00
         </Text>
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <View
           accessibilityState={
             {
@@ -1326,8 +1312,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
       >
         <Text
           allowFontScaling={true}
-          dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          dynamicTypeRamp="headline"
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -1335,10 +1321,10 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillio",
-                "fontSize": 14,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "lineHeight": 21,
+                "lineHeight": 24,
               },
             ]
           }
@@ -1352,21 +1338,23 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         pointerEvents="none"
         style={
           {
+            "display": "flex",
             "flexDirection": "row",
+            "gap": 8,
           }
         }
       >
         <Text
           allowFontScaling={true}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
-                "fontSize": 18,
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -1376,13 +1364,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         >
           € 1.000,00
         </Text>
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <View
           accessibilityState={
             {
@@ -1773,7 +1754,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1782,7 +1763,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
                 "fontFamily": "Titillium Sans Pro",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "600",
                 "lineHeight": 20,
               },
             ]
@@ -1860,7 +1841,7 @@ exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
   >
     <Text
       allowFontScaling={false}
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       style={
         [
           {
@@ -1934,7 +1915,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -1954,7 +1935,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
@@ -1962,7 +1943,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2011,6 +1992,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -2059,7 +2041,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
@@ -2079,15 +2061,15 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           numberOfLines={2}
           style={
             [
               {},
               {
-                "color": "#0073E6",
+                "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2118,7 +2100,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0073E6",
+              "color": "#0B3EE3",
             },
             {
               "flex": 0,
@@ -2127,7 +2109,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0073E6"
+        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
@@ -2196,6 +2178,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     style={
@@ -2242,14 +2225,14 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2280,7 +2263,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0073E6",
+              "color": "#0B3EE3",
             },
             {
               "flex": 0,
@@ -2289,7 +2272,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0073E6"
+        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
@@ -2358,6 +2341,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  onTouchEnd={[Function]}
 >
   <View
     accessibilityElementsHidden={true}
@@ -2466,14 +2450,14 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2627,8 +2611,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
       >
         <Text
           allowFontScaling={false}
-          dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          dynamicTypeRamp="headline"
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -2636,10 +2620,10 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 14,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "lineHeight": 21,
+                "lineHeight": 24,
               },
             ]
           }
@@ -2649,15 +2633,10 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         <View
           style={
             {
-              "height": 4,
-            }
-          }
-        />
-        <View
-          style={
-            {
               "alignItems": "center",
+              "display": "flex",
               "flexDirection": "row",
+              "gap": 4,
             }
           }
         >
@@ -2718,17 +2697,10 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <View
-            style={
-              {
-                "width": 4,
-              }
-            }
-          />
           <Text
             allowFontScaling={false}
             dynamicTypeRamp="footnote"
-            maxFontSizeMultiplier={1.25}
+            maxFontSizeMultiplier={1.5}
             style={
               [
                 {},
@@ -2753,21 +2725,23 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         pointerEvents="none"
         style={
           {
+            "display": "flex",
             "flexDirection": "row",
+            "gap": 8,
           }
         }
       >
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2777,13 +2751,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         >
           € 1.000,00
         </Text>
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <View
           accessibilityState={
             {
@@ -3017,8 +2984,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
       >
         <Text
           allowFontScaling={false}
-          dynamicTypeRamp="footnote"
-          maxFontSizeMultiplier={1.25}
+          dynamicTypeRamp="headline"
+          maxFontSizeMultiplier={1.5}
           numberOfLines={1}
           style={
             [
@@ -3026,10 +2993,10 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {
                 "color": "#0E0F13",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 14,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "lineHeight": 21,
+                "lineHeight": 24,
               },
             ]
           }
@@ -3043,21 +3010,23 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         pointerEvents="none"
         style={
           {
+            "display": "flex",
             "flexDirection": "row",
+            "gap": 8,
           }
         }
       >
         <Text
           allowFontScaling={false}
           dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.25}
+          maxFontSizeMultiplier={1.5}
           style={
             [
               {},
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
-                "fontSize": 18,
+                "fontSize": 17,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -3067,13 +3036,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         >
           € 1.000,00
         </Text>
-        <View
-          style={
-            {
-              "width": 8,
-            }
-          }
-        />
         <View
           accessibilityState={
             {

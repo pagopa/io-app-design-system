@@ -1,47 +1,28 @@
-import React, { useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState } from "react";
 import {
+  ColorValue,
   GestureResponderEvent,
   NativeSyntheticEvent,
   Pressable,
-  StyleSheet,
   TextLayoutEventData,
   View
 } from "react-native";
-import Animated, {
-  Extrapolation,
-  SharedValue,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
-import { IOVisualCostants } from "../../core";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
-import {
-  IOColors,
-  IOColorsStatusBackground,
-  IOColorsStatusForeground
-} from "../../core/IOColors";
+import Animated from "react-native-reanimated";
+import { IOVisualCostants, useIOThemeContext } from "../../core";
+import { IOColors, hexToRgba } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing, IOSpacer } from "../../core/IOSpacing";
+import { useScaleAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../stack";
-import { ButtonText } from "../typography";
+import { Body, ButtonText } from "../typography";
 import { H4 } from "../typography/H4";
-import { Label } from "../typography/Label";
 
-const iconSize: IOIconSizeScale = 24;
+const ICON_SIZE: IOIconSizeScale = 24;
 
-const [spacingDefault, spacingFullWidth] = IOAlertSpacing;
-
-const styles = StyleSheet.create({
-  spacingFullWidth: {
-    padding: spacingFullWidth
-  }
-});
+const [padding, paddingFullWidth] = IOAlertSpacing;
 
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info" | "success";
@@ -66,39 +47,67 @@ type AlertType = AlertProps & AlertActionProps;
 
 type VariantStates = {
   icon: IOIcons;
-  background: IOColorsStatusBackground;
-  foreground: IOColorsStatusForeground;
+  background: ColorValue;
+  foreground: IOColors;
 };
 
 // COMPONENT CONFIGURATION
 
-const mapVariantStates: Record<
+const mapVariantStatesLightMode: Record<
   NonNullable<AlertType["variant"]>,
   VariantStates
 > = {
   error: {
     icon: "errorFilled",
-    background: "error-100",
+    background: IOColors["error-100"],
     foreground: "error-850"
   },
   warning: {
     icon: "warningFilled",
-    background: "warning-100",
+    background: IOColors["warning-100"],
     foreground: "warning-850"
   },
   info: {
     icon: "infoFilled",
-    background: "info-100",
+    background: IOColors["info-100"],
     foreground: "info-850"
   },
   success: {
     icon: "success",
-    background: "success-100",
+    background: IOColors["success-100"],
     foreground: "success-850"
   }
 };
 
-export const Alert = React.forwardRef<View, AlertType>(
+const bgOpacityDarkMode = 0.2;
+
+const mapVariantStatesDarkMode: Record<
+  NonNullable<AlertType["variant"]>,
+  VariantStates
+> = {
+  error: {
+    icon: "errorFilled",
+    background: hexToRgba(IOColors["error-400"], bgOpacityDarkMode),
+    foreground: "error-100"
+  },
+  warning: {
+    icon: "warningFilled",
+    background: hexToRgba(IOColors["warning-400"], bgOpacityDarkMode),
+    foreground: "warning-100"
+  },
+  info: {
+    icon: "infoFilled",
+    background: hexToRgba(IOColors["info-400"], bgOpacityDarkMode),
+    foreground: "info-100"
+  },
+  success: {
+    icon: "success",
+    background: hexToRgba(IOColors["success-400"], bgOpacityDarkMode),
+    foreground: "success-100"
+  }
+};
+
+export const Alert = forwardRef<View, AlertType>(
   (
     {
       variant,
@@ -112,9 +121,11 @@ export const Alert = React.forwardRef<View, AlertType>(
     }: AlertType,
     viewRef
   ): JSX.Element => {
-    const isPressed: SharedValue<number> = useSharedValue(0);
+    const { onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation("medium");
     const { dynamicFontScale, spacingScaleMultiplier } =
       useIOFontDynamicScale();
+    const { themeType } = useIOThemeContext();
 
     const [isMultiline, setIsMultiline] = useState(false);
 
@@ -125,43 +136,16 @@ export const Alert = React.forwardRef<View, AlertType>(
       []
     );
 
-    const spacingDefaultVariant = {
-      padding: spacingDefault,
+    const paddingDefaultVariant = {
+      padding,
       borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
       borderCurve: "continuous"
     };
 
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
-
-    // Interpolate animation values from `isPressed` values
-    const pressedAnimationStyle = useAnimatedStyle(() => {
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
-      );
-
-      return {
-        transform: [{ scale }]
-      };
-    });
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
+    const mapVariantStates =
+      themeType === "light"
+        ? mapVariantStatesLightMode
+        : mapVariantStatesDarkMode;
 
     const renderMainBlock = () => (
       <HStack
@@ -172,7 +156,7 @@ export const Alert = React.forwardRef<View, AlertType>(
         <Icon
           allowFontScaling
           name={mapVariantStates[variant].icon}
-          size={iconSize}
+          size={ICON_SIZE}
           color={mapVariantStates[variant].foreground}
         />
         {/* Sadly we don't have specific alignments style for text
@@ -190,14 +174,14 @@ export const Alert = React.forwardRef<View, AlertType>(
             {title && (
               <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
             )}
-            <Label
+            <Body
               color={mapVariantStates[variant].foreground}
               weight={"Regular"}
               accessibilityRole="text"
               onTextLayout={onTextLayout}
             >
               {content}
-            </Label>
+            </Body>
             {action && (
               <ButtonText
                 color={mapVariantStates[variant].foreground}
@@ -216,8 +200,8 @@ export const Alert = React.forwardRef<View, AlertType>(
       <View
         ref={viewRef}
         style={[
-          fullWidth ? styles.spacingFullWidth : spacingDefaultVariant,
-          { backgroundColor: IOColors[mapVariantStates[variant].background] }
+          fullWidth ? { padding } : paddingDefaultVariant,
+          { backgroundColor: mapVariantStates[variant].background }
         ]}
         testID={testID}
         accessible={false}
@@ -243,10 +227,10 @@ export const Alert = React.forwardRef<View, AlertType>(
       >
         <Animated.View
           style={[
-            fullWidth ? styles.spacingFullWidth : spacingDefaultVariant,
-            { backgroundColor: IOColors[mapVariantStates[variant].background] },
+            fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
+            { backgroundColor: mapVariantStates[variant].background },
             // Disable pressed animation when component is full width
-            !fullWidth && pressedAnimationStyle
+            !fullWidth && scaleAnimatedStyle
           ]}
         >
           {renderMainBlock()}

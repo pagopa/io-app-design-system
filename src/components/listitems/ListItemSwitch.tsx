@@ -13,7 +13,7 @@ import { LoadingSpinner } from "../loadingSpinner";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { HSpacer, VSpacer } from "../spacer";
 import { NativeSwitch } from "../switch/NativeSwitch";
-import { H6, LabelMini, LabelSmall } from "../typography";
+import { BodySmall, H6, LabelMini } from "../typography";
 
 type PartialProps = WithTestID<{
   label: string;
@@ -61,7 +61,7 @@ export const ListItemSwitch = React.memo(
     testID
   }: ListItemSwitchProps) => {
     const theme = useIOTheme();
-    const { dynamicFontScale, spacingScaleMultiplier } =
+    const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
       useIOFontDynamicScale();
 
     // If we have a badge or we are loading, we can't render the switch
@@ -111,7 +111,7 @@ export const ListItemSwitch = React.memo(
             })}
             accessibilityState={{ disabled }}
           >
-            {icon && (
+            {icon && !hugeFontEnabled && (
               <Icon
                 allowFontScaling
                 name={icon}
@@ -172,9 +172,9 @@ export const ListItemSwitch = React.memo(
         {description && (
           <>
             <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
-            <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+            <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
               {description}
-            </LabelSmall>
+            </BodySmall>
           </>
         )}
         {action && (

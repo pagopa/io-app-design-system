@@ -62,7 +62,8 @@ export const ListItemHeader = ({
 }: ListItemHeader) => {
   const theme = useIOTheme();
 
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -90,7 +91,7 @@ export const ListItemHeader = ({
     [label, theme, endElement]
   );
 
-  const listItemInfoAction = useCallback(() => {
+  const listItemAction = useCallback(() => {
     if (endElement) {
       const { type, componentProps } = endElement;
 
@@ -132,7 +133,7 @@ export const ListItemHeader = ({
         style={IOListItemStyles.listItemInner}
         importantForAccessibility={endElement ? "auto" : "no-hide-descendants"}
       >
-        {iconName && (
+        {iconName && !hugeFontEnabled && (
           <View
             style={{
               marginRight:
@@ -150,7 +151,7 @@ export const ListItemHeader = ({
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         {endElement && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
-            {listItemInfoAction()}
+            {listItemAction()}
           </View>
         )}
       </View>

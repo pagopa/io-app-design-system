@@ -42,7 +42,8 @@ export const ListItemAmount = ({
   testID
 }: ListItemAmount) => {
   const theme = useIOTheme();
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -72,7 +73,7 @@ export const ListItemAmount = ({
           { columnGap: iconMargin * dynamicFontScale * spacingScaleMultiplier }
         ]}
       >
-        {iconName && (
+        {iconName && !hugeFontEnabled && (
           <Icon
             allowFontScaling
             name={iconName}

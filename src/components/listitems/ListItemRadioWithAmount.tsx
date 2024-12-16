@@ -1,13 +1,13 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { IOColors, IOSelectionTickVisualParams, useIOTheme } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
-import { HSpacer, VSpacer } from "../spacer";
-import { H6, LabelSmall } from "../typography";
-import { PressableListItemBase } from "./PressableListItemsBase";
+import { HStack } from "../stack";
+import { BodySmall, H6 } from "../typography";
+import { PressableListItemBase } from "./PressableListItemBase";
 
 export type ListItemRadioWithAmountProps = {
   onValueChange?: (newValue: boolean) => void;
@@ -36,6 +36,7 @@ export const ListItemRadioWithAmount = ({
 }: ListItemRadioWithAmountProps) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
   const [toggleValue, setToggleValue] = React.useState(selected ?? false);
+
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");
     setToggleValue(val => !val);
@@ -57,48 +58,32 @@ export const ListItemRadioWithAmount = ({
       }}
     >
       <View style={{ flexShrink: 1 }}>
-        <LabelSmall
-          weight="Semibold"
-          numberOfLines={1}
-          color={theme["textBody-default"]}
-        >
+        <H6 numberOfLines={1} color={theme["textBody-default"]}>
           {label}
-        </LabelSmall>
+        </H6>
         {isSuggested && (
-          <>
-            <VSpacer size={4} />
-            <View style={styles.rowCenter}>
-              <Icon name="sparkles" size={16} color={suggestColor} />
-              <HSpacer size={4} />
-              <LabelSmall weight="Regular" color={suggestColor}>
-                {suggestReason}
-              </LabelSmall>
-            </View>
-          </>
+          <HStack space={4} style={{ alignItems: "center" }}>
+            <Icon name="sparkles" size={16} color={suggestColor} />
+            <BodySmall weight="Regular" color={suggestColor}>
+              {suggestReason}
+            </BodySmall>
+          </HStack>
         )}
       </View>
-      <View
+      <HStack
+        space={8}
         pointerEvents="none"
         accessibilityElementsHidden
         importantForAccessibility="no-hide-descendants"
-        style={{ flexDirection: "row" }}
       >
         <H6 color={theme["interactiveElem-default"]}>
           {formattedAmountString}
         </H6>
-        <HSpacer size={8} />
         <AnimatedRadio
           size={IOSelectionTickVisualParams.size * dynamicFontScale}
           checked={selected ?? toggleValue}
         />
-      </View>
+      </HStack>
     </PressableListItemBase>
   );
 };
-
-const styles = StyleSheet.create({
-  rowCenter: {
-    flexDirection: "row",
-    alignItems: "center"
-  }
-});

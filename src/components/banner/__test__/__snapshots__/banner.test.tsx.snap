@@ -75,14 +75,14 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       <Text
         allowFontScaling={true}
         dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
             {
               "color": "#031344",
               "fontFamily": "Titillio",
-              "fontSize": 18,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
               "lineHeight": 24,
@@ -101,6 +101,9 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       />
       <View
         accessibilityElementsHidden={true}
+        accessibilityLabel="Action text"
+        accessibilityRole="button"
+        accessible={true}
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
@@ -111,104 +114,30 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             }
           }
         />
-        <View
-          accessibilityLabel="Action text"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          hitSlop={
-            {
-              "bottom": 14,
-              "left": 24,
-              "right": 24,
-              "top": 14,
-            }
-          }
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          onTouchEnd={[Function]}
+        <Text
+          accessibilityElementsHidden={true}
+          accessible={false}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          importantForAccessibility="no-hide-descendants"
+          maxFontSizeMultiplier={1.5}
+          numberOfLines={1}
           style={
-            {
-              "alignSelf": "flex-start",
-            }
+            [
+              {},
+              {
+                "color": "#0B3EE3",
+                "fontFamily": "Titillio",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "lineHeight": undefined,
+              },
+            ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "elevation": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "textAlignVertical": "center",
-                },
-                false,
-                {},
-                {
-                  "transform": [
-                    {
-                      "scale": undefined,
-                    },
-                  ],
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              accessible={false}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              importantForAccessibility="no-hide-descendants"
-              maxFontSizeMultiplier={1.25}
-              numberOfLines={1}
-              style={
-                [
-                  {},
-                  {
-                    "color": "#0E0F13",
-                    "fontFamily": "Titillio",
-                    "fontSize": 16,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "lineHeight": undefined,
-                  },
-                  {
-                    "color": undefined,
-                  },
-                ]
-              }
-            >
-              Action text
-            </Text>
-          </View>
-        </View>
+          Action text
+        </Text>
       </View>
     </View>
     <View
@@ -425,14 +354,14 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       <Text
         allowFontScaling={false}
         dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
             {
               "color": "#031344",
               "fontFamily": "Titillium Sans Pro",
-              "fontSize": 18,
+              "fontSize": 17,
               "fontStyle": "normal",
               "fontWeight": "600",
               "lineHeight": 24,
@@ -451,6 +380,9 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       />
       <View
         accessibilityElementsHidden={true}
+        accessibilityLabel="Action text"
+        accessibilityRole="button"
+        accessible={true}
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
       >
@@ -461,104 +393,30 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             }
           }
         />
-        <View
-          accessibilityLabel="Action text"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": false,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          hitSlop={
-            {
-              "bottom": 14,
-              "left": 24,
-              "right": 24,
-              "top": 14,
-            }
-          }
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          onTouchEnd={[Function]}
+        <Text
+          accessibilityElementsHidden={true}
+          accessible={false}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          importantForAccessibility="no-hide-descendants"
+          maxFontSizeMultiplier={1.5}
+          numberOfLines={1}
           style={
-            {
-              "alignSelf": "flex-start",
-            }
+            [
+              {},
+              {
+                "color": "#0B3EE3",
+                "fontFamily": "Titillium Sans Pro",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "lineHeight": undefined,
+              },
+            ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "elevation": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "textAlignVertical": "center",
-                },
-                false,
-                {},
-                {
-                  "transform": [
-                    {
-                      "scale": undefined,
-                    },
-                  ],
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityElementsHidden={true}
-              accessible={false}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
-              importantForAccessibility="no-hide-descendants"
-              maxFontSizeMultiplier={1.25}
-              numberOfLines={1}
-              style={
-                [
-                  {},
-                  {
-                    "color": "#0E0F13",
-                    "fontFamily": "Titillium Sans Pro",
-                    "fontSize": 16,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": undefined,
-                  },
-                  {
-                    "color": undefined,
-                  },
-                ]
-              }
-            >
-              Action text
-            </Text>
-          </View>
-        </View>
+          Action text
+        </Text>
       </View>
     </View>
     <View

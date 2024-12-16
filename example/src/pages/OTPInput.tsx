@@ -7,7 +7,7 @@ import {
   IOStyles,
   VSpacer,
   OTPInput,
-  LabelSmall,
+  BodySmall,
   ButtonSolid,
   ContentWrapper,
   ButtonOutline
@@ -117,7 +117,7 @@ export const OTPInputScreen = () => {
             <OTPWrapper secret />
             <VSpacer />
             <H5>Validation+Secret</H5>
-            <LabelSmall>Correct OTP {`${OTP_COMPARE}`}</LabelSmall>
+            <BodySmall>Correct OTP {`${OTP_COMPARE}`}</BodySmall>
             <VSpacer />
             <OTPWrapper secret validation />
             <VSpacer />

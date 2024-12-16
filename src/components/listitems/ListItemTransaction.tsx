@@ -22,11 +22,11 @@ import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { VSpacer } from "../spacer";
 import { HStack } from "../stack";
-import { H6, LabelSmall } from "../typography";
+import { H6, BodySmall } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
-} from "./PressableListItemsBase";
+} from "./PressableListItemBase";
 
 export type ListItemTransactionBadge = {
   text: string;
@@ -148,16 +148,12 @@ export const ListItemTransaction = ({
           </View>
         )}
         <View style={{ flexShrink: 1 }}>
-          <LabelSmall
-            numberOfLines={numberOfLines}
-            color={theme["textBody-default"]}
-            weight="Semibold"
-          >
+          <H6 numberOfLines={numberOfLines} color={theme["textBody-default"]}>
             {title}
-          </LabelSmall>
-          <LabelSmall weight="Regular" color={theme["textBody-tertiary"]}>
+          </H6>
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {subtitle}
-          </LabelSmall>
+          </BodySmall>
         </View>
       </HStack>
       <HStack style={{ alignItems: "center" }}>
@@ -174,6 +170,7 @@ export const ListItemTransaction = ({
         )}
         {showChevron && (
           <Icon
+            allowFontScaling
             name="chevronRightListItem"
             color={interactiveColor}
             size={IOListItemVisualParams.chevronSize}

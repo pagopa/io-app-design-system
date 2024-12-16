@@ -36,7 +36,7 @@ export type IOFontFamily = keyof typeof fonts;
  * Font Sizes
  */
 const fontSizes = [12, 14, 16, 20, 22, 26, 28, 32] as const;
-const fontSizesLegacy = [18, 28, 31, 35] as const;
+const fontSizesLegacy = [17, 28, 31, 35] as const;
 const allFontSizes = [...new Set([...fontSizes, ...fontSizesLegacy])];
 export type IOFontSize = (typeof allFontSizes)[number];
 
@@ -73,7 +73,7 @@ export const fontWeights: Record<IOFontWeight, IOFontWeightNumeric> = {
 };
 
 type FontStyleObject = {
-  fontSize: IOFontSize;
+  fontSize: IOFontSize | number;
   /* We also accept `string` because Android needs a composed 
   fontFamily name, like `TitilliumSansPro-Regular` */
   fontFamily: string | IOFontFamily;
@@ -122,7 +122,7 @@ export const makeFontFamilyName = (
 const defaultFont: IOFontFamily = "TitilliumSansPro";
 const defaultWeight: IOFontWeight = "Regular";
 const defaultFontSize: IOFontSize = 16;
-export const IOFontSizeMultiplier = 1.25;
+export const IOFontSizeMultiplier = 1.5;
 
 /**
  * Return a {@link FontStyleObject} with the fields filled based on the platform (iOS or Android).
@@ -133,7 +133,7 @@ export const IOFontSizeMultiplier = 1.25;
  */
 
 export const makeFontStyleObject = (
-  size: IOFontSize = defaultFontSize,
+  size: number = defaultFontSize,
   font: IOFontFamily = defaultFont,
   lineHeight: TextStyle["lineHeight"],
   weight: IOFontWeight = defaultWeight,

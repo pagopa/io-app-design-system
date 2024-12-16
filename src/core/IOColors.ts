@@ -53,6 +53,7 @@ export const IOColors = asIOColors({
   "turquoise-850": "#003B3D",
   "turquoise-500": "#00C5CA",
   "turquoise-450": "#19CBCF" /* Dark mode */,
+  "turquoise-300": "#61DCDF",
   "turquoise-150": "#AAEEEF",
   "turquoise-100": "#C2F3F4",
   "turquoise-50": "#DBF9FA",
@@ -232,6 +233,7 @@ export const IOColorsStatus = asIOColors({
 });
 
 export type IOColorsStatus = keyof typeof IOColorsStatus;
+
 export type IOColorsStatusForeground = Extract<
   IOColorsStatus,
   "error-850" | "warning-850" | "info-850" | "success-850"
@@ -283,7 +285,10 @@ const themeKeys = [
   // Status
   "errorIcon",
   "errorText",
+  "successIcon",
   "successText",
+  "warningIcon",
+  "infoIcon",
   // Pictograms
   "pictogram-hands",
   "pictogram-tint-main",
@@ -322,7 +327,10 @@ export const IOThemeLight: IOTheme = {
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
+  successIcon: "success-700",
   successText: "success-700",
+  warningIcon: "warning-700",
+  infoIcon: "info-700",
   // Pictograms
   "pictogram-hands": "blueIO-500",
   "pictogram-tint-main": "turquoise-150",
@@ -356,6 +364,7 @@ export const IOThemeDark: IOTheme = {
   // Design System related
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
+  "icon-decorative": "grey-650",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",
@@ -364,6 +373,9 @@ export const IOThemeDark: IOTheme = {
   errorIcon: "error-400",
   errorText: "error-400",
   successText: "success-400",
+  successIcon: "success-500",
+  warningIcon: "warning-500",
+  infoIcon: "info-500",
   // Pictograms
   "pictogram-hands": "white",
   "pictogram-tint-main": "turquoise-150",
