@@ -90,6 +90,7 @@ const mapLegacyColorStates: Record<
 };
 
 const DISABLED_OPACITY = 0.5;
+const ICON_MARGIN = 8;
 
 export const ButtonLink = forwardRef<View, ButtonLinkProps>(
   (
@@ -156,6 +157,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             iconPosition === "end" && { flexDirection: "row-reverse" },
             { columnGap: iconMargin },
             disabled ? { opacity: DISABLED_OPACITY } : {},
+            { columnGap: ICON_MARGIN },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle
@@ -164,6 +166,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
           {icon &&
             (!disabled ? (
               <AnimatedIconClassComponent
+                allowFontScaling
                 name={icon}
                 animatedProps={pressedColorAnimationStyle}
                 color={colorMap[color]?.label?.default}
@@ -171,6 +174,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
               />
             ) : (
               <AnimatedIcon
+                allowFontScaling
                 name={icon}
                 color={colorMap[color]?.label?.disabled}
                 size={iconSize}

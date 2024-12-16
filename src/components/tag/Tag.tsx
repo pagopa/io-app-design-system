@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import {
   IOColors,
   IOTagRadius,
@@ -13,6 +13,7 @@ import {
   IOTagHSpacing,
   IOTagVSpacing
 } from "../../core/IOSpacing";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOText } from "../typography";
@@ -62,7 +63,9 @@ export type Tag = TextProps & { forceLightMode?: boolean } & WithTestID<
         variant: "custom";
         icon: VariantProps;
       }
-  >;
+  > & {
+    allowFontScaling?: boolean;
+  };
 
 const IOTagIconMargin: IOSpacingScale = 6;
 const IOTagIconSize: IOIconSizeScale = 16;
@@ -79,16 +82,17 @@ const styles = StyleSheet.create({
       }
     }),
     borderWidth: 1,
+    borderCurve: "continuous"
+  },
+  tagStatic: {
     borderRadius: IOTagRadius,
     borderCurve: "continuous",
     paddingHorizontal: IOTagHSpacing,
-    paddingVertical: IOTagVSpacing
+    paddingVertical: IOTagVSpacing,
+    columnGap: IOTagIconMargin
   },
   iconWrapper: {
     flexShrink: 1
-  },
-  spacer: {
-    width: IOTagIconMargin
   }
 });
 
@@ -151,9 +155,11 @@ export const Tag = ({
   testID,
   icon,
   iconAccessibilityLabel,
+  allowFontScaling = true,
   forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
   const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, icon);
@@ -166,14 +172,26 @@ export const Tag = ({
     ? IOColors[IOThemeLight["appBackground-primary"]]
     : IOColors[theme["appBackground-primary"]];
 
+  const tagDynamic: ViewStyle = {
+    paddingHorizontal: IOTagHSpacing * dynamicFontScale,
+    paddingVertical: IOTagVSpacing * dynamicFontScale,
+    columnGap: IOTagIconMargin * dynamicFontScale * spacingScaleMultiplier,
+    borderRadius: IOTagRadius * dynamicFontScale
+  };
+
   return (
     <View
       testID={testID}
-      style={[styles.tag, { borderColor, backgroundColor }]}
+      style={[
+        styles.tag,
+        allowFontScaling ? tagDynamic : styles.tagStatic,
+        { borderColor, backgroundColor }
+      ]}
     >
       {variantProps && (
         <View style={styles.iconWrapper}>
           <Icon
+            allowFontScaling={allowFontScaling}
             name={variantProps.name}
             color={
               forceLightMode
@@ -186,9 +204,9 @@ export const Tag = ({
           />
         </View>
       )}
-      {variantProps && text && <View style={styles.spacer} />}
       {text && (
         <IOText
+          allowFontScaling={allowFontScaling}
           font={isExperimental ? "Titillio" : "TitilliumSansPro"}
           weight={"Semibold"}
           size={12}

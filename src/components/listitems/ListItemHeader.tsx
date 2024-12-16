@@ -7,6 +7,7 @@ import {
   IOStyles,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { ButtonLink, IconButton } from "../buttons";
@@ -60,6 +61,9 @@ export const ListItemHeader = ({
   testID
 }: ListItemHeader) => {
   const theme = useIOTheme();
+
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -129,9 +133,15 @@ export const ListItemHeader = ({
         style={IOListItemStyles.listItemInner}
         importantForAccessibility={endElement ? "auto" : "no-hide-descendants"}
       >
-        {iconName && (
-          <View style={{ marginRight: iconMargin }}>
+        {iconName && !hugeFontEnabled && (
+          <View
+            style={{
+              marginRight:
+                iconMargin * dynamicFontScale * spacingScaleMultiplier
+            }}
+          >
             <Icon
+              allowFontScaling
               name={iconName}
               color={iconColor ?? theme["icon-decorative"]}
               size={IOListItemVisualParams.iconSize}

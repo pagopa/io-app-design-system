@@ -5,12 +5,14 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOStyles,
+  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Icon } from "../icons";
-import { H6, BodySmall } from "../typography";
+import { BodySmall, H6 } from "../typography";
 
 export type ListItemNavAlert = WithTestID<{
   value: string | React.ReactNode;
@@ -35,6 +37,8 @@ export const ListItemNavAlert = ({
   const theme = useIOTheme();
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { isExperimental } = useIOExperimentalDesign();
 
   const componentValueToAccessibility = typeof value === "string" ? value : "";
   const componentDescriptionToAccessibility =
@@ -67,6 +71,8 @@ export const ListItemNavAlert = ({
     </>
   );
 
+  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
+
   return (
     <Pressable
       onPress={onPress}
@@ -85,25 +91,33 @@ export const ListItemNavAlert = ({
         accessibilityElementsHidden
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            scaleAnimatedStyle
+          ]}
         >
           {!withoutIcon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <Icon
-                name="errorFilled"
-                color={theme.errorIcon}
-                size={IOListItemVisualParams.iconSize}
-              />
-            </View>
+            <Icon
+              allowFontScaling
+              name="errorFilled"
+              color={theme.errorIcon}
+              size={IOListItemVisualParams.iconSize}
+            />
           )}
           <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
-          <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name="chevronRightListItem"
-              color={theme["interactiveElem-default"]}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          </View>
+
+          <Icon
+            allowFontScaling
+            name="chevronRightListItem"
+            color={iconColor}
+            size={IOListItemVisualParams.chevronSize}
+          />
         </Animated.View>
       </Animated.View>
     </Pressable>

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOColors, useIOTheme } from "../../core";
+import { IOColors, IOSelectionTickVisualParams, useIOTheme } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HStack } from "../stack";
@@ -33,6 +34,7 @@ export const ListItemRadioWithAmount = ({
   suggestReason,
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
+  const { dynamicFontScale } = useIOFontDynamicScale();
   const [toggleValue, setToggleValue] = React.useState(selected ?? false);
 
   const pressHandler = () => {
@@ -77,7 +79,10 @@ export const ListItemRadioWithAmount = ({
         <H6 color={theme["interactiveElem-default"]}>
           {formattedAmountString}
         </H6>
-        <AnimatedRadio checked={selected ?? toggleValue} />
+        <AnimatedRadio
+          size={IOSelectionTickVisualParams.size * dynamicFontScale}
+          checked={selected ?? toggleValue}
+        />
       </HStack>
     </PressableListItemBase>
   );

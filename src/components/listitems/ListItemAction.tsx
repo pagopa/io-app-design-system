@@ -8,6 +8,7 @@ import {
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons } from "../icons";
 import { ButtonText } from "../typography/ButtonText";
@@ -36,6 +37,8 @@ export const ListItemAction = ({
     useListItemAnimation();
 
   const theme = useIOTheme();
+
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -68,16 +71,24 @@ export const ListItemAction = ({
         accessibilityElementsHidden
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            scaleAnimatedStyle
+          ]}
         >
           {icon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <AnimatedIcon
-                name={icon}
-                color={IOColors[mapForegroundColor[variant]]}
-                size={IOListItemVisualParams.iconSize}
-              />
-            </View>
+            <AnimatedIcon
+              allowFontScaling
+              name={icon}
+              color={IOColors[mapForegroundColor[variant]]}
+              size={IOListItemVisualParams.iconSize}
+            />
           )}
           <View style={{ flexGrow: 1, flexShrink: 1 }}>
             <ButtonText color={mapForegroundColor[variant]}>{label}</ButtonText>

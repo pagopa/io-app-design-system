@@ -6,14 +6,16 @@ import Animated from "react-native-reanimated";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  IOSelectionTickVisualParams,
   IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, BodySmall } from "../typography";
+import { BodySmall, H6 } from "../typography";
 
 type Props = {
   value: string;
@@ -48,6 +50,9 @@ export const ListItemCheckbox = ({
   disabled,
   onValueChange
 }: ListItemCheckboxProps) => {
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
+
   const [toggleValue, setToggleValue] = useState(selected ?? false);
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
@@ -98,19 +103,25 @@ export const ListItemCheckbox = ({
       >
         <Animated.View style={scaleAnimatedStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
-            <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {icon && (
-                <View
-                  style={{
-                    marginRight: IOSelectionListItemVisualParams.iconMargin
-                  }}
-                >
-                  <Icon
-                    name={icon}
-                    color="grey-300"
-                    size={IOSelectionListItemVisualParams.iconSize}
-                  />
-                </View>
+            <View
+              style={[
+                IOStyles.row,
+                {
+                  flexShrink: 1,
+                  columnGap:
+                    IOSelectionListItemVisualParams.iconMargin *
+                    dynamicFontScale *
+                    spacingScaleMultiplier
+                }
+              ]}
+            >
+              {icon && !hugeFontEnabled && (
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  color="grey-300"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                />
               )}
               <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
@@ -122,7 +133,10 @@ export const ListItemCheckbox = ({
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
             >
-              <AnimatedCheckbox checked={selected ?? toggleValue} />
+              <AnimatedCheckbox
+                size={IOSelectionTickVisualParams.size * dynamicFontScale}
+                checked={selected ?? toggleValue}
+              />
             </View>
           </View>
           {description && (
