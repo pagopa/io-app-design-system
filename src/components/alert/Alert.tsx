@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState } from "react";
 import {
   ColorValue,
   GestureResponderEvent,
@@ -7,20 +7,12 @@ import {
   TextLayoutEventData,
   View
 } from "react-native";
-import Animated, {
-  Extrapolation,
-  SharedValue,
-  interpolate,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { IOVisualCostants, useIOThemeContext } from "../../core";
-import { IOScaleValues, IOSpringValues } from "../../core/IOAnimations";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing, IOSpacer } from "../../core/IOSpacing";
+import { useScaleAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -115,7 +107,7 @@ const mapVariantStatesDarkMode: Record<
   }
 };
 
-export const Alert = React.forwardRef<View, AlertType>(
+export const Alert = forwardRef<View, AlertType>(
   (
     {
       variant,
@@ -129,10 +121,11 @@ export const Alert = React.forwardRef<View, AlertType>(
     }: AlertType,
     viewRef
   ): JSX.Element => {
-    const { themeType } = useIOThemeContext();
-    const isPressed: SharedValue<number> = useSharedValue(0);
+    const { onPressIn, onPressOut, scaleAnimatedStyle } =
+      useScaleAnimation("medium");
     const { dynamicFontScale, spacingScaleMultiplier } =
       useIOFontDynamicScale();
+    const { themeType } = useIOThemeContext();
 
     const [isMultiline, setIsMultiline] = useState(false);
 
@@ -148,38 +141,6 @@ export const Alert = React.forwardRef<View, AlertType>(
       borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
       borderCurve: "continuous"
     };
-
-    // Scaling transformation applied when the button is pressed
-    const animationScaleValue = IOScaleValues?.magnifiedButton?.pressedState;
-
-    // Using a spring-based animation for our interpolations
-    const progressPressed = useDerivedValue(() =>
-      withSpring(isPressed.value, IOSpringValues.button)
-    );
-
-    // Interpolate animation values from `isPressed` values
-    const pressedAnimationStyle = useAnimatedStyle(() => {
-      // Scale down button slightly when pressed
-      const scale = interpolate(
-        progressPressed.value,
-        [0, 1],
-        [1, animationScaleValue],
-        Extrapolation.CLAMP
-      );
-
-      return {
-        transform: [{ scale }]
-      };
-    });
-
-    const onPressIn = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 1;
-    }, [isPressed]);
-    const onPressOut = useCallback(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isPressed.value = 0;
-    }, [isPressed]);
 
     const mapVariantStates =
       themeType === "light"
@@ -269,7 +230,7 @@ export const Alert = React.forwardRef<View, AlertType>(
             fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
             { backgroundColor: mapVariantStates[variant].background },
             // Disable pressed animation when component is full width
-            !fullWidth && pressedAnimationStyle
+            !fullWidth && scaleAnimatedStyle
           ]}
         >
           {renderMainBlock()}

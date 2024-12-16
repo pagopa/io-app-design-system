@@ -29,6 +29,8 @@ jest.mock("react-native-reanimated", () => {
   // So we override it with a no-op
   // eslint-disable-next-line functional/immutable-data,@typescript-eslint/no-empty-function
   Reanimated.default.addWhitelistedUIProps = () => { };
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useReducedMotion = () => false;
 
   return Reanimated;
 });

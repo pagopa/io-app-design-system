@@ -27,17 +27,15 @@ export const IOSpringValues = {
   }
 };
 
-export const IOScaleValues = {
+export type IOSpringValues = keyof typeof IOSpringValues;
+
+export const IOScaleEffect = {
   // Slight scale effect
-  basicButton: {
-    pressedState: 0.99
-  },
+  slight: 0.99,
   // Medium scale effect
-  magnifiedButton: {
-    pressedState: 0.97
-  },
+  medium: 0.97,
   // Exaggerated scale effect
-  exaggeratedButton: {
-    pressedState: 0.95
-  }
+  exaggerated: 0.95
 };
+
+export type IOScaleEffect = keyof typeof IOScaleEffect;

@@ -91,7 +91,7 @@ export const ListItemHeader = ({
     [label, theme, endElement]
   );
 
-  const listItemInfoAction = useCallback(() => {
+  const listItemAction = useCallback(() => {
     if (endElement) {
       const { type, componentProps } = endElement;
 
@@ -151,7 +151,7 @@ export const ListItemHeader = ({
         <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
         {endElement && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
-            {listItemInfoAction()}
+            {listItemAction()}
           </View>
         )}
       </View>
