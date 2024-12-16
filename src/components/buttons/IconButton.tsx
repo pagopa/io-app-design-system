@@ -160,6 +160,7 @@ export const IconButton = ({
       >
         {!disabled ? (
           <AnimatedIconClassComponent
+            allowFontScaling
             name={icon}
             size={iconSize}
             animatedProps={animatedColor}
@@ -167,6 +168,7 @@ export const IconButton = ({
           />
         ) : (
           <AnimatedIcon
+            allowFontScaling
             name={icon}
             size={iconSize}
             color={colorMap[color]?.icon?.disabled}

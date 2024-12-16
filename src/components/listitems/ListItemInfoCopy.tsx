@@ -8,6 +8,7 @@ import {
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { BodySmall, H6 } from "../typography";
@@ -37,6 +38,9 @@ export const ListItemInfoCopy = ({
   const theme = useIOTheme();
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
+
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
@@ -87,25 +91,32 @@ export const ListItemInfoCopy = ({
         style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            scaleAnimatedStyle
+          ]}
         >
-          {icon && (
-            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-              <Icon
-                name={icon}
-                color="grey-450"
-                size={IOListItemVisualParams.iconSize}
-              />
-            </View>
+          {icon && !hugeFontEnabled && (
+            <Icon
+              allowFontScaling
+              name={icon}
+              color="grey-450"
+              size={IOListItemVisualParams.iconSize}
+            />
           )}
           <View style={IOStyles.flex}>{listItemInfoCopyContent}</View>
-          <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-            <Icon
-              name="copy"
-              color={foregroundColor}
-              size={IOListItemVisualParams.chevronSize}
-            />
-          </View>
+          <Icon
+            allowFontScaling
+            name="copy"
+            color={foregroundColor}
+            size={IOListItemVisualParams.chevronSize}
+          />
         </Animated.View>
       </Animated.View>
     </Pressable>

@@ -1,11 +1,5 @@
-import React, { ComponentProps, ReactNode } from "react";
-import {
-  GestureResponderEvent,
-  Image,
-  Pressable,
-  StyleSheet,
-  View
-} from "react-native";
+import React, { ComponentProps } from "react";
+import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import {
   IOColors,
@@ -16,13 +10,14 @@ import {
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Avatar } from "../avatar";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { HSpacer, VSpacer } from "../spacer";
-import { Caption, H6, BodySmall } from "../typography";
+import { BodySmall, Caption, H6 } from "../typography";
 
 type ListItemTopElementProps =
   | {
@@ -80,13 +75,6 @@ export type ListItemNavGraphicProps =
 
 export type ListItemNav = ListItemNavPartialProps & ListItemNavGraphicProps;
 
-const styles = StyleSheet.create({
-  paymentLogoSize: {
-    width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize
-  }
-});
-
 export const ListItemNav = ({
   value,
   description,
@@ -107,11 +95,8 @@ export const ListItemNav = ({
     useListItemAnimation();
   const theme = useIOTheme();
 
-  const withMargin = (GraphicalAsset: ReactNode) => (
-    <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-      {GraphicalAsset}
-    </View>
-  );
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -128,7 +113,12 @@ export const ListItemNav = ({
           {topElement.dateValue && (
             <>
               <View style={{ alignSelf: "flex-start", flexDirection: "row" }}>
-                <Icon name="calendar" size={16} color="grey-300" />
+                <Icon
+                  allowFontScaling
+                  name="calendar"
+                  size={16}
+                  color="grey-300"
+                />
                 <HSpacer size={4} />
                 <Caption color={theme["textBody-tertiary"]}>
                   {topElement.dateValue}
@@ -186,35 +176,49 @@ export const ListItemNav = ({
         style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
       >
         <Animated.View
-          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            scaleAnimatedStyle
+          ]}
         >
           {/* Possibile graphical assets
           - Icon
           - Image URL (for payment logos)
           - Avatar
           */}
-          {icon &&
-            withMargin(
-              <Icon
-                name={icon}
-                color={iconColor}
-                size={IOListItemVisualParams.iconSize}
-              />
-            )}
-          {paymentLogoUri &&
-            withMargin(
-              <Image
-                accessibilityIgnoresInvertColors
-                source={{ uri: paymentLogoUri }}
-                style={styles.paymentLogoSize}
-              />
-            )}
-          {avatar && withMargin(<Avatar size="small" {...avatar} />)}
+          {icon && !hugeFontEnabled && (
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={IOListItemVisualParams.iconSize}
+            />
+          )}
+          {paymentLogoUri && (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={{ uri: paymentLogoUri }}
+              style={{
+                width:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                height:
+                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+              }}
+            />
+          )}
+          {avatar && <Avatar size="small" {...avatar} />}
 
           <View style={IOStyles.flex}>{listItemNavContent}</View>
           {loading && <LoadingSpinner color={interactiveColor} />}
           {!loading && !hideChevron && (
             <Icon
+              allowFontScaling
               name="chevronRightListItem"
               color={interactiveColor}
               size={IOListItemVisualParams.chevronSize}

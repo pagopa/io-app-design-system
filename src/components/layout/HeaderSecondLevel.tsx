@@ -24,7 +24,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   IOColors,
   IOSpringValues,
-  IOStyles,
   IOVisualCostants,
   alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
@@ -37,6 +36,7 @@ import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
 import IconButton from "../buttons/IconButton";
 import { HSpacer } from "../spacer";
+import { HStack } from "../stack";
 import { IOText } from "../typography";
 import { HeaderActionProps } from "./common";
 
@@ -310,28 +310,19 @@ export const HeaderSecondLevel = ({
             {title}
           </AnimatedIOText>
         </View>
-        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+        <HStack allowScaleSpacing space={16} style={{ flexShrink: 0 }}>
           {type === "threeActions" && (
-            <>
-              <IconButton {...thirdAction} color={iconButtonColor} />
-              {/* Same as above */}
-              <HSpacer size={16} />
-            </>
+            <IconButton {...thirdAction} color={iconButtonColor} />
           )}
           {(type === "twoActions" || type === "threeActions") && (
-            <>
-              <IconButton {...secondAction} color={iconButtonColor} />
-              {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-              <HSpacer size={16} />
-            </>
+            <IconButton {...secondAction} color={iconButtonColor} />
           )}
           {type !== "base" ? (
             <IconButton {...firstAction} color={iconButtonColor} />
           ) : (
             <HSpacer size={iconBtnSizeSmall as IOSpacer} />
           )}
-        </View>
+        </HStack>
       </Animated.View>
     </Animated.View>
   );

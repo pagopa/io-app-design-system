@@ -191,8 +191,6 @@ export const Banner = ({
       >
         {title && (
           <>
-            {/* Once we get 'gap' property, we can get rid of
-          these <VSpacer> components */}
             <H6 color={colorTitle}>{title}</H6>
             <VSpacer size={4} />
           </>

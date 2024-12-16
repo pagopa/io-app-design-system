@@ -64,6 +64,9 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
         },
         {},
         {
+          "columnGap": 8,
+        },
+        {
           "transform": [
             {
               "scale": undefined,
@@ -79,7 +82,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -163,6 +166,9 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         {
           "height": 48,
         },
+        {
+          "columnGap": 8,
+        },
         false,
         {
           "backgroundColor": "rgba(231,236,252,0)",
@@ -188,7 +194,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
       allowFontScaling={true}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -302,6 +308,9 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
             "flexDirection": "row",
             "justifyContent": "center",
           },
+          {
+            "columnGap": 8,
+          },
           false,
         ]
       }
@@ -312,7 +321,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         allowFontScaling={true}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
           [
@@ -795,6 +804,9 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
         },
         {},
         {
+          "columnGap": 8,
+        },
+        {
           "transform": [
             {
               "scale": undefined,
@@ -810,7 +822,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
       allowFontScaling={false}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -893,6 +905,9 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {
           "height": 40,
         },
+        {
+          "columnGap": 8,
+        },
         false,
         {
           "backgroundColor": "rgba(0,115,230,0)",
@@ -918,7 +933,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
       allowFontScaling={false}
       ellipsizeMode="tail"
       importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.25}
+      maxFontSizeMultiplier={1.5}
       numberOfLines={1}
       style={
         [
@@ -1031,6 +1046,9 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
             "flexDirection": "row",
             "justifyContent": "center",
           },
+          {
+            "columnGap": 8,
+          },
           false,
         ]
       }
@@ -1041,7 +1059,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
         allowFontScaling={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
-        maxFontSizeMultiplier={1.25}
+        maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
           [

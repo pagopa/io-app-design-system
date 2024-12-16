@@ -13,6 +13,7 @@ import {
   IOVisualCostants,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
@@ -63,12 +64,14 @@ const ModuleCredentialContent = ({
   ...pressableProps
 }: WithTestID<ModuleCredentialProps>) => {
   const theme = useIOTheme();
+  const { hugeFontEnabled } = useIOFontDynamicScale();
 
-  const iconComponent = icon && (
+  const iconComponent = icon && !hugeFontEnabled && (
     <Icon
+      allowFontScaling
       name={icon}
       size={IOSelectionListItemVisualParams.iconSize}
-      color="grey-300"
+      color={theme["icon-decorative"]}
     />
   );
 

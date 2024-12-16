@@ -12,6 +12,7 @@ import {
   useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
+
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
@@ -132,6 +133,7 @@ export const ListItemTransaction = ({
   const ListItemTransactionContent = () => (
     <>
       <HStack
+        allowScaleSpacing
         space={IOListItemLogoMargin}
         style={{ alignItems: "center", flexShrink: 1 }}
       >
@@ -168,6 +170,7 @@ export const ListItemTransaction = ({
         )}
         {showChevron && (
           <Icon
+            allowFontScaling
             name="chevronRightListItem"
             color={interactiveColor}
             size={IOListItemVisualParams.chevronSize}

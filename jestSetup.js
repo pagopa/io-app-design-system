@@ -48,5 +48,9 @@ global.AbortController = AbortController;
 global.__reanimatedWorkletInit = jest.fn();
 
 jest.mock("./src/utils/accessibility", () => ({
-  useBoldTextEnabled: () => false
+  useBoldTextEnabled: () => false,
+  useIOFontDynamicScale: () => ({
+    dynamicFontScale: 1,
+    spacingScaleMultiplier: 1
+  })
 }));

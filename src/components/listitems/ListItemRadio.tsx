@@ -7,17 +7,19 @@ import Placeholder from "rn-placeholder";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
+  IOSelectionTickVisualParams,
   IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { HSpacer, VSpacer } from "../spacer";
-import { H6, BodySmall } from "../typography";
 import { VStack } from "../stack";
+import { BodySmall, H6 } from "../typography";
 
 type ListItemRadioGraphicProps =
   | { icon?: never; paymentLogo: IOLogoPaymentType; uri?: never }
@@ -81,6 +83,8 @@ export const ListItemRadio = ({
   testID
 }: ListItemRadioProps) => {
   const [toggleValue, setToggleValue] = useState(selected ?? false);
+  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
+    useIOFontDynamicScale();
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
   const theme = useIOTheme();
@@ -139,7 +143,10 @@ export const ListItemRadio = ({
           </View>
           <HSpacer size={8} />
           <View pointerEvents="none" style={disabledStyle}>
-            <AnimatedRadio checked={toggleValue} />
+            <AnimatedRadio
+              size={IOSelectionTickVisualParams.size * dynamicFontScale}
+              checked={toggleValue}
+            />
           </View>
         </View>
       </View>
@@ -177,37 +184,41 @@ export const ListItemRadio = ({
       >
         <Animated.View style={scaleAnimatedStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
-            <View style={[IOStyles.row, { flexShrink: 1 }]}>
-              {startImage && (
-                <View
-                  style={{
-                    marginRight: IOSelectionListItemVisualParams.iconMargin
-                  }}
-                >
-                  {/* icon or paymentLogo props are mutually exclusive */}
-                  {startImage.icon && (
-                    <Icon
-                      name={startImage.icon}
-                      color="grey-300"
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
-                  {startImage.uri && (
-                    <Image
-                      accessibilityIgnoresInvertColors
-                      source={startImage}
-                      style={styles.imageSize}
-                    />
-                  )}
-                  {startImage.paymentLogo && (
-                    <LogoPayment
-                      name={startImage.paymentLogo}
-                      size={IOSelectionListItemVisualParams.iconSize}
-                    />
-                  )}
+            <View
+              style={{
+                flexDirection: "row",
+                flexShrink: 1,
+                columnGap:
+                  IOSelectionListItemVisualParams.iconMargin *
+                  dynamicFontScale *
+                  spacingScaleMultiplier
+              }}
+            >
+              {startImage?.icon && !hugeFontEnabled && (
+                <Icon
+                  allowFontScaling
+                  name={startImage.icon}
+                  color="grey-300"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                />
+              )}
+              {startImage?.uri && (
+                <View style={{ alignSelf: "center" }}>
+                  <Image
+                    accessibilityIgnoresInvertColors
+                    source={startImage}
+                    style={styles.imageSize}
+                  />
                 </View>
               )}
-
+              {startImage?.paymentLogo && (
+                <View style={{ alignSelf: "center" }}>
+                  <LogoPayment
+                    name={startImage.paymentLogo}
+                    size={IOSelectionListItemVisualParams.iconSize}
+                  />
+                </View>
+              )}
               <H6 color={theme["textBody-default"]} style={{ flexShrink: 1 }}>
                 {value}
               </H6>
@@ -218,7 +229,10 @@ export const ListItemRadio = ({
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
             >
-              <AnimatedRadio checked={selected ?? toggleValue} />
+              <AnimatedRadio
+                size={IOSelectionTickVisualParams.size * dynamicFontScale}
+                checked={selected ?? toggleValue}
+              />
             </View>
           </View>
           {description && (
