@@ -18,7 +18,6 @@ import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../stack";
 import { Body, ButtonText } from "../typography";
-import { H4 } from "../typography/H4";
 
 const ICON_SIZE: IOIconSizeScale = 24;
 
@@ -26,7 +25,6 @@ const [padding, paddingFullWidth] = IOAlertSpacing;
 
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info" | "success";
-  title?: string;
   content: string;
   fullWidth?: boolean;
   accessibilityLabel?: string;
@@ -111,7 +109,6 @@ export const Alert = forwardRef<View, AlertType>(
   (
     {
       variant,
-      title,
       content,
       action,
       onPress,
@@ -165,15 +162,14 @@ export const Alert = forwardRef<View, AlertType>(
       Tested on both Android and iOS. */}
         <View
           style={[
-            !title && isMultiline && { marginTop: -6 * dynamicFontScale },
-            isMultiline && { marginBottom: -4 * dynamicFontScale },
+            isMultiline && {
+              marginTop: -6 * dynamicFontScale,
+              marginBottom: -4 * dynamicFontScale
+            },
             { flex: 1 }
           ]}
         >
           <VStack space={8} allowScaleSpacing>
-            {title && (
-              <H4 color={mapVariantStates[variant].foreground}>{title}</H4>
-            )}
             <Body
               color={mapVariantStates[variant].foreground}
               weight={"Regular"}
