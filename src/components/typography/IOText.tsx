@@ -10,8 +10,8 @@ import { IOColors, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
-  IOFontSizeMultiplier,
   IOFontWeight,
+  IOMaxFontSizeMultiplier,
   makeFontStyleObject
 } from "../../utils/fonts";
 
@@ -142,7 +142,7 @@ export const IOText = forwardRef<View, IOTextProps>(
     /* Accessible typography based on the `fontScale` parameter */
     const accessibleFontSizeProps: ComponentProps<typeof Text> = {
       allowFontScaling,
-      maxFontSizeMultiplier: maxFontSizeMultiplier ?? IOFontSizeMultiplier
+      maxFontSizeMultiplier: maxFontSizeMultiplier ?? IOMaxFontSizeMultiplier
     };
 
     return (
