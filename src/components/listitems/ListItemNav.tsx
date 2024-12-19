@@ -1,6 +1,7 @@
 import React, { ComponentProps } from "react";
 import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
+import { IOSpacer, IOVisualCostants } from "lib/typescript";
 import {
   IOColors,
   IOListItemStyles,
@@ -175,11 +176,7 @@ export const ListItemNav = ({
         style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
       >
         <Animated.View
-          style={[
-            IOListItemStyles.listItemInner,
-            { columnGap: IOListItemVisualParams.iconMargin },
-            scaleAnimatedStyle
-          ]}
+          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
         >
           {/* Possibile graphical assets
           - Icon
@@ -187,24 +184,36 @@ export const ListItemNav = ({
           - Avatar
           */}
           {icon && !hugeFontEnabled && (
-            <Icon
-              allowFontScaling
-              name={icon}
-              color={iconColor}
-              size={IOListItemVisualParams.iconSize}
-            />
+            <>
+              <Icon
+                allowFontScaling
+                name={icon}
+                color={iconColor}
+                size={IOListItemVisualParams.iconSize}
+              />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
           )}
           {paymentLogoUri && (
-            <Image
-              accessibilityIgnoresInvertColors
-              source={{ uri: paymentLogoUri }}
-              style={{
-                width:
-                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
-                height:
-                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
-              }}
-            />
+            <>
+              <Image
+                accessibilityIgnoresInvertColors
+                source={{ uri: paymentLogoUri }}
+                style={{
+                  width:
+                    IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                  height:
+                    IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+                }}
+              />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
           )}
           {avatar && <Avatar size="small" {...avatar} />}
 
