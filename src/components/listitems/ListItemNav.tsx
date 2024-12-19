@@ -95,8 +95,7 @@ export const ListItemNav = ({
     useListItemAnimation();
   const theme = useIOTheme();
 
-  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
-    useIOFontDynamicScale();
+  const { dynamicFontScale, hugeFontEnabled } = useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -178,12 +177,7 @@ export const ListItemNav = ({
         <Animated.View
           style={[
             IOListItemStyles.listItemInner,
-            {
-              columnGap:
-                IOListItemVisualParams.iconMargin *
-                dynamicFontScale *
-                spacingScaleMultiplier
-            },
+            { columnGap: IOListItemVisualParams.iconMargin },
             scaleAnimatedStyle
           ]}
         >
