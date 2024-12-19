@@ -6,7 +6,8 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
-  IOStyles,
+  IOSpacer,
+  IOVisualCostants,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -95,8 +96,7 @@ export const ListItemNav = ({
     useListItemAnimation();
   const theme = useIOTheme();
 
-  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
-    useIOFontDynamicScale();
+  const { dynamicFontScale, hugeFontEnabled } = useIOFontDynamicScale();
 
   const listItemNavContent = (
     <>
@@ -176,16 +176,7 @@ export const ListItemNav = ({
         style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
       >
         <Animated.View
-          style={[
-            IOListItemStyles.listItemInner,
-            {
-              columnGap:
-                IOListItemVisualParams.iconMargin *
-                dynamicFontScale *
-                spacingScaleMultiplier
-            },
-            scaleAnimatedStyle
-          ]}
+          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
         >
           {/* Possibile graphical assets
           - Icon
@@ -193,28 +184,50 @@ export const ListItemNav = ({
           - Avatar
           */}
           {icon && !hugeFontEnabled && (
-            <Icon
-              allowFontScaling
-              name={icon}
-              color={iconColor}
-              size={IOListItemVisualParams.iconSize}
-            />
+            <>
+              <Icon
+                allowFontScaling
+                name={icon}
+                color={iconColor}
+                size={IOListItemVisualParams.iconSize}
+              />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
           )}
           {paymentLogoUri && (
-            <Image
-              accessibilityIgnoresInvertColors
-              source={{ uri: paymentLogoUri }}
-              style={{
-                width:
-                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
-                height:
-                  IOSelectionListItemVisualParams.iconSize * dynamicFontScale
-              }}
-            />
+            <>
+              <Image
+                accessibilityIgnoresInvertColors
+                source={{ uri: paymentLogoUri }}
+                style={{
+                  width:
+                    IOSelectionListItemVisualParams.iconSize * dynamicFontScale,
+                  height:
+                    IOSelectionListItemVisualParams.iconSize * dynamicFontScale
+                }}
+              />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
           )}
-          {avatar && <Avatar size="small" {...avatar} />}
+          {avatar && (
+            <>
+              <Avatar size="small" {...avatar} />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
+          )}
 
-          <View style={IOStyles.flex}>{listItemNavContent}</View>
+          <View style={{ flexGrow: 1, flexShrink: 1 }}>
+            {listItemNavContent}
+          </View>
           {loading && <LoadingSpinner color={interactiveColor} />}
           {!loading && !hideChevron && (
             <Icon

@@ -1,7 +1,9 @@
 import {
   Divider,
   H2,
+  H6,
   Icon,
+  Badge,
   ListItemAction,
   ListItemAmount,
   ListItemHeader,
@@ -133,6 +135,24 @@ const renderListItemNav = () => (
             alert("Action triggered");
           }}
           loading
+        />
+        <ListItemNav
+          icon={"categLearning"}
+          value={
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <H6>Nome del valoreeeeee eeeeeeeeee</H6>
+              <Badge text={"3"} variant="purple" />
+            </View>
+          }
+          onPress={() => {
+            alert("Action triggered");
+          }}
         />
         <ListItemNav
           avatarProps={{

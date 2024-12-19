@@ -531,9 +531,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
             "justifyContent": "space-between",
           },
           {
-            "columnGap": 12,
-          },
-          {
             "transform": [
               {
                 "scale": undefined,
@@ -546,7 +543,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
       <View
         style={
           {
-            "flex": 1,
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
       >
@@ -2203,9 +2201,6 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
             "justifyContent": "space-between",
           },
           {
-            "columnGap": 12,
-          },
-          {
             "transform": [
               {
                 "scale": undefined,
@@ -2218,7 +2213,8 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
       <View
         style={
           {
-            "flex": 1,
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
       >
