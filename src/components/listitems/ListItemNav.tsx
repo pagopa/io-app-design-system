@@ -1,4 +1,3 @@
-import { IOSpacer, IOVisualCostants } from "lib/typescript";
 import React, { ComponentProps } from "react";
 import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
@@ -7,6 +6,8 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
+  IOSpacer,
+  IOVisualCostants,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
