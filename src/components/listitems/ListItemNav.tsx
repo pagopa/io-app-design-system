@@ -1,13 +1,12 @@
+import { IOSpacer, IOVisualCostants } from "lib/typescript";
 import React, { ComponentProps } from "react";
 import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOSpacer, IOVisualCostants } from "lib/typescript";
 import {
   IOColors,
   IOListItemStyles,
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -215,9 +214,19 @@ export const ListItemNav = ({
               />
             </>
           )}
-          {avatar && <Avatar size="small" {...avatar} />}
+          {avatar && (
+            <>
+              <Avatar size="small" {...avatar} />
+              <HSpacer
+                allowScaleSpacing
+                size={IOVisualCostants.iconMargin as IOSpacer}
+              />
+            </>
+          )}
 
-          <View style={IOStyles.flex}>{listItemNavContent}</View>
+          <View style={{ flexGrow: 1, flexShrink: 1 }}>
+            {listItemNavContent}
+          </View>
           {loading && <LoadingSpinner color={interactiveColor} />}
           {!loading && !hideChevron && (
             <Icon
