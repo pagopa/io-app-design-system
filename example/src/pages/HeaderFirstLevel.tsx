@@ -46,15 +46,20 @@ export const HeaderFirstLevelScreen = () => {
       header: () => (
         <HeaderFirstLevel
           ignoreSafeAreaMargin={alert !== undefined}
-          backgroundColor="light"
           title={"Pagina"}
-          type="singleAction"
           firstAction={{
             icon: "help",
+            accessibilityLabel: "Go to the help section",
             onPress: () => {
               Alert.alert("Contextual Help");
-            },
-            accessibilityLabel: ""
+            }
+          }}
+          secondAction={{
+            icon: "coggle",
+            accessibilityLabel: "Go to the Settings section",
+            onPress: () => {
+              Alert.alert("Settings");
+            }
           }}
         />
       )
