@@ -163,7 +163,7 @@ const renderListItemNav = () => (
           topElement={{
             badgeProps: {
               text: "Novità",
-              variant: "blue"
+              variant: "default"
             }
           }}
         />
@@ -176,7 +176,7 @@ const renderListItemNav = () => (
           topElement={{
             badgeProps: {
               text: "Novità",
-              variant: "blue"
+              variant: "default"
             }
           }}
           hideChevron
@@ -475,7 +475,7 @@ const transactionStatusArray: Array<mockTransactionStatusData> = [
   },
   {
     badge: {
-      variant: "info",
+      variant: "default",
       text: "pending"
     },
     asset: { uri: organizationLogoURI.imageSource }
@@ -489,7 +489,7 @@ const transactionStatusArray: Array<mockTransactionStatusData> = [
   },
   {
     badge: {
-      variant: "lightBlue",
+      variant: "default",
       text: "reversal"
     },
     asset: "applePay"
