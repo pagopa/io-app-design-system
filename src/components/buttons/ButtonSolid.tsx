@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
-  LayoutAnimationConfig,
   interpolateColor,
   useAnimatedStyle,
   useReducedMotion
@@ -253,50 +252,50 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
             !disabled && pressedAnimationStyle
           ]}
         >
-          <LayoutAnimationConfig skipEntering>
-            {loading && (
-              <Animated.View
-                style={buttonStyles.buttonInner}
-                entering={enterTransitionInnerContentSmall}
-                exiting={exitTransitionInnerContent}
-              >
-                <LoadingSpinner color={foregroundColor} />
-              </Animated.View>
-            )}
+          {/* <LayoutAnimationConfig skipEntering> */}
+          {loading && (
+            <Animated.View
+              style={buttonStyles.buttonInner}
+              entering={enterTransitionInnerContentSmall}
+              exiting={exitTransitionInnerContent}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
+          )}
 
-            {!loading && (
-              <Animated.View
-                style={[
-                  buttonStyles.buttonInner,
-                  { columnGap: ICON_MARGIN },
-                  /* If 'iconPosition' is set to 'end', we use 
+          {!loading && (
+            <Animated.View
+              style={[
+                buttonStyles.buttonInner,
+                { columnGap: ICON_MARGIN },
+                /* If 'iconPosition' is set to 'end', we use 
                    reverse flex property to invert the position */
-                  iconPosition === "end" && { flexDirection: "row-reverse" }
-                ]}
-                entering={enterTransitionInnerContent}
-              >
-                {icon && (
-                  <Icon
-                    allowFontScaling
-                    name={icon}
-                    size={iconSize}
-                    color={foregroundColor}
-                  />
-                )}
-                <ButtonText
+                iconPosition === "end" && { flexDirection: "row-reverse" }
+              ]}
+              entering={enterTransitionInnerContent}
+            >
+              {icon && (
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  size={iconSize}
                   color={foregroundColor}
-                  style={IOButtonStyles.label}
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                  accessible={false}
-                  accessibilityElementsHidden
-                  importantForAccessibility="no-hide-descendants"
-                >
-                  {label}
-                </ButtonText>
-              </Animated.View>
-            )}
-          </LayoutAnimationConfig>
+                />
+              )}
+              <ButtonText
+                color={foregroundColor}
+                style={IOButtonStyles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                accessible={false}
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
+              >
+                {label}
+              </ButtonText>
+            </Animated.View>
+          )}
+          {/* </LayoutAnimationConfig> */}
         </Animated.View>
       </Pressable>
     );
