@@ -10,10 +10,6 @@ const meta = {
   title: "Components/Banner/Banner",
   component: Banner,
   argTypes: {
-    size: {
-      options: ["small", "big"],
-      control: { type: "radio" }
-    },
     color: {
       options: ["neutral", "turquoise"],
       control: { type: "radio" }
@@ -32,7 +28,6 @@ const meta = {
   args: {
     title: "Banner Title",
     content: "Banner content",
-    size: "big",
     pictogramName: "charity",
     color: "neutral"
   },
@@ -51,13 +46,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Partial<Story> = {
   render: args => {
-    const { size, color, title, content, pictogramName } = args;
+    const { color, title, content, pictogramName } = args;
     const viewRef = React.createRef<View>();
     return (
       <Banner
         content={content}
         title={title}
-        size={size}
         color={color}
         pictogramName={pictogramName}
         viewRef={viewRef}
