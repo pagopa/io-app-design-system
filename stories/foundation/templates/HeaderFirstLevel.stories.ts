@@ -23,8 +23,6 @@ type Story = StoryObj<typeof meta>;
 export const Wallet: Story = {
   args: {
     title: "Portafoglio",
-    type: "twoActions",
-    backgroundColor: "dark",
     firstAction: {
       icon: "help",
       accessibilityLabel: "Help",
@@ -41,7 +39,6 @@ export const Wallet: Story = {
 export const Messages: Story = {
   args: {
     title: "Messaggi",
-    type: "twoActions",
     firstAction: {
       icon: "help",
       accessibilityLabel: "Help",
