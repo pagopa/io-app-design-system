@@ -45,13 +45,13 @@ export const enterTransitionInnerContentSmall = () => {
   "worklet";
   const animations = {
     opacity: withTiming(1, {
-      duration: 1000,
+      duration: 250,
       easing: Easing.in(Easing.cubic)
     }),
     transform: [
       {
         scale: withTiming(1, {
-          duration: 1000,
+          duration: 250,
           easing: Easing.in(Easing.cubic)
         })
       }
