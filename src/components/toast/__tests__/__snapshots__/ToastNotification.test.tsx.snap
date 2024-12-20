@@ -392,7 +392,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -508,7 +508,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#5D1313",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -557,7 +557,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#215C76",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -606,7 +606,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#003B3D",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -655,7 +655,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#224021",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -704,7 +704,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         {},
         {
           "color": "#614C15",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",

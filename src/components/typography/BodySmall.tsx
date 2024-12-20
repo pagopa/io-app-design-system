@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../core";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import {
   IOText,
@@ -25,7 +25,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -34,7 +34,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     const BodySmallProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
-      font: isExperimental ? fontName : legacyFontName,
+      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: customWeight ?? "Regular",
       size: 14,
       lineHeight: 21,

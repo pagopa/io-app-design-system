@@ -4,5 +4,6 @@ export * from "./IOTransitions";
 export * from "./IOStyles";
 export * from "./IOShapes";
 export * from "./IOSpacing";
+export * from "./IONewTypefaceContextProvider";
 export * from "./IODSExperimentalContextProvider";
 export * from "./IOThemeContextProvider";

@@ -1,7 +1,8 @@
-import React, { forwardRef, useMemo } from "react";
+import React, { forwardRef } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated, {
   interpolateColor,
+  useAnimatedProps,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
@@ -10,7 +11,7 @@ import {
   IOColors,
   IOSpacingScale,
   hexToRgba,
-  useIOExperimentalDesign
+  useIONewTypeface
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -67,28 +68,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonLinkProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    label: {
-      default: IOColors.blue,
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  contrast: {
-    label: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  }
-};
-
 const DISABLED_OPACITY = 0.5;
 const ICON_MARGIN = 8;
 
@@ -107,25 +86,43 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     },
     ref
   ) => {
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
-    const colorMap = useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental]
-    );
-
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
-    const pressedColorAnimationStyle = useAnimatedStyle(() => ({
-      color: interpolateColor(
+    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
+      // Link color states to the pressed states
+
+      const labelColor = interpolateColor(
         progress.value,
         [0, 1],
-        [colorMap[color].label.default, colorMap[color].label.pressed]
-      )
-    }));
+        [
+          mapColorStates[color].label.default,
+          mapColorStates[color].label.pressed
+        ]
+      );
+
+      return {
+        color: labelColor
+      };
+    });
+
+    // Animate the <Icon> color prop
+    const pressedColorIconAnimationStyle = useAnimatedProps(() => {
+      const iconColor = interpolateColor(
+        progress.value,
+        [0, 1],
+        [
+          mapColorStates[color].label.default,
+          mapColorStates[color].label.pressed
+        ]
+      );
+
+      return { color: iconColor };
+    });
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);
@@ -168,15 +165,15 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
               <AnimatedIconClassComponent
                 allowFontScaling
                 name={icon}
-                animatedProps={pressedColorAnimationStyle}
-                color={colorMap[color]?.label?.default}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={mapColorStates[color]?.label?.default}
                 size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 allowFontScaling
                 name={icon}
-                color={colorMap[color]?.label?.disabled}
+                color={mapColorStates[color]?.label?.disabled}
                 size={iconSize}
               />
             ))}
@@ -184,13 +181,13 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             style={
               disabled
-                ? { color: colorMap[color]?.label?.disabled }
-                : { ...pressedColorAnimationStyle }
+                ? { color: mapColorStates[color]?.label?.disabled }
+                : { ...pressedColorLabelAnimationStyle }
             }
             numberOfLines={1}
             ellipsizeMode="tail"
