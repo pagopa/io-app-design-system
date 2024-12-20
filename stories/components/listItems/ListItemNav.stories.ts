@@ -36,7 +36,7 @@ export const WithBadge: Story = {
     topElement: {
       badgeProps: {
         text: "Badge",
-        variant: "info"
+        variant: "default"
       }
     }
   }
