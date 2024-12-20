@@ -235,7 +235,12 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           pointerEvents={pressable ? "none" : "auto"}
         >
           <View style={styles.iconContainer}>
-            <Icon name="search" size={iconSize} color={iconColor} />
+            <Icon
+              allowFontScaling
+              name="search"
+              size={iconSize}
+              color={iconColor}
+            />
           </View>
           <AnimatedTextInput
             testID={testID}

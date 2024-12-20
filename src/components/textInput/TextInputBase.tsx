@@ -26,6 +26,7 @@ import {
   useIONewTypeface,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
@@ -78,8 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: inputHeight,
-    paddingVertical: inputPaddingVertical,
-    paddingHorizontal: inputPaddingHorizontal
+    paddingVertical: inputPaddingVertical
   },
   textInputOuterBorder: {
     ...StyleSheet.absoluteFillObject,
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
   },
   textInputLabelWrapper: {
     position: "absolute",
-    paddingHorizontal: inputPaddingHorizontal,
     zIndex: 10,
     bottom: 0,
     top: 0,
@@ -206,6 +205,9 @@ export const TextInputBase = ({
     disabled ? "disabled" : "initial"
   );
   const focusedState = useSharedValue<number>(0);
+
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+
   const theme = useIOTheme();
   const { newTypefaceEnabled } = useIONewTypeface();
 
@@ -339,7 +341,11 @@ export const TextInputBase = ({
         onPress={onTextInputPress}
         style={[
           inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
-          styles.textInput
+          styles.textInput,
+          {
+            paddingHorizontal:
+              inputPaddingHorizontal * dynamicFontScale * spacingScaleMultiplier
+          }
         ]}
         accessible={false}
         accessibilityRole={"none"}
@@ -362,8 +368,13 @@ export const TextInputBase = ({
 
         {icon && (
           <>
-            <Icon name={icon} color={iconColor} size={iconSize} />
-            <HSpacer size={iconMargin} />
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={iconSize}
+            />
+            <HSpacer allowScaleSpacing size={iconMargin} />
           </>
         )}
         <TextInput
@@ -411,7 +422,20 @@ export const TextInputBase = ({
           pointerEvents={"none"}
           style={[
             styles.textInputLabelWrapper,
-            icon ? { left: iconSize + iconMargin } : {}
+            {
+              paddingHorizontal:
+                inputPaddingHorizontal *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            },
+            icon
+              ? {
+                  left:
+                    (iconSize + iconMargin) *
+                    dynamicFontScale *
+                    spacingScaleMultiplier
+                }
+              : {}
           ]}
         >
           <Animated.Text

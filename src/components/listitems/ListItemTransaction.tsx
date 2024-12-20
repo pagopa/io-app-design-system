@@ -152,7 +152,7 @@ export const ListItemTransaction = ({
           </BodySmall>
         </View>
       </HStack>
-      <HStack style={{ alignItems: "center" }}>
+      <HStack space={4} style={{ alignItems: "center" }}>
         {badge ? (
           <Badge variant={badge?.variant} text={badge?.text} />
         ) : (
