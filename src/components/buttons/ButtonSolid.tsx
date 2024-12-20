@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -8,7 +8,6 @@ import {
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   interpolateColor,
-  LayoutAnimationConfig,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
@@ -187,6 +186,17 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       [isExperimental]
     );
 
+    /* Prevent the component from triggering the `isEntering' transition
+       on the on the first render. Solution from this discussion:
+       https://github.com/software-mansion/react-native-reanimated/discussions/2513
+    */
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isMounted.current = true;
+    }, []);
+
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
@@ -253,50 +263,52 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
             !disabled && pressedAnimationStyle
           ]}
         >
-          <LayoutAnimationConfig skipEntering>
-            {loading && (
-              <Animated.View
-                style={buttonStyles.buttonInner}
-                entering={enterTransitionInnerContentSmall}
-                exiting={exitTransitionInnerContent}
-              >
-                <LoadingSpinner color={foregroundColor} />
-              </Animated.View>
-            )}
+          {loading && (
+            <Animated.View
+              style={buttonStyles.buttonInner}
+              entering={
+                isMounted.current ? enterTransitionInnerContentSmall : undefined
+              }
+              exiting={exitTransitionInnerContent}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
+          )}
 
-            {!loading && (
-              <Animated.View
-                style={[
-                  buttonStyles.buttonInner,
-                  { columnGap: ICON_MARGIN },
-                  /* If 'iconPosition' is set to 'end', we use 
+          {!loading && (
+            <Animated.View
+              style={[
+                buttonStyles.buttonInner,
+                { columnGap: ICON_MARGIN },
+                /* If 'iconPosition' is set to 'end', we use 
                    reverse flex property to invert the position */
-                  iconPosition === "end" && { flexDirection: "row-reverse" }
-                ]}
-                entering={enterTransitionInnerContent}
-              >
-                {icon && (
-                  <Icon
-                    allowFontScaling
-                    name={icon}
-                    size={iconSize}
-                    color={foregroundColor}
-                  />
-                )}
-                <ButtonText
+                iconPosition === "end" && { flexDirection: "row-reverse" }
+              ]}
+              entering={
+                isMounted.current ? enterTransitionInnerContent : undefined
+              }
+            >
+              {icon && (
+                <Icon
+                  allowFontScaling
+                  name={icon}
+                  size={iconSize}
                   color={foregroundColor}
-                  style={IOButtonStyles.label}
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                  accessible={false}
-                  accessibilityElementsHidden
-                  importantForAccessibility="no-hide-descendants"
-                >
-                  {label}
-                </ButtonText>
-              </Animated.View>
-            )}
-          </LayoutAnimationConfig>
+                />
+              )}
+              <ButtonText
+                color={foregroundColor}
+                style={IOButtonStyles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                accessible={false}
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
+              >
+                {label}
+              </ButtonText>
+            </Animated.View>
+          )}
         </Animated.View>
       </Pressable>
     );
