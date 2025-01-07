@@ -1,5 +1,10 @@
 import React, { forwardRef, useMemo } from "react";
-import { GestureResponderEvent, Pressable, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  View,
+  TextStyle
+} from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -20,7 +25,11 @@ import {
   IOIcons,
   IconClassComponent
 } from "../icons";
-import { IOText, buttonTextFontSize } from "../typography";
+import {
+  IOText,
+  buttonTextFontSize,
+  buttonTextLineHeight
+} from "../typography";
 
 export type ColorButtonLink = "primary" | "contrast";
 
@@ -34,6 +43,8 @@ export type ButtonLinkProps = WithTestID<{
   // Accessibility
   accessibilityLabel?: string;
   accessibilityHint?: string;
+  numberOfLines?: number;
+  textAlign?: TextStyle["textAlign"];
   // Events
   onPress: (event: GestureResponderEvent) => void;
 }>;
@@ -103,6 +114,8 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
       onPress,
       accessibilityLabel,
       accessibilityHint,
+      numberOfLines = 1,
+      textAlign = "auto",
       testID
     },
     ref
@@ -187,12 +200,14 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             font={isExperimental ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
-            style={
+            lineHeight={buttonTextLineHeight}
+            style={[
               disabled
                 ? { color: colorMap[color]?.label?.disabled }
-                : { ...pressedColorAnimationStyle }
-            }
-            numberOfLines={1}
+                : { ...pressedColorAnimationStyle },
+              { textAlign }
+            ]}
+            numberOfLines={numberOfLines}
             ellipsizeMode="tail"
           >
             {label}
