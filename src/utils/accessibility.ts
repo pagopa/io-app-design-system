@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { AccessibilityInfo, Platform, useWindowDimensions } from "react-native";
-import { useIOExperimentalDesign } from "../core";
-import { IOFontSizeMultiplier } from "./fonts";
+import { IOMaxFontSizeMultiplier } from "./fonts";
 
 /**
  * Query whether a bold text is currently enabled. The result is true
@@ -37,7 +36,7 @@ export const useBoldTextEnabled = () => {
 
 /**
  * Returns a font size multiplier based on the font scale of the device,
- * but limited to the `IOFontSizeMultiplier` value.
+ * but limited to the `IOMaxFontSizeMultiplier` value.
  * @returns number
  */
 export const useIOFontDynamicScale = (): {
@@ -45,17 +44,15 @@ export const useIOFontDynamicScale = (): {
   spacingScaleMultiplier: number;
   hugeFontEnabled: boolean;
 } => {
-  const { isExperimental } = useIOExperimentalDesign();
   const { fontScale } = useWindowDimensions();
 
-  const deviceFontScale = isExperimental ? fontScale : 1;
-  const hugeFontEnabled = deviceFontScale >= 1.35;
+  const hugeFontEnabled = fontScale >= 1.35;
 
-  const dynamicFontScale = Math.min(deviceFontScale, IOFontSizeMultiplier);
+  const dynamicFontScale = Math.min(fontScale, IOMaxFontSizeMultiplier);
   /* We make the spacing dynamic based on the font scale, but we multiply
     this value to limit the amount of scaling applied to the spacing */
   const spacingScaleMultiplier =
-    dynamicFontScale <= IOFontSizeMultiplier ? 1 : 0.8;
+    dynamicFontScale <= IOMaxFontSizeMultiplier ? 1 : 0.8;
 
   return {
     hugeFontEnabled,
