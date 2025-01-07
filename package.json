@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "4.4.3",
+  "version": "4.4.4",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
