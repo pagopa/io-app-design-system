@@ -21,7 +21,7 @@ import {
 } from "react-native";
 import Animated, {
   Easing,
-  Extrapolate,
+  Extrapolation,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
@@ -173,7 +173,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
               showCancelButton,
               [0, 1],
               [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
-              Extrapolate.CLAMP
+              Extrapolation.CLAMP
             )
           }
         ],
@@ -235,7 +235,12 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           pointerEvents={pressable ? "none" : "auto"}
         >
           <View style={styles.iconContainer}>
-            <Icon name="search" size={iconSize} color={iconColor} />
+            <Icon
+              allowFontScaling
+              name="search"
+              size={iconSize}
+              color={iconColor}
+            />
           </View>
           <AnimatedTextInput
             testID={testID}
@@ -328,7 +333,7 @@ const styles = StyleSheet.create({
       inputFontSizePlaceholder,
       "Titillio",
       undefined,
-      "Regular"
+      "Medium"
     )
   },
   placeholderLegacy: {
@@ -336,7 +341,7 @@ const styles = StyleSheet.create({
       inputFontSizePlaceholder,
       "TitilliumSansPro",
       undefined,
-      "Regular"
+      "Semibold"
     )
   },
   cancelButton: {
