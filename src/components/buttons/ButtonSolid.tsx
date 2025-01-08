@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback } from "react";
+import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -130,6 +130,17 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
+    /* Prevent the component from triggering the `isEntering' transition
+       on the on the first render. Solution from this discussion:
+       https://github.com/software-mansion/react-native-reanimated/discussions/2513
+    */
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+      // eslint-disable-next-line functional/immutable-data
+      isMounted.current = true;
+    }, []);
+
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
       // Link color states to the pressed states
@@ -197,7 +208,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
           {loading && (
             <Animated.View
               style={IOButtonStyles.buttonInner}
-              entering={enterTransitionInnerContentSmall}
+              entering={
+                isMounted.current ? enterTransitionInnerContentSmall : undefined
+              }
               exiting={exitTransitionInnerContent}
             >
               <LoadingSpinner color={foregroundColor} />
@@ -213,7 +226,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
                    reverse flex property to invert the position */
                 iconPosition === "end" && { flexDirection: "row-reverse" }
               ]}
-              entering={enterTransitionInnerContent}
+              entering={
+                isMounted.current ? enterTransitionInnerContent : undefined
+              }
             >
               {icon && (
                 <Icon

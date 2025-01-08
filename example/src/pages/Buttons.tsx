@@ -466,6 +466,18 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonLink · Stress test">
+      <View style={{ alignSelf: "center" }}>
+        <ButtonLink
+          textAlign="center"
+          /* Don't set limits on maximum number of lines */
+          numberOfLines={0}
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (centered) with a very looong text"}
+          onPress={onButtonPress}
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ButtonLink · Primary, disabled">
       <View>
         <ButtonLink
@@ -531,9 +543,8 @@ export const Buttons = () => (
           </View>
         </View>
       </ComponentViewerBox>
-
       <ComponentViewerBox
-        name="ButtonLink · Contrast, disabled"
+        name="ButtonLink · Primary, disabled"
         colorMode="dark"
         last
       >

@@ -93,11 +93,16 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
-            "lineHeight": undefined,
+            "lineHeight": 20,
           },
-          {
-            "color": undefined,
-          },
+          [
+            {
+              "color": undefined,
+            },
+            {
+              "textAlign": "auto",
+            },
+          ],
         ]
       }
     >
@@ -300,7 +305,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
     }
   >
     <View
-      entering={[Function]}
       style={
         [
           {
@@ -833,11 +837,16 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
             "fontSize": 16,
             "fontStyle": "normal",
             "fontWeight": "600",
-            "lineHeight": undefined,
+            "lineHeight": 20,
           },
-          {
-            "color": undefined,
-          },
+          [
+            {
+              "color": undefined,
+            },
+            {
+              "textAlign": "auto",
+            },
+          ],
         ]
       }
     >
@@ -1040,7 +1049,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     }
   >
     <View
-      entering={[Function]}
       style={
         [
           {
