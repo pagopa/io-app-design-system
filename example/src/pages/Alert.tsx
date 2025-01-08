@@ -194,55 +194,6 @@ export const DSAlert = () => {
 
       <VSpacer size={40} />
 
-      <H3 color={"bluegrey"} style={{ marginBottom: 16 }}>
-        Title + Content
-      </H3>
-
-      <Alert
-        ref={viewRef}
-        variant="error"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="warning"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="info"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="success"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="info"
-        title="A very very very looooooooooong title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer size={40} />
-
       <H2 color={"bluegrey"} style={{ marginBottom: 16 }}>
         Content + Action
       </H2>
@@ -331,16 +282,6 @@ export const DSAlert = () => {
           fullWidth
           ref={viewRef}
           variant="success"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-        />
-
-        <VSpacer />
-
-        <Alert
-          fullWidth
-          ref={viewRef}
-          variant="info"
-          title="Alert title"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
 

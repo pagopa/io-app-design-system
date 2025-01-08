@@ -11,8 +11,6 @@ import Animated from "react-native-reanimated";
 import {
   IOBannerBigSpacing,
   IOBannerRadius,
-  IOBannerSmallHSpacing,
-  IOBannerSmallVSpacing,
   IOStyles,
   useIONewTypeface,
   useIOTheme,
@@ -31,24 +29,22 @@ import { VSpacer } from "../spacer";
 import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */
-const sizePictogramBig: IOPictogramSizeScale = 80;
-const sizePictogramSmall: IOPictogramSizeScale = 64;
+const sizePictogram: IOPictogramSizeScale = 80;
 const closeButtonDistanceFromEdge: number = 6;
 const closeButtonOpacity = 0.6;
-const sizeBigPadding = IOBannerBigSpacing;
-const sizeSmallHPadding = IOBannerSmallHSpacing;
-const sizeSmallVPadding = IOBannerSmallVSpacing;
+const bannerPadding = IOBannerBigSpacing;
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "flex-start",
     alignContent: "center",
+    padding: bannerPadding,
     borderRadius: IOBannerRadius,
     borderCurve: "continuous"
   },
   bleedPictogram: {
-    marginRight: -sizeBigPadding
+    marginRight: -bannerPadding
   },
   closeIconButton: {
     position: "absolute",
@@ -61,7 +57,6 @@ const styles = StyleSheet.create({
 /* Component Types */
 
 type BaseBannerProps = WithTestID<{
-  size: "big" | "small";
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
   viewRef?: React.RefObject<View>;
@@ -137,7 +132,6 @@ const mapBackgroundColorDarkMode: Record<
 
 export const Banner = ({
   viewRef,
-  size,
   color,
   pictogramName,
   title,
@@ -167,9 +161,7 @@ export const Banner = ({
     backgroundColor:
       themeType === "dark"
         ? hexToRgba(IOColors[mapBackgroundColorDarkMode[color]], 0.1)
-        : IOColors[mapBackgroundColorLightMode[color]],
-    paddingVertical: size === "big" ? sizeBigPadding : sizeSmallVPadding,
-    paddingHorizontal: size === "big" ? sizeBigPadding : sizeSmallHPadding
+        : IOColors[mapBackgroundColorLightMode[color]]
   };
 
   /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
@@ -232,10 +224,7 @@ export const Banner = ({
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
-        <PictogramBleed
-          name={pictogramName}
-          size={size === "big" ? sizePictogramBig : sizePictogramSmall}
-        />
+        <PictogramBleed name={pictogramName} size={sizePictogram} />
       </View>
       {onClose && labelClose && (
         <View style={styles.closeIconButton}>

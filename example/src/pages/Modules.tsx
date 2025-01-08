@@ -249,7 +249,7 @@ const renderModuleCredential = () => (
           onPress={mockFn}
           badge={{
             text: "predefinita",
-            variant: "info"
+            variant: "default"
           }}
         />
       </View>
@@ -262,7 +262,7 @@ const renderModuleCredential = () => (
           onPress={mockFn}
           badge={{
             text: "predefinita",
-            variant: "info"
+            variant: "default"
           }}
         />
       </View>
@@ -318,7 +318,7 @@ const renderModuleNavigation = () => (
           onPress={mockFn}
           badge={{
             text: "In arrivo",
-            variant: "blue",
+            variant: "highlight",
             outline: true
           }}
         />
@@ -333,7 +333,7 @@ const renderModuleNavigation = () => (
           onPress={mockFn}
           badge={{
             text: "IN arrivo",
-            variant: "blue",
+            variant: "highlight",
             outline: true
           }}
         />

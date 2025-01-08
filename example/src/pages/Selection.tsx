@@ -461,7 +461,7 @@ const ListItemSwitchShowroom = () => (
         value={false}
         badge={{
           text: "Attivo",
-          variant: "info"
+          variant: "default"
         }}
         description="Inquadra il codice QR mostrato dall’esercente e segui le istruzioni in app per autorizzare la spesa."
       />
@@ -471,7 +471,7 @@ const ListItemSwitchShowroom = () => (
         value={false}
         badge={{
           text: "Attivo",
-          variant: "info"
+          variant: "default"
         }}
       />
     </ComponentViewerBox>

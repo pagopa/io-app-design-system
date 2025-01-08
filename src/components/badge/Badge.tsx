@@ -13,28 +13,29 @@ import {
   IOBadgeVSpacing,
   IOColors,
   useIONewTypeface,
-  useIOTheme,
   useIOThemeContext
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOText } from "../typography";
 
+/* 
+NOTE FOR REFACTORING in the `io-app`:
+
+- default (legacy) -> removed
+- blue -> Deleted -> replaced with `default`
+- info -> removed -> highlight?
+- purple -> cgn
+- turquoise -> highlight
+- contrast -> removed
+- lightBlue -> default
+*/
+
 export type Badge = WithTestID<{
   outline?: boolean;
   text: string;
   allowFontScaling?: boolean;
-  variant:
-    | "default"
-    | "info"
-    | "warning"
-    | "error"
-    | "success"
-    | "purple"
-    | "lightBlue"
-    | "blue"
-    | "turquoise"
-    | "contrast";
+  variant: "default" | "warning" | "error" | "success" | "cgn" | "highlight";
 }>;
 
 type SolidVariantProps = {
@@ -76,7 +77,6 @@ export const Badge = ({
   variant,
   testID
 }: Badge) => {
-  const theme = useIOTheme();
   const { dynamicFontScale } = useIOFontDynamicScale();
   const { themeType } = useIOThemeContext();
   const { newTypefaceEnabled } = useIONewTypeface();
@@ -88,12 +88,8 @@ export const Badge = ({
     SolidVariantProps
   > = {
     default: {
-      foreground: "grey-700",
-      background: IOColors["grey-50"]
-    },
-    info: {
-      foreground: "info-850",
-      background: IOColors["info-100"]
+      foreground: "blueIO-850",
+      background: IOColors["blueIO-50"]
     },
     warning: {
       foreground: "warning-850",
@@ -107,25 +103,13 @@ export const Badge = ({
       foreground: "error-850",
       background: IOColors["error-100"]
     },
-    purple: {
+    cgn: {
       foreground: "hanPurple-500",
       background: IOColors["hanPurple-100"]
     },
-    lightBlue: {
-      foreground: "blueIO-850",
-      background: IOColors["blueIO-50"]
-    },
-    blue: {
-      foreground: "white",
-      background: IOColors[theme["interactiveElem-default"]]
-    },
-    turquoise: {
+    highlight: {
       foreground: "turquoise-850",
       background: IOColors["turquoise-50"]
-    },
-    contrast: {
-      foreground: "grey-700",
-      background: IOColors.white
     }
   };
 
@@ -134,12 +118,8 @@ export const Badge = ({
     SolidVariantProps
   > = {
     default: {
-      foreground: "grey-50",
-      background: hexToRgba(IOColors["grey-50"], bgOpacityDarkMode)
-    },
-    info: {
-      foreground: "info-400",
-      background: hexToRgba(IOColors["info-400"], bgOpacityDarkMode)
+      foreground: "blueIO-200",
+      background: hexToRgba(IOColors["blueIO-200"], bgOpacityDarkMode)
     },
     warning: {
       foreground: "warning-400",
@@ -153,25 +133,13 @@ export const Badge = ({
       foreground: "error-400",
       background: hexToRgba(IOColors["error-400"], bgOpacityDarkMode)
     },
-    purple: {
+    cgn: {
       foreground: "hanPurple-250",
       background: hexToRgba(IOColors["hanPurple-250"], bgOpacityDarkMode)
     },
-    lightBlue: {
-      foreground: "blueIO-200",
-      background: hexToRgba(IOColors["blueIO-600"], bgOpacityDarkMode)
-    },
-    blue: {
-      foreground: "white",
-      background: IOColors[theme["interactiveElem-default"]]
-    },
-    turquoise: {
+    highlight: {
       foreground: "turquoise-300",
       background: hexToRgba(IOColors["turquoise-300"], bgOpacityDarkMode)
-    },
-    contrast: {
-      foreground: "grey-700",
-      background: IOColors.white
     }
   };
 
@@ -180,10 +148,7 @@ export const Badge = ({
     OutlinedVariantProps
   > = {
     default: {
-      foreground: "grey-700"
-    },
-    info: {
-      foreground: "info-850"
+      foreground: "blueIO-850"
     },
     warning: {
       foreground: "warning-850"
@@ -194,20 +159,11 @@ export const Badge = ({
     error: {
       foreground: "error-850"
     },
-    purple: {
+    cgn: {
       foreground: "hanPurple-500"
     },
-    lightBlue: {
-      foreground: "blueIO-850"
-    },
-    blue: {
-      foreground: theme["interactiveElem-default"]
-    },
-    turquoise: {
+    highlight: {
       foreground: "turquoise-850"
-    },
-    contrast: {
-      foreground: "grey-850"
     }
   };
 
@@ -216,10 +172,7 @@ export const Badge = ({
     OutlinedVariantProps
   > = {
     default: {
-      foreground: "grey-100"
-    },
-    info: {
-      foreground: "info-400"
+      foreground: "blueIO-200"
     },
     warning: {
       foreground: "warning-400"
@@ -230,20 +183,11 @@ export const Badge = ({
     error: {
       foreground: "error-400"
     },
-    purple: {
+    cgn: {
       foreground: "hanPurple-250"
     },
-    lightBlue: {
-      foreground: "blueIO-150"
-    },
-    blue: {
-      foreground: theme["interactiveElem-default"]
-    },
-    turquoise: {
+    highlight: {
       foreground: "turquoise-300"
-    },
-    contrast: {
-      foreground: "grey-100"
     }
   };
 
