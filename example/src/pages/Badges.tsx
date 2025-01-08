@@ -4,7 +4,6 @@ import {
   H4,
   hexToRgba,
   HStack,
-  IOBadgeRadius,
   IOColors,
   IOTagRadius,
   IOVisualCostants,
@@ -44,45 +43,24 @@ const renderBadge = () => (
       <VStack space={16}>
         <H4>Default</H4>
         <HStack space={8} style={{ flexWrap: "wrap" }}>
-          <Badge text={"Blue"} variant="blue" />
           <Badge text={"Default"} variant="default" />
-          <Badge text={"Info"} variant="info" />
           <Badge text={"Warning"} variant="warning" />
           <Badge text={"Error"} variant="error" />
           <Badge text={"Success"} variant="success" />
-          <Badge text={"Purple"} variant="purple" />
-          <Badge text={"Light blue"} variant="lightBlue" />
-          <Badge text={"Turquoise"} variant="turquoise" />
+          <Badge text={"Cgn"} variant="cgn" />
+          <Badge text={"Highlight"} variant="highlight" />
         </HStack>
       </VStack>
       <VStack space={16}>
         <H4>Outline</H4>
         <HStack space={8} style={{ flexWrap: "wrap" }}>
-          <Badge outline text={"Blue"} variant="blue" />
           <Badge outline text={"Default"} variant="default" />
-          <Badge outline text={"Info"} variant="info" />
           <Badge outline text={"Warning"} variant="warning" />
           <Badge outline text={"Error"} variant="error" />
           <Badge outline text={"Success"} variant="success" />
-          <Badge outline text={"Purple"} variant="purple" />
-          <Badge outline text={"Light blue"} variant="lightBlue" />
-          <Badge outline text={"Turquoise"} variant="turquoise" />
-          <Badge outline text={"Contrast"} variant="contrast" />
+          <Badge outline text={"Cgn"} variant="cgn" />
+          <Badge outline text={"Highlight"} variant="highlight" />
         </HStack>
-      </VStack>
-      <VStack space={16}>
-        <H4>Contrast</H4>
-        <View
-          style={{
-            alignSelf: "flex-start",
-            backgroundColor: IOColors.bluegrey,
-            padding: 16,
-            borderRadius: IOBadgeRadius + 16,
-            borderCurve: "continuous"
-          }}
-        >
-          <Badge text={"Contrast"} variant="contrast" />
-        </View>
       </VStack>
     </VStack>
   </>
