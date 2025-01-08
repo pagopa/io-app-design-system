@@ -12,13 +12,11 @@ import Animated, {
   useReducedMotion
 } from "react-native-reanimated";
 import {
-  IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
-  exitTransitionInnerContent,
-  useIOExperimentalDesign
+  exitTransitionInnerContent
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -36,15 +34,6 @@ type ColorStates = {
     disabled: IOColors;
   };
 };
-
-// Disabled state
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
-const legacyStyles = StyleSheet.create({
-  backgroundDisabled: {
-    backgroundColor: IOColors[colorPrimaryLegacyButtonDisabled]
-  }
-});
 
 const colorPrimaryButtonDisabled: IOColors = "grey-200";
 const ICON_MARGIN = 8;
@@ -120,40 +109,6 @@ const mapColorStates: Record<
   }
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonSolidProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    default: IOColors.blue,
-    pressed: IOColors["blue-600"],
-    label: {
-      default: "white",
-      disabled: "white"
-    }
-  },
-  // Danger button
-  danger: {
-    default: IOColors["error-600"],
-    pressed: IOColors["error-500"],
-    label: {
-      default: "white",
-      disabled: "white"
-    }
-  },
-  // Contrast button
-  contrast: {
-    default: IOColors.white,
-    pressed: IOColors["blue-50"],
-    label: {
-      default: "blue",
-      disabled: "white"
-    }
-  }
-};
-
 export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
   (
     {
@@ -171,20 +126,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     },
     ref
   ) => {
-    const { isExperimental } = useIOExperimentalDesign();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
-
-    const colorMap = React.useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental]
-    );
-
-    const buttonStyles = React.useMemo(
-      () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
-      [isExperimental]
-    );
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -203,7 +147,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       const backgroundColor = interpolateColor(
         progress.value,
         [0, 1],
-        [colorMap[color].default, colorMap[color].pressed]
+        [mapColorStates[color].default, mapColorStates[color].pressed]
       );
 
       return { backgroundColor };
@@ -224,8 +168,8 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
 
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
-      ? colorMap[color]?.label?.disabled
-      : colorMap[color]?.label?.default;
+      ? mapColorStates[color]?.label?.disabled
+      : mapColorStates[color]?.label?.default;
 
     return (
       <Pressable
@@ -248,15 +192,13 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       >
         <Animated.View
           style={[
-            buttonStyles.button,
+            IOButtonStyles.button,
+            IOButtonStyles.buttonSizeDefault,
             { overflow: "hidden" },
-            isExperimental && fullWidth && { paddingHorizontal: 16 },
-            buttonStyles.buttonSizeDefault,
+            fullWidth && { paddingHorizontal: 16 },
             disabled
-              ? isExperimental
-                ? styles.backgroundDisabled
-                : legacyStyles.backgroundDisabled
-              : { backgroundColor: colorMap[color]?.default },
+              ? styles.backgroundDisabled
+              : { backgroundColor: mapColorStates[color]?.default },
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle,
@@ -265,7 +207,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
         >
           {loading && (
             <Animated.View
-              style={buttonStyles.buttonInner}
+              style={IOButtonStyles.buttonInner}
               entering={
                 isMounted.current ? enterTransitionInnerContentSmall : undefined
               }
@@ -278,7 +220,7 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
           {!loading && (
             <Animated.View
               style={[
-                buttonStyles.buttonInner,
+                IOButtonStyles.buttonInner,
                 { columnGap: ICON_MARGIN },
                 /* If 'iconPosition' is set to 'end', we use 
                    reverse flex property to invert the position */

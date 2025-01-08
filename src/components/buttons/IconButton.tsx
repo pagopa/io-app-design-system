@@ -1,17 +1,11 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedProps,
   useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IOIconButtonStyles,
-  IOStyles,
-  hexToRgba,
-  useIOExperimentalDesign
-} from "../../core";
+import { IOColors, IOIconButtonStyles, IOStyles, hexToRgba } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
@@ -37,37 +31,6 @@ type ColorStates = {
     pressed: string;
     disabled: string;
   };
-};
-
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<IconButton["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    icon: {
-      default: IOColors.blue,
-      pressed: IOColors["blue-600"],
-      disabled: hexToRgba(IOColors.blue, 0.25)
-    }
-  },
-  // Neutral button
-  neutral: {
-    icon: {
-      default: IOColors.black,
-      pressed: IOColors.bluegreyDark,
-      disabled: IOColors.grey
-    }
-  },
-  // Contrast button
-  contrast: {
-    icon: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.25)
-    }
-  }
 };
 
 const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
@@ -114,19 +77,12 @@ export const IconButton = ({
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
-  const { isExperimental } = useIOExperimentalDesign();
-
-  const colorMap = useMemo(
-    () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-    [isExperimental]
-  );
-
   // Animate the <Icon> color prop
   const animatedColor = useAnimatedProps(() => {
     const iconColor = interpolateColor(
       progress.value,
       [0, 1],
-      [colorMap[color].icon.default, colorMap[color].icon.pressed]
+      [mapColorStates[color].icon.default, mapColorStates[color].icon.pressed]
     );
     return { color: iconColor };
   });
@@ -164,14 +120,14 @@ export const IconButton = ({
             name={icon}
             size={iconSize}
             animatedProps={animatedColor}
-            color={colorMap[color]?.icon?.default}
+            color={mapColorStates[color]?.icon?.default}
           />
         ) : (
           <AnimatedIcon
             allowFontScaling
             name={icon}
             size={iconSize}
-            color={colorMap[color]?.icon?.disabled}
+            color={mapColorStates[color]?.icon?.disabled}
           />
         )}
       </Animated.View>

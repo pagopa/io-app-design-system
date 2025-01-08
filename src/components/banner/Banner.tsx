@@ -12,7 +12,7 @@ import {
   IOBannerBigSpacing,
   IOBannerRadius,
   IOStyles,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
@@ -144,10 +144,9 @@ export const Banner = ({
   accessibilityLabel,
   testID
 }: Banner) => {
+  const { newTypefaceEnabled } = useIONewTypeface();
   const { onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("medium");
-
-  const { isExperimental } = useIOExperimentalDesign();
   const { themeType } = useIOThemeContext();
   const theme = useIOTheme();
 
@@ -208,7 +207,7 @@ export const Banner = ({
           >
             <VSpacer size={4} />
             <IOText
-              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight="Semibold"
               color={colorMainButton}
               size={buttonTextFontSize}

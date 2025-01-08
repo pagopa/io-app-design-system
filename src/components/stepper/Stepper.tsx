@@ -1,14 +1,6 @@
 import * as React from "react";
 import { Dimensions, LayoutChangeEvent, View } from "react-native";
-// import { useCallback } from "react";
-import { useMemo } from "react";
-import {
-  IOColors,
-  IOSpacer,
-  IOStyles,
-  IOVisualCostants,
-  useIOExperimentalDesign
-} from "../../core";
+import { IOColors, IOSpacer, IOStyles, IOVisualCostants } from "../../core";
 
 type StepperProps = {
   steps: number;
@@ -20,17 +12,7 @@ const colorMap: Record<string, IOColors> = {
   active: "blueIO-500"
 };
 
-const legacyColorMap: Record<string, IOColors> = {
-  active: "blue"
-};
-
 export const Stepper = ({ steps, currentStep }: StepperProps) => {
-  const { isExperimental } = useIOExperimentalDesign();
-  const colors = useMemo(
-    () => (isExperimental ? colorMap : legacyColorMap),
-    [isExperimental]
-  );
-
   const [stepWidth, setStepWidth] = React.useState(
     Dimensions.get("window").width / steps
   );
@@ -50,7 +32,7 @@ export const Stepper = ({ steps, currentStep }: StepperProps) => {
             style={{
               borderRadius: 2,
               borderBottomColor:
-                IOColors[i > currentStep - 1 ? "grey-200" : colors.active],
+                IOColors[i > currentStep - 1 ? "grey-200" : colorMap.active],
               borderBottomWidth: 2,
               width: stepWidth - STEPPER_SPACE
             }}

@@ -1,16 +1,11 @@
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback } from "react";
 import { Pressable } from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IONumberPadButtonStyles,
-  hexToRgba,
-  useIOExperimentalDesign
-} from "../../core";
+import { IOColors, IONumberPadButtonStyles } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { H3 } from "../typography";
 
@@ -52,18 +47,6 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   }
 };
 
-const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
-  light: {
-    background: IOColors["grey-100"],
-    pressed: IOColors["grey-200"],
-    foreground: "blue"
-  },
-  dark: {
-    background: hexToRgba(IOColors.black, 0.1),
-    pressed: hexToRgba(IOColors.white, 0.5),
-    foreground: "white"
-  }
-};
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
  *
@@ -74,19 +57,13 @@ export const NumberButton = memo(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("slight");
     const reducedMotion = useReducedMotion();
-    const { isExperimental } = useIOExperimentalDesign();
-
-    const colors = useMemo(
-      () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
-      [variant, isExperimental]
-    );
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => ({
       backgroundColor: interpolateColor(
         progress.value,
         [0, 1],
-        [colors.background, colors.pressed]
+        [colorMap[variant].background, colorMap[variant].pressed]
       )
     }));
 
@@ -111,7 +88,7 @@ export const NumberButton = memo(
             !reducedMotion && scaleAnimatedStyle
           ]}
         >
-          <H3 color={colors.foreground}>{number}</H3>
+          <H3 color={colorMap[variant].foreground}>{number}</H3>
         </Animated.View>
       </Pressable>
     );

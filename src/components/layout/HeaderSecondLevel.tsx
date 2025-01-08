@@ -28,7 +28,7 @@ import {
   alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
   iconBtnSizeSmall,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
@@ -155,7 +155,8 @@ export const HeaderSecondLevel = ({
   );
   const titleRef = React.createRef<View>();
 
-  const { isExperimental } = useIOExperimentalDesign();
+  const { newTypefaceEnabled } = useIONewTypeface();
+
   const theme = useIOTheme();
   const { themeType } = useIOThemeContext();
   const insets = useSafeAreaInsets();
@@ -300,7 +301,7 @@ export const HeaderSecondLevel = ({
             size={14}
             numberOfLines={1}
             accessible={false}
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             style={[
               { color: titleColor, textAlign: "center" },

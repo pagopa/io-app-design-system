@@ -5,7 +5,6 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOStyles,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -38,7 +37,6 @@ export const ListItemNavAlert = ({
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
-  const { isExperimental } = useIOExperimentalDesign();
 
   const componentValueToAccessibility = typeof value === "string" ? value : "";
   const componentDescriptionToAccessibility =
@@ -71,7 +69,7 @@ export const ListItemNavAlert = ({
     </>
   );
 
-  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
+  const iconColor = theme["interactiveElem-default"];
 
   return (
     <Pressable
@@ -111,7 +109,6 @@ export const ListItemNavAlert = ({
             />
           )}
           <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
-
           <Icon
             allowFontScaling
             name="chevronRightListItem"
