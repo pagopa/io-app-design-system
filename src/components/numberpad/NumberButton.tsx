@@ -12,7 +12,7 @@ import {
   useIOExperimentalDesign
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
-import { H3 } from "../typography";
+import { IOText } from "../typography";
 
 type NumberButtonVariantType = "light" | "dark";
 
@@ -111,7 +111,18 @@ export const NumberButton = memo(
             !reducedMotion && scaleAnimatedStyle
           ]}
         >
-          <H3 color={colors.foreground}>{number}</H3>
+          <IOText
+            size={22}
+            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            weight="Semibold"
+            color={colors.foreground}
+            style={{
+              // Additional prop for Android
+              textAlignVertical: "center"
+            }}
+          >
+            {number}
+          </IOText>
         </Animated.View>
       </Pressable>
     );
