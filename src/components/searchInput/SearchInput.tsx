@@ -3,8 +3,7 @@ import React, {
   forwardRef,
   useCallback,
   useImperativeHandle,
-  useRef,
-  useState
+  useRef
 } from "react";
 import {
   ColorValue,
@@ -37,8 +36,12 @@ import {
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
-import { ButtonLink } from "../buttons";
-import { IOIconSizeScale, Icon } from "../icons";
+import { Icon, IOIconSizeScale } from "../icons";
+import {
+  buttonTextFontSize,
+  buttonTextLineHeight,
+  IOText
+} from "../typography";
 
 /* Component visual attributes */
 const inputPaddingHorizontal: IOSpacingScale = 12;
@@ -128,14 +131,19 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     const inputWidth: number =
       Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
 
-    const [cancelButtonWidth, setCancelButtonWidth] =
-      useState<LayoutRectangle["width"]>(0);
+    /* Reanimated styles */
+    const inputAnimatedWidth = useSharedValue<number>(inputWidth);
+    const cancelButtonWidth = useSharedValue<LayoutRectangle["width"]>(0);
+    const isFocused = useSharedValue(0);
 
-    const getCancelButtonWidth = ({ nativeEvent }: LayoutChangeEvent) => {
-      setCancelButtonWidth(nativeEvent.layout.width);
-    };
-
-    const inputWidthWithCancel: number = inputWidth - cancelButtonWidth;
+    const getCancelButtonWidth = useCallback(
+      ({ nativeEvent }: LayoutChangeEvent) => {
+        if (cancelButtonWidth.value !== nativeEvent.layout.width) {
+          cancelButtonWidth.value = nativeEvent.layout.width;
+        }
+      },
+      [cancelButtonWidth]
+    );
 
     useImperativeHandle(
       ref,
@@ -146,10 +154,6 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       }),
       []
     );
-
-    /* Reanimated styles */
-    const inputAnimatedWidth = useSharedValue<number>(inputWidth);
-    const isFocused = useSharedValue(0);
 
     /* Applied to the `SearchInput` */
     const animatedStyle = useAnimatedStyle(() => ({
@@ -172,7 +176,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             translateX: interpolate(
               showCancelButton,
               [0, 1],
-              [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
+              [cancelButtonWidth.value + IOVisualCostants.appMarginDefault, 0],
               Extrapolation.CLAMP
             )
           }
@@ -200,13 +204,13 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     /* Related event handlers */
     const handleFocus = () => {
       isFocused.value = withTiming(1, inputWithTimingConfig);
-      inputAnimatedWidth.value = inputWidthWithCancel;
+      inputAnimatedWidth.value = inputWidth - cancelButtonWidth.value;
     };
 
     const handleBlur = () => {
       isFocused.value = withTiming(0, inputWithTimingConfig);
       inputAnimatedWidth.value = keepCancelVisible
-        ? inputWidthWithCancel
+        ? inputAnimatedWidth.value
         : inputWidth;
     };
 
@@ -280,7 +284,25 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           onLayout={getCancelButtonWidth}
           style={[styles.cancelButton, cancelButtonAnimatedStyle]}
         >
-          <ButtonLink label={cancelButtonLabel} onPress={cancel} />
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={cancelButtonLabel}
+            onPress={cancel}
+          >
+            <IOText
+              color={theme["interactiveElem-default"]}
+              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+              weight={"Semibold"}
+              size={buttonTextFontSize}
+              lineHeight={buttonTextLineHeight}
+              numberOfLines={1}
+              accessible={false}
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+            >
+              {cancelButtonLabel}
+            </IOText>
+          </Pressable>
         </Animated.View>
       </Animated.View>
     );
@@ -345,8 +367,8 @@ const styles = StyleSheet.create({
     )
   },
   cancelButton: {
-    position: "absolute",
-    right: 0,
+    // position: "absolute",
+    // right: 0,
     paddingLeft: cancelButtonMargin
   },
   clearButton: {
