@@ -61,30 +61,19 @@ export const ListItemHeader = ({
 }: ListItemHeader) => {
   const theme = useIOTheme();
 
-  const listItemAccessibilityLabel = useMemo(
-    () => (accessibilityLabel ? accessibilityLabel : `${label}`),
-    [label, accessibilityLabel]
-  );
-
   const itemInfoTextComponent = useMemo(
     () => (
       <View
-        accessible={endElement === undefined ? true : false}
-        importantForAccessibility={
-          endElement !== undefined && endElement.type !== "badge"
-            ? "no-hide-descendants"
-            : "yes"
-        }
-        accessibilityElementsHidden={
-          endElement !== undefined && endElement.type !== "badge"
-        }
+        accessible
+        accessibilityRole="header"
+        accessibilityLabel={accessibilityLabel ?? label}
       >
         <H6 role="heading" color={theme["textBody-tertiary"]}>
           {label}
         </H6>
       </View>
     ),
-    [label, theme, endElement]
+    [label, accessibilityLabel, theme]
   );
 
   const listItemAction = useCallback(() => {
@@ -93,21 +82,12 @@ export const ListItemHeader = ({
 
       switch (type) {
         case "buttonLink":
-          const buttonLinkAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
-
           return (
-            <ButtonLink
-              {...componentProps}
-              accessibilityLabel={buttonLinkAccessibilityLabel}
-            />
+            <ButtonLink {...componentProps} />
           );
-        case "iconButton":
-          const iconButtonAccessibilityLabel = `${listItemAccessibilityLabel}; ${componentProps.accessibilityLabel}`;
+        case "iconButton": 
           return (
-            <IconButton
-              {...componentProps}
-              accessibilityLabel={iconButtonAccessibilityLabel}
-            />
+            <IconButton {...componentProps} />
           );
         case "badge":
           return <Badge {...componentProps} />;
@@ -116,19 +96,14 @@ export const ListItemHeader = ({
       }
     }
     return <></>;
-  }, [endElement, listItemAccessibilityLabel]);
+  }, [endElement]);
 
   return (
     <View
       style={IOListItemStyles.listItem}
       testID={testID}
-      accessible={endElement === undefined ? true : false}
-      accessibilityLabel={listItemAccessibilityLabel}
     >
-      <View
-        style={IOListItemStyles.listItemInner}
-        importantForAccessibility={endElement ? "auto" : "no-hide-descendants"}
-      >
+      <View style={IOListItemStyles.listItemInner}>
         {iconName && (
           <View style={{ marginRight: iconMargin }}>
             <Icon
