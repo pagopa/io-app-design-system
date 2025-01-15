@@ -3,7 +3,8 @@ import React, {
   forwardRef,
   useCallback,
   useImperativeHandle,
-  useRef
+  useRef,
+  useState
 } from "react";
 import {
   ColorValue,
@@ -131,19 +132,14 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     const inputWidth: number =
       Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
 
-    /* Reanimated styles */
-    const inputAnimatedWidth = useSharedValue<number>(inputWidth);
-    const cancelButtonWidth = useSharedValue<LayoutRectangle["width"]>(0);
-    const isFocused = useSharedValue(0);
+    const [cancelButtonWidth, setCancelButtonWidth] =
+      useState<LayoutRectangle["width"]>(0);
 
-    const getCancelButtonWidth = useCallback(
-      ({ nativeEvent }: LayoutChangeEvent) => {
-        if (cancelButtonWidth.value !== nativeEvent.layout.width) {
-          cancelButtonWidth.value = nativeEvent.layout.width;
-        }
-      },
-      [cancelButtonWidth]
-    );
+    const getCancelButtonWidth = ({ nativeEvent }: LayoutChangeEvent) => {
+      setCancelButtonWidth(nativeEvent.layout.width);
+    };
+
+    const inputWidthWithCancel: number = inputWidth - cancelButtonWidth;
 
     useImperativeHandle(
       ref,
@@ -154,6 +150,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       }),
       []
     );
+
+    /* Reanimated styles */
+    const inputAnimatedWidth = useSharedValue<number>(inputWidth);
+    const isFocused = useSharedValue(0);
 
     /* Applied to the `SearchInput` */
     const animatedStyle = useAnimatedStyle(() => ({
@@ -176,7 +176,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             translateX: interpolate(
               showCancelButton,
               [0, 1],
-              [cancelButtonWidth.value + IOVisualCostants.appMarginDefault, 0],
+              [cancelButtonWidth + IOVisualCostants.appMarginDefault, 0],
               Extrapolation.CLAMP
             )
           }
@@ -204,13 +204,13 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     /* Related event handlers */
     const handleFocus = () => {
       isFocused.value = withTiming(1, inputWithTimingConfig);
-      inputAnimatedWidth.value = inputWidth - cancelButtonWidth.value;
+      inputAnimatedWidth.value = inputWidthWithCancel;
     };
 
     const handleBlur = () => {
       isFocused.value = withTiming(0, inputWithTimingConfig);
       inputAnimatedWidth.value = keepCancelVisible
-        ? inputAnimatedWidth.value
+        ? inputWidthWithCancel
         : inputWidth;
     };
 
