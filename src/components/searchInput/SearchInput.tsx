@@ -37,8 +37,12 @@ import {
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
-import { ButtonLink } from "../buttons";
-import { IOIconSizeScale, Icon } from "../icons";
+import { Icon, IOIconSizeScale } from "../icons";
+import {
+  buttonTextFontSize,
+  buttonTextLineHeight,
+  IOText
+} from "../typography";
 
 /* Component visual attributes */
 const inputPaddingHorizontal: IOSpacingScale = 12;
@@ -287,7 +291,25 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           onLayout={getCancelButtonWidth}
           style={[styles.cancelButton, cancelButtonAnimatedStyle]}
         >
-          <ButtonLink label={cancelButtonLabel} onPress={cancel} />
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={cancelButtonLabel}
+            onPress={cancel}
+          >
+            <IOText
+              color={theme["interactiveElem-default"]}
+              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+              weight={"Semibold"}
+              size={buttonTextFontSize}
+              lineHeight={buttonTextLineHeight}
+              numberOfLines={1}
+              accessible={false}
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+            >
+              {cancelButtonLabel}
+            </IOText>
+          </Pressable>
         </Animated.View>
       </Animated.View>
     );

@@ -5,9 +5,13 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { IOColors, IONumberPadButtonStyles } from "../../core";
+import {
+  IOColors,
+  IONumberPadButtonStyles,
+  useIONewTypeface
+} from "../../core";
 import { useScaleAnimation } from "../../hooks";
-import { H3 } from "../typography";
+import { IOText } from "../typography";
 
 type NumberButtonVariantType = "light" | "dark";
 
@@ -57,6 +61,7 @@ export const NumberButton = memo(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("slight");
     const reducedMotion = useReducedMotion();
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => ({
@@ -88,7 +93,18 @@ export const NumberButton = memo(
             !reducedMotion && scaleAnimatedStyle
           ]}
         >
-          <H3 color={colorMap[variant].foreground}>{number}</H3>
+          <IOText
+            size={22}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+            weight="Semibold"
+            color={colorMap[variant].foreground}
+            style={{
+              // Additional prop for Android
+              textAlignVertical: "center"
+            }}
+          >
+            {number}
+          </IOText>
         </Animated.View>
       </Pressable>
     );

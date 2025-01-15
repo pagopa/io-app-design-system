@@ -93,7 +93,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -104,7 +103,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -174,7 +176,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -185,7 +186,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -255,7 +259,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -266,7 +269,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -352,7 +358,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -363,7 +368,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -433,7 +441,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -444,7 +451,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -514,7 +524,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -525,7 +534,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -611,7 +623,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -622,7 +633,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -692,7 +706,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -703,7 +716,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -773,7 +789,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -784,7 +799,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
@@ -1011,7 +1029,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
         >
           <Text
             allowFontScaling={true}
-            dynamicTypeRamp="title2"
             maxFontSizeMultiplier={1.5}
             style={
               [
@@ -1022,7 +1039,10 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   "fontSize": 22,
                   "fontStyle": "normal",
                   "fontWeight": "600",
-                  "lineHeight": 33,
+                  "lineHeight": undefined,
+                },
+                {
+                  "textAlignVertical": "center",
                 },
               ]
             }
