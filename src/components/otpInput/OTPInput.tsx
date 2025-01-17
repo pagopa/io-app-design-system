@@ -149,6 +149,7 @@ export const OTPInput = React.forwardRef<View, Props>(
             inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
             autoFocus={autoFocus}
+            secureTextEntry={true}
           />
           {[...Array(length)].map((_, i) => (
             <BoxedInput
