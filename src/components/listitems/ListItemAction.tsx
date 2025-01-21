@@ -8,7 +8,6 @@ import {
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
-import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { AnimatedIcon, IOIcons } from "../icons";
 import { ButtonText } from "../typography/ButtonText";
@@ -17,6 +16,7 @@ export type ListItemAction = WithTestID<{
   label: string;
   variant: "primary" | "danger";
   onPress: (event: GestureResponderEvent) => void;
+  underlined?: boolean;
   icon?: IOIcons;
 }> &
   Pick<
@@ -29,6 +29,7 @@ export const ListItemAction = ({
   label,
   onPress,
   icon,
+  underlined,
   accessibilityLabel,
   accessibilityHint,
   testID
@@ -37,8 +38,6 @@ export const ListItemAction = ({
     useListItemAnimation();
 
   const theme = useIOTheme();
-
-  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const listItemAccessibilityLabel = useMemo(
     () => (accessibilityLabel ? accessibilityLabel : `${label}`),
@@ -52,6 +51,8 @@ export const ListItemAction = ({
     primary: theme["interactiveElem-default"],
     danger: theme.errorText
   };
+
+  const textDecorationLine = underlined ? "underline" : "none";
 
   return (
     <Pressable
@@ -71,27 +72,24 @@ export const ListItemAction = ({
         accessibilityElementsHidden
       >
         <Animated.View
-          style={[
-            IOListItemStyles.listItemInner,
-            {
-              columnGap:
-                IOListItemVisualParams.iconMargin *
-                dynamicFontScale *
-                spacingScaleMultiplier
-            },
-            scaleAnimatedStyle
-          ]}
+          style={[IOListItemStyles.listItemInner, scaleAnimatedStyle]}
         >
           {icon && (
-            <AnimatedIcon
-              allowFontScaling
-              name={icon}
-              color={IOColors[mapForegroundColor[variant]]}
-              size={IOListItemVisualParams.iconSize}
-            />
+            <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
+              <AnimatedIcon
+                name={icon}
+                color={IOColors[mapForegroundColor[variant]]}
+                size={IOListItemVisualParams.iconSize}
+              />
+            </View>
           )}
           <View style={{ flexGrow: 1, flexShrink: 1 }}>
-            <ButtonText color={mapForegroundColor[variant]}>{label}</ButtonText>
+            <ButtonText
+              textStyle={{ textDecorationLine }}
+              color={mapForegroundColor[variant]}
+            >
+              {label}
+            </ButtonText>
           </View>
         </Animated.View>
       </Animated.View>
