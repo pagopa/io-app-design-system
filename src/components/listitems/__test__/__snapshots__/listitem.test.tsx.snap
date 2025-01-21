@@ -60,9 +60,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
             "justifyContent": "space-between",
           },
           {
-            "columnGap": 12,
-          },
-          {
             "transform": [
               {
                 "scale": undefined,
@@ -85,7 +82,9 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           maxFontSizeMultiplier={1.5}
           style={
             [
-              {},
+              {
+                "textDecorationLine": "none",
+              },
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillio",
@@ -1730,9 +1729,6 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
             "justifyContent": "space-between",
           },
           {
-            "columnGap": 12,
-          },
-          {
             "transform": [
               {
                 "scale": undefined,
@@ -1755,7 +1751,9 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           maxFontSizeMultiplier={1.5}
           style={
             [
-              {},
+              {
+                "textDecorationLine": "none",
+              },
               {
                 "color": "#0B3EE3",
                 "fontFamily": "Titillium Sans Pro",
