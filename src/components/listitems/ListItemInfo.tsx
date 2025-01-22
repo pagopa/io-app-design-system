@@ -1,11 +1,13 @@
-import React, { ComponentProps, useCallback, useMemo } from "react";
-import { AccessibilityRole, Platform, View } from "react-native";
+import React, { ComponentProps, ReactNode, useCallback, useMemo } from "react";
+import { AccessibilityRole, Platform, Pressable, View } from "react-native";
+import Animated from "react-native-reanimated";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOStyles,
   useIOTheme
 } from "../../core";
+import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
@@ -13,7 +15,7 @@ import { ButtonLink, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
-import { H6, BodySmall } from "../typography";
+import { BodySmall, H6 } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -35,25 +37,32 @@ type EndElementProps =
   | IconButtonActionProps
   | BadgeProps;
 
+type GraphicProps =
+  | {
+      paymentLogoIcon?: IOLogoPaymentType;
+      icon?: never;
+    }
+  | {
+      paymentLogoIcon?: never;
+      icon?: IOIcons;
+    };
+
+type InteractiveProps = Pick<
+  ComponentProps<typeof Pressable>,
+  "onLongPress" | "accessibilityActions" | "onAccessibilityAction"
+>;
+
 export type ListItemInfo = WithTestID<{
   label: string;
-  value: string | React.ReactNode;
+  value: string | ReactNode;
   numberOfLines?: number;
   endElement?: EndElementProps;
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
 }> &
-  (
-    | {
-        paymentLogoIcon?: IOLogoPaymentType;
-        icon?: never;
-      }
-    | {
-        icon?: IOIcons;
-        paymentLogoIcon?: never;
-      }
-  );
+  GraphicProps &
+  InteractiveProps;
 
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
@@ -66,11 +75,17 @@ export const ListItemInfo = ({
   endElement,
   accessibilityLabel,
   accessibilityRole,
+  accessibilityActions,
+  onAccessibilityAction,
+  onLongPress,
   testID
 }: ListItemInfo) => {
   const theme = useIOTheme();
   const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
     useIOFontDynamicScale();
+
+  const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
+    useListItemAnimation();
 
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
@@ -136,44 +151,86 @@ export const ListItemInfo = ({
     return <></>;
   }, [endElement]);
 
-  return (
-    <View
-      style={IOListItemStyles.listItem}
-      testID={testID}
-      accessible={endElement === undefined ? true : false}
-      accessibilityLabel={listItemAccessibilityLabel}
-      accessibilityRole={accessibilityRole}
-    >
-      <View
-        style={[
-          IOListItemStyles.listItemInner,
-          {
-            columnGap:
-              IOListItemVisualParams.iconMargin *
-              dynamicFontScale *
-              spacingScaleMultiplier
-          }
-        ]}
-      >
-        {icon && !hugeFontEnabled && (
-          <Icon
-            allowFontScaling
-            name={icon}
-            color="grey-450"
-            size={IOListItemVisualParams.iconSize}
-          />
-        )}
-        {paymentLogoIcon && (
-          <LogoPaymentWithFallback
-            brand={paymentLogoIcon}
-            size={PAYMENT_LOGO_SIZE}
-          />
-        )}
-        <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
-        {endElement && <View>{listItemInfoAction()}</View>}
-      </View>
-    </View>
+  const ListItemInfoContent = () => (
+    <>
+      {icon && !hugeFontEnabled && (
+        <Icon
+          allowFontScaling
+          name={icon}
+          color="grey-450"
+          size={IOListItemVisualParams.iconSize}
+        />
+      )}
+      {paymentLogoIcon && (
+        <LogoPaymentWithFallback
+          brand={paymentLogoIcon}
+          size={PAYMENT_LOGO_SIZE}
+        />
+      )}
+      <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
+      {endElement && <View>{listItemInfoAction()}</View>}
+    </>
   );
+
+  if (onLongPress) {
+    return (
+      <Pressable
+        onLongPress={onLongPress}
+        testID={testID}
+        accessible={endElement === undefined ? true : false}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        onTouchEnd={onPressOut}
+        accessibilityRole={"button"}
+        accessibilityLabel={listItemAccessibilityLabel}
+        accessibilityActions={accessibilityActions}
+        onAccessibilityAction={onAccessibilityAction}
+      >
+        <Animated.View
+          style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
+        >
+          <Animated.View
+            style={[
+              IOListItemStyles.listItemInner,
+              {
+                columnGap:
+                  IOListItemVisualParams.iconMargin *
+                  dynamicFontScale *
+                  spacingScaleMultiplier
+              },
+              scaleAnimatedStyle
+            ]}
+          >
+            <ListItemInfoContent />
+          </Animated.View>
+        </Animated.View>
+      </Pressable>
+    );
+  } else {
+    return (
+      <View
+        style={IOListItemStyles.listItem}
+        testID={testID}
+        accessible={endElement === undefined ? true : false}
+        accessibilityLabel={listItemAccessibilityLabel}
+        accessibilityRole={accessibilityRole}
+      >
+        <View
+          style={[
+            IOListItemStyles.listItemInner,
+            {
+              columnGap:
+                IOListItemVisualParams.iconMargin *
+                dynamicFontScale *
+                spacingScaleMultiplier
+            }
+          ]}
+        >
+          <ListItemInfoContent />
+        </View>
+      </View>
+    );
+  }
 };
 
 export default ListItemInfo;
