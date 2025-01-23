@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     color: IOColors.bluegrey
   },
   componenentLabelDark: {
-    color: IOColors.greyLight
+    color: IOColors["grey-100"]
   }
 });
 

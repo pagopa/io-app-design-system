@@ -616,7 +616,7 @@ const renderListItemTransaction = () => (
           amount: "",
           amountAccessibilityLabel: ""
         }}
-        paymentLogoIcon={<Icon name="notice" color="red" />}
+        paymentLogoIcon={<Icon name="notice" color="error-600" />}
         onPress={onButtonPress}
       />
 

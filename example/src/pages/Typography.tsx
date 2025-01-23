@@ -192,7 +192,7 @@ export const BodySmallRow = () => (
       <HSpacer size={16} />
       <BodySmall color="grey-700">Body small</BodySmall>
       <HSpacer size={16} />
-      <BodySmall color={"red"}>Body small</BodySmall>
+      <BodySmall color={"error-600"}>Body small</BodySmall>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors["grey-700"] }}>
         <BodySmall color={"white"}>Body small</BodySmall>
@@ -209,7 +209,7 @@ export const BodySmallRow = () => (
         Body small SB
       </BodySmall>
       <HSpacer size={16} />
-      <BodySmall weight="Semibold" color={"red"}>
+      <BodySmall weight="Semibold" color={"error-600"}>
         Body small SB
       </BodySmall>
       <HSpacer size={16} />
@@ -230,7 +230,7 @@ export const BodySmallRow = () => (
         Body small Regular
       </BodySmall>
       <HSpacer size={16} />
-      <BodySmall weight="Regular" color={"red"}>
+      <BodySmall weight="Regular" color={"error-600"}>
         Body small Regular
       </BodySmall>
       <HSpacer size={16} />
@@ -254,7 +254,7 @@ export const LabelMiniRow = () => (
       <HSpacer size={16} />
       <LabelMini color="grey-700">Label mini</LabelMini>
       <HSpacer size={16} />
-      <LabelMini color={"red"}>Label mini</LabelMini>
+      <LabelMini color={"error-600"}>Label mini</LabelMini>
       <HSpacer size={16} />
       <View style={{ backgroundColor: IOColors["grey-700"] }}>
         <LabelMini color={"white"}>Label mini</LabelMini>
@@ -267,7 +267,7 @@ export const LabelMiniRow = () => (
         Label mini SB
       </LabelMini>
       <HSpacer size={16} />
-      <LabelMini weight="Semibold" color={"red"}>
+      <LabelMini weight="Semibold" color={"error-600"}>
         Label mini SB
       </LabelMini>
       <HSpacer size={16} />
@@ -284,7 +284,7 @@ export const LabelMiniRow = () => (
         Label mini Regular
       </LabelMini>
       <HSpacer size={16} />
-      <LabelMini weight="Regular" color={"red"}>
+      <LabelMini weight="Regular" color={"error-600"}>
         Label mini Regular
       </LabelMini>
       <HSpacer size={16} />

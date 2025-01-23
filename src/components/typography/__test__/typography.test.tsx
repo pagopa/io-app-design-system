@@ -30,10 +30,10 @@ describe("Test Typography Components", () => {
     // SemiBold weight, default weight
     const h3Default = TestRenderer.create(<H3>Text</H3>).toJSON();
     expect(h3Default).toMatchSnapshot();
-    const h3bluegreyLight = TestRenderer.create(
-      <H3 color={"bluegreyLight"}>Text</H3>
+    const h3grey200 = TestRenderer.create(
+      <H3 color={"grey-200"}>Text</H3>
     ).toJSON();
-    expect(h3bluegreyLight).toMatchSnapshot();
+    expect(h3grey200).toMatchSnapshot();
     const h3white = TestRenderer.create(<H3 color={"white"}>Text</H3>).toJSON();
     expect(h3white).toMatchSnapshot();
     const h3whiteBold = TestRenderer.create(
@@ -95,7 +95,7 @@ describe("Test Typography Components", () => {
     const allowedColors: ReadonlyArray<BodyColors> = [
       "blue",
       "bluegrey",
-      "red",
+      "error-600",
       "white"
     ];
 
@@ -126,14 +126,14 @@ describe("Test Typography common", () => {
   it("Test calculateWeightColor behaviour", () => {
     const noValues = calculateWeightColor<IOFontWeight, IOColors>(
       "Bold",
-      "red"
+      "error-600"
     );
-    expect(noValues.color).toBe("red");
+    expect(noValues.color).toBe("error-600");
     expect(noValues.weight).toBe("Bold");
 
     const weightProvided = calculateWeightColor<IOFontWeight, IOColors>(
       "Bold",
-      "red",
+      "error-600",
       "Regular"
     );
     expect(weightProvided.color).toBe("red");
@@ -141,7 +141,7 @@ describe("Test Typography common", () => {
 
     const allValuesProvided = calculateWeightColor<IOFontWeight, IOColors>(
       "Bold",
-      "red",
+      "error-600",
       "Regular",
       "bluegrey"
     );

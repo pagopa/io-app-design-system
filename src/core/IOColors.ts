@@ -86,21 +86,10 @@ export const IOColors = asIOColors({
   "blue-600": "#0353A3",
   "blue-50": "#EFF7FF",
   /* Legacy */
-  greyUltraLight: "#F5F6F7",
-  greyLight: "#E6E9F2",
-  bluegreyLight: "#CCD4DC",
-  grey: "#909DA8",
   bluegrey: "#475A6D",
   bluegreyDark: "#17324D",
   blue: "#0073E6",
-  blueUltraLight: "#99CCFF" /* Almost deprecated, avoid if possible */,
-  aqua: "#00C5CA",
   aquaUltraLight: "#C1F4F2",
-  antiqueFuchsia: "#9B5897" /* used in the CgnDiscountValueBox only */,
-  orange: "#EA7614",
-  red: "#C02927",
-  green: "#005C3C",
-  greenLight: "#5CA85A"
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -138,42 +127,20 @@ export const getGradientColorValues = (
 
 const {
   white,
-  greyUltraLight,
-  greyLight,
-  bluegreyLight,
-  grey,
   bluegrey,
   bluegreyDark,
   black,
   blue,
-  blueUltraLight,
-  aqua,
   aquaUltraLight,
-  antiqueFuchsia,
-  orange,
-  red,
-  green,
-  greenLight
 } = IOColors;
 
 export const IOColorsLegacy = {
   white,
-  greyUltraLight,
-  greyLight,
-  bluegreyLight,
-  grey,
   bluegrey,
   bluegreyDark,
   black,
   blue,
-  blueUltraLight,
-  aqua,
   aquaUltraLight,
-  antiqueFuchsia,
-  orange,
-  red,
-  green,
-  greenLight
 };
 export type IOColorLegacy = keyof typeof IOColorsLegacy;
 
@@ -454,7 +421,7 @@ Alias tokens:
 */
 /* 
 tabUnderlineColor → greyUltraLight
-headerIconLight → greyLight
+headerIconLight → grey-200
 colorSkeleton → bluegreyLight
 itemSeparator → bluegreyLight
 btnLightBorderColor → grey
@@ -472,8 +439,6 @@ contentPrimaryBackground → blue
 textLinkColor → blue
 colorHighlight → aqua
 toastColor → aquaUltraLight
-brandDanger → red
-calendarExpirableColor → red
 brandSuccess → green
 */
 
@@ -481,7 +446,6 @@ brandSuccess → green
 That is, which color replaces the other? */
 /*
 `blackNew` replaces `black`
-`grey50` → `greyUltraLight`
 `grey100` → `greyLight`
 `grey200` → `blueGreyLight`
 `grey450` → `grey`
@@ -492,6 +456,4 @@ That is, which color replaces the other? */
 `turquoise` → `aqua`
 `turquoiseLight` → `aquaUltraLight`
 `warning` → `yellow`
-`error` → `red`
-`success` → `green`
 */

@@ -18,7 +18,7 @@ const DEFAULT_SIZE: IOSpacer = 16;
 
 /* Debug Mode */
 const debugMode = false;
-const debugBg = hexToRgba(IOColors.red, 0.2);
+const debugBg = hexToRgba(IOColors["error-600"], 0.2);
 
 /**
 Native `Spacer` component
