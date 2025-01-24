@@ -84,9 +84,7 @@ export const HeaderFirstLevelScreen = () => {
       <VSpacer />
       {["info", "warning", "error"].map(variant => (
         <VStack space={4} key={variant}>
-          <H6 color={"bluegrey"} style={{ textTransform: "capitalize" }}>
-            {variant}
-          </H6>
+          <H6 style={{ textTransform: "capitalize" }}>{variant}</H6>
           <HStack space={4}>
             <ButtonSolid
               label="w/ Action"

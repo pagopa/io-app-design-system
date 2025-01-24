@@ -92,7 +92,7 @@ const getLongerTitle = (element: string) =>
   `Very loooong looong title set with Heading ${element}`;
 
 export const DarkBackgroundTypographicScale = () => (
-  <View style={{ backgroundColor: IOColors.bluegrey }}>
+  <View style={{ backgroundColor: IOColors["grey-700"] }}>
     <H1 color={"white"}>Header H1</H1>
     <HSpacer size={16} />
   </View>

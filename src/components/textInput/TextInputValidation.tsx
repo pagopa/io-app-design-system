@@ -18,8 +18,8 @@ type TextInputValidationProps = Omit<
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
   /**
-   * This function can return either a `boolean` or a `ValidationWithOptions` object. 
-   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced. 
+   * This function can return either a `boolean` or a `ValidationWithOptions` object.
+   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced.
    * If a `ValidationWithOptions` object is returned and the field is not valid, the value displayed/announced will be the one contained within this object.
    */
   onValidate: (value: string) => boolean | ValidationWithOptions;
@@ -29,8 +29,14 @@ type TextInputValidationProps = Omit<
   errorMessage: string;
 };
 
-function isValidationWithOptions(validation: boolean | ValidationWithOptions): validation is ValidationWithOptions {
-  return typeof validation === 'object' && 'isValid' in validation && 'errorMessage' in validation;
+function isValidationWithOptions(
+  validation: boolean | ValidationWithOptions
+): validation is ValidationWithOptions {
+  return (
+    typeof validation === "object" &&
+    "isValid" in validation &&
+    "errorMessage" in validation
+  );
 }
 
 const feedbackIconSize: IOIconSizeScale = 24;
@@ -94,7 +100,7 @@ export const TextInputValidation = ({
     () => ({
       valid: {
         name: "success",
-        color: "green"
+        color: "success-500"
       },
       notValid: {
         name: "errorFilled",

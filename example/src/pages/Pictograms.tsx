@@ -4,7 +4,6 @@ import {
   IOColors,
   IOPictograms,
   IOPictogramsBleed,
-  IOPictogramsLegacy,
   IOPictogramsObject,
   IOVisualCostants,
   Pictogram,
@@ -59,8 +58,7 @@ const sortPictogramSet = (
 
 const filteredIOPictograms = filterPictogramSet(
   {
-    ...IOPictogramsObject,
-    ...IOPictogramsLegacy
+    ...IOPictogramsObject
   },
   IOPictograms
 );
@@ -68,7 +66,6 @@ const filteredIOPictograms = filterPictogramSet(
 const sortedIOPictograms = sortPictogramSet(filteredIOPictograms);
 const sortedIOPictogramsBleed = sortPictogramSet(IOPictogramsBleed);
 const sortedIOPictogramsObject = sortPictogramSet(IOPictogramsObject);
-const sortedIOPictogramsLegacy = sortPictogramSet(IOPictogramsLegacy);
 
 export const Pictograms = () => (
   <Screen>
@@ -188,25 +185,5 @@ export const Pictograms = () => (
         <Pictogram name="charity" pictogramStyle="dark-content" />
       </View>
     </ComponentViewerBox>
-
-    <H2
-      style={{
-        marginBottom: 16,
-        paddingTop: IOVisualCostants.appMarginDefault
-      }}
-    >
-      Legacy Pictograms
-    </H2>
-    <View style={styles.itemsWrapper}>
-      {Object.entries(sortedIOPictogramsLegacy).map(([pictogramItemName]) => (
-        <AssetViewerBox
-          key={pictogramItemName}
-          name={pictogramItemName}
-          image={
-            <Pictogram name={pictogramItemName as IOPictograms} size="100%" />
-          }
-        />
-      ))}
-    </View>
   </Screen>
 );

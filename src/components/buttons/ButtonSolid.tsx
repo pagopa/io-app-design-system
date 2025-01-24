@@ -127,7 +127,7 @@ const mapLegacyColorStates: Record<
 > = {
   // Primary button
   primary: {
-    default: IOColors.blue,
+    default: IOColors["blue-500"],
     pressed: IOColors["blue-600"],
     label: {
       default: "white",
@@ -148,7 +148,7 @@ const mapLegacyColorStates: Record<
     default: IOColors.white,
     pressed: IOColors["blue-50"],
     label: {
-      default: "blue",
+      default: "blue-500",
       disabled: "white"
     }
   }

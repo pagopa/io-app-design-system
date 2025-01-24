@@ -630,7 +630,7 @@ const renderListItemTransaction = () => (
           amountAccessibilityLabel: "€ 100",
           refund: true
         }}
-        paymentLogoIcon={<Icon name="refund" color="bluegrey" />}
+        paymentLogoIcon={<Icon name="refund" />}
         onPress={onButtonPress}
       />
 

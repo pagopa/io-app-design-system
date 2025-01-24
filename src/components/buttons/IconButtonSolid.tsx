@@ -73,7 +73,7 @@ const mapLegacyColorStates: Record<
   // Primary button
   primary: {
     background: {
-      default: IOColors.blue,
+      default: IOColors["blue-500"],
       pressed: IOColors["blue-600"],
       disabled: IOColors["grey-100"]
     },
@@ -89,8 +89,8 @@ const mapLegacyColorStates: Record<
       disabled: hexToRgba(IOColors.white, 0.25)
     },
     icon: {
-      default: IOColors.blue,
-      disabled: IOColors.blue
+      default: IOColors["blue-500"],
+      disabled: IOColors["blue-500"]
     }
   }
 };

@@ -84,12 +84,8 @@ export const IOColors = asIOColors({
   "blueItalia-50": "#DDEBFA",
   /* Temporary scale based on legacy Blue */
   "blue-600": "#0353A3",
+  "blue-500": "#0073E6",
   "blue-50": "#EFF7FF",
-  /* Legacy */
-  bluegrey: "#475A6D",
-  bluegreyDark: "#17324D",
-  blue: "#0073E6",
-  aquaUltraLight: "#C1F4F2",
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -126,22 +122,17 @@ export const getGradientColorValues = (
 */
 
 const {
-  white,
-  bluegrey,
-  bluegreyDark,
-  black,
-  blue,
-  aquaUltraLight,
+  "blue-600": blue600,
+  "blue-500": blue500,
+  "blue-50": blue50
 } = IOColors;
 
 export const IOColorsLegacy = {
-  white,
-  bluegrey,
-  bluegreyDark,
-  black,
-  blue,
-  aquaUltraLight,
+  blue600,
+  blue500,
+  blue50
 };
+
 export type IOColorLegacy = keyof typeof IOColorsLegacy;
 
 export const IOColorsNeutral = asIOColors({
@@ -216,9 +207,8 @@ export const IOColorsExtra = {
   "blueItalia-500": IOColors["blueItalia-500"],
   "blueItalia-100": IOColors["blueItalia-100"],
   "blueItalia-50": IOColors["blueItalia-50"],
-  "blue-600": IOColors["blue-600"],
-  "blue-50": IOColors["blue-50"]
 };
+
 export type IOColorsExtra = keyof typeof IOColorsExtra;
 
 /*
@@ -307,9 +297,9 @@ export const IOThemeLight: IOTheme = {
 
 export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
-  "appBackground-accent": "blue",
-  "interactiveElem-default": "blue",
-  "pictogram-hands": "blue"
+  "appBackground-accent": "blue-500",
+  "interactiveElem-default": "blue-500",
+  "pictogram-hands": "blue-500"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -420,40 +410,8 @@ REFACTORING REFERENCES
 Alias tokens:
 */
 /* 
-tabUnderlineColor → greyUltraLight
-headerIconLight → grey-200
-colorSkeleton → bluegreyLight
-itemSeparator → bluegreyLight
-btnLightBorderColor → grey
-disabledService → grey, not referenced though
-headerIconDark → milderGray
-textColor → bluegrey
-topTabBarTextColor → bluegrey
-unselectedColor → bluegrey
-textColorDark → bluegreyDark
-cardTextColor → bluegreyDark
+itemSeparator → grey-200
+textColor → grey-700
 footerShadowColor → black
-topTabBarActiveTextColor → blue
-selectedColor → blue
-contentPrimaryBackground → blue
-textLinkColor → blue
-colorHighlight → aqua
-toastColor → aquaUltraLight
-brandSuccess → green
-*/
-
-/* NEW PALETTE → OLD PALETTE
-That is, which color replaces the other? */
-/*
-`blackNew` replaces `black`
-`grey100` → `greyLight`
-`grey200` → `blueGreyLight`
-`grey450` → `grey`
-`grey650` → `milderGrey`
-`grey700` → `bluegrey`
-`grey850` → `bluegreyDark`
-`blueNew` → `blue`
-`turquoise` → `aqua`
-`turquoiseLight` → `aquaUltraLight`
-`warning` → `yellow`
+contentPrimaryBackground → blue-500
 */

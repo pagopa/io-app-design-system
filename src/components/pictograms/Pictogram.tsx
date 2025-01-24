@@ -12,7 +12,6 @@ import PictogramCameraDenied from "./svg/PictogramCameraDenied";
 import PictogramCameraRequest from "./svg/PictogramCameraRequest";
 import PictogramCharity from "./svg/PictogramCharity";
 import PictogramCie from "./svg/PictogramCie";
-import PictogramCompleted from "./svg/PictogramCompleted";
 import PictogramComunicationProblem from "./svg/PictogramComunicationProblem";
 import PictogramEmpty from "./svg/PictogramEmpty";
 import PictogramEmptyArchive from "./svg/PictogramEmptyArchive";
@@ -36,7 +35,6 @@ import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
-import PictogramProcessing from "./svg/PictogramProcessing";
 import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSuccess from "./svg/PictogramSuccess";
@@ -117,10 +115,6 @@ import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
 
 export const IOPictograms = {
-  // Start legacy pictograms //
-  processing: PictogramProcessing,
-  completed: PictogramCompleted,
-  // End legacy pictograms
   empty: PictogramEmpty,
   feature: PictogramFeature,
   charity: PictogramCharity,
@@ -423,14 +417,3 @@ export const IOPictogramsObject = {
 } as const;
 
 export type IOPictogramsObject = keyof typeof IOPictogramsObject;
-
-/* Legacy pictograms */
-
-const { processing, completed } = IOPictograms;
-
-export const IOPictogramsLegacy = {
-  processing,
-  completed
-} as const;
-
-export type IOPictogramsLegacy = keyof typeof IOPictogramsLegacy;

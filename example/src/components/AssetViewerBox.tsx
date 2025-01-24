@@ -158,7 +158,7 @@ export const AssetViewerBox = ({
     >
       {name && (
         <BodySmall
-          color={"bluegrey"}
+          color={"grey-700"}
           style={{ alignSelf: "flex-start" }}
           weight={"Regular"}
         >

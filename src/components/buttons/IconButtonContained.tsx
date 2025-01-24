@@ -68,7 +68,7 @@ const mapColorStates: Record<
       disabled: "transparent"
     },
     icon: {
-      default: IOColors.bluegrey,
+      default: IOColors["grey-700"],
       pressed: IOColors.black,
       disabled: IOColors["grey-450"]
     }
@@ -95,14 +95,14 @@ const mapLegacyColorStates: Record<
   // Primary button
   primary: {
     background: {
-      default: hexToRgba(IOColors.blue, 0),
-      pressed: hexToRgba(IOColors.blue, 0.15),
+      default: hexToRgba(IOColors["blue-500"], 0),
+      pressed: hexToRgba(IOColors["blue-500"], 0.15),
       disabled: "transparent"
     },
     icon: {
-      default: IOColors.blue,
-      pressed: IOColors.blue,
-      disabled: hexToRgba(IOColors.blue, 0.25)
+      default: IOColors["blue-500"],
+      pressed: IOColors["blue-500"],
+      disabled: hexToRgba(IOColors["blue-500"], 0.25)
     }
   },
   // Neutral button
@@ -113,7 +113,7 @@ const mapLegacyColorStates: Record<
       disabled: "transparent"
     },
     icon: {
-      default: IOColors.bluegrey,
+      default: IOColors["grey-700"],
       pressed: IOColors.black,
       disabled: IOColors["grey-450"]
     }
