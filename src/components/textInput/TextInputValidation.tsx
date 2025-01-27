@@ -86,12 +86,12 @@ export const TextInputValidation = ({
   }, [onFocus]);
 
   const labelError = useMemo(
-    () => (isValid === false && errMessage ? errMessage : bottomMessage),
+    () => (!isValid && errMessage ? errMessage : bottomMessage),
     [isValid, errMessage, bottomMessage]
   );
 
   const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errMessage ? theme.errorText : undefined),
+    () => (!isValid && errMessage ? theme.errorText : undefined),
     [isValid, errMessage, theme.errorText]
   );
 
