@@ -74,7 +74,6 @@ const inputLabelScaleFactor: number = 0.75; /* 16pt becomes 12pt */
 const inputLabelFontSize: IOFontSize = 16;
 const inputDisabledOpacity: number = 0.5;
 const inputRightElementMargin: IOSpacingScale = 8;
-const iconColor: IOColors = "grey-300";
 const iconSize: IOIconSizeScale = 24;
 const iconMargin: IOSpacingScale = 8;
 const inputLabelColor: ColorValue = IOColors["grey-700"];
@@ -156,7 +155,7 @@ const HelperRow = ({
   value,
   counterLimit,
   bottomMessage,
-  bottomMessageColor = "grey-700"
+  bottomMessageColor
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
   const valueCount = useMemo(() => value.length, [value]);
@@ -246,6 +245,7 @@ export const TextInputBase = ({
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const theme = useIOTheme();
+  const iconColor: IOColors = theme["icon-decorative"];
 
   /* Get the label width to enable the correct translation */
   const [labelWidth, setLabelWidth] = useState<number>(0);
@@ -267,8 +267,8 @@ export const TextInputBase = ({
 
   const borderColorMap: Record<InputStatus, string> = useMemo(
     () => ({
-      initial: IOColors["grey-200"],
-      disabled: IOColors["grey-200"],
+      initial: IOColors[theme["textInputBorder-default"]],
+      disabled: IOColors[theme["textInputBorder-default"]],
       focused: IOColors[theme["interactiveElem-default"]],
       error: IOColors[theme.errorText]
     }),

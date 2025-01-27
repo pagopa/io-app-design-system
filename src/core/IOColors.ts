@@ -276,6 +276,7 @@ const themeKeys = [
   "textBody-tertiary",
   // Design System related
   "cardBorder-default",
+  "textInputBorder-default",
   "icon-default",
   "icon-decorative",
   // Layout
@@ -318,6 +319,7 @@ export const IOThemeLight: IOTheme = {
   "textBody-tertiary": "grey-700",
   // Design System related
   "cardBorder-default": "grey-100",
+  "textInputBorder-default": "grey-200",
   "icon-default": "grey-650",
   "icon-decorative": "grey-300",
   // Layout
@@ -363,6 +365,7 @@ export const IOThemeDark: IOTheme = {
   "textBody-tertiary": "grey-450",
   // Design System related
   "cardBorder-default": "grey-850",
+  "textInputBorder-default": "grey-850",
   "icon-default": "grey-450",
   "icon-decorative": "grey-650",
   // Layout
