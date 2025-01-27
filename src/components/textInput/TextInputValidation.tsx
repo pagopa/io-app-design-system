@@ -2,6 +2,7 @@ import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import {
   enterTransitionInputIcon,
@@ -18,8 +19,8 @@ type TextInputValidationProps = Omit<
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
   /**
-   * This function can return either a `boolean` or a `ValidationWithOptions` object. 
-   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced. 
+   * This function can return either a `boolean` or a `ValidationWithOptions` object.
+   * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced.
    * If a `ValidationWithOptions` object is returned and the field is not valid, the value displayed/announced will be the one contained within this object.
    */
   onValidate: (value: string) => boolean | ValidationWithOptions;
@@ -29,8 +30,14 @@ type TextInputValidationProps = Omit<
   errorMessage: string;
 };
 
-function isValidationWithOptions(validation: boolean | ValidationWithOptions): validation is ValidationWithOptions {
-  return typeof validation === 'object' && 'isValid' in validation && 'errorMessage' in validation;
+function isValidationWithOptions(
+  validation: boolean | ValidationWithOptions
+): validation is ValidationWithOptions {
+  return (
+    typeof validation === "object" &&
+    "isValid" in validation &&
+    "errorMessage" in validation
+  );
 }
 
 const feedbackIconSize: IOIconSizeScale = 24;
@@ -44,6 +51,7 @@ export const TextInputValidation = ({
   onFocus,
   ...props
 }: TextInputValidationProps) => {
+  const theme = useIOTheme();
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
   const [errMessage, setErrMessage] = useState(errorMessage);
 
@@ -78,13 +86,13 @@ export const TextInputValidation = ({
   }, [onFocus]);
 
   const labelError = useMemo(
-    () => (isValid === false && errMessage ? errMessage : bottomMessage),
+    () => (!isValid && errMessage ? errMessage : bottomMessage),
     [isValid, errMessage, bottomMessage]
   );
 
   const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errMessage ? "error-600" : undefined),
-    [isValid, errMessage]
+    () => (!isValid && errMessage ? theme.errorText : undefined),
+    [isValid, errMessage, theme.errorText]
   );
 
   const feedbackIconAttrMap: Record<
@@ -94,14 +102,14 @@ export const TextInputValidation = ({
     () => ({
       valid: {
         name: "success",
-        color: "green"
+        color: theme.successIcon
       },
       notValid: {
         name: "errorFilled",
-        color: "error-600"
+        color: theme.errorIcon
       }
     }),
-    []
+    [theme]
   );
 
   const feedbackIcon = useMemo(() => {

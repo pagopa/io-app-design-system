@@ -1,14 +1,15 @@
 import * as React from "react";
-import { PropsWithChildren } from "react";
-import { Pressable } from "react-native";
+import { PropsWithChildren, useCallback } from "react";
+import { GestureResponderEvent, Pressable } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, { useReducedMotion } from "react-native-reanimated";
-import { useScaleAnimation } from "../../hooks";
 import {
   IOColors,
   IOModuleIDPSavedVSpacing,
   IOModuleStyles,
   useIOTheme
 } from "../../core";
+import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 
 export type PressableModuleBaseProps = WithTestID<
@@ -39,9 +40,19 @@ export const PressableModuleBase = ({
   If we remove it, they they won't be able to understand
   if there's an ongoing interaction. */
 
+  const handleOnPress = useCallback(
+    (event: GestureResponderEvent) => {
+      if (onPress) {
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      }
+    },
+    [onPress]
+  );
+
   return (
     <Pressable
-      onPress={onPress}
+      onPress={handleOnPress}
       testID={testID}
       accessible={true}
       onPressIn={onPressIn}
