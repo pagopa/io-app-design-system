@@ -282,6 +282,8 @@ const themeKeys = [
   // Inputs
   "textInputBorder-default",
   "textInputLabel-default",
+  "textInputValue-default",
+  "textInputValue-disabled",
   // Layout
   "divider-header",
   "divider-default",
@@ -327,6 +329,8 @@ export const IOThemeLight: IOTheme = {
   // Inputs
   "textInputBorder-default": "grey-200",
   "textInputLabel-default": "grey-700",
+  "textInputValue-default": "black",
+  "textInputValue-disabled": "grey-850",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
@@ -375,6 +379,8 @@ export const IOThemeDark: IOTheme = {
   // Inputs
   "textInputBorder-default": "grey-850",
   "textInputLabel-default": "grey-450",
+  "textInputValue-default": "white",
+  "textInputValue-disabled": "grey-100",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",

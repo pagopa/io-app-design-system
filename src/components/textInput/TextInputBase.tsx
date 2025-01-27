@@ -76,8 +76,6 @@ const inputDisabledOpacity: number = 0.5;
 const inputRightElementMargin: IOSpacingScale = 8;
 const iconSize: IOIconSizeScale = 24;
 const iconMargin: IOSpacingScale = 8;
-const inputTextColor: ColorValue = IOColors.black;
-const inputDisabledTextColor: ColorValue = IOColors["grey-850"];
 
 const styles = StyleSheet.create({
   textInput: {
@@ -244,6 +242,9 @@ export const TextInputBase = ({
   const theme = useIOTheme();
   const iconColor: IOColors = theme["icon-decorative"];
   const inputLabelColor: ColorValue = IOColors[theme["textInputLabel-default"]];
+  const inputTextColor: ColorValue = IOColors[theme["textInputValue-default"]];
+  const inputDisabledTextColor: ColorValue =
+    IOColors[theme["textInputValue-disabled"]];
 
   /* Get the label width to enable the correct translation */
   const [labelWidth, setLabelWidth] = useState<number>(0);
