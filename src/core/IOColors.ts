@@ -288,6 +288,7 @@ const themeKeys = [
   "divider-header",
   "divider-default",
   "divider-bottomBar",
+  "pdfViewer-background",
   // Status
   "errorIcon",
   "errorText",
@@ -335,6 +336,7 @@ export const IOThemeLight: IOTheme = {
   "divider-header": "grey-100",
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
+  "pdfViewer-background": "grey-700",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
