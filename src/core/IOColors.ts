@@ -233,12 +233,19 @@ const themeKeys = [
   "textBody-tertiary",
   // Design System related
   "cardBorder-default",
+  "textInputBorder-default",
   "icon-default",
   "icon-decorative",
+  // Inputs
+  "textInputBorder-default",
+  "textInputLabel-default",
+  "textInputValue-default",
+  "textInputValue-disabled",
   // Layout
   "divider-header",
   "divider-default",
   "divider-bottomBar",
+  "pdfViewer-background",
   // Status
   "errorIcon",
   "errorText",
@@ -277,10 +284,16 @@ export const IOThemeLight: IOTheme = {
   "cardBorder-default": "grey-100",
   "icon-default": "grey-650",
   "icon-decorative": "grey-300",
+  // Inputs
+  "textInputBorder-default": "grey-200",
+  "textInputLabel-default": "grey-700",
+  "textInputValue-default": "black",
+  "textInputValue-disabled": "grey-850",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
+  "pdfViewer-background": "grey-700",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
@@ -322,6 +335,11 @@ export const IOThemeDark: IOTheme = {
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
   "icon-decorative": "grey-650",
+  // Inputs
+  "textInputBorder-default": "grey-850",
+  "textInputLabel-default": "grey-450",
+  "textInputValue-default": "white",
+  "textInputValue-disabled": "grey-100",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",

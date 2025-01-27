@@ -2,6 +2,7 @@ import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import {
   enterTransitionInputIcon,
@@ -50,6 +51,7 @@ export const TextInputValidation = ({
   onFocus,
   ...props
 }: TextInputValidationProps) => {
+  const theme = useIOTheme();
   const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
   const [errMessage, setErrMessage] = useState(errorMessage);
 
@@ -84,13 +86,13 @@ export const TextInputValidation = ({
   }, [onFocus]);
 
   const labelError = useMemo(
-    () => (isValid === false && errMessage ? errMessage : bottomMessage),
+    () => (!isValid && errMessage ? errMessage : bottomMessage),
     [isValid, errMessage, bottomMessage]
   );
 
   const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errMessage ? "error-600" : undefined),
-    [isValid, errMessage]
+    () => (!isValid && errMessage ? theme.errorText : undefined),
+    [isValid, errMessage, theme.errorText]
   );
 
   const feedbackIconAttrMap: Record<
@@ -100,14 +102,14 @@ export const TextInputValidation = ({
     () => ({
       valid: {
         name: "success",
-        color: "success-500"
+        color: theme.successIcon
       },
       notValid: {
         name: "errorFilled",
-        color: "error-600"
+        color: theme.errorIcon
       }
     }),
-    []
+    [theme]
   );
 
   const feedbackIcon = useMemo(() => {
