@@ -1,5 +1,12 @@
 /* eslint-disable functional/immutable-data */
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   ColorValue,
   LayoutChangeEvent,
@@ -46,7 +53,7 @@ type InputTextProps = WithTestID<{
   inputType?: InputType;
   status?: InputStatus;
   icon?: IOIcons;
-  rightElement?: React.ReactNode;
+  rightElement?: ReactNode;
   counterLimit?: number;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
@@ -151,7 +158,12 @@ const HelperRow = ({
   bottomMessage,
   bottomMessageColor = "grey-700"
 }: InputTextHelperRow) => {
+  const theme = useIOTheme();
   const valueCount = useMemo(() => value.length, [value]);
+
+  const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
+  const bottomMessageColorValue =
+    bottomMessageColor ?? bottomMessageColorDefault;
 
   const helperRowStyle: ViewStyle = useMemo(() => {
     if (counterLimit && bottomMessage) {
@@ -189,14 +201,14 @@ const HelperRow = ({
       }
     >
       {bottomMessage && (
-        <BodySmall weight="Regular" color={bottomMessageColor}>
+        <BodySmall weight="Regular" color={bottomMessageColorValue}>
           {bottomMessage}
         </BodySmall>
       )}
       {counterLimit && (
         <BodySmall
           weight="Regular"
-          color="grey-700"
+          color={bottomMessageColorValue}
         >{`${valueCount} / ${counterLimit}`}</BodySmall>
       )}
     </View>
@@ -226,7 +238,7 @@ export const TextInputBase = ({
 }: InputTextProps) => {
   const inputRef = useRef<TextInput>(null);
   const isSecretInput = useMemo(() => isPassword, [isPassword]);
-  const [inputStatus, setInputStatus] = React.useState<InputStatus>(
+  const [inputStatus, setInputStatus] = useState<InputStatus>(
     disabled ? "disabled" : "initial"
   );
   const focusedState = useSharedValue<number>(0);
@@ -236,7 +248,7 @@ export const TextInputBase = ({
   const theme = useIOTheme();
 
   /* Get the label width to enable the correct translation */
-  const [labelWidth, setLabelWidth] = React.useState<number>(0);
+  const [labelWidth, setLabelWidth] = useState<number>(0);
 
   const getLabelWidth = ({ nativeEvent }: LayoutChangeEvent) => {
     setLabelWidth(nativeEvent.layout.width);
@@ -258,7 +270,7 @@ export const TextInputBase = ({
       initial: IOColors["grey-200"],
       disabled: IOColors["grey-200"],
       focused: IOColors[theme["interactiveElem-default"]],
-      error: IOColors["error-600"]
+      error: IOColors[theme.errorText]
     }),
     [theme]
   );
