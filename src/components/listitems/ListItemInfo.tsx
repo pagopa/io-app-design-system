@@ -93,10 +93,7 @@ export const ListItemInfo = ({
   );
 
   const listItemAccessibilityLabel = useMemo(
-    () =>
-      accessibilityLabel
-        ? accessibilityLabel
-        : `${label}; ${componentValueToAccessibility}`,
+    () => accessibilityLabel ?? `${label}; ${componentValueToAccessibility}`,
     [label, componentValueToAccessibility, accessibilityLabel]
   );
 
@@ -177,7 +174,7 @@ export const ListItemInfo = ({
       <Pressable
         onLongPress={onLongPress}
         testID={testID}
-        accessible={endElement === undefined ? true : false}
+        accessible={!endElement}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         onTouchEnd={onPressOut}
@@ -211,7 +208,7 @@ export const ListItemInfo = ({
       <View
         style={IOListItemStyles.listItem}
         testID={testID}
-        accessible={endElement === undefined ? true : false}
+        accessible={!endElement}
         accessibilityLabel={listItemAccessibilityLabel}
         accessibilityRole={accessibilityRole}
       >
