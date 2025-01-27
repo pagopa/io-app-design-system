@@ -76,7 +76,6 @@ const inputDisabledOpacity: number = 0.5;
 const inputRightElementMargin: IOSpacingScale = 8;
 const iconSize: IOIconSizeScale = 24;
 const iconMargin: IOSpacingScale = 8;
-const inputLabelColor: ColorValue = IOColors["grey-700"];
 const inputTextColor: ColorValue = IOColors.black;
 const inputDisabledTextColor: ColorValue = IOColors["grey-850"];
 
@@ -132,11 +131,9 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textInputLabel: {
-    color: inputLabelColor,
     ...makeFontStyleObject(inputLabelFontSize, "Titillio", undefined, "Regular")
   },
   textInputLabelLegacyFont: {
-    color: inputLabelColor,
     ...makeFontStyleObject(
       inputLabelFontSize,
       "TitilliumSansPro",
@@ -246,6 +243,7 @@ export const TextInputBase = ({
 
   const theme = useIOTheme();
   const iconColor: IOColors = theme["icon-decorative"];
+  const inputLabelColor: ColorValue = IOColors[theme["textInputLabel-default"]];
 
   /* Get the label width to enable the correct translation */
   const [labelWidth, setLabelWidth] = useState<number>(0);
@@ -479,6 +477,7 @@ export const TextInputBase = ({
               isExperimental
                 ? styles.textInputLabel
                 : styles.textInputLabelLegacyFont,
+              { color: inputLabelColor },
               animatedLabelStyle
             ]}
           >

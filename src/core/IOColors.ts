@@ -279,6 +279,9 @@ const themeKeys = [
   "textInputBorder-default",
   "icon-default",
   "icon-decorative",
+  // Inputs
+  "textInputBorder-default",
+  "textInputLabel-default",
   // Layout
   "divider-header",
   "divider-default",
@@ -319,9 +322,11 @@ export const IOThemeLight: IOTheme = {
   "textBody-tertiary": "grey-700",
   // Design System related
   "cardBorder-default": "grey-100",
-  "textInputBorder-default": "grey-200",
   "icon-default": "grey-650",
   "icon-decorative": "grey-300",
+  // Inputs
+  "textInputBorder-default": "grey-200",
+  "textInputLabel-default": "grey-700",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
@@ -365,9 +370,11 @@ export const IOThemeDark: IOTheme = {
   "textBody-tertiary": "grey-450",
   // Design System related
   "cardBorder-default": "grey-850",
-  "textInputBorder-default": "grey-850",
   "icon-default": "grey-450",
   "icon-decorative": "grey-650",
+  // Inputs
+  "textInputBorder-default": "grey-850",
+  "textInputLabel-default": "grey-450",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",
