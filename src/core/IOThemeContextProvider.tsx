@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Appearance } from "react-native";
 import {
   IOTheme,
@@ -43,6 +43,11 @@ export const IOThemeContextProvider = ({
   );
   const { isExperimental } = useIOExperimentalDesign();
 
+  const handleThemeChange = useCallback((newTheme: IOThemeType) => {
+    setCurrentTheme(newTheme);
+    Appearance.setColorScheme(newTheme);
+  }, []);
+
   const themeMap = useMemo(
     () => (isExperimental ? IOThemes : legacyIOThemes),
     [isExperimental]
@@ -53,7 +58,7 @@ export const IOThemeContextProvider = ({
       value={{
         themeType: currentTheme,
         theme: themeMap[currentTheme],
-        setTheme: setCurrentTheme
+        setTheme: handleThemeChange
       }}
     >
       {children}
