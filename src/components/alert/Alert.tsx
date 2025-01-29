@@ -5,7 +5,8 @@ import {
   NativeSyntheticEvent,
   Pressable,
   TextLayoutEventData,
-  View
+  View,
+  ViewStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOVisualCostants, useIOThemeContext } from "../../core";
@@ -136,7 +137,7 @@ export const Alert = forwardRef<View, AlertType>(
       []
     );
 
-    const paddingDefaultVariant = {
+    const paddingDefaultVariant: ViewStyle = {
       padding,
       borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
       borderCurve: "continuous"
