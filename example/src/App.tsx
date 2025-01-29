@@ -17,9 +17,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <IODSExperimentalContextProvider>
-          <IOThemeContextProvider
-            theme={colorScheme === "dark" ? "dark" : "light"}
-          >
+          <IOThemeContextProvider theme={colorScheme}>
             <StatusBannerProvider>
               <ToastProvider>
                 <AppNavigator />

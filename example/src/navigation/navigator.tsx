@@ -13,6 +13,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Accordion } from "../pages/Accordion";
 import { DSAdvice } from "../pages/Advice";
@@ -54,8 +55,8 @@ import { StepperPage } from "../pages/Stepper";
 import { TabNavigationScreen } from "../pages/TabNavigation";
 import { TextInputs } from "../pages/TextInputs";
 import { Toasts } from "../pages/Toasts";
+import Tooltips from "../pages/Tooltips";
 import { Typography } from "../pages/Typography";
-import Tooltips from '../pages/Tooltips';
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
 
@@ -87,6 +88,9 @@ const AppNavigator = () => {
         themeType === "dark" ? IONavigationDarkTheme : IONavigationLightTheme
       }
     >
+      <StatusBar
+        barStyle={themeType === "dark" ? "light-content" : "dark-content"}
+      />
       <GestureHandlerRootView style={IOStyles.flex}>
         <Stack.Navigator
           initialRouteName={APP_ROUTES.MAIN}
