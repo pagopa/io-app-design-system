@@ -29,6 +29,10 @@ const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
 
+const onButtonLongPress = () => {
+  Alert.alert("Alert", "Long press triggered!");
+};
+
 export const ListItems = () => {
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
 
@@ -360,57 +364,128 @@ const renderListItemAction = () => (
 );
 
 const renderListItemInfo = () => (
-  <ComponentViewerBox name="ListItemInfo">
-    <View>
-      <ListItemInfo label="Label" value={"Value"} />
-      <ListItemInfo
-        label="Label"
-        value="A looong looooong looooooooong looooooooooong title"
-      />
-      <ListItemInfo
-        icon="creditCard"
-        label="Label"
-        value="A looong looooong looooooooong looooooooooong title"
-        endElement={{
-          type: "buttonLink",
-          componentProps: {
-            label: "Modifica",
-            accessibilityLabel: "Modifica",
-            onPress: onButtonPress
-          }
-        }}
-      />
-      <ListItemInfo
-        icon="psp"
-        label="Label"
-        value="A looong looooong looooooooong looooooooooong title"
-        endElement={{
-          type: "iconButton",
-          componentProps: {
-            icon: "info",
-            accessibilityLabel: "info",
-            onPress: onButtonPress
-          }
-        }}
-      />
+  <>
+    <ComponentViewerBox name="ListItemInfo">
+      <View>
+        <ListItemInfo label="Label" value={"Value"} />
+        <ListItemInfo
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+        />
+        <ListItemInfo
+          icon="creditCard"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "buttonLink",
+            componentProps: {
+              label: "Modifica",
+              accessibilityLabel: "Modifica",
+              onPress: onButtonPress
+            }
+          }}
+        />
+        <ListItemInfo
+          icon="psp"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "iconButton",
+            componentProps: {
+              icon: "info",
+              accessibilityLabel: "info",
+              onPress: onButtonPress
+            }
+          }}
+        />
 
-      <ListItemInfo
-        icon="psp"
-        label="Label"
-        value="A looong looooong looooooooong looooooooooong title"
-        endElement={{
-          type: "badge",
-          componentProps: {
-            text: "Pagato",
-            variant: "success"
-          }
-        }}
-      />
+        <ListItemInfo
+          icon="psp"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "badge",
+            componentProps: {
+              text: "Pagato",
+              variant: "success"
+            }
+          }}
+        />
 
-      <ListItemInfo label="Label" value={"Value"} icon="gallery" />
-      <ListItemInfo label="Label" value={"Value"} paymentLogoIcon="payPal" />
-    </View>
-  </ComponentViewerBox>
+        <ListItemInfo label="Label" value={"Value"} icon="gallery" />
+        <ListItemInfo label="Label" value={"Value"} paymentLogoIcon="payPal" />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemInfo, onLongPress enabled">
+      <View>
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          label="Label"
+          value={"Value"}
+        />
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+        />
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          icon="creditCard"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "buttonLink",
+            componentProps: {
+              label: "Modifica",
+              accessibilityLabel: "Modifica",
+              onPress: onButtonPress
+            }
+          }}
+        />
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          icon="psp"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "iconButton",
+            componentProps: {
+              icon: "info",
+              accessibilityLabel: "info",
+              onPress: onButtonPress
+            }
+          }}
+        />
+
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          icon="psp"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "badge",
+            componentProps: {
+              text: "Pagato",
+              variant: "success"
+            }
+          }}
+        />
+
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          label="Label"
+          value={"Value"}
+          icon="gallery"
+        />
+        <ListItemInfo
+          onLongPress={onButtonLongPress}
+          label="Label"
+          value={"Value"}
+          paymentLogoIcon="payPal"
+        />
+      </View>
+    </ComponentViewerBox>
+  </>
 );
 
 const renderListItemHeader = () => (
