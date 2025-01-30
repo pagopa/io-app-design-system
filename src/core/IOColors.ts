@@ -81,11 +81,7 @@ export const IOColors = asIOColors({
   "blueItalia-600": "#0052A3",
   "blueItalia-500": "#0066CC" /* pagoPA service */,
   "blueItalia-100": "#C4DCF5",
-  "blueItalia-50": "#DDEBFA",
-  /* Temporary scale based on legacy Blue */
-  "blue-600": "#0353A3",
-  "blue-500": "#0073E6",
-  "blue-50": "#EFF7FF"
+  "blueItalia-50": "#DDEBFA"
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -120,20 +116,6 @@ export const getGradientColorValues = (
 /*
 ░░░ COLORS SETS ░░░
 */
-
-const {
-  "blue-600": blue600,
-  "blue-500": blue500,
-  "blue-50": blue50
-} = IOColors;
-
-export const IOColorsLegacy = {
-  blue600,
-  blue500,
-  blue50
-};
-
-export type IOColorLegacy = keyof typeof IOColorsLegacy;
 
 export const IOColorsNeutral = asIOColors({
   black: IOColors.black,
