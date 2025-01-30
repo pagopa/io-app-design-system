@@ -80,7 +80,7 @@ exports[`Test Typography Components BodySmall Snapshot 2`] = `
     [
       {},
       {
-        "color": "#0073E6",
+        "color": "#0B3EE3",
         "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
@@ -103,7 +103,7 @@ exports[`Test Typography Components BodySmall Snapshot 3`] = `
     [
       {},
       {
-        "color": "#475A6D",
+        "color": "#555C70",
         "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
@@ -126,7 +126,7 @@ exports[`Test Typography Components BodySmall Snapshot 4`] = `
     [
       {},
       {
-        "color": "#C02927",
+        "color": "#D13333",
         "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
@@ -286,7 +286,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
     [
       {},
       {
-        "color": "#CCD4DC",
+        "color": "#D2D6E3",
         "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
@@ -401,7 +401,7 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
     [
       {},
       {
-        "color": "#0073E6",
+        "color": "#0B3EE3",
         "fontFamily": "Titillio",
         "fontSize": 20,
         "fontStyle": "normal",
@@ -476,7 +476,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
         "textTransform": "uppercase",
       },
       {
-        "color": "#475A6D",
+        "color": "#555C70",
         "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
@@ -502,7 +502,7 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
         "textTransform": "uppercase",
       },
       {
-        "color": "#0073E6",
+        "color": "#0B3EE3",
         "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
