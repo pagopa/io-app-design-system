@@ -105,19 +105,19 @@ const mapColorStates: Record<
   // Danger button
   danger: {
     border: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.bluegreyLight
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-200"]
     },
     background: {
-      default: hexToRgba(IOColors.red, 0),
-      pressed: hexToRgba(IOColors.red, 0.15),
+      default: hexToRgba(IOColors["error-600"], 0),
+      pressed: hexToRgba(IOColors["error-600"], 0.15),
       disabled: "transparent"
     },
     label: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.grey
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-450"]
     }
   }
 };

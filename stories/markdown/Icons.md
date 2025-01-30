@@ -99,7 +99,7 @@ export const IONavIcons = {
 You can add the recently added icon with the following declaration:
 ```
 // Default size: 24×24px
-// Default color: Bluegrey
+// Default color: Grey-700
 <Icon name="spid">
 ```
 

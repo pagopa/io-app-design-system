@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
     fontSize: 10
   },
   componenentLabelLight: {
-    color: IOColors.bluegrey
+    color: IOColors["grey-700"]
   },
   componenentLabelDark: {
-    color: IOColors.greyLight
+    color: IOColors["grey-100"]
   }
 });
 

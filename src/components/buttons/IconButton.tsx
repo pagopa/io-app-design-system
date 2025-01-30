@@ -47,7 +47,7 @@ const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
     icon: {
       default: IOColors.black,
       pressed: IOColors["grey-850"],
-      disabled: IOColors.grey
+      disabled: IOColors["grey-450"]
     }
   },
   // Contrast button

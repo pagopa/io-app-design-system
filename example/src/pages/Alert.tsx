@@ -14,9 +14,9 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
+import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
 import { Platform, Alert as RNAlert, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
@@ -105,7 +105,7 @@ export const DSAlert = () => {
   return (
     <Screen>
       <H3
-        color={"bluegrey"}
+        color={"grey-700"}
         style={{
           paddingTop: IOVisualCostants.appMarginDefault,
           marginBottom: 16
@@ -117,7 +117,7 @@ export const DSAlert = () => {
       <VStack space={8}>
         {["info", "warning", "error"].map(variant => (
           <VStack space={4} key={variant}>
-            <H6 color={"bluegrey"} style={{ textTransform: "capitalize" }}>
+            <H6 color={"grey-700"} style={{ textTransform: "capitalize" }}>
               {variant}
             </H6>
             <HStack space={4}>
@@ -146,7 +146,7 @@ export const DSAlert = () => {
 
       {/* Content only */}
       <H3
-        color={"bluegrey"}
+        color={"grey-700"}
         style={{
           marginBottom: 16
         }}
@@ -194,9 +194,7 @@ export const DSAlert = () => {
 
       <VSpacer size={40} />
 
-      <H2 color={"bluegrey"} style={{ marginBottom: 16 }}>
-        Content + Action
-      </H2>
+      <H2 style={{ marginBottom: 16 }}>Content + Action</H2>
 
       <Alert
         ref={viewRef}
@@ -247,9 +245,7 @@ export const DSAlert = () => {
       <VSpacer size={40} />
 
       {/* Full width */}
-      <H2 color={"bluegrey"} style={{ marginBottom: 16 }}>
-        Full width
-      </H2>
+      <H2 style={{ marginBottom: 16 }}>Full width</H2>
       <FullWidthComponent>
         <Alert
           fullWidth

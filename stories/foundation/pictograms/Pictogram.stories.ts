@@ -19,7 +19,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    color: "blueIO-500",
     name: "cardAdd"
   }
 };

@@ -63,13 +63,13 @@ const mapColorStates: Record<
   neutral: {
     background: {
       default: IOColors.white,
-      pressed: IOColors.greyUltraLight,
+      pressed: IOColors["grey-50"],
       disabled: "transparent"
     },
     icon: {
-      default: IOColors.bluegrey,
+      default: IOColors["grey-700"],
       pressed: IOColors.black,
-      disabled: IOColors.grey
+      disabled: IOColors["grey-450"]
     }
   },
   // Contrast button

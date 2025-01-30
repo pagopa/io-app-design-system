@@ -19,9 +19,7 @@ export default function App() {
       <SafeAreaProvider>
         <IODSExperimentalContextProvider>
           <IONewTypefaceContextProvider>
-            <IOThemeContextProvider
-              theme={colorScheme === "dark" ? "dark" : "light"}
-            >
+            <IOThemeContextProvider theme={colorScheme}>
               <StatusBannerProvider>
                 <ToastProvider>
                   <AppNavigator />

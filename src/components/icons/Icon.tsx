@@ -431,7 +431,7 @@ change its color values. It accepts `IOColors` values only.
 */
 export const Icon = ({
   name,
-  color = "bluegrey",
+  color = "grey-700",
   size = 24,
   accessible = false,
   accessibilityLabel = "",
@@ -475,7 +475,7 @@ type IOAnimatedIconsProps = {
 
 export const AnimatedIcon = ({
   name,
-  color = IOColors.bluegrey,
+  color = IOColors["grey-700"],
   size = 24,
   accessible = false,
   allowFontScaling = false,

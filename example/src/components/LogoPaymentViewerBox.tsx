@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   iconLabel: {
     fontSize: 10,
-    color: IOColors.bluegrey
+    color: IOColors["grey-700"]
   }
 });
 
