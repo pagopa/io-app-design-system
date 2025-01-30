@@ -41,7 +41,7 @@ import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSuccess from "./svg/PictogramSuccess";
 import PictogramTime from "./svg/PictogramTime";
-import PictogramUmbrellaNew from "./svg/PictogramUmbrellaNew";
+import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
 /* Bleed Pictograms */
@@ -127,7 +127,7 @@ export const IOPictograms = {
   attention: PictogramAttention,
   message: PictogramMessage,
   emptyArchive: PictogramEmptyArchive,
-  umbrellaNew: PictogramUmbrellaNew,
+  umbrella: PictogramUmbrella,
   feedback: PictogramFeedback,
   idea: PictogramIdea,
   cameraRequest: PictogramCameraRequest,
