@@ -106,19 +106,19 @@ const mapColorStates: Record<
   // Danger button
   danger: {
     border: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.bluegreyLight
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-200"]
     },
     background: {
-      default: hexToRgba(IOColors.red, 0),
-      pressed: hexToRgba(IOColors.red, 0.15),
+      default: hexToRgba(IOColors["error-600"], 0),
+      pressed: hexToRgba(IOColors["error-600"], 0.15),
       disabled: "transparent"
     },
     label: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.grey
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-450"]
     }
   }
 };
@@ -131,19 +131,19 @@ const mapLegacyColorStates: Record<
   // Primary button
   primary: {
     border: {
-      default: IOColors.blue,
-      pressed: IOColors.blue,
-      disabled: IOColors.bluegreyLight
+      default: IOColors["blue-500"],
+      pressed: IOColors["blue-500"],
+      disabled: IOColors["grey-200"]
     },
     background: {
-      default: hexToRgba(IOColors.blue, 0),
-      pressed: hexToRgba(IOColors.blue, 0.15),
+      default: hexToRgba(IOColors["blue-500"], 0),
+      pressed: hexToRgba(IOColors["blue-500"], 0.15),
       disabled: "transparent"
     },
     label: {
-      default: IOColors.blue,
-      pressed: IOColors.blue,
-      disabled: IOColors.grey
+      default: IOColors["blue-500"],
+      pressed: IOColors["blue-500"],
+      disabled: IOColors["grey-450"]
     }
   },
   // Contrast button
@@ -167,19 +167,19 @@ const mapLegacyColorStates: Record<
   // Danger button
   danger: {
     border: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.bluegreyLight
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-200"]
     },
     background: {
-      default: hexToRgba(IOColors.red, 0),
-      pressed: hexToRgba(IOColors.red, 0.15),
+      default: hexToRgba(IOColors["error-600"], 0),
+      pressed: hexToRgba(IOColors["error-600"], 0.15),
       disabled: "transparent"
     },
     label: {
-      default: IOColors.red,
-      pressed: IOColors.red,
-      disabled: IOColors.grey
+      default: IOColors["error-600"],
+      pressed: IOColors["error-600"],
+      disabled: IOColors["grey-450"]
     }
   }
 };

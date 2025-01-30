@@ -156,7 +156,6 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={80}
         bbWidth={80}
-        color="#00C5CA"
         focusable={false}
         height={80}
         meetOrSlice={0}
@@ -175,7 +174,6 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#00C5CA"
         vbHeight={240}
         vbWidth={240}
         width={80}
@@ -435,7 +433,6 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={80}
         bbWidth={80}
-        color="#00C5CA"
         focusable={false}
         height={80}
         meetOrSlice={0}
@@ -454,7 +451,6 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#00C5CA"
         vbHeight={240}
         vbWidth={240}
         width={80}

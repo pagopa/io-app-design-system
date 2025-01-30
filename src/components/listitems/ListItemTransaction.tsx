@@ -123,7 +123,7 @@ export const ListItemTransaction = ({
 
   const interactiveColor: IOColors = isExperimental
     ? theme["interactiveElem-default"]
-    : "blue";
+    : "blue-500";
 
   const amountColorDefault: IOColors = theme["textBody-default"];
   const amountColorRefund: IOColors = theme.successText;

@@ -100,17 +100,17 @@ const mapLegacyColorStates: Record<
   light: {
     border: {
       default: IOColors["grey-300"],
-      selected: IOColors.blue,
+      selected: IOColors["blue-500"],
       disabled: hexToRgba(IOColors.white)
     },
     background: {
       default: IOColors.white,
-      selected: hexToRgba(IOColors.blue, 0.1),
+      selected: hexToRgba(IOColors["blue-500"], 0.1),
       pressed: IOColors.white
     },
     foreground: {
       default: "black",
-      selected: "blue",
+      selected: "blue-500",
       disabled: "grey-700"
     }
   },

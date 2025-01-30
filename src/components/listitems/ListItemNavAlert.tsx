@@ -71,7 +71,9 @@ export const ListItemNavAlert = ({
     </>
   );
 
-  const iconColor = isExperimental ? theme["interactiveElem-default"] : "blue";
+  const iconColor = isExperimental
+    ? theme["interactiveElem-default"]
+    : "blue-500";
 
   return (
     <Pressable

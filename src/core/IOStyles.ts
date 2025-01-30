@@ -352,8 +352,8 @@ export const IOSwitchVisualParams: IOSwitchVisualParams = {
 
 export const IOSelectionTickLegacyVisualParams: IOSelectionTickLegacyVisualParams =
   {
-    borderColorOffState: "bluegrey",
-    bgColorOnState: "blue"
+    borderColorOffState: "grey-700",
+    bgColorOnState: "blue-500"
   };
 
 interface IOSelectionListItemVisualParams {

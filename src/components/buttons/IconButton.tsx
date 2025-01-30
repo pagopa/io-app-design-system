@@ -47,17 +47,17 @@ const mapLegacyColorStates: Record<
   // Primary button
   primary: {
     icon: {
-      default: IOColors.blue,
+      default: IOColors["blue-500"],
       pressed: IOColors["blue-600"],
-      disabled: hexToRgba(IOColors.blue, 0.25)
+      disabled: hexToRgba(IOColors["blue-500"], 0.25)
     }
   },
   // Neutral button
   neutral: {
     icon: {
       default: IOColors.black,
-      pressed: IOColors.bluegreyDark,
-      disabled: IOColors.grey
+      pressed: IOColors["grey-850"],
+      disabled: IOColors["grey-450"]
     }
   },
   // Contrast button
@@ -84,7 +84,7 @@ const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
     icon: {
       default: IOColors.black,
       pressed: IOColors["grey-850"],
-      disabled: IOColors.grey
+      disabled: IOColors["grey-450"]
     }
   },
   // Contrast button

@@ -84,23 +84,8 @@ export const IOColors = asIOColors({
   "blueItalia-50": "#DDEBFA",
   /* Temporary scale based on legacy Blue */
   "blue-600": "#0353A3",
+  "blue-500": "#0073E6",
   "blue-50": "#EFF7FF",
-  /* Legacy */
-  greyUltraLight: "#F5F6F7",
-  greyLight: "#E6E9F2",
-  bluegreyLight: "#CCD4DC",
-  grey: "#909DA8",
-  bluegrey: "#475A6D",
-  bluegreyDark: "#17324D",
-  blue: "#0073E6",
-  blueUltraLight: "#99CCFF" /* Almost deprecated, avoid if possible */,
-  aqua: "#00C5CA",
-  aquaUltraLight: "#C1F4F2",
-  antiqueFuchsia: "#9B5897" /* used in the CgnDiscountValueBox only */,
-  orange: "#EA7614",
-  red: "#C02927",
-  green: "#005C3C",
-  greenLight: "#5CA85A"
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -137,44 +122,17 @@ export const getGradientColorValues = (
 */
 
 const {
-  white,
-  greyUltraLight,
-  greyLight,
-  bluegreyLight,
-  grey,
-  bluegrey,
-  bluegreyDark,
-  black,
-  blue,
-  blueUltraLight,
-  aqua,
-  aquaUltraLight,
-  antiqueFuchsia,
-  orange,
-  red,
-  green,
-  greenLight
+  "blue-600": blue600,
+  "blue-500": blue500,
+  "blue-50": blue50
 } = IOColors;
 
 export const IOColorsLegacy = {
-  white,
-  greyUltraLight,
-  greyLight,
-  bluegreyLight,
-  grey,
-  bluegrey,
-  bluegreyDark,
-  black,
-  blue,
-  blueUltraLight,
-  aqua,
-  aquaUltraLight,
-  antiqueFuchsia,
-  orange,
-  red,
-  green,
-  greenLight
+  blue600,
+  blue500,
+  blue50
 };
+
 export type IOColorLegacy = keyof typeof IOColorsLegacy;
 
 export const IOColorsNeutral = asIOColors({
@@ -249,9 +207,8 @@ export const IOColorsExtra = {
   "blueItalia-500": IOColors["blueItalia-500"],
   "blueItalia-100": IOColors["blueItalia-100"],
   "blueItalia-50": IOColors["blueItalia-50"],
-  "blue-600": IOColors["blue-600"],
-  "blue-50": IOColors["blue-50"]
 };
+
 export type IOColorsExtra = keyof typeof IOColorsExtra;
 
 /*
@@ -353,9 +310,9 @@ export const IOThemeLight: IOTheme = {
 
 export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
-  "appBackground-accent": "blue",
-  "interactiveElem-default": "blue",
-  "pictogram-hands": "blue"
+  "appBackground-accent": "blue-500",
+  "interactiveElem-default": "blue-500",
+  "pictogram-hands": "blue-500"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -471,45 +428,8 @@ REFACTORING REFERENCES
 Alias tokens:
 */
 /* 
-tabUnderlineColor → greyUltraLight
-headerIconLight → greyLight
-colorSkeleton → bluegreyLight
-itemSeparator → bluegreyLight
-btnLightBorderColor → grey
-disabledService → grey, not referenced though
-headerIconDark → milderGray
-textColor → bluegrey
-topTabBarTextColor → bluegrey
-unselectedColor → bluegrey
-textColorDark → bluegreyDark
-cardTextColor → bluegreyDark
+itemSeparator → grey-200
+textColor → grey-700
 footerShadowColor → black
-topTabBarActiveTextColor → blue
-selectedColor → blue
-contentPrimaryBackground → blue
-textLinkColor → blue
-colorHighlight → aqua
-toastColor → aquaUltraLight
-brandDanger → red
-calendarExpirableColor → red
-brandSuccess → green
-*/
-
-/* NEW PALETTE → OLD PALETTE
-That is, which color replaces the other? */
-/*
-`blackNew` replaces `black`
-`grey50` → `greyUltraLight`
-`grey100` → `greyLight`
-`grey200` → `blueGreyLight`
-`grey450` → `grey`
-`grey650` → `milderGrey`
-`grey700` → `bluegrey`
-`grey850` → `bluegreyDark`
-`blueNew` → `blue`
-`turquoise` → `aqua`
-`turquoiseLight` → `aquaUltraLight`
-`warning` → `yellow`
-`error` → `red`
-`success` → `green`
+contentPrimaryBackground → blue-500
 */

@@ -21,7 +21,7 @@ const colorMap: Record<string, IOColors> = {
 };
 
 const legacyColorMap: Record<string, IOColors> = {
-  active: "blue"
+  active: "blue-500"
 };
 
 export const Stepper = ({ steps, currentStep }: StepperProps) => {

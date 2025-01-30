@@ -96,7 +96,7 @@ const renderRawAccordion = () => (
       <RawAccordion
         headerStyle={{
           paddingVertical: 16,
-          backgroundColor: IOColors.greyLight
+          backgroundColor: IOColors["grey-200"]
         }}
         header={
           <View style={IOStyles.row}>

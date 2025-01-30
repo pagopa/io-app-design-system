@@ -39,7 +39,7 @@ type ColorStates = {
 
 // Disabled state
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const colorPrimaryLegacyButtonDisabled: IOColors = "bluegreyLight";
+const colorPrimaryLegacyButtonDisabled: IOColors = "grey-200";
 const legacyStyles = StyleSheet.create({
   backgroundDisabled: {
     backgroundColor: IOColors[colorPrimaryLegacyButtonDisabled]
@@ -127,7 +127,7 @@ const mapLegacyColorStates: Record<
 > = {
   // Primary button
   primary: {
-    default: IOColors.blue,
+    default: IOColors["blue-500"],
     pressed: IOColors["blue-600"],
     label: {
       default: "white",
@@ -148,7 +148,7 @@ const mapLegacyColorStates: Record<
     default: IOColors.white,
     pressed: IOColors["blue-50"],
     label: {
-      default: "blue",
+      default: "blue-500",
       disabled: "white"
     }
   }

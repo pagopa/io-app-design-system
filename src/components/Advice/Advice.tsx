@@ -29,7 +29,7 @@ export const Advice: React.FC<Props> = React.memo(
     text,
     iconName = "notice",
     iconSize = defaultIconSize,
-    iconColor = "blue"
+    iconColor = "blue-500"
   }) => (
     <View style={IOStyles.row}>
       <View style={styles.icon}>

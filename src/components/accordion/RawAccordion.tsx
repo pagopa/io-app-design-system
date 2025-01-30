@@ -106,7 +106,7 @@ export const RawAccordion: React.FC<Props> = props => {
               transform: [{ rotateZ: arrowAngle }]
             }}
           >
-            <Icon name="chevronTop" color="blue" size={24} />
+            <Icon name="chevronTop" color="blue-500" size={24} />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>

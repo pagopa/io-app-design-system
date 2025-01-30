@@ -18,7 +18,7 @@ type OwnProps = Pick<
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const bgLegacyTrackColorAndroid =
-  Platform.OS === "android" ? IOColors["grey-300"] : IOColors.greyUltraLight;
+  Platform.OS === "android" ? IOColors["grey-300"] : IOColors["grey-50"];
 
 export const NativeSwitch = ({
   onValueChange,
@@ -34,7 +34,7 @@ export const NativeSwitch = ({
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   const legacyTrackColor = {
     false: bgLegacyTrackColorAndroid,
-    true: IOColors.blue
+    true: IOColors["blue-500"]
   };
 
   const trackColorComponent = isExperimental ? trackColor : legacyTrackColor;

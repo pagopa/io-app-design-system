@@ -2800,7 +2800,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "width": 24,
                 },
                 {
-                  "borderColor": "#475A6D",
+                  "borderColor": "#555C70",
                 },
               ]
             }
@@ -3085,7 +3085,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                   "width": 24,
                 },
                 {
-                  "borderColor": "#475A6D",
+                  "borderColor": "#555C70",
                 },
               ]
             }

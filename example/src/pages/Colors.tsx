@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   smallCapsLightMode: {
-    color: IOColors.bluegrey
+    color: IOColors["grey-700"]
   },
   smallCapsDarkMode: {
     color: IOColors["grey-450"]
@@ -139,11 +139,7 @@ const renderColorThemeGroup = (
 
   return (
     <View style={{ marginBottom: 40 }}>
-      {name && (
-        <H3 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
-          {name}
-        </H3>
-      )}
+      {name && <H3 style={{ marginBottom: sectionTitleMargin }}>{name}</H3>}
       {/* Show the two different columns
       with both light and dark modes */}
       <View style={IOStyles.row}>
@@ -219,11 +215,7 @@ const renderColorGroup = (
   colorObject: Record<string, ColorValue>
 ) => (
   <View style={{ marginBottom: 24 }}>
-    {name && (
-      <H3 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
-        {name}
-      </H3>
-    )}
+    {name && <H3 style={{ marginBottom: sectionTitleMargin }}>{name}</H3>}
 
     {Object.entries(colorObject).map(([name, colorValue]) => (
       <ColorBox key={name} name={name} color={colorValue} />
@@ -234,7 +226,6 @@ const renderColorGroup = (
 export const Colors = () => (
   <Screen>
     <H2
-      color={"bluegrey"}
       style={{
         marginBottom: sectionTitleMargin,
         paddingTop: IOVisualCostants.appMarginDefault
@@ -251,9 +242,7 @@ export const Colors = () => (
     {/* Extra */}
     {renderColorGroup("Extra", IOColorsExtra)}
 
-    <H2 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
-      Theme
-    </H2>
+    <H2 style={{ marginBottom: sectionTitleMargin }}>Theme</H2>
 
     {renderColorThemeGroup("Main", IOThemeLight, IOThemeDark)}
 
@@ -264,9 +253,7 @@ export const Colors = () => (
     )}
 
     {/* Gradients */}
-    <H2 color={"bluegrey"} style={{ marginBottom: sectionTitleMargin }}>
-      Gradients
-    </H2>
+    <H2 style={{ marginBottom: sectionTitleMargin }}>Gradients</H2>
     <View style={styles.gradientItemsWrapper}>
       {Object.entries(IOColorGradients).map(([name, colorValues]) => (
         <GradientBox key={name} name={name} colors={colorValues} />
@@ -308,7 +295,7 @@ const ColorBox = ({
     {name && (
       <LabelMini
         numberOfLines={1}
-        color={mode === "dark" ? "grey-200" : "bluegrey"}
+        color={mode === "dark" ? "grey-200" : "grey-700"}
         weight={"Regular"}
       >
         {name}

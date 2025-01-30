@@ -75,7 +75,7 @@ const renderBadge = () => (
         <View
           style={{
             alignSelf: "flex-start",
-            backgroundColor: IOColors.bluegrey,
+            backgroundColor: IOColors["grey-700"],
             padding: 16,
             borderRadius: IOBadgeRadius + 16,
             borderCurve: "continuous"
