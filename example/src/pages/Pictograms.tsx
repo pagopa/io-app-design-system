@@ -57,9 +57,7 @@ const sortPictogramSet = (
   );
 
 const filteredIOPictograms = filterPictogramSet(
-  {
-    ...IOPictogramsObject
-  },
+  IOPictogramsObject,
   IOPictograms
 );
 
