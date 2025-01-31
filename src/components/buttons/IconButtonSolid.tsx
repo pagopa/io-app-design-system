@@ -8,7 +8,8 @@ import Animated, {
 import {
   IOButtonStyles,
   IOIconButtonStyles,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
@@ -34,35 +35,6 @@ type ColorStates = {
     default: string;
     disabled: string;
   };
-};
-
-const mapColorStates: Record<
-  NonNullable<IconButtonSolid["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-100"]
-    },
-    icon: {
-      default: IOColors.white,
-      disabled: IOColors["grey-450"]
-    }
-  },
-  contrast: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["blueIO-50"],
-      disabled: hexToRgba(IOColors.white, 0.25)
-    },
-    icon: {
-      default: IOColors["blueIO-500"],
-      disabled: IOColors["blueIO-500"]
-    }
-  }
 };
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
@@ -104,15 +76,47 @@ export const IconButtonSolid = ({
   accessibilityHint,
   testID
 }: IconButtonSolid) => {
+  const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
 
   const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
 
+  const mapColorStates = React.useMemo<
+    Record<NonNullable<IconButtonSolid["color"]>, ColorStates>
+  >(
+    () => ({
+      // Primary button
+      primary: {
+        background: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveElem-disabled"]]
+        },
+        icon: {
+          default: IOColors[theme["buttonText-default"]],
+          disabled: IOColors[theme["buttonText-default"]]
+        }
+      },
+      contrast: {
+        background: {
+          default: IOColors.white,
+          pressed: IOColors["blueIO-50"],
+          disabled: hexToRgba(IOColors.white, 0.25)
+        },
+        icon: {
+          default: IOColors["blueIO-500"],
+          disabled: IOColors["blueIO-500"]
+        }
+      }
+    }),
+    []
+  );
+
   const colorMap = React.useMemo(
     () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-    [isExperimental]
+    [isExperimental, mapColorStates]
   );
 
   const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
