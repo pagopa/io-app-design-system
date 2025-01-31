@@ -272,7 +272,7 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
             { backgroundColor, overflow: "hidden" },
             isExperimental && fullWidth && { paddingHorizontal: 16 },
             buttonStyles.buttonSizeDefault,
-            disabled ? { opacity: DISABLED_OPACITY } : null,
+            disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle,
