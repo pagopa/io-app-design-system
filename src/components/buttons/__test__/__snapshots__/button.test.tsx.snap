@@ -282,15 +282,14 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           "textAlignVertical": "center",
         },
         {
+          "backgroundColor": "#0B3EE3",
           "overflow": "hidden",
         },
         false,
         {
           "height": 48,
         },
-        {
-          "backgroundColor": "#0B3EE3",
-        },
+        {},
         {
           "transform": [
             {
@@ -1024,15 +1023,14 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           "textAlignVertical": "center",
         },
         {
+          "backgroundColor": "#0073E6",
           "overflow": "hidden",
         },
         false,
         {
           "height": 40,
         },
-        {
-          "backgroundColor": "#0073E6",
-        },
+        {},
         {
           "transform": [
             {
