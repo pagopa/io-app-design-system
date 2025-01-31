@@ -96,7 +96,7 @@ export const IconButtonSolid = ({
         },
         icon: {
           default: IOColors[theme["buttonText-default"]],
-          disabled: IOColors[theme["buttonText-default"]]
+          disabled: IOColors[theme["buttonText-disabled"]]
         }
       },
       contrast: {
