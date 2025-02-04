@@ -28,8 +28,8 @@ import { HeaderActionProps } from "./common";
 
 export type HeaderFirstLevel = WithTestID<{
   title: string;
-  firstAction: HeaderActionProps;
-  secondAction: HeaderActionProps;
+  firstAction?: HeaderActionProps;
+  secondAction?: HeaderActionProps;
   thirdAction?: HeaderActionProps;
   animatedRef?: AnimatedRef<Animated.ScrollView>;
   animatedFlatListRef?: AnimatedRef<Animated.FlatList<any>>;
@@ -134,8 +134,8 @@ export const HeaderFirstLevel = ({
         </View>
         <HStack space={16} style={{ flexShrink: 0 }}>
           {thirdAction && <IconButton {...thirdAction} color={"primary"} />}
-          <IconButton {...secondAction} color={"primary"} />
-          <IconButton {...firstAction} color={"primary"} />
+          {secondAction && <IconButton {...secondAction} color={"primary"} />}
+          {firstAction && <IconButton {...firstAction} color={"primary"} />}
         </HStack>
       </View>
     </Animated.View>
