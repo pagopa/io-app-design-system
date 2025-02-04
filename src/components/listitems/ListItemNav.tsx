@@ -81,7 +81,7 @@ export const ListItemNav = ({
   description,
   onPress,
   icon,
-  iconColor = "grey-450",
+  iconColor,
   avatarProps: avatar,
   paymentLogoUri,
   accessibilityLabel,
@@ -95,6 +95,9 @@ export const ListItemNav = ({
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
   const theme = useIOTheme();
+
+  const defaultIconColor = iconColor ?? theme["icon-decorative"];
+  const interactiveColor = theme["interactiveElem-default"];
 
   const { dynamicFontScale, hugeFontEnabled } = useIOFontDynamicScale();
 
@@ -151,8 +154,6 @@ export const ListItemNav = ({
     </>
   );
 
-  const interactiveColor = theme["interactiveElem-default"];
-
   const handleOnPress = (event: GestureResponderEvent) => {
     if (!loading) {
       onPress(event);
@@ -188,7 +189,7 @@ export const ListItemNav = ({
               <Icon
                 allowFontScaling
                 name={icon}
-                color={iconColor}
+                color={defaultIconColor}
                 size={IOListItemVisualParams.iconSize}
               />
               <HSpacer
