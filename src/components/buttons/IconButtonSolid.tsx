@@ -111,7 +111,7 @@ export const IconButtonSolid = ({
         }
       }
     }),
-    []
+    [theme]
   );
 
   const colorMap = React.useMemo(
