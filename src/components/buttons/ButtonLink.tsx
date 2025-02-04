@@ -15,7 +15,8 @@ import {
   IOColors,
   IOSpacingScale,
   hexToRgba,
-  useIOExperimentalDesign
+  useIOExperimentalDesign,
+  useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -50,32 +51,11 @@ export type ButtonLinkProps = WithTestID<{
 }>;
 
 type ColorStates = {
-  label: {
+  foreground: {
     default: string;
     pressed: string;
     disabled: string;
   };
-};
-
-const mapColorStates: Record<
-  NonNullable<ButtonLinkProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    label: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  contrast: {
-    label: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  }
 };
 
 // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
@@ -85,14 +65,14 @@ const mapLegacyColorStates: Record<
 > = {
   // Primary button
   primary: {
-    label: {
+    foreground: {
       default: IOColors["blue-500"],
       pressed: IOColors["blue-600"],
       disabled: IOColors["grey-700"]
     }
   },
   contrast: {
-    label: {
+    foreground: {
       default: IOColors.white,
       pressed: hexToRgba(IOColors.white, 0.85),
       disabled: hexToRgba(IOColors.white, 0.5)
@@ -120,14 +100,41 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     },
     ref
   ) => {
+    const theme = useIOTheme();
     const { isExperimental } = useIOExperimentalDesign();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
+    const mapColorStates = useMemo<
+      Record<NonNullable<ButtonLinkProps["color"]>, ColorStates>
+    >(
+      () => ({
+        // Primary button
+        primary: {
+          foreground: {
+            default: IOColors[theme["interactiveElem-default"]],
+            pressed: IOColors[theme["interactiveElem-pressed"]],
+            disabled: hexToRgba(
+              IOColors[theme["interactiveElem-default"]],
+              0.75
+            )
+          }
+        },
+        contrast: {
+          foreground: {
+            default: IOColors.white,
+            pressed: hexToRgba(IOColors.white, 0.85),
+            disabled: hexToRgba(IOColors.white, 0.5)
+          }
+        }
+      }),
+      [theme]
+    );
+
     const colorMap = useMemo(
       () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental]
+      [isExperimental, mapColorStates]
     );
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
@@ -136,7 +143,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
       color: interpolateColor(
         progress.value,
         [0, 1],
-        [colorMap[color].label.default, colorMap[color].label.pressed]
+        [colorMap[color].foreground.default, colorMap[color].foreground.pressed]
       )
     }));
 
@@ -182,14 +189,14 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorAnimationStyle}
-                color={colorMap[color]?.label?.default}
+                color={colorMap[color]?.foreground?.default}
                 size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 allowFontScaling
                 name={icon}
-                color={colorMap[color]?.label?.disabled}
+                color={colorMap[color]?.foreground?.disabled}
                 size={iconSize}
               />
             ))}
@@ -203,7 +210,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             lineHeight={buttonTextLineHeight}
             style={[
               disabled
-                ? { color: colorMap[color]?.label?.disabled }
+                ? { color: colorMap[color]?.foreground?.disabled }
                 : { ...pressedColorAnimationStyle },
               { textAlign }
             ]}
