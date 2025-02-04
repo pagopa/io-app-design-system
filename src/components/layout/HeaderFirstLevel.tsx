@@ -26,11 +26,15 @@ import { HStack } from "../stack";
 import { H3 } from "../typography";
 import { HeaderActionProps } from "./common";
 
+type HeaderActionsProp =
+  | readonly [] // No actions
+  | readonly [HeaderActionProps] // Single action
+  | readonly [HeaderActionProps, HeaderActionProps] // Two actions
+  | readonly [HeaderActionProps, HeaderActionProps, HeaderActionProps]; // Three actions
+
 export type HeaderFirstLevel = WithTestID<{
   title: string;
-  firstAction?: HeaderActionProps;
-  secondAction?: HeaderActionProps;
-  thirdAction?: HeaderActionProps;
+  actions: HeaderActionsProp;
   animatedRef?: AnimatedRef<Animated.ScrollView>;
   animatedFlatListRef?: AnimatedRef<Animated.FlatList<any>>;
   ignoreSafeAreaMargin?: boolean;
@@ -58,9 +62,7 @@ const styles = StyleSheet.create({
 export const HeaderFirstLevel = ({
   title,
   testID,
-  firstAction,
-  secondAction,
-  thirdAction,
+  actions = [],
   ignoreSafeAreaMargin = false,
   animatedRef,
   animatedFlatListRef
@@ -133,9 +135,9 @@ export const HeaderFirstLevel = ({
           </H3>
         </View>
         <HStack space={16} style={{ flexShrink: 0 }}>
-          {thirdAction && <IconButton {...thirdAction} color={"primary"} />}
-          {secondAction && <IconButton {...secondAction} color={"primary"} />}
-          {firstAction && <IconButton {...firstAction} color={"primary"} />}
+          {actions.map((action, index) => (
+            <IconButton key={index} {...action} color={"primary"} />
+          ))}
         </HStack>
       </View>
     </Animated.View>
