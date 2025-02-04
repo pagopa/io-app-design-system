@@ -129,7 +129,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
           }
         }
       }),
-      []
+      [theme]
     );
 
     const colorMap = useMemo(
