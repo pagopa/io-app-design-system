@@ -144,7 +144,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
           foreground: {
             default: IOColors[theme["interactiveElem-default"]],
             pressed: IOColors[theme["interactiveElem-pressed"]],
-            disabled: IOColors[theme["interactiveElem-disabled"]]
+            disabled: IOColors[theme["interactiveOutline-disabled"]]
           },
           background: {
             default: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0),
