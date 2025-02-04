@@ -154,7 +154,7 @@ export const ListItemInfo = ({
         <Icon
           allowFontScaling
           name={icon}
-          color="grey-450"
+          color={theme["icon-decorative"]}
           size={IOListItemVisualParams.iconSize}
         />
       )}

@@ -31,16 +31,7 @@ export const Primary: Story = {
     }
   }
 };
-export const Danger: Story = {
-  args: {
-    color: "danger",
-    accessibilityLabel: "Tap to trigger test alert",
-    label: "Danger button",
-    onPress: e => {
-      action("clicked")(e);
-    }
-  }
-};
+
 export const Contrast: Story = {
   args: {
     color: "contrast",

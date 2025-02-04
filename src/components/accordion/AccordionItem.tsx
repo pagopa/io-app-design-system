@@ -86,7 +86,7 @@ export const AccordionItem = ({
   // Visual attributes
   const accordionBackground: IOColors = theme["appBackground-primary"];
   const accordionBorder: IOColors = theme["cardBorder-default"];
-  const accordionIconColor: IOColors = theme["icon-default"];
+  const accordionIconColor: IOColors = theme["icon-decorative"];
 
   const onItemPress = () => {
     setExpanded(!expanded);

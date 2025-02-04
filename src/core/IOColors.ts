@@ -85,7 +85,7 @@ export const IOColors = asIOColors({
   /* Temporary scale based on legacy Blue */
   "blue-600": "#0353A3",
   "blue-500": "#0073E6",
-  "blue-50": "#EFF7FF",
+  "blue-50": "#EFF7FF"
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -206,7 +206,7 @@ export const IOColorsExtra = {
   "blueItalia-600": IOColors["blueItalia-600"],
   "blueItalia-500": IOColors["blueItalia-500"],
   "blueItalia-100": IOColors["blueItalia-100"],
-  "blueItalia-50": IOColors["blueItalia-50"],
+  "blueItalia-50": IOColors["blueItalia-50"]
 };
 
 export type IOColorsExtra = keyof typeof IOColorsExtra;
@@ -223,6 +223,13 @@ const themeKeys = [
   "appBackground-accent",
   "interactiveElem-default",
   "interactiveElem-pressed",
+  "interactiveElem-disabled",
+  "interactiveOutline-disabled",
+  "neutralButton-default",
+  "neutralButton-pressed",
+  "neutralButton-disabled",
+  "buttonText-default",
+  "buttonText-disabled",
   "listItem-pressed",
   // Typography
   "textHeading-default",
@@ -272,6 +279,13 @@ export const IOThemeLight: IOTheme = {
   "appBackground-accent": "blueIO-500",
   "interactiveElem-default": "blueIO-500",
   "interactiveElem-pressed": "blueIO-600",
+  "interactiveElem-disabled": "grey-300",
+  "interactiveOutline-disabled": "grey-650",
+  "neutralButton-default": "black",
+  "neutralButton-pressed": "grey-850",
+  "neutralButton-disabled": "grey-450",
+  "buttonText-default": "white",
+  "buttonText-disabled": "grey-700",
   "listItem-pressed": "grey-50",
   // Typography
   "textHeading-default": "black",
@@ -322,7 +336,14 @@ export const IOThemeDark: IOTheme = {
   "appBackground-secondary": "grey-850",
   "appBackground-tertiary": "grey-700",
   "interactiveElem-default": "blueIO-450",
-  "interactiveElem-pressed": "blueIO-600",
+  "interactiveElem-pressed": "blueIO-500",
+  "interactiveElem-disabled": "grey-700",
+  "interactiveOutline-disabled": "grey-450",
+  "neutralButton-default": "white",
+  "neutralButton-pressed": "grey-100",
+  "neutralButton-disabled": "grey-850",
+  "buttonText-default": "white",
+  "buttonText-disabled": "grey-300",
   "listItem-pressed": "grey-850",
   // Typography
   "textHeading-default": "grey-200",
