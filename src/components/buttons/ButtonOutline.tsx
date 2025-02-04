@@ -15,7 +15,8 @@ import {
   IOButtonStyles,
   IOColors,
   hexToRgba,
-  useIONewTypeface
+  useIONewTypeface,
+  useIOTheme
 } from "../../core/";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -27,7 +28,7 @@ import {
 } from "../icons";
 import { IOText, buttonTextFontSize } from "../typography";
 
-type ColorButtonOutline = "primary" | "contrast" | "danger";
+type ColorButtonOutline = "primary" | "contrast";
 export type ButtonOutline = WithTestID<
   {
     color?: ColorButtonOutline;
@@ -45,7 +46,7 @@ export type ButtonOutline = WithTestID<
 >;
 
 type ColorStates = {
-  border: {
+  foreground: {
     default: string;
     pressed: string;
     disabled: string;
@@ -55,71 +56,6 @@ type ColorStates = {
     pressed: string;
     disabled: string;
   };
-  label: {
-    default: string;
-    pressed: string;
-    disabled: string;
-  };
-};
-
-const mapColorStates: Record<
-  NonNullable<ButtonOutline["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    border: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-200"]
-    },
-    background: {
-      default: hexToRgba(IOColors["blueIO-50"], 0),
-      pressed: hexToRgba(IOColors["blueIO-50"], 1),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  // Contrast button
-  contrast: {
-    border: {
-      default: IOColors.white,
-      pressed: IOColors.white,
-      disabled: IOColors["blueIO-200"]
-    },
-    background: {
-      default: hexToRgba(IOColors["blueIO-600"], 0),
-      pressed: IOColors["blueIO-600"],
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors.white,
-      pressed: IOColors.white,
-      disabled: IOColors["blueIO-200"]
-    }
-  },
-  // Danger button
-  danger: {
-    border: {
-      default: IOColors["error-600"],
-      pressed: IOColors["error-600"],
-      disabled: IOColors["grey-200"]
-    },
-    background: {
-      default: hexToRgba(IOColors["error-600"], 0),
-      pressed: hexToRgba(IOColors["error-600"], 0.15),
-      disabled: "transparent"
-    },
-    label: {
-      default: IOColors["error-600"],
-      pressed: IOColors["error-600"],
-      disabled: IOColors["grey-450"]
-    }
-  }
 };
 
 // Icon size
@@ -150,12 +86,45 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     },
     ref
   ) => {
+    const theme = useIOTheme();
     const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
+
+    const mapColorStates: Record<
+      NonNullable<ButtonOutline["color"]>,
+      ColorStates
+    > = {
+      // Primary button
+      primary: {
+        foreground: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveOutline-disabled"]]
+        },
+        background: {
+          default: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0),
+          pressed: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0.1),
+          disabled: "transparent"
+        }
+      },
+      // Contrast button
+      contrast: {
+        foreground: {
+          default: IOColors.white,
+          pressed: IOColors.white,
+          disabled: IOColors["blueIO-200"]
+        },
+        background: {
+          default: hexToRgba(IOColors["blueIO-600"], 0),
+          pressed: hexToRgba(IOColors["blueIO-600"], 0.5),
+          disabled: "transparent"
+        }
+      }
+    };
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => {
@@ -173,8 +142,8 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         progress.value,
         [0, 1],
         [
-          mapColorStates[color].border.default,
-          mapColorStates[color].border.pressed
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
         ]
       );
 
@@ -189,8 +158,8 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         progress.value,
         [0, 1],
         [
-          mapColorStates[color].border.default,
-          mapColorStates[color].border.pressed
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
         ]
       )
     }));
@@ -201,8 +170,8 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         progress.value,
         [0, 1],
         [
-          mapColorStates[color].label.default,
-          mapColorStates[color].label.pressed
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
         ]
       )
     }));
@@ -236,12 +205,12 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
             disabled
               ? {
                   backgroundColor: mapColorStates[color]?.background?.disabled,
-                  borderColor: mapColorStates[color]?.border?.disabled,
+                  borderColor: mapColorStates[color]?.foreground?.disabled,
                   opacity: DISABLED_OPACITY
                 }
               : {
                   backgroundColor: mapColorStates[color]?.background?.default,
-                  borderColor: mapColorStates[color]?.border.default
+                  borderColor: mapColorStates[color]?.foreground.default
                 },
             /* Prevent Reanimated from overriding background colors
                     if button is disabled */
@@ -255,14 +224,14 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
-                color={mapColorStates[color]?.label?.default}
+                color={mapColorStates[color]?.foreground?.default}
                 size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 allowFontScaling
                 name={icon}
-                color={mapColorStates[color]?.label?.disabled}
+                color={mapColorStates[color]?.foreground?.disabled}
                 size={iconSize}
               />
             ))}
@@ -278,7 +247,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
             style={[
               IOButtonStyles.label,
               disabled
-                ? { color: mapColorStates[color]?.label?.disabled }
+                ? { color: mapColorStates[color]?.foreground?.disabled }
                 : { ...pressedColorLabelAnimationStyle }
             ]}
           >

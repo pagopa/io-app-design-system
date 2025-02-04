@@ -1,8 +1,14 @@
-import React, { ComponentProps, useCallback, useEffect, useRef } from "react";
+import React, {
+  ComponentProps,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef
+} from "react";
 import {
+  ColorValue,
   GestureResponderEvent,
   Pressable,
-  StyleSheet,
   View
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
@@ -16,7 +22,8 @@ import {
   IOColors,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
-  exitTransitionInnerContent
+  exitTransitionInnerContent,
+  useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -27,27 +34,22 @@ import { ButtonText } from "../typography/ButtonText";
 export type ButtonSolidColor = "primary" | "danger" | "contrast";
 
 type ColorStates = {
-  default: string;
-  pressed: string;
-  label: {
+  background: {
+    default: string;
+    pressed: string;
+    disabled: string;
+  };
+  foreground: {
     default: IOColors;
     disabled: IOColors;
   };
 };
 
-const colorPrimaryButtonDisabled: IOColors = "grey-200";
 const ICON_MARGIN = 8;
 const DISABLED_OPACITY = 0.5;
 
 // Icon size
 const iconSize: IOIconSizeScale = 20;
-
-const styles = StyleSheet.create({
-  backgroundDisabled: {
-    backgroundColor: IOColors[colorPrimaryButtonDisabled],
-    opacity: DISABLED_OPACITY
-  }
-});
 
 export type ButtonSolidProps = WithTestID<
   {
@@ -76,40 +78,7 @@ export type ButtonSolidProps = WithTestID<
   >
 >;
 
-const mapColorStates: Record<
-  NonNullable<ButtonSolidProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    default: IOColors["blueIO-500"],
-    pressed: IOColors["blueIO-600"],
-    label: {
-      default: "white",
-      disabled: "grey-700"
-    }
-  },
-  // Danger button
-  danger: {
-    default: IOColors["error-600"],
-    pressed: IOColors["error-500"],
-    label: {
-      default: "white",
-      disabled: "grey-700"
-    }
-  },
-  // Contrast button
-  contrast: {
-    default: IOColors.white,
-    pressed: IOColors["blueIO-50"],
-    label: {
-      default: "blueIO-500",
-      disabled: "grey-700"
-    }
-  }
-};
-
-export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
+export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
   (
     {
       color = "primary",
@@ -126,9 +95,52 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
     },
     ref
   ) => {
+    const theme = useIOTheme();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
+
+    const mapColorStates: Record<
+      NonNullable<ButtonSolidProps["color"]>,
+      ColorStates
+    > = {
+      // Primary button
+      primary: {
+        background: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveElem-disabled"]]
+        },
+        foreground: {
+          default: theme["buttonText-default"],
+          disabled: theme["buttonText-disabled"]
+        }
+      },
+      // Danger button
+      danger: {
+        background: {
+          default: IOColors["error-600"],
+          pressed: IOColors["error-500"],
+          disabled: IOColors[theme["interactiveElem-disabled"]]
+        },
+        foreground: {
+          default: theme["buttonText-default"],
+          disabled: theme["buttonText-disabled"]
+        }
+      },
+      // Contrast button
+      contrast: {
+        background: {
+          default: IOColors.white,
+          pressed: IOColors["blueIO-50"],
+          disabled: IOColors["blueIO-50"]
+        },
+        foreground: {
+          default: "blueIO-500",
+          disabled: "blueIO-500"
+        }
+      }
+    };
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -147,7 +159,10 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       const backgroundColor = interpolateColor(
         progress.value,
         [0, 1],
-        [mapColorStates[color].default, mapColorStates[color].pressed]
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.pressed
+        ]
       );
 
       return { backgroundColor };
@@ -166,10 +181,15 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
       [loading, onPress]
     );
 
+    // Background
+    const backgroundColor: ColorValue = disabled
+      ? mapColorStates[color]?.background?.disabled
+      : mapColorStates[color]?.background?.default;
+
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
-      ? mapColorStates[color]?.label?.disabled
-      : mapColorStates[color]?.label?.default;
+      ? mapColorStates[color]?.foreground?.disabled
+      : mapColorStates[color]?.foreground?.default;
 
     return (
       <Pressable
@@ -194,11 +214,9 @@ export const ButtonSolid = React.forwardRef<View, ButtonSolidProps>(
           style={[
             IOButtonStyles.button,
             IOButtonStyles.buttonSizeDefault,
-            { overflow: "hidden" },
+            { backgroundColor, overflow: "hidden" },
             fullWidth && { paddingHorizontal: 16 },
-            disabled
-              ? styles.backgroundDisabled
-              : { backgroundColor: mapColorStates[color]?.default },
+            disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle,

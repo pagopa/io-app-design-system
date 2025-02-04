@@ -5,7 +5,13 @@ import Animated, {
   useAnimatedProps,
   useReducedMotion
 } from "react-native-reanimated";
-import { IOColors, IOIconButtonStyles, IOStyles, hexToRgba } from "../../core";
+import {
+  IOColors,
+  IOIconButtonStyles,
+  IOStyles,
+  hexToRgba,
+  useIOTheme
+} from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
@@ -33,33 +39,6 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<NonNullable<IconButton["color"]>, ColorStates> = {
-  // Primary button
-  primary: {
-    icon: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: hexToRgba(IOColors["blueIO-500"], 0.25)
-    }
-  },
-  // Neutral button
-  neutral: {
-    icon: {
-      default: IOColors.black,
-      pressed: IOColors["grey-850"],
-      disabled: IOColors["grey-450"]
-    }
-  },
-  // Contrast button
-  contrast: {
-    icon: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.25)
-    }
-  }
-};
-
 const AnimatedIconClassComponent =
   Animated.createAnimatedComponent(IconClassComponent);
 
@@ -73,9 +52,40 @@ export const IconButton = ({
   accessibilityHint,
   testID
 }: IconButton) => {
+  const theme = useIOTheme();
   const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
+
+  const mapColorStates: Record<
+    NonNullable<IconButton["color"]>,
+    ColorStates
+  > = {
+    // Primary button
+    primary: {
+      icon: {
+        default: IOColors[theme["interactiveElem-default"]],
+        pressed: IOColors[theme["interactiveElem-pressed"]],
+        disabled: IOColors[theme["interactiveElem-disabled"]]
+      }
+    },
+    // Neutral button
+    neutral: {
+      icon: {
+        default: IOColors[theme["neutralButton-default"]],
+        pressed: IOColors[theme["neutralButton-pressed"]],
+        disabled: IOColors[theme["neutralButton-disabled"]]
+      }
+    },
+    // Contrast button
+    contrast: {
+      icon: {
+        default: IOColors.white,
+        pressed: hexToRgba(IOColors.white, 0.85),
+        disabled: hexToRgba(IOColors.white, 0.25)
+      }
+    }
+  };
 
   // Animate the <Icon> color prop
   const animatedColor = useAnimatedProps(() => {

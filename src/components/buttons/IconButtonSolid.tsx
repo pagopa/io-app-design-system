@@ -5,7 +5,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { IOButtonStyles, IOIconButtonStyles } from "../../core";
+import { IOButtonStyles, IOIconButtonStyles, useIOTheme } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -32,35 +32,6 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<
-  NonNullable<IconButtonSolid["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-100"]
-    },
-    icon: {
-      default: IOColors.white,
-      disabled: IOColors["grey-450"]
-    }
-  },
-  contrast: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["blueIO-50"],
-      disabled: hexToRgba(IOColors.white, 0.25)
-    },
-    icon: {
-      default: IOColors["blueIO-500"],
-      disabled: IOColors["blueIO-500"]
-    }
-  }
-};
-
 export const IconButtonSolid = ({
   icon,
   color = "primary",
@@ -70,9 +41,39 @@ export const IconButtonSolid = ({
   accessibilityHint,
   testID
 }: IconButtonSolid) => {
+  const theme = useIOTheme();
   const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
+
+  const mapColorStates: Record<
+    NonNullable<IconButtonSolid["color"]>,
+    ColorStates
+  > = {
+    // Primary button
+    primary: {
+      background: {
+        default: IOColors[theme["interactiveElem-default"]],
+        pressed: IOColors[theme["interactiveElem-pressed"]],
+        disabled: IOColors[theme["interactiveElem-disabled"]]
+      },
+      icon: {
+        default: IOColors[theme["buttonText-default"]],
+        disabled: IOColors[theme["buttonText-disabled"]]
+      }
+    },
+    contrast: {
+      background: {
+        default: IOColors.white,
+        pressed: IOColors["blueIO-50"],
+        disabled: hexToRgba(IOColors.white, 0.25)
+      },
+      icon: {
+        default: IOColors["blueIO-500"],
+        disabled: IOColors["blueIO-500"]
+      }
+    }
+  };
 
   const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
@@ -106,12 +107,8 @@ export const IconButtonSolid = ({
           !disabled && !reducedMotion && scaleAnimatedStyle,
           !disabled && backgroundColorAnimationStyle,
           disabled
-            ? {
-                backgroundColor: mapColorStates[color]?.background?.disabled
-              }
-            : {
-                backgroundColor: mapColorStates[color]?.background?.default
-              }
+            ? { backgroundColor: mapColorStates[color]?.background?.disabled }
+            : { backgroundColor: mapColorStates[color]?.background?.default }
         ]}
       >
         <AnimatedIcon

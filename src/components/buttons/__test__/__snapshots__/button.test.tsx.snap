@@ -176,7 +176,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         },
         false,
         {
-          "backgroundColor": "rgba(231,236,252,0)",
+          "backgroundColor": "rgba(9,50,182,0)",
           "borderColor": "#0B3EE3",
         },
         {
@@ -285,12 +285,11 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           "height": 48,
         },
         {
+          "backgroundColor": "#0B3EE3",
           "overflow": "hidden",
         },
         false,
-        {
-          "backgroundColor": "#0B3EE3",
-        },
+        {},
         {
           "transform": [
             {
@@ -920,7 +919,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         },
         false,
         {
-          "backgroundColor": "rgba(231,236,252,0)",
+          "backgroundColor": "rgba(9,50,182,0)",
           "borderColor": "#0B3EE3",
         },
         {
@@ -1029,12 +1028,11 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           "height": 48,
         },
         {
+          "backgroundColor": "#0B3EE3",
           "overflow": "hidden",
         },
         false,
-        {
-          "backgroundColor": "#0B3EE3",
-        },
+        {},
         {
           "transform": [
             {

@@ -2,8 +2,8 @@ import React, { forwardRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
-  View,
-  TextStyle
+  TextStyle,
+  View
 } from "react-native";
 import Animated, {
   interpolateColor,
@@ -16,7 +16,8 @@ import {
   IOColors,
   IOSpacingScale,
   hexToRgba,
-  useIONewTypeface
+  useIONewTypeface,
+  useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -51,32 +52,11 @@ export type ButtonLinkProps = WithTestID<{
 }>;
 
 type ColorStates = {
-  label: {
+  foreground: {
     default: string;
     pressed: string;
     disabled: string;
   };
-};
-
-const mapColorStates: Record<
-  NonNullable<ButtonLinkProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    label: {
-      default: IOColors["blueIO-500"],
-      pressed: IOColors["blueIO-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  contrast: {
-    label: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  }
 };
 
 const DISABLED_OPACITY = 0.5;
@@ -99,10 +79,32 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     },
     ref
   ) => {
+    const theme = useIOTheme();
     const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
+
+    const mapColorStates: Record<
+      NonNullable<ButtonLinkProps["color"]>,
+      ColorStates
+    > = {
+      // Primary button
+      primary: {
+        foreground: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.75)
+        }
+      },
+      contrast: {
+        foreground: {
+          default: IOColors.white,
+          pressed: hexToRgba(IOColors.white, 0.85),
+          disabled: hexToRgba(IOColors.white, 0.5)
+        }
+      }
+    };
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
@@ -113,8 +115,8 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         progress.value,
         [0, 1],
         [
-          mapColorStates[color].label.default,
-          mapColorStates[color].label.pressed
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
         ]
       );
 
@@ -129,8 +131,8 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         progress.value,
         [0, 1],
         [
-          mapColorStates[color].label.default,
-          mapColorStates[color].label.pressed
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
         ]
       );
 
@@ -179,14 +181,14 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
-                color={mapColorStates[color]?.label?.default}
+                color={mapColorStates[color]?.foreground?.default}
                 size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 allowFontScaling
                 name={icon}
-                color={mapColorStates[color]?.label?.disabled}
+                color={mapColorStates[color]?.foreground?.disabled}
                 size={iconSize}
               />
             ))}
@@ -200,7 +202,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             lineHeight={buttonTextLineHeight}
             style={[
               disabled
-                ? { color: mapColorStates[color]?.label?.disabled }
+                ? { color: mapColorStates[color]?.foreground?.disabled }
                 : { ...pressedColorLabelAnimationStyle },
               { textAlign }
             ]}
