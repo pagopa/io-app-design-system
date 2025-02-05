@@ -9,6 +9,7 @@ import {
   IOColors,
   IOIconButtonStyles,
   IOStyles,
+  IOThemeLight,
   hexToRgba,
   useIOExperimentalDesign,
   useIOTheme
@@ -30,6 +31,7 @@ export type IconButton = WithTestID<{
   accessibilityLabel: string;
   accessibilityHint?: string;
   onPress: (event: GestureResponderEvent) => void;
+  persistentColorMode?: boolean;
 }>;
 
 type ColorStates = {
@@ -76,6 +78,7 @@ const AnimatedIconClassComponent =
 
 export const IconButton = ({
   color = "primary",
+  persistentColorMode = false,
   icon,
   iconSize = 24,
   disabled = false,
@@ -106,9 +109,15 @@ export const IconButton = ({
       // Neutral button
       neutral: {
         icon: {
-          default: IOColors[theme["neutralButton-default"]],
-          pressed: IOColors[theme["neutralButton-pressed"]],
-          disabled: IOColors[theme["neutralButton-disabled"]]
+          default: persistentColorMode
+            ? IOColors[IOThemeLight["neutralButton-default"]]
+            : IOColors[theme["neutralButton-default"]],
+          pressed: persistentColorMode
+            ? IOColors[IOThemeLight["neutralButton-pressed"]]
+            : IOColors[theme["neutralButton-pressed"]],
+          disabled: persistentColorMode
+            ? IOColors[IOThemeLight["neutralButton-disabled"]]
+            : IOColors[theme["neutralButton-disabled"]]
         }
       },
       // Contrast button
@@ -120,7 +129,7 @@ export const IconButton = ({
         }
       }
     }),
-    [theme]
+    [persistentColorMode, theme]
   );
 
   const colorMap = useMemo(
