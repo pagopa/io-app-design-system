@@ -6,8 +6,8 @@ import {
   IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
-import { useNavigation } from "@react-navigation/native";
 import { useHeaderHeight } from "@react-navigation/elements";
+import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
 import { useLayoutEffect } from "react";
 import { Alert, View } from "react-native";
@@ -23,13 +23,11 @@ export const HeaderSecondLevelScreenDiscreteTransitionCustomBg = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTransparent: true,
       header: () => (
         <HeaderSecondLevel
           enableDiscreteTransition
-          transparent
-          variant="contrast"
-          backgroundColor={IOColors["blueIO-500"]}
+          variant="neutral"
+          backgroundColor={IOColors["blueIO-100"]}
           animatedRef={animatedScrollViewRef as any}
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
@@ -73,7 +71,7 @@ export const HeaderSecondLevelScreenDiscreteTransitionCustomBg = () => {
     >
       <View
         style={{
-          backgroundColor: IOColors["blueIO-600"],
+          backgroundColor: IOColors["blueIO-100"],
           height: 800,
           position: "absolute",
           top: -400,

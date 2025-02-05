@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps, useEffect, useLayoutEffect } from "react";
+import { createRef, useEffect, useLayoutEffect, useMemo } from "react";
 import {
   AccessibilityInfo,
   ColorValue,
@@ -24,13 +24,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   IOColors,
   IOSpringValues,
+  IOThemeDark,
+  IOThemeLight,
   IOVisualCostants,
   alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
   iconBtnSizeSmall,
   useIOExperimentalDesign,
-  useIOTheme,
-  useIOThemeContext
+  useIOTheme
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
@@ -48,7 +49,7 @@ type ScrollValues = {
 type DiscreteTransitionProps =
   | {
       enableDiscreteTransition: true;
-      animatedRef: AnimatedRef<Animated.ScrollView>;
+      animatedRef: AnimatedRef<Animated.ScrollView | Animated.FlatList<any>>;
     }
   | {
       enableDiscreteTransition?: false;
@@ -139,7 +140,7 @@ export const HeaderSecondLevel = ({
   backTestID,
   title,
   type,
-  variant = "neutral",
+  variant,
   backgroundColor,
   transparent = false,
   ignoreSafeAreaMargin = false,
@@ -151,29 +152,35 @@ export const HeaderSecondLevel = ({
   thirdAction
 }: HeaderSecondLevel) => {
   const scrollOffset = useScrollViewOffset(
-    animatedRef as AnimatedRef<Animated.ScrollView>
+    (animatedRef as AnimatedRef<Animated.ScrollView>) ||
+      (animatedRef as AnimatedRef<Animated.FlatList<any>>)
   );
-  const titleRef = React.createRef<View>();
+
+  const titleRef = createRef<View>();
 
   const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
-  const { themeType } = useIOThemeContext();
   const insets = useSafeAreaInsets();
-  const isTitleAccessible = React.useMemo(() => !!title.trim(), [title]);
+  const isTitleAccessible = useMemo(() => !!title.trim(), [title]);
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
 
   const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
-  const iconButtonColorDefault: ComponentProps<typeof IconButton>["color"] =
-    themeType === "dark" ? "contrast" : "neutral";
+  // If the variant is not set, set a fallback color
+  const defaultIconColor = variant ?? "neutral";
 
-  const iconButtonColor: ComponentProps<typeof IconButton>["color"] =
-    variant === "contrast" ? "contrast" : iconButtonColorDefault;
+  /* We apply the same logic of `persistentColorMode`
+  to the title color: if variant is set, the color will
+  be persistent, otherwise it will vary depending
+  on the color scheme. */
+  const titleColorVariant =
+    variant === "contrast"
+      ? IOColors[IOThemeDark["textHeading-default"]]
+      : IOColors[IOThemeLight["textHeading-default"]];
 
-  const titleColor: ColorValue =
-    variant === "neutral"
-      ? IOColors[theme["textHeading-default"]]
-      : IOColors.white;
+  const titleColor: ColorValue = variant
+    ? titleColorVariant
+    : IOColors[theme["textHeading-default"]];
 
   /* Visual attributes when there are transitions between states */
   const HEADER_DEFAULT_BG_COLOR: IOColors = theme["appBackground-primary"];
@@ -186,9 +193,7 @@ export const HeaderSecondLevel = ({
     : headerBgColorSolidState;
 
   const borderColorDefault = IOColors[theme["divider-default"]];
-
   const borderColorSolidState = backgroundColor ?? borderColorDefault;
-
   const borderColorTransparentState = hexToRgba(borderColorSolidState, 0);
 
   useLayoutEffect(() => {
@@ -277,7 +282,10 @@ export const HeaderSecondLevel = ({
               android: "backAndroid",
               default: "backiOS"
             })}
-            color={iconButtonColor}
+            color={defaultIconColor}
+            /* If we specify a variant, we probably want to
+              make it persistent in both light and dark modes. */
+            persistentColorMode={!!variant}
             onPress={goBack}
             accessibilityLabel={backAccessibilityLabel}
             testID={backTestID}
@@ -312,13 +320,25 @@ export const HeaderSecondLevel = ({
         </View>
         <HStack allowScaleSpacing space={16} style={{ flexShrink: 0 }}>
           {type === "threeActions" && (
-            <IconButton {...thirdAction} color={iconButtonColor} />
+            <IconButton
+              {...thirdAction}
+              color={defaultIconColor}
+              persistentColorMode={!!variant}
+            />
           )}
           {(type === "twoActions" || type === "threeActions") && (
-            <IconButton {...secondAction} color={iconButtonColor} />
+            <IconButton
+              {...secondAction}
+              color={defaultIconColor}
+              persistentColorMode={!!variant}
+            />
           )}
           {type !== "base" ? (
-            <IconButton {...firstAction} color={iconButtonColor} />
+            <IconButton
+              {...firstAction}
+              color={defaultIconColor}
+              persistentColorMode={!!variant}
+            />
           ) : (
             <HSpacer size={iconBtnSizeSmall as IOSpacer} />
           )}

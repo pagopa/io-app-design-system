@@ -346,7 +346,7 @@ export const IOThemeDark: IOTheme = {
   "buttonText-disabled": "grey-300",
   "listItem-pressed": "grey-850",
   // Typography
-  "textHeading-default": "grey-200",
+  "textHeading-default": "white",
   "textHeading-secondary": "grey-300",
   "textHeading-tertiary": "grey-450",
   "textBody-default": "white",
