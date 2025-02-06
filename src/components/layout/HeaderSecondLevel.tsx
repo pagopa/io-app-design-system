@@ -49,7 +49,9 @@ type ScrollValues = {
 type DiscreteTransitionProps =
   | {
       enableDiscreteTransition: true;
-      animatedRef: AnimatedRef<Animated.ScrollView | Animated.FlatList<any>>;
+      animatedRef:
+        | AnimatedRef<Animated.ScrollView>
+        | AnimatedRef<Animated.FlatList<any>>;
     }
   | {
       enableDiscreteTransition?: false;
