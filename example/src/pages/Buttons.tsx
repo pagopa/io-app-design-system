@@ -11,7 +11,8 @@ import {
   IconButtonContained,
   IconButtonSolid,
   ListItemSwitch,
-  VSpacer
+  VSpacer,
+  hexToRgba
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
@@ -21,6 +22,13 @@ import { Screen } from "../components/Screen";
 const styles = StyleSheet.create({
   primaryBlock: {
     backgroundColor: IOColors["blueIO-500"],
+    padding: 16,
+    borderRadius: 16
+  },
+  neutralBlock: {
+    borderWidth: 1,
+    borderColor: hexToRgba(IOColors.black, 0.1),
+    backgroundColor: IOColors.white,
     padding: 16,
     borderRadius: 16
   }
@@ -662,6 +670,49 @@ export const Buttons = () => (
 
           <IconButton
             color="contrast"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
+            icon="help"
+            disabled
+            onPress={onButtonPress}
+          />
+        </View>
+      </ComponentViewerBox>
+    </View>
+
+    <VSpacer />
+
+    <View style={styles.neutralBlock}>
+      <ComponentViewerBox
+        name="IconButton · Neutral variant, persistent color mode"
+        last
+      >
+        <View style={IOStyles.row}>
+          <IconButton
+            persistentColorMode
+            color="neutral"
+            accessibilityLabel="Search"
+            accessibilityHint="Tap to trigger test alert"
+            icon="search"
+            onPress={onButtonPress}
+          />
+
+          <HSpacer size={16} />
+
+          <IconButton
+            persistentColorMode
+            color="neutral"
+            accessibilityLabel="Help"
+            accessibilityHint="Tap to trigger test alert"
+            icon="help"
+            onPress={onButtonPress}
+          />
+
+          <HSpacer size={16} />
+
+          <IconButton
+            persistentColorMode
+            color="neutral"
             accessibilityLabel="Help"
             accessibilityHint="Tap to trigger test alert"
             icon="help"
