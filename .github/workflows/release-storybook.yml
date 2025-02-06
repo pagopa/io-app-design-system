@@ -23,7 +23,7 @@ jobs:
       - name: Build Storybook
         run: yarn predeploy
       - name: 'upload'
-        uses: pload-pages-artifact@v3.0.1 #v3.0.1
+        uses: actions/upload-pages-artifact@v3.0.1 #v3.0.1
         with: 
           path: "storybook-static"
       - id: deploy
