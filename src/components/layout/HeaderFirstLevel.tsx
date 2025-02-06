@@ -135,13 +135,17 @@ export const HeaderFirstLevel = ({
           </H3>
         </View>
         <HStack space={16} style={{ flexShrink: 0 }}>
-          {actions.map((action, index) => (
-            <IconButton
-              key={`header-first-level-action-${index}`}
-              {...action}
-              color={"primary"}
-            />
-          ))}
+          {actions
+            .filter(
+              (action): action is HeaderActionProps => action !== undefined
+            )
+            .map((action, index) => (
+              <IconButton
+                key={`header-first-level-action-${index}`}
+                {...action}
+                color={"primary"}
+              />
+            ))}
         </HStack>
       </View>
     </Animated.View>
