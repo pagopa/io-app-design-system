@@ -22,6 +22,8 @@ import { BodySmall } from "../typography";
 
 type ColorMode = "light" | "dark";
 
+type TabItemState = "default" | "selected" | "disabled";
+
 export type TabItem = WithTestID<{
   label: string;
   color?: ColorMode;
@@ -168,7 +170,7 @@ const TabItem = ({
     [isExperimental, mapColorStates, color]
   );
 
-  const itemState: "selected" | "disabled" | "default" = selected
+  const itemState: TabItemState = selected
     ? "selected"
     : disabled
     ? "disabled"
