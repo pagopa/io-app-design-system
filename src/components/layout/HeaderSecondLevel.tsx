@@ -78,6 +78,9 @@ type CommonProps = WithTestID<{
   variant?: "neutral" | "contrast";
   backgroundColor?: string;
   ignoreSafeAreaMargin?: boolean;
+  // Prevents screen readers from focusing on the title when other elements are focused
+  // (e.g. when an input text is throwing an error)
+  ignoreAccessibilityCheck?: boolean;
 }>;
 
 interface Base extends CommonProps {
@@ -151,7 +154,8 @@ export const HeaderSecondLevel = ({
   testID,
   firstAction,
   secondAction,
-  thirdAction
+  thirdAction,
+  ignoreAccessibilityCheck = false
 }: HeaderSecondLevel) => {
   const scrollOffset = useScrollViewOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
@@ -300,7 +304,9 @@ export const HeaderSecondLevel = ({
           ref={titleRef}
           accessibilityElementsHidden={!isTitleAccessible}
           importantForAccessibility={
-            isTitleAccessible ? "yes" : "no-hide-descendants"
+            isTitleAccessible && !ignoreAccessibilityCheck
+              ? "yes"
+              : "no-hide-descendants"
           }
           accessible={isTitleAccessible}
           accessibilityLabel={title}
