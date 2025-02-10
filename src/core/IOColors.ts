@@ -253,6 +253,13 @@ const themeKeys = [
   "divider-default",
   "divider-bottomBar",
   "pdfViewer-background",
+  // Tab Item
+  "tab-item-border-default",
+  "tab-item-border-selected",
+  "tab-item-foreground-default",
+  "tab-item-foreground-selected",
+  "tab-item-background-selected",
+
   // Status
   "errorIcon",
   "errorText",
@@ -308,6 +315,12 @@ export const IOThemeLight: IOTheme = {
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
   "pdfViewer-background": "grey-700",
+  // Tab Item
+  "tab-item-border-default": "grey-300",
+  "tab-item-border-selected": "blueIO-200",
+  "tab-item-foreground-default": "black",
+  "tab-item-foreground-selected": "blueIO-500",
+  "tab-item-background-selected": "blueIO-200",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
@@ -361,6 +374,12 @@ export const IOThemeDark: IOTheme = {
   "textInputLabel-default": "grey-450",
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
+  // Tab Item
+  "tab-item-border-default": "grey-700",
+  "tab-item-border-selected": "grey-700",
+  "tab-item-foreground-default": "grey-200",
+  "tab-item-foreground-selected": "blueIO-200",
+  "tab-item-background-selected": "blueIO-450",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",
