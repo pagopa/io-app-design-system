@@ -171,7 +171,7 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
             disabled: IOColors[theme["interactiveElem-disabled"]]
           },
           foreground: {
-            default: theme["buttonText-default"],
+            default: theme["buttonText-danger"],
             disabled: theme["buttonText-disabled"]
           }
         },
