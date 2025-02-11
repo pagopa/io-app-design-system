@@ -250,6 +250,10 @@ const themeKeys = [
   "textInputLabel-default",
   "textInputValue-default",
   "textInputValue-disabled",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-state-off",
+  "switch-background-state-on",
+  "switch-thumb-color",
   // Layout
   "divider-header",
   "divider-default",
@@ -312,6 +316,10 @@ export const IOThemeLight: IOTheme = {
   "textInputLabel-default": "grey-700",
   "textInputValue-default": "black",
   "textInputValue-disabled": "grey-850",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-state-off": "grey-700",
+  "switch-background-state-on": "blueIO-500",
+  "switch-thumb-color": "white",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
@@ -376,6 +384,10 @@ export const IOThemeDark: IOTheme = {
   "textInputLabel-default": "grey-450",
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-state-off": "grey-850",
+  "switch-background-state-on": "blueIO-300",
+  "switch-thumb-color": "white",
   // Tab Item
   "tab-item-border-default": "grey-700",
   "tab-item-foreground-default": "grey-200",
