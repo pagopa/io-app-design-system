@@ -40,7 +40,6 @@ export const IOColors = asIOColors({
   "blueIO-600": "#0932B6",
   "blueIO-500": "#0B3EE3",
   "blueIO-400": "#3C65E9",
-  "blueIO-450": "#2351E6" /* Dark mode */,
   "blueIO-200": "#9DB2F4",
   "blueIO-150": "#B6C5F7",
   "blueIO-100": "#CED8F9",
@@ -153,7 +152,6 @@ export const IOColorsTints = asIOColors({
   "blueIO-850": IOColors["blueIO-850"],
   "blueIO-600": IOColors["blueIO-600"],
   "blueIO-500": IOColors["blueIO-500"],
-  "blueIO-450": IOColors["blueIO-450"],
   "blueIO-200": IOColors["blueIO-200"],
   "blueIO-150": IOColors["blueIO-150"],
   "blueIO-100": IOColors["blueIO-100"],
@@ -253,6 +251,12 @@ const themeKeys = [
   "divider-default",
   "divider-bottomBar",
   "pdfViewer-background",
+  // Tab Item
+  "tab-item-border-default",
+  "tab-item-foreground-default",
+  "tab-item-foreground-selected",
+  "tab-item-background-selected",
+
   // Status
   "errorIcon",
   "errorText",
@@ -308,6 +312,11 @@ export const IOThemeLight: IOTheme = {
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
   "pdfViewer-background": "grey-700",
+  // Tab Item
+  "tab-item-border-default": "grey-300",
+  "tab-item-foreground-default": "black",
+  "tab-item-foreground-selected": "blueIO-500",
+  "tab-item-background-selected": "blueIO-200",
   // Status
   errorIcon: "error-600",
   errorText: "error-600",
@@ -335,7 +344,7 @@ export const IOThemeDark: IOTheme = {
   "appBackground-primary": "black",
   "appBackground-secondary": "grey-850",
   "appBackground-tertiary": "grey-700",
-  "interactiveElem-default": "blueIO-450",
+  "interactiveElem-default": "blueIO-400",
   "interactiveElem-pressed": "blueIO-500",
   "interactiveElem-disabled": "grey-700",
   "interactiveOutline-disabled": "grey-450",
@@ -361,6 +370,11 @@ export const IOThemeDark: IOTheme = {
   "textInputLabel-default": "grey-450",
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
+  // Tab Item
+  "tab-item-border-default": "grey-700",
+  "tab-item-foreground-default": "grey-200",
+  "tab-item-foreground-selected": "blueIO-200",
+  "tab-item-background-selected": "blueIO-400",
   // Layout
   "divider-header": "grey-850",
   "divider-default": "grey-850",
