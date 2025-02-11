@@ -1,21 +1,28 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { GestureResponderEvent, Pressable, StyleSheet } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
-  SharedValue,
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
   useReducedMotion,
-  useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOSpringValues, hexToRgba } from "../../core";
+import {
+  IOColors,
+  IOSpringValues,
+  hexToRgba,
+  useIONewTypeface,
+  useIOTheme
+} from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { BodySmall } from "../typography";
+import { IOText } from "../typography";
 
 type ColorMode = "light" | "dark";
+
+type TabItemState = "default" | "selected" | "disabled";
 
 export type TabItem = WithTestID<{
   label: string;
@@ -37,12 +44,10 @@ type ColorStates = {
   border: {
     default: string;
     selected: string;
-    disabled: string;
   };
   background: {
     default: string;
     selected: string;
-    pressed: string;
   };
   foreground: {
     default: IOColors;
@@ -51,42 +56,7 @@ type ColorStates = {
   };
 };
 
-const mapColorStates: Record<NonNullable<TabItem["color"]>, ColorStates> = {
-  light: {
-    border: {
-      default: IOColors["grey-300"],
-      selected: IOColors["blueIO-500"],
-      disabled: IOColors["grey-300"]
-    },
-    background: {
-      default: IOColors.white,
-      selected: IOColors["blueIO-50"],
-      pressed: IOColors.white
-    },
-    foreground: {
-      default: "black",
-      selected: "blueIO-500",
-      disabled: "grey-700"
-    }
-  },
-  dark: {
-    border: {
-      default: hexToRgba(IOColors.white, 0),
-      selected: IOColors.white,
-      disabled: hexToRgba(IOColors.white, 0.5)
-    },
-    background: {
-      default: hexToRgba(IOColors.white, 0),
-      selected: IOColors.white,
-      pressed: IOColors.white
-    },
-    foreground: {
-      default: "white",
-      selected: "black",
-      disabled: "white"
-    }
-  }
-};
+const DISABLED_OPACITY = 0.5;
 
 const TabItem = ({
   label,
@@ -101,74 +71,108 @@ const TabItem = ({
   icon,
   iconSelected
 }: TabItem) => {
-  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
-    useScaleAnimation();
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
+  const theme = useIOTheme();
   const reducedMotion = useReducedMotion();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
-  const foregroundColor = useMemo(
-    () =>
-      mapColorStates[color].foreground[
-        selected ? "selected" : disabled ? "disabled" : "default"
-      ],
-    [color, selected, disabled]
+  const mapColorStates: Record<
+    NonNullable<TabItem["color"]>,
+    ColorStates
+  > = useMemo(
+    () => ({
+      light: {
+        border: {
+          default: IOColors[theme["tab-item-border-default"]],
+          selected: hexToRgba(
+            IOColors[theme["tab-item-foreground-selected"]],
+            0.5
+          )
+        },
+        background: {
+          default: hexToRgba(
+            IOColors[theme["tab-item-background-selected"]],
+            0
+          ),
+          selected: hexToRgba(
+            IOColors[theme["tab-item-background-selected"]],
+            0.25
+          ),
+          pressed: IOColors[theme["appBackground-primary"]]
+        },
+        foreground: {
+          default: theme["tab-item-foreground-default"],
+          selected: theme["tab-item-foreground-selected"],
+          disabled: "grey-700"
+        }
+      },
+      dark: {
+        border: {
+          default: hexToRgba(IOColors.white, 0),
+          selected: IOColors.white
+        },
+        background: {
+          default: hexToRgba(IOColors.white, 0.1),
+          selected: IOColors.white,
+          pressed: IOColors.white
+        },
+        foreground: {
+          default: "white",
+          selected: "black",
+          disabled: "white"
+        }
+      }
+    }),
+    [theme]
   );
 
-  const borderColor = useMemo(
-    () =>
-      mapColorStates[color].border[
-        selected ? "selected" : disabled ? "disabled" : "default"
-      ],
-    [color, selected, disabled]
-  );
+  const itemState: TabItemState = selected
+    ? "selected"
+    : disabled
+    ? "disabled"
+    : "default";
 
-  const opaquePressedBackgroundColor = hexToRgba(
-    mapColorStates[color].background.pressed,
-    0.1
-  );
+  const foregroundColor = mapColorStates[color].foreground[itemState];
 
-  const isSelected: SharedValue<number> = useSharedValue(0);
-  const progressSelected = useDerivedValue(() =>
-    withSpring(isSelected.value, IOSpringValues.selection)
+  const selectedStateTransition = useDerivedValue(() =>
+    withSpring(selected ? 1 : 0, IOSpringValues.selection)
   );
-
-  useEffect(() => {
-    // eslint-disable-next-line functional/immutable-data
-    isSelected.value = selected ? 1 : 0;
-  }, [isSelected, selected]);
 
   // Interpolate animation values from `pressed` values
-  const animatedStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
-    const pressedBackgroundColor = interpolateColor(
-      progress.value,
-      [0, 1],
-      [mapColorStates[color].background.default, opaquePressedBackgroundColor]
-    );
-
-    const selectedBackgroundColor = interpolateColor(
-      progressSelected.value,
-      [0, 1],
-      [opaquePressedBackgroundColor, mapColorStates[color].background.selected]
-    );
-
-    const selectedBorderColor = interpolateColor(
-      progressSelected.value,
-      [0, 1],
-      [
-        mapColorStates[color].border.default,
-        mapColorStates[color].border.selected
-      ]
-    );
-
-    return {
-      backgroundColor: selected
-        ? selectedBackgroundColor
-        : pressedBackgroundColor,
-      borderColor: selected ? selectedBorderColor : borderColor
-    };
-  }, [progress, progressSelected, selected]);
+  const animatedStyle = useAnimatedStyle(
+    () => ({
+      backgroundColor: interpolateColor(
+        selectedStateTransition.value,
+        [0, 1],
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.selected
+        ]
+      ),
+      borderColor: interpolateColor(
+        selectedStateTransition.value,
+        [0, 1],
+        [
+          mapColorStates[color].border.default,
+          mapColorStates[color].border.selected
+        ]
+      )
+    }),
+    [selectedStateTransition]
+  );
 
   const activeIcon = selected ? iconSelected ?? icon : icon;
+
+  const handleOnPress = useCallback(
+    (event: GestureResponderEvent) => {
+      if (onPress) {
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      }
+    },
+    [onPress]
+  );
 
   return (
     <Pressable
@@ -177,7 +181,7 @@ const TabItem = ({
       accessibilityRole={"button"}
       accessibilityState={{ selected }}
       testID={testID}
-      onPress={onPress}
+      onPress={handleOnPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       accessible={true}
@@ -187,18 +191,23 @@ const TabItem = ({
         style={[
           styles.container,
           { columnGap: 4 },
-          !reducedMotion && scaleAnimatedStyle,
+          !disabled && !reducedMotion && scaleAnimatedStyle,
           animatedStyle,
           fullWidth && styles.fullWidth,
-          disabled && styles.disabled
+          disabled && { opacity: DISABLED_OPACITY }
         ]}
       >
         {activeIcon && (
           <Icon name={activeIcon} color={foregroundColor} size={16} />
         )}
-        <BodySmall weight="Semibold" color={foregroundColor}>
+        <IOText
+          size={14}
+          font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+          weight="Semibold"
+          color={foregroundColor}
+        >
           {label}
-        </BodySmall>
+        </IOText>
       </Animated.View>
     </Pressable>
   );
@@ -218,8 +227,7 @@ const styles = StyleSheet.create({
   },
   fullWidth: {
     alignSelf: "auto"
-  },
-  disabled: { opacity: 0.5 }
+  }
 });
 
 export { TabItem };
