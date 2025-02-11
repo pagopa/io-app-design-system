@@ -18,7 +18,7 @@ import {
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
-import { BodySmall } from "../typography";
+import { IOText } from "../typography";
 
 type ColorMode = "light" | "dark";
 
@@ -240,9 +240,14 @@ const TabItem = ({
         {activeIcon && (
           <Icon name={activeIcon} color={foregroundColor} size={16} />
         )}
-        <BodySmall weight="Semibold" color={foregroundColor}>
+        <IOText
+          size={14}
+          font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+          weight="Semibold"
+          color={foregroundColor}
+        >
           {label}
-        </BodySmall>
+        </IOText>
       </Animated.View>
     </Pressable>
   );
