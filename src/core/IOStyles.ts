@@ -311,9 +311,6 @@ export const IOModuleStyles = StyleSheet.create({
 interface IOSelectionTickVisualParams {
   size: IOIconSizeScale;
   borderWidth: number;
-  borderColorOffState: IOColors;
-  bgColorOnState: IOColors;
-  tickColor: IOColors;
 }
 
 interface IOSelectionTickLegacyVisualParams {
@@ -323,10 +320,7 @@ interface IOSelectionTickLegacyVisualParams {
 
 export const IOSelectionTickVisualParams: IOSelectionTickVisualParams = {
   size: 24,
-  borderWidth: 2,
-  borderColorOffState: "grey-650",
-  bgColorOnState: "blueIO-500",
-  tickColor: "white"
+  borderWidth: 2
 };
 
 export const IOSelectionTickLegacyVisualParams: IOSelectionTickLegacyVisualParams =

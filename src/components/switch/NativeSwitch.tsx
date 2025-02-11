@@ -27,8 +27,8 @@ export const NativeSwitch = ({
   const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
   const trackColor = {
-    false: IOColors[theme["switch-background-state-off"]],
-    true: IOColors[theme["switch-background-state-on"]]
+    false: IOColors[theme["switch-background-off"]],
+    true: IOColors[theme["switch-background-on"]]
   };
 
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
@@ -48,7 +48,7 @@ export const NativeSwitch = ({
       thumbColor={IOColors[theme["switch-thumb-color"]]}
       ios_backgroundColor={
         isExperimental
-          ? IOColors[theme["switch-background-state-off"]]
+          ? IOColors[theme["switch-background-off"]]
           : bgLegacyTrackColorAndroid
       }
       onValueChange={onValueChange}

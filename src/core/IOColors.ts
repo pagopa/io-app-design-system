@@ -251,9 +251,12 @@ const themeKeys = [
   "textInputValue-default",
   "textInputValue-disabled",
   // Selection (Radio, Checkbox, Switch)
-  "switch-background-state-off",
-  "switch-background-state-on",
+  "switch-background-off",
+  "switch-background-on",
   "switch-thumb-color",
+  "selection-border-off",
+  "selection-background-on",
+  "selection-tick",
   // Layout
   "divider-header",
   "divider-default",
@@ -317,9 +320,12 @@ export const IOThemeLight: IOTheme = {
   "textInputValue-default": "black",
   "textInputValue-disabled": "grey-850",
   // Selection (Radio, Checkbox, Switch)
-  "switch-background-state-off": "grey-700",
-  "switch-background-state-on": "blueIO-500",
+  "switch-background-off": "grey-700",
+  "switch-background-on": "blueIO-500",
   "switch-thumb-color": "white",
+  "selection-border-off": "grey-650",
+  "selection-background-on": "blueIO-500",
+  "selection-tick": "white",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
@@ -348,7 +354,8 @@ export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
   "appBackground-accent": "blue-500",
   "interactiveElem-default": "blue-500",
-  "pictogram-hands": "blue-500"
+  "pictogram-hands": "blue-500",
+  "selection-tick": "white"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -385,9 +392,12 @@ export const IOThemeDark: IOTheme = {
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
   // Selection (Radio, Checkbox, Switch)
-  "switch-background-state-off": "grey-850",
-  "switch-background-state-on": "blueIO-300",
+  "switch-background-off": "grey-850",
+  "switch-background-on": "blueIO-300",
   "switch-thumb-color": "white",
+  "selection-border-off": "grey-450",
+  "selection-background-on": "blueIO-300",
+  "selection-tick": "black",
   // Tab Item
   "tab-item-border-default": "grey-700",
   "tab-item-foreground-default": "grey-200",
