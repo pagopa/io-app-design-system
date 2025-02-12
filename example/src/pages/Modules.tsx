@@ -11,7 +11,7 @@ import {
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Alert, ImageSourcePropType, View } from "react-native";
+import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -19,8 +19,10 @@ import { Screen } from "../components/Screen";
 const mockIDPProviderItem = {
   id: "posteid",
   name: "Poste ID",
-  logo: "",
-  localLogo: require("../../assets/images/spid-idp-posteid.png"),
+  logo: {
+    url: { uri: undefined },
+    local: require("../../assets/images/spid-idp-posteid.png")
+  },
   profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
 };
 
@@ -34,8 +36,12 @@ const renderModuleIDP = () => (
       <View>
         <ModuleIDP
           name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
+          logo={{
+            light: {
+              url: mockIDPProviderItem.logo.url,
+              local: mockIDPProviderItem.logo.local
+            }
+          }}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
         />
@@ -46,8 +52,12 @@ const renderModuleIDP = () => (
         <ModuleIDP
           withLooseSpacing
           name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
+          logo={{
+            light: {
+              url: mockIDPProviderItem.logo.url,
+              local: mockIDPProviderItem.logo.local
+            }
+          }}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
         />
@@ -57,8 +67,12 @@ const renderModuleIDP = () => (
       <View>
         <ModuleIDP
           name={"This is a very loooooong IDP provider name"}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
+          logo={{
+            light: {
+              url: mockIDPProviderItem.logo.url,
+              local: mockIDPProviderItem.logo.local
+            }
+          }}
           onPress={mockFn}
           testID={`idp-${mockIDPProviderItem.id}-button`}
         />
