@@ -1,12 +1,13 @@
-import React, { forwardRef, useMemo } from "react";
+import React, { forwardRef } from "react";
 import {
   GestureResponderEvent,
   Pressable,
-  View,
-  TextStyle
+  TextStyle,
+  View
 } from "react-native";
 import Animated, {
   interpolateColor,
+  useAnimatedProps,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
@@ -15,7 +16,7 @@ import {
   IOColors,
   IOSpacingScale,
   hexToRgba,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
@@ -58,28 +59,6 @@ type ColorStates = {
   };
 };
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonLinkProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    foreground: {
-      default: IOColors["blue-500"],
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-700"]
-    }
-  },
-  contrast: {
-    foreground: {
-      default: IOColors.white,
-      pressed: hexToRgba(IOColors.white, 0.85),
-      disabled: hexToRgba(IOColors.white, 0.5)
-    }
-  }
-};
-
 const DISABLED_OPACITY = 0.5;
 const ICON_MARGIN = 8;
 
@@ -101,51 +80,64 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
+    const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
-    const mapColorStates = useMemo<
-      Record<NonNullable<ButtonLinkProps["color"]>, ColorStates>
-    >(
-      () => ({
-        // Primary button
-        primary: {
-          foreground: {
-            default: IOColors[theme["interactiveElem-default"]],
-            pressed: IOColors[theme["interactiveElem-pressed"]],
-            disabled: hexToRgba(
-              IOColors[theme["interactiveElem-default"]],
-              0.75
-            )
-          }
-        },
-        contrast: {
-          foreground: {
-            default: IOColors.white,
-            pressed: hexToRgba(IOColors.white, 0.85),
-            disabled: hexToRgba(IOColors.white, 0.5)
-          }
+    const mapColorStates: Record<
+      NonNullable<ButtonLinkProps["color"]>,
+      ColorStates
+    > = {
+      // Primary button
+      primary: {
+        foreground: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.75)
         }
-      }),
-      [theme]
-    );
-
-    const colorMap = useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental, mapColorStates]
-    );
+      },
+      contrast: {
+        foreground: {
+          default: IOColors.white,
+          pressed: hexToRgba(IOColors.white, 0.85),
+          disabled: hexToRgba(IOColors.white, 0.5)
+        }
+      }
+    };
 
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
-    const pressedColorAnimationStyle = useAnimatedStyle(() => ({
-      color: interpolateColor(
+    const pressedColorLabelAnimationStyle = useAnimatedStyle(() => {
+      // Link color states to the pressed states
+
+      const labelColor = interpolateColor(
         progress.value,
         [0, 1],
-        [colorMap[color].foreground.default, colorMap[color].foreground.pressed]
-      )
-    }));
+        [
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
+        ]
+      );
+
+      return {
+        color: labelColor
+      };
+    });
+
+    // Animate the <Icon> color prop
+    const pressedColorIconAnimationStyle = useAnimatedProps(() => {
+      const iconColor = interpolateColor(
+        progress.value,
+        [0, 1],
+        [
+          mapColorStates[color].foreground.default,
+          mapColorStates[color].foreground.pressed
+        ]
+      );
+
+      return { color: iconColor };
+    });
 
     const AnimatedIconClassComponent =
       Animated.createAnimatedComponent(IconClassComponent);
@@ -188,15 +180,15 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
               <AnimatedIconClassComponent
                 allowFontScaling
                 name={icon}
-                animatedProps={pressedColorAnimationStyle}
-                color={colorMap[color]?.foreground?.default}
+                animatedProps={pressedColorIconAnimationStyle}
+                color={mapColorStates[color]?.foreground?.default}
                 size={iconSize}
               />
             ) : (
               <AnimatedIcon
                 allowFontScaling
                 name={icon}
-                color={colorMap[color]?.foreground?.disabled}
+                color={mapColorStates[color]?.foreground?.disabled}
                 size={iconSize}
               />
             ))}
@@ -204,14 +196,14 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             lineHeight={buttonTextLineHeight}
             style={[
               disabled
-                ? { color: colorMap[color]?.foreground?.disabled }
-                : { ...pressedColorAnimationStyle },
+                ? { color: mapColorStates[color]?.foreground?.disabled }
+                : { ...pressedColorLabelAnimationStyle },
               { textAlign }
             ]}
             numberOfLines={numberOfLines}

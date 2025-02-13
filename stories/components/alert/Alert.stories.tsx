@@ -16,9 +16,6 @@ const meta = {
     layout: "centered"
   },
   argTypes: {
-    title: {
-      control: { type: "text" }
-    },
     content: {
       control: { type: "text" }
     },
@@ -28,15 +25,12 @@ const meta = {
     }
   },
   args: {
-    title: "Alert Title",
     content: "Alert content"
   },
   render: args => {
-    const { title, content, variant } = args;
+    const { content, variant } = args;
     const viewRef = React.createRef<View>();
-    return (
-      <Alert content={content} title={title} ref={viewRef} variant={variant} />
-    );
+    return <Alert content={content} ref={viewRef} variant={variant} />;
   }
 } satisfies Meta<typeof Alert>;
 

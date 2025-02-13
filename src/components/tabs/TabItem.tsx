@@ -12,7 +12,7 @@ import {
   IOColors,
   IOSpringValues,
   hexToRgba,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
@@ -58,42 +58,6 @@ type ColorStates = {
 
 const DISABLED_OPACITY = 0.5;
 
-const mapLegacyColorStates: Record<
-  NonNullable<TabItem["color"]>,
-  ColorStates
-> = {
-  light: {
-    border: {
-      default: IOColors["grey-450"],
-      selected: IOColors["blue-500"]
-    },
-    background: {
-      default: IOColors.white,
-      selected: hexToRgba(IOColors["blue-500"], 0.1)
-    },
-    foreground: {
-      default: "black",
-      selected: "blue-500",
-      disabled: "grey-700"
-    }
-  },
-  dark: {
-    border: {
-      default: hexToRgba(IOColors.white, 0),
-      selected: IOColors.white
-    },
-    background: {
-      default: hexToRgba(IOColors.white, 0.1),
-      selected: IOColors.white
-    },
-    foreground: {
-      default: "white",
-      selected: "black",
-      disabled: "white"
-    }
-  }
-};
-
 const TabItem = ({
   label,
   color = "light",
@@ -111,8 +75,7 @@ const TabItem = ({
     useScaleAnimation("medium");
   const theme = useIOTheme();
   const reducedMotion = useReducedMotion();
-
-  const { isExperimental } = useIOExperimentalDesign();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
   const mapColorStates: Record<
     NonNullable<TabItem["color"]>,
@@ -164,22 +127,13 @@ const TabItem = ({
     [theme]
   );
 
-  const colors = useMemo(
-    () =>
-      isExperimental ? mapColorStates[color] : mapLegacyColorStates[color],
-    [isExperimental, mapColorStates, color]
-  );
-
   const itemState: TabItemState = selected
     ? "selected"
     : disabled
     ? "disabled"
     : "default";
 
-  const foregroundColor = useMemo(
-    () => colors.foreground[itemState],
-    [colors.foreground, itemState]
-  );
+  const foregroundColor = mapColorStates[color].foreground[itemState];
 
   const selectedStateTransition = useDerivedValue(() =>
     withSpring(selected ? 1 : 0, IOSpringValues.selection)
@@ -191,12 +145,18 @@ const TabItem = ({
       backgroundColor: interpolateColor(
         selectedStateTransition.value,
         [0, 1],
-        [colors.background.default, colors.background.selected]
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.selected
+        ]
       ),
       borderColor: interpolateColor(
         selectedStateTransition.value,
         [0, 1],
-        [colors.border.default, colors.border.selected]
+        [
+          mapColorStates[color].border.default,
+          mapColorStates[color].border.selected
+        ]
       )
     }),
     [selectedStateTransition]
@@ -242,7 +202,7 @@ const TabItem = ({
         )}
         <IOText
           size={14}
-          font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+          font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
           weight="Semibold"
           color={foregroundColor}
         >

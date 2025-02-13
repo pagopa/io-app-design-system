@@ -33,7 +33,7 @@ import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
@@ -120,10 +120,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     ref
   ) => {
     const searchInputRef = useRef<TextInput>(null);
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     /* Component visual attributes */
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
     const inputCaretColor = IOColors[theme["interactiveElem-default"]];
 
     /* Widths used for the transition:
@@ -254,11 +254,18 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             accessibilityRole={"search"}
             accessibilityLabel={accessibilityLabel}
             style={[
+              {
+                ...makeFontStyleObject(
+                  inputFontSizePlaceholder,
+                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  undefined,
+                  "Regular"
+                )
+              },
               styles.textInput,
               Platform.OS === "ios"
                 ? styles.textInputIOS
-                : styles.textInputAndroid,
-              isExperimental ? styles.placeholder : styles.placeholderLegacy
+                : styles.textInputAndroid
             ]}
             selectionColor={inputCaretColor}
             cursorColor={inputCaretColor}
@@ -291,7 +298,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           >
             <IOText
               color={theme["interactiveElem-default"]}
-              font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight={"Semibold"}
               size={buttonTextFontSize}
               lineHeight={buttonTextLineHeight}
@@ -349,22 +356,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: iconMargin
-  },
-  placeholder: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "Titillio",
-      undefined,
-      "Medium"
-    )
-  },
-  placeholderLegacy: {
-    ...makeFontStyleObject(
-      inputFontSizePlaceholder,
-      "TitilliumSansPro",
-      undefined,
-      "Semibold"
-    )
   },
   cancelButton: {
     position: "absolute",

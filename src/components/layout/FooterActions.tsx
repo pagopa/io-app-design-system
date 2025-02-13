@@ -17,7 +17,6 @@ import {
   IOVisualCostants,
   buttonSolidHeight,
   hexToRgba,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -128,7 +127,6 @@ export const FooterActions = ({
   debugMode = false
 }: FooterActionsProps) => {
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
 
   const { bottomMargin, extraBottomMargin } = useBottomMargins(
     !!actions?.secondary,
@@ -143,13 +141,12 @@ export const FooterActions = ({
      (both light and dark themes) */
   const HEADER_BG_COLOR: ColorValue = IOColors[theme["appBackground-primary"]];
   const TRANSPARENT_BG_COLOR: ColorValue = "transparent";
-  const BUTTONSOLID_HEIGHT = isExperimental ? buttonSolidHeight : 40;
 
   /* Safe background block. Cover everything until it reaches
      the half of the primary action button. It avoids
      glitchy behavior underneath.  */
   const safeBackgroundBlockHeight =
-    bottomMargin + actionBlockHeight - BUTTONSOLID_HEIGHT / 2;
+    bottomMargin + actionBlockHeight - buttonSolidHeight / 2;
 
   const getActionBlockMeasurements = (event: LayoutChangeEvent) => {
     const { height } = event.nativeEvent.layout;
