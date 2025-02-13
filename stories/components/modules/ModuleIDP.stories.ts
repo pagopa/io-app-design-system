@@ -25,10 +25,7 @@ export const Primary: Story = {
   args: {
     logo: {
       light: {
-        url: {
-          uri: "https://assets.cdn.io.italia.it/spid/idps/spid-idp-posteid.png"
-        },
-        local: 0
+        uri: "https://assets.cdn.io.italia.it/spid/idps/spid-idp-posteid.png"
       }
     },
     name: "Poste ID",

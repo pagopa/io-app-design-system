@@ -13,14 +13,9 @@ import {
   PressableModuleBaseProps
 } from "./PressableModuleBase";
 
-type IDPLogoSource = {
-  local: ImageSourcePropType;
-  url: ImageSourcePropType;
-};
-
 type IDPLogoColorMode = {
-  light: IDPLogoSource;
-  dark?: IDPLogoSource;
+  light: ImageSourcePropType;
+  dark?: ImageSourcePropType;
 };
 interface ModuleIDP extends PressableModuleBaseProps {
   name: string;
@@ -40,23 +35,13 @@ const styles = StyleSheet.create({
 const useIDPLogo = (logo: IDPLogoColorMode): ImageSourcePropType => {
   const { themeType } = useIOThemeContext();
 
-  const {
-    light: { url: urlLogoLightMode, local: localLogoLightMode }
-  } = logo;
-
-  const logoIDPLightMode =
-    localLogoLightMode ?? addCacheTimestampToUri(urlLogoLightMode);
+  const logoIDPLightMode = addCacheTimestampToUri(logo.light);
 
   if (!logo.dark) {
     return logoIDPLightMode;
   }
 
-  const {
-    dark: { url: urlLogoDarkMode, local: localLogoDarkMode }
-  } = logo;
-
-  const logoIDPDarkMode =
-    localLogoDarkMode ?? addCacheTimestampToUri(urlLogoDarkMode);
+  const logoIDPDarkMode = addCacheTimestampToUri(logo.dark);
 
   return themeType === "dark" ? logoIDPDarkMode : logoIDPLightMode;
 };

@@ -21,8 +21,7 @@ const mockIDPProviderItems = {
     id: "posteid",
     name: "Poste ID",
     logo: {
-      url: { uri: undefined },
-      local: require("../../assets/images/spid-idp-posteid.png")
+      light: require("../../assets/images/spid-idp-posteid.png")
     },
     profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
   },
@@ -30,14 +29,8 @@ const mockIDPProviderItems = {
     id: "intesiGroup",
     name: "Intesi Group",
     logo: {
-      light: {
-        url: { uri: undefined },
-        local: require("../../assets/images/intesi-group-light.png")
-      },
-      dark: {
-        url: { uri: undefined },
-        local: require("../../assets/images/intesi-group-dark.png")
-      }
+      light: require("../../assets/images/intesi-group-light.png"),
+      dark: require("../../assets/images/intesi-group-dark.png")
     }
   }
 };
@@ -57,10 +50,7 @@ const renderModuleIDP = () => {
           <ModuleIDP
             name={posteItem.name}
             logo={{
-              light: {
-                url: posteItem.logo.url,
-                local: posteItem.logo.local
-              }
+              light: posteItem.logo.light
             }}
             onPress={mockFn}
             testID={`idp-${posteItem.id}-button`}
@@ -73,10 +63,7 @@ const renderModuleIDP = () => {
             withLooseSpacing
             name={posteItem.name}
             logo={{
-              light: {
-                url: posteItem.logo.url,
-                local: posteItem.logo.local
-              }
+              light: posteItem.logo.light
             }}
             onPress={mockFn}
             testID={`idp-${posteItem.id}-button`}
@@ -88,14 +75,8 @@ const renderModuleIDP = () => {
           <ModuleIDP
             name={intesiGroupItem.name}
             logo={{
-              light: {
-                url: intesiGroupItem.logo.light.url,
-                local: intesiGroupItem.logo.light.local
-              },
-              dark: {
-                url: intesiGroupItem.logo.dark.url,
-                local: intesiGroupItem.logo.dark.local
-              }
+              light: intesiGroupItem.logo.light,
+              dark: intesiGroupItem.logo.dark
             }}
             onPress={mockFn}
             testID={`idp-${intesiGroupItem.id}-button`}
@@ -107,10 +88,7 @@ const renderModuleIDP = () => {
           <ModuleIDP
             name={"This is a very loooooong IDP provider name"}
             logo={{
-              light: {
-                url: posteItem.logo.url,
-                local: posteItem.logo.local
-              }
+              light: posteItem.logo.light
             }}
             onPress={mockFn}
             testID={`idp-${posteItem.id}-button`}
