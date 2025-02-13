@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
-import { IOListItemLogoMargin, useIONewTypeface, useIOTheme } from "../../core";
+import {
+  IOListItemLogoMargin,
+  useIONewTypeface,
+  useIOTheme,
+  useIOThemeContext
+} from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
 import { IOText } from "../typography";
 import {
@@ -8,10 +13,18 @@ import {
   PressableModuleBaseProps
 } from "./PressableModuleBase";
 
+type IDPLogoSource = {
+  local: ImageSourcePropType;
+  url: ImageSourcePropType;
+};
+
+type IDPLogoColorMode = {
+  light: IDPLogoSource;
+  dark?: IDPLogoSource;
+};
 interface ModuleIDP extends PressableModuleBaseProps {
   name: string;
-  localLogo: ImageSourcePropType;
-  logo: ImageSourcePropType;
+  logo: IDPLogoColorMode;
   accessibilityLabel?: string;
 }
 
@@ -24,19 +37,41 @@ const styles = StyleSheet.create({
   }
 });
 
+const useIDPLogo = (logo: IDPLogoColorMode): ImageSourcePropType => {
+  const { themeType } = useIOThemeContext();
+
+  const {
+    light: { url: urlLogoLightMode, local: localLogoLightMode }
+  } = logo;
+
+  const logoIDPLightMode =
+    localLogoLightMode ?? addCacheTimestampToUri(urlLogoLightMode);
+
+  if (!logo.dark) {
+    return logoIDPLightMode;
+  }
+
+  const {
+    dark: { url: urlLogoDarkMode, local: localLogoDarkMode }
+  } = logo;
+
+  const logoIDPDarkMode =
+    localLogoDarkMode ?? addCacheTimestampToUri(urlLogoDarkMode);
+
+  return themeType === "dark" ? logoIDPDarkMode : logoIDPLightMode;
+};
+
 export const ModuleIDP = ({
   name,
-  localLogo,
   logo,
   withLooseSpacing = false,
   onPress,
   testID,
   accessibilityLabel
 }: ModuleIDP) => {
-  const theme = useIOTheme();
   const { newTypefaceEnabled } = useIONewTypeface();
-  // eslint-disable-next-line no-console
-  const urlLogoIDP = localLogo ? localLogo : addCacheTimestampToUri(logo);
+  const theme = useIOTheme();
+  const IDPLogoSource = useIDPLogo(logo);
 
   return (
     <PressableModuleBase
@@ -62,7 +97,7 @@ export const ModuleIDP = ({
       </IOText>
       <Image
         accessibilityIgnoresInvertColors
-        source={urlLogoIDP}
+        source={IDPLogoSource}
         style={styles.idpLogo}
       />
     </PressableModuleBase>

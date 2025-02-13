@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { ImageSourcePropType } from "react-native";
 import { ModuleIDP } from "../../../src/components";
 import { withMaxWitdth, withTheme } from "../../utils";
 
@@ -24,10 +23,16 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    logo: "https://assets.cdn.io.italia.it/spid/idps/spid-idp-posteid.png" as ImageSourcePropType,
-    name: "POSTE ID",
+    logo: {
+      light: {
+        url: {
+          uri: "https://assets.cdn.io.italia.it/spid/idps/spid-idp-posteid.png"
+        },
+        local: 0
+      }
+    },
+    name: "Poste ID",
     accessibilityLabel: "Tap to trigger test alert",
-    localLogo: 0,
     onPress: e => {
       action("clicked")(e);
     }

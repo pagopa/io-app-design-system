@@ -197,13 +197,14 @@ export const Banner = ({
         {action && (
           /* Disable pointer events to avoid
              pressed state on the button */
-          <View
+          <Pressable
             pointerEvents="none"
             importantForAccessibility="no-hide-descendants"
             accessible={true}
             accessibilityElementsHidden
             accessibilityLabel={action}
             accessibilityRole="button"
+            onPress={onPress}
           >
             <VSpacer size={4} />
             <IOText
@@ -220,7 +221,7 @@ export const Banner = ({
             >
               {action}
             </IOText>
-          </View>
+          </Pressable>
         )}
       </View>
       <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>

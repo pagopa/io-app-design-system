@@ -2,7 +2,6 @@ import React from "react";
 import { Alert } from "react-native";
 import * as TestRenderer from "react-test-renderer";
 import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
-import ListItemIDP from "../../modules/ModuleIDP";
 import ListItemAction from "../ListItemAction";
 import ListItemInfo from "../ListItemInfo";
 import ListItemInfoCopy from "../ListItemInfoCopy";
@@ -68,12 +67,6 @@ describe("Test List Item Components", () => {
       ></ListItemAction>
     ).toJSON();
     expect(listItemAction).toMatchSnapshot();
-  });
-  it("ListItemIDP Snapshot", () => {
-    const listItemIDP = TestRenderer.create(
-      <ListItemIDP></ListItemIDP>
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
   });
   it("ListItemTransaction Snapshot", () => {
     const listItemIDP = TestRenderer.create(
@@ -170,12 +163,6 @@ describe("Test List Item Components - Experimental Enabled ", () => {
       ></ListItemAction>
     ).toJSON();
     expect(listItemAction).toMatchSnapshot();
-  });
-  it("ListItemIDP Snapshot", () => {
-    const listItemIDP = TestRendererWithExperimentalEnabledContextProvider(
-      <ListItemIDP></ListItemIDP>
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
   });
   it("ListItemTransaction Snapshot", () => {
     const listItemIDP = TestRendererWithExperimentalEnabledContextProvider(

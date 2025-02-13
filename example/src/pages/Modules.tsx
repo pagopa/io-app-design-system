@@ -1,69 +1,125 @@
 import {
   H2,
+  ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
   ModuleCredential,
   ModuleIDP,
   ModuleNavigation,
   ModulePaymentNotice,
-  ModuleSummary
+  ModuleSummary,
+  useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Alert, ImageSourcePropType, View } from "react-native";
+import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
-const mockIDPProviderItem = {
-  id: "posteid",
-  name: "Poste ID",
-  logo: "",
-  localLogo: require("../../assets/images/spid-idp-posteid.png"),
-  profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
+const mockIDPProviderItems = {
+  poste: {
+    id: "posteid",
+    name: "Poste ID",
+    logo: {
+      url: { uri: undefined },
+      local: require("../../assets/images/spid-idp-posteid.png")
+    },
+    profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
+  },
+  intesiGroup: {
+    id: "intesiGroup",
+    name: "Intesi Group",
+    logo: {
+      light: {
+        url: { uri: undefined },
+        local: require("../../assets/images/intesi-group-light.png")
+      },
+      dark: {
+        url: { uri: undefined },
+        local: require("../../assets/images/intesi-group-dark.png")
+      }
+    }
+  }
 };
 
 const mockFn = () => {
   Alert.alert("Action triggered");
 };
 
-const renderModuleIDP = () => (
-  <>
-    <ComponentViewerBox name="ModuleIDP, default variant">
-      <View>
-        <ModuleIDP
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleIDP, saved variant">
-      <View>
-        <ModuleIDP
-          withLooseSpacing
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleIDP, default variant, stress test">
-      <View>
-        <ModuleIDP
-          name={"This is a very loooooong IDP provider name"}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-  </>
-);
+const renderModuleIDP = () => {
+  const { poste: posteItem, intesiGroup: intesiGroupItem } =
+    mockIDPProviderItems;
+
+  return (
+    <>
+      <ComponentViewerBox name="ModuleIDP, default variant">
+        <View>
+          <ModuleIDP
+            name={posteItem.name}
+            logo={{
+              light: {
+                url: posteItem.logo.url,
+                local: posteItem.logo.local
+              }
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, saved variant">
+        <View>
+          <ModuleIDP
+            withLooseSpacing
+            name={posteItem.name}
+            logo={{
+              light: {
+                url: posteItem.logo.url,
+                local: posteItem.logo.local
+              }
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, both color modes supported">
+        <View>
+          <ModuleIDP
+            name={intesiGroupItem.name}
+            logo={{
+              light: {
+                url: intesiGroupItem.logo.light.url,
+                local: intesiGroupItem.logo.light.local
+              },
+              dark: {
+                url: intesiGroupItem.logo.dark.url,
+                local: intesiGroupItem.logo.dark.local
+              }
+            }}
+            onPress={mockFn}
+            testID={`idp-${intesiGroupItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, default variant, stress test">
+        <View>
+          <ModuleIDP
+            name={"This is a very loooooong IDP provider name"}
+            logo={{
+              light: {
+                url: posteItem.logo.url,
+                local: posteItem.logo.local
+              }
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
 
 const renderModulePaymentNotice = () => (
   <>
@@ -375,23 +431,34 @@ const renderModuleSummary = () => (
   </>
 );
 
-const Modules = () => (
-  <Screen>
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
-    {renderModuleIDP()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
-    {renderModulePaymentNotice()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
-    {renderModuleSummary()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
-    {renderModuleCheckout()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
-    {renderModuleAttachment()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
-    {renderModuleCredential()}
-    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
-    {renderModuleNavigation()}
-  </Screen>
-);
+const Modules = () => {
+  const { setTheme, themeType } = useIOThemeContext();
+
+  return (
+    <Screen>
+      <ListItemSwitch
+        label="Abilita Dark Mode"
+        value={themeType === "dark"}
+        onSwitchValueChange={() =>
+          setTheme(themeType === "dark" ? "light" : "dark")
+        }
+      />
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
+      {renderModuleIDP()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
+      {renderModulePaymentNotice()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
+      {renderModuleSummary()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
+      {renderModuleCheckout()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
+      {renderModuleAttachment()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
+      {renderModuleCredential()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
+      {renderModuleNavigation()}
+    </Screen>
+  );
+};
 
 export default Modules;
