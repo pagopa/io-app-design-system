@@ -270,38 +270,11 @@ export const IOModuleStyles = StyleSheet.create({
 interface IOSelectionTickVisualParams {
   size: IOIconSizeScale;
   borderWidth: number;
-  borderColorOffState: IOColors;
-  bgColorOnState: IOColors;
-  tickColor: IOColors;
-}
-
-interface IOSwitchVisualParams {
-  width: number;
-  height: number;
-  bgColorOffState: IOColors;
-  bgColorOnState: IOColors;
-  tickColor: IOColors;
-  bgCircle: IOColors;
-  padding: number;
 }
 
 export const IOSelectionTickVisualParams: IOSelectionTickVisualParams = {
   size: 24,
-  borderWidth: 2,
-  borderColorOffState: "grey-650",
-  bgColorOnState: "blueIO-500",
-  tickColor: "white"
-};
-
-export const IOSwitchVisualParams: IOSwitchVisualParams = {
-  width: 40,
-  height: 28,
-  bgColorOffState: "grey-700",
-  bgColorOnState: "blueIO-500",
-  tickColor: "blueIO-500",
-  bgCircle: "white",
-  // Space between the circle and the main shape
-  padding: 2
+  borderWidth: 2
 };
 
 interface IOSelectionListItemVisualParams {

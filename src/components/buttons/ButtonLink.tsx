@@ -94,7 +94,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         foreground: {
           default: IOColors[theme["interactiveElem-default"]],
           pressed: IOColors[theme["interactiveElem-pressed"]],
-          disabled: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.75)
+          disabled: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.85)
         }
       },
       contrast: {

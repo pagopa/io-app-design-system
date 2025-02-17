@@ -14,6 +14,7 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { useIOTheme } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSelectionTickVisualParams } from "../../core/IOStyles";
@@ -50,10 +51,11 @@ export const AnimatedRadio = ({
   onPress,
   disabled
 }: OwnProps) => {
+  const theme = useIOTheme();
   const isChecked = checked ?? false;
 
-  const borderColor = IOColors[IOSelectionTickVisualParams.borderColorOffState];
-  const backgroundColor = IOColors[IOSelectionTickVisualParams.bgColorOnState];
+  const borderColor = IOColors[theme["selection-border-off"]];
+  const backgroundColor = IOColors[theme["selection-background-on"]];
 
   const circleAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
@@ -116,7 +118,7 @@ export const AnimatedRadio = ({
           <AnimatedTick
             size={size}
             progress={tickAnimationProgress}
-            stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
+            stroke={IOColors[theme["selection-tick"]]}
           />
         </View>
       )}

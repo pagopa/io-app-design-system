@@ -15,7 +15,6 @@ import {
   RadioGroup,
   RadioItem,
   RadioItemWithAmount,
-  SwitchLabel,
   VSpacer,
   useIOTheme
 } from "@pagopa/io-app-design-system";
@@ -63,8 +62,6 @@ export const Selection = () => {
       <NativeSwitchShowroom />
       {/* ListItemSwitch */}
       <ListItemSwitchShowroom />
-      {/* SwitchLabel */}
-      {renderAnimatedSwitch()}
     </Screen>
   );
 };
@@ -306,15 +303,6 @@ const RadioListItemsWithAmountShowroom = () => {
     </ComponentViewerBox>
   );
 };
-// SWITCH
-
-const renderAnimatedSwitch = () => (
-  <ComponentViewerBox name="AnimatedSwitch, dismissed in favor of the native one">
-    <SwitchLabel label="This is a test" />
-    <VSpacer size={16} />
-    <SwitchLabel label="This is a test with a very loooong looooooong loooooooong text" />
-  </ComponentViewerBox>
-);
 
 // RADIO BUTTON LABEL
 

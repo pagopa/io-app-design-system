@@ -8,13 +8,11 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { useIOTheme } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSpacingScale } from "../../core/IOSpacing";
-import {
-  IOSelectionTickVisualParams,
-  IOVisualCostants
-} from "../../core/IOStyles";
+import { IOVisualCostants } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
@@ -50,12 +48,13 @@ export const AnimatedMessageCheckbox = ({
   checked,
   onPress
 }: AnimatedMessageCheckbox) => {
+  const theme = useIOTheme();
   const isChecked = !!checked;
 
   const shapeAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
 
-  const backgroundColor = IOColors[IOSelectionTickVisualParams.bgColorOnState];
+  const backgroundColor = IOColors[theme["selection-background-on"]];
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
@@ -99,7 +98,7 @@ export const AnimatedMessageCheckbox = ({
         <AnimatedTick
           progress={tickAnimationProgress}
           strokeWidth={1.5}
-          stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
+          stroke={IOColors[theme["selection-tick"]]}
         />
       )}
     </Pressable>

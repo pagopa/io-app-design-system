@@ -198,7 +198,7 @@ export const ListItemRadio = ({
                 <Icon
                   allowFontScaling
                   name={startImage.icon}
-                  color="grey-300"
+                  color={theme["icon-decorative"]}
                   size={IOSelectionListItemVisualParams.iconSize}
                 />
               )}

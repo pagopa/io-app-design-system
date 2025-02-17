@@ -119,7 +119,7 @@ export const ListItemCheckbox = ({
                 <Icon
                   allowFontScaling
                   name={icon}
-                  color="grey-300"
+                  color={theme["icon-decorative"]}
                   size={IOSelectionListItemVisualParams.iconSize}
                 />
               )}

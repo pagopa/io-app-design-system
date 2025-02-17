@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, SwitchProps } from "react-native";
+import { useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
-import { IOSwitchVisualParams } from "../../core/IOStyles";
 
 type OwnProps = Pick<
   SwitchProps,
@@ -20,9 +20,11 @@ export const NativeSwitch = ({
   value,
   ...accessibility
 }: OwnProps) => {
+  const theme = useIOTheme();
+
   const trackColor = {
-    false: IOColors[IOSwitchVisualParams.bgColorOffState],
-    true: IOColors[IOSwitchVisualParams.bgColorOnState]
+    false: IOColors[theme["switch-background-off"]],
+    true: IOColors[theme["switch-background-on"]]
   };
 
   return (
@@ -31,8 +33,8 @@ export const NativeSwitch = ({
       accessibilityRole="switch"
       accessibilityState={{ checked: value, disabled: accessibility.disabled }}
       trackColor={trackColor}
-      thumbColor={IOColors[IOSwitchVisualParams.bgCircle]}
-      ios_backgroundColor={IOColors[IOSwitchVisualParams.bgColorOffState]}
+      thumbColor={IOColors[theme["switch-thumb-color"]]}
+      ios_backgroundColor={IOColors[theme["switch-background-off"]]}
       onValueChange={onValueChange}
       value={value}
     />
