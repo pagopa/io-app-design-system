@@ -40,6 +40,7 @@ export const IOColors = asIOColors({
   "blueIO-600": "#0932B6",
   "blueIO-500": "#0B3EE3",
   "blueIO-400": "#3C65E9",
+  "blueIO-300": "#6D8BEE",
   "blueIO-200": "#9DB2F4",
   "blueIO-150": "#B6C5F7",
   "blueIO-100": "#CED8F9",
@@ -152,6 +153,8 @@ export const IOColorsTints = asIOColors({
   "blueIO-850": IOColors["blueIO-850"],
   "blueIO-600": IOColors["blueIO-600"],
   "blueIO-500": IOColors["blueIO-500"],
+  "blueIO-400": IOColors["blueIO-400"],
+  "blueIO-300": IOColors["blueIO-300"],
   "blueIO-200": IOColors["blueIO-200"],
   "blueIO-150": IOColors["blueIO-150"],
   "blueIO-100": IOColors["blueIO-100"],
@@ -227,6 +230,7 @@ const themeKeys = [
   "neutralButton-pressed",
   "neutralButton-disabled",
   "buttonText-default",
+  "buttonText-danger",
   "buttonText-disabled",
   "listItem-pressed",
   // Typography
@@ -246,6 +250,13 @@ const themeKeys = [
   "textInputLabel-default",
   "textInputValue-default",
   "textInputValue-disabled",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-off",
+  "switch-background-on",
+  "switch-thumb-color",
+  "selection-border-off",
+  "selection-background-on",
+  "selection-tick",
   // Layout
   "divider-header",
   "divider-default",
@@ -289,6 +300,7 @@ export const IOThemeLight: IOTheme = {
   "neutralButton-pressed": "grey-850",
   "neutralButton-disabled": "grey-450",
   "buttonText-default": "white",
+  "buttonText-danger": "white",
   "buttonText-disabled": "grey-700",
   "listItem-pressed": "grey-50",
   // Typography
@@ -307,6 +319,13 @@ export const IOThemeLight: IOTheme = {
   "textInputLabel-default": "grey-700",
   "textInputValue-default": "black",
   "textInputValue-disabled": "grey-850",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-off": "grey-700",
+  "switch-background-on": "blueIO-500",
+  "switch-thumb-color": "white",
+  "selection-border-off": "grey-650",
+  "selection-background-on": "blueIO-500",
+  "selection-tick": "white",
   // Layout
   "divider-header": "grey-100",
   "divider-default": "grey-200",
@@ -335,7 +354,8 @@ export const IOThemeLightLegacy: IOTheme = {
   ...IOThemeLight,
   "appBackground-accent": "blue-500",
   "interactiveElem-default": "blue-500",
-  "pictogram-hands": "blue-500"
+  "pictogram-hands": "blue-500",
+  "selection-tick": "white"
 };
 
 export const IOThemeDark: IOTheme = {
@@ -344,14 +364,15 @@ export const IOThemeDark: IOTheme = {
   "appBackground-primary": "black",
   "appBackground-secondary": "grey-850",
   "appBackground-tertiary": "grey-700",
-  "interactiveElem-default": "blueIO-400",
-  "interactiveElem-pressed": "blueIO-500",
+  "interactiveElem-default": "blueIO-300",
+  "interactiveElem-pressed": "blueIO-400",
   "interactiveElem-disabled": "grey-700",
   "interactiveOutline-disabled": "grey-450",
   "neutralButton-default": "white",
   "neutralButton-pressed": "grey-100",
   "neutralButton-disabled": "grey-850",
-  "buttonText-default": "white",
+  "buttonText-default": "black",
+  "buttonText-danger": "white",
   "buttonText-disabled": "grey-300",
   "listItem-pressed": "grey-850",
   // Typography
@@ -370,6 +391,13 @@ export const IOThemeDark: IOTheme = {
   "textInputLabel-default": "grey-450",
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
+  // Selection (Radio, Checkbox, Switch)
+  "switch-background-off": "grey-850",
+  "switch-background-on": "blueIO-300",
+  "switch-thumb-color": "white",
+  "selection-border-off": "grey-450",
+  "selection-background-on": "blueIO-300",
+  "selection-tick": "black",
   // Tab Item
   "tab-item-border-default": "grey-700",
   "tab-item-foreground-default": "grey-200",

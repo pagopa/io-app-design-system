@@ -8,13 +8,12 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { useIOExperimentalDesign } from "../../core";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSpacingScale } from "../../core/IOSpacing";
 import {
   IOSelectionTickLegacyVisualParams,
-  IOSelectionTickVisualParams,
   IOVisualCostants
 } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
@@ -52,13 +51,14 @@ export const AnimatedMessageCheckbox = ({
   checked,
   onPress
 }: AnimatedMessageCheckbox) => {
+  const theme = useIOTheme();
   const isChecked = !!checked;
   const { isExperimental } = useIOExperimentalDesign();
 
   const shapeAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
-  const backgroundColorOnState =
-    IOColors[IOSelectionTickVisualParams.bgColorOnState];
+  const backgroundColorOnState = IOColors[theme["selection-background-on"]];
+
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
   const legacyBackgroundColorOnState =
     IOColors[IOSelectionTickLegacyVisualParams.bgColorOnState];
@@ -110,7 +110,7 @@ export const AnimatedMessageCheckbox = ({
         <AnimatedTick
           progress={tickAnimationProgress}
           strokeWidth={1.5}
-          stroke={IOColors[IOSelectionTickVisualParams.tickColor]}
+          stroke={IOColors[theme["selection-tick"]]}
         />
       )}
     </Pressable>

@@ -1,8 +1,7 @@
 import React from "react";
 import { Platform, Switch, SwitchProps } from "react-native";
-import { useIOExperimentalDesign } from "../../core";
+import { useIOExperimentalDesign, useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
-import { IOSwitchVisualParams } from "../../core/IOStyles";
 
 type OwnProps = Pick<
   SwitchProps,
@@ -25,10 +24,11 @@ export const NativeSwitch = ({
   value,
   ...accessibility
 }: OwnProps) => {
+  const theme = useIOTheme();
   const { isExperimental } = useIOExperimentalDesign();
   const trackColor = {
-    false: IOColors[IOSwitchVisualParams.bgColorOffState],
-    true: IOColors[IOSwitchVisualParams.bgColorOnState]
+    false: IOColors[theme["switch-background-off"]],
+    true: IOColors[theme["switch-background-on"]]
   };
 
   // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
@@ -45,10 +45,10 @@ export const NativeSwitch = ({
       accessibilityRole="switch"
       accessibilityState={{ checked: value, disabled: accessibility.disabled }}
       trackColor={trackColorComponent}
-      thumbColor={IOColors[IOSwitchVisualParams.bgCircle]}
+      thumbColor={IOColors[theme["switch-thumb-color"]]}
       ios_backgroundColor={
         isExperimental
-          ? IOColors[IOSwitchVisualParams.bgColorOffState]
+          ? IOColors[theme["switch-background-off"]]
           : bgLegacyTrackColorAndroid
       }
       onValueChange={onValueChange}
