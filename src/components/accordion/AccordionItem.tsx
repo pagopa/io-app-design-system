@@ -26,6 +26,9 @@ export type AccordionItem = {
   body: string | React.ReactNode;
   accessibilityLabel?: string;
   icon?: IOIcons;
+  backgroundVariant?: "primary" | "secondary";
+  defaultExpanded?: boolean;
+  onPress?: (expanded: boolean) => void;
 };
 
 type AccordionBody = {
@@ -54,14 +57,9 @@ export const AccordionBody = ({ children, expanded }: AccordionBody) => {
     }
   };
 
-  const animatedHeightStyle = useAnimatedStyle(
-    () => ({
-      height: expanded
-        ? withSpring(height, IOSpringValues.accordion)
-        : withSpring(0, IOSpringValues.accordion)
-    }),
-    [expanded]
-  );
+  const animatedHeightStyle = useAnimatedStyle(() => ({
+    height: withSpring(expanded ? height : 0, IOSpringValues.accordion)
+  }));
 
   return (
     <Animated.View
@@ -78,18 +76,24 @@ export const AccordionItem = ({
   title,
   accessibilityLabel,
   body,
-  icon
+  icon,
+  onPress,
+  defaultExpanded = false,
+  backgroundVariant = "primary"
 }: AccordionItem) => {
   const theme = useIOTheme();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   // Visual attributes
-  const accordionBackground: IOColors = theme["appBackground-primary"];
+  const accordionBackground: IOColors =
+    theme[`appBackground-${backgroundVariant}`];
   const accordionBorder: IOColors = theme["cardBorder-default"];
   const accordionIconColor: IOColors = theme["icon-decorative"];
 
   const onItemPress = () => {
-    setExpanded(!expanded);
+    const nextExpanded = !expanded;
+    setExpanded(nextExpanded);
+    onPress?.(nextExpanded);
   };
 
   const animatedChevron = useAnimatedStyle(
@@ -191,7 +195,8 @@ const styles = StyleSheet.create({
   accordionBodyContainer: {
     position: "absolute",
     padding: accordionBodySpacing,
-    paddingTop: 0
+    paddingTop: 0,
+    width: "100%"
   },
   textContainer: {
     padding: accordionBodySpacing,
