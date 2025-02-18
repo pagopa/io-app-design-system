@@ -17,7 +17,7 @@ export const MdH3 = forwardRef<View, TypographicStyleProps>(
       weight: "Regular",
       size: 16,
       lineHeight: 24,
-      color: customColor ?? theme["textHeading-tertiary"]
+      color: customColor ?? theme["textHeading-default"]
     };
 
     return (
