@@ -1,5 +1,11 @@
 import * as React from "react";
-import { useCallback, useMemo, useState } from "react";
+import {
+  useCallback,
+  useMemo,
+  useState,
+  forwardRef,
+  useImperativeHandle
+} from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../core";
@@ -28,6 +34,10 @@ type TextInputValidationProps = Omit<
    * In case of a dynamic `errorMessage`, use the `onValidate` function with a `ValidationWithOptions` object as the return value to ensure that screen readers announce the correct value.
    */
   errorMessage: string;
+  /**
+   * Determines the validation mode. If "onBlur", validation occurs on blur. If "onContinue", validation occurs when an external button is pressed.
+   */
+  validationMode?: "onBlur" | "onContinue";
 };
 
 function isValidationWithOptions(
@@ -42,107 +52,132 @@ function isValidationWithOptions(
 
 const feedbackIconSize: IOIconSizeScale = 24;
 
-export const TextInputValidation = ({
-  onValidate,
-  errorMessage,
-  value,
-  bottomMessage,
-  onBlur,
-  onFocus,
-  ...props
-}: TextInputValidationProps) => {
-  const theme = useIOTheme();
-  const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
-  const [errMessage, setErrMessage] = useState(errorMessage);
+export const TextInputValidation = forwardRef<
+  {
+    validateInput: () => void;
+  },
+  TextInputValidationProps
+>(
+  (
+    {
+      onValidate,
+      errorMessage,
+      value,
+      bottomMessage,
+      onBlur,
+      onFocus,
+      validationMode = "onBlur",
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useIOTheme();
+    const [isValid, setIsValid] = useState<boolean | undefined>(undefined);
+    const [errMessage, setErrMessage] = useState(errorMessage);
 
-  const getErrorFeedback = useCallback((isValid: boolean, message: string) => {
-    setIsValid(isValid);
-    setErrMessage(message);
+    const getErrorFeedback = useCallback(
+      (isValid: boolean, message: string) => {
+        setIsValid(isValid);
+        setErrMessage(message);
 
-    if (!isValid) {
-      triggerHaptic("notificationError");
-      AccessibilityInfo.announceForAccessibilityWithOptions(message, {
-        queue: true
-      });
-    } else {
-      triggerHaptic("notificationSuccess");
-    }
-  }, []);
-
-  const onBlurHandler = useCallback(() => {
-    const validation = onValidate(value);
-
-    if (isValidationWithOptions(validation)) {
-      getErrorFeedback(validation.isValid, validation.errorMessage);
-    } else {
-      getErrorFeedback(validation, errorMessage);
-    }
-    onBlur?.();
-  }, [value, errorMessage, onBlur, onValidate, getErrorFeedback]);
-
-  const onFocusHandler = useCallback(() => {
-    setIsValid(undefined);
-    onFocus?.();
-  }, [onFocus]);
-
-  const labelError = useMemo(
-    () => (isValid === false && errMessage ? errMessage : bottomMessage),
-    [isValid, errMessage, bottomMessage]
-  );
-
-  const labelErrorColor: IOColors | undefined = useMemo(
-    () => (isValid === false && errMessage ? theme.errorText : undefined),
-    [isValid, errMessage, theme.errorText]
-  );
-
-  const feedbackIconAttrMap: Record<
-    string,
-    { name: IOIcons; color: IOColors }
-  > = useMemo(
-    () => ({
-      valid: {
-        name: "success",
-        color: theme.successIcon
+        if (!isValid) {
+          triggerHaptic("notificationError");
+          AccessibilityInfo.announceForAccessibilityWithOptions(message, {
+            queue: true
+          });
+        } else {
+          triggerHaptic("notificationSuccess");
+        }
       },
-      notValid: {
-        name: "errorFilled",
-        color: theme.errorIcon
-      }
-    }),
-    [theme]
-  );
-
-  const feedbackIcon = useMemo(() => {
-    const validationStatus = isValid ? "valid" : "notValid";
-
-    return isValid !== undefined ? (
-      <Animated.View
-        entering={enterTransitionInputIcon}
-        exiting={exitTransitionInputIcon}
-      >
-        <Icon
-          name={feedbackIconAttrMap[validationStatus].name}
-          color={feedbackIconAttrMap[validationStatus].color}
-          size={feedbackIconSize}
-        />
-      </Animated.View>
-    ) : (
-      <View style={{ width: feedbackIconSize, height: feedbackIconSize }} />
+      []
     );
-  }, [feedbackIconAttrMap, isValid]);
 
-  return (
-    <TextInputBase
-      {...props}
-      value={value}
-      status={isValid === false ? "error" : undefined}
-      bottomMessage={labelError}
-      bottomMessageColor={labelErrorColor}
-      rightElement={feedbackIcon}
-      onBlur={onBlurHandler}
-      onFocus={onFocusHandler}
-    />
-  );
-};
+    const validateInput = useCallback(() => {
+      const validation = onValidate(value);
+
+      if (isValidationWithOptions(validation)) {
+        getErrorFeedback(validation.isValid, validation.errorMessage);
+      } else {
+        getErrorFeedback(validation, errorMessage);
+      }
+    }, [value, errorMessage, onValidate, getErrorFeedback]);
+
+    // Expose the validateInput function to the parent component
+    useImperativeHandle(ref, () => ({
+      validateInput
+    }));
+
+    const onBlurHandler = useCallback(() => {
+      if (validationMode === "onBlur") {
+        validateInput();
+      }
+      onBlur?.();
+    }, [validationMode, validateInput, onBlur]);
+
+    const onFocusHandler = useCallback(() => {
+      setIsValid(undefined);
+      onFocus?.();
+    }, [onFocus]);
+
+    const labelError = useMemo(
+      () => (isValid === false && errMessage ? errMessage : bottomMessage),
+      [isValid, errMessage, bottomMessage]
+    );
+
+    const labelErrorColor: IOColors | undefined = useMemo(
+      () => (isValid === false && errMessage ? theme.errorText : undefined),
+      [isValid, errMessage, theme.errorText]
+    );
+
+    const feedbackIconAttrMap: Record<
+      string,
+      { name: IOIcons; color: IOColors }
+    > = useMemo(
+      () => ({
+        valid: {
+          name: "success",
+          color: theme.successIcon
+        },
+        notValid: {
+          name: "errorFilled",
+          color: theme.errorIcon
+        }
+      }),
+      [theme]
+    );
+
+    const feedbackIcon = useMemo(() => {
+      const validationStatus = isValid ? "valid" : "notValid";
+
+      return isValid !== undefined ? (
+        <Animated.View
+          entering={enterTransitionInputIcon}
+          exiting={exitTransitionInputIcon}
+        >
+          <Icon
+            name={feedbackIconAttrMap[validationStatus].name}
+            color={feedbackIconAttrMap[validationStatus].color}
+            size={feedbackIconSize}
+          />
+        </Animated.View>
+      ) : (
+        <View style={{ width: feedbackIconSize, height: feedbackIconSize }} />
+      );
+    }, [feedbackIconAttrMap, isValid]);
+
+    return (
+      <TextInputBase
+        {...props}
+        value={value}
+        status={isValid === false ? "error" : undefined}
+        bottomMessage={labelError}
+        bottomMessageColor={labelErrorColor}
+        rightElement={feedbackIcon}
+        onBlur={onBlurHandler}
+        onFocus={onFocusHandler}
+      />
+    );
+  }
+);
 
 export default TextInputValidation;
