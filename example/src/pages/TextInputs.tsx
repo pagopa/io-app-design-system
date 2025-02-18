@@ -1,5 +1,4 @@
 import {
-  ButtonSolid,
   H4,
   H5,
   IOStyles,
@@ -10,7 +9,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Button, TextInputBase, View } from "react-native";
+import { Button, View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
