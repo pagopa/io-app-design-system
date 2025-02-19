@@ -11,6 +11,7 @@ import ListItemNavAlert from "../ListItemNavAlert";
 import { ListItemRadioWithAmount } from "../ListItemRadioWithAmount";
 import { ListItemTransaction } from "../ListItemTransaction";
 import { PressableListItemBase } from "../PressableListItemBase";
+import { CollapsibleListItems } from "../CollapsibleListItems";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -115,6 +116,53 @@ describe("Test List Item Components", () => {
     ).toJSON();
     expect(suggested).toMatchSnapshot();
     expect(notSuggested).toMatchSnapshot();
+  });
+  it("CollapsibleListItems Snapshot (controlled)", () => {
+    const collapsibleListItems = TestRenderer.create(
+      <CollapsibleListItems
+        title="Patente di guida"
+        selectedItemIds={["name"]}
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          }
+        ]}
+      />
+    );
+    expect(collapsibleListItems).toMatchSnapshot();
+  });
+  it("CollapsibleListItems Snapshot (uncontrolled)", () => {
+    const collapsibleListItems = TestRenderer.create(
+      <CollapsibleListItems
+        title="Patente di guida"
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          }
+        ]}
+      />
+    );
+    expect(collapsibleListItems).toMatchSnapshot();
+  });
+  it("CollapsibleListItems Snapshot (unselectable items)", () => {
+    const collapsibleListItems = TestRenderer.create(
+      <CollapsibleListItems
+        title="Patente di guida"
+        selectionEnabled={false}
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          }
+        ]}
+      />
+    );
+    expect(collapsibleListItems).toMatchSnapshot();
   });
 });
 
