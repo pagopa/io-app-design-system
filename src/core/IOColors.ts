@@ -381,7 +381,7 @@ export const IOThemeDark: IOTheme = {
   "textHeading-tertiary": "grey-450",
   "textBody-default": "white",
   "textBody-secondary": "grey-100",
-  "textBody-tertiary": "grey-450",
+  "textBody-tertiary": "grey-300",
   // Design System related
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
