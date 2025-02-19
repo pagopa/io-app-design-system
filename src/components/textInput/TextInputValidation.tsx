@@ -28,6 +28,10 @@ type TextInputValidationProps = Omit<
    * In case of a dynamic `errorMessage`, use the `onValidate` function with a `ValidationWithOptions` object as the return value to ensure that screen readers announce the correct value.
    */
   errorMessage: string;
+  /**
+   * A string that will be read by screen readers when the field is not valid.
+   */
+  accessibilityErrorLabel?: string;
 };
 
 function isValidationWithOptions(
@@ -49,6 +53,7 @@ export const TextInputValidation = ({
   bottomMessage,
   onBlur,
   onFocus,
+  accessibilityErrorLabel,
   ...props
 }: TextInputValidationProps) => {
   const theme = useIOTheme();
@@ -61,9 +66,12 @@ export const TextInputValidation = ({
 
     if (!isValid) {
       triggerHaptic("notificationError");
-      AccessibilityInfo.announceForAccessibilityWithOptions(message, {
-        queue: true
-      });
+      AccessibilityInfo.announceForAccessibilityWithOptions(
+        accessibilityErrorLabel ?? message,
+        {
+          queue: true
+        }
+      );
     } else {
       triggerHaptic("notificationSuccess");
     }
