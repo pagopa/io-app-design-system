@@ -38,6 +38,10 @@ type TextInputValidationProps = Omit<
    * Determines the validation mode. If "onBlur", validation occurs on blur. If "onContinue", validation occurs when an external button is pressed.
    */
   validationMode?: "onBlur" | "onContinue";
+  /**
+   * A string that will be read by screen readers when the field is not valid.
+   */
+  accessibilityErrorLabel?: string;
 };
 
 function isValidationWithOptions(
@@ -67,6 +71,7 @@ export const TextInputValidation = forwardRef<
       onBlur,
       onFocus,
       validationMode = "onBlur",
+      accessibilityErrorLabel,
       ...props
     },
     ref
@@ -82,9 +87,12 @@ export const TextInputValidation = forwardRef<
 
         if (!isValid) {
           triggerHaptic("notificationError");
-          AccessibilityInfo.announceForAccessibilityWithOptions(message, {
-            queue: true
-          });
+          AccessibilityInfo.announceForAccessibilityWithOptions(
+            accessibilityErrorLabel ?? message,
+            {
+              queue: true
+            }
+          );
         } else {
           triggerHaptic("notificationSuccess");
         }
