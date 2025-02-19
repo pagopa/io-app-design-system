@@ -9,7 +9,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { View } from "react-native";
+import { Button, View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
@@ -70,6 +70,36 @@ const InputPasswordComponentWrapper = (
     </>
   );
 };
+
+const TextInputValidationOnContinue = (
+  props: Omit<
+    React.ComponentProps<typeof TextInputValidation>,
+    "value" | "onChangeText"
+  > & { value?: string }
+) => {
+  const textInputRef = React.useRef<{ validateInput: () => void }>(null);
+
+  const handleContinue = () => {
+    textInputRef.current?.validateInput();
+  };
+  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+
+  return (
+    <>
+      <VSpacer />
+      <TextInputValidation
+        {...props}
+        ref={textInputRef}
+        value={inputValue}
+        onChangeText={setInputValue}
+        validationMode="onContinue"
+      />
+      <Button title="Continue" onPress={handleContinue} />
+      <VSpacer />
+    </>
+  );
+};
+
 /**
  * This Screen is used to test components in isolation while developing.
  * @returns a screen with a flexed view where you can test components
@@ -100,8 +130,20 @@ export const TextInputs = () => (
         bottomMessage="Inserisci almeno 3 caratteri"
         errorMessage="Inserisci almeno 3 caratteri"
       />
+      <TextInputValidationOnContinue
+        placeholder={"Base input"}
+        onValidate={value => value.length > 2}
+        bottomMessage="Inserisci almeno 3 caratteri"
+        errorMessage="Inserisci almeno 3 caratteri"
+      />
       <H5>Base input with validation and error</H5>
       <InputValidationComponentWrapper
+        placeholder={"Base input"}
+        onValidate={value => value.length > 2}
+        bottomMessage="Inserisci almeno 3 caratteri"
+        errorMessage="Troppo corto"
+      />
+      <TextInputValidationOnContinue
         placeholder={"Base input"}
         onValidate={value => value.length > 2}
         bottomMessage="Inserisci almeno 3 caratteri"
