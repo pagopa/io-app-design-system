@@ -76,7 +76,11 @@ export const AccordionBody = ({
     <Animated.View
       style={[animatedHeightStyle, styles.accordionCollapsableContainer]}
     >
-      <View style={styles.accordionBodyContainer} onLayout={onLayout}>
+      <View
+        testID="AccordionBodyContainer"
+        style={styles.accordionBodyContainer}
+        onLayout={onLayout}
+      >
         {children}
       </View>
     </Animated.View>
@@ -135,6 +139,7 @@ export const AccordionItem = ({
       ]}
     >
       <TouchableWithoutFeedback
+        testID="AccordionToggleButton"
         accessible={true}
         accessibilityRole="button"
         accessibilityState={{ expanded }}
