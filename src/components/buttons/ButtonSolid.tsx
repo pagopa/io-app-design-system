@@ -3,7 +3,6 @@ import React, {
   forwardRef,
   useCallback,
   useEffect,
-  useMemo,
   useRef
 } from "react";
 import {
@@ -19,13 +18,11 @@ import Animated, {
   useReducedMotion
 } from "react-native-reanimated";
 import {
-  IOButtonLegacyStyles,
   IOButtonStyles,
   IOColors,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
   exitTransitionInnerContent,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
@@ -81,49 +78,6 @@ export type ButtonSolidProps = WithTestID<
   >
 >;
 
-// TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-const mapLegacyColorStates: Record<
-  NonNullable<ButtonSolidProps["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: IOColors["blue-500"],
-      pressed: IOColors["blue-600"],
-      disabled: IOColors["grey-200"]
-    },
-    foreground: {
-      default: "white",
-      disabled: "white"
-    }
-  },
-  // Danger button
-  danger: {
-    background: {
-      default: IOColors["error-600"],
-      pressed: IOColors["error-500"],
-      disabled: IOColors["grey-200"]
-    },
-    foreground: {
-      default: "white",
-      disabled: "white"
-    }
-  },
-  // Contrast button
-  contrast: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["blue-50"],
-      disabled: IOColors["grey-200"]
-    },
-    foreground: {
-      default: "blue-500",
-      disabled: "white"
-    }
-  }
-};
-
 export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
   (
     {
@@ -142,64 +96,51 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
     ref
   ) => {
     const theme = useIOTheme();
-    const { isExperimental } = useIOExperimentalDesign();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
 
-    const mapColorStates = useMemo<
-      Record<NonNullable<ButtonSolidProps["color"]>, ColorStates>
-    >(
-      () => ({
-        // Primary button
-        primary: {
-          background: {
-            default: IOColors[theme["interactiveElem-default"]],
-            pressed: IOColors[theme["interactiveElem-pressed"]],
-            disabled: IOColors[theme["interactiveElem-disabled"]]
-          },
-          foreground: {
-            default: theme["buttonText-default"],
-            disabled: theme["buttonText-disabled"]
-          }
+    const mapColorStates: Record<
+      NonNullable<ButtonSolidProps["color"]>,
+      ColorStates
+    > = {
+      // Primary button
+      primary: {
+        background: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveElem-disabled"]]
         },
-        // Danger button
-        danger: {
-          background: {
-            default: IOColors["error-600"],
-            pressed: IOColors["error-500"],
-            disabled: IOColors[theme["interactiveElem-disabled"]]
-          },
-          foreground: {
-            default: theme["buttonText-danger"],
-            disabled: theme["buttonText-disabled"]
-          }
-        },
-        // Contrast button
-        contrast: {
-          background: {
-            default: IOColors.white,
-            pressed: IOColors["blueIO-50"],
-            disabled: IOColors["blueIO-50"]
-          },
-          foreground: {
-            default: "blueIO-500",
-            disabled: "blueIO-500"
-          }
+        foreground: {
+          default: theme["buttonText-default"],
+          disabled: theme["buttonText-disabled"]
         }
-      }),
-      [theme]
-    );
-
-    const colorMap = useMemo(
-      () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-      [isExperimental, mapColorStates]
-    );
-
-    const buttonStyles = useMemo(
-      () => (isExperimental ? IOButtonStyles : IOButtonLegacyStyles),
-      [isExperimental]
-    );
+      },
+      // Danger button
+      danger: {
+        background: {
+          default: IOColors["error-600"],
+          pressed: IOColors["error-500"],
+          disabled: IOColors[theme["interactiveElem-disabled"]]
+        },
+        foreground: {
+          default: theme["buttonText-danger"],
+          disabled: theme["buttonText-disabled"]
+        }
+      },
+      // Contrast button
+      contrast: {
+        background: {
+          default: IOColors.white,
+          pressed: IOColors["blueIO-50"],
+          disabled: IOColors["blueIO-50"]
+        },
+        foreground: {
+          default: "blueIO-500",
+          disabled: "blueIO-500"
+        }
+      }
+    };
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -218,7 +159,10 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
       const backgroundColor = interpolateColor(
         progress.value,
         [0, 1],
-        [colorMap[color].background.default, colorMap[color].background.pressed]
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.pressed
+        ]
       );
 
       return { backgroundColor };
@@ -239,13 +183,13 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
 
     // Background
     const backgroundColor: ColorValue = disabled
-      ? colorMap[color]?.background?.disabled
-      : colorMap[color]?.background?.default;
+      ? mapColorStates[color]?.background?.disabled
+      : mapColorStates[color]?.background?.default;
 
     // Label & Icons colors
     const foregroundColor: IOColors = disabled
-      ? colorMap[color]?.foreground?.disabled
-      : colorMap[color]?.foreground?.default;
+      ? mapColorStates[color]?.foreground?.disabled
+      : mapColorStates[color]?.foreground?.default;
 
     return (
       <Pressable
@@ -268,10 +212,10 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
       >
         <Animated.View
           style={[
-            buttonStyles.button,
+            IOButtonStyles.button,
+            IOButtonStyles.buttonSizeDefault,
             { backgroundColor, overflow: "hidden" },
-            isExperimental && fullWidth && { paddingHorizontal: 16 },
-            buttonStyles.buttonSizeDefault,
+            fullWidth && { paddingHorizontal: 16 },
             disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
@@ -281,7 +225,7 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
         >
           {loading && (
             <Animated.View
-              style={buttonStyles.buttonInner}
+              style={IOButtonStyles.buttonInner}
               entering={
                 isMounted.current ? enterTransitionInnerContentSmall : undefined
               }
@@ -294,7 +238,7 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
           {!loading && (
             <Animated.View
               style={[
-                buttonStyles.buttonInner,
+                IOButtonStyles.buttonInner,
                 { columnGap: ICON_MARGIN },
                 /* If 'iconPosition' is set to 'end', we use 
                    reverse flex property to invert the position */

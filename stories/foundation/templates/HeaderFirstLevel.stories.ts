@@ -23,31 +23,35 @@ type Story = StoryObj<typeof meta>;
 export const Wallet: Story = {
   args: {
     title: "Portafoglio",
-    firstAction: {
-      icon: "help",
-      accessibilityLabel: "Help",
-      onPress: () => alert("First Action")
-    },
-    secondAction: {
-      icon: "add",
-      onPress: () => alert("Second Action"),
-      accessibilityLabel: "Add"
-    }
+    actions: [
+      {
+        icon: "add",
+        onPress: () => alert("Second Action"),
+        accessibilityLabel: "Add"
+      },
+      {
+        icon: "help",
+        accessibilityLabel: "Help",
+        onPress: () => alert("First Action")
+      }
+    ]
   }
 };
 
 export const Messages: Story = {
   args: {
     title: "Messaggi",
-    firstAction: {
-      icon: "help",
-      accessibilityLabel: "Help",
-      onPress: () => alert("First Action")
-    },
-    secondAction: {
-      icon: "search",
-      onPress: () => alert("Second Action"),
-      accessibilityLabel: "search"
-    }
+    actions: [
+      {
+        icon: "search",
+        onPress: () => alert("Second Action"),
+        accessibilityLabel: "search"
+      },
+      {
+        icon: "help",
+        accessibilityLabel: "Help",
+        onPress: () => alert("First Action")
+      }
+    ]
   }
 };

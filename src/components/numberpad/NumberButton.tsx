@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback } from "react";
 import { Pressable } from "react-native";
 import Animated, {
   interpolateColor,
@@ -8,8 +8,7 @@ import Animated, {
 import {
   IOColors,
   IONumberPadButtonStyles,
-  hexToRgba,
-  useIOExperimentalDesign
+  useIONewTypeface
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { IOText } from "../typography";
@@ -52,18 +51,6 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
   }
 };
 
-const legacyColorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
-  light: {
-    background: IOColors["grey-100"],
-    pressed: IOColors["grey-200"],
-    foreground: "blue-500"
-  },
-  dark: {
-    background: hexToRgba(IOColors.black, 0.1),
-    pressed: hexToRgba(IOColors.white, 0.5),
-    foreground: "white"
-  }
-};
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
  *
@@ -74,19 +61,14 @@ export const NumberButton = memo(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("slight");
     const reducedMotion = useReducedMotion();
-    const { isExperimental } = useIOExperimentalDesign();
-
-    const colors = useMemo(
-      () => (isExperimental ? colorMap[variant] : legacyColorMap[variant]),
-      [variant, isExperimental]
-    );
+    const { newTypefaceEnabled } = useIONewTypeface();
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => ({
       backgroundColor: interpolateColor(
         progress.value,
         [0, 1],
-        [colors.background, colors.pressed]
+        [colorMap[variant].background, colorMap[variant].pressed]
       )
     }));
 
@@ -113,9 +95,9 @@ export const NumberButton = memo(
         >
           <IOText
             size={22}
-            font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight="Semibold"
-            color={colors.foreground}
+            color={colorMap[variant].foreground}
             style={{
               // Additional prop for Android
               textAlignVertical: "center"
