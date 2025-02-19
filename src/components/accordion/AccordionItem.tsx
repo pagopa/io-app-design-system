@@ -58,6 +58,7 @@ export const AccordionBody = ({
 
   const onLayout = (event: LayoutChangeEvent) => {
     const { height: onLayoutHeight } = event.nativeEvent.layout;
+
     if (onLayoutHeight > 0 && height.value !== onLayoutHeight) {
       height.value = onLayoutHeight; // eslint-disable-line functional/immutable-data
     }
