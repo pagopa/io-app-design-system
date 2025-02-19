@@ -1,25 +1,15 @@
-import React, { useState } from "react";
-import {
-  LayoutChangeEvent,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View
-} from "react-native";
+import React from "react";
+import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import Animated, {
-  SharedValue,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import {
   IOAccordionRadius,
   IOStyles,
   useIOTheme,
   type IOSpacingScale
 } from "../../core";
-import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors, hexToRgba } from "../../core/IOColors";
+import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons/Icon";
 import { Body, H6 } from "../typography";
 
@@ -28,15 +18,6 @@ export type AccordionItem = {
   body: string | React.ReactNode;
   accessibilityLabel?: string;
   icon?: IOIcons;
-  backgroundVariant?: "primary" | "secondary";
-  defaultExpanded?: boolean;
-  onPress?: (expanded: boolean) => void;
-};
-
-type AccordionBody = {
-  children: React.ReactNode;
-  expanded: boolean;
-  animationEnabled: SharedValue<boolean>;
 };
 
 const accordionBodySpacing: IOSpacingScale = 16;
@@ -46,88 +27,27 @@ const accordionChevronMargin: IOSpacingScale = 8;
 // Icon size
 const iconSize: IOIconSizeScale = 24;
 
-/* The code below is a re-adaptation of Dima Portenko's code:
-https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
-*/
-export const AccordionBody = ({
-  children,
-  expanded,
-  animationEnabled
-}: AccordionBody) => {
-  const height = useSharedValue(0);
-
-  const onLayout = (event: LayoutChangeEvent) => {
-    const { height: onLayoutHeight } = event.nativeEvent.layout;
-
-    if (onLayoutHeight > 0 && height.value !== onLayoutHeight) {
-      height.value = onLayoutHeight; // eslint-disable-line functional/immutable-data
-    }
-  };
-
-  const animatedHeightStyle = useAnimatedStyle(() => {
-    const nextHeight = expanded ? height.value : 0;
-    return {
-      height: animationEnabled.value
-        ? withSpring(nextHeight, IOSpringValues.accordion)
-        : nextHeight
-    };
-  });
-
-  return (
-    <Animated.View
-      style={[animatedHeightStyle, styles.accordionCollapsableContainer]}
-    >
-      <View
-        testID="AccordionBodyContainer"
-        style={styles.accordionBodyContainer}
-        onLayout={onLayout}
-      >
-        {children}
-      </View>
-    </Animated.View>
-  );
-};
-
 export const AccordionItem = ({
   title,
   accessibilityLabel,
   body,
-  icon,
-  onPress,
-  defaultExpanded = false,
-  backgroundVariant = "primary"
+  icon
 }: AccordionItem) => {
   const theme = useIOTheme();
-  const [expanded, setExpanded] = useState(defaultExpanded);
-  // Disable animation when starting expanded
-  const animationEnabled = useSharedValue(!defaultExpanded);
+
+  const {
+    expanded,
+    toggleAccordion,
+    onBodyLayout,
+    iconAnimatedStyle,
+    bodyAnimatedStyle,
+    bodyInnerStyle
+  } = useAccordionAnimation();
 
   // Visual attributes
-  const accordionBackground: IOColors =
-    theme[`appBackground-${backgroundVariant}`];
+  const accordionBackground: IOColors = theme["appBackground-primary"];
   const accordionBorder: IOColors = theme["cardBorder-default"];
   const accordionIconColor: IOColors = theme["icon-decorative"];
-
-  const onItemPress = () => {
-    // Re-enable animation when the user interacts with the accordion
-    animationEnabled.value = true; // eslint-disable-line functional/immutable-data
-    const nextExpanded = !expanded;
-    setExpanded(nextExpanded);
-    onPress?.(nextExpanded);
-  };
-
-  const animatedChevron = useAnimatedStyle(
-    () => ({
-      transform: [
-        {
-          rotate: expanded
-            ? withSpring(`180deg`, IOSpringValues.accordion)
-            : withSpring(`0deg`, IOSpringValues.accordion)
-        }
-      ]
-    }),
-    [expanded]
-  );
 
   return (
     <View
@@ -140,12 +60,11 @@ export const AccordionItem = ({
       ]}
     >
       <TouchableWithoutFeedback
-        testID="AccordionToggleButton"
         accessible={true}
         accessibilityRole="button"
         accessibilityState={{ expanded }}
         accessibilityLabel={accessibilityLabel ?? title}
-        onPress={onItemPress}
+        onPress={toggleAccordion}
       >
         <View style={styles.textContainer}>
           <View
@@ -171,7 +90,7 @@ export const AccordionItem = ({
               <H6 color={theme["textBody-default"]}>{title}</H6>
             </View>
           </View>
-          <Animated.View style={animatedChevron}>
+          <Animated.View style={iconAnimatedStyle}>
             <Icon
               name="chevronBottom"
               color={theme["interactiveElem-default"]}
@@ -180,9 +99,12 @@ export const AccordionItem = ({
         </View>
       </TouchableWithoutFeedback>
 
-      <AccordionBody expanded={expanded} animationEnabled={animationEnabled}>
-        {typeof body === "string" ? <Body>{body}</Body> : body}
-      </AccordionBody>
+      <Animated.View style={bodyAnimatedStyle}>
+        <View style={bodyInnerStyle} onLayout={onBodyLayout}>
+          {typeof body === "string" ? <Body>{body}</Body> : body}
+        </View>
+      </Animated.View>
+
       {/* This gradient adds a smooth end to the content. If it is missing,
       the content will be cut sharply during the height transition. */}
       <LinearGradient
@@ -209,15 +131,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: IOAccordionRadius,
     borderCurve: "continuous"
-  },
-  accordionCollapsableContainer: {
-    overflow: "hidden"
-  },
-  accordionBodyContainer: {
-    position: "absolute",
-    padding: accordionBodySpacing,
-    paddingTop: 0,
-    width: "100%"
   },
   textContainer: {
     padding: accordionBodySpacing,

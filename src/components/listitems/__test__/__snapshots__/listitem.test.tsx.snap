@@ -1686,59 +1686,39 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (controlled) 1`
     ]
   }
 >
-  <View
-    accessibilityLabel="Patente di guida"
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": false,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "padding": 16,
-      }
-    }
-    testID="AccordionToggleButton"
+  <RNGestureHandlerButton
+    collapsable={false}
+    delayLongPress={600}
+    enabled={true}
+    exclusive={true}
+    handlerTag={1}
+    handlerType="NativeViewGestureHandler"
+    onGestureEvent={[Function]}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    onHandlerStateChange={[Function]}
+    rippleColor={0}
+    touchSoundDisabled={false}
   >
     <View
-      style={
-        [
-          {
-            "flexDirection": "row",
-          },
-          {
-            "alignItems": "center",
-          },
-          {
-            "flexShrink": 1,
-            "marginRight": 8,
-          },
-        ]
+      accessibilityLabel="Patente di guida"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "expanded": false,
+        }
       }
+      accessible={true}
+      collapsable={false}
+      style={{}}
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
         style={
           {
-            "flexShrink": 1,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 16,
           }
         }
       >
@@ -1762,81 +1742,81 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (controlled) 1`
         >
           Patente di guida
         </Text>
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "transform": [
+        <View
+          style={
             {
-              "rotate": "0deg",
-            },
-          ],
-        }
-      }
-    >
-      <RNSVGSvgView
-        accessibilityElementsHidden={true}
-        accessibilityLabel=""
-        accessible={false}
-        align="xMidYMid"
-        bbHeight={24}
-        bbWidth={24}
-        focusable={false}
-        height={24}
-        importantForAccessibility="no-hide-descendants"
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
-        style={
-          [
-            {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            {
-              "color": "#0B3EE3",
-            },
-            {
-              "flex": 0,
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-        tintColor="#0B3EE3"
-        vbHeight={24}
-        vbWidth={24}
-        width={24}
-      >
-        <RNSVGGroup
-          fill={
-            {
-              "payload": 4278190080,
-              "type": 0,
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
             }
           }
         >
-          <RNSVGPath
-            clipRule={0}
-            d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
-            fill={
-              {
-                "type": 2,
-              }
-            }
-            fillRule={0}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            accessibilityLabel=""
+            accessible={false}
+            align="xMidYMid"
+            bbHeight={24}
+            bbWidth={24}
+            focusable={false}
+            height={24}
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               [
-                "fill",
-                "fillRule",
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "color": "#0B3EE3",
+                },
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
               ]
             }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
+            tintColor="#0B3EE3"
+            vbHeight={24}
+            vbWidth={24}
+            width={24}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
+                fill={
+                  {
+                    "type": 2,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
     </View>
-  </View>
+  </RNGestureHandlerButton>
   <View
     style={
       [
@@ -1852,14 +1832,17 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (controlled) 1`
     <View
       onLayout={[Function]}
       style={
-        {
-          "padding": 16,
-          "paddingTop": 0,
-          "position": "absolute",
-          "width": "100%",
-        }
+        [
+          {
+            "padding": 16,
+            "paddingTop": 0,
+            "position": "absolute",
+          },
+          {
+            "width": "100%",
+          },
+        ]
       }
-      testID="AccordionBodyContainer"
     >
       <View
         accessibilityLabel="Mario Rossi, Nome e cognome"
@@ -2225,59 +2208,39 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (uncontrolled) 
     ]
   }
 >
-  <View
-    accessibilityLabel="Patente di guida"
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": false,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "padding": 16,
-      }
-    }
-    testID="AccordionToggleButton"
+  <RNGestureHandlerButton
+    collapsable={false}
+    delayLongPress={600}
+    enabled={true}
+    exclusive={true}
+    handlerTag={2}
+    handlerType="NativeViewGestureHandler"
+    onGestureEvent={[Function]}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    onHandlerStateChange={[Function]}
+    rippleColor={0}
+    touchSoundDisabled={false}
   >
     <View
-      style={
-        [
-          {
-            "flexDirection": "row",
-          },
-          {
-            "alignItems": "center",
-          },
-          {
-            "flexShrink": 1,
-            "marginRight": 8,
-          },
-        ]
+      accessibilityLabel="Patente di guida"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "expanded": false,
+        }
       }
+      accessible={true}
+      collapsable={false}
+      style={{}}
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
         style={
           {
-            "flexShrink": 1,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 16,
           }
         }
       >
@@ -2301,81 +2264,81 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (uncontrolled) 
         >
           Patente di guida
         </Text>
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "transform": [
+        <View
+          style={
             {
-              "rotate": "0deg",
-            },
-          ],
-        }
-      }
-    >
-      <RNSVGSvgView
-        accessibilityElementsHidden={true}
-        accessibilityLabel=""
-        accessible={false}
-        align="xMidYMid"
-        bbHeight={24}
-        bbWidth={24}
-        focusable={false}
-        height={24}
-        importantForAccessibility="no-hide-descendants"
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
-        style={
-          [
-            {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            {
-              "color": "#0B3EE3",
-            },
-            {
-              "flex": 0,
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-        tintColor="#0B3EE3"
-        vbHeight={24}
-        vbWidth={24}
-        width={24}
-      >
-        <RNSVGGroup
-          fill={
-            {
-              "payload": 4278190080,
-              "type": 0,
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
             }
           }
         >
-          <RNSVGPath
-            clipRule={0}
-            d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
-            fill={
-              {
-                "type": 2,
-              }
-            }
-            fillRule={0}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            accessibilityLabel=""
+            accessible={false}
+            align="xMidYMid"
+            bbHeight={24}
+            bbWidth={24}
+            focusable={false}
+            height={24}
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               [
-                "fill",
-                "fillRule",
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "color": "#0B3EE3",
+                },
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
               ]
             }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
+            tintColor="#0B3EE3"
+            vbHeight={24}
+            vbWidth={24}
+            width={24}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
+                fill={
+                  {
+                    "type": 2,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
     </View>
-  </View>
+  </RNGestureHandlerButton>
   <View
     style={
       [
@@ -2391,14 +2354,17 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (uncontrolled) 
     <View
       onLayout={[Function]}
       style={
-        {
-          "padding": 16,
-          "paddingTop": 0,
-          "position": "absolute",
-          "width": "100%",
-        }
+        [
+          {
+            "padding": 16,
+            "paddingTop": 0,
+            "position": "absolute",
+          },
+          {
+            "width": "100%",
+          },
+        ]
       }
-      testID="AccordionBodyContainer"
     >
       <View
         accessibilityLabel="Mario Rossi, Nome e cognome"
@@ -2695,59 +2661,39 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (unselectable i
     ]
   }
 >
-  <View
-    accessibilityLabel="Patente di guida"
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": false,
-        "selected": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "padding": 16,
-      }
-    }
-    testID="AccordionToggleButton"
+  <RNGestureHandlerButton
+    collapsable={false}
+    delayLongPress={600}
+    enabled={true}
+    exclusive={true}
+    handlerTag={3}
+    handlerType="NativeViewGestureHandler"
+    onGestureEvent={[Function]}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    onHandlerStateChange={[Function]}
+    rippleColor={0}
+    touchSoundDisabled={false}
   >
     <View
-      style={
-        [
-          {
-            "flexDirection": "row",
-          },
-          {
-            "alignItems": "center",
-          },
-          {
-            "flexShrink": 1,
-            "marginRight": 8,
-          },
-        ]
+      accessibilityLabel="Patente di guida"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "expanded": false,
+        }
       }
+      accessible={true}
+      collapsable={false}
+      style={{}}
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
         style={
           {
-            "flexShrink": 1,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 16,
           }
         }
       >
@@ -2771,81 +2717,81 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (unselectable i
         >
           Patente di guida
         </Text>
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "transform": [
+        <View
+          style={
             {
-              "rotate": "0deg",
-            },
-          ],
-        }
-      }
-    >
-      <RNSVGSvgView
-        accessibilityElementsHidden={true}
-        accessibilityLabel=""
-        accessible={false}
-        align="xMidYMid"
-        bbHeight={24}
-        bbWidth={24}
-        focusable={false}
-        height={24}
-        importantForAccessibility="no-hide-descendants"
-        meetOrSlice={0}
-        minX={0}
-        minY={0}
-        style={
-          [
-            {
-              "backgroundColor": "transparent",
-              "borderWidth": 0,
-            },
-            {
-              "color": "#0B3EE3",
-            },
-            {
-              "flex": 0,
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-        tintColor="#0B3EE3"
-        vbHeight={24}
-        vbWidth={24}
-        width={24}
-      >
-        <RNSVGGroup
-          fill={
-            {
-              "payload": 4278190080,
-              "type": 0,
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
             }
           }
         >
-          <RNSVGPath
-            clipRule={0}
-            d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
-            fill={
-              {
-                "type": 2,
-              }
-            }
-            fillRule={0}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            accessibilityLabel=""
+            accessible={false}
+            align="xMidYMid"
+            bbHeight={24}
+            bbWidth={24}
+            focusable={false}
+            height={24}
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               [
-                "fill",
-                "fillRule",
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "color": "#0B3EE3",
+                },
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
               ]
             }
-          />
-        </RNSVGGroup>
-      </RNSVGSvgView>
+            tintColor="#0B3EE3"
+            vbHeight={24}
+            vbWidth={24}
+            width={24}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
+                fill={
+                  {
+                    "type": 2,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
     </View>
-  </View>
+  </RNGestureHandlerButton>
   <View
     style={
       [
@@ -2861,14 +2807,17 @@ exports[`Test List Item Components CollapsibleListItems Snapshot (unselectable i
     <View
       onLayout={[Function]}
       style={
-        {
-          "padding": 16,
-          "paddingTop": 0,
-          "position": "absolute",
-          "width": "100%",
-        }
+        [
+          {
+            "padding": 16,
+            "paddingTop": 0,
+            "position": "absolute",
+          },
+          {
+            "width": "100%",
+          },
+        ]
       }
-      testID="AccordionBodyContainer"
     >
       <View
         style={
