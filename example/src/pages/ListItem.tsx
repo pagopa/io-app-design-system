@@ -17,6 +17,7 @@ import {
   ListItemTransaction,
   ListItemTransactionBadge,
   ListItemTransactionLogo,
+  CollapsibleListItems,
   VSpacer,
   useIOExperimentalDesign
 } from "@pagopa/io-app-design-system";
@@ -69,6 +70,9 @@ export const ListItems = () => {
         ListItemRadioWithAmount
       </H2>
       {renderListItemRadioWithAmount()}
+
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>CollapsibleListItems</H2>
+      {renderCollapsibleListItems()}
       <VSpacer size={40} />
     </Screen>
   );
@@ -775,4 +779,53 @@ const renderListItemRadioWithAmount = () => (
       />
     </View>
   </ComponentViewerBox>
+);
+
+const renderCollapsibleListItems = () => (
+  <>
+    <ComponentViewerBox name="CollapsibleListItems · Default collapsed & unselectable">
+      <CollapsibleListItems
+        defaultExpanded={false}
+        selectionEnabled={false}
+        title="Patente di guida"
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          },
+          {
+            id: "birthplace",
+            title: "Roma",
+            description: "Luogo di nascita"
+          }
+        ]}
+      />
+    </ComponentViewerBox>
+
+    <ComponentViewerBox name="CollapsibleListItems · Default expanded & selectable">
+      <CollapsibleListItems
+        defaultExpanded
+        selectionEnabled
+        title="Patente di guida"
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          },
+          {
+            id: "birthplace",
+            title: "Roma",
+            description: "Luogo di nascita"
+          },
+          {
+            id: "birthdate",
+            title: "01/01/1970",
+            description: "Data di nascita"
+          }
+        ]}
+      />
+    </ComponentViewerBox>
+  </>
 );
