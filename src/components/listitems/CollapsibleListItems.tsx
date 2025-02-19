@@ -31,7 +31,7 @@ type Props = {
   selectedItemIds?: Array<string>;
   /**
    * Whether the accordion starts expanded.
-   * @default true
+   * @default false
    */
   defaultExpanded?: boolean;
   /**
