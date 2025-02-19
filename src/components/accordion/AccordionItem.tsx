@@ -7,7 +7,9 @@ import {
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Animated, {
+  SharedValue,
   useAnimatedStyle,
+  useSharedValue,
   withSpring
 } from "react-native-reanimated";
 import {
@@ -34,6 +36,7 @@ export type AccordionItem = {
 type AccordionBody = {
   children: React.ReactNode;
   expanded: boolean;
+  animationEnabled: SharedValue<boolean>;
 };
 
 const accordionBodySpacing: IOSpacingScale = 16;
@@ -46,20 +49,28 @@ const iconSize: IOIconSizeScale = 24;
 /* The code below is a re-adaptation of Dima Portenko's code:
 https://github.com/dimaportenko/reanimated-collapsable-card-tutorial
 */
-export const AccordionBody = ({ children, expanded }: AccordionBody) => {
-  const [height, setHeight] = useState(0);
+export const AccordionBody = ({
+  children,
+  expanded,
+  animationEnabled
+}: AccordionBody) => {
+  const height = useSharedValue(0);
 
   const onLayout = (event: LayoutChangeEvent) => {
     const { height: onLayoutHeight } = event.nativeEvent.layout;
-
-    if (onLayoutHeight > 0 && height !== onLayoutHeight) {
-      setHeight(onLayoutHeight);
+    if (onLayoutHeight > 0 && height.value !== onLayoutHeight) {
+      height.value = onLayoutHeight; // eslint-disable-line functional/immutable-data
     }
   };
 
-  const animatedHeightStyle = useAnimatedStyle(() => ({
-    height: withSpring(expanded ? height : 0, IOSpringValues.accordion)
-  }));
+  const animatedHeightStyle = useAnimatedStyle(() => {
+    const nextHeight = expanded ? height.value : 0;
+    return {
+      height: animationEnabled.value
+        ? withSpring(nextHeight, IOSpringValues.accordion)
+        : nextHeight
+    };
+  });
 
   return (
     <Animated.View
@@ -83,6 +94,8 @@ export const AccordionItem = ({
 }: AccordionItem) => {
   const theme = useIOTheme();
   const [expanded, setExpanded] = useState(defaultExpanded);
+  // Disable animation when starting expanded
+  const animationEnabled = useSharedValue(!defaultExpanded);
 
   // Visual attributes
   const accordionBackground: IOColors =
@@ -91,6 +104,8 @@ export const AccordionItem = ({
   const accordionIconColor: IOColors = theme["icon-decorative"];
 
   const onItemPress = () => {
+    // Re-enable animation when the user interacts with the accordion
+    animationEnabled.value = true; // eslint-disable-line functional/immutable-data
     const nextExpanded = !expanded;
     setExpanded(nextExpanded);
     onPress?.(nextExpanded);
@@ -159,7 +174,7 @@ export const AccordionItem = ({
         </View>
       </TouchableWithoutFeedback>
 
-      <AccordionBody expanded={expanded}>
+      <AccordionBody expanded={expanded} animationEnabled={animationEnabled}>
         {typeof body === "string" ? <Body>{body}</Body> : body}
       </AccordionBody>
       {/* This gradient adds a smooth end to the content. If it is missing,
