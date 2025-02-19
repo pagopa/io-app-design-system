@@ -97,7 +97,7 @@ export const TextInputValidation = forwardRef<
           triggerHaptic("notificationSuccess");
         }
       },
-      []
+      [accessibilityErrorLabel]
     );
 
     const validateInput = useCallback(() => {
