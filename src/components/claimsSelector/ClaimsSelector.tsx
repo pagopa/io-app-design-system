@@ -17,7 +17,7 @@ import { Divider } from "../divider";
 import { BodySmall, H6 } from "../typography";
 import { VSpacer } from "../spacer";
 import { Icon } from "../icons";
-import { ListItemCheckbox } from "./ListItemCheckbox";
+import { ListItemCheckbox } from "../listitems";
 
 const accordionBodySpacing: IOSpacingScale = 16;
 
@@ -61,7 +61,7 @@ type Item = {
   description?: string;
 };
 
-export const CollapsibleListItems = ({
+export const ClaimsSelector = ({
   title,
   items,
   defaultExpanded,
