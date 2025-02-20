@@ -15,9 +15,9 @@ export const MdH2 = forwardRef<View, TypographicStyleProps>(
       ...props,
       font: isExperimental ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
-      size: 16,
+      size: 18,
       lineHeight: 24,
-      color: customColor ?? theme["textHeading-tertiary"]
+      color: customColor ?? theme["textHeading-default"]
     };
 
     return (
