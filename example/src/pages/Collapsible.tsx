@@ -1,6 +1,7 @@
 import {
   AccordionItem,
   Body,
+  ClaimsSelector,
   H3,
   H5,
   IOColors,
@@ -13,6 +14,8 @@ import {
 import * as React from "react";
 import { FlatList, ListRenderItemInfo, View } from "react-native";
 import { Screen } from "../components/Screen";
+import { ComponentViewerBox } from "../components/ComponentViewerBox";
+
 
 const assistanceData: Array<AccordionItem> = [
   {
@@ -56,12 +59,12 @@ const assistanceData: Array<AccordionItem> = [
   }
 ];
 
-export const Accordion = () => {
-  // const renderAccordionHeader = () => (
-  //   <View style={{ marginTop: 16, marginBottom: 24 }}>
-  //     <H1 color={theme["textHeading-default"]}>Accordion</H1>
-  //   </View>
-  // );
+export const Collapsible = () => {
+  const renderAccordionHeader = () => (
+    <View style={{ marginBottom: 16 }}>
+      <H3>Accordion</H3>
+    </View>
+  );
 
   const renderItem = ({ item }: ListRenderItemInfo<AccordionItem>) => (
     <AccordionItem title={item.title} body={item.body} icon={item.icon} />
@@ -76,12 +79,12 @@ export const Accordion = () => {
           flexGrow: 1,
           paddingTop: IOVisualCostants.appMarginDefault
         }}
-        // ListHeaderComponent={renderAccordionHeader}
+        ListHeaderComponent={renderAccordionHeader}
         ItemSeparatorComponent={() => <VSpacer size={8} />}
         keyExtractor={(item, index) => `${item.title}-${index}`}
         renderItem={renderItem}
       />
-
+      {renderClaimsSelector()}
       {renderRawAccordion()}
     </Screen>
   );
@@ -130,4 +133,57 @@ const renderRawAccordion = () => (
       </RawAccordion>
     </View>
   </>
+);
+
+
+const renderClaimsSelector = () => (
+  <View>
+    <VSpacer size={40} />
+    <H3>ClaimsSelector</H3>
+    <VSpacer size={16} />
+    <ComponentViewerBox name="ClaimsSelector · Default collapsed & unselectable">
+      <ClaimsSelector
+        defaultExpanded={false}
+        selectionEnabled={false}
+        title="Patente di guida"
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          },
+          {
+            id: "birthplace",
+            title: "Roma",
+            description: "Luogo di nascita"
+          }
+        ]}
+      />
+    </ComponentViewerBox>
+
+    <ComponentViewerBox name="ClaimsSelector · Default expanded & selectable">
+      <ClaimsSelector
+        defaultExpanded
+        selectionEnabled
+        title="Patente di guida"
+        items={[
+          {
+            id: "name",
+            title: "Mario Rossi",
+            description: "Nome e cognome"
+          },
+          {
+            id: "birthplace",
+            title: "Roma",
+            description: "Luogo di nascita"
+          },
+          {
+            id: "birthdate",
+            title: "01/01/1970",
+            description: "Data di nascita"
+          }
+        ]}
+      />
+    </ComponentViewerBox>
+  </View>
 );
