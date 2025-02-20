@@ -7,17 +7,14 @@ import {
   hexToRgba,
   IOAccordionRadius,
   IOColors,
-  IOSelectionListItemStyles,
-  IOSelectionListItemVisualParams,
   IOSpacingScale,
   useIOTheme
 } from "../../core";
 import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
 import { Divider } from "../divider";
-import { BodySmall, H6 } from "../typography";
-import { VSpacer } from "../spacer";
+import { H6 } from "../typography";
 import { Icon } from "../icons";
-import { ListItemCheckbox } from "../listitems";
+import { ListItemCheckbox, ListItemInfo } from "../listitems";
 
 const accordionBodySpacing: IOSpacingScale = 16;
 
@@ -58,7 +55,7 @@ type Props = {
 type Item = {
   id: string;
   title: string;
-  description?: string;
+  description: string;
 };
 
 export const ClaimsSelector = ({
@@ -106,7 +103,7 @@ export const ClaimsSelector = ({
           }
         />
       ) : (
-        <SimpleListItem value={item.title} description={item.description} />
+        <ListItemInfo value={item.title} label={item.description} />
       )}
     </Fragment>
   ));
@@ -157,29 +154,6 @@ export const ClaimsSelector = ({
           IOColors[accordionBackground]
         ]}
       />
-    </View>
-  );
-};
-
-type SimpleListItemProps = {
-  value: string;
-  description?: string;
-};
-
-const SimpleListItem = ({ value, description }: SimpleListItemProps) => {
-  const theme = useIOTheme();
-
-  return (
-    <View style={IOSelectionListItemStyles.listItem}>
-      <H6 color={theme["textBody-default"]}>{value}</H6>
-      {description && (
-        <View>
-          <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
-          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {description}
-          </BodySmall>
-        </View>
-      )}
     </View>
   );
 };

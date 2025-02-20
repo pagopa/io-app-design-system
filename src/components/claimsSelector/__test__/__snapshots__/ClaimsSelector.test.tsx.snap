@@ -1150,6 +1150,8 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       }
     >
       <View
+        accessibilityLabel="Nome e cognome; Mario Rossi"
+        accessible={true}
         style={
           {
             "marginHorizontal": -24,
@@ -1158,54 +1160,73 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           }
         }
       >
-        <Text
-          allowFontScaling={true}
-          dynamicTypeRamp="headline"
-          maxFontSizeMultiplier={1.5}
+        <View
           style={
             [
-              {},
               {
-                "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
-                "fontStyle": "normal",
-                "fontWeight": "600",
-                "lineHeight": 24,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+              {
+                "columnGap": 12,
               },
             ]
           }
         >
-          Mario Rossi
-        </Text>
-        <View>
           <View
             style={
               {
-                "height": 4,
+                "flex": 1,
               }
             }
-          />
-          <Text
-            allowFontScaling={true}
-            dynamicTypeRamp="footnote"
-            maxFontSizeMultiplier={1.5}
-            style={
-              [
-                {},
-                {
-                  "color": "#555C70",
-                  "fontFamily": "Titillium Sans Pro",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 21,
-                },
-              ]
-            }
           >
-            Nome e cognome
-          </Text>
+            <View
+              accessible={true}
+            >
+              <Text
+                allowFontScaling={true}
+                dynamicTypeRamp="footnote"
+                maxFontSizeMultiplier={1.5}
+                style={
+                  [
+                    {},
+                    {
+                      "color": "#555C70",
+                      "fontFamily": "Titillium Sans Pro",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "lineHeight": 21,
+                    },
+                  ]
+                }
+              >
+                Nome e cognome
+              </Text>
+              <Text
+                allowFontScaling={true}
+                dynamicTypeRamp="headline"
+                maxFontSizeMultiplier={1.5}
+                numberOfLines={2}
+                style={
+                  [
+                    {},
+                    {
+                      "color": "#0E0F13",
+                      "fontFamily": "Titillium Sans Pro",
+                      "fontSize": 17,
+                      "fontStyle": "normal",
+                      "fontWeight": "600",
+                      "lineHeight": 24,
+                    },
+                  ]
+                }
+              >
+                Mario Rossi
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>
