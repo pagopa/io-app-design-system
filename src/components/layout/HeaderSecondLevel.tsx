@@ -13,6 +13,8 @@ import Animated, {
   SharedValue,
   interpolate,
   interpolateColor,
+  runOnJS,
+  useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
   useScrollViewOffset,
@@ -268,6 +270,31 @@ export const HeaderSecondLevel = ({
       : 1
   }));
 
+  const [importantForAccessibility, setImportantForAccessibility] =
+    React.useState<"yes" | "no-hide-descendants">("yes");
+
+  // Updates accessibility state based on scroll position.
+  useAnimatedReaction(
+    () =>
+      enableDiscreteTransition
+        ? scrollOffset.value
+        : scrollValues?.contentOffsetY.value,
+    (currentOffset, previousOffset) => {
+      if (currentOffset !== previousOffset) {
+        const offsetToCompare = enableDiscreteTransition
+          ? 0
+          : scrollValues?.triggerOffset ?? 0;
+        // Sets accessibility to "yes" when scrolled past the threshold, else hides it from screen readers.
+        const newValue =
+          (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
+            ? "yes"
+            : "no-hide-descendants";
+        runOnJS(setImportantForAccessibility)(newValue);
+      }
+    },
+    [scrollValues, enableDiscreteTransition]
+  );
+
   return (
     <Animated.View
       accessibilityRole="header"
@@ -302,11 +329,7 @@ export const HeaderSecondLevel = ({
         <View
           ref={titleRef}
           accessibilityElementsHidden={!isTitleAccessible}
-          importantForAccessibility={
-            isTitleAccessible && !ignoreAccessibilityCheck
-              ? "yes"
-              : "no-hide-descendants"
-          }
+          importantForAccessibility={importantForAccessibility}
           accessible={isTitleAccessible}
           accessibilityLabel={title}
           accessibilityRole="header"
