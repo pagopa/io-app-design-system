@@ -15,7 +15,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Accordion } from "../pages/Accordion";
+import { Collapsible } from "../pages/Collapsible";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
@@ -192,11 +192,11 @@ const AppNavigator = () => {
             }}
           />
           <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.ACCORDION.route}
-            component={Accordion}
+            name={APP_ROUTES.COMPONENTS.COLLAPSIBLE.route}
+            component={Collapsible}
             options={{
               presentation: "modal",
-              headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
+              headerTitle: APP_ROUTES.COMPONENTS.COLLAPSIBLE.title,
               headerBackTitleVisible: false
             }}
           />
