@@ -30,8 +30,6 @@ export type IOAlertSpacing = (typeof IOAlertSpacing)[number];
 // Values used in the `<Banner>` component
 export type IOBannerSpacing = Extract<IOSpacingScale, 12 | 16>;
 export const IOBannerBigSpacing: IOBannerSpacing = 16;
-export const IOBannerSmallHSpacing: IOBannerSpacing = 16;
-export const IOBannerSmallVSpacing: IOBannerSpacing = 12;
 
 // Values used in the `<Tag>` component
 export type IOTagSpacing = Extract<IOSpacingScale, 6 | 8>;

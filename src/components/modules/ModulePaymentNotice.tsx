@@ -85,7 +85,7 @@ const ModulePaymentNoticeContent = ({
       case "canceled":
         return <Badge variant="default" text={badgeText} />;
       case "in-progress":
-        return <Badge variant="info" text={badgeText} />;
+        return <Badge variant="default" text={badgeText} />;
     }
   };
 

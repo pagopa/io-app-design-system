@@ -2,7 +2,7 @@ import React from "react";
 import Svg, { Path } from "react-native-svg";
 import { SVGPictogramProps } from "../types";
 
-const PictogramUmbrellaNew = ({
+const PictogramUmbrella = ({
   size,
   colorValues,
   ...props
@@ -51,4 +51,4 @@ const PictogramUmbrellaNew = ({
   </Svg>
 );
 
-export default PictogramUmbrellaNew;
+export default PictogramUmbrella;

@@ -14,9 +14,9 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
+import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
 import { Platform, Alert as RNAlert, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
@@ -194,53 +194,6 @@ export const DSAlert = () => {
 
       <VSpacer size={40} />
 
-      <H3 style={{ marginBottom: 16 }}>Title + Content</H3>
-
-      <Alert
-        ref={viewRef}
-        variant="error"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="warning"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="info"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="success"
-        title="Alert title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer />
-
-      <Alert
-        ref={viewRef}
-        variant="info"
-        title="A very very very looooooooooong title"
-        content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
-      />
-
-      <VSpacer size={40} />
-
       <H2 style={{ marginBottom: 16 }}>Content + Action</H2>
 
       <Alert
@@ -325,16 +278,6 @@ export const DSAlert = () => {
           fullWidth
           ref={viewRef}
           variant="success"
-          content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
-        />
-
-        <VSpacer />
-
-        <Alert
-          fullWidth
-          ref={viewRef}
-          variant="info"
-          title="Alert title"
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
 

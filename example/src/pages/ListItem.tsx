@@ -13,12 +13,10 @@ import {
   ListItemNavAlert,
   ListItemRadio,
   ListItemRadioWithAmount,
-  ListItemSwitch,
   ListItemTransaction,
   ListItemTransactionBadge,
   ListItemTransactionLogo,
-  VSpacer,
-  useIOExperimentalDesign
+  VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
@@ -33,46 +31,35 @@ const onButtonLongPress = () => {
   Alert.alert("Alert", "Long press triggered!");
 };
 
-export const ListItems = () => {
-  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+export const ListItems = () => (
+  <Screen>
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemNav</H2>
+    {renderListItemNav()}
 
-  return (
-    <Screen>
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemNav</H2>
-      <ListItemSwitch
-        label="Abilita Design Sperimentale"
-        value={isExperimental}
-        onSwitchValueChange={setExperimental}
-      />
-      {renderListItemNav()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfoCopy</H2>
+    {renderListItemInfoCopy()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfoCopy</H2>
-      {renderListItemInfoCopy()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfo</H2>
+    {renderListItemInfo()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemInfo</H2>
-      {renderListItemInfo()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemHeader</H2>
+    {renderListItemHeader()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemHeader</H2>
-      {renderListItemHeader()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAmount</H2>
+    {renderListItemAmount()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAmount</H2>
-      {renderListItemAmount()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAction</H2>
+    {renderListItemAction()}
 
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemAction</H2>
-      {renderListItemAction()}
-
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemTransaction</H2>
-      {renderListItemTransaction()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadio</H2>
-      {renderListItemRadio()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>
-        ListItemRadioWithAmount
-      </H2>
-      {renderListItemRadioWithAmount()}
-      <VSpacer size={40} />
-    </Screen>
-  );
-};
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemTransaction</H2>
+    {renderListItemTransaction()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadio</H2>
+    {renderListItemRadio()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ListItemRadioWithAmount</H2>
+    {renderListItemRadioWithAmount()}
+    <VSpacer size={40} />
+  </Screen>
+);
 
 const renderListItemNav = () => (
   <>
@@ -151,7 +138,7 @@ const renderListItemNav = () => (
               }}
             >
               <H6>Nome del valoreeeeee eeeeeeeeee</H6>
-              <Badge text={"3"} variant="purple" />
+              <Badge text={"3"} variant="cgn" />
             </View>
           }
           onPress={() => {
@@ -187,7 +174,7 @@ const renderListItemNav = () => (
           topElement={{
             badgeProps: {
               text: "Novità",
-              variant: "blue"
+              variant: "default"
             }
           }}
         />
@@ -200,7 +187,7 @@ const renderListItemNav = () => (
           topElement={{
             badgeProps: {
               text: "Novità",
-              variant: "blue"
+              variant: "default"
             }
           }}
           hideChevron
@@ -596,7 +583,7 @@ const transactionStatusArray: Array<mockTransactionStatusData> = [
   },
   {
     badge: {
-      variant: "info",
+      variant: "default",
       text: "pending"
     },
     asset: { uri: organizationLogoURI.imageSource }
@@ -610,7 +597,7 @@ const transactionStatusArray: Array<mockTransactionStatusData> = [
   },
   {
     badge: {
-      variant: "lightBlue",
+      variant: "default",
       text: "reversal"
     },
     asset: "applePay"

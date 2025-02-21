@@ -15,13 +15,10 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIOTheme } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
-import {
-  IOSelectionTickLegacyVisualParams,
-  IOSelectionTickVisualParams
-} from "../../core/IOStyles";
+import { IOSelectionTickVisualParams } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
@@ -63,24 +60,8 @@ export const AnimatedCheckbox = ({
   const { dynamicFontScale } = useIOFontDynamicScale();
   const isChecked = checked ?? false;
 
-  const { isExperimental } = useIOExperimentalDesign();
-  const borderColorOffState = IOColors[theme["selection-border-off"]];
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyBorderColorOffState =
-    IOColors[IOSelectionTickLegacyVisualParams.borderColorOffState];
-  const borderColorProp = isExperimental
-    ? borderColorOffState
-    : legacyBorderColorOffState;
-
-  const backgroundColorOnState = IOColors[theme["selection-background-on"]];
-
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyBackgroundColorOnState =
-    IOColors[IOSelectionTickLegacyVisualParams.bgColorOnState];
-  const backgroundColor = isExperimental
-    ? backgroundColorOnState
-    : legacyBackgroundColorOnState;
+  const borderColor = IOColors[theme["selection-border-off"]];
+  const backgroundColor = IOColors[theme["selection-background-on"]];
 
   const squareAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
@@ -128,13 +109,7 @@ export const AnimatedCheckbox = ({
       testID="AnimatedCheckboxInput"
     >
       <View
-        style={[
-          styles.checkboxBorder,
-          checkboxSizeStyle,
-          {
-            borderColor: borderColorProp
-          }
-        ]}
+        style={[styles.checkboxBorder, checkboxSizeStyle, { borderColor }]}
       />
       <Animated.View
         style={[

@@ -36,7 +36,7 @@ export const WithBadge: Story = {
       type: "badge",
       componentProps: {
         text: "Badge",
-        variant: "info"
+        variant: "default"
       }
     },
     accessibilityLabel: "Tap to trigger test alert"

@@ -3,21 +3,12 @@ import React, {
   PropsWithChildren,
   useCallback,
   useContext,
-  useMemo,
   useState
 } from "react";
 import { Appearance, ColorSchemeName } from "react-native";
-import {
-  IOTheme,
-  IOThemeDark,
-  IOThemeLight,
-  IOThemeLightLegacy
-} from "./IOColors";
-import { useIOExperimentalDesign } from "./IODSExperimentalContextProvider";
+import { IOTheme, IOThemeDark, IOThemeLight } from "./IOColors";
 
 export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
-export const legacyIOThemes = { light: IOThemeLightLegacy, dark: IOThemeDark };
-// type IOThemeType = keyof typeof IOThemes | null;
 
 type IOThemeContextType = {
   themeType: ColorSchemeName;
@@ -48,23 +39,17 @@ export const IOThemeContextProvider = ({
   const [currentTheme, setCurrentTheme] = useState<ColorSchemeName>(
     theme ?? Appearance.getColorScheme()
   );
-  const { isExperimental } = useIOExperimentalDesign();
 
   const handleThemeChange = useCallback((newTheme: ColorSchemeName) => {
     setCurrentTheme(newTheme);
     Appearance.setColorScheme(newTheme);
   }, []);
 
-  const themeMap = useMemo(
-    () => (isExperimental ? IOThemes : legacyIOThemes),
-    [isExperimental]
-  );
-
   return (
     <IOThemeContext.Provider
       value={{
         themeType: currentTheme,
-        theme: themeMap[currentTheme ?? "light"],
+        theme: IOThemes[currentTheme ?? "light"],
         setTheme: handleThemeChange
       }}
     >

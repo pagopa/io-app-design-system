@@ -13,7 +13,6 @@ describe("Test Banner Components", () => {
     const advice = TestRenderer.create(
       <Banner
         color="neutral"
-        size="big"
         title="Banner title"
         pictogramName="charity"
         action="Action text"
@@ -30,7 +29,6 @@ describe("Test Banner Components - Experimental Enabled", () => {
     const advice = TestRendererWithExperimentalEnabledContextProvider(
       <Banner
         color="neutral"
-        size="big"
         title="Banner title"
         pictogramName="charity"
         action="Action text"

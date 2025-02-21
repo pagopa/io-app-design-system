@@ -50,7 +50,7 @@ describe("Test Typography Components", () => {
     const h4Default = TestRenderer.create(<H4>Text</H4>).toJSON();
     expect(h4Default).toMatchSnapshot();
     const h4Dblue = TestRenderer.create(
-      <H4 color={"blue-500"}>Text</H4>
+      <H4 color={"blueIO-500"}>Text</H4>
     ).toJSON();
     expect(h4Dblue).toMatchSnapshot();
     const h4white = TestRenderer.create(<H4 color={"white"}>Text</H4>).toJSON();
@@ -65,7 +65,7 @@ describe("Test Typography Components", () => {
     ).toJSON();
     expect(h5Defaultbluegrey).toMatchSnapshot();
     const h5Defaultblue = TestRenderer.create(
-      <H5 color={"blue-500"}>Text</H5>
+      <H5 color={"blueIO-500"}>Text</H5>
     ).toJSON();
     expect(h5Defaultblue).toMatchSnapshot();
     const h5Defaultwhite = TestRenderer.create(
@@ -95,7 +95,7 @@ describe("Test Typography Components", () => {
     type BodyColors = React.ComponentProps<typeof BodySmall>["color"];
 
     const allowedColors: ReadonlyArray<BodyColors> = [
-      "blue-500",
+      "blueIO-500",
       "grey-700",
       "error-600",
       "white"
