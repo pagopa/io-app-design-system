@@ -1183,6 +1183,11 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           >
             <View
               accessible={true}
+              style={
+                {
+                  "flexDirection": "column-reverse",
+                }
+              }
             >
               <Text
                 allowFontScaling={true}
