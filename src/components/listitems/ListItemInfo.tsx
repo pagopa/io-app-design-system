@@ -60,6 +60,7 @@ export type ListItemInfo = WithTestID<{
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
+  reversed?: boolean;
 }> &
   GraphicProps &
   InteractiveProps;
@@ -70,6 +71,7 @@ export const ListItemInfo = ({
   label,
   value,
   numberOfLines = 2,
+  reversed = false,
   icon,
   paymentLogoIcon,
   endElement,
@@ -99,7 +101,10 @@ export const ListItemInfo = ({
 
   const itemInfoTextComponent = useMemo(
     () => (
-      <View accessible={Platform.OS === "ios"}>
+      <View
+        accessible={Platform.OS === "ios"}
+        style={{ flexDirection: reversed ? "column-reverse" : "column" }}
+      >
         <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
           {label}
         </BodySmall>
@@ -112,7 +117,7 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme]
+    [label, value, numberOfLines, theme, reversed]
   );
 
   const listItemInfoAction = useCallback(() => {
