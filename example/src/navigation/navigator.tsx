@@ -192,11 +192,11 @@ const AppNavigator = () => {
             }}
           />
           <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.ACCORDION.route}
+            name={APP_ROUTES.COMPONENTS.COLLAPSIBLE.route}
             component={Collapsible}
             options={{
               presentation: "modal",
-              headerTitle: APP_ROUTES.COMPONENTS.ACCORDION.title,
+              headerTitle: APP_ROUTES.COMPONENTS.COLLAPSIBLE.title,
               headerBackTitleVisible: false
             }}
           />

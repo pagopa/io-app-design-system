@@ -18,7 +18,7 @@ const APP_ROUTES = {
     MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },
     BADGE: { route: "DESIGN_SYSTEM_BADGE", title: "Badges & Tags" },
     SELECTION: { route: "DESIGN_SYSTEM_SELECTION", title: "Selection" },
-    ACCORDION: { route: "DESIGN_SYSTEM_ACCORDION", title: "Collapsible" },
+    COLLAPSIBLE: { route: "DESIGN_SYSTEM_COLLAPSIBLE", title: "Collapsible" },
     ALERT: { route: "DESIGN_SYSTEM_ALERT", title: "Alert" },
     STEPPER: { route: "DESIGN_SYSTEM_STEPPER", title: "Stepper" },
     ADVICE: { route: "DESIGN_SYSTEM_ADVICE", title: "Advice & Banners" },
