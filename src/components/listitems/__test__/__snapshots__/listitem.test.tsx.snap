@@ -140,6 +140,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
     >
       <View
         accessible={true}
+        style={
+          {
+            "flexDirection": "column",
+          }
+        }
       >
         <Text
           allowFontScaling={true}
@@ -1711,6 +1716,11 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
     >
       <View
         accessible={true}
+        style={
+          {
+            "flexDirection": "column",
+          }
+        }
       >
         <Text
           allowFontScaling={true}

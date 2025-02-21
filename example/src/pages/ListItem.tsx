@@ -403,6 +403,32 @@ const renderListItemInfo = () => (
         <ListItemInfo label="Label" value={"Value"} paymentLogoIcon="payPal" />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemInfo, reversed">
+      <View>
+        <ListItemInfo reversed label="Label" value={"Value"} />
+        <ListItemInfo
+          reversed
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+        />
+
+        <ListItemInfo
+          reversed
+          icon="psp"
+          label="Label"
+          value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "badge",
+            componentProps: {
+              text: "Pagato",
+              variant: "success"
+            }
+          }}
+        />
+
+        <ListItemInfo reversed label="Label" value={"Value"} icon="gallery" />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ListItemInfo, onLongPress enabled">
       <View>
         <ListItemInfo

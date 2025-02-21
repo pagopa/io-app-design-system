@@ -6,7 +6,6 @@ import { IOText, IOTextProps, TypographicStyleProps } from "../IOText";
 /**
  * `MdH1` typographic style
  */
-
 export const MdH1 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
@@ -18,7 +17,7 @@ export const MdH1 = forwardRef<View, TypographicStyleProps>(
       weight: "Semibold",
       size: 20,
       lineHeight: 24,
-      color: customColor ?? theme["textHeading-tertiary"]
+      color: customColor ?? theme["textHeading-default"]
     };
 
     return (
