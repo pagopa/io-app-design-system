@@ -103,7 +103,7 @@ export const ClaimsSelector = ({
           }
         />
       ) : (
-        <ListItemInfo value={item.title} label={item.description} />
+        <ListItemInfo reversed value={item.title} label={item.description} />
       )}
     </Fragment>
   ));
