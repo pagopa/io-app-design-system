@@ -44,3 +44,6 @@ export type Nullable<T> = T | null;
  * Returns a type with the desired type or undefined
  */
 export type Optional<T> = T | undefined;
+
+
+export type TextInputValidationRefProps = { validateInput: () => void };

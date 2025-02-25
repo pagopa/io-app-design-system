@@ -1,13 +1,14 @@
 import * as React from "react";
 import {
-  useCallback,
-  useMemo,
-  useState,
   forwardRef,
-  useImperativeHandle
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+  useState
 } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
+import { TextInputValidationRefProps } from "src/utils/types";
 import { useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import {
@@ -57,9 +58,7 @@ function isValidationWithOptions(
 const feedbackIconSize: IOIconSizeScale = 24;
 
 export const TextInputValidation = forwardRef<
-  {
-    validateInput: () => void;
-  },
+  TextInputValidationRefProps,
   TextInputValidationProps
 >(
   (
