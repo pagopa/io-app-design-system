@@ -10,7 +10,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, auto text alig
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -34,7 +34,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, center text al
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -58,7 +58,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, default text a
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -82,7 +82,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, justify text a
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -106,7 +106,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, left text alig
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -130,7 +130,7 @@ exports[`ComposedBodyFromArray should match snapshot, empty body, right text ali
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -154,7 +154,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -175,7 +175,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -195,7 +195,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -215,7 +215,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -235,7 +235,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -255,7 +255,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, auto 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -279,7 +279,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -300,7 +300,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -320,7 +320,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -340,7 +340,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -360,7 +360,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -380,7 +380,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, cente
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -404,7 +404,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -425,7 +425,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -445,7 +445,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -465,7 +465,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -485,7 +485,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -505,7 +505,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, defau
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -529,7 +529,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -550,7 +550,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -570,7 +570,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -590,7 +590,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -610,7 +610,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -630,7 +630,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, justi
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -654,7 +654,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -675,7 +675,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -695,7 +695,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -715,7 +715,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -735,7 +735,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -755,7 +755,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, left 
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",
@@ -779,7 +779,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -800,7 +800,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
@@ -820,7 +820,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "700",
@@ -840,7 +840,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "300",
@@ -860,7 +860,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "500",
@@ -880,7 +880,7 @@ exports[`ComposedBodyFromArray should match snapshot, multiple items body, right
         {},
         {
           "color": "#555C70",
-          "fontFamily": "Titillium Sans Pro",
+          "fontFamily": "Titillio",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "600",

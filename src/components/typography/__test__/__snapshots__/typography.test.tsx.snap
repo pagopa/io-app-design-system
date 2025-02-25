@@ -10,7 +10,7 @@ exports[`Test Typography Components Body Snapshot 1`] = `
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -58,7 +58,7 @@ exports[`Test Typography Components BodySmall Snapshot 1`] = `
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -80,8 +80,8 @@ exports[`Test Typography Components BodySmall Snapshot 2`] = `
     [
       {},
       {
-        "color": "#0073E6",
-        "fontFamily": "Titillium Sans Pro",
+        "color": "#0B3EE3",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -104,7 +104,7 @@ exports[`Test Typography Components BodySmall Snapshot 3`] = `
       {},
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -127,7 +127,7 @@ exports[`Test Typography Components BodySmall Snapshot 4`] = `
       {},
       {
         "color": "#D13333",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -150,7 +150,7 @@ exports[`Test Typography Components BodySmall Snapshot 5`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "400",
@@ -172,7 +172,7 @@ exports[`Test Typography Components CTA Snapshot 1`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -195,7 +195,7 @@ exports[`Test Typography Components H1 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 28,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -218,7 +218,7 @@ exports[`Test Typography Components H1 Snapshot 2`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 28,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -241,8 +241,8 @@ exports[`Test Typography Components H2 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 28,
+        "fontFamily": "Titillio",
+        "fontSize": 26,
         "fontStyle": "normal",
         "fontWeight": "600",
         "lineHeight": 34,
@@ -264,7 +264,7 @@ exports[`Test Typography Components H3 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -287,7 +287,7 @@ exports[`Test Typography Components H3 Snapshot 2`] = `
       {},
       {
         "color": "#D2D6E3",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -310,7 +310,7 @@ exports[`Test Typography Components H3 Snapshot 3`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -333,7 +333,7 @@ exports[`Test Typography Components H3 Snapshot 4`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -356,7 +356,7 @@ exports[`Test Typography Components H3 Snapshot 5`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -379,7 +379,7 @@ exports[`Test Typography Components H4 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -401,8 +401,8 @@ exports[`Test Typography Components H4 Snapshot 2`] = `
     [
       {},
       {
-        "color": "#0073E6",
-        "fontFamily": "Titillium Sans Pro",
+        "color": "#0B3EE3",
+        "fontFamily": "Titillio",
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -425,7 +425,7 @@ exports[`Test Typography Components H4 Snapshot 3`] = `
       {},
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 20,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -451,7 +451,7 @@ exports[`Test Typography Components H5 Snapshot 1`] = `
       },
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -477,7 +477,7 @@ exports[`Test Typography Components H5 Snapshot 2`] = `
       },
       {
         "color": "#555C70",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -502,8 +502,8 @@ exports[`Test Typography Components H5 Snapshot 3`] = `
         "textTransform": "uppercase",
       },
       {
-        "color": "#0073E6",
-        "fontFamily": "Titillium Sans Pro",
+        "color": "#0B3EE3",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -529,7 +529,7 @@ exports[`Test Typography Components H5 Snapshot 4`] = `
       },
       {
         "color": "#FFFFFF",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 14,
         "fontStyle": "normal",
         "fontWeight": "600",
@@ -552,8 +552,8 @@ exports[`Test Typography Components H6 Snapshot 1`] = `
       {},
       {
         "color": "#0E0F13",
-        "fontFamily": "Titillium Sans Pro",
-        "fontSize": 17,
+        "fontFamily": "Titillio",
+        "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "600",
         "lineHeight": 24,
@@ -579,7 +579,7 @@ exports[`Test Typography Components Link Snapshot 1`] = `
       },
       {
         "color": "#0B3EE3",
-        "fontFamily": "Titillium Sans Pro",
+        "fontFamily": "Titillio",
         "fontSize": 16,
         "fontStyle": "normal",
         "fontWeight": "400",

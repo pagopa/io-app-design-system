@@ -105,105 +105,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
 </View>
 `;
 
-exports[`Test List Item Components - Experimental Enabled  ListItemIDP Snapshot 1`] = `
-<View
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": undefined,
-      "checked": undefined,
-      "disabled": undefined,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onTouchEnd={[Function]}
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "borderColor": "#E8EBF1",
-          "borderCurve": "continuous",
-          "borderRadius": 8,
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "paddingHorizontal": 16,
-          "paddingVertical": 16,
-        },
-        {
-          "borderColor": "#E8EBF1",
-        },
-        false,
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-      ]
-    }
-  >
-    <Text
-      allowFontScaling={true}
-      maxFontSizeMultiplier={1.5}
-      style={
-        [
-          {
-            "alignSelf": "center",
-            "flexShrink": 1,
-            "letterSpacing": 0.5,
-            "textTransform": "uppercase",
-          },
-          {
-            "color": "#555C70",
-            "fontFamily": "Titillio",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-    <Image
-      accessibilityIgnoresInvertColors={true}
-      style={
-        {
-          "height": 30,
-          "marginStart": 8,
-          "resizeMode": "contain",
-          "width": 120,
-        }
-      }
-    />
-  </View>
-</View>
-`;
-
 exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
@@ -1763,7 +1664,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
@@ -1776,105 +1677,6 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
         </Text>
       </View>
     </View>
-  </View>
-</View>
-`;
-
-exports[`Test List Item Components ListItemIDP Snapshot 1`] = `
-<View
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": undefined,
-      "checked": undefined,
-      "disabled": undefined,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onTouchEnd={[Function]}
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "borderColor": "#E8EBF1",
-          "borderCurve": "continuous",
-          "borderRadius": 8,
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "paddingHorizontal": 16,
-          "paddingVertical": 16,
-        },
-        {
-          "borderColor": "#E8EBF1",
-        },
-        false,
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-      ]
-    }
-  >
-    <Text
-      allowFontScaling={true}
-      maxFontSizeMultiplier={1.5}
-      style={
-        [
-          {
-            "alignSelf": "center",
-            "flexShrink": 1,
-            "letterSpacing": 0.5,
-            "textTransform": "uppercase",
-          },
-          {
-            "color": "#555C70",
-            "fontFamily": "Titillium Sans Pro",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-    <Image
-      accessibilityIgnoresInvertColors={true}
-      style={
-        {
-          "height": 30,
-          "marginStart": 8,
-          "resizeMode": "contain",
-          "width": 120,
-        }
-      }
-    />
   </View>
 </View>
 `;
@@ -1929,7 +1731,7 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {},
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -1950,8 +1752,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2055,7 +1857,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               {},
               {
                 "color": "#555C70",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
@@ -2076,8 +1878,8 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2237,8 +2039,8 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2462,8 +2264,8 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2494,7 +2296,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0073E6",
+              "color": "#0B3EE3",
             },
             {
               "flex": 0,
@@ -2503,7 +2305,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0073E6"
+        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
@@ -2625,8 +2427,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2712,7 +2514,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 {},
                 {
                   "color": "#5517E3",
-                  "fontFamily": "Titillium Sans Pro",
+                  "fontFamily": "Titillio",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
@@ -2746,8 +2548,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -2810,7 +2612,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "width": 24,
                 },
                 {
-                  "borderColor": "#555C70",
+                  "borderColor": "#636B82",
                 },
               ]
             }
@@ -2829,7 +2631,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "width": 24,
                 },
                 {
-                  "backgroundColor": "#0073E6",
+                  "backgroundColor": "#0B3EE3",
                 },
                 {
                   "opacity": 1,
@@ -2998,8 +2800,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {},
               {
                 "color": "#0E0F13",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -3031,8 +2833,8 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
-                "fontSize": 17,
+                "fontFamily": "Titillio",
+                "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "lineHeight": 24,
@@ -3095,7 +2897,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                   "width": 24,
                 },
                 {
-                  "borderColor": "#555C70",
+                  "borderColor": "#636B82",
                 },
               ]
             }
@@ -3114,7 +2916,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                   "width": 24,
                 },
                 {
-                  "backgroundColor": "#0073E6",
+                  "backgroundColor": "#0B3EE3",
                 },
                 {
                   "opacity": 0,

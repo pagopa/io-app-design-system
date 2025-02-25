@@ -1,21 +1,25 @@
 import * as React from "react";
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
-import { addCacheTimestampToUri } from "../../utils/image";
 import {
   IOListItemLogoMargin,
-  useIOExperimentalDesign,
-  useIOTheme
+  useIONewTypeface,
+  useIOTheme,
+  useIOThemeContext
 } from "../../core";
+import { addCacheTimestampToUri } from "../../utils/image";
 import { IOText } from "../typography";
 import {
   PressableModuleBase,
   PressableModuleBaseProps
 } from "./PressableModuleBase";
 
+type IDPLogoColorMode = {
+  light: ImageSourcePropType;
+  dark?: ImageSourcePropType;
+};
 interface ModuleIDP extends PressableModuleBaseProps {
   name: string;
-  localLogo: ImageSourcePropType;
-  logo: ImageSourcePropType;
+  logo: IDPLogoColorMode;
   accessibilityLabel?: string;
 }
 
@@ -28,20 +32,31 @@ const styles = StyleSheet.create({
   }
 });
 
+const useIDPLogo = (logo: IDPLogoColorMode): ImageSourcePropType => {
+  const { themeType } = useIOThemeContext();
+
+  const logoIDPLightMode = addCacheTimestampToUri(logo.light);
+
+  if (!logo.dark) {
+    return logoIDPLightMode;
+  }
+
+  const logoIDPDarkMode = addCacheTimestampToUri(logo.dark);
+
+  return themeType === "dark" ? logoIDPDarkMode : logoIDPLightMode;
+};
+
 export const ModuleIDP = ({
   name,
-  localLogo,
   logo,
   withLooseSpacing = false,
   onPress,
   testID,
   accessibilityLabel
 }: ModuleIDP) => {
+  const { newTypefaceEnabled } = useIONewTypeface();
   const theme = useIOTheme();
-  const { isExperimental } = useIOExperimentalDesign();
-
-  // eslint-disable-next-line no-console
-  const urlLogoIDP = localLogo ? localLogo : addCacheTimestampToUri(logo);
+  const IDPLogoSource = useIDPLogo(logo);
 
   return (
     <PressableModuleBase
@@ -50,7 +65,7 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}
@@ -67,7 +82,7 @@ export const ModuleIDP = ({
       </IOText>
       <Image
         accessibilityIgnoresInvertColors
-        source={urlLogoIDP}
+        source={IDPLogoSource}
         style={styles.idpLogo}
       />
     </PressableModuleBase>

@@ -5,7 +5,7 @@ import {
   IOTagRadius,
   IOTheme,
   IOThemeLight,
-  useIOExperimentalDesign,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import {
@@ -159,8 +159,8 @@ export const Tag = ({
   forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
+  const { newTypefaceEnabled } = useIONewTypeface();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
-  const { isExperimental } = useIOExperimentalDesign();
 
   const variantProps = getVariantProps(variant, icon);
 
@@ -207,7 +207,7 @@ export const Tag = ({
       {text && (
         <IOText
           allowFontScaling={allowFontScaling}
-          font={isExperimental ? "Titillio" : "TitilliumSansPro"}
+          font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
           weight={"Semibold"}
           size={12}
           lineHeight={16}

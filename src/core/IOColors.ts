@@ -81,11 +81,7 @@ export const IOColors = asIOColors({
   "blueItalia-600": "#0052A3",
   "blueItalia-500": "#0066CC" /* pagoPA service */,
   "blueItalia-100": "#C4DCF5",
-  "blueItalia-50": "#DDEBFA",
-  /* Temporary scale based on legacy Blue */
-  "blue-600": "#0353A3",
-  "blue-500": "#0073E6",
-  "blue-50": "#EFF7FF"
+  "blueItalia-50": "#DDEBFA"
 });
 
 export type IOColors = keyof typeof IOColors;
@@ -120,20 +116,6 @@ export const getGradientColorValues = (
 /*
 ░░░ COLORS SETS ░░░
 */
-
-const {
-  "blue-600": blue600,
-  "blue-500": blue500,
-  "blue-50": blue50
-} = IOColors;
-
-export const IOColorsLegacy = {
-  blue600,
-  blue500,
-  blue50
-};
-
-export type IOColorLegacy = keyof typeof IOColorsLegacy;
 
 export const IOColorsNeutral = asIOColors({
   black: IOColors.black,
@@ -348,14 +330,6 @@ export const IOThemeLight: IOTheme = {
   "pictogram-tint-main": "turquoise-150",
   "pictogram-tint-secondary": "turquoise-500",
   "pictogram-tint-tertiary": "blueIO-400"
-};
-
-export const IOThemeLightLegacy: IOTheme = {
-  ...IOThemeLight,
-  "appBackground-accent": "blue-500",
-  "interactiveElem-default": "blue-500",
-  "pictogram-hands": "blue-500",
-  "selection-tick": "white"
 };
 
 export const IOThemeDark: IOTheme = {
