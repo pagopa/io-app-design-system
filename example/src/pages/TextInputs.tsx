@@ -6,6 +6,7 @@ import {
   TextInput,
   TextInputPassword,
   TextInputValidation,
+  TextInputValidationRefProps,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -77,7 +78,7 @@ const TextInputValidationOnContinue = (
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const textInputRef = React.useRef<{ validateInput: () => void }>(null);
+  const textInputRef = React.useRef<TextInputValidationRefProps>(null);
 
   const handleContinue = () => {
     textInputRef.current?.validateInput();
