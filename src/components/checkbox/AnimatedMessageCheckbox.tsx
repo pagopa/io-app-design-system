@@ -8,14 +8,11 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { useIOExperimentalDesign, useIOTheme } from "../../core";
+import { useIOTheme } from "../../core";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSpacingScale } from "../../core/IOSpacing";
-import {
-  IOSelectionTickLegacyVisualParams,
-  IOVisualCostants
-} from "../../core/IOStyles";
+import { IOVisualCostants } from "../../core/IOStyles";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {
@@ -53,18 +50,11 @@ export const AnimatedMessageCheckbox = ({
 }: AnimatedMessageCheckbox) => {
   const theme = useIOTheme();
   const isChecked = !!checked;
-  const { isExperimental } = useIOExperimentalDesign();
 
   const shapeAnimationProgress = useSharedValue(checked ? 1 : 0);
   const tickAnimationProgress = useSharedValue(checked ? 1 : 0);
-  const backgroundColorOnState = IOColors[theme["selection-background-on"]];
 
-  // TODO: Remove this when legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
-  const legacyBackgroundColorOnState =
-    IOColors[IOSelectionTickLegacyVisualParams.bgColorOnState];
-  const backgroundColorProp = isExperimental
-    ? backgroundColorOnState
-    : legacyBackgroundColorOnState;
+  const backgroundColor = IOColors[theme["selection-background-on"]];
 
   useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
@@ -100,9 +90,7 @@ export const AnimatedMessageCheckbox = ({
       <Animated.View
         style={[
           styles.checkBoxShape,
-          {
-            backgroundColor: backgroundColorProp
-          },
+          { backgroundColor },
           animatedCheckboxShape
         ]}
       />

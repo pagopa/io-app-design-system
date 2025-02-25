@@ -132,12 +132,12 @@ import IconNavMessages from "./svg/IconNavMessages";
 import IconNavMessagesFocused from "./svg/IconNavMessagesFocused";
 import IconNavProfile from "./svg/IconNavProfile";
 import IconNavProfileFocused from "./svg/IconNavProfileFocused";
+import IconNavQrWallet from "./svg/IconNavQrWallet";
 import IconNavScan from "./svg/IconNavScan";
 import IconNavServices from "./svg/IconNavServices";
 import IconNavServicesFocused from "./svg/IconNavServicesFocused";
 import IconNavWallet from "./svg/IconNavWallet";
 import IconNavWalletFocused from "./svg/IconNavWalletFocused";
-import IconNavQrWallet from "./svg/IconNavQrWallet";
 import IconNotes from "./svg/IconNotes";
 import IconNotice from "./svg/IconNotice";
 import IconNoticeFilled from "./svg/IconNoticeFilled";
@@ -192,10 +192,12 @@ import IconSystemSettingsiOS from "./svg/IconSystemSettingsiOS";
 import IconSystemToggleInstructions from "./svg/IconSystemToggleInstructions";
 import IconTag from "./svg/IconTag";
 import IconTerms from "./svg/IconTerms";
+import IconTheme from "./svg/IconTheme";
 import IconTouch from "./svg/IconTouch";
 import IconTransactions from "./svg/IconTransactions";
 import IconTransactionsBoxed from "./svg/IconTransactionsBoxed";
 import IconTrashcan from "./svg/IconTrashcan";
+import IconTypeface from "./svg/IconTypeface";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
 import LegIconCheckOff from "./svg/LegIconCheckOff";
@@ -358,6 +360,8 @@ export const IOIcons = {
   light: IconLight,
   lightFilled: IconLightFilled,
   code: IconCode,
+  theme: IconTheme,
+  typeface: IconTypeface,
   navMessages: IconNavMessages,
   navMessagesFocused: IconNavMessagesFocused,
   navWallet: IconNavWallet,

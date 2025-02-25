@@ -161,7 +161,7 @@ export const Pictograms = () => (
       >
         <Pictogram name="feature" pictogramStyle="light-content" />
         <HSpacer size={24} />
-        <Pictogram name="umbrellaNew" pictogramStyle="light-content" />
+        <Pictogram name="umbrella" pictogramStyle="light-content" />
       </View>
     </ComponentViewerBox>
 

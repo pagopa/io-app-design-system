@@ -41,11 +41,10 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
           "borderCurve": "continuous",
           "borderRadius": 8,
           "flexDirection": "row",
+          "padding": 16,
         },
         {
           "backgroundColor": "#F4F5F8",
-          "paddingHorizontal": 16,
-          "paddingVertical": 16,
         },
         {
           "transform": [
@@ -346,11 +345,10 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
           "borderCurve": "continuous",
           "borderRadius": 8,
           "flexDirection": "row",
+          "padding": 16,
         },
         {
           "backgroundColor": "#F4F5F8",
-          "paddingHorizontal": 16,
-          "paddingVertical": 16,
         },
         {
           "transform": [
@@ -386,8 +384,8 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
             {},
             {
               "color": "#031344",
-              "fontFamily": "Titillium Sans Pro",
-              "fontSize": 17,
+              "fontFamily": "Titillio",
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
               "lineHeight": 24,
@@ -460,7 +458,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
               {},
               {
                 "color": "#0B3EE3",
-                "fontFamily": "Titillium Sans Pro",
+                "fontFamily": "Titillio",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",

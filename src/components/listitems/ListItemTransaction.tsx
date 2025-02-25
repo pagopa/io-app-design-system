@@ -9,7 +9,6 @@ import {
   IOListItemVisualParams,
   IOStyles,
   IOVisualCostants,
-  useIOExperimentalDesign,
   useIOTheme
 } from "../../core";
 
@@ -114,16 +113,13 @@ export const ListItemTransaction = ({
   numberOfLines = 2,
   accessible
 }: ListItemTransaction) => {
-  const { isExperimental } = useIOExperimentalDesign();
   const theme = useIOTheme();
 
   if (isLoading) {
     return <SkeletonComponent />;
   }
 
-  const interactiveColor: IOColors = isExperimental
-    ? theme["interactiveElem-default"]
-    : "blue-500";
+  const interactiveColor: IOColors = theme["interactiveElem-default"];
 
   const amountColorDefault: IOColors = theme["textBody-default"];
   const amountColorRefund: IOColors = theme.successText;

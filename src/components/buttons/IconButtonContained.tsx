@@ -15,8 +15,7 @@ import {
   IOButtonStyles,
   IOColors,
   IOIconButtonStyles,
-  hexToRgba,
-  useIOExperimentalDesign
+  hexToRgba
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -88,51 +87,6 @@ const mapColorStates: Record<
   }
 };
 
-const mapLegacyColorStates: Record<
-  NonNullable<IconButtonContained["color"]>,
-  ColorStates
-> = {
-  // Primary button
-  primary: {
-    background: {
-      default: hexToRgba(IOColors["blue-500"], 0),
-      pressed: hexToRgba(IOColors["blue-500"], 0.15),
-      disabled: "transparent"
-    },
-    icon: {
-      default: IOColors["blue-500"],
-      pressed: IOColors["blue-500"],
-      disabled: hexToRgba(IOColors["blue-500"], 0.25)
-    }
-  },
-  // Neutral button
-  neutral: {
-    background: {
-      default: IOColors.white,
-      pressed: IOColors["grey-50"],
-      disabled: "transparent"
-    },
-    icon: {
-      default: IOColors["grey-700"],
-      pressed: IOColors.black,
-      disabled: IOColors["grey-450"]
-    }
-  },
-  // Contrast button
-  contrast: {
-    background: {
-      default: hexToRgba(IOColors.white, 0),
-      pressed: hexToRgba(IOColors.white, 0.2),
-      disabled: "transparent"
-    },
-    icon: {
-      default: IOColors.white,
-      pressed: IOColors.white,
-      disabled: hexToRgba(IOColors.white, 0.25)
-    }
-  }
-};
-
 const AnimatedIconClassComponent =
   Animated.createAnimatedComponent(IconClassComponent);
 
@@ -145,22 +99,18 @@ export const IconButtonContained = ({
   accessibilityHint,
   testID
 }: IconButtonContained) => {
-  const { isExperimental } = useIOExperimentalDesign();
-
   const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
     useScaleAnimation("exaggerated");
   const reducedMotion = useReducedMotion();
-
-  const colorMap = React.useMemo(
-    () => (isExperimental ? mapColorStates : mapLegacyColorStates),
-    [isExperimental]
-  );
 
   const backgroundColorAnimationStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       progress.value,
       [0, 1],
-      [colorMap[color].background.default, colorMap[color].background.pressed]
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.pressed
+      ]
     )
   }));
 
@@ -169,7 +119,7 @@ export const IconButtonContained = ({
     color: interpolateColor(
       progress.value,
       [0, 1],
-      [colorMap[color].icon.default, colorMap[color].icon.pressed]
+      [mapColorStates[color].icon.default, mapColorStates[color].icon.pressed]
     )
   }));
 
@@ -199,10 +149,13 @@ export const IconButtonContained = ({
           <AnimatedIconClassComponent
             name={icon}
             animatedProps={iconColorAnimationStyle}
-            color={colorMap[color]?.icon?.default}
+            color={mapColorStates[color]?.icon?.default}
           />
         ) : (
-          <AnimatedIcon name={icon} color={colorMap[color]?.icon?.disabled} />
+          <AnimatedIcon
+            name={icon}
+            color={mapColorStates[color]?.icon?.disabled}
+          />
         )}
       </Animated.View>
     </Pressable>

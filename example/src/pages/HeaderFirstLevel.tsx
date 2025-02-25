@@ -5,6 +5,7 @@ import {
   ButtonSolid,
   H3,
   H6,
+  HeaderActionProps,
   HeaderFirstLevel,
   HStack,
   IOVisualCostants,
@@ -20,10 +21,43 @@ import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
 
+const firstAction: HeaderActionProps = {
+  icon: "help",
+  accessibilityLabel: "Go to the help section",
+  onPress: () => {
+    Alert.alert("Contextual Help");
+  }
+};
+
+const secondAction: HeaderActionProps = {
+  icon: "coggle",
+  accessibilityLabel: "Go to the Settings section",
+  onPress: () => {
+    Alert.alert("Settings");
+  }
+};
+
+const thirdAction: HeaderActionProps = {
+  icon: "light",
+  accessibilityLabel: "Turn on/off the light",
+  onPress: () => {
+    Alert.alert("Light");
+  }
+};
+
+const actionsConfiguration: {
+  [size: number]: React.ComponentProps<typeof HeaderFirstLevel>["actions"];
+} = {
+  0: [],
+  1: [firstAction],
+  2: [firstAction, secondAction],
+  3: [firstAction, secondAction, thirdAction]
+};
+
 export const HeaderFirstLevelScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const [actions, setActions] = useState(2);
+  const [actionsSize, setActionsSize] = useState(2);
 
   const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
@@ -50,43 +84,11 @@ export const HeaderFirstLevelScreen = () => {
         <HeaderFirstLevel
           ignoreSafeAreaMargin={alert !== undefined}
           title={"Pagina"}
-          firstAction={
-            actions > 0
-              ? {
-                  icon: "help",
-                  accessibilityLabel: "Go to the help section",
-                  onPress: () => {
-                    Alert.alert("Contextual Help");
-                  }
-                }
-              : undefined
-          }
-          secondAction={
-            actions > 1
-              ? {
-                  icon: "coggle",
-                  accessibilityLabel: "Go to the Settings section",
-                  onPress: () => {
-                    Alert.alert("Settings");
-                  }
-                }
-              : undefined
-          }
-          thirdAction={
-            actions > 2
-              ? {
-                  icon: "light",
-                  accessibilityLabel: "Turn on/off the light",
-                  onPress: () => {
-                    Alert.alert("Light");
-                  }
-                }
-              : undefined
-          }
+          actions={actionsConfiguration[actionsSize]}
         />
       )
     });
-  }, [navigation, alert, actions]);
+  }, [navigation, alert, actionsSize]);
 
   return (
     <ScrollView
@@ -99,14 +101,26 @@ export const HeaderFirstLevelScreen = () => {
       <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
       <VSpacer />
       <ListItemHeader label="Header actions size" />
-      {Array.from({ length: 4 }).map((_, i) => (
-        <ListItemRadio
-          key={i}
-          value={`${i} actions`}
-          selected={i === actions}
-          onValueChange={() => setActions(i)}
-        />
-      ))}
+      <ListItemRadio
+        value="No actions"
+        selected={actionsSize === 0}
+        onValueChange={() => setActionsSize(0)}
+      />
+      <ListItemRadio
+        value="One action"
+        selected={actionsSize === 1}
+        onValueChange={() => setActionsSize(1)}
+      />
+      <ListItemRadio
+        value="Two actions"
+        selected={actionsSize === 2}
+        onValueChange={() => setActionsSize(2)}
+      />
+      <ListItemRadio
+        value="Three actions"
+        selected={actionsSize === 3}
+        onValueChange={() => setActionsSize(3)}
+      />
       <VSpacer />
       <ButtonSolid
         label="Torna indietro"

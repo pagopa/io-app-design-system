@@ -8,64 +8,96 @@ import {
   ModuleNavigation,
   ModulePaymentNotice,
   ModuleSummary,
-  useIOExperimentalDesign
+  useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { Alert, ImageSourcePropType, View } from "react-native";
+import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
-const mockIDPProviderItem = {
-  id: "posteid",
-  name: "Poste ID",
-  logo: "",
-  localLogo: require("../../assets/images/spid-idp-posteid.png"),
-  profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
+const mockIDPProviderItems = {
+  poste: {
+    id: "posteid",
+    name: "Poste ID",
+    logo: {
+      light: require("../../assets/images/spid-idp-posteid.png")
+    },
+    profileUrl: "https://posteid.poste.it/private/cruscotto.shtml"
+  },
+  intesiGroup: {
+    id: "intesiGroup",
+    name: "Intesi Group",
+    logo: {
+      light: require("../../assets/images/intesi-group-light.png"),
+      dark: require("../../assets/images/intesi-group-dark.png")
+    }
+  }
 };
 
 const mockFn = () => {
   Alert.alert("Action triggered");
 };
 
-const renderModuleIDP = () => (
-  <>
-    <ComponentViewerBox name="ModuleIDP, default variant">
-      <View>
-        <ModuleIDP
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleIDP, saved variant">
-      <View>
-        <ModuleIDP
-          withLooseSpacing
-          name={mockIDPProviderItem.name}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleIDP, default variant, stress test">
-      <View>
-        <ModuleIDP
-          name={"This is a very loooooong IDP provider name"}
-          logo={mockIDPProviderItem.logo as ImageSourcePropType}
-          localLogo={mockIDPProviderItem.localLogo as ImageSourcePropType}
-          onPress={mockFn}
-          testID={`idp-${mockIDPProviderItem.id}-button`}
-        />
-      </View>
-    </ComponentViewerBox>
-  </>
-);
+const renderModuleIDP = () => {
+  const { poste: posteItem, intesiGroup: intesiGroupItem } =
+    mockIDPProviderItems;
+
+  return (
+    <>
+      <ComponentViewerBox name="ModuleIDP, default variant">
+        <View>
+          <ModuleIDP
+            name={posteItem.name}
+            logo={{
+              light: posteItem.logo.light
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, saved variant">
+        <View>
+          <ModuleIDP
+            withLooseSpacing
+            name={posteItem.name}
+            logo={{
+              light: posteItem.logo.light
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, both color modes supported">
+        <View>
+          <ModuleIDP
+            name={intesiGroupItem.name}
+            logo={{
+              light: intesiGroupItem.logo.light,
+              dark: intesiGroupItem.logo.dark
+            }}
+            onPress={mockFn}
+            testID={`idp-${intesiGroupItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleIDP, default variant, stress test">
+        <View>
+          <ModuleIDP
+            name={"This is a very loooooong IDP provider name"}
+            logo={{
+              light: posteItem.logo.light
+            }}
+            onPress={mockFn}
+            testID={`idp-${posteItem.id}-button`}
+          />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
 
 const renderModulePaymentNotice = () => (
   <>
@@ -251,7 +283,7 @@ const renderModuleCredential = () => (
           onPress={mockFn}
           badge={{
             text: "predefinita",
-            variant: "info"
+            variant: "default"
           }}
         />
       </View>
@@ -264,7 +296,7 @@ const renderModuleCredential = () => (
           onPress={mockFn}
           badge={{
             text: "predefinita",
-            variant: "info"
+            variant: "default"
           }}
         />
       </View>
@@ -320,7 +352,7 @@ const renderModuleNavigation = () => (
           onPress={mockFn}
           badge={{
             text: "In arrivo",
-            variant: "blue",
+            variant: "highlight",
             outline: true
           }}
         />
@@ -335,7 +367,7 @@ const renderModuleNavigation = () => (
           onPress={mockFn}
           badge={{
             text: "IN arrivo",
-            variant: "blue",
+            variant: "highlight",
             outline: true
           }}
         />
@@ -378,14 +410,16 @@ const renderModuleSummary = () => (
 );
 
 const Modules = () => {
-  const { isExperimental, setExperimental } = useIOExperimentalDesign();
+  const { setTheme, themeType } = useIOThemeContext();
 
   return (
     <Screen>
       <ListItemSwitch
-        label="Abilita Design Sperimentale"
-        value={isExperimental}
-        onSwitchValueChange={setExperimental}
+        label="Abilita Dark Mode"
+        value={themeType === "dark"}
+        onSwitchValueChange={() =>
+          setTheme(themeType === "dark" ? "light" : "dark")
+        }
       />
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
       {renderModuleIDP()}

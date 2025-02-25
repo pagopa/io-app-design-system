@@ -31,10 +31,10 @@ export const Warning: Story = {
   }
 };
 
-export const Contrast: Story = {
+export const Error: Story = {
   args: {
     text: "Attenzione",
-    variant: "contrast"
+    variant: "error"
   }
 };
 
@@ -54,10 +54,10 @@ export const OutlineWarning: Story = {
   }
 };
 
-export const OutlineContrast: Story = {
+export const OutlineError: Story = {
   args: {
     text: "Attenzione",
     outline: true,
-    variant: "contrast"
+    variant: "error"
   }
 };
