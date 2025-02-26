@@ -8,7 +8,7 @@ import {
 } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { TextInputValidationRefProps } from "src/utils/types";
+import { TextInputValidationRefProps } from "../../utils/types";
 import { useIOTheme } from "../../core";
 import { IOColors } from "../../core/IOColors";
 import {

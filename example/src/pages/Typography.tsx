@@ -116,6 +116,9 @@ export const H2Row = () => (
   <VStack space={4}>
     <H2>{getTitle("H2")}</H2>
     <H2 style={styles.distancedTitle}>{getLongerTitle("H2")}</H2>
+    <H2 style={styles.distancedTitle} weight="Bold">
+      Header H2 Bold
+    </H2>
   </VStack>
 );
 
@@ -126,7 +129,6 @@ export const H3Row = () => (
     <View style={{ backgroundColor: IOColors["grey-700"] }}>
       <H3 color={"white"}>Header H3</H3>
     </View>
-    <H3 weight="Bold">Header H3 Bold</H3>
   </HStack>
 );
 
