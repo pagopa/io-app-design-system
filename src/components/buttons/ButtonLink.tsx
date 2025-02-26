@@ -161,7 +161,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         accessible={true}
         disabled={disabled}
         hitSlop={{ top: 14, right: 24, bottom: 14, left: 24 }}
-        style={IOButtonStyles.dimensionsDefault}
+        style={{ alignSelf: "flex-start" }}
       >
         <Animated.View
           style={[
