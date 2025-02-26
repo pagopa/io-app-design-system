@@ -130,6 +130,7 @@ export const HeaderFirstLevel = ({
             style={{ flexShrink: 1 }}
             numberOfLines={1}
             color={theme["textHeading-default"]}
+            maxFontSizeMultiplier={1.25}
           >
             {title}
           </H2>
