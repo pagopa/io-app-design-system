@@ -214,7 +214,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
         : inputWidth;
     };
 
-    const cancel = useCallback(
+    const handleCancel = useCallback(
       (event: GestureResponderEvent) => {
         onChangeText?.("");
         onCancel?.(event);
@@ -222,7 +222,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
       [onCancel, onChangeText]
     );
 
-    const clear = useCallback(() => {
+    const handleClear = useCallback(() => {
       onChangeText?.("");
       searchInputRef.current?.clear();
     }, [onChangeText]);
@@ -233,7 +233,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     );
 
     const renderSearchBar = () => (
-      <Animated.View style={styles.searchBar}>
+      <Animated.View
+        importantForAccessibility={pressable ? "no-hide-descendants" : "auto"}
+        style={styles.searchBar}
+      >
         <Animated.View
           style={[styles.searchInput, animatedStyle]}
           pointerEvents={pressable ? "none" : "auto"}
@@ -279,7 +282,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           />
           <AnimatedPressable
             style={[styles.clearButton, clearButtonAnimatedStyle]}
-            onPress={clear}
+            onPress={handleClear}
             accessibilityLabel={clearAccessibilityLabel}
             accessibilityRole="button"
             hitSlop={16}
@@ -294,7 +297,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={cancelButtonLabel}
-            onPress={cancel}
+            onPress={handleCancel}
           >
             <IOText
               color={theme["interactiveElem-default"]}
@@ -316,9 +319,10 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
 
     return pressable ? (
       <Pressable
+        accessible={true}
         accessibilityRole="button"
         accessibilityLabel={placeholder}
-        onPress={pressable?.onPress}
+        onPress={pressable.onPress}
       >
         {renderSearchBar()}
       </Pressable>
