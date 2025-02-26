@@ -3,7 +3,6 @@ import {
   Body,
   ButtonOutline,
   ButtonSolid,
-  H3,
   H6,
   HeaderActionProps,
   HeaderFirstLevel,
