@@ -83,7 +83,7 @@ export const HeaderFirstLevelScreen = () => {
       header: () => (
         <HeaderFirstLevel
           ignoreSafeAreaMargin={alert !== undefined}
-          title={"Pagina"}
+          title={"Portafoglio"}
           actions={actionsConfiguration[actionsSize]}
         />
       )
@@ -98,8 +98,6 @@ export const HeaderFirstLevelScreen = () => {
       }}
       scrollEventThrottle={8}
     >
-      <H3>Questo è un titolo lungo, ma lungo lungo davvero, eh!</H3>
-      <VSpacer />
       <ListItemHeader label="Header actions size" />
       <ListItemRadio
         value="No actions"
