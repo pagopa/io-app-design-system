@@ -12,6 +12,7 @@ import {
   IconButtonSolid,
   ListItemSwitch,
   VSpacer,
+  VStack,
   hexToRgba
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
@@ -51,63 +52,57 @@ export const Buttons = () => (
       ButtonSolid
     </H2>
     <ComponentViewerBox name="ButtonSolid · Primary Variant (using Pressable API)">
-      <ButtonSolid
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <ButtonSolid
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="qrCode"
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <ButtonSolid
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="qrCode"
-        iconPosition="end"
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <View style={{ alignSelf: "center" }}>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
           accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (centered)"}
+          label={"Primary button"}
           onPress={onButtonPress}
         />
-      </View>
+        <ButtonSolid
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="qrCode"
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="qrCode"
+          iconPosition="end"
+          onPress={onButtonPress}
+        />
+        <View style={{ alignSelf: "center" }}>
+          <ButtonSolid
+            accessibilityHint="Tap to trigger test alert"
+            label={"Primary button (centered)"}
+            onPress={onButtonPress}
+          />
+        </View>
+      </VStack>
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonSolid · Primary, Full width">
-      <ButtonSolid
-        fullWidth
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button (full width)"}
-        onPress={onButtonPress}
-      />
+      {/* Let's force `alignItems: "flex-start"`
+      to test if `fullWidth` is managed correctly */}
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          fullWidth
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (full width)"}
+          onPress={onButtonPress}
+        />
+      </VStack>
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonSolid · Primary · Full width, loading state">
       <LoadingSolidButtonExample />
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonSolid · Primary, disabled">
-      <View>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
           disabled
           accessibilityHint="Tap to trigger test alert"
           label={"Primary button (disabled)"}
           onPress={onButtonPress}
         />
-
-        <VSpacer size={16} />
-
         <ButtonSolid
           disabled
           accessibilityHint="Tap to trigger test alert"
@@ -115,20 +110,17 @@ export const Buttons = () => (
           icon="qrCode"
           onPress={onButtonPress}
         />
-      </View>
+      </VStack>
     </ComponentViewerBox>
 
     <ComponentViewerBox name="ButtonSolid · Danger variant">
-      <View>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
           color="danger"
           label={"Danger button"}
           onPress={onButtonPress}
           accessibilityHint="Tap to trigger test alert"
         />
-
-        <VSpacer size={16} />
-
         <ButtonSolid
           color="danger"
           accessibilityHint="Tap to trigger test alert"
@@ -136,9 +128,6 @@ export const Buttons = () => (
           icon="trashcan"
           onPress={onButtonPress}
         />
-
-        <VSpacer size={16} />
-
         <ButtonSolid
           color="danger"
           accessibilityHint="Tap to trigger test alert"
@@ -147,22 +136,20 @@ export const Buttons = () => (
           iconPosition="end"
           onPress={onButtonPress}
         />
-      </View>
+      </VStack>
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonSolid · Danger, full width">
-      <View>
-        <ButtonSolid
-          fullWidth
-          color="danger"
-          accessibilityHint="Tap to trigger test alert"
-          label={"Danger button (full width)"}
-          onPress={onButtonPress}
-        />
-      </View>
+      <ButtonSolid
+        fullWidth
+        color="danger"
+        accessibilityHint="Tap to trigger test alert"
+        label={"Danger button (full width)"}
+        onPress={onButtonPress}
+      />
     </ComponentViewerBox>
 
     <ComponentViewerBox name="ButtonSolid · Danger, disabled">
-      <View>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
           color="danger"
           disabled
@@ -170,9 +157,6 @@ export const Buttons = () => (
           label={"Danger button (disabled)"}
           onPress={onButtonPress}
         />
-
-        <VSpacer size={16} />
-
         <ButtonSolid
           color="danger"
           disabled
@@ -181,7 +165,7 @@ export const Buttons = () => (
           icon="trashcan"
           onPress={onButtonPress}
         />
-      </View>
+      </VStack>
     </ComponentViewerBox>
 
     <View style={styles.primaryBlock}>
@@ -189,15 +173,13 @@ export const Buttons = () => (
         name="ButtonSolid · Contrast variant"
         colorMode="dark"
       >
-        <View>
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
           <ButtonSolid
             color="contrast"
             label={"Contrast button"}
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
 
           <ButtonSolid
             color="contrast"
@@ -206,8 +188,6 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
 
           <ButtonSolid
             color="contrast"
@@ -217,38 +197,34 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-        </View>
+        </VStack>
       </ComponentViewerBox>
 
       <ComponentViewerBox
         name="ButtonSolid · Contrast, full width"
         colorMode="dark"
       >
-        <View>
-          <ButtonSolid
-            fullWidth
-            color="contrast"
-            label={"Contrast button"}
-            onPress={onButtonPress}
-            accessibilityHint="Tap to trigger test alert"
-          />
-        </View>
+        <ButtonSolid
+          fullWidth
+          color="contrast"
+          label={"Contrast button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
       </ComponentViewerBox>
 
       <ComponentViewerBox
         name="ButtonSolid · Contrast, full width, loading state"
         colorMode="dark"
       >
-        <View>
-          <ButtonSolid
-            fullWidth
-            loading
-            color="contrast"
-            label={"Contrast button"}
-            onPress={onButtonPress}
-            accessibilityHint="Tap to trigger test alert"
-          />
-        </View>
+        <ButtonSolid
+          fullWidth
+          loading
+          color="contrast"
+          label={"Contrast button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
       </ComponentViewerBox>
 
       <ComponentViewerBox
@@ -256,7 +232,7 @@ export const Buttons = () => (
         colorMode="dark"
         last
       >
-        <View>
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
           <ButtonSolid
             disabled
             color="contrast"
@@ -264,8 +240,6 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
 
           <ButtonSolid
             disabled
@@ -275,7 +249,7 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-        </View>
+        </VStack>
       </ComponentViewerBox>
     </View>
 
@@ -283,61 +257,53 @@ export const Buttons = () => (
 
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>ButtonOutline</H2>
     <ComponentViewerBox name="ButtonOutline · Primary variant (using Pressable API)">
-      <ButtonOutline
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <ButtonOutline
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="arrowLeft"
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <ButtonOutline
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="arrowRight"
-        iconPosition="end"
-        onPress={onButtonPress}
-      />
-
-      <VSpacer size={16} />
-
-      <View style={{ alignSelf: "center" }}>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonOutline
           accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (centered)"}
+          label={"Primary button"}
           onPress={onButtonPress}
         />
-      </View>
+
+        <ButtonOutline
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="arrowLeft"
+          onPress={onButtonPress}
+        />
+
+        <ButtonOutline
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="arrowRight"
+          iconPosition="end"
+          onPress={onButtonPress}
+        />
+
+        <View style={{ alignSelf: "center" }}>
+          <ButtonOutline
+            accessibilityHint="Tap to trigger test alert"
+            label={"Primary button (centered)"}
+            onPress={onButtonPress}
+          />
+        </View>
+      </VStack>
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonOutline · Primary, full width">
-      <View>
-        <ButtonOutline
-          fullWidth
-          accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (full width)"}
-          onPress={onButtonPress}
-        />
-      </View>
+      <ButtonOutline
+        fullWidth
+        accessibilityHint="Tap to trigger test alert"
+        label={"Primary button (full width)"}
+        onPress={onButtonPress}
+      />
     </ComponentViewerBox>
     <ComponentViewerBox name="ButtonOutline · Primary, disabled">
-      <View>
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonOutline
           disabled
           accessibilityHint="Tap to trigger test alert"
           label={"Primary button (disabled)"}
           onPress={onButtonPress}
         />
-
-        <VSpacer size={16} />
 
         <ButtonOutline
           disabled
@@ -347,7 +313,7 @@ export const Buttons = () => (
           iconPosition="end"
           onPress={onButtonPress}
         />
-      </View>
+      </VStack>
     </ComponentViewerBox>
 
     <View style={styles.primaryBlock}>
@@ -355,16 +321,13 @@ export const Buttons = () => (
         name="ButtonOutline · Contrast variant"
         colorMode="dark"
       >
-        <View>
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
           <ButtonOutline
             color="contrast"
             label={"Contrast button"}
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
-
           <ButtonOutline
             color="contrast"
             label={"Contrast button"}
@@ -372,9 +335,6 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
-
           <ButtonOutline
             color="contrast"
             label={"Contrast button"}
@@ -383,22 +343,20 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-        </View>
+        </VStack>
       </ComponentViewerBox>
 
       <ComponentViewerBox
         name="ButtonOutline · Contrast, full width"
         colorMode="dark"
       >
-        <View>
-          <ButtonOutline
-            fullWidth
-            color="contrast"
-            label={"Contrast button"}
-            onPress={onButtonPress}
-            accessibilityHint="Tap to trigger test alert"
-          />
-        </View>
+        <ButtonOutline
+          fullWidth
+          color="contrast"
+          label={"Contrast button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
       </ComponentViewerBox>
 
       <ComponentViewerBox
@@ -406,7 +364,7 @@ export const Buttons = () => (
         colorMode="dark"
         last
       >
-        <View>
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
           <ButtonOutline
             disabled
             color="contrast"
@@ -414,8 +372,6 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-
-          <VSpacer size={16} />
 
           <ButtonOutline
             disabled
@@ -426,7 +382,7 @@ export const Buttons = () => (
             onPress={onButtonPress}
             accessibilityHint="Tap to trigger test alert"
           />
-        </View>
+        </VStack>
       </ComponentViewerBox>
     </View>
 
@@ -910,7 +866,7 @@ const LoadingSolidButtonExample = () => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
-    <View>
+    <>
       <ButtonSolid
         fullWidth
         loading={isEnabled}
@@ -923,6 +879,6 @@ const LoadingSolidButtonExample = () => {
         onSwitchValueChange={toggleSwitch}
         value={isEnabled}
       />
-    </View>
+    </>
   );
 };

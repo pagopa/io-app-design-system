@@ -192,7 +192,11 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         onPressOut={onPressOut}
         accessible={true}
         disabled={disabled}
-        style={!fullWidth ? IOButtonStyles.dimensionsDefault : {}}
+        style={
+          fullWidth
+            ? { flexShrink: 0, alignSelf: "stretch" }
+            : { flexShrink: 1, alignSelf: "auto" }
+        }
       >
         <Animated.View
           style={[
