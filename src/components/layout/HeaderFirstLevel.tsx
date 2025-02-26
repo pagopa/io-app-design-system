@@ -23,7 +23,7 @@ import {
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { HStack } from "../stack";
-import { H3 } from "../typography";
+import { H2 } from "../typography";
 import { HeaderActionProps } from "./common";
 
 type HeaderActionsProp =
@@ -125,14 +125,15 @@ export const HeaderFirstLevel = ({
 
       <View style={styles.headerInner}>
         <View ref={titleRef} accessible accessibilityRole="header">
-          <H3
+          <H2
             weight="Bold"
             style={{ flexShrink: 1 }}
             numberOfLines={1}
             color={theme["textHeading-default"]}
+            maxFontSizeMultiplier={1.25}
           >
             {title}
-          </H3>
+          </H2>
         </View>
         <HStack space={16} style={{ flexShrink: 0 }}>
           {actions.map((action, index) => (
