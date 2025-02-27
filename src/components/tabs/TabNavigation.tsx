@@ -1,7 +1,7 @@
 import React from "react";
 import { FlexStyle, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { IOVisualCostants } from "src/core";
+import { IOVisualCostants } from "../../core";
 import { TabItem } from "./TabItem";
 
 export type TabNavigationItem = Omit<
