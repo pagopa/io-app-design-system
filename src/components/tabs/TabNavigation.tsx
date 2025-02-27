@@ -40,7 +40,7 @@ const TabNavigation = ({
   tabAlignment = "center",
   onItemPress,
   children,
-  includeContentMargins = false
+  includeContentMargins = true
 }: TabNavigation) => {
   const [itemMinWidth, setItemMinWidth] = React.useState<number>(0);
 
