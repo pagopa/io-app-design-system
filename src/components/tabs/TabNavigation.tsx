@@ -1,6 +1,7 @@
 import React from "react";
 import { FlexStyle, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { IOVisualCostants } from "src/core";
 import { TabItem } from "./TabItem";
 
 export type TabNavigationItem = Omit<
@@ -23,7 +24,7 @@ type TabNavigation = {
   onItemPress?: (index: number) => void;
   // Tabs
   children: TabNavigationChildren;
-  excludePadding?: boolean;
+  includeContentMargins?: boolean;
 };
 
 const itemsJustify: Record<TabAlignment, FlexStyle["justifyContent"]> = {
@@ -39,7 +40,7 @@ const TabNavigation = ({
   tabAlignment = "center",
   onItemPress,
   children,
-  excludePadding = false
+  includeContentMargins = false
 }: TabNavigation) => {
   const [itemMinWidth, setItemMinWidth] = React.useState<number>(0);
 
@@ -81,8 +82,11 @@ const TabNavigation = ({
       centerContent={true}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={[
-        excludePadding ? styles.containerNoPadding : styles.container,
+        includeContentMargins
+          ? { paddingHorizontal: IOVisualCostants.appMarginDefault }
+          : {},
         {
+          flexGrow: 1,
           justifyContent: itemsJustify[tabAlignment]
         }
       ]}
@@ -93,13 +97,6 @@ const TabNavigation = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    paddingHorizontal: 24
-  },
-  containerNoPadding: {
-    flexGrow: 1
-  },
   item: {
     flexGrow: 0,
     flexShrink: 1,
