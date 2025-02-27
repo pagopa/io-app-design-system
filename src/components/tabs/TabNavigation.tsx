@@ -23,6 +23,7 @@ type TabNavigation = {
   onItemPress?: (index: number) => void;
   // Tabs
   children: TabNavigationChildren;
+  excludePadding?: boolean;
 };
 
 const itemsJustify: Record<TabAlignment, FlexStyle["justifyContent"]> = {
@@ -37,7 +38,8 @@ const TabNavigation = ({
   selectedIndex,
   tabAlignment = "center",
   onItemPress,
-  children
+  children,
+  excludePadding = false
 }: TabNavigation) => {
   const [itemMinWidth, setItemMinWidth] = React.useState<number>(0);
 
@@ -79,7 +81,7 @@ const TabNavigation = ({
       centerContent={true}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={[
-        styles.container,
+        excludePadding ? styles.containerNoPadding : styles.container,
         {
           justifyContent: itemsJustify[tabAlignment]
         }
@@ -94,6 +96,9 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     paddingHorizontal: 24
+  },
+  containerNoPadding: {
+    flexGrow: 1
   },
   item: {
     flexGrow: 0,
