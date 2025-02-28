@@ -31,7 +31,10 @@ const assistanceData: Array<AccordionItem> = [
       <Body>
         I tuoi metodi di pagamento sono visualizzati come card nella parte alta
         dello schermo del Portafoglio. Seleziona la card del metodo che vuoi
-        eliminare e poi premi Elimina questo metodo!
+        eliminare e poi premi{" "}
+        <Body onPress={() => null} asLink>
+          Elimina questo metodo!
+        </Body>
       </Body>
     )
   },
