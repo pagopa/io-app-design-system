@@ -5,7 +5,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { IOButtonStyles, IOIconButtonStyles, useIOTheme } from "../../core";
+import { IOIconButtonStyles, useIOTheme } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -98,7 +98,7 @@ export const IconButtonSolid = ({
       onPressOut={onPressOut}
       accessible={true}
       disabled={disabled}
-      style={IOButtonStyles.dimensionsDefault}
+      style={{ alignSelf: "flex-start" }}
     >
       <Animated.View
         style={[

@@ -147,7 +147,8 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "alignSelf": "flex-start",
+      "alignSelf": "auto",
+      "flexShrink": 1,
     }
   }
 >
@@ -264,7 +265,8 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "alignSelf": "flex-start",
+      "alignSelf": "auto",
+      "flexShrink": 1,
     }
   }
 >
@@ -890,7 +892,8 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "alignSelf": "flex-start",
+      "alignSelf": "auto",
+      "flexShrink": 1,
     }
   }
 >
@@ -1007,7 +1010,8 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     {
-      "alignSelf": "flex-start",
+      "alignSelf": "auto",
+      "flexShrink": 1,
     }
   }
 >

@@ -167,10 +167,6 @@ export const IOButtonStyles = StyleSheet.create({
   },
   buttonSizeSmall: {
     height: btnSizeDefault
-  },
-  /* Widths */
-  dimensionsDefault: {
-    alignSelf: "flex-start"
   }
 });
 

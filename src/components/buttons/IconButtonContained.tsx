@@ -11,12 +11,7 @@ import {
   IOIcons,
   IconClassComponent
 } from "../../components/icons";
-import {
-  IOButtonStyles,
-  IOColors,
-  IOIconButtonStyles,
-  hexToRgba
-} from "../../core";
+import { IOColors, IOIconButtonStyles, hexToRgba } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 
@@ -135,7 +130,7 @@ export const IconButtonContained = ({
       onPressOut={onPressOut}
       accessible={true}
       disabled={disabled}
-      style={IOButtonStyles.dimensionsDefault}
+      style={{ alignSelf: "flex-start" }}
     >
       <Animated.View
         style={[
