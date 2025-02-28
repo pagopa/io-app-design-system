@@ -99,7 +99,10 @@ export const AccordionItem = ({
         </View>
       </TouchableWithoutFeedback>
 
-      <Animated.View style={bodyAnimatedStyle}>
+      <Animated.View
+        style={bodyAnimatedStyle}
+        importantForAccessibility={expanded ? "auto" : "no-hide-descendants"}
+      >
         <View style={bodyInnerStyle} onLayout={onBodyLayout}>
           {typeof body === "string" ? <Body>{body}</Body> : body}
         </View>
@@ -108,6 +111,7 @@ export const AccordionItem = ({
       {/* This gradient adds a smooth end to the content. If it is missing,
       the content will be cut sharply during the height transition. */}
       <LinearGradient
+        accessible={false}
         style={{
           height: accordionBodySpacing,
           position: "absolute",
