@@ -36,6 +36,7 @@ export type Badge = WithTestID<{
   text: string;
   allowFontScaling?: boolean;
   variant: "default" | "warning" | "error" | "success" | "cgn" | "highlight";
+  accessible?: boolean;
 }>;
 
 type SolidVariantProps = {
@@ -75,6 +76,7 @@ export const Badge = ({
   outline = false,
   allowFontScaling = true,
   variant,
+  accessible = true,
   testID
 }: Badge) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
@@ -206,7 +208,7 @@ export const Badge = ({
 
   return (
     <View
-      accessible={true}
+      accessible={accessible}
       testID={testID}
       style={[
         styles.badge,
