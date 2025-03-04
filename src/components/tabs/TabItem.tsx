@@ -33,7 +33,6 @@ export type TabItem = WithTestID<{
   label: string;
   color?: ColorMode;
   selected?: boolean;
-  fullWidth?: boolean;
   // Icons
   icon?: IOIcons;
   iconSelected?: IOIcons;
@@ -69,7 +68,6 @@ const TabItem = forwardRef(
       label,
       color = "light",
       selected = false,
-      fullWidth = false,
       accessibilityLabel,
       accessibilityHint,
       testID,
@@ -149,27 +147,24 @@ const TabItem = forwardRef(
     );
 
     // Interpolate animation values from `pressed` values
-    const animatedStyle = useAnimatedStyle(
-      () => ({
-        backgroundColor: interpolateColor(
-          selectedStateTransition.value,
-          [0, 1],
-          [
-            mapColorStates[color].background.default,
-            mapColorStates[color].background.selected
-          ]
-        ),
-        borderColor: interpolateColor(
-          selectedStateTransition.value,
-          [0, 1],
-          [
-            mapColorStates[color].border.default,
-            mapColorStates[color].border.selected
-          ]
-        )
-      }),
-      [selectedStateTransition]
-    );
+    const animatedStyle = useAnimatedStyle(() => ({
+      backgroundColor: interpolateColor(
+        selectedStateTransition.value,
+        [0, 1],
+        [
+          mapColorStates[color].background.default,
+          mapColorStates[color].background.selected
+        ]
+      ),
+      borderColor: interpolateColor(
+        selectedStateTransition.value,
+        [0, 1],
+        [
+          mapColorStates[color].border.default,
+          mapColorStates[color].border.selected
+        ]
+      )
+    }));
 
     const activeIcon = selected ? iconSelected ?? icon : icon;
 
@@ -203,7 +198,6 @@ const TabItem = forwardRef(
             { columnGap: 4 },
             !disabled && !reducedMotion && scaleAnimatedStyle,
             animatedStyle,
-            fullWidth && styles.fullWidth,
             disabled && { opacity: DISABLED_OPACITY }
           ]}
         >
@@ -235,9 +229,6 @@ const styles = StyleSheet.create({
     borderCurve: "continuous",
     justifyContent: "center",
     alignSelf: "flex-start"
-  },
-  fullWidth: {
-    alignSelf: "auto"
   }
 });
 

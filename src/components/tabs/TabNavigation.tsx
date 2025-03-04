@@ -56,9 +56,6 @@ const TabNavigation = ({
       key={index}
       style={[
         styles.item,
-        {
-          marginEnd: index === React.Children.count(children) - 1 ? 0 : 8
-        },
         stretchItems && {
           minWidth: itemMinWidth
         }
@@ -87,7 +84,8 @@ const TabNavigation = ({
           : {},
         {
           flexGrow: 1,
-          justifyContent: itemsJustify[tabAlignment]
+          justifyContent: itemsJustify[tabAlignment],
+          gap: 8
         }
       ]}
     >
