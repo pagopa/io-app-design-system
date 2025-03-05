@@ -12,10 +12,7 @@ import {
   ScrollViewProps,
   StyleSheet
 } from "react-native";
-import Animated, {
-  useAnimatedRef,
-  useScrollViewOffset
-} from "react-native-reanimated";
+import Animated, { useAnimatedRef } from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
@@ -55,7 +52,6 @@ const ForceScrollDownView = ({
   onThresholdCrossed
 }: ForceScrollDownView) => {
   const scrollViewRef = useAnimatedRef<Animated.ScrollView>();
-  const scrollOffset = useScrollViewOffset(scrollViewRef);
 
   /**
    * The height of the scroll view, used to determine whether or not the scrollable content fits inside
@@ -87,10 +83,11 @@ const ForceScrollDownView = ({
    */
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const { layoutMeasurement, contentSize } = event.nativeEvent;
+      const { layoutMeasurement, contentOffset, contentSize } =
+        event.nativeEvent;
 
       const thresholdCrossed =
-        layoutMeasurement.height + Math.max(0, scrollOffset.value) >=
+        layoutMeasurement.height + contentOffset.y >=
         contentSize.height - threshold;
 
       setThresholdCrossed(previousState => {
@@ -103,7 +100,7 @@ const ForceScrollDownView = ({
         return thresholdCrossed;
       });
     },
-    [scrollOffset.value, threshold]
+    [threshold]
   );
 
   /**
