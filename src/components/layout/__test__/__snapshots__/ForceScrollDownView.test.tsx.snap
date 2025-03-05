@@ -2,16 +2,13 @@
 
 exports[`ForceScrollDownView should match snapshot 1`] = `
 <RCTScrollView
+  collapsable={false}
   onContentSizeChange={[Function]}
   onLayout={[Function]}
   onScroll={[Function]}
   scrollEnabled={true}
-  scrollEventThrottle={400}
-  scrollIndicatorInsets={
-    {
-      "right": 1,
-    }
-  }
+  scrollEventThrottle={8}
+  style={{}}
   testID="ScrollView"
 >
   <View>

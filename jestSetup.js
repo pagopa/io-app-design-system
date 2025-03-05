@@ -31,6 +31,8 @@ jest.mock("react-native-reanimated", () => {
   Reanimated.default.addWhitelistedUIProps = () => { };
   // eslint-disable-next-line functional/immutable-data
   Reanimated.useReducedMotion = () => false;
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useScrollViewOffset = () => 0;
 
   return Reanimated;
 });
