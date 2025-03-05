@@ -3,20 +3,22 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState
 } from "react";
 import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  ScrollView,
   ScrollViewProps,
   StyleSheet
 } from "react-native";
-import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
+import Animated, {
+  useAnimatedRef,
+  useScrollViewOffset
+} from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
+import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 
 type ForceScrollDownViewProps = {
   /**
@@ -52,7 +54,8 @@ const ForceScrollDownView = ({
   scrollEnabled = true,
   onThresholdCrossed
 }: ForceScrollDownViewProps) => {
-  const scrollViewRef = useRef<ScrollView>(null);
+  const scrollViewRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollOffset = useScrollViewOffset(scrollViewRef);
 
   /**
    * The height of the scroll view, used to determine whether or not the scrollable content fits inside
@@ -80,15 +83,14 @@ const ForceScrollDownView = ({
   /**
    * A callback that is called whenever the scroll view is scrolled. It checks whether or not the
    * scroll view has crossed the threshold from the bottom and updates the state accordingly.
-   * The callback is designed to updatr button visibility only when crossing the threshold.
+   * The callback is designed to update button visibility only when crossing the threshold.
    */
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const { layoutMeasurement, contentOffset, contentSize } =
-        event.nativeEvent;
+      const { layoutMeasurement, contentSize } = event.nativeEvent;
 
       const thresholdCrossed =
-        layoutMeasurement.height + contentOffset.y >=
+        layoutMeasurement.height + scrollOffset.value >=
         contentSize.height - threshold;
 
       setThresholdCrossed(previousState => {
@@ -101,7 +103,7 @@ const ForceScrollDownView = ({
         return thresholdCrossed;
       });
     },
-    [threshold]
+    [scrollOffset.value, threshold]
   );
 
   /**
@@ -180,20 +182,19 @@ const ForceScrollDownView = ({
 
   return (
     <>
-      <ScrollView
+      <Animated.ScrollView
         testID={"ScrollView"}
         ref={scrollViewRef}
-        scrollIndicatorInsets={{ right: 1 }}
         scrollEnabled={scrollEnabled}
-        onScroll={handleScroll}
-        scrollEventThrottle={400}
         style={style}
+        onScroll={handleScroll}
+        scrollEventThrottle={8}
         onLayout={handleLayout}
         onContentSizeChange={handleContentSizeChange}
         contentContainerStyle={contentContainerStyle}
       >
         {children}
-      </ScrollView>
+      </Animated.ScrollView>
       {scrollDownButton}
     </>
   );
