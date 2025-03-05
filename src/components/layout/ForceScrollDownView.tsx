@@ -1,4 +1,5 @@
 import React, {
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -21,7 +22,7 @@ type ForceScrollDownViewProps = {
   /**
    * The content to display inside the scroll view.
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /**
    * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
    * should become hidden. Defaults to 100.
