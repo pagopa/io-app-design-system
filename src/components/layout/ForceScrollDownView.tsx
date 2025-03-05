@@ -20,7 +20,7 @@ import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 
-type ForceScrollDownViewProps = {
+export type ForceScrollDownView = {
   /**
    * The content to display inside the scroll view.
    */
@@ -29,7 +29,7 @@ type ForceScrollDownViewProps = {
    * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
    * should become hidden. Defaults to 100.
    */
-  threshold?: number;
+  threshold: number;
   /**
    * A callback that will be called whenever the scroll view crosses the threshold. The callback
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
@@ -48,12 +48,12 @@ type ForceScrollDownViewProps = {
  */
 const ForceScrollDownView = ({
   children,
-  threshold = 100,
+  threshold,
   style,
   contentContainerStyle,
   scrollEnabled = true,
   onThresholdCrossed
-}: ForceScrollDownViewProps) => {
+}: ForceScrollDownView) => {
   const scrollViewRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollViewRef);
 
@@ -90,7 +90,7 @@ const ForceScrollDownView = ({
       const { layoutMeasurement, contentSize } = event.nativeEvent;
 
       const thresholdCrossed =
-        layoutMeasurement.height + scrollOffset.value >=
+        layoutMeasurement.height + Math.max(0, scrollOffset.value) >=
         contentSize.height - threshold;
 
       setThresholdCrossed(previousState => {
