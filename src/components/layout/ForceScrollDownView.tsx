@@ -1,4 +1,5 @@
 import React, {
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -13,20 +14,20 @@ import {
   ScrollViewProps,
   StyleSheet
 } from "react-native";
-import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
+import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 
-type ForceScrollDownViewProps = {
+export type ForceScrollDownView = {
   /**
    * The content to display inside the scroll view.
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /**
    * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
    * should become hidden. Defaults to 100.
    */
-  threshold?: number;
+  threshold: number;
   /**
    * A callback that will be called whenever the scroll view crosses the threshold. The callback
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
@@ -45,12 +46,12 @@ type ForceScrollDownViewProps = {
  */
 const ForceScrollDownView = ({
   children,
-  threshold = 100,
+  threshold,
   style,
   contentContainerStyle,
   scrollEnabled = true,
   onThresholdCrossed
-}: ForceScrollDownViewProps) => {
+}: ForceScrollDownView) => {
   const scrollViewRef = useRef<ScrollView>(null);
 
   /**
@@ -79,7 +80,7 @@ const ForceScrollDownView = ({
   /**
    * A callback that is called whenever the scroll view is scrolled. It checks whether or not the
    * scroll view has crossed the threshold from the bottom and updates the state accordingly.
-   * The callback is designed to updatr button visibility only when crossing the threshold.
+   * The callback is designed to update button visibility only when crossing the threshold.
    */
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -182,11 +183,10 @@ const ForceScrollDownView = ({
       <ScrollView
         testID={"ScrollView"}
         ref={scrollViewRef}
-        scrollIndicatorInsets={{ right: 1 }}
         scrollEnabled={scrollEnabled}
-        onScroll={handleScroll}
-        scrollEventThrottle={400}
         style={style}
+        onScroll={handleScroll}
+        scrollEventThrottle={8}
         onLayout={handleLayout}
         onContentSizeChange={handleContentSizeChange}
         contentContainerStyle={contentContainerStyle}

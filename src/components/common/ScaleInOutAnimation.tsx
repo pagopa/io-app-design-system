@@ -4,16 +4,12 @@ import { ViewStyle } from "react-native";
 import Animated, {
   LayoutAnimation,
   WithSpringConfig,
-  withDelay,
-  withSpring,
-  withTiming
+  withSpring
 } from "react-native-reanimated";
 
 type Props = {
   visible?: boolean;
   springConfig?: WithSpringConfig;
-  delayOut?: number;
-  delayIn?: number;
   children: React.ReactNode;
   style?: ViewStyle;
 };
@@ -21,8 +17,6 @@ type Props = {
 const ScaleInOutAnimation = ({
   visible = true,
   springConfig = { damping: 500, mass: 3, stiffness: 1000 },
-  delayOut = 0,
-  delayIn = 0,
   children,
   style
 }: Props) => {
@@ -30,10 +24,12 @@ const ScaleInOutAnimation = ({
     "worklet";
     return {
       initialValues: {
-        transform: [{ scale: 0 }]
+        opacity: 0,
+        transform: [{ scale: 0.5 }]
       },
       animations: {
-        transform: [{ scale: withDelay(delayIn, withSpring(1, springConfig)) }]
+        opacity: withSpring(1, springConfig),
+        transform: [{ scale: withSpring(1, springConfig) }]
       }
     };
   };
@@ -42,10 +38,12 @@ const ScaleInOutAnimation = ({
     "worklet";
     return {
       initialValues: {
+        opacity: 1,
         transform: [{ scale: 1 }]
       },
       animations: {
-        transform: [{ scale: withDelay(delayOut, withTiming(0)) }]
+        opacity: withSpring(0, springConfig),
+        transform: [{ scale: withSpring(0.5, springConfig) }]
       }
     };
   };
