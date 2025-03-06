@@ -26,7 +26,10 @@ type ForceScrollDownViewActions = {
    * The distance from the bottom is computed automatically based on the actions.
    */
   threshold?: never;
-  actions: ComponentProps<typeof FooterActions>["actions"];
+  footerActions: Omit<
+    ComponentProps<typeof FooterActions>,
+    "fixed" | "onMeasure"
+  >;
 };
 
 type ForceScrollDownViewCustomSlot = {
@@ -35,7 +38,7 @@ type ForceScrollDownViewCustomSlot = {
    * should become hidden.
    */
   threshold: number;
-  actions?: never;
+  footerActions?: never;
 };
 
 type ForceScrollDownViewSlot =
@@ -65,7 +68,7 @@ export type ForceScrollDownView = {
  * `scrollEnabled` prop to `false`.
  */
 const ForceScrollDownView = ({
-  actions,
+  footerActions,
   children,
   threshold: customThreshold,
   style,
@@ -80,7 +83,7 @@ const ForceScrollDownView = ({
     handleFooterActionsInlineMeasurements
   } = useFooterActionsInlineMeasurements();
 
-  const threshold = actions
+  const threshold = footerActions
     ? footerActionsInlineMeasurements.safeBottomAreaHeight
     : customThreshold;
 
@@ -88,13 +91,13 @@ const ForceScrollDownView = ({
    * The height of the scroll view, used to determine whether or not the scrollable content fits inside
    * the scroll view and whether the "scroll to bottom" button should be displayed.
    */
-  const [scrollViewHeight, setScrollViewHeight] = useState<number>();
+  const [scrollViewHeight, setScrollViewHeight] = useState<number>(0);
 
   /**
    * The height of the scrollable content, used to determine whether or not the "scroll to bottom" button
    * should be displayed.
    */
-  const [contentHeight, setContentHeight] = useState<number>();
+  const [contentHeight, setContentHeight] = useState<number>(0);
 
   /**
    * Whether or not the scroll view has crossed the threshold from the bottom.
@@ -121,17 +124,12 @@ const ForceScrollDownView = ({
         layoutMeasurement.height + contentOffset.y >=
         contentSize.height - (threshold ?? 0);
 
-      setThresholdCrossed(previousState => {
-        if (!previousState && thresholdCrossed) {
-          setButtonVisible(false);
-        }
-        if (previousState && !thresholdCrossed) {
-          setButtonVisible(true);
-        }
-        return thresholdCrossed;
-      });
+      if (isThresholdCrossed !== thresholdCrossed) {
+        setThresholdCrossed(thresholdCrossed);
+        setButtonVisible(!thresholdCrossed);
+      }
     },
-    [threshold]
+    [threshold, isThresholdCrossed]
   );
 
   /**
@@ -176,8 +174,8 @@ const ForceScrollDownView = ({
    */
   const needsScroll = useMemo(
     () =>
-      scrollViewHeight != null &&
-      contentHeight != null &&
+      scrollViewHeight > 0 &&
+      contentHeight > 0 &&
       scrollViewHeight < contentHeight,
     [scrollViewHeight, contentHeight]
   );
@@ -222,11 +220,11 @@ const ForceScrollDownView = ({
         contentContainerStyle={contentContainerStyle}
       >
         {children}
-        {actions && (
+        {footerActions && (
           <FooterActions
+            {...footerActions}
             onMeasure={handleFooterActionsInlineMeasurements}
             fixed={false}
-            actions={actions}
           />
         )}
       </ScrollView>

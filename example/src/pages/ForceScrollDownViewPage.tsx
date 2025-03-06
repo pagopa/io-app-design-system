@@ -9,12 +9,14 @@ import { Screen } from "../components/Screen";
  */
 export const ForceScrollDownViewPage = () => (
   <ForceScrollDownView
-    actions={{
-      type: "SingleButton",
-      primary: {
-        label: "Continua",
-        onPress: () => {
-          Alert.alert("Button pressed");
+    footerActions={{
+      actions: {
+        type: "SingleButton",
+        primary: {
+          label: "Continua",
+          onPress: () => {
+            Alert.alert("Button pressed");
+          }
         }
       }
     }}
