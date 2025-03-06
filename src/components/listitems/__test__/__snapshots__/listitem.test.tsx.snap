@@ -767,6 +767,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 1`] = `
 <View
+  accessibilityLabel="label € 1.000,00 suggestReason"
   accessibilityRole="radio"
   accessibilityState={
     {
@@ -1140,6 +1141,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
 
 exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmount Snapshot 2`] = `
 <View
+  accessibilityLabel="label € 1.000,00 "
   accessibilityRole="radio"
   accessibilityState={
     {
@@ -2343,6 +2345,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 <View
+  accessibilityLabel="label € 1.000,00 suggestReason"
   accessibilityRole="radio"
   accessibilityState={
     {
@@ -2716,6 +2719,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
 
 exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
 <View
+  accessibilityLabel="label € 1.000,00 "
   accessibilityRole="radio"
   accessibilityState={
     {
