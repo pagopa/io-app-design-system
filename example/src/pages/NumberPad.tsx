@@ -89,7 +89,7 @@ export const NumberPadScreen = () => {
           deleteAccessibilityLabel="Delete"
           onNumberPress={onNumberPress}
           onDeletePress={onDeletePress}
-          variant={blueBackground ? "dark" : "light"}
+          variant={blueBackground ? "primary" : "neutral"}
           biometricType="FACE_ID"
           biometricAccessibilityLabel="Face ID"
           onBiometricPress={onBiometricPress}
