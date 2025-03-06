@@ -1,4 +1,5 @@
 import React, {
+  ComponentProps,
   ReactNode,
   useCallback,
   useEffect,
@@ -17,6 +18,29 @@ import {
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
+import { FooterActions } from "./FooterActions";
+import { useFooterActionsInlineMeasurements } from "./hooks";
+
+type ForceScrollDownViewActions = {
+  /**
+   * The distance from the bottom is computed automatically based on the actions.
+   */
+  threshold?: never;
+  actions: ComponentProps<typeof FooterActions>["actions"];
+};
+
+type ForceScrollDownViewCustomSlot = {
+  /**
+   * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
+   * should become hidden.
+   */
+  threshold: number;
+  actions?: never;
+};
+
+type ForceScrollDownViewSlot =
+  | ForceScrollDownViewActions
+  | ForceScrollDownViewCustomSlot;
 
 export type ForceScrollDownView = {
   /**
@@ -24,19 +48,15 @@ export type ForceScrollDownView = {
    */
   children: ReactNode;
   /**
-   * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
-   * should become hidden. Defaults to 100.
-   */
-  threshold: number;
-  /**
    * A callback that will be called whenever the scroll view crosses the threshold. The callback
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
    */
   onThresholdCrossed?: (crossed: boolean) => void;
-} & Pick<
-  ScrollViewProps,
-  "style" | "contentContainerStyle" | "scrollEnabled" | "testID"
->;
+} & ForceScrollDownViewSlot &
+  Pick<
+    ScrollViewProps,
+    "style" | "contentContainerStyle" | "scrollEnabled" | "testID"
+  >;
 
 /**
  * A React Native component that displays a scroll view with a button that scrolls to the bottom of the content
@@ -45,14 +65,24 @@ export type ForceScrollDownView = {
  * `scrollEnabled` prop to `false`.
  */
 const ForceScrollDownView = ({
+  actions,
   children,
-  threshold,
+  threshold: customThreshold,
   style,
   contentContainerStyle,
   scrollEnabled = true,
   onThresholdCrossed
 }: ForceScrollDownView) => {
   const scrollViewRef = useRef<ScrollView>(null);
+
+  const {
+    footerActionsInlineMeasurements,
+    handleFooterActionsInlineMeasurements
+  } = useFooterActionsInlineMeasurements();
+
+  const threshold = actions
+    ? footerActionsInlineMeasurements.safeBottomAreaHeight
+    : customThreshold;
 
   /**
    * The height of the scroll view, used to determine whether or not the scrollable content fits inside
@@ -89,7 +119,7 @@ const ForceScrollDownView = ({
 
       const thresholdCrossed =
         layoutMeasurement.height + contentOffset.y >=
-        contentSize.height - threshold;
+        contentSize.height - (threshold ?? 0);
 
       setThresholdCrossed(previousState => {
         if (!previousState && thresholdCrossed) {
@@ -192,6 +222,13 @@ const ForceScrollDownView = ({
         contentContainerStyle={contentContainerStyle}
       >
         {children}
+        {actions && (
+          <FooterActions
+            onMeasure={handleFooterActionsInlineMeasurements}
+            fixed={false}
+            actions={actions}
+          />
+        )}
       </ScrollView>
       {scrollDownButton}
     </>
