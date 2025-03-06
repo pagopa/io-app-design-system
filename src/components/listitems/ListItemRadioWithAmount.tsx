@@ -48,11 +48,15 @@ export const ListItemRadioWithAmount = ({
 
   const suggestColor: IOColors = "hanPurple-500";
 
+  const defaultAccessibilityLabel = `${label} ${formattedAmountString} ${
+    suggestReason ?? ""
+  }`;
+
   return (
     <PressableListItemBase
       onPress={pressHandler}
       accessibilityRole="radio"
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel ?? defaultAccessibilityLabel}
       accessibilityState={{
         checked: selected ?? toggleValue
       }}
