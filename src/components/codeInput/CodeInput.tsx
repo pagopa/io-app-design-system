@@ -11,7 +11,7 @@ type CodeInputProps = {
   onValueChange: (value: string) => void;
   length: number;
   onValidate: (value: string) => boolean;
-  variant?: "light" | "dark";
+  variant?: "primary" | "neutral";
 };
 
 const DOT_SIZE = 16;
@@ -47,35 +47,39 @@ export const CodeInput = ({
   length,
   value,
   onValueChange,
-  variant = "light",
+  variant = "primary",
   onValidate
 }: CodeInputProps) => {
   const [status, setStatus] = useState<"default" | "error">("default");
-  const { themeType } = useIOThemeContext();
+  const { themeType, theme } = useIOThemeContext();
 
   const { translate, animatedStyle, shakeAnimation } = useErrorShakeAnimation();
 
   /* Empty Dot
   - Right color depending on both theme and variant */
   const emptyDotColorLightBg = IOColors["grey-650"];
-  const emptyDotColorDarkBg = hexToRgba(IOColors.white, 0.75);
+  const emptyDotColorDarkBg = IOColors["grey-300"];
+  const emptyDotColorAccentBg = hexToRgba(IOColors.white, 0.75);
+
   const emptyDotColorThemeBased =
     themeType === "light" ? emptyDotColorLightBg : emptyDotColorDarkBg;
 
   const emptyDotColor =
-    variant === "light" ? emptyDotColorDarkBg : emptyDotColorThemeBased;
+    variant === "primary" ? emptyDotColorAccentBg : emptyDotColorThemeBased;
 
   /* Filled Dot
   - Right color depending on theme, variant and status */
   const filledDotColorLightBg = IOColors.black;
   const filledDotColorDarkBg = IOColors.white;
+  const filledDotColorError =
+    variant === "primary" ? IOColors["error-400"] : IOColors[theme.errorText];
   const filledDotColorThemeBased =
     themeType === "light" ? filledDotColorLightBg : filledDotColorDarkBg;
 
   const filledDotColor =
     status === "error"
-      ? IOColors["error-600"]
-      : variant === "light"
+      ? filledDotColorError
+      : variant === "primary"
       ? filledDotColorDarkBg
       : filledDotColorThemeBased;
 
