@@ -80,7 +80,7 @@ export const NumberPadScreen = () => {
         <CodeInput
           value={value}
           length={PIN_LENGTH}
-          variant={blueBackground ? "light" : "dark"}
+          variant={blueBackground ? "primary" : "neutral"}
           onValueChange={setValue}
           onValidate={v => v === "123456"}
         />
@@ -89,7 +89,7 @@ export const NumberPadScreen = () => {
           deleteAccessibilityLabel="Delete"
           onNumberPress={onNumberPress}
           onDeletePress={onDeletePress}
-          variant={blueBackground ? "dark" : "light"}
+          variant={blueBackground ? "primary" : "neutral"}
           biometricType="FACE_ID"
           biometricAccessibilityLabel="Face ID"
           onBiometricPress={onBiometricPress}

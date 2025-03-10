@@ -1,23 +1,26 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { Pressable } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
 import {
+  hexToRgba,
   IOColors,
   IONumberPadButtonStyles,
-  useIONewTypeface
+  useIONewTypeface,
+  useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { IOText } from "../typography";
 
-type NumberButtonVariantType = "light" | "dark";
+type NumberButtonVariantType = "neutral" | "primary";
 
 type NumberButtonProps = {
   /**
-   * Used to choose the component color variant between `dark` and `light`.
+   * Used to choose the component color variant between `neutral` and `primary`.
    */
   variant: NumberButtonVariantType;
   /**
@@ -38,19 +41,6 @@ type ColorMapVariant = {
   foreground: IOColors;
 };
 
-const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
-  light: {
-    background: IOColors["grey-50"],
-    pressed: IOColors["grey-200"],
-    foreground: "blueIO-500"
-  },
-  dark: {
-    background: IOColors["blueIO-400"],
-    pressed: IOColors["blueIO-200"],
-    foreground: "white"
-  }
-};
-
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
  *
@@ -58,10 +48,31 @@ const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = {
  */
 export const NumberButton = memo(
   ({ number, variant, onPress }: NumberButtonProps) => {
+    const theme = useIOTheme();
+
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
-      useScaleAnimation("slight");
+      useScaleAnimation("medium");
     const reducedMotion = useReducedMotion();
     const { newTypefaceEnabled } = useIONewTypeface();
+
+    const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = useMemo(
+      () => ({
+        neutral: {
+          background: hexToRgba(
+            IOColors[theme["interactiveElem-default"]],
+            0.1
+          ),
+          pressed: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.35),
+          foreground: theme["interactiveElem-default"]
+        },
+        primary: {
+          background: hexToRgba(IOColors.white, 0.15),
+          pressed: hexToRgba(IOColors.white, 0.5),
+          foreground: "white"
+        }
+      }),
+      [theme]
+    );
 
     // Interpolate animation values from `isPressed` values
     const pressedAnimationStyle = useAnimatedStyle(() => ({
@@ -73,6 +84,7 @@ export const NumberButton = memo(
     }));
 
     const handleOnPress = useCallback(() => {
+      ReactNativeHapticFeedback.trigger("impactLight");
       onPress(number);
     }, [number, onPress]);
 

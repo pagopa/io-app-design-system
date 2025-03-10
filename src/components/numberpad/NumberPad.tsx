@@ -70,7 +70,7 @@ const mapIconSpecByBiometric: Record<
  * @returns {JSX.Element} The rendered numeric keyboard component.
  */
 export const NumberPad = ({
-  variant = "dark",
+  variant = "primary",
   biometricType,
   biometricAccessibilityLabel,
   deleteAccessibilityLabel,
@@ -101,7 +101,7 @@ export const NumberPad = ({
             <ButtonWrapper key={item}>
               <IconButton
                 icon="cancel"
-                color={variant === "dark" ? "contrast" : "primary"}
+                color={variant === "primary" ? "contrast" : "primary"}
                 onPress={onDeletePress}
                 accessibilityLabel={deleteAccessibilityLabel}
               />
@@ -114,7 +114,7 @@ export const NumberPad = ({
               <IconButton
                 icon={mapIconSpecByBiometric[biometricType].icon}
                 iconSize={mapIconSpecByBiometric[biometricType].size}
-                color={variant === "dark" ? "contrast" : "primary"}
+                color={variant === "primary" ? "contrast" : "primary"}
                 onPress={onBiometricPress}
                 accessibilityLabel={biometricAccessibilityLabel}
               />

@@ -22,6 +22,6 @@ type Story = StoryObj<typeof meta>;
 export const Light: Story = {
   args: {
     deleteAccessibilityLabel: "Delete",
-    variant: "light"
+    variant: "neutral"
   }
 };
