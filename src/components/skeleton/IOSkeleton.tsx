@@ -11,7 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
 
-const ANIMATION_DURATION = 1000;
+const ANIMATION_DURATION = 1250;
 const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
 const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
 
@@ -48,11 +48,11 @@ export const IOSkeleton = React.memo(
         withSequence(
           withTiming(OPACITY_MAX, {
             duration: ANIMATION_DURATION / 2,
-            easing: Easing.linear
+            easing: Easing.inOut(Easing.sin)
           }),
           withTiming(OPACITY_MIN, {
             duration: ANIMATION_DURATION / 2,
-            easing: Easing.linear
+            easing: Easing.inOut(Easing.sin)
           })
         ),
         -1,
@@ -77,23 +77,16 @@ export const IOSkeleton = React.memo(
       opacity: reduceMotion ? OPACITY_REDUCED_MOTION : opacity.value
     }));
 
-    return shape === "square" ? (
+    return (
       <Animated.View
         style={[
           {
             backgroundColor,
-            width: size,
-            height: size,
+            width: shape === "square" ? size : width,
+            height: shape === "square" ? size : height,
             borderRadius,
             borderCurve: "continuous"
           },
-          animatedStyle
-        ]}
-      />
-    ) : (
-      <Animated.View
-        style={[
-          { backgroundColor, width, height, borderRadius },
           animatedStyle
         ]}
       />
