@@ -383,6 +383,7 @@ export const IOThemeDark: IOTheme = {
   "divider-header": "grey-850",
   "divider-default": "grey-850",
   "divider-bottomBar": "grey-850",
+  "skeleton-background": "grey-850",
   // Status
   errorIcon: "error-400",
   errorText: "error-400",
