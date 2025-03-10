@@ -1,4 +1,6 @@
 import React, {
+  ComponentProps,
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -13,29 +15,51 @@ import {
   ScrollViewProps,
   StyleSheet
 } from "react-native";
-import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
+import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
+import { FooterActions } from "./FooterActions";
+import { useFooterActionsInlineMeasurements } from "./hooks";
 
-type ForceScrollDownViewProps = {
+type ForceScrollDownViewActions = {
+  /**
+   * The distance from the bottom is computed automatically based on the actions.
+   */
+  threshold?: never;
+  footerActions: Omit<
+    ComponentProps<typeof FooterActions>,
+    "fixed" | "onMeasure"
+  >;
+};
+
+type ForceScrollDownViewCustomSlot = {
+  /**
+   * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
+   * should become hidden.
+   */
+  threshold: number;
+  footerActions?: never;
+};
+
+type ForceScrollDownViewSlot =
+  | ForceScrollDownViewActions
+  | ForceScrollDownViewCustomSlot;
+
+export type ForceScrollDownView = {
   /**
    * The content to display inside the scroll view.
    */
-  children: React.ReactNode;
-  /**
-   * The distance from the bottom of the scrollable content at which the "scroll to bottom" button
-   * should become hidden. Defaults to 100.
-   */
-  threshold?: number;
+  children: ReactNode;
   /**
    * A callback that will be called whenever the scroll view crosses the threshold. The callback
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
    */
   onThresholdCrossed?: (crossed: boolean) => void;
-} & Pick<
-  ScrollViewProps,
-  "style" | "contentContainerStyle" | "scrollEnabled" | "testID"
->;
+} & ForceScrollDownViewSlot &
+  Pick<
+    ScrollViewProps,
+    "style" | "contentContainerStyle" | "scrollEnabled" | "testID"
+  >;
 
 /**
  * A React Native component that displays a scroll view with a button that scrolls to the bottom of the content
@@ -44,26 +68,36 @@ type ForceScrollDownViewProps = {
  * `scrollEnabled` prop to `false`.
  */
 const ForceScrollDownView = ({
+  footerActions,
   children,
-  threshold = 100,
+  threshold: customThreshold,
   style,
   contentContainerStyle,
   scrollEnabled = true,
   onThresholdCrossed
-}: ForceScrollDownViewProps) => {
+}: ForceScrollDownView) => {
   const scrollViewRef = useRef<ScrollView>(null);
+
+  const {
+    footerActionsInlineMeasurements,
+    handleFooterActionsInlineMeasurements
+  } = useFooterActionsInlineMeasurements();
+
+  const threshold = footerActions
+    ? footerActionsInlineMeasurements.safeBottomAreaHeight
+    : customThreshold;
 
   /**
    * The height of the scroll view, used to determine whether or not the scrollable content fits inside
    * the scroll view and whether the "scroll to bottom" button should be displayed.
    */
-  const [scrollViewHeight, setScrollViewHeight] = useState<number>();
+  const [scrollViewHeight, setScrollViewHeight] = useState<number>(0);
 
   /**
    * The height of the scrollable content, used to determine whether or not the "scroll to bottom" button
    * should be displayed.
    */
-  const [contentHeight, setContentHeight] = useState<number>();
+  const [contentHeight, setContentHeight] = useState<number>(0);
 
   /**
    * Whether or not the scroll view has crossed the threshold from the bottom.
@@ -79,7 +113,7 @@ const ForceScrollDownView = ({
   /**
    * A callback that is called whenever the scroll view is scrolled. It checks whether or not the
    * scroll view has crossed the threshold from the bottom and updates the state accordingly.
-   * The callback is designed to updatr button visibility only when crossing the threshold.
+   * The callback is designed to update button visibility only when crossing the threshold.
    */
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -88,19 +122,14 @@ const ForceScrollDownView = ({
 
       const thresholdCrossed =
         layoutMeasurement.height + contentOffset.y >=
-        contentSize.height - threshold;
+        contentSize.height - (threshold ?? 0);
 
-      setThresholdCrossed(previousState => {
-        if (!previousState && thresholdCrossed) {
-          setButtonVisible(false);
-        }
-        if (previousState && !thresholdCrossed) {
-          setButtonVisible(true);
-        }
-        return thresholdCrossed;
-      });
+      if (isThresholdCrossed !== thresholdCrossed) {
+        setThresholdCrossed(thresholdCrossed);
+        setButtonVisible(!thresholdCrossed);
+      }
     },
-    [threshold]
+    [threshold, isThresholdCrossed]
   );
 
   /**
@@ -145,8 +174,8 @@ const ForceScrollDownView = ({
    */
   const needsScroll = useMemo(
     () =>
-      scrollViewHeight != null &&
-      contentHeight != null &&
+      scrollViewHeight > 0 &&
+      contentHeight > 0 &&
       scrollViewHeight < contentHeight,
     [scrollViewHeight, contentHeight]
   );
@@ -182,16 +211,22 @@ const ForceScrollDownView = ({
       <ScrollView
         testID={"ScrollView"}
         ref={scrollViewRef}
-        scrollIndicatorInsets={{ right: 1 }}
         scrollEnabled={scrollEnabled}
-        onScroll={handleScroll}
-        scrollEventThrottle={400}
         style={style}
+        onScroll={handleScroll}
+        scrollEventThrottle={8}
         onLayout={handleLayout}
         onContentSizeChange={handleContentSizeChange}
         contentContainerStyle={contentContainerStyle}
       >
         {children}
+        {footerActions && (
+          <FooterActions
+            {...footerActions}
+            onMeasure={handleFooterActionsInlineMeasurements}
+            fixed={false}
+          />
+        )}
       </ScrollView>
       {scrollDownButton}
     </>

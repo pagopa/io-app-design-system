@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FooterActionsInlineMeasurements } from "../FooterActionsInline";
 
 type UseFooterActionsInlineMeasurementsProps = {
@@ -25,11 +25,12 @@ export const useFooterActionsInlineMeasurements =
       safeBottomAreaHeight: 0
     });
 
-    const handleFooterActionsInlineMeasurements = (
-      values: FooterActionsInlineMeasurements
-    ) => {
-      setFooterActionsInlineMeasurements(values);
-    };
+    const handleFooterActionsInlineMeasurements = useCallback(
+      (values: FooterActionsInlineMeasurements) => {
+        setFooterActionsInlineMeasurements(values);
+      },
+      []
+    );
 
     return {
       footerActionsInlineMeasurements,

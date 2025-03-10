@@ -13,7 +13,7 @@ describe("ForceScrollDownView", () => {
     const tChildren = <Text>{tContent}</Text>;
 
     const component = render(
-      <ForceScrollDownView>{tChildren}</ForceScrollDownView>
+      <ForceScrollDownView threshold={100}>{tChildren}</ForceScrollDownView>
     );
 
     expect(component).toMatchSnapshot();
@@ -23,7 +23,7 @@ describe("ForceScrollDownView", () => {
     const tChildren = <Text>{tContent}</Text>;
 
     const { getByText } = render(
-      <ForceScrollDownView>{tChildren}</ForceScrollDownView>
+      <ForceScrollDownView threshold={100}>{tChildren}</ForceScrollDownView>
     );
 
     expect(getByText(tContent)).toBeDefined();
@@ -35,7 +35,7 @@ describe("ForceScrollDownView", () => {
     const tScreenHeight = 1000;
 
     const { getByTestId, queryByTestId } = render(
-      <ForceScrollDownView>{tChildren}</ForceScrollDownView>
+      <ForceScrollDownView threshold={100}>{tChildren}</ForceScrollDownView>
     );
 
     const scrollView = getByTestId("ScrollView");
@@ -72,7 +72,7 @@ describe("ForceScrollDownView", () => {
     const tScreenHeight = 1000;
 
     const { getByTestId, queryByTestId } = render(
-      <ForceScrollDownView>{tChildren}</ForceScrollDownView>
+      <ForceScrollDownView threshold={100}>{tChildren}</ForceScrollDownView>
     );
 
     const scrollView = getByTestId("ScrollView");

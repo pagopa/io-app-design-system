@@ -1,10 +1,6 @@
+import { Body, ForceScrollDownView } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { SafeAreaView } from "react-native";
-import {
-  IOStyles,
-  ForceScrollDownView,
-  Body
-} from "@pagopa/io-app-design-system";
+import { Alert } from "react-native";
 import { Screen } from "../components/Screen";
 
 /**
@@ -12,13 +8,23 @@ import { Screen } from "../components/Screen";
  * @returns a screen with a flexed view where you can test components
  */
 export const ForceScrollDownViewPage = () => (
-  <SafeAreaView style={IOStyles.flex}>
-    <ForceScrollDownView>
-      <Screen>
-        {[...Array(50)].map((_el, i) => (
-          <Body key={`body-${i}`}>Repeated text</Body>
-        ))}
-      </Screen>
-    </ForceScrollDownView>
-  </SafeAreaView>
+  <ForceScrollDownView
+    footerActions={{
+      actions: {
+        type: "SingleButton",
+        primary: {
+          label: "Continua",
+          onPress: () => {
+            Alert.alert("Button pressed");
+          }
+        }
+      }
+    }}
+  >
+    <Screen>
+      {[...Array(34)].map((_el, i) => (
+        <Body key={`body-${i}`}>Repeated text</Body>
+      ))}
+    </Screen>
+  </ForceScrollDownView>
 );
