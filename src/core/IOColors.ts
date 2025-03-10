@@ -244,6 +244,7 @@ const themeKeys = [
   "divider-default",
   "divider-bottomBar",
   "pdfViewer-background",
+  "skeleton-background",
   // Tab Item
   "tab-item-border-default",
   "tab-item-foreground-default",
@@ -313,6 +314,7 @@ export const IOThemeLight: IOTheme = {
   "divider-default": "grey-200",
   "divider-bottomBar": "grey-200",
   "pdfViewer-background": "grey-700",
+  "skeleton-background": "grey-100",
   // Tab Item
   "tab-item-border-default": "grey-300",
   "tab-item-foreground-default": "black",
