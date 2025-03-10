@@ -12,8 +12,8 @@ import Animated, {
 import { IOColors, useIOTheme } from "../../core";
 
 const ANIMATION_DURATION = 1000;
-const [MIN_OPACITY, MAX_OPACITY] = [0.35, 0.75];
-const [MIN_OPACITY_REDUCED_MOTION, MAX_OPACITY_REDUCED_MOTION] = [0.5, 0.7];
+const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
+const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
 
 type IOSkeletonSquare = {
   shape: "square";
@@ -33,74 +33,70 @@ type IOSkeletonRectangle = {
 
 export type IOSkeleton = IOSkeletonSquare | IOSkeletonRectangle;
 
-export const IOSkeleton = ({
-  shape,
-  size,
-  width,
-  height,
-  radius: borderRadius
-}: IOSkeleton) => {
-  const reduceMotion = useReducedMotion();
+export const IOSkeleton = React.memo(
+  ({ shape, size, width, height, radius: borderRadius }: IOSkeleton) => {
+    const reduceMotion = useReducedMotion();
 
-  const minOpacity = reduceMotion ? MIN_OPACITY_REDUCED_MOTION : MIN_OPACITY;
-  const maxOpacity = reduceMotion ? MAX_OPACITY_REDUCED_MOTION : MAX_OPACITY;
+    const opacity = useSharedValue(OPACITY_MAX);
+    const theme = useIOTheme();
 
-  const opacity = useSharedValue(maxOpacity);
-  const theme = useIOTheme();
+    const backgroundColor = IOColors[theme["skeleton-background"]];
 
-  const backgroundColor = IOColors[theme["skeleton-background"]];
+    const startSkeletonAnimation = useCallback(() => {
+      // eslint-disable-next-line functional/immutable-data
+      opacity.value = withRepeat(
+        withSequence(
+          withTiming(OPACITY_MAX, {
+            duration: ANIMATION_DURATION / 2,
+            easing: Easing.linear
+          }),
+          withTiming(OPACITY_MIN, {
+            duration: ANIMATION_DURATION / 2,
+            easing: Easing.linear
+          })
+        ),
+        -1,
+        true
+      );
+    }, [opacity]);
 
-  const startSkeletonAnimation = useCallback(() => {
-    // eslint-disable-next-line functional/immutable-data
-    opacity.value = withRepeat(
-      withSequence(
-        withTiming(maxOpacity, {
-          duration: ANIMATION_DURATION / 2,
-          easing: Easing.linear
-        }),
-        withTiming(minOpacity, {
-          duration: ANIMATION_DURATION / 2,
-          easing: Easing.linear
-        })
-      ),
-      -1,
-      true
+    const cancelAnimations = useCallback(() => {
+      "worklet";
+      cancelAnimation(opacity);
+    }, [opacity]);
+
+    useEffect(() => {
+      startSkeletonAnimation();
+
+      return () => {
+        cancelAnimations();
+      };
+    }, [startSkeletonAnimation, cancelAnimations]);
+
+    const animatedStyle = useAnimatedStyle(() => ({
+      opacity: reduceMotion ? OPACITY_REDUCED_MOTION : opacity.value
+    }));
+
+    return shape === "square" ? (
+      <Animated.View
+        style={[
+          {
+            backgroundColor,
+            width: size,
+            height: size,
+            borderRadius,
+            borderCurve: "continuous"
+          },
+          animatedStyle
+        ]}
+      />
+    ) : (
+      <Animated.View
+        style={[
+          { backgroundColor, width, height, borderRadius },
+          animatedStyle
+        ]}
+      />
     );
-  }, [opacity, minOpacity, maxOpacity]);
-
-  const cancelAnimations = useCallback(() => {
-    "worklet";
-    cancelAnimation(opacity);
-  }, [opacity]);
-
-  useEffect(() => {
-    startSkeletonAnimation();
-
-    return () => {
-      cancelAnimations();
-    };
-  }, [startSkeletonAnimation, cancelAnimations]);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value
-  }));
-
-  return shape === "square" ? (
-    <Animated.View
-      style={[
-        {
-          backgroundColor,
-          width: size,
-          height: size,
-          borderRadius,
-          borderCurve: "continuous"
-        },
-        animatedStyle
-      ]}
-    />
-  ) : (
-    <Animated.View
-      style={[{ backgroundColor, width, height, borderRadius }, animatedStyle]}
-    />
-  );
-};
+  }
+);

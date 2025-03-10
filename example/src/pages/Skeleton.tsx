@@ -8,6 +8,7 @@ import {
   HStack,
   IOAppMargin,
   IOColors,
+  IOModuleIDPVSpacing,
   IOSkeleton,
   IOSpacer,
   LabelMini,
@@ -38,9 +39,39 @@ export const Skeleton = () => {
         <IOSkeleton shape="rectangle" width={150} height={120} />
       </HStack>
 
-      <VStack space={4}>
-        <ModuleCheckout isLoading />
-      </VStack>
+      <ContentWrapper>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: IOModuleIDPVSpacing
+          }}
+        >
+          <HStack space={8} style={{ alignItems: "center" }}>
+            <IOSkeleton shape="square" size={24} radius={8} />
+            <VStack space={8}>
+              <IOSkeleton
+                shape="rectangle"
+                width={170}
+                height={20}
+                radius={8}
+              />
+              <IOSkeleton
+                shape="rectangle"
+                width={110}
+                height={16}
+                radius={8}
+              />
+            </VStack>
+          </HStack>
+          <IOSkeleton shape="rectangle" width={64} height={16} radius={8} />
+        </View>
+
+        <VStack space={4}>
+          <ModuleCheckout isLoading />
+        </VStack>
+      </ContentWrapper>
 
       <VStack space={16}>
         {IOAppMargin.map((value, i) => (
