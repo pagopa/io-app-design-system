@@ -29,7 +29,7 @@ export type XOR<T, U> = T | U extends object
   ? (Without<T, U> & U) | (Without<U, T> & T)
   : T | U;
 
-export type InputType = "credit-card" | "default";
+export type InputType = "credit-card" | "iban" | "default";
 
 // Biometrics type used in io-app code base
 // https://github.com/pagopa/io-app/blob/master/ts/utils/biometrics.ts#L31
@@ -44,6 +44,5 @@ export type Nullable<T> = T | null;
  * Returns a type with the desired type or undefined
  */
 export type Optional<T> = T | undefined;
-
 
 export type TextInputValidationRefProps = { validateInput: () => void };
