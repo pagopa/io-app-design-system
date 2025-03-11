@@ -38,6 +38,18 @@ export const getInputPropsByType = (
           returnKeyType: "done"
         }
       };
+    case "iban":
+      return {
+        valueFormat: v => v.replace(/\s/g, "").replace(/.{4}/g, "$& ").trim(),
+        textInputProps: {
+          autoComplete: "off",
+          keyboardType: "default",
+          textContentType: "none",
+          inputMode: "text",
+          returnKeyType: "done",
+          autoCapitalize: "characters"
+        }
+      };
     default:
       return undefined;
   }
