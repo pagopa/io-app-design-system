@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 import Animated, {
   cancelAnimation,
   Easing,
@@ -33,7 +33,7 @@ type IOSkeletonRectangle = {
 
 export type IOSkeleton = IOSkeletonSquare | IOSkeletonRectangle;
 
-export const IOSkeleton = React.memo(
+export const IOSkeleton = memo(
   ({ shape, size, width, height, radius: borderRadius }: IOSkeleton) => {
     const reduceMotion = useReducedMotion();
 
