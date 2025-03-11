@@ -315,12 +315,21 @@ export const TextInputBase = ({
 
   const onChangeTextHandler = useCallback(
     (text: string) => {
-      if (counterLimit && text.length > counterLimit) {
+      const actualTextLength = text.replace(/\s/g, "").length;
+
+      if (counterLimit && actualTextLength > counterLimit) {
         return;
       }
-      onChangeText(text);
+
+      if (inputType !== "default") {
+        // necessary to omit whitespaces added by the valueFormat function
+        const formattedText = text.replace(/\s/g, "");
+        onChangeText(formattedText);
+      } else {
+        onChangeText(text);
+      }
     },
-    [counterLimit, onChangeText]
+    [counterLimit, onChangeText, inputType]
   );
 
   const onBlurHandler = useCallback(() => {
@@ -347,6 +356,15 @@ export const TextInputBase = ({
         : value,
     [value, derivedInputProps]
   );
+
+  // Calculate the adjusted maxLength to account for spaces
+  const adjustedMaxLength = useMemo(() => {
+    if (counterLimit && derivedInputProps && derivedInputProps.valueFormat) {
+      const spacesCount = Math.floor(counterLimit / 4);
+      return counterLimit + spacesCount;
+    }
+    return counterLimit;
+  }, [counterLimit, derivedInputProps]);
 
   return (
     <>
@@ -407,7 +425,7 @@ export const TextInputBase = ({
           accessibilityHint={accessibilityHint}
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
-          maxLength={counterLimit}
+          maxLength={adjustedMaxLength}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
           blurOnSubmit={true}
