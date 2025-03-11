@@ -26,7 +26,7 @@ type IOSkeletonSquare = {
 
 type IOSkeletonRectangle = {
   shape: "rectangle";
-  width: number;
+  width: number | "100%";
   height: number;
   radius?: number;
   size?: never;
