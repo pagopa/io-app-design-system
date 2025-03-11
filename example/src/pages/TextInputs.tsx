@@ -124,6 +124,11 @@ export const TextInputs = () => (
         inputType={"credit-card"}
         bottomMessage="Handles credit card input type"
       />
+      <InputComponentWrapper
+        placeholder={"Base input"}
+        inputType={"iban"}
+        bottomMessage="Handles IBAN input type"
+      />
       <H5>Base input with validation</H5>
       <InputValidationComponentWrapper
         placeholder={"Base input"}
