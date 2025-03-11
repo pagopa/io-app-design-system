@@ -51,7 +51,6 @@ import { SearchCustom } from "../pages/SearchCustom";
 import { SearchNative } from "../pages/SearchNative";
 import { Selection } from "../pages/Selection";
 import { Skeleton } from "../pages/Skeleton";
-import { SkeletonLegacy } from "../pages/SkeletonLegacy";
 import { HeaderSecondLevelScreenStatic } from "../pages/StaticHeaderSecondLevel";
 import { StepperPage } from "../pages/Stepper";
 import { TabNavigationScreen } from "../pages/TabNavigation";
@@ -208,15 +207,6 @@ const AppNavigator = () => {
             component={Skeleton}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.SKELETON.title,
-              headerBackTitleVisible: false
-            }}
-          />
-
-          <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.SKELETON_LEGACY.route}
-            component={SkeletonLegacy}
-            options={{
-              headerTitle: APP_ROUTES.COMPONENTS.SKELETON_LEGACY.title,
               headerBackTitleVisible: false
             }}
           />

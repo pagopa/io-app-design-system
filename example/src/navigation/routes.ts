@@ -74,10 +74,6 @@ const APP_ROUTES = {
     SKELETON: {
       route: "DESIGN_SYSTEM_SKELETON",
       title: "Skeleton"
-    },
-    SKELETON_LEGACY: {
-      route: "DESIGN_SYSTEM_SKELETON_LEGACY",
-      title: "Skeleton (legacy)"
     }
   },
   SCREENS: {
