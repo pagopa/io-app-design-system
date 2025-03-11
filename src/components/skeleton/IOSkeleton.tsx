@@ -1,4 +1,5 @@
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo, useEffect, useMemo } from "react";
+import { ViewStyle } from "react-native";
 import Animated, {
   cancelAnimation,
   Easing,
@@ -36,13 +37,28 @@ export type IOSkeleton = IOSkeletonSquare | IOSkeletonRectangle;
 export const IOSkeleton = memo(
   ({ shape, size, width, height, radius: borderRadius }: IOSkeleton) => {
     const reduceMotion = useReducedMotion();
+    const theme = useIOTheme();
 
     const opacity = useSharedValue(OPACITY_MAX);
-    const theme = useIOTheme();
 
     const backgroundColor = IOColors[theme["skeleton-background"]];
 
-    const startSkeletonAnimation = useCallback(() => {
+    const baseStyle: ViewStyle = useMemo(
+      () => ({
+        backgroundColor,
+        width: shape === "square" ? size : width,
+        height: shape === "square" ? size : height,
+        borderRadius,
+        borderCurve: "continuous"
+      }),
+      [backgroundColor, shape, size, width, height, borderRadius]
+    );
+
+    useEffect(() => {
+      if (reduceMotion) {
+        return;
+      }
+
       // eslint-disable-next-line functional/immutable-data
       opacity.value = withRepeat(
         withSequence(
@@ -58,38 +74,16 @@ export const IOSkeleton = memo(
         -1,
         true
       );
-    }, [opacity]);
-
-    const cancelAnimations = useCallback(() => {
-      "worklet";
-      cancelAnimation(opacity);
-    }, [opacity]);
-
-    useEffect(() => {
-      startSkeletonAnimation();
 
       return () => {
-        cancelAnimations();
+        cancelAnimation(opacity);
       };
-    }, [startSkeletonAnimation, cancelAnimations]);
+    }, [opacity, reduceMotion]);
 
     const animatedStyle = useAnimatedStyle(() => ({
       opacity: reduceMotion ? OPACITY_REDUCED_MOTION : opacity.value
     }));
 
-    return (
-      <Animated.View
-        style={[
-          {
-            backgroundColor,
-            width: shape === "square" ? size : width,
-            height: shape === "square" ? size : height,
-            borderRadius,
-            borderCurve: "continuous"
-          },
-          animatedStyle
-        ]}
-      />
-    );
+    return <Animated.View style={[baseStyle, animatedStyle]} />;
   }
 );
