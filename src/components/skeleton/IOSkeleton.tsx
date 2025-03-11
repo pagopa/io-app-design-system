@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo } from "react";
-import { ViewStyle } from "react-native";
+import { DimensionValue, ViewStyle } from "react-native";
 import Animated, {
   cancelAnimation,
   Easing,
@@ -26,7 +26,7 @@ type IOSkeletonSquare = {
 
 type IOSkeletonRectangle = {
   shape: "rectangle";
-  width: number | "100%";
+  width: DimensionValue;
   height: number;
   radius?: number;
   size?: never;
