@@ -120,17 +120,27 @@ const styles = StyleSheet.create({
 
 type InputTextHelperRow = Pick<
   InputTextProps,
-  "value" | "counterLimit" | "bottomMessage" | "bottomMessageColor"
+  | "value"
+  | "counterLimit"
+  | "bottomMessage"
+  | "bottomMessageColor"
+  | "inputType"
 >;
 
 const HelperRow = ({
   value,
   counterLimit,
   bottomMessage,
-  bottomMessageColor
+  bottomMessageColor,
+  inputType
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
-  const valueCount = useMemo(() => value.length, [value]);
+
+  const valueCount = useMemo(
+    () =>
+      inputType !== "default" ? value.replace(/\s/g, "").length : value.length,
+    [inputType, value]
+  );
 
   const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
   const bottomMessageColorValue =
@@ -518,10 +528,11 @@ export const TextInputBase = ({
 
       {(bottomMessage || counterLimit) && (
         <HelperRow
-          value={value}
+          value={inputValue}
           bottomMessage={bottomMessage}
           bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
+          inputType={inputType}
         />
       )}
     </>
