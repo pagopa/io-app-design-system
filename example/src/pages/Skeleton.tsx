@@ -2,6 +2,7 @@ import {
   ContentWrapper,
   H3,
   HStack,
+  IOColors,
   IOModuleIDPVSpacing,
   IOSkeleton,
   VStack,
@@ -53,6 +54,48 @@ export const Skeleton = () => {
             <IOSkeleton shape="rectangle" width={64} height={16} radius={8} />
           </View>
         ))}
+
+        {/* Custom color */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: IOModuleIDPVSpacing
+          }}
+        >
+          <HStack space={8} style={{ alignItems: "center" }}>
+            <IOSkeleton
+              shape="square"
+              size={24}
+              radius={8}
+              color={IOColors["blueIO-150"]}
+            />
+            <VStack space={8}>
+              <IOSkeleton
+                color={IOColors["blueIO-150"]}
+                shape="rectangle"
+                width={170}
+                height={20}
+                radius={8}
+              />
+              <IOSkeleton
+                color={IOColors["blueIO-150"]}
+                shape="rectangle"
+                width={110}
+                height={16}
+                radius={8}
+              />
+            </VStack>
+          </HStack>
+          <IOSkeleton
+            shape="rectangle"
+            width={64}
+            height={16}
+            radius={8}
+            color={IOColors["blueIO-150"]}
+          />
+        </View>
       </ContentWrapper>
     </NoMarginScreen>
   );

@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo } from "react";
-import { DimensionValue, ViewStyle } from "react-native";
+import { ColorValue, DimensionValue, ViewStyle } from "react-native";
 import Animated, {
   cancelAnimation,
   Easing,
@@ -32,16 +32,18 @@ type IOSkeletonRectangle = {
   size?: never;
 };
 
-export type IOSkeleton = IOSkeletonSquare | IOSkeletonRectangle;
+export type IOSkeleton = (IOSkeletonSquare | IOSkeletonRectangle) & {
+  color?: ColorValue;
+};
 
 export const IOSkeleton = memo(
-  ({ shape, size, width, height, radius: borderRadius }: IOSkeleton) => {
+  ({ shape, size, width, height, radius: borderRadius, color }: IOSkeleton) => {
     const reduceMotion = useReducedMotion();
     const theme = useIOTheme();
 
     const opacity = useSharedValue(OPACITY_MAX);
 
-    const backgroundColor = IOColors[theme["skeleton-background"]];
+    const backgroundColor = color ?? IOColors[theme["skeleton-background"]];
 
     const baseStyle: ViewStyle = useMemo(
       () => ({
