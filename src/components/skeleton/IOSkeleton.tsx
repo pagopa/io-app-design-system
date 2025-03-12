@@ -11,6 +11,7 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
+import { WithTestID } from "../../utils/types";
 
 const ANIMATION_DURATION = 1250;
 const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
@@ -32,9 +33,11 @@ type IOSkeletonRectangle = {
   size?: never;
 };
 
-export type IOSkeleton = (IOSkeletonSquare | IOSkeletonRectangle) & {
-  color?: ColorValue;
-};
+export type IOSkeleton = WithTestID<
+  (IOSkeletonSquare | IOSkeletonRectangle) & {
+    color?: ColorValue;
+  }
+>;
 
 export const IOSkeleton = memo(
   ({ shape, size, width, height, radius: borderRadius, color }: IOSkeleton) => {

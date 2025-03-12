@@ -44,6 +44,7 @@ export const Skeleton = () => {
                   radius={8}
                 />
                 <IOSkeleton
+                  testID="skeleton-rectangle-2"
                   shape="rectangle"
                   width={110}
                   height={16}
