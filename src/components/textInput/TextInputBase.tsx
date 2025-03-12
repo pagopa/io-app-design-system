@@ -315,7 +315,8 @@ export const TextInputBase = ({
 
   const onChangeTextHandler = useCallback(
     (text: string) => {
-      const actualTextLength = text.replace(/\s/g, "").length;
+      const actualTextLength =
+        inputType !== "default" ? text.replace(/\s/g, "").length : text.length;
 
       if (counterLimit && actualTextLength > counterLimit) {
         return;
