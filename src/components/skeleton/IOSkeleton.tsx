@@ -45,12 +45,15 @@ export const IOSkeleton = ({
   width,
   height,
   radius: borderRadius,
-  color
+  color,
+  testID
 }: IOSkeleton) => {
   const reduceMotion = useReducedMotion();
   const theme = useIOTheme();
 
-  const opacity = useSharedValue(OPACITY_MAX);
+  const opacity = useSharedValue(
+    reduceMotion ? OPACITY_REDUCED_MOTION : OPACITY_MAX
+  );
 
   const backgroundColor = color ?? IOColors[theme["skeleton-background"]];
 
@@ -67,17 +70,18 @@ export const IOSkeleton = ({
 
   useEffect(() => {
     if (reduceMotion) {
+      // eslint-disable-next-line functional/immutable-data
+      opacity.value = OPACITY_REDUCED_MOTION;
       return;
     }
 
-    // eslint-disable-next-line functional/immutable-data
-    opacity.value = withRepeat(
+    const animationSequence = withRepeat(
       withSequence(
-        withTiming(OPACITY_MAX, {
+        withTiming(OPACITY_MIN, {
           duration: ANIMATION_DURATION / 2,
           easing: Easing.inOut(Easing.sin)
         }),
-        withTiming(OPACITY_MIN, {
+        withTiming(OPACITY_MAX, {
           duration: ANIMATION_DURATION / 2,
           easing: Easing.inOut(Easing.sin)
         })
@@ -86,14 +90,18 @@ export const IOSkeleton = ({
       true
     );
 
+    // eslint-disable-next-line functional/immutable-data
+    opacity.value = animationSequence;
+
     return () => {
       cancelAnimation(opacity);
     };
-  }, [opacity, reduceMotion]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduceMotion]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: reduceMotion ? OPACITY_REDUCED_MOTION : opacity.value
+    opacity: opacity.value
   }));
 
-  return <Animated.View style={[baseStyle, animatedStyle]} />;
+  return <Animated.View testID={testID} style={[baseStyle, animatedStyle]} />;
 };
