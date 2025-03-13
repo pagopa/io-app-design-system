@@ -145,14 +145,14 @@ const renderModulePaymentNotice = () => (
       <View>
         <ModulePaymentNotice
           isLoading
-          onPress={mockFn}
+          loadingAccessibilityLabel="Loading payment notice"
           paymentNotice={{
-            status: "default",
-            amount: "100,00 €",
-            amountAccessibilityLabel: "100,00 €"
+            status: "in-progress"
           }}
+          badgeText="In corso"
+          subtitle="F24"
           title="Codice avviso"
-          subtitle="302012131232131"
+          onPress={mockFn}
         />
       </View>
     </ComponentViewerBox>
@@ -216,7 +216,10 @@ const renderModuleCheckout = () => (
       />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCheckout, loading">
-      <ModuleCheckout isLoading />
+      <ModuleCheckout
+        isLoading
+        loadingAccessibilityLabel="Loading checkout item"
+      />
     </ComponentViewerBox>
   </>
 );
@@ -250,6 +253,7 @@ const renderModuleAttachment = () => (
         title="Documento.pdf"
         format="pdf"
         isLoading
+        loadingAccessibilityLabel="Loading attachment"
         onPress={modulePress}
       />
     </ComponentViewerBox>
@@ -258,6 +262,7 @@ const renderModuleAttachment = () => (
         title="Documento.pdf"
         format="pdf"
         isFetching
+        fetchingAccessibilityLabel="Fetching attachment"
         onPress={modulePress}
       />
     </ComponentViewerBox>
@@ -325,7 +330,10 @@ const renderModuleCredential = () => (
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCredential, loading">
       <View>
-        <ModuleCredential isLoading={true} />
+        <ModuleCredential
+          isLoading={true}
+          loadingAccessibilityLabel={"Loading credential"}
+        />
       </View>
     </ComponentViewerBox>
   </>
@@ -375,7 +383,10 @@ const renderModuleNavigation = () => (
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleNavigation, loading">
       <View>
-        <ModuleNavigation isLoading={true} />
+        <ModuleNavigation
+          isLoading={true}
+          loadingAccessibilityLabel={"Loading navigation"}
+        />
       </View>
     </ComponentViewerBox>
   </>
