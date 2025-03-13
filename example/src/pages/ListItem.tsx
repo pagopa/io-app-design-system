@@ -615,6 +615,7 @@ const renderListItemTransaction = () => (
           amountAccessibilityLabel: "€ 1.000,00"
         }}
         isLoading={true}
+        loadingAccessibilityLabel="Loading transaction"
         onPress={onButtonPress}
       />
 
