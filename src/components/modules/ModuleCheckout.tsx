@@ -21,6 +21,7 @@ import { PressableModuleBase } from "./PressableModuleBase";
 
 type LoadingProps = {
   isLoading: true;
+  loadingAccessibilityLabel?: string;
 };
 
 type ImageProps =
@@ -45,7 +46,11 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   const imageMargin: IOSpacingScale = 12;
 
   if (props.isLoading) {
-    return <ModuleCheckoutSkeleton />;
+    return (
+      <ModuleCheckoutSkeleton
+        loadingAccessibilityLabel={props.loadingAccessibilityLabel}
+      />
+    );
   }
 
   const { paymentLogo, image, title, subtitle, ctaText, onPress } = props;
@@ -98,8 +103,13 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   );
 };
 
-const ModuleCheckoutSkeleton = () => (
+const ModuleCheckoutSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<LoadingProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <HStack space={8} style={{ alignItems: "center" }}>
         <Placeholder.Box animate="fade" radius={8} height={24} width={24} />

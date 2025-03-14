@@ -28,6 +28,7 @@ import {
 
 type LoadingProps = {
   isLoading: true;
+  loadingAccessibilityLabel?: string;
 };
 
 type ImageProps =
@@ -49,7 +50,11 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
   const { hugeFontEnabled } = useIOFontDynamicScale();
 
   if (props.isLoading) {
-    return <ModuleNavigationSkeleton />;
+    return (
+      <ModuleNavigationSkeleton
+        loadingAccessibilityLabel={props.loadingAccessibilityLabel}
+      />
+    );
   }
 
   const { icon, image, title, subtitle, onPress, badge, ...pressableProps } =
@@ -111,8 +116,13 @@ export const ModuleNavigation = (props: WithTestID<ModuleNavigationProps>) => {
   );
 };
 
-const ModuleNavigationSkeleton = () => (
+const ModuleNavigationSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<LoadingProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <HStack
         style={{ alignItems: "center" }}

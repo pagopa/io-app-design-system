@@ -211,7 +211,8 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonIcon: false
+      skeletonIcon: false,
+      loadingAccessibilityLabel: "Loading radio item"
     }
   },
   {
@@ -222,7 +223,8 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonIcon: true
+      skeletonIcon: true,
+      loadingAccessibilityLabel: "Loading radio item"
     }
   },
   {
@@ -233,7 +235,8 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     disabled: true,
     loadingProps: {
       state: true,
-      skeletonDescription: true
+      skeletonDescription: true,
+      loadingAccessibilityLabel: "Loading radio item"
     }
   },
   {
@@ -245,7 +248,8 @@ const mockRadioItems = (): ReadonlyArray<RadioItem<string>> => [
     loadingProps: {
       state: true,
       skeletonDescription: true,
-      skeletonIcon: true
+      skeletonIcon: true,
+      loadingAccessibilityLabel: "Loading radio item"
     }
   }
 ];

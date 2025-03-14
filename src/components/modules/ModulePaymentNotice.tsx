@@ -23,6 +23,7 @@ export type ModulePaymentNoticeProps = WithTestID<
   {
     isLoading?: boolean;
     accessibilityLabel?: string;
+    loadingAccessibilityLabel?: string;
     title?: string;
     subtitle: string;
     onPress: (event: GestureResponderEvent) => void;
@@ -140,10 +141,15 @@ export const ModulePaymentNotice = ({
   testID,
   accessibilityLabel,
   onPress,
+  loadingAccessibilityLabel,
   ...rest
 }: ModulePaymentNoticeProps) => {
   if (isLoading) {
-    return <ModulePaymentNoticeSkeleton />;
+    return (
+      <ModulePaymentNoticeSkeleton
+        loadingAccessibilityLabel={loadingAccessibilityLabel}
+      />
+    );
   }
 
   return (
@@ -157,8 +163,13 @@ export const ModulePaymentNotice = ({
   );
 };
 
-const ModulePaymentNoticeSkeleton = () => (
+const ModulePaymentNoticeSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<ModulePaymentNoticeProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <VStack space={4}>
         <Placeholder.Box animate="fade" radius={8} width={120} height={12} />

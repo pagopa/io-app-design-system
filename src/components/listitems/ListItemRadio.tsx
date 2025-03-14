@@ -31,11 +31,13 @@ type ListItemRadioLoadingProps =
       state: true;
       skeletonDescription?: boolean;
       skeletonIcon?: boolean;
+      loadingAccessibilityLabel?: string;
     }
   | {
       state?: false;
       skeletonDescription?: never;
       skeletonIcon?: never;
+      loadingAccessibilityLabel?: never;
     };
 
 type Props = WithTestID<{
@@ -122,8 +124,15 @@ export const ListItemRadio = ({
     </View>
   );
 
-  const SkeletonComponent = () => (
-    <View style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}>
+  const ListItemRadioSkeleton = ({
+    loadingAccessibilityLabel
+  }: Pick<ListItemRadioLoadingProps, "loadingAccessibilityLabel">) => (
+    <View
+      style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}
+      accessible={true}
+      accessibilityLabel={loadingAccessibilityLabel}
+      accessibilityState={{ busy: true }}
+    >
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
           style={[
@@ -155,7 +164,9 @@ export const ListItemRadio = ({
   );
 
   return loadingProps?.state ? (
-    <SkeletonComponent />
+    <ListItemRadioSkeleton
+      loadingAccessibilityLabel={loadingProps?.loadingAccessibilityLabel}
+    />
   ) : (
     <Pressable
       accessibilityRole="radio"
