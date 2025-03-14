@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import {
+  AccessibilityRole,
   GestureResponderEvent,
   Pressable,
   TextStyle,
@@ -44,6 +45,7 @@ export type ButtonLinkProps = WithTestID<{
   iconPosition?: "start" | "end";
   // Accessibility
   accessibilityLabel?: string;
+  accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
   accessibilityHint?: string;
   numberOfLines?: number;
   textAlign?: TextStyle["textAlign"];
@@ -72,6 +74,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
       iconPosition = "start",
       onPress,
       accessibilityLabel,
+      accessibilityRole = "button",
       accessibilityHint,
       numberOfLines = 1,
       textAlign = "auto",
@@ -151,7 +154,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         ref={ref}
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
-        accessibilityRole={"button"}
+        accessibilityRole={accessibilityRole}
         accessibilityState={{ disabled }}
         testID={testID}
         onPress={onPress}
