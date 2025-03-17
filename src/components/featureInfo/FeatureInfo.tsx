@@ -57,6 +57,10 @@ export const FeatureInfo = ({
 }: FeatureInfoProps) => {
   const theme = useIOTheme();
 
+  /* Already defined in the `BodySmall` component as a fallback value,
+  but I keep it here to avoid possible future inconsistencies. */
+  const accessibilityRole = action?.accessibilityRole ?? "link";
+
   return (
     <HStack style={{ alignItems: "center" }} space={24}>
       {iconName && (
@@ -84,7 +88,7 @@ export const FeatureInfo = ({
             accessible
             importantForAccessibility={"yes"}
             accessibilityElementsHidden={false}
-            accessibilityRole={action.accessibilityRole}
+            accessibilityRole={accessibilityRole}
           >
             {action.label}
           </BodySmall>
