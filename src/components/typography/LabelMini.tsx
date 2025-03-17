@@ -21,7 +21,13 @@ const legacyFontName: IOFontFamily = "TitilliumSansPro";
  */
 export const LabelMini = forwardRef<View, LabelMiniProps>(
   (
-    { weight: customWeight, color: customColor, asLink, ...props },
+    {
+      weight: customWeight,
+      color: customColor,
+      asLink,
+      accessibilityRole = "link",
+      ...props
+    },
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
@@ -41,7 +47,7 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
       color: customColor ?? defaultColor,
       ...(asLink
         ? {
-            accessibilityRole: "link",
+            accessibilityRole,
             textStyle: { textDecorationLine: "underline" }
           }
         : {})

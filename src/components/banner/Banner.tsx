@@ -79,9 +79,9 @@ type RequiredBannerProps =
 
 type BannerActionProps =
   | {
-      action?: string;
+      action: string;
       onPress: (event: GestureResponderEvent) => void;
-      accessibilityRole?: never;
+      accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
     }
   | {
       action?: never;
@@ -142,6 +142,7 @@ export const Banner = ({
   onClose,
   accessibilityHint,
   accessibilityLabel,
+  accessibilityRole = "button",
   testID
 }: Banner) => {
   const { newTypefaceEnabled } = useIONewTypeface();
@@ -178,7 +179,7 @@ export const Banner = ({
         // A11y related props
         accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
         accessibilityHint={accessibilityHint}
-        accessibilityRole={action !== undefined ? "button" : undefined}
+        accessibilityRole={action !== undefined ? accessibilityRole : "text"}
       >
         {title && (
           <>
@@ -264,9 +265,6 @@ export const Banner = ({
       style={[styles.container, dynamicContainerStyles]}
       // A11y related props
       accessible={false}
-      accessibilityHint={accessibilityHint}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole={"text"}
     >
       {renderMainBlock()}
     </View>

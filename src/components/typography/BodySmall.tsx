@@ -21,7 +21,13 @@ const legacyFontName: IOFontFamily = "TitilliumSansPro";
  */
 export const BodySmall = forwardRef<View, BodySmallProps>(
   (
-    { weight: customWeight, color: customColor, asLink, ...props },
+    {
+      weight: customWeight,
+      color: customColor,
+      asLink,
+      accessibilityRole = "link",
+      ...props
+    },
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
@@ -41,7 +47,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
       color: customColor ?? defaultColor,
       ...(asLink
         ? {
-            accessibilityRole: "link",
+            accessibilityRole,
             textStyle: { textDecorationLine: "underline" }
           }
         : {})
