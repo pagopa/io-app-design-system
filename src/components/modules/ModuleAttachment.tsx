@@ -16,6 +16,7 @@ type PartialProps = WithTestID<{
   format: "doc" | "pdf";
   isLoading?: boolean;
   isFetching?: boolean;
+  loadingAccessibilityLabel?: string;
   fetchingAccessibilityLabel?: string;
   onPress: (event: GestureResponderEvent) => void;
 }>;
@@ -87,6 +88,7 @@ const ModuleAttachmentContent = ({
  * @param {string}   accessibilityLabel - Optional accessibility label.
  * @param {boolean}  disabled - If true, the button is disabled.
  * @param {string}   fetchingAccessibilityLabel - Optional accessibility label to use during fetching.
+ * @param {string}   loadingAccessibilityLabel - Optional accessibility label to use during loading.
  * @param {string}   format - Badge content. PDF or DOC.
  * @param {boolean}  isLoading - If true, displays a skeleton loading component.
  * @param {boolean}  isFetching - If true, displays an activity indicator.
@@ -99,6 +101,7 @@ export const ModuleAttachment = ({
   accessibilityLabel,
   disabled = false,
   fetchingAccessibilityLabel,
+  loadingAccessibilityLabel,
   format,
   isLoading = false,
   isFetching = false,
@@ -117,7 +120,11 @@ export const ModuleAttachment = ({
   );
 
   if (isLoading) {
-    return <ModuleAttachmentSkeleton />;
+    return (
+      <ModuleAttachmentSkeleton
+        loadingAccessibilityLabel={loadingAccessibilityLabel}
+      />
+    );
   }
 
   const pressableAccessibilityLabel =
@@ -149,8 +156,13 @@ export const ModuleAttachment = ({
   );
 };
 
-const ModuleAttachmentSkeleton = () => (
+const ModuleAttachmentSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<ModuleAttachmentProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <VStack space={4}>
         <IOSkeleton shape="rectangle" radius={8} width={114} height={16} />

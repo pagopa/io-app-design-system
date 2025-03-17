@@ -32,6 +32,7 @@ type ImageProps =
 
 type LoadingModuleProps = {
   isLoading: true;
+  loadingAccessibilityLabel?: string;
 };
 
 type BaseModuleProps = {
@@ -48,7 +49,9 @@ const ModuleCredential = (
   props: WithTestID<LoadingModuleProps | ModuleCredentialProps>
 ) =>
   props.isLoading ? (
-    <ModuleCredentialSkeleton />
+    <ModuleCredentialSkeleton
+      loadingAccessibilityLabel={props.loadingAccessibilityLabel}
+    />
   ) : (
     <ModuleCredentialContent {...props} />
   );
@@ -144,8 +147,13 @@ const ModuleCredentialContent = ({
   );
 };
 
-const ModuleCredentialSkeleton = () => (
+const ModuleCredentialSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<LoadingModuleProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <HStack
         style={{ alignItems: "center" }}
