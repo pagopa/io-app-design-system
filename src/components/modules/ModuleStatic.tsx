@@ -1,11 +1,13 @@
 import * as React from "react";
-import { PressableProps, View } from "react-native";
+import { PressableProps, View, ViewProps } from "react-native";
 import { IOColors, IOModuleStyles, useIOTheme } from "../../core";
 import { HStack } from "../stack";
 
-type ModuleStaticProps =
-  | ModuleStaticSingleBlockProps
-  | ModuleStaticMultipleBlockProps;
+type ModuleStaticProps = Pick<
+  ViewProps,
+  "accessible" | "accessibilityLabel" | "accessibilityState"
+> &
+  (ModuleStaticSingleBlockProps | ModuleStaticMultipleBlockProps);
 
 type ModuleStaticMultipleBlockProps = {
   startBlock: React.ReactNode;
@@ -27,7 +29,10 @@ export const ModuleStatic = ({
   disabled = false,
   startBlock,
   endBlock,
-  children
+  children,
+  accessible = false,
+  accessibilityLabel,
+  accessibilityState
 }: ModuleStaticProps) => {
   const theme = useIOTheme();
 
@@ -40,7 +45,9 @@ export const ModuleStatic = ({
           opacity: disabled ? DISABLED_OPACITY : 1
         }
       ]}
-      accessible={false}
+      accessible={accessible}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={accessibilityState}
     >
       {startBlock && (
         <HStack space={8} style={{ alignItems: "center" }}>

@@ -41,6 +41,7 @@ export type ListItemTransaction = WithTestID<
   PressableBaseProps & {
     showChevron?: boolean;
     isLoading?: boolean;
+    loadingAccessibilityLabel?: string;
     /**
      * A logo that will be displayed on the left of the list item.
      *
@@ -102,6 +103,7 @@ const StartComponent = ({
 
 export const ListItemTransaction = ({
   accessibilityLabel,
+  loadingAccessibilityLabel,
   showChevron = false,
   isLoading = false,
   paymentLogoIcon,
@@ -116,7 +118,11 @@ export const ListItemTransaction = ({
   const theme = useIOTheme();
 
   if (isLoading) {
-    return <SkeletonComponent />;
+    return (
+      <ListItemTransactionSkeleton
+        loadingAccessibilityLabel={loadingAccessibilityLabel}
+      />
+    );
   }
 
   const interactiveColor: IOColors = theme["interactiveElem-default"];
@@ -207,8 +213,15 @@ export const ListItemTransaction = ({
   }
 };
 
-const SkeletonComponent = () => (
-  <View style={IOListItemStyles.listItem} accessible={false}>
+const ListItemTransactionSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<ListItemTransaction, "loadingAccessibilityLabel">) => (
+  <View
+    style={IOListItemStyles.listItem}
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
+  >
     <View style={IOListItemStyles.listItemInner}>
       <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
         <Placeholder.Box

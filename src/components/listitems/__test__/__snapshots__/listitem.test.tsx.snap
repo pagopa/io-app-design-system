@@ -1364,7 +1364,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
 
 exports[`Test List Item Components - Experimental Enabled  ListItemTransaction Snapshot 1`] = `
 <View
-  accessible={false}
+  accessibilityState={
+    {
+      "busy": true,
+    }
+  }
+  accessible={true}
   style={
     {
       "marginHorizontal": -24,
@@ -2942,7 +2947,12 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
 
 exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
 <View
-  accessible={false}
+  accessibilityState={
+    {
+      "busy": true,
+    }
+  }
+  accessible={true}
   style={
     {
       "marginHorizontal": -24,
