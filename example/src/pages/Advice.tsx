@@ -110,7 +110,8 @@ const renderFeatureInfo = () => {
           }
           action={{
             label: "Scopri di più",
-            onPress: onLinkPress
+            onPress: onLinkPress,
+            accessibilityRole: "button"
           }}
         />
       </ComponentViewerBox>
@@ -137,6 +138,7 @@ const renderBanner = () => (
             pictogramName="charity"
             action="Action text"
             onPress={onLinkPress}
+            accessibilityRole="link"
           />
           <VSpacer size={24} />
           <Banner
