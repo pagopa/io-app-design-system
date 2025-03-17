@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { GestureResponderEvent } from "react-native";
+import { AccessibilityRole, GestureResponderEvent } from "react-native";
 import {
   BodySmall,
   HStack,
@@ -23,6 +23,7 @@ type FeatureInfoActionProps =
       action: {
         label: string;
         onPress: (event: GestureResponderEvent) => void;
+        accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
       };
     }
   | {
@@ -83,6 +84,7 @@ export const FeatureInfo = ({
             accessible
             importantForAccessibility={"yes"}
             accessibilityElementsHidden={false}
+            accessibilityRole={action.accessibilityRole}
           >
             {action.label}
           </BodySmall>

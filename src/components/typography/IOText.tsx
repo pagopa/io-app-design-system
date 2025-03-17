@@ -1,5 +1,6 @@
 import React, { ComponentProps, forwardRef, useMemo } from "react";
 import {
+  AccessibilityRole,
   ColorValue,
   GestureResponderEvent,
   Text,
@@ -60,6 +61,7 @@ export type TypographicStyleAsLinkProps =
       color?: never;
       asLink: true;
       onPress: (event: GestureResponderEvent) => void;
+      accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
     }
   | { color?: IOColors; asLink?: false };
 

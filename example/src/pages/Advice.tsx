@@ -110,7 +110,8 @@ const renderFeatureInfo = () => {
           }
           action={{
             label: "Scopri di più",
-            onPress: onLinkPress
+            onPress: onLinkPress,
+            accessibilityRole: "button"
           }}
         />
       </ComponentViewerBox>
