@@ -137,6 +137,7 @@ const renderBanner = () => (
             pictogramName="charity"
             action="Action text"
             onPress={onLinkPress}
+            accessibilityRole="link"
           />
           <VSpacer size={24} />
           <Banner
