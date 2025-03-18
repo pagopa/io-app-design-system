@@ -6,7 +6,6 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import Placeholder from "rn-placeholder";
 import {
   IOSelectionListItemVisualParams,
   IOSpacingScale,
@@ -14,8 +13,9 @@ import {
 } from "../../core";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
+import { IOSkeleton } from "../skeleton";
 import { HStack, VStack } from "../stack";
-import { H6, BodySmall } from "../typography";
+import { BodySmall, H6 } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -112,15 +112,15 @@ const ModuleCheckoutSkeleton = ({
     accessibilityState={{ busy: true }}
     startBlock={
       <HStack space={8} style={{ alignItems: "center" }}>
-        <Placeholder.Box animate="fade" radius={8} height={24} width={24} />
+        <IOSkeleton shape="square" size={24} radius={8} />
         <VStack space={8}>
-          <Placeholder.Box animate="fade" radius={8} height={20} width={170} />
-          <Placeholder.Box animate="fade" radius={8} height={16} width={110} />
+          <IOSkeleton shape="rectangle" width={170} height={20} radius={8} />
+          <IOSkeleton shape="rectangle" width={110} height={16} radius={8} />
         </VStack>
       </HStack>
     }
     endBlock={
-      <Placeholder.Box animate="fade" width={64} height={16} radius={8} />
+      <IOSkeleton shape="rectangle" width={64} height={16} radius={8} />
     }
   />
 );

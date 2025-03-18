@@ -6,7 +6,6 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
@@ -14,12 +13,13 @@ import {
   IOVisualCostants,
   useIOTheme
 } from "../../core";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { IOSkeleton } from "../skeleton";
 import { HStack, VStack } from "../stack";
-import { LabelMini, BodySmall } from "../typography";
-import { useIOFontDynamicScale } from "../../utils/accessibility";
+import { BodySmall, LabelMini } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
   PressableModuleBase,
@@ -128,15 +128,15 @@ const ModuleNavigationSkeleton = ({
         style={{ alignItems: "center" }}
         space={IOVisualCostants.iconMargin as IOSpacer}
       >
-        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
+        <IOSkeleton shape="square" size={24} radius={8} />
         <VStack space={4}>
-          <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
-          <Placeholder.Box animate="fade" width={160} height={12} radius={8} />
+          <IOSkeleton shape="rectangle" width={96} height={16} radius={8} />
+          <IOSkeleton shape="rectangle" width={160} height={12} radius={8} />
         </VStack>
       </HStack>
     }
     endBlock={
-      <Placeholder.Box animate="fade" width={64} height={24} radius={16} />
+      <IOSkeleton shape="rectangle" width={64} height={24} radius={16} />
     }
   />
 );

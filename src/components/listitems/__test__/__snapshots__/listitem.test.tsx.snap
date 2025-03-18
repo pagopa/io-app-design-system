@@ -1395,86 +1395,64 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={44}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 44,
               "width": 44,
-            }
-          }
-          width={44}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
     <View
       style={
         {
-          "flex": 1,
+          "display": "flex",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "gap": 4,
         }
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={16}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 16,
               "width": 62,
-            }
-          }
-          width={62}
-        />
-      </View>
-      <View
-        style={
-          {
-            "height": 4,
-          }
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
         }
       />
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={16}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 16,
               "width": 107,
-            }
-          }
-          width={107}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
     <View
       style={
@@ -1484,27 +1462,21 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={24}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 24,
               "width": 70,
-            }
-          }
-          width={70}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>
@@ -2978,86 +2950,64 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={44}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 44,
               "width": 44,
-            }
-          }
-          width={44}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
     <View
       style={
         {
-          "flex": 1,
+          "display": "flex",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "gap": 4,
         }
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={16}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 16,
               "width": 62,
-            }
-          }
-          width={62}
-        />
-      </View>
-      <View
-        style={
-          {
-            "height": 4,
-          }
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
         }
       />
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={16}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 16,
               "width": 107,
-            }
-          }
-          width={107}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
     <View
       style={
@@ -3067,27 +3017,21 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
       }
     >
       <View
-        collapsable={false}
         style={
-          {
-            "opacity": 0.5,
-          }
-        }
-      >
-        <View
-          height={24}
-          radius={8}
-          style={
+          [
             {
-              "backgroundColor": "#efefef",
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
               "borderRadius": 8,
               "height": 24,
               "width": 70,
-            }
-          }
-          width={70}
-        />
-      </View>
+            },
+            {
+              "opacity": 0.75,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>

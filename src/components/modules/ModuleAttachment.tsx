@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, PressableProps } from "react-native";
-import Placeholder from "rn-placeholder";
 import { IOListItemVisualParams, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { IOSkeleton } from "../skeleton";
 import { HStack, VStack } from "../stack";
 import { Body } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
@@ -165,8 +165,8 @@ const ModuleAttachmentSkeleton = ({
     accessibilityState={{ busy: true }}
     startBlock={
       <VStack space={4}>
-        <Placeholder.Box animate="fade" radius={8} width={114} height={16} />
-        <Placeholder.Box animate="fade" radius={16} width={42} height={20} />
+        <IOSkeleton shape="rectangle" radius={8} width={114} height={16} />
+        <IOSkeleton shape="rectangle" radius={16} width={42} height={20} />
       </VStack>
     }
   />

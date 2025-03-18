@@ -1,13 +1,11 @@
 import React, { ReactNode } from "react";
 import { ImageURISource, View } from "react-native";
-import Placeholder from "rn-placeholder";
 
 import {
   IOColors,
   IOListItemLogoMargin,
   IOListItemStyles,
   IOListItemVisualParams,
-  IOStyles,
   IOVisualCostants,
   useIOTheme
 } from "../../core";
@@ -19,9 +17,9 @@ import { Badge } from "../badge/Badge";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
-import { VSpacer } from "../spacer";
-import { HStack } from "../stack";
-import { H6, BodySmall } from "../typography";
+import { IOSkeleton } from "../skeleton";
+import { HStack, VStack } from "../stack";
+import { BodySmall, H6 } from "../typography";
 import {
   PressableBaseProps,
   PressableListItemBase
@@ -224,20 +222,18 @@ const ListItemTransactionSkeleton = ({
   >
     <View style={IOListItemStyles.listItemInner}>
       <View style={{ marginRight: IOListItemVisualParams.iconMargin }}>
-        <Placeholder.Box
-          animate="fade"
-          height={IOVisualCostants.avatarSizeSmall}
-          width={IOVisualCostants.avatarSizeSmall}
+        <IOSkeleton
+          shape="square"
+          size={IOVisualCostants.avatarSizeSmall}
           radius={IOVisualCostants.avatarRadiusSizeSmall}
         />
       </View>
-      <View style={IOStyles.flex}>
-        <Placeholder.Box animate="fade" radius={8} width={62} height={16} />
-        <VSpacer size={4} />
-        <Placeholder.Box animate="fade" radius={8} width={107} height={16} />
-      </View>
+      <VStack space={4} style={{ flexGrow: 1 }}>
+        <IOSkeleton shape="rectangle" width={62} height={16} radius={8} />
+        <IOSkeleton shape="rectangle" width={107} height={16} radius={8} />
+      </VStack>
       <View style={{ marginLeft: IOListItemVisualParams.iconMargin }}>
-        <Placeholder.Box animate="fade" radius={8} width={70} height={24} />
+        <IOSkeleton shape="rectangle" width={70} height={24} radius={8} />
       </View>
     </View>
   </View>

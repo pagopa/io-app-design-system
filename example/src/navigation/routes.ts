@@ -70,6 +70,10 @@ const APP_ROUTES = {
     TOOLTIPS: {
       route: "DESIGN_SYSTEM_TOOLTIPS",
       title: "Tooltips"
+    },
+    SKELETON: {
+      route: "DESIGN_SYSTEM_SKELETON",
+      title: "Skeleton"
     }
   },
   SCREENS: {
