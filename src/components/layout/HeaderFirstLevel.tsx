@@ -77,7 +77,8 @@ export const HeaderFirstLevel = ({
     if (reactNode !== null) {
       AccessibilityInfo.setAccessibilityFocus(reactNode);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* We show the divider only when the header is scrolled down */
   const offset = useScrollViewOffset(

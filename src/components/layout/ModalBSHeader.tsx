@@ -47,7 +47,8 @@ export const ModalBSHeader = ({
     if (reactNode !== null) {
       AccessibilityInfo.setAccessibilityFocus(reactNode);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <View style={styles.container} ref={headerRef}>
