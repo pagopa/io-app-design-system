@@ -212,7 +212,8 @@ export const HeaderSecondLevel = ({
         AccessibilityInfo.setAccessibilityFocus(reactNode);
       }
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const bgColorDiscreteTransition = useDerivedValue(() =>
     withSpring(scrollOffset.value > 0 ? 1 : 0, IOSpringValues.header)
