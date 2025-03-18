@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated from "react-native-reanimated";
-import Placeholder from "rn-placeholder";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
@@ -17,6 +16,7 @@ import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
+import { IOSkeleton } from "../skeleton";
 import { HSpacer, VSpacer } from "../spacer";
 import { VStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
@@ -31,11 +31,13 @@ type ListItemRadioLoadingProps =
       state: true;
       skeletonDescription?: boolean;
       skeletonIcon?: boolean;
+      loadingAccessibilityLabel?: string;
     }
   | {
       state?: false;
       skeletonDescription?: never;
       skeletonIcon?: never;
+      loadingAccessibilityLabel?: never;
     };
 
 type Props = WithTestID<{
@@ -101,9 +103,8 @@ export const ListItemRadio = ({
 
   const SkeletonDescriptionLines = () => (
     <VStack space={8}>
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
-      <Placeholder.Box animate="fade" radius={8} width={"100%"} height={8} />
+      <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
+      <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
     </VStack>
   );
 
@@ -113,17 +114,23 @@ export const ListItemRadio = ({
         marginRight: IOSelectionListItemVisualParams.iconMargin
       }}
     >
-      <Placeholder.Box
-        animate="fade"
-        radius={4}
-        width={IOSelectionListItemVisualParams.iconSize}
-        height={IOSelectionListItemVisualParams.iconSize}
+      <IOSkeleton
+        shape="square"
+        size={IOSelectionListItemVisualParams.iconSize}
+        radius={8}
       />
     </View>
   );
 
-  const SkeletonComponent = () => (
-    <View style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}>
+  const ListItemRadioSkeleton = ({
+    loadingAccessibilityLabel
+  }: Pick<ListItemRadioLoadingProps, "loadingAccessibilityLabel">) => (
+    <View
+      style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}
+      accessible={true}
+      accessibilityLabel={loadingAccessibilityLabel}
+      accessibilityState={{ busy: true }}
+    >
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
           style={[
@@ -134,12 +141,7 @@ export const ListItemRadio = ({
         >
           <View style={[IOStyles.row, IOStyles.alignCenter]}>
             {loadingProps?.skeletonIcon && <SkeletonIcon />}
-            <Placeholder.Box
-              animate="fade"
-              radius={8}
-              width={179}
-              height={16}
-            />
+            <IOSkeleton shape="rectangle" width={180} height={16} radius={8} />
           </View>
           <HSpacer size={8} />
           <View pointerEvents="none" style={disabledStyle}>
@@ -155,7 +157,9 @@ export const ListItemRadio = ({
   );
 
   return loadingProps?.state ? (
-    <SkeletonComponent />
+    <ListItemRadioSkeleton
+      loadingAccessibilityLabel={loadingProps?.loadingAccessibilityLabel}
+    />
   ) : (
     <Pressable
       accessibilityRole="radio"

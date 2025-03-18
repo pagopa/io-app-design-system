@@ -1,12 +1,12 @@
 import * as React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
-import Placeholder from "rn-placeholder";
 import { IOListItemVisualParams, IOSpacer, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
+import { IOSkeleton } from "../skeleton";
 import { HStack, VStack } from "../stack";
-import { Body, H6, BodySmall } from "../typography";
+import { Body, BodySmall, H6 } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";
 
@@ -23,6 +23,7 @@ export type ModulePaymentNoticeProps = WithTestID<
   {
     isLoading?: boolean;
     accessibilityLabel?: string;
+    loadingAccessibilityLabel?: string;
     title?: string;
     subtitle: string;
     onPress: (event: GestureResponderEvent) => void;
@@ -140,10 +141,15 @@ export const ModulePaymentNotice = ({
   testID,
   accessibilityLabel,
   onPress,
+  loadingAccessibilityLabel,
   ...rest
 }: ModulePaymentNoticeProps) => {
   if (isLoading) {
-    return <ModulePaymentNoticeSkeleton />;
+    return (
+      <ModulePaymentNoticeSkeleton
+        loadingAccessibilityLabel={loadingAccessibilityLabel}
+      />
+    );
   }
 
   return (
@@ -157,16 +163,21 @@ export const ModulePaymentNotice = ({
   );
 };
 
-const ModulePaymentNoticeSkeleton = () => (
+const ModulePaymentNoticeSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<ModulePaymentNoticeProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <VStack space={4}>
-        <Placeholder.Box animate="fade" radius={8} width={120} height={12} />
-        <Placeholder.Box animate="fade" radius={8} width={180} height={16} />
+        <IOSkeleton shape="rectangle" width={120} height={12} radius={8} />
+        <IOSkeleton shape="rectangle" width={180} height={16} radius={8} />
       </VStack>
     }
     endBlock={
-      <Placeholder.Box animate="fade" radius={16} width={64} height={24} />
+      <IOSkeleton shape="rectangle" width={64} height={24} radius={16} />
     }
   />
 );

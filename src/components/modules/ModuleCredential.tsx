@@ -5,7 +5,6 @@ import {
   ImageURISource,
   StyleSheet
 } from "react-native";
-import Placeholder from "rn-placeholder";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
@@ -18,6 +17,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
+import { IOSkeleton } from "../skeleton";
 import { HStack } from "../stack/Stack";
 import { BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
@@ -32,6 +32,7 @@ type ImageProps =
 
 type LoadingModuleProps = {
   isLoading: true;
+  loadingAccessibilityLabel?: string;
 };
 
 type BaseModuleProps = {
@@ -48,7 +49,9 @@ const ModuleCredential = (
   props: WithTestID<LoadingModuleProps | ModuleCredentialProps>
 ) =>
   props.isLoading ? (
-    <ModuleCredentialSkeleton />
+    <ModuleCredentialSkeleton
+      loadingAccessibilityLabel={props.loadingAccessibilityLabel}
+    />
   ) : (
     <ModuleCredentialContent {...props} />
   );
@@ -144,19 +147,24 @@ const ModuleCredentialContent = ({
   );
 };
 
-const ModuleCredentialSkeleton = () => (
+const ModuleCredentialSkeleton = ({
+  loadingAccessibilityLabel
+}: Pick<LoadingModuleProps, "loadingAccessibilityLabel">) => (
   <ModuleStatic
+    accessible={true}
+    accessibilityLabel={loadingAccessibilityLabel}
+    accessibilityState={{ busy: true }}
     startBlock={
       <HStack
         style={{ alignItems: "center" }}
         space={IOVisualCostants.iconMargin as IOSpacer}
       >
-        <Placeholder.Box animate="fade" width={24} height={24} radius={8} />
-        <Placeholder.Box animate="fade" width={96} height={16} radius={8} />
+        <IOSkeleton shape="square" size={24} radius={8} />
+        <IOSkeleton shape="rectangle" width={96} height={16} radius={8} />
       </HStack>
     }
     endBlock={
-      <Placeholder.Box animate="fade" width={64} height={24} radius={16} />
+      <IOSkeleton shape="rectangle" width={64} height={24} radius={16} />
     }
   />
 );

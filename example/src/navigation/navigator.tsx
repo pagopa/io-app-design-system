@@ -15,11 +15,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Collapsible } from "../pages/Collapsible";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
+import { Collapsible } from "../pages/Collapsible";
 import { Colors } from "../pages/Colors";
 import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateScreen";
 import { FooterActionsInlineNotFixed } from "../pages/FooterActionsInlineNotFixed";
@@ -50,6 +50,7 @@ import { Sandbox } from "../pages/Sandbox";
 import { SearchCustom } from "../pages/SearchCustom";
 import { SearchNative } from "../pages/SearchNative";
 import { Selection } from "../pages/Selection";
+import { Skeleton } from "../pages/Skeleton";
 import { HeaderSecondLevelScreenStatic } from "../pages/StaticHeaderSecondLevel";
 import { StepperPage } from "../pages/Stepper";
 import { TabNavigationScreen } from "../pages/TabNavigation";
@@ -200,6 +201,16 @@ const AppNavigator = () => {
               headerBackTitleVisible: false
             }}
           />
+
+          <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.SKELETON.route}
+            component={Skeleton}
+            options={{
+              headerTitle: APP_ROUTES.COMPONENTS.SKELETON.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
           <Stack.Screen
             name={APP_ROUTES.FOUNDATION.LAYOUT.route}
             component={Layout}
