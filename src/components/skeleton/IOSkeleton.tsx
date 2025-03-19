@@ -1,21 +1,16 @@
-import React, { useEffect, useMemo } from "react";
-import { ColorValue, DimensionValue, ViewStyle } from "react-native";
-import Animated, {
-  cancelAnimation,
+import React, { useEffect, useMemo, useRef } from "react";
+import {
+  Animated,
+  ColorValue,
+  DimensionValue,
   Easing,
-  useAnimatedStyle,
-  useReducedMotion,
-  useSharedValue,
-  withRepeat,
-  withSequence,
-  withTiming
-} from "react-native-reanimated";
+  ViewStyle
+} from "react-native";
 import { IOColors, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 
 const ANIMATION_DURATION = 1250;
 const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
-const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
 
 type IOSkeletonSquare = {
   shape: "square";
@@ -48,12 +43,9 @@ export const IOSkeleton = ({
   color,
   testID
 }: IOSkeleton) => {
-  const reduceMotion = useReducedMotion();
   const theme = useIOTheme();
 
-  const opacity = useSharedValue(
-    reduceMotion ? OPACITY_REDUCED_MOTION : OPACITY_MAX
-  );
+  const opacity = useRef(new Animated.Value(OPACITY_MAX)).current;
 
   const backgroundColor = color ?? IOColors[theme["skeleton-background"]];
 
@@ -62,46 +54,45 @@ export const IOSkeleton = ({
       backgroundColor,
       width: shape === "square" ? size : width,
       height: shape === "square" ? size : height,
-      borderRadius,
-      borderCurve: "continuous"
+      borderRadius
     }),
     [backgroundColor, shape, size, width, height, borderRadius]
   );
 
   useEffect(() => {
-    if (reduceMotion) {
-      // eslint-disable-next-line functional/immutable-data
-      opacity.value = OPACITY_REDUCED_MOTION;
-      return;
-    }
-
-    const animationSequence = withRepeat(
-      withSequence(
-        withTiming(OPACITY_MIN, {
+    const animate = () => {
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: OPACITY_MIN,
           duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin)
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true
         }),
-        withTiming(OPACITY_MAX, {
+        Animated.timing(opacity, {
+          toValue: OPACITY_MAX,
           duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin)
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true
         })
-      ),
-      -1,
-      true
-    );
+      ]).start(() => animate());
+    };
 
-    // eslint-disable-next-line functional/immutable-data
-    opacity.value = animationSequence;
+    animate();
 
     return () => {
-      cancelAnimation(opacity);
+      opacity.stopAnimation();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reduceMotion]);
+  }, [opacity]);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value
-  }));
-
-  return <Animated.View testID={testID} style={[baseStyle, animatedStyle]} />;
+  return (
+    <Animated.View
+      testID={testID}
+      style={[
+        baseStyle,
+        {
+          opacity
+        }
+      ]}
+    />
+  );
 };
