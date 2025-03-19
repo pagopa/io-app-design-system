@@ -84,7 +84,12 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
   );
 
   return ctaText ? (
-    <PressableModuleBase onPress={onPress}>
+    <PressableModuleBase
+      onPress={onPress}
+      accessibilityLabel={
+        subtitle ? `${title}, ${subtitle}, ${ctaText}` : `${title}, ${ctaText}`
+      }
+    >
       <HStack space={4} style={{ alignItems: "center" }}>
         <ModuleBaseContent />
         <View
