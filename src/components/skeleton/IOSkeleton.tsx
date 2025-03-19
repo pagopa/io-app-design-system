@@ -6,11 +6,13 @@ import {
   Easing,
   ViewStyle
 } from "react-native";
+import { useReducedMotion } from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 
 const ANIMATION_DURATION = 1250;
 const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
+const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
 
 type IOSkeletonSquare = {
   shape: "square";
@@ -43,6 +45,7 @@ export const IOSkeleton = ({
   color,
   testID
 }: IOSkeleton) => {
+  const reduceMotion = useReducedMotion();
   const theme = useIOTheme();
 
   const opacity = useRef(new Animated.Value(OPACITY_MAX)).current;
@@ -54,12 +57,18 @@ export const IOSkeleton = ({
       backgroundColor,
       width: shape === "square" ? size : width,
       height: shape === "square" ? size : height,
-      borderRadius
+      borderRadius,
+      borderCurve: "continuous"
     }),
     [backgroundColor, shape, size, width, height, borderRadius]
   );
 
   useEffect(() => {
+    if (reduceMotion) {
+      opacity.setValue(OPACITY_REDUCED_MOTION);
+      return;
+    }
+
     const animation = Animated.loop(
       Animated.sequence([
         Animated.timing(opacity, {
@@ -82,17 +91,7 @@ export const IOSkeleton = ({
     return () => {
       animation.stop();
     };
-  }, [opacity]);
+  }, [opacity, reduceMotion]);
 
-  return (
-    <Animated.View
-      testID={testID}
-      style={[
-        baseStyle,
-        {
-          opacity
-        }
-      ]}
-    />
-  );
+  return <Animated.View testID={testID} style={[baseStyle, { opacity }]} />;
 };
