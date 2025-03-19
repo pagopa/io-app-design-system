@@ -1399,6 +1399,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 44,
             "opacity": 0.75,
@@ -1422,6 +1423,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 16,
             "opacity": 0.75,
@@ -1434,6 +1436,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 16,
             "opacity": 0.75,
@@ -1454,6 +1457,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 24,
             "opacity": 0.75,
@@ -2938,6 +2942,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 44,
             "opacity": 0.75,
@@ -2961,6 +2966,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 16,
             "opacity": 0.75,
@@ -2973,6 +2979,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 16,
             "opacity": 0.75,
@@ -2993,6 +3000,7 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
         style={
           {
             "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
             "borderRadius": 8,
             "height": 24,
             "opacity": 0.75,
