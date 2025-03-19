@@ -60,7 +60,7 @@ export const IOSkeleton = ({
   );
 
   useEffect(() => {
-    const animate = () => {
+    const animation = Animated.loop(
       Animated.sequence([
         Animated.timing(opacity, {
           toValue: OPACITY_MIN,
@@ -74,13 +74,13 @@ export const IOSkeleton = ({
           easing: Easing.inOut(Easing.sin),
           useNativeDriver: true
         })
-      ]).start(() => animate());
-    };
+      ])
+    );
 
-    animate();
+    animation.start();
 
     return () => {
-      opacity.stopAnimation();
+      animation.stop();
     };
   }, [opacity]);
 
