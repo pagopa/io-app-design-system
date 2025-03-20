@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
-import { IOColors } from "../../core";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import { hexToRgba, IOColors, useIOTheme } from "../../core";
 import { H6, IOText } from "../typography";
 
 type Props = {
@@ -18,28 +18,13 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 8,
     borderCurve: "continuous"
-  },
-  defaultBox: {
-    borderWidth: 1,
-    borderColor: IOColors["grey-650"]
-  },
-  focusedBox: {
-    borderWidth: 2,
-    borderColor: IOColors["blueIO-500"]
-  },
-  errorBox: {
-    borderWidth: 1,
-    borderColor: IOColors["error-850"],
-    backgroundColor: IOColors["error-100"]
   }
 });
 
-// FIXME Replace this component with H3 once the legacy look is deprecated https://pagopa.atlassian.net/browse/IOPLT-153
 const SecretValue = () => (
   <IOText
     font="DMMono"
     weight="Semibold"
-    color="grey-850"
     size={22}
     lineHeight={33}
     accessible={false}
@@ -49,17 +34,33 @@ const SecretValue = () => (
 );
 
 export const BoxedInput = ({ status, value, secret }: Props) => {
-  const derivedStyle = useMemo(() => {
+  const theme = useIOTheme();
+
+  const derivedStyle: ViewStyle = useMemo(() => {
     switch (status) {
       case "error":
-        return styles.errorBox;
+        return {
+          borderWidth: 1,
+          borderColor: IOColors[theme["otpInputBorder-error"]],
+          backgroundColor: hexToRgba(
+            IOColors[theme["otpInputBorder-error"]],
+            0.15
+          )
+        };
       case "focus":
-        return styles.focusedBox;
+        return {
+          borderWidth: 2,
+          borderColor: IOColors[theme["interactiveElem-default"]]
+        };
       case "default":
       default:
-        return styles.defaultBox;
+        return {
+          borderWidth: 1,
+          borderColor: IOColors[theme["otpInputBorder-default"]]
+        };
     }
-  }, [status]);
+  }, [status, theme]);
+
   return (
     <View style={[styles.baseBox, derivedStyle]} accessible={false}>
       {value &&
