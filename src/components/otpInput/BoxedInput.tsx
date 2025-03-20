@@ -36,33 +36,30 @@ const SecretValue = () => (
 export const BoxedInput = ({ status, value, secret }: Props) => {
   const theme = useIOTheme();
 
-  const derivedStyle: ViewStyle = useMemo(() => {
-    switch (status) {
-      case "error":
-        return {
-          borderWidth: 1,
-          borderColor: IOColors[theme["otpInputBorder-error"]],
-          backgroundColor: hexToRgba(
-            IOColors[theme["otpInputBorder-error"]],
-            0.15
-          )
-        };
-      case "focus":
-        return {
-          borderWidth: 2,
-          borderColor: IOColors[theme["interactiveElem-default"]]
-        };
-      case "default":
-      default:
-        return {
-          borderWidth: 1,
-          borderColor: IOColors[theme["otpInputBorder-default"]]
-        };
-    }
-  }, [status, theme]);
+  const statusStyle: Record<Props["status"], ViewStyle> = useMemo(
+    () => ({
+      error: {
+        borderWidth: 1,
+        borderColor: IOColors[theme["otpInputBorder-error"]],
+        backgroundColor: hexToRgba(
+          IOColors[theme["otpInputBorder-error"]],
+          0.15
+        )
+      },
+      focus: {
+        borderWidth: 2,
+        borderColor: IOColors[theme["interactiveElem-default"]]
+      },
+      default: {
+        borderWidth: 1,
+        borderColor: IOColors[theme["otpInputBorder-default"]]
+      }
+    }),
+    [theme]
+  );
 
   return (
-    <View style={[styles.baseBox, derivedStyle]} accessible={false}>
+    <View style={[styles.baseBox, statusStyle[status]]} accessible={false}>
       {value &&
         (secret ? <SecretValue /> : <H6 accessible={false}>{value}</H6>)}
     </View>
