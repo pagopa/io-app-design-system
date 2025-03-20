@@ -60,6 +60,8 @@ const TabNavigation = ({
           minWidth: itemMinWidth
         }
       ]}
+      accessible
+      accessibilityRole={"tablist"}
       onLayout={handleItemOnLayout}
     >
       {React.cloneElement<TabItem>(child, {
