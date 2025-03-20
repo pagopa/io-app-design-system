@@ -29,6 +29,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
       color: customColor,
       asLink,
       accessibilityRole = "link",
+      textStyle: customTextStyle,
       ...props
     },
     ref?: ForwardedRef<View>
@@ -51,7 +52,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
       ...(asLink
         ? {
             accessibilityRole,
-            textStyle: { textDecorationLine: "underline" }
+            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
           }
         : {})
     };
