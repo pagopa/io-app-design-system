@@ -26,6 +26,7 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
       color: customColor,
       asLink,
       accessibilityRole = "link",
+      textStyle: customTextStyle,
       ...props
     },
     ref?: ForwardedRef<View>
@@ -48,7 +49,7 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
       ...(asLink
         ? {
             accessibilityRole,
-            textStyle: { textDecorationLine: "underline" }
+            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
           }
         : {})
     };
