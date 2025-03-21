@@ -152,12 +152,7 @@ export const ListItemSwitch = React.memo(
                 testID={badge.testID}
               />
             )}
-            {isLoading && (
-              <LoadingSpinner
-                size={24}
-                color={theme["interactiveElem-default"]}
-              />
-            )}
+            {isLoading && <LoadingSpinner size={24} />}
             {canRenderSwitch && (
               <NativeSwitch
                 value={value}

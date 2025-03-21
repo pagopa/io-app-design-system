@@ -96,7 +96,14 @@ export const OTPInput = forwardRef<View, Props>(
       }
     };
 
-    useEffect(() => () => clearTimeout(timerRef.current), []);
+    useEffect(
+      () => () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+      },
+      []
+    );
 
     const handleChange = (value: string) => {
       if (value.length > length) {

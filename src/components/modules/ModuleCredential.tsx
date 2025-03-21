@@ -91,7 +91,6 @@ const ModuleCredentialContent = ({
       return (
         <LoadingSpinner
           testID={testID ? `${testID}_activityIndicator` : undefined}
-          color={theme["interactiveElem-default"]}
         />
       );
     }
