@@ -30,7 +30,7 @@
     "test": "jest --config='./jest.config.js'",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prettify": "prettier --write \"src/**/*.(ts|tsx)\"",
+    "prettify": "prettier --write \"src/**/*.{ts,tsx}\"",
     "prepack": "bob build",
     "prepare": "bob build",
     "release": "release-it",
