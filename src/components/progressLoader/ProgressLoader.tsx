@@ -1,19 +1,12 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOSpringValues } from "../../core";
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 4,
-    backgroundColor: IOColors.white
-  }
-});
+import { IOColors, IOSpringValues, useIOTheme } from "../../core";
 
 export type ProgressLoader = {
   progress: number;
@@ -29,12 +22,16 @@ export type ProgressLoader = {
 export const ProgressLoader = ({
   progress,
   accessibilityLabel,
-  color = "blueIO-500"
+  color: customColor
 }: ProgressLoader) => {
-  const [width, setWidth] = React.useState(0);
+  const theme = useIOTheme();
+  const [width, setWidth] = useState(0);
   const progressWidth = useSharedValue(0);
 
-  React.useEffect(() => {
+  const backgroundColor = IOColors[theme["appBackground-primary"]];
+  const foregroundColor = customColor ?? theme["interactiveElem-default"];
+
+  useEffect(() => {
     // eslint-disable-next-line functional/immutable-data
     progressWidth.value = withSpring(
       (progress / 100) * width,
@@ -48,14 +45,20 @@ export const ProgressLoader = ({
 
   return (
     <View
-      style={styles.container}
+      style={{ flex: 1, backgroundColor }}
       onLayout={e => setWidth(e.nativeEvent.layout.width)}
       accessibilityLabel={accessibilityLabel}
+      accessibilityRole="progressbar"
+      accessibilityValue={{
+        min: 0,
+        max: 100,
+        now: progress
+      }}
     >
       <Animated.View
         style={[
           animatedStyle,
-          { height: "100%", backgroundColor: IOColors[color] }
+          { height: 4, backgroundColor: IOColors[foregroundColor] }
         ]}
       />
     </View>
