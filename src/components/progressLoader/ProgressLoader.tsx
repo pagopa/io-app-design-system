@@ -47,7 +47,12 @@ export const ProgressLoader = ({
     <View
       focusable
       /* We set a fixed height to make the component focusable on Android */
-      style={{ flex: 1, height: 16, justifyContent: "center", backgroundColor }}
+      style={{
+        width: "100%",
+        height: 16,
+        justifyContent: "center",
+        backgroundColor
+      }}
       onLayout={e => setWidth(e.nativeEvent.layout.width)}
       importantForAccessibility="yes"
       accessibilityLabel={accessibilityLabel}
