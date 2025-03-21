@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { IOColors } from '../../core';
-import { ChildrenCoords } from './utils/types';
+import { StyleSheet } from "react-native";
+import { IOColors } from "../../core";
+import { ChildrenCoords } from "./utils/types";
 
 export const tooltipStyles = StyleSheet.create({
   overlay: {
@@ -26,11 +26,11 @@ export const tooltipStyles = StyleSheet.create({
   },
   arrowContainer: {
     position: "absolute",
-    display: 'flex',
+    display: "flex",
     zIndex: 3000
   },
   closeIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 8,
     top: 9 // It's been used `9` instead of `8` to fix accessibility focus order. In this way title is read before close icon.
   }
