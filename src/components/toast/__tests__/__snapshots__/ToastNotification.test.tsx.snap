@@ -11,14 +11,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#AAEEEF",
-        "borderColor": "#003B3D",
+        "borderColor": "rgba(0,59,61,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -127,14 +127,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#FFD9D9",
-        "borderColor": "#5D1313",
+        "borderColor": "rgba(93,19,19,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -176,14 +176,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#E1F5FE",
-        "borderColor": "#215C76",
+        "borderColor": "rgba(33,92,118,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -225,14 +225,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#AAEEEF",
-        "borderColor": "#003B3D",
+        "borderColor": "rgba(0,59,61,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -274,14 +274,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#E1F4E1",
-        "borderColor": "#224021",
+        "borderColor": "rgba(34,64,33,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -323,14 +323,14 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#FFF5DA",
-        "borderColor": "#614C15",
+        "borderColor": "rgba(97,76,21,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -372,14 +372,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#AAEEEF",
-        "borderColor": "#003B3D",
+        "borderColor": "rgba(0,59,61,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -488,14 +488,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#FFD9D9",
-        "borderColor": "#5D1313",
+        "borderColor": "rgba(93,19,19,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -537,14 +537,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#E1F5FE",
-        "borderColor": "#215C76",
+        "borderColor": "rgba(33,92,118,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -586,14 +586,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#AAEEEF",
-        "borderColor": "#003B3D",
+        "borderColor": "rgba(0,59,61,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -635,14 +635,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#E1F4E1",
-        "borderColor": "#224021",
+        "borderColor": "rgba(34,64,33,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
@@ -684,14 +684,14 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         "alignItems": "center",
         "borderCurve": "continuous",
         "borderRadius": 8,
-        "borderWidth": 1,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "padding": 16,
       },
       {
         "backgroundColor": "#FFF5DA",
-        "borderColor": "#614C15",
+        "borderColor": "rgba(97,76,21,0.5)",
+        "borderWidth": 1,
       },
     ]
   }
