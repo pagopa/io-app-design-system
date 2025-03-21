@@ -48,6 +48,7 @@ export const ProgressLoader = ({
       style={{ flex: 1, backgroundColor }}
       onLayout={e => setWidth(e.nativeEvent.layout.width)}
       accessibilityLabel={accessibilityLabel}
+      accessible={true}
       accessibilityRole="progressbar"
       accessibilityValue={{
         min: 0,
