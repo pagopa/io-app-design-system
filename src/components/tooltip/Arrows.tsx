@@ -1,9 +1,9 @@
-import Svg, { Path } from 'react-native-svg';
-import React from 'react';
-import { IOColors } from '../../core';
+import Svg, { Path } from "react-native-svg";
+import React from "react";
+import { IOColors } from "../../core";
 
 export const LeftArrow = ({ color = IOColors.white }: { color?: string }) => (
-  <Svg fill="none" >
+  <Svg fill="none">
     <Path
       d="M12.6955 15.2C14.8289 13.6 14.8289 10.4 12.6955 8.8L0.962204 0V24L12.6955 15.2Z"
       fill={color}

@@ -1,6 +1,6 @@
-import { ScaledSize } from 'react-native';
-import { IOVisualCostants } from '../../../core';
-import { ChildrenCoords, DisplayInsets, Placement } from './types';
+import { ScaledSize } from "react-native";
+import { IOVisualCostants } from "../../../core";
+import { ChildrenCoords, DisplayInsets, Placement } from "./types";
 
 export const ARROW_WIDTH = 24;
 export const ARROW_HEIGHT = 14;
@@ -9,7 +9,7 @@ const DEFAULT_INSETS: DisplayInsets = {
   top: 0,
   bottom: 0,
   left: IOVisualCostants.appMarginDefault,
-  right: IOVisualCostants.appMarginDefault,
+  right: IOVisualCostants.appMarginDefault
 };
 
 /**
@@ -21,22 +21,22 @@ export const getDisplayInsets = (
 ): DisplayInsets => ({ ...DEFAULT_INSETS, ...displayInsets });
 
 /**
- * 
+ *
  * @param placement The `Tooltip` placement
  * @returns The `Arrow` box `width` and `height` based on `placement` value
  */
 export const getArrowBoxByPlacement = (placement: Placement) => {
   switch (placement) {
-    case 'left':
-    case 'right':
+    case "left":
+    case "right":
       return {
         width: ARROW_HEIGHT,
-        height: ARROW_WIDTH,
+        height: ARROW_WIDTH
       };
     default:
       return {
         height: ARROW_HEIGHT,
-        width: ARROW_WIDTH,
+        width: ARROW_WIDTH
       };
   }
 };
@@ -66,7 +66,8 @@ export const getTooltipCoords = (
       };
     case "bottom":
       return {
-        top: childrenCoords.y + childrenCoords.height + ARROW_HEIGHT + EMPTY_SPACE,
+        top:
+          childrenCoords.y + childrenCoords.height + ARROW_HEIGHT + EMPTY_SPACE,
         left: displayInsets.left,
         width: screenWidth - displayInsets.left - displayInsets.right
       };
@@ -75,17 +76,20 @@ export const getTooltipCoords = (
         top: childrenCoords.y,
         left: displayInsets.left,
         width:
-          screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT - displayInsets.left - EMPTY_SPACE
+          screenWidth -
+          (screenWidth - childrenCoords.x) -
+          ARROW_HEIGHT -
+          displayInsets.left -
+          EMPTY_SPACE
       };
     case "right":
-      const elementSize = childrenCoords.width + childrenCoords.x + ARROW_HEIGHT + EMPTY_SPACE;
+      const elementSize =
+        childrenCoords.width + childrenCoords.x + ARROW_HEIGHT + EMPTY_SPACE;
 
       return {
         top: childrenCoords.y,
         left: elementSize,
-        width:
-          screenWidth -
-          (elementSize + displayInsets.right)
+        width: screenWidth - (elementSize + displayInsets.right)
       };
     // TODO: provide a default center position in case of Tooltip without children
     default:
@@ -121,7 +125,12 @@ export const getArrowCoords = (
     case "left":
       return {
         top: childrenCoords.y,
-        left: screenWidth - (screenWidth - childrenCoords.x) - ARROW_HEIGHT - EMPTY_SPACE - 1, // FIXME -> This `-1` is necessary because of the Svg size doesn't match the box size
+        left:
+          screenWidth -
+          (screenWidth - childrenCoords.x) -
+          ARROW_HEIGHT -
+          EMPTY_SPACE -
+          1 // FIXME -> This `-1` is necessary because of the Svg size doesn't match the box size
       };
     case "right":
       return {
@@ -139,16 +148,19 @@ export const getArrowCoords = (
  * @param placement The `Tooltip` placement in relation of its children
  * @param childrenHeight The `Tooltip`'s children height
  * @param tooltipHeight The `Tooltip`'s height
- * @returns If placement is `left` or `right` it returns the vertical tranlsation to align the `Tooltip` center with its `children` center, 
+ * @returns If placement is `left` or `right` it returns the vertical tranlsation to align the `Tooltip` center with its `children` center,
  * otherwise `null` is returned
  */
-export const getTooltipVerticalAlignment = (placement: Placement, childrenHeight: number, tooltipHeight?: number) => {
+export const getTooltipVerticalAlignment = (
+  placement: Placement,
+  childrenHeight: number,
+  tooltipHeight?: number
+) => {
   if ((placement === "left" || placement === "right") && tooltipHeight) {
     return {
       transform: [
         {
-          translateY:
-            -tooltipHeight / 2 + childrenHeight / 2
+          translateY: -tooltipHeight / 2 + childrenHeight / 2
         }
       ]
     };
@@ -160,14 +172,16 @@ export const getTooltipVerticalAlignment = (placement: Placement, childrenHeight
  * A utility function to calculate the `Arrow` vertical alignment
  * @param placement The `Tooltip` placement in relation of its children
  * @param childrenHeight The `Tooltip`'s children height
-*/
-export const getArrowVerticalAlignment = (placement: Placement, childrenHeight: number) => {
+ */
+export const getArrowVerticalAlignment = (
+  placement: Placement,
+  childrenHeight: number
+) => {
   if (placement === "left" || placement === "right") {
     return {
       transform: [
         {
-          translateY:
-            -ARROW_WIDTH / 2 + childrenHeight / 2
+          translateY: -ARROW_WIDTH / 2 + childrenHeight / 2
         }
       ]
     };

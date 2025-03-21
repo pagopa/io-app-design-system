@@ -86,13 +86,9 @@ export const ListItemHeader = ({
 
       switch (type) {
         case "buttonLink":
-          return (
-            <ButtonLink {...componentProps} />
-          );
-        case "iconButton": 
-          return (
-            <IconButton {...componentProps} />
-          );
+          return <ButtonLink {...componentProps} />;
+        case "iconButton":
+          return <IconButton {...componentProps} />;
         case "badge":
           return <Badge {...componentProps} />;
         default:
@@ -103,10 +99,7 @@ export const ListItemHeader = ({
   }, [endElement]);
 
   return (
-    <View
-      style={IOListItemStyles.listItem}
-      testID={testID}
-    >
+    <View style={IOListItemStyles.listItem} testID={testID}>
       <View style={IOListItemStyles.listItemInner}>
         {iconName && !hugeFontEnabled && (
           <View
