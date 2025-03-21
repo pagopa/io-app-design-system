@@ -26,6 +26,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
       color: customColor,
       asLink,
       accessibilityRole = "link",
+      textStyle: customTextStyle,
       ...props
     },
     ref?: ForwardedRef<View>
@@ -48,7 +49,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
       ...(asLink
         ? {
             accessibilityRole,
-            textStyle: { textDecorationLine: "underline" }
+            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
           }
         : {})
     };
