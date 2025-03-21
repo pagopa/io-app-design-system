@@ -60,7 +60,6 @@ export const LoadingSpinner = ({
       accessibilityRole="progressbar"
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
-      importantForAccessibility={"no-hide-descendants"}
       testID={testID}
     >
       <Animated.View
