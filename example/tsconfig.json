@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig",
+  "extends": ["@tsconfig/react-native/tsconfig.json", "../tsconfig"],
   "compilerOptions": {
     // Avoid expo-cli auto-generating a tsconfig
   }
