@@ -74,3 +74,12 @@ coverage/
 
 # Storybook
 storybook-static
+
+# Yarn
+**/.yarn/*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

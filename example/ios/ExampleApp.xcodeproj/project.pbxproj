@@ -14,7 +14,6 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RnDiffApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		156FEFA162CE4118B7B0E409 /* TitilliumSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C6D7476B139472CA35D0A7C /* TitilliumSansPro-Black.otf */; };
 		16EB711B49904FDCB773BFF8 /* TitilliumSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 165A63C9D24A49A0884E935F /* TitilliumSansPro-Light.otf */; };
 		1D6E6F9B4C16432CA6BEBF9B /* Titillio-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206717D13554353B50B2957 /* Titillio-Light.otf */; };
@@ -22,6 +21,7 @@
 		21717B5E05AE475F98736DF3 /* Titillio-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D45E0DCC845A427BA80DDCED /* Titillio-BlackItalic.otf */; };
 		358B339E53D745279D8F0A92 /* TitilliumSansPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 721969CE7F714270A560A3C2 /* TitilliumSansPro-BoldItalic.otf */; };
 		3A4D6DDAEE064A62BCB9E41C /* TitilliumSansPro-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D914480BB10462696485089 /* TitilliumSansPro-ThinItalic.otf */; };
+		3B87E80906437720E6561BD6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7EA0BAF5C6876F30AA317 /* PrivacyInfo.xcprivacy */; };
 		3E9A766310EF4D7182ECE58B /* Titillio-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9323387669874BCA88DEAAB7 /* Titillio-BoldItalic.otf */; };
 		493FA456AB57478891021E84 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF1D50D36F43F2BC0D124F /* LICENSE.txt */; };
 		497AFB642D5642ECA1B57F46 /* Titillio-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C2B73AC2CA34996A186ECD8 /* Titillio-Regular.otf */; };
@@ -69,6 +69,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ExampleApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExampleApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleApp/main.m; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RnDiffApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		165A63C9D24A49A0884E935F /* TitilliumSansPro-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-Light.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-Light.otf"; sourceTree = "<group>"; };
 		17BFE9FD4EE94A2381B4C39C /* Titillio-ExtrablackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-ExtrablackItalic.otf"; path = "../assets/fonts/Titillio/Titillio-ExtrablackItalic.otf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ExampleApp-ExampleAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp-ExampleAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +77,7 @@
 		1E50F38389644583B83DCCCA /* DMMono-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMMono-Medium.ttf"; path = "../assets/fonts/DMMono/DMMono-Medium.ttf"; sourceTree = "<group>"; };
 		2D914480BB10462696485089 /* TitilliumSansPro-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-ThinItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-ThinItalic.otf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3DD7EA0BAF5C6876F30AA317 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ExampleApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		463C2C4990BE436BBAE9E663 /* Titillio-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-Black.otf"; path = "../assets/fonts/Titillio/Titillio-Black.otf"; sourceTree = "<group>"; };
 		5070E0C4AA8E482D9C9099B5 /* Titillio-Extrabold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-Extrabold.otf"; path = "../assets/fonts/Titillio/Titillio-Extrabold.otf"; sourceTree = "<group>"; };
 		555A35FB015A4CFBA6E6670B /* TitilliumSansPro-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-Regular.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-Regular.otf"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				3DD7EA0BAF5C6876F30AA317 /* PrivacyInfo.xcprivacy */,
 			);
 			name = ExampleApp;
 			sourceTree = "<group>";
@@ -278,7 +281,6 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ExampleApp" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
-				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -375,6 +377,7 @@
 				E3FA1603F38846889B4DC948 /* Titillio-SemiboldItalic.otf in Resources */,
 				EB544EEBF56F494EBA967C80 /* Titillio-Thin.otf in Resources */,
 				0C3C1E3040E34DDEB7ABFB43 /* Titillio-ThinItalic.otf in Resources */,
+				3B87E80906437720E6561BD6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,8 +650,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -674,6 +678,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CXX = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
@@ -694,6 +699,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -718,6 +725,8 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -725,8 +734,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -752,6 +762,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				CXX = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
@@ -768,6 +779,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -791,6 +804,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
