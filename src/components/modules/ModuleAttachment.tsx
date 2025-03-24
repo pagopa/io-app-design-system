@@ -44,12 +44,7 @@ const ModuleAttachmentContent = ({
         ? `${testID}_activityIndicator`
         : undefined;
 
-      return (
-        <LoadingSpinner
-          testID={activityIndicatorTestId}
-          color={theme["interactiveElem-default"]}
-        />
-      );
+      return <LoadingSpinner testID={activityIndicatorTestId} />;
     }
 
     return (
