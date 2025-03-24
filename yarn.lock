@@ -2846,6 +2846,8 @@ __metadata:
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.18.6
     "@babel/plugin-proposal-export-namespace-from": ^7.18.9
+    "@babel/plugin-transform-class-properties": ^7.25.9
+    "@babel/plugin-transform-export-namespace-from": ^7.25.9
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.2.2
     "@react-native-community/eslint-config": ^3.0.2
@@ -5886,11 +5888,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 22.13.12
-  resolution: "@types/node@npm:22.13.12"
+  version: 22.13.13
+  resolution: "@types/node@npm:22.13.13"
   dependencies:
     undici-types: ~6.20.0
-  checksum: 712dded901ae063e9c682a2ee7de64c7253045355ebd4b1937380dc80f5bbd738e364c031394bd2da1b3ade1364bc5530acf857f68812062f40712eb3e794160
+  checksum: 763c120725c4817227d3043095fd1e764744b2f3632e3e3c8242e1620a8e6fe1c9eeae38074dee3e39af6b890de142c3b6067f9b31e36635c44f3f5f4f2bb8cf
   languageName: node
   linkType: hard
 
@@ -5902,11 +5904,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^18.0.0":
-  version: 18.19.82
-  resolution: "@types/node@npm:18.19.82"
+  version: 18.19.83
+  resolution: "@types/node@npm:18.19.83"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 0d98ef9e4daf6c982e608ddfe18c2ed7b6efb6be6e65fd089b9cb51d62289059fe2db6ea5a30bad6381e0c0e18a0d921cf15ebc7b0a088bda5e46b5b7e951180
+  checksum: 02f2f08aa97c7cc119e088576df3d8d0b13e077ea50b75cc3b6f0d9037da0f1fe5663b448b120cbe578ac0741bc6213d76d07853647da37c5367dac8e8395d5c
   languageName: node
   linkType: hard
 
@@ -5961,13 +5963,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.1":
-  version: 18.3.1
-  resolution: "@types/react@npm:18.3.1"
+"@types/react@npm:>=16":
+  version: 19.0.12
+  resolution: "@types/react@npm:19.0.12"
+  dependencies:
+    csstype: ^3.0.2
+  checksum: 795f27287e44ef5f81ef9e8439ede54c16d692eb7aadcfc314a2e2de6160033e32d3ee9ce7027e05417e9d80f57a4eb22a6a9cbc40a0a12346c71a1fce939956
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18, @types/react@npm:~18.3.1":
+  version: 18.3.20
+  resolution: "@types/react@npm:18.3.20"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
-  checksum: 9224ef319a0c2b7f66e7e7f06012aa5eb638a6c76c9742843eab1a5d243f2bed5ff829ddbb41efd60d33a266420528adfcb84cb93f238b00e905f98c3a355768
+  checksum: a93a4eec87c671ad9d68eaedaa2aa3688926409802939d2b291800cf926c771eb505a18721174364217ae9e1e8b89d09c1519f06ba1f168271de9f4c832710ea
   languageName: node
   linkType: hard
 
