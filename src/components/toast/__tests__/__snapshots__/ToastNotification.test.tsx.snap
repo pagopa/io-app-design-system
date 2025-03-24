@@ -82,12 +82,12 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
         },
       ]
     }
-    tintColor="#003B3D"
     vbHeight={24}
     vbWidth={24}
     width={24}
   >
     <RNSVGGroup
+      color="#003B3D"
       fill={
         {
           "payload": 4278190080,
@@ -443,12 +443,12 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
         },
       ]
     }
-    tintColor="#003B3D"
     vbHeight={24}
     vbWidth={24}
     width={24}
   >
     <RNSVGGroup
+      color="#003B3D"
       fill={
         {
           "payload": 4278190080,

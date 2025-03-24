@@ -415,11 +415,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
       focusable={false}
@@ -444,12 +439,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
           },
         ]
       }
-      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -549,11 +544,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
       focusable={false}
@@ -578,12 +568,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
           },
         ]
       }
-      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -710,12 +700,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
           },
         ]
       }
-      tintColor="#FFFFFF"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#FFFFFF"
         fill={
           {
             "payload": 4278190080,
@@ -1160,11 +1150,6 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
       focusable={false}
@@ -1189,12 +1174,12 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
           },
         ]
       }
-      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -1294,11 +1279,6 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
       focusable={false}
@@ -1323,12 +1303,12 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
           },
         ]
       }
-      tintColor="#0B3EE3"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -1455,12 +1435,12 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
           },
         ]
       }
-      tintColor="#FFFFFF"
       vbHeight={24}
       vbWidth={24}
       width={24}
     >
       <RNSVGGroup
+        color="#FFFFFF"
         fill={
           {
             "payload": 4278190080,
