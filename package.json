@@ -35,7 +35,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install",
+    "bootstrap": "yarn example",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "predeploy": "yarn build-storybook",
