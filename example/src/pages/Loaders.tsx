@@ -2,17 +2,18 @@ import {
   H3,
   IOColors,
   LoadingSpinner,
-  ProgressLoader
+  ProgressLoader,
+  VStack
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { Screen } from "../components/Screen";
 
 export const Loaders = () => {
-  const [progress, setProgress] = React.useState(0);
-  React.useEffect(() => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      // console.log("progress", progress, (progress + 10) % 100);
       setProgress(prev => (prev + 10) % 100);
     }, 500);
     return () => clearInterval(interval);
@@ -20,24 +21,36 @@ export const Loaders = () => {
 
   return (
     <Screen>
-      <H3>LoadingSpinner</H3>
-      <View style={{ borderRadius: 8, overflow: "hidden" }}>
-        <View style={{ backgroundColor: IOColors.white, padding: 16 }}>
-          <LoadingSpinner color="blueIO-500" />
-        </View>
-        <View style={{ backgroundColor: IOColors["blueIO-500"], padding: 16 }}>
-          <LoadingSpinner color="white" />
-        </View>
-      </View>
-      <H3>ProgressLoader</H3>
-      <View style={{ borderRadius: 8, overflow: "hidden" }}>
-        <View style={{ backgroundColor: IOColors.white, padding: 16 }}>
+      <VStack space={24}>
+        <VStack space={16}>
+          <H3>LoadingSpinner</H3>
+          <VStack space={16}>
+            <VStack space={16}>
+              <LoadingSpinner />
+              <LoadingSpinner size={48} />
+              <LoadingSpinner size={76} />
+            </VStack>
+            <View
+              style={{
+                borderRadius: 8,
+                borderCurve: "continuous",
+                backgroundColor: IOColors["blueIO-500"],
+                padding: 16
+              }}
+            >
+              <VStack space={16}>
+                <LoadingSpinner color="white" />
+                <LoadingSpinner color="white" size={48} />
+                <LoadingSpinner color="white" size={76} />
+              </VStack>
+            </View>
+          </VStack>
+        </VStack>
+        <VStack space={16}>
+          <H3>ProgressLoader</H3>
           <ProgressLoader progress={progress} />
-        </View>
-        <View style={{ backgroundColor: IOColors["blueIO-500"], padding: 16 }}>
-          <ProgressLoader progress={90} />
-        </View>
-      </View>
+        </VStack>
+      </VStack>
     </Screen>
   );
 };
