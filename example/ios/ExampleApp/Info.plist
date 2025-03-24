@@ -48,5 +48,39 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DMMono-Medium.ttf</string>
+		<string>TitilliumSansPro-Black.otf</string>
+		<string>TitilliumSansPro-BlackItalic.otf</string>
+		<string>TitilliumSansPro-Bold.otf</string>
+		<string>TitilliumSansPro-BoldItalic.otf</string>
+		<string>TitilliumSansPro-Italic.otf</string>
+		<string>TitilliumSansPro-Light.otf</string>
+		<string>TitilliumSansPro-LightItalic.otf</string>
+		<string>TitilliumSansPro-Regular.otf</string>
+		<string>TitilliumSansPro-Semibold.otf</string>
+		<string>TitilliumSansPro-SemiboldItalic.otf</string>
+		<string>TitilliumSansPro-Thin.otf</string>
+		<string>TitilliumSansPro-ThinItalic.otf</string>
+		<string>Titillio-Black.otf</string>
+		<string>Titillio-BlackItalic.otf</string>
+		<string>Titillio-Bold.otf</string>
+		<string>Titillio-BoldItalic.otf</string>
+		<string>Titillio-Extrablack.otf</string>
+		<string>Titillio-ExtrablackItalic.otf</string>
+		<string>Titillio-Extrabold.otf</string>
+		<string>Titillio-ExtraboldItalic.otf</string>
+		<string>Titillio-Light.otf</string>
+		<string>Titillio-LightItalic.otf</string>
+		<string>Titillio-Regular.otf</string>
+		<string>Titillio-RegularItalic.otf</string>
+		<string>Titillio-Semibold.otf</string>
+		<string>Titillio-SemiboldItalic.otf</string>
+		<string>Titillio-Thin.otf</string>
+		<string>Titillio-ThinItalic.otf</string>
+	</array>
 </dict>
 </plist>
