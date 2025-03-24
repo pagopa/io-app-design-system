@@ -108,7 +108,8 @@ type CloseWithTapOnBackground = {
 type CloseWithBackgroundTapDisabled = {
   allowCloseOnBackgroundTap?: false;
 };
-type Props = CommonProps & (CloseWithTapOnBackground | CloseWithBackgroundTapDisabled);
+type Props = CommonProps &
+  (CloseWithTapOnBackground | CloseWithBackgroundTapDisabled);
 
 /**
  * Tooltip component that displays a contextual tooltip around its children.
@@ -133,7 +134,8 @@ export const Tooltip = ({
   const insets = useSafeAreaInsets();
   const [currentPlacement, setCurrentPlacement] =
     useState<Placement>(initialPlacement);
-  const [childrenCoords, setChildrenCoords] = useState<ChildrenCoords>(INITIAL_COORDS);
+  const [childrenCoords, setChildrenCoords] =
+    useState<ChildrenCoords>(INITIAL_COORDS);
   const [tooltipLayout, setTooltipLayout] = useState<TooltipLayout>();
   const childRef = useRef<View>(null);
   const titleRef = useRef<View>(null);
@@ -144,8 +146,7 @@ export const Tooltip = ({
     [currentPlacement]
   );
   const isChildrenMeasurementFinished =
-    every(childrenCoords, isDefined)
-    && some(childrenCoords, isNotZero);
+    every(childrenCoords, isDefined) && some(childrenCoords, isNotZero);
   const isTooltipMeasurementCompleted = isDefined(tooltipLayout);
   const tooltipVisibility = { opacity: isTooltipMeasurementCompleted ? 1 : 0 };
 
@@ -240,7 +241,9 @@ export const Tooltip = ({
       <Modal transparent visible={isVisible && isChildrenMeasurementFinished}>
         <View
           accessibilityElementsHidden={!childrenInteractionsEnabled}
-          importantForAccessibility={childrenInteractionsEnabled ? 'auto' : 'no-hide-descendants'}
+          importantForAccessibility={
+            childrenInteractionsEnabled ? "auto" : "no-hide-descendants"
+          }
           pointerEvents={childrenInteractionsEnabled ? "auto" : "box-only"}
           style={[
             tooltipStyles.childrenContainer,
@@ -252,15 +255,12 @@ export const Tooltip = ({
         <TouchableWithoutFeedback
           accessible={allowCloseOnBackgroundTap}
           accessibilityRole={allowCloseOnBackgroundTap ? "button" : "none"}
-          importantForAccessibility={allowCloseOnBackgroundTap ? 'yes' : 'no'}
+          importantForAccessibility={allowCloseOnBackgroundTap ? "yes" : "no"}
           accessibilityElementsHidden={!allowCloseOnBackgroundTap}
           onPress={handleTapOnBackground}
         >
           <View
-            style={[
-              tooltipStyles.overlay,
-              { height: screenDimensions.height }
-            ]}
+            style={[tooltipStyles.overlay, { height: screenDimensions.height }]}
           />
         </TouchableWithoutFeedback>
         <View
@@ -296,11 +296,7 @@ export const Tooltip = ({
           style={[
             tooltipStyles.arrowContainer,
             getArrowBoxByPlacement(currentPlacement),
-            getArrowCoords(
-              currentPlacement,
-              childrenCoords,
-              screenDimensions
-            ),
+            getArrowCoords(currentPlacement, childrenCoords, screenDimensions),
             getArrowVerticalAlignment(currentPlacement, childrenCoords.height),
             tooltipVisibility
           ]}
