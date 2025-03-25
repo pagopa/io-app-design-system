@@ -1,6 +1,11 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { IOAlertRadius, IOColors } from "../../core";
+import React, { useMemo } from "react";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import {
+  hexToRgba,
+  IOAlertRadius,
+  IOColors,
+  useIOThemeContext
+} from "../../core";
 import { Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { ButtonText } from "../typography";
@@ -38,16 +43,27 @@ type Props = Pick<Toast, "message" | "variant" | "icon">;
 
 const ToastNotification = ({ message, variant = "neutral", icon }: Props) => {
   const colors = toastColorVariants[variant];
+  const { themeType } = useIOThemeContext();
+
+  const dynamicStyle: ViewStyle = useMemo(() => {
+    const borderColor =
+      themeType === "dark"
+        ? hexToRgba(IOColors[colors.stroke], 0.25)
+        : hexToRgba(IOColors[colors.stroke], 0.5);
+
+    /* Remove border entirely when dark mode is enabled */
+    const borderWidth = themeType === "dark" ? 0 : 1;
+
+    return {
+      backgroundColor: IOColors[colors.background],
+      borderColor,
+      borderWidth
+    };
+  }, [colors, themeType]);
 
   return (
     <View
-      style={[
-        styles.toast,
-        {
-          backgroundColor: IOColors[colors.background],
-          borderColor: IOColors[colors.stroke]
-        }
-      ]}
+      style={[styles.toast, dynamicStyle]}
       accessible={true}
       accessibilityRole={"alert"}
       accessibilityLabel={message}
@@ -68,7 +84,6 @@ const ToastNotification = ({ message, variant = "neutral", icon }: Props) => {
 const styles = StyleSheet.create({
   toast: {
     borderRadius: IOAlertRadius,
-    borderWidth: 1,
     borderCurve: "continuous",
     padding: 16,
     flexDirection: "row",

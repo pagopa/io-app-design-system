@@ -1,15 +1,12 @@
-import React, { useEffect, useMemo } from "react";
-import { ColorValue, DimensionValue, ViewStyle } from "react-native";
-import Animated, {
-  cancelAnimation,
+import React, { useEffect, useMemo, useRef } from "react";
+import {
+  Animated,
+  ColorValue,
+  DimensionValue,
   Easing,
-  useAnimatedStyle,
-  useReducedMotion,
-  useSharedValue,
-  withRepeat,
-  withSequence,
-  withTiming
-} from "react-native-reanimated";
+  ViewStyle
+} from "react-native";
+import { useReducedMotion } from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
 import { WithTestID } from "../../utils/types";
 
@@ -51,9 +48,7 @@ export const IOSkeleton = ({
   const reduceMotion = useReducedMotion();
   const theme = useIOTheme();
 
-  const opacity = useSharedValue(
-    reduceMotion ? OPACITY_REDUCED_MOTION : OPACITY_MAX
-  );
+  const opacity = useRef(new Animated.Value(OPACITY_MAX)).current;
 
   const backgroundColor = color ?? IOColors[theme["skeleton-background"]];
 
@@ -70,38 +65,33 @@ export const IOSkeleton = ({
 
   useEffect(() => {
     if (reduceMotion) {
-      // eslint-disable-next-line functional/immutable-data
-      opacity.value = OPACITY_REDUCED_MOTION;
+      opacity.setValue(OPACITY_REDUCED_MOTION);
       return;
     }
 
-    const animationSequence = withRepeat(
-      withSequence(
-        withTiming(OPACITY_MIN, {
+    const animation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: OPACITY_MIN,
           duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin)
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true
         }),
-        withTiming(OPACITY_MAX, {
+        Animated.timing(opacity, {
+          toValue: OPACITY_MAX,
           duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin)
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true
         })
-      ),
-      -1,
-      true
+      ])
     );
 
-    // eslint-disable-next-line functional/immutable-data
-    opacity.value = animationSequence;
+    animation.start();
 
     return () => {
-      cancelAnimation(opacity);
+      animation.stop();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reduceMotion]);
+  }, [opacity, reduceMotion]);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value
-  }));
-
-  return <Animated.View testID={testID} style={[baseStyle, animatedStyle]} />;
+  return <Animated.View testID={testID} style={[baseStyle, { opacity }]} />;
 };

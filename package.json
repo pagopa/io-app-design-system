@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "5.2.2",
+  "version": "5.2.5",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -30,7 +30,8 @@
     "test": "jest --config='./jest.config.js'",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prettify": "prettier --write \"src/**/*.(ts|tsx)\"",
+    "prettify": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "prettier:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "prepack": "bob build",
     "prepare": "bob build",
     "postinstall": "bob build",

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import {
   AccessibilityInfo,
   NativeSyntheticEvent,
@@ -9,6 +10,7 @@ import {
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOStyles } from "../../core/IOStyles";
+import { useIOTheme } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
 import { VSpacer } from "../spacer";
@@ -43,7 +45,7 @@ type Props = {
  * @param errorMessage - The error message to display
  * @returns
  */
-export const OTPInput = React.forwardRef<View, Props>(
+export const OTPInput = forwardRef<View, Props>(
   (
     {
       value,
@@ -61,14 +63,16 @@ export const OTPInput = React.forwardRef<View, Props>(
     },
     ref
   ) => {
-    const [hasFocus, setHasFocus] = React.useState(autoFocus);
-    const [hasError, setHasError] = React.useState(false);
+    const [hasFocus, setHasFocus] = useState(autoFocus);
+    const [hasError, setHasError] = useState(false);
+
+    const theme = useIOTheme();
 
     const { translate, animatedStyle, shakeAnimation } =
       useErrorShakeAnimation();
 
-    const inputRef = React.createRef<TextInput>();
-    const timerRef = React.useRef<NodeJS.Timeout>();
+    const inputRef = createRef<TextInput>();
+    const timerRef = useRef<NodeJS.Timeout>();
 
     const handleValidate = (val: string) => {
       if (!onValidate || val.length < length) {
@@ -92,7 +96,14 @@ export const OTPInput = React.forwardRef<View, Props>(
       }
     };
 
-    React.useEffect(() => () => clearTimeout(timerRef.current), []);
+    useEffect(
+      () => () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+      },
+      []
+    );
 
     const handleChange = (value: string) => {
       if (value.length > length) {
@@ -170,7 +181,7 @@ export const OTPInput = React.forwardRef<View, Props>(
         {hasError && errorMessage && (
           <BodySmall
             weight="Semibold"
-            color="error-850"
+            color={theme.errorText}
             style={{ textAlign: "center" }}
           >
             {errorMessage}

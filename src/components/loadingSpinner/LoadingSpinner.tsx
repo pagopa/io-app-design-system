@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { View, Animated, Easing } from "react-native";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
-import { IOColors } from "../../core";
+import { IOColors, useIOTheme } from "../../core";
 
 export type LoadingSpinner = WithTestID<{
   color?: IOColors;
@@ -24,34 +24,34 @@ const strokeMap: Record<NonNullable<LoadingSpinner["size"]>, number> = {
   76: 7
 };
 
-const startRotationAnimation = (
-  durationMs: number,
-  rotationDegree: Animated.Value
-): void => {
-  Animated.loop(
-    Animated.timing(rotationDegree, {
-      toValue: 360,
-      duration: durationMs,
-      easing: Easing.linear,
-      useNativeDriver: true
-    })
-  ).start();
-};
-
 export const LoadingSpinner = ({
-  color = "blueIO-500",
+  color: customColor,
   size = 24,
   durationMs = 850,
   accessibilityHint,
   accessibilityLabel,
   testID = "LoadingSpinnerTestID"
 }: LoadingSpinner): React.ReactElement => {
+  const theme = useIOTheme();
   const rotationDegree = useRef(new Animated.Value(0)).current;
   const stroke: number = strokeMap[size];
 
+  const color = customColor ?? theme["interactiveElem-default"];
+
   useEffect(() => {
-    startRotationAnimation(durationMs, rotationDegree);
-  }, [durationMs, rotationDegree]);
+    const animation = Animated.loop(
+      Animated.timing(rotationDegree, {
+        toValue: 360,
+        duration: durationMs,
+        easing: Easing.linear,
+        useNativeDriver: true
+      })
+    );
+
+    animation.start();
+
+    return () => animation.stop();
+  }, [durationMs, rotationDegree, theme]);
 
   return (
     <View
@@ -60,7 +60,6 @@ export const LoadingSpinner = ({
       accessibilityRole="progressbar"
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
-      importantForAccessibility={"no-hide-descendants"}
       testID={testID}
     >
       <Animated.View

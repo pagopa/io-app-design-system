@@ -232,6 +232,8 @@ const themeKeys = [
   "textInputLabel-default",
   "textInputValue-default",
   "textInputValue-disabled",
+  "otpInputBorder-default",
+  "otpInputBorder-error",
   // Selection (Radio, Checkbox, Switch)
   "switch-background-off",
   "switch-background-on",
@@ -302,6 +304,8 @@ export const IOThemeLight: IOTheme = {
   "textInputLabel-default": "grey-700",
   "textInputValue-default": "black",
   "textInputValue-disabled": "grey-850",
+  "otpInputBorder-default": "grey-650",
+  "otpInputBorder-error": "error-600",
   // Selection (Radio, Checkbox, Switch)
   "switch-background-off": "grey-700",
   "switch-background-on": "blueIO-500",
@@ -367,6 +371,8 @@ export const IOThemeDark: IOTheme = {
   "textInputLabel-default": "grey-450",
   "textInputValue-default": "white",
   "textInputValue-disabled": "grey-100",
+  "otpInputBorder-default": "grey-450",
+  "otpInputBorder-error": "error-400",
   // Selection (Radio, Checkbox, Switch)
   "switch-background-off": "grey-850",
   "switch-background-on": "blueIO-300",
