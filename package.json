@@ -33,8 +33,6 @@
     "prettify": "prettier --write \"src/**/*.{ts,tsx}\"",
     "prettier:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "prepack": "bob build",
-    "prepare": "bob build",
-    "postinstall": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example",
