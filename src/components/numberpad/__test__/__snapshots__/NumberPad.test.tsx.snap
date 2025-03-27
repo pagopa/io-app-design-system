@@ -905,11 +905,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
-              animatedProps={
-                {
-                  "color": undefined,
-                }
-              }
               bbHeight={24}
               bbWidth={24}
               focusable={false}
@@ -934,12 +929,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   },
                 ]
               }
-              tintColor="#FFFFFF"
               vbHeight={24}
               vbWidth={24}
               width={24}
             >
               <RNSVGGroup
+                color="#FFFFFF"
                 fill={
                   {
                     "payload": 4278190080,
@@ -1129,11 +1124,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
-              animatedProps={
-                {
-                  "color": undefined,
-                }
-              }
               bbHeight={24}
               bbWidth={24}
               focusable={false}
@@ -1158,12 +1148,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                   },
                 ]
               }
-              tintColor="#FFFFFF"
               vbHeight={24}
               vbWidth={24}
               width={24}
             >
               <RNSVGGroup
+                color="#FFFFFF"
                 fill={
                   {
                     "payload": 4278190080,

@@ -23,11 +23,18 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
     exclusive={true}
     handlerTag={1}
     handlerType="NativeViewGestureHandler"
-    onGestureEvent={[Function]}
+    innerRef={null}
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
-    onHandlerStateChange={[Function]}
-    rippleColor={0}
+    rippleColor="transparent"
+    style={
+      [
+        undefined,
+        {
+          "cursor": undefined,
+        },
+      ]
+    }
     touchSoundDisabled={false}
   >
     <View
@@ -112,12 +119,12 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                 },
               ]
             }
-            tintColor="#0B3EE3"
             vbHeight={24}
             vbWidth={24}
             width={24}
           >
             <RNSVGGroup
+              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,
@@ -545,11 +552,18 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
     exclusive={true}
     handlerTag={2}
     handlerType="NativeViewGestureHandler"
-    onGestureEvent={[Function]}
+    innerRef={null}
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
-    onHandlerStateChange={[Function]}
-    rippleColor={0}
+    rippleColor="transparent"
+    style={
+      [
+        undefined,
+        {
+          "cursor": undefined,
+        },
+      ]
+    }
     touchSoundDisabled={false}
   >
     <View
@@ -634,12 +648,12 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                 },
               ]
             }
-            tintColor="#0B3EE3"
             vbHeight={24}
             vbWidth={24}
             width={24}
           >
             <RNSVGGroup
+              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,
@@ -998,11 +1012,18 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
     exclusive={true}
     handlerTag={3}
     handlerType="NativeViewGestureHandler"
-    onGestureEvent={[Function]}
+    innerRef={null}
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
-    onHandlerStateChange={[Function]}
-    rippleColor={0}
+    rippleColor="transparent"
+    style={
+      [
+        undefined,
+        {
+          "cursor": undefined,
+        },
+      ]
+    }
     touchSoundDisabled={false}
   >
     <View
@@ -1087,12 +1108,12 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
                 },
               ]
             }
-            tintColor="#0B3EE3"
             vbHeight={24}
             vbWidth={24}
             width={24}
           >
             <RNSVGGroup
+              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,

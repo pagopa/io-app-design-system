@@ -1,15 +1,8 @@
-import React from "react";
 import { Decorator } from "@storybook/react";
-import { useGlobals } from "@storybook/preview-api";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import React from "react";
 import { View } from "react-native";
-import {
-  IOColors,
-  IODSExperimentalContextProvider,
-  IOThemeContextProvider,
-  hexToRgba
-} from "../src/core";
-import { EXPERIMENTAL_DS_PARAM_KEY } from "./addons/ExperimentalDsToggle";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { IOColors, IOThemeContextProvider, hexToRgba } from "../src/core";
 
 export const withTheme: Decorator = (StoryFn, context) => {
   const themeContext =
@@ -25,18 +18,7 @@ export const withTheme: Decorator = (StoryFn, context) => {
   );
 };
 
-export const withEperimentalDs: Decorator = StoryFn => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [globals] = useGlobals();
-
-  return (
-    <IODSExperimentalContextProvider
-      isExperimentaEnabled={globals[EXPERIMENTAL_DS_PARAM_KEY]}
-    >
-      <StoryFn />
-    </IODSExperimentalContextProvider>
-  );
-};
+export const withEperimentalDs: Decorator = StoryFn => <StoryFn />;
 
 export const withMaxWitdth: Decorator = StoryFn => (
   <div

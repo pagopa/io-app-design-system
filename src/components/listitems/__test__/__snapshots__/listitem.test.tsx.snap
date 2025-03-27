@@ -343,12 +343,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -504,12 +504,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -641,12 +641,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
             },
           ]
         }
-        tintColor="#D13333"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#D13333"
           fill={
             {
               "payload": 4278190080,
@@ -729,12 +729,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -902,12 +902,12 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
               ]
             }
-            tintColor="#5517E3"
             vbHeight={17}
             vbWidth={16}
             width={16}
           >
             <RNSVGGroup
+              color="#5517E3"
               fill={
                 {
                   "payload": 4278190080,
@@ -1886,12 +1886,12 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2047,12 +2047,12 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2184,12 +2184,12 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#D13333"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#D13333"
           fill={
             {
               "payload": 4278190080,
@@ -2272,12 +2272,12 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
             },
           ]
         }
-        tintColor="#0B3EE3"
         vbHeight={24}
         vbWidth={24}
         width={24}
       >
         <RNSVGGroup
+          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2445,12 +2445,12 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 },
               ]
             }
-            tintColor="#5517E3"
             vbHeight={17}
             vbWidth={16}
             width={16}
           >
             <RNSVGGroup
+              color="#5517E3"
               fill={
                 {
                   "payload": 4278190080,

@@ -13,6 +13,7 @@ NativeModules.RNGestureHandlerModule = {
   dropGestureHandler: jest.fn(),
   updateGestureHandler: jest.fn(),
   forceTouchAvailable: jest.fn(),
+  flushOperations: jest.fn(),
   State: {},
   Directions: {}
 };
@@ -31,14 +32,39 @@ jest.mock("react-native-reanimated", () => {
   Reanimated.default.addWhitelistedUIProps = () => { };
   // eslint-disable-next-line functional/immutable-data
   Reanimated.useReducedMotion = () => false;
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useAnimatedReaction = jest.fn();
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useAnimatedProps = jest.fn();
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useFrameCallback = jest.fn();
 
   return Reanimated;
+});
+
+jest.mock("react-native/Libraries/TurboModule/TurboModuleRegistry", () => {
+  const turboModuleRegistry = jest.requireActual(
+    "react-native/Libraries/TurboModule/TurboModuleRegistry"
+  );
+  return {
+    ...turboModuleRegistry,
+    getEnforcing: name => {
+      if (name === "RNHapticFeedback") {
+        return null; // or return a minimal mock
+      }
+      return turboModuleRegistry.getEnforcing(name);
+    }
+  };
 });
 
 // eslint-disable-next-line functional/immutable-data
 NativeModules.PlatformConstants = NativeModules.PlatformConstants || {
   forceTouchAvailable: false
 };
+
+jest.mock('react-native/Libraries/EventEmitter/RCTDeviceEventEmitter', () => ({
+  default: jest.fn()
+}));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any,functional/immutable-data
 global.fetch = nodeFetch;

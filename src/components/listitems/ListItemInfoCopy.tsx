@@ -68,7 +68,7 @@ export const ListItemInfoCopy = ({
           {value}
         </H6>
       ) : (
-        { value }
+        value
       )}
     </>
   );
