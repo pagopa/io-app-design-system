@@ -13,7 +13,6 @@ import {
   IOBannerBigSpacing,
   IOBannerRadius,
   IOColors,
-  IOStyles,
   useIOTheme,
   useIOThemeContext
 } from "../../core";
@@ -94,7 +93,7 @@ export const BannerErrorState = ({
   const renderMainBlock = () => (
     <>
       <View
-        style={[IOStyles.flex, IOStyles.alignCenter]}
+        style={{ flex: 1, alignItems: "center" }}
         accessible={true}
         // A11y related props
         accessibilityLabel={accessibilityLabel}
