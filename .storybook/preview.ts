@@ -1,13 +1,9 @@
 import type { Preview } from "@storybook/react";
 import { IOThemeLight, IOThemeDark } from "../src/core";
 import { withEperimentalDs } from "../stories/utils";
-import { EXPERIMENTAL_DS_PARAM_KEY } from "../stories/addons/ExperimentalDsToggle";
 
 const preview: Preview = {
   decorators: [withEperimentalDs],
-  globals: {
-    [EXPERIMENTAL_DS_PARAM_KEY]: false
-  },
   parameters: {
     options: {
       storySort: {
