@@ -91,43 +91,41 @@ export const BannerErrorState = ({
   };
 
   const renderMainBlock = () => (
-    <>
-      <View
-        style={{ flex: 1, alignItems: "center" }}
-        accessible={true}
-        // A11y related props
-        accessibilityLabel={accessibilityLabel}
-        accessibilityHint={accessibilityHint}
-        accessibilityRole={actionText !== undefined ? "button" : undefined}
-      >
-        {icon && (
-          <>
-            <Icon name={icon} size={24} color={foregroundColor} />
-            <VSpacer size={8} />
-          </>
-        )}
-        {label && (
-          <>
-            <Body color={foregroundColor} textStyle={{ textAlign: "center" }}>
-              {label}
-            </Body>
-            {actionText && <VSpacer size={8} />}
-          </>
-        )}
-        {actionText && (
-          /* Disable pointer events to avoid
+     <View
+      style={{ flex: 1, alignItems: "center" }}
+      accessible={true}
+      // A11y related props
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole={actionText !== undefined ? "button" : undefined}
+    >
+      {icon && (
+        <>
+          <Icon name={icon} size={24} color={foregroundColor} />
+          <VSpacer size={8} />
+        </>
+      )}
+      {label && (
+        <>
+          <Body color={foregroundColor} textStyle={{ textAlign: "center" }}>
+            {label}
+          </Body>
+          {actionText && <VSpacer size={8} />}
+        </>
+      )}
+      {actionText && (
+        /* Disable pointer events to avoid
             pressed state on the button */
-          <View
-            pointerEvents="none"
-            accessibilityElementsHidden
-            importantForAccessibility="no-hide-descendants"
-          >
-            <VSpacer size={4} />
-            <ButtonLink color="primary" onPress={onPress} label={actionText} />
-          </View>
-        )}
-      </View>
-    </>
+        <View
+          pointerEvents="none"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
+          <VSpacer size={4} />
+          <ButtonLink color="primary" onPress={onPress} label={actionText} />
+        </View>
+      )}
+    </View>
   );
 
   const PressableContent = () => (
