@@ -19,7 +19,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies and build with builder bob
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@53a5c23a925969671a6bb98ea70a4f650928ef93 #v3.16
       - name: Publish Package
