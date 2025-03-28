@@ -19,7 +19,7 @@ jobs:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies and build with builder bob
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: Build Storybook
         run: yarn predeploy
       - name: 'upload'
