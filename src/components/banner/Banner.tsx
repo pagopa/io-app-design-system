@@ -11,7 +11,6 @@ import Animated from "react-native-reanimated";
 import {
   IOBannerBigSpacing,
   IOBannerRadius,
-  IOStyles,
   useIONewTypeface,
   useIOTheme,
   useIOThemeContext
@@ -174,26 +173,18 @@ export const Banner = ({
   const renderMainBlock = () => (
     <>
       <View
-        style={[IOStyles.flex, IOStyles.selfCenter]}
+        style={{ flex: 1, alignSelf: "center", gap: 4 }}
         accessible={true}
         // A11y related props
         accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
         accessibilityHint={accessibilityHint}
         accessibilityRole={action !== undefined ? accessibilityRole : "text"}
       >
-        {title && (
-          <>
-            <H6 color={colorTitle}>{title}</H6>
-            <VSpacer size={4} />
-          </>
-        )}
+        {title && <H6 color={colorTitle}>{title}</H6>}
         {content && (
-          <>
-            <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
-              {content}
-            </BodySmall>
-            {action && <VSpacer size={8} />}
-          </>
+          <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
+            {content}
+          </BodySmall>
         )}
         {action && (
           /* Disable pointer events to avoid
@@ -207,7 +198,7 @@ export const Banner = ({
             accessibilityRole="button"
             onPress={onPress}
           >
-            <VSpacer size={4} />
+            <VSpacer size={8} />
             <IOText
               font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight="Semibold"
@@ -225,7 +216,7 @@ export const Banner = ({
           </Pressable>
         )}
       </View>
-      <View style={[styles.bleedPictogram, IOStyles.selfCenter]}>
+      <View style={[styles.bleedPictogram, { alignSelf: "center" }]}>
         <PictogramBleed name={pictogramName} size={sizePictogram} />
       </View>
       {onClose && labelClose && (

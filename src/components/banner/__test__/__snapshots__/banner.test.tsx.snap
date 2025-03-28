@@ -61,14 +61,11 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       accessibilityRole="button"
       accessible={true}
       style={
-        [
-          {
-            "flex": 1,
-          },
-          {
-            "alignSelf": "center",
-          },
-        ]
+        {
+          "alignSelf": "center",
+          "flex": 1,
+          "gap": 4,
+        }
       }
     >
       <Text
@@ -91,13 +88,6 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
       >
         Banner title
       </Text>
-      <View
-        style={
-          {
-            "height": 4,
-          }
-        }
-      />
       <View
         accessibilityElementsHidden={true}
         accessibilityLabel="Action text"
@@ -137,7 +127,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         <View
           style={
             {
-              "height": 4,
+              "height": 8,
             }
           }
         />
@@ -365,14 +355,11 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       accessibilityRole="button"
       accessible={true}
       style={
-        [
-          {
-            "flex": 1,
-          },
-          {
-            "alignSelf": "center",
-          },
-        ]
+        {
+          "alignSelf": "center",
+          "flex": 1,
+          "gap": 4,
+        }
       }
     >
       <Text
@@ -395,13 +382,6 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
       >
         Banner title
       </Text>
-      <View
-        style={
-          {
-            "height": 4,
-          }
-        }
-      />
       <View
         accessibilityElementsHidden={true}
         accessibilityLabel="Action text"
@@ -441,7 +421,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         <View
           style={
             {
-              "height": 4,
+              "height": 8,
             }
           }
         />
