@@ -91,27 +91,19 @@ export const BannerErrorState = ({
   };
 
   const renderMainBlock = () => (
-     <View
-      style={{ flex: 1, alignItems: "center" }}
+    <View
+      style={{ flex: 1, alignItems: "center", gap: 8 }}
       accessible={true}
       // A11y related props
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
       accessibilityRole={actionText !== undefined ? "button" : undefined}
     >
-      {icon && (
-        <>
-          <Icon name={icon} size={24} color={foregroundColor} />
-          <VSpacer size={8} />
-        </>
-      )}
+      {icon && <Icon name={icon} size={24} color={foregroundColor} />}
       {label && (
-        <>
-          <Body color={foregroundColor} textStyle={{ textAlign: "center" }}>
-            {label}
-          </Body>
-          {actionText && <VSpacer size={8} />}
-        </>
+        <Body color={foregroundColor} textStyle={{ textAlign: "center" }}>
+          {label}
+        </Body>
       )}
       {actionText && (
         /* Disable pointer events to avoid
