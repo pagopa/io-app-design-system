@@ -149,21 +149,6 @@ export const AvatarSearch = React.memo(
     const internalSpace = dimensionsMap.small.internalSpace;
     const innerRadius = borderRadius - internalSpace;
 
-    const indexValue = useRef<number>(0);
-    const [imageSource, setImageSource] = useState(
-      source === undefined ? undefined : addCacheTimestampToUri(source)
-    );
-
-    const onError = () => {
-      if (Array.isArray(source) && indexValue.current + 1 < source.length) {
-        // eslint-disable-next-line functional/immutable-data
-        indexValue.current = indexValue.current + 1;
-        setImageSource(addCacheTimestampToUri(source[indexValue.current]));
-        return;
-      }
-      setImageSource(undefined);
-    };
-
     return (
       <View
         accessibilityIgnoresInvertColors
@@ -183,10 +168,9 @@ export const AvatarSearch = React.memo(
         >
           <Image
             accessibilityIgnoresInvertColors
-            source={imageSource}
+            source={source}
             style={styles.avatarImage}
             defaultSource={defaultSource ?? avatarSearchPlaceholder}
-            onError={onError}
           />
         </View>
       </View>
