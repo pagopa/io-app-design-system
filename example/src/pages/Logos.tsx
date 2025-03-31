@@ -76,43 +76,49 @@ const organizationsURIs = [
     name: "Placeholder"
   },
   {
-    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}1199250158.png`],
+    imageSource: [
+      { uri: `${cdnPath}wrongUri.png`, width: 100, height: 100 },
+      { uri: `${cdnPath}1199250158.png`, width: 100, height: 100 }
+    ],
     name: "Multi image uris"
   },
   {
-    imageSource: [`${cdnPath}wrongUri.png`, `${cdnPath}wrongUri.pg`],
+    imageSource: [
+      { uri: `${cdnPath}wrongUri.png`, width: 100, height: 100 },
+      { uri: `${cdnPath}wrongUri.pg`, width: 100, height: 100 }
+    ],
     name: "Multi image uris both bad uris"
   },
   {
-    imageSource: `${cdnPath}1199250158.png`,
+    imageSource: { uri: `${cdnPath}1199250158.png` },
     name: "Comune di Milano"
   },
   {
-    imageSource: `${cdnPath}82003830161.png`,
+    imageSource: { uri: `${cdnPath}82003830161.png` },
     name: "Comune di Sotto il Monte Giovanni XXIII"
   },
   {
-    imageSource: `${cdnPath}82001760675.png`,
+    imageSource: { uri: `${cdnPath}82001760675.png` },
     name: "Comune di Controguerra"
   },
   {
-    imageSource: `${cdnPath}80078750587.png`,
+    imageSource: { uri: `${cdnPath}80078750587.png` },
     name: "INPS"
   },
   {
-    imageSource: `${cdnPath}5779711000.png`,
+    imageSource: { uri: `${cdnPath}5779711000.png` },
     name: "e-distribuzione"
   },
   {
-    imageSource: `${cdnPath}97254170588.png`,
+    imageSource: { uri: `${cdnPath}97254170588.png` },
     name: "Agenzia della Difesa"
   },
   {
-    imageSource: `${cdnPath}80215430580.png`,
+    imageSource: { uri: `${cdnPath}80215430580.png` },
     name: "Ministero dell'Interno"
   },
   {
-    imageSource: `${cdnPath}wrongUri.png`,
+    imageSource: { uri: `${cdnPath}wrongUri.png` },
     name: "Wrong URI"
   }
 ];
@@ -128,18 +134,7 @@ const renderAvatar = () => (
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
             <React.Fragment key={i}>
-              <Avatar
-                size="small"
-                logoUri={
-                  imageSource
-                    ? Array.isArray(imageSource)
-                      ? imageSource.map(s => ({ uri: s }))
-                      : {
-                          uri: imageSource
-                        }
-                    : undefined
-                }
-              />
+              <Avatar size="small" logoUri={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
             </React.Fragment>
           ))}
@@ -155,18 +150,7 @@ const renderAvatar = () => (
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
             <React.Fragment key={i}>
-              <Avatar
-                size="medium"
-                logoUri={
-                  imageSource
-                    ? Array.isArray(imageSource)
-                      ? imageSource.map(s => ({ uri: s }))
-                      : {
-                          uri: imageSource
-                        }
-                    : undefined
-                }
-              />
+              <Avatar size="medium" logoUri={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
             </React.Fragment>
           ))}
@@ -182,15 +166,7 @@ const renderAvatar = () => (
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
             <React.Fragment key={i}>
-              <AvatarSearch
-                source={
-                  imageSource
-                    ? Array.isArray(imageSource)
-                      ? imageSource.map(s => ({ uri: s }))
-                      : [{ uri: imageSource }]
-                    : []
-                }
-              />
+              <AvatarSearch source={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
             </React.Fragment>
           ))}

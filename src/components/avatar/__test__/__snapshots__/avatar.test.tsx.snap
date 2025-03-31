@@ -97,6 +97,7 @@ exports[`Test Avatar Components - Experimental Enabled AvatarSearch Snapshot 1`]
           "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
         }
       }
+      onError={[Function]}
       source={
         {
           "uri": "",
@@ -211,6 +212,7 @@ exports[`Test Avatar Components AvatarSearch Snapshot 1`] = `
           "testUri": "../../../src/components/avatar/placeholder/avatar-placeholder.png",
         }
       }
+      onError={[Function]}
       source={
         {
           "uri": "",

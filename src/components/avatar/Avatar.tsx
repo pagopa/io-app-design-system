@@ -1,11 +1,5 @@
-import React, { ComponentProps } from "react";
-import {
-  Image,
-  ImageRequireSource,
-  ImageURISource,
-  StyleSheet,
-  View
-} from "react-native";
+import React, { ComponentProps, useRef, useState } from "react";
+import { Image, ImageSourcePropType, StyleSheet, View } from "react-native";
 import { Icon } from "../../components/icons";
 import {
   IOColors,
@@ -19,7 +13,7 @@ import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";
 
 type Avatar = {
   size: "small" | "medium";
-  logoUri?: ImageRequireSource | ImageURISource | ReadonlyArray<ImageURISource>;
+  logoUri?: ImageSourcePropType;
 };
 
 const internalSpaceDefaultSize: number = 6;
@@ -72,16 +66,10 @@ const styles = StyleSheet.create({
  */
 export const Avatar = ({ logoUri, size }: Avatar) => {
   const theme = useIOTheme();
-  const indexValue = React.useRef<number>(0);
+  const indexValue = useRef<number>(0);
 
-  const [imageSource, setImageSource] = React.useState(
-    logoUri === undefined
-      ? undefined
-      : Array.isArray(logoUri)
-      ? addCacheTimestampToUri(logoUri[0])
-      : typeof logoUri === "number"
-      ? logoUri
-      : addCacheTimestampToUri(logoUri as ImageURISource)
+  const [imageSource, setImageSource] = useState(
+    logoUri === undefined ? undefined : addCacheTimestampToUri(logoUri)
   );
 
   const onError = () => {
@@ -161,6 +149,21 @@ export const AvatarSearch = React.memo(
     const internalSpace = dimensionsMap.small.internalSpace;
     const innerRadius = borderRadius - internalSpace;
 
+    const indexValue = useRef<number>(0);
+    const [imageSource, setImageSource] = useState(
+      source === undefined ? undefined : addCacheTimestampToUri(source)
+    );
+
+    const onError = () => {
+      if (Array.isArray(source) && indexValue.current + 1 < source.length) {
+        // eslint-disable-next-line functional/immutable-data
+        indexValue.current = indexValue.current + 1;
+        setImageSource(addCacheTimestampToUri(source[indexValue.current]));
+        return;
+      }
+      setImageSource(undefined);
+    };
+
     return (
       <View
         accessibilityIgnoresInvertColors
@@ -180,9 +183,10 @@ export const AvatarSearch = React.memo(
         >
           <Image
             accessibilityIgnoresInvertColors
-            source={source}
+            source={imageSource}
             style={styles.avatarImage}
             defaultSource={defaultSource ?? avatarSearchPlaceholder}
+            onError={onError}
           />
         </View>
       </View>
