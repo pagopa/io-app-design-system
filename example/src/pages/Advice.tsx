@@ -7,7 +7,9 @@ import {
   IOPictogramsBleed,
   IOVisualCostants,
   VSpacer,
-  WithTestID
+  VStack,
+  WithTestID,
+  BannerErrorState
 } from "@pagopa/io-app-design-system";
 import React from "react";
 import { Alert, View } from "react-native";
@@ -39,6 +41,10 @@ const bannerBackgroundColours: Array<BannerProps["color"]> = [
 export const DSAdvice = () => (
   <Screen>
     {renderFeatureInfo()}
+
+    <VSpacer size={24} />
+
+    {renderBannerErrorState()}
 
     <VSpacer size={24} />
 
@@ -82,7 +88,7 @@ const renderFeatureInfo = () => {
           iconName="security"
           action={{
             label:
-              "Si applicano i Termini e condizioni d’uso e l’Informativa Privacy di Paytipper",
+              "Si applicano i Termini e condizioni d'uso e l'Informativa Privacy di Paytipper",
             onPress: onLinkPress
           }}
         />
@@ -207,5 +213,28 @@ const renderBanner = () => (
         </ComponentViewerBox>
       </React.Fragment>
     ))}
+  </>
+);
+
+const renderBannerErrorState = () => (
+  <>
+    <H2 style={{ marginBottom: 16 }}>BannerErrorState</H2>
+    <VStack space={16}>
+      <ComponentViewerBox name="BannerErrorState, default icon">
+        <BannerErrorState
+          label="Il caricamento delle ricevute è fallito."
+          actionText={"Riprova"}
+          onPress={onLinkPress}
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="BannerErrorState, custom icon">
+        <BannerErrorState
+          icon="errorFilled"
+          label="Il caricamento delle ricevute è fallito."
+          actionText={"Riprova"}
+          onPress={onLinkPress}
+        />
+      </ComponentViewerBox>
+    </VStack>
   </>
 );
