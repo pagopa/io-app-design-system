@@ -1,25 +1,27 @@
+import { every, some } from "lodash";
 import React, {
-  useState,
-  useRef,
-  PropsWithChildren,
-  useEffect,
-  useCallback,
   JSXElementConstructor,
+  PropsWithChildren,
+  ReactElement,
+  useCallback,
+  useEffect,
   useMemo,
-  ReactElement
+  useRef,
+  useState
 } from "react";
 import {
-  View,
-  Modal,
   Dimensions,
   LayoutChangeEvent,
-  TouchableWithoutFeedback
+  Modal,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View
 } from "react-native";
+import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { every, some } from "lodash";
-import { IOColors } from "../../core";
-import { Body, H6 } from "../typography";
+import { IOColors, useIOTheme, useIOThemeContext } from "../../core";
 import { IconButton } from "../buttons";
+import { Body, H6 } from "../typography";
 import { BottomArrow, LeftArrow, RightArrow, TopArrow } from "./Arrows";
 import {
   ARROW_HEIGHT,
@@ -33,7 +35,6 @@ import {
   isDefined,
   isNotZero
 } from "./utils";
-import { getChildrenPosition, tooltipStyles } from "./styles";
 import {
   ChildrenCoords,
   DisplayInsets,
@@ -111,6 +112,45 @@ type CloseWithBackgroundTapDisabled = {
 type Props = CommonProps &
   (CloseWithTapOnBackground | CloseWithBackgroundTapDisabled);
 
+const styles = StyleSheet.create({
+  backdrop: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundColor: IOColors.black,
+    zIndex: 997
+  },
+  childrenContainer: {
+    position: "absolute",
+    zIndex: 1000
+  },
+  tooltipContainer: {
+    position: "absolute",
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderRadius: 8,
+    zIndex: 2000,
+    overflow: "visible"
+  },
+  arrowContainer: {
+    position: "absolute",
+    display: "flex",
+    zIndex: 3000
+  },
+  closeIcon: {
+    position: "absolute",
+    right: 8,
+    top: 9 // It's been used `9` instead of `8` to fix accessibility focus order. In this way title is read before close icon.
+  }
+});
+
+const getChildrenPosition = (childrenCoords: ChildrenCoords) => ({
+  top: childrenCoords.y,
+  left: childrenCoords.x,
+  width: childrenCoords.width,
+  height: childrenCoords.height
+});
+
 /**
  * Tooltip component that displays a contextual tooltip around its children.
  * The tooltip position is controlled by the `placement` prop and can adjust
@@ -140,6 +180,12 @@ export const Tooltip = ({
   const childRef = useRef<View>(null);
   const titleRef = useRef<View>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+
+  // Theme
+  const theme = useIOTheme();
+  const { themeType } = useIOThemeContext();
+  const backdropOpacity = themeType === "light" ? 0.4 : 0.8;
+  const tooltipBackground = IOColors[theme["appBackground-secondary"]];
 
   const Arrow = useMemo(
     () => ARROWS_BY_PLACEMENT[currentPlacement],
@@ -246,7 +292,7 @@ export const Tooltip = ({
           }
           pointerEvents={childrenInteractionsEnabled ? "auto" : "box-only"}
           style={[
-            tooltipStyles.childrenContainer,
+            styles.childrenContainer,
             getChildrenPosition(childrenCoords)
           ]}
         >
@@ -259,14 +305,25 @@ export const Tooltip = ({
           accessibilityElementsHidden={!allowCloseOnBackgroundTap}
           onPress={handleTapOnBackground}
         >
-          <View
-            style={[tooltipStyles.overlay, { height: screenDimensions.height }]}
-          />
+          <Animated.View
+            entering={FadeIn.duration(200).easing(Easing.inOut(Easing.quad))}
+            // The exiting transition is not visible, due to the component being unmounted
+            // before the transition ends. I leave it here for future reference.
+            exiting={FadeOut.duration(200).easing(Easing.inOut(Easing.quad))}
+          >
+            <View
+              style={[
+                styles.backdrop,
+                { opacity: backdropOpacity, height: screenDimensions.height }
+              ]}
+            />
+          </Animated.View>
         </TouchableWithoutFeedback>
         <View
           onLayout={handleTooltipOnLayout}
           style={[
-            tooltipStyles.tooltipContainer,
+            styles.tooltipContainer,
+            { backgroundColor: tooltipBackground },
             getTooltipCoords(
               currentPlacement,
               childrenCoords,
@@ -282,7 +339,7 @@ export const Tooltip = ({
           ]}
         >
           <H6 ref={titleRef}>{title}</H6>
-          <View style={tooltipStyles.closeIcon}>
+          <View style={styles.closeIcon}>
             <IconButton
               color="neutral"
               icon="closeSmall"
@@ -294,14 +351,14 @@ export const Tooltip = ({
         </View>
         <View
           style={[
-            tooltipStyles.arrowContainer,
+            styles.arrowContainer,
             getArrowBoxByPlacement(currentPlacement),
             getArrowCoords(currentPlacement, childrenCoords, screenDimensions),
             getArrowVerticalAlignment(currentPlacement, childrenCoords.height),
             tooltipVisibility
           ]}
         >
-          <Arrow color={IOColors.white} />
+          <Arrow color={tooltipBackground} />
         </View>
       </Modal>
     </>
