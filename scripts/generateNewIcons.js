@@ -111,16 +111,25 @@ fs.readFile(timestampFilePath, "utf8", (err, timestamp) => {
       /* Only process files with a more recent creation
       date later than the timestamp value */
       if (fileStats.mtime > new Date(timestamp)) {
-        const data = fs.readFileSync(filePath, "utf8");
-
-        // Check if the file is an SVG
         if (!file.endsWith(".svg")) {
           return;
         }
 
+        const excludedPrefixes = ["IconSystem", "IconBiom", "IconProduct"];
+        if (excludedPrefixes.some(prefix => file.startsWith(prefix))) {
+          console.log(`⚠️ Skipping excluded file: ${file}`);
+          return;
+        }
+
+        const data = fs.readFileSync(filePath, "utf8");
+
         // Using SVGO to optimize the SVG
         const result = optimize(data, {
           path: filePath,
+          js2svg: {
+            pretty: true,
+            indent: 2,
+          },
           plugins: [
             "removeDimensions",
             "removeRasterImages",
