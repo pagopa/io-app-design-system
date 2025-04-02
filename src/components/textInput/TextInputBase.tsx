@@ -8,6 +8,7 @@ import React, {
   useState
 } from "react";
 import {
+  AccessibilityInfo,
   ColorValue,
   LayoutChangeEvent,
   Platform,
@@ -54,7 +55,7 @@ type InputTextProps = WithTestID<{
   status?: InputStatus;
   icon?: IOIcons;
   rightElement?: ReactNode;
-  counterLimit?: number;
+  counterLimit?: CounterLimitProps;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
   disabled?: boolean;
@@ -63,6 +64,16 @@ type InputTextProps = WithTestID<{
   onFocus?: () => void;
   autoFocus?: boolean;
 }>;
+
+type CounterLimitProps =
+  | {
+      value: number;
+      limitReachedAccessibilityAnnouncement: string;
+    }
+  | {
+      value?: never;
+      limitReachedAccessibilityAnnouncement?: never;
+    };
 
 const inputMarginTop: IOSpacingScale = 16;
 const inputHeight: number = 60;
@@ -142,6 +153,22 @@ const HelperRow = ({
     [inputType, value]
   );
 
+  useEffect(() => {
+    if (
+      counterLimit &&
+      valueCount === counterLimit.value &&
+      counterLimit.limitReachedAccessibilityAnnouncement
+    ) {
+      // Announce the limit reached message
+      AccessibilityInfo.announceForAccessibilityWithOptions(
+        counterLimit.limitReachedAccessibilityAnnouncement,
+        {
+          queue: true
+        }
+      );
+    }
+  }, [counterLimit, valueCount]);
+
   const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
   const bottomMessageColorValue =
     bottomMessageColor ?? bottomMessageColorDefault;
@@ -188,6 +215,7 @@ const HelperRow = ({
       )}
       {counterLimit && (
         <BodySmall
+          accessibilityLiveRegion="polite"
           weight="Regular"
           color={bottomMessageColorValue}
         >{`${valueCount} / ${counterLimit}`}</BodySmall>
@@ -328,7 +356,7 @@ export const TextInputBase = ({
       const actualTextLength =
         inputType !== "default" ? text.replace(/\s/g, "").length : text.length;
 
-      if (counterLimit && actualTextLength > counterLimit) {
+      if (counterLimit?.value && actualTextLength > counterLimit.value) {
         return;
       }
 
@@ -370,11 +398,15 @@ export const TextInputBase = ({
 
   // Calculate the adjusted maxLength to account for spaces
   const adjustedMaxLength = useMemo(() => {
-    if (counterLimit && derivedInputProps && derivedInputProps.valueFormat) {
-      const spacesCount = Math.floor(counterLimit / 4);
-      return counterLimit + spacesCount;
+    if (
+      counterLimit?.value &&
+      derivedInputProps &&
+      derivedInputProps.valueFormat
+    ) {
+      const spacesCount = Math.floor(counterLimit?.value / 4);
+      return counterLimit?.value + spacesCount;
     }
-    return counterLimit;
+    return counterLimit?.value;
   }, [counterLimit, derivedInputProps]);
 
   return (
@@ -434,6 +466,7 @@ export const TextInputBase = ({
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
           accessibilityHint={accessibilityHint}
+          accessibilityLiveRegion="polite"
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={adjustedMaxLength}
