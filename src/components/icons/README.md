@@ -37,7 +37,8 @@ In your user interface design app (Figma/Sketch) export your SVG with `1×` pres
 4. If the `generateNewIcons` script accidentally overwrites older React components, remember to discard the changes before committing
 
 > [!caution] 
-> If your icon **is not** monochromatic, you should use the manual process because the script doesn't support this specific case yet
+> This script is designed to work on monochromatic icons only. To avoid disruption to current icons that are not monochromatic, this script will skip any icon that starts with the following prefix: `IconSystem…`, `IconBiom…`, `IconProduct…`.
+> For these particular cases, you must follow the manual process.
 
 #### Manual process (alternative)
 

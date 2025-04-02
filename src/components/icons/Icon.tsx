@@ -155,6 +155,7 @@ import IconProductIOApp from "./svg/IconProductIOApp";
 import IconProductIOAppBlueBg from "./svg/IconProductIOAppBlueBg";
 import IconProductPagoPA from "./svg/IconProductPagoPA";
 import IconProfile from "./svg/IconProfile";
+import IconProfileRegistered from "./svg/IconProfileRegistered";
 import IconQrCode from "./svg/IconQrCode";
 import IconQuestion from "./svg/IconQuestion";
 import IconRead from "./svg/IconRead";
@@ -298,6 +299,7 @@ export const IOIcons = {
   trashcan: IconTrashcan,
   calendar: IconCalendar,
   profile: IconProfile,
+  profileRegistered: IconProfileRegistered,
   familySharing: IconFamilySharing,
   lightbulb: IconLightbulb,
   magicWand: IconMagicWand,
@@ -519,13 +521,11 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 */
 
 /* New icons */
-const { bonusFilled, creditCardFilled, heartOff, starOff } = IOIcons;
+const { sparkles, profileRegistered } = IOIcons;
 
 export const IOIconsNew = {
-  bonusFilled,
-  creditCardFilled,
-  heartOff,
-  starOff
+  sparkles,
+  profileRegistered
 };
 
 /* Navigation */
