@@ -35,6 +35,7 @@ export const IOColors = asIOColors({
   "grey-650": "#636B82",
   "grey-700": "#555C70",
   "grey-850": "#2B2E38",
+  "grey-900": "#1D1F26",
   black: "#0E0F13",
   "blueIO-850": "#031344",
   "blueIO-600": "#0932B6",
@@ -119,6 +120,7 @@ export const getGradientColorValues = (
 
 export const IOColorsNeutral = asIOColors({
   black: IOColors.black,
+  "grey-900": IOColors["grey-900"],
   "grey-850": IOColors["grey-850"],
   "grey-700": IOColors["grey-700"],
   "grey-650": IOColors["grey-650"],
@@ -342,7 +344,7 @@ export const IOThemeDark: IOTheme = {
   ...IOThemeLight,
   // General
   "appBackground-primary": "black",
-  "appBackground-secondary": "grey-850",
+  "appBackground-secondary": "grey-900",
   "appBackground-tertiary": "grey-700",
   "interactiveElem-default": "blueIO-300",
   "interactiveElem-pressed": "blueIO-400",
@@ -354,7 +356,7 @@ export const IOThemeDark: IOTheme = {
   "buttonText-default": "black",
   "buttonText-danger": "white",
   "buttonText-disabled": "grey-300",
-  "listItem-pressed": "grey-850",
+  "listItem-pressed": "grey-900",
   // Typography
   "textHeading-default": "white",
   "textHeading-secondary": "grey-300",
