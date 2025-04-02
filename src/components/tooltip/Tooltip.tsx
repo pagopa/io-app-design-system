@@ -17,6 +17,7 @@ import {
   TouchableWithoutFeedback,
   View
 } from "react-native";
+import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOColors, useIOTheme, useIOThemeContext } from "../../core";
 import { IconButton } from "../buttons";
@@ -304,12 +305,19 @@ export const Tooltip = ({
           accessibilityElementsHidden={!allowCloseOnBackgroundTap}
           onPress={handleTapOnBackground}
         >
-          <View
-            style={[
-              styles.backdrop,
-              { opacity: backdropOpacity, height: screenDimensions.height }
-            ]}
-          />
+          <Animated.View
+            entering={FadeIn.duration(200).easing(Easing.inOut(Easing.quad))}
+            // The exiting transition is not visible, due to the component being unmounted
+            // before the transition ends. I leave it here for future reference.
+            exiting={FadeOut.duration(200).easing(Easing.inOut(Easing.quad))}
+          >
+            <View
+              style={[
+                styles.backdrop,
+                { opacity: backdropOpacity, height: screenDimensions.height }
+              ]}
+            />
+          </Animated.View>
         </TouchableWithoutFeedback>
         <View
           onLayout={handleTooltipOnLayout}
