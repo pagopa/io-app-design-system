@@ -55,7 +55,8 @@ type InputTextProps = WithTestID<{
   status?: InputStatus;
   icon?: IOIcons;
   rightElement?: ReactNode;
-  counterLimit?: CounterLimitProps;
+  counterLimit?: number;
+  accessibilityAnnounceLimitReached?: string;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
   disabled?: boolean;
@@ -64,16 +65,6 @@ type InputTextProps = WithTestID<{
   onFocus?: () => void;
   autoFocus?: boolean;
 }>;
-
-type CounterLimitProps =
-  | {
-      value: number;
-      limitReachedAccessibilityAnnouncement: string;
-    }
-  | {
-      value?: never;
-      limitReachedAccessibilityAnnouncement?: never;
-    };
 
 const inputMarginTop: IOSpacingScale = 16;
 const inputHeight: number = 60;
@@ -153,22 +144,6 @@ const HelperRow = ({
     [inputType, value]
   );
 
-  useEffect(() => {
-    if (
-      counterLimit &&
-      valueCount === counterLimit.value &&
-      counterLimit.limitReachedAccessibilityAnnouncement
-    ) {
-      // Announce the limit reached message
-      AccessibilityInfo.announceForAccessibilityWithOptions(
-        counterLimit.limitReachedAccessibilityAnnouncement,
-        {
-          queue: true
-        }
-      );
-    }
-  }, [counterLimit, valueCount]);
-
   const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
   const bottomMessageColorValue =
     bottomMessageColor ?? bottomMessageColorDefault;
@@ -217,6 +192,7 @@ const HelperRow = ({
         <BodySmall
           accessibilityLiveRegion="polite"
           weight="Regular"
+          accessibilityLabel={`${value}, ${valueCount} / ${counterLimit}`}
           color={bottomMessageColorValue}
         >{`${valueCount} / ${counterLimit}`}</BodySmall>
       )}
@@ -237,6 +213,7 @@ export const TextInputBase = ({
   icon,
   rightElement,
   counterLimit,
+  accessibilityAnnounceLimitReached,
   bottomMessage,
   bottomMessageColor,
   onBlur,
@@ -356,7 +333,21 @@ export const TextInputBase = ({
       const actualTextLength =
         inputType !== "default" ? text.replace(/\s/g, "").length : text.length;
 
-      if (counterLimit?.value && actualTextLength > counterLimit.value) {
+      // Notify the user when the limit is reached
+      // This is only for iOS, as Android handles it via accessibilityLiveRegion
+      if (
+        counterLimit &&
+        actualTextLength >= counterLimit &&
+        accessibilityAnnounceLimitReached
+      ) {
+        if (Platform.OS === "ios") {
+          // Su iOS, utilizzare accessibilityAnnouncement per notificare
+          AccessibilityInfo.announceForAccessibility(
+            accessibilityAnnounceLimitReached
+          );
+        }
+      }
+      if (counterLimit && actualTextLength > counterLimit) {
         return;
       }
 
@@ -368,7 +359,7 @@ export const TextInputBase = ({
         onChangeText(text);
       }
     },
-    [counterLimit, onChangeText, inputType]
+    [counterLimit, onChangeText, inputType, accessibilityAnnounceLimitReached]
   );
 
   const onBlurHandler = useCallback(() => {
@@ -398,15 +389,11 @@ export const TextInputBase = ({
 
   // Calculate the adjusted maxLength to account for spaces
   const adjustedMaxLength = useMemo(() => {
-    if (
-      counterLimit?.value &&
-      derivedInputProps &&
-      derivedInputProps.valueFormat
-    ) {
-      const spacesCount = Math.floor(counterLimit?.value / 4);
-      return counterLimit?.value + spacesCount;
+    if (counterLimit && derivedInputProps && derivedInputProps.valueFormat) {
+      const spacesCount = Math.floor(counterLimit / 4);
+      return counterLimit + spacesCount;
     }
-    return counterLimit?.value;
+    return counterLimit;
   }, [counterLimit, derivedInputProps]);
 
   return (
