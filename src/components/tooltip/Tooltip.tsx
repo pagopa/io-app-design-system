@@ -185,7 +185,7 @@ export const Tooltip = ({
   const theme = useIOTheme();
   const { themeType } = useIOThemeContext();
   const backdropOpacity = themeType === "light" ? 0.4 : 0.8;
-  const tooltipBackground = IOColors[theme["appBackground-primary"]];
+  const tooltipBackground = IOColors[theme["appBackground-secondary"]];
 
   const Arrow = useMemo(
     () => ARROWS_BY_PLACEMENT[currentPlacement],
