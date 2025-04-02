@@ -127,6 +127,7 @@ type InputTextHelperRow = Pick<
   | "bottomMessage"
   | "bottomMessageColor"
   | "inputType"
+  | "textInputProps"
 >;
 
 const HelperRow = ({
@@ -134,7 +135,8 @@ const HelperRow = ({
   counterLimit,
   bottomMessage,
   bottomMessageColor,
-  inputType
+  inputType,
+  textInputProps
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
 
@@ -143,6 +145,13 @@ const HelperRow = ({
       inputType !== "default" ? value.replace(/\s/g, "").length : value.length,
     [inputType, value]
   );
+
+  const helperAccessibilityLabel = useMemo(() => {
+    if (textInputProps?.keyboardType === "numeric") {
+      return `${value.split("").join(" ")}, ${valueCount} / ${counterLimit}`;
+    }
+    return `${value}, ${valueCount}`;
+  }, [value, valueCount, counterLimit, textInputProps]);
 
   const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
   const bottomMessageColorValue =
@@ -192,7 +201,7 @@ const HelperRow = ({
         <BodySmall
           accessibilityLiveRegion="polite"
           weight="Regular"
-          accessibilityLabel={`${value}, ${valueCount} / ${counterLimit}`}
+          accessibilityLabel={helperAccessibilityLabel}
           color={bottomMessageColorValue}
         >{`${valueCount} / ${counterLimit}`}</BodySmall>
       )}
@@ -553,6 +562,7 @@ export const TextInputBase = ({
           bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
           inputType={inputType}
+          textInputProps={textInputProps}
         />
       )}
     </>

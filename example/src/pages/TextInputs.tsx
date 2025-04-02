@@ -132,6 +132,8 @@ export const TextInputs = () => (
       <InputComponentWrapper
         placeholder={"Input with max length"}
         counterLimit={10}
+        inputType="default"
+        textInputProps={{ keyboardType: "numeric" }}
         accessibilityAnnounceLimitReached="Hai inserito il numero massimo di caratteri"
         bottomMessage="Max length of 10 characters"
       />
