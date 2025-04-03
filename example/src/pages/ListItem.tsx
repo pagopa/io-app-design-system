@@ -544,7 +544,11 @@ const renderListItemHeader = () => (
       />
 
       <ListItemHeader label="Label" iconName="gallery" />
-      <ListItemHeader label="Label" iconName="gallery" description="Description" />
+      <ListItemHeader
+        label="Label"
+        iconName="gallery"
+        description="Description"
+      />
     </View>
   </ComponentViewerBox>
 );

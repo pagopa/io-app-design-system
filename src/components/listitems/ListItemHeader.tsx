@@ -128,15 +128,13 @@ export const ListItemHeader = ({
         )}
       </View>
       {description && (
-            <View>
-              <VSpacer
-                size={IOSelectionListItemVisualParams.descriptionMargin}
-              />
-              <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
-                {description}
-              </BodySmall>
-            </View>
-          )}
+        <View>
+          <VSpacer size={IOSelectionListItemVisualParams.descriptionMargin} />
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
+            {description}
+          </BodySmall>
+        </View>
+      )}
     </View>
   );
 };
