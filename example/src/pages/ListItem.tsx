@@ -65,66 +65,43 @@ const renderListItemNav = () => (
   <>
     <ComponentViewerBox name="ListItemNav">
       <View>
-        <ListItemNav
-          value={"Value"}
-          onPress={() => {
-            alert("Action triggered");
-          }}
-        />
+        <ListItemNav value={"Value"} onPress={onButtonPress} />
         <ListItemNav
           value={"Value"}
           description="Description"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
         <ListItemNav
           value="A looong looooong looooooooong looooooooooong title"
           description="Description"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
 
-        <ListItemNav
-          value={"Value"}
-          icon="gallery"
-          onPress={() => {
-            alert("Action triggered");
-          }}
-        />
+        <ListItemNav value={"Value"} icon="gallery" onPress={onButtonPress} />
         <ListItemNav
           value={"Value"}
           description="Description"
           icon="gallery"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
         <ListItemNav
           value={"Value"}
           description="Description"
           icon="productPagoPA"
           iconColor="blueIO-500"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with a payment logo"
           paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with a loading indicator"
           paymentLogoUri="https://github.com/pagopa/io-services-metadata/blob/master/logos/apps/paypal.png?raw=true"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           loading
         />
         <ListItemNav
@@ -141,9 +118,7 @@ const renderListItemNav = () => (
               <Badge text={"3"} variant="cgn" />
             </View>
           }
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
         <ListItemNav
           avatarProps={{
@@ -152,25 +127,19 @@ const renderListItemNav = () => (
             }
           }}
           description="Description"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           value={"Value"}
         />
         <ListItemNav
           value={"Value"}
           description="This is a list item nav without chevron icon"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           hideChevron
         />
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with badge"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -181,9 +150,7 @@ const renderListItemNav = () => (
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with badge"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           topElement={{
             badgeProps: {
               text: "Novità",
@@ -195,9 +162,7 @@ const renderListItemNav = () => (
         <ListItemNav
           value={"Value"}
           description="This is a list item nav with badge"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           topElement={{
             dateValue: "14/04/2024"
           }}
@@ -208,34 +173,26 @@ const renderListItemNav = () => (
       <View>
         <ListItemNavAlert
           value={"Value"}
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNavAlert
           value={"Value"}
           description="Description"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNavAlert
           withoutIcon
           value={"Value"}
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           accessibilityLabel="Empty just for testing purposes"
         />
         <ListItemNavAlert
           withoutIcon
           value={"Value"}
           description="Description"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
           accessibilityLabel="Empty just for testing purposes"
         />
       </View>
@@ -249,18 +206,14 @@ const renderListItemInfoCopy = () => (
       <ListItemInfoCopy
         label={"Label"}
         value="Value"
-        onPress={() => {
-          alert("Value copied");
-        }}
+        onPress={onButtonPress}
         accessibilityLabel="Empty just for testing purposes"
       />
       <Divider />
       <ListItemInfoCopy
         label={"Codice fiscale"}
         value="01199250158"
-        onPress={() => {
-          alert("Value copied");
-        }}
+        onPress={onButtonPress}
         accessibilityLabel="Empty just for testing purposes"
         icon="institution"
       />
@@ -268,9 +221,7 @@ const renderListItemInfoCopy = () => (
       <ListItemInfoCopy
         label={"Carta di credito"}
         value="4975 3013 5042 7899"
-        onPress={() => {
-          alert("Value copied");
-        }}
+        onPress={onButtonPress}
         accessibilityLabel="Empty just for testing purposes"
         icon="creditCard"
       />
@@ -278,9 +229,7 @@ const renderListItemInfoCopy = () => (
       <ListItemInfoCopy
         label={"Indirizzo"}
         value={`P.za Colonna, 370\n00186 Roma (RM)`}
-        onPress={() => {
-          alert("Value copied");
-        }}
+        onPress={onButtonPress}
         accessibilityLabel="Empty just for testing purposes"
       />
     </View>
