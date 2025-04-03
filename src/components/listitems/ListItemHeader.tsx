@@ -3,6 +3,7 @@ import { View } from "react-native";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
+  IOSelectionListItemVisualParams,
   IOSpacingScale,
   IOStyles,
   useIOTheme
@@ -12,7 +13,8 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { ButtonLink, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
-import { H6 } from "../typography";
+import { BodySmall, H6 } from "../typography";
+import { VSpacer } from "../spacer";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -45,6 +47,7 @@ export type ListItemHeader = WithTestID<{
   label: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
+  description?: string;
   // Accessibility
   accessibilityLabel?: string;
 }> &
@@ -57,6 +60,7 @@ export const ListItemHeader = ({
   iconName,
   iconColor,
   endElement,
+  description,
   accessibilityLabel,
   testID
 }: ListItemHeader) => {
@@ -123,6 +127,16 @@ export const ListItemHeader = ({
           </View>
         )}
       </View>
+      {description && (
+            <View>
+              <VSpacer
+                size={IOSelectionListItemVisualParams.descriptionMargin}
+              />
+              <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
+                {description}
+              </BodySmall>
+            </View>
+          )}
     </View>
   );
 };
