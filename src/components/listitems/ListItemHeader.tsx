@@ -6,6 +6,7 @@ import {
   IOSelectionListItemVisualParams,
   IOSpacingScale,
   IOStyles,
+  IOVisualCostants,
   useIOTheme
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
@@ -53,7 +54,7 @@ export type ListItemHeader = WithTestID<{
 }> &
   IconProps;
 
-const iconMargin: IOSpacingScale = 8;
+const iconMargin: IOSpacingScale = IOVisualCostants.iconMargin;
 
 export const ListItemHeader = ({
   label,
