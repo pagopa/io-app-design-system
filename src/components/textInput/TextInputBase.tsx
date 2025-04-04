@@ -347,14 +347,12 @@ export const TextInputBase = ({
       if (
         counterLimit &&
         actualTextLength >= counterLimit &&
-        accessibilityAnnounceLimitReached
+        accessibilityAnnounceLimitReached &&
+        Platform.OS === "ios"
       ) {
-        if (Platform.OS === "ios") {
-          // Su iOS, utilizzare accessibilityAnnouncement per notificare
           AccessibilityInfo.announceForAccessibility(
             accessibilityAnnounceLimitReached
           );
-        }
       }
       if (counterLimit && actualTextLength > counterLimit) {
         return;
