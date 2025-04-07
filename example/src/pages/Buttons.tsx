@@ -690,9 +690,7 @@ export const Buttons = () => (
           accessibilityLabel="Go down"
           accessibilityHint="Tap to trigger test alert"
           icon="arrowBottom"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
 
         <HSpacer size={16} />
@@ -703,9 +701,7 @@ export const Buttons = () => (
           accessibilityHint="Tap to trigger test alert"
           icon="arrowBottom"
           disabled
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
       </View>
     </ComponentViewerBox>
@@ -750,9 +746,7 @@ export const Buttons = () => (
           accessibilityLabel="Help"
           accessibilityHint="Tap to trigger test alert"
           icon="help"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
 
         <IconButtonContained
@@ -760,9 +754,7 @@ export const Buttons = () => (
           accessibilityHint="Tap to trigger test alert"
           icon="help"
           disabled
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
       </View>
     </ComponentViewerBox>
@@ -774,9 +766,7 @@ export const Buttons = () => (
           accessibilityLabel="Help"
           accessibilityHint="Tap to trigger test alert"
           icon="help"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
 
         <IconButtonContained
@@ -785,9 +775,7 @@ export const Buttons = () => (
           accessibilityHint="Tap to trigger test alert"
           icon="help"
           disabled
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onButtonPress}
         />
       </View>
     </ComponentViewerBox>
