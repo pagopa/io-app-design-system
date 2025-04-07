@@ -350,9 +350,9 @@ export const TextInputBase = ({
         accessibilityAnnounceLimitReached &&
         Platform.OS === "ios"
       ) {
-          AccessibilityInfo.announceForAccessibility(
-            accessibilityAnnounceLimitReached
-          );
+        AccessibilityInfo.announceForAccessibility(
+          accessibilityAnnounceLimitReached
+        );
       }
       if (counterLimit && actualTextLength > counterLimit) {
         return;
