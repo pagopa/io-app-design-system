@@ -129,6 +129,14 @@ export const TextInputs = () => (
         inputType={"iban"}
         bottomMessage="Handles IBAN input type"
       />
+      <InputComponentWrapper
+        placeholder={"Input with max length"}
+        counterLimit={10}
+        inputType="default"
+        textInputProps={{ keyboardType: "numeric" }}
+        accessibilityAnnounceLimitReached="Hai inserito il numero massimo di caratteri"
+        bottomMessage="Max length of 10 characters"
+      />
       <H5>Base input with validation</H5>
       <InputValidationComponentWrapper
         placeholder={"Base input"}

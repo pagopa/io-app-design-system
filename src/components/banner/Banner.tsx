@@ -29,7 +29,7 @@ import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */
 const sizePictogram: IOPictogramSizeScale = 80;
-const closeButtonDistanceFromEdge: number = 6;
+const closeButtonDistanceFromEdge: number = 10;
 const closeButtonOpacity = 0.6;
 const bannerPadding = IOBannerBigSpacing;
 

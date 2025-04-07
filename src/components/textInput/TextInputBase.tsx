@@ -8,6 +8,7 @@ import React, {
   useState
 } from "react";
 import {
+  AccessibilityInfo,
   ColorValue,
   LayoutChangeEvent,
   Platform,
@@ -55,6 +56,7 @@ type InputTextProps = WithTestID<{
   icon?: IOIcons;
   rightElement?: ReactNode;
   counterLimit?: number;
+  accessibilityAnnounceLimitReached?: string;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
   disabled?: boolean;
@@ -125,6 +127,7 @@ type InputTextHelperRow = Pick<
   | "bottomMessage"
   | "bottomMessageColor"
   | "inputType"
+  | "textInputProps"
 >;
 
 const HelperRow = ({
@@ -132,7 +135,8 @@ const HelperRow = ({
   counterLimit,
   bottomMessage,
   bottomMessageColor,
-  inputType
+  inputType,
+  textInputProps
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
 
@@ -141,6 +145,13 @@ const HelperRow = ({
       inputType !== "default" ? value.replace(/\s/g, "").length : value.length,
     [inputType, value]
   );
+
+  const helperAccessibilityLabel = useMemo(() => {
+    if (textInputProps?.keyboardType === "numeric") {
+      return `${value.split("").join(" ")}, ${valueCount} / ${counterLimit}`;
+    }
+    return `${value}, ${valueCount}`;
+  }, [value, valueCount, counterLimit, textInputProps]);
 
   const bottomMessageColorDefault: IOColors = theme["textBody-tertiary"];
   const bottomMessageColorValue =
@@ -188,7 +199,9 @@ const HelperRow = ({
       )}
       {counterLimit && (
         <BodySmall
+          accessibilityLiveRegion="polite"
           weight="Regular"
+          accessibilityLabel={helperAccessibilityLabel}
           color={bottomMessageColorValue}
         >{`${valueCount} / ${counterLimit}`}</BodySmall>
       )}
@@ -209,6 +222,7 @@ export const TextInputBase = ({
   icon,
   rightElement,
   counterLimit,
+  accessibilityAnnounceLimitReached,
   bottomMessage,
   bottomMessageColor,
   onBlur,
@@ -328,6 +342,18 @@ export const TextInputBase = ({
       const actualTextLength =
         inputType !== "default" ? text.replace(/\s/g, "").length : text.length;
 
+      // Notify the user when the limit is reached
+      // This is only for iOS, as Android handles it via accessibilityLiveRegion
+      if (
+        counterLimit &&
+        actualTextLength >= counterLimit &&
+        accessibilityAnnounceLimitReached &&
+        Platform.OS === "ios"
+      ) {
+        AccessibilityInfo.announceForAccessibility(
+          accessibilityAnnounceLimitReached
+        );
+      }
       if (counterLimit && actualTextLength > counterLimit) {
         return;
       }
@@ -340,7 +366,7 @@ export const TextInputBase = ({
         onChangeText(text);
       }
     },
-    [counterLimit, onChangeText, inputType]
+    [counterLimit, onChangeText, inputType, accessibilityAnnounceLimitReached]
   );
 
   const onBlurHandler = useCallback(() => {
@@ -434,6 +460,7 @@ export const TextInputBase = ({
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
           accessibilityHint={accessibilityHint}
+          accessibilityLiveRegion="polite"
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={adjustedMaxLength}
@@ -533,6 +560,7 @@ export const TextInputBase = ({
           bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
           inputType={inputType}
+          textInputProps={textInputProps}
         />
       )}
     </>
