@@ -48,11 +48,7 @@ import {
 const inputPaddingHorizontal: IOSpacingScale = 12;
 const inputPaddingClearButton: IOSpacingScale = 8;
 const inputRadius: number = 8;
-const inputBgColorDefault: ColorValue = IOColors["grey-50"];
-const inputBgColorFocused: ColorValue = IOColors["grey-100"];
-const inputColorPlaceholder: ColorValue = IOColors["grey-700"];
 const iconMargin: IOSpacingScale = 8;
-const iconColor: IOColors = "grey-700";
 const iconSize: IOIconSizeScale = 16;
 const iconCloseSize: IOIconSizeScale = 24;
 const inputFontSizePlaceholder: IOFontSize = 14;
@@ -125,6 +121,14 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     /* Component visual attributes */
     const theme = useIOTheme();
     const inputCaretColor = IOColors[theme["interactiveElem-default"]];
+
+    const inputBgColorDefault: ColorValue =
+      IOColors[theme["appBackground-secondary"]];
+    const inputBgColorFocused: ColorValue =
+      IOColors[theme["appBackground-tertiary"]];
+    const inputColorPlaceholder: ColorValue =
+      IOColors[theme["textBody-tertiary"]];
+    const iconColor: IOColors = theme["textBody-tertiary"];
 
     /* Widths used for the transition:
        - `SearchInput` entire width
@@ -258,6 +262,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             accessibilityLabel={accessibilityLabel}
             style={[
               {
+                color: IOColors[theme["textBody-default"]],
                 ...makeFontStyleObject(
                   inputFontSizePlaceholder,
                   newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
