@@ -227,6 +227,7 @@ const themeKeys = [
   // Design System related
   "cardBorder-default",
   "textInputBorder-default",
+  "stepper-default",
   "icon-default",
   "icon-decorative",
   // Inputs
@@ -254,7 +255,6 @@ const themeKeys = [
   "tab-item-foreground-default",
   "tab-item-foreground-selected",
   "tab-item-background-selected",
-
   // Status
   "errorIcon",
   "errorText",
@@ -300,6 +300,7 @@ export const IOThemeLight: IOTheme = {
   // Design System related
   "cardBorder-default": "grey-100",
   "icon-default": "grey-650",
+  "stepper-default": "grey-200",
   "icon-decorative": "grey-300",
   // Inputs
   "textInputBorder-default": "grey-200",
@@ -368,6 +369,7 @@ export const IOThemeDark: IOTheme = {
   "cardBorder-default": "grey-850",
   "icon-default": "grey-450",
   "icon-decorative": "grey-650",
+  "stepper-default": "grey-700",
   // Inputs
   "textInputBorder-default": "grey-850",
   "textInputLabel-default": "grey-450",
