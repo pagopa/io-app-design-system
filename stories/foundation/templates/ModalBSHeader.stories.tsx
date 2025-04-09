@@ -1,28 +1,27 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
+import { action } from "@storybook/addon-actions";
 import { View } from "react-native";
 import { H3, HSpacer, Icon, ModalBSHeader } from "../../../src/components";
 import { withMaxWitdth, withSafeAreaProvider } from "../../utils";
 import { IOStyles } from "../../../src/core";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
   title: "Foundation/Templates/ModalBSHeader",
   component: ModalBSHeader,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: "centered"
   },
   decorators: [withMaxWitdth, withSafeAreaProvider],
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  args: {
+    onClose: () => action("onClose")
+  }
 } satisfies Meta<typeof ModalBSHeader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Standard: Story = {
   args: {
     title: "A Modal Header",

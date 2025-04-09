@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import { CodeInput } from "../../../src/components";
 
@@ -22,6 +23,7 @@ export const Primary: Story = {
   args: {
     length: 6,
     onValidate: v => v === "123456",
-    value: ""
+    value: "",
+    onValueChange: () => action("onValueChange")
   }
 };
