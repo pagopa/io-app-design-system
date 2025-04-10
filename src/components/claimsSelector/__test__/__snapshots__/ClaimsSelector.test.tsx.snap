@@ -171,6 +171,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
       style={
         [
           {
+            "flexGrow": 1,
             "padding": 16,
             "paddingTop": 0,
             "position": "absolute",
@@ -700,6 +701,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
       style={
         [
           {
+            "flexGrow": 1,
             "padding": 16,
             "paddingTop": 0,
             "position": "absolute",
@@ -1160,6 +1162,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       style={
         [
           {
+            "flexGrow": 1,
             "padding": 16,
             "paddingTop": 0,
             "position": "absolute",
