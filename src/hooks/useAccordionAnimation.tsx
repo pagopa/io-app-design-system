@@ -96,7 +96,8 @@ export const useAccordionAnimation = ({
 
 const styles = StyleSheet.create({
   accordionCollapsableContainer: {
-    overflow: "hidden"
+    overflow: "hidden",
+    flex: 1
   },
   accordionBodyContainer: {
     position: "absolute",
