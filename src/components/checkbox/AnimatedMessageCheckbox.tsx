@@ -19,7 +19,8 @@ type Props = {
   checked?: boolean;
 };
 
-type AnimatedMessageCheckbox = Props & Pick<PressableProps, "onPress">;
+type AnimatedMessageCheckbox = Props &
+  Pick<PressableProps, "accessible" | "onPress">;
 
 const internalSpacing: IOSpacingScale = 4;
 
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
  * list item (Select mode that enables related actions)
  */
 export const AnimatedMessageCheckbox = ({
+  accessible,
   checked,
   onPress
 }: AnimatedMessageCheckbox) => {
@@ -81,6 +83,7 @@ export const AnimatedMessageCheckbox = ({
 
   return (
     <Pressable
+      accessible={accessible}
       accessibilityRole="checkbox"
       accessibilityState={{ checked }}
       testID="AnimatedMessageCheckboxInput"
