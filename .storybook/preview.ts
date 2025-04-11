@@ -42,7 +42,6 @@ const preview: Preview = {
         }
       ]
     },
-    actions: { argTypesRegex: "^on.*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
