@@ -253,6 +253,236 @@ export const Buttons = () => (
       </ComponentViewerBox>
     </View>
 
+    <H2
+      style={{
+        marginBottom: 16,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
+    >
+      Button (Outline variant)
+    </H2>
+    <ComponentViewerBox name="ButtonSolid · Primary Variant (using Pressable API)">
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          variant="outline"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          variant="outline"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="qrCode"
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          variant="outline"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="qrCode"
+          iconPosition="end"
+          onPress={onButtonPress}
+        />
+        <View style={{ alignSelf: "center" }}>
+          <ButtonSolid
+            variant="outline"
+            accessibilityHint="Tap to trigger test alert"
+            label={"Primary button (centered)"}
+            onPress={onButtonPress}
+          />
+        </View>
+      </VStack>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonSolid · Primary, Full width">
+      {/* Let's force `alignItems: "flex-start"`
+      to test if `fullWidth` is managed correctly */}
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          variant="outline"
+          fullWidth
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (full width)"}
+          onPress={onButtonPress}
+        />
+      </VStack>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonSolid · Primary · Full width, loading state">
+      <LoadingOutlineButtonExample />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonSolid · Primary, disabled">
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          variant="outline"
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (disabled)"}
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          variant="outline"
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (disabled)"}
+          icon="qrCode"
+          onPress={onButtonPress}
+        />
+      </VStack>
+    </ComponentViewerBox>
+
+    <ComponentViewerBox name="ButtonSolid · Danger variant">
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          variant="outline"
+          color="danger"
+          label={"Danger button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
+        <ButtonSolid
+          variant="outline"
+          color="danger"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="trashcan"
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          variant="outline"
+          color="danger"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button"}
+          icon="trashcan"
+          iconPosition="end"
+          onPress={onButtonPress}
+        />
+      </VStack>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonSolid · Danger, full width">
+      <ButtonSolid
+        variant="outline"
+        fullWidth
+        color="danger"
+        accessibilityHint="Tap to trigger test alert"
+        label={"Danger button (full width)"}
+        onPress={onButtonPress}
+      />
+    </ComponentViewerBox>
+
+    <ComponentViewerBox name="ButtonSolid · Danger, disabled">
+      <VStack space={16} style={{ alignItems: "flex-start" }}>
+        <ButtonSolid
+          variant="outline"
+          color="danger"
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Danger button (disabled)"}
+          onPress={onButtonPress}
+        />
+        <ButtonSolid
+          variant="outline"
+          color="danger"
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Danger button (disabled)"}
+          icon="trashcan"
+          onPress={onButtonPress}
+        />
+      </VStack>
+    </ComponentViewerBox>
+
+    <View style={styles.primaryBlock}>
+      <ComponentViewerBox
+        name="ButtonSolid · Contrast variant"
+        colorMode="dark"
+      >
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
+          <ButtonSolid
+            variant="outline"
+            color="contrast"
+            label={"Contrast button"}
+            onPress={onButtonPress}
+            accessibilityHint="Tap to trigger test alert"
+          />
+
+          <ButtonSolid
+            variant="outline"
+            color="contrast"
+            label={"Contrast button"}
+            icon="add"
+            onPress={onButtonPress}
+            accessibilityHint="Tap to trigger test alert"
+          />
+
+          <ButtonSolid
+            variant="outline"
+            color="contrast"
+            label={"Contrast button"}
+            icon="add"
+            iconPosition="end"
+            onPress={onButtonPress}
+            accessibilityHint="Tap to trigger test alert"
+          />
+        </VStack>
+      </ComponentViewerBox>
+
+      <ComponentViewerBox
+        name="ButtonSolid · Contrast, full width"
+        colorMode="dark"
+      >
+        <ButtonSolid
+          variant="outline"
+          fullWidth
+          color="contrast"
+          label={"Contrast button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
+      </ComponentViewerBox>
+
+      <ComponentViewerBox
+        name="ButtonSolid · Contrast, full width, loading state"
+        colorMode="dark"
+      >
+        <ButtonSolid
+          variant="outline"
+          fullWidth
+          loading
+          color="contrast"
+          label={"Contrast button"}
+          onPress={onButtonPress}
+          accessibilityHint="Tap to trigger test alert"
+        />
+      </ComponentViewerBox>
+
+      <ComponentViewerBox
+        name="ButtonSolid · Contrast, disabled"
+        colorMode="dark"
+        last
+      >
+        <VStack space={16} style={{ alignItems: "flex-start" }}>
+          <ButtonSolid
+            variant="outline"
+            disabled
+            color="contrast"
+            label={"Contrast button (disabled)"}
+            onPress={onButtonPress}
+            accessibilityHint="Tap to trigger test alert"
+          />
+
+          <ButtonSolid
+            variant="outline"
+            disabled
+            color="contrast"
+            label={"Contrast button (disabled)"}
+            icon="add"
+            onPress={onButtonPress}
+            accessibilityHint="Tap to trigger test alert"
+          />
+        </VStack>
+      </ComponentViewerBox>
+    </View>
+
     <VSpacer size={40} />
 
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>ButtonOutline</H2>
@@ -856,6 +1086,29 @@ const LoadingSolidButtonExample = () => {
   return (
     <>
       <ButtonSolid
+        fullWidth
+        loading={isEnabled}
+        accessibilityHint="Tap to trigger test alert"
+        label={"Primary button"}
+        onPress={() => setIsEnabled(true)}
+      />
+      <ListItemSwitch
+        label="Abilita lo stato di caricamento"
+        onSwitchValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </>
+  );
+};
+
+const LoadingOutlineButtonExample = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  return (
+    <>
+      <ButtonSolid
+        variant="outline"
         fullWidth
         loading={isEnabled}
         accessibilityHint="Tap to trigger test alert"

@@ -46,12 +46,12 @@ export type ButtonOutline = WithTestID<
 >;
 
 type ColorStates = {
-  foreground: {
+  background: {
     default: string;
     pressed: string;
     disabled: string;
   };
-  background: {
+  foreground: {
     default: string;
     pressed: string;
     disabled: string;
@@ -100,28 +100,28 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     > = {
       // Primary button
       primary: {
-        foreground: {
-          default: IOColors[theme["interactiveElem-default"]],
-          pressed: IOColors[theme["interactiveElem-pressed"]],
-          disabled: IOColors[theme["interactiveOutline-disabled"]]
-        },
         background: {
           default: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0),
           pressed: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0.1),
           disabled: "transparent"
+        },
+        foreground: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveOutline-disabled"]]
         }
       },
       // Contrast button
       contrast: {
-        foreground: {
-          default: IOColors.white,
-          pressed: IOColors.white,
-          disabled: IOColors["blueIO-200"]
-        },
         background: {
           default: hexToRgba(IOColors["blueIO-600"], 0),
           pressed: hexToRgba(IOColors["blueIO-600"], 0.5),
           disabled: "transparent"
+        },
+        foreground: {
+          default: IOColors.white,
+          pressed: IOColors.white,
+          disabled: IOColors["blueIO-200"]
         }
       }
     };
