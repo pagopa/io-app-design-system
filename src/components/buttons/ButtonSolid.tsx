@@ -244,9 +244,21 @@ const useButtonAnimatedStyles = (
     )
   }));
 
+  const iconColorAnimatedStyle = useAnimatedProps(() => ({
+    color: interpolateColor(
+      progress.value,
+      [0, 1],
+      [
+        IOColors[mapColorStates[color]?.foreground?.default],
+        IOColors[mapColorStates[color]?.foreground?.pressed]
+      ]
+    )
+  }));
+
   return {
     buttonAnimatedStyle: pressedAnimationStyle,
-    labelAnimatedStyle: pressedColorLabelAnimationStyle
+    labelAnimatedStyle: pressedColorLabelAnimationStyle,
+    iconColorAnimatedStyle
   };
 };
 
@@ -309,11 +321,8 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
 
-    const { buttonAnimatedStyle, labelAnimatedStyle } = useButtonAnimatedStyles(
-      variant,
-      color,
-      progress
-    );
+    const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
+      useButtonAnimatedStyles(variant, color, progress);
 
     const reducedMotion = useReducedMotion();
 
@@ -357,21 +366,6 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       : mapColorStates[color]?.foreground?.default;
 
     const borderWidth: number = variant === "outline" ? borderWidthOutline : 0;
-
-    const iconColorAnimatedStyle = useAnimatedProps(() => {
-      const iconColor = disabled
-        ? mapColorStates[color]?.foreground?.disabled
-        : interpolateColor(
-            progress.value,
-            [0, 1],
-            [
-              IOColors[mapColorStates[color]?.foreground?.default],
-              IOColors[mapColorStates[color]?.foreground?.pressed]
-            ]
-          );
-
-      return { color: iconColor };
-    });
 
     // Render button content
     const renderButtonContent = () => (
