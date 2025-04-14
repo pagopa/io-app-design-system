@@ -150,9 +150,6 @@ export const IOButtonStyles = StyleSheet.create({
     elevation: 0
   },
   /* Labels */
-  label: {
-    alignSelf: "center"
-  },
   labelSizeDefault: {
     fontSize: 16
   },

@@ -9,11 +9,14 @@ import {
   ColorValue,
   GestureResponderEvent,
   Pressable,
+  StyleSheet,
   View
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   interpolateColor,
+  SharedValue,
+  useAnimatedProps,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
@@ -24,13 +27,21 @@ import {
   enterTransitionInnerContentSmall,
   exitTransitionInnerContent,
   hexToRgba,
+  useIONewTypeface,
   useIOTheme
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
-import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import {
+  AnimatedIcon,
+  IOIconSizeScale,
+  IOIcons,
+  Icon,
+  IconClassComponent
+} from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { ButtonText } from "../typography/ButtonText";
+import { ButtonText, buttonTextFontSize } from "../typography/ButtonText";
+import { IOText } from "../typography";
 
 export type ButtonColor = "primary" | "danger" | "contrast";
 export type ButtonVariant = "solid" | "outline";
@@ -59,7 +70,7 @@ type ColorStatesLink = {
 const ICON_MARGIN = 8;
 const DISABLED_OPACITY = 0.5;
 
-const useButtonStyles = (variant: ButtonVariant) => {
+const useButtonColorMap = (variant: ButtonVariant) => {
   const theme = useIOTheme();
 
   const mapColorStatesVariantSolid: Record<
@@ -180,16 +191,68 @@ const useButtonStyles = (variant: ButtonVariant) => {
     }
   };
 
-  const buttonStyles = {
+  const colorMap = {
     solid: mapColorStatesVariantSolid,
     outline: mapColorStatesVariantOutline,
     link: mapColorStatesVariantLink
   };
 
-  return buttonStyles[variant];
+  return colorMap[variant];
 };
 
-// Icon size
+const useButtonAnimatedStyles = (
+  variant: ButtonVariant,
+  color: ButtonColor,
+  progress: SharedValue<number>
+) => {
+  const mapColorStates = useButtonColorMap(variant);
+
+  // Interpolate animation values from `isPressed` values
+  const pressedAnimationStyle = useAnimatedStyle(() => {
+    // Link color states to the pressed states
+    const backgroundColor = interpolateColor(
+      progress.value,
+      [0, 1],
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.pressed
+      ]
+    );
+
+    const borderColor = interpolateColor(
+      progress.value,
+      [0, 1],
+      [
+        IOColors[mapColorStates[color].foreground.default],
+        IOColors[mapColorStates[color].foreground.pressed]
+      ]
+    );
+
+    return variant === "outline"
+      ? { backgroundColor, borderColor }
+      : { backgroundColor };
+  });
+
+  const pressedColorLabelAnimationStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(
+      progress.value,
+      [0, 1],
+      [
+        IOColors[mapColorStates[color].foreground.default],
+        IOColors[mapColorStates[color].foreground.pressed]
+      ]
+    )
+  }));
+
+  return {
+    buttonAnimatedStyle: pressedAnimationStyle,
+    labelAnimatedStyle: pressedColorLabelAnimationStyle
+  };
+};
+
+// Visual attributes
+const btnBorderRadius = 8;
+const btnSizeDefault = 48;
 const iconSize: IOIconSizeScale = 20;
 const borderWidthOutline = 2;
 
@@ -242,50 +305,33 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     },
     ref
   ) => {
-    const mapColorStates = useButtonStyles(variant);
+    const mapColorStates = useButtonColorMap(variant);
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
+
+    const { buttonAnimatedStyle, labelAnimatedStyle } = useButtonAnimatedStyles(
+      variant,
+      color,
+      progress
+    );
+
     const reducedMotion = useReducedMotion();
 
-    // const { newTypefaceEnabled } = useIONewTypeface();
-    // const AnimatedIOText = Animated.createAnimatedComponent(IOText);
+    const { newTypefaceEnabled } = useIONewTypeface();
+    const AnimatedIOText = Animated.createAnimatedComponent(IOText);
+    const AnimatedIconClassComponent =
+      Animated.createAnimatedComponent(IconClassComponent);
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
        https://github.com/software-mansion/react-native-reanimated/discussions/2513
     */
-    const isMounted = useRef(false);
+    const isMounted = useRef<boolean>(false);
 
     useEffect(() => {
       // eslint-disable-next-line functional/immutable-data
       isMounted.current = true;
     }, []);
-
-    // Interpolate animation values from `isPressed` values
-    const pressedAnimationStyle = useAnimatedStyle(() => {
-      // Link color states to the pressed states
-      const backgroundColor = interpolateColor(
-        progress.value,
-        [0, 1],
-        [
-          mapColorStates[color].background.default,
-          mapColorStates[color].background.pressed
-        ]
-      );
-
-      const borderColor = interpolateColor(
-        progress.value,
-        [0, 1],
-        [
-          IOColors[mapColorStates[color].foreground.default],
-          IOColors[mapColorStates[color].foreground.pressed]
-        ]
-      );
-
-      return variant === "outline"
-        ? { backgroundColor, borderColor }
-        : { backgroundColor };
-    });
 
     const handleOnPress = useCallback(
       (event: GestureResponderEvent) => {
@@ -309,6 +355,91 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const foregroundColor: IOColors = disabled
       ? mapColorStates[color]?.foreground?.disabled
       : mapColorStates[color]?.foreground?.default;
+
+    const borderWidth: number = variant === "outline" ? borderWidthOutline : 0;
+
+    const iconColorAnimatedStyle = useAnimatedProps(() => {
+      const iconColor = disabled
+        ? mapColorStates[color]?.foreground?.disabled
+        : interpolateColor(
+            progress.value,
+            [0, 1],
+            [
+              IOColors[mapColorStates[color]?.foreground?.default],
+              IOColors[mapColorStates[color]?.foreground?.pressed]
+            ]
+          );
+
+      return { color: iconColor };
+    });
+
+    // Render button content
+    const renderButtonContent = () => (
+      <>
+        {loading && (
+          <Animated.View
+            style={styles.buttonInner}
+            entering={
+              isMounted.current ? enterTransitionInnerContentSmall : undefined
+            }
+            exiting={exitTransitionInnerContent}
+          >
+            <LoadingSpinner color={foregroundColor} />
+          </Animated.View>
+        )}
+
+        {!loading && (
+          <Animated.View
+            style={[
+              styles.buttonInner,
+              { columnGap: ICON_MARGIN },
+              iconPosition === "end" && { flexDirection: "row-reverse" }
+            ]}
+            entering={
+              isMounted.current ? enterTransitionInnerContent : undefined
+            }
+          >
+            {icon &&
+              (!disabled ? (
+                <AnimatedIconClassComponent
+                  allowFontScaling
+                  name={icon}
+                  animatedProps={iconColorAnimatedStyle}
+                  size={iconSize}
+                />
+              ) : (
+                <AnimatedIcon
+                  allowFontScaling
+                  name={icon}
+                  color={IOColors[mapColorStates[color]?.foreground?.disabled]}
+                  size={iconSize}
+                />
+              ))}
+            <AnimatedIOText
+              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+              weight={"Semibold"}
+              size={buttonTextFontSize}
+              accessible={false}
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={[
+                { alignSelf: "center" },
+                disabled
+                  ? {
+                      color:
+                        IOColors[mapColorStates[color]?.foreground?.disabled]
+                    }
+                  : labelAnimatedStyle
+              ]}
+            >
+              {label}
+            </AnimatedIOText>
+          </Animated.View>
+        )}
+      </>
+    );
 
     return (
       <Pressable
@@ -335,80 +466,45 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       >
         <Animated.View
           style={[
-            IOButtonStyles.button,
-            IOButtonStyles.buttonSizeDefault,
-            {
-              backgroundColor,
-              overflow: "hidden",
-              borderWidth: variant === "outline" ? borderWidthOutline : 0
-            },
+            styles.button,
             fullWidth && { paddingHorizontal: 16 },
-            disabled
-              ? {
-                  backgroundColor: mapColorStates[color]?.background?.disabled,
-                  borderColor: mapColorStates[color]?.foreground?.disabled,
-                  opacity: DISABLED_OPACITY
-                }
-              : {
-                  backgroundColor: mapColorStates[color]?.background?.default,
-                  borderColor: mapColorStates[color]?.foreground.default
-                },
+            {
+              height: btnSizeDefault,
+              backgroundColor,
+              borderWidth,
+              borderColor: IOColors[foregroundColor]
+            },
+            disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
               if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle,
-            !disabled && pressedAnimationStyle
+            !disabled && buttonAnimatedStyle
           ]}
         >
-          {loading && (
-            <Animated.View
-              style={IOButtonStyles.buttonInner}
-              entering={
-                isMounted.current ? enterTransitionInnerContentSmall : undefined
-              }
-              exiting={exitTransitionInnerContent}
-            >
-              <LoadingSpinner color={foregroundColor} />
-            </Animated.View>
-          )}
-
-          {!loading && (
-            <Animated.View
-              style={[
-                IOButtonStyles.buttonInner,
-                { columnGap: ICON_MARGIN },
-                /* If 'iconPosition' is set to 'end', we use 
-                   reverse flex property to invert the position */
-                iconPosition === "end" && { flexDirection: "row-reverse" }
-              ]}
-              entering={
-                isMounted.current ? enterTransitionInnerContent : undefined
-              }
-            >
-              {icon && (
-                <Icon
-                  allowFontScaling
-                  name={icon}
-                  size={iconSize}
-                  color={foregroundColor}
-                />
-              )}
-              <ButtonText
-                color={foregroundColor}
-                style={IOButtonStyles.label}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-                accessible={false}
-                accessibilityElementsHidden
-                importantForAccessibility="no-hide-descendants"
-              >
-                {label}
-              </ButtonText>
-            </Animated.View>
-          )}
+          {renderButtonContent()}
         </Animated.View>
       </Pressable>
     );
   }
 );
+
+const styles = StyleSheet.create({
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlignVertical: "center", // Prop supported on Android only
+    borderRadius: btnBorderRadius,
+    borderCurve: "continuous",
+    paddingHorizontal: 24,
+    overflow: "hidden",
+    elevation: 0
+  },
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  }
+});
 
 export default ButtonSolid;
