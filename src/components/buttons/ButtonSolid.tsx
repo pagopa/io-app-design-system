@@ -32,10 +32,10 @@ import {
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
+  AnimatedIcon,
   AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  Icon
+  IOIcons
 } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOText } from "../typography";
@@ -51,9 +51,9 @@ type ColorStates = {
     disabled: string;
   };
   foreground: {
-    default: IOColors;
-    pressed: IOColors;
-    disabled: IOColors;
+    default: string;
+    pressed: string;
+    disabled: string;
   };
 };
 
@@ -83,9 +83,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["interactiveElem-disabled"]]
       },
       foreground: {
-        default: theme["buttonText-default"],
-        pressed: theme["buttonText-default"],
-        disabled: theme["buttonText-disabled"]
+        default: IOColors[theme["buttonText-default"]],
+        pressed: IOColors[theme["buttonText-default"]],
+        disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
     // Danger button
@@ -96,9 +96,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["interactiveElem-disabled"]]
       },
       foreground: {
-        default: theme["buttonText-danger"],
-        pressed: theme["buttonText-danger"],
-        disabled: theme["buttonText-disabled"]
+        default: IOColors[theme["buttonText-danger"]],
+        pressed: IOColors[theme["buttonText-danger"]],
+        disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
     // Contrast button
@@ -109,9 +109,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors["blueIO-50"]
       },
       foreground: {
-        default: "blueIO-500",
-        pressed: "blueIO-500",
-        disabled: "blueIO-500"
+        default: IOColors["blueIO-500"],
+        pressed: IOColors["blueIO-500"],
+        disabled: IOColors["blueIO-500"]
       }
     }
   };
@@ -128,9 +128,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: "transparent"
       },
       foreground: {
-        default: theme["interactiveElem-default"],
-        pressed: theme["interactiveElem-pressed"],
-        disabled: theme["interactiveOutline-disabled"]
+        default: IOColors[theme["interactiveElem-default"]],
+        pressed: IOColors[theme["interactiveElem-pressed"]],
+        disabled: IOColors[theme["interactiveOutline-disabled"]]
       }
     },
     // Danger button
@@ -141,9 +141,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: "transparent"
       },
       foreground: {
-        default: theme["buttonText-danger"],
-        pressed: theme["buttonText-danger"],
-        disabled: theme["buttonText-disabled"]
+        default: IOColors[theme["buttonText-danger"]],
+        pressed: IOColors[theme["buttonText-danger"]],
+        disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
     // Contrast button
@@ -154,9 +154,9 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: "transparent"
       },
       foreground: {
-        default: "white",
-        pressed: "white",
-        disabled: "blueIO-200"
+        default: IOColors.white,
+        pressed: IOColors.white,
+        disabled: IOColors["blueIO-200"]
       }
     }
   };
@@ -221,8 +221,8 @@ const useButtonAnimatedStyles = (
       progress.value,
       [0, 1],
       [
-        IOColors[mapColorStates[color].foreground.default],
-        IOColors[mapColorStates[color].foreground.pressed]
+        mapColorStates[color].foreground.default,
+        mapColorStates[color].foreground.pressed
       ]
     );
 
@@ -236,8 +236,8 @@ const useButtonAnimatedStyles = (
       progress.value,
       [0, 1],
       [
-        IOColors[mapColorStates[color].foreground.default],
-        IOColors[mapColorStates[color].foreground.pressed]
+        mapColorStates[color].foreground.default,
+        mapColorStates[color].foreground.pressed
       ]
     )
   }));
@@ -247,8 +247,8 @@ const useButtonAnimatedStyles = (
       progress.value,
       [0, 1],
       [
-        IOColors[mapColorStates[color]?.foreground?.default],
-        IOColors[mapColorStates[color]?.foreground?.pressed]
+        mapColorStates[color]?.foreground?.default,
+        mapColorStates[color]?.foreground?.pressed
       ]
     )
   }));
@@ -325,6 +325,8 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const reducedMotion = useReducedMotion();
 
     const { newTypefaceEnabled } = useIONewTypeface();
+
+    // Create Animatable components
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
     /* Prevent the component from triggering the `isEntering' transition
@@ -357,7 +359,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       : mapColorStates[color]?.background?.default;
 
     // Label & Icons colors
-    const foregroundColor: IOColors = disabled
+    const foregroundColor: ColorValue = disabled
       ? mapColorStates[color]?.foreground?.disabled
       : mapColorStates[color]?.foreground?.default;
 
@@ -398,7 +400,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
                   size={iconSize}
                 />
               ) : (
-                <Icon
+                <AnimatedIcon
                   allowFontScaling
                   name={icon}
                   color={mapColorStates[color]?.foreground?.disabled}
@@ -417,10 +419,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
               style={[
                 { alignSelf: "center" },
                 disabled
-                  ? {
-                      color:
-                        IOColors[mapColorStates[color]?.foreground?.disabled]
-                    }
+                  ? { color: mapColorStates[color]?.foreground?.disabled }
                   : labelAnimatedStyle
               ]}
             >
@@ -462,7 +461,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
               height: btnSizeDefault,
               backgroundColor,
               borderWidth,
-              borderColor: IOColors[foregroundColor]
+              borderColor: foregroundColor
             },
             disabled ? { opacity: DISABLED_OPACITY } : {},
             /* Prevent Reanimated from overriding background colors
