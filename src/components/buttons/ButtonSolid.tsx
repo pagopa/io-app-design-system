@@ -6,11 +6,14 @@ import React, {
   useRef
 } from "react";
 import {
+  AccessibilityRole,
   ColorValue,
   GestureResponderEvent,
   Pressable,
   StyleSheet,
-  View
+  TextStyle,
+  View,
+  ViewStyle
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
@@ -38,11 +41,11 @@ import {
   IOIcons
 } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { IOText } from "../typography";
+import { AnimatedIOText } from "../typography";
 import { buttonTextFontSize } from "../typography/ButtonText";
 
 export type ButtonColor = "primary" | "danger" | "contrast";
-export type ButtonVariant = "solid" | "outline";
+export type ButtonVariant = "solid" | "outline" | "link";
 
 type ColorStates = {
   background: {
@@ -57,14 +60,6 @@ type ColorStates = {
   };
 };
 
-type ColorStatesLink = {
-  foreground: {
-    default: string;
-    pressed: string;
-    disabled: string;
-  };
-};
-
 const useButtonColorMap = (variant: ButtonVariant) => {
   const theme = useIOTheme();
 
@@ -72,7 +67,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
     NonNullable<ButtonProps["color"]>,
     ColorStates
   > = {
-    // Primary button
+    // Primary
     primary: {
       background: {
         default: IOColors[theme["interactiveElem-default"]],
@@ -85,7 +80,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
-    // Danger button
+    // Danger
     danger: {
       background: {
         default: IOColors["error-600"],
@@ -98,7 +93,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
-    // Contrast button
+    // Contrast
     contrast: {
       background: {
         default: IOColors.white,
@@ -117,7 +112,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
     NonNullable<ButtonProps["color"]>,
     ColorStates
   > = {
-    // Primary button
+    // Primary
     primary: {
       background: {
         default: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0),
@@ -130,7 +125,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["interactiveOutline-disabled"]]
       }
     },
-    // Danger button
+    // Danger
     danger: {
       background: {
         default: hexToRgba(IOColors["error-600"], 0),
@@ -143,7 +138,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
         disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
-    // Contrast button
+    // Contrast
     contrast: {
       background: {
         default: hexToRgba(IOColors["blueIO-600"], 0),
@@ -158,31 +153,42 @@ const useButtonColorMap = (variant: ButtonVariant) => {
     }
   };
 
+  const transparentLinkBackground: ColorStates["background"] = {
+    default: "transparent",
+    pressed: "transparent",
+    disabled: "transparent"
+  };
+
   const mapColorStatesVariantLink: Record<
     NonNullable<ButtonProps["color"]>,
-    ColorStatesLink
+    ColorStates
   > = {
-    // Primary button
+    // Primary
     primary: {
       foreground: {
         default: IOColors[theme["interactiveElem-default"]],
         pressed: IOColors[theme["interactiveElem-pressed"]],
         disabled: hexToRgba(IOColors[theme["interactiveElem-default"]], 0.85)
-      }
+      },
+      background: transparentLinkBackground
     },
+    // Danger
     danger: {
       foreground: {
-        default: theme["buttonText-danger"],
-        pressed: theme["buttonText-danger"],
-        disabled: theme["buttonText-disabled"]
-      }
+        default: IOColors[theme["buttonText-danger"]],
+        pressed: IOColors[theme["buttonText-danger"]],
+        disabled: IOColors[theme["buttonText-disabled"]]
+      },
+      background: transparentLinkBackground
     },
+    // Contrast
     contrast: {
       foreground: {
         default: IOColors.white,
         pressed: hexToRgba(IOColors.white, 0.85),
         disabled: hexToRgba(IOColors.white, 0.5)
-      }
+      },
+      background: transparentLinkBackground
     }
   };
 
@@ -204,7 +210,11 @@ const useButtonAnimatedStyles = (
 
   // Interpolate animation values from `isPressed` values
   const pressedAnimationStyle = useAnimatedStyle(() => {
-    // Link color states to the pressed states
+    // `link` variant doesn't need this animated style
+    if (variant === "link") {
+      return {};
+    }
+
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
@@ -257,12 +267,18 @@ const useButtonAnimatedStyles = (
   };
 };
 
+type ButtonSpecificProps =
+  | {
+      variant?: "link";
+      numberOfLines?: number;
+      textAlign?: TextStyle["textAlign"];
+    }
+  | {
+      variant?: "solid" | "outline";
+    };
+
 export type ButtonProps = WithTestID<
-  {
-    /**
-     * @default solid
-     */
-    variant?: ButtonVariant;
+  ButtonSpecificProps & {
     /**
      * @default primary
      */
@@ -282,10 +298,14 @@ export type ButtonProps = WithTestID<
      */
     iconPosition?: "start" | "end";
     onPress: (event: GestureResponderEvent) => void;
+    /**
+     * @default button
+     */
+    accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
   } & Pick<
-    ComponentProps<typeof Pressable>,
-    "disabled" | "accessibilityLabel" | "accessibilityHint"
-  >
+      ComponentProps<typeof Pressable>,
+      "disabled" | "accessibilityLabel" | "accessibilityHint"
+    >
 >;
 
 export const ButtonSolid = forwardRef<View, ButtonProps>(
@@ -302,32 +322,52 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       onPress,
       accessibilityLabel,
       accessibilityHint,
-      testID
+      accessibilityRole = "button",
+      testID,
+      ...props
     },
     ref
   ) => {
     const mapColorStates = useButtonColorMap(variant);
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
-
     const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
       useButtonAnimatedStyles(variant, color, progress);
-
     const reducedMotion = useReducedMotion();
-
     const { newTypefaceEnabled } = useIONewTypeface();
 
-    // Create Animatable components
-    const AnimatedIOText = Animated.createAnimatedComponent(IOText);
+    // ---------------------------------------
+    // VISUAL ATTRIBUTES
+    // ---------------------------------------
+    const btnIconSizeMap: Record<ButtonVariant, IOIconSizeScale> = {
+      solid: 20,
+      outline: 20,
+      link: 24
+    };
 
-    // Visual attributes
+    const btnBorderWidthMap: Record<ButtonVariant, ViewStyle["borderWidth"]> = {
+      solid: 0,
+      outline: 2,
+      link: 0
+    };
+
+    const btnIconSize = btnIconSizeMap[variant];
+    const btnBorderWidth = btnBorderWidthMap[variant];
     const btnBorderRadius = 8;
-    const btnBorderWidth: number = variant === "outline" ? 2 : 0;
     const btnSizeDefault = 48;
-    const iconSize: IOIconSizeScale = 20;
 
     const ICON_MARGIN = 8;
     const DISABLED_OPACITY = 0.5;
+
+    // Background color
+    const backgroundColor: ColorValue = disabled
+      ? mapColorStates[color].background.disabled
+      : mapColorStates[color].background.default;
+
+    // Label & Icons colors
+    const foregroundColor: ColorValue = disabled
+      ? mapColorStates[color]?.foreground?.disabled
+      : mapColorStates[color]?.foreground?.default;
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -353,17 +393,9 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       [loading, onPress]
     );
 
-    // Background
-    const backgroundColor: ColorValue = disabled
-      ? mapColorStates[color]?.background?.disabled
-      : mapColorStates[color]?.background?.default;
-
-    // Label & Icons colors
-    const foregroundColor: ColorValue = disabled
-      ? mapColorStates[color]?.foreground?.disabled
-      : mapColorStates[color]?.foreground?.default;
-
-    // Render button content
+    // ---------------------------------------
+    // BUTTON INNER CONTENT
+    // ---------------------------------------
     const renderButtonContent = () => (
       <>
         {loading && (
@@ -395,14 +427,14 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
                   allowFontScaling
                   name={icon}
                   animatedProps={iconColorAnimatedStyle}
-                  size={iconSize}
+                  size={btnIconSize}
                 />
               ) : (
                 <AnimatedIcon
                   allowFontScaling
                   name={icon}
                   color={mapColorStates[color]?.foreground?.disabled}
-                  size={iconSize}
+                  size={btnIconSize}
                 />
               ))}
             <AnimatedIOText
@@ -435,7 +467,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
         // Using || operator because empty string is not an accepted value
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
-        accessibilityRole={"button"}
+        accessibilityRole={accessibilityRole}
         accessibilityState={{
           busy: loading,
           disabled: disabled || false
