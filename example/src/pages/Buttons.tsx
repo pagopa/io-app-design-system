@@ -1,4 +1,5 @@
 import {
+  ButtonColor,
   ButtonLink,
   ButtonOutline,
   ButtonSolid,
@@ -15,7 +16,7 @@ import {
   VStack,
   hexToRgba
 } from "@pagopa/io-app-design-system";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -38,6 +39,8 @@ const styles = StyleSheet.create({
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
+
+const buttonColors: Array<ButtonColor> = ["primary", "danger", "contrast"];
 
 // sonarjs/cognitive-complexity
 export const Buttons = () => (
@@ -112,7 +115,6 @@ export const Buttons = () => (
         />
       </VStack>
     </ComponentViewerBox>
-
     <ComponentViewerBox name="ButtonSolid · Danger variant">
       <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
@@ -147,7 +149,6 @@ export const Buttons = () => (
         onPress={onButtonPress}
       />
     </ComponentViewerBox>
-
     <ComponentViewerBox name="ButtonSolid · Danger, disabled">
       <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
@@ -167,7 +168,6 @@ export const Buttons = () => (
         />
       </VStack>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="ButtonSolid · Contrast variant"
@@ -252,7 +252,6 @@ export const Buttons = () => (
         </VStack>
       </ComponentViewerBox>
     </View>
-
     <H2
       style={{
         marginBottom: 16,
@@ -329,7 +328,6 @@ export const Buttons = () => (
         />
       </VStack>
     </ComponentViewerBox>
-
     <ComponentViewerBox name="ButtonSolid · Danger variant">
       <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
@@ -368,7 +366,6 @@ export const Buttons = () => (
         onPress={onButtonPress}
       />
     </ComponentViewerBox>
-
     <ComponentViewerBox name="ButtonSolid · Danger, disabled">
       <VStack space={16} style={{ alignItems: "flex-start" }}>
         <ButtonSolid
@@ -390,7 +387,6 @@ export const Buttons = () => (
         />
       </VStack>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="ButtonSolid · Contrast variant"
@@ -482,9 +478,7 @@ export const Buttons = () => (
         </VStack>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>ButtonOutline</H2>
     <ComponentViewerBox name="ButtonOutline · Primary variant (using Pressable API)">
       <VStack space={16} style={{ alignItems: "flex-start" }}>
@@ -545,7 +539,6 @@ export const Buttons = () => (
         />
       </VStack>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="ButtonOutline · Contrast variant"
@@ -615,87 +608,115 @@ export const Buttons = () => (
         </VStack>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>Button (link variant)</H2>
-    <ComponentViewerBox name="ButtonLink · Primary variant (using Pressable API)">
-      <ButtonSolid
-        variant="link"
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        onPress={onButtonPress}
-      />
+    <VStack space={32}>
+      {buttonColors.map((color, index) => {
+        const isContrast = color === "contrast";
 
-      <VSpacer size={16} />
+        return (
+          <Fragment key={`${color}-link-variant-${index}`}>
+            <View style={isContrast ? styles.primaryBlock : {}}>
+              <ComponentViewerBox
+                name={`Button · Link variant, ${color} color`}
+                colorMode={isContrast ? "dark" : undefined}
+              >
+                <ButtonSolid
+                  color={color}
+                  variant="link"
+                  accessibilityHint="Tap to trigger test alert"
+                  label={"Primary button"}
+                  onPress={onButtonPress}
+                />
 
-      <ButtonSolid
-        variant="link"
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="starEmpty"
-        onPress={onButtonPress}
-      />
+                <VSpacer size={16} />
 
-      <VSpacer size={16} />
+                <ButtonSolid
+                  color={color}
+                  variant="link"
+                  accessibilityHint="Tap to trigger test alert"
+                  label={"Primary button"}
+                  icon="starEmpty"
+                  onPress={onButtonPress}
+                />
 
-      <ButtonSolid
-        variant="link"
-        accessibilityHint="Tap to trigger test alert"
-        label={"Primary button"}
-        icon="starEmpty"
-        iconPosition="end"
-        onPress={onButtonPress}
-      />
+                <VSpacer size={16} />
 
-      <VSpacer size={16} />
+                <ButtonSolid
+                  color={color}
+                  variant="link"
+                  accessibilityHint="Tap to trigger test alert"
+                  label={"Primary button"}
+                  icon="starEmpty"
+                  iconPosition="end"
+                  onPress={onButtonPress}
+                />
 
-      <View style={{ alignSelf: "center" }}>
-        <ButtonSolid
-          variant="link"
-          accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (centered)"}
-          onPress={onButtonPress}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ButtonLink · Stress test">
-      <View style={{ alignSelf: "center" }}>
-        <ButtonSolid
-          variant="link"
-          textAlign="center"
-          /* Don't set limits on maximum number of lines */
-          numberOfLines={0}
-          accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (centered) with a very looong text"}
-          onPress={onButtonPress}
-        />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ButtonLink · Primary, disabled">
-      <View>
-        <ButtonLink
-          disabled
-          accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (disabled)"}
-          onPress={onButtonPress}
-        />
+                <VSpacer size={16} />
 
-        <VSpacer size={16} />
+                <View style={{ alignSelf: "center" }}>
+                  <ButtonSolid
+                    color={color}
+                    variant="link"
+                    accessibilityHint="Tap to trigger test alert"
+                    label={"Primary button (centered)"}
+                    onPress={onButtonPress}
+                  />
+                </View>
+              </ComponentViewerBox>
+              <ComponentViewerBox
+                name="ButtonLink · Stress test"
+                colorMode={isContrast ? "dark" : undefined}
+              >
+                <View style={{ alignSelf: "center" }}>
+                  <ButtonSolid
+                    color={color}
+                    variant="link"
+                    textAlign="center"
+                    /* Don't set limits on maximum number of lines */
+                    numberOfLines={0}
+                    accessibilityHint="Tap to trigger test alert"
+                    label={"Primary button (centered) with a very looong text"}
+                    onPress={onButtonPress}
+                  />
+                </View>
+              </ComponentViewerBox>
+              <ComponentViewerBox
+                name={`Button · Link variant, ${color} color, disabled`}
+                colorMode={isContrast ? "dark" : undefined}
+                last
+              >
+                <View>
+                  <ButtonSolid
+                    color={color}
+                    variant="link"
+                    disabled
+                    accessibilityHint="Tap to trigger test alert"
+                    label={"Primary button (disabled)"}
+                    onPress={onButtonPress}
+                  />
 
-        <ButtonLink
-          disabled
-          accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (disabled)"}
-          icon="starEmpty"
-          iconPosition="end"
-          onPress={onButtonPress}
-        />
-      </View>
-    </ComponentViewerBox>
+                  <VSpacer size={16} />
+
+                  <ButtonSolid
+                    color={color}
+                    variant="link"
+                    disabled
+                    accessibilityHint="Tap to trigger test alert"
+                    label={"Primary button (disabled)"}
+                    icon="starEmpty"
+                    iconPosition="end"
+                    onPress={onButtonPress}
+                  />
+                </View>
+              </ComponentViewerBox>
+            </View>
+          </Fragment>
+        );
+      })}
+    </VStack>
 
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>ButtonLink</H2>
     <ComponentViewerBox name="ButtonLink · Primary variant (using Pressable API)">
       <ButtonLink
@@ -766,7 +787,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox name="ButtonLink · Contrast variant" colorMode="dark">
         <View>
@@ -838,9 +858,7 @@ export const Buttons = () => (
         </View>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>IconButton</H2>
     <ComponentViewerBox name="IconButton · Primary variant">
       <View style={IOStyles.row}>
@@ -871,7 +889,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <ComponentViewerBox name="IconButton · Neutral variant">
       <View style={IOStyles.row}>
         <IconButton
@@ -904,7 +921,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="IconButton · Contrast variant"
@@ -943,9 +959,7 @@ export const Buttons = () => (
         </View>
       </ComponentViewerBox>
     </View>
-
     <VSpacer />
-
     <View style={styles.neutralBlock}>
       <ComponentViewerBox
         name="IconButton · Neutral variant, persistent color mode"
@@ -986,11 +1000,8 @@ export const Buttons = () => (
         </View>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>IconButtonSolid</H2>
-
     <ComponentViewerBox name="IconButtonSolid · Primary variant, large">
       <View style={IOStyles.row}>
         <IconButtonSolid
@@ -1013,7 +1024,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="IconButtonSolid · Contrast variant, large"
@@ -1042,9 +1052,7 @@ export const Buttons = () => (
         </View>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>
       IconButtonContained (Icebox)
     </H2>
@@ -1066,7 +1074,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <ComponentViewerBox name="IconButtonContained · Neutral variant">
       <View style={IOStyles.row}>
         <IconButtonContained
@@ -1087,7 +1094,6 @@ export const Buttons = () => (
         />
       </View>
     </ComponentViewerBox>
-
     <View style={styles.primaryBlock}>
       <ComponentViewerBox
         name="IconButtonContained · Contrast variant"
@@ -1114,11 +1120,8 @@ export const Buttons = () => (
         </View>
       </ComponentViewerBox>
     </View>
-
     <VSpacer size={40} />
-
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>Specific buttons</H2>
-
     <ComponentViewerBox name="CalendarEventButton (using new ButtonOutline)">
       <ButtonOutline
         accessibilityHint="Tap to trigger test alert"
@@ -1136,7 +1139,6 @@ export const Buttons = () => (
         onPress={onButtonPress}
       />
     </ComponentViewerBox>
-
     <ComponentViewerBox name="Login buttons">
       <ButtonSolid
         fullWidth

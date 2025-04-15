@@ -180,8 +180,8 @@ const useButtonColorMap = (variant: ButtonVariant) => {
     // Danger
     danger: {
       foreground: {
-        default: IOColors[theme["buttonText-danger"]],
-        pressed: IOColors[theme["buttonText-danger"]],
+        default: IOColors[theme.errorText],
+        pressed: IOColors[theme.errorText],
         disabled: IOColors[theme["buttonText-disabled"]]
       },
       background: transparentLinkBackground
@@ -356,7 +356,6 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const reducedMotion = useReducedMotion();
     const { newTypefaceEnabled } = useIONewTypeface();
 
-    const isBlockButton = variant === "solid" || variant === "outline";
     const isLinkButton = variant === "link";
 
     // ---------------------------------------
@@ -407,10 +406,6 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const foregroundColor: ColorValue = disabled
       ? mapColorStates[color]?.foreground?.disabled
       : mapColorStates[color]?.foreground?.default;
-
-    // const btnStyle = isBlockButton ? {
-
-    // }
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -484,7 +479,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
               font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight={"Semibold"}
               size={buttonTextFontSize}
-              lineHeight={isBlockButton ? undefined : buttonTextLineHeight}
+              lineHeight={isLinkButton ? buttonTextLineHeight : undefined}
               accessible={false}
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
@@ -522,7 +517,9 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
         disabled={disabled}
         hitSlop={isLinkButton ? btnLinkHitSlop : undefined}
         style={
-          fullWidth
+          isLinkButton
+            ? { alignSelf: "flex-start" }
+            : fullWidth
             ? { flexShrink: 0, alignSelf: "stretch" }
             : { flexShrink: 1, alignSelf: "auto" }
         }
@@ -539,7 +536,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
                 : btnPaddingHorizontalMap.default
             },
             {
-              height: isBlockButton ? btnSizeDefault : undefined,
+              height: isLinkButton ? undefined : btnSizeDefault,
               backgroundColor,
               borderWidth: btnBorderWidth,
               borderRadius: btnBorderRadius,
