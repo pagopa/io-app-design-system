@@ -14,14 +14,13 @@ import {
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
-  interpolateColor,
   SharedValue,
+  interpolateColor,
   useAnimatedProps,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
 import {
-  IOButtonStyles,
   IOColors,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
@@ -33,15 +32,14 @@ import {
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
-  AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
   IOIcons,
-  Icon,
-  IconClassComponent
+  Icon
 } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
-import { ButtonText, buttonTextFontSize } from "../typography/ButtonText";
 import { IOText } from "../typography";
+import { buttonTextFontSize } from "../typography/ButtonText";
 
 export type ButtonColor = "primary" | "danger" | "contrast";
 export type ButtonVariant = "solid" | "outline";
@@ -328,8 +326,6 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
 
     const { newTypefaceEnabled } = useIONewTypeface();
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
-    const AnimatedIconClassComponent =
-      Animated.createAnimatedComponent(IconClassComponent);
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -395,17 +391,17 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
           >
             {icon &&
               (!disabled ? (
-                <AnimatedIconClassComponent
+                <AnimatedIconWithColorTransition
                   allowFontScaling
                   name={icon}
                   animatedProps={iconColorAnimatedStyle}
                   size={iconSize}
                 />
               ) : (
-                <AnimatedIcon
+                <Icon
                   allowFontScaling
                   name={icon}
-                  color={IOColors[mapColorStates[color]?.foreground?.disabled]}
+                  color={mapColorStates[color]?.foreground?.disabled}
                   size={iconSize}
                 />
               ))}

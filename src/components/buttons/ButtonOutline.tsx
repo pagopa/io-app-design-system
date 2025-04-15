@@ -22,9 +22,9 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
+  IOIcons
 } from "../icons";
 import { IOText, buttonTextFontSize } from "../typography";
 
@@ -176,9 +176,6 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
       )
     }));
 
-    const AnimatedIconClassComponent =
-      Animated.createAnimatedComponent(IconClassComponent);
-
     return (
       <Pressable
         ref={ref}
@@ -224,7 +221,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         >
           {icon &&
             (!disabled ? (
-              <AnimatedIconClassComponent
+              <AnimatedIconWithColorTransition
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
@@ -249,7 +246,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
             numberOfLines={1}
             ellipsizeMode="tail"
             style={[
-              IOButtonStyles.label,
+              { alignSelf: "center" },
               disabled
                 ? { color: mapColorStates[color]?.foreground?.disabled }
                 : { ...pressedColorLabelAnimationStyle }
