@@ -10,7 +10,9 @@ import {
   ColorValue,
   GestureResponderEvent,
   Pressable,
+  PressableProps,
   StyleSheet,
+  TextProps,
   TextStyle,
   View,
   ViewStyle
@@ -42,7 +44,10 @@ import {
 } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { AnimatedIOText } from "../typography";
-import { buttonTextFontSize } from "../typography/ButtonText";
+import {
+  buttonTextFontSize,
+  buttonTextLineHeight
+} from "../typography/ButtonText";
 
 export type ButtonColor = "primary" | "danger" | "contrast";
 export type ButtonVariant = "solid" | "outline" | "link";
@@ -270,11 +275,17 @@ const useButtonAnimatedStyles = (
 type ButtonSpecificProps =
   | {
       variant?: "link";
-      numberOfLines?: number;
+      numberOfLines?: TextProps["numberOfLines"];
       textAlign?: TextStyle["textAlign"];
+      fullWidth?: never;
+      loading?: never;
     }
   | {
       variant?: "solid" | "outline";
+      fullWidth?: boolean;
+      loading?: boolean;
+      numberOfLines?: never;
+      textAlign?: never;
     };
 
 export type ButtonProps = WithTestID<
@@ -284,6 +295,7 @@ export type ButtonProps = WithTestID<
      */
     color?: ButtonColor;
     label: string;
+    icon?: IOIcons;
     /**
      * @default false
      */
@@ -292,11 +304,18 @@ export type ButtonProps = WithTestID<
      * @default false
      */
     loading?: boolean;
-    icon?: IOIcons;
     /**
      * @default start
      */
     iconPosition?: "start" | "end";
+    /**
+     * @default 1
+     */
+    numberOfLines?: number;
+    /**
+     * @default auto
+     */
+    textAlign?: TextStyle["textAlign"];
     onPress: (event: GestureResponderEvent) => void;
     /**
      * @default button
@@ -317,14 +336,15 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       fullWidth = false,
       disabled = false,
       loading = false,
+      numberOfLines = 1,
+      textAlign = "auto",
       icon,
       iconPosition = "start",
       onPress,
       accessibilityLabel,
       accessibilityHint,
       accessibilityRole = "button",
-      testID,
-      ...props
+      testID
     },
     ref
   ) => {
@@ -335,6 +355,9 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       useButtonAnimatedStyles(variant, color, progress);
     const reducedMotion = useReducedMotion();
     const { newTypefaceEnabled } = useIONewTypeface();
+
+    const isBlockButton = variant === "solid" || variant === "outline";
+    const isLinkButton = variant === "link";
 
     // ---------------------------------------
     // VISUAL ATTRIBUTES
@@ -349,6 +372,22 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
       solid: 0,
       outline: 2,
       link: 0
+    };
+
+    const btnPaddingHorizontalMap: Record<
+      string,
+      ViewStyle["paddingHorizontal"]
+    > = {
+      default: 24,
+      fullWidth: 16,
+      link: 0
+    };
+
+    const btnLinkHitSlop: PressableProps["hitSlop"] = {
+      top: 14,
+      right: 24,
+      bottom: 14,
+      left: 24
     };
 
     const btnIconSize = btnIconSizeMap[variant];
@@ -368,6 +407,10 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const foregroundColor: ColorValue = disabled
       ? mapColorStates[color]?.foreground?.disabled
       : mapColorStates[color]?.foreground?.default;
+
+    // const btnStyle = isBlockButton ? {
+
+    // }
 
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
@@ -441,13 +484,14 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
               font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight={"Semibold"}
               size={buttonTextFontSize}
+              lineHeight={isBlockButton ? undefined : buttonTextLineHeight}
               accessible={false}
               accessibilityElementsHidden
               importantForAccessibility="no-hide-descendants"
-              numberOfLines={1}
+              numberOfLines={numberOfLines}
               ellipsizeMode="tail"
               style={[
-                { alignSelf: "center" },
+                { textAlign },
                 disabled
                   ? { color: mapColorStates[color]?.foreground?.disabled }
                   : { ...labelAnimatedStyle }
@@ -476,6 +520,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         disabled={disabled}
+        hitSlop={isLinkButton ? btnLinkHitSlop : undefined}
         style={
           fullWidth
             ? { flexShrink: 0, alignSelf: "stretch" }
@@ -486,9 +531,15 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
         <Animated.View
           style={[
             styles.button,
-            fullWidth && { paddingHorizontal: 16 },
             {
-              height: btnSizeDefault,
+              paddingHorizontal: isLinkButton
+                ? btnPaddingHorizontalMap.link
+                : fullWidth
+                ? btnPaddingHorizontalMap.fullWidth
+                : btnPaddingHorizontalMap.default
+            },
+            {
+              height: isBlockButton ? btnSizeDefault : undefined,
               backgroundColor,
               borderWidth: btnBorderWidth,
               borderRadius: btnBorderRadius,
@@ -515,7 +566,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlignVertical: "center", // Prop supported on Android only
     borderCurve: "continuous",
-    paddingHorizontal: 24,
     overflow: "hidden",
     elevation: 0
   },

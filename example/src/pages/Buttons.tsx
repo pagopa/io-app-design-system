@@ -302,7 +302,7 @@ export const Buttons = () => (
           variant="outline"
           fullWidth
           accessibilityHint="Tap to trigger test alert"
-          label={"Primary button (full width)"}
+          label={"Primary button (full width) with a loong looong label"}
           onPress={onButtonPress}
         />
       </VStack>
@@ -615,6 +615,84 @@ export const Buttons = () => (
         </VStack>
       </ComponentViewerBox>
     </View>
+
+    <VSpacer size={40} />
+
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>Button (link variant)</H2>
+    <ComponentViewerBox name="ButtonLink · Primary variant (using Pressable API)">
+      <ButtonSolid
+        variant="link"
+        accessibilityHint="Tap to trigger test alert"
+        label={"Primary button"}
+        onPress={onButtonPress}
+      />
+
+      <VSpacer size={16} />
+
+      <ButtonSolid
+        variant="link"
+        accessibilityHint="Tap to trigger test alert"
+        label={"Primary button"}
+        icon="starEmpty"
+        onPress={onButtonPress}
+      />
+
+      <VSpacer size={16} />
+
+      <ButtonSolid
+        variant="link"
+        accessibilityHint="Tap to trigger test alert"
+        label={"Primary button"}
+        icon="starEmpty"
+        iconPosition="end"
+        onPress={onButtonPress}
+      />
+
+      <VSpacer size={16} />
+
+      <View style={{ alignSelf: "center" }}>
+        <ButtonSolid
+          variant="link"
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (centered)"}
+          onPress={onButtonPress}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonLink · Stress test">
+      <View style={{ alignSelf: "center" }}>
+        <ButtonSolid
+          variant="link"
+          textAlign="center"
+          /* Don't set limits on maximum number of lines */
+          numberOfLines={0}
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (centered) with a very looong text"}
+          onPress={onButtonPress}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ButtonLink · Primary, disabled">
+      <View>
+        <ButtonLink
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (disabled)"}
+          onPress={onButtonPress}
+        />
+
+        <VSpacer size={16} />
+
+        <ButtonLink
+          disabled
+          accessibilityHint="Tap to trigger test alert"
+          label={"Primary button (disabled)"}
+          icon="starEmpty"
+          iconPosition="end"
+          onPress={onButtonPress}
+        />
+      </View>
+    </ComponentViewerBox>
 
     <VSpacer size={40} />
 
