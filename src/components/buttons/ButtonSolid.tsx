@@ -65,9 +65,6 @@ type ColorStatesLink = {
   };
 };
 
-const ICON_MARGIN = 8;
-const DISABLED_OPACITY = 0.5;
-
 const useButtonColorMap = (variant: ButtonVariant) => {
   const theme = useIOTheme();
 
@@ -260,12 +257,6 @@ const useButtonAnimatedStyles = (
   };
 };
 
-// Visual attributes
-const btnBorderRadius = 8;
-const btnSizeDefault = 48;
-const iconSize: IOIconSizeScale = 20;
-const borderWidthOutline = 2;
-
 export type ButtonProps = WithTestID<
   {
     /**
@@ -329,6 +320,15 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     // Create Animatable components
     const AnimatedIOText = Animated.createAnimatedComponent(IOText);
 
+    // Visual attributes
+    const btnBorderRadius = 8;
+    const btnBorderWidth: number = variant === "outline" ? 2 : 0;
+    const btnSizeDefault = 48;
+    const iconSize: IOIconSizeScale = 20;
+
+    const ICON_MARGIN = 8;
+    const DISABLED_OPACITY = 0.5;
+
     /* Prevent the component from triggering the `isEntering' transition
        on the on the first render. Solution from this discussion:
        https://github.com/software-mansion/react-native-reanimated/discussions/2513
@@ -362,8 +362,6 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
     const foregroundColor: ColorValue = disabled
       ? mapColorStates[color]?.foreground?.disabled
       : mapColorStates[color]?.foreground?.default;
-
-    const borderWidth: number = variant === "outline" ? borderWidthOutline : 0;
 
     // Render button content
     const renderButtonContent = () => (
@@ -420,7 +418,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
                 { alignSelf: "center" },
                 disabled
                   ? { color: mapColorStates[color]?.foreground?.disabled }
-                  : labelAnimatedStyle
+                  : { ...labelAnimatedStyle }
               ]}
             >
               {label}
@@ -432,17 +430,16 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
 
     return (
       <Pressable
-        testID={testID}
         ref={ref}
         accessible={true}
         // Using || operator because empty string is not an accepted value
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
+        accessibilityRole={"button"}
         accessibilityState={{
           busy: loading,
           disabled: disabled || false
         }}
-        accessibilityRole={"button"}
         onPress={handleOnPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
@@ -452,6 +449,7 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
             ? { flexShrink: 0, alignSelf: "stretch" }
             : { flexShrink: 1, alignSelf: "auto" }
         }
+        testID={testID}
       >
         <Animated.View
           style={[
@@ -460,7 +458,8 @@ export const ButtonSolid = forwardRef<View, ButtonProps>(
             {
               height: btnSizeDefault,
               backgroundColor,
-              borderWidth,
+              borderWidth: btnBorderWidth,
+              borderRadius: btnBorderRadius,
               borderColor: foregroundColor
             },
             disabled ? { opacity: DISABLED_OPACITY } : {},
@@ -483,7 +482,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     textAlignVertical: "center", // Prop supported on Android only
-    borderRadius: btnBorderRadius,
     borderCurve: "continuous",
     paddingHorizontal: 24,
     overflow: "hidden",

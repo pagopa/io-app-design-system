@@ -179,21 +179,21 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     return (
       <Pressable
         ref={ref}
+        accessible={true}
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
         accessibilityState={{ disabled: disabled || false }}
-        testID={testID}
         onPress={onPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        accessible={true}
         disabled={disabled}
         style={
           fullWidth
             ? { flexShrink: 0, alignSelf: "stretch" }
             : { flexShrink: 1, alignSelf: "auto" }
         }
+        testID={testID}
       >
         <Animated.View
           style={[
