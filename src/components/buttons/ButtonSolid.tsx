@@ -137,12 +137,12 @@ const useButtonColorMap = (variant: ButtonVariant) => {
     danger: {
       background: {
         default: hexToRgba(IOColors["error-600"], 0),
-        pressed: hexToRgba(IOColors["error-500"], 0.1),
+        pressed: hexToRgba(IOColors["error-600"], 0.1),
         disabled: "transparent"
       },
       foreground: {
-        default: IOColors[theme["buttonText-danger"]],
-        pressed: IOColors[theme["buttonText-danger"]],
+        default: IOColors[theme.errorText],
+        pressed: IOColors[theme.errorText],
         disabled: IOColors[theme["buttonText-disabled"]]
       }
     },
