@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
   accordionBodyContainer: {
     position: "absolute",
     padding: accordionBodySpacing,
+    width: "100%",
     paddingTop: 0
   }
 });
