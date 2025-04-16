@@ -77,7 +77,7 @@ type CommonProps = WithTestID<{
   title: string;
   // Visual attributes
   transparent?: boolean;
-  variant?: "neutral" | "contrast";
+  variant?: "neutral" | "contrast" | "primary";
   backgroundColor?: string;
   ignoreSafeAreaMargin?: boolean;
   // Prevents screen readers from focusing on the title when other elements are focused
