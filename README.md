@@ -73,7 +73,8 @@ import { ButtonSolid } from '@pagopa/io-app-design-system';
 
 const MainScreen = () => (
   <View>
-    <ButtonSolid
+    <Button
+      variant="solid"
       accessibilityLabel="Tap to trigger test alert"
       label="Hello world"
       onPress={() => Alert.alert("Alert", "Action triggered")}
