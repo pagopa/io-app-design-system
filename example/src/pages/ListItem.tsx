@@ -304,6 +304,7 @@ const renderListItemInfo = () => (
     <ComponentViewerBox name="ListItemInfo">
       <View>
         <ListItemInfo label="Label" value={"Value"} />
+        <ListItemInfo value={"Value without a label"} />
         <ListItemInfo
           label="Label"
           value="A looong looooong looooooooong looooooooooong title"
@@ -325,6 +326,19 @@ const renderListItemInfo = () => (
           icon="psp"
           label="Label"
           value="A looong looooong looooooooong looooooooooong title"
+          endElement={{
+            type: "iconButton",
+            componentProps: {
+              icon: "info",
+              accessibilityLabel: "info",
+              onPress: onButtonPress
+            }
+          }}
+        />
+
+        <ListItemInfo
+          icon="psp"
+          value="A looong looooong looooooooong looooooooooong title without a label"
           endElement={{
             type: "iconButton",
             componentProps: {
