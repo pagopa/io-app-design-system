@@ -182,7 +182,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
       foreground: {
         default: IOColors[theme.errorText],
         pressed: IOColors[theme.errorText],
-        disabled: IOColors[theme["buttonText-disabled"]]
+        disabled: hexToRgba(IOColors[theme.errorText], 0.85)
       },
       background: transparentLinkBackground
     },
