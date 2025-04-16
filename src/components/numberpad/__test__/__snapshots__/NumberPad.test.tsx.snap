@@ -907,6 +907,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               align="xMidYMid"
               bbHeight={24}
               bbWidth={24}
+              color="#FFFFFF"
               focusable={false}
               height={24}
               importantForAccessibility="no-hide-descendants"
@@ -920,9 +921,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
                     "borderWidth": 0,
                   },
                   {
-                    "color": "#FFFFFF",
-                  },
-                  {
                     "flex": 0,
                     "height": 24,
                     "width": 24,
@@ -934,7 +932,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               width={24}
             >
               <RNSVGGroup
-                color="#FFFFFF"
                 fill={
                   {
                     "payload": 4278190080,
@@ -1126,6 +1123,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
               align="xMidYMid"
               bbHeight={24}
               bbWidth={24}
+              color="#FFFFFF"
               focusable={false}
               height={24}
               importantForAccessibility="no-hide-descendants"
@@ -1139,9 +1137,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
                     "borderWidth": 0,
                   },
                   {
-                    "color": "#FFFFFF",
-                  },
-                  {
                     "flex": 0,
                     "height": 24,
                     "width": 24,
@@ -1153,7 +1148,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               width={24}
             >
               <RNSVGGroup
-                color="#FFFFFF"
                 fill={
                   {
                     "payload": 4278190080,

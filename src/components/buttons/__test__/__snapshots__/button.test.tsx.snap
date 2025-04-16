@@ -417,6 +417,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -430,9 +431,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -444,7 +442,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       width={24}
     >
       <RNSVGGroup
-        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -546,6 +543,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -559,9 +557,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -573,7 +568,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       width={24}
     >
       <RNSVGGroup
-        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -678,6 +672,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#FFFFFF"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -691,9 +686,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
             "borderWidth": 0,
           },
           {
-            "color": "#FFFFFF",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -705,7 +697,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
       width={24}
     >
       <RNSVGGroup
-        color="#FFFFFF"
         fill={
           {
             "payload": 4278190080,
@@ -1152,6 +1143,7 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1165,9 +1157,6 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -1179,7 +1168,6 @@ exports[`Test Buttons Components IconButton Snapshot 1`] = `
       width={24}
     >
       <RNSVGGroup
-        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -1281,6 +1269,7 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1294,9 +1283,6 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#0B3EE3",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -1308,7 +1294,6 @@ exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
       width={24}
     >
       <RNSVGGroup
-        color="#0B3EE3"
         fill={
           {
             "payload": 4278190080,
@@ -1413,6 +1398,7 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
       align="xMidYMid"
       bbHeight={24}
       bbWidth={24}
+      color="#FFFFFF"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
@@ -1426,9 +1412,6 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
             "borderWidth": 0,
           },
           {
-            "color": "#FFFFFF",
-          },
-          {
             "flex": 0,
             "height": 24,
             "width": 24,
@@ -1440,7 +1423,6 @@ exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
       width={24}
     >
       <RNSVGGroup
-        color="#FFFFFF"
         fill={
           {
             "payload": 4278190080,
