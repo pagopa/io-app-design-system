@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { ColorValue, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import {
   IOColors,
@@ -11,14 +11,11 @@ import {
   useIOThemeContext
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { Button } from "../buttons";
+import { Button, ButtonBlockSpecificProps } from "../buttons";
 import { HSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
-type ButtonBlockProps = Omit<
-  ComponentProps<typeof Button>,
-  "variant" | "fullWidth" | "numberOfLines" | "textAlign"
->;
+type ButtonBlockProps = Omit<ButtonBlockSpecificProps, "variant" | "fullWidth">;
 
 export type FooterActionsInlineMeasurements = {
   /* Height of the safe bottom area. It includes:

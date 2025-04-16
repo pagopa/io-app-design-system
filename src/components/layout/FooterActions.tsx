@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps, Fragment, PropsWithChildren, useState } from "react";
+import { Fragment, PropsWithChildren, useState } from "react";
 import {
   ColorValue,
   LayoutChangeEvent,
@@ -20,18 +20,16 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { Button } from "../buttons";
+import {
+  Button,
+  ButtonBlockSpecificProps,
+  ButtonLinkSpecificProps
+} from "../buttons";
 import { VSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
-type ButtonBlockProps = Omit<
-  ComponentProps<typeof Button>,
-  "variant" | "fullWidth" | "numberOfLines" | "textAlign"
->;
-type ButtonLinkProps = Omit<
-  ComponentProps<typeof Button>,
-  "variant" | "fullWidth" | "loading"
->;
+type ButtonBlockProps = Omit<ButtonBlockSpecificProps, "variant" | "fullWidth">;
+type ButtonLinkProps = Omit<ButtonLinkSpecificProps, "variant">;
 
 type FooterSingleButton = {
   type: "SingleButton";

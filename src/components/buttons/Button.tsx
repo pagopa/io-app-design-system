@@ -272,6 +272,16 @@ const useButtonAnimatedStyles = (
   };
 };
 
+export type ButtonBlockSpecificProps = Omit<
+  ComponentProps<typeof Button>,
+  "numberOfLines" | "textAlign"
+>;
+
+export type ButtonLinkSpecificProps = Omit<
+  ComponentProps<typeof Button>,
+  "fullWidth" | "loading"
+>;
+
 type ButtonSpecificProps =
   | {
       variant?: "link";
