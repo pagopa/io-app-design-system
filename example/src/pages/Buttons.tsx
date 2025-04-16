@@ -1,7 +1,6 @@
 import {
   Button,
   ButtonColor,
-  ButtonLink,
   ButtonOutline,
   ButtonSolid,
   H2,

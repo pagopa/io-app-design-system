@@ -3,17 +3,11 @@ import {
   ButtonOutline,
   ButtonSolid,
   H2,
-  HSpacer,
   IOColors,
-  IOStyles,
   IOVisualCostants,
-  IconButton,
-  IconButtonContained,
-  IconButtonSolid,
   ListItemSwitch,
   VSpacer,
-  VStack,
-  hexToRgba
+  VStack
 } from "@pagopa/io-app-design-system";
 import React, { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
@@ -23,13 +17,6 @@ import { Screen } from "../components/Screen";
 const styles = StyleSheet.create({
   primaryBlock: {
     backgroundColor: IOColors["blueIO-500"],
-    padding: 16,
-    borderRadius: 16
-  },
-  neutralBlock: {
-    borderWidth: 1,
-    borderColor: hexToRgba(IOColors.black, 0.1),
-    backgroundColor: IOColors.white,
     padding: 16,
     borderRadius: 16
   }
