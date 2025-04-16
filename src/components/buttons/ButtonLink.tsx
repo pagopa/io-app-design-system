@@ -64,6 +64,9 @@ type ColorStates = {
 const DISABLED_OPACITY = 0.5;
 const ICON_MARGIN = 8;
 
+/**
+ * @deprecated Use `Button` with variant `link` instead
+ */
 export const ButtonLink = forwardRef<View, ButtonLinkProps>(
   (
     {

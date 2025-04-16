@@ -78,6 +78,9 @@ export type ButtonSolidProps = WithTestID<
   >
 >;
 
+/**
+ * @deprecated Use `Button` with variant `solid` instead
+ */
 export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
   (
     {

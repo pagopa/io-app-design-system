@@ -70,6 +70,9 @@ const IOButtonStylesLocal = StyleSheet.create({
   }
 });
 
+/**
+ * @deprecated Use `Button` with variant `outline` instead
+ */
 export const ButtonOutline = forwardRef<View, ButtonOutline>(
   (
     {
