@@ -11,9 +11,14 @@ import {
   useIOThemeContext
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonOutline, ButtonSolid } from "../buttons";
+import { Button } from "../buttons";
 import { HSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
+
+type ButtonBlockProps = Omit<
+  ComponentProps<typeof Button>,
+  "variant" | "fullWidth" | "numberOfLines" | "textAlign"
+>;
 
 export type FooterActionsInlineMeasurements = {
   /* Height of the safe bottom area. It includes:
@@ -29,8 +34,8 @@ export type FooterActionsInlineMeasurements = {
 
 type FooterActionsInline = WithTestID<
   PropsWithChildren<{
-    startAction: Omit<ComponentProps<typeof ButtonOutline>, "fullWidth">;
-    endAction: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+    startAction: ButtonBlockProps;
+    endAction: ButtonBlockProps;
     onMeasure?: (measurements: FooterActionsInlineMeasurements) => void;
     /* Don't include safe area insets */
     excludeSafeAreaMargins?: boolean;
@@ -124,11 +129,11 @@ export const FooterActionsInline = ({
       >
         <View style={{ flexDirection: "row" }}>
           <View style={styles.buttonWrapper}>
-            <ButtonOutline fullWidth {...startAction} />
+            <Button variant="outline" fullWidth {...startAction} />
           </View>
           <HSpacer size={spaceBetweenActions} />
           <View style={styles.buttonWrapper}>
-            <ButtonSolid fullWidth {...endAction} />
+            <Button variant="solid" fullWidth {...endAction} />
           </View>
         </View>
       </View>
