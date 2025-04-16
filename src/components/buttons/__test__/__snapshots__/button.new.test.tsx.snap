@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] = `
+exports[`Test Buttons Components Button Snapshot · Link variant 1`] = `
 <View
-  accessibilityLabel="label"
+  accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -41,7 +41,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  onTouchEnd={[Function]}
   style={
     {
       "alignSelf": "flex-start",
@@ -53,184 +52,88 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
       [
         {
           "alignItems": "center",
+          "borderCurve": "continuous",
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
+          "overflow": "hidden",
           "textAlignVertical": "center",
         },
-        false,
         {
-          "columnGap": 8,
+          "paddingHorizontal": 0,
+        },
+        {
+          "backgroundColor": "transparent",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": undefined,
         },
         {},
         {
-          "columnGap": 8,
-        },
-        {
           "transform": [
             {
               "scale": undefined,
             },
           ],
         },
+        {},
       ]
     }
   >
-    <Text
-      accessibilityElementsHidden={true}
-      accessible={false}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.5}
-      numberOfLines={1}
+    <View
       style={
         [
-          {},
           {
-            "color": "#0E0F13",
-            "fontFamily": "Titillio",
-            "fontSize": 16,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": 20,
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
           },
-          [
-            {
-              "color": undefined,
-            },
-            {
-              "textAlign": "auto",
-            },
-          ],
+          {
+            "columnGap": 8,
+          },
+          false,
         ]
       }
     >
-      label
-    </Text>
+      <Text
+        accessibilityElementsHidden={true}
+        accessible={false}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        importantForAccessibility="no-hide-descendants"
+        maxFontSizeMultiplier={1.5}
+        numberOfLines={1}
+        style={
+          [
+            {},
+            {
+              "color": "#0E0F13",
+              "fontFamily": "Titillio",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "lineHeight": 20,
+            },
+            [
+              {
+                "textAlign": "auto",
+              },
+              {
+                "color": undefined,
+              },
+            ],
+          ]
+        }
+      >
+        label
+      </Text>
+    </View>
   </View>
 </View>
 `;
 
-exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1`] = `
-<View
-  accessibilityLabel="accessibilityLabel"
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": undefined,
-      "checked": undefined,
-      "disabled": false,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    {
-      "alignSelf": "auto",
-      "flexShrink": 1,
-    }
-  }
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "borderCurve": "continuous",
-          "borderRadius": 8,
-          "elevation": 0,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "paddingHorizontal": 24,
-          "textAlignVertical": "center",
-        },
-        {
-          "height": 48,
-        },
-        {
-          "borderWidth": 2,
-        },
-        false,
-        {
-          "columnGap": 8,
-        },
-        false,
-        {
-          "backgroundColor": "rgba(9,50,182,0)",
-          "borderColor": "#0B3EE3",
-        },
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-  >
-    <Text
-      accessibilityElementsHidden={true}
-      accessible={false}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.5}
-      numberOfLines={1}
-      style={
-        [
-          {},
-          {
-            "color": "#0E0F13",
-            "fontFamily": "Titillio",
-            "fontSize": 16,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": undefined,
-          },
-          [
-            {
-              "alignSelf": "center",
-            },
-            {
-              "color": undefined,
-            },
-          ],
-        ]
-      }
-    >
-      label
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`] = `
+exports[`Test Buttons Components Button Snapshot · Outline variant 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -276,21 +179,151 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         {
           "alignItems": "center",
           "borderCurve": "continuous",
-          "borderRadius": 8,
           "elevation": 0,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingHorizontal": 24,
+          "overflow": "hidden",
           "textAlignVertical": "center",
         },
         {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "rgba(9,50,182,0)",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 2,
           "height": 48,
+        },
+        {},
+        {
+          "transform": [
+            {
+              "scale": undefined,
+            },
+          ],
+        },
+        {
+          "backgroundColor": undefined,
+          "borderColor": undefined,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
+    >
+      <Text
+        accessibilityElementsHidden={true}
+        accessible={false}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        importantForAccessibility="no-hide-descendants"
+        maxFontSizeMultiplier={1.5}
+        numberOfLines={1}
+        style={
+          [
+            {},
+            {
+              "color": "#0E0F13",
+              "fontFamily": "Titillio",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "lineHeight": undefined,
+            },
+            [
+              {
+                "textAlign": "auto",
+              },
+              {
+                "color": undefined,
+              },
+            ],
+          ]
+        }
+      >
+        label
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Test Buttons Components Button Snapshot · Solid variant 1`] = `
+<View
+  accessibilityLabel="accessibilityLabel"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": false,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignSelf": "auto",
+      "flexShrink": 1,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
         },
         {
           "backgroundColor": "#0B3EE3",
-          "overflow": "hidden",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": 48,
         },
-        false,
         {},
         {
           "transform": [
@@ -332,16 +365,21 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           [
             {},
             {
-              "color": "#FFFFFF",
+              "color": "#0E0F13",
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
-              "lineHeight": 20,
+              "lineHeight": undefined,
             },
-            {
-              "alignSelf": "center",
-            },
+            [
+              {
+                "textAlign": "auto",
+              },
+              {
+                "color": undefined,
+              },
+            ],
           ]
         }
       >
@@ -352,7 +390,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
 </View>
 `;
 
-exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] = `
+exports[`Test Buttons Components IconButton Snapshot 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -471,7 +509,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
 </View>
 `;
 
-exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snapshot 1`] = `
+exports[`Test Buttons Components IconButtonContained Snapshot 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -597,7 +635,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
 </View>
 `;
 
-exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot 1`] = `
+exports[`Test Buttons Components IconButtonSolid Snapshot 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -722,358 +760,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
         />
       </RNSVGGroup>
     </RNSVGSvgView>
-  </View>
-</View>
-`;
-
-exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
-<View
-  accessibilityLabel="label"
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": undefined,
-      "checked": undefined,
-      "disabled": false,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  hitSlop={
-    {
-      "bottom": 14,
-      "left": 24,
-      "right": 24,
-      "top": 14,
-    }
-  }
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  onTouchEnd={[Function]}
-  style={
-    {
-      "alignSelf": "flex-start",
-    }
-  }
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "elevation": 0,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "textAlignVertical": "center",
-        },
-        false,
-        {
-          "columnGap": 8,
-        },
-        {},
-        {
-          "columnGap": 8,
-        },
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-      ]
-    }
-  >
-    <Text
-      accessibilityElementsHidden={true}
-      accessible={false}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.5}
-      numberOfLines={1}
-      style={
-        [
-          {},
-          {
-            "color": "#0E0F13",
-            "fontFamily": "Titillio",
-            "fontSize": 16,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": 20,
-          },
-          [
-            {
-              "color": undefined,
-            },
-            {
-              "textAlign": "auto",
-            },
-          ],
-        ]
-      }
-    >
-      label
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
-<View
-  accessibilityLabel="accessibilityLabel"
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": undefined,
-      "checked": undefined,
-      "disabled": false,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    {
-      "alignSelf": "auto",
-      "flexShrink": 1,
-    }
-  }
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "borderCurve": "continuous",
-          "borderRadius": 8,
-          "elevation": 0,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "paddingHorizontal": 24,
-          "textAlignVertical": "center",
-        },
-        {
-          "height": 48,
-        },
-        {
-          "borderWidth": 2,
-        },
-        false,
-        {
-          "columnGap": 8,
-        },
-        false,
-        {
-          "backgroundColor": "rgba(9,50,182,0)",
-          "borderColor": "#0B3EE3",
-        },
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-  >
-    <Text
-      accessibilityElementsHidden={true}
-      accessible={false}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      importantForAccessibility="no-hide-descendants"
-      maxFontSizeMultiplier={1.5}
-      numberOfLines={1}
-      style={
-        [
-          {},
-          {
-            "color": "#0E0F13",
-            "fontFamily": "Titillio",
-            "fontSize": 16,
-            "fontStyle": "normal",
-            "fontWeight": "600",
-            "lineHeight": undefined,
-          },
-          [
-            {
-              "alignSelf": "center",
-            },
-            {
-              "color": undefined,
-            },
-          ],
-        ]
-      }
-    >
-      label
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
-<View
-  accessibilityLabel="accessibilityLabel"
-  accessibilityRole="button"
-  accessibilityState={
-    {
-      "busy": false,
-      "checked": undefined,
-      "disabled": false,
-      "expanded": undefined,
-      "selected": undefined,
-    }
-  }
-  accessibilityValue={
-    {
-      "max": undefined,
-      "min": undefined,
-      "now": undefined,
-      "text": undefined,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    {
-      "alignSelf": "auto",
-      "flexShrink": 1,
-    }
-  }
->
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
-          "borderCurve": "continuous",
-          "borderRadius": 8,
-          "elevation": 0,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "paddingHorizontal": 24,
-          "textAlignVertical": "center",
-        },
-        {
-          "height": 48,
-        },
-        {
-          "backgroundColor": "#0B3EE3",
-          "overflow": "hidden",
-        },
-        false,
-        {},
-        {
-          "transform": [
-            {
-              "scale": undefined,
-            },
-          ],
-        },
-        {
-          "backgroundColor": undefined,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "center",
-          },
-          {
-            "columnGap": 8,
-          },
-          false,
-        ]
-      }
-    >
-      <Text
-        accessibilityElementsHidden={true}
-        accessible={false}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        importantForAccessibility="no-hide-descendants"
-        maxFontSizeMultiplier={1.5}
-        numberOfLines={1}
-        style={
-          [
-            {},
-            {
-              "color": "#FFFFFF",
-              "fontFamily": "Titillio",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "lineHeight": 20,
-            },
-            {
-              "alignSelf": "center",
-            },
-          ]
-        }
-      >
-        label
-      </Text>
-    </View>
   </View>
 </View>
 `;
