@@ -7,7 +7,6 @@ import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSelectionTickVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -133,13 +132,14 @@ export const ListItemRadio = ({
     >
       <View style={IOSelectionListItemStyles.listItemInner}>
         <View
-          style={[
-            IOStyles.flex,
-            IOStyles.rowSpaceBetween,
-            IOStyles.alignCenter
-          ]}
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}
         >
-          <View style={[IOStyles.row, IOStyles.alignCenter]}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             {loadingProps?.skeletonIcon && <SkeletonIcon />}
             <IOSkeleton shape="rectangle" width={180} height={16} radius={8} />
           </View>

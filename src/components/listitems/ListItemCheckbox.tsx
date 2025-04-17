@@ -7,7 +7,6 @@ import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSelectionTickVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -104,16 +103,14 @@ export const ListItemCheckbox = ({
         <Animated.View style={scaleAnimatedStyle}>
           <View style={IOSelectionListItemStyles.listItemInner}>
             <View
-              style={[
-                IOStyles.row,
-                {
-                  flexShrink: 1,
-                  columnGap:
-                    IOSelectionListItemVisualParams.iconMargin *
-                    dynamicFontScale *
-                    spacingScaleMultiplier
-                }
-              ]}
+              style={{
+                flexDirection: "row",
+                flexShrink: 1,
+                columnGap:
+                  IOSelectionListItemVisualParams.iconMargin *
+                  dynamicFontScale *
+                  spacingScaleMultiplier
+              }}
             >
               {icon && !hugeFontEnabled && (
                 <Icon

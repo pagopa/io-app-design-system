@@ -1,7 +1,6 @@
 import {
   ContentWrapper,
   H1,
-  IOStyles,
   IOVisualCostants,
   Stepper,
   VStack
@@ -17,10 +16,11 @@ import { NoMarginScreen } from "../components/Screen";
 export const StepperPage = () => (
   <NoMarginScreen>
     <View
-      style={[
-        IOStyles.flex,
-        { paddingTop: IOVisualCostants.appMarginDefault, gap: 24 }
-      ]}
+      style={{
+        flex: 1,
+        paddingTop: IOVisualCostants.appMarginDefault,
+        gap: 24
+      }}
     >
       <ContentWrapper>
         <H1>Stepper</H1>

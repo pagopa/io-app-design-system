@@ -2,7 +2,6 @@ import * as React from "react";
 import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
 import { IOSelectionTickVisualParams, useIOTheme } from "../../core";
-import { IOStyles } from "../../core/IOStyles";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { H6 } from "../typography/H6";
@@ -69,15 +68,13 @@ export const RadioButtonLabel = ({
       testID="AnimatedRadioButton"
     >
       <View
-        style={[
-          IOStyles.row,
-          {
-            alignItems: "flex-start",
-            flexShrink: 1,
-            width: "100%",
-            columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
-          }
-        ]}
+        style={{
+          flexDirection: "row",
+          alignItems: "flex-start",
+          flexShrink: 1,
+          width: "100%",
+          columnGap: 8 * dynamicFontScale * spacingScaleMultiplier
+        }}
       >
         <View
           pointerEvents="none"

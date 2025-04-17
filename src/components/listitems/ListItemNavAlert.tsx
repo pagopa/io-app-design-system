@@ -4,7 +4,6 @@ import Animated from "react-native-reanimated";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -108,7 +107,7 @@ export const ListItemNavAlert = ({
               size={IOListItemVisualParams.iconSize}
             />
           )}
-          <View style={IOStyles.flex}>{listItemNavAlertContent}</View>
+          <View style={{ flex: 1 }}>{listItemNavAlertContent}</View>
           <Icon
             allowFontScaling
             name="chevronRightListItem"

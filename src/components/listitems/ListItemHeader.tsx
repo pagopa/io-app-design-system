@@ -5,7 +5,6 @@ import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
   IOSpacingScale,
-  IOStyles,
   IOVisualCostants,
   useIOTheme
 } from "../../core";
@@ -14,8 +13,8 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { ButtonLink, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
-import { BodySmall, H6 } from "../typography";
 import { VSpacer } from "../spacer";
+import { BodySmall, H6 } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -121,7 +120,7 @@ export const ListItemHeader = ({
             />
           </View>
         )}
-        <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
+        <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
         {endElement && (
           <View style={{ marginLeft: IOListItemVisualParams.actionMargin }}>
             {listItemAction()}

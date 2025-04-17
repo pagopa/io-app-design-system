@@ -1,7 +1,6 @@
 import React, { ComponentProps } from "react";
 import Animated, { LinearTransition } from "react-native-reanimated";
 import { WithTestID } from "../../utils/types";
-import { IOStyles } from "../../core";
 import { AlertEdgeToEdge } from "./AlertEdgeToEdge";
 
 type AlertEdgeToEdgeWrapperProps = React.PropsWithChildren<
@@ -15,7 +14,7 @@ export const AlertEdgeToEdgeWrapper = ({
 }: AlertEdgeToEdgeWrapperProps) => (
   <>
     {alertProps && <AlertEdgeToEdge {...alertProps} />}
-    <Animated.View layout={LinearTransition} style={IOStyles.flex}>
+    <Animated.View layout={LinearTransition} style={{ flex: 1 }}>
       {children}
     </Animated.View>
   </>

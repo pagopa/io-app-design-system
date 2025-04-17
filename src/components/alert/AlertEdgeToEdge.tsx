@@ -20,7 +20,6 @@ import {
   IOColorsStatusForeground
 } from "../../core/IOColors";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { IOStyles } from "../../core/IOStyles";
 import { useScaleAnimation } from "../../hooks";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -120,7 +119,7 @@ export const AlertEdgeToEdge = ({
           color={mapVariantStates[variant].foreground}
         />
       </View>
-      <View style={IOStyles.flex}>
+      <View style={{ flex: 1 }}>
         <Body
           color={mapVariantStates[variant].foreground}
           weight={"Regular"}

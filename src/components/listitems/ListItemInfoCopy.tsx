@@ -4,7 +4,6 @@ import Animated from "react-native-reanimated";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -110,7 +109,7 @@ export const ListItemInfoCopy = ({
               size={IOListItemVisualParams.iconSize}
             />
           )}
-          <View style={IOStyles.flex}>{listItemInfoCopyContent}</View>
+          <View style={{ flex: 1 }}>{listItemInfoCopyContent}</View>
           <Icon
             allowFontScaling
             name="copy"

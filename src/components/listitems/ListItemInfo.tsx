@@ -4,7 +4,6 @@ import Animated from "react-native-reanimated";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useListItemAnimation } from "../../hooks";
@@ -175,7 +174,7 @@ export const ListItemInfo = ({
           size={PAYMENT_LOGO_SIZE}
         />
       )}
-      <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
+      <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
       {endElement && <View>{listItemInfoAction()}</View>}
     </>
   );

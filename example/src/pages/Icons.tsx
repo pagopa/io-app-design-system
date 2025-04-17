@@ -11,7 +11,6 @@ import {
   IOIconsNew,
   IONavIcons,
   IOProductIcons,
-  IOStyles,
   IOSystemIcons,
   IOVisualCostants,
   Icon,
@@ -196,7 +195,7 @@ export const Icons = () => {
 
       <H4 style={{ marginBottom: 12 }}>IconContained</H4>
       <ComponentViewerBox name={"IconContained, default variant"}>
-        <View style={IOStyles.row}>
+        <View style={{ flexDirection: "row" }}>
           <IconContained icon="device" variant="tonal" color="neutral" />
           <HSpacer size={8} />
           <IconContained icon="institution" variant="tonal" color="neutral" />

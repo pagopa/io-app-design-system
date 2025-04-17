@@ -6,7 +6,6 @@ import {
   H2,
   HSpacer,
   IOColors,
-  IOStyles,
   IOVisualCostants,
   ListItemCheckbox,
   ListItemSwitch,
@@ -147,7 +146,7 @@ const AnimatedMessageCheckboxShowroom = () => {
   return (
     <>
       <ComponentViewerBox name="AnimatedMessageCheckbox">
-        <View style={[IOStyles.row, IOStyles.alignCenter]}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           <AnimatedMessageCheckbox checked={isEnabled} />
           <HSpacer size={24} />
           <NativeSwitch onValueChange={toggleSwitch} value={isEnabled} />

@@ -2,12 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Animated from "react-native-reanimated";
-import {
-  IOAccordionRadius,
-  IOStyles,
-  useIOTheme,
-  type IOSpacingScale
-} from "../../core";
+import { IOAccordionRadius, useIOTheme, type IOSpacingScale } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons/Icon";
@@ -68,14 +63,12 @@ export const AccordionItem = ({
       >
         <View style={styles.textContainer}>
           <View
-            style={[
-              IOStyles.row,
-              IOStyles.alignCenter,
-              {
-                flexShrink: 1,
-                marginRight: accordionChevronMargin
-              }
-            ]}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              flexShrink: 1,
+              marginRight: accordionChevronMargin
+            }}
           >
             {icon && (
               <View style={{ marginRight: accordionIconMargin }}>
