@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Buttons Components Button Snapshot · Link variant 1`] = `
+exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -133,7 +133,7 @@ exports[`Test Buttons Components Button Snapshot · Link variant 1`] = `
 </View>
 `;
 
-exports[`Test Buttons Components Button Snapshot · Outline variant 1`] = `
+exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"
@@ -262,7 +262,7 @@ exports[`Test Buttons Components Button Snapshot · Outline variant 1`] = `
 </View>
 `;
 
-exports[`Test Buttons Components Button Snapshot · Solid variant 1`] = `
+exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
 <View
   accessibilityLabel="accessibilityLabel"
   accessibilityRole="button"

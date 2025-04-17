@@ -67,13 +67,13 @@ yarn storybook
 To try a component, just import it:
 
 ```tsx
-import { ButtonSolid } from '@pagopa/io-app-design-system';
+import { IOButton } from '@pagopa/io-app-design-system';
 
 // [...]
 
 const MainScreen = () => (
   <View>
-    <Button
+    <IOButton
       variant="solid"
       accessibilityLabel="Tap to trigger test alert"
       label="Hello world"

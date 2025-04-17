@@ -21,35 +21,38 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import {
-  Button,
-  ButtonBlockSpecificProps,
-  ButtonLinkSpecificProps
+  IOButton,
+  IOButtonBlockSpecificProps,
+  IOButtonLinkSpecificProps
 } from "../buttons";
 import { VSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
-type ButtonBlockProps = Omit<ButtonBlockSpecificProps, "variant" | "fullWidth">;
-type ButtonLinkProps = Omit<ButtonLinkSpecificProps, "variant">;
+type IOButtonBlockProps = Omit<
+  IOButtonBlockSpecificProps,
+  "variant" | "fullWidth"
+>;
+type IOButtonLinkProps = Omit<IOButtonLinkSpecificProps, "variant">;
 
 type FooterSingleButton = {
   type: "SingleButton";
-  primary: ButtonBlockProps;
+  primary: IOButtonBlockProps;
   secondary?: never;
   tertiary?: never;
 };
 
 type FooterTwoButtons = {
   type: "TwoButtons";
-  primary: ButtonBlockProps;
-  secondary: ButtonLinkProps;
+  primary: IOButtonBlockProps;
+  secondary: IOButtonLinkProps;
   tertiary?: never;
 };
 
 type FooterThreeButtons = {
   type: "ThreeButtons";
-  primary: ButtonBlockProps;
-  secondary: ButtonBlockProps;
-  tertiary: ButtonLinkProps;
+  primary: IOButtonBlockProps;
+  secondary: IOButtonBlockProps;
+  tertiary: IOButtonLinkProps;
 };
 
 export type FooterActionsMeasurements = {
@@ -234,11 +237,13 @@ const renderActions = (
   } = actions;
   return (
     <Fragment>
-      {primaryAction && <Button variant="solid" fullWidth {...primaryAction} />}
+      {primaryAction && (
+        <IOButton variant="solid" fullWidth {...primaryAction} />
+      )}
       {type === "TwoButtons" && secondaryAction && (
         <View style={{ alignSelf: "center", marginBottom: extraBottomMargin }}>
           <VSpacer size={spaceBetweenActionAndLink} />
-          <Button variant="link" {...secondaryAction} />
+          <IOButton variant="link" {...secondaryAction} />
         </View>
       )}
       {type === "ThreeButtons" && (
@@ -246,7 +251,7 @@ const renderActions = (
           {secondaryAction && (
             <>
               <VSpacer size={spaceBetweenActions} />
-              <Button variant="outline" fullWidth {...secondaryAction} />
+              <IOButton variant="outline" fullWidth {...secondaryAction} />
             </>
           )}
           {tertiaryAction && (
@@ -254,7 +259,7 @@ const renderActions = (
               style={{ alignSelf: "center", marginBottom: extraBottomMargin }}
             >
               <VSpacer size={spaceBetweenActionAndLink} />
-              <Button variant="link" {...tertiaryAction} />
+              <IOButton variant="link" {...tertiaryAction} />
             </View>
           )}
         </>

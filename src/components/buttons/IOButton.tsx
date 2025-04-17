@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import {
   AccessibilityRole,
+  ButtonProps,
   ColorValue,
   GestureResponderEvent,
   Pressable,
@@ -49,8 +50,8 @@ import {
   buttonTextLineHeight
 } from "../typography/ButtonText";
 
-export type ButtonColor = "primary" | "danger" | "contrast";
-export type ButtonVariant = "solid" | "outline" | "link";
+export type IOButtonColor = "primary" | "danger" | "contrast";
+export type IOButtonVariant = "solid" | "outline" | "link";
 
 type ColorStates = {
   background: {
@@ -65,7 +66,7 @@ type ColorStates = {
   };
 };
 
-const useButtonColorMap = (variant: ButtonVariant) => {
+const useButtonColorMap = (variant: IOButtonVariant) => {
   const theme = useIOTheme();
 
   const mapColorStatesVariantSolid: Record<
@@ -165,7 +166,7 @@ const useButtonColorMap = (variant: ButtonVariant) => {
   };
 
   const mapColorStatesVariantLink: Record<
-    NonNullable<ButtonProps["color"]>,
+    NonNullable<IOButtonProps["color"]>,
     ColorStates
   > = {
     // Primary
@@ -207,8 +208,8 @@ const useButtonColorMap = (variant: ButtonVariant) => {
 };
 
 const useButtonAnimatedStyles = (
-  variant: ButtonVariant,
-  color: ButtonColor,
+  variant: IOButtonVariant,
+  color: IOButtonColor,
   progress: SharedValue<number>
 ) => {
   const mapColorStates = useButtonColorMap(variant);
@@ -272,17 +273,17 @@ const useButtonAnimatedStyles = (
   };
 };
 
-export type ButtonBlockSpecificProps = Omit<
-  ComponentProps<typeof Button>,
+export type IOButtonBlockSpecificProps = Omit<
+  ComponentProps<typeof IOButton>,
   "numberOfLines" | "textAlign"
 >;
 
-export type ButtonLinkSpecificProps = Omit<
-  ComponentProps<typeof Button>,
+export type IOButtonLinkSpecificProps = Omit<
+  ComponentProps<typeof IOButton>,
   "fullWidth" | "loading"
 >;
 
-type ButtonSpecificProps =
+type IOButtonSpecificProps =
   | {
       variant?: "link";
       numberOfLines?: TextProps["numberOfLines"];
@@ -298,12 +299,12 @@ type ButtonSpecificProps =
       textAlign?: never;
     };
 
-export type ButtonProps = WithTestID<
-  ButtonSpecificProps & {
+export type IOButtonProps = WithTestID<
+  IOButtonSpecificProps & {
     /**
      * @default primary
      */
-    color?: ButtonColor;
+    color?: IOButtonColor;
     label: string;
     icon?: IOIcons;
     /**
@@ -337,7 +338,7 @@ export type ButtonProps = WithTestID<
     >
 >;
 
-export const Button = forwardRef<View, ButtonProps>(
+export const IOButton = forwardRef<View, IOButtonProps>(
   (
     {
       variant = "solid",
@@ -371,17 +372,18 @@ export const Button = forwardRef<View, ButtonProps>(
     // ---------------------------------------
     // VISUAL ATTRIBUTES
     // ---------------------------------------
-    const btnIconSizeMap: Record<ButtonVariant, IOIconSizeScale> = {
+    const btnIconSizeMap: Record<IOButtonVariant, IOIconSizeScale> = {
       solid: 20,
       outline: 20,
       link: 24
     };
 
-    const btnBorderWidthMap: Record<ButtonVariant, ViewStyle["borderWidth"]> = {
-      solid: 0,
-      outline: 2,
-      link: 0
-    };
+    const btnBorderWidthMap: Record<IOButtonVariant, ViewStyle["borderWidth"]> =
+      {
+        solid: 0,
+        outline: 2,
+        link: 0
+      };
 
     const btnPaddingHorizontalMap: Record<
       string,
@@ -583,4 +585,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Button;
+export default IOButton;

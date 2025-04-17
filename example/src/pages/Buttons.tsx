@@ -1,10 +1,10 @@
 import {
-  Button,
-  ButtonColor,
-  ButtonVariant,
   H2,
   H3,
   HSpacer,
+  IOButton,
+  IOButtonColor,
+  IOButtonVariant,
   IOColors,
   IOIcons,
   IOStyles,
@@ -41,14 +41,14 @@ const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
 
-const buttonColors: Array<ButtonColor> = ["primary", "danger", "contrast"];
+const buttonColors: Array<IOButtonColor> = ["primary", "danger", "contrast"];
 
-const buttonVariants: Array<Extract<ButtonVariant, "solid" | "outline">> = [
+const buttonVariants: Array<Extract<IOButtonVariant, "solid" | "outline">> = [
   "solid",
   "outline"
 ];
 
-const colorsIconMap: Record<ButtonColor, IOIcons> = {
+const colorsIconMap: Record<IOButtonColor, IOIcons> = {
   primary: "qrCode",
   danger: "trashcan",
   contrast: "add"
@@ -65,7 +65,7 @@ export const Buttons = () => (
         paddingTop: IOVisualCostants.appMarginDefault
       }}
     >
-      Button
+      IOButton
     </H2>
 
     {renderSolidOutlineButton()}
@@ -352,7 +352,7 @@ const renderSolidOutlineButton = () => (
             const isContrast = color === "contrast";
 
             const buttonLabel = `${capitalize(variant)} button`;
-            const titleComponentViewerBox = `Button · ${capitalize(
+            const titleComponentViewerBox = `IOButton · ${capitalize(
               variant
             )} variant, ${color} color`;
 
@@ -364,14 +364,14 @@ const renderSolidOutlineButton = () => (
                     colorMode={isContrast ? "dark" : undefined}
                   >
                     <VStack space={16} style={{ alignItems: "flex-start" }}>
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         accessibilityHint="Tap to trigger test alert"
                         label={buttonLabel}
                         onPress={onButtonPress}
                       />
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         accessibilityHint="Tap to trigger test alert"
@@ -379,7 +379,7 @@ const renderSolidOutlineButton = () => (
                         icon={colorsIconMap[color]}
                         onPress={onButtonPress}
                       />
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         accessibilityHint="Tap to trigger test alert"
@@ -389,7 +389,7 @@ const renderSolidOutlineButton = () => (
                         onPress={onButtonPress}
                       />
                       <View style={{ alignSelf: "center" }}>
-                        <Button
+                        <IOButton
                           color={color}
                           variant={variant}
                           accessibilityHint="Tap to trigger test alert"
@@ -406,7 +406,7 @@ const renderSolidOutlineButton = () => (
                     {/* Let's force `alignItems: "flex-start"`
       to test if `fullWidth` is managed correctly */}
                     <VStack space={16} style={{ alignItems: "flex-start" }}>
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         fullWidth
@@ -421,7 +421,7 @@ const renderSolidOutlineButton = () => (
                     colorMode={isContrast ? "dark" : undefined}
                   >
                     {isContrast ? (
-                      <Button
+                      <IOButton
                         fullWidth
                         loading
                         variant={variant}
@@ -440,7 +440,7 @@ const renderSolidOutlineButton = () => (
                     last
                   >
                     <VStack space={16} style={{ alignItems: "flex-start" }}>
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         disabled
@@ -448,7 +448,7 @@ const renderSolidOutlineButton = () => (
                         label={`${buttonLabel} (disabled)`}
                         onPress={onButtonPress}
                       />
-                      <Button
+                      <IOButton
                         color={color}
                         variant={variant}
                         disabled
@@ -480,10 +480,10 @@ const renderLinkButton = () => (
           <Fragment key={`${color}-link-variant-${index}`}>
             <View style={isContrast ? styles.primaryBlock : {}}>
               <ComponentViewerBox
-                name={`Button · Link variant, ${color} color`}
+                name={`IOButton · Link variant, ${color} color`}
                 colorMode={isContrast ? "dark" : undefined}
               >
-                <Button
+                <IOButton
                   color={color}
                   variant="link"
                   accessibilityHint="Tap to trigger test alert"
@@ -493,7 +493,7 @@ const renderLinkButton = () => (
 
                 <VSpacer size={16} />
 
-                <Button
+                <IOButton
                   color={color}
                   variant="link"
                   accessibilityHint="Tap to trigger test alert"
@@ -504,7 +504,7 @@ const renderLinkButton = () => (
 
                 <VSpacer size={16} />
 
-                <Button
+                <IOButton
                   color={color}
                   variant="link"
                   accessibilityHint="Tap to trigger test alert"
@@ -517,7 +517,7 @@ const renderLinkButton = () => (
                 <VSpacer size={16} />
 
                 <View style={{ alignSelf: "center" }}>
-                  <Button
+                  <IOButton
                     color={color}
                     variant="link"
                     accessibilityHint="Tap to trigger test alert"
@@ -527,11 +527,11 @@ const renderLinkButton = () => (
                 </View>
               </ComponentViewerBox>
               <ComponentViewerBox
-                name="ButtonLink · Stress test"
+                name="IOButton · Link variant, stress test"
                 colorMode={isContrast ? "dark" : undefined}
               >
                 <View style={{ alignSelf: "center" }}>
-                  <Button
+                  <IOButton
                     color={color}
                     variant="link"
                     textAlign="center"
@@ -546,12 +546,12 @@ const renderLinkButton = () => (
                 </View>
               </ComponentViewerBox>
               <ComponentViewerBox
-                name={`Button · Link variant, ${color} color, disabled`}
+                name={`IOButton · Link variant, ${color} color, disabled`}
                 colorMode={isContrast ? "dark" : undefined}
                 last
               >
                 <View>
-                  <Button
+                  <IOButton
                     color={color}
                     variant="link"
                     disabled
@@ -562,7 +562,7 @@ const renderLinkButton = () => (
 
                   <VSpacer size={16} />
 
-                  <Button
+                  <IOButton
                     color={color}
                     variant="link"
                     disabled
@@ -586,15 +586,15 @@ const LoadingButtonExample = ({
   variant,
   color
 }: {
-  variant: Extract<ButtonVariant, "solid" | "outline">;
-  color: ButtonColor;
+  variant: Extract<IOButtonVariant, "solid" | "outline">;
+  color: IOButtonColor;
 }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
     <>
-      <Button
+      <IOButton
         variant={variant}
         color={color}
         fullWidth

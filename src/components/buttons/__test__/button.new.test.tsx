@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert } from "react-native";
 import * as TestRenderer from "react-test-renderer";
-import Button from "../Button";
+import IOButton from "../IOButton";
 import IconButton from "../IconButton";
 import IconButtonContained from "../IconButtonContained";
 import IconButtonSolid from "../IconButtonSolid";
@@ -10,38 +10,38 @@ const onButtonPress = () => {
 };
 
 describe("Test Buttons Components", () => {
-  it("Button Snapshot · Solid variant", () => {
+  it("IOButton Snapshot · Solid variant", () => {
     const buttonSolid = TestRenderer.create(
-      <Button
+      <IOButton
         variant="solid"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></Button>
+      ></IOButton>
     ).toJSON();
     expect(buttonSolid).toMatchSnapshot();
   });
 
-  it("Button Snapshot · Link variant", () => {
+  it("IOButton Snapshot · Link variant", () => {
     const buttonLink = TestRenderer.create(
-      <Button
+      <IOButton
         variant="link"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></Button>
+      ></IOButton>
     ).toJSON();
     expect(buttonLink).toMatchSnapshot();
   });
 
-  it("Button Snapshot · Outline variant", () => {
+  it("IOButton Snapshot · Outline variant", () => {
     const buttonOutline = TestRenderer.create(
-      <Button
+      <IOButton
         variant="outline"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></Button>
+      ></IOButton>
     ).toJSON();
     expect(buttonOutline).toMatchSnapshot();
   });

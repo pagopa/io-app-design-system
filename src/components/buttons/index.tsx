@@ -1,4 +1,4 @@
-export * from "./Button";
+export * from "./IOButton";
 export * from "./ButtonLink";
 export * from "./ButtonOutline";
 export * from "./ButtonSolid";
