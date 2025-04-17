@@ -1,18 +1,17 @@
-import * as React from "react";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 import {
-  H1,
-  H5,
-  IOStyles,
-  VSpacer,
-  OTPInput,
   BodySmall,
+  ButtonOutline,
   ButtonSolid,
   ContentWrapper,
-  ButtonOutline
+  H1,
+  H5,
+  OTPInput,
+  VSpacer
 } from "@pagopa/io-app-design-system";
+import { useHeaderHeight } from "@react-navigation/elements";
+import * as React from "react";
 import { useState } from "react";
+import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
 const OTP_LENGTH = 8;
 const OTP_COMPARE = "12345678";
@@ -98,13 +97,13 @@ export const OTPInputScreen = () => {
           ios: "padding",
           android: undefined
         })}
-        contentContainerStyle={[IOStyles.flex, { paddingBottom: 70 }]}
-        style={IOStyles.flex}
+        contentContainerStyle={{ flex: 1, paddingBottom: 70 }}
+        style={{ flex: 1 }}
         keyboardVerticalOffset={headerHeight}
       >
         <ScrollView ref={scrollViewRef}>
           <ContentWrapper>
-            <View style={IOStyles.alignCenter}>
+            <View style={{ alignItems: "center" }}>
               <H1>OTP Input</H1>
             </View>
             <VSpacer />

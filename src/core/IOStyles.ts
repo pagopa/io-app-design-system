@@ -174,9 +174,7 @@ export const IOIconButtonStyles = StyleSheet.create({
   /* IconButton */
   button: {
     alignItems: "center",
-    justifyContent: "center",
-    // Reset default visual parameters
-    elevation: 0
+    justifyContent: "center"
   },
   buttonSizeSmall: {
     width: iconBtnSizeSmall,

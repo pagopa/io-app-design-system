@@ -1,7 +1,6 @@
 import {
   H1,
   H5,
-  IOStyles,
   IOVisualCostants,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -16,13 +15,10 @@ import { Screen } from "../components/Screen";
 export const Sandbox = () => (
   <Screen>
     <View
-      style={[
-        IOStyles.flex,
-        {
-          paddingTop: IOVisualCostants.appMarginDefault
-          // backgroundColor: IOColors["blueIO-500"]
-        }
-      ]}
+      style={{
+        flex: 1,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
     >
       <H1>Sandbox</H1>
       <H5>{"Insert here the component you're willing to test"}</H5>

@@ -8,7 +8,6 @@ import Animated, {
 import {
   IOColors,
   IOIconButtonStyles,
-  IOStyles,
   IOThemeLight,
   hexToRgba,
   useIOTheme
@@ -127,9 +126,8 @@ export const IconButton = ({
     >
       <Animated.View
         style={[
+          IOIconButtonStyles.button,
           IOIconButtonStyles.buttonSizeSmall,
-          IOStyles.alignCenter,
-          IOStyles.centerJustified,
           !disabled && !reducedMotion && scaleAnimatedStyle
         ]}
       >
