@@ -19,17 +19,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
   >
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -69,10 +64,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -152,10 +145,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -235,10 +226,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -284,17 +273,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -334,10 +318,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -417,10 +399,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -500,10 +480,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -549,17 +527,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -599,10 +572,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -682,10 +653,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -765,10 +734,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -814,17 +781,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -836,8 +798,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
             },
             {
               "alignItems": "center",
-            },
-            {
               "justifyContent": "center",
             },
           ]
@@ -997,10 +957,8 @@ exports[`NumberPad Should match the snapshot 1`] = `
             [
               {
                 "alignItems": "center",
+                "borderRadius": 28,
                 "justifyContent": "center",
-              },
-              {
-                "borderRadius": 100,
               },
               {
                 "height": 56,
@@ -1052,8 +1010,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
             },
             {
               "alignItems": "center",
-            },
-            {
               "justifyContent": "center",
             },
           ]
