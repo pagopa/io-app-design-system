@@ -19,17 +19,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
   >
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -284,17 +279,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -549,17 +539,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -814,17 +799,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
     </View>
     <View
       style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <View
@@ -836,8 +816,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
             },
             {
               "alignItems": "center",
-            },
-            {
               "justifyContent": "center",
             },
           ]
@@ -881,14 +859,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                {
                   "height": 24,
                   "width": 24,
-                },
-                {
-                  "alignItems": "center",
-                },
-                {
-                  "justifyContent": "center",
                 },
                 {
                   "transform": [
@@ -1055,8 +1031,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
             },
             {
               "alignItems": "center",
-            },
-            {
               "justifyContent": "center",
             },
           ]
@@ -1100,14 +1074,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                {
                   "height": 24,
                   "width": 24,
-                },
-                {
-                  "alignItems": "center",
-                },
-                {
-                  "justifyContent": "center",
                 },
                 {
                   "transform": [
