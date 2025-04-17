@@ -52,8 +52,8 @@ type InteractiveProps = Pick<
 >;
 
 export type ListItemInfo = WithTestID<{
-  label: string;
   value: string | ReactNode;
+  label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
   // Accessibility
@@ -67,8 +67,8 @@ export type ListItemInfo = WithTestID<{
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
 export const ListItemInfo = ({
-  label,
   value,
+  label,
   numberOfLines = 2,
   reversed = false,
   icon,
@@ -94,7 +94,11 @@ export const ListItemInfo = ({
   );
 
   const listItemAccessibilityLabel = useMemo(
-    () => accessibilityLabel ?? `${label}; ${componentValueToAccessibility}`,
+    () =>
+      accessibilityLabel ??
+      (label
+        ? `${label}; ${componentValueToAccessibility}`
+        : componentValueToAccessibility),
     [label, componentValueToAccessibility, accessibilityLabel]
   );
 
@@ -104,9 +108,11 @@ export const ListItemInfo = ({
         accessible={Platform.OS === "ios"}
         style={{ flexDirection: reversed ? "column-reverse" : "column" }}
       >
-        <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
-          {label}
-        </BodySmall>
+        {label && (
+          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
+            {label}
+          </BodySmall>
+        )}
         {typeof value === "string" ? (
           <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
             {value}
