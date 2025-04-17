@@ -96,9 +96,9 @@ type FooterActionsProps = WithTestID<
   }>
 >;
 
-/* Margin between ButtonSolid and ButtonOutline */
+/* Margin between `solid` and `variant` variant */
 const spaceBetweenActions: IOSpacer = 16;
-/* Margin between ButtonSolid and ButtonLink */
+/* Margin between `solid` and `link` variant */
 const spaceBetweenActionAndLink: IOSpacer = 16;
 
 const styles = StyleSheet.create({

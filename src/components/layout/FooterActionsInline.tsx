@@ -12,7 +12,6 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOButton, IOButtonBlockSpecificProps } from "../buttons";
-import { HSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
 type IOButtonBlockProps = Omit<
@@ -43,9 +42,6 @@ type FooterActionsInline = WithTestID<
     fixed?: boolean;
   }>
 >;
-
-/* Margin between ButtonSolid and ButtonOutline */
-const spaceBetweenActions: IOSpacer = 16;
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -81,6 +77,8 @@ export const FooterActionsInline = ({
 
   const { bottomMargin } = useBottomMargins(false, excludeSafeAreaMargins);
 
+  /* Margin between `solid` and `outline` variant */
+  const spaceBetweenActions: IOSpacer = 16;
   /* Top padding applied above the actions */
   const topSpacingValue: IOSpacingScale = 16;
   const topSpacing = fixed ? topSpacingValue : 0;
@@ -127,11 +125,15 @@ export const FooterActionsInline = ({
         onLayout={getActionBlockMeasurements}
         pointerEvents="box-none"
       >
-        <View style={{ flexDirection: "row" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: spaceBetweenActions
+          }}
+        >
           <View style={styles.buttonWrapper}>
             <IOButton variant="outline" fullWidth {...startAction} />
           </View>
-          <HSpacer size={spaceBetweenActions} />
           <View style={styles.buttonWrapper}>
             <IOButton variant="solid" fullWidth {...endAction} />
           </View>

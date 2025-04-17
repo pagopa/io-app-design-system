@@ -119,6 +119,7 @@ export const IOButtonStyles = StyleSheet.create({
   /* BaseButton, used in the:
   ButtonSolid, ButtonOutline
   */
+  /* DELETE THIS, ONCE WE REMOVE `ButtonSolid`, `ButtonOutline` COMPONENTS */
   button: {
     flexDirection: "row",
     alignItems: "center",
