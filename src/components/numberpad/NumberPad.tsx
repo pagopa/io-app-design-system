@@ -1,11 +1,11 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import { IONumberPadButtonStyles, IOStyles } from "../../core";
 import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
+import { ContentWrapper } from "../contentWrapper";
 import { IOIconSizeScale, IOIcons } from "../icons";
 import { VStack } from "../stack";
-import { NumberButton } from "./NumberButton";
+import { NumberButton, numberButtonStyles } from "./NumberButton";
 
 type BiometricAuthProps =
   | {
@@ -122,9 +122,7 @@ export const NumberPad = ({
           );
         }
 
-        return (
-          <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />
-        );
+        return <View key={"emptyElem"} style={numberButtonStyles.buttonSize} />;
       }),
     [
       biometricAccessibilityLabel,
@@ -147,7 +145,7 @@ export const NumberPad = ({
           [7, 8, 9],
           [biometricType, 0, "delete"]
         ].map((row, i) => (
-          <View key={i} style={[IOStyles.rowSpaceBetween, styles.numberPad]}>
+          <View key={i} style={styles.numberPad}>
             {renderButtonsRow(row)}
           </View>
         ))}
@@ -156,15 +154,14 @@ export const NumberPad = ({
     [biometricType, renderButtonsRow]
   );
 
-  return <View style={IOStyles.horizontalContentPadding}>{numberPad}</View>;
+  return <ContentWrapper>{numberPad}</ContentWrapper>;
 };
 
 const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
   <View
     style={[
-      IONumberPadButtonStyles.buttonSize,
-      IOStyles.alignCenter,
-      IOStyles.centerJustified
+      numberButtonStyles.buttonSize,
+      { alignItems: "center", justifyContent: "center" }
     ]}
   >
     {children}
@@ -173,6 +170,7 @@ const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
 
 const styles = StyleSheet.create({
   numberPad: {
+    flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     flexGrow: 1

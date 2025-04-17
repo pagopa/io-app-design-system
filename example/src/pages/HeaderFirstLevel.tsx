@@ -1,12 +1,11 @@
 import {
   AlertEdgeToEdgeProps,
   Body,
-  ButtonOutline,
-  ButtonSolid,
   H6,
   HeaderActionProps,
   HeaderFirstLevel,
   HStack,
+  IOButton,
   IOVisualCostants,
   ListItemHeader,
   ListItemRadio,
@@ -119,7 +118,8 @@ export const HeaderFirstLevelScreen = () => {
         onValueChange={() => setActionsSize(3)}
       />
       <VSpacer />
-      <ButtonSolid
+      <IOButton
+        variant="solid"
         label="Torna indietro"
         onPress={navigation.goBack}
         accessibilityLabel=""
@@ -129,13 +129,15 @@ export const HeaderFirstLevelScreen = () => {
         <VStack space={4} key={variant}>
           <H6 style={{ textTransform: "capitalize" }}>{variant}</H6>
           <HStack space={4}>
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/ Action"
               onPress={() =>
                 handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
               }
             />
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/o Action"
               onPress={() =>
                 handleShowAlert(
@@ -145,7 +147,7 @@ export const HeaderFirstLevelScreen = () => {
               }
             />
           </HStack>
-          <ButtonOutline label="Hide" onPress={removeAlert} />
+          <IOButton variant="outline" label="Hide" onPress={removeAlert} />
         </VStack>
       ))}
       {[...Array(50)].map((_el, i) => (

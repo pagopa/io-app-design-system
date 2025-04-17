@@ -8,8 +8,8 @@ import Animated, {
 } from "react-native-reanimated";
 import {
   AnimatedIcon,
-  IOIcons,
-  IconClassComponent
+  AnimatedIconWithColorTransition,
+  IOIcons
 } from "../../components/icons";
 import { IOColors, IOIconButtonStyles, hexToRgba } from "../../core";
 import { useScaleAnimation } from "../../hooks";
@@ -82,9 +82,6 @@ const mapColorStates: Record<
   }
 };
 
-const AnimatedIconClassComponent =
-  Animated.createAnimatedComponent(IconClassComponent);
-
 export const IconButtonContained = ({
   icon,
   color = "primary",
@@ -141,7 +138,7 @@ export const IconButtonContained = ({
         ]}
       >
         {!disabled ? (
-          <AnimatedIconClassComponent
+          <AnimatedIconWithColorTransition
             name={icon}
             animatedProps={iconColorAnimationStyle}
             color={mapColorStates[color]?.icon?.default}

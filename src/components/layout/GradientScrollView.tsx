@@ -21,7 +21,8 @@ export type GradientScrollView = WithTestID<{
   children: React.ReactNode;
   excludeSafeAreaMargins?: boolean;
   debugMode?: boolean;
-  // Accepted components: ButtonSolid, ButtonLink
+  // Accepted components: `solid` variant for the primaryAction,
+  // `link` variant for the secondaryAction.
   // Don't use any components other than this, please.
   primaryActionProps: GradientBottomActions["primaryActionProps"];
   secondaryActionProps?: GradientBottomActions["secondaryActionProps"];

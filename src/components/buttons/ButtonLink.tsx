@@ -24,9 +24,9 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
+  IOIcons
 } from "../icons";
 import {
   IOText,
@@ -64,6 +64,9 @@ type ColorStates = {
 const DISABLED_OPACITY = 0.5;
 const ICON_MARGIN = 8;
 
+/**
+ * @deprecated Use `Button` with variant `link` instead
+ */
 export const ButtonLink = forwardRef<View, ButtonLinkProps>(
   (
     {
@@ -142,9 +145,6 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
       return { color: iconColor };
     });
 
-    const AnimatedIconClassComponent =
-      Animated.createAnimatedComponent(IconClassComponent);
-
     // Icon size
     const iconSize: IOIconSizeScale = 24;
     const iconMargin: IOSpacingScale = 8;
@@ -180,7 +180,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
         >
           {icon &&
             (!disabled ? (
-              <AnimatedIconClassComponent
+              <AnimatedIconWithColorTransition
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}

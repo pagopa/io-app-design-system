@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { View, Animated, Easing } from "react-native";
+import { View, Animated, Easing, ColorValue } from "react-native";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
 import { IOColors, useIOTheme } from "../../core";
 
 export type LoadingSpinner = WithTestID<{
-  color?: IOColors;
+  color?: ColorValue;
   size?: IOLoadingSpinnerSizeScale;
   durationMs?: number;
   accessibilityLabel?: string;
@@ -36,7 +36,7 @@ export const LoadingSpinner = ({
   const rotationDegree = useRef(new Animated.Value(0)).current;
   const stroke: number = strokeMap[size];
 
-  const color = customColor ?? theme["interactiveElem-default"];
+  const color = customColor ?? IOColors[theme["interactiveElem-default"]];
 
   useEffect(() => {
     const animation = Animated.loop(
@@ -87,12 +87,12 @@ export const LoadingSpinner = ({
         >
           <Defs>
             <LinearGradient id="spinner-secondHalf">
-              <Stop offset="0%" stopOpacity="0" stopColor={IOColors[color]} />
-              <Stop offset="100%" stopOpacity="1" stopColor={IOColors[color]} />
+              <Stop offset="0%" stopOpacity="0" stopColor={color} />
+              <Stop offset="100%" stopOpacity="1" stopColor={color} />
             </LinearGradient>
             <LinearGradient id="spinner-firstHalf">
-              <Stop offset="0%" stopOpacity="1" stopColor={IOColors[color]} />
-              <Stop offset="100%" stopOpacity="1" stopColor={IOColors[color]} />
+              <Stop offset="0%" stopOpacity="1" stopColor={color} />
+              <Stop offset="100%" stopOpacity="1" stopColor={color} />
             </LinearGradient>
           </Defs>
 
@@ -110,7 +110,7 @@ export const LoadingSpinner = ({
               } ${size / 2 - stroke / 2} 0 0 1 ${stroke / 2} ${size / 2}`}
             />
             <Path
-              stroke={IOColors[color]}
+              stroke={color}
               strokeLinecap="round"
               d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
                 size / 2 - stroke / 2

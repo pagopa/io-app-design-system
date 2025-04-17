@@ -14,6 +14,10 @@ const APP_ROUTES = {
     IMAGE: { route: "DESIGN_SYSTEM_IMAGE", title: "Image" },
     OTP_INPUT: { route: "DESIGN_SYSTEM_OTP_INPUT", title: "OTP Input" },
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
+    BUTTONS_LEGACY: {
+      route: "DESIGN_SYSTEM_BUTTONS_LEGACY",
+      title: "Buttons (legacy)"
+    },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
     MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },
     BADGE: { route: "DESIGN_SYSTEM_BADGE", title: "Badges & Tags" },

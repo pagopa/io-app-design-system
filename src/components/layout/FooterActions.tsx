@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps, Fragment, PropsWithChildren, useState } from "react";
+import { Fragment, PropsWithChildren, useState } from "react";
 import {
   ColorValue,
   LayoutChangeEvent,
@@ -20,29 +20,39 @@ import {
   useIOTheme
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink, ButtonOutline, ButtonSolid } from "../buttons";
+import {
+  IOButton,
+  IOButtonBlockSpecificProps,
+  IOButtonLinkSpecificProps
+} from "../buttons";
 import { VSpacer } from "../spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
+type IOButtonBlockProps = Omit<
+  IOButtonBlockSpecificProps,
+  "variant" | "fullWidth"
+>;
+type IOButtonLinkProps = Omit<IOButtonLinkSpecificProps, "variant">;
+
 type FooterSingleButton = {
   type: "SingleButton";
-  primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+  primary: IOButtonBlockProps;
   secondary?: never;
   tertiary?: never;
 };
 
 type FooterTwoButtons = {
   type: "TwoButtons";
-  primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
-  secondary: Omit<ComponentProps<typeof ButtonLink>, "color">;
+  primary: IOButtonBlockProps;
+  secondary: IOButtonLinkProps;
   tertiary?: never;
 };
 
 type FooterThreeButtons = {
   type: "ThreeButtons";
-  primary: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
-  secondary: Omit<ComponentProps<typeof ButtonOutline>, "fullWidth" | "color">;
-  tertiary: Omit<ComponentProps<typeof ButtonLink>, "color">;
+  primary: IOButtonBlockProps;
+  secondary: IOButtonBlockProps;
+  tertiary: IOButtonLinkProps;
 };
 
 export type FooterActionsMeasurements = {
@@ -86,9 +96,9 @@ type FooterActionsProps = WithTestID<
   }>
 >;
 
-/* Margin between ButtonSolid and ButtonOutline */
+/* Margin between `solid` and `variant` variant */
 const spaceBetweenActions: IOSpacer = 16;
-/* Margin between ButtonSolid and ButtonLink */
+/* Margin between `solid` and `link` variant */
 const spaceBetweenActionAndLink: IOSpacer = 16;
 
 const styles = StyleSheet.create({
@@ -227,11 +237,13 @@ const renderActions = (
   } = actions;
   return (
     <Fragment>
-      {primaryAction && <ButtonSolid fullWidth {...primaryAction} />}
+      {primaryAction && (
+        <IOButton variant="solid" fullWidth {...primaryAction} />
+      )}
       {type === "TwoButtons" && secondaryAction && (
         <View style={{ alignSelf: "center", marginBottom: extraBottomMargin }}>
           <VSpacer size={spaceBetweenActionAndLink} />
-          <ButtonLink color="primary" {...secondaryAction} />
+          <IOButton variant="link" {...secondaryAction} />
         </View>
       )}
       {type === "ThreeButtons" && (
@@ -239,7 +251,7 @@ const renderActions = (
           {secondaryAction && (
             <>
               <VSpacer size={spaceBetweenActions} />
-              <ButtonOutline fullWidth color="primary" {...secondaryAction} />
+              <IOButton variant="outline" fullWidth {...secondaryAction} />
             </>
           )}
           {tertiaryAction && (
@@ -247,7 +259,7 @@ const renderActions = (
               style={{ alignSelf: "center", marginBottom: extraBottomMargin }}
             >
               <VSpacer size={spaceBetweenActionAndLink} />
-              <ButtonLink color="primary" {...tertiaryAction} />
+              <IOButton variant="link" {...tertiaryAction} />
             </View>
           )}
         </>

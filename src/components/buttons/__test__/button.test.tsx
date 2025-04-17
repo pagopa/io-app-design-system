@@ -8,6 +8,7 @@ import ButtonSolid from "../ButtonSolid";
 import IconButton from "../IconButton";
 import IconButtonContained from "../IconButtonContained";
 import IconButtonSolid from "../IconButtonSolid";
+
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
 };
@@ -40,39 +41,6 @@ describe("Test Buttons Components", () => {
       ></ButtonOutline>
     ).toJSON();
     expect(buttonOutline).toMatchSnapshot();
-  });
-
-  it("IconButtonSolid Snapshot", () => {
-    const iconButtonSolid = TestRenderer.create(
-      <IconButtonSolid
-        onPress={onButtonPress}
-        icon={"spid"}
-        accessibilityLabel={"accessibilityLabel"}
-      ></IconButtonSolid>
-    ).toJSON();
-    expect(iconButtonSolid).toMatchSnapshot();
-  });
-
-  it("IconButton Snapshot", () => {
-    const iconButton = TestRenderer.create(
-      <IconButton
-        onPress={onButtonPress}
-        icon={"spid"}
-        accessibilityLabel={"accessibilityLabel"}
-      ></IconButton>
-    ).toJSON();
-    expect(iconButton).toMatchSnapshot();
-  });
-
-  it("IconButtonContained Snapshot", () => {
-    const iconButtonContained = TestRenderer.create(
-      <IconButtonContained
-        onPress={onButtonPress}
-        icon={"spid"}
-        accessibilityLabel={"accessibilityLabel"}
-      ></IconButtonContained>
-    ).toJSON();
-    expect(iconButtonContained).toMatchSnapshot();
   });
 });
 

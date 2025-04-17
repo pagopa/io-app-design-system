@@ -7,6 +7,7 @@ import {
   TextStyle,
   View
 } from "react-native";
+import Animated from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
@@ -154,3 +155,5 @@ export const IOText = forwardRef<View, IOTextProps>(
     );
   }
 );
+
+export const AnimatedIOText = Animated.createAnimatedComponent(IOText);
