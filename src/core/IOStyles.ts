@@ -113,8 +113,6 @@ export const buttonSolidHeight: number = btnSizeDefault;
 // TODO: Replace the number type with the new IOIconSizeScale
 export const iconBtnSizeSmall: number = 24;
 
-export const numberPadBtnSize: number = 56;
-
 export const IOButtonStyles = StyleSheet.create({
   /* BaseButton, used in the:
   ButtonSolid, ButtonOutline
@@ -192,22 +190,6 @@ export const IOIconButtonStyles = StyleSheet.create({
     width: btnSizeLarge,
     height: btnSizeLarge,
     borderRadius: btnSizeLarge
-  }
-});
-
-export const IONumberPadButtonStyles = StyleSheet.create({
-  /* IconButton */
-  button: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  circularShape: {
-    // Circular shape
-    borderRadius: 100
-  },
-  buttonSize: {
-    width: numberPadBtnSize,
-    height: numberPadBtnSize
   }
 });
 
