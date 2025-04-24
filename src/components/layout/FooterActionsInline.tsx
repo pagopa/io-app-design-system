@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentProps, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { ColorValue, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import {
   IOColors,
@@ -11,9 +11,13 @@ import {
   useIOThemeContext
 } from "../../core";
 import { WithTestID } from "../../utils/types";
-import { ButtonOutline, ButtonSolid } from "../buttons";
-import { HSpacer } from "../spacer";
+import { IOButton, IOButtonBlockSpecificProps } from "../buttons";
 import { useBottomMargins } from "./hooks/useBottomMargins";
+
+type IOButtonBlockProps = Omit<
+  IOButtonBlockSpecificProps,
+  "variant" | "fullWidth"
+>;
 
 export type FooterActionsInlineMeasurements = {
   /* Height of the safe bottom area. It includes:
@@ -29,8 +33,8 @@ export type FooterActionsInlineMeasurements = {
 
 type FooterActionsInline = WithTestID<
   PropsWithChildren<{
-    startAction: Omit<ComponentProps<typeof ButtonOutline>, "fullWidth">;
-    endAction: Omit<ComponentProps<typeof ButtonSolid>, "fullWidth">;
+    startAction: IOButtonBlockProps;
+    endAction: IOButtonBlockProps;
     onMeasure?: (measurements: FooterActionsInlineMeasurements) => void;
     /* Don't include safe area insets */
     excludeSafeAreaMargins?: boolean;
@@ -38,9 +42,6 @@ type FooterActionsInline = WithTestID<
     fixed?: boolean;
   }>
 >;
-
-/* Margin between ButtonSolid and ButtonOutline */
-const spaceBetweenActions: IOSpacer = 16;
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -76,6 +77,8 @@ export const FooterActionsInline = ({
 
   const { bottomMargin } = useBottomMargins(false, excludeSafeAreaMargins);
 
+  /* Margin between `solid` and `outline` variant */
+  const spaceBetweenActions: IOSpacer = 16;
   /* Top padding applied above the actions */
   const topSpacingValue: IOSpacingScale = 16;
   const topSpacing = fixed ? topSpacingValue : 0;
@@ -122,13 +125,17 @@ export const FooterActionsInline = ({
         onLayout={getActionBlockMeasurements}
         pointerEvents="box-none"
       >
-        <View style={{ flexDirection: "row" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: spaceBetweenActions
+          }}
+        >
           <View style={styles.buttonWrapper}>
-            <ButtonOutline fullWidth {...startAction} />
+            <IOButton variant="outline" fullWidth {...startAction} />
           </View>
-          <HSpacer size={spaceBetweenActions} />
           <View style={styles.buttonWrapper}>
-            <ButtonSolid fullWidth {...endAction} />
+            <IOButton variant="solid" fullWidth {...endAction} />
           </View>
         </View>
       </View>

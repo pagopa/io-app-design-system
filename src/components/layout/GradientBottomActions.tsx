@@ -2,23 +2,24 @@ import * as React from "react";
 import { Easing, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { easeGradient } from "react-native-easing-gradient";
 import LinearGradient from "react-native-linear-gradient";
-import Animated from "react-native-reanimated";
+import Animated, { AnimatedStyle } from "react-native-reanimated";
 import { IOColors, IOSpacer, IOVisualCostants, hexToRgba } from "../../core";
 import { WithTestID } from "../../utils/types";
-import {
-  ButtonLink,
-  ButtonLinkProps,
-  ButtonSolid,
-  ButtonSolidProps
-} from "../buttons";
+import { IOButton, IOButtonProps } from "../buttons";
 import { VSpacer } from "../spacer";
 
+type PrimaryActionProps = Extract<
+  IOButtonProps,
+  { variant?: "solid" | "outline" }
+>;
+type SecondaryActionProps = Extract<IOButtonProps, { variant?: "link" }>;
+
 export type GradientBottomActions = WithTestID<{
-  transitionAnimStyle: Animated.AnimateStyle<StyleProp<ViewStyle>>;
+  transitionAnimStyle: AnimatedStyle<StyleProp<ViewStyle>>;
   dimensions: GradientBottomActionsDimensions;
-  // Accepted components: ButtonSolid for the primaryAction, ButtonLink for the secondaryAction
-  primaryActionProps?: Omit<ButtonSolidProps, "fullWidth">;
-  secondaryActionProps?: ButtonLinkProps;
+  // Button actions
+  primaryActionProps?: PrimaryActionProps;
+  secondaryActionProps?: SecondaryActionProps;
   // Debug mode
   debugMode?: boolean;
 }>;
@@ -68,8 +69,8 @@ const styles = StyleSheet.create({
  * @see IOScrollView
  */
 export const GradientBottomActions = ({
-  primaryActionProps: primaryAction,
-  secondaryActionProps: secondaryAction,
+  primaryActionProps,
+  secondaryActionProps,
   dimensions,
   transitionAnimStyle,
   debugMode,
@@ -122,11 +123,9 @@ export const GradientBottomActions = ({
       ]}
     />
     <View style={styles.buttonContainer} pointerEvents="box-none">
-      {primaryAction && (
-        <ButtonSolid fullWidth {...primaryAction}></ButtonSolid>
-      )}
+      {primaryActionProps && <IOButton {...primaryActionProps} fullWidth />}
 
-      {secondaryAction && (
+      {secondaryActionProps && (
         <View
           style={{
             alignSelf: "center",
@@ -134,7 +133,7 @@ export const GradientBottomActions = ({
           }}
         >
           <VSpacer size={dimensions.spaceBetweenActions} />
-          {<ButtonLink {...secondaryAction}></ButtonLink>}
+          <IOButton {...secondaryActionProps} />
         </View>
       )}
     </View>

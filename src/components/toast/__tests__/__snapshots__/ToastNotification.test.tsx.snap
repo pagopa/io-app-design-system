@@ -60,6 +60,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     align="xMidYMid"
     bbHeight={24}
     bbWidth={24}
+    color="#003B3D"
     focusable={false}
     height={24}
     importantForAccessibility="no-hide-descendants"
@@ -73,9 +74,6 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
           "borderWidth": 0,
         },
         {
-          "color": "#003B3D",
-        },
-        {
           "flex": 0,
           "height": 24,
           "width": 24,
@@ -87,7 +85,6 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     width={24}
   >
     <RNSVGGroup
-      color="#003B3D"
       fill={
         {
           "payload": 4278190080,
@@ -421,6 +418,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     align="xMidYMid"
     bbHeight={24}
     bbWidth={24}
+    color="#003B3D"
     focusable={false}
     height={24}
     importantForAccessibility="no-hide-descendants"
@@ -434,9 +432,6 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
           "borderWidth": 0,
         },
         {
-          "color": "#003B3D",
-        },
-        {
           "flex": 0,
           "height": 24,
           "width": 24,
@@ -448,7 +443,6 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     width={24}
   >
     <RNSVGGroup
-      color="#003B3D"
       fill={
         {
           "payload": 4278190080,
