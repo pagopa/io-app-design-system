@@ -29,7 +29,8 @@ const hapticFeedbackMap: Record<
   error: "notificationError",
   warning: "notificationWarning",
   // There isn't a `notificationInfo` haptic feedback type, so we use a generic one
-  info: "impactMedium"
+  info: "impactMedium",
+  success: "notificationSuccess"
 };
 
 export const StatusBannerProvider = ({ children }: AlertProviderProps) => {

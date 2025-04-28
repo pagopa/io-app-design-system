@@ -117,7 +117,7 @@ export const DSAlert = () => {
       </H3>
 
       <VStack space={8}>
-        {["info", "warning", "error"].map(variant => (
+        {["info", "warning", "error", "success"].map(variant => (
           <VStack space={4} key={variant}>
             <H6 color={"grey-700"} style={{ textTransform: "capitalize" }}>
               {variant}
