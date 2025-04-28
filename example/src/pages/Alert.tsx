@@ -8,7 +8,6 @@ import {
   HStack,
   IconButton,
   IOButton,
-  IOStyles,
   IOVisualCostants,
   VSpacer,
   VStack
@@ -52,7 +51,7 @@ export const DSAlert = () => {
         />
       ),
       headerRight: () => (
-        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+        <View style={{ flexDirection: "row", flexShrink: 0 }}>
           <IconButton
             accessibilityLabel="coggle"
             icon="coggle"

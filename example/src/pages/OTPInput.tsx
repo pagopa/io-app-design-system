@@ -4,7 +4,6 @@ import {
   H1,
   H5,
   IOButton,
-  IOStyles,
   OTPInput,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -99,13 +98,13 @@ export const OTPInputScreen = () => {
           ios: "padding",
           android: undefined
         })}
-        contentContainerStyle={[IOStyles.flex, { paddingBottom: 70 }]}
-        style={IOStyles.flex}
+        contentContainerStyle={{ flex: 1, paddingBottom: 70 }}
+        style={{ flex: 1 }}
         keyboardVerticalOffset={headerHeight}
       >
         <ScrollView ref={scrollViewRef}>
           <ContentWrapper>
-            <View style={IOStyles.alignCenter}>
+            <View style={{ alignItems: "center" }}>
               <H1>OTP Input</H1>
             </View>
             <VSpacer />

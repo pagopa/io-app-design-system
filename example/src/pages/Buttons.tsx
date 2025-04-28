@@ -7,7 +7,6 @@ import {
   IOButtonVariant,
   IOColors,
   IOIcons,
-  IOStyles,
   IOVisualCostants,
   IconButton,
   IconButtonContained,
@@ -78,7 +77,7 @@ export const Buttons = () => (
 
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>IconButton</H2>
     <ComponentViewerBox name="IconButton · Primary variant">
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <IconButton
           accessibilityHint="Tap to trigger test alert"
           accessibilityLabel="Search"
@@ -107,7 +106,7 @@ export const Buttons = () => (
       </View>
     </ComponentViewerBox>
     <ComponentViewerBox name="IconButton · Neutral variant">
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <IconButton
           accessibilityLabel="Search"
           color="neutral"
@@ -144,7 +143,7 @@ export const Buttons = () => (
         colorMode="dark"
         last
       >
-        <View style={IOStyles.row}>
+        <View style={{ flexDirection: "row" }}>
           <IconButton
             color="contrast"
             accessibilityLabel="Search"
@@ -182,7 +181,7 @@ export const Buttons = () => (
         name="IconButton · Neutral variant, persistent color mode"
         last
       >
-        <View style={IOStyles.row}>
+        <View style={{ flexDirection: "row" }}>
           <IconButton
             persistentColorMode
             color="neutral"
@@ -220,7 +219,7 @@ export const Buttons = () => (
     <VSpacer size={40} />
     <H2 style={{ marginBottom: 16, marginTop: 16 }}>IconButtonSolid</H2>
     <ComponentViewerBox name="IconButtonSolid · Primary variant, large">
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <IconButtonSolid
           color="primary"
           accessibilityLabel="Go down"
@@ -247,7 +246,7 @@ export const Buttons = () => (
         colorMode="dark"
         last
       >
-        <View style={IOStyles.row}>
+        <View style={{ flexDirection: "row" }}>
           <IconButtonSolid
             color="contrast"
             accessibilityLabel="Go down"
@@ -274,7 +273,7 @@ export const Buttons = () => (
       IconButtonContained (Icebox)
     </H2>
     <ComponentViewerBox name="IconButtonContained · Primary variant">
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <IconButtonContained
           accessibilityLabel="Help"
           accessibilityHint="Tap to trigger test alert"
@@ -292,7 +291,7 @@ export const Buttons = () => (
       </View>
     </ComponentViewerBox>
     <ComponentViewerBox name="IconButtonContained · Neutral variant">
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <IconButtonContained
           color="neutral"
           accessibilityLabel="Help"
@@ -317,7 +316,7 @@ export const Buttons = () => (
         colorMode="dark"
         last
       >
-        <View style={IOStyles.row}>
+        <View style={{ flexDirection: "row" }}>
           <IconButtonContained
             color="contrast"
             accessibilityLabel="Help"

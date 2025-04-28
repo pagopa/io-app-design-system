@@ -1,6 +1,5 @@
 import {
   HeaderSecondLevel,
-  IOStyles,
   IOThemeDark,
   IOThemeLight,
   ModalBSHeader,
@@ -93,7 +92,7 @@ const AppNavigator = () => {
       <StatusBar
         barStyle={themeType === "dark" ? "light-content" : "dark-content"}
       />
-      <GestureHandlerRootView style={IOStyles.flex}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <Stack.Navigator
           initialRouteName={APP_ROUTES.MAIN}
           screenOptions={{

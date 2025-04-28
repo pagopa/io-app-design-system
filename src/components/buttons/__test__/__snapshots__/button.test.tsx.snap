@@ -391,14 +391,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
     style={
       [
         {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        {
           "height": 24,
           "width": 24,
-        },
-        {
-          "alignItems": "center",
-        },
-        {
-          "justifyContent": "center",
         },
         {
           "transform": [
@@ -515,7 +513,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       [
         {
           "alignItems": "center",
-          "elevation": 0,
           "justifyContent": "center",
         },
         {
@@ -641,7 +638,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
       [
         {
           "alignItems": "center",
-          "elevation": 0,
           "justifyContent": "center",
         },
         {

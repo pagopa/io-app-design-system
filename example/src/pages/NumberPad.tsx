@@ -5,7 +5,6 @@ import {
   H1,
   H5,
   IOColors,
-  IOStyles,
   IOVisualCostants,
   ListItemSwitch,
   NumberPad,
@@ -64,7 +63,7 @@ export const NumberPadScreen = () => {
           value={blueBackground}
           onSwitchValueChange={() => setBlueBackground(v => !v)}
         />
-        <View style={IOStyles.alignCenter}>
+        <View style={{ alignItems: "center" }}>
           <H1>NumberPad + Code Input</H1>
           <H5>{"Value Typed on the NumberPad component"}</H5>
           <VSpacer />

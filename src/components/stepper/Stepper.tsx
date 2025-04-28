@@ -1,12 +1,6 @@
 import * as React from "react";
 import { ColorValue, View } from "react-native";
-import {
-  IOColors,
-  IOSpacer,
-  IOStyles,
-  IOVisualCostants,
-  useIOTheme
-} from "../../core";
+import { IOColors, IOSpacer, IOVisualCostants, useIOTheme } from "../../core";
 
 type StepperProps = {
   steps: number;
@@ -26,11 +20,12 @@ export const Stepper = ({ steps, currentStep }: StepperProps) => {
   return (
     <View style={{ paddingHorizontal: IOVisualCostants.appMarginDefault }}>
       <View
-        style={[
-          IOStyles.flex,
-          IOStyles.rowSpaceBetween,
-          { gap: STEPPER_SPACE }
-        ]}
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          gap: STEPPER_SPACE
+        }}
       >
         {[...Array(steps)].map((_, i) => (
           <View

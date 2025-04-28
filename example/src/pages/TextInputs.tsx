@@ -1,7 +1,6 @@
 import {
   H4,
   H5,
-  IOStyles,
   IOVisualCostants,
   TextInput,
   TextInputPassword,
@@ -108,7 +107,10 @@ const TextInputValidationOnContinue = (
 export const TextInputs = () => (
   <Screen>
     <View
-      style={[IOStyles.flex, { paddingTop: IOVisualCostants.appMarginDefault }]}
+      style={{
+        flex: 1,
+        paddingTop: IOVisualCostants.appMarginDefault
+      }}
     >
       <H4>Base input</H4>
       <InputComponentWrapper placeholder={"Base input"} />
