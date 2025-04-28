@@ -321,6 +321,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -334,9 +335,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -348,7 +346,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -482,6 +479,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -495,9 +493,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -509,7 +504,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -619,6 +613,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#D13333"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -632,9 +627,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               "borderWidth": 0,
             },
             {
-              "color": "#D13333",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -646,7 +638,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         width={24}
       >
         <RNSVGGroup
-          color="#D13333"
           fill={
             {
               "payload": 4278190080,
@@ -707,6 +698,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -720,9 +712,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -734,7 +723,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -880,6 +868,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
+            color="#5517E3"
             focusable={false}
             height={16}
             importantForAccessibility="no-hide-descendants"
@@ -893,9 +882,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                   "borderWidth": 0,
                 },
                 {
-                  "color": "#5517E3",
-                },
-                {
                   "flex": 0,
                   "height": 16,
                   "width": 16,
@@ -907,7 +893,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             width={16}
           >
             <RNSVGGroup
-              color="#5517E3"
               fill={
                 {
                   "payload": 4278190080,
@@ -1864,6 +1849,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -1877,9 +1863,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -1891,7 +1874,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2025,6 +2007,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -2038,9 +2021,6 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -2052,7 +2032,6 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2162,6 +2141,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#D13333"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -2175,9 +2155,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#D13333",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -2189,7 +2166,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         width={24}
       >
         <RNSVGGroup
-          color="#D13333"
           fill={
             {
               "payload": 4278190080,
@@ -2250,6 +2226,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         align="xMidYMid"
         bbHeight={24}
         bbWidth={24}
+        color="#0B3EE3"
         focusable={false}
         height={24}
         importantForAccessibility="no-hide-descendants"
@@ -2263,9 +2240,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
               "borderWidth": 0,
             },
             {
-              "color": "#0B3EE3",
-            },
-            {
               "flex": 0,
               "height": 24,
               "width": 24,
@@ -2277,7 +2251,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         width={24}
       >
         <RNSVGGroup
-          color="#0B3EE3"
           fill={
             {
               "payload": 4278190080,
@@ -2423,6 +2396,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
+            color="#5517E3"
             focusable={false}
             height={16}
             importantForAccessibility="no-hide-descendants"
@@ -2436,9 +2410,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "borderWidth": 0,
                 },
                 {
-                  "color": "#5517E3",
-                },
-                {
                   "flex": 0,
                   "height": 16,
                   "width": 16,
@@ -2450,7 +2421,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             width={16}
           >
             <RNSVGGroup
-              color="#5517E3"
               fill={
                 {
                   "payload": 4278190080,

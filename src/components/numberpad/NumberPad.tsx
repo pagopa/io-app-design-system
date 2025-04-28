@@ -1,12 +1,11 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-import { IONumberPadButtonStyles } from "../../core";
 import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
 import { ContentWrapper } from "../contentWrapper";
 import { IOIconSizeScale, IOIcons } from "../icons";
 import { VStack } from "../stack";
-import { NumberButton } from "./NumberButton";
+import { NumberButton, numberButtonStyles } from "./NumberButton";
 
 type BiometricAuthProps =
   | {
@@ -123,9 +122,7 @@ export const NumberPad = ({
           );
         }
 
-        return (
-          <View key={"emptyElem"} style={IONumberPadButtonStyles.buttonSize} />
-        );
+        return <View key={"emptyElem"} style={numberButtonStyles.buttonSize} />;
       }),
     [
       biometricAccessibilityLabel,
@@ -163,7 +160,7 @@ export const NumberPad = ({
 const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
   <View
     style={[
-      IONumberPadButtonStyles.buttonSize,
+      numberButtonStyles.buttonSize,
       { alignItems: "center", justifyContent: "center" }
     ]}
   >

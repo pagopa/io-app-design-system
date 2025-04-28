@@ -16,9 +16,9 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
+  IOIcons
 } from "../icons";
 
 export type IconButton = WithTestID<{
@@ -39,9 +39,6 @@ type ColorStates = {
     disabled: string;
   };
 };
-
-const AnimatedIconClassComponent =
-  Animated.createAnimatedComponent(IconClassComponent);
 
 export const IconButton = ({
   color = "primary",
@@ -132,7 +129,7 @@ export const IconButton = ({
         ]}
       >
         {!disabled ? (
-          <AnimatedIconClassComponent
+          <AnimatedIconWithColorTransition
             allowFontScaling
             name={icon}
             size={iconSize}

@@ -1,12 +1,11 @@
 import {
   AlertEdgeToEdgeProps,
   Body,
-  ButtonOutline,
-  ButtonSolid,
   H3,
   H6,
   HeaderSecondLevel,
   HStack,
+  IOButton,
   IOVisualCostants,
   useIOTheme,
   VSpacer,
@@ -133,13 +132,15 @@ export const HeaderSecondLevelScreen = () => {
         <VStack space={4} key={variant}>
           <H6 style={{ textTransform: "capitalize" }}>{variant}</H6>
           <HStack space={4}>
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/ Action"
               onPress={() =>
                 handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
               }
             />
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/o Action"
               onPress={() =>
                 handleShowAlert(
@@ -149,7 +150,7 @@ export const HeaderSecondLevelScreen = () => {
               }
             />
           </HStack>
-          <ButtonOutline label="Hide" onPress={removeAlert} />
+          <IOButton variant="outline" label="Hide" onPress={removeAlert} />
         </VStack>
       ))}
       {[...Array(50)].map((_el, i) => (

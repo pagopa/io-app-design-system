@@ -22,9 +22,9 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
+  IOIcons
 } from "../icons";
 import { IOText, buttonTextFontSize } from "../typography";
 
@@ -46,12 +46,12 @@ export type ButtonOutline = WithTestID<
 >;
 
 type ColorStates = {
-  foreground: {
+  background: {
     default: string;
     pressed: string;
     disabled: string;
   };
-  background: {
+  foreground: {
     default: string;
     pressed: string;
     disabled: string;
@@ -70,6 +70,9 @@ const IOButtonStylesLocal = StyleSheet.create({
   }
 });
 
+/**
+ * @deprecated Use `Button` with variant `outline` instead
+ */
 export const ButtonOutline = forwardRef<View, ButtonOutline>(
   (
     {
@@ -100,28 +103,28 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     > = {
       // Primary button
       primary: {
-        foreground: {
-          default: IOColors[theme["interactiveElem-default"]],
-          pressed: IOColors[theme["interactiveElem-pressed"]],
-          disabled: IOColors[theme["interactiveOutline-disabled"]]
-        },
         background: {
           default: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0),
           pressed: hexToRgba(IOColors[theme["interactiveElem-pressed"]], 0.1),
           disabled: "transparent"
+        },
+        foreground: {
+          default: IOColors[theme["interactiveElem-default"]],
+          pressed: IOColors[theme["interactiveElem-pressed"]],
+          disabled: IOColors[theme["interactiveOutline-disabled"]]
         }
       },
       // Contrast button
       contrast: {
-        foreground: {
-          default: IOColors.white,
-          pressed: IOColors.white,
-          disabled: IOColors["blueIO-200"]
-        },
         background: {
           default: hexToRgba(IOColors["blueIO-600"], 0),
           pressed: hexToRgba(IOColors["blueIO-600"], 0.5),
           disabled: "transparent"
+        },
+        foreground: {
+          default: IOColors.white,
+          pressed: IOColors.white,
+          disabled: IOColors["blueIO-200"]
         }
       }
     };
@@ -176,27 +179,24 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
       )
     }));
 
-    const AnimatedIconClassComponent =
-      Animated.createAnimatedComponent(IconClassComponent);
-
     return (
       <Pressable
         ref={ref}
+        accessible={true}
         accessibilityLabel={accessibilityLabel || label}
         accessibilityHint={accessibilityHint}
         accessibilityRole={"button"}
         accessibilityState={{ disabled: disabled || false }}
-        testID={testID}
         onPress={onPress}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        accessible={true}
         disabled={disabled}
         style={
           fullWidth
             ? { flexShrink: 0, alignSelf: "stretch" }
             : { flexShrink: 1, alignSelf: "auto" }
         }
+        testID={testID}
       >
         <Animated.View
           style={[
@@ -224,7 +224,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
         >
           {icon &&
             (!disabled ? (
-              <AnimatedIconClassComponent
+              <AnimatedIconWithColorTransition
                 allowFontScaling
                 name={icon}
                 animatedProps={pressedColorIconAnimationStyle}
@@ -249,7 +249,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
             numberOfLines={1}
             ellipsizeMode="tail"
             style={[
-              IOButtonStyles.label,
+              { alignSelf: "center" },
               disabled
                 ? { color: mapColorStates[color]?.foreground?.disabled }
                 : { ...pressedColorLabelAnimationStyle }

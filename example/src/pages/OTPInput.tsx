@@ -1,10 +1,9 @@
 import {
   BodySmall,
-  ButtonOutline,
-  ButtonSolid,
   ContentWrapper,
   H1,
   H5,
+  IOButton,
   OTPInput,
   VSpacer
 } from "@pagopa/io-app-design-system";
@@ -53,7 +52,11 @@ const OTPWrapper = ({
           autoFocus={autoFocus}
         />
         <VSpacer />
-        <ButtonSolid onPress={() => setValue("")} label={"Pulisci valore"} />
+        <IOButton
+          variant="solid"
+          onPress={() => setValue("")}
+          label={"Pulisci valore"}
+        />
       </>
     ),
     [value, onValueChange, secret, onValidate, autoFocus]
@@ -83,8 +86,6 @@ export const OTPInputScreen = () => {
   const autofocusableOTPViewRef = React.useRef<View>(null);
   const [showAutofocusableOTP, setShowAutofocusableOTP] = useState(false);
   const headerHeight = useHeaderHeight();
-
-  const ToggleButton = showAutofocusableOTP ? ButtonSolid : ButtonOutline;
 
   return (
     <View
@@ -122,7 +123,8 @@ export const OTPInputScreen = () => {
             <VSpacer />
             <H5>Autofocus</H5>
             <VSpacer />
-            <ToggleButton
+            <IOButton
+              variant={showAutofocusableOTP ? "solid" : "outline"}
               onPress={() => {
                 setShowAutofocusableOTP(!showAutofocusableOTP);
                 setTimeout(() => {

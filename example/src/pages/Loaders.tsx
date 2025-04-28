@@ -39,9 +39,9 @@ export const Loaders = () => {
               }}
             >
               <VStack space={16}>
-                <LoadingSpinner color="white" />
-                <LoadingSpinner color="white" size={48} />
-                <LoadingSpinner color="white" size={76} />
+                <LoadingSpinner color={IOColors.white} />
+                <LoadingSpinner color={IOColors.white} size={48} />
+                <LoadingSpinner color={IOColors.white} size={76} />
               </VStack>
             </View>
           </VStack>

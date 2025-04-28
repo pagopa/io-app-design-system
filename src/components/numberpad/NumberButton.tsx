@@ -1,18 +1,12 @@
 import React, { memo, useCallback, useMemo } from "react";
-import { Pressable } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import {
-  hexToRgba,
-  IOColors,
-  IONumberPadButtonStyles,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core";
+import { hexToRgba, IOColors, useIONewTypeface, useIOTheme } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { IOText } from "../typography";
 
@@ -40,6 +34,8 @@ type ColorMapVariant = {
   pressed: string;
   foreground: IOColors;
 };
+
+const numberPadBtnSize: number = 56;
 
 /**
  * Based on a `Pressable` element, it displays a number button with animations on press In and Out.
@@ -98,9 +94,8 @@ export const NumberButton = memo(
       >
         <Animated.View
           style={[
-            IONumberPadButtonStyles.button,
-            IONumberPadButtonStyles.circularShape,
-            IONumberPadButtonStyles.buttonSize,
+            numberButtonStyles.circularButton,
+            numberButtonStyles.buttonSize,
             pressedAnimationStyle,
             !reducedMotion && scaleAnimatedStyle
           ]}
@@ -122,3 +117,15 @@ export const NumberButton = memo(
     );
   }
 );
+
+export const numberButtonStyles = StyleSheet.create({
+  circularButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: numberPadBtnSize / 2
+  },
+  buttonSize: {
+    width: numberPadBtnSize,
+    height: numberPadBtnSize
+  }
+});

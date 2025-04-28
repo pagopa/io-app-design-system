@@ -97,6 +97,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
             align="xMidYMid"
             bbHeight={24}
             bbWidth={24}
+            color="#0B3EE3"
             focusable={false}
             height={24}
             importantForAccessibility="no-hide-descendants"
@@ -110,9 +111,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                   "borderWidth": 0,
                 },
                 {
-                  "color": "#0B3EE3",
-                },
-                {
                   "flex": 0,
                   "height": 24,
                   "width": 24,
@@ -124,7 +122,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
             width={24}
           >
             <RNSVGGroup
-              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,
@@ -623,6 +620,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
             align="xMidYMid"
             bbHeight={24}
             bbWidth={24}
+            color="#0B3EE3"
             focusable={false}
             height={24}
             importantForAccessibility="no-hide-descendants"
@@ -636,9 +634,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                   "borderWidth": 0,
                 },
                 {
-                  "color": "#0B3EE3",
-                },
-                {
                   "flex": 0,
                   "height": 24,
                   "width": 24,
@@ -650,7 +645,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
             width={24}
           >
             <RNSVGGroup
-              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,
@@ -1080,6 +1074,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             align="xMidYMid"
             bbHeight={24}
             bbWidth={24}
+            color="#0B3EE3"
             focusable={false}
             height={24}
             importantForAccessibility="no-hide-descendants"
@@ -1093,9 +1088,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
                   "borderWidth": 0,
                 },
                 {
-                  "color": "#0B3EE3",
-                },
-                {
                   "flex": 0,
                   "height": 24,
                   "width": 24,
@@ -1107,7 +1099,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             width={24}
           >
             <RNSVGGroup
-              color="#0B3EE3"
               fill={
                 {
                   "payload": 4278190080,

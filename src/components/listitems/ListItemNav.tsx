@@ -229,7 +229,7 @@ export const ListItemNav = ({
           <View style={{ flexGrow: 1, flexShrink: 1 }}>
             {listItemNavContent}
           </View>
-          {loading && <LoadingSpinner color={interactiveColor} />}
+          {loading && <LoadingSpinner color={IOColors[interactiveColor]} />}
           {!loading && !hideChevron && (
             <Icon
               allowFontScaling
