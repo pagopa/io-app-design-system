@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 });
 
 type AlertProps = WithTestID<{
-  variant: "error" | "warning" | "info";
+  variant: "error" | "warning" | "info" | "success";
   content: string;
   viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
@@ -85,6 +85,11 @@ const mapVariantStates: Record<
     icon: "infoFilled",
     background: "info-100",
     foreground: "info-850"
+  },
+  success: {
+    icon: "success",
+    background: "success-100",
+    foreground: "success-850"
   }
 };
 
