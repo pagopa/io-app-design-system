@@ -1,10 +1,8 @@
-import React, { forwardRef, useCallback, useState } from "react";
+import React, { forwardRef } from "react";
 import {
   ColorValue,
   GestureResponderEvent,
-  NativeSyntheticEvent,
   Pressable,
-  TextLayoutEventData,
   View,
   ViewStyle
 } from "react-native";
@@ -125,15 +123,6 @@ export const Alert = forwardRef<View, AlertType>(
       useIOFontDynamicScale();
     const { themeType } = useIOThemeContext();
 
-    const [isMultiline, setIsMultiline] = useState(false);
-
-    const onTextLayout = useCallback(
-      (event: NativeSyntheticEvent<TextLayoutEventData>) => {
-        setIsMultiline(event.nativeEvent.lines.length > 1);
-      },
-      []
-    );
-
     const paddingDefaultVariant: ViewStyle = {
       padding,
       borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
@@ -149,7 +138,7 @@ export const Alert = forwardRef<View, AlertType>(
       <HStack
         space={IOVisualCostants.iconMargin as IOSpacer}
         allowScaleSpacing
-        style={{ alignItems: isMultiline ? "flex-start" : "center" }}
+        style={{ alignItems: "center" }}
       >
         <Icon
           allowFontScaling
@@ -162,20 +151,17 @@ export const Alert = forwardRef<View, AlertType>(
       have to put these magic numbers after manual adjustments.
       Tested on both Android and iOS. */}
         <View
-          style={[
-            isMultiline && {
-              marginTop: -6 * dynamicFontScale,
-              marginBottom: -4 * dynamicFontScale
-            },
-            { flex: 1 }
-          ]}
+          style={{
+            marginTop: -4 * dynamicFontScale,
+            marginBottom: -4 * dynamicFontScale,
+            flex: 1
+          }}
         >
           <VStack space={8} allowScaleSpacing>
             <Body
               color={mapVariantStates[variant].foreground}
               weight={"Regular"}
               accessibilityRole="text"
-              onTextLayout={onTextLayout}
             >
               {content}
             </Body>
