@@ -59,7 +59,7 @@ export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
  */
 export type TypographicStyleAsLinkProps =
   | {
-      color?: never;
+      color?: IOColors;
       asLink: true;
       onPress: (event: GestureResponderEvent) => void;
       accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
