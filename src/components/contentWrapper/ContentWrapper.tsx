@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import { View, ViewProps, ViewStyle } from "react-native";
 import { WithTestID } from "src/utils/types";
 import type { IOAppMargin } from "../../core";
@@ -20,21 +20,27 @@ type IOContentWrapperProps = WithTestID<
 depending on the size value
 @param {IOContentWrapper} margin
  */
-export const ContentWrapper = ({
-  margin = IOVisualCostants.appMarginDefault,
-  style,
-  children,
-  testID,
-  ...rest
-}: IOContentWrapperProps) => (
-  <View
-    testID={testID}
-    style={{
-      paddingHorizontal: margin,
-      ...style
-    }}
-    {...rest}
-  >
-    {children}
-  </View>
+export const ContentWrapper = forwardRef<View, IOContentWrapperProps>(
+  (
+    {
+      margin = IOVisualCostants.appMarginDefault,
+      style,
+      children,
+      testID,
+      ...rest
+    }: IOContentWrapperProps,
+    ref
+  ) => (
+    <View
+      testID={testID}
+      style={{
+        paddingHorizontal: margin,
+        ...style
+      }}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </View>
+  )
 );
