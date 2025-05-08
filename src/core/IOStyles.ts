@@ -19,8 +19,10 @@ interface IOVisualCostants {
   // Header
   headerHeight: number;
   // Dimensions
+  avatarSizeXSmall: number;
   avatarSizeSmall: number;
   avatarSizeMedium: number;
+  avatarRadiusSizeXSmall: number;
   avatarRadiusSizeSmall: number;
   avatarRadiusSizeMedium: number;
   iconContainedSizeDefault: number;
@@ -32,8 +34,10 @@ interface IOVisualCostants {
 export const IOVisualCostants: IOVisualCostants = {
   appMarginDefault: 24,
   headerHeight: 56,
+  avatarSizeXSmall: 24,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
+  avatarRadiusSizeXSmall: 4,
   avatarRadiusSizeSmall: 8,
   avatarRadiusSizeMedium: 12,
   iconContainedSizeDefault: 44,

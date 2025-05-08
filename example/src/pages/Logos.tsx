@@ -125,6 +125,22 @@ const organizationsURIs = [
 
 const renderAvatar = () => (
   <>
+    <ComponentViewerBox name={`Avatar, xsmall size`}>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={styles.horizontalScroll}
+      >
+        <HStack space={8}>
+          {organizationsURIs.map(({ imageSource }, i) => (
+            <React.Fragment key={i}>
+              <Avatar size="xsmall" logoUri={imageSource} />
+              {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
+            </React.Fragment>
+          ))}
+        </HStack>
+      </ScrollView>
+    </ComponentViewerBox>
     <ComponentViewerBox name={`Avatar, small size`}>
       <ScrollView
         horizontal={true}

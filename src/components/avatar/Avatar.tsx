@@ -12,21 +12,29 @@ import { addCacheTimestampToUri } from "../../utils/image";
 import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";
 
 type Avatar = {
-  size: "small" | "medium";
+  size: "xsmall" | "small" | "medium";
   logoUri?: ImageSourcePropType;
 };
 
-const internalSpaceDefaultSize: number = 6;
+const internalSpaceDefaultSize: number = 3;
+const internalSpaceSmallSize: number = 6;
 const internalSpaceLargeSize: number = 9;
-const internalSpacePlaceholderDefaultSize: IOSpacingScale = 12;
+const internalSpacePlaceholderDefaultSize: IOSpacingScale = 6;
+const internalSpacePlaceholderSmallSize: IOSpacingScale = 12;
 const internalSpacePlaceholderLargeSize: IOSpacingScale = 16;
 const avatarBorderLightMode = hexToRgba(IOColors.black, 0.1);
 
 const dimensionsMap = {
-  small: {
-    size: IOVisualCostants.avatarSizeSmall,
+  xsmall: {
+    size: IOVisualCostants.avatarSizeXSmall,
     internalSpace: internalSpaceDefaultSize,
     internalSpacePlaceholder: internalSpacePlaceholderDefaultSize,
+    radius: IOVisualCostants.avatarRadiusSizeXSmall
+  },
+  small: {
+    size: IOVisualCostants.avatarSizeSmall,
+    internalSpace: internalSpaceSmallSize,
+    internalSpacePlaceholder: internalSpacePlaceholderSmallSize,
     radius: IOVisualCostants.avatarRadiusSizeSmall
   },
   medium: {
@@ -59,8 +67,7 @@ const styles = StyleSheet.create({
 /**
  * Avatar component is used to display the logo of an organization. It accepts the following props:
  * - `logoUri`: the uri of the image to display. If not provided, a placeholder icon will be displayed. It can be a single uri or an array of uris, in which case the first one that is available will be used.
- * - `shape`: the shape of the avatar, can be "circle" or "square"
- * - `size`: the size of the avatar, can be "small" or "medium"
+ * - `size`: the size of the avatar, can be "xsmall", "small" or "medium"
  * @param AvatarProps
  * @returns
  */
