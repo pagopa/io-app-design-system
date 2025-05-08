@@ -16,7 +16,9 @@ const meta = {
   tags: ["autodocs"],
   decorators: [withMaxWitdth],
   args: {
-    pictogramName: "cie"
+    pictogramProps: {
+      name: "cie"
+    }
   }
 } satisfies Meta<typeof FeatureInfo>;
 

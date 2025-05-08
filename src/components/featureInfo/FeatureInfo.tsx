@@ -6,16 +6,17 @@ import {
   IOIconSizeScale,
   IOIcons,
   IOPictogramSizeScale,
-  IOPictograms,
+  IOPictogramsProps,
   Icon,
   Pictogram,
   VStack
 } from "../../components";
-import { useIOTheme } from "../../core";
+import { IOColors, useIOTheme } from "../../core";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting
   body?: string | ReactNode;
+  variant?: "neutral" | "contrast";
 };
 
 type FeatureInfoActionProps =
@@ -31,8 +32,11 @@ type FeatureInfoActionProps =
     };
 
 type FeatureInfoGraphicProps =
-  | { iconName?: never; pictogramName: IOPictograms }
-  | { iconName: IOIcons; pictogramName?: never };
+  | {
+      iconName?: never;
+      pictogramProps: Pick<IOPictogramsProps, "name" | "pictogramStyle">;
+    }
+  | { iconName: IOIcons; pictogramProps?: never };
 
 type FeatureInfoProps = FeatureInfoGraphicProps &
   PartialFeatureInfo &
@@ -41,25 +45,46 @@ type FeatureInfoProps = FeatureInfoGraphicProps &
 const DEFAULT_ICON_SIZE: IOIconSizeScale = 24;
 const DEFAULT_PICTOGRAM_SIZE: IOPictogramSizeScale = 48;
 
-const renderNode = (body: FeatureInfoProps["body"]) => {
-  if (typeof body === "string") {
-    return <BodySmall testID="infoScreenBody">{body}</BodySmall>;
-  }
-
-  return body;
-};
-
 export const FeatureInfo = ({
-  iconName,
-  pictogramName,
+  action,
   body,
-  action
+  iconName,
+  pictogramProps,
+  variant = "neutral"
 }: FeatureInfoProps) => {
   const theme = useIOTheme();
 
   /* Already defined in the `BodySmall` component as a fallback value,
   but I keep it here to avoid possible future inconsistencies. */
   const accessibilityRole = action?.accessibilityRole ?? "link";
+
+  const variantMap: Record<
+    NonNullable<FeatureInfoProps["variant"]>,
+    { action: IOColors; content: IOColors }
+  > = {
+    contrast: {
+      action: "white",
+      content: "white"
+    },
+    neutral: {
+      action: theme["interactiveElem-default"],
+      content: theme["textBody-tertiary"]
+    }
+  };
+
+  const { action: actionColor, content: contentColor } = variantMap[variant];
+
+  const FeatureInfoContent = () => {
+    if (typeof body === "string") {
+      return (
+        <BodySmall color={contentColor} testID="infoScreenBody">
+          {body}
+        </BodySmall>
+      );
+    }
+
+    return <>{body}</>;
+  };
 
   return (
     <HStack style={{ alignItems: "center" }} space={24}>
@@ -71,20 +96,21 @@ export const FeatureInfo = ({
           color={theme["icon-decorative"]}
         />
       )}
-      {pictogramName && (
+      {pictogramProps && (
         <Pictogram
+          {...pictogramProps}
           allowFontScaling
-          name={pictogramName}
           size={DEFAULT_PICTOGRAM_SIZE}
         />
       )}
       <VStack allowScaleSpacing space={4} style={{ flexShrink: 1 }}>
-        {renderNode(body)}
+        <FeatureInfoContent />
         {action && (
           <BodySmall
             asLink
             weight="Semibold"
             onPress={action.onPress}
+            color={actionColor}
             accessible
             importantForAccessibility={"yes"}
             accessibilityElementsHidden={false}
