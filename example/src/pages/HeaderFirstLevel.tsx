@@ -9,6 +9,7 @@ import {
   IOVisualCostants,
   ListItemHeader,
   ListItemRadio,
+  ListItemSwitch,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
@@ -56,6 +57,7 @@ export const HeaderFirstLevelScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const [actionsSize, setActionsSize] = useState(2);
+  const [variant, setVariant] = useState<"primary" | "contrast">("primary");
 
   const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
@@ -83,10 +85,11 @@ export const HeaderFirstLevelScreen = () => {
           ignoreSafeAreaMargin={alert !== undefined}
           title={"Portafoglio"}
           actions={actionsConfiguration[actionsSize]}
+          variant={variant}
         />
       )
     });
-  }, [navigation, alert, actionsSize]);
+  }, [navigation, alert, actionsSize, variant]);
 
   return (
     <ScrollView
@@ -116,6 +119,14 @@ export const HeaderFirstLevelScreen = () => {
         value="Three actions"
         selected={actionsSize === 3}
         onValueChange={() => setActionsSize(3)}
+      />
+      <VSpacer />
+      <ListItemSwitch
+        label="Enable contrast variant"
+        value={variant === "contrast"}
+        onSwitchValueChange={() => {
+          setVariant(variant === "primary" ? "contrast" : "primary");
+        }}
       />
       <VSpacer />
       <IOButton

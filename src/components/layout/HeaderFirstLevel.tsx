@@ -32,12 +32,15 @@ type HeaderActionsProp =
   | readonly [HeaderActionProps, HeaderActionProps] // Two actions
   | readonly [HeaderActionProps, HeaderActionProps, HeaderActionProps]; // Three actions
 
+type Variant = "primary" | "contrast";
+
 export type HeaderFirstLevel = WithTestID<{
   title: string;
   actions: HeaderActionsProp;
   animatedRef?: AnimatedRef<Animated.ScrollView>;
   animatedFlatListRef?: AnimatedRef<Animated.FlatList<any>>;
   ignoreSafeAreaMargin?: boolean;
+  variant?: Variant;
 }>;
 
 const styles = StyleSheet.create({
@@ -65,12 +68,14 @@ export const HeaderFirstLevel = ({
   actions = [],
   ignoreSafeAreaMargin = false,
   animatedRef,
+  variant = "primary",
   animatedFlatListRef
 }: HeaderFirstLevel) => {
   const titleRef = createRef<View>();
   const insets = useSafeAreaInsets();
   const theme = useIOTheme();
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
+  const isPrimary = variant === 'primary';
 
   useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
@@ -83,7 +88,7 @@ export const HeaderFirstLevel = ({
   /* We show the divider only when the header is scrolled down */
   const offset = useScrollViewOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
-      (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
+    (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
   );
 
   useEffect(() => {
@@ -105,14 +110,18 @@ export const HeaderFirstLevel = ({
   return (
     <Animated.View
       style={[
-        { backgroundColor: IOColors[theme["appBackground-primary"]] },
+        {
+          backgroundColor: isPrimary
+            ? IOColors[theme["appBackground-primary"]]
+            : IOColors[theme["appBackground-accent"]]
+        },
         animatedStyle
       ]}
       accessibilityRole="header"
       testID={testID}
     >
       {/* Divider */}
-      {(animatedRef || animatedFlatListRef) && (
+      {((animatedRef || animatedFlatListRef) && isPrimary) && (
         <Animated.View
           style={[
             {
@@ -130,7 +139,7 @@ export const HeaderFirstLevel = ({
             weight="Bold"
             style={{ flexShrink: 1 }}
             numberOfLines={1}
-            color={theme["textHeading-default"]}
+            color={isPrimary ? theme["textHeading-default"] : theme["textHeading-constrast"]}
             maxFontSizeMultiplier={1.25}
           >
             {title}
@@ -141,7 +150,7 @@ export const HeaderFirstLevel = ({
             <IconButton
               key={`header-first-level-action-${index}`}
               {...action}
-              color={"primary"}
+              color={variant}
             />
           ))}
         </HStack>
