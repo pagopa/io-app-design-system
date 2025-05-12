@@ -206,8 +206,10 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconAddDocument from './svg/IconAddDocument';
 
 export const IOIcons = {
+  addDocument: IconAddDocument,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   cieLetter: IconCieLetter,
