@@ -2,7 +2,7 @@ import React from "react";
 import { Svg, Path } from "react-native-svg";
 import { SVGIconProps } from "../types";
 
-const IconAddDocument = ({ size, style, ...props }: SVGIconProps) => (
+const IconDocumentAdd = ({ size, style, ...props }: SVGIconProps) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     <Path
       d="M5.06462 2.5C4.77099 2.5 4.53295 2.73804 4.53295 3.03167V6.53332H1.03167C0.738036 6.53332 0.5 6.77136 0.5 7.06499C0.5 7.35862 0.738036 7.59666 1.03167 7.59666L4.53295 7.59666V11.0986C4.53295 11.3922 4.77099 11.6303 5.06462 11.6303C5.35825 11.6303 5.59629 11.3922 5.59629 11.0986V7.59666L9.0979 7.59666C9.39153 7.59666 9.62957 7.35862 9.62957 7.06499C9.62957 6.77136 9.39153 6.53332 9.0979 6.53332L5.59629 6.53332V3.03167C5.59629 2.73804 5.35825 2.5 5.06462 2.5Z"
@@ -22,4 +22,4 @@ const IconAddDocument = ({ size, style, ...props }: SVGIconProps) => (
 
 );
 
-export default IconAddDocument;
+export default IconDocumentAdd;

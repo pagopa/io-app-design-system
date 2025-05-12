@@ -206,10 +206,9 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconAddDocument from './svg/IconAddDocument';
+import IconDocumentAdd from './svg/IconDocumentAdd';
 
 export const IOIcons = {
-  addDocument: IconAddDocument,
   spid: IconSpid,
   cie: IconCie /* io-cie */,
   cieLetter: IconCieLetter,
@@ -254,6 +253,7 @@ export const IOIcons = {
   security: IconSecurity,
   option: IconOption,
   key: IconKey,
+  documentAdd: IconDocumentAdd,
   docGiacenza: IconDocGiacenza,
   docPaymentTitle: IconDocPaymentTitle,
   docPaymentCode: IconDocPaymentCode,
@@ -532,11 +532,12 @@ export const AnimatedIconWithColorTransition = Animated.createAnimatedComponent(
 */
 
 /* New icons */
-const { sparkles, profileRegistered } = IOIcons;
+const { sparkles, profileRegistered, documentAdd } = IOIcons;
 
 export const IOIconsNew = {
   sparkles,
-  profileRegistered
+  profileRegistered,
+  documentAdd
 };
 
 /* Navigation */
