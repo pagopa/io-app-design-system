@@ -75,7 +75,7 @@ export const HeaderFirstLevel = ({
   const insets = useSafeAreaInsets();
   const theme = useIOTheme();
   const paddingTop = useSharedValue(ignoreSafeAreaMargin ? 0 : insets.top);
-  const isPrimary = variant === 'primary';
+  const isPrimary = variant === "primary";
 
   useLayoutEffect(() => {
     const reactNode = findNodeHandle(titleRef.current);
@@ -88,7 +88,7 @@ export const HeaderFirstLevel = ({
   /* We show the divider only when the header is scrolled down */
   const offset = useScrollViewOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
-    (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
+      (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
   );
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export const HeaderFirstLevel = ({
       testID={testID}
     >
       {/* Divider */}
-      {((animatedRef || animatedFlatListRef) && isPrimary) && (
+      {(animatedRef || animatedFlatListRef) && isPrimary && (
         <Animated.View
           style={[
             {
@@ -139,7 +139,11 @@ export const HeaderFirstLevel = ({
             weight="Bold"
             style={{ flexShrink: 1 }}
             numberOfLines={1}
-            color={isPrimary ? theme["textHeading-default"] : theme["textHeading-constrast"]}
+            color={
+              isPrimary
+                ? theme["textHeading-default"]
+                : theme["textHeading-constrast"]
+            }
             maxFontSizeMultiplier={1.25}
           >
             {title}

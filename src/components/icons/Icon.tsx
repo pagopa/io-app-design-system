@@ -206,7 +206,7 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconDocumentAdd from './svg/IconDocumentAdd';
+import IconDocumentAdd from "./svg/IconDocumentAdd";
 
 export const IOIcons = {
   spid: IconSpid,
