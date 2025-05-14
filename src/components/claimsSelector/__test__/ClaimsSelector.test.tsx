@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import * as TestRenderer from "react-test-renderer";
 import { ClaimsSelector } from "../ClaimsSelector";
 
