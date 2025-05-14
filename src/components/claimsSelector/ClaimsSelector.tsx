@@ -109,7 +109,18 @@ export const ClaimsSelector = ({
             />
           ) : (
             <ListItemInfo
-              value={type === "image" ? <ImageClaim uri={value} /> : value}
+              value={
+                type === "image" ? (
+                  <Image
+                    source={{ uri: value }}
+                    style={styles.imageClaim}
+                    resizeMode="contain"
+                    accessibilityIgnoresInvertColors
+                  />
+                ) : (
+                  value
+                )
+              }
               label={description}
               accessibilityRole={type}
               reversed
@@ -169,15 +180,6 @@ export const ClaimsSelector = ({
     </View>
   );
 };
-
-const ImageClaim = ({ uri }: { uri: string }) => (
-  <Image
-    source={{ uri }}
-    style={styles.imageClaim}
-    resizeMode="contain"
-    accessibilityIgnoresInvertColors
-  />
-);
 
 const styles = StyleSheet.create({
   accordionWrapper: {
