@@ -774,7 +774,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
                 style={
                   {
                     "aspectRatio": 0.75,
-                    "width": 180,
+                    "width": 160,
                   }
                 }
               />
