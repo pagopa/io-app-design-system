@@ -36,7 +36,11 @@ import {
   useIONewTypeface,
   useIOTheme
 } from "../../core";
-import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
+import {
+  IOFontSize,
+  IOMaxFontSizeMultiplier,
+  makeFontStyleObject
+} from "../../utils/fonts";
 import { Icon, IOIconSizeScale } from "../icons";
 import {
   buttonTextFontSize,
@@ -46,6 +50,7 @@ import {
 
 /* Component visual attributes */
 const inputPaddingHorizontal: IOSpacingScale = 12;
+const inputPaddingVertical: IOSpacingScale = 8;
 const inputPaddingClearButton: IOSpacingScale = 8;
 const inputRadius: number = 8;
 const iconMargin: IOSpacingScale = 8;
@@ -54,8 +59,6 @@ const iconCloseSize: IOIconSizeScale = 24;
 const inputFontSizePlaceholder: IOFontSize = 14;
 const cancelButtonMargin: IOSpacingScale = 16;
 const inputTransitionDuration: number = 250;
-const inputHeightIOS: number = 36;
-const inputHeightAndroid: number = 42;
 
 type SearchInputPressableProps = {
   onPress: (event: GestureResponderEvent) => void;
@@ -260,6 +263,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             returnKeyType="search"
             accessibilityRole={"search"}
             accessibilityLabel={accessibilityLabel}
+            numberOfLines={1}
             style={[
               {
                 color: IOColors[theme["textBody-default"]],
@@ -284,7 +288,9 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
             onChangeText={handleChangeText}
             value={value}
             autoFocus={autoFocus}
+            maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
           />
+
           <AnimatedPressable
             style={[styles.clearButton, clearButtonAnimatedStyle]}
             onPress={handleClear}
@@ -358,10 +364,11 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   textInputIOS: {
-    height: inputHeightIOS
+    paddingVertical: inputPaddingVertical
   },
   textInputAndroid: {
-    height: inputHeightAndroid
+    textAlignVertical: "center",
+    overflow: "hidden"
   },
   iconContainer: {
     marginRight: iconMargin
@@ -372,6 +379,7 @@ const styles = StyleSheet.create({
     paddingLeft: cancelButtonMargin
   },
   clearButton: {
+    transformOrigin: "center",
     marginLeft: iconMargin
   }
 });
