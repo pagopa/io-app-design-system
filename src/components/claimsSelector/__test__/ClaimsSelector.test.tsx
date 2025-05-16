@@ -11,7 +11,7 @@ describe("ClaimsSelector", () => {
         items={[
           {
             id: "name",
-            title: "Mario Rossi",
+            value: "Mario Rossi",
             description: "Nome e cognome"
           }
         ]}
@@ -27,7 +27,7 @@ describe("ClaimsSelector", () => {
         items={[
           {
             id: "name",
-            title: "Mario Rossi",
+            value: "Mario Rossi",
             description: "Nome e cognome"
           }
         ]}
@@ -44,8 +44,26 @@ describe("ClaimsSelector", () => {
         items={[
           {
             id: "name",
-            title: "Mario Rossi",
+            value: "Mario Rossi",
             description: "Nome e cognome"
+          }
+        ]}
+      />
+    );
+    expect(claimsSelector).toMatchSnapshot();
+  });
+
+  it("ClaimsSelector Snapshot (custom component)", () => {
+    const claimsSelector = TestRenderer.create(
+      <ClaimsSelector
+        title="Patente di guida"
+        selectionEnabled={false}
+        items={[
+          {
+            id: "name",
+            value: "data:image/png;base64,iVBORw0KGgoAAAANSUh",
+            description: "Nome e cognome",
+            type: "image"
           }
         ]}
       />

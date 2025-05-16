@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
@@ -54,8 +54,9 @@ type Props = {
 
 type Item = {
   id: string;
-  title: string;
+  value: string;
   description: string;
+  type?: "text" | "image";
 };
 
 export const ClaimsSelector = ({
@@ -88,25 +89,47 @@ export const ClaimsSelector = ({
     onToggle?.(!expanded);
   };
 
-  const body = items.map((item, index) => (
-    <Fragment key={item.id}>
-      {index !== 0 && <Divider />}
-      {selectionEnabled ? (
-        <ListItemCheckbox
-          value={item.title}
-          description={item.description}
-          selected={selectedItemIds?.includes(item.id)}
-          onValueChange={
-            onItemSelected
-              ? selected => onItemSelected(item, selected)
-              : undefined
-          }
-        />
-      ) : (
-        <ListItemInfo reversed value={item.title} label={item.description} />
-      )}
-    </Fragment>
-  ));
+  const renderClaimItem = (item: Item, index: number) => {
+    const { id, value, description, type = "text" } = item;
+    return (
+      <Fragment key={id}>
+        {index !== 0 && <Divider />}
+        {
+          // We do not support checkbox selection for images, as it is not needed now
+          selectionEnabled && type === "text" ? (
+            <ListItemCheckbox
+              value={value}
+              description={description}
+              selected={selectedItemIds?.includes(id)}
+              onValueChange={
+                onItemSelected
+                  ? selected => onItemSelected(item, selected)
+                  : undefined
+              }
+            />
+          ) : (
+            <ListItemInfo
+              value={
+                type === "image" ? (
+                  <Image
+                    source={{ uri: value }}
+                    style={styles.imageClaim}
+                    resizeMode="contain"
+                    accessibilityIgnoresInvertColors
+                  />
+                ) : (
+                  value
+                )
+              }
+              label={description}
+              accessibilityRole={type}
+              reversed
+            />
+          )
+        }
+      </Fragment>
+    );
+  };
 
   return (
     <View
@@ -141,7 +164,7 @@ export const ClaimsSelector = ({
           style={[bodyInnerStyle, styles.bodyInnerContainer]}
           onLayout={onBodyLayout}
         >
-          {body}
+          {items.map(renderClaimItem)}
         </View>
       </Animated.View>
 
@@ -181,5 +204,9 @@ const styles = StyleSheet.create({
     // Avoid gradient overlaps with border radius
     left: accordionBodySpacing,
     right: accordionBodySpacing
+  },
+  imageClaim: {
+    width: 160,
+    aspectRatio: 3 / 4
   }
 });
