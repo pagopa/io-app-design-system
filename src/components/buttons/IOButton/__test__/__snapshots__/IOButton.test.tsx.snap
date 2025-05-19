@@ -120,6 +120,9 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
                 "textAlign": "auto",
               },
               {
+                "color": "#0B3EE3",
+              },
+              {
                 "color": undefined,
               },
             ],
@@ -249,6 +252,9 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
                 "textAlign": "auto",
               },
               {
+                "color": "#0B3EE3",
+              },
+              {
                 "color": undefined,
               },
             ],
@@ -375,6 +381,9 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
             [
               {
                 "textAlign": "auto",
+              },
+              {
+                "color": "#FFFFFF",
               },
               {
                 "color": undefined,
