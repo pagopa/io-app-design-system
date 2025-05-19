@@ -523,6 +523,300 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
 </View>
 `;
 
+exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
+<View
+  style={
+    [
+      {
+        "borderCurve": "continuous",
+        "borderRadius": 8,
+        "borderWidth": 1,
+      },
+      {
+        "backgroundColor": "#F4F5F8",
+        "borderColor": "#E8EBF1",
+      },
+    ]
+  }
+>
+  <RNGestureHandlerButton
+    collapsable={false}
+    delayLongPress={600}
+    enabled={true}
+    exclusive={true}
+    handlerTag={4}
+    handlerType="NativeViewGestureHandler"
+    innerRef={null}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    rippleColor="transparent"
+    style={
+      [
+        undefined,
+        {
+          "cursor": undefined,
+        },
+      ]
+    }
+    touchSoundDisabled={false}
+  >
+    <View
+      accessibilityLabel="Patente di guida"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "expanded": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      style={{}}
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 16,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          dynamicTypeRamp="headline"
+          maxFontSizeMultiplier={1.5}
+          style={
+            [
+              {},
+              {
+                "color": "#0E0F13",
+                "fontFamily": "Titillio",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "lineHeight": 24,
+              },
+            ]
+          }
+        >
+          Patente di guida
+        </Text>
+        <View
+          style={
+            {
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            }
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            accessibilityLabel=""
+            accessible={false}
+            align="xMidYMid"
+            bbHeight={24}
+            bbWidth={24}
+            color="#0B3EE3"
+            focusable={false}
+            height={24}
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width={24}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M18.7071 8.29289c.3905.39053.3905 1.02369 0 1.41422l-6 5.99999c-.3905.3905-1.0237.3905-1.4142 0L5.29289 9.70711c-.39052-.39053-.39052-1.02369 0-1.41422.39053-.39052 1.02369-.39052 1.41422 0L12 13.5858l5.2929-5.29291c.3905-.39052 1.0237-.39052 1.4142 0Z"
+                fill={
+                  {
+                    "type": 2,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </RNGestureHandlerButton>
+  <View
+    style={
+      [
+        {
+          "height": 0,
+        },
+        {
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        [
+          {
+            "padding": 16,
+            "paddingTop": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+          {
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Nome e cognome; "
+        accessibilityRole="image"
+        accessible={true}
+        style={
+          {
+            "marginHorizontal": -24,
+            "paddingHorizontal": 24,
+            "paddingVertical": 12,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+              {
+                "columnGap": 12,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "flex": 1,
+              }
+            }
+          >
+            <View
+              accessible={true}
+              style={
+                {
+                  "flexDirection": "column-reverse",
+                }
+              }
+            >
+              <Text
+                allowFontScaling={true}
+                dynamicTypeRamp="footnote"
+                maxFontSizeMultiplier={1.5}
+                style={
+                  [
+                    {},
+                    {
+                      "color": "#555C70",
+                      "fontFamily": "Titillio",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "lineHeight": 21,
+                    },
+                  ]
+                }
+              >
+                Nome e cognome
+              </Text>
+              <Image
+                accessibilityIgnoresInvertColors={true}
+                resizeMode="contain"
+                source={
+                  {
+                    "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUh",
+                  }
+                }
+                style={
+                  {
+                    "aspectRatio": 0.75,
+                    "width": 160,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <BVLinearGradient
+    colors={
+      [
+        16053752,
+        4294243832,
+      ]
+    }
+    endPoint={
+      {
+        "x": 0.5,
+        "y": 1,
+      }
+    }
+    locations={null}
+    startPoint={
+      {
+        "x": 0.5,
+        "y": 0,
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "height": 16,
+        "left": 16,
+        "position": "absolute",
+        "right": 16,
+      }
+    }
+  />
+</View>
+`;
+
 exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
 <View
   style={
@@ -1158,6 +1452,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
     >
       <View
         accessibilityLabel="Nome e cognome; Mario Rossi"
+        accessibilityRole="text"
         accessible={true}
         style={
           {
