@@ -324,12 +324,11 @@ export const IOButton = forwardRef<View, IOButtonProps>(
             },
             {
               height: isLinkButton ? undefined : btnSizeDefault,
-              backgroundColor,
               borderWidth: btnBorderWidth,
               borderRadius: btnBorderRadius,
               borderColor: foregroundColor
             },
-            disabled ? { opacity: DISABLED_OPACITY } : {},
+            disabled ? { opacity: DISABLED_OPACITY, backgroundColor } : {},
             /* Prevent Reanimated from overriding background colors
                 if button is disabled */
             !disabled && !reducedMotion && scaleAnimatedStyle,
