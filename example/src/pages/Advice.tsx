@@ -96,28 +96,34 @@ const renderFeatureInfo = () => {
       <VSpacer size={16} />
       <ComponentViewerBox name="FeatureInfo · with Pictogram">
         <FeatureInfo
-          pictogramName="clock"
           body={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
           }
+          pictogramProps={{
+            name: "clock"
+          }}
         />
         <VSpacer size={24} />
         <FeatureInfo
-          pictogramName="manual"
           body={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua"
           }
+          pictogramProps={{
+            name: "manual"
+          }}
         />
         <VSpacer size={24} />
         <FeatureInfo
-          pictogramName="followMessage"
-          body={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
-          }
           action={{
             label: "Scopri di più",
             onPress: onLinkPress,
             accessibilityRole: "button"
+          }}
+          body={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. sed do eiusmod tempor ut labore et dolore magna aliqua"
+          }
+          pictogramProps={{
+            name: "followMessage"
           }}
         />
       </ComponentViewerBox>

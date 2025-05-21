@@ -189,7 +189,7 @@ export type IOPictograms = keyof typeof IOPictograms;
 
 export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 
-type IOPictogramsProps = {
+export type IOPictogramsProps = {
   name: IOPictograms;
   /* Not too happy about the API choice,
   but at least we have the same <StatusBar …>

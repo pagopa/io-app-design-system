@@ -276,7 +276,8 @@ export const IOButton = forwardRef<View, IOButtonProps>(
                 { textAlign },
                 disabled
                   ? { color: mapColorStates[color]?.foreground?.disabled }
-                  : { ...labelAnimatedStyle }
+                  : { color: mapColorStates[color]?.foreground?.default },
+                !disabled && labelAnimatedStyle
               ]}
             >
               {label}
