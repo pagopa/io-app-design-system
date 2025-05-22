@@ -113,6 +113,7 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
+import PictogramSavingMoney from "./svg/PictogramSavingMoney";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
@@ -174,6 +175,7 @@ export const IOPictograms = {
   walletDoc: PictogramWalletDoc,
   emptyWallet: PictogramEmptyWallet,
   meterLimit: PictogramMeterLimit,
+  savingMoney: PictogramSavingMoney,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
