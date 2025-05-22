@@ -3,6 +3,7 @@ import React, {
   forwardRef,
   useCallback,
   useEffect,
+  useMemo,
   useRef
 } from "react";
 import {
@@ -180,10 +181,23 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const ICON_MARGIN = 8;
     const DISABLED_OPACITY = 0.5;
 
+    // Background color
+    const backgroundColor: ColorValue = useMemo(
+      () =>
+        disabled
+          ? mapColorStates[color].background.disabled
+          : mapColorStates[color].background.default,
+      [disabled, mapColorStates, color]
+    );
+
     // Label & Icons colors
-    const foregroundColor: ColorValue = disabled
-      ? mapColorStates[color]?.foreground?.disabled
-      : mapColorStates[color]?.foreground?.default;
+    const foregroundColor: ColorValue = useMemo(
+      () =>
+        disabled
+          ? mapColorStates[color]?.foreground?.disabled
+          : mapColorStates[color]?.foreground?.default,
+      [color, disabled, mapColorStates]
+    );
 
     // ---------------------------------------
     // BUTTON INNER LOGIC
@@ -320,14 +334,14 @@ export const IOButton = forwardRef<View, IOButtonProps>(
             },
             {
               height: isLinkButton ? undefined : btnSizeDefault,
+              backgroundColor,
               borderWidth: btnBorderWidth,
               borderRadius: btnBorderRadius,
               borderColor: foregroundColor
             },
             disabled
               ? {
-                  opacity: DISABLED_OPACITY,
-                  backgroundColor: mapColorStates[color].background.disabled
+                  opacity: DISABLED_OPACITY
                 }
               : {},
             /* Prevent Reanimated from overriding background colors
