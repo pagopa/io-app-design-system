@@ -180,6 +180,11 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const ICON_MARGIN = 8;
     const DISABLED_OPACITY = 0.5;
 
+    // Background color
+    const backgroundColor: ColorValue = disabled
+      ? mapColorStates[color].background.disabled
+      : mapColorStates[color].background.default;
+
     // Label & Icons colors
     const foregroundColor: ColorValue = disabled
       ? mapColorStates[color]?.foreground?.disabled
@@ -311,6 +316,10 @@ export const IOButton = forwardRef<View, IOButtonProps>(
         <Animated.View
           style={[
             styles.button,
+            /* Prevent Reanimated from overriding background colors
+                if button is disabled */
+            !disabled && !reducedMotion && scaleAnimatedStyle,
+            !disabled && buttonAnimatedStyle,
             {
               paddingHorizontal: isLinkButton
                 ? btnPaddingHorizontalMap.link
@@ -320,20 +329,16 @@ export const IOButton = forwardRef<View, IOButtonProps>(
             },
             {
               height: isLinkButton ? undefined : btnSizeDefault,
+              backgroundColor,
               borderWidth: btnBorderWidth,
               borderRadius: btnBorderRadius,
               borderColor: foregroundColor
             },
             disabled
               ? {
-                  opacity: DISABLED_OPACITY,
-                  backgroundColor: mapColorStates[color].background.disabled
+                  opacity: DISABLED_OPACITY
                 }
-              : {},
-            /* Prevent Reanimated from overriding background colors
-                if button is disabled */
-            !disabled && !reducedMotion && scaleAnimatedStyle,
-            !disabled && buttonAnimatedStyle
+              : {}
           ]}
         >
           {renderButtonContent()}
