@@ -182,22 +182,14 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const DISABLED_OPACITY = 0.5;
 
     // Background color
-    const backgroundColor: ColorValue = useMemo(
-      () =>
-        disabled
-          ? mapColorStates[color].background.disabled
-          : mapColorStates[color].background.default,
-      [disabled, mapColorStates, color]
-    );
+    const backgroundColor: ColorValue = disabled
+      ? mapColorStates[color].background.disabled
+      : mapColorStates[color].background.default;
 
     // Label & Icons colors
-    const foregroundColor: ColorValue = useMemo(
-      () =>
-        disabled
-          ? mapColorStates[color]?.foreground?.disabled
-          : mapColorStates[color]?.foreground?.default,
-      [color, disabled, mapColorStates]
-    );
+    const foregroundColor: ColorValue = disabled
+      ? mapColorStates[color]?.foreground?.disabled
+      : mapColorStates[color]?.foreground?.default;
 
     // ---------------------------------------
     // BUTTON INNER LOGIC
@@ -325,6 +317,10 @@ export const IOButton = forwardRef<View, IOButtonProps>(
         <Animated.View
           style={[
             styles.button,
+            /* Prevent Reanimated from overriding background colors
+                if button is disabled */
+            !disabled && !reducedMotion && scaleAnimatedStyle,
+            !disabled && buttonAnimatedStyle,
             {
               paddingHorizontal: isLinkButton
                 ? btnPaddingHorizontalMap.link
@@ -343,11 +339,7 @@ export const IOButton = forwardRef<View, IOButtonProps>(
               ? {
                   opacity: DISABLED_OPACITY
                 }
-              : {},
-            /* Prevent Reanimated from overriding background colors
-                if button is disabled */
-            !disabled && !reducedMotion && scaleAnimatedStyle,
-            !disabled && buttonAnimatedStyle
+              : {}
           ]}
         >
           {renderButtonContent()}
