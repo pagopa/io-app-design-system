@@ -75,6 +75,7 @@ import PictogramBleedPayments from "./svg/PictogramBleedPayments";
 import PictogramBleedPending from "./svg/PictogramBleedPending";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramBleedReactivate from "./svg/PictogramBleedReactivate";
+import PictogramBleedSavingMoney from "./svg/PictogramBleedSavingMoney";
 import PictogramBleedSearch from "./svg/PictogramBleedSearch";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedSettings from "./svg/PictogramBleedSettings";
@@ -113,6 +114,7 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
+import PictogramSavingMoney from "./svg/PictogramSavingMoney";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
@@ -174,6 +176,7 @@ export const IOPictograms = {
   walletDoc: PictogramWalletDoc,
   emptyWallet: PictogramEmptyWallet,
   meterLimit: PictogramMeterLimit,
+  savingMoney: PictogramSavingMoney,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -304,6 +307,7 @@ export type IOPictogramsBleed = Extract<
   | "payments"
   | "activate"
   | "reactivate"
+  | "savingMoney"
   | "workInProgress",
   IOPictograms
 >;
@@ -351,7 +355,8 @@ export const IOPictogramsBleed: {
   payments: PictogramBleedPayments,
   activate: PictogramBleedActivate,
   reactivate: PictogramBleedReactivate,
-  workInProgress: PictogramBleedWorkInProgress
+  workInProgress: PictogramBleedWorkInProgress,
+  savingMoney: PictogramBleedSavingMoney
 };
 
 export const PictogramBleed = ({
