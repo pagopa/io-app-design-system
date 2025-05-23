@@ -35,7 +35,11 @@ import {
   useIOTheme
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
-import { IOFontSize, makeFontStyleObject } from "../../utils/fonts";
+import {
+  IOFontSize,
+  IOMaxFontSizeMultiplier,
+  makeFontStyleObject
+} from "../../utils/fonts";
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
@@ -464,6 +468,7 @@ export const TextInputBase = ({
           selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
           cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
           maxLength={adjustedMaxLength}
+          maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
           blurOnSubmit={true}
@@ -511,6 +516,7 @@ export const TextInputBase = ({
             onLayout={getLabelWidth}
             numberOfLines={1}
             accessible={false}
+            maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
             style={[
               {
                 ...makeFontStyleObject(
