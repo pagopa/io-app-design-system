@@ -12,8 +12,5 @@ module.exports = {
     "\\.svg": "<rootDir>/ts/__mocks__/svgMock.js"
   },
   setupFiles: ["./jestSetup.js"],
-  setupFilesAfterEnv: [
-    "./jestSetupAfterEnv.js"
-  ],
   collectCoverage: true
 };

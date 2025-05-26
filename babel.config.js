@@ -3,11 +3,6 @@ module.exports = {
   plugins: [
     "@babel/plugin-transform-private-methods",
     "@babel/plugin-transform-class-properties",
-    [
-      "react-native-reanimated/plugin",
-      {
-        globals: ["__scanCodes"]
-      }
-    ],
+    "react-native-reanimated/plugin"
   ]
 };
