@@ -1,12 +1,12 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import TestRenderer from "react-test-renderer";
 import { IODSExperimentalContextProvider } from "../core/IODSExperimentalContextProvider";
 
-export const renderWithExperimentalEnabledContextProvider = (
+export const TestRendererWithExperimentalEnabledContextProvider = (
   ui: React.ReactElement,
-  options?: Parameters<typeof render>[1]
+  options?: Parameters<typeof TestRenderer.create>[1]
 ) =>
-  render(
+  TestRenderer.create(
     <IODSExperimentalContextProvider isExperimentaEnabled={true}>
       {ui}
     </IODSExperimentalContextProvider>,
