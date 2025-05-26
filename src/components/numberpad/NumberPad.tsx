@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback, useMemo } from "react";
+import React, { ComponentProps, JSX, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
