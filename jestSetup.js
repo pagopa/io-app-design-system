@@ -7,6 +7,7 @@ import nodeFetch from "node-fetch";
 import { NativeModules } from "react-native";
 
 // Setup Reanimated for testing
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('react-native-reanimated').setUpTests();
 
 // eslint-disable-next-line functional/immutable-data
