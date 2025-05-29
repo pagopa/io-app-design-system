@@ -1,18 +1,3 @@
-// Mock react-native-reanimated before any imports
-jest.mock("react-native-reanimated", () => {
-  const Reanimated = jest.requireActual("react-native-reanimated/mock");
-  return {
-    ...Reanimated,
-    // Add any missing hooks or exports here
-    useReducedMotion: () => false
-  };
-});
-
-// Mock react-native-haptic-feedback to avoid warnings and side effects
-jest.mock("react-native-haptic-feedback", () => ({
-  trigger: jest.fn()
-}));
-
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 import { NumberPad } from "../NumberPad";

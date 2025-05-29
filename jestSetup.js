@@ -22,6 +22,21 @@ NativeModules.RNGestureHandlerModule = {
   Directions: {}
 };
 
+jest.mock("react-native-reanimated", () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const Reanimated = require("react-native-reanimated/mock");
+
+  // eslint-disable-next-line functional/immutable-data
+  Reanimated.useReducedMotion = () => false;
+
+  return Reanimated;
+});
+
+// Mock react-native-haptic-feedback to avoid warnings and side effects
+jest.mock("react-native-haptic-feedback", () => ({
+  trigger: jest.fn()
+}));
+
 jest.mock("react-native/Libraries/TurboModule/TurboModuleRegistry", () => {
   const turboModuleRegistry = jest.requireActual(
     "react-native/Libraries/TurboModule/TurboModuleRegistry"
