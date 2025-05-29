@@ -106,7 +106,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.78.2",
-    "react-native-builder-bob": "^0.40.8",
+    "react-native-builder-bob": "^0.38.0",
     "react-native-web": "^0.18.12",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "19.0.0",
@@ -194,5 +194,8 @@
     "react-native-reanimated": "3.17.5",
     "react-native-safe-area-context": "^5.4.1",
     "react-native-svg": "^15.12.0"
+  },
+  "resolutions": {
+    "arktype": "1.0.25"
   }
 }
