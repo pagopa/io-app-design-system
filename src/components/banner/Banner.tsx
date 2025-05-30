@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 type BaseBannerProps = WithTestID<{
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
-  viewRef?: React.RefObject<View>;
+  viewRef?: React.RefObject<View | null>;
   // A11y related props
   accessibilityLabel?: string;
   accessibilityHint?: string;

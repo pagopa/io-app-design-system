@@ -863,6 +863,11 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
+              animatedProps={
+                {
+                  "color": undefined,
+                }
+              }
               bbHeight={24}
               bbWidth={24}
               color="#FFFFFF"
@@ -1073,6 +1078,11 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
+              animatedProps={
+                {
+                  "color": undefined,
+                }
+              }
               bbHeight={24}
               bbWidth={24}
               color="#FFFFFF"

@@ -71,7 +71,7 @@ export const OTPInput = forwardRef<View, Props>(
       useErrorShakeAnimation();
 
     const inputRef = createRef<TextInput>();
-    const timerRef = useRef<NodeJS.Timeout>();
+    const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
     const handleValidate = (val: string) => {
       if (!onValidate || val.length < length) {

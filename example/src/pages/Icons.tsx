@@ -18,7 +18,7 @@ import {
   SVGIconProps,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import React, { JSX } from "react";
 import { StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { IconViewerBox, iconItemGutter } from "../components/IconViewerBox";

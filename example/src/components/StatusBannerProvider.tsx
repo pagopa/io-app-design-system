@@ -3,11 +3,17 @@ import {
   AlertEdgeToEdgeProps,
   AlertEdgeToEdgeWrapper
 } from "@pagopa/io-app-design-system";
-import React, { createContext, useCallback, useMemo, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState
+} from "react";
 import { HapticFeedbackTypes } from "react-native-haptic-feedback";
 
 type AlertProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type StatusBannerContext = {

@@ -64,8 +64,8 @@ const OTPWrapper = ({
 };
 
 const scrollVerticallyToView = (
-  scrollViewRef: React.RefObject<ScrollView>,
-  targetViewRef: React.RefObject<View>
+  scrollViewRef: React.RefObject<ScrollView | null>,
+  targetViewRef: React.RefObject<View | null>
 ) => {
   if (targetViewRef.current && scrollViewRef.current) {
     targetViewRef.current.measureLayout(

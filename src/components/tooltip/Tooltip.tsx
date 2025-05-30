@@ -179,7 +179,9 @@ export const Tooltip = ({
   const [tooltipLayout, setTooltipLayout] = useState<TooltipLayout>();
   const childRef = useRef<View>(null);
   const titleRef = useRef<View>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
 
   // Theme
   const theme = useIOTheme();
