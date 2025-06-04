@@ -73,7 +73,7 @@ const config: StorybookConfig = {
               require("@babel/preset-env").default
             ],
             plugins: [
-              "@babel/plugin-proposal-export-namespace-from",
+              "@babel/plugin-transform-export-namespace-from",
               "react-native-reanimated/plugin"
             ]
           }
