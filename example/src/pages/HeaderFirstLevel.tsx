@@ -1,15 +1,15 @@
 import {
   AlertEdgeToEdgeProps,
   Body,
-  ButtonOutline,
-  ButtonSolid,
   H6,
   HeaderActionProps,
   HeaderFirstLevel,
   HStack,
+  IOButton,
   IOVisualCostants,
   ListItemHeader,
   ListItemRadio,
+  ListItemSwitch,
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
@@ -57,6 +57,7 @@ export const HeaderFirstLevelScreen = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const [actionsSize, setActionsSize] = useState(2);
+  const [variant, setVariant] = useState<"primary" | "contrast">("primary");
 
   const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
@@ -84,10 +85,11 @@ export const HeaderFirstLevelScreen = () => {
           ignoreSafeAreaMargin={alert !== undefined}
           title={"Portafoglio"}
           actions={actionsConfiguration[actionsSize]}
+          variant={variant}
         />
       )
     });
-  }, [navigation, alert, actionsSize]);
+  }, [navigation, alert, actionsSize, variant]);
 
   return (
     <ScrollView
@@ -119,7 +121,16 @@ export const HeaderFirstLevelScreen = () => {
         onValueChange={() => setActionsSize(3)}
       />
       <VSpacer />
-      <ButtonSolid
+      <ListItemSwitch
+        label="Enable contrast variant"
+        value={variant === "contrast"}
+        onSwitchValueChange={() => {
+          setVariant(variant === "primary" ? "contrast" : "primary");
+        }}
+      />
+      <VSpacer />
+      <IOButton
+        variant="solid"
         label="Torna indietro"
         onPress={navigation.goBack}
         accessibilityLabel=""
@@ -129,13 +140,15 @@ export const HeaderFirstLevelScreen = () => {
         <VStack space={4} key={variant}>
           <H6 style={{ textTransform: "capitalize" }}>{variant}</H6>
           <HStack space={4}>
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/ Action"
               onPress={() =>
                 handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
               }
             />
-            <ButtonSolid
+            <IOButton
+              variant="solid"
               label="w/o Action"
               onPress={() =>
                 handleShowAlert(
@@ -145,7 +158,7 @@ export const HeaderFirstLevelScreen = () => {
               }
             />
           </HStack>
-          <ButtonOutline label="Hide" onPress={removeAlert} />
+          <IOButton variant="outline" label="Hide" onPress={removeAlert} />
         </VStack>
       ))}
       {[...Array(50)].map((_el, i) => (

@@ -8,7 +8,6 @@ import {
   IOColorsNeutral,
   IOColorsStatus,
   IOColorsTints,
-  IOStyles,
   IOThemeDark,
   IOThemeLight,
   IOVisualCostants,
@@ -142,13 +141,13 @@ const renderColorThemeGroup = (
       {name && <H3 style={{ marginBottom: sectionTitleMargin }}>{name}</H3>}
       {/* Show the two different columns
       with both light and dark modes */}
-      <View style={IOStyles.row}>
+      <View style={{ flexDirection: "row" }}>
         <View style={[styles.colorModeWrapper, styles.darkModeWrapper]} />
         <View style={[styles.colorModeWrapper, styles.lightModeWrapper]} />
         <View style={styles.colorItemsWrapper}>
           <View style={styles.colorWrapperBothModes}>
             <SmallCapsTitle title="Light mode" />
-            <View style={IOStyles.flex}>
+            <View style={{ flex: 1 }}>
               {Object.entries(colorObjectLightMode).map(
                 ([name, colorValue], i) => {
                   const [, darkModeColorValue] = colorArrayDarkMode[i];
@@ -182,7 +181,7 @@ const renderColorThemeGroup = (
           </View>
           <View style={styles.colorWrapperBothModes}>
             <SmallCapsTitle title="Dark mode" darkMode />
-            <View style={IOStyles.flex}>
+            <View style={{ flex: 1 }}>
               {Object.entries(colorObjectDarkMode).map(
                 ([name, colorValue], i) => {
                   const [, lightModeColorValue] = colorArrayLightMode[i];

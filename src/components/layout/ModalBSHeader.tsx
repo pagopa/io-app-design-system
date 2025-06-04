@@ -6,7 +6,7 @@ import {
   View,
   findNodeHandle
 } from "react-native";
-import { IOColors, IOStyles, IOVisualCostants } from "../../core";
+import { IOColors, IOVisualCostants } from "../../core";
 import { IconButton } from "../buttons";
 import { H4 } from "../typography";
 
@@ -56,7 +56,7 @@ export const ModalBSHeader = ({
         title
       ) : (
         <View
-          style={IOStyles.flex}
+          style={{ flex: 1 }}
           accessible={true}
           accessibilityRole={"header"}
           accessibilityLabel={typeof title === "string" ? title : undefined}

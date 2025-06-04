@@ -3,11 +3,17 @@ import {
   AlertEdgeToEdgeProps,
   AlertEdgeToEdgeWrapper
 } from "@pagopa/io-app-design-system";
-import React, { createContext, useCallback, useMemo, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState
+} from "react";
 import { HapticFeedbackTypes } from "react-native-haptic-feedback";
 
 type AlertProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type StatusBannerContext = {
@@ -29,7 +35,8 @@ const hapticFeedbackMap: Record<
   error: "notificationError",
   warning: "notificationWarning",
   // There isn't a `notificationInfo` haptic feedback type, so we use a generic one
-  info: "impactMedium"
+  info: "impactMedium",
+  success: "notificationSuccess"
 };
 
 export const StatusBannerProvider = ({ children }: AlertProviderProps) => {

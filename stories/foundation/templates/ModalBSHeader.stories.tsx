@@ -1,10 +1,10 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import React from "react";
+
 import { View } from "react-native";
 import { H3, HSpacer, Icon, ModalBSHeader } from "../../../src/components";
 import { withMaxWitdth, withSafeAreaProvider } from "../../utils";
-import { IOStyles } from "../../../src/core";
 
 const meta = {
   title: "Foundation/Templates/ModalBSHeader",
@@ -32,10 +32,10 @@ export const Standard: Story = {
 export const ReactNodeTitle: Story = {
   args: {
     title: (
-      <View style={[IOStyles.row, { alignItems: "center" }, IOStyles.flex]}>
+      <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
         <Icon name="attachment" size={16} />
         <HSpacer size={16} />
-        <H3 style={IOStyles.flex} testID={"discount-name"}>
+        <H3 style={{ flex: 1 }} testID={"discount-name"}>
           {"Sample Value"}
         </H3>
       </View>

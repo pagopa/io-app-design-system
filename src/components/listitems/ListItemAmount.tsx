@@ -4,7 +4,6 @@ import {
   IOListItemStyles,
   IOListItemVisualParams,
   IOSpacingScale,
-  IOStyles,
   useIOTheme
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
@@ -81,7 +80,7 @@ export const ListItemAmount = ({
             size={IOListItemVisualParams.iconSize}
           />
         )}
-        <View style={IOStyles.flex}>{itemInfoTextComponent}</View>
+        <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
         <H3
           {...valueElementProps}
           color={theme["textBody-default"]}

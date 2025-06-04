@@ -20,7 +20,6 @@ import {
   IOColorsStatusForeground
 } from "../../core/IOColors";
 import { IOAlertSpacing } from "../../core/IOSpacing";
-import { IOStyles } from "../../core/IOStyles";
 import { useScaleAnimation } from "../../hooks";
 import { makeFontStyleObject } from "../../utils/fonts";
 import { WithTestID } from "../../utils/types";
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
 });
 
 type AlertProps = WithTestID<{
-  variant: "error" | "warning" | "info";
+  variant: "error" | "warning" | "info" | "success";
   content: string;
   viewRef?: React.RefObject<View>;
   accessibilityLabel?: string;
@@ -86,6 +85,11 @@ const mapVariantStates: Record<
     icon: "infoFilled",
     background: "info-100",
     foreground: "info-850"
+  },
+  success: {
+    icon: "success",
+    background: "success-100",
+    foreground: "success-850"
   }
 };
 
@@ -120,7 +124,7 @@ export const AlertEdgeToEdge = ({
           color={mapVariantStates[variant].foreground}
         />
       </View>
-      <View style={IOStyles.flex}>
+      <View style={{ flex: 1 }}>
         <Body
           color={mapVariantStates[variant].foreground}
           weight={"Regular"}

@@ -1,14 +1,15 @@
 import {
+  BodySmall,
+  ContentWrapper,
   Divider,
   H1,
-  IOStyles,
-  BodySmall,
+  IOVisualCostants,
   ListItemNav,
   ListItemSwitch,
   VSpacer,
   useIOExperimentalDesign,
-  useIOThemeContext,
-  useIONewTypeface
+  useIONewTypeface,
+  useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { SectionList, View } from "react-native";
@@ -91,7 +92,7 @@ const MainScreen = (props: Props) => {
 
   return (
     <>
-      <View style={IOStyles.horizontalContentPadding}>
+      <ContentWrapper>
         <ListItemSwitch
           label="Abilita Design Sperimentale"
           value={isExperimental}
@@ -111,11 +112,13 @@ const MainScreen = (props: Props) => {
           }
         />
         <VSpacer size={4} />
-      </View>
+      </ContentWrapper>
       <SectionList
         keyExtractor={(item, index) => `${item.route}-${index}`}
         stickySectionHeadersEnabled={false}
-        contentContainerStyle={IOStyles.horizontalContentPadding}
+        contentContainerStyle={{
+          paddingHorizontal: IOVisualCostants.appMarginDefault
+        }}
         renderSectionHeader={renderDSSection}
         renderSectionFooter={renderDSSectionFooter}
         renderItem={renderDSNavItem}

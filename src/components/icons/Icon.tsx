@@ -1,5 +1,6 @@
 import React from "react";
 import { ColorValue } from "react-native";
+import Animated from "react-native-reanimated";
 import { IOColors } from "../../core/IOColors";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 
@@ -205,6 +206,7 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconDocumentAdd from "./svg/IconDocumentAdd";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -251,6 +253,7 @@ export const IOIcons = {
   security: IconSecurity,
   option: IconOption,
   key: IconKey,
+  documentAdd: IconDocumentAdd,
   docGiacenza: IconDocGiacenza,
   docPaymentTitle: IconDocPaymentTitle,
   docPaymentCode: IconDocPaymentCode,
@@ -452,7 +455,7 @@ export const Icon = ({
   return (
     <IconElement
       {...props}
-      style={{ color: IOColors[color] }}
+      color={IOColors[color]}
       size={iconSize}
       accessible={isAccessible}
       accessibilityElementsHidden={!isAccessible}
@@ -494,7 +497,7 @@ export const AnimatedIcon = ({
   return (
     <IconElement
       {...props}
-      style={{ color }}
+      color={color}
       size={iconSize}
       accessible={accessible}
       accessibilityElementsHidden={true}
@@ -507,7 +510,7 @@ export const AnimatedIcon = ({
 /* Make <Icon> component animatable. Reanimated supports class components only,
 so we need to convert <Icon> into a class component first.
 https://github.com/software-mansion/react-native-reanimated/discussions/1527  */
-export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
+class AnimatedIconClassComponent extends React.Component<IOAnimatedIconsProps> {
   constructor(props: IOAnimatedIconsProps) {
     super(props);
   }
@@ -517,15 +520,24 @@ export class IconClassComponent extends React.Component<IOAnimatedIconsProps> {
 }
 
 /*
+A name that explicitly indicates the purpose of the component.
+It must be used in combination with `useAnimatedProps` hook.
+*/
+export const AnimatedIconWithColorTransition = Animated.createAnimatedComponent(
+  AnimatedIconClassComponent
+);
+
+/*
 ░░░ VARIOUS SETS ░░░
 */
 
 /* New icons */
-const { sparkles, profileRegistered } = IOIcons;
+const { sparkles, profileRegistered, documentAdd } = IOIcons;
 
 export const IOIconsNew = {
   sparkles,
-  profileRegistered
+  profileRegistered,
+  documentAdd
 };
 
 /* Navigation */

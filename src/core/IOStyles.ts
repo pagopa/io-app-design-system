@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { IOIconSizeScale } from "../components/icons";
 import { IOColors } from "./IOColors";
 import { IOModuleIDPRadius } from "./IOShapes";
@@ -43,31 +43,6 @@ export const IOVisualCostants: IOVisualCostants = {
 };
 
 export const IOStyles = StyleSheet.create({
-  flex: {
-    flex: 1
-  },
-  selfCenter: {
-    alignSelf: "center"
-  },
-  alignCenter: {
-    alignItems: "center"
-  },
-  horizontalContentPadding: {
-    paddingHorizontal: IOVisualCostants.appMarginDefault
-  },
-  row: {
-    flexDirection: "row"
-  },
-  column: {
-    flexDirection: "column"
-  },
-  rowSpaceBetween: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  centerJustified: {
-    justifyContent: "center"
-  },
   // The following styles come from the original
   // NativeBase's `View`. They are moved here to
   // prevent UI regressions.
@@ -85,14 +60,6 @@ export const IOStyles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 37,
     elevation: 20 // Prop supported on Android only
-  },
-  bgWhite: {
-    backgroundColor: IOColors.white
-    // https://github.com/pagopa/io-app/pull/4387
-  },
-  topListBorderBelowTabsStyle: {
-    borderTopWidth: Platform.OS === "android" ? 0.1 : undefined,
-    elevation: 0.1
   }
 });
 
@@ -113,12 +80,11 @@ export const buttonSolidHeight: number = btnSizeDefault;
 // TODO: Replace the number type with the new IOIconSizeScale
 export const iconBtnSizeSmall: number = 24;
 
-export const numberPadBtnSize: number = 56;
-
 export const IOButtonStyles = StyleSheet.create({
   /* BaseButton, used in the:
   ButtonSolid, ButtonOutline
   */
+  /* DELETE THIS, ONCE WE REMOVE `ButtonSolid`, `ButtonOutline` COMPONENTS */
   button: {
     flexDirection: "row",
     alignItems: "center",
@@ -174,9 +140,7 @@ export const IOIconButtonStyles = StyleSheet.create({
   /* IconButton */
   button: {
     alignItems: "center",
-    justifyContent: "center",
-    // Reset default visual parameters
-    elevation: 0
+    justifyContent: "center"
   },
   buttonSizeSmall: {
     width: iconBtnSizeSmall,
@@ -191,22 +155,6 @@ export const IOIconButtonStyles = StyleSheet.create({
     width: btnSizeLarge,
     height: btnSizeLarge,
     borderRadius: btnSizeLarge
-  }
-});
-
-export const IONumberPadButtonStyles = StyleSheet.create({
-  /* IconButton */
-  button: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  circularShape: {
-    // Circular shape
-    borderRadius: 100
-  },
-  buttonSize: {
-    width: numberPadBtnSize,
-    height: numberPadBtnSize
   }
 });
 

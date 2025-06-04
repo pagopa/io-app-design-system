@@ -1,9 +1,9 @@
 import { ContentWrapper } from "@pagopa/io-app-design-system";
-import React from "react";
+import React, { ReactNode } from "react";
 import { ScrollView, View } from "react-native";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const Screen = ({ children }: Props) => (

@@ -78,6 +78,9 @@ export type ButtonSolidProps = WithTestID<
   >
 >;
 
+/**
+ * @deprecated Use `Button` with variant `solid` instead
+ */
 export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
   (
     {
@@ -235,7 +238,7 @@ export const ButtonSolid = forwardRef<View, ButtonSolidProps>(
               }
               exiting={exitTransitionInnerContent}
             >
-              <LoadingSpinner color={foregroundColor} />
+              <LoadingSpinner color={IOColors[foregroundColor]} />
             </Animated.View>
           )}
 

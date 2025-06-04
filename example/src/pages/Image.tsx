@@ -1,20 +1,20 @@
-import React from "react";
-import { View, ScrollView, SafeAreaView } from "react-native";
 import {
+  ContentWrapper,
   H1,
   H6,
   IOImage,
-  IOStyles,
   VSpacer
 } from "@pagopa/io-app-design-system";
+import React from "react";
+import { SafeAreaView, ScrollView } from "react-native";
 
 export const ImageScreen = () => (
-  <SafeAreaView style={IOStyles.flex}>
-    <ScrollView style={IOStyles.flex}>
+  <SafeAreaView style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <VSpacer />
-      <View style={IOStyles.horizontalContentPadding}>
+      <ContentWrapper>
         <H1>Image screen</H1>
-      </View>
+      </ContentWrapper>
       <VSpacer />
       <IOImage
         imageProps={{
@@ -26,7 +26,7 @@ export const ImageScreen = () => (
         aspectRatio="1:1"
       />
       <VSpacer />
-      <View style={IOStyles.horizontalContentPadding}>
+      <ContentWrapper>
         <H6>{"This is a 16:9"}</H6>
         <VSpacer size={4} />
         <IOImage
@@ -50,7 +50,7 @@ export const ImageScreen = () => (
           alt="Some alt text"
           aspectRatio="4:3"
         />
-      </View>
+      </ContentWrapper>
     </ScrollView>
   </SafeAreaView>
 );

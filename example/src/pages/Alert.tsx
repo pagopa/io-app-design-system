@@ -1,15 +1,13 @@
 import {
   Alert,
   AlertEdgeToEdgeProps,
-  ButtonOutline,
-  ButtonSolid,
   H2,
   H3,
   H6,
   HSpacer,
   HStack,
   IconButton,
-  IOStyles,
+  IOButton,
   IOVisualCostants,
   VSpacer,
   VStack
@@ -20,6 +18,10 @@ import { Platform, Alert as RNAlert, View } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
+
+const onAlertPress = () => {
+  RNAlert.alert("Alert triggered");
+};
 
 export const DSAlert = () => {
   const viewRef = React.useRef(null);
@@ -49,7 +51,7 @@ export const DSAlert = () => {
         />
       ),
       headerRight: () => (
-        <View style={[IOStyles.row, { flexShrink: 0 }]}>
+        <View style={{ flexDirection: "row", flexShrink: 0 }}>
           <IconButton
             accessibilityLabel="coggle"
             icon="coggle"
@@ -115,19 +117,21 @@ export const DSAlert = () => {
       </H3>
 
       <VStack space={8}>
-        {["info", "warning", "error"].map(variant => (
+        {["info", "warning", "error", "success"].map(variant => (
           <VStack space={4} key={variant}>
             <H6 color={"grey-700"} style={{ textTransform: "capitalize" }}>
               {variant}
             </H6>
             <HStack space={4}>
-              <ButtonSolid
+              <IOButton
+                variant="solid"
                 label="w/ Action"
                 onPress={() =>
                   handleShowAlert(variant as AlertEdgeToEdgeProps["variant"])
                 }
               />
-              <ButtonSolid
+              <IOButton
+                variant="solid"
                 label="w/o Action"
                 onPress={() =>
                   handleShowAlert(
@@ -137,7 +141,7 @@ export const DSAlert = () => {
                 }
               />
             </HStack>
-            <ButtonOutline label="Hide" onPress={removeAlert} />
+            <IOButton variant="outline" label="Hide" onPress={removeAlert} />
           </VStack>
         ))}
       </VStack>
@@ -200,9 +204,7 @@ export const DSAlert = () => {
         ref={viewRef}
         variant="error"
         action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
+        onPress={onAlertPress}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
 
@@ -212,9 +214,7 @@ export const DSAlert = () => {
         ref={viewRef}
         variant="warning"
         action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
+        onPress={onAlertPress}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
 
@@ -224,9 +224,7 @@ export const DSAlert = () => {
         ref={viewRef}
         variant="info"
         action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
+        onPress={onAlertPress}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
 
@@ -236,9 +234,7 @@ export const DSAlert = () => {
         ref={viewRef}
         variant="success"
         action="Alert action"
-        onPress={() => {
-          alert("Action triggered");
-        }}
+        onPress={onAlertPress}
         content="Ut enim ad minim veniam, quis ullamco laboris nisi ut aliquid"
       />
 
@@ -288,9 +284,7 @@ export const DSAlert = () => {
           ref={viewRef}
           variant="info"
           action="Alert action"
-          onPress={() => {
-            alert("Action triggered");
-          }}
+          onPress={onAlertPress}
           content="Ut enim ad minim veniam, quis ullamco labo nisi ut aliquid ad minim veniam"
         />
       </FullWidthComponent>

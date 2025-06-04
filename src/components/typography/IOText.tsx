@@ -7,6 +7,7 @@ import {
   TextStyle,
   View
 } from "react-native";
+import Animated from "react-native-reanimated";
 import { IOColors, useIOTheme } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
@@ -58,7 +59,7 @@ export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
  */
 export type TypographicStyleAsLinkProps =
   | {
-      color?: never;
+      color?: IOColors;
       asLink: true;
       onPress: (event: GestureResponderEvent) => void;
       accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
@@ -154,3 +155,5 @@ export const IOText = forwardRef<View, IOTextProps>(
     );
   }
 );
+
+export const AnimatedIOText = Animated.createAnimatedComponent(IOText);

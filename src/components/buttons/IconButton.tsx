@@ -8,7 +8,6 @@ import Animated, {
 import {
   IOColors,
   IOIconButtonStyles,
-  IOStyles,
   IOThemeLight,
   hexToRgba,
   useIOTheme
@@ -17,9 +16,9 @@ import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {
   AnimatedIcon,
+  AnimatedIconWithColorTransition,
   IOIconSizeScale,
-  IOIcons,
-  IconClassComponent
+  IOIcons
 } from "../icons";
 
 export type IconButton = WithTestID<{
@@ -40,9 +39,6 @@ type ColorStates = {
     disabled: string;
   };
 };
-
-const AnimatedIconClassComponent =
-  Animated.createAnimatedComponent(IconClassComponent);
 
 export const IconButton = ({
   color = "primary",
@@ -127,14 +123,13 @@ export const IconButton = ({
     >
       <Animated.View
         style={[
+          IOIconButtonStyles.button,
           IOIconButtonStyles.buttonSizeSmall,
-          IOStyles.alignCenter,
-          IOStyles.centerJustified,
           !disabled && !reducedMotion && scaleAnimatedStyle
         ]}
       >
         {!disabled ? (
-          <AnimatedIconClassComponent
+          <AnimatedIconWithColorTransition
             allowFontScaling
             name={icon}
             size={iconSize}

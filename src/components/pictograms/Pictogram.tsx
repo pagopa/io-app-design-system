@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { JSX, useMemo } from "react";
 import { ColorValue } from "react-native";
 import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
@@ -75,6 +75,7 @@ import PictogramBleedPayments from "./svg/PictogramBleedPayments";
 import PictogramBleedPending from "./svg/PictogramBleedPending";
 import PictogramBleedQrCode from "./svg/PictogramBleedQrCode";
 import PictogramBleedReactivate from "./svg/PictogramBleedReactivate";
+import PictogramBleedSavingMoney from "./svg/PictogramBleedSavingMoney";
 import PictogramBleedSearch from "./svg/PictogramBleedSearch";
 import PictogramBleedSecurity from "./svg/PictogramBleedSecurity";
 import PictogramBleedSettings from "./svg/PictogramBleedSettings";
@@ -113,6 +114,7 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
+import PictogramSavingMoney from "./svg/PictogramSavingMoney";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
@@ -174,6 +176,7 @@ export const IOPictograms = {
   walletDoc: PictogramWalletDoc,
   emptyWallet: PictogramEmptyWallet,
   meterLimit: PictogramMeterLimit,
+  savingMoney: PictogramSavingMoney,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
@@ -189,7 +192,7 @@ export type IOPictograms = keyof typeof IOPictograms;
 
 export type IOPictogramSizeScale = 48 | 64 | 72 | 80 | 120 | 180;
 
-type IOPictogramsProps = {
+export type IOPictogramsProps = {
   name: IOPictograms;
   /* Not too happy about the API choice,
   but at least we have the same <StatusBar …>
@@ -304,6 +307,7 @@ export type IOPictogramsBleed = Extract<
   | "payments"
   | "activate"
   | "reactivate"
+  | "savingMoney"
   | "workInProgress",
   IOPictograms
 >;
@@ -351,7 +355,8 @@ export const IOPictogramsBleed: {
   payments: PictogramBleedPayments,
   activate: PictogramBleedActivate,
   reactivate: PictogramBleedReactivate,
-  workInProgress: PictogramBleedWorkInProgress
+  workInProgress: PictogramBleedWorkInProgress,
+  savingMoney: PictogramBleedSavingMoney
 };
 
 export const PictogramBleed = ({

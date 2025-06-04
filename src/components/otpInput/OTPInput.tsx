@@ -9,7 +9,6 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOStyles } from "../../core/IOStyles";
 import { useIOTheme } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
@@ -72,7 +71,7 @@ export const OTPInput = forwardRef<View, Props>(
       useErrorShakeAnimation();
 
     const inputRef = createRef<TextInput>();
-    const timerRef = useRef<NodeJS.Timeout>();
+    const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
     const handleValidate = (val: string) => {
       if (!onValidate || val.length < length) {
@@ -138,7 +137,7 @@ export const OTPInput = forwardRef<View, Props>(
             setHasFocus(true);
           }}
           ref={ref}
-          style={[IOStyles.row, { justifyContent: "space-around" }]}
+          style={{ flexDirection: "row", justifyContent: "space-around" }}
           accessible={true}
           accessibilityLabel={accessibilityLabel}
           accessibilityHint={accessibilityHint}
