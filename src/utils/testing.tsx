@@ -4,7 +4,7 @@ import { IODSExperimentalContextProvider } from "../core/IODSExperimentalContext
 
 export const TestRendererWithExperimentalEnabledContextProvider = (
   ui: React.ReactElement,
-  options?: TestRenderer.TestRendererOptions
+  options?: Parameters<typeof TestRenderer.create>[1]
 ) =>
   TestRenderer.create(
     <IODSExperimentalContextProvider isExperimentaEnabled={true}>
