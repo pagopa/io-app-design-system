@@ -8,10 +8,8 @@ const config: StorybookConfig = {
 
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-actions",
-    "@storybook/addon-interactions",
     {
       name: "@storybook/addon-react-native-web",
       options: {

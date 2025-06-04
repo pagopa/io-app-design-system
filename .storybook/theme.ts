@@ -1,4 +1,4 @@
-import { create } from "@storybook/theming";
+import { create } from "storybook/theming";
 
 export const sbTheme = create({
   base: "light",

@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-webpack5";
 import { IOThemeLight, IOThemeDark } from "../src/core";
 import { withEperimentalDs } from "../stories/utils";
 

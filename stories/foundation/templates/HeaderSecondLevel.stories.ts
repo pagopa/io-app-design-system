@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { HeaderSecondLevel } from "../../../src/components";
 import { withMaxWitdth, withSafeAreaProvider } from "../../utils";

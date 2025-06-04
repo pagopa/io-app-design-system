@@ -20,6 +20,7 @@
 		3A4D6DDAEE064A62BCB9E41C /* TitilliumSansPro-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D914480BB10462696485089 /* TitilliumSansPro-ThinItalic.otf */; };
 		3B87E80906437720E6561BD6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7EA0BAF5C6876F30AA317 /* PrivacyInfo.xcprivacy */; };
 		3E9A766310EF4D7182ECE58B /* Titillio-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9323387669874BCA88DEAAB7 /* Titillio-BoldItalic.otf */; };
+		472A8D737532E513D51CE4E3 /* libPods-ExampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA7A3F41F542DE45FD74015 /* libPods-ExampleApp.a */; };
 		493FA456AB57478891021E84 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF1D50D36F43F2BC0D124F /* LICENSE.txt */; };
 		497AFB642D5642ECA1B57F46 /* Titillio-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C2B73AC2CA34996A186ECD8 /* Titillio-Regular.otf */; };
 		4E98DA23C9A74ABD815AA090 /* TitilliumSansPro-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5FC82A404FE3426DAF4CC14B /* TitilliumSansPro-Thin.otf */; };
@@ -56,6 +57,7 @@
 		17BFE9FD4EE94A2381B4C39C /* Titillio-ExtrablackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-ExtrablackItalic.otf"; path = "../assets/fonts/Titillio/Titillio-ExtrablackItalic.otf"; sourceTree = "<group>"; };
 		1CFF1D50D36F43F2BC0D124F /* LICENSE.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = LICENSE.txt; path = ../assets/fonts/TitilliumSansPro/LICENSE.txt; sourceTree = "<group>"; };
 		1E50F38389644583B83DCCCA /* DMMono-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMMono-Medium.ttf"; path = "../assets/fonts/DMMono/DMMono-Medium.ttf"; sourceTree = "<group>"; };
+		209F2ACF00EC569DD39C8DC6 /* Pods-ExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2D914480BB10462696485089 /* TitilliumSansPro-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-ThinItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-ThinItalic.otf"; sourceTree = "<group>"; };
 		3DD7EA0BAF5C6876F30AA317 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ExampleApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		463C2C4990BE436BBAE9E663 /* Titillio-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-Black.otf"; path = "../assets/fonts/Titillio/Titillio-Black.otf"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		6C6D7476B139472CA35D0A7C /* TitilliumSansPro-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-Black.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-Black.otf"; sourceTree = "<group>"; };
 		721969CE7F714270A560A3C2 /* TitilliumSansPro-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-BoldItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-BoldItalic.otf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ExampleApp/AppDelegate.swift; sourceTree = "<group>"; };
+		76C0E351F1CA2982BB46F4DE /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		7EF8935DC94F47A9BBDFD6C8 /* Titillio-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-Thin.otf"; path = "../assets/fonts/Titillio/Titillio-Thin.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ExampleApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AFD11CE456424CA5DEAFD7 /* Titillio-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-RegularItalic.otf"; path = "../assets/fonts/Titillio/Titillio-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		D250123C226F48A8B293E7B4 /* Titillio-ExtraboldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-ExtraboldItalic.otf"; path = "../assets/fonts/Titillio/Titillio-ExtraboldItalic.otf"; sourceTree = "<group>"; };
 		D45E0DCC845A427BA80DDCED /* Titillio-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Titillio-BlackItalic.otf"; path = "../assets/fonts/Titillio/Titillio-BlackItalic.otf"; sourceTree = "<group>"; };
 		E1250CCE3DA54D589AB013F6 /* TitilliumSansPro-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-LightItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-LightItalic.otf"; sourceTree = "<group>"; };
+		EAA7A3F41F542DE45FD74015 /* libPods-ExampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F829BC8E045ECAB97BA45F7F /* libPods-ExampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF23D2E42775424F9E287256 /* TitilliumSansPro-SemiboldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-SemiboldItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-SemiboldItalic.otf"; sourceTree = "<group>"; };
@@ -93,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA421D798B40729935E7323 /* libPods-ExampleApp.a in Frameworks */,
+				472A8D737532E513D51CE4E3 /* libPods-ExampleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				F829BC8E045ECAB97BA45F7F /* libPods-ExampleApp.a */,
+				EAA7A3F41F542DE45FD74015 /* libPods-ExampleApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,8 +197,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C6B13784F97D8C776B7465CE /* Pods-ExampleApp.debug.xcconfig */,
-				111499C1A8EB71DD8ED59381 /* Pods-ExampleApp.release.xcconfig */,
+				209F2ACF00EC569DD39C8DC6 /* Pods-ExampleApp.debug.xcconfig */,
+				76C0E351F1CA2982BB46F4DE /* Pods-ExampleApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -206,13 +210,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ExampleApp" */;
 			buildPhases = (
-				467933A6FAABD6F5B1767EC4 /* [CP] Check Pods Manifest.lock */,
+				E81419BA7BA69984AA6E36CB /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				560796BE880D39A71502E098 /* [CP] Embed Pods Frameworks */,
-				5B2A560F12946F3030B298E5 /* [CP] Copy Pods Resources */,
+				26A36629065FA114FDD2E22A /* [CP] Embed Pods Frameworks */,
+				57338CA7AEF17A3F4D3F90D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,7 +318,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		467933A6FAABD6F5B1767EC4 /* [CP] Check Pods Manifest.lock */ = {
+		26A36629065FA114FDD2E22A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57338CA7AEF17A3F4D3F90D0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleApp/Pods-ExampleApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E81419BA7BA69984AA6E36CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,7 +424,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6B13784F97D8C776B7465CE /* Pods-ExampleApp.debug.xcconfig */;
+			baseConfigurationReference = 209F2ACF00EC569DD39C8DC6 /* Pods-ExampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -413,7 +451,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 111499C1A8EB71DD8ED59381 /* Pods-ExampleApp.release.xcconfig */;
+			baseConfigurationReference = 76C0E351F1CA2982BB46F4DE /* Pods-ExampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

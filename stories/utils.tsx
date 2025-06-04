@@ -1,4 +1,4 @@
-import { Decorator } from "@storybook/react";
+import { Decorator } from "@storybook/react-webpack5";
 import React from "react";
 import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";

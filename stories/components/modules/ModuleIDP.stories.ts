@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { ModuleIDP } from "../../../src/components";
 import { withMaxWitdth, withTheme } from "../../utils";

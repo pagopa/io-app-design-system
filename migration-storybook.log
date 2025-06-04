@@ -1,0 +1,316 @@
+🔎 checking possible migrations..
+
+🔎 found a 'consolidated-imports' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────╮
+│                                                                                          │
+│   Found package.json files that contain consolidated or renamed Storybook packages       │
+│   that need to be updated:                                                               │
+│   - /Users/damiano.plebani/projects/io-app-design-system/package.json                    │
+│                                                                                          │
+│   We will automatically rename the following packages:                                   │
+│   - @storybook/blocks -> @storybook/addon-docs/blocks                                    │
+│   - @storybook/manager-api -> storybook/manager-api                                      │
+│   - @storybook/test -> storybook/test                                                    │
+│   - @storybook/theming -> storybook/theming                                              │
+│                                                                                          │
+│   These packages have been renamed or consolidated into the main storybook package and   │
+│   should be removed.                                                                     │
+│   The main storybook package will be added to devDependencies if not already present.    │
+│                                                                                          │
+│   Would you like to:                                                                     │
+│   1. Update these package.json files                                                     │
+│   2. Scan your codebase and update any imports from these updated packages               │
+│                                                                                          │
+│   This will ensure your project is properly updated to use the new updated package       │
+│   structure and to use the latest package names.                                         │
+│                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'consolidated-imports' migration on your project? › (Y/n)✔ Do you want to run the 'consolidated-imports' migration on your project? … yes
+? Enter a custom glob pattern: › **/*.{mjs,cjs,js,jsx,ts,tsx,mdx}✔ Enter a custom glob pattern: … **/*.{mjs,cjs,js,jsx,ts,tsx,mdx}
+Scanning for affected files...
+Scanning 2363 files...
+Installing dependencies...
+
+✅ ran consolidated-imports migration
+
+🔎 found a 'removeAddonInteractions' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────╮
+│                                                                                          │
+│   @storybook/addon-interactions has been consolidated into Storybook core.               │
+│                                                                                          │
+│   We'll remove it from your dependencies and unregister it from your Storybook           │
+│   configuration.                                                                         │
+│   The functionality will continue to work as before, but now it's built into Storybook   │
+│   core.                                                                                  │
+│                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'removeAddonInteractions' migration on your project? › (Y/n)✔ Do you want to run the 'removeAddonInteractions' migration on your project? … yes
+Removing @storybook/addon-interactions...
+✅ ran removeAddonInteractions migration
+
+🔎 found a 'renderer-to-framework' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────╮
+│                                                                                          │
+│   As part of Storybook's evolution, we're moving from renderer-based to                  │
+│   framework-based configuration.                                                         │
+│                                                                                          │
+│   This migration will:                                                                   │
+│   1. Update your source files to use framework-specific imports                          │
+│   2. Remove the renderer packages from your package.json                                 │
+│   3. Install the necessary framework dependencies                                        │
+│   Would you like to proceed with these changes?                                          │
+│                                                                                          │
+│   More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#moving-fr   │
+│   om-renderer-based-to-framework-based-configuration                                     │
+│                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'renderer-to-framework' migration on your project? › (Y/n)✔ Do you want to run the 'renderer-to-framework' migration on your project? … yes
+? Enter a custom glob pattern to scan for story files (or press enter to use default): › **/*.{mjs,cjs,js,jsx,ts,tsx}✔ Enter a custom glob pattern to scan for story files (or press enter to use default): … **/*.{mjs,cjs,js,jsx,ts,tsx}
+
+Migrating @storybook/react to @storybook/react-webpack5
+Scanning 2351 files...
+Updating package.json files...
+Installing dependencies...
+
+✅ ran renderer-to-framework migration
+
+🔎 found a 'remove-essentials' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────╮
+│                                                                                       │
+│           In Storybook 9.0, several features have been moved into Storybook's core.   │
+│                                                                                       │
+│   We've detected the following addons that are now part of Storybook core:            │
+│                                                                                       │
+│           - @storybook/addon-actions                                                  │
+│                                                                                       │
+│           These will be removed as they are no longer needed.                         │
+│                                                                                       │
+│           We'll also need to update your code to use the new core addons.             │
+│                                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'remove-essentials' migration on your project? › (Y/n)✔ Do you want to run the 'remove-essentials' migration on your project? … yes
+❌ error when running remove-essentials migration
+Error: Command failed with exit code 7: yarn exec storybook remove @storybook/addon-actions --config-dir .storybook
+An error occurred while removing dependencies.
+/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/bin/index.cjs:23
+  throw error;
+  ^
+
+HandledError: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions
+    at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26153:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)
+    at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562
+    at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12) {
+  handled: true,
+  cause: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions
+      at makeError (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25217:67)
+      at handlePromise (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25835:15)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async ks.executeCommand (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26293:15)
+      at async ks.runRemoveDeps (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27258:5)
+      at async ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26151:9)
+      at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)
+      at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562
+      at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12) {
+    shortMessage: 'Command failed with exit code 1: yarn remove @storybook/addon-actions',
+    command: 'yarn remove @storybook/addon-actions',
+    escapedCommand: 'yarn remove "@storybook/addon-actions"',
+    exitCode: 1,
+    signal: undefined,
+    signalDescription: undefined,
+    stdout: undefined,
+    stderr: undefined,
+    cwd: '/Users/damiano.plebani/projects/io-app-design-system',
+    failed: true,
+    timedOut: false,
+    isCanceled: false,
+    killed: false
+  }
+}
+
+Node.js v20.9.0
+Uninstalling @storybook/addon-actions
+Usage Error: Pattern @storybook/addon-actions doesn't match any packages referenced by this workspace
+
+$ yarn remove [-A,--all] [--mode #0] ...
+Error: Command failed with exit code 1: yarn remove @storybook/addon-actions
+Error: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions
+    at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26153:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)
+    at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562
+    at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12)
+    at makeError (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25217:67)
+    at handlePromise (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25835:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ks.executeCommand (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26293:15)
+    at async Object.run (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:342:476)
+    at async runFixes (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:413:1798)
+    at async automigrate (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:1834)
+    at async doUpgrade (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:2517)
+    at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12)
+    at async upgrade (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:3048) {
+  shortMessage: 'Command failed with exit code 7: yarn exec storybook remove @storybook/addon-actions --config-dir .storybook',
+  command: 'yarn exec storybook remove @storybook/addon-actions --config-dir .storybook',
+  escapedCommand: 'yarn exec storybook remove "@storybook/addon-actions" --config-dir .storybook',
+  exitCode: 7,
+  signal: undefined,
+  signalDescription: undefined,
+  stdout: 'Uninstalling @storybook/addon-actions\n' +
+    "\x1B[31m\x1B[1mUsage Error\x1B[22m\x1B[39m: Pattern @storybook/addon-actions doesn't match any packages referenced by this workspace\n" +
+    '\n' +
+    '\x1B[1m$ \x1B[22myarn remove [-A,--all] [--mode #0] ...\n' +
+    'Error: Command failed with exit code 1: yarn remove @storybook/addon-actions\n' +
+    '\x1B[38;2;241;97;97mError: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions\x1B[39m\n' +
+    '    at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26153:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '    at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)\n' +
+    '    at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562\n' +
+    '    at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12)',
+  stderr: 'An error occurred while removing dependencies.\n' +
+    '/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/bin/index.cjs:23\n' +
+    '  throw error;\n' +
+    '  ^\n' +
+    '\n' +
+    'HandledError: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions\n' +
+    '    at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26153:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '    at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)\n' +
+    '    at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562\n' +
+    '    at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12) {\n' +
+    '  handled: true,\n' +
+    '  cause: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions\n' +
+    '      at makeError (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25217:67)\n' +
+    '      at handlePromise (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25835:15)\n' +
+    '      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '      at async ks.executeCommand (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26293:15)\n' +
+    '      at async ks.runRemoveDeps (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27258:5)\n' +
+    '      at async ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26151:9)\n' +
+    '      at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:27439:32)\n' +
+    '      at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:480:5562\n' +
+    '      at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/core-server/index.cjs:36122:12) {\n' +
+    "    shortMessage: 'Command failed with exit code 1: yarn remove @storybook/addon-actions',\n" +
+    "    command: 'yarn remove @storybook/addon-actions',\n" +
+    `    escapedCommand: 'yarn remove "@storybook/addon-actions"',\n` +
+    '    exitCode: 1,\n' +
+    '    signal: undefined,\n' +
+    '    signalDescription: undefined,\n' +
+    '    stdout: undefined,\n' +
+    '    stderr: undefined,\n' +
+    "    cwd: '/Users/damiano.plebani/projects/io-app-design-system',\n" +
+    '    failed: true,\n' +
+    '    timedOut: false,\n' +
+    '    isCanceled: false,\n' +
+    '    killed: false\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Node.js v20.9.0',
+  cwd: '/Users/damiano.plebani/projects/io-app-design-system',
+  failed: true,
+  timedOut: false,
+  isCanceled: false,
+  killed: false
+}
+
+
+╭ Migration check ran with failures ───────────────────────────────────────────────────────╮
+│                                                                                          │
+│   Successful migrations:                                                                 │
+│                                                                                          │
+│   consolidated-imports, removeAddonInteractions, renderer-to-framework                   │
+│                                                                                          │
+│   Failed migrations:                                                                     │
+│                                                                                          │
+│   remove-essentials:                                                                     │
+│   Command failed with exit code 7: yarn exec storybook remove @storybook/addon-actions   │
+│   --config-dir .storybook                                                                │
+│   An error occurred while removing dependencies.                                         │
+│   /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/bin/in   │
+│   dex.cjs:23                                                                             │
+│   throw error;                                                                           │
+│   ^                                                                                      │
+│                                                                                          │
+│   HandledError: Error: Command failed with exit code 1: yarn remove                      │
+│   @storybook/addon-actions                                                               │
+│   at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_mod   │
+│   ules/storybook/dist/common/index.cjs:26153:94)                                         │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:95:5)          │
+│   at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules   │
+│   /storybook/dist/common/index.cjs:27439:32)                                             │
+│   at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/c   │
+│   li/dist/bin/index.cjs:480:5562                                                         │
+│   at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modul   │
+│   es/storybook/dist/core-server/index.cjs:36122:12) {                                    │
+│   handled: true,                                                                         │
+│   cause: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions    │
+│   at makeError (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/storybo   │
+│   ok/dist/common/index.cjs:25217:67)                                                     │
+│   at handlePromise (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/sto   │
+│   rybook/dist/common/index.cjs:25835:15)                                                 │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:95:5)          │
+│   at async ks.executeCommand (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_m   │
+│   odules/storybook/dist/common/index.cjs:26293:15)                                       │
+│   at async ks.runRemoveDeps (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_mo   │
+│   dules/storybook/dist/common/index.cjs:27258:5)                                         │
+│   at async ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/no   │
+│   de_modules/storybook/dist/common/index.cjs:26151:9)                                    │
+│   at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules   │
+│   /storybook/dist/common/index.cjs:27439:32)                                             │
+│   at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/c   │
+│   li/dist/bin/index.cjs:480:5562                                                         │
+│   at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modul   │
+│   es/storybook/dist/core-server/index.cjs:36122:12) {                                    │
+│   shortMessage: 'Command failed with exit code 1: yarn remove                            │
+│   @storybook/addon-actions',                                                             │
+│   command: 'yarn remove @storybook/addon-actions',                                       │
+│   escapedCommand: 'yarn remove "@storybook/addon-actions"',                              │
+│   exitCode: 1,                                                                           │
+│   signal: undefined,                                                                     │
+│   signalDescription: undefined,                                                          │
+│   stdout: undefined,                                                                     │
+│   stderr: undefined,                                                                     │
+│   cwd: '/Users/damiano.plebani/projects/io-app-design-system',                           │
+│   failed: true,                                                                          │
+│   timedOut: false,                                                                       │
+│   isCanceled: false,                                                                     │
+│   killed: false                                                                          │
+│   }                                                                                      │
+│   }                                                                                      │
+│                                                                                          │
+│   Node.js v20.9.0                                                                        │
+│   Uninstalling @storybook/addon-actions                                                  │
+│   Usage Error: Pattern @storybook/addon-actions doesn't match any packages referenced    │
+│   by this workspace                                                                      │
+│                                                                                          │
+│   $ yarn remove [-A,--all] [--mode #0] ...                                               │
+│   Error: Command failed with exit code 1: yarn remove @storybook/addon-actions           │
+│   Error: Error: Command failed with exit code 1: yarn remove @storybook/addon-actions    │
+│   at ks.removeDependencies (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_mod   │
+│   ules/storybook/dist/common/index.cjs:26153:94)                                         │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:95:5)          │
+│   at async removeAddon (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules   │
+│   /storybook/dist/common/index.cjs:27439:32)                                             │
+│   at async /Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/c   │
+│   li/dist/bin/index.cjs:480:5562                                                         │
+│   at async withTelemetry (/Users/damiano.plebani/.npm/_npx/22a2e474f1fcccdb/node_modul   │
+│   es/storybook/dist/core-server/index.cjs:36122:12)                                      │
+│                                                                                          │
+│   You can find the full logs in                                                          │
+│   /Users/damiano.plebani/projects/io-app-design-system/migration-storybook.log           │
+│                                                                                          │
+│   ─────────────────────────────────────────────────                                      │
+│                                                                                          │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook     │
+│   automigrate'                                                                           │
+│                                                                                          │
+│   The automigrations try to migrate common patterns in your project, but might not       │
+│   contain everything needed to migrate to the latest version of Storybook.               │
+│                                                                                          │
+│   Please check the changelog and migration guide for manual migrations and more          │
+│   information: https://storybook.js.org/docs/migration-guide                             │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                │
+│                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
+
