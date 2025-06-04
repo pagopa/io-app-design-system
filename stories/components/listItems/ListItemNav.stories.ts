@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 import { ListItemNav } from "../../../src/components";
 import { withMaxWitdth, withTheme } from "../../utils";
