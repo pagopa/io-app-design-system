@@ -163,6 +163,18 @@ export const Layout = () => {
             </HStack>
           </View>
         </ComponentViewerBox>
+
+        <ComponentViewerBox name="HStack, zero gap">
+          <View
+            style={{
+              backgroundColor: IOColors[theme["appBackground-secondary"]]
+            }}
+          >
+            <HStack style={{ padding: 16 }}>
+              <HStackBlocks />
+            </HStack>
+          </View>
+        </ComponentViewerBox>
       </ContentWrapper>
 
       <VSpacer size={24} />
