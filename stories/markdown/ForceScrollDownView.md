@@ -23,7 +23,3 @@ const MyComponent = () => (
 |`onThresholdCrossed`  |`(crossed: boolean) => void`  | N | A callback that will be called whenever the scroll view crosses the threshold. The callback is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`) |
 | `style` `contentContainerStyle` `scrollEnabled` `testID` | `ScrollView` component props  | N | The same props as the [ScrollView](https://reactnative.dev/docs/scrollview) component |
 <br/>
-
-<div style="display: flex; flex-direction: column; align-items: center">
-<img src="./ForceScrollDown.gif" />
-</div>
