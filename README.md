@@ -50,18 +50,13 @@ cd iOS && bundle exec pod install
 # Launch the app locally (simulator flag is optional)
 yarn ios --simulator='iPhone 15 Pro'
 ```
-Activate the toggle at the top of the application to view the experimental design system.
+
+### Playground
+Consider the example app your playground when developing and testing current or new components. If you need to build new components, ensure that you test them in the same environment as our users, without making any technical trade-offs (like testing them in a browser)
 
 > [!important]
 > The sample application consists of several pages with some components for testing purposes. To view the [continuously updated Design System section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system), please refer to the [main app](https://github.com/pagopa/io-app).
 
-## Playground & Documentation
-A [Storybook](https://storybook.js.org/) playground is also available to help develop and test components. To start it in the local environment, run the following command:
-
-```bash
-yarn storybook
-```
-> Storybook documentation is a work in progress
 
 # Usage
 To try a component, just import it:
