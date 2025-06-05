@@ -3,9 +3,9 @@ import { View, ViewProps, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 
-type AllowedStyleProps = Pick<
+type AllowedStyleProps = Exclude<
   ViewStyle,
-  "alignItems" | "flexShrink" | "flexGrow" | "flex" | "flexWrap" | "width"
+  "display" | "flexDirection" | "gap"
 >;
 
 type A11YRelatedProps = Pick<
@@ -14,7 +14,7 @@ type A11YRelatedProps = Pick<
 >;
 
 type Stack = PropsWithChildren<{
-  space?: IOSpacer;
+  space?: IOSpacer | 0;
   style?: AllowedStyleProps;
   allowScaleSpacing?: boolean;
 }> &
@@ -24,15 +24,13 @@ type BaseStack = Stack & {
   orientation: "vertical" | "horizontal";
 };
 
-const DEFAULT_SPACING_VALUE: IOSpacer = 16;
-
 /**
 Horizontal Stack component
 @param {IOSpacer} space
  */
 
 const Stack = ({
-  space = DEFAULT_SPACING_VALUE,
+  space = 0,
   style,
   orientation = "vertical",
   allowScaleSpacing,
@@ -47,9 +45,10 @@ const Stack = ({
       style={{
         display: "flex",
         flexDirection: orientation === "horizontal" ? "row" : "column",
-        gap: allowScaleSpacing
-          ? space * dynamicFontScale * spacingScaleMultiplier
-          : space,
+        gap:
+          allowScaleSpacing && space !== 0
+            ? space * dynamicFontScale * spacingScaleMultiplier
+            : space,
         ...style
       }}
     >
