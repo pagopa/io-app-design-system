@@ -129,6 +129,7 @@ Essential atomic components:
   * [FeatureInfo](./src/components/featureInfo/)
   * [Banner](./src/components/banner/)
 * [**Headers**](./src/components/headers/) · [📖 Docs](./src/components/headers/README.md)
+* [**Templates**](./src/components/templates/) · [📖 Docs](./src/components/templates/README.md)
 
 #### [Explore the `components` folder →](./src/components)
 

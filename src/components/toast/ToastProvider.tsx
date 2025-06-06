@@ -14,7 +14,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
-import { Dismissable } from "../layout/Dismissable";
+import { Dismissable } from "../templates";
 import { ToastNotification } from "./ToastNotification";
 import { ToastContext } from "./context";
 import { Toast } from "./types";

@@ -32,6 +32,7 @@ export * from "./switch";
 export * from "./tabs";
 export * from "./tag";
 export * from "./textInput";
+export * from "./templates";
 export * from "./toast";
 export * from "./tooltip";
 export * from "./typography";

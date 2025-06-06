@@ -18,8 +18,7 @@ import {
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
-import { FooterActions } from "./FooterActions";
-import { useFooterActionsInlineMeasurements } from "./hooks";
+import { FooterActions, useFooterActionsInlineMeasurements } from "../layout";
 
 type ForceScrollDownViewActions = {
   /**
