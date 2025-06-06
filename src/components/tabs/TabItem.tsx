@@ -13,13 +13,8 @@ import Animated, {
   useReducedMotion,
   withSpring
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IOSpringValues,
-  hexToRgba,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../context";
+import { IOColors, IOSpringValues, hexToRgba } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";

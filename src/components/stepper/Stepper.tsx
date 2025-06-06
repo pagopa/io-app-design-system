@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { ColorValue, View } from "react-native";
-import { IOColors, IOSpacer, IOVisualCostants, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOSpacer, IOVisualCostants } from "../../core";
 
 type StepperProps = {
   steps: number;

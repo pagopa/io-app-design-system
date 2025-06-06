@@ -8,7 +8,8 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOColors, useIOTheme } from "../../core";
+import { IOColors } from "../../core";
+import { useIOTheme } from "../../context";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,

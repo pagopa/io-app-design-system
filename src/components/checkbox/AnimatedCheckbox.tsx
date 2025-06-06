@@ -14,11 +14,10 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { useIOFontDynamicScale } from "../../utils/accessibility";
-import { useIOTheme } from "../../core";
-import { IOSpringValues } from "../../core/IOAnimations";
+import { useIOTheme } from "../../context";
+import { IOSelectionTickVisualParams, IOSpringValues } from "../../core";
 import { IOColors } from "../../core/IOColors";
-import { IOSelectionTickVisualParams } from "../../core/IOStyles";
+import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedTick } from "../common/AnimatedTick";
 
 type Props = {

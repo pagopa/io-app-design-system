@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { IOIcons, Icon } from "../icons";
 import { H6, BodySmall } from "../typography";
 import {

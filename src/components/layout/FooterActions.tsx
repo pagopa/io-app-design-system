@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Fragment, PropsWithChildren, useState } from "react";
+import React, { Fragment, PropsWithChildren, useState } from "react";
 import {
   ColorValue,
   LayoutChangeEvent,
@@ -10,14 +9,14 @@ import {
   ViewStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpacer,
   IOSpacing,
   IOVisualCostants,
   buttonSolidHeight,
-  hexToRgba,
-  useIOTheme
+  hexToRgba
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import {

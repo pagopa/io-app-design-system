@@ -7,7 +7,8 @@ import {
   ViewStyle
 } from "react-native";
 import { useReducedMotion } from "react-native-reanimated";
-import { IOColors, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors } from "../../core";
 import { WithTestID } from "../../utils/types";
 
 const ANIMATION_DURATION = 1250;

@@ -11,13 +11,8 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import {
-  IOButtonStyles,
-  IOColors,
-  hexToRgba,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core/";
+import { useIONewTypeface, useIOTheme } from "../../context";
+import { IOButtonStyles, IOColors, hexToRgba } from "../../core/";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import {

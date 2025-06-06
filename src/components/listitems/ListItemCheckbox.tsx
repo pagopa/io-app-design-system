@@ -6,9 +6,9 @@ import Animated from "react-native-reanimated";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
-  IOSelectionTickVisualParams,
-  useIOTheme
+  IOSelectionTickVisualParams
 } from "../../core";
+import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";

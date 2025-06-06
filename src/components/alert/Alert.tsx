@@ -7,7 +7,8 @@ import {
   ViewStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOVisualCostants, useIOThemeContext } from "../../core";
+import { useIOThemeContext } from "../../context";
+import { IOVisualCostants } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { IOAlertRadius } from "../../core/IOShapes";
 import { IOAlertSpacing, IOSpacer } from "../../core/IOSpacing";

@@ -1,12 +1,8 @@
 import React, { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
-import {
-  IOColors,
-  IOListItemStyles,
-  IOListItemVisualParams,
-  useIOTheme
-} from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";

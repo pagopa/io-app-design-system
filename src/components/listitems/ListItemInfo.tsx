@@ -1,11 +1,8 @@
 import React, { ComponentProps, ReactNode, useCallback, useMemo } from "react";
 import { AccessibilityRole, Platform, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
-import {
-  IOListItemStyles,
-  IOListItemVisualParams,
-  useIOTheme
-} from "../../core";
+import { IOListItemStyles, IOListItemVisualParams } from "../../core";
+import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";

@@ -7,7 +7,8 @@ import {
   SharedValue,
   useAnimatedStyle
 } from "react-native-reanimated";
-import { hexToRgba, IOColors, IOScaleEffect, useIOTheme } from "../core";
+import { useIOTheme } from "../context";
+import { hexToRgba, IOColors, IOScaleEffect } from "../core";
 import { useSpringPressProgressValue } from "../utils/hooks";
 
 export const useListItemAnimation = (): {

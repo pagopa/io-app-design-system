@@ -1,14 +1,12 @@
-import * as React from "react";
-import { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import { ColorValue, LayoutChangeEvent, StyleSheet, View } from "react-native";
+import { useIOTheme, useIOThemeContext } from "../../context";
 import {
   IOColors,
   IOSpacer,
   IOSpacing,
   IOSpacingScale,
-  IOVisualCostants,
-  useIOTheme,
-  useIOThemeContext
+  IOVisualCostants
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOButton, IOButtonBlockSpecificProps } from "../buttons";

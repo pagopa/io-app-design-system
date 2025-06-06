@@ -6,7 +6,8 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { hexToRgba, IOColors, useIONewTypeface, useIOTheme } from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../context";
+import { hexToRgba, IOColors } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { IOText } from "../typography";
 

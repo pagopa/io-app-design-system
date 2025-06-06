@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, SwitchProps } from "react-native";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { IOColors } from "../../core/IOColors";
 
 type OwnProps = Pick<

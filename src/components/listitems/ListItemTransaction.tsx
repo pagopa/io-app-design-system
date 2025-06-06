@@ -6,10 +6,9 @@ import {
   IOListItemLogoMargin,
   IOListItemStyles,
   IOListItemVisualParams,
-  IOVisualCostants,
-  useIOTheme
+  IOVisualCostants
 } from "../../core";
-
+import { useIOTheme } from "../../context";
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";

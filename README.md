@@ -50,18 +50,13 @@ cd iOS && bundle exec pod install
 # Launch the app locally (simulator flag is optional)
 yarn ios --simulator='iPhone 15 Pro'
 ```
-Activate the toggle at the top of the application to view the experimental design system.
+
+### Playground
+Consider the example app your playground when developing and testing current or new components. If you need to build new components, ensure that you test them in the same environment as our users, without making any technical trade-offs (like testing them in a browser)
 
 > [!important]
 > The sample application consists of several pages with some components for testing purposes. To view the [continuously updated Design System section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system), please refer to the [main app](https://github.com/pagopa/io-app).
 
-## Playground & Documentation
-A [Storybook](https://storybook.js.org/) playground is also available to help develop and test components. To start it in the local environment, run the following command:
-
-```bash
-yarn storybook
-```
-> Storybook documentation is a work in progress
 
 # Usage
 To try a component, just import it:
@@ -100,24 +95,22 @@ Essential core visual attributes of the design language. It includes:
 
 ## Foundation
 Essential atomic components:
-* [**Typography**](./src/components/typography/)
-  * [📖 Docs](./src/components/typography/README.md) · [Handling font files →](./src/components/typography/README.md#handling-font-files)
-* **Layout**
-  * [ContentWrapper](./src/components/contentWrapper/)
-  * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
-  * [Divider](./src/components/divider/)
-* [**Icons**](./src/components/icons/)
+* [**Typography**](./src/components/typography/) · [📖 Docs](./src/components/typography/README.md)
+* [**Layout**](./src/components/layout/) · [📖 Docs](./src/components/layout/README.md)
+  * [`ContentWrapper`](./src/components/contentWrapper/)
+  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/spacer/)
+  * [`Divider`](./src/components/divider/)
+* [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
-  * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
-* [**Pictograms**](./src/components/pictograms/)
+  * [**[HowTo]** Add a new icon →](./src/components/icons/#add-a-new-icon)
+* [**Pictograms**](./src/components/pictograms/) · [📖 Docs](./src/components/pictograms/README.md)
   * Assets with an intended size greather than `56px`
-  * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
-* **Logos**
+  * [**[HowTo]** Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
+* [**Logos**](./src/components/logos/) · [📖 Docs](./src/components/logos/README.md)
   * [Payment Logos](./src/components/logos/)
-    * [📖 Docs](./src/components/logos/)
   * [Avatar](./src/components/avatar/)
 * **Loaders**
-  * [LoadingSpinner](./src/components/loadingSpinner/)
+  * [`LoadingSpinner`](./src/components/loadingSpinner/)
 
 ## Components
 
@@ -135,6 +128,8 @@ Essential atomic components:
 * **Advice & Banners**
   * [FeatureInfo](./src/components/featureInfo/)
   * [Banner](./src/components/banner/)
+* [**Headers**](./src/components/headers/) · [📖 Docs](./src/components/headers/README.md)
+* [**Templates**](./src/components/templates/) · [📖 Docs](./src/components/templates/README.md)
 
 #### [Explore the `components` folder →](./src/components)
 
@@ -146,6 +141,12 @@ Essential atomic components:
 Common functions used to wrap up external libraries and utilities
 
 #### [Explore the `functions` folder →](./src/functions)
+
+## Contexts
+
+The contexts used in and exported from the library.
+
+#### [Explore the `context` folder →](./src/context)
 
 ## Dependencies
 * [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all the component animations

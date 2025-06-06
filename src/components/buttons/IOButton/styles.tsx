@@ -4,7 +4,8 @@ import {
   useAnimatedProps,
   useAnimatedStyle
 } from "react-native-reanimated";
-import { IOColors, hexToRgba, useIOTheme } from "../../../core";
+import { useIOTheme } from "../../../context";
+import { hexToRgba, IOColors } from "../../../core/IOColors";
 import { IOButtonColor, IOButtonProps, IOButtonVariant } from "./IOButton";
 
 type ColorStates = {

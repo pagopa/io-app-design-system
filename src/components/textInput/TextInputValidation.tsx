@@ -9,7 +9,7 @@ import {
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { TextInputValidationRefProps } from "../../utils/types";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { IOColors } from "../../core/IOColors";
 import {
   enterTransitionInputIcon,

@@ -2,9 +2,9 @@ import React, { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
 import {
   IOSelectionListItemStyles,
-  IOSelectionListItemVisualParams,
-  useIOTheme
+  IOSelectionListItemVisualParams
 } from "../../core";
+import { useIOTheme } from "../../context";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";

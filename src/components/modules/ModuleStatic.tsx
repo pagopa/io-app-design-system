@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { PressableProps, View, ViewProps } from "react-native";
-import { IOColors, IOModuleStyles, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOModuleStyles } from "../../core";
 import { HStack } from "../stack";
 
 type ModuleStaticProps = Pick<

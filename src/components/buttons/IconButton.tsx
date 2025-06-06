@@ -5,12 +5,12 @@ import Animated, {
   useAnimatedProps,
   useReducedMotion
 } from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOIconButtonStyles,
   IOThemeLight,
-  hexToRgba,
-  useIOTheme
+  hexToRgba
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";

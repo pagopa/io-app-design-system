@@ -1,20 +1,20 @@
 import React, { Fragment } from "react";
 import { Image, StyleSheet, View } from "react-native";
-import Animated from "react-native-reanimated";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
+import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   hexToRgba,
   IOAccordionRadius,
   IOColors,
-  IOSpacingScale,
-  useIOTheme
+  IOSpacingScale
 } from "../../core";
 import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
 import { Divider } from "../divider";
-import { H6 } from "../typography";
 import { Icon } from "../icons";
 import { ListItemCheckbox, ListItemInfo } from "../listitems";
+import { H6 } from "../typography";
 
 const accordionBodySpacing: IOSpacingScale = 16;
 

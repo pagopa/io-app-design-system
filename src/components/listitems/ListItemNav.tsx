@@ -7,9 +7,9 @@ import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
   IOSpacer,
-  IOVisualCostants,
-  useIOTheme
+  IOVisualCostants
 } from "../../core";
+import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";

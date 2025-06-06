@@ -29,13 +29,8 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { WithTestID } from "src/utils/types";
-import {
-  IOColors,
-  IOSpacingScale,
-  IOVisualCostants,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../context";
+import { IOColors, IOSpacingScale, IOVisualCostants } from "../../core";
 import {
   IOFontSize,
   IOMaxFontSizeMultiplier,

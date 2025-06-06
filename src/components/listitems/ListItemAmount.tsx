@@ -1,10 +1,10 @@
 import React, { ComponentProps, useMemo } from "react";
 import { View } from "react-native";
+import { useIOTheme } from "../../context";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
-  IOSpacingScale,
-  useIOTheme
+  IOSpacingScale
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";

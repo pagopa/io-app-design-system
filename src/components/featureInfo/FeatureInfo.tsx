@@ -11,7 +11,8 @@ import {
   Pictogram,
   VStack
 } from "../../components";
-import { IOColors, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors } from "../../core/IOColors";
 
 type PartialFeatureInfo = {
   // Necessary to render main body with different formatting

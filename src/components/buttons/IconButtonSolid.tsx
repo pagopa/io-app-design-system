@@ -1,11 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { IOIconButtonStyles, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOIconButtonStyles } from "../../core";
 import { IOColors, hexToRgba } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";

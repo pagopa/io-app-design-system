@@ -17,13 +17,13 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOButtonStyles,
   IOColors,
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
-  exitTransitionInnerContent,
-  useIOTheme
+  exitTransitionInnerContent
 } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";

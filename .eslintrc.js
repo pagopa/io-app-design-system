@@ -8,7 +8,6 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react-native-a11y/all",
     "prettier",
-    "plugin:storybook/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

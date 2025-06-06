@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { View, Animated, Easing, ColorValue } from "react-native";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
-import { IOColors, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors } from "../../core/IOColors";
 
 export type LoadingSpinner = WithTestID<{
   color?: ColorValue;

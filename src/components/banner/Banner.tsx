@@ -8,13 +8,8 @@ import {
   ViewStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
-import {
-  IOBannerBigSpacing,
-  IOBannerRadius,
-  useIONewTypeface,
-  useIOTheme,
-  useIOThemeContext
-} from "../../core";
+import { useIONewTypeface, useIOTheme, useIOThemeContext } from "../../context";
+import { IOBannerBigSpacing, IOBannerRadius } from "../../core";
 import { hexToRgba, IOColors } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";

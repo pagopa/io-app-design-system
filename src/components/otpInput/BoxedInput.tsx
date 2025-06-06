@@ -1,7 +1,7 @@
-import * as React from "react";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { hexToRgba, IOColors, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { hexToRgba, IOColors } from "../../core/IOColors";
 import { H6, IOText } from "../typography";
 
 type Props = {

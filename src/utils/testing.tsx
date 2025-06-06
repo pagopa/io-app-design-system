@@ -1,6 +1,6 @@
 import React from "react";
 import TestRenderer from "react-test-renderer";
-import { IODSExperimentalContextProvider } from "../core/IODSExperimentalContextProvider";
+import { IODSExperimentalContextProvider } from "../context/IODSExperimentalContextProvider";
 
 export const TestRendererWithExperimentalEnabledContextProvider = (
   ui: React.ReactElement,
