@@ -140,6 +140,12 @@ Common functions used to wrap up external libraries and utilities
 
 #### [Explore the `functions` folder →](./src/functions)
 
+## Contexts
+
+The contexts used in and exported from the library.
+
+#### [Explore the `context` folder →](./src/context)
+
 ## Dependencies
 * [`react-native-reanimated`](https://github.com/software-mansion/react-native-reanimated): Handles all the component animations
 * [`react-native-svg`](https://github.com/software-mansion/react-native-svg): Handles all the vector asset components (icons, pictograms and logos)
