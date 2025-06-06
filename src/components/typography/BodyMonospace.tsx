@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { bodyFontSize, bodyLineHeight } from "./Body";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 

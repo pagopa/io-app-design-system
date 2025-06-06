@@ -1,5 +1,4 @@
-import * as React from "react";
-import { createRef, useEffect, useLayoutEffect } from "react";
+import React, { createRef, useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
   findNodeHandle,
@@ -14,11 +13,11 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useIOTheme } from "../../context";
 import {
   alertEdgeToEdgeInsetTransitionConfig,
   IOColors,
-  IOVisualCostants,
-  useIOTheme
+  IOVisualCostants
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";

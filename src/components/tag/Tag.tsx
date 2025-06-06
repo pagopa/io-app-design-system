@@ -1,18 +1,15 @@
 import React from "react";
 import { Platform, StyleSheet, View, ViewStyle } from "react-native";
+import { useIONewTypeface, useIOTheme } from "../../context";
 import {
   IOColors,
-  IOTagRadius,
-  IOTheme,
-  IOThemeLight,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core";
-import {
   IOSpacingScale,
   IOTagHSpacing,
-  IOTagVSpacing
-} from "../../core/IOSpacing";
+  IOTagRadius,
+  IOTagVSpacing,
+  IOTheme,
+  IOThemeLight
+} from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";

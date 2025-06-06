@@ -1,6 +1,7 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { IOColors, useIOTheme } from "../../core";
+import { StyleSheet, View } from "react-native";
+import { useIOTheme } from "../../context";
+import { IOColors } from "../../core/IOColors";
 
 const DEFAULT_BORDER_SIZE = StyleSheet.hairlineWidth;
 

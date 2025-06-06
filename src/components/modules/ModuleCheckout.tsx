@@ -6,11 +6,8 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import {
-  IOSelectionListItemVisualParams,
-  IOSpacingScale,
-  useIOTheme
-} from "../../core";
+import { IOSelectionListItemVisualParams, IOSpacingScale } from "../../core";
+import { useIOTheme } from "../../context";
 import { ButtonLink } from "../buttons";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { IOSkeleton } from "../skeleton";

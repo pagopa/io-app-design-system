@@ -9,7 +9,7 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
 import { VSpacer } from "../spacer";

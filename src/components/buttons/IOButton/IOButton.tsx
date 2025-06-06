@@ -19,11 +19,11 @@ import {
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, { useReducedMotion } from "react-native-reanimated";
+import { useIONewTypeface } from "../../../context";
 import {
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
-  exitTransitionInnerContent,
-  useIONewTypeface
+  exitTransitionInnerContent
 } from "../../../core";
 import { useScaleAnimation } from "../../../hooks";
 import { WithTestID } from "../../../utils/types";

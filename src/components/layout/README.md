@@ -24,3 +24,41 @@ const ComponentWithLargerMargin = () => (
   </ContentWrapper>
 );
 ```
+
+### Spacer
+
+```jsx
+import { VSpacer, HSpacer } from '@pagopa/io-app-design-system';
+
+const Component = () => (
+  <View>
+    {/* […] */}
+    <VSpacer />
+    {/* […] */}
+  </View>
+);
+
+const ComponentWithHSpacer = () => (
+  <View style={{
+    flexDirection: 'row'
+  }}>
+    {/* […] */}
+    <HSpacer />
+    {/* […] */}
+  </ View>
+);
+```
+
+### Divider
+
+```jsx
+import { Divider } from '@pagopa/io-app-design-system';
+
+const Component = () => (
+  <Screen>
+    {/* [First block] */}
+    <Divider />
+    {/* [Second block] */}
+  </Screen>
+);
+```

@@ -23,6 +23,7 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useIONewTypeface, useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpringValues,
@@ -31,9 +32,7 @@ import {
   IOVisualCostants,
   alertEdgeToEdgeInsetTransitionConfig,
   hexToRgba,
-  iconBtnSizeSmall,
-  useIONewTypeface,
-  useIOTheme
+  iconBtnSizeSmall
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";

@@ -6,7 +6,7 @@ import React, {
   useState
 } from "react";
 import { Appearance, ColorSchemeName } from "react-native";
-import { IOTheme, IOThemeDark, IOThemeLight } from "./IOColors";
+import { IOTheme, IOThemeDark, IOThemeLight } from "../core/IOColors";
 
 export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
 

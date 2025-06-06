@@ -1,7 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
-import { IOColors, IOSelectionTickVisualParams, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOSelectionTickVisualParams } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
 import { AnimatedRadio } from "../radio/AnimatedRadio";

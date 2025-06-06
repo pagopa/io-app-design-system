@@ -3,12 +3,8 @@ import { PropsWithChildren, useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, { useReducedMotion } from "react-native-reanimated";
-import {
-  IOColors,
-  IOModuleIDPSavedVSpacing,
-  IOModuleStyles,
-  useIOTheme
-} from "../../core";
+import { IOColors, IOModuleIDPSavedVSpacing, IOModuleStyles } from "../../core";
+import { useIOTheme } from "../../context";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 

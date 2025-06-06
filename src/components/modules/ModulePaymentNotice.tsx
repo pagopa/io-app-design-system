@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
-import { IOListItemVisualParams, IOSpacer, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOListItemVisualParams, IOSpacer } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";

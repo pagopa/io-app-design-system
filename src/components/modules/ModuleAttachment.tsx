@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { GestureResponderEvent, PressableProps } from "react-native";
-import { IOListItemVisualParams, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOListItemVisualParams } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { Icon } from "../icons";
