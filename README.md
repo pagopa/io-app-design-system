@@ -95,24 +95,22 @@ Essential core visual attributes of the design language. It includes:
 
 ## Foundation
 Essential atomic components:
-* [**Typography**](./src/components/typography/)
-  * [📖 Docs](./src/components/typography/README.md)
-* **Layout**
-  * [ContentWrapper](./src/components/contentWrapper/)
-  * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
-  * [Divider](./src/components/divider/)
-* [**Icons**](./src/components/icons/)
+* [**Typography**](./src/components/typography/) · [📖 Docs](./src/components/typography/README.md)
+* **Layout** · [📖 Docs](./src/components/layout/README.md)
+  * [`ContentWrapper`](./src/components/contentWrapper/)
+  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/spacer/)
+  * [`Divider`](./src/components/divider/)
+* [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
-  * [📖 Docs](./src/components/icons/README.md) · [Add a new icon →](./src/components/icons/#add-a-new-icon)
-* [**Pictograms**](./src/components/pictograms/)
+  * [📖 Add a new icon →](./src/components/icons/#add-a-new-icon)
+* [**Pictograms**](./src/components/pictograms/) · [📖 Docs](./src/components/pictograms/README.md)
   * Assets with an intended size greather than `56px`
-  * [📖 Docs](./src/components/pictograms/README.md) · [Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
-* **Logos**
+  * [📖 Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
+* **Logos** · [📖 Docs](./src/components/logos/)
   * [Payment Logos](./src/components/logos/)
-    * [📖 Docs](./src/components/logos/)
   * [Avatar](./src/components/avatar/)
 * **Loaders**
-  * [LoadingSpinner](./src/components/loadingSpinner/)
+  * [`LoadingSpinner`](./src/components/loadingSpinner/)
 
 ## Components
 
