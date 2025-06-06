@@ -96,7 +96,7 @@ Essential core visual attributes of the design language. It includes:
 ## Foundation
 Essential atomic components:
 * [**Typography**](./src/components/typography/)
-  * [📖 Docs](./src/components/typography/README.md) · [Handling font files →](./src/components/typography/README.md#handling-font-files)
+  * [📖 Docs](./src/components/typography/README.md)
 * **Layout**
   * [ContentWrapper](./src/components/contentWrapper/)
   * [Spacer](./src/components/spacer/) (`VSpacer`,`HSpacing`)
