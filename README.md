@@ -102,10 +102,10 @@ Essential atomic components:
   * [`Divider`](./src/components/divider/)
 * [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
-  * [📖 Add a new icon →](./src/components/icons/#add-a-new-icon)
+  * [**[HowTo]** Add a new icon →](./src/components/icons/#add-a-new-icon)
 * [**Pictograms**](./src/components/pictograms/) · [📖 Docs](./src/components/pictograms/README.md)
   * Assets with an intended size greather than `56px`
-  * [📖 Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
+  * [**[HowTo]** Add a new pictogram →](./src/components/pictograms/README.md#add-a-new-pictogram)
 * [**Logos**](./src/components/logos/) · [📖 Docs](./src/components/logos/README.md)
   * [Payment Logos](./src/components/logos/)
   * [Avatar](./src/components/avatar/)
