@@ -14,13 +14,13 @@ import { ContentWrapper } from '@pagopa/io-app-design-system';
 
 const Component = () => (
   <ContentWrapper>
-   {// your content here}
+   {/* […] */}
   </ContentWrapper>
 );
 
 const ComponentWithLargerMargin = () => (
   <ContentWrapper margin={24}>
-   {// your content here}
+   {/* […] */}
   </ContentWrapper>
 );
 ```
