@@ -13,6 +13,7 @@ export * from "./featureInfo";
 export * from "./icons";
 export * from "./image";
 export * from "./layout";
+export * from "./headers";
 export * from "./listitems";
 export * from "./loadingSpinner";
 export * from "./logos";
