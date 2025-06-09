@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ColorValue, StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { hexToRgba, IOColors, useIOThemeContext } from "../../core";
+import { useIOThemeContext } from "../../context";
+import { hexToRgba, IOColors } from "../../core/IOColors";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
 import { HStack } from "../stack";

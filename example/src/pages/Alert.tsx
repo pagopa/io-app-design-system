@@ -4,9 +4,8 @@ import {
   H2,
   H3,
   H6,
-  HSpacer,
+  HeaderSecondLevel,
   HStack,
-  IconButton,
   IOButton,
   IOVisualCostants,
   VSpacer,
@@ -14,7 +13,7 @@ import {
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
-import { Platform, Alert as RNAlert, View } from "react-native";
+import { Alert as RNAlert } from "react-native";
 import { FullWidthComponent } from "../components/FullWidthComponent";
 import { Screen } from "../components/Screen";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
@@ -32,57 +31,28 @@ export const DSAlert = () => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerShadowVisible: false,
-      headerTitle: () => (
-        <View
-          style={{ paddingTop: 10, height: IOVisualCostants.headerHeight }}
+      header: () => (
+        <HeaderSecondLevel
+          title="Alert"
+          goBack={() => navigation.goBack()}
+          backAccessibilityLabel="Torna indietro"
+          type="threeActions"
+          firstAction={{
+            icon: "help",
+            onPress: () => RNAlert.alert("help"),
+            accessibilityLabel: ""
+          }}
+          secondAction={{
+            icon: "add",
+            onPress: () => RNAlert.alert("add"),
+            accessibilityLabel: ""
+          }}
+          thirdAction={{
+            icon: "coggle",
+            onPress: () => RNAlert.alert("coggle"),
+            accessibilityLabel: ""
+          }}
         />
-      ),
-      headerLeft: () => (
-        <IconButton
-          icon={Platform.select({
-            android: "backAndroid",
-            default: "backiOS"
-          })}
-          color={"neutral"}
-          onPress={navigation.goBack}
-          accessibilityLabel={"back"}
-          testID={"back-button-header"}
-        />
-      ),
-      headerRight: () => (
-        <View style={{ flexDirection: "row", flexShrink: 0 }}>
-          <IconButton
-            accessibilityLabel="coggle"
-            icon="coggle"
-            color={"primary"}
-            onPress={() => {
-              RNAlert.alert("coggle");
-            }}
-          />
-          {/* Same as above */}
-          <HSpacer size={16} />
-
-          <IconButton
-            accessibilityLabel="add"
-            icon="add"
-            color={"primary"}
-            onPress={() => {
-              RNAlert.alert("add");
-            }}
-          />
-          {/* Ideally, with the "gap" flex property,
-              we can get rid of these ugly constructs */}
-          <HSpacer size={16} />
-          <IconButton
-            accessibilityLabel="help"
-            icon="help"
-            color={"primary"}
-            onPress={() => {
-              RNAlert.alert("help");
-            }}
-          />
-        </View>
       )
     });
   });

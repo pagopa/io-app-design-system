@@ -1,12 +1,12 @@
 import React, { ComponentProps, useRef, useState } from "react";
 import { Image, ImageSourcePropType, StyleSheet, View } from "react-native";
 import { Icon } from "../../components/icons";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpacingScale,
   IOVisualCostants,
-  hexToRgba,
-  useIOTheme
+  hexToRgba
 } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
 import avatarSearchPlaceholder from "./placeholder/avatar-placeholder.png";

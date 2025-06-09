@@ -19,7 +19,8 @@ import {
 } from "react-native";
 import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IOColors, useIOTheme, useIOThemeContext } from "../../core";
+import { useIOTheme, useIOThemeContext } from "../../context";
+import { IOColors } from "../../core/IOColors";
 import { IconButton } from "../buttons";
 import { Body, H6 } from "../typography";
 import { BottomArrow, LeftArrow, RightArrow, TopArrow } from "./Arrows";

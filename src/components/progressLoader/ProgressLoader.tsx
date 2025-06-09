@@ -1,12 +1,12 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { IOColors, IOSpringValues, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOSpringValues } from "../../core";
 
 export type ProgressLoader = {
   progress: number;

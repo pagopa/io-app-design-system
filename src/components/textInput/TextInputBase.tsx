@@ -27,13 +27,8 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import {
-  IOColors,
-  IOSpacingScale,
-  hexToRgba,
-  useIONewTypeface,
-  useIOTheme
-} from "../../core";
+import { useIONewTypeface, useIOTheme } from "../../context";
+import { IOColors, IOSpacingScale, hexToRgba } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import {
   IOFontSize,

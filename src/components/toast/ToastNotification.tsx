@@ -1,11 +1,7 @@
 import React, { useMemo } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import {
-  hexToRgba,
-  IOAlertRadius,
-  IOColors,
-  useIOThemeContext
-} from "../../core";
+import { useIOThemeContext } from "../../context";
+import { IOAlertRadius, IOColors, hexToRgba } from "../../core";
 import { Icon } from "../icons";
 import { HSpacer } from "../spacer";
 import { ButtonText } from "../typography";

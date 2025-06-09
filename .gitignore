@@ -72,9 +72,6 @@ lib/
 #Jest
 coverage/
 
-# Storybook
-storybook-static
-
 # Yarn
 **/.yarn/*
 .yarn/*

@@ -8,7 +8,7 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
 import { IOSpringValues } from "../../core/IOAnimations";
 import { IOColors } from "../../core/IOColors";
 import { IOSpacingScale } from "../../core/IOSpacing";

@@ -1,6 +1,7 @@
 import React, { JSX, useMemo } from "react";
 import { ColorValue } from "react-native";
-import { IOColors, IOThemeDark, IOThemeLight, useIOTheme } from "../../core";
+import { useIOTheme } from "../../context";
+import { IOColors, IOThemeDark, IOThemeLight } from "../../core/IOColors";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 
 import PictogramAccessDenied from "./svg/PictogramAccessDenied";

@@ -6,14 +6,13 @@ import {
   View,
   ViewStyle
 } from "react-native";
+import { useIONewTypeface, useIOThemeContext } from "../../context";
 import {
   hexToRgba,
   IOBadgeHSpacing,
   IOBadgeRadius,
   IOBadgeVSpacing,
-  IOColors,
-  useIONewTypeface,
-  useIOThemeContext
+  IOColors
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";

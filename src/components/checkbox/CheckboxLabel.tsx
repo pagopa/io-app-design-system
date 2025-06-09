@@ -1,11 +1,7 @@
-import * as React from "react";
-import { ComponentProps, useState } from "react";
+import React, { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
-import {
-  IOSelectionTickVisualParams,
-  IOSpacingScale,
-  useIOTheme
-} from "../../core";
+import { useIOTheme } from "../../context";
+import { IOSelectionTickVisualParams, IOSpacingScale } from "../../core";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { HStack } from "../stack";
