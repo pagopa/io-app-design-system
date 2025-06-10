@@ -79,3 +79,15 @@ const Component = () => (
   </Screen>
 );
 ```
+
+## Frequently Asked Questions
+
+### I need to add space between the components. Should I use `Stack` or `Spacer` components?
+
+The `gap` property, on which the `Stack` components are based, is handled directly by React Native's layout engine. This means that:
+- Native-level spacing calculation
+- Better memory efficiency
+- Faster layout computation
+
+Unless you need to create a lot of nested `Stack` containers to reflect the design specs, you should probably use `Stack` instead of `Spacer`.
+`Spacer` components are still available because they can be useful in specific edge cases.
