@@ -117,6 +117,7 @@ Essential atomic components:
 ## Components
 
 * [**Buttons**](./src/components/buttons/)
+  * [**`IOButton`**](./src/components/buttons/IOButton)
 * [**TextInput**](./src/components/textInput/)
 * [**List Items**](./src/components/listitems/)
 * [**Modules**](./src/components/modules/)
