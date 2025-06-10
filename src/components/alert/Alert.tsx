@@ -1,4 +1,4 @@
-import React, { forwardRef, JSX } from "react";
+import React, { JSX, forwardRef } from "react";
 import {
   ColorValue,
   GestureResponderEvent,
@@ -16,7 +16,7 @@ import { useScaleAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { HStack, VStack } from "../stack";
+import { HStack, VStack } from "../layout";
 import { Body, ButtonText } from "../typography";
 
 const ICON_SIZE: IOIconSizeScale = 24;

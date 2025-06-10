@@ -5,8 +5,8 @@ import { useIOTheme } from "../../context";
 import { IOColors, IOSelectionTickVisualParams } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { Icon } from "../icons";
+import { HStack } from "../layout";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
-import { HStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
 import { PressableListItemBase } from "./PressableListItemBase";
 

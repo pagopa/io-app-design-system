@@ -3,17 +3,17 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSelectionTickVisualParams
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { AnimatedCheckbox } from "../checkbox/AnimatedCheckbox";
 import { IOIcons, Icon } from "../icons";
-import { HSpacer, VSpacer } from "../spacer";
+import { HSpacer, VSpacer } from "../layout";
 import { BodySmall, H6 } from "../typography";
 
 type Props = {

@@ -11,8 +11,8 @@ import {
   IOSpacingScale
 } from "../../core";
 import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
-import { Divider } from "../divider";
 import { Icon } from "../icons";
+import { Divider } from "../layout";
 import { ListItemCheckbox, ListItemInfo } from "../listitems";
 import { H6 } from "../typography";
 

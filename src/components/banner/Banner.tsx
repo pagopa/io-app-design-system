@@ -14,12 +14,12 @@ import { hexToRgba, IOColors } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
+import { VSpacer } from "../layout";
 import {
   IOPictogramsBleed,
   IOPictogramSizeScale,
   PictogramBleed
 } from "../pictograms";
-import { VSpacer } from "../spacer";
 import { BodySmall, buttonTextFontSize, H6, IOText } from "../typography";
 
 /* Styles */

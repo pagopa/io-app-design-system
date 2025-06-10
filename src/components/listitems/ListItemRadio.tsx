@@ -3,21 +3,20 @@ import { useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams,
   IOSelectionTickVisualParams
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOIcons, Icon } from "../icons";
+import { HSpacer, VSpacer, VStack } from "../layout";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { AnimatedRadio } from "../radio/AnimatedRadio";
 import { IOSkeleton } from "../skeleton";
-import { HSpacer, VSpacer } from "../spacer";
-import { VStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
 
 type ListItemRadioGraphicProps =

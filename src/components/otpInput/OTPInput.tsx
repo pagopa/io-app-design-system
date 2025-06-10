@@ -12,7 +12,7 @@ import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
-import { VSpacer } from "../spacer";
+import { VSpacer } from "../layout";
 import { BodySmall } from "../typography";
 import { BoxedInput } from "./BoxedInput";
 

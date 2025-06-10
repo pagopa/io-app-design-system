@@ -5,7 +5,7 @@ import { useIOThemeContext } from "../../context";
 import { hexToRgba, IOColors } from "../../core/IOColors";
 import { triggerHaptic } from "../../functions";
 import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation";
-import { HStack } from "../stack";
+import { HStack } from "../layout";
 
 type CodeInputProps = {
   value: string;

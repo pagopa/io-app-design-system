@@ -38,7 +38,7 @@ import {
 import { RNTextInputProps, getInputPropsByType } from "../../utils/textInput";
 import { InputType, WithTestID } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
-import { HSpacer } from "../spacer";
+import { HSpacer } from "../layout";
 import { BodySmall } from "../typography";
 
 type InputStatus = "initial" | "focused" | "disabled" | "error";

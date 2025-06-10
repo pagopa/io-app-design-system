@@ -6,12 +6,12 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import { IOSelectionListItemVisualParams, IOSpacingScale } from "../../core";
 import { useIOTheme } from "../../context";
+import { IOSelectionListItemVisualParams, IOSpacingScale } from "../../core";
 import { ButtonLink } from "../buttons";
+import { HStack, VStack } from "../layout";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { IOSkeleton } from "../skeleton";
-import { HStack, VStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import { PressableModuleBase } from "./PressableModuleBase";

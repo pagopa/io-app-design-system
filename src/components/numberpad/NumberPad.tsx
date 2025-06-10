@@ -2,9 +2,8 @@ import React, { ComponentProps, JSX, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
-import { ContentWrapper } from "../contentWrapper";
 import { IOIconSizeScale, IOIcons } from "../icons";
-import { VStack } from "../stack";
+import { ContentWrapper, VStack } from "../layout";
 import { NumberButton, numberButtonStyles } from "./NumberButton";
 
 type BiometricAuthProps =

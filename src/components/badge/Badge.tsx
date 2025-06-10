@@ -18,18 +18,6 @@ import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { IOText } from "../typography";
 
-/* 
-NOTE FOR REFACTORING in the `io-app`:
-
-- default (legacy) -> removed
-- blue -> Deleted -> replaced with `default`
-- info -> removed -> highlight?
-- purple -> cgn
-- turquoise -> highlight
-- contrast -> removed
-- lightBlue -> default
-*/
-
 export type Badge = WithTestID<{
   outline?: boolean;
   text: string;

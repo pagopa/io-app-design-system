@@ -6,19 +6,19 @@ import {
   StyleSheet,
   View
 } from "react-native";
+import { useIOTheme } from "../../context";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
   IOSpacer,
   IOVisualCostants
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { HStack, VStack } from "../layout";
 import { IOSkeleton } from "../skeleton";
-import { HStack, VStack } from "../stack";
 import { BodySmall, LabelMini } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {

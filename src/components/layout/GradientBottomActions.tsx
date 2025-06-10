@@ -6,7 +6,7 @@ import Animated, { AnimatedStyle } from "react-native-reanimated";
 import { IOColors, IOSpacer, IOVisualCostants, hexToRgba } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IOButton, IOButtonProps } from "../buttons";
-import { VSpacer } from "../spacer";
+import { VSpacer } from "./Spacer";
 
 type PrimaryActionProps = Extract<
   IOButtonProps,

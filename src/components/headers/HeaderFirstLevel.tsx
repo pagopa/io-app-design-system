@@ -21,7 +21,7 @@ import {
 } from "../../core";
 import { WithTestID } from "../../utils/types";
 import { IconButton } from "../buttons";
-import { HStack } from "../stack";
+import { HStack } from "../layout";
 import { H2 } from "../typography";
 import { HeaderActionProps } from "./common";
 
