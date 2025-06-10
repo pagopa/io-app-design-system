@@ -98,6 +98,7 @@ Essential atomic components:
 * [**Typography**](./src/components/typography/) · [📖 Docs](./src/components/typography/README.md)
 * [**Layout**](./src/components/layout/) · [📖 Docs](./src/components/layout/README.md)
   * [`ContentWrapper`](./src/components/contentWrapper/)
+  * [Stack (`VStack`, `HStack`)](./src/components/stack/)
   * [Spacer (`VSpacer`,`HSpacing`)](./src/components/spacer/)
   * [`Divider`](./src/components/divider/)
 * [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)

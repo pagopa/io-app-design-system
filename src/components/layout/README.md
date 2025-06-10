@@ -28,12 +28,12 @@ const ComponentWithLargerMargin = () => (
 
 ### Stack
 
+In the example below, the inner components are arranged with an equal uniform space of 16 between them.
+
 ```jsx
 import { VStack } from '@pagopa/io-app-design-system';
 
 const ComponentWithInnerSpacing = () => (
-  {/* The inner components are arranged with
-  an equal uniform space of 16 between them. */}
   <VStack space={16}>
    {/* […] */}
   </VStack>
