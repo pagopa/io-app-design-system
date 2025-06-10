@@ -97,10 +97,10 @@ Essential core visual attributes of the design language. It includes:
 Essential atomic components:
 * [**Typography**](./src/components/typography/) · [📖 Docs](./src/components/typography/README.md)
 * [**Layout**](./src/components/layout/) · [📖 Docs](./src/components/layout/README.md)
-  * [`ContentWrapper`](./src/components/contentWrapper/)
-  * [Stack (`VStack`, `HStack`)](./src/components/stack/)
-  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/spacer/)
-  * [`Divider`](./src/components/divider/)
+  * [`ContentWrapper`](./src/components/layout/ContentWrapper.tsx)
+  * [Stack (`VStack`, `HStack`)](./src/components/layout/Stack.tsx)
+  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/layout/Spacer.tsx)
+  * [`Divider`](./src/components/layout/Divider.tsx)
   * [**[HowTo]** *Should I use Stack or Spacer?*  and other FAQs →](./src/components/layout/README.md#frequently-asked-questions)
 * [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
