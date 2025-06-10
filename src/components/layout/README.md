@@ -8,7 +8,7 @@ Different layout components are available to help with screen composition:
 
 ## Usage
 
-### ContentWrapper
+### `ContentWrapper`
 
 ```jsx
 import { ContentWrapper } from '@pagopa/io-app-design-system';
@@ -26,9 +26,9 @@ const ComponentWithLargerMargin = () => (
 );
 ```
 
-### Stack
+### `VStack` and `HStack`
 
-In the example below, the inner components are arranged with an equal uniform space of 16 between them.
+In the example below, the inner components are arranged with an equal uniform vertical space of 16 between them.
 
 ```jsx
 import { VStack } from '@pagopa/io-app-design-system';
@@ -40,7 +40,7 @@ const ComponentWithInnerSpacing = () => (
 );
 ```
 
-### Spacer
+### `VSpacer` and `HSpacer`
 
 ```jsx
 import { VSpacer, HSpacer } from '@pagopa/io-app-design-system';
@@ -66,7 +66,7 @@ const ComponentWithHSpacer = () => (
 );
 ```
 
-### Divider
+### `Divider`
 
 ```jsx
 import { Divider } from '@pagopa/io-app-design-system';
