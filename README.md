@@ -118,6 +118,8 @@ Essential atomic components:
 
 * [**Buttons**](./src/components/buttons/)
   * [`IOButton`](./src/components/buttons/IOButton)
+  * [`IconButton`](./src/components/buttons/IconButton.tsx)
+  * [`IconButtonSolid`](./src/components/buttons/IconButtonSolid.tsx)
 * [**TextInput**](./src/components/textInput/)
 * [**List Items**](./src/components/listitems/)
   * [`ListItemAction`](./src/components/listitems/ListItemAction.tsx)
