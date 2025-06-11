@@ -139,12 +139,15 @@ Essential atomic components:
 * [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
+    * [`ListItemCheckbox`](./src/components/listitems/ListItemCheckbox.tsx)
+    * [`CheckBoxLabel`](./src/components/checkbox/CheckboxLabel.tsx)
   * [Radio](./src/components/radio/)
+    * [`ListItemRadio`](./src/components/listitems/ListItemRadio.tsx)
+    * [`ListItemRadioWithAmount`](./src/components/listitems/ListItemRadioWithAmount.tsx)
+    * [`RadioGroup`](./src/components/radio/RadioGroup.tsx)
   * [Switch](./src/components/switch/)
-  * [`ListItemRadio`](./src/components/listitems/ListItemRadio.tsx)
-  * [`ListItemRadioWithAmount`](./src/components/listitems/ListItemRadioWithAmount.tsx)
-  * [`ListItemSwitch`](./src/components/listitems/ListItemSwitch.tsx)
-  * [`ListItemCheckbox`](./src/components/listitems/ListItemCheckbox.tsx)
+    * [`ListItemSwitch`](./src/components/listitems/ListItemSwitch.tsx)
+    * [`NativeSwitch`](./src/components/switch/NativeSwitch.tsx)
 * [**Accordion**](./src/components/accordion/)
 * [**Alert**](./src/components/alert/)
   * [`Alert`](./src/components//alert/Alert.tsx)
@@ -161,8 +164,8 @@ Essential atomic components:
   * [`ForceScrollDownView`](./src/components/templates/ForceScrollDownView.tsx)
 
 
-> ![note]
-> A similar information architecture is available in the **Design System** section in the main IO app
+> [!important]
+> If you want to test the above components in a real environment, please refer to the  **Design System** section in the main IO app
 
 #### [Explore the `components` folder →](./src/components)
 
