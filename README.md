@@ -168,7 +168,7 @@ Essential atomic components:
 
 
 > [!important]
-> If you want to test the above components in a real environment, please refer to the  [**Design System**](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) section in the main IO app. Please be aware that certain components displayed in that section are exclusively accessible in the `io-app` repository.
+> If you want to test the above components in a real environment, please refer to the  [**Design System**](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) section in the [main IO app](https://github.com/pagopa/io-app). Please be aware that certain components displayed in that section are exclusively accessible in the `io-app` repository.
 
 #### [Explore the `components` folder →](./src/components)
 
