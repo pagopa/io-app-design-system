@@ -117,7 +117,7 @@ Essential atomic components:
 ## Components
 
 * [**Buttons**](./src/components/buttons/)
-  * [**`IOButton`**](./src/components/buttons/IOButton)
+  * [`IOButton`](./src/components/buttons/IOButton)
 * [**TextInput**](./src/components/textInput/)
 * [**List Items**](./src/components/listitems/)
   * [`ListItemAction`](./src/components/listitems/ListItemAction.tsx)
@@ -150,16 +150,19 @@ Essential atomic components:
   * [`Alert`](./src/components//alert/Alert.tsx)
   * [`AlertEdgeToEdge`](./src/components/alert/AlertEdgeToEdge.tsx)
 * **Advice & Banners**
-  * [FeatureInfo](./src/components/featureInfo/)
-  * [Banner](./src/components/banner/)
+  * [`FeatureInfo`](./src/components/featureInfo/)
+  * [`Banner`](./src/components/banner/)
 * [**Headers**](./src/components/headers/) · [📖 Docs](./src/components/headers/README.md)
   * [`HeaderFirstLevel`](./src/components/headers/HeaderFirstLevel.tsx)
   * [`HeaderSecondLevel`](./src/components/headers/HeaderSecondLevel.tsx)
   * [`ModalBSHeader`](./src/components/headers/ModalBSHeader.tsx)
 * [**Templates**](./src/components/templates/) · [📖 Docs](./src/components/templates/README.md)
+  * [`Dismissable`](./src/components/templates/Dismissable.tsx)
+  * [`ForceScrollDownView`](./src/components/templates/ForceScrollDownView.tsx)
+
 
 > ![note]
-> A similar information architecture is available 
+> A similar information architecture is available in the **Design System** section in the main IO app
 
 #### [Explore the `components` folder →](./src/components)
 
