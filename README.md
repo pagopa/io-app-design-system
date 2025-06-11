@@ -101,7 +101,7 @@ Essential atomic components:
   * [Stack (`VStack`, `HStack`)](./src/components/layout/Stack.tsx)
   * [Spacer (`VSpacer`,`HSpacing`)](./src/components/layout/Spacer.tsx)
   * [`Divider`](./src/components/layout/Divider.tsx)
-  * [**[HowTo]** *Should I use Stack or Spacer?*  and other FAQs →](./src/components/layout/README.md#frequently-asked-questions)
+  * [**[HowTo]** *Should I use `Stack` or `Spacer`?*  and other FAQs →](./src/components/layout/README.md#frequently-asked-questions)
 * [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
   * [**[HowTo]** Add a new icon →](./src/components/icons/#add-a-new-icon)
