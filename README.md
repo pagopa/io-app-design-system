@@ -136,7 +136,9 @@ Essential atomic components:
   * [`ModuleNavigation`](./src/components/modules/ModuleNavigation.tsx)
   * [`ModulePaymentNotice`](./src/components/modules/ModulePaymentNotice.tsx)
   * [`ModuleSummary`](./src/components/modules/ModuleSummary.tsx)
-* [**`Badge`**](./src/components/badge/) & [**`Tag`**](./src/components/tag/)
+* [**`Badges`**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+  * [`Badge`](./src/components/badge/Badge.tsx)
+  * [`Tag`](./src/components/tag/Tag.tsx)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
     * [`ListItemCheckbox`](./src/components/listitems/ListItemCheckbox.tsx)
