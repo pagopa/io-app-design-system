@@ -136,7 +136,7 @@ Essential atomic components:
   * [`ModuleNavigation`](./src/components/modules/ModuleNavigation.tsx)
   * [`ModulePaymentNotice`](./src/components/modules/ModulePaymentNotice.tsx)
   * [`ModuleSummary`](./src/components/modules/ModuleSummary.tsx)
-* [**`Badges`**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+* [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
   * [`Badge`](./src/components/badge/Badge.tsx)
   * [`Tag`](./src/components/tag/Tag.tsx)
 * **Selection**
@@ -168,12 +168,10 @@ Essential atomic components:
 
 
 > [!important]
-> If you want to test the above components in a real environment, please refer to the  **Design System** section in the main IO app
+> If you want to test the above components in a real environment, please refer to the  [**Design System**](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) section in the main IO app. Please be aware that certain components displayed in that section are exclusively accessible in the `io-app` repository.
 
 #### [Explore the `components` folder →](./src/components)
 
-> [!note]
-> Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
 
 ## Functions
