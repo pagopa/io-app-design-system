@@ -136,7 +136,7 @@ Essential atomic components:
   * [`ModuleNavigation`](./src/components/modules/ModuleNavigation.tsx)
   * [`ModulePaymentNotice`](./src/components/modules/ModulePaymentNotice.tsx)
   * [`ModuleSummary`](./src/components/modules/ModuleSummary.tsx)
-* [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+* [**`Badge`**](./src/components/badge/) & [**`Tag`**](./src/components/tag/)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
     * [`ListItemCheckbox`](./src/components/listitems/ListItemCheckbox.tsx)
@@ -149,6 +149,7 @@ Essential atomic components:
     * [`ListItemSwitch`](./src/components/listitems/ListItemSwitch.tsx)
     * [`NativeSwitch`](./src/components/switch/NativeSwitch.tsx)
 * [**Accordion**](./src/components/accordion/)
+  * [`AccordionItem`](./src/components/accordion/AccordionItem.tsx)
 * [**Alert**](./src/components/alert/)
   * [`Alert`](./src/components//alert/Alert.tsx)
   * [`AlertEdgeToEdge`](./src/components/alert/AlertEdgeToEdge.tsx)
