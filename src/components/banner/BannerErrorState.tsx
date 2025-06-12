@@ -11,12 +11,12 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { useIOTheme, useIOThemeContext } from "../../context";
 import { IOBannerBigSpacing, IOBannerRadius } from "../../core";
 import { hexToRgba, IOColors } from "../../core/IOColors";
-import { WithTestID } from "../../utils/types";
-import { Icon, IOIcons } from "../icons";
 import { useScaleAnimation } from "../../hooks";
-import { VSpacer } from "../spacer";
-import { Body } from "../typography";
+import { WithTestID } from "../../utils/types";
 import { ButtonLink } from "../buttons";
+import { Icon, IOIcons } from "../icons";
+import { VSpacer } from "../layout";
+import { Body } from "../typography";
 
 const styles = StyleSheet.create({
   container: {

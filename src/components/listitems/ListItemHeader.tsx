@@ -1,5 +1,6 @@
 import React, { ComponentProps, useCallback, useMemo } from "react";
 import { View } from "react-native";
+import { useIOTheme } from "../../context";
 import {
   IOListItemStyles,
   IOListItemVisualParams,
@@ -7,13 +8,12 @@ import {
   IOSpacingScale,
   IOVisualCostants
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { ButtonLink, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
-import { VSpacer } from "../spacer";
+import { VSpacer } from "../layout";
 import { BodySmall, H6 } from "../typography";
 
 type ButtonLinkActionProps = {

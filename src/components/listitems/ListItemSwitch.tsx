@@ -1,17 +1,17 @@
 import React, { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
+import { useIOTheme } from "../../context";
 import {
   IOSelectionListItemStyles,
   IOSelectionListItemVisualParams
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { HSpacer, VSpacer } from "../layout";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
-import { HSpacer, VSpacer } from "../spacer";
 import { NativeSwitch } from "../switch/NativeSwitch";
 import { BodySmall, H6, LabelMini } from "../typography";
 

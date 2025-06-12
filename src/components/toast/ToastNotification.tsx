@@ -3,7 +3,7 @@ import { StyleSheet, View, ViewStyle } from "react-native";
 import { useIOThemeContext } from "../../context";
 import { IOAlertRadius, IOColors, hexToRgba } from "../../core";
 import { Icon } from "../icons";
-import { HSpacer } from "../spacer";
+import { HSpacer } from "../layout";
 import { ButtonText } from "../typography";
 import { Toast, ToastVariant } from "./types";
 

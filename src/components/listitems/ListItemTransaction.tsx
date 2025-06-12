@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { ImageURISource, View } from "react-native";
 
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOListItemLogoMargin,
@@ -8,16 +9,15 @@ import {
   IOListItemVisualParams,
   IOVisualCostants
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { WithTestID } from "../../utils/types";
 import { isImageUri } from "../../utils/url";
 import { Avatar } from "../avatar/Avatar";
 import { Badge } from "../badge/Badge";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, Icon } from "../icons";
+import { HStack, VStack } from "../layout";
 import { IOLogoPaymentType } from "../logos";
 import { IOSkeleton } from "../skeleton";
-import { HStack, VStack } from "../stack";
 import { BodySmall, H6 } from "../typography";
 import {
   PressableBaseProps,

@@ -24,7 +24,7 @@ import {
   IOButtonBlockSpecificProps,
   IOButtonLinkSpecificProps
 } from "../buttons";
-import { VSpacer } from "../spacer";
+import { VSpacer } from "./Spacer";
 import { useBottomMargins } from "./hooks/useBottomMargins";
 
 type IOButtonBlockProps = Omit<

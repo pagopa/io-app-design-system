@@ -1,6 +1,7 @@
 import React, { ComponentProps } from "react";
 import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOListItemStyles,
@@ -9,15 +10,14 @@ import {
   IOSpacer,
   IOVisualCostants
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Avatar } from "../avatar";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { HSpacer, VSpacer } from "../layout";
 import { LoadingSpinner } from "../loadingSpinner";
-import { HSpacer, VSpacer } from "../spacer";
 import { BodySmall, Caption, H6 } from "../typography";
 
 type ListItemTopElementProps =

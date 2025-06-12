@@ -1,5 +1,5 @@
 import React, { ComponentProps } from "react";
-import { Divider } from "../divider";
+import { Divider } from "../layout";
 import { ListItemRadio, ListItemRadioWithAmount } from "../listitems";
 
 export type RadioItem<T> = {

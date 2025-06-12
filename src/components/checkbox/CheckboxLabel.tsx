@@ -4,7 +4,7 @@ import { useIOTheme } from "../../context";
 import { IOSelectionTickVisualParams, IOSpacingScale } from "../../core";
 import { triggerHaptic } from "../../functions/haptic-feedback/hapticFeedback";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
-import { HStack } from "../stack";
+import { HStack } from "../layout";
 import { H6 } from "../typography/H6";
 import { AnimatedCheckbox } from "./AnimatedCheckbox";
 

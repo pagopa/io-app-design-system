@@ -18,7 +18,7 @@ import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOSkeleton } from "../skeleton";
-import { HStack } from "../stack/Stack";
+import { HStack } from "../layout/Stack";
 import { BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {

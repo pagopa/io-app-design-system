@@ -97,9 +97,11 @@ Essential core visual attributes of the design language. It includes:
 Essential atomic components:
 * [**Typography**](./src/components/typography/) · [📖 Docs](./src/components/typography/README.md)
 * [**Layout**](./src/components/layout/) · [📖 Docs](./src/components/layout/README.md)
-  * [`ContentWrapper`](./src/components/contentWrapper/)
-  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/spacer/)
-  * [`Divider`](./src/components/divider/)
+  * [`ContentWrapper`](./src/components/layout/ContentWrapper.tsx)
+  * [Stack (`VStack`, `HStack`)](./src/components/layout/Stack.tsx)
+  * [Spacer (`VSpacer`,`HSpacing`)](./src/components/layout/Spacer.tsx)
+  * [`Divider`](./src/components/layout/Divider.tsx)
+  * [**[HowTo]** *Should I use `Stack` or `Spacer`?*  and other FAQs →](./src/components/layout/README.md#frequently-asked-questions)
 * [**Icons**](./src/components/icons/) · [📖 Docs](./src/components/icons/README.md)
   * Assets with an intended size between `12px` and `56px`
   * [**[HowTo]** Add a new icon →](./src/components/icons/#add-a-new-icon)
@@ -115,26 +117,63 @@ Essential atomic components:
 ## Components
 
 * [**Buttons**](./src/components/buttons/)
+  * [`IOButton`](./src/components/buttons/IOButton)
+  * [`IconButton`](./src/components/buttons/IconButton.tsx)
+  * [`IconButtonSolid`](./src/components/buttons/IconButtonSolid.tsx)
 * [**TextInput**](./src/components/textInput/)
 * [**List Items**](./src/components/listitems/)
+  * [`ListItemAction`](./src/components/listitems/ListItemAction.tsx)
+  * [`ListItemAmount`](./src/components/listitems/ListItemAmount.tsx)
+  * [`ListItemHeader`](./src/components/listitems/ListItemHeader.tsx)
+  * [`ListItemInfo`](./src/components/listitems/ListItemInfo.tsx)
+  * [`ListItemInfoCopy`](./src/components/listitems/ListItemInfoCopy.tsx)
+  * [`ListItemNav`](./src/components/listitems/ListItemNav.tsx)
+  * [`ListItemNavAlert`](./src/components/listitems/ListItemNavAlert.tsx)
+  * [`ListItemTransaction`](./src/components/listitems/ListItemTransaction.tsx)
 * [**Modules**](./src/components/modules/)
+  * [`ModuleAttachment`](./src/components/modules/ModuleAttachment.tsx)
+  * [`ModuleCheckout`](./src/components/modules/ModuleCheckout.tsx)
+  * [`ModuleCredential`](./src/components/modules/ModuleCredential.tsx)
+  * [`ModuleIDP`](./src/components/modules/ModuleIDP.tsx)
+  * [`ModuleNavigation`](./src/components/modules/ModuleNavigation.tsx)
+  * [`ModulePaymentNotice`](./src/components/modules/ModulePaymentNotice.tsx)
+  * [`ModuleSummary`](./src/components/modules/ModuleSummary.tsx)
 * [**Badges**](./src/components/badge/) & [**Tags**](./src/components/tag/)
+  * [`Badge`](./src/components/badge/Badge.tsx)
+  * [`Tag`](./src/components/tag/Tag.tsx)
 * **Selection**
   * [Checkbox](./src/components/checkbox/)
+    * [`ListItemCheckbox`](./src/components/listitems/ListItemCheckbox.tsx)
+    * [`CheckBoxLabel`](./src/components/checkbox/CheckboxLabel.tsx)
   * [Radio](./src/components/radio/)
+    * [`ListItemRadio`](./src/components/listitems/ListItemRadio.tsx)
+    * [`ListItemRadioWithAmount`](./src/components/listitems/ListItemRadioWithAmount.tsx)
+    * [`RadioGroup`](./src/components/radio/RadioGroup.tsx)
   * [Switch](./src/components/switch/)
+    * [`ListItemSwitch`](./src/components/listitems/ListItemSwitch.tsx)
+    * [`NativeSwitch`](./src/components/switch/NativeSwitch.tsx)
 * [**Accordion**](./src/components/accordion/)
+  * [`AccordionItem`](./src/components/accordion/AccordionItem.tsx)
 * [**Alert**](./src/components/alert/)
+  * [`Alert`](./src/components//alert/Alert.tsx)
+  * [`AlertEdgeToEdge`](./src/components/alert/AlertEdgeToEdge.tsx)
 * **Advice & Banners**
-  * [FeatureInfo](./src/components/featureInfo/)
-  * [Banner](./src/components/banner/)
+  * [`FeatureInfo`](./src/components/featureInfo/)
+  * [`Banner`](./src/components/banner/)
 * [**Headers**](./src/components/headers/) · [📖 Docs](./src/components/headers/README.md)
+  * [`HeaderFirstLevel`](./src/components/headers/HeaderFirstLevel.tsx)
+  * [`HeaderSecondLevel`](./src/components/headers/HeaderSecondLevel.tsx)
+  * [`ModalBSHeader`](./src/components/headers/ModalBSHeader.tsx)
 * [**Templates**](./src/components/templates/) · [📖 Docs](./src/components/templates/README.md)
+  * [`Dismissable`](./src/components/templates/Dismissable.tsx)
+  * [`ForceScrollDownView`](./src/components/templates/ForceScrollDownView.tsx)
+
+
+> [!important]
+> If you want to test the above components in a real environment, please refer to the  [**Design System**](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) section in the [main IO app](https://github.com/pagopa/io-app). Please be aware that certain components displayed in that section are exclusively accessible in the `io-app` repository.
 
 #### [Explore the `components` folder →](./src/components)
 
-> [!note]
-> Some components that can be tested in the [official DS section](https://github.com/pagopa/io-app/tree/master/ts/features/design-system) are missing
 
 
 ## Functions
