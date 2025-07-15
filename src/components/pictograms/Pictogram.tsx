@@ -86,6 +86,7 @@ import PictogramBleedSuccess from "./svg/PictogramBleedSuccess";
 import PictogramBleedTime from "./svg/PictogramBleedTime";
 import PictogramBleedTiming from "./svg/PictogramBleedTiming";
 import PictogramBleedWorkInProgress from "./svg/PictogramBleedWorkInProgress";
+import PictogramBleedEmailDotNotif from "./svg/PictogramBleedEmailDotNotif";
 /* End Bleed Pictograms */
 import PictogramCardAdd from "./svg/PictogramCardAdd";
 import PictogramCardFavourite from "./svg/PictogramCardFavourite";
@@ -309,7 +310,8 @@ export type IOPictogramsBleed = Extract<
   | "activate"
   | "reactivate"
   | "savingMoney"
-  | "workInProgress",
+  | "workInProgress"
+  | "emailDotNotif",
   IOPictograms
 >;
 
@@ -357,7 +359,8 @@ export const IOPictogramsBleed: {
   activate: PictogramBleedActivate,
   reactivate: PictogramBleedReactivate,
   workInProgress: PictogramBleedWorkInProgress,
-  savingMoney: PictogramBleedSavingMoney
+  savingMoney: PictogramBleedSavingMoney,
+  emailDotNotif: PictogramBleedEmailDotNotif
 };
 
 export const PictogramBleed = ({
