@@ -18,7 +18,10 @@ import {
   ViewStyle
 } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
-import Animated, { useReducedMotion } from "react-native-reanimated";
+import Animated, {
+  LayoutAnimationConfig,
+  useReducedMotion
+} from "react-native-reanimated";
 import { useIONewTypeface } from "../../../context";
 import {
   enterTransitionInnerContent,
@@ -224,15 +227,17 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const renderButtonContent = () => (
       <>
         {loading && (
-          <Animated.View
-            style={styles.buttonInner}
-            entering={
-              isMounted.current ? enterTransitionInnerContentSmall : undefined
-            }
-            exiting={exitTransitionInnerContent}
-          >
-            <LoadingSpinner color={foregroundColor} />
-          </Animated.View>
+          <LayoutAnimationConfig skipExiting>
+            <Animated.View
+              style={styles.buttonInner}
+              entering={
+                isMounted.current ? enterTransitionInnerContentSmall : undefined
+              }
+              exiting={exitTransitionInnerContent}
+            >
+              <LoadingSpinner color={foregroundColor} />
+            </Animated.View>
+          </LayoutAnimationConfig>
         )}
 
         {!loading && (
