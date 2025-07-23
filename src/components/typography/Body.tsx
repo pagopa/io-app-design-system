@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
+import { View, Pressable } from "react-native";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import {
@@ -30,6 +30,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
       asLink,
       accessibilityRole = "link",
       textStyle: customTextStyle,
+      onPress,
       ...props
     },
     ref?: ForwardedRef<View>
@@ -56,6 +57,18 @@ export const Body = forwardRef<View, BodyStyleProps>(
           }
         : {})
     };
+
+    if (asLink) {
+      return (
+        <Pressable
+          onPress={onPress}
+          ref={ref}
+          accessibilityRole={accessibilityRole}
+        >
+          <IOText {...BodyProps}>{props.children}</IOText>
+        </Pressable>
+      );
+    }
 
     return (
       <IOText ref={ref} {...BodyProps}>
