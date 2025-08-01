@@ -195,8 +195,10 @@ export const HeaderSecondLevel = ({
     [theme]
   );
 
-  const headerBgColorSolidState =
-    backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
+  const headerBgColorSolidState = useMemo(
+    () => backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR],
+    [HEADER_DEFAULT_BG_COLOR, backgroundColor]
+  );
 
   const headerBgColorTransparentState = transparent
     ? hexToRgba(headerBgColorSolidState, 0)
