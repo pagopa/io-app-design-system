@@ -13,8 +13,6 @@ import Animated, {
   SharedValue,
   interpolate,
   interpolateColor,
-  runOnJS,
-  useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
   useScrollViewOffset,
@@ -154,8 +152,7 @@ export const HeaderSecondLevel = ({
   testID,
   firstAction,
   secondAction,
-  thirdAction,
-  ignoreAccessibilityCheck = false
+  thirdAction
 }: HeaderSecondLevel) => {
   const scrollOffset = useScrollViewOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
