@@ -190,7 +190,10 @@ export const HeaderSecondLevel = ({
     : IOColors[theme["textHeading-default"]];
 
   /* Visual attributes when there are transitions between states */
-  const HEADER_DEFAULT_BG_COLOR: IOColors = theme["appBackground-primary"];
+  const HEADER_DEFAULT_BG_COLOR: IOColors = useMemo(
+    () => theme["appBackground-primary"],
+    [theme]
+  );
 
   const headerBgColorSolidState =
     backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
