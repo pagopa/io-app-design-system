@@ -190,15 +190,10 @@ export const HeaderSecondLevel = ({
     : IOColors[theme["textHeading-default"]];
 
   /* Visual attributes when there are transitions between states */
-  const HEADER_DEFAULT_BG_COLOR: IOColors = useMemo(
-    () => theme["appBackground-primary"],
-    [theme]
-  );
+  const HEADER_DEFAULT_BG_COLOR: IOColors = theme["appBackground-primary"];
 
-  const headerBgColorSolidState = useMemo(
-    () => backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR],
-    [HEADER_DEFAULT_BG_COLOR, backgroundColor]
-  );
+  const headerBgColorSolidState =
+    backgroundColor ?? IOColors[HEADER_DEFAULT_BG_COLOR];
 
   const headerBgColorTransparentState = transparent
     ? hexToRgba(headerBgColorSolidState, 0)
@@ -275,30 +270,30 @@ export const HeaderSecondLevel = ({
       : 1
   }));
 
-  const [importantForAccessibility, setImportantForAccessibility] =
-    React.useState<"yes" | "no-hide-descendants">("yes");
+  // const [importantForAccessibility, setImportantForAccessibility] =
+  //   React.useState<"yes" | "no-hide-descendants">("yes");
 
   // Updates accessibility state based on scroll position.
-  useAnimatedReaction(
-    () =>
-      enableDiscreteTransition
-        ? scrollOffset.value
-        : scrollValues?.contentOffsetY.value,
-    (currentOffset, previousOffset) => {
-      if (currentOffset !== previousOffset) {
-        const offsetToCompare = enableDiscreteTransition
-          ? 0
-          : scrollValues?.triggerOffset ?? 0;
-        // Sets accessibility to "yes" when scrolled past the threshold, else hides it from screen readers.
-        const newValue =
-          (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
-            ? "yes"
-            : "no-hide-descendants";
-        runOnJS(setImportantForAccessibility)(newValue);
-      }
-    },
-    [scrollValues, enableDiscreteTransition]
-  );
+  // useAnimatedReaction(
+  //   () =>
+  //     enableDiscreteTransition
+  //       ? scrollOffset.value
+  //       : scrollValues?.contentOffsetY.value,
+  //   (currentOffset, previousOffset) => {
+  //     if (currentOffset !== previousOffset) {
+  //       const offsetToCompare = enableDiscreteTransition
+  //         ? 0
+  //         : scrollValues?.triggerOffset ?? 0;
+  //       // Sets accessibility to "yes" when scrolled past the threshold, else hides it from screen readers.
+  //       const newValue =
+  //         (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
+  //           ? "yes"
+  //           : "no-hide-descendants";
+  //       runOnJS(setImportantForAccessibility)(newValue);
+  //     }
+  //   },
+  //   [scrollValues, enableDiscreteTransition]
+  // );
 
   return (
     <Animated.View
@@ -334,7 +329,7 @@ export const HeaderSecondLevel = ({
         <View
           ref={titleRef}
           accessibilityElementsHidden={!isTitleAccessible}
-          importantForAccessibility={importantForAccessibility}
+          // importantForAccessibility={importantForAccessibility}
           accessible={isTitleAccessible}
           accessibilityLabel={title}
           accessibilityRole="header"
