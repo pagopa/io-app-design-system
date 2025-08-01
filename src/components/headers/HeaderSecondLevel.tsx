@@ -13,6 +13,8 @@ import Animated, {
   SharedValue,
   interpolate,
   interpolateColor,
+  runOnJS,
+  useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
   useScrollViewOffset,
@@ -152,7 +154,8 @@ export const HeaderSecondLevel = ({
   testID,
   firstAction,
   secondAction,
-  thirdAction
+  thirdAction,
+  ignoreAccessibilityCheck = false
 }: HeaderSecondLevel) => {
   const scrollOffset = useScrollViewOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
@@ -227,26 +230,14 @@ export const HeaderSecondLevel = ({
   }));
 
   const headerWrapperAnimatedStyle = useAnimatedStyle(() => ({
-    backgroundColor: enableDiscreteTransition
-      ? interpolateColor(
-          bgColorDiscreteTransition.value,
-          [0, 1],
-          [headerBgColorTransparentState, headerBgColorSolidState]
-        )
-      : scrollValues
+    backgroundColor: scrollValues
       ? interpolateColor(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
           [headerBgColorTransparentState, headerBgColorSolidState]
         )
       : headerBgColorSolidState,
-    borderColor: enableDiscreteTransition
-      ? interpolateColor(
-          bgColorDiscreteTransition.value,
-          [0, 1],
-          [borderColorTransparentState, borderColorSolidState]
-        )
-      : scrollValues
+    borderColor: scrollValues
       ? interpolateColor(
           scrollValues.contentOffsetY.value,
           [0, scrollValues.triggerOffset],
@@ -267,30 +258,30 @@ export const HeaderSecondLevel = ({
       : 1
   }));
 
-  // const [importantForAccessibility, setImportantForAccessibility] =
-  //   React.useState<"yes" | "no-hide-descendants">("yes");
+  const [importantForAccessibility, setImportantForAccessibility] =
+    React.useState<"yes" | "no-hide-descendants">("yes");
 
   // Updates accessibility state based on scroll position.
-  // useAnimatedReaction(
-  //   () =>
-  //     enableDiscreteTransition
-  //       ? scrollOffset.value
-  //       : scrollValues?.contentOffsetY.value,
-  //   (currentOffset, previousOffset) => {
-  //     if (currentOffset !== previousOffset) {
-  //       const offsetToCompare = enableDiscreteTransition
-  //         ? 0
-  //         : scrollValues?.triggerOffset ?? 0;
-  //       // Sets accessibility to "yes" when scrolled past the threshold, else hides it from screen readers.
-  //       const newValue =
-  //         (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
-  //           ? "yes"
-  //           : "no-hide-descendants";
-  //       runOnJS(setImportantForAccessibility)(newValue);
-  //     }
-  //   },
-  //   [scrollValues, enableDiscreteTransition]
-  // );
+  useAnimatedReaction(
+    () =>
+      enableDiscreteTransition
+        ? scrollOffset.value
+        : scrollValues?.contentOffsetY.value,
+    (currentOffset, previousOffset) => {
+      if (currentOffset !== previousOffset) {
+        const offsetToCompare = enableDiscreteTransition
+          ? 0
+          : scrollValues?.triggerOffset ?? 0;
+        // Sets accessibility to "yes" when scrolled past the threshold, else hides it from screen readers.
+        const newValue =
+          (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
+            ? "yes"
+            : "no-hide-descendants";
+        runOnJS(setImportantForAccessibility)(newValue);
+      }
+    },
+    [scrollValues, enableDiscreteTransition]
+  );
 
   return (
     <Animated.View
@@ -326,7 +317,7 @@ export const HeaderSecondLevel = ({
         <View
           ref={titleRef}
           accessibilityElementsHidden={!isTitleAccessible}
-          // importantForAccessibility={importantForAccessibility}
+          importantForAccessibility={importantForAccessibility}
           accessible={isTitleAccessible}
           accessibilityLabel={title}
           accessibilityRole="header"
