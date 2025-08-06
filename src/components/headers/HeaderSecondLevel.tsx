@@ -301,7 +301,6 @@ export const HeaderSecondLevel = ({
       style={[
         { borderBottomWidth: 1, borderColor: borderColorTransparentState },
         ignoreSafeAreaMargin ? { borderColor: borderColorSolidState } : {},
-        !transparent ? { backgroundColor: headerBgColorSolidState } : {},
         headerWrapperAnimatedStyle
       ]}
     >
