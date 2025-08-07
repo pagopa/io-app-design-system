@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
+import { View, Pressable } from "react-native";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
 import {
@@ -27,6 +27,7 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
       asLink,
       accessibilityRole = "link",
       textStyle: customTextStyle,
+      onPress,
       ...props
     },
     ref?: ForwardedRef<View>
@@ -53,6 +54,18 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
           }
         : {})
     };
+
+    if (asLink) {
+      return (
+        <Pressable
+          onPress={onPress}
+          ref={ref}
+          accessibilityRole={accessibilityRole}
+        >
+          <IOText {...LabelMiniProps}>{props.children}</IOText>
+        </Pressable>
+      );
+    }
 
     return (
       <IOText ref={ref} {...LabelMiniProps}>
