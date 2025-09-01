@@ -21,7 +21,7 @@ export const IOThemeContext: React.Context<IOThemeContextType> =
     themeType: Appearance.getColorScheme(),
     theme:
       Appearance.getColorScheme() === "dark" ? IOThemes.dark : IOThemes.light,
-    setTheme: (_: ColorSchemeName) => void 0
+    setTheme: () => void 0
   });
 
 export const useIOThemeContext = () => useContext(IOThemeContext);
