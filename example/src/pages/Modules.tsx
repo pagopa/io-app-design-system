@@ -6,6 +6,7 @@ import {
   ModuleCredential,
   ModuleIDP,
   ModuleNavigation,
+  ModuleNavigationAlt,
   ModulePaymentNotice,
   ModuleSummary,
   useIOThemeContext
@@ -392,6 +393,34 @@ const renderModuleNavigation = () => (
   </>
 );
 
+const renderModuleNavigationAlt = () => (
+  <>
+    <ComponentViewerBox name="ModuleNavigationAlt">
+      <View>
+        <ModuleNavigationAlt
+          icon="cie"
+          title="Usa CIE + PIN"
+          subtitle="Dovrai usare la Carta di Identità Elettronica (CIE) e inserire il suo PIN di 8 cifre."
+          onPress={mockFn}
+          badge={{
+            text: "scelta consigliata",
+            variant: 'highlight',
+            outline: false
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigationAlt, loading">
+      <View>
+        <ModuleNavigationAlt
+          isLoading={true}
+          loadingAccessibilityLabel={"Loading navigation"}
+        />
+      </View>
+    </ComponentViewerBox>
+  </>
+);
+
 const renderModuleSummary = () => (
   <>
     <ComponentViewerBox name="ModuleSummary, default variant">
@@ -446,6 +475,8 @@ const Modules = () => {
       {renderModuleCredential()}
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
+      {renderModuleNavigationAlt()}
     </Screen>
   );
 };
