@@ -14,6 +14,7 @@ import {
 import * as React from "react";
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
+import Spid from "../../assets/images/spid.png";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -404,11 +405,37 @@ const renderModuleNavigationAlt = () => (
           onPress={mockFn}
           badge={{
             text: "scelta consigliata",
-            variant: 'highlight',
+            variant: "highlight",
             outline: false
           }}
         />
       </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigationAlt, image">
+      <ModuleNavigationAlt
+        image={Spid}
+        title="Usa SPID"
+        subtitle="Dovrai usare credenziali e app (o SMS)"
+        onPress={mockFn}
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigationAlt, fetching">
+      <ModuleNavigationAlt
+        icon="cie"
+        title="Usa l’app CieID"
+        subtitle="Dovrai usare credenziali e app CieID"
+        onPress={mockFn}
+        isFetching
+      />
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleNavigationAlt, custom right icon">
+      <ModuleNavigationAlt
+        icon="cie"
+        title="Usa l’app CieID"
+        subtitle="Dovrai usare credenziali e app CieID"
+        onPress={mockFn}
+        rightIcon="arrowRight"
+      />
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleNavigationAlt, loading">
       <View>

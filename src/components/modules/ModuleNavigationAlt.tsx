@@ -25,6 +25,7 @@ import {
   PressableModuleBase,
   PressableModuleBaseProps
 } from "./PressableModuleBase";
+import { LoadingSpinner } from "../loadingSpinner";
 
 type LoadingProps = {
   isLoading: true;
@@ -40,6 +41,8 @@ type BaseProps = {
   title: string;
   subtitle?: string;
   badge?: Badge;
+  isFetching?: boolean;
+  rightIcon?: IOIcons;
 } & ImageProps &
   PressableModuleBaseProps;
 
@@ -59,11 +62,21 @@ export const ModuleNavigationAlt = (
     );
   }
 
-  const { icon, image, title, subtitle, onPress, badge, ...pressableProps } =
-    props;
+  const {
+    testID,
+    icon,
+    image,
+    title,
+    subtitle,
+    onPress,
+    badge,
+    isFetching,
+    rightIcon,
+    ...pressableProps
+  } = props;
 
   const iconComponent = icon && !hugeFontEnabled && (
-    <Icon name={icon} size={32} color="blueIO-500" />
+    <Icon name={icon} size={32} color={theme["interactiveElem-default"]} />
   );
 
   const imageComponent = image && (
@@ -73,6 +86,26 @@ export const ModuleNavigationAlt = (
       accessibilityIgnoresInvertColors={true}
     />
   );
+
+  const endComponent = React.useMemo(() => {
+    if (isFetching) {
+      return (
+        <LoadingSpinner
+          testID={testID ? `${testID}_activityIndicator` : undefined}
+        />
+      );
+    }
+    if (onPress) {
+      return (
+        <Icon
+          name={rightIcon ?? "chevronRightListItem"}
+          color={theme["interactiveElem-default"]}
+          size={IOListItemVisualParams.chevronSize}
+        />
+      );
+    }
+    return null;
+  }, [testID, theme, isFetching, badge, onPress]);
 
   return (
     <PressableModuleBase {...pressableProps} onPress={onPress}>
@@ -109,13 +142,7 @@ export const ModuleNavigationAlt = (
             )}
           </View>
         </HStack>
-        {onPress ? (
-          <Icon
-            name="chevronRightListItem"
-            color={theme["interactiveElem-default"]}
-            size={IOListItemVisualParams.chevronSize}
-          />
-        ) : null}
+        {endComponent}
       </HStack>
     </PressableModuleBase>
   );
