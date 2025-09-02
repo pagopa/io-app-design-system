@@ -65,8 +65,8 @@ export const ModuleNavigationAlt = (
   const iconComponent = icon && !hugeFontEnabled && (
     <Icon
       name={icon}
-      size={IOSelectionListItemVisualParams.iconSize}
-      color="grey-300"
+      size={32}
+      color='blueIO-500'
     />
   );
 

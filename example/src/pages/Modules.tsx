@@ -398,7 +398,7 @@ const renderModuleNavigationAlt = () => (
     <ComponentViewerBox name="ModuleNavigationAlt">
       <View>
         <ModuleNavigationAlt
-          icon="cie"
+          icon="securityPad"
           title="Usa CIE + PIN"
           subtitle="Dovrai usare la Carta di Identità Elettronica (CIE) e inserire il suo PIN di 8 cifre."
           onPress={mockFn}
