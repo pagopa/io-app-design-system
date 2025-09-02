@@ -18,6 +18,7 @@ import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../layout";
+import { LoadingSpinner } from "../loadingSpinner";
 import { IOSkeleton } from "../skeleton";
 import { BodySmall, LabelMini } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
@@ -25,7 +26,6 @@ import {
   PressableModuleBase,
   PressableModuleBaseProps
 } from "./PressableModuleBase";
-import { LoadingSpinner } from "../loadingSpinner";
 
 type LoadingProps = {
   isLoading: true;
@@ -87,7 +87,7 @@ export const ModuleNavigationAlt = (
     />
   );
 
-  const endComponent = React.useMemo(() => {
+  const endComponent = () => {
     if (isFetching) {
       return (
         <LoadingSpinner
@@ -105,7 +105,7 @@ export const ModuleNavigationAlt = (
       );
     }
     return null;
-  }, [testID, theme, isFetching, badge, onPress]);
+  };
 
   return (
     <PressableModuleBase {...pressableProps} onPress={onPress}>
@@ -142,7 +142,7 @@ export const ModuleNavigationAlt = (
             )}
           </View>
         </HStack>
-        {endComponent}
+        {endComponent()}
       </HStack>
     </PressableModuleBase>
   );
