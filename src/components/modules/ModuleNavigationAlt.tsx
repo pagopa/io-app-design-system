@@ -63,11 +63,7 @@ export const ModuleNavigationAlt = (
     props;
 
   const iconComponent = icon && !hugeFontEnabled && (
-    <Icon
-      name={icon}
-      size={32}
-      color='blueIO-500'
-    />
+    <Icon name={icon} size={32} color="blueIO-500" />
   );
 
   const imageComponent = image && (

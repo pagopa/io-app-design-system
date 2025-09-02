@@ -3,13 +3,7 @@ import { Svg, Path, G, Defs, Rect, ClipPath } from "react-native-svg";
 import { SVGIconProps } from "../types";
 
 const IconAdd = ({ size, style, ...props }: SVGIconProps) => (
-  <Svg
-    width={size}
-    height={size}
-    viewBox="0 0 32 33"
-    style={style}
-    {...props}
-  >
+  <Svg width={size} height={size} viewBox="0 0 32 33" style={style} {...props}>
     <G clip-path="url(#clip0_6_44995)">
       <Path
         d="M22.9665 13.9431C24.2209 12.41 22.3029 10.578 20.8548 11.8615L14.5008 18.2842L11.5911 15.3024C11.2056 15.0202 11.0212 14.6506 10.5441 14.4916C9.11577 14.0157 8.01979 15.7583 9.00326 16.8912C11.0619 18.5632 13.4424 23.0918 16.5063 20.4701C18.7452 18.5548 20.7433 15.9236 22.9665 13.9431Z"
