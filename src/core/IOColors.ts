@@ -80,7 +80,9 @@ export const IOColors = asIOColors({
   "info-100": "#E1F5FE",
   "blueItalia-850": "#001F3D",
   "blueItalia-600": "#0052A3",
-  "blueItalia-500": "#0066CC" /* pagoPA service */,
+  "blueItalia-500":
+    "#0066CC" /* Italian services, such as pagoPA, CieID, SpID, etc… */,
+  "blueItalia-300": "#4595E5",
   "blueItalia-100": "#C4DCF5",
   "blueItalia-50": "#DDEBFA"
 });
@@ -190,6 +192,7 @@ export const IOColorsExtra = {
   "blueItalia-850": IOColors["blueItalia-850"],
   "blueItalia-600": IOColors["blueItalia-600"],
   "blueItalia-500": IOColors["blueItalia-500"],
+  "blueItalia-300": IOColors["blueItalia-300"],
   "blueItalia-100": IOColors["blueItalia-100"],
   "blueItalia-50": IOColors["blueItalia-50"]
 };
@@ -217,6 +220,7 @@ const themeKeys = [
   "buttonText-danger",
   "buttonText-disabled",
   "listItem-pressed",
+  "italyBrand-default",
   // Typography
   "textHeading-default",
   "textHeading-secondary",
@@ -291,6 +295,7 @@ export const IOThemeLight: IOTheme = {
   "buttonText-danger": "white",
   "buttonText-disabled": "grey-700",
   "listItem-pressed": "grey-50",
+  "italyBrand-default": "blueItalia-500",
   // Typography
   "textHeading-default": "black",
   "textHeading-secondary": "grey-850",
@@ -360,6 +365,7 @@ export const IOThemeDark: IOTheme = {
   "buttonText-danger": "white",
   "buttonText-disabled": "grey-300",
   "listItem-pressed": "grey-900",
+  "italyBrand-default": "blueItalia-300",
   // Typography
   "textHeading-default": "white",
   "textHeading-secondary": "grey-300",
