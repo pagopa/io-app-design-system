@@ -28,6 +28,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
       weight: customWeight,
       color: customColor,
       asLink,
+      avoidPressable,
       accessibilityRole = "link",
       textStyle: customTextStyle,
       onPress,
@@ -58,7 +59,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
         : {})
     };
 
-    if (asLink) {
+    if (asLink && !avoidPressable) {
       return (
         <Pressable
           onPress={onPress}
@@ -71,7 +72,11 @@ export const Body = forwardRef<View, BodyStyleProps>(
     }
 
     return (
-      <IOText ref={ref} {...BodyProps}>
+      <IOText
+        ref={ref}
+        {...BodyProps}
+        onPress={asLink && avoidPressable ? onPress : undefined}
+      >
         {props.children}
       </IOText>
     );
