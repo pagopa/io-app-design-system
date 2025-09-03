@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View
 } from "react-native";
+import { SvgProps } from "react-native-svg";
 import { useIOTheme } from "../../context";
 import {
   IOListItemVisualParams,
@@ -26,21 +27,19 @@ import {
   PressableModuleBase,
   PressableModuleBaseProps
 } from "./PressableModuleBase";
-import { SvgProps } from "react-native-svg";
 type LoadingProps = {
   isLoading: true;
   loadingAccessibilityLabel?: string;
 };
 
 type ImageProps =
-  | { icon: IOIcons; image?: never; svgIcon?: never }
+  | { icon: IOIcons; image?: never }
   | {
       icon?: never;
       image:
         | ImageURISource
         | ImageSourcePropType
         | React.ReactElement<SvgProps>;
-      svgIcon?: never;
     };
 
 type BaseProps = {
@@ -87,7 +86,9 @@ export const ModuleNavigationAlt = (
   );
 
   const imageComponent = () => {
-    if (!image) return null;
+    if (!image) {
+      return null;
+    }
 
     if (React.isValidElement(image)) {
       return image;
