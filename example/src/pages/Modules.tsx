@@ -1,5 +1,6 @@
 import {
   H2,
+  IOTheme,
   ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
@@ -14,7 +15,7 @@ import {
 import * as React from "react";
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
-import Spid from "../../assets/images/spid.png";
+import SpidTextLogo from "../../assets/images/spid-text-logo.svg";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -394,7 +395,7 @@ const renderModuleNavigation = () => (
   </>
 );
 
-const renderModuleNavigationAlt = () => (
+const renderModuleNavigationAlt = (theme: IOTheme) => (
   <>
     <ComponentViewerBox name="ModuleNavigationAlt">
       <View>
@@ -413,7 +414,13 @@ const renderModuleNavigationAlt = () => (
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleNavigationAlt, image">
       <ModuleNavigationAlt
-        image={Spid}
+        image={
+          <SpidTextLogo
+            width={32}
+            height={32}
+            // style={{ fill: theme["interactiveElem-default"] }}
+          />
+        }
         title="Usa SPID"
         subtitle="Dovrai usare credenziali e app (o SMS)"
         onPress={mockFn}
@@ -477,7 +484,7 @@ const renderModuleSummary = () => (
 );
 
 const Modules = () => {
-  const { setTheme, themeType } = useIOThemeContext();
+  const { setTheme, themeType, theme } = useIOThemeContext();
 
   return (
     <Screen>
@@ -503,7 +510,7 @@ const Modules = () => {
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
-      {renderModuleNavigationAlt()}
+      {renderModuleNavigationAlt(theme)}
     </Screen>
   );
 };

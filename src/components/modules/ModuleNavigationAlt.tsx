@@ -26,15 +26,22 @@ import {
   PressableModuleBase,
   PressableModuleBaseProps
 } from "./PressableModuleBase";
-
+import { SvgProps } from "react-native-svg";
 type LoadingProps = {
   isLoading: true;
   loadingAccessibilityLabel?: string;
 };
 
 type ImageProps =
-  | { icon: IOIcons; image?: never }
-  | { icon?: never; image: ImageURISource | ImageSourcePropType };
+  | { icon: IOIcons; image?: never; svgIcon?: never }
+  | {
+      icon?: never;
+      image:
+        | ImageURISource
+        | ImageSourcePropType
+        | React.ReactElement<SvgProps>;
+      svgIcon?: never;
+    };
 
 type BaseProps = {
   isLoading?: false;
@@ -79,13 +86,21 @@ export const ModuleNavigationAlt = (
     <Icon name={icon} size={32} color={theme["interactiveElem-default"]} />
   );
 
-  const imageComponent = image && (
-    <Image
-      source={image}
-      style={styles.image}
-      accessibilityIgnoresInvertColors={true}
-    />
-  );
+  const imageComponent = () => {
+    if (!image) return null;
+
+    if (React.isValidElement(image)) {
+      return image;
+    } else {
+      return (
+        <Image
+          source={image as ImageSourcePropType}
+          style={styles.image}
+          accessibilityIgnoresInvertColors={true}
+        />
+      );
+    }
+  };
 
   const endComponent = () => {
     if (isFetching) {
@@ -114,7 +129,7 @@ export const ModuleNavigationAlt = (
           space={IOVisualCostants.iconMargin as IOSpacer}
           style={{ alignItems: "center", flexGrow: 1, flexShrink: 1 }}
         >
-          {iconComponent ?? imageComponent}
+          {iconComponent ?? imageComponent()}
 
           <View style={{ flexShrink: 1 }}>
             <View
