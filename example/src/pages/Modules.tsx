@@ -1,5 +1,6 @@
 import {
   H2,
+  IOColors,
   ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
@@ -9,6 +10,7 @@ import {
   ModuleNavigationAlt,
   ModulePaymentNotice,
   ModuleSummary,
+  useIOTheme,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -394,59 +396,64 @@ const renderModuleNavigation = () => (
   </>
 );
 
-const renderModuleNavigationAlt = () => (
-  <>
-    <ComponentViewerBox name="ModuleNavigationAlt">
-      <View>
+const RenderModuleNavigationAlt = () => {
+  const theme = useIOTheme();
+  return (
+    <>
+      <ComponentViewerBox name="ModuleNavigationAlt">
+        <View>
+          <ModuleNavigationAlt
+            icon="securityPad"
+            title="Usa CIE + PIN"
+            subtitle="Dovrai usare la Carta di Identità Elettronica (CIE) e inserire il suo PIN di 8 cifre."
+            onPress={mockFn}
+            badge={{
+              text: "scelta consigliata",
+              variant: "highlight",
+              outline: false
+            }}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, image">
         <ModuleNavigationAlt
-          icon="securityPad"
-          title="Usa CIE + PIN"
-          subtitle="Dovrai usare la Carta di Identità Elettronica (CIE) e inserire il suo PIN di 8 cifre."
+          image={<SpidTextLogo fill={IOColors[theme["italyBrand-default"]]} />}
+          title="Usa SPID"
+          subtitle="Dovrai usare credenziali e app (o SMS)"
           onPress={mockFn}
-          badge={{
-            text: "scelta consigliata",
-            variant: "highlight",
-            outline: false
-          }}
         />
-      </View>
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleNavigationAlt, image">
-      <ModuleNavigationAlt
-        image={<SpidTextLogo width={32} height={32} />}
-        title="Usa SPID"
-        subtitle="Dovrai usare credenziali e app (o SMS)"
-        onPress={mockFn}
-      />
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleNavigationAlt, fetching">
-      <ModuleNavigationAlt
-        icon="cie"
-        title="Usa l’app CieID"
-        subtitle="Dovrai usare credenziali e app CieID"
-        onPress={mockFn}
-        isFetching
-      />
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleNavigationAlt, custom right icon">
-      <ModuleNavigationAlt
-        icon="cie"
-        title="Usa l’app CieID"
-        subtitle="Dovrai usare credenziali e app CieID"
-        onPress={mockFn}
-        rightIcon="arrowRight"
-      />
-    </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleNavigationAlt, loading">
-      <View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, fetching">
         <ModuleNavigationAlt
-          isLoading={true}
-          loadingAccessibilityLabel={"Loading navigation"}
+          icon="cie"
+          iconColor={theme["italyBrand-default"]}
+          title="Usa l’app CieID"
+          subtitle="Dovrai usare credenziali e app CieID"
+          onPress={mockFn}
+          isFetching
         />
-      </View>
-    </ComponentViewerBox>
-  </>
-);
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, custom right icon">
+        <ModuleNavigationAlt
+          icon="cie"
+          iconColor={theme["italyBrand-default"]}
+          title="Usa l’app CieID"
+          subtitle="Dovrai usare credenziali e app CieID"
+          onPress={mockFn}
+          rightIcon="arrowRight"
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, loading">
+        <View>
+          <ModuleNavigationAlt
+            isLoading={true}
+            loadingAccessibilityLabel={"Loading navigation"}
+          />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
 
 const renderModuleSummary = () => (
   <>
@@ -503,7 +510,7 @@ const Modules = () => {
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
-      {renderModuleNavigationAlt()}
+      {RenderModuleNavigationAlt()}
     </Screen>
   );
 };

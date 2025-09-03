@@ -9,15 +9,15 @@ import {
 import { SvgProps } from "react-native-svg";
 import { useIOTheme } from "../../context";
 import {
+  IOColors,
   IOListItemVisualParams,
-  IOSelectionListItemVisualParams,
   IOSpacer,
   IOVisualCostants
 } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
-import { IOIcons, Icon } from "../icons";
+import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { HStack, VStack } from "../layout";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOSkeleton } from "../skeleton";
@@ -49,6 +49,7 @@ type BaseProps = {
   badge?: Badge;
   isFetching?: boolean;
   rightIcon?: IOIcons;
+  iconColor?: IOColors;
 } & ImageProps &
   PressableModuleBaseProps;
 
@@ -59,6 +60,8 @@ export const ModuleNavigationAlt = (
 ) => {
   const theme = useIOTheme();
   const { hugeFontEnabled } = useIOFontDynamicScale();
+
+  const graphicWrapperSize: IOIconSizeScale = 48;
 
   if (props.isLoading) {
     return (
@@ -71,6 +74,7 @@ export const ModuleNavigationAlt = (
   const {
     testID,
     icon,
+    iconColor = theme["interactiveElem-default"],
     image,
     title,
     subtitle,
@@ -81,8 +85,8 @@ export const ModuleNavigationAlt = (
     ...pressableProps
   } = props;
 
-  const iconComponent = icon && !hugeFontEnabled && (
-    <Icon name={icon} size={32} color={theme["interactiveElem-default"]} />
+  const iconComponent = icon && (
+    <Icon name={icon} size={32} color={iconColor} />
   );
 
   const imageComponent = () => {
@@ -94,11 +98,13 @@ export const ModuleNavigationAlt = (
       return image;
     } else {
       return (
-        <Image
-          source={image as ImageSourcePropType}
-          style={styles.image}
-          accessibilityIgnoresInvertColors={true}
-        />
+        <View>
+          <Image
+            source={image as ImageSourcePropType}
+            style={styles.image}
+            accessibilityIgnoresInvertColors={true}
+          />
+        </View>
       );
     }
   };
@@ -130,33 +136,38 @@ export const ModuleNavigationAlt = (
           space={IOVisualCostants.iconMargin as IOSpacer}
           style={{ alignItems: "center", flexGrow: 1, flexShrink: 1 }}
         >
-          {iconComponent ?? imageComponent()}
-
-          <View style={{ flexShrink: 1 }}>
+          {!hugeFontEnabled && (
             <View
               style={{
-                display: "flex",
-                alignItems: "flex-start",
-                marginBottom: 8
+                alignItems: "center",
+                justifyContent: "center",
+                width: graphicWrapperSize,
+                height: graphicWrapperSize
               }}
             >
-              {badge ? <Badge {...badge} /> : null}
+              {iconComponent ?? imageComponent()}
             </View>
-            <BodySmall
-              color={theme["interactiveElem-default"]}
-              weight="Semibold"
-              numberOfLines={2}
-              lineBreakMode="middle"
-              style={{ flexShrink: 1 }}
-            >
-              {title}
-            </BodySmall>
-            {subtitle && (
-              <LabelMini weight="Regular" color={theme["textBody-tertiary"]}>
-                {subtitle}
-              </LabelMini>
-            )}
-          </View>
+          )}
+
+          <VStack space={8} style={{ flexShrink: 1, alignItems: "flex-start" }}>
+            {badge ? <Badge {...badge} /> : null}
+            <View>
+              <BodySmall
+                color={theme["interactiveElem-default"]}
+                weight="Semibold"
+                numberOfLines={2}
+                lineBreakMode="middle"
+                style={{ flexShrink: 1 }}
+              >
+                {title}
+              </BodySmall>
+              {subtitle && (
+                <LabelMini weight="Regular" color={theme["textBody-tertiary"]}>
+                  {subtitle}
+                </LabelMini>
+              )}
+            </View>
+          </VStack>
         </HStack>
         {endComponent()}
       </HStack>
@@ -192,8 +203,8 @@ const ModuleNavigationAltSkeleton = ({
 
 const styles = StyleSheet.create({
   image: {
-    width: IOSelectionListItemVisualParams.iconSize,
-    height: IOSelectionListItemVisualParams.iconSize,
+    width: "100%",
+    height: "auto",
     resizeMode: "contain"
   }
 });
