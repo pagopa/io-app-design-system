@@ -1,6 +1,5 @@
 import {
   H2,
-  IOTheme,
   ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
@@ -395,7 +394,7 @@ const renderModuleNavigation = () => (
   </>
 );
 
-const renderModuleNavigationAlt = (theme: IOTheme) => (
+const renderModuleNavigationAlt = () => (
   <>
     <ComponentViewerBox name="ModuleNavigationAlt">
       <View>
@@ -414,13 +413,7 @@ const renderModuleNavigationAlt = (theme: IOTheme) => (
     </ComponentViewerBox>
     <ComponentViewerBox name="ModuleNavigationAlt, image">
       <ModuleNavigationAlt
-        image={
-          <SpidTextLogo
-            width={32}
-            height={32}
-            // style={{ fill: theme["interactiveElem-default"] }}
-          />
-        }
+        image={<SpidTextLogo width={32} height={32} />}
         title="Usa SPID"
         subtitle="Dovrai usare credenziali e app (o SMS)"
         onPress={mockFn}
@@ -510,7 +503,7 @@ const Modules = () => {
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
-      {renderModuleNavigationAlt(theme)}
+      {renderModuleNavigationAlt()}
     </Screen>
   );
 };
