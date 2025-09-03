@@ -477,7 +477,7 @@ const renderModuleSummary = () => (
 );
 
 const Modules = () => {
-  const { setTheme, themeType, theme } = useIOThemeContext();
+  const { setTheme, themeType } = useIOThemeContext();
 
   return (
     <Screen>
