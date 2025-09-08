@@ -1,18 +1,22 @@
 import {
   H2,
+  IOColors,
   ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
   ModuleCredential,
   ModuleIDP,
   ModuleNavigation,
+  ModuleNavigationAlt,
   ModulePaymentNotice,
   ModuleSummary,
+  useIOTheme,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
+import SpidTextLogo from "../../assets/images/spid-text-logo.svg";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -392,6 +396,65 @@ const renderModuleNavigation = () => (
   </>
 );
 
+const RenderModuleNavigationAlt = () => {
+  const theme = useIOTheme();
+  return (
+    <>
+      <ComponentViewerBox name="ModuleNavigationAlt">
+        <View>
+          <ModuleNavigationAlt
+            icon="securityPad"
+            title="Usa CIE + PIN"
+            subtitle="Dovrai usare la Carta di Identità Elettronica (CIE) e inserire il suo PIN di 8 cifre."
+            onPress={mockFn}
+            badge={{
+              text: "scelta consigliata",
+              variant: "highlight",
+              outline: false
+            }}
+          />
+        </View>
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, image">
+        <ModuleNavigationAlt
+          image={<SpidTextLogo fill={IOColors[theme["italyBrand-default"]]} />}
+          title="Usa SPID"
+          subtitle="Dovrai usare credenziali e app (o SMS)"
+          onPress={mockFn}
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, fetching">
+        <ModuleNavigationAlt
+          icon="cie"
+          iconColor={theme["italyBrand-default"]}
+          title="Usa l’app CieID"
+          subtitle="Dovrai usare credenziali e app CieID"
+          onPress={mockFn}
+          isFetching
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, custom right icon">
+        <ModuleNavigationAlt
+          icon="cie"
+          iconColor={theme["italyBrand-default"]}
+          title="Usa l’app CieID"
+          subtitle="Dovrai usare credenziali e app CieID"
+          onPress={mockFn}
+          rightIcon="arrowRight"
+        />
+      </ComponentViewerBox>
+      <ComponentViewerBox name="ModuleNavigationAlt, loading">
+        <View>
+          <ModuleNavigationAlt
+            isLoading={true}
+            loadingAccessibilityLabel={"Loading navigation"}
+          />
+        </View>
+      </ComponentViewerBox>
+    </>
+  );
+};
+
 const renderModuleSummary = () => (
   <>
     <ComponentViewerBox name="ModuleSummary, default variant">
@@ -446,6 +509,8 @@ const Modules = () => {
       {renderModuleCredential()}
       <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
       {renderModuleNavigation()}
+      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
+      {RenderModuleNavigationAlt()}
     </Screen>
   );
 };

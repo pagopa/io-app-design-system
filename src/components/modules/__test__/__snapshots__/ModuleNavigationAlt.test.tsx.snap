@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chevron (onPress) 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge + chevron) 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no icon) + chevron (onPress) - Experimental 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `null`;
+
+exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress) 1`] = `null`;
