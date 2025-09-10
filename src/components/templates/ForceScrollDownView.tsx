@@ -62,7 +62,7 @@ export type ForceScrollDownView = {
    * Optional Animated ref to be used with `useScrollViewOffset`
    * (outside this component)
    */
-  animatedScrollRef?: AnimatedRef<Animated.ScrollView>;
+  animatedRef?: AnimatedRef<Animated.ScrollView>;
 } & ForceScrollDownViewSlot &
   Pick<
     ScrollViewProps,
@@ -83,10 +83,10 @@ const ForceScrollDownView = ({
   contentContainerStyle,
   scrollEnabled = true,
   onThresholdCrossed,
-  animatedScrollRef
+  animatedRef
 }: ForceScrollDownView) => {
   const internalAnimatedRef = useAnimatedRef<Animated.ScrollView>();
-  const scrollViewRef = animatedScrollRef ?? internalAnimatedRef;
+  const scrollViewRef = animatedRef ?? internalAnimatedRef;
 
   const {
     footerActionsInlineMeasurements,

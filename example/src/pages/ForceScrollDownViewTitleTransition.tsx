@@ -35,7 +35,7 @@ export const ForceScrollDownViewTitleTransition = () => {
 
   return (
     <ForceScrollDownView
-      animatedScrollRef={animatedScrollViewRef}
+      animatedRef={animatedScrollViewRef}
       footerActions={{
         actions: {
           type: "SingleButton",
