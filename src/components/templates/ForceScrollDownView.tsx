@@ -4,17 +4,21 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState
 } from "react";
 import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  ScrollView,
   ScrollViewProps,
   StyleSheet
 } from "react-native";
+import Animated, {
+  runOnUI,
+  scrollTo,
+  useAnimatedRef,
+  type AnimatedRef
+} from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
@@ -54,6 +58,11 @@ export type ForceScrollDownView = {
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
    */
   onThresholdCrossed?: (crossed: boolean) => void;
+  /**
+   * Optional Animated ref to be used with `useScrollViewOffset`
+   * (outside this component)
+   */
+  animatedScrollRef?: AnimatedRef<Animated.ScrollView>;
 } & ForceScrollDownViewSlot &
   Pick<
     ScrollViewProps,
@@ -73,9 +82,11 @@ const ForceScrollDownView = ({
   style,
   contentContainerStyle,
   scrollEnabled = true,
-  onThresholdCrossed
+  onThresholdCrossed,
+  animatedScrollRef
 }: ForceScrollDownView) => {
-  const scrollViewRef = useRef<ScrollView>(null);
+  const internalAnimatedRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollViewRef = animatedScrollRef ?? internalAnimatedRef;
 
   const {
     footerActionsInlineMeasurements,
@@ -163,8 +174,12 @@ const ForceScrollDownView = ({
    */
   const handleScrollDownPress = useCallback(() => {
     setButtonVisible(false);
-    scrollViewRef.current?.scrollToEnd();
-  }, [scrollViewRef]);
+    const targetY = Math.max(0, contentHeight - scrollViewHeight);
+    runOnUI((y: number) => {
+      "worklet";
+      scrollTo(scrollViewRef, 0, y, true);
+    })(targetY);
+  }, [scrollViewRef, contentHeight, scrollViewHeight]);
 
   /**
    * Whether or not the "scroll to bottom" button needs to be displayed. It is only displayed
@@ -207,7 +222,7 @@ const ForceScrollDownView = ({
 
   return (
     <>
-      <ScrollView
+      <Animated.ScrollView
         testID={"ScrollView"}
         ref={scrollViewRef}
         scrollEnabled={scrollEnabled}
@@ -226,7 +241,7 @@ const ForceScrollDownView = ({
             fixed={false}
           />
         )}
-      </ScrollView>
+      </Animated.ScrollView>
       {scrollDownButton}
     </>
   );
