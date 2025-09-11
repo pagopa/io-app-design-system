@@ -1,7 +1,8 @@
 // __tests__/ModuleNavigationAlt.test.tsx
+import { render } from "@testing-library/react-native";
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
 import { Alert } from "react-native";
+import * as TestRenderer from "react-test-renderer";
 import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { ModuleNavigationAlt } from "../ModuleNavigationAlt";
 
@@ -112,5 +113,18 @@ describe("ModuleNavigationAlt - Snapshot (Experimental Enabled)", () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it("should forward testID", () => {
+    const { getByTestId } = render(
+      <ModuleNavigationAlt
+        testID="module-navigation-alt"
+        title="With Image"
+        image={{ uri: "https://example.com/icon.png" }}
+        onPress={jest.fn()}
+      />
+    );
+
+    expect(getByTestId("module-navigation-alt")).toBeTruthy();
   });
 });
