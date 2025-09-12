@@ -12,6 +12,7 @@ import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { BodySmall, H6 } from "../typography";
+import { VSpacer } from "../layout";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -33,6 +34,8 @@ type EndElementProps =
   | IconButtonActionProps
   | BadgeProps;
 
+type TopElementProps = BadgeProps;
+
 type GraphicProps =
   | {
       paymentLogoIcon?: IOLogoPaymentType;
@@ -48,9 +51,8 @@ type InteractiveProps = Pick<
   "onLongPress" | "accessibilityActions" | "onAccessibilityAction"
 >;
 
-export type ListItemInfo = WithTestID<{
+export type ListItemInfoBase = WithTestID<{
   value: string | ReactNode;
-  label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
   // Accessibility
@@ -60,6 +62,23 @@ export type ListItemInfo = WithTestID<{
 }> &
   GraphicProps &
   InteractiveProps;
+
+type WithLabel = ListItemInfoBase & {
+  label: string;
+  topElement?: never;
+};
+
+type WithTopElement = ListItemInfoBase & {
+  topElement: TopElementProps;
+  label?: never;
+};
+
+type WithPlainListInfoBase = ListItemInfoBase & {
+  label?: undefined;
+  topElement?: undefined;
+};
+
+export type ListItemInfo = WithLabel | WithTopElement | WithPlainListInfoBase;
 
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
@@ -71,6 +90,7 @@ export const ListItemInfo = ({
   icon,
   paymentLogoIcon,
   endElement,
+  topElement,
   accessibilityLabel,
   accessibilityRole,
   accessibilityActions,
@@ -105,7 +125,15 @@ export const ListItemInfo = ({
         accessible={Platform.OS === "ios"}
         style={{ flexDirection: reversed ? "column-reverse" : "column" }}
       >
-        {label && (
+        {topElement?.type === "badge" && (
+          <>
+            <View style={{ alignSelf: "flex-start" }}>
+              <Badge {...topElement.componentProps} />
+            </View>
+            <VSpacer size={8} />
+          </>
+        )}
+        {label && !topElement && (
           <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {label}
           </BodySmall>
@@ -119,7 +147,7 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, reversed]
+    [label, value, numberOfLines, theme, reversed, topElement]
   );
 
   const listItemInfoAction = useCallback(() => {
