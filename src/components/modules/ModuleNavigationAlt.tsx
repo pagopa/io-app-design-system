@@ -120,6 +120,7 @@ export const ModuleNavigationAlt = (
     if (onPress) {
       return (
         <Icon
+          testID={testID ? `${testID}_icon` : undefined}
           name={rightIcon ?? "chevronRightListItem"}
           color={theme["interactiveElem-default"]}
           size={IOListItemVisualParams.chevronSize}
@@ -130,7 +131,7 @@ export const ModuleNavigationAlt = (
   };
 
   return (
-    <PressableModuleBase {...pressableProps} onPress={onPress}>
+    <PressableModuleBase {...pressableProps} testID={testID} onPress={onPress}>
       <HStack space={8} style={{ alignItems: "center" }}>
         <HStack
           space={IOVisualCostants.iconMargin as IOSpacer}
