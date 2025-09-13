@@ -392,6 +392,41 @@ const renderListItemInfo = () => (
         <ListItemInfo reversed label="Label" value={"Value"} icon="gallery" />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ListItemInfo, with badge">
+      <View>
+        <ListItemInfo
+          topElement={{
+            type: "badge",
+            componentProps: {
+              text: "Verifica in corso",
+              variant: "warning"
+            }
+          }}
+          value="A looong looooong looooooooong looooooooooong title"
+        />
+        <ListItemInfo
+          topElement={{
+            type: "badge",
+            componentProps: {
+              text: "Success",
+              variant: "success"
+            }
+          }}
+          value="A looong looooong looooooooong looooooooooong title"
+        />
+        <ListItemInfo
+          topElement={{
+            type: "badge",
+            componentProps: {
+              text: "Success",
+              variant: "success"
+            }
+          }}
+          label="Title"
+          value="With both badge and label"
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ListItemInfo, onLongPress enabled">
       <View>
         <ListItemInfo
