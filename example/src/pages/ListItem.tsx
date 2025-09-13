@@ -414,6 +414,17 @@ const renderListItemInfo = () => (
           }}
           value="A looong looooong looooooooong looooooooooong title"
         />
+        <ListItemInfo
+          topElement={{
+            type: "badge",
+            componentProps: {
+              text: "Success",
+              variant: "success"
+            }
+          }}
+          label="Title"
+          value="With both badge and label"
+        />
       </View>
     </ComponentViewerBox>
     <ComponentViewerBox name="ListItemInfo, onLongPress enabled">

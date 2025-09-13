@@ -51,10 +51,12 @@ type InteractiveProps = Pick<
   "onLongPress" | "accessibilityActions" | "onAccessibilityAction"
 >;
 
-export type ListItemInfoBase = WithTestID<{
+export type ListItemInfo = WithTestID<{
   value: string | ReactNode;
+  label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
+  topElement?: TopElementProps;
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
@@ -62,23 +64,6 @@ export type ListItemInfoBase = WithTestID<{
 }> &
   GraphicProps &
   InteractiveProps;
-
-type WithLabel = ListItemInfoBase & {
-  label: string;
-  topElement?: never;
-};
-
-type WithTopElement = ListItemInfoBase & {
-  topElement: TopElementProps;
-  label?: never;
-};
-
-type WithPlainListInfoBase = ListItemInfoBase & {
-  label?: undefined;
-  topElement?: undefined;
-};
-
-export type ListItemInfo = WithLabel | WithTopElement | WithPlainListInfoBase;
 
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
@@ -126,14 +111,12 @@ export const ListItemInfo = ({
         style={{ flexDirection: reversed ? "column-reverse" : "column" }}
       >
         {topElement?.type === "badge" && (
-          <>
-            <View style={{ alignSelf: "flex-start" }}>
-              <Badge {...topElement.componentProps} />
-            </View>
-            <VSpacer size={8} />
-          </>
+          <View style={{ alignSelf: "flex-start" }}>
+            <Badge {...topElement.componentProps} />
+            <VSpacer size={4} />
+          </View>
         )}
-        {label && !topElement && (
+        {label && (
           <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {label}
           </BodySmall>
