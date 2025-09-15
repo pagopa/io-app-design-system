@@ -2,8 +2,6 @@ export * from "./ContentWrapper";
 export * from "./Divider";
 export * from "./FooterActions";
 export * from "./FooterActionsInline";
-export * from "./GradientBottomActions";
-export * from "./GradientScrollView";
 export * from "./hooks";
 export * from "./Spacer";
 export * from "./Stack";
