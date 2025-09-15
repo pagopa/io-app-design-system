@@ -70,6 +70,7 @@ import IconDeviceVibration from "./svg/IconDeviceVibration";
 import IconDocGiacenza from "./svg/IconDocGiacenza";
 import IconDocPaymentCode from "./svg/IconDocPaymentCode";
 import IconDocPaymentTitle from "./svg/IconDocPaymentTitle";
+import IconDocumentAdd from "./svg/IconDocumentAdd";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
 import IconDotMenu from "./svg/IconDotMenu";
@@ -129,6 +130,7 @@ import IconMapPin from "./svg/IconMapPin";
 import IconMerchant from "./svg/IconMerchant";
 import IconMessage from "./svg/IconMessage";
 import IconMessageLegal from "./svg/IconMessageLegal";
+import IconMultiCard from "./svg/IconMultiCard";
 import IconNavMessages from "./svg/IconNavMessages";
 import IconNavMessagesFocused from "./svg/IconNavMessagesFocused";
 import IconNavProfile from "./svg/IconNavProfile";
@@ -167,6 +169,7 @@ import IconReload from "./svg/IconReload";
 import IconSave from "./svg/IconSave";
 import IconSearch from "./svg/IconSearch";
 import IconSecurity from "./svg/IconSecurity";
+import IconSecurityPad from "./svg/IconSecurityPad";
 import IconSelfCertification from "./svg/IconSelfCertification";
 import IconShareAndroid from "./svg/IconShareAndroid";
 import IconShareiOs from "./svg/IconShareiOs";
@@ -206,7 +209,6 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconDocumentAdd from "./svg/IconDocumentAdd";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -251,6 +253,7 @@ export const IOIcons = {
   inbox: IconInboxEmpty,
   inboxFilled: IconInboxFilled,
   security: IconSecurity,
+  securityPad: IconSecurityPad,
   option: IconOption,
   key: IconKey,
   documentAdd: IconDocumentAdd,
@@ -274,6 +277,7 @@ export const IOIcons = {
   creditCard: IconCreditCard,
   creditCardOff: IconCreditCardOff,
   creditCardFilled: IconCreditCardFilled,
+  multiCard: IconMultiCard,
   bonus: IconBonus,
   bonusFilled: IconBonusFilled,
   transactionsBoxed: IconTransactionsBoxed,
@@ -532,12 +536,15 @@ export const AnimatedIconWithColorTransition = Animated.createAnimatedComponent(
 */
 
 /* New icons */
-const { sparkles, profileRegistered, documentAdd } = IOIcons;
+const { sparkles, profileRegistered, documentAdd, securityPad, multiCard } =
+  IOIcons;
 
 export const IOIconsNew = {
   sparkles,
   profileRegistered,
-  documentAdd
+  documentAdd,
+  securityPad,
+  multiCard
 };
 
 /* Navigation */

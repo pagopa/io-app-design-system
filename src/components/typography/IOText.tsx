@@ -62,10 +62,11 @@ export type TypographicStyleAsLinkProps =
   | {
       color?: IOColors;
       asLink: true;
+      avoidPressable?: true;
       onPress: (event: GestureResponderEvent) => void;
       accessibilityRole?: Extract<AccessibilityRole, "button" | "link">;
     }
-  | { color?: IOColors; asLink?: false };
+  | { color?: IOColors; asLink?: false; avoidPressable?: false };
 
 /**
  * Decorate the function {@link makeFontStyleObject} with the additional color calculation.
