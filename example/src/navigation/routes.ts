@@ -113,10 +113,6 @@ const APP_ROUTES = {
     FOOTER_ACTIONS_INLINE_NOT_FIXED: {
       route: "DESIGN_SYSTEM_FOOTER_ACTIONS_INLINE_NOT_FIXED",
       title: "Footer actions (inline, not fixed)"
-    },
-    GRADIENT_SCROLLVIEW: {
-      route: "DESIGN_SYSTEM_GRADIENT_SCROLLVIEW",
-      title: "Gradient ScrollView"
     }
   },
   SANDBOX: {
