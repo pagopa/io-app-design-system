@@ -12,6 +12,7 @@ import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
 import { BodySmall, H6 } from "../typography";
+import { VSpacer } from "../layout";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -33,6 +34,8 @@ type EndElementProps =
   | IconButtonActionProps
   | BadgeProps;
 
+type TopElementProps = BadgeProps;
+
 type GraphicProps =
   | {
       paymentLogoIcon?: IOLogoPaymentType;
@@ -53,6 +56,7 @@ export type ListItemInfo = WithTestID<{
   label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
+  topElement?: TopElementProps;
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
@@ -71,6 +75,7 @@ export const ListItemInfo = ({
   icon,
   paymentLogoIcon,
   endElement,
+  topElement,
   accessibilityLabel,
   accessibilityRole,
   accessibilityActions,
@@ -105,6 +110,12 @@ export const ListItemInfo = ({
         accessible={Platform.OS === "ios"}
         style={{ flexDirection: reversed ? "column-reverse" : "column" }}
       >
+        {topElement?.type === "badge" && (
+          <View style={{ alignSelf: "flex-start" }}>
+            <Badge {...topElement.componentProps} />
+            <VSpacer size={4} />
+          </View>
+        )}
         {label && (
           <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
             {label}
@@ -119,7 +130,7 @@ export const ListItemInfo = ({
         )}
       </View>
     ),
-    [label, value, numberOfLines, theme, reversed]
+    [label, value, numberOfLines, theme, reversed, topElement]
   );
 
   const listItemInfoAction = useCallback(() => {
