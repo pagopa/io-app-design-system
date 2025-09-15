@@ -208,6 +208,7 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
+import IconMultiCard from "./svg/IconMultiCard";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -276,6 +277,7 @@ export const IOIcons = {
   creditCard: IconCreditCard,
   creditCardOff: IconCreditCardOff,
   creditCardFilled: IconCreditCardFilled,
+  multiCard: IconMultiCard,
   bonus: IconBonus,
   bonusFilled: IconBonusFilled,
   transactionsBoxed: IconTransactionsBoxed,
