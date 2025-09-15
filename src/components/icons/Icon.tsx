@@ -130,6 +130,7 @@ import IconMapPin from "./svg/IconMapPin";
 import IconMerchant from "./svg/IconMerchant";
 import IconMessage from "./svg/IconMessage";
 import IconMessageLegal from "./svg/IconMessageLegal";
+import IconMultiCard from "./svg/IconMultiCard";
 import IconNavMessages from "./svg/IconNavMessages";
 import IconNavMessagesFocused from "./svg/IconNavMessagesFocused";
 import IconNavProfile from "./svg/IconNavProfile";
@@ -208,7 +209,6 @@ import LegIconCheckOff from "./svg/LegIconCheckOff";
 import LegIconCheckOn from "./svg/LegIconCheckOn";
 import LegIconRadioOff from "./svg/LegIconRadioOff";
 import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconMultiCard from "./svg/IconMultiCard";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -536,13 +536,15 @@ export const AnimatedIconWithColorTransition = Animated.createAnimatedComponent(
 */
 
 /* New icons */
-const { sparkles, profileRegistered, documentAdd, securityPad } = IOIcons;
+const { sparkles, profileRegistered, documentAdd, securityPad, multiCard } =
+  IOIcons;
 
 export const IOIconsNew = {
   sparkles,
   profileRegistered,
   documentAdd,
-  securityPad
+  securityPad,
+  multiCard
 };
 
 /* Navigation */
