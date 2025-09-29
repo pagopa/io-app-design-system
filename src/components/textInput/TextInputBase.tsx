@@ -27,7 +27,7 @@ import Animated, {
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { IOColors, IOSpacingScale, hexToRgba } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import {
@@ -237,7 +237,6 @@ export const TextInputBase = ({
   );
   const focusedState = useSharedValue<number>(0);
 
-  const { newTypefaceEnabled } = useIONewTypeface();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const theme = useIOTheme();
@@ -472,7 +471,7 @@ export const TextInputBase = ({
             {
               ...makeFontStyleObject(
                 inputLabelFontSize,
-                newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                "Titillio",
                 undefined,
                 "Regular"
               )
@@ -516,7 +515,7 @@ export const TextInputBase = ({
               {
                 ...makeFontStyleObject(
                   inputLabelFontSize,
-                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  "Titillio",
                   undefined,
                   "Regular"
                 ),

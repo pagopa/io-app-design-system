@@ -1,6 +1,5 @@
 import {
   IODSExperimentalContextProvider,
-  IONewTypefaceContextProvider,
   IOThemeContextProvider,
   ToastProvider
 } from "@pagopa/io-app-design-system";
@@ -18,15 +17,13 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <IODSExperimentalContextProvider>
-          <IONewTypefaceContextProvider>
-            <IOThemeContextProvider theme={colorScheme}>
-              <StatusBannerProvider>
-                <ToastProvider>
-                  <AppNavigator />
-                </ToastProvider>
-              </StatusBannerProvider>
-            </IOThemeContextProvider>
-          </IONewTypefaceContextProvider>
+          <IOThemeContextProvider theme={colorScheme}>
+            <StatusBannerProvider>
+              <ToastProvider>
+                <AppNavigator />
+              </ToastProvider>
+            </StatusBannerProvider>
+          </IOThemeContextProvider>
         </IODSExperimentalContextProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

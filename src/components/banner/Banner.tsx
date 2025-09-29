@@ -8,7 +8,7 @@ import {
   ViewStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { useIONewTypeface, useIOTheme, useIOThemeContext } from "../../context";
+import { useIOTheme, useIOThemeContext } from "../../context";
 import { IOBannerBigSpacing, IOBannerRadius } from "../../core";
 import { hexToRgba, IOColors } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
@@ -141,7 +141,6 @@ export const Banner = forwardRef<View, Banner>(
     }: Banner,
     viewRef
   ) => {
-    const { newTypefaceEnabled } = useIONewTypeface();
     const { onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("medium");
     const { themeType } = useIOThemeContext();
@@ -198,7 +197,7 @@ export const Banner = forwardRef<View, Banner>(
             >
               <VSpacer size={8} />
               <IOText
-                font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+                font={"Titillio"}
                 weight="Semibold"
                 color={colorMainButton}
                 size={buttonTextFontSize}

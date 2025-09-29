@@ -11,7 +11,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { IOButtonStyles, IOColors, hexToRgba } from "../../core/";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
@@ -85,7 +85,6 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
     ref
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
@@ -235,7 +234,7 @@ export const ButtonOutline = forwardRef<View, ButtonOutline>(
               />
             ))}
           <AnimatedIOText
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+            font={"Titillio"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             accessible={false}

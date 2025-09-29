@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -13,11 +13,10 @@ export const heroLineHeight = 48;
 export const Hero = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const HeroProps: IOTextProps = {
       ...props,
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+      font: "Titillio",
       weight: "Semibold",
       size: 32,
       lineHeight: 48,

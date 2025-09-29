@@ -22,7 +22,6 @@ import Animated, {
   LayoutAnimationConfig,
   useReducedMotion
 } from "react-native-reanimated";
-import { useIONewTypeface } from "../../../context";
 import {
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,
@@ -139,7 +138,6 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
       useButtonAnimatedStyles(variant, color, progress);
     const reducedMotion = useReducedMotion();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const isLinkButton = variant === "link";
 
@@ -268,7 +266,7 @@ export const IOButton = forwardRef<View, IOButtonProps>(
                 />
               ))}
             <AnimatedIOText
-              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+              font={"Titillio"}
               weight={"Semibold"}
               size={buttonTextFontSize}
               lineHeight={isLinkButton ? buttonTextLineHeight : undefined}

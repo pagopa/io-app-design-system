@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View, Pressable } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
-import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { useIOTheme } from "../../context";
+import { IOFontWeight } from "../../utils/fonts";
 import {
   IOText,
   IOTextProps,
@@ -12,9 +12,6 @@ import {
 type BodySmallProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
-
-const fontName: IOFontFamily = "Titillio";
-const legacyFontName: IOFontFamily = "TitilliumSansPro";
 
 /**
  * `BodySmall` typographic style
@@ -34,7 +31,6 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -43,7 +39,7 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     const BodySmallProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
-      font: newTypefaceEnabled ? fontName : legacyFontName,
+      font: "Titillio",
       weight: customWeight ?? "Regular",
       size: 14,
       lineHeight: 21,

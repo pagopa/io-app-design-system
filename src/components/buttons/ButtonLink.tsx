@@ -12,7 +12,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import {
   IOButtonStyles,
   IOColors,
@@ -85,7 +85,6 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
     ref
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation();
     const reducedMotion = useReducedMotion();
@@ -198,7 +197,7 @@ export const ButtonLink = forwardRef<View, ButtonLinkProps>(
             accessible={false}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+            font={"Titillio"}
             weight={"Semibold"}
             size={buttonTextFontSize}
             lineHeight={buttonTextLineHeight}

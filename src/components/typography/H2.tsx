@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { IOFontSize, IOFontWeight } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
@@ -20,12 +20,11 @@ export const H2 = forwardRef<View, H2StyleProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H2Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "title1", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+      font: "Titillio",
       weight: customWeight ?? "Semibold",
       size: h2FontSize,
       lineHeight: h2LineHeight,
