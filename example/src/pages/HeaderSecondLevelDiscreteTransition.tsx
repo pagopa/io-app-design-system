@@ -63,6 +63,7 @@ export const HeaderSecondLevelScreenDiscreteTransition = () => {
         paddingBottom: insets.bottom,
         paddingHorizontal: IOVisualCostants.appMarginDefault
       }}
+      scrollEventThrottle={8}
     >
       <H3 color={theme["textHeading-default"]}>
         Questo è un titolo lungo, ma lungo lungo davvero, eh!

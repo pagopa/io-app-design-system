@@ -43,10 +43,6 @@ const APP_ROUTES = {
       route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN",
       title: "Force Scroll Down"
     },
-    FORCE_SCROLL_DOWN_TITLE_TRANSITION: {
-      route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN_TITLE_TRANSITION",
-      title: "Force Scroll Down (Title Transition)"
-    },
     HEADER_SECOND_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_SECOND_LEVEL",
       title: "Header Second Level"
