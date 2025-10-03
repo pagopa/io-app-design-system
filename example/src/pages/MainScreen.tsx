@@ -8,7 +8,6 @@ import {
   ListItemSwitch,
   VSpacer,
   useIOExperimentalDesign,
-  useIONewTypeface,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -59,7 +58,7 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 const MainScreen = (props: Props) => {
   const { setTheme, themeType, theme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
-  const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
+
   const renderDSNavItem = ({
     item: { title, route }
   }: {
@@ -97,11 +96,6 @@ const MainScreen = (props: Props) => {
           label="Abilita Design Sperimentale"
           value={isExperimental}
           onSwitchValueChange={setExperimental}
-        />
-        <ListItemSwitch
-          label="Abilita nuovo carattere"
-          value={newTypefaceEnabled}
-          onSwitchValueChange={setNewTypefaceEnabled}
         />
         <VSpacer size={4} />
         <ListItemSwitch

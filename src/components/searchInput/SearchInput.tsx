@@ -29,7 +29,7 @@ import Animated, {
   withTiming
 } from "react-native-reanimated";
 import { WithTestID } from "src/utils/types";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { IOColors, IOSpacingScale, IOVisualCostants } from "../../core";
 import {
   IOFontSize,
@@ -114,7 +114,6 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     ref
   ) => {
     const searchInputRef = useRef<TextInput>(null);
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     /* Component visual attributes */
     const theme = useIOTheme();
@@ -264,7 +263,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
                 color: IOColors[theme["textBody-default"]],
                 ...makeFontStyleObject(
                   inputFontSizePlaceholder,
-                  newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                  "Titillio",
                   undefined,
                   "Regular"
                 )
@@ -307,7 +306,7 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           >
             <IOText
               color={theme["interactiveElem-default"]}
-              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
+              font={"Titillio"}
               weight={"Semibold"}
               size={buttonTextFontSize}
               lineHeight={buttonTextLineHeight}
