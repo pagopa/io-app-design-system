@@ -340,6 +340,20 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, with badge and chevron">
+      <View>
+        <ModuleCredential
+          icon={"messageLegal"}
+          label="Attestato di residenza"
+          onPress={mockFn}
+          badge={{
+            text: "novità",
+            variant: "default"
+          }}
+          showChevronWithBadge={true}
+        />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
