@@ -89,16 +89,14 @@ const ModuleCredentialContent = ({
   );
 
   const endComponent = React.useMemo(() => {
-    const activityIndicatorTestID = testID ? `${testID}_activityIndicator` : undefined;
+    const activityIndicatorTestID = testID
+      ? `${testID}_activityIndicator`
+      : undefined;
     const chevronTestID = testID ? `${testID}_icon` : undefined;
     const badgeTestID = testID ? `${testID}_badge` : undefined;
 
     if (isFetching) {
-      return (
-        <LoadingSpinner
-          testID={activityIndicatorTestID}
-        />
-      );
+      return <LoadingSpinner testID={activityIndicatorTestID} />;
     }
 
     const chevronIcon = (
