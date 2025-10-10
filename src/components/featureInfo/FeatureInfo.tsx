@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { AccessibilityRole, GestureResponderEvent } from "react-native";
 import {
-  BodySmall,
+  Body,
   HStack,
   IOIconSizeScale,
   IOIcons,
@@ -78,9 +78,9 @@ export const FeatureInfo = ({
   const FeatureInfoContent = () => {
     if (typeof body === "string") {
       return (
-        <BodySmall color={contentColor} testID="infoScreenBody">
+        <Body color={contentColor} testID="infoScreenBody">
           {body}
-        </BodySmall>
+        </Body>
       );
     }
 
@@ -107,7 +107,7 @@ export const FeatureInfo = ({
       <VStack allowScaleSpacing space={4} style={{ flexShrink: 1 }}>
         <FeatureInfoContent />
         {action && (
-          <BodySmall
+          <Body
             asLink
             weight="Semibold"
             onPress={action.onPress}
@@ -118,7 +118,7 @@ export const FeatureInfo = ({
             accessibilityRole={accessibilityRole}
           >
             {action.label}
-          </BodySmall>
+          </Body>
         )}
       </VStack>
     </HStack>
