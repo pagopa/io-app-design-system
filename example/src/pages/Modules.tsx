@@ -275,6 +275,18 @@ const renderModuleAttachment = () => (
 
 const renderModuleCredential = () => (
   <>
+    <ComponentViewerBox name="ModuleCredential, static w/ badge">
+      <View>
+        <ModuleCredential
+          icon="fingerprint"
+          label="Identità digitale"
+          badge={{
+            text: "predefinita",
+            variant: "default"
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCredential">
       <View>
         <ModuleCredential
@@ -332,11 +344,17 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
-    <ComponentViewerBox name="ModuleCredential, loading">
+    <ComponentViewerBox name="ModuleCredential, fetching w/ badge">
       <View>
         <ModuleCredential
-          isLoading={true}
-          loadingAccessibilityLabel={"Loading credential"}
+          icon="fingerprint"
+          label="Identità digitale"
+          onPress={mockFn}
+          isFetching={true}
+          badge={{
+            text: "Predefinita",
+            variant: "default"
+          }}
         />
       </View>
     </ComponentViewerBox>
@@ -350,7 +368,14 @@ const renderModuleCredential = () => (
             text: "novità",
             variant: "default"
           }}
-          showChevronWithBadge={true}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, loading">
+      <View>
+        <ModuleCredential
+          isLoading={true}
+          loadingAccessibilityLabel={"Loading credential"}
         />
       </View>
     </ComponentViewerBox>
