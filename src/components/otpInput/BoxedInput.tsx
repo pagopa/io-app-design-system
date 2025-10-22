@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 const SecretValue = () => (
   <IOText
-    font="DMMono"
+    font="FiraCode"
     weight="Semibold"
     size={22}
     lineHeight={33}
