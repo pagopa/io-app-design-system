@@ -28,7 +28,6 @@ import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
-import { GradientScroll } from "../pages/GradientScroll";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
@@ -472,15 +471,6 @@ const AppNavigator = () => {
             component={SearchNative}
             options={{
               headerTitle: APP_ROUTES.SCREENS.SEARCH.title,
-              headerBackTitleVisible: false
-            }}
-          />
-
-          <Stack.Screen
-            name={APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.route}
-            component={GradientScroll}
-            options={{
-              headerTitle: APP_ROUTES.SCREENS.GRADIENT_SCROLLVIEW.title,
               headerBackTitleVisible: false
             }}
           />

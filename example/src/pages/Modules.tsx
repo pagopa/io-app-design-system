@@ -275,6 +275,18 @@ const renderModuleAttachment = () => (
 
 const renderModuleCredential = () => (
   <>
+    <ComponentViewerBox name="ModuleCredential, static w/ badge">
+      <View>
+        <ModuleCredential
+          icon="fingerprint"
+          label="Identità digitale"
+          badge={{
+            text: "predefinita",
+            variant: "default"
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
     <ComponentViewerBox name="ModuleCredential">
       <View>
         <ModuleCredential
@@ -329,6 +341,33 @@ const renderModuleCredential = () => (
           label="Identità digitale"
           onPress={mockFn}
           isFetching={true}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, fetching w/ badge">
+      <View>
+        <ModuleCredential
+          icon="fingerprint"
+          label="Identità digitale"
+          onPress={mockFn}
+          isFetching={true}
+          badge={{
+            text: "Predefinita",
+            variant: "default"
+          }}
+        />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, with badge and chevron">
+      <View>
+        <ModuleCredential
+          icon={"messageLegal"}
+          label="Attestato di residenza"
+          onPress={mockFn}
+          badge={{
+            text: "novità",
+            variant: "default"
+          }}
         />
       </View>
     </ComponentViewerBox>

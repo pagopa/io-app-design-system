@@ -22,11 +22,11 @@ const fonts = {
     ios: "Titillio",
     default: "Titillio"
   }),
-  DMMono: Platform.select({
-    android: "DMMono",
-    web: "DMMono",
-    ios: "DM Mono",
-    default: "DMMono"
+  FiraCode: Platform.select({
+    android: "FiraCode",
+    web: "FiraCode",
+    ios: "Fira Code",
+    default: "FiraCode"
   })
 } as const;
 

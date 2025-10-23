@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Image,
   ImageSourcePropType,
   ImageURISource,
   StyleSheet
 } from "react-native";
+import { useIOTheme } from "../../context";
 import {
   IOListItemVisualParams,
   IOSelectionListItemVisualParams,
   IOSpacer,
   IOVisualCostants
 } from "../../core";
-import { useIOTheme } from "../../context";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
 import { IOIcons, Icon } from "../icons";
+import { HSpacer } from "../layout";
+import { HStack } from "../layout/Stack";
 import { LoadingSpinner } from "../loadingSpinner";
 import { IOSkeleton } from "../skeleton";
-import { HStack } from "../layout/Stack";
 import { BodySmall } from "../typography";
 import { ModuleStatic } from "./ModuleStatic";
 import {
@@ -86,30 +87,32 @@ const ModuleCredentialContent = ({
     />
   );
 
-  const endComponent = React.useMemo(() => {
-    if (isFetching) {
-      return (
-        <LoadingSpinner
-          testID={testID ? `${testID}_activityIndicator` : undefined}
-        />
-      );
-    }
-    if (badge) {
-      return (
-        <Badge {...badge} testID={testID ? `${testID}_badge` : undefined} />
-      );
-    }
-    if (onPress) {
-      return (
-        <Icon
-          testID={testID ? `${testID}_icon` : undefined}
-          name="chevronRightListItem"
-          color={theme["interactiveElem-default"]}
-          size={IOListItemVisualParams.chevronSize}
-        />
-      );
-    }
-    return null;
+  const endComponent = useMemo(() => {
+    const activityIndicatorTestID = testID
+      ? `${testID}_activityIndicator`
+      : undefined;
+    const chevronTestID = testID ? `${testID}_icon` : undefined;
+    const badgeTestID = testID ? `${testID}_badge` : undefined;
+
+    return badge || onPress ? (
+      <HStack style={{ alignItems: "center" }}>
+        {badge && <Badge {...badge} testID={badgeTestID} />}
+        {onPress &&
+          (isFetching ? (
+            <>
+              <HSpacer size={8} />
+              <LoadingSpinner testID={activityIndicatorTestID} />
+            </>
+          ) : (
+            <Icon
+              testID={chevronTestID}
+              name="chevronRightListItem"
+              color={theme["interactiveElem-default"]}
+              size={IOListItemVisualParams.chevronSize}
+            />
+          ))}
+      </HStack>
+    ) : null;
   }, [testID, theme, isFetching, badge, onPress]);
 
   const ModuleContent = () => (
