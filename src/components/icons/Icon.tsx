@@ -74,6 +74,7 @@ import IconDocumentAdd from "./svg/IconDocumentAdd";
 import IconDocumentAttachment from "./svg/IconDocumentAttachment";
 import IconDocumentAttachmentPDF from "./svg/IconDocumentAttachmentPDF";
 import IconDotMenu from "./svg/IconDotMenu";
+import IconEUStars from "./svg/IconEUStars";
 import IconEdit from "./svg/IconEdit";
 import IconEmail from "./svg/IconEmail";
 import IconEmailFill from "./svg/IconEmailFill";
@@ -205,11 +206,6 @@ import IconTrashcan from "./svg/IconTrashcan";
 import IconTypeface from "./svg/IconTypeface";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
-import LegIconCheckOff from "./svg/LegIconCheckOff";
-import LegIconCheckOn from "./svg/LegIconCheckOn";
-import LegIconRadioOff from "./svg/LegIconRadioOff";
-import LegIconRadioOn from "./svg/LegIconRadioOn";
-import IconEUStars from "./svg/IconEUStars";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -383,10 +379,6 @@ export const IOIcons = {
   navProfile: IconNavProfile,
   navProfileFocused: IconNavProfileFocused,
   navPsp: IconPSP,
-  legRadioOn: LegIconRadioOn,
-  legRadioOff: LegIconRadioOff,
-  legCheckOn: LegIconCheckOn,
-  legCheckOff: LegIconCheckOff,
   biomFingerprint: IconBiomFingerprint,
   biomFaceID: IconBiomFaceID,
   categCulture: IconCategCulture,

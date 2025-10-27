@@ -14,7 +14,7 @@ export const BodyMonospace = forwardRef<View, TypographicStyleProps>(
     const BodyProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "body", // iOS only
-      font: "DMMono",
+      font: "FiraCode",
       weight: "Medium",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,
