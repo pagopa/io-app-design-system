@@ -96,7 +96,7 @@ export const BannerErrorState = ({
     >
       {icon && <Icon name={icon} size={24} color={foregroundColor} />}
       {label && (
-        <Body color={foregroundColor} textStyle={{ textAlign: "center" }}>
+        <Body color={foregroundColor} style={{ textAlign: "center" }}>
           {label}
         </Body>
       )}
