@@ -59,6 +59,7 @@ import Tooltips from "../pages/Tooltips";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
+import { ForceScrollDownViewTitleTransition } from "../pages/ForceScrollDownViewTitleTransition";
 
 const IONavigationDarkTheme = {
   ...DarkTheme,
@@ -362,6 +363,18 @@ const AppNavigator = () => {
             component={ForceScrollDownViewPage}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.route
+            }
+            component={ForceScrollDownViewTitleTransition}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.title,
               headerBackTitleVisible: false
             }}
           />

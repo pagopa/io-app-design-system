@@ -7,7 +7,8 @@ import Animated, {
   useAnimatedRef,
   useAnimatedReaction,
   useScrollViewOffset,
-  useSharedValue
+  useSharedValue,
+  AnimatedRef
 } from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
@@ -48,6 +49,11 @@ export type ForceScrollDownView = {
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
    */
   onThresholdCrossed?: (crossed: boolean) => void;
+  /**
+   * Optional Animated ref to be used with `useScrollViewOffset`
+   * (outside this component)
+   */
+  animatedRef?: AnimatedRef<Animated.ScrollView>;
 } & ForceScrollDownViewSlot &
   Pick<
     ScrollViewProps,
@@ -67,9 +73,11 @@ const ForceScrollDownView = ({
   style,
   contentContainerStyle,
   scrollEnabled = true,
-  onThresholdCrossed
+  onThresholdCrossed,
+  animatedRef
 }: ForceScrollDownView) => {
-  const animatedRef = useAnimatedRef<Animated.ScrollView>();
+  const internalAnimatedRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollViewRef = animatedRef ?? internalAnimatedRef;
 
   const {
     footerActionsInlineMeasurements,
@@ -88,7 +96,7 @@ const ForceScrollDownView = ({
 
   const scrollViewHeight = useSharedValue(0);
   const contentHeight = useSharedValue(0);
-  const offsetY = useScrollViewOffset(animatedRef);
+  const offsetY = useScrollViewOffset(scrollViewRef);
 
   useAnimatedReaction(
     () =>
@@ -134,9 +142,9 @@ const ForceScrollDownView = ({
     const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
     runOnUI((x: number, y: number, animated: boolean) => {
       "worklet";
-      scrollTo(animatedRef, x, y, animated);
+      scrollTo(scrollViewRef, x, y, animated);
     })(0, targetY, true);
-  }, [animatedRef, contentHeight, scrollViewHeight]);
+  }, [scrollViewRef, contentHeight, scrollViewHeight]);
 
   /**
    * Whether or not to render the "scroll to bottom" button. It is only rendered when the scroll view
@@ -167,7 +175,7 @@ const ForceScrollDownView = ({
     <>
       <Animated.ScrollView
         testID={"ScrollView"}
-        ref={animatedRef}
+        ref={scrollViewRef}
         scrollEnabled={scrollEnabled}
         style={style}
         onLayout={handleLayout}
