@@ -28,6 +28,7 @@ import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { ForceScrollDownViewTitleTransition } from "../pages/ForceScrollDownViewTitleTransition";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
@@ -59,7 +60,6 @@ import Tooltips from "../pages/Tooltips";
 import { Typography } from "../pages/Typography";
 import { AppParamsList } from "./params";
 import APP_ROUTES from "./routes";
-import { ForceScrollDownViewTitleTransition } from "../pages/ForceScrollDownViewTitleTransition";
 
 const IONavigationDarkTheme = {
   ...DarkTheme,
