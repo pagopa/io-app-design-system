@@ -78,6 +78,10 @@ const APP_ROUTES = {
     SKELETON: {
       route: "DESIGN_SYSTEM_SKELETON",
       title: "Skeleton"
+    },
+    MARKDOWN: {
+      route: "DESIGN_SYSTEM_MARKDOWN",
+      title: "Markdown"
     }
   },
   SCREENS: {
