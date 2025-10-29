@@ -88,12 +88,11 @@ const ForceScrollDownView = ({
 
   const scrollViewHeight = useSharedValue(0);
   const contentHeight = useSharedValue(0);
-  // Track scroll offset from Reanimated
   const offsetY = useScrollViewOffset(animatedRef);
 
   useAnimatedReaction(
     () =>
-      scrollViewHeight.value + offsetY.value >=
+      scrollViewHeight.value + Math.max(offsetY.value, 0) >=
       contentHeight.value - (threshold ?? 0),
     (crossed, previous) => {
       if (crossed !== previous) {
@@ -110,10 +109,8 @@ const ForceScrollDownView = ({
    * state with the new content height.
    */
   const handleContentSizeChange = useCallback(
-    (_w: number, h: number) => {
-      // eslint-disable-next-line functional/immutable-data
-      contentHeight.value = h;
-    },
+    // eslint-disable-next-line functional/immutable-data
+    (_w: number, h: number) => (contentHeight.value = h),
     [contentHeight]
   );
 
@@ -122,10 +119,9 @@ const ForceScrollDownView = ({
    * with the new scroll view height.
    */
   const handleLayout = useCallback(
-    (event: LayoutChangeEvent) => {
+    (event: LayoutChangeEvent) =>
       // eslint-disable-next-line functional/immutable-data
-      scrollViewHeight.value = event.nativeEvent.layout.height;
-    },
+      (scrollViewHeight.value = event.nativeEvent.layout.height),
     [scrollViewHeight]
   );
 
@@ -136,19 +132,11 @@ const ForceScrollDownView = ({
   const handleScrollDownPress = useCallback(() => {
     setButtonVisible(false);
     const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
-    // Use Reanimated scrollTo on UI thread for reliability
     runOnUI((x: number, y: number, animated: boolean) => {
       "worklet";
       scrollTo(animatedRef, x, y, animated);
     })(0, targetY, true);
   }, [animatedRef, contentHeight, scrollViewHeight]);
-
-  /**
-   * Whether or not the "scroll to bottom" button needs to be displayed. It is only displayed
-   * when the scrollable content cannot fit inside the scroll view and the button is enabled
-   * (`scrollEnabled` is `true`).
-   */
-  // Button rendering relies on visibility computed on UI thread
 
   /**
    * Whether or not to render the "scroll to bottom" button. It is only rendered when the scroll view
