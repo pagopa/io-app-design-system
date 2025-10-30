@@ -1,18 +1,20 @@
-import React, { ComponentProps, ReactNode, useCallback, useState } from "react";
+import React, { ComponentProps, ReactNode, useCallback } from "react";
 import { LayoutChangeEvent, ScrollViewProps, StyleSheet } from "react-native";
 import Animated, {
+  AnimatedRef,
+  interpolate,
   runOnJS,
   runOnUI,
   scrollTo,
-  useAnimatedRef,
   useAnimatedReaction,
+  useAnimatedRef,
+  useAnimatedStyle,
   useScrollViewOffset,
   useSharedValue,
-  AnimatedRef
+  withSpring
 } from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
-import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 import { FooterActions, useFooterActionsInlineMeasurements } from "../layout";
 
 type ForceScrollDownViewActions = {
@@ -92,8 +94,9 @@ const ForceScrollDownView = ({
    * Whether or not the "scroll to bottom" button should be visible. This is controlled by the threshold
    * and the current scroll position.
    */
-  const [isButtonVisible, setButtonVisible] = useState(true);
+  // const [isButtonVisible, setButtonVisible] = useState(true);
 
+  const isButtonVisible = useSharedValue(1);
   const scrollViewHeight = useSharedValue(0);
   const contentHeight = useSharedValue(0);
   const offsetY = useScrollViewOffset(scrollViewRef);
@@ -104,7 +107,11 @@ const ForceScrollDownView = ({
       contentHeight.value - (threshold ?? 0),
     (crossed, previous) => {
       if (crossed !== previous) {
-        runOnJS(setButtonVisible)(!crossed);
+        // eslint-disable-next-line functional/immutable-data
+        isButtonVisible.value = withSpring(
+          crossed && scrollEnabled ? 0 : 1,
+          IOSpringValues.button
+        );
         if (onThresholdCrossed) {
           runOnJS(onThresholdCrossed)(crossed);
         }
@@ -138,37 +145,34 @@ const ForceScrollDownView = ({
    * scroll view to the bottom and hides the button.
    */
   const handleScrollDownPress = useCallback(() => {
-    setButtonVisible(false);
     runOnUI(() => {
       "worklet";
+      // eslint-disable-next-line functional/immutable-data
+      isButtonVisible.value = withSpring(0, IOSpringValues.button);
       const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
       scrollTo(scrollViewRef, 0, targetY, true);
     })();
-  }, [scrollViewRef, contentHeight, scrollViewHeight]);
+  }, [scrollViewRef, contentHeight, scrollViewHeight, isButtonVisible]);
 
   /**
-   * Whether or not to render the "scroll to bottom" button. It is only rendered when the scroll view
-   * is enabled, needs to be scrolled, and the button is visible (`isButtonVisible` is `true`).
+   * The "scroll to bottom" button component. It is wrapped in a reanimated View
+   * and has animated style applied to it.
    */
-  const shouldRenderScrollButton = scrollEnabled && isButtonVisible;
 
-  /**
-   * The "scroll to bottom" button component. It is wrapped in a reanimated view and has enter and exit
-   * animations applied to it.
-   */
+  const buttonTransitionStyle = useAnimatedStyle(() => ({
+    opacity: isButtonVisible.value,
+    transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
+  }));
+
   const scrollDownButton = (
-    <ScaleInOutAnimation
-      springConfig={IOSpringValues.button}
-      style={styles.scrollDownButton}
-      visible={shouldRenderScrollButton}
-    >
+    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"
         icon="arrowBottom"
         onPress={handleScrollDownPress}
       />
-    </ScaleInOutAnimation>
+    </Animated.View>
   );
 
   return (
