@@ -139,11 +139,11 @@ const ForceScrollDownView = ({
    */
   const handleScrollDownPress = useCallback(() => {
     setButtonVisible(false);
-    const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
-    runOnUI((x: number, y: number, animated: boolean) => {
+    runOnUI(() => {
       "worklet";
-      scrollTo(scrollViewRef, x, y, animated);
-    })(0, targetY, true);
+      const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
+      scrollTo(scrollViewRef, 0, targetY, true);
+    })();
   }, [scrollViewRef, contentHeight, scrollViewHeight]);
 
   /**
