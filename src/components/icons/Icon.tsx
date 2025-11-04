@@ -105,6 +105,7 @@ import IconHistory from "./svg/IconHistory";
 import IconHome from "./svg/IconHome";
 import IconHomeFill from "./svg/IconHomeFill";
 import IconHourglass from "./svg/IconHourglass";
+import IconITWallet from "./svg/IconITWallet";
 import IconInboxEmpty from "./svg/IconInboxEmpty";
 import IconInboxFilled from "./svg/IconInboxFilled";
 import IconInfo from "./svg/IconInfo";
@@ -411,7 +412,8 @@ export const IOIcons = {
   systemNFC: IconSystemNFC,
   systemPasswordAndroid: IconSystemPasswordAndroid,
   systemPasswordiOS: IconSystemPasswordiOS,
-  euStars: IconEUStars
+  euStars: IconEUStars,
+  itWallet: IconITWallet
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
