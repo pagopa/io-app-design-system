@@ -53,6 +53,7 @@ import IconChevronRight from "./svg/IconChevronRight";
 import IconChevronRightListItem from "./svg/IconChevronRightListItem";
 import IconChevronTop from "./svg/IconChevronTop";
 import IconCie from "./svg/IconCie";
+import IconCieCard from "./svg/IconCieCard";
 import IconCieLetter from "./svg/IconCieLetter";
 import IconCloseLarge from "./svg/IconCloseLarge";
 import IconCloseMedium from "./svg/IconCloseMedium";
@@ -157,6 +158,7 @@ import IconPinOn from "./svg/IconPinOn";
 import IconPrint from "./svg/IconPrint";
 import IconProductIOApp from "./svg/IconProductIOApp";
 import IconProductIOAppBlueBg from "./svg/IconProductIOAppBlueBg";
+import IconProductITWallet from "./svg/IconProductITWallet";
 import IconProductPagoPA from "./svg/IconProductPagoPA";
 import IconProfile from "./svg/IconProfile";
 import IconProfileRegistered from "./svg/IconProfileRegistered";
@@ -210,6 +212,7 @@ import IconWebsite from "./svg/IconWebsite";
 export const IOIcons = {
   spid: IconSpid,
   cie: IconCie /* io-cie */,
+  cieCard: IconCieCard,
   cieLetter: IconCieLetter,
   qrCode: IconQrCode,
   bell: IconBell,
@@ -396,6 +399,7 @@ export const IOIcons = {
   productIOApp: IconProductIOApp,
   productPagoPA: IconProductPagoPA,
   productIOAppBlueBg: IconProductIOAppBlueBg,
+  productITWallet: IconProductITWallet,
   systemSettingsAndroid: IconSystemSettingsAndroid,
   systemSettingsiOS: IconSystemSettingsiOS,
   systemToggleInstructions: IconSystemToggleInstructions,
@@ -616,12 +620,14 @@ export const IOCategoryIcons = {
 export type IOCategoryIcons = keyof typeof IOCategoryIcons;
 
 /* Product Logos */
-const { productIOApp, productPagoPA, productIOAppBlueBg } = IOIcons;
+const { productIOApp, productPagoPA, productIOAppBlueBg, productITWallet } =
+  IOIcons;
 
 export const IOProductIcons = {
   productIOApp,
   productPagoPA,
-  productIOAppBlueBg
+  productIOAppBlueBg,
+  productITWallet
 } as const;
 
 export type IOProductIcons = keyof typeof IOProductIcons;
