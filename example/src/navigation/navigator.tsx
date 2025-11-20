@@ -28,6 +28,7 @@ import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { ForceScrollDownViewTitleTransition } from "../pages/ForceScrollDownViewTitleTransition";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
@@ -362,6 +363,18 @@ const AppNavigator = () => {
             component={ForceScrollDownViewPage}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.route
+            }
+            component={ForceScrollDownViewTitleTransition}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.title,
               headerBackTitleVisible: false
             }}
           />
