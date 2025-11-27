@@ -1,23 +1,20 @@
-import React, {
-  ComponentProps,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
-import {
-  LayoutChangeEvent,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  ScrollView,
-  ScrollViewProps,
-  StyleSheet
-} from "react-native";
+import React, { ComponentProps, ReactNode, useCallback } from "react";
+import { LayoutChangeEvent, ScrollViewProps, StyleSheet } from "react-native";
+import Animated, {
+  AnimatedRef,
+  interpolate,
+  runOnJS,
+  runOnUI,
+  scrollTo,
+  useAnimatedReaction,
+  useAnimatedRef,
+  useAnimatedStyle,
+  useScrollViewOffset,
+  useSharedValue,
+  withSpring
+} from "react-native-reanimated";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
-import { ScaleInOutAnimation } from "../common/ScaleInOutAnimation";
 import { FooterActions, useFooterActionsInlineMeasurements } from "../layout";
 
 type ForceScrollDownViewActions = {
@@ -54,6 +51,11 @@ export type ForceScrollDownView = {
    * is passed a boolean indicating whether the threshold has been crossed (`true`) or not (`false`).
    */
   onThresholdCrossed?: (crossed: boolean) => void;
+  /**
+   * Optional Animated ref to be used with `useScrollViewOffset`
+   * (outside this component)
+   */
+  animatedRef?: AnimatedRef<Animated.ScrollView>;
 } & ForceScrollDownViewSlot &
   Pick<
     ScrollViewProps,
@@ -73,9 +75,11 @@ const ForceScrollDownView = ({
   style,
   contentContainerStyle,
   scrollEnabled = true,
-  onThresholdCrossed
+  onThresholdCrossed,
+  animatedRef
 }: ForceScrollDownView) => {
-  const scrollViewRef = useRef<ScrollView>(null);
+  const internalAnimatedRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollViewRef = animatedRef ?? internalAnimatedRef;
 
   const {
     footerActionsInlineMeasurements,
@@ -87,133 +91,97 @@ const ForceScrollDownView = ({
     : customThreshold;
 
   /**
-   * The height of the scroll view, used to determine whether or not the scrollable content fits inside
-   * the scroll view and whether the "scroll to bottom" button should be displayed.
-   */
-  const [scrollViewHeight, setScrollViewHeight] = useState<number>(0);
-
-  /**
-   * The height of the scrollable content, used to determine whether or not the "scroll to bottom" button
-   * should be displayed.
-   */
-  const [contentHeight, setContentHeight] = useState<number>(0);
-
-  /**
-   * Whether or not the scroll view has crossed the threshold from the bottom.
-   */
-  const [isThresholdCrossed, setThresholdCrossed] = useState(false);
-
-  /**
    * Whether or not the "scroll to bottom" button should be visible. This is controlled by the threshold
    * and the current scroll position.
    */
-  const [isButtonVisible, setButtonVisible] = useState(true);
+  // const [isButtonVisible, setButtonVisible] = useState(true);
 
-  /**
-   * A callback that is called whenever the scroll view is scrolled. It checks whether or not the
-   * scroll view has crossed the threshold from the bottom and updates the state accordingly.
-   * The callback is designed to update button visibility only when crossing the threshold.
-   */
-  const handleScroll = useCallback(
-    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const { layoutMeasurement, contentOffset, contentSize } =
-        event.nativeEvent;
+  const isButtonVisible = useSharedValue(1);
+  const scrollViewHeight = useSharedValue(0);
+  const contentHeight = useSharedValue(0);
+  const offsetY = useScrollViewOffset(scrollViewRef);
 
-      const thresholdCrossed =
-        layoutMeasurement.height + contentOffset.y >=
-        contentSize.height - (threshold ?? 0);
-
-      if (isThresholdCrossed !== thresholdCrossed) {
-        setThresholdCrossed(thresholdCrossed);
-        setButtonVisible(!thresholdCrossed);
+  useAnimatedReaction(
+    () =>
+      scrollViewHeight.value + Math.max(offsetY.value, 0) >=
+      contentHeight.value - (threshold ?? 0),
+    (crossed, previous) => {
+      if (crossed !== previous) {
+        // eslint-disable-next-line functional/immutable-data
+        isButtonVisible.value = withSpring(
+          crossed && scrollEnabled ? 0 : 1,
+          IOSpringValues.button
+        );
+        if (onThresholdCrossed) {
+          runOnJS(onThresholdCrossed)(crossed);
+        }
       }
-    },
-    [threshold, isThresholdCrossed]
+    }
   );
-
-  /**
-   * A side effect that calls the `onThresholdCrossed` callback whenever the value of `isThresholdCrossed` changes.
-   */
-  useEffect(() => {
-    onThresholdCrossed?.(isThresholdCrossed);
-  }, [onThresholdCrossed, isThresholdCrossed]);
 
   /**
    * A callback that is called whenever the size of the scrollable content changes. It updates the
    * state with the new content height.
    */
   const handleContentSizeChange = useCallback(
-    (_contentWidth: number, contentHeight: number) => {
-      setContentHeight(contentHeight);
-    },
-    []
+    // eslint-disable-next-line functional/immutable-data
+    (_w: number, h: number) => (contentHeight.value = h),
+    [contentHeight]
   );
 
   /**
    * A callback that is called whenever the size of the scroll view changes. It updates the state
    * with the new scroll view height.
    */
-  const handleLayout = useCallback((event: LayoutChangeEvent) => {
-    setScrollViewHeight(event.nativeEvent.layout.height);
-  }, []);
+  const handleLayout = useCallback(
+    (event: LayoutChangeEvent) =>
+      // eslint-disable-next-line functional/immutable-data
+      (scrollViewHeight.value = event.nativeEvent.layout.height),
+    [scrollViewHeight]
+  );
 
   /**
    * A callback that is called when the "scroll to bottom" button is pressed. It scrolls the
    * scroll view to the bottom and hides the button.
    */
   const handleScrollDownPress = useCallback(() => {
-    setButtonVisible(false);
-    scrollViewRef.current?.scrollToEnd();
-  }, [scrollViewRef]);
+    runOnUI(() => {
+      "worklet";
+      // eslint-disable-next-line functional/immutable-data
+      isButtonVisible.value = withSpring(0, IOSpringValues.button);
+      const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
+      scrollTo(scrollViewRef, 0, targetY, true);
+    })();
+  }, [scrollViewRef, contentHeight, scrollViewHeight, isButtonVisible]);
 
   /**
-   * Whether or not the "scroll to bottom" button needs to be displayed. It is only displayed
-   * when the scrollable content cannot fit inside the scroll view and the button is enabled
-   * (`scrollEnabled` is `true`).
+   * The "scroll to bottom" button component. It is wrapped in a reanimated View
+   * and has animated style applied to it.
    */
-  const needsScroll = useMemo(
-    () =>
-      scrollViewHeight > 0 &&
-      contentHeight > 0 &&
-      scrollViewHeight < contentHeight,
-    [scrollViewHeight, contentHeight]
-  );
 
-  /**
-   * Whether or not to render the "scroll to bottom" button. It is only rendered when the scroll view
-   * is enabled, needs to be scrolled, and the button is visible (`isButtonVisible` is `true`).
-   */
-  const shouldRenderScrollButton =
-    scrollEnabled && needsScroll && isButtonVisible;
+  const buttonTransitionStyle = useAnimatedStyle(() => ({
+    opacity: isButtonVisible.value,
+    transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
+  }));
 
-  /**
-   * The "scroll to bottom" button component. It is wrapped in a reanimated view and has enter and exit
-   * animations applied to it.
-   */
   const scrollDownButton = (
-    <ScaleInOutAnimation
-      springConfig={IOSpringValues.button}
-      style={styles.scrollDownButton}
-      visible={shouldRenderScrollButton}
-    >
+    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"
         icon="arrowBottom"
         onPress={handleScrollDownPress}
       />
-    </ScaleInOutAnimation>
+    </Animated.View>
   );
 
   return (
     <>
-      <ScrollView
+      <Animated.ScrollView
         testID={"ScrollView"}
         ref={scrollViewRef}
         scrollEnabled={scrollEnabled}
         style={style}
-        onScroll={handleScroll}
-        scrollEventThrottle={8}
         onLayout={handleLayout}
         onContentSizeChange={handleContentSizeChange}
         contentContainerStyle={contentContainerStyle}
@@ -226,7 +194,7 @@ const ForceScrollDownView = ({
             fixed={false}
           />
         )}
-      </ScrollView>
+      </Animated.ScrollView>
       {scrollDownButton}
     </>
   );
