@@ -7,7 +7,7 @@ import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
-import { ButtonLink, IconButton } from "../buttons";
+import { IOButton, IOButtonLinkSpecificProps, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { IOLogoPaymentType } from "../logos";
@@ -16,7 +16,7 @@ import { VSpacer } from "../layout";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
-  componentProps: ComponentProps<typeof ButtonLink>;
+  componentProps: Omit<IOButtonLinkSpecificProps, "variant">;
 };
 
 type IconButtonActionProps = {
@@ -144,7 +144,8 @@ export const ListItemInfo = ({
           }`;
 
           return (
-            <ButtonLink
+            <IOButton
+              variant="link"
               {...componentProps}
               accessibilityLabel={buttonLinkAccessibilityLabel}
             />

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOSelectionListItemVisualParams, IOSpacingScale } from "../../core";
-import { ButtonLink } from "../buttons";
+import { IOButton } from "../buttons";
 import { HStack, VStack } from "../layout";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
 import { IOSkeleton } from "../skeleton";
@@ -94,7 +94,7 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"
         >
-          <ButtonLink label={ctaText} onPress={() => null} />
+          <IOButton variant="link" label={ctaText} onPress={() => null} />
         </View>
       </HStack>
     </PressableModuleBase>

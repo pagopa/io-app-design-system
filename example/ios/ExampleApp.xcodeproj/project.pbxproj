@@ -39,9 +39,9 @@
 		CF08661296A84F3790AE7176 /* TitilliumSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 555A35FB015A4CFBA6E6670B /* TitilliumSansPro-Regular.otf */; };
 		D8750855083A4030BBF76F07 /* Titillio-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFD11CE456424CA5DEAFD7 /* Titillio-RegularItalic.otf */; };
 		DBC2F57CBD33421CAAE5ECF2 /* TitilliumSansPro-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B25A42218CA0455EB3DC54ED /* TitilliumSansPro-BlackItalic.otf */; };
+		E0B4565CE7474E62A0EAD472 /* FiraCode-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F522EC84EA494FD4AF867370 /* FiraCode-Medium.ttf */; };
 		E3FA1603F38846889B4DC948 /* Titillio-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B371518363164094B73176EE /* Titillio-SemiboldItalic.otf */; };
 		EB544EEBF56F494EBA967C80 /* Titillio-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7EF8935DC94F47A9BBDFD6C8 /* Titillio-Thin.otf */; };
-		E0B4565CE7474E62A0EAD472 /* FiraCode-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F522EC84EA494FD4AF867370 /* FiraCode-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,8 +84,8 @@
 		E1250CCE3DA54D589AB013F6 /* TitilliumSansPro-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-LightItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-LightItalic.otf"; sourceTree = "<group>"; };
 		EAA7A3F41F542DE45FD74015 /* libPods-ExampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F522EC84EA494FD4AF867370 /* FiraCode-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FiraCode-Medium.ttf"; path = "../assets/fonts/FiraCode/FiraCode-Medium.ttf"; sourceTree = "<group>"; };
 		FF23D2E42775424F9E287256 /* TitilliumSansPro-SemiboldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumSansPro-SemiboldItalic.otf"; path = "../assets/fonts/TitilliumSansPro/TitilliumSansPro-SemiboldItalic.otf"; sourceTree = "<group>"; };
-		F522EC84EA494FD4AF867370 /* FiraCode-Medium.ttf */ = {isa = PBXFileReference; name = "FiraCode-Medium.ttf"; path = "../assets/fonts/FiraCode/FiraCode-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
