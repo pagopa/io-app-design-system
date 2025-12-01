@@ -1,22 +1,20 @@
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { render } from "@testing-library/react-native";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { Badge } from "../Badge";
 
 describe("Test Badge Components", () => {
   it("Badge Snapshot", () => {
-    const badge = TestRenderer.create(
-      <Badge text={"text"} variant={"default"} />
-    ).toJSON();
-    expect(badge).toMatchSnapshot();
+    const { toJSON } = render(<Badge text={"text"} variant={"default"} />);
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
 describe("Test Badge Components - Experimental Enabled", () => {
   it("Badge Snapshot", () => {
-    const badge = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <Badge text={"text"} variant={"default"} />
-    ).toJSON();
-    expect(badge).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert } from "react-native";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { render } from "@testing-library/react-native";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { Banner } from "../Banner";
 
 const onLinkPress = () => {
@@ -10,7 +10,7 @@ const onLinkPress = () => {
 
 describe("Test Banner Components", () => {
   it("Banner Snapshot", () => {
-    const advice = TestRenderer.create(
+    const { toJSON } = render(
       <Banner
         color="neutral"
         title="Banner title"
@@ -19,14 +19,14 @@ describe("Test Banner Components", () => {
         onPress={onLinkPress}
         accessibilityLabel="Action text"
       />
-    ).toJSON();
-    expect(advice).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
 describe("Test Banner Components - Experimental Enabled", () => {
   it("Banner Snapshot", () => {
-    const advice = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <Banner
         color="neutral"
         title="Banner title"
@@ -35,7 +35,7 @@ describe("Test Banner Components - Experimental Enabled", () => {
         onPress={onLinkPress}
         accessibilityLabel="Action text"
       />
-    ).toJSON();
-    expect(advice).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });
