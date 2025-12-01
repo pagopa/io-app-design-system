@@ -6131,7 +6131,7 @@ __metadata:
     jest: ^29.2.1
     prettier: 2.8.8
     react: 19.1.0
-    react-native: ^0.81.0
+    react-native: 0.81.5
     react-native-easing-gradient: ^1.1.1
     react-native-gesture-handler: ^2.28.0
     react-native-haptic-feedback: ^2.3.3
@@ -9451,7 +9451,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:^0.81.0":
+"react-native@npm:0.81.5":
   version: 0.81.5
   resolution: "react-native@npm:0.81.5"
   dependencies:
