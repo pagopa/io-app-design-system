@@ -415,7 +415,7 @@ export const IOIcons = {
   systemPasswordAndroid: IconSystemPasswordAndroid,
   systemPasswordiOS: IconSystemPasswordiOS,
   euStars: IconEUStars,
-  iconCard: IconCard
+  card: IconCard
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
