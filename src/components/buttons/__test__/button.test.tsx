@@ -1,13 +1,11 @@
+import { render } from "@testing-library/react-native";
 import React from "react";
 import { Alert } from "react-native";
-import { render } from "@testing-library/react-native";
 import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
-import ButtonLink from "../ButtonLink";
-import ButtonOutline from "../ButtonOutline";
-import ButtonSolid from "../ButtonSolid";
 import IconButton from "../IconButton";
 import IconButtonContained from "../IconButtonContained";
 import IconButtonSolid from "../IconButtonSolid";
+import { IOButton } from "../IOButton";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -16,7 +14,8 @@ const onButtonPress = () => {
 describe("Test Buttons Components", () => {
   it("ButtonSolid Snapshot", () => {
     const { toJSON } = render(
-      <ButtonSolid
+      <IOButton
+        variant="solid"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
@@ -27,14 +26,15 @@ describe("Test Buttons Components", () => {
 
   it("ButtonLink Snapshot", () => {
     const { toJSON } = render(
-      <ButtonLink label={"label"} onPress={onButtonPress} />
+      <IOButton variant="link" label={"label"} onPress={onButtonPress} />
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonOutline Snapshot", () => {
     const { toJSON } = render(
-      <ButtonOutline
+      <IOButton
+        variant="outline"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
@@ -47,7 +47,8 @@ describe("Test Buttons Components", () => {
 describe("Test Buttons Components - Experimental Enabled", () => {
   it("ButtonSolid Snapshot", () => {
     const { toJSON } = renderWithExperimentalEnabledContextProvider(
-      <ButtonSolid
+      <IOButton
+        variant="solid"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
@@ -58,14 +59,15 @@ describe("Test Buttons Components - Experimental Enabled", () => {
 
   it("ButtonLink Snapshot", () => {
     const { toJSON } = renderWithExperimentalEnabledContextProvider(
-      <ButtonLink label={"label"} onPress={onButtonPress} />
+      <IOButton variant="link" label={"label"} onPress={onButtonPress} />
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonOutline Snapshot", () => {
     const { toJSON } = renderWithExperimentalEnabledContextProvider(
-      <ButtonOutline
+      <IOButton
+        variant="outline"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
