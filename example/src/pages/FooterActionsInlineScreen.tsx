@@ -1,9 +1,9 @@
 import {
   Body,
-  ButtonOutline,
   ContentWrapper,
   FooterActionsInline,
   H1,
+  IOButton,
   useFooterActionsInlineMeasurements
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
@@ -31,7 +31,8 @@ export const FooterActionsInlineScreen = () => {
           {[...Array(50)].map((_el, i) => (
             <Body key={`body-${i}`}>{`Repeated text ${i}`}</Body>
           ))}
-          <ButtonOutline
+          <IOButton
+            variant="outline"
             color="primary"
             accessibilityLabel="Test ButtonOutline"
             onPress={() => Alert.alert("Button pressed")}

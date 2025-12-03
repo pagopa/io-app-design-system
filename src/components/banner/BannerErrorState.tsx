@@ -13,10 +13,10 @@ import { IOBannerBigSpacing, IOBannerRadius } from "../../core";
 import { hexToRgba, IOColors } from "../../core/IOColors";
 import { useScaleAnimation } from "../../hooks";
 import { WithTestID } from "../../utils/types";
-import { ButtonLink } from "../buttons";
 import { Icon, IOIcons } from "../icons";
 import { VSpacer } from "../layout";
 import { Body } from "../typography";
+import { IOButton } from "../buttons";
 
 const styles = StyleSheet.create({
   container: {
@@ -109,7 +109,12 @@ export const BannerErrorState = ({
           importantForAccessibility="no-hide-descendants"
         >
           <VSpacer size={4} />
-          <ButtonLink color="primary" onPress={onPress} label={actionText} />
+          <IOButton
+            variant="link"
+            color="primary"
+            onPress={onPress}
+            label={actionText}
+          />
         </View>
       )}
     </View>
