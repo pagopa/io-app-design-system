@@ -137,7 +137,11 @@ export const OTPInput = forwardRef<View, Props>(
             setHasFocus(true);
           }}
           ref={ref}
-          style={{ flexDirection: "row", justifyContent: "space-around" }}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            columnGap: length >= 8 ? 4 : 8
+          }}
           accessible={true}
           accessibilityLabel={accessibilityLabel}
           accessibilityHint={accessibilityHint}
@@ -168,8 +172,8 @@ export const OTPInput = forwardRef<View, Props>(
                 hasError
                   ? "error"
                   : hasFocus && value.length === i
-                  ? "focus"
-                  : "default"
+                    ? "focus"
+                    : "default"
               }
               secret={secret}
               value={value[i]}

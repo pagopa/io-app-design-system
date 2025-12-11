@@ -12,30 +12,36 @@ import * as React from "react";
 import { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
-const OTP_LENGTH = 8;
-const OTP_COMPARE = "12345678";
+const OTP_LENGTH_8 = 8;
+const OTP_LENGTH_6 = 6;
+const OTP_COMPARE_8 = "12345678";
+const OTP_COMPARE_6 = "123456";
 
 type WrapperProps = {
   secret?: boolean;
   validation?: boolean;
   autoFocus?: boolean;
+  length?: number;
+  otpCompare?: string;
 };
 
 const OTPWrapper = ({
   secret = false,
   validation = false,
-  autoFocus = false
+  autoFocus = false,
+  length = OTP_LENGTH_8,
+  otpCompare = OTP_COMPARE_8
 }: WrapperProps) => {
   const [value, setValue] = useState("");
   const onValueChange = React.useCallback((v: string) => {
-    if (v.length <= OTP_LENGTH) {
+    if (v.length <= length) {
       setValue(v);
     }
-  }, []);
+  }, [length]);
 
   const onValidate = React.useCallback(
-    (v: string) => !validation || v === OTP_COMPARE,
-    [validation]
+    (v: string) => !validation || v === otpCompare,
+    [validation, otpCompare]
   );
 
   return React.useMemo(
@@ -45,7 +51,7 @@ const OTPWrapper = ({
           value={value}
           accessibilityLabel={"OTP Input"}
           onValueChange={onValueChange}
-          length={OTP_LENGTH}
+          length={length}
           secret={secret}
           onValidate={onValidate}
           errorMessage={"Wrong OTP"}
@@ -59,7 +65,7 @@ const OTPWrapper = ({
         />
       </>
     ),
-    [value, onValueChange, secret, onValidate, autoFocus]
+    [value, onValueChange, secret, onValidate, autoFocus, length]
   );
 };
 
@@ -117,9 +123,19 @@ export const OTPInputScreen = () => {
             <OTPWrapper secret />
             <VSpacer />
             <H5>Validation+Secret</H5>
-            <BodySmall>Correct OTP {`${OTP_COMPARE}`}</BodySmall>
+            <BodySmall>Correct OTP {`${OTP_COMPARE_8}`}</BodySmall>
             <VSpacer />
             <OTPWrapper secret validation />
+            <VSpacer />
+            <H5>Validation+Secret+length 6</H5>
+            <BodySmall>Correct OTP:
+              {" "}
+              <BodySmall weight="Semibold">
+                {OTP_COMPARE_6}
+              </BodySmall>
+            </BodySmall>
+            <VSpacer />
+            <OTPWrapper secret validation length={OTP_LENGTH_6} otpCompare={OTP_COMPARE_6} />
             <VSpacer />
             <H5>Autofocus</H5>
             <VSpacer />
@@ -134,9 +150,8 @@ export const OTPInputScreen = () => {
                   );
                 }, 100);
               }}
-              label={`${
-                showAutofocusableOTP ? "Hide" : "Show"
-              } Autofocusable OTP`}
+              label={`${showAutofocusableOTP ? "Hide" : "Show"
+                } Autofocusable OTP`}
             />
             <VSpacer />
             {showAutofocusableOTP && (
