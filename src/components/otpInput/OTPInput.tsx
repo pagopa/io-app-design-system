@@ -172,8 +172,8 @@ export const OTPInput = forwardRef<View, Props>(
                 hasError
                   ? "error"
                   : hasFocus && value.length === i
-                    ? "focus"
-                    : "default"
+                  ? "focus"
+                  : "default"
               }
               secret={secret}
               value={value[i]}
