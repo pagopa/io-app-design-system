@@ -3,12 +3,16 @@ import { addCacheTimestampToUri } from "../image";
 
 describe("addCacheTimestampToUri", () => {
   describe("on ios", () => {
+    const originalOS = Platform.OS;
+
     beforeAll(() => {
-      jest.resetModules();
-      jest.mock("react-native/Libraries/Utilities/Platform", () => ({
-        OS: "ios", // or 'ios'
-        select: () => null
-      }));
+      // eslint-disable-next-line functional/immutable-data
+      (Platform as typeof Platform & { OS: string }).OS = "ios";
+    });
+
+    afterAll(() => {
+      // eslint-disable-next-line functional/immutable-data
+      (Platform as typeof Platform & { OS: string }).OS = originalOS;
     });
 
     it("should set Platform.OS to iOS", () => {
@@ -23,12 +27,16 @@ describe("addCacheTimestampToUri", () => {
   });
 
   describe("on Android", () => {
+    const originalOS = Platform.OS;
+
     beforeAll(() => {
-      jest.resetModules();
-      jest.mock("react-native/Libraries/Utilities/Platform", () => ({
-        OS: "android", // or 'ios'
-        select: () => null
-      }));
+      // eslint-disable-next-line functional/immutable-data
+      (Platform as typeof Platform & { OS: string }).OS = "android";
+    });
+
+    afterAll(() => {
+      // eslint-disable-next-line functional/immutable-data
+      (Platform as typeof Platform & { OS: string }).OS = originalOS;
     });
 
     it("should set Platform.OS to Android", () => {
