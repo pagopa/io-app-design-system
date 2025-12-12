@@ -140,7 +140,7 @@ export const OTPInput = forwardRef<View, Props>(
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            columnGap: length >= 8 ? 4 : 8
+            columnGap: 8
           }}
           accessible={true}
           accessibilityLabel={accessibilityLabel}
