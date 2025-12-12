@@ -5,7 +5,7 @@ import { hexToRgba, IOColors } from "../../core/IOColors";
 import { H6, IOText } from "../typography";
 
 const MAX_WIDTH = 48;
-const MAX_HEIGHT = 60;
+const MAX_HEIGHT = 64;
 
 type Props = {
   status: "default" | "focus" | "error";
