@@ -4,6 +4,9 @@ import { useIOTheme } from "../../context";
 import { hexToRgba, IOColors } from "../../core/IOColors";
 import { H6, IOText } from "../typography";
 
+const MAX_WIDTH = 48;
+const MAX_HEIGHT = 64;
+
 type Props = {
   status: "default" | "focus" | "error";
   secret?: boolean;
@@ -14,8 +17,10 @@ const styles = StyleSheet.create({
   baseBox: {
     alignItems: "center",
     justifyContent: "center",
-    width: 35,
-    height: 60,
+    flex: 1,
+    maxWidth: MAX_WIDTH,
+    maxHeight: MAX_HEIGHT,
+    aspectRatio: MAX_WIDTH / MAX_HEIGHT,
     borderRadius: 8,
     borderCurve: "continuous"
   }
