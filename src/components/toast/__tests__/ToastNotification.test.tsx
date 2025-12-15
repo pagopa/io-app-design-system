@@ -1,6 +1,6 @@
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { render } from "@testing-library/react-native";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { ToastNotification } from "../ToastNotification";
 import { Toast } from "../types";
 
@@ -13,8 +13,8 @@ describe("Test ToastNotification component", () => {
     { message: "Hello", variant: "success" },
     { message: "Hello", variant: "warning" }
   ])("should match snapshot for props (%s)", toast => {
-    const component = TestRenderer.create(<ToastNotification {...toast} />);
-    expect(component).toMatchSnapshot();
+    const { toJSON } = render(<ToastNotification {...toast} />);
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
@@ -27,9 +27,9 @@ describe("Test ToastNotification component - Experimental Enabled", () => {
     { message: "Hello", variant: "success" },
     { message: "Hello", variant: "warning" }
   ])("should match snapshot for props (%s)", toast => {
-    const component = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ToastNotification {...toast} />
     );
-    expect(component).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 });

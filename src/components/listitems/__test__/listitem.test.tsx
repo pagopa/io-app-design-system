@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert } from "react-native";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { render } from "@testing-library/react-native";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import ListItemAction from "../ListItemAction";
 import ListItemInfo from "../ListItemInfo";
 import ListItemInfoCopy from "../ListItemInfoCopy";
@@ -17,59 +17,59 @@ const onButtonPress = () => {
 
 describe("Test List Item Components", () => {
   it("ListItemInfo Snapshot", () => {
-    const listItemInfo = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemInfo
         label={"label"}
         value={"testValue"}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemInfo>
-    ).toJSON();
-    expect(listItemInfo).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemInfoCopy Snapshot", () => {
-    const listItemInfoCopy = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemInfoCopy
         label={"label"}
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemInfoCopy>
-    ).toJSON();
-    expect(listItemInfoCopy).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemNav Snapshot", () => {
-    const listItemNav = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemNav
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemNav>
-    ).toJSON();
-    expect(listItemNav).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemNavAlert Snapshot", () => {
-    const listItemNavAlert = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemNavAlert
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemNavAlert>
-    ).toJSON();
-    expect(listItemNavAlert).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemAction Snapshot", () => {
-    const listItemAction = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemAction
         label={"label"}
         variant={"primary"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemAction>
-    ).toJSON();
-    expect(listItemAction).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemTransaction Snapshot", () => {
-    const listItemIDP = TestRenderer.create(
+    const { toJSON } = render(
       <ListItemTransaction
         title="TITLE"
         subtitle="subtitle"
@@ -80,17 +80,15 @@ describe("Test List Item Components", () => {
         isLoading={true}
         onPress={onButtonPress}
       />
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("PressableListItemsBase Snapshot", () => {
-    const listItemIDP = TestRenderer.create(
-      <PressableListItemBase></PressableListItemBase>
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
+    const { toJSON } = render(<PressableListItemBase />);
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemRadioWithAmount Snapshot", () => {
-    const suggested = TestRenderer.create(
+    const { toJSON: toJSONSuggested } = render(
       <ListItemRadioWithAmount
         formattedAmountString="€ 1.000,00"
         label="label"
@@ -98,74 +96,74 @@ describe("Test List Item Components", () => {
         isSuggested={true}
         selected={true}
       />
-    ).toJSON();
-    const notSuggested = TestRenderer.create(
+    );
+    const { toJSON: toJSONNotSuggested } = render(
       <ListItemRadioWithAmount
         formattedAmountString="€ 1.000,00"
         label="label"
         isSuggested={false}
       />
-    ).toJSON();
-    expect(suggested).toMatchSnapshot();
-    expect(notSuggested).toMatchSnapshot();
+    );
+    expect(toJSONSuggested()).toMatchSnapshot();
+    expect(toJSONNotSuggested()).toMatchSnapshot();
   });
 });
 
 describe("Test List Item Components - Experimental Enabled ", () => {
   it("ListItemInfo Snapshot", () => {
-    const listItemInfo = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemInfo
         label={"label"}
         value={"testValue"}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemInfo>
-    ).toJSON();
-    expect(listItemInfo).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemInfoCopy Snapshot", () => {
-    const listItemInfoCopy = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemInfoCopy
         label={"label"}
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemInfoCopy>
-    ).toJSON();
-    expect(listItemInfoCopy).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemNav Snapshot", () => {
-    const listItemNav = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemNav
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemNav>
-    ).toJSON();
-    expect(listItemNav).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemNavAlert Snapshot", () => {
-    const listItemNavAlert = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemNavAlert
         value={"testValue"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemNavAlert>
-    ).toJSON();
-    expect(listItemNavAlert).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemAction Snapshot", () => {
-    const listItemAction = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemAction
         label={"label"}
         variant={"primary"}
         onPress={onButtonPress}
         accessibilityLabel={"accessibilityLabel"}
-      ></ListItemAction>
-    ).toJSON();
-    expect(listItemAction).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemTransaction Snapshot", () => {
-    const listItemIDP = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <ListItemTransaction
         title="TITLE"
         subtitle="subtitle"
@@ -176,33 +174,35 @@ describe("Test List Item Components - Experimental Enabled ", () => {
         isLoading={true}
         onPress={onButtonPress}
       />
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("PressableListItemsBase Snapshot", () => {
-    const listItemIDP = TestRendererWithExperimentalEnabledContextProvider(
-      <PressableListItemBase></PressableListItemBase>
-    ).toJSON();
-    expect(listItemIDP).toMatchSnapshot();
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
+      <PressableListItemBase />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
   it("ListItemRadioWithAmount Snapshot", () => {
-    const suggested = TestRendererWithExperimentalEnabledContextProvider(
-      <ListItemRadioWithAmount
-        formattedAmountString="€ 1.000,00"
-        label="label"
-        suggestReason="suggestReason"
-        isSuggested={true}
-        selected={true}
-      />
-    ).toJSON();
-    const notSuggested = TestRendererWithExperimentalEnabledContextProvider(
-      <ListItemRadioWithAmount
-        formattedAmountString="€ 1.000,00"
-        label="label"
-        isSuggested={false}
-      />
-    ).toJSON();
-    expect(suggested).toMatchSnapshot();
-    expect(notSuggested).toMatchSnapshot();
+    const { toJSON: toJSONSuggested } =
+      renderWithExperimentalEnabledContextProvider(
+        <ListItemRadioWithAmount
+          formattedAmountString="€ 1.000,00"
+          label="label"
+          suggestReason="suggestReason"
+          isSuggested={true}
+          selected={true}
+        />
+      );
+    const { toJSON: toJSONNotSuggested } =
+      renderWithExperimentalEnabledContextProvider(
+        <ListItemRadioWithAmount
+          formattedAmountString="€ 1.000,00"
+          label="label"
+          isSuggested={false}
+        />
+      );
+    expect(toJSONSuggested()).toMatchSnapshot();
+    expect(toJSONNotSuggested()).toMatchSnapshot();
   });
 });

@@ -1,36 +1,32 @@
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { render } from "@testing-library/react-native";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { Avatar, AvatarSearch } from "../Avatar";
 
 describe("Test Avatar Components", () => {
   it("Avatar Snapshot", () => {
-    const avatar = TestRenderer.create(
-      <Avatar size={"small"} logoUri={{ uri: "" }} />
-    ).toJSON();
-    expect(avatar).toMatchSnapshot();
+    const { toJSON } = render(<Avatar size={"small"} logoUri={{ uri: "" }} />);
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("AvatarSearch Snapshot", () => {
-    const avatar = TestRenderer.create(
-      <AvatarSearch source={{ uri: "" }} />
-    ).toJSON();
-    expect(avatar).toMatchSnapshot();
+    const { toJSON } = render(<AvatarSearch source={{ uri: "" }} />);
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
 describe("Test Avatar Components - Experimental Enabled", () => {
   it("Avatar Snapshot", () => {
-    const avatar = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <Avatar size={"small"} logoUri={{ uri: "" }} />
-    ).toJSON();
-    expect(avatar).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("AvatarSearch Snapshot", () => {
-    const avatar = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <AvatarSearch source={{ uri: "" }} />
-    ).toJSON();
-    expect(avatar).toMatchSnapshot();
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });
