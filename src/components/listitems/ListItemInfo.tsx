@@ -170,21 +170,48 @@ export const ListItemInfo = ({
   const ListItemInfoContent = () => (
     <>
       {icon && !hugeFontEnabled && (
-        <Icon
-          allowFontScaling
-          name={icon}
-          color={theme["icon-decorative"]}
-          size={IOListItemVisualParams.iconSize}
-        />
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+          accessibilityElementsHidden={true}
+        >
+          <Icon
+            allowFontScaling
+            name={icon}
+            color={theme["icon-decorative"]}
+            size={IOListItemVisualParams.iconSize}
+          />
+        </View>
       )}
       {paymentLogoIcon && (
-        <LogoPaymentWithFallback
-          brand={paymentLogoIcon}
-          size={PAYMENT_LOGO_SIZE}
-        />
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+          accessibilityElementsHidden={true}
+        >
+          <LogoPaymentWithFallback
+            brand={paymentLogoIcon}
+            size={PAYMENT_LOGO_SIZE}
+          />
+        </View>
       )}
-      <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
-      {endElement && <View>{listItemInfoAction()}</View>}
+      <View
+        style={{ flex: 1 }}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={true}
+      >
+        {itemInfoTextComponent}
+      </View>
+      {endElement && (
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+          accessibilityElementsHidden={true}
+        >
+          {listItemInfoAction()}
+        </View>
+      )}
     </>
   );
 
@@ -193,7 +220,7 @@ export const ListItemInfo = ({
       <Pressable
         onLongPress={onLongPress}
         testID={testID}
-        accessible={!endElement}
+        accessible={true}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         onTouchEnd={onPressOut}
@@ -227,7 +254,7 @@ export const ListItemInfo = ({
       <View
         style={IOListItemStyles.listItem}
         testID={testID}
-        accessible={!endElement}
+        accessible={true}
         accessibilityLabel={listItemAccessibilityLabel}
         accessibilityRole={accessibilityRole}
       >
