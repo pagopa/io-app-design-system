@@ -170,48 +170,21 @@ export const ListItemInfo = ({
   const ListItemInfoContent = () => (
     <>
       {icon && !hugeFontEnabled && (
-        <View
-          accessible={false}
-          importantForAccessibility="no-hide-descendants"
-          accessibilityElementsHidden={true}
-        >
-          <Icon
-            allowFontScaling
-            name={icon}
-            color={theme["icon-decorative"]}
-            size={IOListItemVisualParams.iconSize}
-          />
-        </View>
+        <Icon
+          allowFontScaling
+          name={icon}
+          color={theme["icon-decorative"]}
+          size={IOListItemVisualParams.iconSize}
+        />
       )}
       {paymentLogoIcon && (
-        <View
-          accessible={false}
-          importantForAccessibility="no-hide-descendants"
-          accessibilityElementsHidden={true}
-        >
-          <LogoPaymentWithFallback
-            brand={paymentLogoIcon}
-            size={PAYMENT_LOGO_SIZE}
-          />
-        </View>
+        <LogoPaymentWithFallback
+          brand={paymentLogoIcon}
+          size={PAYMENT_LOGO_SIZE}
+        />
       )}
-      <View
-        style={{ flex: 1 }}
-        accessible={false}
-        importantForAccessibility="no-hide-descendants"
-        accessibilityElementsHidden={true}
-      >
-        {itemInfoTextComponent}
-      </View>
-      {endElement && (
-        <View
-          accessible={false}
-          importantForAccessibility="no-hide-descendants"
-          accessibilityElementsHidden={true}
-        >
-          {listItemInfoAction()}
-        </View>
-      )}
+      <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
+      {endElement && <View>{listItemInfoAction()}</View>}
     </>
   );
 
@@ -220,12 +193,12 @@ export const ListItemInfo = ({
       <Pressable
         onLongPress={onLongPress}
         testID={testID}
-        accessible={true}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         onTouchEnd={onPressOut}
+        accessible={true}
         accessibilityRole={"button"}
-        accessibilityLabel={listItemAccessibilityLabel}
+        accessibilityLabel={accessibilityLabel}
         accessibilityActions={accessibilityActions}
         onAccessibilityAction={onAccessibilityAction}
       >
@@ -255,7 +228,7 @@ export const ListItemInfo = ({
         style={IOListItemStyles.listItem}
         testID={testID}
         accessible={true}
-        accessibilityLabel={listItemAccessibilityLabel}
+        accessibilityLabel={accessibilityLabel}
         accessibilityRole={accessibilityRole}
       >
         <View
