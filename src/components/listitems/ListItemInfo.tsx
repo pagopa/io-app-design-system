@@ -1,8 +1,8 @@
 import React, { ComponentProps, ReactNode, useCallback, useMemo } from "react";
-import { AccessibilityRole, Platform, Pressable, View } from "react-native";
+import { AccessibilityRole, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { useIOTheme } from "../../context";
+import { IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
@@ -10,9 +10,9 @@ import { Badge } from "../badge";
 import { IOButton, IOButtonLinkSpecificProps, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import { VSpacer } from "../layout";
 import { IOLogoPaymentType } from "../logos";
 import { BodySmall, H6 } from "../typography";
-import { VSpacer } from "../layout";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
@@ -90,24 +90,34 @@ export const ListItemInfo = ({
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
 
+  // Determine if there are interactive elements
+  const hasInteractiveElements =
+    endElement?.type === "buttonLink" || endElement?.type === "iconButton";
+
   const componentValueToAccessibility = useMemo(
     () => (typeof value === "string" ? value : ""),
     [value]
   );
 
-  const listItemAccessibilityLabel = useMemo(
-    () =>
-      accessibilityLabel ??
-      (label
-        ? `${label}; ${componentValueToAccessibility}`
-        : componentValueToAccessibility),
-    [label, componentValueToAccessibility, accessibilityLabel]
-  );
+  const badgeText =
+    topElement?.type === "badge" ? topElement.componentProps.text ?? "" : "";
+
+  const listItemAccessibilityLabel =
+    accessibilityLabel ??
+    [badgeText, label, componentValueToAccessibility]
+      .filter(Boolean)
+      .join("; ");
 
   const itemInfoTextComponent = useMemo(
     () => (
       <View
-        accessible={Platform.OS === "ios"}
+        accessible={hasInteractiveElements}
+        accessibilityLabel={
+          hasInteractiveElements ? listItemAccessibilityLabel : undefined
+        }
+        importantForAccessibility={
+          hasInteractiveElements ? "yes" : "no-hide-descendants"
+        }
         style={{ flexDirection: reversed ? "column-reverse" : "column" }}
       >
         {topElement?.type === "badge" && (
@@ -184,7 +194,16 @@ export const ListItemInfo = ({
         />
       )}
       <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
-      {endElement && <View>{listItemInfoAction()}</View>}
+      {endElement && (
+        <View
+          accessible={false}
+          importantForAccessibility={
+            hasInteractiveElements ? "auto" : "no-hide-descendants"
+          }
+        >
+          {listItemInfoAction()}
+        </View>
+      )}
     </>
   );
 
@@ -227,9 +246,13 @@ export const ListItemInfo = ({
       <View
         style={IOListItemStyles.listItem}
         testID={testID}
-        accessible={true}
-        accessibilityLabel={accessibilityLabel}
-        accessibilityRole={accessibilityRole}
+        accessible={!hasInteractiveElements}
+        accessibilityLabel={
+          hasInteractiveElements ? undefined : listItemAccessibilityLabel
+        }
+        accessibilityRole={
+          hasInteractiveElements ? undefined : accessibilityRole
+        }
       >
         <View
           style={[
