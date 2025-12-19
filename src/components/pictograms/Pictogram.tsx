@@ -43,6 +43,7 @@ import PictogramTime from "./svg/PictogramTime";
 import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
+import PictogramPremiumCredentials from "./svg/PictogramPremiumCredentials";
 /* Bleed Pictograms */
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
 import PictogramBleedActivate from "./svg/PictogramBleedActivate";
@@ -184,6 +185,7 @@ export const IOPictograms = {
   savingMoney: PictogramSavingMoney,
   sendAccess: PictogramSendAccess,
   pinSecurity: PictogramPinSecurity,
+  premiumCredentials: PictogramPremiumCredentials,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
