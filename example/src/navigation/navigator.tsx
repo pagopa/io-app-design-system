@@ -18,7 +18,6 @@ import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
-import { ButtonsLegacy } from "../pages/ButtonsLegacy";
 import { Collapsible } from "../pages/Collapsible";
 import { Colors } from "../pages/Colors";
 import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateScreen";
@@ -192,14 +191,7 @@ const AppNavigator = () => {
               headerBackTitleVisible: false
             }}
           />
-          <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.BUTTONS_LEGACY.route}
-            component={ButtonsLegacy}
-            options={{
-              headerTitle: APP_ROUTES.COMPONENTS.BUTTONS_LEGACY.title,
-              headerBackTitleVisible: false
-            }}
-          />
+
           <Stack.Screen
             name={APP_ROUTES.COMPONENTS.COLLAPSIBLE.route}
             component={Collapsible}

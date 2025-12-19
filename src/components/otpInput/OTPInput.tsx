@@ -16,6 +16,8 @@ import { VSpacer } from "../layout";
 import { BodySmall } from "../typography";
 import { BoxedInput } from "./BoxedInput";
 
+const OTP_ITEMS_GAP = 8;
+
 type Props = {
   value: string;
   onValueChange: (value: string) => void;
@@ -137,7 +139,11 @@ export const OTPInput = forwardRef<View, Props>(
             setHasFocus(true);
           }}
           ref={ref}
-          style={{ flexDirection: "row", justifyContent: "space-around" }}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            columnGap: OTP_ITEMS_GAP
+          }}
           accessible={true}
           accessibilityLabel={accessibilityLabel}
           accessibilityHint={accessibilityHint}

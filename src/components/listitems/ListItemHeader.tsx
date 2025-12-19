@@ -11,14 +11,14 @@ import {
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
-import { ButtonLink, IconButton } from "../buttons";
+import { IOButton, IOButtonLinkSpecificProps, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
 import { VSpacer } from "../layout";
 import { BodySmall, H6 } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
-  componentProps: ComponentProps<typeof ButtonLink>;
+  componentProps: Omit<IOButtonLinkSpecificProps, "variant">;
 };
 
 type IconButtonActionProps = {
@@ -90,7 +90,7 @@ export const ListItemHeader = ({
 
       switch (type) {
         case "buttonLink":
-          return <ButtonLink {...componentProps} />;
+          return <IOButton variant="link" {...componentProps} />;
         case "iconButton":
           return <IconButton {...componentProps} />;
         case "badge":

@@ -119,6 +119,7 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
+import PictogramPinSecurity from "./svg/PictogramPinSecurity";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
@@ -182,6 +183,7 @@ export const IOPictograms = {
   meterLimit: PictogramMeterLimit,
   savingMoney: PictogramSavingMoney,
   sendAccess: PictogramSendAccess,
+  pinSecurity: PictogramPinSecurity,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,
