@@ -131,6 +131,8 @@ export const OTPInput = forwardRef<View, Props>(
       }
     };
 
+    const cells = React.useMemo(() => Array.from({ length }), [length]);
+
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
         <Pressable
@@ -167,7 +169,7 @@ export const OTPInput = forwardRef<View, Props>(
             autoFocus={autoFocus}
             secureTextEntry={true}
           />
-          {[...Array(length)].map((_, i) => (
+          {cells.map((_, i) => (
             <BoxedInput
               key={i}
               status={
