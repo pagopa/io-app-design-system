@@ -131,10 +131,7 @@ export const OTPInput = forwardRef<View, Props>(
       }
     };
 
-    const cells = React.useMemo(() =>
-      Array.from({ length }),
-      [length]
-    );
+    const cells = React.useMemo(() => Array.from({ length }), [length]);
 
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>

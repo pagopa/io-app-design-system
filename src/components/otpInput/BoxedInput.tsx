@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     maxWidth: MAX_WIDTH,
     maxHeight: MAX_HEIGHT,
-    aspectRatio: MAX_WIDTH / MAX_HEIGHT,
+    aspectRatio: MAX_WIDTH / MAX_HEIGHT
   },
   baseBox: {
     alignItems: "center",
@@ -67,8 +67,8 @@ export const BoxedInput = memo(({ status, value, secret }: Props) => {
   );
 
   return (
-    <View style={styles.boxWrapper}>
-      <View style={[styles.baseBox, statusStyle[status]]} accessible={false}>
+    <View style={styles.boxWrapper} accessible={false}>
+      <View style={[styles.baseBox, statusStyle[status]]}>
         {value &&
           (secret ? <SecretValue /> : <H6 accessible={false}>{value}</H6>)}
       </View>
