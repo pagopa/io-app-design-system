@@ -208,7 +208,6 @@ import IconTrashcan from "./svg/IconTrashcan";
 import IconTypeface from "./svg/IconTypeface";
 import IconWarningFilled from "./svg/IconWarningFilled";
 import IconWebsite from "./svg/IconWebsite";
-import IconCard from "./svg/IconCard";
 
 export const IOIcons = {
   spid: IconSpid,
@@ -414,8 +413,7 @@ export const IOIcons = {
   systemNFC: IconSystemNFC,
   systemPasswordAndroid: IconSystemPasswordAndroid,
   systemPasswordiOS: IconSystemPasswordiOS,
-  euStars: IconEUStars,
-  card: IconCard
+  euStars: IconEUStars
 } as const;
 
 export type IOIcons = keyof typeof IOIcons;
