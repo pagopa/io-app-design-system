@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { useIOTheme } from "../../context";
 import { hexToRgba, IOColors } from "../../core/IOColors";
@@ -14,13 +14,16 @@ type Props = {
 };
 
 const styles = StyleSheet.create({
+  boxWrapper: {
+    flex: 1,
+    maxWidth: MAX_WIDTH,
+    maxHeight: MAX_HEIGHT,
+    aspectRatio: MAX_WIDTH / MAX_HEIGHT
+  },
   baseBox: {
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    maxWidth: MAX_WIDTH,
-    maxHeight: MAX_HEIGHT,
-    aspectRatio: MAX_WIDTH / MAX_HEIGHT,
     borderRadius: 8,
     borderCurve: "continuous"
   }
@@ -38,7 +41,7 @@ const SecretValue = () => (
   </IOText>
 );
 
-export const BoxedInput = ({ status, value, secret }: Props) => {
+export const BoxedInput = memo(({ status, value, secret }: Props) => {
   const theme = useIOTheme();
 
   const statusStyle: Record<Props["status"], ViewStyle> = useMemo(
@@ -64,9 +67,11 @@ export const BoxedInput = ({ status, value, secret }: Props) => {
   );
 
   return (
-    <View style={[styles.baseBox, statusStyle[status]]} accessible={false}>
-      {value &&
-        (secret ? <SecretValue /> : <H6 accessible={false}>{value}</H6>)}
+    <View style={styles.boxWrapper} accessible={false}>
+      <View style={[styles.baseBox, statusStyle[status]]}>
+        {value &&
+          (secret ? <SecretValue /> : <H6 accessible={false}>{value}</H6>)}
+      </View>
     </View>
   );
-};
+});
