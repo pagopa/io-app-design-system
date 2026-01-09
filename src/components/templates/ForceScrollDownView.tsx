@@ -1,5 +1,10 @@
 import React, { ComponentProps, ReactNode, useCallback } from "react";
-import { LayoutChangeEvent, ScrollViewProps, StyleSheet } from "react-native";
+import {
+  LayoutChangeEvent,
+  Platform,
+  ScrollViewProps,
+  StyleSheet
+} from "react-native";
 import Animated, {
   AnimatedRef,
   interpolate,
@@ -166,9 +171,11 @@ const ForceScrollDownView = ({
     transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
   }));
 
+  const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
+
   // Calculate bottom position including safe area insets
   const scrollDownButtonBottom =
-    insets.bottom > 0 ? insets.bottom : IOVisualCostants.scrollDownButtonBottom;
+    IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin;
 
   const scrollDownButton = (
     <Animated.View
