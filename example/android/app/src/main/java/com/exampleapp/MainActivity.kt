@@ -1,9 +1,15 @@
 package com.exampleapp
 
+import android.os.Build;
+import android.os.Bundle;
+
+import androidx.core.view.WindowCompat;
+
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
+
 
 class MainActivity : ReactActivity() {
 
@@ -19,4 +25,12 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+  // https://github.com/crazycodeboy/react-native-splash-screen#third-stepplugin-configuration
+  override fun onCreate(savedInstanceState: Bundle?) {
+      // Enable edge to edge support
+      // https://developer.android.com/develop/ui/views/layout/edge-to-edge?hl=it
+      WindowCompat.setDecorFitsSystemWindows(window, false)
+      super.onCreate(null);
+  }
 }
