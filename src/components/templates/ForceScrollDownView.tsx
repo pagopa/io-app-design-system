@@ -13,6 +13,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { FooterActions, useFooterActionsInlineMeasurements } from "../layout";
@@ -80,6 +81,7 @@ const ForceScrollDownView = ({
 }: ForceScrollDownView) => {
   const internalAnimatedRef = useAnimatedRef<Animated.ScrollView>();
   const scrollViewRef = animatedRef ?? internalAnimatedRef;
+  const insets = useSafeAreaInsets();
 
   const {
     footerActionsInlineMeasurements,
@@ -164,8 +166,18 @@ const ForceScrollDownView = ({
     transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
   }));
 
+  // Calculate bottom position including safe area insets
+  const scrollDownButtonBottom =
+    insets.bottom > 0 ? insets.bottom : IOVisualCostants.scrollDownButtonBottom;
+
   const scrollDownButton = (
-    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
+    <Animated.View
+      style={[
+        styles.scrollDownButton,
+        { bottom: scrollDownButtonBottom },
+        buttonTransitionStyle
+      ]}
+    >
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"
@@ -204,8 +216,7 @@ const styles = StyleSheet.create({
   scrollDownButton: {
     position: "absolute",
     zIndex: 10,
-    right: IOVisualCostants.scrollDownButtonRight,
-    bottom: IOVisualCostants.scrollDownButtonBottom
+    right: IOVisualCostants.scrollDownButtonRight
   }
 });
 
