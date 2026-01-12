@@ -1,13 +1,16 @@
 import { throttle } from "lodash";
 import React from "react";
-import { AccessibilityInfo, StyleSheet, View } from "react-native";
+import { AccessibilityInfo, Platform, StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
   SequencedTransition,
   SlideInUp,
   SlideOutUp
 } from "react-native-reanimated";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets
+} from "react-native-safe-area-context";
 import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { Dismissable } from "../templates";
@@ -112,10 +115,20 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     [addToast, removeToast, removeAllToasts]
   );
 
+  const insets = useSafeAreaInsets();
+
   return (
     <ToastContext.Provider value={contextValue as ToastContext}>
       <InitializeToastRef />
-      <SafeAreaView style={styles.container} pointerEvents="box-none">
+      <SafeAreaView
+        style={[
+          styles.container,
+          {
+            paddingTop: Platform.OS === "android" ? insets.top : 0
+          }
+        ]}
+        pointerEvents="box-none"
+      >
         <View
           style={{ padding: IOVisualCostants.appMarginDefault }}
           pointerEvents="box-none"
