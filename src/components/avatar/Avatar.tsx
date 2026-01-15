@@ -170,13 +170,13 @@ export const AvatarSearch = React.memo(
           {source === undefined ? (
             <Image
               accessibilityIgnoresInvertColors
-              source={source}
+              source={defaultPlaceholder}
               style={styles.avatarImage}
             />
           ) : (
             <Image
               accessibilityIgnoresInvertColors
-              source={defaultPlaceholder}
+              source={source}
               style={styles.avatarImage}
             />
           )}
