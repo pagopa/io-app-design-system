@@ -148,6 +148,7 @@ export const AvatarSearch = React.memo(
     const borderRadius = dimensionsMap.small.radius;
     const internalSpace = dimensionsMap.small.internalSpace;
     const innerRadius = borderRadius - internalSpace;
+    const defaultPlaceholder = defaultSource ?? avatarSearchPlaceholder;
 
     return (
       <View
@@ -166,12 +167,19 @@ export const AvatarSearch = React.memo(
         <View
           style={[styles.avatarInnerWrapper, { borderRadius: innerRadius }]}
         >
-          <Image
-            accessibilityIgnoresInvertColors
-            source={source}
-            style={styles.avatarImage}
-            defaultSource={defaultSource ?? avatarSearchPlaceholder}
-          />
+          {source === undefined ? (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={source}
+              style={styles.avatarImage}
+            />
+          ) : (
+            <Image
+              accessibilityIgnoresInvertColors
+              source={defaultPlaceholder}
+              style={styles.avatarImage}
+            />
+          )}
         </View>
       </View>
     );
