@@ -130,7 +130,7 @@ export const Avatar = ({ logoUri, size }: Avatar) => {
 
 export type AvatarSearchProps = Pick<
   ComponentProps<typeof Image>,
-  "source" | "defaultSource"
+  "source" | "defaultSource" | "onError"
 >;
 
 /**
@@ -142,7 +142,7 @@ export type AvatarSearchProps = Pick<
  * @returns
  */
 export const AvatarSearch = React.memo(
-  ({ defaultSource, source }: AvatarSearchProps) => {
+  ({ defaultSource, source, onError }: AvatarSearchProps) => {
     // Visual attributes
     const avatarSize = dimensionsMap.small.size;
     const borderRadius = dimensionsMap.small.radius;
@@ -177,6 +177,7 @@ export const AvatarSearch = React.memo(
             <Image
               accessibilityIgnoresInvertColors
               source={source}
+              onError={onError}
               style={styles.avatarImage}
             />
           )}
