@@ -116,6 +116,7 @@ const renderClaimsSelector = () => (
             type: "image"
           }
         ]}
+        headerGradientColors={["#ECECEC", "#F2E4CE"]}
       />
     </ComponentViewerBox>
 

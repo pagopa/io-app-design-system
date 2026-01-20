@@ -10,7 +10,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         "borderWidth": 1,
       },
       {
-        "backgroundColor": "#F4F5F8",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E8EBF1",
       },
     ]
@@ -50,12 +50,21 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
     >
       <View
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "padding": 16,
-          }
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+            {
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "overflow": "hidden",
+            },
+          ]
         }
       >
         <Text
@@ -489,36 +498,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
       </View>
     </View>
   </View>
-  <BVLinearGradient
-    colors={
-      [
-        16053752,
-        4294243832,
-      ]
-    }
-    endPoint={
-      {
-        "x": 0.5,
-        "y": 1,
-      }
-    }
-    locations={null}
-    startPoint={
-      {
-        "x": 0.5,
-        "y": 0,
-      }
-    }
-    style={
-      {
-        "bottom": 0,
-        "height": 16,
-        "left": 16,
-        "position": "absolute",
-        "right": 16,
-      }
-    }
-  />
 </View>
 `;
 
@@ -532,7 +511,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
         "borderWidth": 1,
       },
       {
-        "backgroundColor": "#F4F5F8",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E8EBF1",
       },
     ]
@@ -572,12 +551,21 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
     >
       <View
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "padding": 16,
-          }
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+            {
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "overflow": "hidden",
+            },
+          ]
         }
       >
         <Text
@@ -782,36 +770,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
       </View>
     </View>
   </View>
-  <BVLinearGradient
-    colors={
-      [
-        16053752,
-        4294243832,
-      ]
-    }
-    endPoint={
-      {
-        "x": 0.5,
-        "y": 1,
-      }
-    }
-    locations={null}
-    startPoint={
-      {
-        "x": 0.5,
-        "y": 0,
-      }
-    }
-    style={
-      {
-        "bottom": 0,
-        "height": 16,
-        "left": 16,
-        "position": "absolute",
-        "right": 16,
-      }
-    }
-  />
 </View>
 `;
 
@@ -825,7 +783,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         "borderWidth": 1,
       },
       {
-        "backgroundColor": "#F4F5F8",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E8EBF1",
       },
     ]
@@ -865,12 +823,21 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
     >
       <View
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "padding": 16,
-          }
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+            {
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "overflow": "hidden",
+            },
+          ]
         }
       >
         <Text
@@ -1235,36 +1202,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
       </View>
     </View>
   </View>
-  <BVLinearGradient
-    colors={
-      [
-        16053752,
-        4294243832,
-      ]
-    }
-    endPoint={
-      {
-        "x": 0.5,
-        "y": 1,
-      }
-    }
-    locations={null}
-    startPoint={
-      {
-        "x": 0.5,
-        "y": 0,
-      }
-    }
-    style={
-      {
-        "bottom": 0,
-        "height": 16,
-        "left": 16,
-        "position": "absolute",
-        "right": 16,
-      }
-    }
-  />
 </View>
 `;
 
@@ -1278,7 +1215,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
         "borderWidth": 1,
       },
       {
-        "backgroundColor": "#F4F5F8",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E8EBF1",
       },
     ]
@@ -1318,12 +1255,21 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
     >
       <View
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "padding": 16,
-          }
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+            {
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "overflow": "hidden",
+            },
+          ]
         }
       >
         <Text
@@ -1534,35 +1480,5 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       </View>
     </View>
   </View>
-  <BVLinearGradient
-    colors={
-      [
-        16053752,
-        4294243832,
-      ]
-    }
-    endPoint={
-      {
-        "x": 0.5,
-        "y": 1,
-      }
-    }
-    locations={null}
-    startPoint={
-      {
-        "x": 0.5,
-        "y": 0,
-      }
-    }
-    style={
-      {
-        "bottom": 0,
-        "height": 16,
-        "left": 16,
-        "position": "absolute",
-        "right": 16,
-      }
-    }
-  />
 </View>
 `;

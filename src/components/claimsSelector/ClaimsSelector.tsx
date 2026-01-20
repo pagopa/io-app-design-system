@@ -2,10 +2,9 @@ import React, { Fragment } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
-import Animated from "react-native-reanimated";
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import {
-  hexToRgba,
   IOAccordionRadius,
   IOColors,
   IOSpacingScale
@@ -17,6 +16,9 @@ import { ListItemCheckbox, ListItemInfo } from "../listitems";
 import { H6 } from "../typography";
 
 const accordionBodySpacing: IOSpacingScale = 16;
+
+// Threshold to determine when the accordion is considered fully collapsed
+const COLLAPSED_RADIUS_THRESHOLD = 0.001;
 
 type Props = {
   /**
@@ -50,6 +52,10 @@ type Props = {
    */
   onToggle?: (expanded: boolean) => void;
   accessibilityLabel?: string;
+  /**
+   * Accordion header gradient colors.
+   */
+  headerGradientColors?: Array<string>;
 };
 
 type Item = {
@@ -67,7 +73,8 @@ export const ClaimsSelector = ({
   onToggle,
   accessibilityLabel,
   selectedItemIds,
-  selectionEnabled = true
+  selectionEnabled = true,
+  headerGradientColors
 }: Props) => {
   const theme = useIOTheme();
   const {
@@ -76,18 +83,38 @@ export const ClaimsSelector = ({
     onBodyLayout,
     iconAnimatedStyle,
     bodyAnimatedStyle,
-    bodyInnerStyle
+    bodyInnerStyle,
+    progress
   } = useAccordionAnimation({
     defaultExpanded
   });
 
-  const accordionBackground: IOColors = theme["appBackground-secondary"];
+  const accordionBackground: IOColors = theme["appBackground-primary"];
   const accordionBorder: IOColors = theme["cardBorder-default"];
 
   const onItemPress = () => {
     toggleAccordion();
     onToggle?.(!expanded);
   };
+
+  const hasHeaderGradient = (headerGradientColors?.length ?? 0) >= 2;
+
+  const headerRadiusAnimatedStyle = useAnimatedStyle(() => {
+    /**
+     * Dynamically adjust bottom corner radius based on the expansion progress.
+     * Bottom corners are rounded only when the accordion is fully collapsed to
+     * ensure visual consistency with the outer container.
+     */
+    const bottomRadius =
+      progress.value < COLLAPSED_RADIUS_THRESHOLD ? IOAccordionRadius : 0;
+    return {
+      borderTopLeftRadius: IOAccordionRadius,
+      borderTopRightRadius: IOAccordionRadius,
+      borderBottomLeftRadius: bottomRadius,
+      borderBottomRightRadius: bottomRadius,
+      overflow: "hidden"
+    };
+  });
 
   const renderClaimItem = (item: Item, index: number) => {
     const { id, value, description, type = "text" } = item;
@@ -148,15 +175,18 @@ export const ClaimsSelector = ({
         accessibilityLabel={accessibilityLabel ?? title}
         onPress={onItemPress}
       >
-        <View style={styles.textContainer}>
+        <Animated.View style={[styles.textContainer, headerRadiusAnimatedStyle]}>
+          {hasHeaderGradient && (
+            <LinearGradient
+              colors={headerGradientColors!}
+              style={StyleSheet.absoluteFill}
+            />
+          )}
           <H6 color={theme["textBody-default"]}>{title}</H6>
           <Animated.View style={iconAnimatedStyle}>
-            <Icon
-              name="chevronBottom"
-              color={theme["interactiveElem-default"]}
-            />
+            <Icon name="chevronBottom" color={theme["interactiveElem-default"]} />
           </Animated.View>
-        </View>
+        </Animated.View>
       </TouchableWithoutFeedback>
 
       <Animated.View style={bodyAnimatedStyle}>
@@ -167,16 +197,6 @@ export const ClaimsSelector = ({
           {items.map(renderClaimItem)}
         </View>
       </Animated.View>
-
-      {/* This gradient adds a smooth end to the content. If it is missing,
-      the content will be cut sharply during the height transition. */}
-      <LinearGradient
-        style={styles.linearGradient}
-        colors={[
-          hexToRgba(IOColors[accordionBackground], 0),
-          IOColors[accordionBackground]
-        ]}
-      />
     </View>
   );
 };
@@ -195,15 +215,6 @@ const styles = StyleSheet.create({
   },
   bodyInnerContainer: {
     width: "100%"
-  },
-  linearGradient: {
-    height: accordionBodySpacing,
-    position: "absolute",
-    // Place at the bottom
-    bottom: 0,
-    // Avoid gradient overlaps with border radius
-    left: accordionBodySpacing,
-    right: accordionBodySpacing
   },
   imageClaim: {
     width: 160,
