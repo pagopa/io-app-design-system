@@ -184,7 +184,7 @@ export const ClaimsSelector = ({
           )}
           <H6 color={theme["textBody-default"]}>{title}</H6>
           <Animated.View style={iconAnimatedStyle}>
-            <Icon name="chevronBottom" color={theme["interactiveElem-default"]} />
+          <Icon name="chevronBottom" color={theme["textBody-default"]} />
           </Animated.View>
         </Animated.View>
       </TouchableWithoutFeedback>
