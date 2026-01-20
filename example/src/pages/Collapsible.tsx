@@ -93,7 +93,7 @@ const renderClaimsSelector = () => (
     <VSpacer size={40} />
     <H3>ClaimsSelector</H3>
     <VSpacer size={16} />
-    <ComponentViewerBox name="ClaimsSelector · Default collapsed & unselectable">
+    <ComponentViewerBox name="ClaimsSelector · Default collapsed & unselectable · Gradient header">
       <ClaimsSelector
         defaultExpanded={false}
         selectionEnabled={false}
@@ -120,7 +120,7 @@ const renderClaimsSelector = () => (
       />
     </ComponentViewerBox>
 
-    <ComponentViewerBox name="ClaimsSelector · Default expanded & selectable">
+    <ComponentViewerBox name="ClaimsSelector · Default expanded & selectable · No gradient">
       <ClaimsSelector
         defaultExpanded
         selectionEnabled
