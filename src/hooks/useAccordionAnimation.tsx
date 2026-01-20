@@ -72,7 +72,9 @@ export const useAccordionAnimation = ({
 
   const progress = useDerivedValue(() => {
     const to = expanded ? 1 : 0;
-    return animationEnabled.value ? withSpring(to, IOSpringValues.accordion) : to;
+    return animationEnabled.value
+      ? withSpring(to, IOSpringValues.accordion)
+      : to;
   }, [expanded]);
 
   return {

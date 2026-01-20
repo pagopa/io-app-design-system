@@ -4,11 +4,7 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useIOTheme } from "../../context";
-import {
-  IOAccordionRadius,
-  IOColors,
-  IOSpacingScale
-} from "../../core";
+import { IOAccordionRadius, IOColors, IOSpacingScale } from "../../core";
 import { useAccordionAnimation } from "../../hooks/useAccordionAnimation";
 import { Icon } from "../icons";
 import { Divider } from "../layout";
@@ -175,7 +171,9 @@ export const ClaimsSelector = ({
         accessibilityLabel={accessibilityLabel ?? title}
         onPress={onItemPress}
       >
-        <Animated.View style={[styles.textContainer, headerRadiusAnimatedStyle]}>
+        <Animated.View
+          style={[styles.textContainer, headerRadiusAnimatedStyle]}
+        >
           {hasHeaderGradient && (
             <LinearGradient
               colors={headerGradientColors!}
@@ -184,7 +182,7 @@ export const ClaimsSelector = ({
           )}
           <H6 color={theme["textBody-default"]}>{title}</H6>
           <Animated.View style={iconAnimatedStyle}>
-          <Icon name="chevronBottom" color={theme["textBody-default"]} />
+            <Icon name="chevronBottom" color={theme["textBody-default"]} />
           </Animated.View>
         </Animated.View>
       </TouchableWithoutFeedback>
