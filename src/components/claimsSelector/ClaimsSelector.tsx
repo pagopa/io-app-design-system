@@ -16,6 +16,9 @@ const accordionBodySpacing: IOSpacingScale = 16;
 // Threshold to determine when the accordion is considered fully collapsed
 const COLLAPSED_RADIUS_THRESHOLD = 0.001;
 
+// Border width offset to ensure gradient fits within the border curves
+const COLLAPSIBLE_BORDER = 1;
+
 type Props = {
   /**
    * The accordion title.
@@ -93,7 +96,12 @@ export const ClaimsSelector = ({
     onToggle?.(!expanded);
   };
 
-  const hasHeaderGradient = (headerGradientColors?.length ?? 0) >= 2;
+  const hasHeaderGradient =
+    headerGradientColors && headerGradientColors.length >= 2;
+
+  const headerForegroundColor: IOColors = hasHeaderGradient
+    ? "black"
+    : theme["textBody-default"];
 
   const headerRadiusAnimatedStyle = useAnimatedStyle(() => {
     /**
@@ -104,10 +112,10 @@ export const ClaimsSelector = ({
     const bottomRadius =
       progress.value < COLLAPSED_RADIUS_THRESHOLD ? IOAccordionRadius : 0;
     return {
-      borderTopLeftRadius: IOAccordionRadius,
-      borderTopRightRadius: IOAccordionRadius,
-      borderBottomLeftRadius: bottomRadius,
-      borderBottomRightRadius: bottomRadius,
+      borderTopLeftRadius: IOAccordionRadius - COLLAPSIBLE_BORDER,
+      borderTopRightRadius: IOAccordionRadius - COLLAPSIBLE_BORDER,
+      borderBottomLeftRadius: bottomRadius - COLLAPSIBLE_BORDER,
+      borderBottomRightRadius: bottomRadius - COLLAPSIBLE_BORDER,
       overflow: "hidden"
     };
   });
@@ -176,13 +184,13 @@ export const ClaimsSelector = ({
         >
           {hasHeaderGradient && (
             <LinearGradient
-              colors={headerGradientColors!}
+              colors={headerGradientColors}
               style={StyleSheet.absoluteFill}
             />
           )}
-          <H6 color={theme["textBody-default"]}>{title}</H6>
+          <H6 color={headerForegroundColor}>{title}</H6>
           <Animated.View style={iconAnimatedStyle}>
-            <Icon name="chevronBottom" color={theme["textBody-default"]} />
+            <Icon name="chevronBottom" color={headerForegroundColor} />
           </Animated.View>
         </Animated.View>
       </TouchableWithoutFeedback>

@@ -58,10 +58,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
               "padding": 16,
             },
             {
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
               "overflow": "hidden",
             },
           ]
@@ -559,10 +559,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
               "padding": 16,
             },
             {
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
               "overflow": "hidden",
             },
           ]
@@ -831,10 +831,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
               "padding": 16,
             },
             {
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
               "overflow": "hidden",
             },
           ]
@@ -1263,10 +1263,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
               "padding": 16,
             },
             {
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
               "overflow": "hidden",
             },
           ]
