@@ -62,6 +62,7 @@ type Item = {
   value: string;
   description: string;
   type?: "text" | "image";
+  endElement?: ListItemInfo["endElement"];
 };
 
 export const ClaimsSelector = ({
@@ -121,7 +122,7 @@ export const ClaimsSelector = ({
   });
 
   const renderClaimItem = (item: Item, index: number) => {
-    const { id, value, description, type = "text" } = item;
+    const { id, value, description, type = "text", endElement } = item;
     return (
       <Fragment key={id}>
         {index !== 0 && <Divider />}
@@ -155,6 +156,7 @@ export const ClaimsSelector = ({
               label={description}
               accessibilityRole={type}
               reversed
+              endElement={endElement}
             />
           )
         }

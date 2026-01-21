@@ -7,7 +7,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { FlatList, ListRenderItemInfo, View } from "react-native";
+import { Alert, FlatList, ListRenderItemInfo, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -55,6 +55,10 @@ const assistanceData: Array<AccordionItem> = [
     icon: "bell"
   }
 ];
+
+const onButtonPress = () => {
+  Alert.alert("Alert", "Action triggered");
+};
 
 export const Collapsible = () => {
   const renderAccordionHeader = () => (
@@ -107,7 +111,15 @@ const renderClaimsSelector = () => (
           {
             id: "birthplace",
             value: "Roma",
-            description: "Luogo di nascita"
+            description: "Luogo di nascita",
+            endElement: {
+              type: "iconButton",
+              componentProps: {
+                icon: "info",
+                onPress: onButtonPress,
+                accessibilityLabel: "Mostra dettagli Luogo di nascita"
+              }
+            }
           },
           {
             id: "image",
