@@ -5,7 +5,7 @@ import React, {
   useContext,
   useState
 } from "react";
-import { Appearance, ColorSchemeName } from "react-native";
+import { Appearance, ColorSchemeName, useColorScheme } from "react-native";
 import { IOTheme, IOThemeDark, IOThemeLight } from "../core/IOColors";
 
 export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
@@ -13,7 +13,8 @@ export const IOThemes = { light: IOThemeLight, dark: IOThemeDark };
 type IOThemeContextType = {
   themeType: ColorSchemeName;
   theme: IOTheme;
-  setTheme: (theme: ColorSchemeName) => void;
+  themePreference: ColorSchemeName;
+  setTheme: (theme: ColorSchemeName | null) => void;
 };
 
 export const IOThemeContext: React.Context<IOThemeContextType> =
@@ -21,6 +22,7 @@ export const IOThemeContext: React.Context<IOThemeContextType> =
     themeType: Appearance.getColorScheme(),
     theme:
       Appearance.getColorScheme() === "dark" ? IOThemes.dark : IOThemes.light,
+    themePreference: undefined,
     setTheme: () => void 0
   });
 
@@ -36,19 +38,23 @@ export const IOThemeContextProvider = ({
   children,
   theme
 }: PropsWithChildren<IOThemeContextProviderProps>) => {
-  const [currentTheme, setCurrentTheme] = useState<ColorSchemeName>(
-    theme ?? Appearance.getColorScheme()
-  );
+  const systemColorScheme = useColorScheme();
+
+  const [themePreference, setThemePreference] =
+    useState<ColorSchemeName>(theme);
+
+  const resolvedTheme = themePreference ?? systemColorScheme ?? "light";
 
   const handleThemeChange = useCallback((newTheme: ColorSchemeName) => {
-    setCurrentTheme(newTheme);
+    setThemePreference(newTheme ?? undefined);
   }, []);
 
   return (
     <IOThemeContext.Provider
       value={{
-        themeType: currentTheme,
-        theme: IOThemes[currentTheme ?? "light"],
+        themeType: resolvedTheme,
+        theme: IOThemes[resolvedTheme],
+        themePreference,
         setTheme: handleThemeChange
       }}
     >

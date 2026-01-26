@@ -1,5 +1,6 @@
 const APP_ROUTES = {
   MAIN: "DESIGN_SYSTEM_MAIN",
+  PREFERENCES: { route: "DESIGN_SYSTEM_PREFERENCES", title: "Preferences" },
   FOUNDATION: {
     COLOR: { route: "DESIGN_SYSTEM_COLOR", title: "Colors" },
     TYPOGRAPHY: { route: "DESIGN_SYSTEM_TYPOGRAPHY", title: "Typography" },

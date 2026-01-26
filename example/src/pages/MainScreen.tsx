@@ -104,14 +104,14 @@ const MainScreen = (props: Props) => {
           onSwitchValueChange={setNewTypefaceEnabled}
         />
         <VSpacer size={4} />
-        <ListItemSwitch
-          label="Abilita Dark Mode"
-          value={themeType === "dark"}
-          onSwitchValueChange={() =>
-            setTheme(themeType === "dark" ? "light" : "dark")
+        <VSpacer size={4} />
+        <ListItemNav
+          accessibilityLabel={`Go to the Settings page`}
+          value={"Settings"}
+          onPress={() =>
+            props.navigation.navigate(APP_ROUTES.PREFERENCES.route)
           }
         />
-        <VSpacer size={4} />
       </ContentWrapper>
       <SectionList
         keyExtractor={(item, index) => `${item.route}-${index}`}
