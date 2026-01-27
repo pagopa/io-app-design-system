@@ -12,7 +12,8 @@ import {
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { SectionList, View } from "react-native";
+import { useEffect } from "react";
+import { SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
@@ -57,9 +58,15 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 ];
 
 const MainScreen = (props: Props) => {
-  const { theme } = useIOThemeContext();
+  const colorScheme = useColorScheme();
+  const { theme, setTheme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
+
+  useEffect(() => {
+    setTheme(colorScheme);
+  }, [colorScheme, setTheme]);
+
   const renderDSNavItem = ({
     item: { title, route }
   }: {
