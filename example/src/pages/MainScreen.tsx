@@ -57,7 +57,7 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 ];
 
 const MainScreen = (props: Props) => {
-  const { setTheme, themeType, theme } = useIOThemeContext();
+  const { theme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
   const renderDSNavItem = ({
@@ -104,14 +104,6 @@ const MainScreen = (props: Props) => {
           onSwitchValueChange={setNewTypefaceEnabled}
         />
         <VSpacer size={4} />
-        <VSpacer size={4} />
-        <ListItemNav
-          accessibilityLabel={`Go to the Settings page`}
-          value={"Settings"}
-          onPress={() =>
-            props.navigation.navigate(APP_ROUTES.PREFERENCES.route)
-          }
-        />
       </ContentWrapper>
       <SectionList
         keyExtractor={(item, index) => `${item.route}-${index}`}

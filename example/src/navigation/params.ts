@@ -2,7 +2,6 @@ import DESIGN_SYSTEM_ROUTES from "./routes";
 
 export type AppParamsList = {
   [DESIGN_SYSTEM_ROUTES.MAIN]: undefined;
-  [DESIGN_SYSTEM_ROUTES.PREFERENCES.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.FOUNDATION.COLOR.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.FOUNDATION.TYPOGRAPHY.route]: undefined;
   [DESIGN_SYSTEM_ROUTES.FOUNDATION.LAYOUT.route]: undefined;

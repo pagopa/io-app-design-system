@@ -14,12 +14,16 @@ import {
   createNativeStackNavigator,
   NativeStackHeaderProps
 } from "@react-navigation/native-stack";
-import React from "react";
-import { StatusBar } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  Appearance,
+  ColorSchemeName,
+  StatusBar,
+  useColorScheme
+} from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
-import { AppSettings } from "../pages/AppSettings";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
 import { Collapsible } from "../pages/Collapsible";
@@ -113,14 +117,6 @@ const AppNavigator = () => {
             component={MainScreen}
             options={{
               headerTitle: "Design System"
-            }}
-          />
-          <Stack.Screen
-            name={APP_ROUTES.PREFERENCES.route}
-            component={AppSettings}
-            options={{
-              headerTitle: APP_ROUTES.PREFERENCES.title,
-              headerBackTitleVisible: false
             }}
           />
           <Stack.Screen
