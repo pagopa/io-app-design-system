@@ -14,13 +14,8 @@ import {
   createNativeStackNavigator,
   NativeStackHeaderProps
 } from "@react-navigation/native-stack";
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  Appearance,
-  ColorSchemeName,
-  StatusBar,
-  useColorScheme
-} from "react-native";
+import React from "react";
+import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
