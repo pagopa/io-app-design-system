@@ -1,5 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import { View, Animated, Easing, ColorValue } from "react-native";
+import React, { useEffect } from "react";
+import { View, ColorValue } from "react-native";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withTiming,
+  Easing
+} from "react-native-reanimated";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
 import { useIOTheme } from "../../context";
@@ -34,25 +41,23 @@ export const LoadingSpinner = ({
   testID = "LoadingSpinnerTestID"
 }: LoadingSpinner): React.ReactElement => {
   const theme = useIOTheme();
-  const rotationDegree = useRef(new Animated.Value(0)).current;
+  const rotation = useSharedValue(0);
   const stroke: number = strokeMap[size];
 
   const color = customColor ?? IOColors[theme["interactiveElem-default"]];
 
   useEffect(() => {
-    const animation = Animated.loop(
-      Animated.timing(rotationDegree, {
-        toValue: 360,
-        duration: durationMs,
-        easing: Easing.linear,
-        useNativeDriver: true
-      })
+    // eslint-disable-next-line functional/immutable-data
+    rotation.value = withRepeat(
+      withTiming(360, { duration: durationMs, easing: Easing.linear }),
+      -1,
+      false
     );
+  }, [durationMs, rotation]);
 
-    animation.start();
-
-    return () => animation.stop();
-  }, [durationMs, rotationDegree, theme]);
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ rotateZ: `${rotation.value}deg` }]
+  }));
 
   return (
     <View
@@ -65,16 +70,7 @@ export const LoadingSpinner = ({
     >
       <Animated.View
         testID={"LoadingSpinnerAnimatedTestID"}
-        style={{
-          transform: [
-            {
-              rotateZ: rotationDegree.interpolate({
-                inputRange: [0, 360],
-                outputRange: ["0deg", "360deg"]
-              })
-            }
-          ]
-        }}
+        style={animatedStyle}
       >
         {/* Thanks to Ben Ilegbodu for the article on how to
           create a a SVG gradient loading spinner. Below is
