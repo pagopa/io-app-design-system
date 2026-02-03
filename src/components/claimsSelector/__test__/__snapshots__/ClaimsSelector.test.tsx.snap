@@ -49,6 +49,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
       collapsable={false}
     >
       <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
+        nativeID="0"
         style={
           [
             {
@@ -88,14 +116,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
           Patente di guida
         </Text>
         <View
-          style={
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
+          nativeID="1"
+          style={
+            [
+              {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            ]
           }
         >
           <RNSVGSvgView
@@ -160,6 +209,27 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
     </View>
   </RNGestureHandlerButton>
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "height": 0,
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "overflow": "hidden",
+        },
+      ]
+    }
+    nativeID="2"
     style={
       [
         {
@@ -223,6 +293,32 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         testID="ListItemCheckbox"
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(244, 245, 248, 0)",
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "marginHorizontal": -24,
+                "paddingHorizontal": 24,
+                "paddingVertical": 12,
+              },
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          nativeID="3"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -232,7 +328,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                 "paddingVertical": 12,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(244, 245, 248, 0)",
               },
               {
                 "opacity": 1,
@@ -241,14 +337,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
           }
         >
           <View
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "transform": [
-                  {
-                    "scale": undefined,
-                  },
-                ],
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={{}}
+            nativeID="4"
+            style={
+              [
+                {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              ]
             }
           >
             <View
@@ -365,6 +482,43 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                     }
                   />
                   <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {
+                          "opacity": 1,
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        },
+                      }
+                    }
+                    jestInlineStyle={
+                      [
+                        {
+                          "borderCurve": "continuous",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 0,
+                        },
+                        {
+                          "borderRadius": 5,
+                          "height": 24,
+                          "width": 24,
+                        },
+                        {
+                          "backgroundColor": "#0B3EE3",
+                        },
+                      ]
+                    }
+                    nativeID="5"
                     style={
                       [
                         {
@@ -385,7 +539,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                           "opacity": 1,
                           "transform": [
                             {
-                              "scale": undefined,
+                              "scale": 1,
                             },
                           ],
                         },
@@ -443,6 +597,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                               "stroke",
                               "strokeWidth",
                               "strokeDasharray",
+                              "strokeDashoffset",
                               "strokeLinecap",
                               "strokeLinejoin",
                             ]
@@ -454,6 +609,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                             }
                           }
                           strokeDasharray={null}
+                          strokeDashoffset={null}
                           strokeLinecap={1}
                           strokeLinejoin={1}
                           strokeWidth={2}
@@ -550,6 +706,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
       collapsable={false}
     >
       <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
+        nativeID="16"
         style={
           [
             {
@@ -589,14 +773,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
           Patente di guida
         </Text>
         <View
-          style={
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
+          nativeID="17"
+          style={
+            [
+              {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            ]
           }
         >
           <RNSVGSvgView
@@ -661,6 +866,27 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
     </View>
   </RNGestureHandlerButton>
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "height": 0,
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "overflow": "hidden",
+        },
+      ]
+    }
+    nativeID="18"
     style={
       [
         {
@@ -822,6 +1048,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
       collapsable={false}
     >
       <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
+        nativeID="7"
         style={
           [
             {
@@ -861,14 +1115,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
           Patente di guida
         </Text>
         <View
-          style={
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
+          nativeID="8"
+          style={
+            [
+              {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            ]
           }
         >
           <RNSVGSvgView
@@ -933,6 +1208,27 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
     </View>
   </RNGestureHandlerButton>
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "height": 0,
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "overflow": "hidden",
+        },
+      ]
+    }
+    nativeID="9"
     style={
       [
         {
@@ -996,6 +1292,32 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         testID="ListItemCheckbox"
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(244, 245, 248, 0)",
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "marginHorizontal": -24,
+                "paddingHorizontal": 24,
+                "paddingVertical": 12,
+              },
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          nativeID="10"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -1005,7 +1327,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                 "paddingVertical": 12,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(244, 245, 248, 0)",
               },
               {
                 "opacity": 1,
@@ -1014,14 +1336,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
           }
         >
           <View
-            style={
+            collapsable={false}
+            jestAnimatedProps={
               {
-                "transform": [
-                  {
-                    "scale": undefined,
-                  },
-                ],
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={{}}
+            nativeID="11"
+            style={
+              [
+                {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              ]
             }
           >
             <View
@@ -1138,6 +1481,43 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                     }
                   />
                   <View
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {
+                          "opacity": 0,
+                          "transform": [
+                            {
+                              "scale": 0.5,
+                            },
+                          ],
+                        },
+                      }
+                    }
+                    jestInlineStyle={
+                      [
+                        {
+                          "borderCurve": "continuous",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 0,
+                        },
+                        {
+                          "borderRadius": 5,
+                          "height": 24,
+                          "width": 24,
+                        },
+                        {
+                          "backgroundColor": "#0B3EE3",
+                        },
+                      ]
+                    }
+                    nativeID="12"
                     style={
                       [
                         {
@@ -1158,7 +1538,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                           "opacity": 0,
                           "transform": [
                             {
-                              "scale": undefined,
+                              "scale": 0.5,
                             },
                           ],
                         },
@@ -1254,6 +1634,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       collapsable={false}
     >
       <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
+        nativeID="13"
         style={
           [
             {
@@ -1293,14 +1701,35 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           Patente di guida
         </Text>
         <View
-          style={
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
+          nativeID="14"
+          style={
+            [
+              {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            ]
           }
         >
           <RNSVGSvgView
@@ -1365,6 +1794,27 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
     </View>
   </RNGestureHandlerButton>
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "height": 0,
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "overflow": "hidden",
+        },
+      ]
+    }
+    nativeID="15"
     style={
       [
         {

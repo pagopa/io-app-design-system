@@ -37,7 +37,30 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="23"
     style={
       [
         {
@@ -46,12 +69,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="24"
       style={
         [
           {
@@ -65,7 +118,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -230,7 +283,30 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="17"
     style={
       [
         {
@@ -239,12 +315,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="18"
       style={
         [
           {
@@ -258,7 +364,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -412,6 +518,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="19"
     style={
       [
         {
@@ -420,12 +549,39 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+      nativeID="20"
       style={
         [
           {
@@ -436,7 +592,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -571,7 +727,30 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="21"
     style={
       [
         {
@@ -580,12 +759,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="22"
       style={
         [
           {
@@ -599,7 +808,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -789,6 +998,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="27"
     style={
       [
         {
@@ -797,12 +1029,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="28"
       style={
         [
           {
@@ -816,7 +1078,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1028,6 +1290,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 1,
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
+            nativeID="29"
             style={
               [
                 {
@@ -1047,7 +1345,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                   "opacity": 1,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -1099,6 +1397,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                       "stroke",
                       "strokeWidth",
                       "strokeDasharray",
+                      "strokeDashoffset",
                       "strokeLinecap",
                       "strokeLinejoin",
                     ]
@@ -1110,6 +1409,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                     }
                   }
                   strokeDasharray={null}
+                  strokeDashoffset={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
                   strokeWidth={2}
@@ -1160,6 +1460,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="31"
     style={
       [
         {
@@ -1168,12 +1491,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="32"
       style={
         [
           {
@@ -1187,7 +1540,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1314,6 +1667,42 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": 0.5,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
+            nativeID="33"
             style={
               [
                 {
@@ -1333,7 +1722,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                   "opacity": 0,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 0.5,
                     },
                   ],
                 },
@@ -1490,6 +1879,29 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="25"
     style={
       [
         {
@@ -1498,12 +1910,42 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="26"
       style={
         [
           {
@@ -1517,7 +1959,7 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1565,7 +2007,30 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="6"
     style={
       [
         {
@@ -1574,12 +2039,42 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="7"
       style={
         [
           {
@@ -1593,7 +2088,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1758,7 +2253,30 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="0"
     style={
       [
         {
@@ -1767,12 +2285,42 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="1"
       style={
         [
           {
@@ -1786,7 +2334,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1940,6 +2488,29 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="2"
     style={
       [
         {
@@ -1948,12 +2519,39 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+      nativeID="3"
       style={
         [
           {
@@ -1964,7 +2562,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2099,7 +2697,30 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="4"
     style={
       [
         {
@@ -2108,12 +2729,42 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="5"
       style={
         [
           {
@@ -2127,7 +2778,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2317,6 +2968,29 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="10"
     style={
       [
         {
@@ -2325,12 +2999,42 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="11"
       style={
         [
           {
@@ -2344,7 +3048,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2556,6 +3260,42 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 1,
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
+            nativeID="12"
             style={
               [
                 {
@@ -2575,7 +3315,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "opacity": 1,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -2627,6 +3367,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                       "stroke",
                       "strokeWidth",
                       "strokeDasharray",
+                      "strokeDashoffset",
                       "strokeLinecap",
                       "strokeLinejoin",
                     ]
@@ -2638,6 +3379,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                     }
                   }
                   strokeDasharray={null}
+                  strokeDashoffset={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
                   strokeWidth={2}
@@ -2688,6 +3430,29 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="14"
     style={
       [
         {
@@ -2696,12 +3461,42 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="15"
       style={
         [
           {
@@ -2715,7 +3510,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2842,6 +3637,42 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": 0.5,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
+            nativeID="16"
             style={
               [
                 {
@@ -2861,7 +3692,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                   "opacity": 0,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 0.5,
                     },
                   ],
                 },
@@ -3018,6 +3849,29 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
+    nativeID="8"
     style={
       [
         {
@@ -3026,12 +3880,42 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
+      nativeID="9"
       style={
         [
           {
@@ -3045,7 +3929,7 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
