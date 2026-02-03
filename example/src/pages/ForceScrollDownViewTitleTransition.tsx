@@ -23,7 +23,8 @@ export const ForceScrollDownViewTitleTransition = () => {
       header: () => (
         <HeaderSecondLevel
           enableDiscreteTransition
-          animatedRef={animatedScrollViewRef}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          animatedRef={animatedScrollViewRef as any}
           title={"Questo è un titolo lungo, ma lungo lungo davvero, eh!"}
           goBack={() => navigation.goBack()}
           backAccessibilityLabel="Torna indietro"
@@ -35,7 +36,8 @@ export const ForceScrollDownViewTitleTransition = () => {
 
   return (
     <ForceScrollDownView
-      animatedRef={animatedScrollViewRef}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      animatedRef={animatedScrollViewRef as any}
       footerActions={{
         actions: {
           type: "SingleButton",

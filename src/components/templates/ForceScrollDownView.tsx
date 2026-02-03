@@ -8,8 +8,6 @@ import {
 import Animated, {
   AnimatedRef,
   interpolate,
-  runOnJS,
-  runOnUI,
   scrollTo,
   useAnimatedReaction,
   useAnimatedRef,
@@ -18,6 +16,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
@@ -120,7 +119,7 @@ const ForceScrollDownView = ({
           IOSpringValues.button
         );
         if (onThresholdCrossed) {
-          runOnJS(onThresholdCrossed)(crossed);
+          scheduleOnRN(onThresholdCrossed, crossed);
         }
       }
     }
@@ -152,13 +151,13 @@ const ForceScrollDownView = ({
    * scroll view to the bottom and hides the button.
    */
   const handleScrollDownPress = useCallback(() => {
-    runOnUI(() => {
+    scheduleOnUI(() => {
       "worklet";
       // eslint-disable-next-line functional/immutable-data
       isButtonVisible.value = withSpring(0, IOSpringValues.button);
       const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
       scrollTo(scrollViewRef, 0, targetY, true);
-    })();
+    });
   }, [scrollViewRef, contentHeight, scrollViewHeight, isButtonVisible]);
 
   /**

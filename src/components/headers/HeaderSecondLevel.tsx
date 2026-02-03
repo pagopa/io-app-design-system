@@ -13,7 +13,6 @@ import Animated, {
   SharedValue,
   interpolate,
   interpolateColor,
-  runOnJS,
   useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
@@ -22,6 +21,7 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { scheduleOnRN } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import {
@@ -289,7 +289,7 @@ export const HeaderSecondLevel = ({
           (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
             ? "yes"
             : "no-hide-descendants";
-        runOnJS(setImportantForAccessibility)(newValue);
+        scheduleOnRN(setImportantForAccessibility, newValue);
       }
     },
     [scrollValues, enableDiscreteTransition]
