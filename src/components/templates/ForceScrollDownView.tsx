@@ -12,7 +12,7 @@ import Animated, {
   useAnimatedReaction,
   useAnimatedRef,
   useAnimatedStyle,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
@@ -57,7 +57,7 @@ export type ForceScrollDownView = {
    */
   onThresholdCrossed?: (crossed: boolean) => void;
   /**
-   * Optional Animated ref to be used with `useScrollViewOffset`
+   * Optional Animated ref to be used with `useScrollOffset`
    * (outside this component)
    */
   animatedRef?: AnimatedRef<Animated.ScrollView>;
@@ -105,7 +105,7 @@ const ForceScrollDownView = ({
   const isButtonVisible = useSharedValue(1);
   const scrollViewHeight = useSharedValue(0);
   const contentHeight = useSharedValue(0);
-  const offsetY = useScrollViewOffset(scrollViewRef);
+  const offsetY = useScrollOffset(scrollViewRef);
 
   useAnimatedReaction(
     () =>

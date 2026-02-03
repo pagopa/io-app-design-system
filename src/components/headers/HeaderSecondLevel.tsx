@@ -16,7 +16,7 @@ import Animated, {
   useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withSpring,
   withTiming
@@ -157,7 +157,7 @@ export const HeaderSecondLevel = ({
   thirdAction,
   ignoreAccessibilityCheck = false
 }: HeaderSecondLevel) => {
-  const scrollOffset = useScrollViewOffset(
+  const scrollOffset = useScrollOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
       (animatedRef as AnimatedRef<Animated.FlatList<any>>)
   );
