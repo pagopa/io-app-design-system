@@ -33,6 +33,39 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignContent": "center",
+          "alignItems": "flex-start",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "padding": 16,
+        },
+        {
+          "backgroundColor": "#F4F5F8",
+        },
+      ]
+    }
+    nativeID="1"
     style={
       [
         {
@@ -49,7 +82,7 @@ exports[`Test Banner Components - Experimental Enabled Banner Snapshot 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -327,6 +360,39 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignContent": "center",
+          "alignItems": "flex-start",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "padding": 16,
+        },
+        {
+          "backgroundColor": "#F4F5F8",
+        },
+      ]
+    }
+    nativeID="0"
     style={
       [
         {
@@ -343,7 +409,7 @@ exports[`Test Banner Components Banner Snapshot 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },

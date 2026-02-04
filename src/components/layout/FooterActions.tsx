@@ -8,7 +8,7 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { AnimatedStyle } from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import {
   IOColors,
@@ -72,9 +72,9 @@ type FooterActions = FooterSingleButton | FooterTwoButtons | FooterThreeButtons;
 
 type FooterAnimatedStyles = {
   /* Apply object returned by `useAnimatedStyle` to the main block */
-  mainBlock?: Animated.AnimateStyle<ViewStyle>;
+  mainBlock?: AnimatedStyle<ViewStyle>;
   /* Apply object returned by `useAnimatedStyle` to the background */
-  background?: Animated.AnimateStyle<ViewStyle>;
+  background?: AnimatedStyle<ViewStyle>;
 };
 
 type FooterActionsProps = WithTestID<
