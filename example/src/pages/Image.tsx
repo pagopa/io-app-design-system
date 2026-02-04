@@ -6,7 +6,8 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import React from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const ImageScreen = () => (
   <SafeAreaView style={{ flex: 1 }}>

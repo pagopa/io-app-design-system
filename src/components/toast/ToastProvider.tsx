@@ -1,19 +1,16 @@
 import { throttle } from "lodash";
 import React from "react";
-import {
-  AccessibilityInfo,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  View
-} from "react-native";
+import { AccessibilityInfo, Platform, StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
   SequencedTransition,
   SlideInUp,
   SlideOutUp
 } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets
+} from "react-native-safe-area-context";
 import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { Dismissable } from "../templates";

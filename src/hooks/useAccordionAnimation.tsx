@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { StyleSheet, type LayoutChangeEvent } from "react-native";
 import {
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
@@ -69,6 +70,13 @@ export const useAccordionAnimation = ({
   ];
   const bodyInnerStyle = styles.accordionBodyContainer;
 
+  const progress = useDerivedValue(() => {
+    const to = expanded ? 1 : 0;
+    return animationEnabled.value
+      ? withSpring(to, IOSpringValues.accordion)
+      : to;
+  }, [expanded]);
+
   return {
     expanded,
     /**
@@ -90,7 +98,11 @@ export const useAccordionAnimation = ({
     /**
      * The style to apply to the inner body container.
      */
-    bodyInnerStyle
+    bodyInnerStyle,
+    /**
+     * The progress of the accordion animation, from 0 (collapsed) to 1 (expanded).
+     */
+    progress
   };
 };
 

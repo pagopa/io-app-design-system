@@ -10,7 +10,10 @@ import {
   DefaultTheme,
   NavigationContainer
 } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackHeaderProps
+} from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -495,7 +498,7 @@ const AppNavigator = () => {
               component={ListItems}
               options={{
                 headerShown: true,
-                header: ({ navigation }) => (
+                header: ({ navigation }: NativeStackHeaderProps) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
                     ignoreSafeAreaMargin
@@ -516,7 +519,7 @@ const AppNavigator = () => {
               component={ListItems}
               options={{
                 headerShown: true,
-                header: ({ navigation }) => (
+                header: ({ navigation }: NativeStackHeaderProps) => (
                   <ModalBSHeader
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.title}
                     onClose={navigation.goBack}

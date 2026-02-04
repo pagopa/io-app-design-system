@@ -7,7 +7,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import * as React from "react";
-import { FlatList, ListRenderItemInfo, View } from "react-native";
+import { Alert, FlatList, ListRenderItemInfo, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
 
@@ -56,6 +56,10 @@ const assistanceData: Array<AccordionItem> = [
   }
 ];
 
+const onButtonPress = () => {
+  Alert.alert("Alert", "Action triggered");
+};
+
 export const Collapsible = () => {
   const renderAccordionHeader = () => (
     <View style={{ marginBottom: 16 }}>
@@ -93,7 +97,7 @@ const renderClaimsSelector = () => (
     <VSpacer size={40} />
     <H3>ClaimsSelector</H3>
     <VSpacer size={16} />
-    <ComponentViewerBox name="ClaimsSelector · Default collapsed & unselectable">
+    <ComponentViewerBox name="ClaimsSelector · Default collapsed & unselectable · Gradient header">
       <ClaimsSelector
         defaultExpanded={false}
         selectionEnabled={false}
@@ -107,7 +111,15 @@ const renderClaimsSelector = () => (
           {
             id: "birthplace",
             value: "Roma",
-            description: "Luogo di nascita"
+            description: "Luogo di nascita",
+            endElement: {
+              type: "iconButton",
+              componentProps: {
+                icon: "info",
+                onPress: onButtonPress,
+                accessibilityLabel: "Mostra dettagli Luogo di nascita"
+              }
+            }
           },
           {
             id: "image",
@@ -116,10 +128,11 @@ const renderClaimsSelector = () => (
             type: "image"
           }
         ]}
+        headerGradientColors={["#ECECEC", "#F2E4CE"]}
       />
     </ComponentViewerBox>
 
-    <ComponentViewerBox name="ClaimsSelector · Default expanded & selectable">
+    <ComponentViewerBox name="ClaimsSelector · Default expanded & selectable · No gradient">
       <ClaimsSelector
         defaultExpanded
         selectionEnabled

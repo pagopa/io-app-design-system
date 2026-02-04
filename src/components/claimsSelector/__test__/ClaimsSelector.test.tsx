@@ -1,10 +1,10 @@
 import React from "react";
-import * as TestRenderer from "react-test-renderer";
+import { render } from "@testing-library/react-native";
 import { ClaimsSelector } from "../ClaimsSelector";
 
 describe("ClaimsSelector", () => {
   it("ClaimsSelector Snapshot (controlled)", () => {
-    const claimsSelector = TestRenderer.create(
+    const { toJSON } = render(
       <ClaimsSelector
         title="Patente di guida"
         selectedItemIds={["name"]}
@@ -17,11 +17,11 @@ describe("ClaimsSelector", () => {
         ]}
       />
     );
-    expect(claimsSelector).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ClaimsSelector Snapshot (uncontrolled)", () => {
-    const claimsSelector = TestRenderer.create(
+    const { toJSON } = render(
       <ClaimsSelector
         title="Patente di guida"
         items={[
@@ -33,11 +33,11 @@ describe("ClaimsSelector", () => {
         ]}
       />
     );
-    expect(claimsSelector).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ClaimsSelector Snapshot (unselectable items)", () => {
-    const claimsSelector = TestRenderer.create(
+    const { toJSON } = render(
       <ClaimsSelector
         title="Patente di guida"
         selectionEnabled={false}
@@ -50,11 +50,11 @@ describe("ClaimsSelector", () => {
         ]}
       />
     );
-    expect(claimsSelector).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ClaimsSelector Snapshot (custom component)", () => {
-    const claimsSelector = TestRenderer.create(
+    const { toJSON } = render(
       <ClaimsSelector
         title="Patente di guida"
         selectionEnabled={false}
@@ -68,6 +68,6 @@ describe("ClaimsSelector", () => {
         ]}
       />
     );
-    expect(claimsSelector).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 });
