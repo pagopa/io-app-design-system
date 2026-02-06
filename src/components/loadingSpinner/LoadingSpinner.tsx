@@ -1,12 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useId } from "react";
 import { View, ColorValue } from "react-native";
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withRepeat,
-  withTiming,
-  Easing
-} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
 import { WithTestID } from "../../utils/types";
 import { useIOTheme } from "../../context";
@@ -26,7 +20,12 @@ export type LoadingSpinner = WithTestID<{
  */
 export type IOLoadingSpinnerSizeScale = 24 | 48 | 76;
 
-const strokeMap: Record<NonNullable<LoadingSpinner["size"]>, number> = {
+const spinKeyframes = {
+  from: { transform: [{ rotateZ: "0deg" }] },
+  to: { transform: [{ rotateZ: "360deg" }] }
+};
+
+const strokeMap: Record<IOLoadingSpinnerSizeScale, number> = {
   24: 3,
   48: 5,
   76: 7
@@ -41,23 +40,13 @@ export const LoadingSpinner = ({
   testID = "LoadingSpinnerTestID"
 }: LoadingSpinner): React.ReactElement => {
   const theme = useIOTheme();
-  const rotation = useSharedValue(0);
-  const stroke: number = strokeMap[size];
+  const id = useId();
+  const stroke = strokeMap[size];
 
   const color = customColor ?? IOColors[theme["interactiveElem-default"]];
 
-  useEffect(() => {
-    // eslint-disable-next-line functional/immutable-data
-    rotation.value = withRepeat(
-      withTiming(360, { duration: durationMs, easing: Easing.linear }),
-      -1,
-      false
-    );
-  }, [durationMs, rotation]);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ rotateZ: `${rotation.value}deg` }]
-  }));
+  const secondHalfId = `${id}-secondHalf`;
+  const firstHalfId = `${id}-firstHalf`;
 
   return (
     <View
@@ -70,7 +59,13 @@ export const LoadingSpinner = ({
     >
       <Animated.View
         testID={"LoadingSpinnerAnimatedTestID"}
-        style={animatedStyle}
+        style={{
+          animationName: spinKeyframes,
+          animationDuration: durationMs,
+          animationIterationCount: "infinite",
+          animationTimingFunction: "linear",
+          transformOrigin: "center"
+        }}
       >
         {/* Thanks to Ben Ilegbodu for the article on how to
           create a a SVG gradient loading spinner. Below is
@@ -83,11 +78,11 @@ export const LoadingSpinner = ({
           fill="none"
         >
           <Defs>
-            <LinearGradient id="spinner-secondHalf">
+            <LinearGradient id={secondHalfId}>
               <Stop offset="0%" stopOpacity="0" stopColor={color} />
               <Stop offset="100%" stopOpacity="1" stopColor={color} />
             </LinearGradient>
-            <LinearGradient id="spinner-firstHalf">
+            <LinearGradient id={firstHalfId}>
               <Stop offset="0%" stopOpacity="1" stopColor={color} />
               <Stop offset="100%" stopOpacity="1" stopColor={color} />
             </LinearGradient>
@@ -95,13 +90,13 @@ export const LoadingSpinner = ({
 
           <G strokeWidth={stroke}>
             <Path
-              stroke="url(#spinner-secondHalf)"
+              stroke={`url(#${secondHalfId})`}
               d={`M ${stroke / 2} ${size / 2} A ${size / 2 - stroke / 2} ${
                 size / 2 - stroke / 2
               } 0 0 1 ${size - stroke / 2} ${size / 2}`}
             />
             <Path
-              stroke="url(#spinner-firstHalf)"
+              stroke={`url(#${firstHalfId})`}
               d={`M ${size - stroke / 2} ${size / 2} A ${
                 size / 2 - stroke / 2
               } ${size / 2 - stroke / 2} 0 0 1 ${stroke / 2} ${size / 2}`}
