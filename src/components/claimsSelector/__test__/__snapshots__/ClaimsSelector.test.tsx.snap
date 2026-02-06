@@ -590,7 +590,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                         <RNSVGPath
                           d="m7 12 4 4 7-7"
                           fill={null}
-                          onLayout={[Function]}
+                          onSvgLayout={[Function]}
                           propList={
                             [
                               "fill",

@@ -1390,7 +1390,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
@@ -3360,7 +3360,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
