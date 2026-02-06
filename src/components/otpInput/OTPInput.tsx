@@ -141,15 +141,7 @@ export const OTPInput = forwardRef<View, Props>(
             setHasFocus(true);
           }}
           ref={ref}
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            columnGap: OTP_ITEMS_GAP
-          }}
-          accessible={true}
-          accessibilityLabel={accessibilityLabel}
-          accessibilityHint={accessibilityHint}
-          accessibilityValue={{ text: value }}
+          accessible={false}
         >
           <TextInput
             value={value}
@@ -166,23 +158,37 @@ export const OTPInput = forwardRef<View, Props>(
             autoComplete={autocomplete ? "sms-otp" : undefined}
             inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
+            accessibilityLabel={accessibilityLabel}
+            accessibilityHint={accessibilityHint}
+            accessibilityValue={{ text: value }}
             autoFocus={autoFocus}
             secureTextEntry={true}
           />
-          {cells.map((_, i) => (
-            <BoxedInput
-              key={i}
-              status={
-                hasError
-                  ? "error"
-                  : hasFocus && value.length === i
-                  ? "focus"
-                  : "default"
-              }
-              secret={secret}
-              value={value[i]}
-            />
-          ))}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              columnGap: OTP_ITEMS_GAP,
+              flexGrow: 1
+            }}
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no-hide-descendants"
+          >
+            {cells.map((_, i) => (
+              <BoxedInput
+                key={i}
+                status={
+                  hasError
+                    ? "error"
+                    : hasFocus && value.length === i
+                    ? "focus"
+                    : "default"
+                }
+                secret={secret}
+                value={value[i]}
+              />
+            ))}
+          </View>
         </Pressable>
         <VSpacer size={4} />
         {hasError && errorMessage && (
