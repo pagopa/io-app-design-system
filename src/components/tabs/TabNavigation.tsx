@@ -1,6 +1,11 @@
 import React from "react";
-import { FlexStyle, LayoutChangeEvent, StyleSheet, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import {
+  FlexStyle,
+  LayoutChangeEvent,
+  ScrollView,
+  StyleSheet,
+  View
+} from "react-native";
 import { IOVisualCostants } from "../../core";
 import { TabItem } from "./TabItem";
 

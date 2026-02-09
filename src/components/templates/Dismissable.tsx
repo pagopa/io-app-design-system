@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions } from "react-native";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { usePanGesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -36,21 +36,16 @@ const Dismissable = ({
   const translateX = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateX: translateX.value
-      }
-    ]
+    transform: [{ translateX: translateX.value }]
   }));
 
-  const pan = Gesture.Pan()
-    .onUpdate(event => {
-      // eslint-disable-next-line functional/immutable-data
+  /* eslint-disable functional/immutable-data */
+  const pan = usePanGesture({
+    onUpdate: event => {
       translateX.value = event.translationX;
-    })
-    .onEnd(event => {
+    },
+    onDeactivate: event => {
       if (Math.abs(event.translationX) > dismissThreshold) {
-        // eslint-disable-next-line functional/immutable-data
         translateX.value = withTiming(
           windowWidth * Math.sign(event.translationX),
           {
@@ -63,11 +58,12 @@ const Dismissable = ({
           }
         );
       } else {
-        // eslint-disable-next-line functional/immutable-data
         translateX.value = withSpring(0, { mass: 0.5 });
       }
-    })
-    .withTestId(testID ?? "");
+    },
+    testID: testID ?? ""
+  });
+  /* eslint-enable functional/immutable-data */
 
   return (
     <GestureDetector gesture={pan}>

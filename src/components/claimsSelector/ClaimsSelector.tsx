@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useIOTheme } from "../../context";
@@ -174,7 +173,7 @@ export const ClaimsSelector = ({
         }
       ]}
     >
-      <TouchableWithoutFeedback
+      <Pressable
         accessible={true}
         accessibilityRole="button"
         accessibilityState={{ expanded }}
@@ -195,7 +194,7 @@ export const ClaimsSelector = ({
             <Icon name="chevronBottom" color={headerForegroundColor} />
           </Animated.View>
         </Animated.View>
-      </TouchableWithoutFeedback>
+      </Pressable>
 
       <Animated.View style={bodyAnimatedStyle}>
         <View
