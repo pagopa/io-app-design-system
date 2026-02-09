@@ -147,7 +147,12 @@ export const OTPInput = forwardRef<View, Props>(
             value={value}
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
-            style={{ position: "absolute", opacity: 0 }}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              opacity: 0.01
+            }}
             maxLength={length}
             ref={inputRef}
             onBlur={() => setHasFocus(false)}
