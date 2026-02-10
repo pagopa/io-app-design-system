@@ -3,9 +3,9 @@ import { Svg, Path } from "react-native-svg";
 import { SVGIconProps } from "../types";
 
 const IconPlay = ({ size, style, ...props }: SVGIconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 16 16" style={style} {...props}>
+  <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
     <Path
-      d="M0 12.8513V3.14895C0 .638117 3.23654-.859495 5.65284.533264l8.72806 5.030866c2.2027 1.26965 2.1479 4.08388-.1031 5.28867L5.54977 15.5243C3.12752 16.8208 0 15.3144 0 12.8513Z"
+      d="M0 19.277V4.72342C0 0.957176 4.85482 -1.28924 8.47926 0.799896L21.5713 8.3462C24.8754 10.2507 24.7931 14.472 21.4167 16.2792L8.32466 23.2864C4.69129 25.2311 0 22.9717 0 19.277Z"
       fill="currentColor"
     />
   </Svg>
