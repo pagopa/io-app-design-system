@@ -1,0 +1,18 @@
+import React from "react";
+import { Svg, Path } from "react-native-svg";
+import { SVGIconProps } from "../types";
+
+const IconPause = ({ size, style, ...props }: SVGIconProps) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" style={style} {...props}>
+    <Path
+      d="M0 3C0 1.34315 1.34315 0 3 0H6C7.65685 0 9 1.34315 9 3V21C9 22.6569 7.65685 24 6 24H3C1.34315 24 0 22.6569 0 21V3Z"
+      fill="currentColor"
+    />
+    <Path
+      d="M15 3C15 1.34315 16.3431 0 18 0H21C22.6569 0 24 1.34315 24 3V21C24 22.6569 22.6569 24 21 24H18C16.3431 24 15 22.6569 15 21V3Z"
+      fill="currentColor"
+    />
+  </Svg>
+);
+
+export default IconPause;
