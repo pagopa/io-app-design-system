@@ -115,7 +115,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
   return (
     <ToastContext.Provider value={contextValue as ToastContext}>
       <InitializeToastRef />
-      <SafeAreaView style={[styles.container]} pointerEvents="box-none">
+      <SafeAreaView style={styles.container} pointerEvents="box-none">
         <View
           style={{ padding: IOVisualCostants.appMarginDefault }}
           pointerEvents="box-none"
