@@ -2,10 +2,9 @@ import * as React from "react";
 import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import {
   AccessibilityInfo,
-  NativeSyntheticEvent,
   Pressable,
   TextInput,
-  TextInputKeyPressEventData,
+  TextInputKeyPressEvent,
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
@@ -145,11 +144,13 @@ export const OTPInput = forwardRef<View, Props>(
             value={value}
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
+            caretHidden={true}
+            // eslint-disable-next-line react-native/no-color-literals
             style={{
               position: "absolute",
               width: "100%",
               height: "100%",
-              opacity: 0.01
+              color: "transparent"
             }}
             maxLength={length}
             ref={inputRef}
@@ -163,16 +164,18 @@ export const OTPInput = forwardRef<View, Props>(
             accessible={true}
             accessibilityLabel={accessibilityLabel}
             accessibilityHint={accessibilityHint}
-            accessibilityValue={{ text: value }}
+            // Ensure the screen reader pronounces the code digit by digit
+            accessibilityValue={{ text: value.split("").join(" ") }}
             autoFocus={autoFocus}
-            secureTextEntry={true}
+            secureTextEntry={secret}
           />
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
               columnGap: OTP_ITEMS_GAP,
-              flexGrow: 1
+              flexGrow: 1,
+              zIndex: 10
             }}
             accessibilityElementsHidden={true}
             importantForAccessibility="no-hide-descendants"
