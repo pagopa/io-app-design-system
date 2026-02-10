@@ -30,6 +30,10 @@ type Props = {
   accessibilityLabel?: string;
   deleteButtonAccessibilityLabel?: string;
   accessibilityHint?: string;
+  accessibilityValueText?: (params: {
+    valueLength: number;
+    length: number;
+  }) => string;
   inputAccessoryViewID?: string;
   autoFocus?: boolean;
 };
@@ -55,6 +59,7 @@ export const OTPInput = forwardRef<View, Props>(
       length,
       accessibilityLabel,
       accessibilityHint,
+      accessibilityValueText,
       onValidate,
       errorMessage = "",
       secret = false,
@@ -167,7 +172,13 @@ export const OTPInput = forwardRef<View, Props>(
             accessibilityLabel={accessibilityLabel}
             accessibilityHint={accessibilityHint}
             // Ensure the screen reader pronounces the code digit by digit
-            accessibilityValue={{ text: value.split("").join(" ") }}
+            accessibilityValue={{
+              text:
+                accessibilityValueText?.({
+                  valueLength: value.length,
+                  length
+                }) ?? value.split("").join(" ")
+            }}
             autoFocus={autoFocus}
             secureTextEntry={secret}
           />
