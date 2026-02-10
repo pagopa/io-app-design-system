@@ -114,10 +114,8 @@ export const OTPInput = forwardRef<View, Props>(
       handleValidate(value);
     };
 
-    const handleKeyPress = ({
-      nativeEvent
-    }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
-      switch (nativeEvent.key) {
+    const handleKeyPress = (e: TextInputKeyPressEvent) => {
+      switch (e.nativeEvent.key) {
         case "Backspace":
           if (deleteButtonAccessibilityLabel && value.length > 0) {
             AccessibilityInfo.announceForAccessibility(
@@ -126,7 +124,7 @@ export const OTPInput = forwardRef<View, Props>(
           }
           break;
         default:
-          AccessibilityInfo.announceForAccessibility(nativeEvent.key);
+          AccessibilityInfo.announceForAccessibility(e.nativeEvent.key);
           break;
       }
     };
