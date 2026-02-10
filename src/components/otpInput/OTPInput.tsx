@@ -2,7 +2,9 @@ import * as React from "react";
 import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import {
   AccessibilityInfo,
+  Platform,
   Pressable,
+  StyleSheet,
   TextInput,
   TextInputKeyPressEvent,
   View
@@ -144,14 +146,14 @@ export const OTPInput = forwardRef<View, Props>(
             value={value}
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
-            caretHidden={true}
-            // eslint-disable-next-line react-native/no-color-literals
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              color: "transparent"
-            }}
+            caretHidden={Platform.OS === "ios"}
+            style={[
+              StyleSheet.absoluteFillObject,
+              Platform.select({
+                ios: { opacity: 0.01 },
+                android: { opacity: 0 }
+              })
+            ]}
             maxLength={length}
             ref={inputRef}
             onBlur={() => setHasFocus(false)}
