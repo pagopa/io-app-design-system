@@ -3,12 +3,12 @@ import { Dimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Easing,
-  runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { scheduleOnRN } from "react-native-worklets";
 import { WithTestID } from "../../utils/types";
 
 const windowWidth = Dimensions.get("window").width;
@@ -57,7 +57,10 @@ const Dismissable = ({
             duration: 300,
             easing: Easing.inOut(Easing.exp)
           },
-          runOnJS(onDismiss)
+          () => {
+            "worklet";
+            scheduleOnRN(onDismiss);
+          }
         );
       } else {
         // eslint-disable-next-line functional/immutable-data

@@ -8,7 +8,7 @@ import {
 import Animated, {
   AnimatedRef,
   useAnimatedStyle,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
@@ -85,7 +85,7 @@ export const HeaderFirstLevel = ({
   }, []);
 
   /* We show the divider only when the header is scrolled down */
-  const offset = useScrollViewOffset(
+  const offset = useScrollOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
       (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
   );

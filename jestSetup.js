@@ -6,10 +6,6 @@
 import nodeFetch from "node-fetch";
 import { NativeModules } from "react-native";
 
-// Setup Reanimated for testing
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('react-native-reanimated').setUpTests();
-
 // eslint-disable-next-line functional/immutable-data
 NativeModules.RNGestureHandlerModule = {
   attachGestureHandler: jest.fn(),
@@ -22,15 +18,14 @@ NativeModules.RNGestureHandlerModule = {
   Directions: {}
 };
 
-jest.mock("react-native-reanimated", () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const Reanimated = require("react-native-reanimated/mock");
+// Mock react-native-worklets for tests (must be before reanimated)
+jest.mock("react-native-worklets", () =>
+  require("react-native-worklets/lib/module/mock")
+);
 
-  // eslint-disable-next-line functional/immutable-data
-  Reanimated.useReducedMotion = () => false;
-
-  return Reanimated;
-});
+// Setup Reanimated for testing using the new v4 approach
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("react-native-reanimated").setUpTests();
 
 // Mock react-native-haptic-feedback to avoid warnings and side effects
 jest.mock("react-native-haptic-feedback", () => ({
@@ -57,7 +52,7 @@ NativeModules.PlatformConstants = NativeModules.PlatformConstants || {
   forceTouchAvailable: false
 };
 
-jest.mock('react-native/Libraries/EventEmitter/RCTDeviceEventEmitter', () => ({
+jest.mock("react-native/Libraries/EventEmitter/RCTDeviceEventEmitter", () => ({
   default: jest.fn()
 }));
 
