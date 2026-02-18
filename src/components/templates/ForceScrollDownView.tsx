@@ -165,24 +165,18 @@ const ForceScrollDownView = ({
    * and has animated style applied to it.
    */
 
-  const buttonTransitionStyle = useAnimatedStyle(() => ({
-    opacity: isButtonVisible.value,
-    transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
-  }));
-
-  const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
-
-  // Calculate bottom position including safe area insets
-  const scrollDownButtonBottom =
-    IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin;
+  const buttonTransitionStyle = useAnimatedStyle(() => {
+    const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
+    return {
+      bottom: IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin,
+      opacity: isButtonVisible.value,
+      transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
+    };
+  });
 
   const scrollDownButton = (
     <Animated.View
-      style={[
-        styles.scrollDownButton,
-        { bottom: scrollDownButtonBottom },
-        buttonTransitionStyle
-      ]}
+      style={[styles.scrollDownButton, buttonTransitionStyle]}
     >
       <IconButtonSolid
         testID={"ScrollDownButton"}
