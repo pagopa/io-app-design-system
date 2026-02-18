@@ -210,7 +210,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 
         false,
       ]
     }
-    nativeID="5"
     style={
       [
         {
@@ -464,7 +463,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
         false,
       ]
     }
-    nativeID="4"
     style={
       [
         {
@@ -755,7 +753,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
         false,
       ]
     }
-    nativeID="6"
     style={
       [
         {
@@ -1095,7 +1092,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no ic
         false,
       ]
     }
-    nativeID="7"
     style={
       [
         {
@@ -1485,7 +1481,6 @@ exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `
         false,
       ]
     }
-    nativeID="1"
     style={
       [
         {
@@ -1739,7 +1734,6 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
         false,
       ]
     }
-    nativeID="0"
     style={
       [
         {
@@ -2030,7 +2024,6 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
         false,
       ]
     }
-    nativeID="2"
     style={
       [
         {
@@ -2370,7 +2363,6 @@ exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress)
         false,
       ]
     }
-    nativeID="3"
     style={
       [
         {

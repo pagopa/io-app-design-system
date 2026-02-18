@@ -89,7 +89,6 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
         {},
       ]
     }
-    nativeID="3"
     style={
       [
         {
@@ -148,7 +147,6 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
           false,
         ]
       }
-      nativeID="4"
       style={
         [
           {
@@ -193,7 +191,6 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="5"
         numberOfLines={1}
         style={
           [
@@ -311,7 +308,6 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
         {},
       ]
     }
-    nativeID="6"
     style={
       [
         {
@@ -373,7 +369,6 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
           false,
         ]
       }
-      nativeID="7"
       style={
         [
           {
@@ -418,7 +413,6 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="8"
         numberOfLines={1}
         style={
           [
@@ -535,7 +529,6 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
         {},
       ]
     }
-    nativeID="0"
     style={
       [
         {
@@ -596,7 +589,6 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
           false,
         ]
       }
-      nativeID="1"
       style={
         [
           {
@@ -641,7 +633,6 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="2"
         numberOfLines={1}
         style={
           [
