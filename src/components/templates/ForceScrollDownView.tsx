@@ -170,14 +170,14 @@ const ForceScrollDownView = ({
     return {
       bottom: IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin,
       opacity: isButtonVisible.value,
-      transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
+      transform: [
+        { scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }
+      ]
     };
   });
 
   const scrollDownButton = (
-    <Animated.View
-      style={[styles.scrollDownButton, buttonTransitionStyle]}
-    >
+    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"
