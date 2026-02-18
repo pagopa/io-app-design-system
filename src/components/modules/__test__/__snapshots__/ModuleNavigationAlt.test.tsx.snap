@@ -174,6 +174,42 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -194,7 +230,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -391,6 +427,42 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -411,7 +483,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -645,6 +717,42 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -665,7 +773,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -948,6 +1056,42 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no ic
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -968,7 +1112,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no ic
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -1301,6 +1445,42 @@ exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -1321,7 +1501,7 @@ exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -1518,6 +1698,42 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -1538,7 +1754,7 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -1772,6 +1988,42 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -1792,7 +2044,7 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -2075,6 +2327,42 @@ exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress)
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#E8EBF1",
+          "borderCurve": "continuous",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+        },
+        {
+          "borderColor": "#E8EBF1",
+        },
+        false,
+      ]
+    }
     style={
       [
         {
@@ -2095,7 +2383,7 @@ exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress)
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },

@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "5.12.3",
+  "version": "6.0.0-1",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -101,9 +101,10 @@
     "react-native-gesture-handler": "*",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
-    "react-native-reanimated": "*",
+    "react-native-reanimated": ">=4.0.0",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "react-native-worklets": "*"
   },
   "engines": {
     "node": ">= 20"
@@ -169,9 +170,10 @@
     "react-native-gesture-handler": "^2.25.0",
     "react-native-haptic-feedback": "^2.3.3",
     "react-native-linear-gradient": "^2.8.3",
-    "react-native-reanimated": "3.19.5",
-    "react-native-safe-area-context": "^5.4.1",
-    "react-native-svg": "^15.12.0"
+    "react-native-reanimated": "4.2.2",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-svg": "^15.12.0",
+    "react-native-worklets": "^0.7.0"
   },
   "resolutions": {
     "arktype": "1.0.25"

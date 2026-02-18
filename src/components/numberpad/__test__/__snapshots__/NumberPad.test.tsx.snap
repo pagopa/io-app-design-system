@@ -60,6 +60,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -72,12 +103,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -141,6 +172,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -153,12 +215,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -222,6 +284,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -234,12 +327,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -314,6 +407,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -326,12 +450,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -395,6 +519,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -407,12 +562,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -476,6 +631,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -488,12 +674,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -568,6 +754,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -580,12 +797,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -649,6 +866,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -661,12 +909,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -730,6 +978,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -742,12 +1021,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -838,6 +1117,35 @@ exports[`NumberPad Should match the snapshot 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
             style={
               [
                 {
@@ -851,7 +1159,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -863,17 +1171,25 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
-              animatedProps={
-                {
-                  "color": undefined,
-                }
-              }
               bbHeight={24}
               bbWidth={24}
+              collapsable={false}
               color="#FFFFFF"
               focusable={false}
               height={24}
               importantForAccessibility="no-hide-descendants"
+              jestAnimatedProps={
+                {
+                  "value": {
+                    "color": "rgba(255, 255, 255, 1)",
+                  },
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
               meetOrSlice={0}
               minX={0}
               minY={0}
@@ -956,6 +1272,37 @@ exports[`NumberPad Should match the snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
+          collapsable={false}
+          jestAnimatedProps={
+            {
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
+                "transform": [
+                  {
+                    "scale": 1,
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 28,
+                "justifyContent": "center",
+              },
+              {
+                "height": 56,
+                "width": 56,
+              },
+            ]
+          }
           style={
             [
               {
@@ -968,12 +1315,12 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 "width": 56,
               },
               {
-                "backgroundColor": undefined,
+                "backgroundColor": "rgba(255, 255, 255, 0.149)",
               },
               {
                 "transform": [
                   {
-                    "scale": undefined,
+                    "scale": 1,
                   },
                 ],
               },
@@ -1053,6 +1400,35 @@ exports[`NumberPad Should match the snapshot 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
             style={
               [
                 {
@@ -1066,7 +1442,7 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 {
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -1078,17 +1454,25 @@ exports[`NumberPad Should match the snapshot 1`] = `
               accessibilityLabel=""
               accessible={false}
               align="xMidYMid"
-              animatedProps={
-                {
-                  "color": undefined,
-                }
-              }
               bbHeight={24}
               bbWidth={24}
+              collapsable={false}
               color="#FFFFFF"
               focusable={false}
               height={24}
               importantForAccessibility="no-hide-descendants"
+              jestAnimatedProps={
+                {
+                  "value": {
+                    "color": "rgba(255, 255, 255, 1)",
+                  },
+                }
+              }
+              jestAnimatedStyle={
+                {
+                  "value": {},
+                }
+              }
               meetOrSlice={0}
               minX={0}
               minY={0}

@@ -8,16 +8,15 @@ import {
 import Animated, {
   AnimatedRef,
   interpolate,
-  runOnJS,
-  runOnUI,
   scrollTo,
   useAnimatedReaction,
   useAnimatedRef,
   useAnimatedStyle,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
+import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
@@ -58,7 +57,7 @@ export type ForceScrollDownView = {
    */
   onThresholdCrossed?: (crossed: boolean) => void;
   /**
-   * Optional Animated ref to be used with `useScrollViewOffset`
+   * Optional Animated ref to be used with `useScrollOffset`
    * (outside this component)
    */
   animatedRef?: AnimatedRef<Animated.ScrollView>;
@@ -106,7 +105,7 @@ const ForceScrollDownView = ({
   const isButtonVisible = useSharedValue(1);
   const scrollViewHeight = useSharedValue(0);
   const contentHeight = useSharedValue(0);
-  const offsetY = useScrollViewOffset(scrollViewRef);
+  const offsetY = useScrollOffset(scrollViewRef);
 
   useAnimatedReaction(
     () =>
@@ -120,7 +119,7 @@ const ForceScrollDownView = ({
           IOSpringValues.button
         );
         if (onThresholdCrossed) {
-          runOnJS(onThresholdCrossed)(crossed);
+          scheduleOnRN(onThresholdCrossed, crossed);
         }
       }
     }
@@ -152,13 +151,13 @@ const ForceScrollDownView = ({
    * scroll view to the bottom and hides the button.
    */
   const handleScrollDownPress = useCallback(() => {
-    runOnUI(() => {
+    scheduleOnUI(() => {
       "worklet";
       // eslint-disable-next-line functional/immutable-data
       isButtonVisible.value = withSpring(0, IOSpringValues.button);
       const targetY = Math.max(0, contentHeight.value - scrollViewHeight.value);
       scrollTo(scrollViewRef, 0, targetY, true);
-    })();
+    });
   }, [scrollViewRef, contentHeight, scrollViewHeight, isButtonVisible]);
 
   /**
@@ -166,25 +165,19 @@ const ForceScrollDownView = ({
    * and has animated style applied to it.
    */
 
-  const buttonTransitionStyle = useAnimatedStyle(() => ({
-    opacity: isButtonVisible.value,
-    transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
-  }));
-
-  const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
-
-  // Calculate bottom position including safe area insets
-  const scrollDownButtonBottom =
-    IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin;
+  const buttonTransitionStyle = useAnimatedStyle(() => {
+    const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
+    return {
+      bottom: IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin,
+      opacity: isButtonVisible.value,
+      transform: [
+        { scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }
+      ]
+    };
+  });
 
   const scrollDownButton = (
-    <Animated.View
-      style={[
-        styles.scrollDownButton,
-        { bottom: scrollDownButtonBottom },
-        buttonTransitionStyle
-      ]}
-    >
+    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"
