@@ -29,7 +29,8 @@ import {
 
 type ImageProps =
   | { icon: IOIcons; image?: never }
-  | { icon?: never; image: ImageURISource | ImageSourcePropType };
+  | { icon?: never; image: ImageURISource | ImageSourcePropType }
+  | { icon?: never; image?: never };
 
 type LoadingModuleProps = {
   isLoading: true;
