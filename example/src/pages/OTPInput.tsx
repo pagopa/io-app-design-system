@@ -23,6 +23,10 @@ type WrapperProps = {
   autoFocus?: boolean;
   length?: number;
   otpCompare?: string;
+  accessibilityValueText?: (params: {
+    valueLength: number;
+    length: number;
+  }) => string;
 };
 
 const OTPWrapper = ({
@@ -30,7 +34,8 @@ const OTPWrapper = ({
   validation = false,
   autoFocus = false,
   length = OTP_LENGTH_8,
-  otpCompare = OTP_COMPARE_8
+  otpCompare = OTP_COMPARE_8,
+  accessibilityValueText
 }: WrapperProps) => {
   const [value, setValue] = useState("");
   const onValueChange = useCallback(
@@ -59,6 +64,7 @@ const OTPWrapper = ({
           onValidate={onValidate}
           errorMessage={"Wrong OTP"}
           autoFocus={autoFocus}
+          accessibilityValueText={accessibilityValueText}
         />
         <VSpacer />
         <IOButton
@@ -68,7 +74,7 @@ const OTPWrapper = ({
         />
       </>
     ),
-    [value, onValueChange, secret, onValidate, autoFocus, length]
+    [value, onValueChange, secret, onValidate, autoFocus, length, accessibilityValueText]
   );
 };
 
@@ -126,7 +132,12 @@ export const OTPInputScreen = () => {
             <VSpacer />
             <H5>Secret</H5>
             <VSpacer />
-            <OTPWrapper secret />
+            <OTPWrapper
+              secret
+              accessibilityValueText={({ valueLength, length }) =>
+                `${valueLength} of ${length} digits entered`
+              }
+            />
             <VSpacer />
             <H5>Validation+Secret</H5>
             <BodySmall>Correct OTP {`${OTP_COMPARE_8}`}</BodySmall>
