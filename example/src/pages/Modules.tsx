@@ -377,6 +377,11 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, without image or icon and with chevron">
+      <View>
+        <ModuleCredential label="Identità digitale" onPress={mockFn} />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
