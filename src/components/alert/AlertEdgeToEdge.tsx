@@ -110,7 +110,7 @@ export const AlertEdgeToEdge = ({
     [variant]
   );
 
-  const renderMainBlock = () => (
+  const mainBlock = (
     <>
       <View
         style={{
@@ -151,40 +151,6 @@ export const AlertEdgeToEdge = ({
     </>
   );
 
-  const PressableButton = () => (
-    <Pressable
-      testID={testID}
-      onPress={onPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      onTouchEnd={onPressOut}
-      // A11y related props
-      accessible={true}
-      accessibilityHint={accessibilityHint}
-      accessibilityRole={"button"}
-    >
-      <Animated.View
-        entering={enterTransitionAlertEdgeToEdgeContent}
-        style={[styles.alert, scaleAnimatedStyle]}
-      >
-        {renderMainBlock()}
-      </Animated.View>
-    </Pressable>
-  );
-
-  const StaticComponent = () => (
-    <Animated.View
-      entering={enterTransitionAlertEdgeToEdgeContent}
-      style={styles.alert}
-      testID={testID}
-      accessible={false}
-      accessibilityRole="alert"
-      accessibilityHint={accessibilityHint}
-    >
-      {renderMainBlock()}
-    </Animated.View>
-  );
-
   return (
     <Animated.View
       entering={enterTransitionAlertEdgeToEdge}
@@ -194,7 +160,36 @@ export const AlertEdgeToEdge = ({
         backgroundColor
       }}
     >
-      {action ? PressableButton() : StaticComponent()}
+      {action ? (
+        <Pressable
+          testID={testID}
+          onPress={onPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+          onTouchEnd={onPressOut}
+          accessible={true}
+          accessibilityHint={accessibilityHint}
+          accessibilityRole={"button"}
+        >
+          <Animated.View
+            entering={enterTransitionAlertEdgeToEdgeContent}
+            style={[styles.alert, scaleAnimatedStyle]}
+          >
+            {mainBlock}
+          </Animated.View>
+        </Pressable>
+      ) : (
+        <Animated.View
+          entering={enterTransitionAlertEdgeToEdgeContent}
+          style={styles.alert}
+          testID={testID}
+          accessible={false}
+          accessibilityRole="alert"
+          accessibilityHint={accessibilityHint}
+        >
+          {mainBlock}
+        </Animated.View>
+      )}
     </Animated.View>
   );
 };
