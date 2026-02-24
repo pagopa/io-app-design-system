@@ -85,7 +85,7 @@ export const BannerErrorState = ({
         : IOColors[backgroundColor]
   };
 
-  const mainBlock = (
+  const renderMainBlock = () => (
     <View
       style={{ flex: 1, alignItems: "center", gap: 8 }}
       accessible={true}
@@ -120,43 +120,44 @@ export const BannerErrorState = ({
     </View>
   );
 
+  const PressableContent = () => (
+    <Pressable
+      ref={viewRef}
+      testID={testID}
+      onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      accessible={false}
+    >
+      <Animated.View
+        style={[styles.container, dynamicContainerStyles, scaleAnimatedStyle]}
+      >
+        {renderMainBlock()}
+      </Animated.View>
+    </Pressable>
+  );
+
+  const StaticComponent = () => (
+    <View
+      ref={viewRef}
+      testID={testID}
+      style={[styles.container, dynamicContainerStyles]}
+      // A11y related props
+      accessible={false}
+      accessibilityHint={accessibilityHint}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole={"text"}
+    >
+      {renderMainBlock()}
+    </View>
+  );
+
   return (
     <Animated.View
       entering={FadeIn.duration(150)}
       exiting={FadeOut.duration(150)}
     >
-      {actionText ? (
-        <Pressable
-          ref={viewRef}
-          testID={testID}
-          onPress={onPress}
-          onPressIn={onPressIn}
-          onPressOut={onPressOut}
-          accessible={false}
-        >
-          <Animated.View
-            style={[
-              styles.container,
-              dynamicContainerStyles,
-              scaleAnimatedStyle
-            ]}
-          >
-            {mainBlock}
-          </Animated.View>
-        </Pressable>
-      ) : (
-        <View
-          ref={viewRef}
-          testID={testID}
-          style={[styles.container, dynamicContainerStyles]}
-          accessible={false}
-          accessibilityHint={accessibilityHint}
-          accessibilityLabel={accessibilityLabel}
-          accessibilityRole={"text"}
-        >
-          {mainBlock}
-        </View>
-      )}
+      {actionText ? <PressableContent /> : <StaticComponent />}
     </Animated.View>
   );
 };
