@@ -1756,15 +1756,59 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1780,28 +1824,116 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1814,15 +1946,59 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3710,15 +3886,59 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3734,28 +3954,116 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3768,15 +4076,59 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "50%": {
+                  "opacity": 0.35,
+                },
+                "from": {
+                  "opacity": 0.75,
+                },
+                "to": {
+                  "opacity": 0.75,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
