@@ -1779,14 +1779,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -1847,14 +1844,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -1904,14 +1898,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -1969,14 +1960,11 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -3909,14 +3897,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -3977,14 +3962,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -4034,14 +4016,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {
@@ -4099,14 +4078,11 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
               "animationDuration": "1250ms",
               "animationIterationCount": "infinite",
               "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
                 "50%": {
                   "opacity": 0.35,
-                },
-                "from": {
-                  "opacity": 0.75,
-                },
-                "to": {
-                  "opacity": 0.75,
                 },
               },
               "animationTimingFunction": CubicBezierEasing {

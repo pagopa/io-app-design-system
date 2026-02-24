@@ -83,14 +83,11 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
                 "animationDuration": "1250ms",
                 "animationIterationCount": "infinite",
                 "animationName": {
+                  "0%, 100%": {
+                    "opacity": 0.75,
+                  },
                   "50%": {
                     "opacity": 0.35,
-                  },
-                  "from": {
-                    "opacity": 0.75,
-                  },
-                  "to": {
-                    "opacity": 0.75,
                   },
                 },
                 "animationTimingFunction": CubicBezierEasing {
@@ -149,14 +146,11 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -206,14 +200,11 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -263,14 +254,11 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -323,14 +311,11 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
             "animationDuration": "1250ms",
             "animationIterationCount": "infinite",
             "animationName": {
+              "0%, 100%": {
+                "opacity": 0.75,
+              },
               "50%": {
                 "opacity": 0.35,
-              },
-              "from": {
-                "opacity": 0.75,
-              },
-              "to": {
-                "opacity": 0.75,
               },
             },
             "animationTimingFunction": CubicBezierEasing {
@@ -1574,14 +1559,11 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
                 "animationDuration": "1250ms",
                 "animationIterationCount": "infinite",
                 "animationName": {
+                  "0%, 100%": {
+                    "opacity": 0.75,
+                  },
                   "50%": {
                     "opacity": 0.35,
-                  },
-                  "from": {
-                    "opacity": 0.75,
-                  },
-                  "to": {
-                    "opacity": 0.75,
                   },
                 },
                 "animationTimingFunction": CubicBezierEasing {
@@ -1640,14 +1622,11 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -1697,14 +1676,11 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -1754,14 +1730,11 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
                   "animationDuration": "1250ms",
                   "animationIterationCount": "infinite",
                   "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
                     "50%": {
                       "opacity": 0.35,
-                    },
-                    "from": {
-                      "opacity": 0.75,
-                    },
-                    "to": {
-                      "opacity": 0.75,
                     },
                   },
                   "animationTimingFunction": CubicBezierEasing {
@@ -1814,14 +1787,11 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
             "animationDuration": "1250ms",
             "animationIterationCount": "infinite",
             "animationName": {
+              "0%, 100%": {
+                "opacity": 0.75,
+              },
               "50%": {
                 "opacity": 0.35,
-              },
-              "from": {
-                "opacity": 0.75,
-              },
-              "to": {
-                "opacity": 0.75,
               },
             },
             "animationTimingFunction": CubicBezierEasing {
