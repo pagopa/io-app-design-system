@@ -1,6 +1,9 @@
 import React, { useMemo } from "react";
 import { ColorValue, DimensionValue, ViewStyle } from "react-native";
-import Animated, { cubicBezier, useReducedMotion } from "react-native-reanimated";
+import Animated, {
+  cubicBezier,
+  useReducedMotion
+} from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import { IOColors } from "../../core";
 import { WithTestID } from "../../utils/types";
