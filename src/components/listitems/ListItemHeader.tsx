@@ -136,5 +136,3 @@ export const ListItemHeader = ({
     </View>
   );
 };
-
-export default ListItemHeader;

@@ -84,5 +84,3 @@ export const ModuleIDP = ({
     </PressableModuleBase>
   );
 };
-
-export default ModuleIDP;

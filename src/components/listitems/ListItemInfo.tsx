@@ -266,5 +266,3 @@ export const ListItemInfo = ({
     );
   }
 };
-
-export default ListItemInfo;
