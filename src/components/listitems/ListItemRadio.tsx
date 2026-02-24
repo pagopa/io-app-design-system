@@ -99,34 +99,11 @@ export const ListItemRadio = ({
 
   const disabledStyle = { opacity: disabled ? DISABLED_OPACITY : 1 };
 
-  const SkeletonDescriptionLines = () => (
-    <VStack space={8}>
-      <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
-      <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
-    </VStack>
-  );
-
-  const SkeletonIcon = () => (
-    <View
-      style={{
-        marginRight: IOSelectionListItemVisualParams.iconMargin
-      }}
-    >
-      <IOSkeleton
-        shape="square"
-        size={IOSelectionListItemVisualParams.iconSize}
-        radius={8}
-      />
-    </View>
-  );
-
-  const ListItemRadioSkeleton = ({
-    loadingAccessibilityLabel
-  }: Pick<ListItemRadioLoadingProps, "loadingAccessibilityLabel">) => (
+  return loadingProps?.state ? (
     <View
       style={[IOSelectionListItemStyles.listItem, { rowGap: 8 }]}
       accessible={true}
-      accessibilityLabel={loadingAccessibilityLabel}
+      accessibilityLabel={loadingProps?.loadingAccessibilityLabel}
       accessibilityState={{ busy: true }}
     >
       <View style={IOSelectionListItemStyles.listItemInner}>
@@ -139,7 +116,19 @@ export const ListItemRadio = ({
           }}
         >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            {loadingProps?.skeletonIcon && <SkeletonIcon />}
+            {loadingProps?.skeletonIcon && (
+              <View
+                style={{
+                  marginRight: IOSelectionListItemVisualParams.iconMargin
+                }}
+              >
+                <IOSkeleton
+                  shape="square"
+                  size={IOSelectionListItemVisualParams.iconSize}
+                  radius={8}
+                />
+              </View>
+            )}
             <IOSkeleton shape="rectangle" width={180} height={16} radius={8} />
           </View>
           <HSpacer size={8} />
@@ -151,14 +140,13 @@ export const ListItemRadio = ({
           </View>
         </View>
       </View>
-      {loadingProps?.skeletonDescription && <SkeletonDescriptionLines />}
+      {loadingProps?.skeletonDescription && (
+        <VStack space={8}>
+          <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
+          <IOSkeleton shape="rectangle" width="100%" height={8} radius={8} />
+        </VStack>
+      )}
     </View>
-  );
-
-  return loadingProps?.state ? (
-    <ListItemRadioSkeleton
-      loadingAccessibilityLabel={loadingProps?.loadingAccessibilityLabel}
-    />
   ) : (
     <Pressable
       accessibilityRole="radio"
