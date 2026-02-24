@@ -75,18 +75,6 @@ export const FeatureInfo = ({
 
   const { action: actionColor, content: contentColor } = variantMap[variant];
 
-  const FeatureInfoContent = () => {
-    if (typeof body === "string") {
-      return (
-        <Body color={contentColor} testID="infoScreenBody">
-          {body}
-        </Body>
-      );
-    }
-
-    return <>{body}</>;
-  };
-
   return (
     <HStack style={{ alignItems: "center" }} space={24}>
       {iconName && (
@@ -105,7 +93,13 @@ export const FeatureInfo = ({
         />
       )}
       <VStack allowScaleSpacing space={4} style={{ flexShrink: 1 }}>
-        <FeatureInfoContent />
+        {typeof body === "string" ? (
+          <Body color={contentColor} testID="infoScreenBody">
+            {body}
+          </Body>
+        ) : (
+          body
+        )}
         {action && (
           <Body
             asLink
