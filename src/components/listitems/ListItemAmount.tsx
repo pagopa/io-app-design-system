@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import React, { ComponentProps } from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import {
@@ -44,10 +44,9 @@ export const ListItemAmount = ({
   const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
     useIOFontDynamicScale();
 
-  const listItemAccessibilityLabel = useMemo(
-    () => (accessibilityLabel ? accessibilityLabel : `${label}`),
-    [label, accessibilityLabel]
-  );
+  const listItemAccessibilityLabel = accessibilityLabel
+    ? accessibilityLabel
+    : `${label}`;
 
   const itemInfoTextComponent = (
     <View
