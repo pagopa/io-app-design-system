@@ -133,6 +133,8 @@ export const TextInputs = () => {
       // eslint-disable-next-line functional/immutable-data
       hasFocused.current = false;
     }
+
+    return undefined;
   }, [isFocused]);
 
   return (
