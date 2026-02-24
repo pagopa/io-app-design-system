@@ -58,6 +58,55 @@ const ModuleCredential = (
     <ModuleCredentialContent {...props} />
   );
 
+const ModuleContent = ({
+  icon,
+  image,
+  label,
+  endComponent
+}: Pick<BaseModuleProps, "label"> &
+  Pick<ImageProps, "icon" | "image"> & {
+    endComponent: React.ReactNode;
+  }) => {
+  const theme = useIOTheme();
+  const { hugeFontEnabled } = useIOFontDynamicScale();
+
+  return (
+    <HStack space={8} style={{ alignItems: "center" }}>
+      <HStack
+        space={IOVisualCostants.iconMargin as IOSpacer}
+        style={{ flexGrow: 1, flexShrink: 1, alignItems: "center" }}
+      >
+        {/* Graphical assets */}
+        {icon && !hugeFontEnabled ? (
+          <Icon
+            allowFontScaling
+            name={icon}
+            size={IOSelectionListItemVisualParams.iconSize}
+            color={theme["icon-decorative"]}
+          />
+        ) : image ? (
+          <Image
+            source={image}
+            style={styles.image}
+            accessibilityIgnoresInvertColors={true}
+          />
+        ) : null}
+
+        <BodySmall
+          color={theme["interactiveElem-default"]}
+          weight="Semibold"
+          numberOfLines={2}
+          lineBreakMode="middle"
+          style={{ flexShrink: 1 }}
+        >
+          {label}
+        </BodySmall>
+      </HStack>
+      {endComponent}
+    </HStack>
+  );
+};
+
 const ModuleCredentialContent = ({
   testID,
   icon,
@@ -69,24 +118,6 @@ const ModuleCredentialContent = ({
   ...pressableProps
 }: WithTestID<ModuleCredentialProps>) => {
   const theme = useIOTheme();
-  const { hugeFontEnabled } = useIOFontDynamicScale();
-
-  const iconComponent = icon && !hugeFontEnabled && (
-    <Icon
-      allowFontScaling
-      name={icon}
-      size={IOSelectionListItemVisualParams.iconSize}
-      color={theme["icon-decorative"]}
-    />
-  );
-
-  const imageComponent = image && (
-    <Image
-      source={image}
-      style={styles.image}
-      accessibilityIgnoresInvertColors={true}
-    />
-  );
 
   const endComponent = useMemo(() => {
     const activityIndicatorTestID = testID
@@ -116,36 +147,23 @@ const ModuleCredentialContent = ({
     ) : null;
   }, [testID, theme, isFetching, badge, onPress]);
 
-  const ModuleContent = () => (
-    <HStack space={8} style={{ alignItems: "center" }}>
-      <HStack
-        space={IOVisualCostants.iconMargin as IOSpacer}
-        style={{ flexGrow: 1, flexShrink: 1, alignItems: "center" }}
-      >
-        {/* Graphical assets */}
-        {iconComponent ?? imageComponent}
-
-        <BodySmall
-          color={theme["interactiveElem-default"]}
-          weight="Semibold"
-          numberOfLines={2}
-          lineBreakMode="middle"
-          style={{ flexShrink: 1 }}
-        >
-          {label}
-        </BodySmall>
-      </HStack>
-      {endComponent}
-    </HStack>
-  );
-
   return onPress ? (
     <PressableModuleBase {...pressableProps} testID={testID} onPress={onPress}>
-      <ModuleContent />
+      <ModuleContent
+        icon={icon}
+        image={image}
+        label={label}
+        endComponent={endComponent}
+      />
     </PressableModuleBase>
   ) : (
     <ModuleStatic>
-      <ModuleContent />
+      <ModuleContent
+        icon={icon}
+        image={image}
+        label={label}
+        endComponent={endComponent}
+      />
     </ModuleStatic>
   );
 };
