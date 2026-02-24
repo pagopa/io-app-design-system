@@ -109,9 +109,13 @@ export const TextInputValidation = forwardRef<
       }
     }, [value, errorMessage, onValidate, getErrorFeedback]);
 
-    // Expose the validateInput function to the parent component
+    const inputRef =
+      React.useRef<React.ComponentRef<typeof TextInputBase>>(null);
+
     useImperativeHandle(ref, () => ({
-      validateInput
+      validateInput,
+      focus: () => inputRef.current?.focus?.(),
+      blur: () => inputRef.current?.blur?.()
     }));
 
     const onBlurHandler = useCallback(() => {
@@ -175,6 +179,7 @@ export const TextInputValidation = forwardRef<
     return (
       <TextInputBase
         {...props}
+        ref={inputRef}
         value={value}
         status={isValid === false ? "error" : undefined}
         bottomMessage={labelError}
