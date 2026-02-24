@@ -151,7 +151,7 @@ export const HeaderFirstLevel = ({
         <HStack space={16} style={{ flexShrink: 0 }}>
           {actions.map(action => (
             <IconButton
-              key={action.icon}
+              key={`header-first-level-action-${action.icon}`}
               {...action}
               color={variant}
             />
