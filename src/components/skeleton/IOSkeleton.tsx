@@ -13,9 +13,8 @@ const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
 const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
 
 const pulseKeyframes = {
-  from: { opacity: OPACITY_MAX },
-  "50%": { opacity: OPACITY_MIN },
-  to: { opacity: OPACITY_MAX }
+  "0%, 100%": { opacity: OPACITY_MAX },
+  "50%": { opacity: OPACITY_MIN }
 };
 
 type IOSkeletonSquare = {
