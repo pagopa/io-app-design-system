@@ -67,10 +67,7 @@ export type ListItemInfo = WithTestID<{
 
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
 
-const EndElementComponent = ({
-  type,
-  componentProps
-}: EndElementProps) => {
+const EndElementComponent = ({ type, componentProps }: EndElementProps) => {
   switch (type) {
     case "buttonLink":
       return (
@@ -185,14 +182,12 @@ export const ListItemInfo = ({
   onLongPress,
   testID
 }: ListItemInfo) => {
-  const { dynamicFontScale, spacingScaleMultiplier } =
-    useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
 
-  const componentValueToAccessibility =
-    typeof value === "string" ? value : "";
+  const componentValueToAccessibility = typeof value === "string" ? value : "";
 
   const listItemAccessibilityLabel =
     accessibilityLabel ??
