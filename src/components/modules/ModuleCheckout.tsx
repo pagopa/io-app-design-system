@@ -56,13 +56,15 @@ const ModuleBaseContent = ({
       {/* Graphical elements */}
       {paymentLogo ? (
         <LogoPayment name={paymentLogo} />
-      ) : image ? (
-        <Image
-          source={image}
-          style={styles.image}
-          accessibilityIgnoresInvertColors={true}
-        />
-      ) : null}
+      ) : (
+        image && (
+          <Image
+            source={image}
+            style={styles.image}
+            accessibilityIgnoresInvertColors={true}
+          />
+        )
+      )}
 
       <View style={{ flexGrow: 1, flexShrink: 1 }}>
         <H6 color={theme["textBody-default"]}>{title}</H6>

@@ -84,13 +84,15 @@ const ModuleContent = ({
             size={IOSelectionListItemVisualParams.iconSize}
             color={theme["icon-decorative"]}
           />
-        ) : image ? (
-          <Image
-            source={image}
-            style={styles.image}
-            accessibilityIgnoresInvertColors={true}
-          />
-        ) : null}
+        ) : (
+          image && (
+            <Image
+              source={image}
+              style={styles.image}
+              accessibilityIgnoresInvertColors={true}
+            />
+          )
+        )}
 
         <BodySmall
           color={theme["interactiveElem-default"]}
