@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { GestureResponderEvent, PressableProps } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOListItemVisualParams } from "../../core";

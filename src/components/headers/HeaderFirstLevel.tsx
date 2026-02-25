@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useLayoutEffect } from "react";
+import { createRef, useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
   findNodeHandle,

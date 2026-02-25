@@ -1,5 +1,11 @@
-import * as React from "react";
-import { createRef, forwardRef, useEffect, useRef, useState } from "react";
+import {
+  createRef,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   AccessibilityInfo,
   NativeSyntheticEvent,
@@ -131,7 +137,7 @@ export const OTPInput = forwardRef<View, Props>(
       }
     };
 
-    const cells = React.useMemo(() => Array.from({ length }), [length]);
+    const cells = useMemo(() => Array.from({ length }), [length]);
 
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>

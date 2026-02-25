@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
 import { useIONewTypeface, useIOThemeContext, useIOTheme } from "../../context";
 import { IOListItemLogoMargin } from "../../core";

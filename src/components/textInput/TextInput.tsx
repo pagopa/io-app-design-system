@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ComponentProps } from "react";
 import { TextInputBase } from "./TextInputBase";
 

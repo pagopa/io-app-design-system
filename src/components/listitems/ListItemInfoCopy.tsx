@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, ReactNode, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -11,7 +11,7 @@ import { BodySmall, H6 } from "../typography";
 
 export type ListItemInfoCopy = WithTestID<{
   label: string;
-  value: string | React.ReactNode;
+  value: string | ReactNode;
   numberOfLines?: number;
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;

@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React from "react";
+import { ReactNode } from "react";
 import { ViewStyle } from "react-native";
 import Animated, {
   LayoutAnimation,
@@ -10,7 +10,7 @@ import Animated, {
 type Props = {
   visible?: boolean;
   springConfig?: WithSpringConfig;
-  children: React.ReactNode;
+  children: ReactNode;
   style?: ViewStyle;
 };
 

@@ -1,6 +1,5 @@
-import React, { ReactNode } from "react";
+import { isValidElement, ReactNode } from "react";
 import { ImageURISource, View } from "react-native";
-
 import { useIOTheme } from "../../context";
 import {
   IOColors,
@@ -87,7 +86,7 @@ const StartComponent = ({
   if (isImageUri(logoIcon)) {
     return <Avatar logoUri={logoIcon} size="small" />;
   }
-  if (React.isValidElement(logoIcon)) {
+  if (isValidElement(logoIcon)) {
     return <>{logoIcon}</>;
   }
   return (

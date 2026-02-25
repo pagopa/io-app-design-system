@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, useMemo } from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import {

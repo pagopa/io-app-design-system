@@ -1,4 +1,4 @@
-import React, { ComponentProps, useRef, useState } from "react";
+import { ComponentProps, memo, useRef, useState } from "react";
 import { Image, ImageSourcePropType, StyleSheet, View } from "react-native";
 import { Icon } from "../../components/icons";
 import { useIOTheme } from "../../context";
@@ -141,7 +141,7 @@ export type AvatarSearchProps = Pick<
  * @param AvatarSearchProps
  * @returns
  */
-export const AvatarSearch = React.memo(
+export const AvatarSearch = memo(
   ({ defaultSource, source, onError }: AvatarSearchProps) => {
     // Visual attributes
     const avatarSize = dimensionsMap.small.size;

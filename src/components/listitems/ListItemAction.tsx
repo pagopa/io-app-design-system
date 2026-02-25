@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, useMemo } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../context";

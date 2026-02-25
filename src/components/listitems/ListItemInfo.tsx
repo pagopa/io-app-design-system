@@ -1,8 +1,8 @@
-import React, { ComponentProps, ReactNode, useCallback, useMemo } from "react";
+import { ComponentProps, ReactNode, useCallback, useMemo } from "react";
 import { AccessibilityRole, Platform, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { useIOTheme } from "../../context";
+import { IOListItemStyles, IOListItemVisualParams } from "../../core";
 import { useListItemAnimation } from "../../hooks";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
@@ -10,9 +10,9 @@ import { Badge } from "../badge";
 import { IOButton, IOButtonLinkSpecificProps, IconButton } from "../buttons";
 import { LogoPaymentWithFallback } from "../common/LogoPaymentWithFallback";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
+import { VSpacer } from "../layout";
 import { IOLogoPaymentType } from "../logos";
 import { BodySmall, H6 } from "../typography";
-import { VSpacer } from "../layout";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
