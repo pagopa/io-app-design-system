@@ -25,6 +25,8 @@ module.exports = {
     "functional",
   ],
   rules: {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
     "no-case-declarations": "off",
     "no-inner-declarations": "off",
     "prefer-const": "error",
