@@ -1,5 +1,5 @@
 import { Body, ForceScrollDownView } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert } from "react-native";
 import { Screen } from "../components/Screen";
 

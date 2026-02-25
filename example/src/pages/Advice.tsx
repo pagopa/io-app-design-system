@@ -1,5 +1,6 @@
 import {
   Banner,
+  BannerErrorState,
   BodyProps,
   ComposedBodyFromArray,
   FeatureInfo,
@@ -8,10 +9,9 @@ import {
   IOVisualCostants,
   VSpacer,
   VStack,
-  WithTestID,
-  BannerErrorState
+  WithTestID
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import { Fragment, RefObject } from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -28,7 +28,7 @@ type BannerProps = WithTestID<{
   size: "big" | "small";
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
-  viewRef: React.RefObject<View>;
+  viewRef: RefObject<View>;
   accessibilityLabel?: string;
   accessibilityHint?: string;
 }>;
@@ -142,7 +142,7 @@ const renderBanner = () => (
       Banner
     </H2>
     {bannerBackgroundColours.map(color => (
-      <React.Fragment key={`${color}-block`}>
+      <Fragment key={`${color}-block`}>
         <ComponentViewerBox name={`Banner · Big size, ${color} variant`}>
           <Banner
             color={color}
@@ -217,7 +217,7 @@ const renderBanner = () => (
             labelClose="Nascondi questo banner"
           />
         </ComponentViewerBox>
-      </React.Fragment>
+      </Fragment>
     ))}
   </>
 );

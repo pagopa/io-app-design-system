@@ -4,7 +4,7 @@ import {
   Tooltip,
   VSpacer
 } from "@pagopa/io-app-design-system";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { View } from "react-native";
 import { Screen } from "../components/Screen";
 
