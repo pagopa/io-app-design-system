@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 type IONewTypefaceContextType = {
   newTypefaceEnabled: boolean;
@@ -7,13 +7,12 @@ type IONewTypefaceContextType = {
 /**
  * Experimental Context for new UI Representations
  */
-export const IONewTypefaceContext =
-  React.createContext<IONewTypefaceContextType>({
-    newTypefaceEnabled: true,
-    setNewTypefaceEnabled: () => void 0
-  });
+export const IONewTypefaceContext = createContext<IONewTypefaceContextType>({
+  newTypefaceEnabled: true,
+  setNewTypefaceEnabled: () => void 0
+});
 
-export const useIONewTypeface = () => React.useContext(IONewTypefaceContext);
+export const useIONewTypeface = () => useContext(IONewTypefaceContext);
 
 type IOExperimentalContextProviderProps = {
   isNewTypefaceEnabled?: boolean;

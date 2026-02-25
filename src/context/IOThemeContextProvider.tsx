@@ -1,4 +1,5 @@
-import React, {
+import {
+  Context,
   createContext,
   PropsWithChildren,
   useCallback,
@@ -16,7 +17,7 @@ type IOThemeContextType = {
   setTheme: (theme: ColorSchemeName) => void;
 };
 
-export const IOThemeContext: React.Context<IOThemeContextType> =
+export const IOThemeContext: Context<IOThemeContextType> =
   createContext<IOThemeContextType>({
     themeType: Appearance.getColorScheme(),
     theme:
