@@ -36,7 +36,7 @@ export const ListItemAction = ({
 
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
-   const listItemAccessibilityLabel = accessibilityLabel || `${label}`;
+  const listItemAccessibilityLabel = accessibilityLabel || `${label}`;
 
   const mapForegroundColor: Record<
     NonNullable<ListItemAction["variant"]>,

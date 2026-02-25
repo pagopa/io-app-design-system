@@ -44,7 +44,7 @@ export const ListItemAmount = ({
   const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
     useIOFontDynamicScale();
 
-    const listItemAccessibilityLabel = accessibilityLabel || `${label}`;
+  const listItemAccessibilityLabel = accessibilityLabel || `${label}`;
 
   const itemInfoTextComponent = (
     <View

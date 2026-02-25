@@ -40,7 +40,8 @@ export const ListItemInfoCopy = ({
 
   const componentValueToAccessibility = typeof value === "string" ? value : "";
 
-  const listItemAccessibilityLabel = accessibilityLabel || `${label}; ${componentValueToAccessibility}`;
+  const listItemAccessibilityLabel =
+    accessibilityLabel || `${label}; ${componentValueToAccessibility}`;
 
   const foregroundColor = theme["interactiveElem-default"];
 
