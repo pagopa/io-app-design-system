@@ -1,6 +1,5 @@
-import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import { IOVisualCostants, IOColors } from "../../core";
+import { IOColors, IOVisualCostants } from "../../core";
 import { IOIcons, Icon } from "./Icon";
 
 type IconContained = {

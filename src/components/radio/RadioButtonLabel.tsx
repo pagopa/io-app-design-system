@@ -1,4 +1,4 @@
-import React, { ComponentProps, useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOSelectionTickVisualParams } from "../../core";

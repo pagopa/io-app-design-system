@@ -11,7 +11,7 @@ import {
   ModuleSummary,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import SpidTextLogo from "../../assets/images/spid-text-logo.svg";

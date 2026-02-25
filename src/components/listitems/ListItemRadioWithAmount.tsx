@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { View } from "react-native";
 import RNReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { useIOTheme } from "../../context";
@@ -36,7 +36,7 @@ export const ListItemRadioWithAmount = ({
   formattedAmountString
 }: ListItemRadioWithAmountProps) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
-  const [toggleValue, setToggleValue] = React.useState(selected ?? false);
+  const [toggleValue, setToggleValue] = useState(selected ?? false);
 
   const pressHandler = () => {
     RNReactNativeHapticFeedback.trigger("impactLight");

@@ -8,8 +8,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
-import * as React from "react";
-import { useCallback, useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
 const OTP_LENGTH_8 = 8;
@@ -47,7 +46,7 @@ const OTPWrapper = ({
     [validation, otpCompare]
   );
 
-  return React.useMemo(
+  return useMemo(
     () => (
       <>
         <OTPInput
@@ -73,8 +72,8 @@ const OTPWrapper = ({
 };
 
 const scrollVerticallyToView = (
-  scrollViewRef: React.RefObject<ScrollView | null>,
-  targetViewRef: React.RefObject<View | null>
+  scrollViewRef: RefObject<ScrollView | null>,
+  targetViewRef: RefObject<View | null>
 ) => {
   if (targetViewRef.current && scrollViewRef.current) {
     const nativeScrollRef = scrollViewRef.current.getNativeScrollRef();
@@ -94,8 +93,8 @@ const scrollVerticallyToView = (
  * @returns a screen with a flexed view where you can test components
  */
 export const OTPInputScreen = () => {
-  const scrollViewRef = React.useRef<ScrollView>(null);
-  const autofocusableOTPViewRef = React.useRef<View>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const autofocusableOTPViewRef = useRef<View>(null);
   const [showAutofocusableOTP, setShowAutofocusableOTP] = useState(false);
   const headerHeight = useHeaderHeight();
 

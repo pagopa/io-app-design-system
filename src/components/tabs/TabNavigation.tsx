@@ -1,12 +1,12 @@
-import React from "react";
+import { cloneElement, ReactElement, useState } from "react";
 import { FlexStyle, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { IOVisualCostants } from "../../core";
 import { TabItem } from "./TabItem";
 
 type TabNavigationChildren =
-  | React.ReactElement<TabItem>
-  | Array<React.ReactElement<TabItem>>;
+  | ReactElement<TabItem>
+  | Array<ReactElement<TabItem>>;
 
 type TabAlignment = "start" | "center" | "end" | "stretch";
 
@@ -37,7 +37,7 @@ const TabNavigation = ({
   children,
   includeContentMargins = true
 }: TabNavigation) => {
-  const [itemMinWidth, setItemMinWidth] = React.useState<number>(0);
+  const [itemMinWidth, setItemMinWidth] = useState<number>(0);
 
   const handleItemOnLayout = (event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout;
@@ -46,7 +46,7 @@ const TabNavigation = ({
 
   const stretchItems = tabAlignment === "stretch";
 
-  const wrapChild = (child: React.ReactElement<TabItem>, index: number = 0) => (
+  const wrapChild = (child: ReactElement<TabItem>, index: number = 0) => (
     <View
       key={child.props.label}
       style={[
@@ -57,7 +57,7 @@ const TabNavigation = ({
       ]}
       onLayout={handleItemOnLayout}
     >
-      {React.cloneElement<TabItem>(child, {
+      {cloneElement<TabItem>(child, {
         onPress: event => {
           child.props.onPress?.(event);
           onItemPress?.(index);

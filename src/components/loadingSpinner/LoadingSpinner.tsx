@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { View, ColorValue } from "react-native";
+import { ReactElement, useEffect } from "react";
+import { ColorValue, View } from "react-native";
 import Animated, {
-  useSharedValue,
+  Easing,
   useAnimatedStyle,
+  useSharedValue,
   withRepeat,
-  withTiming,
-  Easing
+  withTiming
 } from "react-native-reanimated";
 import Svg, { Defs, G, LinearGradient, Path, Stop } from "react-native-svg";
-import { WithTestID } from "../../utils/types";
 import { useIOTheme } from "../../context";
 import { IOColors } from "../../core/IOColors";
+import { WithTestID } from "../../utils/types";
 
 export type LoadingSpinner = WithTestID<{
   color?: ColorValue;
@@ -39,7 +39,7 @@ export const LoadingSpinner = ({
   accessibilityHint,
   accessibilityLabel,
   testID = "LoadingSpinnerTestID"
-}: LoadingSpinner): React.ReactElement => {
+}: LoadingSpinner): ReactElement => {
   const theme = useIOTheme();
   const rotation = useSharedValue(0);
   const stroke: number = strokeMap[size];

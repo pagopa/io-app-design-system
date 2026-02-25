@@ -3,7 +3,7 @@ import {
   AlertEdgeToEdgeProps,
   AlertEdgeToEdgeWrapper
 } from "@pagopa/io-app-design-system";
-import React, {
+import {
   createContext,
   ReactNode,
   useCallback,

@@ -5,7 +5,7 @@ import {
   Stepper,
   VStack
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { View } from "react-native";
 import { NoMarginScreen } from "../components/Screen";
 

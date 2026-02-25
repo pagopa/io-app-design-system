@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -10,8 +10,8 @@ import { Icon } from "../icons";
 import { BodySmall, H6 } from "../typography";
 
 export type ListItemNavAlert = WithTestID<{
-  value: string | React.ReactNode;
-  description?: string | React.ReactNode;
+  value: string | ReactNode;
+  description?: string | ReactNode;
   withoutIcon?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 }> &

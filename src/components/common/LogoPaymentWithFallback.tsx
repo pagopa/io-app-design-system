@@ -1,4 +1,3 @@
-import * as React from "react";
 import { IOColors } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { findFirstCaseInsensitive } from "../../utils/object";

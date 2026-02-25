@@ -1,15 +1,15 @@
-import * as React from "react";
+import { ComponentProps, useCallback, useState } from "react";
 import { IconButton } from "../buttons";
 import { TextInputBase } from "./TextInputBase";
 
 type TextInputPasswordProps = Omit<
-  React.ComponentProps<typeof TextInputBase>,
+  ComponentProps<typeof TextInputBase>,
   "isPassword"
 >;
 
 export const TextInputPassword = (props: TextInputPasswordProps) => {
   const { onBlur, disabled } = props;
-  const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const rightElement = (
     <IconButton
@@ -20,7 +20,7 @@ export const TextInputPassword = (props: TextInputPasswordProps) => {
     />
   );
 
-  const onBlurHandler = React.useCallback(() => {
+  const onBlurHandler = useCallback(() => {
     setShowPassword(false);
     onBlur?.();
   }, [onBlur]);

@@ -8,17 +8,16 @@ import {
   TextInputValidationRefProps,
   VSpacer
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+import { ComponentProps, useRef, useState } from "react";
 import { Button, View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
-  props: Omit<
-    React.ComponentProps<typeof TextInput>,
-    "value" | "onChangeText"
-  > & { value?: string }
+  props: Omit<ComponentProps<typeof TextInput>, "value" | "onChangeText"> & {
+    value?: string;
+  }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -31,11 +30,11 @@ const InputComponentWrapper = (
 
 const InputValidationComponentWrapper = (
   props: Omit<
-    React.ComponentProps<typeof TextInputValidation>,
+    ComponentProps<typeof TextInputValidation>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -52,11 +51,11 @@ const InputValidationComponentWrapper = (
 
 const InputPasswordComponentWrapper = (
   props: Omit<
-    React.ComponentProps<typeof TextInputPassword>,
+    ComponentProps<typeof TextInputPassword>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -73,16 +72,16 @@ const InputPasswordComponentWrapper = (
 
 const TextInputValidationOnContinue = (
   props: Omit<
-    React.ComponentProps<typeof TextInputValidation>,
+    ComponentProps<typeof TextInputValidation>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const textInputRef = React.useRef<TextInputValidationRefProps>(null);
+  const textInputRef = useRef<TextInputValidationRefProps>(null);
 
   const handleContinue = () => {
     textInputRef.current?.validateInput();
   };
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>

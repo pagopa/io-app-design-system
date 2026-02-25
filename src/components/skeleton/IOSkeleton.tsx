@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { ColorValue, DimensionValue, ViewStyle } from "react-native";
 import Animated, {
   cubicBezier,

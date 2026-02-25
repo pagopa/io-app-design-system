@@ -1,5 +1,10 @@
-import * as React from "react";
-import { createRef, useEffect, useLayoutEffect, useMemo } from "react";
+import {
+  createRef,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState
+} from "react";
 import {
   AccessibilityInfo,
   ColorValue,
@@ -21,8 +26,8 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { scheduleOnRN } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { scheduleOnRN } from "react-native-worklets";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import {
   IOColors,
@@ -270,8 +275,9 @@ export const HeaderSecondLevel = ({
       : 1
   }));
 
-  const [importantForAccessibility, setImportantForAccessibility] =
-    React.useState<"yes" | "no-hide-descendants">("yes");
+  const [importantForAccessibility, setImportantForAccessibility] = useState<
+    "yes" | "no-hide-descendants"
+  >("yes");
 
   // Updates accessibility state based on scroll position.
   useAnimatedReaction(

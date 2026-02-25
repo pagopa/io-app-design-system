@@ -17,7 +17,6 @@ import {
   themeStatusColorsDarkMode,
   themeStatusColorsLightMode
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { ColorValue, Dimensions, StyleSheet, Text, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { Screen } from "../components/Screen";

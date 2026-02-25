@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import { IOFontSize, IOFontWeight } from "../../utils/fonts";

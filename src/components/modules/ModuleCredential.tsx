@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import {
   Image,
   ImageSourcePropType,
@@ -65,7 +65,7 @@ const ModuleContent = ({
   endComponent
 }: Pick<BaseModuleProps, "label"> &
   Pick<ImageProps, "icon" | "image"> & {
-    endComponent: React.ReactNode;
+    endComponent: ReactNode;
   }) => {
   const theme = useIOTheme();
   const { hugeFontEnabled } = useIOFontDynamicScale();

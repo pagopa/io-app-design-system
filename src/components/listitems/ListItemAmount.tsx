@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps } from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import {

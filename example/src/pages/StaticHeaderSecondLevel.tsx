@@ -1,12 +1,3 @@
-import * as React from "react";
-import { useState } from "react";
-import { Alert, View, LayoutChangeEvent } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Animated, {
-  useAnimatedScrollHandler,
-  useSharedValue
-} from "react-native-reanimated";
-import { useNavigation } from "@react-navigation/native";
 import {
   Body,
   H3,
@@ -15,6 +6,14 @@ import {
   useIOTheme,
   VSpacer
 } from "@pagopa/io-app-design-system";
+import { useNavigation } from "@react-navigation/native";
+import { useLayoutEffect, useState } from "react";
+import { Alert, LayoutChangeEvent, View } from "react-native";
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue
+} from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 // This is defined as about the half of a default ListItem… component
 const defaultTriggerOffsetValue: number = 32;
@@ -39,7 +38,7 @@ export const HeaderSecondLevelScreenStatic = () => {
     translationY.value = event.contentOffset.y;
   });
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       header: () => (
         <HeaderSecondLevel
