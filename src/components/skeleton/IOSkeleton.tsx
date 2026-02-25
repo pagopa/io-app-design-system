@@ -1,11 +1,8 @@
 import { useMemo } from "react";
 import { ColorValue, DimensionValue, ViewStyle } from "react-native";
-import Animated, {
-  cubicBezier,
-  useReducedMotion
-} from "react-native-reanimated";
+import Animated, { useReducedMotion } from "react-native-reanimated";
 import { useIOTheme } from "../../context";
-import { IOColors } from "../../core";
+import { IOColors, IOEasingCurves } from "../../core";
 import { WithTestID } from "../../utils/types";
 
 const ANIMATION_DURATION = 1250;
@@ -75,8 +72,7 @@ export const IOSkeleton = ({
               animationName: pulseKeyframes,
               animationDuration: `${ANIMATION_DURATION}ms`,
               animationIterationCount: "infinite",
-              /* Equivalent to Easing.inOut(Easing.sin) */
-              animationTimingFunction: cubicBezier(0.37, 0, 0.63, 1)
+              animationTimingFunction: IOEasingCurves.easeInOutSine
             }
       ]}
     />
