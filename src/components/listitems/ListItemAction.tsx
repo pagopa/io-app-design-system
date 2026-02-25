@@ -91,5 +91,3 @@ export const ListItemAction = ({
     </Pressable>
   );
 };
-
-export default ListItemAction;

@@ -39,24 +39,6 @@ const ModuleAttachmentContent = ({
 >) => {
   const theme = useIOTheme();
 
-  const IconOrActivityIndicatorComponent = () => {
-    if (isFetching) {
-      const activityIndicatorTestId = testID
-        ? `${testID}_activityIndicator`
-        : undefined;
-
-      return <LoadingSpinner testID={activityIndicatorTestId} />;
-    }
-
-    return (
-      <Icon
-        name="chevronRightListItem"
-        color={theme["interactiveElem-default"]}
-        size={IOListItemVisualParams.chevronSize}
-      />
-    );
-  };
-
   return (
     <HStack space={8} style={{ alignItems: "center" }}>
       <VStack
@@ -72,7 +54,17 @@ const ModuleAttachmentContent = ({
         </Body>
         <Badge text={format.toUpperCase()} variant="default" />
       </VStack>
-      <IconOrActivityIndicatorComponent />
+      {isFetching ? (
+        <LoadingSpinner
+          testID={testID ? `${testID}_activityIndicator` : undefined}
+        />
+      ) : (
+        <Icon
+          name="chevronRightListItem"
+          color={theme["interactiveElem-default"]}
+          size={IOListItemVisualParams.chevronSize}
+        />
+      )}
     </HStack>
   );
 };

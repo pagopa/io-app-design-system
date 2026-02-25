@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, useCallback, useMemo } from "react";
+import React, { ComponentProps, ReactNode } from "react";
 import { AccessibilityRole, Platform, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -34,8 +34,6 @@ type EndElementProps =
   | IconButtonActionProps
   | BadgeProps;
 
-type TopElementProps = BadgeProps;
-
 type GraphicProps =
   | {
       paymentLogoIcon?: IOLogoPaymentType;
@@ -56,7 +54,7 @@ export type ListItemInfo = WithTestID<{
   label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
-  topElement?: TopElementProps;
+  topElement?: BadgeProps;
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
@@ -66,6 +64,105 @@ export type ListItemInfo = WithTestID<{
   InteractiveProps;
 
 const PAYMENT_LOGO_SIZE: IOIconSizeScale = 24;
+
+const EndElementComponent = ({ type, componentProps }: EndElementProps) => {
+  switch (type) {
+    case "buttonLink":
+      return (
+        <IOButton
+          variant="link"
+          {...componentProps}
+          accessibilityLabel={`${
+            componentProps.accessibilityLabel ?? componentProps.label
+          }`}
+        />
+      );
+    case "iconButton":
+      return (
+        <IconButton
+          {...componentProps}
+          accessibilityLabel={`${componentProps.accessibilityLabel}`}
+        />
+      );
+    case "badge":
+      return <Badge {...componentProps} />;
+    default:
+      return null;
+  }
+};
+
+const ListItemInfoContent = ({
+  icon,
+  paymentLogoIcon,
+  label,
+  value,
+  numberOfLines,
+  reversed,
+  topElement,
+  endElement
+}: Pick<
+  ListItemInfo,
+  | "icon"
+  | "paymentLogoIcon"
+  | "label"
+  | "value"
+  | "numberOfLines"
+  | "reversed"
+  | "topElement"
+  | "endElement"
+>) => {
+  const theme = useIOTheme();
+  const { hugeFontEnabled } = useIOFontDynamicScale();
+
+  return (
+    <>
+      {icon && !hugeFontEnabled && (
+        <Icon
+          allowFontScaling
+          name={icon}
+          color={theme["icon-decorative"]}
+          size={IOListItemVisualParams.iconSize}
+        />
+      )}
+      {paymentLogoIcon && (
+        <LogoPaymentWithFallback
+          brand={paymentLogoIcon}
+          size={PAYMENT_LOGO_SIZE}
+        />
+      )}
+      <View style={{ flex: 1 }}>
+        <View
+          accessible={Platform.OS === "ios"}
+          style={{ flexDirection: reversed ? "column-reverse" : "column" }}
+        >
+          {topElement?.type === "badge" && (
+            <View style={{ alignSelf: "flex-start" }}>
+              <Badge {...topElement.componentProps} />
+              <VSpacer size={4} />
+            </View>
+          )}
+          {label && (
+            <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
+              {label}
+            </BodySmall>
+          )}
+          {typeof value === "string" ? (
+            <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
+              {value}
+            </H6>
+          ) : (
+            value
+          )}
+        </View>
+      </View>
+      {endElement && (
+        <View>
+          <EndElementComponent {...endElement} />
+        </View>
+      )}
+    </>
+  );
+};
 
 export const ListItemInfo = ({
   value,
@@ -83,110 +180,29 @@ export const ListItemInfo = ({
   onLongPress,
   testID
 }: ListItemInfo) => {
-  const theme = useIOTheme();
-  const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
-    useIOFontDynamicScale();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
 
-  const componentValueToAccessibility = useMemo(
-    () => (typeof value === "string" ? value : ""),
-    [value]
-  );
+  const componentValueToAccessibility = typeof value === "string" ? value : "";
 
-  const listItemAccessibilityLabel = useMemo(
-    () =>
-      accessibilityLabel ??
-      (label
-        ? `${label}; ${componentValueToAccessibility}`
-        : componentValueToAccessibility),
-    [label, componentValueToAccessibility, accessibilityLabel]
-  );
+  const listItemAccessibilityLabel =
+    accessibilityLabel ??
+    (label
+      ? `${label}; ${componentValueToAccessibility}`
+      : componentValueToAccessibility);
 
-  const itemInfoTextComponent = useMemo(
-    () => (
-      <View
-        accessible={Platform.OS === "ios"}
-        style={{ flexDirection: reversed ? "column-reverse" : "column" }}
-      >
-        {topElement?.type === "badge" && (
-          <View style={{ alignSelf: "flex-start" }}>
-            <Badge {...topElement.componentProps} />
-            <VSpacer size={4} />
-          </View>
-        )}
-        {label && (
-          <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
-            {label}
-          </BodySmall>
-        )}
-        {typeof value === "string" ? (
-          <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
-            {value}
-          </H6>
-        ) : (
-          value
-        )}
-      </View>
-    ),
-    [label, value, numberOfLines, theme, reversed, topElement]
-  );
-
-  const listItemInfoAction = useCallback(() => {
-    if (endElement) {
-      const { type, componentProps } = endElement;
-
-      switch (type) {
-        case "buttonLink":
-          const buttonLinkAccessibilityLabel = `${
-            componentProps.accessibilityLabel ?? componentProps.label
-          }`;
-
-          return (
-            <IOButton
-              variant="link"
-              {...componentProps}
-              accessibilityLabel={buttonLinkAccessibilityLabel}
-            />
-          );
-        case "iconButton":
-          const iconButtonAccessibilityLabel = `${componentProps.accessibilityLabel}`;
-          return (
-            <IconButton
-              {...componentProps}
-              accessibilityLabel={iconButtonAccessibilityLabel}
-            />
-          );
-        case "badge":
-          return <Badge {...componentProps} />;
-        default:
-          return <></>;
-      }
-    }
-    return <></>;
-  }, [endElement]);
-
-  const ListItemInfoContent = () => (
-    <>
-      {icon && !hugeFontEnabled && (
-        <Icon
-          allowFontScaling
-          name={icon}
-          color={theme["icon-decorative"]}
-          size={IOListItemVisualParams.iconSize}
-        />
-      )}
-      {paymentLogoIcon && (
-        <LogoPaymentWithFallback
-          brand={paymentLogoIcon}
-          size={PAYMENT_LOGO_SIZE}
-        />
-      )}
-      <View style={{ flex: 1 }}>{itemInfoTextComponent}</View>
-      {endElement && <View>{listItemInfoAction()}</View>}
-    </>
-  );
+  const contentProps = {
+    icon,
+    paymentLogoIcon,
+    label,
+    value,
+    numberOfLines,
+    reversed,
+    topElement,
+    endElement
+  } as const;
 
   if (onLongPress) {
     return (
@@ -217,7 +233,7 @@ export const ListItemInfo = ({
               scaleAnimatedStyle
             ]}
           >
-            <ListItemInfoContent />
+            <ListItemInfoContent {...contentProps} />
           </Animated.View>
         </Animated.View>
       </Pressable>
@@ -242,11 +258,9 @@ export const ListItemInfo = ({
             }
           ]}
         >
-          <ListItemInfoContent />
+          <ListItemInfoContent {...contentProps} />
         </View>
       </View>
     );
   }
 };
-
-export default ListItemInfo;

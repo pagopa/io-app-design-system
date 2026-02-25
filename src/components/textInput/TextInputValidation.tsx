@@ -186,5 +186,3 @@ export const TextInputValidation = forwardRef<
     );
   }
 );
-
-export default TextInputValidation;

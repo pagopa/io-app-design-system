@@ -4,11 +4,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { IOVisualCostants } from "../../core";
 import { TabItem } from "./TabItem";
 
-export type TabNavigationItem = Omit<
-  TabItem,
-  "onPress" | "color" | "selected" | "accessibilityLabel" | "accessibilityHint"
->;
-
 type TabNavigationChildren =
   | React.ReactElement<TabItem>
   | Array<React.ReactElement<TabItem>>;

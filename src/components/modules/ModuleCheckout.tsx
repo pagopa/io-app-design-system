@@ -7,7 +7,7 @@ import {
   View
 } from "react-native";
 import { useIOTheme } from "../../context";
-import { IOSelectionListItemVisualParams, IOSpacingScale } from "../../core";
+import { IOSelectionListItemVisualParams, IOSpacer } from "../../core";
 import { IOButton } from "../buttons";
 import { HStack, VStack } from "../layout";
 import { IOLogoPaymentType, LogoPayment } from "../logos";
@@ -37,37 +37,34 @@ type BaseProps = {
 
 export type ModuleCheckoutProps = LoadingProps | BaseProps;
 
-export const ModuleCheckout = (props: ModuleCheckoutProps) => {
+const IMAGE_MARGIN: IOSpacer = 12;
+
+const ModuleBaseContent = ({
+  paymentLogo,
+  image,
+  title,
+  subtitle
+}: Pick<BaseProps, "paymentLogo" | "title" | "subtitle"> &
+  Pick<ImageProps, "image">) => {
   const theme = useIOTheme();
 
-  const imageMargin: IOSpacingScale = 12;
-
-  if (props.isLoading) {
-    return (
-      <ModuleCheckoutSkeleton
-        loadingAccessibilityLabel={props.loadingAccessibilityLabel}
-      />
-    );
-  }
-
-  const { paymentLogo, image, title, subtitle, ctaText, onPress } = props;
-
-  const paymentLogoComponent = paymentLogo && (
-    <LogoPayment name={paymentLogo} />
-  );
-
-  const imageComponent = image && (
-    <Image
-      source={image}
-      style={styles.image}
-      accessibilityIgnoresInvertColors={true}
-    />
-  );
-
-  const ModuleBaseContent = () => (
-    <HStack space={imageMargin} style={{ alignItems: "center", flexShrink: 1 }}>
+  return (
+    <HStack
+      space={IMAGE_MARGIN}
+      style={{ alignItems: "center", flexShrink: 1 }}
+    >
       {/* Graphical elements */}
-      {paymentLogoComponent ?? imageComponent}
+      {paymentLogo ? (
+        <LogoPayment name={paymentLogo} />
+      ) : (
+        image && (
+          <Image
+            source={image}
+            style={styles.image}
+            accessibilityIgnoresInvertColors={true}
+          />
+        )
+      )}
 
       <View style={{ flexGrow: 1, flexShrink: 1 }}>
         <H6 color={theme["textBody-default"]}>{title}</H6>
@@ -79,6 +76,18 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
       </View>
     </HStack>
   );
+};
+
+export const ModuleCheckout = (props: ModuleCheckoutProps) => {
+  if (props.isLoading) {
+    return (
+      <ModuleCheckoutSkeleton
+        loadingAccessibilityLabel={props.loadingAccessibilityLabel}
+      />
+    );
+  }
+
+  const { paymentLogo, image, title, subtitle, ctaText, onPress } = props;
 
   return ctaText ? (
     <PressableModuleBase
@@ -88,7 +97,12 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
       }
     >
       <HStack space={4} style={{ alignItems: "center" }}>
-        <ModuleBaseContent />
+        <ModuleBaseContent
+          title={title}
+          subtitle={subtitle}
+          paymentLogo={paymentLogo}
+          image={image}
+        />
         <View
           pointerEvents="none"
           accessibilityElementsHidden
@@ -100,7 +114,12 @@ export const ModuleCheckout = (props: ModuleCheckoutProps) => {
     </PressableModuleBase>
   ) : (
     <ModuleStatic>
-      <ModuleBaseContent />
+      <ModuleBaseContent
+        title={title}
+        subtitle={subtitle}
+        paymentLogo={paymentLogo}
+        image={image}
+      />
     </ModuleStatic>
   );
 };
