@@ -243,5 +243,3 @@ export const ListItemNav = ({
     </Pressable>
   );
 };
-
-export default ListItemNav;

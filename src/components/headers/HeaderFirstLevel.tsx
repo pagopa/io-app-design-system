@@ -161,5 +161,3 @@ export const HeaderFirstLevel = ({
     </Animated.View>
   );
 };
-
-export default HeaderFirstLevel;

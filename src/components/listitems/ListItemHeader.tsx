@@ -76,9 +76,7 @@ export const ListItemHeader = ({
         accessibilityRole="header"
         accessibilityLabel={accessibilityLabel ?? label}
       >
-        <H6 role="heading" color={theme["textBody-tertiary"]}>
-          {label}
-        </H6>
+        <H6 color={theme["textBody-tertiary"]}>{label}</H6>
       </View>
     ),
     [label, accessibilityLabel, theme]
@@ -138,5 +136,3 @@ export const ListItemHeader = ({
     </View>
   );
 };
-
-export default ListItemHeader;

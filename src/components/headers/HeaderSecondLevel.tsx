@@ -41,7 +41,7 @@ import {
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
-import IconButton from "../buttons/IconButton";
+import { IconButton } from "../buttons/IconButton";
 import { HSpacer, HStack } from "../layout";
 import { IOText } from "../typography";
 import { HeaderActionProps } from "./common";
@@ -383,5 +383,3 @@ export const HeaderSecondLevel = ({
     </Animated.View>
   );
 };
-
-export default HeaderSecondLevel;

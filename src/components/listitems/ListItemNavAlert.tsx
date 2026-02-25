@@ -116,5 +116,3 @@ export const ListItemNavAlert = ({
     </Pressable>
   );
 };
-
-export default ListItemNavAlert;

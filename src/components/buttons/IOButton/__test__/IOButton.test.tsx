@@ -1,6 +1,6 @@
 import { Alert } from "react-native";
 import { render } from "@testing-library/react-native";
-import IOButton from "../IOButton";
+import { IOButton } from "../IOButton";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");

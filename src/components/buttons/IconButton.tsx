@@ -147,5 +147,3 @@ export const IconButton = ({
     </Pressable>
   );
 };
-
-export default IconButton;

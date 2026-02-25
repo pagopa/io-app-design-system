@@ -118,5 +118,3 @@ export const ListItemInfoCopy = ({
     </Pressable>
   );
 };
-
-export default ListItemInfoCopy;

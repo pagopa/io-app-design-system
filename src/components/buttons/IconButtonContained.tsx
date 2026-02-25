@@ -152,5 +152,3 @@ export const IconButtonContained = ({
     </Pressable>
   );
 };
-
-export default IconButtonContained;

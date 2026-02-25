@@ -94,5 +94,3 @@ export const ListItemAmount = ({
     </View>
   );
 };
-
-export default ListItemAmount;
