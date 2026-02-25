@@ -1,9 +1,9 @@
-import React from "react";
 import { render, RenderOptions } from "@testing-library/react-native";
+import { ReactElement } from "react";
 import { IODSExperimentalContextProvider } from "../context/IODSExperimentalContextProvider";
 
 export const renderWithExperimentalEnabledContextProvider = (
-  ui: React.ReactElement,
+  ui: ReactElement,
   options?: RenderOptions
 ) =>
   render(
