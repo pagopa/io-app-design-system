@@ -34,8 +34,6 @@ type EndElementProps =
   | IconButtonActionProps
   | BadgeProps;
 
-type TopElementProps = BadgeProps;
-
 type GraphicProps =
   | {
       paymentLogoIcon?: IOLogoPaymentType;
@@ -56,7 +54,7 @@ export type ListItemInfo = WithTestID<{
   label?: string;
   numberOfLines?: number;
   endElement?: EndElementProps;
-  topElement?: TopElementProps;
+  topElement?: BadgeProps;
   // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
