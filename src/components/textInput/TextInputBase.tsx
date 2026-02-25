@@ -140,7 +140,7 @@ const HelperRow = ({
   const theme = useIOTheme();
 
   const valueCount =
-    inputType !== "default" ? value.replace(/\s/g, "").length : value.length;
+    inputType === "default" ? value.length : value.replace(/\s/g, "").length;
 
   const helperAccessibilityLabel = useMemo(() => {
     if (textInputProps?.keyboardType === "numeric") {
