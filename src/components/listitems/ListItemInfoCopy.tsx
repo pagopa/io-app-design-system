@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import React, { ComponentProps } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -38,18 +38,10 @@ export const ListItemInfoCopy = ({
   const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
     useIOFontDynamicScale();
 
-  const componentValueToAccessibility = useMemo(
-    () => (typeof value === "string" ? value : ""),
-    [value]
-  );
+  const componentValueToAccessibility = typeof value === "string" ? value : "";
 
-  const listItemAccessibilityLabel = useMemo(
-    () =>
-      accessibilityLabel
-        ? accessibilityLabel
-        : `${label}; ${componentValueToAccessibility}`,
-    [label, componentValueToAccessibility, accessibilityLabel]
-  );
+  const listItemAccessibilityLabel =
+    accessibilityLabel || `${label}; ${componentValueToAccessibility}`;
 
   const foregroundColor = theme["interactiveElem-default"];
 

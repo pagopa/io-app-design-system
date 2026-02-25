@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { IOVisualCostants, IOColors } from "../../core";
 import { IOIcons, Icon } from "./Icon";
@@ -53,15 +52,9 @@ When adding new styles, you should be aware of this context and be careful
 not to add variants that look like interactive counterparts.
 */
 export const IconContained = ({ variant, color, icon }: IconContained) => {
-  const backgroundColor = useMemo(
-    () => variantMap[variant][color].background,
-    [variant, color]
-  );
+  const backgroundColor = variantMap[variant][color].background;
 
-  const foregroundColor = useMemo(
-    () => variantMap[variant][color].foreground,
-    [variant, color]
-  );
+  const foregroundColor = variantMap[variant][color].foreground;
 
   return (
     <View
