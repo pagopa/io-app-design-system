@@ -125,5 +125,3 @@ export const IconButtonSolid = ({
     </Pressable>
   );
 };
-
-export default IconButtonSolid;

@@ -79,57 +79,32 @@ const MUNICIPALITY_LOGO_SIZE = 44;
 // since it is bigger than the card logos, we use
 // it as a base size for homogeneous sizing via container size.
 
-const StartComponent = ({
-  logoIcon
-}: {
-  logoIcon: ListItemTransactionLogo;
-}) => {
-  if (isImageUri(logoIcon)) {
-    return <Avatar logoUri={logoIcon} size="small" />;
-  }
-  if (React.isValidElement(logoIcon)) {
-    return <>{logoIcon}</>;
-  }
-  return (
-    <LogoPaymentWithFallback
-      brand={logoIcon as IOLogoPaymentType}
-      size={CARD_LOGO_SIZE}
-    />
-  );
-};
-
-export const ListItemTransaction = ({
-  accessibilityLabel,
-  loadingAccessibilityLabel,
-  showChevron = false,
-  isLoading = false,
+const ListItemTransactionContent = ({
   paymentLogoIcon,
-  onPress,
-  subtitle,
-  testID,
+  numberOfLines,
   title,
-  transaction: { amount, amountAccessibilityLabel, badge, refund },
-  numberOfLines = 2,
-  accessible
-}: ListItemTransaction) => {
+  subtitle,
+  badge,
+  amountAccessibilityLabel,
+  showChevron,
+  amount,
+  refund
+}: Pick<
+  ListItemTransaction,
+  "paymentLogoIcon" | "numberOfLines" | "title" | "subtitle" | "showChevron"
+> & {
+  badge: ListItemTransactionBadge | undefined;
+  amount: string | undefined;
+  amountAccessibilityLabel: string | undefined;
+  refund: boolean | undefined;
+}) => {
   const theme = useIOTheme();
-
-  if (isLoading) {
-    return (
-      <ListItemTransactionSkeleton
-        loadingAccessibilityLabel={loadingAccessibilityLabel}
-      />
-    );
-  }
-
   const interactiveColor: IOColors = theme["interactiveElem-default"];
+  const amountColor: IOColors = refund
+    ? theme.successText
+    : theme["textBody-default"];
 
-  const amountColorDefault: IOColors = theme["textBody-default"];
-  const amountColorRefund: IOColors = theme.successText;
-
-  const amountColor = refund ? amountColorRefund : amountColorDefault;
-
-  const ListItemTransactionContent = () => (
+  return (
     <>
       <HStack
         allowScaleSpacing
@@ -178,6 +153,60 @@ export const ListItemTransaction = ({
       </HStack>
     </>
   );
+};
+
+const StartComponent = ({
+  logoIcon
+}: {
+  logoIcon: ListItemTransactionLogo;
+}) => {
+  if (isImageUri(logoIcon)) {
+    return <Avatar logoUri={logoIcon} size="small" />;
+  }
+  if (React.isValidElement(logoIcon)) {
+    return <>{logoIcon}</>;
+  }
+  return (
+    <LogoPaymentWithFallback
+      brand={logoIcon as IOLogoPaymentType}
+      size={CARD_LOGO_SIZE}
+    />
+  );
+};
+
+export const ListItemTransaction = ({
+  accessibilityLabel,
+  loadingAccessibilityLabel,
+  showChevron = false,
+  isLoading = false,
+  paymentLogoIcon,
+  onPress,
+  subtitle,
+  testID,
+  title,
+  transaction: { amount, amountAccessibilityLabel, badge, refund },
+  numberOfLines = 2,
+  accessible
+}: ListItemTransaction) => {
+  if (isLoading) {
+    return (
+      <ListItemTransactionSkeleton
+        loadingAccessibilityLabel={loadingAccessibilityLabel}
+      />
+    );
+  }
+
+  const contentProps = {
+    paymentLogoIcon,
+    numberOfLines,
+    title,
+    subtitle,
+    badge,
+    amountAccessibilityLabel,
+    showChevron,
+    amount,
+    refund
+  } as const;
 
   if (onPress) {
     return (
@@ -186,7 +215,7 @@ export const ListItemTransaction = ({
         testID={testID}
         accessibilityLabel={accessibilityLabel}
       >
-        <ListItemTransactionContent />
+        <ListItemTransactionContent {...contentProps} />
       </PressableListItemBase>
     );
   } else {
@@ -203,7 +232,7 @@ export const ListItemTransaction = ({
             { columnGap: IOListItemVisualParams.iconMargin }
           ]}
         >
-          <ListItemTransactionContent />
+          <ListItemTransactionContent {...contentProps} />
         </View>
       </View>
     );
