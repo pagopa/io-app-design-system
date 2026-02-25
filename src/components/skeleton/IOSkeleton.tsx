@@ -1,12 +1,9 @@
-import { useEffect, useMemo, useRef } from "react";
-import {
-  Animated,
-  ColorValue,
-  DimensionValue,
-  Easing,
-  ViewStyle
-} from "react-native";
-import { useReducedMotion } from "react-native-reanimated";
+import { useMemo } from "react";
+import { ColorValue, DimensionValue, ViewStyle } from "react-native";
+import Animated, {
+  cubicBezier,
+  useReducedMotion
+} from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import { IOColors } from "../../core";
 import { WithTestID } from "../../utils/types";
@@ -14,6 +11,11 @@ import { WithTestID } from "../../utils/types";
 const ANIMATION_DURATION = 1250;
 const [OPACITY_MIN, OPACITY_MAX] = [0.35, 0.75];
 const OPACITY_REDUCED_MOTION = (OPACITY_MAX + OPACITY_MIN) / 2;
+
+const pulseKeyframes = {
+  "0%, 100%": { opacity: OPACITY_MAX },
+  "50%": { opacity: OPACITY_MIN }
+};
 
 type IOSkeletonSquare = {
   shape: "square";
@@ -49,8 +51,6 @@ export const IOSkeleton = ({
   const reduceMotion = useReducedMotion();
   const theme = useIOTheme();
 
-  const opacity = useRef(new Animated.Value(OPACITY_MAX)).current;
-
   const backgroundColor = color ?? IOColors[theme["skeleton-background"]];
 
   const baseStyle: ViewStyle = useMemo(
@@ -64,35 +64,21 @@ export const IOSkeleton = ({
     [backgroundColor, shape, size, width, height, borderRadius]
   );
 
-  useEffect(() => {
-    if (reduceMotion) {
-      opacity.setValue(OPACITY_REDUCED_MOTION);
-      return;
-    }
-
-    const animation = Animated.loop(
-      Animated.sequence([
-        Animated.timing(opacity, {
-          toValue: OPACITY_MIN,
-          duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin),
-          useNativeDriver: true
-        }),
-        Animated.timing(opacity, {
-          toValue: OPACITY_MAX,
-          duration: ANIMATION_DURATION / 2,
-          easing: Easing.inOut(Easing.sin),
-          useNativeDriver: true
-        })
-      ])
-    );
-
-    animation.start();
-
-    return () => {
-      animation.stop();
-    };
-  }, [opacity, reduceMotion]);
-
-  return <Animated.View testID={testID} style={[baseStyle, { opacity }]} />;
+  return (
+    <Animated.View
+      testID={testID}
+      style={[
+        baseStyle,
+        reduceMotion
+          ? { opacity: OPACITY_REDUCED_MOTION }
+          : {
+              animationName: pulseKeyframes,
+              animationDuration: `${ANIMATION_DURATION}ms`,
+              animationIterationCount: "infinite",
+              /* Equivalent to Easing.inOut(Easing.sin) */
+              animationTimingFunction: cubicBezier(0.37, 0, 0.63, 1)
+            }
+      ]}
+    />
+  );
 };
