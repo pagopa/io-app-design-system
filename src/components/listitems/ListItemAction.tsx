@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo } from "react";
+import { ComponentProps } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../context";
@@ -36,10 +36,7 @@ export const ListItemAction = ({
 
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
-  const listItemAccessibilityLabel = useMemo(
-    () => (accessibilityLabel ? accessibilityLabel : `${label}`),
-    [label, accessibilityLabel]
-  );
+  const listItemAccessibilityLabel = accessibilityLabel || `${label}`;
 
   const mapForegroundColor: Record<
     NonNullable<ListItemAction["variant"]>,
