@@ -8,8 +8,7 @@ import {
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
 import { useHeaderHeight } from "@react-navigation/elements";
-import * as React from "react";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Alert, LayoutChangeEvent, View } from "react-native";
 import Animated, {
   useAnimatedScrollHandler,
@@ -40,7 +39,7 @@ export const HeaderSecondLevelCustomBackground = () => {
     translationY.value = event.contentOffset.y;
   });
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       header: () => (
         <HeaderSecondLevel

@@ -1,5 +1,6 @@
 import {
   Body,
+  BodySmall,
   ContentWrapper,
   Divider,
   H1,
@@ -10,12 +11,10 @@ import {
   IOSpacer,
   IOVisualCostants,
   LabelMini,
-  BodySmall,
   VSpacer,
   VStack,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { NoMarginScreen } from "../components/Screen";

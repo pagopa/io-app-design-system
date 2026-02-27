@@ -1,5 +1,4 @@
-import * as React from "react";
-import { PropsWithChildren, useCallback } from "react";
+import { ComponentProps, PropsWithChildren, useCallback } from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, { useReducedMotion } from "react-native-reanimated";
@@ -12,7 +11,7 @@ export type PressableModuleBaseProps = WithTestID<
   {
     withLooseSpacing?: boolean;
   } & Pick<
-    React.ComponentProps<typeof Pressable>,
+    ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "accessibilityHint"
   >
 >;

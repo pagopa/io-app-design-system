@@ -1,4 +1,4 @@
-import React, { ComponentProps, JSX, useCallback, useMemo } from "react";
+import { ComponentProps, JSX, ReactNode, useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { BiometricsValidType, Optional } from "../../utils/types";
 import { IconButton } from "../buttons";
@@ -156,7 +156,7 @@ export const NumberPad = ({
   return <ContentWrapper>{numberPad}</ContentWrapper>;
 };
 
-const ButtonWrapper = ({ children }: { children: React.ReactNode }) => (
+const ButtonWrapper = ({ children }: { children: ReactNode }) => (
   <View
     style={[
       numberButtonStyles.buttonSize,

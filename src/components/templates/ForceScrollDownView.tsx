@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, useCallback } from "react";
+import { ComponentProps, ReactNode, useCallback } from "react";
 import {
   LayoutChangeEvent,
   Platform,
@@ -16,8 +16,8 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { IOSpringValues, IOVisualCostants } from "../../core";
 import { IconButtonSolid } from "../buttons";
 import { FooterActions, useFooterActionsInlineMeasurements } from "../layout";
@@ -165,25 +165,19 @@ const ForceScrollDownView = ({
    * and has animated style applied to it.
    */
 
-  const buttonTransitionStyle = useAnimatedStyle(() => ({
-    opacity: isButtonVisible.value,
-    transform: [{ scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }]
-  }));
-
-  const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
-
-  // Calculate bottom position including safe area insets
-  const scrollDownButtonBottom =
-    IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin;
+  const buttonTransitionStyle = useAnimatedStyle(() => {
+    const androidEdgeToEdgeMargin = Platform.OS === "ios" ? 0 : insets.bottom;
+    return {
+      bottom: IOVisualCostants.scrollDownButtonBottom + androidEdgeToEdgeMargin,
+      opacity: isButtonVisible.value,
+      transform: [
+        { scale: interpolate(isButtonVisible.value, [0, 1], [0.5, 1]) }
+      ]
+    };
+  });
 
   const scrollDownButton = (
-    <Animated.View
-      style={[
-        styles.scrollDownButton,
-        { bottom: scrollDownButtonBottom },
-        buttonTransitionStyle
-      ]}
-    >
+    <Animated.View style={[styles.scrollDownButton, buttonTransitionStyle]}>
       <IconButtonSolid
         testID={"ScrollDownButton"}
         accessibilityLabel="Scroll to bottom"

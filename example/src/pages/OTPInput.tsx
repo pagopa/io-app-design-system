@@ -8,8 +8,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
-import * as React from "react";
-import { useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
 const OTP_LENGTH_8 = 8;
@@ -33,18 +32,21 @@ const OTPWrapper = ({
   otpCompare = OTP_COMPARE_8
 }: WrapperProps) => {
   const [value, setValue] = useState("");
-  const onValueChange = React.useCallback((v: string) => {
-    if (v.length <= length) {
-      setValue(v);
-    }
-  }, [length]);
+  const onValueChange = useCallback(
+    (v: string) => {
+      if (v.length <= length) {
+        setValue(v);
+      }
+    },
+    [length]
+  );
 
-  const onValidate = React.useCallback(
+  const onValidate = useCallback(
     (v: string) => !validation || v === otpCompare,
     [validation, otpCompare]
   );
 
-  return React.useMemo(
+  return useMemo(
     () => (
       <>
         <OTPInput
@@ -70,16 +72,19 @@ const OTPWrapper = ({
 };
 
 const scrollVerticallyToView = (
-  scrollViewRef: React.RefObject<ScrollView | null>,
-  targetViewRef: React.RefObject<View | null>
+  scrollViewRef: RefObject<ScrollView | null>,
+  targetViewRef: RefObject<View | null>
 ) => {
   if (targetViewRef.current && scrollViewRef.current) {
-    targetViewRef.current.measureLayout(
-      scrollViewRef.current.getInnerViewNode(),
-      (_: number, y: number) => {
-        scrollViewRef.current?.scrollTo({ y, animated: true });
-      }
-    );
+    const nativeScrollRef = scrollViewRef.current.getNativeScrollRef();
+    if (nativeScrollRef) {
+      targetViewRef.current.measureLayout(
+        nativeScrollRef,
+        (_: number, y: number) => {
+          scrollViewRef.current?.scrollTo({ y, animated: true });
+        }
+      );
+    }
   }
 };
 
@@ -88,8 +93,8 @@ const scrollVerticallyToView = (
  * @returns a screen with a flexed view where you can test components
  */
 export const OTPInputScreen = () => {
-  const scrollViewRef = React.useRef<ScrollView>(null);
-  const autofocusableOTPViewRef = React.useRef<View>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const autofocusableOTPViewRef = useRef<View>(null);
   const [showAutofocusableOTP, setShowAutofocusableOTP] = useState(false);
   const headerHeight = useHeaderHeight();
 
@@ -128,34 +133,35 @@ export const OTPInputScreen = () => {
             <OTPWrapper secret validation />
             <VSpacer />
             <H5>Validation+Secret+length 6</H5>
-            <BodySmall>Correct OTP:
-              {" "}
-              <BodySmall weight="Semibold">
-                {OTP_COMPARE_6}
-              </BodySmall>
+            <BodySmall>
+              Correct OTP:{" "}
+              <BodySmall weight="Semibold">{OTP_COMPARE_6}</BodySmall>
             </BodySmall>
             <VSpacer />
-            <OTPWrapper secret validation length={OTP_LENGTH_6} otpCompare={OTP_COMPARE_6} />
+            <OTPWrapper
+              secret
+              validation
+              length={OTP_LENGTH_6}
+              otpCompare={OTP_COMPARE_6}
+            />
             <VSpacer />
             <H5>Autofocus</H5>
             <VSpacer />
             <IOButton
               variant={showAutofocusableOTP ? "solid" : "outline"}
-              onPress={() => {
-                setShowAutofocusableOTP(!showAutofocusableOTP);
-                setTimeout(() => {
-                  scrollVerticallyToView(
-                    scrollViewRef,
-                    autofocusableOTPViewRef
-                  );
-                }, 100);
-              }}
-              label={`${showAutofocusableOTP ? "Hide" : "Show"
-                } Autofocusable OTP`}
+              onPress={() => setShowAutofocusableOTP(!showAutofocusableOTP)}
+              label={`${
+                showAutofocusableOTP ? "Hide" : "Show"
+              } Autofocusable OTP`}
             />
             <VSpacer />
             {showAutofocusableOTP && (
-              <View ref={autofocusableOTPViewRef}>
+              <View
+                ref={autofocusableOTPViewRef}
+                onLayout={() =>
+                  scrollVerticallyToView(scrollViewRef, autofocusableOTPViewRef)
+                }
+              >
                 <OTPWrapper autoFocus />
                 <VSpacer />
               </View>

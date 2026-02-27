@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps, Fragment, ReactNode } from "react";
 import { Divider } from "../layout";
 import { ListItemRadio, ListItemRadioWithAmount } from "../listitems";
 
@@ -6,7 +6,7 @@ export type RadioItem<T> = {
   id: T;
   value: string;
   accessibilityLabel?: string;
-  description?: string | React.ReactNode;
+  description?: string | ReactNode;
   disabled?: boolean;
   startImage?: ComponentProps<typeof ListItemRadio>["startImage"];
   loadingProps?: ComponentProps<typeof ListItemRadio>["loadingProps"];
@@ -51,7 +51,7 @@ type Props<T> = RadioListItemProps<T> | RadioListItemWithAmountProps<T>;
 const RadioListItem = <T,>(props: RadioListItemProps<T>) => (
   <>
     {props.items.map((item, index) => (
-      <React.Fragment key={`radio_item_${item.id}`}>
+      <Fragment key={`radio_item_${item.id}`}>
         <ListItemRadio
           testID={`RadioItemTestID_${item.id}`}
           value={item.value}
@@ -64,7 +64,7 @@ const RadioListItem = <T,>(props: RadioListItemProps<T>) => (
           selected={props.selectedItem === item.id}
         />
         {index < props.items.length - 1 && <Divider />}
-      </React.Fragment>
+      </Fragment>
     ))}
   </>
 );
@@ -74,7 +74,7 @@ const RadioListItemWithAmount = <T,>(
 ) => (
   <>
     {props.items.map((item, index) => (
-      <React.Fragment key={`radio_item_${item.id}`}>
+      <Fragment key={`radio_item_${item.id}`}>
         {item.isSuggested ? (
           <ListItemRadioWithAmount
             label={item.label}
@@ -94,7 +94,7 @@ const RadioListItemWithAmount = <T,>(
         )}
 
         {index < props.items.length - 1 && <Divider />}
-      </React.Fragment>
+      </Fragment>
     ))}
   </>
 );

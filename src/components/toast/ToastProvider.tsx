@@ -1,16 +1,13 @@
 import { throttle } from "lodash";
-import React from "react";
-import { AccessibilityInfo, Platform, StyleSheet, View } from "react-native";
+import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
+import { AccessibilityInfo, StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
   SequencedTransition,
   SlideInUp,
   SlideOutUp
 } from "react-native-reanimated";
-import {
-  SafeAreaView,
-  useSafeAreaInsets
-} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
 import { Dismissable } from "../templates";
@@ -61,16 +58,16 @@ const ToastNotificationStackItem = ({
 );
 
 type ToastProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const ToastProvider = ({ children }: ToastProviderProps) => {
-  const toastId = React.useRef(1);
-  const [toasts, setToasts] = React.useState<
+  const toastId = useRef(1);
+  const [toasts, setToasts] = useState<
     ReadonlyArray<ToastNotificationStackItem>
   >([]);
 
-  const addToast = React.useCallback((toast: Toast): number => {
+  const addToast = useCallback((toast: Toast): number => {
     const id = (toastId.current ?? 0) + 1;
     // eslint-disable-next-line functional/immutable-data
     toastId.current = id;
@@ -98,15 +95,15 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     return id;
   }, []);
 
-  const removeToast = React.useCallback((id: number) => {
+  const removeToast = useCallback((id: number) => {
     setToasts(prevToasts => prevToasts.filter(t => t.id !== id));
   }, []);
 
-  const removeAllToasts = React.useCallback(() => {
+  const removeAllToasts = useCallback(() => {
     setToasts([]);
   }, []);
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({
       addToast: throttle(addToast, TOAST_THROTTLE_TIME),
       removeToast: throttle(removeToast, TOAST_THROTTLE_TIME),
@@ -115,20 +112,10 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
     [addToast, removeToast, removeAllToasts]
   );
 
-  const insets = useSafeAreaInsets();
-
   return (
     <ToastContext.Provider value={contextValue as ToastContext}>
       <InitializeToastRef />
-      <SafeAreaView
-        style={[
-          styles.container,
-          {
-            paddingTop: Platform.OS === "android" ? insets.top : 0
-          }
-        ]}
-        pointerEvents="box-none"
-      >
+      <SafeAreaView style={styles.container} pointerEvents="box-none">
         <View
           style={{ padding: IOVisualCostants.appMarginDefault }}
           pointerEvents="box-none"

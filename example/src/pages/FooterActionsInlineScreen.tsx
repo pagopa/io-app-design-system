@@ -6,7 +6,7 @@ import {
   IOButton,
   useFooterActionsInlineMeasurements
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, ScrollView, View } from "react-native";
 
 /**

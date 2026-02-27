@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { ColorValue, LayoutChangeEvent, StyleSheet, View } from "react-native";
 import { useIOTheme, useIOThemeContext } from "../../context";
 import {

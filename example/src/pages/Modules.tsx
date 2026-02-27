@@ -11,7 +11,7 @@ import {
   ModuleSummary,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import SpidTextLogo from "../../assets/images/spid-text-logo.svg";
@@ -375,6 +375,11 @@ const renderModuleCredential = () => (
           isLoading={true}
           loadingAccessibilityLabel={"Loading credential"}
         />
+      </View>
+    </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, without image or icon and with chevron">
+      <View>
+        <ModuleCredential label="Identità digitale" onPress={mockFn} />
       </View>
     </ComponentViewerBox>
   </>

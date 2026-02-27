@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, View } from "react-native";
 import { WithTestID } from "src/utils/types";
 import { IOColors, hexToRgba } from "../../core";

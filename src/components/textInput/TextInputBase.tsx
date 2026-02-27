@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React, {
+import {
   ReactNode,
   useCallback,
   useEffect,
@@ -139,11 +139,8 @@ const HelperRow = ({
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
 
-  const valueCount = useMemo(
-    () =>
-      inputType !== "default" ? value.replace(/\s/g, "").length : value.length,
-    [inputType, value]
-  );
+  const valueCount =
+    inputType === "default" ? value.length : value.replace(/\s/g, "").length;
 
   const helperAccessibilityLabel = useMemo(() => {
     if (textInputProps?.keyboardType === "numeric") {
@@ -231,7 +228,6 @@ export const TextInputBase = ({
   testID
 }: InputTextProps) => {
   const inputRef = useRef<TextInput>(null);
-  const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const [inputStatus, setInputStatus] = useState<InputStatus>(
     disabled ? "disabled" : "initial"
   );
@@ -454,7 +450,7 @@ export const TextInputBase = ({
           importantForAccessibility="yes"
           accessibilityElementsHidden={false}
           editable={!disabled}
-          secureTextEntry={isSecretInput}
+          secureTextEntry={isPassword}
           disableFullscreenUI={true}
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}

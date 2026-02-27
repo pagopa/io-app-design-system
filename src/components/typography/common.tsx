@@ -1,4 +1,4 @@
-import React from "react";
+import { ComponentPropsWithRef } from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
 import type { IOColors } from "../../core";
 import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
@@ -72,7 +72,7 @@ export function calculateWeightColor<WeightPropsType, ColorsPropsType>(
  * In addition to the {@link DefaultTypographyProps} all the {@link Text} props are allowed (`style` excluded)
  */
 export type ExternalTypographyProps<T> = T extends DefaultTypographyProps
-  ? Omit<React.ComponentPropsWithRef<typeof Text>, "style"> &
+  ? Omit<ComponentPropsWithRef<typeof Text>, "style"> &
       T & { style?: TypographyStyle }
   : never;
 

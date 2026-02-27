@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, useMemo } from "react";
+import { ComponentProps, forwardRef, useMemo } from "react";
 import {
   AccessibilityRole,
   ColorValue,
@@ -8,8 +8,8 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { IOColors } from "../../core";
 import { useIOTheme } from "../../context";
+import { IOColors } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,

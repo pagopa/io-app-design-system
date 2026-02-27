@@ -91,7 +91,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="0"
           style={
             [
               {
@@ -204,7 +203,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="1"
           style={
             [
               {
@@ -317,7 +315,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="2"
           style={
             [
               {
@@ -441,7 +438,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="3"
           style={
             [
               {
@@ -554,7 +550,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="4"
           style={
             [
               {
@@ -667,7 +662,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="5"
           style={
             [
               {
@@ -791,7 +785,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="6"
           style={
             [
               {
@@ -904,7 +897,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="7"
           style={
             [
               {
@@ -1017,7 +1009,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="8"
           style={
             [
               {
@@ -1155,7 +1146,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 },
               ]
             }
-            nativeID="9"
             style={
               [
                 {
@@ -1203,7 +1193,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               meetOrSlice={0}
               minX={0}
               minY={0}
-              nativeID="10"
               style={
                 [
                   {
@@ -1314,7 +1303,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               },
             ]
           }
-          nativeID="11"
           style={
             [
               {
@@ -1441,7 +1429,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
                 },
               ]
             }
-            nativeID="12"
             style={
               [
                 {
@@ -1489,7 +1476,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               meetOrSlice={0}
               minX={0}
               minY={0}
-              nativeID="13"
               style={
                 [
                   {

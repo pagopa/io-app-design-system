@@ -6,19 +6,21 @@ jobs:
   npm:
     runs-on: ubuntu-latest
     environment: prod
+    permissions:
+      id-token: write  # Required for OIDC
     steps:
       - name: Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
       - name: Setup Node
-        uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 #v2.5.2
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 #v4.4.0
         with:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
+      - name: Install npm 11
+        run: npm install -g npm@11.7.0
       - name: Install dependencies
         run: yarn install --immutable
       - name: Build the library
         run: yarn prepack
       - name: Publish package on NPM 📦
-        run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN }}
+        run: npm publish

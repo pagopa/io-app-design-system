@@ -1,4 +1,3 @@
-import React from "react";
 import { GestureResponderEvent, StyleSheet, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOListItemVisualParams, IOSpacer } from "../../core";
@@ -56,6 +55,42 @@ const styles = StyleSheet.create({
   }
 });
 
+const AmountOrBadgeComponent = ({
+  status,
+  amount,
+  amountAccessibilityLabel,
+  badgeText
+}: {
+  status: PaymentNoticeStatus;
+  amount: string | undefined;
+  amountAccessibilityLabel: string | undefined;
+  badgeText: string;
+}) => {
+  const theme = useIOTheme();
+
+  switch (status) {
+    case "default":
+      return (
+        <H6
+          accessibilityLabel={amountAccessibilityLabel}
+          color={theme["interactiveElem-default"]}
+          numberOfLines={1}
+        >
+          {amount}
+        </H6>
+      );
+    case "paid":
+      return <Badge variant="success" text={badgeText} />;
+    case "error":
+      return <Badge variant="error" text={badgeText} />;
+    case "expired":
+    case "revoked":
+    case "canceled":
+    case "in-progress":
+      return <Badge variant="default" text={badgeText} />;
+  }
+};
+
 const ModulePaymentNoticeContent = ({
   title,
   subtitle,
@@ -63,33 +98,6 @@ const ModulePaymentNoticeContent = ({
   badgeText = ""
 }: Omit<ModulePaymentNoticeProps, "isLoading" | "onPress" | "testID">) => {
   const theme = useIOTheme();
-
-  const AmountOrBadgeComponent = () => {
-    switch (status) {
-      case "default":
-        return (
-          <H6
-            accessibilityLabel={amountAccessibilityLabel}
-            color={theme["interactiveElem-default"]}
-            numberOfLines={1}
-          >
-            {amount}
-          </H6>
-        );
-      case "paid":
-        return <Badge variant="success" text={badgeText} />;
-      case "error":
-        return <Badge variant="error" text={badgeText} />;
-      case "expired":
-        return <Badge variant="default" text={badgeText} />;
-      case "revoked":
-        return <Badge variant="default" text={badgeText} />;
-      case "canceled":
-        return <Badge variant="default" text={badgeText} />;
-      case "in-progress":
-        return <Badge variant="default" text={badgeText} />;
-    }
-  };
 
   return (
     <HStack space={IOListItemVisualParams.iconMargin as IOSpacer}>
@@ -114,7 +122,12 @@ const ModulePaymentNoticeContent = ({
         )}
       </View>
       <View style={styles.endBlock}>
-        <AmountOrBadgeComponent />
+        <AmountOrBadgeComponent
+          status={status}
+          amount={amount}
+          amountAccessibilityLabel={amountAccessibilityLabel}
+          badgeText={badgeText}
+        />
         <Icon
           name="chevronRightListItem"
           color={theme["interactiveElem-default"]}

@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import { ComponentProps, ReactNode, useState } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated from "react-native-reanimated";
@@ -40,7 +39,7 @@ type ListItemRadioLoadingProps =
 
 type Props = WithTestID<{
   value: string;
-  description?: string | React.ReactNode;
+  description?: string | ReactNode;
   selected: boolean;
   onValueChange?: (newValue: boolean) => void;
   startImage?: ListItemRadioGraphicProps;
@@ -51,7 +50,7 @@ const DISABLED_OPACITY = 0.5;
 
 type ListItemRadioProps = Props &
   Pick<
-    React.ComponentProps<typeof Pressable>,
+    ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 

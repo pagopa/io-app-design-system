@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { GestureResponderEvent, Image, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../context";
@@ -22,7 +22,7 @@ import { BodySmall, Caption, H6 } from "../typography";
 
 type ListItemTopElementProps =
   | {
-      badgeProps: React.ComponentProps<typeof Badge>;
+      badgeProps: ComponentProps<typeof Badge>;
       dateValue?: never;
     }
   | {
@@ -32,12 +32,12 @@ type ListItemTopElementProps =
 
 type ListItemNavPartialProps = WithTestID<
   {
-    value: string | React.ReactNode;
+    value: string | ReactNode;
     /**
      * The maximum number of lines to display for the value.
      */
     numberOfLines?: number;
-    description?: string | React.ReactNode;
+    description?: string | ReactNode;
     loading?: boolean;
     onPress: (event: GestureResponderEvent) => void;
     hideChevron?: boolean;
@@ -243,5 +243,3 @@ export const ListItemNav = ({
     </Pressable>
   );
 };
-
-export default ListItemNav;

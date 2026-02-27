@@ -1,6 +1,6 @@
 // __tests__/ModuleNavigationAlt.test.tsx
 import { render } from "@testing-library/react-native";
-import React from "react";
+
 import { Alert } from "react-native";
 import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
 import { ModuleNavigationAlt } from "../ModuleNavigationAlt";

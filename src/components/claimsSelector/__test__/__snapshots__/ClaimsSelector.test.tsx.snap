@@ -76,7 +76,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
             },
           ]
         }
-        nativeID="0"
         style={
           [
             {
@@ -134,7 +133,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
             }
           }
           jestInlineStyle={{}}
-          nativeID="1"
           style={
             [
               {
@@ -229,7 +227,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         },
       ]
     }
-    nativeID="2"
     style={
       [
         {
@@ -318,7 +315,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
               },
             ]
           }
-          nativeID="3"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -355,7 +351,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
               }
             }
             jestInlineStyle={{}}
-            nativeID="4"
             style={
               [
                 {
@@ -518,7 +513,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                         },
                       ]
                     }
-                    nativeID="5"
                     style={
                       [
                         {
@@ -733,7 +727,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
             },
           ]
         }
-        nativeID="16"
         style={
           [
             {
@@ -791,7 +784,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
             }
           }
           jestInlineStyle={{}}
-          nativeID="17"
           style={
             [
               {
@@ -886,7 +878,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
         },
       ]
     }
-    nativeID="18"
     style={
       [
         {
@@ -1075,7 +1066,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
             },
           ]
         }
-        nativeID="7"
         style={
           [
             {
@@ -1133,7 +1123,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
             }
           }
           jestInlineStyle={{}}
-          nativeID="8"
           style={
             [
               {
@@ -1228,7 +1217,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         },
       ]
     }
-    nativeID="9"
     style={
       [
         {
@@ -1317,7 +1305,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
               },
             ]
           }
-          nativeID="10"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -1354,7 +1341,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
               }
             }
             jestInlineStyle={{}}
-            nativeID="11"
             style={
               [
                 {
@@ -1517,7 +1503,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                         },
                       ]
                     }
-                    nativeID="12"
                     style={
                       [
                         {
@@ -1661,7 +1646,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             },
           ]
         }
-        nativeID="13"
         style={
           [
             {
@@ -1719,7 +1703,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             }
           }
           jestInlineStyle={{}}
-          nativeID="14"
           style={
             [
               {
@@ -1814,7 +1797,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
         },
       ]
     }
-    nativeID="15"
     style={
       [
         {

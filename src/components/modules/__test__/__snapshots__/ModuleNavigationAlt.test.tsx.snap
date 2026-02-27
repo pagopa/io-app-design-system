@@ -60,15 +60,56 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
       >
         <View
           collapsable={false}
-          style={
+          jestAnimatedProps={
             {
-              "backgroundColor": "#E8EBF1",
-              "borderCurve": "continuous",
-              "borderRadius": 8,
-              "height": 32,
-              "opacity": 0.75,
-              "width": 32,
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {},
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "backgroundColor": "#E8EBF1",
+                "borderCurve": "continuous",
+                "borderRadius": 8,
+                "height": 32,
+                "width": 32,
+              },
+              {
+                "animationDuration": "1250ms",
+                "animationIterationCount": "infinite",
+                "animationName": {
+                  "0%, 100%": {
+                    "opacity": 0.75,
+                  },
+                  "50%": {
+                    "opacity": 0.35,
+                  },
+                },
+                "animationTimingFunction": CubicBezierEasing {
+                  "x1": 0.37,
+                  "x2": 0.63,
+                  "y1": 0,
+                  "y2": 1,
+                },
+              },
+            ]
+          }
+          style={
+            [
+              {
+                "backgroundColor": "#E8EBF1",
+                "borderCurve": "continuous",
+                "borderRadius": 8,
+                "height": 32,
+                "width": 32,
+              },
+              {},
+            ]
           }
         />
         <View
@@ -82,41 +123,164 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
         >
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 12,
-                "opacity": 0.75,
-                "width": 52,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 52,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 52,
+                },
+                {},
+              ]
             }
           />
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 16,
-                "opacity": 0.75,
-                "width": 96,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 16,
+                  "width": 96,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 16,
+                  "width": 96,
+                },
+                {},
+              ]
             }
           />
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 12,
-                "opacity": 0.75,
-                "width": 160,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 160,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 160,
+                },
+                {},
+              ]
             }
           />
         </View>
@@ -124,15 +288,56 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Loading state 1`]
     </View>
     <View
       collapsable={false}
-      style={
+      jestAnimatedProps={
         {
-          "backgroundColor": "#E8EBF1",
-          "borderCurve": "continuous",
-          "borderRadius": 16,
-          "height": 24,
-          "opacity": 0.75,
-          "width": 64,
+          "value": {},
         }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
+            "borderRadius": 16,
+            "height": 24,
+            "width": 64,
+          },
+          {
+            "animationDuration": "1250ms",
+            "animationIterationCount": "infinite",
+            "animationName": {
+              "0%, 100%": {
+                "opacity": 0.75,
+              },
+              "50%": {
+                "opacity": 0.35,
+              },
+            },
+            "animationTimingFunction": CubicBezierEasing {
+              "x1": 0.37,
+              "x2": 0.63,
+              "y1": 0,
+              "y2": 1,
+            },
+          },
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
+            "borderRadius": 16,
+            "height": 24,
+            "width": 64,
+          },
+          {},
+        ]
       }
     />
   </View>
@@ -210,7 +415,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 
         false,
       ]
     }
-    nativeID="5"
     style={
       [
         {
@@ -464,7 +668,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
         false,
       ]
     }
-    nativeID="4"
     style={
       [
         {
@@ -755,7 +958,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
         false,
       ]
     }
-    nativeID="6"
     style={
       [
         {
@@ -1095,7 +1297,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no ic
         false,
       ]
     }
-    nativeID="7"
     style={
       [
         {
@@ -1335,15 +1536,56 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
       >
         <View
           collapsable={false}
-          style={
+          jestAnimatedProps={
             {
-              "backgroundColor": "#E8EBF1",
-              "borderCurve": "continuous",
-              "borderRadius": 8,
-              "height": 32,
-              "opacity": 0.75,
-              "width": 32,
+              "value": {},
             }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {},
+            }
+          }
+          jestInlineStyle={
+            [
+              {
+                "backgroundColor": "#E8EBF1",
+                "borderCurve": "continuous",
+                "borderRadius": 8,
+                "height": 32,
+                "width": 32,
+              },
+              {
+                "animationDuration": "1250ms",
+                "animationIterationCount": "infinite",
+                "animationName": {
+                  "0%, 100%": {
+                    "opacity": 0.75,
+                  },
+                  "50%": {
+                    "opacity": 0.35,
+                  },
+                },
+                "animationTimingFunction": CubicBezierEasing {
+                  "x1": 0.37,
+                  "x2": 0.63,
+                  "y1": 0,
+                  "y2": 1,
+                },
+              },
+            ]
+          }
+          style={
+            [
+              {
+                "backgroundColor": "#E8EBF1",
+                "borderCurve": "continuous",
+                "borderRadius": 8,
+                "height": 32,
+                "width": 32,
+              },
+              {},
+            ]
           }
         />
         <View
@@ -1357,41 +1599,164 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
         >
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 12,
-                "opacity": 0.75,
-                "width": 52,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 52,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 52,
+                },
+                {},
+              ]
             }
           />
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 16,
-                "opacity": 0.75,
-                "width": 96,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 16,
+                  "width": 96,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 16,
+                  "width": 96,
+                },
+                {},
+              ]
             }
           />
           <View
             collapsable={false}
-            style={
+            jestAnimatedProps={
               {
-                "backgroundColor": "#E8EBF1",
-                "borderCurve": "continuous",
-                "borderRadius": 8,
-                "height": 12,
-                "opacity": 0.75,
-                "width": 160,
+                "value": {},
               }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {},
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 160,
+                },
+                {
+                  "animationDuration": "1250ms",
+                  "animationIterationCount": "infinite",
+                  "animationName": {
+                    "0%, 100%": {
+                      "opacity": 0.75,
+                    },
+                    "50%": {
+                      "opacity": 0.35,
+                    },
+                  },
+                  "animationTimingFunction": CubicBezierEasing {
+                    "x1": 0.37,
+                    "x2": 0.63,
+                    "y1": 0,
+                    "y2": 1,
+                  },
+                },
+              ]
+            }
+            style={
+              [
+                {
+                  "backgroundColor": "#E8EBF1",
+                  "borderCurve": "continuous",
+                  "borderRadius": 8,
+                  "height": 12,
+                  "width": 160,
+                },
+                {},
+              ]
             }
           />
         </View>
@@ -1399,15 +1764,56 @@ exports[`ModuleNavigationAlt - Snapshot Loading state 1`] = `
     </View>
     <View
       collapsable={false}
-      style={
+      jestAnimatedProps={
         {
-          "backgroundColor": "#E8EBF1",
-          "borderCurve": "continuous",
-          "borderRadius": 16,
-          "height": 24,
-          "opacity": 0.75,
-          "width": 64,
+          "value": {},
         }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
+            "borderRadius": 16,
+            "height": 24,
+            "width": 64,
+          },
+          {
+            "animationDuration": "1250ms",
+            "animationIterationCount": "infinite",
+            "animationName": {
+              "0%, 100%": {
+                "opacity": 0.75,
+              },
+              "50%": {
+                "opacity": 0.35,
+              },
+            },
+            "animationTimingFunction": CubicBezierEasing {
+              "x1": 0.37,
+              "x2": 0.63,
+              "y1": 0,
+              "y2": 1,
+            },
+          },
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#E8EBF1",
+            "borderCurve": "continuous",
+            "borderRadius": 16,
+            "height": 24,
+            "width": 64,
+          },
+          {},
+        ]
       }
     />
   </View>
@@ -1485,7 +1891,6 @@ exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `
         false,
       ]
     }
-    nativeID="1"
     style={
       [
         {
@@ -1739,7 +2144,6 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
         false,
       ]
     }
-    nativeID="0"
     style={
       [
         {
@@ -2030,7 +2434,6 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
         false,
       ]
     }
-    nativeID="2"
     style={
       [
         {
@@ -2370,7 +2773,6 @@ exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress)
         false,
       ]
     }
-    nativeID="3"
     style={
       [
         {

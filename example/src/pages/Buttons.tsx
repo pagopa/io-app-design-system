@@ -16,7 +16,7 @@ import {
   VStack,
   hexToRgba
 } from "@pagopa/io-app-design-system";
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
