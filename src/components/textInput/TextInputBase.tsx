@@ -1,8 +1,10 @@
 /* eslint-disable functional/immutable-data */
-import React, {
+import {
+  forwardRef,
   ReactNode,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState
@@ -139,11 +141,8 @@ const HelperRow = ({
 }: InputTextHelperRow) => {
   const theme = useIOTheme();
 
-  const valueCount = useMemo(
-    () =>
-      inputType !== "default" ? value.replace(/\s/g, "").length : value.length,
-    [inputType, value]
-  );
+  const valueCount =
+    inputType === "default" ? value.length : value.replace(/\s/g, "").length;
 
   const helperAccessibilityLabel = useMemo(() => {
     if (textInputProps?.keyboardType === "numeric") {
@@ -208,9 +207,9 @@ const HelperRow = ({
   );
 };
 
-export const TextInputBase = React.forwardRef<TextInput, InputTextProps>(
+export const TextInputBase = forwardRef<TextInput, InputTextProps>(
   (
-    {
+     {
       disabled = false,
       placeholder,
       value = "",
@@ -414,7 +413,7 @@ export const TextInputBase = React.forwardRef<TextInput, InputTextProps>(
       return counterLimit;
     }, [counterLimit, derivedInputProps]);
 
-    React.useImperativeHandle(forwardedRef, () => internalInputRef.current!);
+    useImperativeHandle(forwardedRef, () => internalInputRef.current!);
 
     return (
       <>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Svg, Path, LinearGradient, Stop, Defs } from "react-native-svg";
 import { SVGLogoProps } from "../types";
 

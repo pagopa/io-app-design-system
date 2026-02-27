@@ -1,19 +1,18 @@
-import React, { MutableRefObject } from "react";
-import { ToastOptions } from "./types";
+import { createRef, RefObject, useCallback, useContext, useMemo } from "react";
 import { ToastContext } from "./context";
+import { ToastOptions } from "./types";
 
 export const useIOToast = () => {
-  const { addToast, removeToast, removeAllToasts } =
-    React.useContext(ToastContext);
+  const { addToast, removeToast, removeAllToasts } = useContext(ToastContext);
 
-  const show = React.useCallback(
+  const show = useCallback(
     (message: string, options?: ToastOptions) => {
       addToast({ message, ...options });
     },
     [addToast]
   );
 
-  const error = React.useCallback(
+  const error = useCallback(
     (message: string) => {
       show(message, {
         variant: "error",
@@ -24,7 +23,7 @@ export const useIOToast = () => {
     [show]
   );
 
-  const info = React.useCallback(
+  const info = useCallback(
     (message: string) => {
       show(message, {
         variant: "info",
@@ -35,7 +34,7 @@ export const useIOToast = () => {
     [show]
   );
 
-  const success = React.useCallback(
+  const success = useCallback(
     (message: string) => {
       show(message, {
         variant: "success",
@@ -46,7 +45,7 @@ export const useIOToast = () => {
     [show]
   );
 
-  const warning = React.useCallback(
+  const warning = useCallback(
     (message: string) => {
       show(message, {
         variant: "warning",
@@ -57,7 +56,7 @@ export const useIOToast = () => {
     [show]
   );
 
-  return React.useMemo(
+  return useMemo(
     () => ({
       show,
       error,
@@ -73,8 +72,7 @@ export const useIOToast = () => {
 
 export type IOToast = ReturnType<typeof useIOToast>;
 
-export const IOToastRef =
-  React.createRef<IOToast>() as MutableRefObject<IOToast>;
+export const IOToastRef = createRef<IOToast>() as RefObject<IOToast>;
 
 export const IOToast: IOToast = {
   show: (message: string, options?: ToastOptions) =>

@@ -14,8 +14,7 @@ import {
   VStack
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
-import { useContext, useState } from "react";
+import { ComponentProps, useContext, useEffect, useState } from "react";
 import { Alert, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBannerContext } from "../components/StatusBannerProvider";
@@ -45,7 +44,7 @@ const thirdAction: HeaderActionProps = {
 };
 
 const actionsConfiguration: {
-  [size: number]: React.ComponentProps<typeof HeaderFirstLevel>["actions"];
+  [size: number]: ComponentProps<typeof HeaderFirstLevel>["actions"];
 } = {
   0: [],
   1: [firstAction],
@@ -78,7 +77,7 @@ export const HeaderFirstLevelScreen = () => {
       : showAlert({ variant, content });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     navigation.setOptions({
       header: () => (
         <HeaderFirstLevel

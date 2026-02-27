@@ -2,9 +2,10 @@ import { ScaledSize } from "react-native";
 import { IOVisualCostants } from "../../../core";
 import { ChildrenCoords, DisplayInsets, Placement } from "./types";
 
-export const ARROW_WIDTH = 24;
 export const ARROW_HEIGHT = 14;
 export const EMPTY_SPACE = 8;
+
+const ARROW_WIDTH = 24;
 const DEFAULT_INSETS: DisplayInsets = {
   top: 0,
   bottom: 0,

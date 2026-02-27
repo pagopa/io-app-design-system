@@ -1,9 +1,9 @@
 import {
+  Badge,
   Divider,
   H2,
   H6,
   Icon,
-  Badge,
   ListItemAction,
   ListItemAmount,
   ListItemHeader,
@@ -18,7 +18,7 @@ import {
   ListItemTransactionLogo,
   VSpacer
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+import { Fragment } from "react";
 import { Alert, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -626,7 +626,7 @@ const renderListItemTransaction = () => (
 
       {transactionStatusArray.map(
         ({ badge, asset }: mockTransactionStatusData) => (
-          <React.Fragment key={`transactionStatus-${badge?.text}`}>
+          <Fragment key={`transactionStatus-${badge?.text}`}>
             <ListItemTransaction
               title="Title"
               subtitle="subtitle"
@@ -635,7 +635,7 @@ const renderListItemTransaction = () => (
               onPress={onButtonPress}
             />
             <Divider />
-          </React.Fragment>
+          </Fragment>
         )
       )}
 

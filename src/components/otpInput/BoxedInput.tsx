@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import { memo, useMemo } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { useIOTheme } from "../../context";
 import { hexToRgba, IOColors } from "../../core/IOColors";

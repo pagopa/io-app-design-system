@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 type IOExperimentalContextType = {
   isExperimental: boolean;
@@ -8,13 +8,13 @@ type IOExperimentalContextType = {
  * Experimental Context for new UI Representations
  */
 export const IOExperimentalDesignContext =
-  React.createContext<IOExperimentalContextType>({
+  createContext<IOExperimentalContextType>({
     isExperimental: false,
     setExperimental: () => void 0
   });
 
 export const useIOExperimentalDesign = () =>
-  React.useContext(IOExperimentalDesignContext);
+  useContext(IOExperimentalDesignContext);
 
 type IOExperimentalContextProviderProps = {
   isExperimentaEnabled?: boolean;
@@ -23,7 +23,7 @@ type IOExperimentalContextProviderProps = {
 export const IODSExperimentalContextProvider = ({
   children,
   isExperimentaEnabled
-}: React.PropsWithChildren<IOExperimentalContextProviderProps>) => {
+}: PropsWithChildren<IOExperimentalContextProviderProps>) => {
   const [isExperimental, setExperimental] = useState(
     isExperimentaEnabled ?? false
   );

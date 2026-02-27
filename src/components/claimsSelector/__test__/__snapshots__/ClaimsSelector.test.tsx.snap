@@ -906,7 +906,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
       }
     >
       <View
-        accessibilityLabel="Nome e cognome; "
+        accessibilityLabel="Nome e cognome"
         accessibilityRole="image"
         accessible={true}
         style={
@@ -939,7 +939,8 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
             }
           >
             <View
-              accessible={true}
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
               style={
                 {
                   "flexDirection": "column-reverse",
@@ -1825,7 +1826,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       }
     >
       <View
-        accessibilityLabel="Nome e cognome; Mario Rossi"
+        accessibilityLabel="Mario Rossi; Nome e cognome"
         accessibilityRole="text"
         accessible={true}
         style={
@@ -1858,7 +1859,8 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             }
           >
             <View
-              accessible={true}
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
               style={
                 {
                   "flexDirection": "column-reverse",

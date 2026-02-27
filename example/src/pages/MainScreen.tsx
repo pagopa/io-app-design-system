@@ -11,7 +11,7 @@ import {
   useIONewTypeface,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { useEffect } from "react";
 import { SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";

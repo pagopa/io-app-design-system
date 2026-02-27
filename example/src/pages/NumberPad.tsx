@@ -12,7 +12,7 @@ import {
   useIOTheme
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, View } from "react-native";
 
 const PIN_LENGTH = 6;

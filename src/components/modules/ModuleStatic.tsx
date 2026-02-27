@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { PressableProps, View, ViewProps } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOColors, IOModuleStyles } from "../../core";
@@ -11,8 +11,8 @@ type ModuleStaticProps = Pick<
   (ModuleStaticSingleBlockProps | ModuleStaticMultipleBlockProps);
 
 type ModuleStaticMultipleBlockProps = {
-  startBlock: React.ReactNode;
-  endBlock?: React.ReactNode;
+  startBlock: ReactNode;
+  endBlock?: ReactNode;
   children?: never;
   disabled?: PressableProps["disabled"];
 };
@@ -20,7 +20,7 @@ type ModuleStaticMultipleBlockProps = {
 type ModuleStaticSingleBlockProps = {
   startBlock?: never;
   endBlock?: never;
-  children: React.ReactNode;
+  children: ReactNode;
   disabled?: PressableProps["disabled"];
 };
 

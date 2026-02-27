@@ -9,17 +9,22 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useIsFocused } from "@react-navigation/native";
-import * as React from "react";
+import {
+  ComponentProps,
+  ComponentRef,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import { Button, View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
-  props: Omit<
-    React.ComponentProps<typeof TextInput>,
-    "value" | "onChangeText"
-  > & { value?: string }
+  props: Omit<ComponentProps<typeof TextInput>, "value" | "onChangeText"> & {
+    value?: string;
+  }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -32,11 +37,11 @@ const InputComponentWrapper = (
 
 const InputValidationComponentWrapper = (
   props: Omit<
-    React.ComponentProps<typeof TextInputValidation>,
+    ComponentProps<typeof TextInputValidation>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -53,11 +58,11 @@ const InputValidationComponentWrapper = (
 
 const InputPasswordComponentWrapper = (
   props: Omit<
-    React.ComponentProps<typeof TextInputPassword>,
+    ComponentProps<typeof TextInputPassword>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -74,16 +79,16 @@ const InputPasswordComponentWrapper = (
 
 const TextInputValidationOnContinue = (
   props: Omit<
-    React.ComponentProps<typeof TextInputValidation>,
+    ComponentProps<typeof TextInputValidation>,
     "value" | "onChangeText"
   > & { value?: string }
 ) => {
-  const textInputRef = React.useRef<TextInputValidationRefProps>(null);
+  const textInputRef = useRef<TextInputValidationRefProps>(null);
 
   const handleContinue = () => {
     textInputRef.current?.validateInput();
   };
-  const [inputValue, setInputValue] = React.useState(props.value ?? "");
+  const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
@@ -107,15 +112,14 @@ const TextInputValidationOnContinue = (
  */
 
 export const TextInputs = () => {
-  const hasFocused = React.useRef(false);
+  const hasFocused = useRef(false);
   const isFocused = useIsFocused();
 
-  const textInputRef =
-    React.useRef<React.ComponentRef<typeof InputComponentWrapper>>(null);
+  const textInputRef = useRef<ComponentRef<typeof InputComponentWrapper>>(null);
   // Workaround to trigger autofocus on the input,
   // since autoFocus prop is not working due to this bug
   // https://github.com/react-navigation/react-navigation/issues/11643
-  React.useEffect(() => {
+  useEffect(() => {
     if (isFocused && !hasFocused.current) {
       // Small delay to let the native view hierarchy catch up
       const timer = setTimeout(() => {

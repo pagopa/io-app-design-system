@@ -1,5 +1,5 @@
-import * as React from "react";
 import {
+  ComponentProps,
   forwardRef,
   useCallback,
   useImperativeHandle,
@@ -22,7 +22,7 @@ import { TextInputBase } from "./TextInputBase";
 export type ValidationWithOptions = { isValid: boolean; errorMessage: string };
 
 type TextInputValidationProps = Omit<
-  React.ComponentProps<typeof TextInputBase>,
+  ComponentProps<typeof TextInputBase>,
   "rightElement" | "status" | "bottomMessageColor" | "isPassword"
 > & {
   /**
@@ -191,5 +191,3 @@ export const TextInputValidation = forwardRef<
     );
   }
 );
-
-export default TextInputValidation;
