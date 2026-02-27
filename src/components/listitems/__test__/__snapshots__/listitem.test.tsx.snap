@@ -190,7 +190,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
@@ -2308,7 +2309,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
