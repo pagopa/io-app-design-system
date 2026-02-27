@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from "react";
-import { AccessibilityRole, Platform, Pressable, View } from "react-native";
+import { AccessibilityRole, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOTheme } from "../../context";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -35,14 +35,8 @@ type EndElementProps =
   | BadgeProps;
 
 type GraphicProps =
-  | {
-      paymentLogoIcon?: IOLogoPaymentType;
-      icon?: never;
-    }
-  | {
-      paymentLogoIcon?: never;
-      icon?: IOIcons;
-    };
+  | { paymentLogoIcon?: IOLogoPaymentType; icon?: never }
+  | { paymentLogoIcon?: never; icon?: IOIcons };
 
 type InteractiveProps = Pick<
   ComponentProps<typeof Pressable>,
@@ -55,7 +49,6 @@ export type ListItemInfo = WithTestID<{
   numberOfLines?: number;
   endElement?: EndElementProps;
   topElement?: BadgeProps;
-  // Accessibility
   accessibilityLabel?: string;
   accessibilityRole?: AccessibilityRole;
   reversed?: boolean;
@@ -72,16 +65,16 @@ const EndElementComponent = ({ type, componentProps }: EndElementProps) => {
         <IOButton
           variant="link"
           {...componentProps}
-          accessibilityLabel={`${
+          accessibilityLabel={
             componentProps.accessibilityLabel ?? componentProps.label
-          }`}
+          }
         />
       );
     case "iconButton":
       return (
         <IconButton
           {...componentProps}
-          accessibilityLabel={`${componentProps.accessibilityLabel}`}
+          accessibilityLabel={componentProps.accessibilityLabel}
         />
       );
     case "badge":
@@ -99,7 +92,9 @@ const ListItemInfoContent = ({
   numberOfLines,
   reversed,
   topElement,
-  endElement
+  endElement,
+  hasInteractiveElements,
+  listItemAccessibilityLabel
 }: Pick<
   ListItemInfo,
   | "icon"
@@ -110,7 +105,10 @@ const ListItemInfoContent = ({
   | "reversed"
   | "topElement"
   | "endElement"
->) => {
+> & {
+  hasInteractiveElements: boolean;
+  listItemAccessibilityLabel?: string;
+}) => {
   const theme = useIOTheme();
   const { hugeFontEnabled } = useIOFontDynamicScale();
 
@@ -124,15 +122,23 @@ const ListItemInfoContent = ({
           size={IOListItemVisualParams.iconSize}
         />
       )}
+
       {paymentLogoIcon && (
         <LogoPaymentWithFallback
           brand={paymentLogoIcon}
           size={PAYMENT_LOGO_SIZE}
         />
       )}
+
       <View style={{ flex: 1 }}>
         <View
-          accessible={Platform.OS === "ios"}
+          accessible={hasInteractiveElements}
+          accessibilityLabel={
+            hasInteractiveElements ? listItemAccessibilityLabel : undefined
+          }
+          importantForAccessibility={
+            hasInteractiveElements ? "yes" : "no-hide-descendants"
+          }
           style={{ flexDirection: reversed ? "column-reverse" : "column" }}
         >
           {topElement?.type === "badge" && (
@@ -141,11 +147,13 @@ const ListItemInfoContent = ({
               <VSpacer size={4} />
             </View>
           )}
+
           {label && (
             <BodySmall weight="Regular" color={theme["textBody-tertiary"]}>
               {label}
             </BodySmall>
           )}
+
           {typeof value === "string" ? (
             <H6 color={theme["textBody-default"]} numberOfLines={numberOfLines}>
               {value}
@@ -155,8 +163,14 @@ const ListItemInfoContent = ({
           )}
         </View>
       </View>
+
       {endElement && (
-        <View>
+        <View
+          accessible={false}
+          importantForAccessibility={
+            hasInteractiveElements ? "auto" : "no-hide-descendants"
+          }
+        >
           <EndElementComponent {...endElement} />
         </View>
       )}
@@ -164,6 +178,35 @@ const ListItemInfoContent = ({
   );
 };
 
+/**
+ * ListItemInfo component displays information in a list item format with optional icons,
+ * labels, values, and end elements (buttons, badges).
+ *
+ * @remarks
+ * **Accessibility for Interactive Elements:**
+ * When using interactive end elements (`buttonLink` or `iconButton`), you must provide
+ * an appropriate `accessibilityLabel` directly to the interactive component props.
+ * This ensures that screen reader users can understand the relationship between the
+ * list item content and the action that the interactive element triggers.
+ *
+ * Example:
+ * ```tsx
+ * <ListItemInfo
+ *   label="Email"
+ *   value="user@example.com"
+ *   endElement={{
+ *     type: "buttonLink",
+ *     componentProps: {
+ *       label: "Edit",
+ *       accessibilityLabel: "Edit email address"
+ *     }
+ *   }}
+ * />
+ * ```
+ *
+ * The design system cannot enforce this pattern automatically, so it's the responsibility
+ * of the implementing software engineer to ensure proper accessibility labels are set.
+ */
 export const ListItemInfo = ({
   value,
   label,
@@ -185,13 +228,41 @@ export const ListItemInfo = ({
   const { onPressIn, onPressOut, scaleAnimatedStyle, backgroundAnimatedStyle } =
     useListItemAnimation();
 
+  /**
+   * A11Y Support: Two different combinations based on interactive elements
+   *
+   * 1. NO interactive elements (or just badge):
+   *    - The outer container is accessible and receives the complete accessibility label
+   *    - This allows the entire list item to be treated as a single accessibility element
+   *
+   * 2. WITH interactive elements (buttonLink or iconButton):
+   *    - The outer container is NOT accessible
+   *    - The inner content becomes accessible with its label
+   *    - The interactive element is separately accessible with its own label
+   *    - This allows screen readers to navigate between the content and the action separately
+   */
+  const hasInteractiveElements =
+    endElement?.type === "buttonLink" || endElement?.type === "iconButton";
+
   const componentValueToAccessibility = typeof value === "string" ? value : "";
 
+  const topBadgeText =
+    topElement?.type === "badge" ? topElement.componentProps.text ?? "" : "";
+
+  const endBadgeText =
+    endElement?.type === "badge" ? endElement.componentProps.text ?? "" : "";
+
+  /**
+   * Build text in VISUAL ORDER
+   */
+  const mainTextParts = reversed
+    ? [componentValueToAccessibility, label]
+    : [label, componentValueToAccessibility];
+
+  const textParts = [topBadgeText, ...mainTextParts, endBadgeText];
+
   const listItemAccessibilityLabel =
-    accessibilityLabel ??
-    (label
-      ? `${label}; ${componentValueToAccessibility}`
-      : componentValueToAccessibility);
+    accessibilityLabel ?? textParts.filter(Boolean).join("; ");
 
   const contentProps = {
     icon,
@@ -201,7 +272,9 @@ export const ListItemInfo = ({
     numberOfLines,
     reversed,
     topElement,
-    endElement
+    endElement,
+    hasInteractiveElements,
+    listItemAccessibilityLabel
   } as const;
 
   if (onLongPress) {
@@ -209,14 +282,14 @@ export const ListItemInfo = ({
       <Pressable
         onLongPress={onLongPress}
         testID={testID}
-        accessible={!endElement}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        onTouchEnd={onPressOut}
-        accessibilityRole={"button"}
+        accessible
+        accessibilityRole="button"
         accessibilityLabel={listItemAccessibilityLabel}
         accessibilityActions={accessibilityActions}
         onAccessibilityAction={onAccessibilityAction}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        onTouchEnd={onPressOut}
       >
         <Animated.View
           style={[IOListItemStyles.listItem, backgroundAnimatedStyle]}
@@ -238,29 +311,31 @@ export const ListItemInfo = ({
         </Animated.View>
       </Pressable>
     );
-  } else {
-    return (
-      <View
-        style={IOListItemStyles.listItem}
-        testID={testID}
-        accessible={!endElement}
-        accessibilityLabel={listItemAccessibilityLabel}
-        accessibilityRole={accessibilityRole}
-      >
-        <View
-          style={[
-            IOListItemStyles.listItemInner,
-            {
-              columnGap:
-                IOListItemVisualParams.iconMargin *
-                dynamicFontScale *
-                spacingScaleMultiplier
-            }
-          ]}
-        >
-          <ListItemInfoContent {...contentProps} />
-        </View>
-      </View>
-    );
   }
+
+  return (
+    <View
+      style={IOListItemStyles.listItem}
+      testID={testID}
+      accessible={!hasInteractiveElements}
+      accessibilityLabel={
+        hasInteractiveElements ? undefined : listItemAccessibilityLabel
+      }
+      accessibilityRole={hasInteractiveElements ? undefined : accessibilityRole}
+    >
+      <View
+        style={[
+          IOListItemStyles.listItemInner,
+          {
+            columnGap:
+              IOListItemVisualParams.iconMargin *
+              dynamicFontScale *
+              spacingScaleMultiplier
+          }
+        ]}
+      >
+        <ListItemInfoContent {...contentProps} />
+      </View>
+    </View>
+  );
 };
