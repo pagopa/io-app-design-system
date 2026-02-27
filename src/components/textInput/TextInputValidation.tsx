@@ -1,14 +1,15 @@
 import {
   ComponentProps,
+  ComponentRef,
   forwardRef,
   useCallback,
   useImperativeHandle,
   useMemo,
+  useRef,
   useState
 } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { TextInputValidationRefProps } from "../../utils/types";
 import { useIOTheme } from "../../context";
 import { IOColors } from "../../core/IOColors";
 import {
@@ -16,6 +17,7 @@ import {
   exitTransitionInputIcon
 } from "../../core/IOTransitions";
 import { triggerHaptic } from "../../functions";
+import { TextInputValidationRefProps } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { TextInputBase } from "./TextInputBase";
 
@@ -109,8 +111,7 @@ export const TextInputValidation = forwardRef<
       }
     }, [value, errorMessage, onValidate, getErrorFeedback]);
 
-    const inputRef =
-      React.useRef<React.ComponentRef<typeof TextInputBase>>(null);
+    const inputRef = useRef<ComponentRef<typeof TextInputBase>>(null);
 
     useImperativeHandle(ref, () => ({
       validateInput,
