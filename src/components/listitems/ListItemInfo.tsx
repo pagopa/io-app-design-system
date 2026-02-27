@@ -230,11 +230,11 @@ export const ListItemInfo = ({
 
   /**
    * A11Y Support: Two different combinations based on interactive elements
-   * 
-   * 1. NO interactive elements (or just badge): 
+   *
+   * 1. NO interactive elements (or just badge):
    *    - The outer container is accessible and receives the complete accessibility label
    *    - This allows the entire list item to be treated as a single accessibility element
-   * 
+   *
    * 2. WITH interactive elements (buttonLink or iconButton):
    *    - The outer container is NOT accessible
    *    - The inner content becomes accessible with its label
