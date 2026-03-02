@@ -6080,7 +6080,7 @@ __metadata:
     react-native-reanimated: 4.2.2
     react-native-safe-area-context: ^5.6.2
     react-native-screens: ^4.11.1
-    react-native-svg: ^15.12.1
+    react-native-svg: ^15.12.2
     react-native-svg-transformer: ^1.5.1
     react-native-worklets: ^0.7.0
     react-test-renderer: 19.1.0
@@ -9369,9 +9369,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-svg@npm:^15.12.1":
-  version: 15.15.0
-  resolution: "react-native-svg@npm:15.15.0"
+"react-native-svg@npm:^15.12.2":
+  version: 15.15.3
+  resolution: "react-native-svg@npm:15.15.3"
   dependencies:
     css-select: ^5.1.0
     css-tree: ^1.1.3
@@ -9379,7 +9379,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: dafc22741b0ee9a052b4e807b5a4a26505acd165f57f9678b940b0009422c1dcabefde8920f28c346bbd650bec32b320d0492f63c36c1848f4cbae8ed6ce34e5
+  checksum: 82ec0096ff0e55509382bfaaa79b55787e4131aaa404c8f83b4198c4f6b351ef1543592ed61adc0e2e794e143d39356614988d84eb97e28d647bc2e4bc2208c9
   languageName: node
   linkType: hard
 
