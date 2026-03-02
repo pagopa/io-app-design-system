@@ -15,10 +15,9 @@ export type LoadingSpinner = WithTestID<{
 }>;
 
 /**
- * Size scale, 76 is kept for backward compatibility with the old design system but 48 is enough for the new one.
- * It will be removed in the future.
+ * Size scale
  */
-export type IOLoadingSpinnerSizeScale = 24 | 48 | 76;
+export type IOLoadingSpinnerSizeScale = 24 | 48;
 
 const spinKeyframes = {
   from: { transform: [{ rotateZ: "0deg" }] },
@@ -27,8 +26,7 @@ const spinKeyframes = {
 
 const strokeMap: Record<IOLoadingSpinnerSizeScale, number> = {
   24: 3,
-  48: 5,
-  76: 7
+  48: 5
 };
 
 export const LoadingSpinner = ({
