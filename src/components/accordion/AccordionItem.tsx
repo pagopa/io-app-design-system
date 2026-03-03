@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Animated from "react-native-reanimated";
@@ -11,7 +11,7 @@ import { Body, H6 } from "../typography";
 
 export type AccordionItem = {
   title: string;
-  body: string | React.ReactNode;
+  body: string | ReactNode;
   accessibilityLabel?: string;
   icon?: IOIcons;
 };

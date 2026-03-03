@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Alert, View, LayoutChangeEvent } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
@@ -40,7 +39,7 @@ export const HeaderSecondLevelWithStepper = () => {
     translationY.value = event.contentOffset.y;
   });
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       header: () => (
         <>

@@ -8,7 +8,6 @@ import {
   VStack,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { FlatList, View } from "react-native";
 import { NoMarginScreen } from "../components/Screen";
 

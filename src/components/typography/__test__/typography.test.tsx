@@ -1,19 +1,19 @@
-import React, { ComponentProps } from "react";
-import { Alert } from "react-native";
 import { render } from "@testing-library/react-native";
+import { ComponentProps } from "react";
+import { Alert } from "react-native";
 import type { IOColors } from "../../../core/IOColors";
 import { IOFontWeight } from "../../../utils/fonts";
 import { Body } from "../Body";
 import { BodyMonospace } from "../BodyMonospace";
+import { BodySmall } from "../BodySmall";
 import { ButtonText } from "../ButtonText";
+import { calculateWeightColor } from "../common";
 import { H1 } from "../H1";
 import { H2 } from "../H2";
 import { H3 } from "../H3";
 import { H4 } from "../H4";
 import { H5 } from "../H5";
 import { H6 } from "../H6";
-import { BodySmall } from "../BodySmall";
-import { calculateWeightColor } from "../common";
 
 describe("Test Typography Components", () => {
   it("H1 Snapshot", () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import { Platform, StyleSheet, View, ViewStyle } from "react-native";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import {

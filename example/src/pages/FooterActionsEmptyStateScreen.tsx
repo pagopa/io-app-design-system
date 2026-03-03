@@ -7,7 +7,7 @@ import {
   VSpacer,
   useFooterActionsMeasurements
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, Platform, ScrollView, View } from "react-native";
 
 /**

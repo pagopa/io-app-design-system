@@ -48,6 +48,47 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 0,
+        },
+        {
+          "backgroundColor": "transparent",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": undefined,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -62,7 +103,7 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -82,6 +123,30 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -100,8 +165,31 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -123,7 +211,7 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -177,6 +265,49 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "rgba(9,50,182,0)",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 2,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -191,13 +322,13 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -214,6 +345,30 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -232,8 +387,31 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -255,7 +433,7 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -309,6 +487,48 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -323,12 +543,12 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -345,6 +565,30 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -363,8 +607,31 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(255, 255, 255, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#FFFFFF",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -386,7 +653,7 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
                 "color": "#FFFFFF",
               },
               {
-                "color": undefined,
+                "color": "rgba(255, 255, 255, 1)",
               },
             ],
           ]

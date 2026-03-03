@@ -1,4 +1,4 @@
-import React, {
+import {
   ComponentProps,
   forwardRef,
   useCallback,
@@ -369,5 +369,3 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-
-export default IOButton;

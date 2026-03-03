@@ -1,14 +1,14 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Dimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Easing,
-  runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming
 } from "react-native-reanimated";
+import { scheduleOnRN } from "react-native-worklets";
 import { WithTestID } from "../../utils/types";
 
 const windowWidth = Dimensions.get("window").width;
@@ -16,7 +16,7 @@ const windowWidth = Dimensions.get("window").width;
 type Dismissable = WithTestID<{
   onDismiss?: () => void;
   dismissThreshold?: number;
-  children: React.ReactNode;
+  children: ReactNode;
 }>;
 
 /**
@@ -57,7 +57,10 @@ const Dismissable = ({
             duration: 300,
             easing: Easing.inOut(Easing.exp)
           },
-          runOnJS(onDismiss)
+          () => {
+            "worklet";
+            scheduleOnRN(onDismiss);
+          }
         );
       } else {
         // eslint-disable-next-line functional/immutable-data

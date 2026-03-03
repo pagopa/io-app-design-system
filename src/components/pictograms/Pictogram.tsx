@@ -1,4 +1,4 @@
-import React, { JSX, useMemo } from "react";
+import { JSX, useMemo } from "react";
 import { ColorValue } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOColors, IOThemeDark, IOThemeLight } from "../../core/IOColors";
@@ -36,6 +36,7 @@ import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
+import PictogramPremiumCredentials from "./svg/PictogramPremiumCredentials";
 import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSuccess from "./svg/PictogramSuccess";
@@ -43,7 +44,6 @@ import PictogramTime from "./svg/PictogramTime";
 import PictogramUmbrella from "./svg/PictogramUmbrella";
 import PictogramUpdateOS from "./svg/PictogramUpdateOS";
 import PictogramWorkInProgress from "./svg/PictogramWorkInProgress";
-import PictogramPremiumCredentials from "./svg/PictogramPremiumCredentials";
 /* Bleed Pictograms */
 import PictogramBleedAccessDenied from "./svg/PictogramBleedAccessDenied";
 import PictogramBleedActivate from "./svg/PictogramBleedActivate";
@@ -109,6 +109,7 @@ import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramPending from "./svg/PictogramPending";
+import PictogramPinSecurity from "./svg/PictogramPinSecurity";
 import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramReactivate from "./svg/PictogramReactivate";
 import PictogramSavingMoney from "./svg/PictogramSavingMoney";
@@ -120,7 +121,6 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
-import PictogramPinSecurity from "./svg/PictogramPinSecurity";
 
 export const IOPictograms = {
   empty: PictogramEmpty,

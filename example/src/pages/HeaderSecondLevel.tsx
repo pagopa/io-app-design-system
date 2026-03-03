@@ -12,8 +12,7 @@ import {
   VStack
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
-import { useState } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import { Alert, LayoutChangeEvent, View } from "react-native";
 import Animated, {
   useAnimatedScrollHandler,
@@ -31,8 +30,7 @@ export const HeaderSecondLevelScreen = () => {
   );
   const translationY = useSharedValue(0);
 
-  const { showAlert, removeAlert, alert } =
-    React.useContext(StatusBannerContext);
+  const { showAlert, removeAlert, alert } = useContext(StatusBannerContext);
 
   const handleShowAlert = (
     variant: AlertEdgeToEdgeProps["variant"],
@@ -65,7 +63,7 @@ export const HeaderSecondLevelScreen = () => {
     translationY.value = event.contentOffset.y;
   });
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
       header: () => (

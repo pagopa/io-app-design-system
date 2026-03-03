@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react-native";
-import React from "react";
+
 import { Alert } from "react-native";
 import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
-import IconButton from "../IconButton";
-import IconButtonContained from "../IconButtonContained";
-import IconButtonSolid from "../IconButtonSolid";
+import { IconButton } from "../IconButton";
+import { IconButtonContained } from "../IconButtonContained";
+import { IconButtonSolid } from "../IconButtonSolid";
 import { IOButton } from "../IOButton";
 
 const onButtonPress = () => {

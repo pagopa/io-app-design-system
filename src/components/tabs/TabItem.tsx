@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref, useCallback, useMemo } from "react";
+import { Ref, forwardRef, useCallback, useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,

@@ -48,6 +48,47 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 0,
+        },
+        {
+          "backgroundColor": "transparent",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": undefined,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -62,7 +103,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -82,6 +123,30 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -100,8 +165,31 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -123,7 +211,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -177,6 +265,49 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "rgba(9,50,182,0)",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 2,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -191,13 +322,13 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -214,6 +345,30 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -232,8 +387,31 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -255,7 +433,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -309,6 +487,48 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -323,12 +543,12 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -345,6 +565,30 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -363,8 +607,31 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(255, 255, 255, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#FFFFFF",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -386,7 +653,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
                 "color": "#FFFFFF",
               },
               {
-                "color": undefined,
+                "color": "rgba(255, 255, 255, 1)",
               },
             ],
           ]
@@ -435,6 +702,35 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
   onStartShouldSetResponder={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        {
+          "height": 24,
+          "width": 24,
+        },
+      ]
+    }
     style={
       [
         {
@@ -448,7 +744,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -460,17 +756,25 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
+      collapsable={false}
       color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
+      jestAnimatedProps={
+        {
+          "value": {
+            "color": "rgba(11, 62, 227, 1)",
+          },
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -561,6 +865,37 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(11, 62, 227, 0)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        {
+          "borderRadius": 48,
+          "height": 48,
+          "width": 48,
+        },
+      ]
+    }
     style={
       [
         {
@@ -575,12 +910,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(11, 62, 227, 0)",
         },
       ]
     }
@@ -590,17 +925,25 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       accessibilityLabel=""
       accessible={false}
       align="xMidYMid"
-      animatedProps={
-        {
-          "color": undefined,
-        }
-      }
       bbHeight={24}
       bbWidth={24}
+      collapsable={false}
       color="#0B3EE3"
       focusable={false}
       height={24}
       importantForAccessibility="no-hide-descendants"
+      jestAnimatedProps={
+        {
+          "value": {
+            "color": "rgba(11, 62, 227, 1)",
+          },
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -691,6 +1034,40 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        {
+          "borderRadius": 56,
+          "height": 56,
+          "width": 56,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+        },
+      ]
+    }
     style={
       [
         {
@@ -705,12 +1082,12 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(11, 62, 227, 1)",
         },
         {
           "backgroundColor": "#0B3EE3",
@@ -827,6 +1204,47 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 0,
+        },
+        {
+          "backgroundColor": "transparent",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": undefined,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -841,7 +1259,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
@@ -861,6 +1279,30 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -879,8 +1321,31 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -902,7 +1367,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -956,6 +1421,49 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "rgba(9,50,182,0)",
+          "borderColor": "#0B3EE3",
+          "borderRadius": 8,
+          "borderWidth": 2,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -970,13 +1478,13 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
+          "backgroundColor": "rgba(9, 50, 182, 0)",
+          "borderColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -993,6 +1501,30 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -1011,8 +1543,31 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(11, 62, 227, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#0B3EE3",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -1034,7 +1589,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
                 "color": "#0B3EE3",
               },
               {
-                "color": undefined,
+                "color": "rgba(11, 62, 227, 1)",
               },
             ],
           ]
@@ -1088,6 +1643,48 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
   }
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(11, 62, 227, 1)",
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "alignItems": "center",
+          "borderCurve": "continuous",
+          "elevation": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "textAlignVertical": "center",
+        },
+        {
+          "paddingHorizontal": 24,
+        },
+        {
+          "backgroundColor": "#0B3EE3",
+          "borderColor": "#FFFFFF",
+          "borderRadius": 8,
+          "borderWidth": 0,
+          "height": 48,
+        },
+        {},
+      ]
+    }
     style={
       [
         {
@@ -1102,12 +1699,12 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
         {
           "transform": [
             {
-              "scale": undefined,
+              "scale": 1,
             },
           ],
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(11, 62, 227, 1)",
         },
         {
           "paddingHorizontal": 24,
@@ -1124,6 +1721,30 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          {
+            "columnGap": 8,
+          },
+          false,
+        ]
+      }
       style={
         [
           {
@@ -1142,8 +1763,31 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
         accessibilityElementsHidden={true}
         accessible={false}
         allowFontScaling={true}
+        collapsable={false}
         ellipsizeMode="tail"
         importantForAccessibility="no-hide-descendants"
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "color": "rgba(255, 255, 255, 1)",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "textAlign": "auto",
+            },
+            {
+              "color": "#FFFFFF",
+            },
+          ]
+        }
         maxFontSizeMultiplier={1.5}
         numberOfLines={1}
         style={
@@ -1165,7 +1809,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
                 "color": "#FFFFFF",
               },
               {
-                "color": undefined,
+                "color": "rgba(255, 255, 255, 1)",
               },
             ],
           ]

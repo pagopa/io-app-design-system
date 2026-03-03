@@ -1,9 +1,9 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 import Animated, { LinearTransition } from "react-native-reanimated";
 import { WithTestID } from "../../utils/types";
 import { AlertEdgeToEdge } from "./AlertEdgeToEdge";
 
-type AlertEdgeToEdgeWrapperProps = React.PropsWithChildren<
+type AlertEdgeToEdgeWrapperProps = PropsWithChildren<
   WithTestID<{
     alertProps?: ComponentProps<typeof AlertEdgeToEdge>;
   }>

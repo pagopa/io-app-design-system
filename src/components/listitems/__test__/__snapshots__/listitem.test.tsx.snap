@@ -37,7 +37,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -46,12 +68,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -65,7 +116,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -139,7 +190,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
@@ -230,7 +282,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -239,12 +313,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -258,7 +361,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -412,6 +515,28 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -420,12 +545,38 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
       style={
         [
           {
@@ -436,7 +587,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -571,7 +722,29 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -580,12 +753,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -599,7 +801,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -789,6 +991,28 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -797,12 +1021,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -816,7 +1069,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1028,6 +1281,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 1,
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
             style={
               [
                 {
@@ -1047,7 +1335,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                   "opacity": 1,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -1092,13 +1380,14 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
                       "stroke",
                       "strokeWidth",
                       "strokeDasharray",
+                      "strokeDashoffset",
                       "strokeLinecap",
                       "strokeLinejoin",
                     ]
@@ -1110,6 +1399,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                     }
                   }
                   strokeDasharray={null}
+                  strokeDashoffset={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
                   strokeWidth={2}
@@ -1160,6 +1450,28 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -1168,12 +1480,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -1187,7 +1528,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1314,6 +1655,41 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": 0.5,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
             style={
               [
                 {
@@ -1333,7 +1709,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                   "opacity": 0,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 0.5,
                     },
                   ],
                 },
@@ -1381,15 +1757,56 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1405,28 +1822,110 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1439,15 +1938,56 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1490,6 +2030,28 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -1498,12 +2060,41 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -1517,7 +2108,7 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1565,7 +2156,29 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -1574,12 +2187,41 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -1593,7 +2235,7 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1667,7 +2309,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
@@ -1758,7 +2401,29 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -1767,12 +2432,41 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -1786,7 +2480,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -1940,6 +2634,28 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -1948,12 +2664,38 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
       style={
         [
           {
@@ -1964,7 +2706,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2099,7 +2841,29 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
+    collapsable={false}
     importantForAccessibility="no-hide-descendants"
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -2108,12 +2872,41 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -2127,7 +2920,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2317,6 +3110,28 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -2325,12 +3140,41 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -2344,7 +3188,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2556,6 +3400,41 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 1,
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
             style={
               [
                 {
@@ -2575,7 +3454,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                   "opacity": 1,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 1,
                     },
                   ],
                 },
@@ -2620,13 +3499,14 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
                       "stroke",
                       "strokeWidth",
                       "strokeDasharray",
+                      "strokeDashoffset",
                       "strokeLinecap",
                       "strokeLinejoin",
                     ]
@@ -2638,6 +3518,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                     }
                   }
                   strokeDasharray={null}
+                  strokeDashoffset={null}
                   strokeLinecap={1}
                   strokeLinejoin={1}
                   strokeWidth={2}
@@ -2688,6 +3569,28 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -2696,12 +3599,41 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -2715,7 +3647,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },
@@ -2842,6 +3774,41 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
             }
           />
           <View
+            collapsable={false}
+            jestAnimatedProps={
+              {
+                "value": {},
+              }
+            }
+            jestAnimatedStyle={
+              {
+                "value": {
+                  "opacity": 0,
+                  "transform": [
+                    {
+                      "scale": 0.5,
+                    },
+                  ],
+                },
+              }
+            }
+            jestInlineStyle={
+              [
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                },
+                {
+                  "borderRadius": 12,
+                  "height": 24,
+                  "width": 24,
+                },
+                {
+                  "backgroundColor": "#0B3EE3",
+                },
+              ]
+            }
             style={
               [
                 {
@@ -2861,7 +3828,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                   "opacity": 0,
                   "transform": [
                     {
-                      "scale": undefined,
+                      "scale": 0.5,
                     },
                   ],
                 },
@@ -2909,15 +3876,56 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -2933,28 +3941,110 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -2967,15 +4057,56 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3018,6 +4149,28 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
   onTouchEnd={[Function]}
 >
   <View
+    collapsable={false}
+    jestAnimatedProps={
+      {
+        "value": {},
+      }
+    }
+    jestAnimatedStyle={
+      {
+        "value": {
+          "backgroundColor": "rgba(244, 245, 248, 0)",
+        },
+      }
+    }
+    jestInlineStyle={
+      [
+        {
+          "marginHorizontal": -24,
+          "paddingHorizontal": 24,
+          "paddingVertical": 12,
+        },
+      ]
+    }
     style={
       [
         {
@@ -3026,12 +4179,41 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
           "paddingVertical": 12,
         },
         {
-          "backgroundColor": undefined,
+          "backgroundColor": "rgba(244, 245, 248, 0)",
         },
       ]
     }
   >
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          {
+            "columnGap": 12,
+          },
+        ]
+      }
       style={
         [
           {
@@ -3045,7 +4227,7 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
           {
             "transform": [
               {
-                "scale": undefined,
+                "scale": 1,
               },
             ],
           },

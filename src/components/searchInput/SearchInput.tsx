@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React, {
+import {
   forwardRef,
   useCallback,
   useImperativeHandle,

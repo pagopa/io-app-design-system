@@ -1,4 +1,3 @@
-import * as React from "react";
 import { GestureResponderEvent, Pressable } from "react-native";
 import Animated, {
   interpolateColor,
@@ -153,5 +152,3 @@ export const IconButtonContained = ({
     </Pressable>
   );
 };
-
-export default IconButtonContained;

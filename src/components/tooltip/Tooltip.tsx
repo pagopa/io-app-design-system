@@ -1,5 +1,5 @@
 import { every, some } from "lodash";
-import React, {
+import {
   JSXElementConstructor,
   PropsWithChildren,
   ReactElement,

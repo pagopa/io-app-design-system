@@ -8,7 +8,7 @@ import {
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
+
 import { useLayoutEffect } from "react";
 import { Alert, View } from "react-native";
 import Animated, { useAnimatedRef } from "react-native-reanimated";

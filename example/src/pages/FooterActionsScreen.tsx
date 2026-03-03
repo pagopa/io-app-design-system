@@ -5,7 +5,7 @@ import {
   useFooterActionsMeasurements,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import { Fragment } from "react";
 import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const onButtonPress = () => {
@@ -26,7 +26,7 @@ export const FooterActionsScreen = () => {
         }}
       >
         {[...Array(9)].map((_el, i) => (
-          <React.Fragment key={`view-${i}`}>
+          <Fragment key={`view-${i}`}>
             <View
               style={[
                 styles.block,
@@ -38,7 +38,7 @@ export const FooterActionsScreen = () => {
               </Text>
             </View>
             <VSpacer size={4} />
-          </React.Fragment>
+          </Fragment>
         ))}
       </ScrollView>
       <FooterActions
