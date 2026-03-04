@@ -13,12 +13,10 @@ export const h4LineHeight = 24;
 export const H4 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H4Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "title3", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: h4FontSize,
       lineHeight: h4LineHeight,

@@ -155,7 +155,6 @@ export const Tag = ({
   forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
-  const { newTypefaceEnabled } = useIONewTypeface();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const variantProps = getVariantProps(variant, icon);
@@ -203,7 +202,6 @@ export const Tag = ({
       {text && (
         <IOText
           allowFontScaling={allowFontScaling}
-          font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
           weight={"Semibold"}
           size={12}
           lineHeight={16}

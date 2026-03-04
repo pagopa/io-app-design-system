@@ -49,7 +49,6 @@ export const ModuleIDP = ({
   testID,
   accessibilityLabel
 }: ModuleIDP) => {
-  const { newTypefaceEnabled } = useIONewTypeface();
   const theme = useIOTheme();
   const IDPLogoSource = useIDPLogo(logo);
 
@@ -60,7 +59,6 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}

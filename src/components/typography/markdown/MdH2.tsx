@@ -9,11 +9,9 @@ import { IOText, IOTextProps, TypographicStyleProps } from "../IOText";
 export const MdH2 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const MdH2Props: IOTextProps = {
       ...props,
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: 18,
       lineHeight: 24,

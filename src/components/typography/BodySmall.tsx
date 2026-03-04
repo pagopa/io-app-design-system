@@ -34,7 +34,6 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -43,7 +42,6 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
     const BodySmallProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
-      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: customWeight ?? "Regular",
       size: 14,
       lineHeight: 21,

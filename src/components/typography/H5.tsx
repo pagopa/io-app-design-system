@@ -13,12 +13,10 @@ export const h5LineHeight = 16;
 export const H5 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H5Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "subheadline", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: h5FontSize,
       lineHeight: h5LineHeight,

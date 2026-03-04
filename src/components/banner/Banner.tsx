@@ -141,7 +141,6 @@ export const Banner = forwardRef<View, Banner>(
     }: Banner,
     viewRef
   ) => {
-    const { newTypefaceEnabled } = useIONewTypeface();
     const { onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("medium");
     const { themeType } = useIOThemeContext();
@@ -198,7 +197,6 @@ export const Banner = forwardRef<View, Banner>(
             >
               <VSpacer size={8} />
               <IOText
-                font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
                 weight="Semibold"
                 color={colorMainButton}
                 size={buttonTextFontSize}

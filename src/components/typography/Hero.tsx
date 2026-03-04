@@ -13,11 +13,9 @@ export const heroLineHeight = 48;
 export const Hero = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const HeroProps: IOTextProps = {
       ...props,
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: 32,
       lineHeight: 48,

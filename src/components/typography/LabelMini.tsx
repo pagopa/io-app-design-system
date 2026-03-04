@@ -33,7 +33,6 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -42,7 +41,6 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
     const LabelMiniProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
-      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: customWeight ? customWeight : "Semibold",
       size: 12,
       lineHeight: 18,

@@ -139,7 +139,6 @@ export const IOButton = forwardRef<View, IOButtonProps>(
     const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
       useButtonAnimatedStyles(variant, color, progress);
     const reducedMotion = useReducedMotion();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const isLinkButton = variant === "link";
 
@@ -268,7 +267,6 @@ export const IOButton = forwardRef<View, IOButtonProps>(
                 />
               ))}
             <AnimatedIOText
-              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight={"Semibold"}
               size={buttonTextFontSize}
               lineHeight={isLinkButton ? buttonTextLineHeight : undefined}

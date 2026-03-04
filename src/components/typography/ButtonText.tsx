@@ -11,19 +11,14 @@ export const buttonTextLineHeight = 20;
 /* Needed to render `ButtonOutline` and`ButtonLink` because they use
 `AnimatedText` for color transition through Reanimated */
 const defaultColor: IOColors = "white";
-const fontName: IOFontFamily = "Titillio";
-const legacyFontName: IOFontFamily = "TitilliumSansPro";
 
 /**
  * `ButtonText` typographic style
  */
 export const ButtonText = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const { newTypefaceEnabled } = useIONewTypeface();
-
     const ButtonTextProps: IOTextProps = {
       ...props,
-      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: "Semibold",
       size: buttonTextFontSize,
       lineHeight: buttonTextLineHeight,

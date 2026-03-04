@@ -37,7 +37,6 @@ export const Body = forwardRef<View, BodyStyleProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const defaultColor = asLink
       ? theme["interactiveElem-default"]
@@ -46,7 +45,6 @@ export const Body = forwardRef<View, BodyStyleProps>(
     const BodyProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "body", // iOS only
-      font: newTypefaceEnabled ? fontName : legacyFontName,
       weight: customWeight ? customWeight : "Regular",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,

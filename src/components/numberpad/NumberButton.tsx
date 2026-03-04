@@ -50,7 +50,6 @@ export const NumberButton = memo(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("medium");
     const reducedMotion = useReducedMotion();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = useMemo(
       () => ({
@@ -103,7 +102,6 @@ export const NumberButton = memo(
         >
           <IOText
             size={22}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight="Semibold"
             color={colorMap[variant].foreground}
             style={{

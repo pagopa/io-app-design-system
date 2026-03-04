@@ -169,8 +169,6 @@ export const HeaderSecondLevel = ({
 
   const titleRef = createRef<View>();
 
-  const { newTypefaceEnabled } = useIONewTypeface();
-
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
   const isTitleAccessible = useMemo(() => !!title.trim(), [title]);
@@ -344,7 +342,6 @@ export const HeaderSecondLevel = ({
             size={14}
             numberOfLines={1}
             accessible={false}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             style={[
               { color: titleColor, textAlign: "center" },

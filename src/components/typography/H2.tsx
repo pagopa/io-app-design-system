@@ -20,12 +20,10 @@ export const H2 = forwardRef<View, H2StyleProps>(
     ref?: ForwardedRef<View>
   ) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H2Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "title1", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: customWeight ?? "Semibold",
       size: h2FontSize,
       lineHeight: h2LineHeight,

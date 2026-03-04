@@ -77,7 +77,6 @@ const TabItem = forwardRef(
       useScaleAnimation("medium");
     const theme = useIOTheme();
     const reducedMotion = useReducedMotion();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const mapColorStates: Record<
       NonNullable<TabItem["color"]>,
@@ -199,12 +198,7 @@ const TabItem = forwardRef(
           {activeIcon && (
             <Icon name={activeIcon} color={foregroundColor} size={16} />
           )}
-          <IOText
-            size={14}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
-            weight="Semibold"
-            color={foregroundColor}
-          >
+          <IOText size={14} weight="Semibold" color={foregroundColor}>
             {label}
           </IOText>
         </Animated.View>

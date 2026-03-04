@@ -13,12 +13,10 @@ export const h1LineHeight = 42;
 export const H1 = forwardRef<View, TypographicStyleProps>(
   ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
     const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const H1Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "largeTitle", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: h1FontSize,
       lineHeight: h1LineHeight,
