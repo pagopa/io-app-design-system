@@ -5,7 +5,7 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import { useIONewTypeface, useIOThemeContext } from "../../context";
+import { useIOThemeContext } from "../../context";
 import {
   hexToRgba,
   IOBadgeHSpacing,

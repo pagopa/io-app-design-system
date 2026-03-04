@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef } from "react";
 import { View } from "react-native";
-import { useIONewTypeface } from "../../context";
+
 import { IOColors } from "../../core";
-import { IOFontFamily, IOFontSize } from "../../utils/fonts";
+import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 
 export const buttonTextFontSize: IOFontSize = 16;

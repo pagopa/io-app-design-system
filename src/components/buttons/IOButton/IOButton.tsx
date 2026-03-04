@@ -22,7 +22,6 @@ import Animated, {
   LayoutAnimationConfig,
   useReducedMotion
 } from "react-native-reanimated";
-import { useIONewTypeface } from "../../../context";
 import {
   enterTransitionInnerContent,
   enterTransitionInnerContentSmall,

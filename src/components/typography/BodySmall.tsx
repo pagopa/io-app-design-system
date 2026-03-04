@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef } from "react";
 import { Pressable, View } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
-import { IOFontFamily, IOFontWeight } from "../../utils/fonts";
+import { useIOTheme } from "../../context";
+import { IOFontWeight } from "../../utils/fonts";
 import {
   IOText,
   IOTextProps,
@@ -12,9 +12,6 @@ import {
 type BodySmallProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
-
-const fontName: IOFontFamily = "Titillio";
-const legacyFontName: IOFontFamily = "TitilliumSansPro";
 
 /**
  * `BodySmall` typographic style

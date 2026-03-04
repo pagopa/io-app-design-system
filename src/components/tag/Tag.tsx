@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, View, ViewStyle } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpacingScale,

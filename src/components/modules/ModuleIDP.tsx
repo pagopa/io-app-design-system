@@ -1,5 +1,5 @@
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
-import { useIONewTypeface, useIOThemeContext, useIOTheme } from "../../context";
+import { useIOThemeContext, useIOTheme } from "../../context";
 import { IOListItemLogoMargin } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
 import { IOText } from "../typography";
