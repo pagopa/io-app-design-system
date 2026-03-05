@@ -13,7 +13,7 @@ import {
 
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { SectionList, View, useColorScheme } from "react-native";
+import { Platform, SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
@@ -130,9 +130,13 @@ const MainScreen = (props: Props) => {
     <SectionList
       ListHeaderComponent={
         <>
-          <VSpacer size={48} />
-          <VSpacer size={48} />
-          <VSpacer size={24} />
+          {Platform.OS === "ios" && (
+            <>
+              <VSpacer size={48} />
+              <VSpacer size={48} />
+              <VSpacer size={24} />
+            </>
+          )}
           <ListItemSwitch
             label="Abilita Design Sperimentale"
             value={isExperimental}
