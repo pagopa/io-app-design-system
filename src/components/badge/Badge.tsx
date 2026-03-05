@@ -5,7 +5,7 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import { useIONewTypeface, useIOThemeContext } from "../../context";
+import { useIOThemeContext } from "../../context";
 import {
   hexToRgba,
   IOBadgeHSpacing,
@@ -67,7 +67,6 @@ export const Badge = ({
 }: Badge) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
   const { themeType } = useIOThemeContext();
-  const { newTypefaceEnabled } = useIONewTypeface();
 
   const bgOpacityDarkMode = 0.2;
 
@@ -211,7 +210,6 @@ export const Badge = ({
     >
       <IOText
         allowFontScaling={allowFontScaling}
-        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}
