@@ -196,7 +196,7 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -418,7 +418,7 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -638,7 +638,7 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
