@@ -110,9 +110,8 @@ export const IOText = forwardRef<View, IOTextProps>(
     const boldEnabled = useBoldTextEnabled();
     const { newTypefaceEnabled } = useIONewTypeface();
 
-    const computedFont = font || (newTypefaceEnabled
-      ? "Titillio"
-      : "TitilliumSansPro");
+    const computedFont =
+      font || (newTypefaceEnabled ? "Titillio" : "TitilliumSansPro");
 
     const computedStyleObj = useMemo(
       () =>
