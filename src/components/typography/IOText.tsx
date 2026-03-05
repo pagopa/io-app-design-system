@@ -8,7 +8,7 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { useIOTheme } from "../../context";
+import { useIONewTypeface, useIOTheme } from "../../context";
 import { IOColors } from "../../core";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
@@ -108,19 +108,32 @@ export const IOText = forwardRef<View, IOTextProps>(
   ) => {
     const theme = useIOTheme();
     const boldEnabled = useBoldTextEnabled();
+    const { newTypefaceEnabled } = useIONewTypeface();
+
+    const computedFont =
+      font || (newTypefaceEnabled ? "Titillio" : "TitilliumSansPro");
 
     const computedStyleObj = useMemo(
       () =>
         calculateTextStyle(
           color ?? theme["textBody-default"],
           size,
-          font,
+          computedFont,
           lineHeight,
           weight,
           fontStyle,
           boldEnabled
         ),
-      [color, theme, size, font, lineHeight, weight, fontStyle, boldEnabled]
+      [
+        color,
+        theme,
+        size,
+        computedFont,
+        lineHeight,
+        weight,
+        fontStyle,
+        boldEnabled
+      ]
     );
 
     /* In some cases, for example when we use color transitions with

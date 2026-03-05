@@ -28,7 +28,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scheduleOnRN } from "react-native-worklets";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpringValues,
@@ -168,8 +168,6 @@ export const HeaderSecondLevel = ({
   );
 
   const titleRef = createRef<View>();
-
-  const { newTypefaceEnabled } = useIONewTypeface();
 
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
@@ -344,7 +342,6 @@ export const HeaderSecondLevel = ({
             size={14}
             numberOfLines={1}
             accessible={false}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             style={[
               { color: titleColor, textAlign: "center" },
