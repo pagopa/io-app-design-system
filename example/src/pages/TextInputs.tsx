@@ -11,12 +11,11 @@ import {
 import { useIsFocused } from "@react-navigation/native";
 import {
   ComponentProps,
-  ComponentRef,
   useEffect,
   useRef,
   useState
 } from "react";
-import { Button, View } from "react-native";
+import { Button, TextInput as RNTextInput, View } from "react-native";
 import { Screen } from "../components/Screen";
 
 const InputComponentWrapper = (
@@ -115,7 +114,7 @@ export const TextInputs = () => {
   const hasFocused = useRef(false);
   const isFocused = useIsFocused();
 
-  const textInputRef = useRef<ComponentRef<typeof InputComponentWrapper>>(null);
+  const textInputRef = useRef<RNTextInput>(null);
   // Workaround to trigger autofocus on the input,
   // since autoFocus prop is not working due to this bug
   // https://github.com/react-navigation/react-navigation/issues/11643
