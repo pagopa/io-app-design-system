@@ -209,7 +209,7 @@ const HelperRow = ({
 
 export const TextInputBase = forwardRef<TextInput, InputTextProps>(
   (
-     {
+    {
       disabled = false,
       placeholder,
       value = "",
