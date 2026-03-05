@@ -1,4 +1,3 @@
-import { throttle } from "lodash";
 import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { AccessibilityInfo, StyleSheet, View } from "react-native";
 import Animated, {
@@ -10,6 +9,7 @@ import Animated, {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { IOVisualCostants } from "../../core";
 import { triggerHaptic } from "../../functions";
+import { throttle } from "../../utils/throttle";
 import { Dismissable } from "../templates";
 import { ToastNotification } from "./ToastNotification";
 import { ToastContext } from "./context";
