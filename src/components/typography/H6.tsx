@@ -21,7 +21,6 @@ export const H6 = forwardRef<View, TypographicStyleProps>(
     const H6Props: IOTextProps = {
       ...props,
       dynamicTypeRamp: "headline", // iOS only
-      font: newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
       weight: "Semibold",
       size: newTypefaceEnabled ? h6FontSize : legacyFontSize,
       lineHeight: h6LineHeight,
