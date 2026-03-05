@@ -68,21 +68,17 @@ const MainScreen = (props: Props) => {
     setTheme(colorScheme);
   }, [colorScheme, setTheme]);
 
-  const searchBarOptions: NativeStackNavigationOptions["headerSearchBarOptions"] =
-    {
-      placeholder: "Search components...",
-      hideNavigationBar: false,
-      onChangeText: (event: { nativeEvent: { text: string } }) => {
-        setSearchQuery(event.nativeEvent.text);
-      }
-    };
-
   // Configure native header search bar
   useLayoutEffect(() => {
     props.navigation.setOptions({
-      headerSearchBarOptions: searchBarOptions
+      headerSearchBarOptions: {
+        placeholder: "Search components...",
+        hideNavigationBar: false,
+        onChangeText: (event: { nativeEvent: { text: string } }) => {
+          setSearchQuery(event.nativeEvent.text);
+        }
+      } as NativeStackNavigationOptions["headerSearchBarOptions"]
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.navigation]);
 
   // Filter items based on search query
