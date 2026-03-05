@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, View, ViewStyle } from "react-native";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpacingScale,
@@ -155,7 +155,6 @@ export const Tag = ({
   forceLightMode = false
 }: Tag) => {
   const theme = useIOTheme();
-  const { newTypefaceEnabled } = useIONewTypeface();
   const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
   const variantProps = getVariantProps(variant, icon);
@@ -203,7 +202,6 @@ export const Tag = ({
       {text && (
         <IOText
           allowFontScaling={allowFontScaling}
-          font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
           weight={"Semibold"}
           size={12}
           lineHeight={16}

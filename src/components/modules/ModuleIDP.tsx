@@ -1,5 +1,5 @@
 import { Image, ImageSourcePropType, StyleSheet } from "react-native";
-import { useIONewTypeface, useIOThemeContext, useIOTheme } from "../../context";
+import { useIOThemeContext, useIOTheme } from "../../context";
 import { IOListItemLogoMargin } from "../../core";
 import { addCacheTimestampToUri } from "../../utils/image";
 import { IOText } from "../typography";
@@ -49,7 +49,6 @@ export const ModuleIDP = ({
   testID,
   accessibilityLabel
 }: ModuleIDP) => {
-  const { newTypefaceEnabled } = useIONewTypeface();
   const theme = useIOTheme();
   const IDPLogoSource = useIDPLogo(logo);
 
@@ -60,7 +59,6 @@ export const ModuleIDP = ({
       withLooseSpacing={withLooseSpacing}
     >
       <IOText
-        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}
