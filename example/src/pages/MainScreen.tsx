@@ -12,7 +12,7 @@ import {
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
@@ -62,10 +62,38 @@ const MainScreen = (props: Props) => {
   const { theme, setTheme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     setTheme(colorScheme);
   }, [colorScheme, setTheme]);
+
+  // Configure native header search bar
+  useLayoutEffect(() => {
+    props.navigation.setOptions({
+      headerSearchBarOptions: {
+        placeholder: "Search components...",
+        onChangeText: (event: { nativeEvent: { text: string } }) => {
+          setSearchQuery(event.nativeEvent.text);
+        }
+      }
+    });
+  }, [props.navigation]);
+
+  // Filter items based on search query
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return DESIGN_SYSTEM_SECTION_DATA;
+    }
+
+    const lowerQuery = searchQuery.toLowerCase();
+    return DESIGN_SYSTEM_SECTION_DATA.map(section => ({
+      ...section,
+      data: section.data.filter(item =>
+        item.title.toLowerCase().includes(lowerQuery)
+      )
+    })).filter(section => section.data.length > 0);
+  }, [searchQuery]);
 
   const renderDSNavItem = ({
     item: { title, route }
@@ -122,7 +150,16 @@ const MainScreen = (props: Props) => {
         renderSectionFooter={renderDSSectionFooter}
         renderItem={renderDSNavItem}
         ItemSeparatorComponent={() => <Divider />}
-        sections={DESIGN_SYSTEM_SECTION_DATA}
+        sections={filteredSections}
+        ListEmptyComponent={
+          searchQuery.trim() ? (
+            <View style={{ paddingVertical: 24 }}>
+              <BodySmall color={theme["textBody-tertiary"]}>
+                No components found matching {searchQuery}
+              </BodySmall>
+            </View>
+          ) : null
+        }
       />
     </>
   );
