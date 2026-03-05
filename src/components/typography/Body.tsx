@@ -42,7 +42,7 @@ export const Body = forwardRef<View, BodyStyleProps>(
     const BodyProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "body", // iOS only
-      weight: customWeight ? customWeight : "Regular",
+      weight: customWeight || "Regular",
       size: bodyFontSize,
       lineHeight: bodyLineHeight,
       color: customColor ?? defaultColor,
