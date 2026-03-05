@@ -1,6 +1,5 @@
 import {
   BodySmall,
-  ContentWrapper,
   Divider,
   H1,
   IOVisualCostants,
@@ -12,6 +11,7 @@ import {
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
@@ -68,16 +68,21 @@ const MainScreen = (props: Props) => {
     setTheme(colorScheme);
   }, [colorScheme, setTheme]);
 
+  const searchBarOptions: NativeStackNavigationOptions["headerSearchBarOptions"] =
+    {
+      placeholder: "Search components...",
+      hideNavigationBar: false,
+      onChangeText: (event: { nativeEvent: { text: string } }) => {
+        setSearchQuery(event.nativeEvent.text);
+      }
+    };
+
   // Configure native header search bar
   useLayoutEffect(() => {
     props.navigation.setOptions({
-      headerSearchBarOptions: {
-        placeholder: "Search components...",
-        onChangeText: (event: { nativeEvent: { text: string } }) => {
-          setSearchQuery(event.nativeEvent.text);
-        }
-      }
+      headerSearchBarOptions: searchBarOptions
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.navigation]);
 
   // Filter items based on search query
@@ -126,42 +131,45 @@ const MainScreen = (props: Props) => {
   const renderDSSectionFooter = () => <VSpacer size={24} />;
 
   return (
-    <>
-      <ContentWrapper>
-        <ListItemSwitch
-          label="Abilita Design Sperimentale"
-          value={isExperimental}
-          onSwitchValueChange={setExperimental}
-        />
-        <ListItemSwitch
-          label="Abilita nuovo carattere"
-          value={newTypefaceEnabled}
-          onSwitchValueChange={setNewTypefaceEnabled}
-        />
-        <VSpacer size={4} />
-      </ContentWrapper>
-      <SectionList
-        keyExtractor={(item, index) => `${item.route}-${index}`}
-        stickySectionHeadersEnabled={false}
-        contentContainerStyle={{
-          paddingHorizontal: IOVisualCostants.appMarginDefault
-        }}
-        renderSectionHeader={renderDSSection}
-        renderSectionFooter={renderDSSectionFooter}
-        renderItem={renderDSNavItem}
-        ItemSeparatorComponent={() => <Divider />}
-        sections={filteredSections}
-        ListEmptyComponent={
-          searchQuery.trim() ? (
-            <View style={{ paddingVertical: 24 }}>
-              <BodySmall color={theme["textBody-tertiary"]}>
-                No components found matching {searchQuery}
-              </BodySmall>
-            </View>
-          ) : null
-        }
-      />
-    </>
+    <SectionList
+      ListHeaderComponent={
+        <>
+          <VSpacer size={48} />
+          <VSpacer size={48} />
+          <VSpacer size={24} />
+          <ListItemSwitch
+            label="Abilita Design Sperimentale"
+            value={isExperimental}
+            onSwitchValueChange={setExperimental}
+          />
+          <ListItemSwitch
+            label="Abilita nuovo carattere"
+            value={newTypefaceEnabled}
+            onSwitchValueChange={setNewTypefaceEnabled}
+          />
+        </>
+      }
+      keyExtractor={(item, index) => `${item.route}-${index}`}
+      stickySectionHeadersEnabled={false}
+      contentContainerStyle={{
+        paddingHorizontal: IOVisualCostants.appMarginDefault
+      }}
+      renderSectionHeader={renderDSSection}
+      renderSectionFooter={renderDSSectionFooter}
+      renderItem={renderDSNavItem}
+      ItemSeparatorComponent={() => <Divider />}
+      sections={filteredSections}
+      ListFooterComponent={<VSpacer size={48} />}
+      ListEmptyComponent={
+        searchQuery.trim() ? (
+          <View style={{ paddingVertical: 24 }}>
+            <BodySmall color={theme["textBody-tertiary"]}>
+              No components found matching {searchQuery}
+            </BodySmall>
+          </View>
+        ) : null
+      }
+    />
   );
 };
 
