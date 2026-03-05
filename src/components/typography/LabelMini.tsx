@@ -38,7 +38,7 @@ export const LabelMini = forwardRef<View, LabelMiniProps>(
     const LabelMiniProps: IOTextProps = {
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
-      weight: customWeight ? customWeight : "Semibold",
+      weight: customWeight || "Semibold",
       size: 12,
       lineHeight: 18,
       color: customColor ?? defaultColor,
