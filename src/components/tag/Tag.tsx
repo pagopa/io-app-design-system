@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
       }
     }),
+    overflow: "hidden",
     borderWidth: 1,
     borderCurve: "continuous"
   },
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     columnGap: IOTagIconMargin
   },
   iconWrapper: {
-    flexShrink: 1
+    flexShrink: 0
   }
 });
 

@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
     borderCurve: "continuous",
     ...Platform.select({
       android: {
@@ -219,8 +220,7 @@ export const Badge = ({
         style={{
           alignSelf: "center",
           textTransform: "uppercase",
-          letterSpacing: 0.5,
-          flexShrink: 1
+          letterSpacing: 0.5
         }}
       >
         {text}
