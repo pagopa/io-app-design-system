@@ -90,24 +90,6 @@ const flattenInline = (tokens: ReadonlyArray<Token>): ReadonlyArray<Token> =>
   }, []);
 
 /**
- * Recursively collects text content from AST nodes.
- * Used to build the raw text of blockquotes for Banner parsing.
- */
-const collectTextContent = (nodes: ReadonlyArray<MarkdownNode>): string =>
-  nodes
-    .map(node => {
-      if (node.content) {
-        return node.content;
-      }
-      if (node.children.length > 0) {
-        return collectTextContent(node.children);
-      }
-      return "";
-    })
-    .filter(Boolean)
-    .join("\n");
-
-/**
  * Converts a flat array of tokens into a hierarchical AST,
  * skipping disabled/unsupported token types entirely.
  */
@@ -162,10 +144,6 @@ const tokensToAST = (
       content: token.content || undefined,
       attributes: attributes || undefined,
       children: [],
-      // Preserve raw markup for blockquotes (needed for Banner extraction)
-      ...(nodeType === "blockquote" && token.markup
-        ? { raw: token.markup }
-        : {}),
       // Preserve ordered flag for lists
       ...(nodeType === "ordered_list" ? { ordered: true } : {}),
       ...(nodeType === "bullet_list" ? { ordered: false } : {}),
@@ -185,14 +163,9 @@ const tokensToAST = (
       // Opening token — parse children
       const [childNodes, nextIndex] = parseFrom(index + 1);
 
-      // For blockquotes, collect raw content from children recursively
-      const rawContent =
-        nodeType === "blockquote" ? collectTextContent(childNodes) : undefined;
-
       const nodeWithChildren: MarkdownNode = {
         ...node,
-        children: childNodes,
-        ...(rawContent ? { raw: rawContent } : {})
+        children: childNodes
       };
       const [restNodes, finalIndex] = parseFrom(nextIndex);
       return [[nodeWithChildren, ...restNodes], finalIndex];

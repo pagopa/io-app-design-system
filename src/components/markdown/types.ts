@@ -60,8 +60,6 @@ export type MarkdownNode = {
   content?: string;
   attributes?: Record<string, string>;
   children: ReadonlyArray<MarkdownNode>;
-  /** Preserved raw markdown source (used for blockquote → Banner extraction) */
-  raw?: string;
   /** List metadata: whether the list is ordered */
   ordered?: boolean;
 };

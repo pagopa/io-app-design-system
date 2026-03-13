@@ -192,37 +192,27 @@ const BULLET_FULL = "\u2022";
 /* ─── Blockquote / Banner helpers ─── */
 
 const PICTOGRAM_REGEXP = /^\s*\[!(.*?)\]/;
-const HEADING_REGEXP = /^#{1,6}\s+(.+)/m;
 
 /**
- * Extracts pictogram name from blockquote raw content.
- * Format: `>[!pictogramName]`
+ * Extracts pictogram name from a text string.
+ * Format: `[!pictogramName]`
  */
-const extractPictogramName = (raw: string): IOPictogramsBleed => {
-  const match = PICTOGRAM_REGEXP.exec(raw);
+const extractPictogramName = (text: string): IOPictogramsBleed => {
+  const match = PICTOGRAM_REGEXP.exec(text);
   const value = match?.[1];
   const isValid = value != null && value in IOPictogramsBleed;
   return isValid ? (value as IOPictogramsBleed) : "notification";
 };
 
 /**
- * Extracts title from blockquote raw content.
- * Format: `># Title text`
+ * Recursively collects text content from AST nodes.
  */
-const extractBannerTitle = (raw: string): string | undefined => {
-  const match = HEADING_REGEXP.exec(raw);
-  return match?.[1]?.trim();
+const collectRawText = (node: MarkdownNode): string => {
+  if (node.content) {
+    return node.content;
+  }
+  return node.children.map(collectRawText).join("");
 };
-
-/**
- * Extracts body content from blockquote, removing pictogram and heading lines.
- */
-const extractBannerContent = (raw: string): string =>
-  raw
-    .replace(new RegExp(PICTOGRAM_REGEXP.source, "g"), "")
-    .replace(new RegExp(HEADING_REGEXP.source, "gm"), "")
-    .replace(/^>*/gm, "")
-    .trim();
 
 /* ─── HTML helpers ─── */
 
@@ -327,18 +317,19 @@ const listItemRule: RenderRule = (node, renderChildren) => (
 );
 
 const blockquoteRule: RenderRule = node => {
-  // Collect raw text from all descendant text/paragraph nodes
-  const collectRawText = (n: MarkdownNode): string => {
-    if (n.content) {
-      return n.content;
-    }
-    return n.children.map(collectRawText).join("\n");
-  };
+  const allText = collectRawText(node);
+  const pictogramName = extractPictogramName(allText);
 
-  const rawContent = node.raw || collectRawText(node);
-  const pictogramName = extractPictogramName(rawContent);
-  const title = extractBannerTitle(rawContent);
-  const content = extractBannerContent(rawContent);
+  // Find the first heading child for the banner title
+  const headingNode = node.children.find(c => c.type.startsWith("heading"));
+  const title = headingNode ? collectRawText(headingNode).trim() : undefined;
+
+  // Collect content from paragraph children, stripping the pictogram pattern
+  const content = node.children
+    .filter(c => c.type === "paragraph")
+    .map(c => collectRawText(c).replace(PICTOGRAM_REGEXP, "").trim())
+    .filter(Boolean)
+    .join("\n");
 
   return (
     <Banner
