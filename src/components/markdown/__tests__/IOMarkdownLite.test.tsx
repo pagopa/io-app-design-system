@@ -68,7 +68,9 @@ describe("IOMarkdownLite", () => {
   });
 
   it("falls back to Linking.openURL when no onLinkPress provided", () => {
-    const spy = jest.spyOn(Linking, "openURL").mockImplementation(jest.fn());
+    const spy = jest
+      .spyOn(Linking, "openURL")
+      .mockImplementation(() => Promise.resolve());
     const { getByRole } = renderComponent({
       content: "[click](https://example.com)"
     });
