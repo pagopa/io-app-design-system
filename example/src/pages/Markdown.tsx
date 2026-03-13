@@ -1,4 +1,8 @@
-import { IOMarkdownLite, ListItemHeader } from "@pagopa/io-app-design-system";
+import {
+  IOMarkdownLite,
+  ListItemHeader,
+  VSpacer
+} from "@pagopa/io-app-design-system";
 import React from "react";
 import { Screen } from "../components/Screen";
 
@@ -95,7 +99,7 @@ export const Markdown = () => (
   <Screen>
     <ListItemHeader label="All" />
     <IOMarkdownLite content={ALL} />
-    {/*     <ListItemHeader label="Headings" />
+    <ListItemHeader label="Headings" />
     <IOMarkdownLite content={HEADINGS} />
     <ListItemHeader label="Banners" />
     <IOMarkdownLite content={BANNER} />
@@ -105,6 +109,6 @@ export const Markdown = () => (
     <IOMarkdownLite content={PARAGRAPH} />
     <ListItemHeader label="Link" />
     <IOMarkdownLite content={LINK} />
-    <VSpacer size={48} /> */}
+    <VSpacer size={48} />
   </Screen>
 );
