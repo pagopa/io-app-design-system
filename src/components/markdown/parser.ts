@@ -265,9 +265,7 @@ const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
       { result: [], textRun: [] }
     );
 
-    return textRun.length > 0
-      ? [...result, wrapTextRun(textRun)]
-      : [...result];
+    return textRun.length > 0 ? [...result, wrapTextRun(textRun)] : [...result];
   });
 
 /**

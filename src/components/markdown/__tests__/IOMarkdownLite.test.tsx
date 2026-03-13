@@ -5,13 +5,12 @@ import { IOThemeContextProvider } from "../../../context";
 import { IOMarkdownLite } from "../IOMarkdownLite";
 
 /** Renders the component wrapped with the required theme provider */
-const renderComponent = (
-  props: React.ComponentProps<typeof IOMarkdownLite>
-) => render(
-  <IOThemeContextProvider>
-    <IOMarkdownLite {...props} />
-  </IOThemeContextProvider>
-);
+const renderComponent = (props: React.ComponentProps<typeof IOMarkdownLite>) =>
+  render(
+    <IOThemeContextProvider>
+      <IOMarkdownLite {...props} />
+    </IOThemeContextProvider>
+  );
 
 describe("IOMarkdownLite", () => {
   it("renders basic paragraph text", () => {
@@ -31,9 +30,7 @@ describe("IOMarkdownLite", () => {
     // Style is a flattened array — check the array contains an object with fontWeight
     const styles = [el.props.style].flat();
     expect(styles).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ fontWeight: "600" })
-      ])
+      expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
     );
   });
 
@@ -43,9 +40,7 @@ describe("IOMarkdownLite", () => {
     expect(el).toBeTruthy();
     const styles = [el.props.style].flat();
     expect(styles).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ fontStyle: "italic" })
-      ])
+      expect.arrayContaining([expect.objectContaining({ fontStyle: "italic" })])
     );
   });
 

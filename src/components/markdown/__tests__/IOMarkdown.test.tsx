@@ -3,9 +3,7 @@ import React from "react";
 import { IOThemeContextProvider } from "../../../context";
 import { IOMarkdown } from "../IOMarkdown";
 
-const renderComponent = (
-  props: React.ComponentProps<typeof IOMarkdown>
-) =>
+const renderComponent = (props: React.ComponentProps<typeof IOMarkdown>) =>
   render(
     <IOThemeContextProvider>
       <IOMarkdown {...props} />
@@ -38,9 +36,7 @@ describe("IOMarkdown", () => {
     const el = getByText("bold");
     const styles = [el.props.style].flat();
     expect(styles).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ fontWeight: "600" })
-      ])
+      expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
     );
   });
 
@@ -49,9 +45,7 @@ describe("IOMarkdown", () => {
     const el = getByText("italic");
     const styles = [el.props.style].flat();
     expect(styles).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ fontStyle: "italic" })
-      ])
+      expect.arrayContaining([expect.objectContaining({ fontStyle: "italic" })])
     );
   });
 

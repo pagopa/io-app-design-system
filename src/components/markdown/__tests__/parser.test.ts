@@ -247,9 +247,7 @@ describe("parse — image lifting", () => {
   });
 
   it("lifts image between text paragraphs to top-level", () => {
-    const ast = parse(
-      "Before\n\n![alt](https://example.com/img.png)\n\nAfter"
-    );
+    const ast = parse("Before\n\n![alt](https://example.com/img.png)\n\nAfter");
     expect(ast).toHaveLength(3);
     expect(ast[0].type).toBe("paragraph");
     expect(ast[1].type).toBe("image");
