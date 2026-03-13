@@ -12,6 +12,7 @@ import { h4FontSize, h4LineHeight } from "../typography/H4";
 import { h5FontSize, h5LineHeight } from "../typography/H5";
 import { h6FontSize, h6LineHeight } from "../typography/H6";
 import { IOText } from "../typography/IOText";
+import { CodeBlock } from "./CodeBlock";
 import { ImageRenderer } from "./ImageRenderer";
 import type {
   MarkdownNode,
@@ -361,7 +362,7 @@ const codeInlineRule: RenderRule = node => (
 );
 
 const fenceRule: RenderRule = node => (
-  <Body key={node.key}>{node.content ?? ""}</Body>
+  <CodeBlock key={node.key} content={(node.content ?? "").trimEnd()} />
 );
 
 const hrRule: RenderRule = node => <Divider key={node.key} />;
