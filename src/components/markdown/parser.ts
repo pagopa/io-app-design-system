@@ -299,10 +299,16 @@ export const parse = (
   const md = needsHtml ? mdFull : mdLite;
 
   return pipe(
+    // 1. Tokenize the markdown source using markdown-it
     md.parse(source, {}),
+    // 2. Unwrap nested inline tokens into a flat token stream
     flattenInline,
+    // 3. Convert the flat token stream into a hierarchical AST
     tokens => tokensToAST(tokens, enabledTypes),
-    liftImages
+    // 4. Hoist image nodes out of paragraph wrappers so imageRule is invoked
+    liftImages,
+    // 5. Drop empty paragraphs left behind by disabled/lifted node types
+    nodes => nodes.filter(n => n.type !== "paragraph" || n.children.length > 0)
   );
 };
 
