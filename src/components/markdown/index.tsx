@@ -1,4 +1,4 @@
-import { IOMarkdown, IOMarkdownLite, type IOMarkdownProps } from "./Markdown";
+import { IOMarkdown, type IOMarkdownProps } from "./Markdown";
 
-export { IOMarkdown, IOMarkdownLite };
+export { IOMarkdown };
 export type { IOMarkdownProps };

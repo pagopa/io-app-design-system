@@ -16,6 +16,7 @@ export * from "./listitems";
 export * from "./loadingSpinner";
 export * from "./logos";
 export * from "./markdown";
+export * from "./markdownLite";
 export * from "./modules";
 export * from "./numberpad";
 export * from "./otpInput";

@@ -1,0 +1,215 @@
+import { parseLite } from "../parser";
+import { MarkdownLiteNode, MarkdownLiteNodeType } from "../types";
+
+/** Recursively collect all node types in an AST */
+const collectTypes = (nodes: ReadonlyArray<MarkdownLiteNode>): Array<string> =>
+  nodes.flatMap(n => [n.type, ...collectTypes(n.children)]);
+
+/** Find first node matching a type (depth-first) */
+const findNode = (
+  nodes: ReadonlyArray<MarkdownLiteNode>,
+  type: MarkdownLiteNodeType
+): MarkdownLiteNode | undefined => {
+  for (const n of nodes) {
+    if (n.type === type) {
+      return n;
+    }
+    const found = findNode(n.children, type);
+    if (found) {
+      return found;
+    }
+  }
+  return undefined;
+};
+
+describe("parseLite — supported content", () => {
+  it("parses plain paragraph text", () => {
+    const ast = parseLite("Hello world");
+    expect(ast).toHaveLength(1);
+    expect(ast[0].type).toBe("paragraph");
+    const textNode = findNode(ast, "text");
+    expect(textNode).toBeDefined();
+    expect(textNode!.content).toBe("Hello world");
+  });
+
+  it.each<[string, MarkdownLiteNodeType]>([
+    ["# H1", "heading1"],
+    ["## H2", "heading2"],
+    ["### H3", "heading3"],
+    ["#### H4", "heading4"],
+    ["##### H5", "heading5"],
+    ["###### H6", "heading6"]
+  ])("parses heading '%s' as %s", (input, expectedType) => {
+    const ast = parseLite(input);
+    expect(ast).toHaveLength(1);
+    expect(ast[0].type).toBe(expectedType);
+    const textNode = findNode(ast[0].children, "text");
+    expect(textNode).toBeDefined();
+  });
+
+  it("parses **bold** text", () => {
+    const ast = parseLite("**bold**");
+    expect(ast).toHaveLength(1);
+    expect(ast[0].type).toBe("paragraph");
+    const strong = findNode(ast, "strong");
+    expect(strong).toBeDefined();
+    const textNode = findNode(strong!.children, "text");
+    expect(textNode).toBeDefined();
+    expect(textNode!.content).toBe("bold");
+  });
+
+  it("parses *italic* text", () => {
+    const ast = parseLite("*italic*");
+    expect(ast).toHaveLength(1);
+    const em = findNode(ast, "em");
+    expect(em).toBeDefined();
+    const textNode = findNode(em!.children, "text");
+    expect(textNode).toBeDefined();
+    expect(textNode!.content).toBe("italic");
+  });
+
+  it("parses ***bold+italic*** text with nested strong/em", () => {
+    const ast = parseLite("***both***");
+    const types = collectTypes(ast);
+    expect(types).toContain("strong");
+    expect(types).toContain("em");
+    const textNode = findNode(ast, "text");
+    expect(textNode).toBeDefined();
+    expect(textNode!.content).toBe("both");
+  });
+
+  it("parses [link](url) with href attribute and text child", () => {
+    const ast = parseLite("[click me](https://example.com)");
+    const link = findNode(ast, "link");
+    expect(link).toBeDefined();
+    expect(link!.attributes?.href).toBe("https://example.com");
+    const textNode = findNode(link!.children, "text");
+    expect(textNode).toBeDefined();
+    expect(textNode!.content).toBe("click me");
+  });
+
+  it("parses softbreak (single newline within paragraph)", () => {
+    const ast = parseLite("line1\nline2");
+    const sb = findNode(ast, "softbreak");
+    expect(sb).toBeDefined();
+  });
+
+  it("parses hardbreak (two spaces + newline)", () => {
+    const ast = parseLite("line1  \nline2");
+    const hb = findNode(ast, "hardbreak");
+    expect(hb).toBeDefined();
+  });
+
+  it("parses multiple paragraphs as separate paragraph nodes", () => {
+    const ast = parseLite("First paragraph\n\nSecond paragraph");
+    const paragraphs = ast.filter(n => n.type === "paragraph");
+    expect(paragraphs.length).toBe(2);
+  });
+});
+
+describe("parseLite — unsupported content is skipped", () => {
+  const UNSUPPORTED_TYPES = [
+    "image",
+    "bullet_list",
+    "list_item",
+    "ordered_list",
+    "fence",
+    "code_block",
+    "code_inline",
+    "blockquote",
+    "table",
+    "hr",
+    "html_block",
+    "html_inline"
+  ];
+
+  const assertNoUnsupportedTypes = (ast: ReadonlyArray<MarkdownLiteNode>) => {
+    const types = collectTypes(ast);
+    for (const t of UNSUPPORTED_TYPES) {
+      expect(types).not.toContain(t);
+    }
+  };
+
+  it("skips image ![alt](url)", () => {
+    const ast = parseLite("![alt text](https://img.png)");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips unordered list - item", () => {
+    const ast = parseLite("- item one\n- item two");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips ordered list 1. item", () => {
+    const ast = parseLite("1. first\n2. second");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips fenced code block", () => {
+    const ast = parseLite("```\nconst x = 1;\n```");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips inline code `code`", () => {
+    const ast = parseLite("some `inline code` here");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips blockquote > text", () => {
+    const ast = parseLite("> quoted text");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips table", () => {
+    const ast = parseLite("| Col1 | Col2 |\n|------|------|\n| A | B |");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips horizontal rule ---", () => {
+    const ast = parseLite("---");
+    assertNoUnsupportedTypes(ast);
+  });
+
+  it("skips HTML <div>text</div>", () => {
+    // html is disabled in md config, so this should not produce html nodes
+    const ast = parseLite("<div>text</div>");
+    assertNoUnsupportedTypes(ast);
+  });
+});
+
+describe("parseLite — edge cases", () => {
+  it("returns empty array for empty string", () => {
+    const ast = parseLite("");
+    expect(ast).toEqual([]);
+  });
+
+  it("returns no meaningful content for only unsupported markdown", () => {
+    const ast = parseLite("- list\n\n> quote\n\n---\n\n```\ncode\n```");
+    // Should either be empty or contain only empty paragraph wrappers
+    const types = collectTypes(ast);
+    for (const t of [
+      "bullet_list",
+      "list_item",
+      "blockquote",
+      "hr",
+      "fence",
+      "code_block"
+    ]) {
+      expect(types).not.toContain(t);
+    }
+  });
+
+  it("keeps supported nodes when mixed with unsupported content", () => {
+    const ast = parseLite(
+      "Hello **world**\n\n- list item\n\nAnother paragraph"
+    );
+    const paragraphs = ast.filter(n => n.type === "paragraph");
+    expect(paragraphs.length).toBe(2);
+    const strong = findNode(ast, "strong");
+    expect(strong).toBeDefined();
+    // No list nodes
+    const types = collectTypes(ast);
+    expect(types).not.toContain("bullet_list");
+    expect(types).not.toContain("list_item");
+  });
+});
