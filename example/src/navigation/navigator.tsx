@@ -219,7 +219,8 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.MARKDOWN.route}
             component={Markdown}
             options={{
-              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN.title
+              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN.title,
+              headerBackTitleVisible: false
             }}
           />
 
@@ -227,7 +228,8 @@ const AppNavigator = () => {
             name={APP_ROUTES.COMPONENTS.MARKDOWN_LITE.route}
             component={MarkdownLite}
             options={{
-              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN_LITE.title
+              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN_LITE.title,
+              headerBackTitleVisible: false
             }}
           />
 
