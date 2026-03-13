@@ -236,32 +236,38 @@ const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
       return [...node.children];
     }
 
-    // Mixed content: split children into text runs and standalone images
-    const result: Array<MarkdownNode> = [];
-    let currentTextRun: Array<MarkdownNode> = [];
-
-    const flushTextRun = () => {
-      if (currentTextRun.length > 0) {
-        result.push({
-          ...node,
-          key: uniqueId("md_paragraph_"),
-          children: currentTextRun
-        });
-        currentTextRun = [];
-      }
+    // Mixed content: split children into text runs and standalone images.
+    // A single reduce accumulates finished nodes and the current text run;
+    // a trailing text run is flushed after the fold.
+    type Acc = {
+      readonly result: ReadonlyArray<MarkdownNode>;
+      readonly textRun: ReadonlyArray<MarkdownNode>;
     };
 
-    for (const child of node.children) {
-      if (child.type === "image") {
-        flushTextRun();
-        result.push(child);
-      } else {
-        currentTextRun.push(child);
-      }
-    }
-    flushTextRun();
+    const wrapTextRun = (run: ReadonlyArray<MarkdownNode>): MarkdownNode => ({
+      ...node,
+      key: uniqueId("md_paragraph_"),
+      children: run
+    });
 
-    return result;
+    const { result, textRun } = node.children.reduce<Acc>(
+      (acc, child) =>
+        child.type === "image"
+          ? {
+              result: [
+                ...acc.result,
+                ...(acc.textRun.length > 0 ? [wrapTextRun(acc.textRun)] : []),
+                child
+              ],
+              textRun: []
+            }
+          : { ...acc, textRun: [...acc.textRun, child] },
+      { result: [], textRun: [] }
+    );
+
+    return textRun.length > 0
+      ? [...result, wrapTextRun(textRun)]
+      : [...result];
   });
 
 /**
