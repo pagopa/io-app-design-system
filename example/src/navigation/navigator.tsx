@@ -44,6 +44,7 @@ import { Loaders } from "../pages/Loaders";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
 import { Markdown } from "../pages/Markdown";
+import { MarkdownLite } from "../pages/MarkdownLite";
 import Modules from "../pages/Modules";
 import { NumberPadScreen } from "../pages/NumberPad";
 import { OTPInputScreen } from "../pages/OTPInput";
@@ -219,6 +220,14 @@ const AppNavigator = () => {
             component={Markdown}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN.title
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.MARKDOWN_LITE.route}
+            component={MarkdownLite}
+            options={{
+              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN_LITE.title
             }}
           />
 

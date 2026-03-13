@@ -82,6 +82,10 @@ const APP_ROUTES = {
     MARKDOWN: {
       route: "DESIGN_SYSTEM_MARKDOWN",
       title: "Markdown"
+    },
+    MARKDOWN_LITE: {
+      route: "DESIGN_SYSTEM_MARKDOWN_LITE",
+      title: "Markdown Lite"
     }
   },
   SCREENS: {

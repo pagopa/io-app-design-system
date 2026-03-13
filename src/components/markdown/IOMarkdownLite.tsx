@@ -1,45 +1,14 @@
-import { constant } from "lodash";
-import { useCallback, useMemo } from "react";
-import { Linking, View } from "react-native";
-import { useIOTheme } from "../../context";
-import { parseLite } from "./parser";
-import { RenderContext, renderAST } from "./renderer";
+import { IOMarkdown } from "./IOMarkdown";
+import { LITE_DISABLED_TYPES } from "./parser";
 import type { IOMarkdownLiteProps } from "./types";
 
-export const IOMarkdownLite = ({
-  content,
-  onLinkPress,
-  testID
-}: IOMarkdownLiteProps) => {
-  const theme = useIOTheme();
-  const ast = useMemo(() => parseLite(content), [content]);
-
-  const handleLinkPress = useCallback(
-    (url: string) => {
-      if (onLinkPress) {
-        onLinkPress(url);
-      } else {
-        Linking.openURL(url).catch(constant(null));
-      }
-    },
-    [onLinkPress]
-  );
-
-  const context = useMemo<RenderContext>(
-    () => ({
-      onLinkPress: handleLinkPress,
-      headingColor: theme["textHeading-default"],
-      bodyColor: theme["textBody-default"],
-      linkColor: theme["interactiveElem-default"]
-    }),
-    [handleLinkPress, theme]
-  );
-
-  const rendered = renderAST(ast, context);
-
-  return (
-    <View style={{ gap: 8 }} testID={testID}>
-      {rendered}
-    </View>
-  );
-};
+/**
+ * Lightweight markdown component supporting only headings,
+ * paragraphs, bold, italic, links, and line breaks.
+ *
+ * This is a thin wrapper around `IOMarkdown` with extra node types
+ * (lists, blockquotes, images, code, etc.) disabled.
+ */
+export const IOMarkdownLite = (props: IOMarkdownLiteProps) => (
+  <IOMarkdown {...props} disabledRules={LITE_DISABLED_TYPES} />
+);

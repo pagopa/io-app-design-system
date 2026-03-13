@@ -1,2 +1,8 @@
+export { IOMarkdown } from "./IOMarkdown";
 export { IOMarkdownLite } from "./IOMarkdownLite";
-export type { IOMarkdownLiteProps } from "./types";
+export type {
+  IOMarkdownProps,
+  IOMarkdownLiteProps,
+  IOMarkdownRenderRules,
+  MarkdownNodeType
+} from "./types";
