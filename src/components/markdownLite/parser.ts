@@ -79,17 +79,14 @@ const tokensToAST = (
     if (nodeType === undefined) {
       if (token.nesting === 1) {
         // Opening token: skip ahead to matching close
-        let depth = 1;
-        let i = index + 1;
-        while (i < tokens.length && depth > 0) {
-          if (tokens[i].nesting === 1) {
-            depth++;
-          } else if (tokens[i].nesting === -1) {
-            depth--;
-          }
-          i++;
-        }
-        return parseFrom(i);
+        const findMatchingClose = (
+          pos: number,
+          depth: number
+        ): number =>
+          pos >= tokens.length || depth === 0
+            ? pos
+            : findMatchingClose(pos + 1, depth + tokens[pos].nesting);
+        return parseFrom(findMatchingClose(index + 1, 1));
       }
       // Self-closing / inline token: skip single token
       return parseFrom(index + 1);

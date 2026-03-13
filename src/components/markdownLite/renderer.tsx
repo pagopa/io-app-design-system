@@ -1,5 +1,12 @@
 import React from "react";
 import type { IOColors } from "../../core";
+import { bodyFontSize, bodyLineHeight } from "../typography/Body";
+import { h1FontSize, h1LineHeight } from "../typography/H1";
+import { h2FontSize, h2LineHeight } from "../typography/H2";
+import { h3FontSize, h3LineHeight } from "../typography/H3";
+import { h4FontSize, h4LineHeight } from "../typography/H4";
+import { h5FontSize, h5LineHeight } from "../typography/H5";
+import { h6FontSize, h6LineHeight } from "../typography/H6";
 import { IOText } from "../typography/IOText";
 import type { MarkdownLiteNode } from "./types";
 
@@ -16,12 +23,12 @@ type HeadingConfig = {
 };
 
 const headingConfigMap: Record<string, HeadingConfig> = {
-  heading1: { size: 28, lineHeight: 42 },
-  heading2: { size: 26, lineHeight: 34 },
-  heading3: { size: 22, lineHeight: 33 },
-  heading4: { size: 20, lineHeight: 24 },
-  heading5: { size: 14, lineHeight: 16 },
-  heading6: { size: 16, lineHeight: 24 }
+  heading1: { size: h1FontSize, lineHeight: h1LineHeight },
+  heading2: { size: h2FontSize, lineHeight: h2LineHeight },
+  heading3: { size: h3FontSize, lineHeight: h3LineHeight },
+  heading4: { size: h4FontSize, lineHeight: h4LineHeight },
+  heading5: { size: h5FontSize, lineHeight: h5LineHeight },
+  heading6: { size: h6FontSize, lineHeight: h6LineHeight }
 };
 
 type InlineStyle = {
@@ -146,8 +153,8 @@ const renderBlock = (
   return (
     <IOText
       key={node.key}
-      size={isHeading ? headingConfig.size : 16}
-      lineHeight={isHeading ? headingConfig.lineHeight : 24}
+      size={isHeading ? headingConfig.size : bodyFontSize}
+      lineHeight={isHeading ? headingConfig.lineHeight : bodyLineHeight}
       weight={isHeading ? "Semibold" : "Regular"}
       color={isHeading ? context.headingColor : context.bodyColor}
     >
