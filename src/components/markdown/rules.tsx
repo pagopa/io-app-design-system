@@ -1,18 +1,17 @@
 import React, { Fragment } from "react";
 import { View } from "react-native";
-import { IOPictogramsBleed } from "../pictograms";
 import { Banner } from "../banner";
-import { Divider, VSpacer, HSpacer } from "../layout";
-import { Body } from "../typography/Body";
+import { Divider, HSpacer, VSpacer } from "../layout";
+import { IOPictogramsBleed } from "../pictograms";
+import { Body, bodyFontSize, bodyLineHeight } from "../typography/Body";
 import { BodyMonospace } from "../typography/BodyMonospace";
-import { IOText } from "../typography/IOText";
-import { bodyFontSize, bodyLineHeight } from "../typography/Body";
 import { h1FontSize, h1LineHeight } from "../typography/H1";
 import { h2FontSize, h2LineHeight } from "../typography/H2";
 import { h3FontSize, h3LineHeight } from "../typography/H3";
 import { h4FontSize, h4LineHeight } from "../typography/H4";
 import { h5FontSize, h5LineHeight } from "../typography/H5";
 import { h6FontSize, h6LineHeight } from "../typography/H6";
+import { IOText } from "../typography/IOText";
 import { ImageRenderer } from "./ImageRenderer";
 import type {
   MarkdownNode,
@@ -69,10 +68,7 @@ const flattenInlineNodes = (
 
       case "softbreak":
       case "hardbreak":
-        return [
-          ...acc,
-          { key: node.key, text: "\n", style: inherited }
-        ];
+        return [...acc, { key: node.key, text: "\n", style: inherited }];
 
       case "strong":
         return [
@@ -124,9 +120,7 @@ const renderSegment = (
   isCode?: boolean
 ): React.ReactNode => {
   if (isCode) {
-    return (
-      <BodyMonospace key={segment.key}>{segment.text}</BodyMonospace>
-    );
+    return <BodyMonospace key={segment.key}>{segment.text}</BodyMonospace>;
   }
 
   const { bold, italic, link } = segment.style;
@@ -206,8 +200,7 @@ const HEADING_REGEXP = /^#{1,6}\s+(.+)/m;
 const extractPictogramName = (raw: string): IOPictogramsBleed => {
   const match = PICTOGRAM_REGEXP.exec(raw);
   const value = match?.[1];
-  const isValid =
-    value != null && value in IOPictogramsBleed;
+  const isValid = value != null && value in IOPictogramsBleed;
   return isValid ? (value as IOPictogramsBleed) : "notification";
 };
 
