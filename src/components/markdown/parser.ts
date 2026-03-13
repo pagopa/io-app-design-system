@@ -77,9 +77,7 @@ const getNodeType = (
  * Flattens nested inline tokens into the parent token stream.
  * markdown-it wraps inline content in `inline` tokens with children.
  */
-const flattenInline = (
-  tokens: ReadonlyArray<Token>
-): ReadonlyArray<Token> =>
+const flattenInline = (tokens: ReadonlyArray<Token>): ReadonlyArray<Token> =>
   tokens.reduce<ReadonlyArray<Token>>((acc, token) => {
     if (
       token.type === "inline" &&
@@ -189,9 +187,7 @@ const tokensToAST = (
 
       // For blockquotes, collect raw content from children recursively
       const rawContent =
-        nodeType === "blockquote"
-          ? collectTextContent(childNodes)
-          : undefined;
+        nodeType === "blockquote" ? collectTextContent(childNodes) : undefined;
 
       const nodeWithChildren: MarkdownNode = {
         ...node,
@@ -210,6 +206,63 @@ const tokensToAST = (
   const [nodes] = parseFrom(0);
   return nodes;
 };
+
+/**
+ * Lifts image nodes out of paragraph containers so they become
+ * top-level siblings.  markdown-it always wraps images inside
+ * paragraphs; this post-processing step ensures the existing
+ * `imageRule` is actually invoked during rendering.
+ *
+ * - Paragraph with **only** image children → replaced by the images.
+ * - Paragraph with a **mix** of text and images → split into
+ *   alternating paragraph (text run) and standalone image nodes.
+ * - Paragraphs without images → unchanged.
+ */
+const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
+  nodes.flatMap(node => {
+    if (node.type !== "paragraph") {
+      return [node];
+    }
+
+    const hasImage = node.children.some(c => c.type === "image");
+    if (!hasImage) {
+      return [node];
+    }
+
+    // Every child is an image → lift them all out
+    const allImages = node.children.every(c => c.type === "image");
+    if (allImages) {
+      // Return images as top-level nodes (they keep their own keys)
+      return [...node.children];
+    }
+
+    // Mixed content: split children into text runs and standalone images
+    const result: Array<MarkdownNode> = [];
+    let currentTextRun: Array<MarkdownNode> = [];
+
+    const flushTextRun = () => {
+      if (currentTextRun.length > 0) {
+        result.push({
+          ...node,
+          key: uniqueId("md_paragraph_"),
+          children: currentTextRun
+        });
+        currentTextRun = [];
+      }
+    };
+
+    for (const child of node.children) {
+      if (child.type === "image") {
+        flushTextRun();
+        result.push(child);
+      } else {
+        currentTextRun.push(child);
+      }
+    }
+    flushTextRun();
+
+    return result;
+  });
 
 /**
  * Computes the enabled types set from the full set minus disabled types.
@@ -242,7 +295,8 @@ export const parse = (
   return pipe(
     md.parse(source, {}),
     flattenInline,
-    tokens => tokensToAST(tokens, enabledTypes)
+    tokens => tokensToAST(tokens, enabledTypes),
+    liftImages
   );
 };
 

@@ -117,13 +117,13 @@ This content is visually separated from the first by a horizontal rule.`;
 
 /* ─── Images ─── */
 
-const IMAGE_SIMPLE = `![Placeholder image (200×200)](https://placehold.co/200)`;
+const IMAGE_SIMPLE = `![Placeholder image (200×200)](https://picsum.photos/200/200)`;
 
 const IMAGE_WITH_CONTEXT = `## App screenshot
 
 Below is an example banner image illustrating a wide landscape format:
 
-![Wide landscape placeholder (600×200)](https://placehold.co/600x200)
+![Wide landscape placeholder (600×200)](https://picsum.photos/600/200)
 
 The image above should scale to fit the available width while preserving its aspect ratio.`;
 
@@ -131,11 +131,11 @@ const IMAGE_MULTIPLE = `### Image gallery
 
 Here are several images with different dimensions:
 
-![Small square (100×100)](https://placehold.co/100)
+![Small square (100×100)](https://picsum.photos/100/100)
 
-![Wide rectangle (400×150)](https://placehold.co/400x150)
+![Wide rectangle (400×150)](https://picsum.photos/400/150)
 
-![Tall rectangle (200×400)](https://placehold.co/200x400)
+![Tall rectangle (200×400)](https://picsum.photos/200/400)
 
 Each image should respect its own aspect ratio and never exceed the screen width.`;
 
@@ -144,7 +144,7 @@ const IMAGE_INLINE_CONTENT = `## How to find your service ID
 1. Open the **IO app** and go to *Services*
 2. Tap the service you want to inspect
 
-![Service detail screen (300×500)](https://placehold.co/300x500)
+![Service detail screen (300×500)](https://picsum.photos/300/500)
 
 3. The service ID is displayed at the bottom of the detail screen under \`service_id\`
 4. Copy it and use it in the [developer portal](https://developer.io.italia.it)

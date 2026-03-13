@@ -1,5 +1,5 @@
-import { parseLite } from "../parser";
-import { MarkdownLiteNode, MarkdownLiteNodeType } from "../types";
+import { parse, parseLite } from "../parser";
+import { MarkdownLiteNode, MarkdownLiteNodeType, MarkdownNode } from "../types";
 
 /** Recursively collect all node types in an AST */
 const collectTypes = (nodes: ReadonlyArray<MarkdownLiteNode>): Array<string> =>
@@ -211,5 +211,82 @@ describe("parseLite — edge cases", () => {
     const types = collectTypes(ast);
     expect(types).not.toContain("bullet_list");
     expect(types).not.toContain("list_item");
+  });
+});
+
+/* ─── Full parse: image lifting ─── */
+
+/** Recursively collect all node types in an AST (full parse version) */
+const collectAllTypes = (nodes: ReadonlyArray<MarkdownNode>): Array<string> =>
+  nodes.flatMap(n => [n.type, ...collectAllTypes(n.children)]);
+
+/** Find first node matching a type (depth-first, full parse version) */
+const findAnyNode = (
+  nodes: ReadonlyArray<MarkdownNode>,
+  type: string
+): MarkdownNode | undefined => {
+  for (const n of nodes) {
+    if (n.type === type) {
+      return n;
+    }
+    const found = findAnyNode(n.children, type);
+    if (found) {
+      return found;
+    }
+  }
+  return undefined;
+};
+
+describe("parse — image lifting", () => {
+  it("lifts a standalone image out of its paragraph wrapper", () => {
+    const ast = parse("![alt text](https://example.com/img.png)");
+    expect(ast).toHaveLength(1);
+    expect(ast[0].type).toBe("image");
+    expect(ast[0].attributes?.src).toBe("https://example.com/img.png");
+    expect(ast[0].attributes?.alt).toBe("alt text");
+  });
+
+  it("lifts image between text paragraphs to top-level", () => {
+    const ast = parse(
+      "Before\n\n![alt](https://example.com/img.png)\n\nAfter"
+    );
+    expect(ast).toHaveLength(3);
+    expect(ast[0].type).toBe("paragraph");
+    expect(ast[1].type).toBe("image");
+    expect(ast[1].attributes?.src).toBe("https://example.com/img.png");
+    expect(ast[2].type).toBe("paragraph");
+  });
+
+  it("splits a paragraph with mixed text and image into separate nodes", () => {
+    const ast = parse(
+      "Some text ![alt](https://example.com/img.png) more text"
+    );
+    expect(ast).toHaveLength(3);
+    expect(ast[0].type).toBe("paragraph");
+    expect(ast[1].type).toBe("image");
+    expect(ast[2].type).toBe("paragraph");
+  });
+
+  it("lifts multiple images from separate paragraphs", () => {
+    const ast = parse("![a](url1)\n\n![b](url2)");
+    expect(ast).toHaveLength(2);
+    expect(ast[0].type).toBe("image");
+    expect(ast[1].type).toBe("image");
+  });
+
+  it("does not nest image inside a paragraph node", () => {
+    const ast = parse("![alt](https://example.com/img.png)");
+    const paragraphs = ast.filter(n => n.type === "paragraph");
+    for (const p of paragraphs) {
+      const nestedImage = findAnyNode(p.children, "image");
+      expect(nestedImage).toBeUndefined();
+    }
+  });
+
+  it("leaves paragraphs without images unchanged", () => {
+    const ast = parse("Just **text** here");
+    expect(ast).toHaveLength(1);
+    expect(ast[0].type).toBe("paragraph");
+    expect(collectAllTypes(ast)).not.toContain("image");
   });
 });

@@ -145,6 +145,27 @@ describe("IOMarkdown", () => {
     expect(queryByText("block")).toBeNull();
   });
 
+  /* ─── Image rendering ─── */
+
+  it("renders an image when markdown contains image syntax", () => {
+    const content = "![Placeholder](https://picsum.photos/200/200)";
+    const { getByLabelText } = renderComponent({ content });
+    const image = getByLabelText("Placeholder");
+    expect(image).toBeTruthy();
+    expect(image.props.source).toEqual({
+      uri: "https://picsum.photos/200/200"
+    });
+  });
+
+  it("does not render images when image is in disabledRules", () => {
+    const content = "![Placeholder](https://picsum.photos/200/200)";
+    const { queryByLabelText } = renderComponent({
+      content,
+      disabledRules: ["image"]
+    });
+    expect(queryByLabelText("Placeholder")).toBeNull();
+  });
+
   /* ─── testID ─── */
 
   it("applies testID to the container view", () => {
