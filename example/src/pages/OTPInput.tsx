@@ -8,48 +8,62 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
-import * as React from "react";
-import { useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
-const OTP_LENGTH = 8;
-const OTP_COMPARE = "12345678";
+const OTP_LENGTH_8 = 8;
+const OTP_LENGTH_6 = 6;
+const OTP_COMPARE_8 = "12345678";
+const OTP_COMPARE_6 = "123456";
 
 type WrapperProps = {
   secret?: boolean;
   validation?: boolean;
   autoFocus?: boolean;
+  length?: number;
+  otpCompare?: string;
+  accessibilityValueText?: (params: {
+    valueLength: number;
+    length: number;
+  }) => string;
 };
 
 const OTPWrapper = ({
   secret = false,
   validation = false,
-  autoFocus = false
+  autoFocus = false,
+  length = OTP_LENGTH_8,
+  otpCompare = OTP_COMPARE_8,
+  accessibilityValueText
 }: WrapperProps) => {
   const [value, setValue] = useState("");
-  const onValueChange = React.useCallback((v: string) => {
-    if (v.length <= OTP_LENGTH) {
-      setValue(v);
-    }
-  }, []);
-
-  const onValidate = React.useCallback(
-    (v: string) => !validation || v === OTP_COMPARE,
-    [validation]
+  const onValueChange = useCallback(
+    (v: string) => {
+      if (v.length <= length) {
+        setValue(v);
+      }
+    },
+    [length]
   );
 
-  return React.useMemo(
+  const onValidate = useCallback(
+    (v: string) => !validation || v === otpCompare,
+    [validation, otpCompare]
+  );
+
+  return useMemo(
     () => (
       <>
         <OTPInput
           value={value}
           accessibilityLabel={"OTP Input"}
           onValueChange={onValueChange}
-          length={OTP_LENGTH}
+          length={length}
           secret={secret}
           onValidate={onValidate}
           errorMessage={"Wrong OTP"}
           autoFocus={autoFocus}
+          accessibilityValueText={accessibilityValueText}
         />
         <VSpacer />
         <IOButton
@@ -59,21 +73,24 @@ const OTPWrapper = ({
         />
       </>
     ),
-    [value, onValueChange, secret, onValidate, autoFocus]
+    [value, onValueChange, secret, onValidate, autoFocus, length, accessibilityValueText]
   );
 };
 
 const scrollVerticallyToView = (
-  scrollViewRef: React.RefObject<ScrollView | null>,
-  targetViewRef: React.RefObject<View | null>
+  scrollViewRef: RefObject<ScrollView | null>,
+  targetViewRef: RefObject<View | null>
 ) => {
   if (targetViewRef.current && scrollViewRef.current) {
-    targetViewRef.current.measureLayout(
-      scrollViewRef.current.getInnerViewNode(),
-      (_: number, y: number) => {
-        scrollViewRef.current?.scrollTo({ y, animated: true });
-      }
-    );
+    const nativeScrollRef = scrollViewRef.current.getNativeScrollRef();
+    if (nativeScrollRef) {
+      targetViewRef.current.measureLayout(
+        nativeScrollRef,
+        (_: number, y: number) => {
+          scrollViewRef.current?.scrollTo({ y, animated: true });
+        }
+      );
+    }
   }
 };
 
@@ -82,8 +99,8 @@ const scrollVerticallyToView = (
  * @returns a screen with a flexed view where you can test components
  */
 export const OTPInputScreen = () => {
-  const scrollViewRef = React.useRef<ScrollView>(null);
-  const autofocusableOTPViewRef = React.useRef<View>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
+  const autofocusableOTPViewRef = useRef<View>(null);
   const [showAutofocusableOTP, setShowAutofocusableOTP] = useState(false);
   const headerHeight = useHeaderHeight();
 
@@ -114,33 +131,48 @@ export const OTPInputScreen = () => {
             <VSpacer />
             <H5>Secret</H5>
             <VSpacer />
-            <OTPWrapper secret />
+            <OTPWrapper
+              secret
+              accessibilityValueText={({ valueLength, length }) =>
+                `${valueLength} of ${length} digits entered`
+              }
+            />
             <VSpacer />
             <H5>Validation+Secret</H5>
-            <BodySmall>Correct OTP {`${OTP_COMPARE}`}</BodySmall>
+            <BodySmall>Correct OTP {`${OTP_COMPARE_8}`}</BodySmall>
             <VSpacer />
             <OTPWrapper secret validation />
+            <VSpacer />
+            <H5>Validation+Secret+length 6</H5>
+            <BodySmall>
+              Correct OTP:{" "}
+              <BodySmall weight="Semibold">{OTP_COMPARE_6}</BodySmall>
+            </BodySmall>
+            <VSpacer />
+            <OTPWrapper
+              secret
+              validation
+              length={OTP_LENGTH_6}
+              otpCompare={OTP_COMPARE_6}
+            />
             <VSpacer />
             <H5>Autofocus</H5>
             <VSpacer />
             <IOButton
               variant={showAutofocusableOTP ? "solid" : "outline"}
-              onPress={() => {
-                setShowAutofocusableOTP(!showAutofocusableOTP);
-                setTimeout(() => {
-                  scrollVerticallyToView(
-                    scrollViewRef,
-                    autofocusableOTPViewRef
-                  );
-                }, 100);
-              }}
+              onPress={() => setShowAutofocusableOTP(!showAutofocusableOTP)}
               label={`${
                 showAutofocusableOTP ? "Hide" : "Show"
               } Autofocusable OTP`}
             />
             <VSpacer />
             {showAutofocusableOTP && (
-              <View ref={autofocusableOTPViewRef}>
+              <View
+                ref={autofocusableOTPViewRef}
+                onLayout={() =>
+                  scrollVerticallyToView(scrollViewRef, autofocusableOTPViewRef)
+                }
+              >
                 <OTPWrapper autoFocus />
                 <VSpacer />
               </View>

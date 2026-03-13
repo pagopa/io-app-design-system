@@ -14,10 +14,6 @@ const APP_ROUTES = {
     IMAGE: { route: "DESIGN_SYSTEM_IMAGE", title: "Image" },
     OTP_INPUT: { route: "DESIGN_SYSTEM_OTP_INPUT", title: "OTP Input" },
     BUTTONS: { route: "DESIGN_SYSTEM_BUTTONS", title: "Buttons" },
-    BUTTONS_LEGACY: {
-      route: "DESIGN_SYSTEM_BUTTONS_LEGACY",
-      title: "Buttons (legacy)"
-    },
     LIST_ITEMS: { route: "DESIGN_SYSTEM_LIST_ITEMS", title: "List Items" },
     MODULES: { route: "DESIGN_SYSTEM_MODULES", title: "Modules" },
     BADGE: { route: "DESIGN_SYSTEM_BADGE", title: "Badges & Tags" },
@@ -38,6 +34,10 @@ const APP_ROUTES = {
     HEADER_FIRST_LEVEL: {
       route: "DESIGN_SYSTEM_HEADER_FIRST_LEVEL",
       title: "Header First Level"
+    },
+    FORCE_SCROLL_DOWN_TITLE_TRANSITION: {
+      route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN_TITLE_TRANSITION",
+      title: "Force Scroll Down (Title Transition)"
     },
     FORCE_SCROLL_DOWN: {
       route: "DESIGN_SYSTEM_FORCE_SCROLL_DOWN",

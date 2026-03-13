@@ -1,5 +1,4 @@
-import { every, some } from "lodash";
-import React, {
+import {
   JSXElementConstructor,
   PropsWithChildren,
   ReactElement,
@@ -194,8 +193,10 @@ export const Tooltip = ({
     () => ARROWS_BY_PLACEMENT[currentPlacement],
     [currentPlacement]
   );
+  const childrenCoordsValues = Object.values(childrenCoords);
   const isChildrenMeasurementFinished =
-    every(childrenCoords, isDefined) && some(childrenCoords, isNotZero);
+    childrenCoordsValues.every(isDefined) &&
+    childrenCoordsValues.some(isNotZero);
   const isTooltipMeasurementCompleted = isDefined(tooltipLayout);
   const tooltipVisibility = { opacity: isTooltipMeasurementCompleted ? 1 : 0 };
 
@@ -211,7 +212,7 @@ export const Tooltip = ({
           width,
           height
         };
-        if (every(coords, isDefined)) {
+        if (Object.values(coords).every(isDefined)) {
           setChildrenCoords(coords);
         }
       });

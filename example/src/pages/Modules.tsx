@@ -1,7 +1,6 @@
 import {
   H2,
   IOColors,
-  ListItemSwitch,
   ModuleAttachment,
   ModuleCheckout,
   ModuleCredential,
@@ -10,10 +9,9 @@ import {
   ModuleNavigationAlt,
   ModulePaymentNotice,
   ModuleSummary,
-  useIOTheme,
-  useIOThemeContext
+  useIOTheme
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, View } from "react-native";
 import CgnLogo from "../../assets/images/cgn_logo.png";
 import SpidTextLogo from "../../assets/images/spid-text-logo.svg";
@@ -379,6 +377,11 @@ const renderModuleCredential = () => (
         />
       </View>
     </ComponentViewerBox>
+    <ComponentViewerBox name="ModuleCredential, without image or icon and with chevron">
+      <View>
+        <ModuleCredential label="Identità digitale" onPress={mockFn} />
+      </View>
+    </ComponentViewerBox>
   </>
 );
 
@@ -522,36 +525,25 @@ const renderModuleSummary = () => (
   </>
 );
 
-const Modules = () => {
-  const { setTheme, themeType } = useIOThemeContext();
-
-  return (
-    <Screen>
-      <ListItemSwitch
-        label="Abilita Dark Mode"
-        value={themeType === "dark"}
-        onSwitchValueChange={() =>
-          setTheme(themeType === "dark" ? "light" : "dark")
-        }
-      />
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
-      {renderModuleIDP()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
-      {renderModulePaymentNotice()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
-      {renderModuleSummary()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
-      {renderModuleCheckout()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
-      {renderModuleAttachment()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
-      {renderModuleCredential()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
-      {renderModuleNavigation()}
-      <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
-      {RenderModuleNavigationAlt()}
-    </Screen>
-  );
-};
+const Modules = () => (
+  <Screen>
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleIDP</H2>
+    {renderModuleIDP()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModulePaymentNotice</H2>
+    {renderModulePaymentNotice()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleSummary</H2>
+    {renderModuleSummary()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCheckout</H2>
+    {renderModuleCheckout()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleAttachment</H2>
+    {renderModuleAttachment()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleCredential</H2>
+    {renderModuleCredential()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigation</H2>
+    {renderModuleNavigation()}
+    <H2 style={{ marginBottom: 16, marginTop: 16 }}>ModuleNavigationAlt</H2>
+    {RenderModuleNavigationAlt()}
+  </Screen>
+);
 
 export default Modules;

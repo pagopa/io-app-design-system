@@ -1,13 +1,11 @@
-import React from "react";
+import { render } from "@testing-library/react-native";
+
 import { Alert } from "react-native";
-import * as TestRenderer from "react-test-renderer";
-import { TestRendererWithExperimentalEnabledContextProvider } from "../../../utils/testing";
-import ButtonLink from "../ButtonLink";
-import ButtonOutline from "../ButtonOutline";
-import ButtonSolid from "../ButtonSolid";
-import IconButton from "../IconButton";
-import IconButtonContained from "../IconButtonContained";
-import IconButtonSolid from "../IconButtonSolid";
+import { renderWithExperimentalEnabledContextProvider } from "../../../utils/testing";
+import { IconButton } from "../IconButton";
+import { IconButtonContained } from "../IconButtonContained";
+import { IconButtonSolid } from "../IconButtonSolid";
+import { IOButton } from "../IOButton";
 
 const onButtonPress = () => {
   Alert.alert("Alert", "Action triggered");
@@ -15,96 +13,99 @@ const onButtonPress = () => {
 
 describe("Test Buttons Components", () => {
   it("ButtonSolid Snapshot", () => {
-    const buttonSolid = TestRenderer.create(
-      <ButtonSolid
+    const { toJSON } = render(
+      <IOButton
+        variant="solid"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></ButtonSolid>
-    ).toJSON();
-    expect(buttonSolid).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonLink Snapshot", () => {
-    const buttonLink = TestRenderer.create(
-      <ButtonLink label={"label"} onPress={onButtonPress}></ButtonLink>
-    ).toJSON();
-    expect(buttonLink).toMatchSnapshot();
+    const { toJSON } = render(
+      <IOButton variant="link" label={"label"} onPress={onButtonPress} />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonOutline Snapshot", () => {
-    const buttonOutline = TestRenderer.create(
-      <ButtonOutline
+    const { toJSON } = render(
+      <IOButton
+        variant="outline"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></ButtonOutline>
-    ).toJSON();
-    expect(buttonOutline).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
 describe("Test Buttons Components - Experimental Enabled", () => {
   it("ButtonSolid Snapshot", () => {
-    const buttonSolid = TestRendererWithExperimentalEnabledContextProvider(
-      <ButtonSolid
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
+      <IOButton
+        variant="solid"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></ButtonSolid>
-    ).toJSON();
-    expect(buttonSolid).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonLink Snapshot", () => {
-    const buttonLink = TestRendererWithExperimentalEnabledContextProvider(
-      <ButtonLink label={"label"} onPress={onButtonPress}></ButtonLink>
-    ).toJSON();
-    expect(buttonLink).toMatchSnapshot();
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
+      <IOButton variant="link" label={"label"} onPress={onButtonPress} />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("ButtonOutline Snapshot", () => {
-    const buttonOutline = TestRendererWithExperimentalEnabledContextProvider(
-      <ButtonOutline
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
+      <IOButton
+        variant="outline"
         label={"label"}
         accessibilityLabel={"accessibilityLabel"}
         onPress={onButtonPress}
-      ></ButtonOutline>
-    ).toJSON();
-    expect(buttonOutline).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("IconButtonSolid Snapshot", () => {
-    const iconButtonSolid = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <IconButtonSolid
         onPress={onButtonPress}
         icon={"spid"}
         accessibilityLabel={"accessibilityLabel"}
-      ></IconButtonSolid>
-    ).toJSON();
-    expect(iconButtonSolid).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("IconButton Snapshot", () => {
-    const iconButton = TestRendererWithExperimentalEnabledContextProvider(
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
       <IconButton
         onPress={onButtonPress}
         icon={"spid"}
         accessibilityLabel={"accessibilityLabel"}
-      ></IconButton>
-    ).toJSON();
-    expect(iconButton).toMatchSnapshot();
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it("IconButtonContained Snapshot", () => {
-    const iconButtonContained =
-      TestRendererWithExperimentalEnabledContextProvider(
-        <IconButtonContained
-          onPress={onButtonPress}
-          icon={"spid"}
-          accessibilityLabel={"accessibilityLabel"}
-        ></IconButtonContained>
-      ).toJSON();
-    expect(iconButtonContained).toMatchSnapshot();
+    const { toJSON } = renderWithExperimentalEnabledContextProvider(
+      <IconButtonContained
+        onPress={onButtonPress}
+        icon={"spid"}
+        accessibilityLabel={"accessibilityLabel"}
+      />
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 });

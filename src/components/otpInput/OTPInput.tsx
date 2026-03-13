@@ -1,11 +1,18 @@
-import * as React from "react";
-import { createRef, forwardRef, useEffect, useRef, useState } from "react";
+import {
+  createRef,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   AccessibilityInfo,
-  NativeSyntheticEvent,
+  Platform,
   Pressable,
+  StyleSheet,
   TextInput,
-  TextInputKeyPressEventData,
+  TextInputKeyPressEvent,
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
@@ -15,6 +22,8 @@ import { useErrorShakeAnimation } from "../../utils/hooks/useErrorShakeAnimation
 import { VSpacer } from "../layout";
 import { BodySmall } from "../typography";
 import { BoxedInput } from "./BoxedInput";
+
+const OTP_ITEMS_GAP = 8;
 
 type Props = {
   value: string;
@@ -27,6 +36,10 @@ type Props = {
   accessibilityLabel?: string;
   deleteButtonAccessibilityLabel?: string;
   accessibilityHint?: string;
+  accessibilityValueText?: (params: {
+    valueLength: number;
+    length: number;
+  }) => string;
   inputAccessoryViewID?: string;
   autoFocus?: boolean;
 };
@@ -52,6 +65,7 @@ export const OTPInput = forwardRef<View, Props>(
       length,
       accessibilityLabel,
       accessibilityHint,
+      accessibilityValueText,
       onValidate,
       errorMessage = "",
       secret = false,
@@ -112,10 +126,8 @@ export const OTPInput = forwardRef<View, Props>(
       handleValidate(value);
     };
 
-    const handleKeyPress = ({
-      nativeEvent
-    }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
-      switch (nativeEvent.key) {
+    const handleKeyPress = (e: TextInputKeyPressEvent) => {
+      switch (e.nativeEvent.key) {
         case "Backspace":
           if (deleteButtonAccessibilityLabel && value.length > 0) {
             AccessibilityInfo.announceForAccessibility(
@@ -124,10 +136,12 @@ export const OTPInput = forwardRef<View, Props>(
           }
           break;
         default:
-          AccessibilityInfo.announceForAccessibility(nativeEvent.key);
+          AccessibilityInfo.announceForAccessibility(e.nativeEvent.key);
           break;
       }
     };
+
+    const cells = useMemo(() => Array.from({ length }), [length]);
 
     return (
       <Animated.View style={[{ flexGrow: 1 }, animatedStyle]}>
@@ -137,17 +151,20 @@ export const OTPInput = forwardRef<View, Props>(
             setHasFocus(true);
           }}
           ref={ref}
-          style={{ flexDirection: "row", justifyContent: "space-around" }}
-          accessible={true}
-          accessibilityLabel={accessibilityLabel}
-          accessibilityHint={accessibilityHint}
-          accessibilityValue={{ text: value }}
+          accessible={false}
         >
           <TextInput
             value={value}
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
-            style={{ position: "absolute", opacity: 0 }}
+            caretHidden={Platform.OS === "ios"}
+            style={[
+              StyleSheet.absoluteFillObject,
+              Platform.select({
+                ios: { opacity: 0.01 },
+                android: { opacity: 0 }
+              })
+            ]}
             maxLength={length}
             ref={inputRef}
             onBlur={() => setHasFocus(false)}
@@ -158,23 +175,45 @@ export const OTPInput = forwardRef<View, Props>(
             autoComplete={autocomplete ? "sms-otp" : undefined}
             inputAccessoryViewID={inputAccessoryViewID}
             accessible={true}
+            accessibilityLabel={accessibilityLabel}
+            accessibilityHint={accessibilityHint}
+            // Ensure the screen reader pronounces the code digit by digit
+            accessibilityValue={{
+              text:
+                accessibilityValueText?.({
+                  valueLength: value.length,
+                  length
+                }) ?? value.split("").join(" ")
+            }}
             autoFocus={autoFocus}
-            secureTextEntry={true}
+            secureTextEntry={secret}
           />
-          {[...Array(length)].map((_, i) => (
-            <BoxedInput
-              key={i}
-              status={
-                hasError
-                  ? "error"
-                  : hasFocus && value.length === i
-                  ? "focus"
-                  : "default"
-              }
-              secret={secret}
-              value={value[i]}
-            />
-          ))}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              columnGap: OTP_ITEMS_GAP,
+              flexGrow: 1,
+              zIndex: 10
+            }}
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no-hide-descendants"
+          >
+            {cells.map((_, i) => (
+              <BoxedInput
+                key={i}
+                status={
+                  hasError
+                    ? "error"
+                    : hasFocus && value.length === i
+                    ? "focus"
+                    : "default"
+                }
+                secret={secret}
+                value={value[i]}
+              />
+            ))}
+          </View>
         </Pressable>
         <VSpacer size={4} />
         {hasError && errorMessage && (

@@ -1,6 +1,5 @@
 import {
   BodySmall,
-  ContentWrapper,
   Divider,
   H1,
   IOVisualCostants,
@@ -11,8 +10,10 @@ import {
   useIONewTypeface,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
-import { SectionList, View } from "react-native";
+
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { Platform, SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
@@ -57,9 +58,44 @@ const DESIGN_SYSTEM_SECTION_DATA = [
 ];
 
 const MainScreen = (props: Props) => {
-  const { setTheme, themeType, theme } = useIOThemeContext();
+  const colorScheme = useColorScheme();
+  const { theme, setTheme } = useIOThemeContext();
   const { isExperimental, setExperimental } = useIOExperimentalDesign();
   const { newTypefaceEnabled, setNewTypefaceEnabled } = useIONewTypeface();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setTheme(colorScheme);
+  }, [colorScheme, setTheme]);
+
+  // Configure native header search bar
+  useLayoutEffect(() => {
+    props.navigation.setOptions({
+      headerSearchBarOptions: {
+        placeholder: "Search components...",
+        hideNavigationBar: false,
+        onChangeText: (event: { nativeEvent: { text: string } }) => {
+          setSearchQuery(event.nativeEvent.text);
+        }
+      } as NativeStackNavigationOptions["headerSearchBarOptions"]
+    });
+  }, [props.navigation]);
+
+  // Filter items based on search query
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return DESIGN_SYSTEM_SECTION_DATA;
+    }
+
+    const lowerQuery = searchQuery.toLowerCase();
+    return DESIGN_SYSTEM_SECTION_DATA.map(section => ({
+      ...section,
+      data: section.data.filter(item =>
+        item.title.toLowerCase().includes(lowerQuery)
+      )
+    })).filter(section => section.data.length > 0);
+  }, [searchQuery]);
+
   const renderDSNavItem = ({
     item: { title, route }
   }: {
@@ -91,41 +127,49 @@ const MainScreen = (props: Props) => {
   const renderDSSectionFooter = () => <VSpacer size={24} />;
 
   return (
-    <>
-      <ContentWrapper>
-        <ListItemSwitch
-          label="Abilita Design Sperimentale"
-          value={isExperimental}
-          onSwitchValueChange={setExperimental}
-        />
-        <ListItemSwitch
-          label="Abilita nuovo carattere"
-          value={newTypefaceEnabled}
-          onSwitchValueChange={setNewTypefaceEnabled}
-        />
-        <VSpacer size={4} />
-        <ListItemSwitch
-          label="Abilita Dark Mode"
-          value={themeType === "dark"}
-          onSwitchValueChange={() =>
-            setTheme(themeType === "dark" ? "light" : "dark")
-          }
-        />
-        <VSpacer size={4} />
-      </ContentWrapper>
-      <SectionList
-        keyExtractor={(item, index) => `${item.route}-${index}`}
-        stickySectionHeadersEnabled={false}
-        contentContainerStyle={{
-          paddingHorizontal: IOVisualCostants.appMarginDefault
-        }}
-        renderSectionHeader={renderDSSection}
-        renderSectionFooter={renderDSSectionFooter}
-        renderItem={renderDSNavItem}
-        ItemSeparatorComponent={() => <Divider />}
-        sections={DESIGN_SYSTEM_SECTION_DATA}
-      />
-    </>
+    <SectionList
+      ListHeaderComponent={
+        <>
+          {Platform.OS === "ios" && (
+            <>
+              <VSpacer size={48} />
+              <VSpacer size={48} />
+              <VSpacer size={24} />
+            </>
+          )}
+          <ListItemSwitch
+            label="Abilita Design Sperimentale"
+            value={isExperimental}
+            onSwitchValueChange={setExperimental}
+          />
+          <ListItemSwitch
+            label="Abilita nuovo carattere"
+            value={newTypefaceEnabled}
+            onSwitchValueChange={setNewTypefaceEnabled}
+          />
+        </>
+      }
+      keyExtractor={(item, index) => `${item.route}-${index}`}
+      stickySectionHeadersEnabled={false}
+      contentContainerStyle={{
+        paddingHorizontal: IOVisualCostants.appMarginDefault
+      }}
+      renderSectionHeader={renderDSSection}
+      renderSectionFooter={renderDSSectionFooter}
+      renderItem={renderDSNavItem}
+      ItemSeparatorComponent={() => <Divider />}
+      sections={filteredSections}
+      ListFooterComponent={<VSpacer size={48} />}
+      ListEmptyComponent={
+        searchQuery.trim() ? (
+          <View style={{ paddingVertical: 24 }}>
+            <BodySmall color={theme["textBody-tertiary"]}>
+              No components found matching {searchQuery}
+            </BodySmall>
+          </View>
+        ) : null
+      }
+    />
   );
 };
 

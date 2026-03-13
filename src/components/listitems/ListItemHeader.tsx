@@ -1,4 +1,4 @@
-import React, { ComponentProps, useCallback, useMemo } from "react";
+import { ComponentProps, useCallback, useMemo } from "react";
 import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import {
@@ -11,14 +11,14 @@ import {
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { WithTestID } from "../../utils/types";
 import { Badge } from "../badge";
-import { ButtonLink, IconButton } from "../buttons";
+import { IOButton, IOButtonLinkSpecificProps, IconButton } from "../buttons";
 import { IOIcons, Icon } from "../icons";
 import { VSpacer } from "../layout";
 import { BodySmall, H6 } from "../typography";
 
 type ButtonLinkActionProps = {
   type: "buttonLink";
-  componentProps: ComponentProps<typeof ButtonLink>;
+  componentProps: Omit<IOButtonLinkSpecificProps, "variant">;
 };
 
 type IconButtonActionProps = {
@@ -76,9 +76,7 @@ export const ListItemHeader = ({
         accessibilityRole="header"
         accessibilityLabel={accessibilityLabel ?? label}
       >
-        <H6 role="heading" color={theme["textBody-tertiary"]}>
-          {label}
-        </H6>
+        <H6 color={theme["textBody-tertiary"]}>{label}</H6>
       </View>
     ),
     [label, accessibilityLabel, theme]
@@ -90,7 +88,7 @@ export const ListItemHeader = ({
 
       switch (type) {
         case "buttonLink":
-          return <ButtonLink {...componentProps} />;
+          return <IOButton variant="link" {...componentProps} />;
         case "iconButton":
           return <IconButton {...componentProps} />;
         case "badge":
@@ -138,5 +136,3 @@ export const ListItemHeader = ({
     </View>
   );
 };
-
-export default ListItemHeader;

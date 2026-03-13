@@ -11,7 +11,6 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -38,32 +37,30 @@ export const Badges = () => (
 );
 
 const renderBadge = () => (
-  <>
-    <VStack space={24}>
-      <VStack space={16}>
-        <H4>Default</H4>
-        <HStack space={8} style={{ flexWrap: "wrap" }}>
-          <Badge text={"Default"} variant="default" />
-          <Badge text={"Warning"} variant="warning" />
-          <Badge text={"Error"} variant="error" />
-          <Badge text={"Success"} variant="success" />
-          <Badge text={"Cgn"} variant="cgn" />
-          <Badge text={"Highlight"} variant="highlight" />
-        </HStack>
-      </VStack>
-      <VStack space={16}>
-        <H4>Outline</H4>
-        <HStack space={8} style={{ flexWrap: "wrap" }}>
-          <Badge outline text={"Default"} variant="default" />
-          <Badge outline text={"Warning"} variant="warning" />
-          <Badge outline text={"Error"} variant="error" />
-          <Badge outline text={"Success"} variant="success" />
-          <Badge outline text={"Cgn"} variant="cgn" />
-          <Badge outline text={"Highlight"} variant="highlight" />
-        </HStack>
-      </VStack>
+  <VStack space={24}>
+    <VStack space={16}>
+      <H4>Default</H4>
+      <HStack space={8} style={{ flexWrap: "wrap" }}>
+        <Badge text={"Default"} variant="default" />
+        <Badge text={"Warning"} variant="warning" />
+        <Badge text={"Error"} variant="error" />
+        <Badge text={"Success"} variant="success" />
+        <Badge text={"Cgn"} variant="cgn" />
+        <Badge text={"Highlight"} variant="highlight" />
+      </HStack>
     </VStack>
-  </>
+    <VStack space={16}>
+      <H4>Outline</H4>
+      <HStack space={8} style={{ flexWrap: "wrap" }}>
+        <Badge outline text={"Default"} variant="default" />
+        <Badge outline text={"Warning"} variant="warning" />
+        <Badge outline text={"Error"} variant="error" />
+        <Badge outline text={"Success"} variant="success" />
+        <Badge outline text={"Cgn"} variant="cgn" />
+        <Badge outline text={"Highlight"} variant="highlight" />
+      </HStack>
+    </VStack>
+  </VStack>
 );
 
 const renderTag = () => (

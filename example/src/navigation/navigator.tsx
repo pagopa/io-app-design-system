@@ -10,15 +10,16 @@ import {
   DefaultTheme,
   NavigationContainer
 } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import {
+  createNativeStackNavigator,
+  NativeStackHeaderProps
+} from "@react-navigation/native-stack";
 import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { DSAdvice } from "../pages/Advice";
 import { DSAlert } from "../pages/Alert";
 import { Badges } from "../pages/Badges";
 import { Buttons } from "../pages/Buttons";
-import { ButtonsLegacy } from "../pages/ButtonsLegacy";
 import { Collapsible } from "../pages/Collapsible";
 import { Colors } from "../pages/Colors";
 import { FooterActionsEmptyStateScreen } from "../pages/FooterActionsEmptyStateScreen";
@@ -28,6 +29,7 @@ import { FooterActionsNotFixed } from "../pages/FooterActionsNotFixed";
 import { FooterActionsScreen } from "../pages/FooterActionsScreen";
 import { FooterActionsStickyScreen } from "../pages/FooterActionsStickyScreen";
 import { ForceScrollDownViewPage } from "../pages/ForceScrollDownViewPage";
+import { ForceScrollDownViewTitleTransition } from "../pages/ForceScrollDownViewTitleTransition";
 import { HeaderFirstLevelScreen } from "../pages/HeaderFirstLevel";
 import { HeaderSecondLevelScreen } from "../pages/HeaderSecondLevel";
 import { HeaderSecondLevelCustomBackground } from "../pages/HeaderSecondLevelCustomBackground";
@@ -192,14 +194,7 @@ const AppNavigator = () => {
               headerBackTitleVisible: false
             }}
           />
-          <Stack.Screen
-            name={APP_ROUTES.COMPONENTS.BUTTONS_LEGACY.route}
-            component={ButtonsLegacy}
-            options={{
-              headerTitle: APP_ROUTES.COMPONENTS.BUTTONS_LEGACY.title,
-              headerBackTitleVisible: false
-            }}
-          />
+
           <Stack.Screen
             name={APP_ROUTES.COMPONENTS.COLLAPSIBLE.route}
             component={Collapsible}
@@ -376,6 +371,18 @@ const AppNavigator = () => {
           />
 
           <Stack.Screen
+            name={
+              APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.route
+            }
+            component={ForceScrollDownViewTitleTransition}
+            options={{
+              headerTitle:
+                APP_ROUTES.COMPONENTS.FORCE_SCROLL_DOWN_TITLE_TRANSITION.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
             name={APP_ROUTES.COMPONENTS.HEADER_FIRST_LEVEL.route}
             component={HeaderFirstLevelScreen}
             options={{
@@ -500,7 +507,7 @@ const AppNavigator = () => {
               component={ListItems}
               options={{
                 headerShown: true,
-                header: ({ navigation }) => (
+                header: ({ navigation }: NativeStackHeaderProps) => (
                   <HeaderSecondLevel
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL.title}
                     ignoreSafeAreaMargin
@@ -521,7 +528,7 @@ const AppNavigator = () => {
               component={ListItems}
               options={{
                 headerShown: true,
-                header: ({ navigation }) => (
+                header: ({ navigation }: NativeStackHeaderProps) => (
                   <ModalBSHeader
                     title={APP_ROUTES.SCREENS.FULL_SCREEN_MODAL_2.title}
                     onClose={navigation.goBack}

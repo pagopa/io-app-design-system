@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { View, ViewProps, ViewStyle } from "react-native";
 import { IOSpacer } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";

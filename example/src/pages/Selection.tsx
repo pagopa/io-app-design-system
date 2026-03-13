@@ -17,7 +17,7 @@ import {
   VSpacer,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React, { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Text, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { Screen } from "../components/Screen";
@@ -330,7 +330,7 @@ const NativeSwitchShowroom = () => {
 };
 
 type ListItemSwitchSampleProps = Pick<
-  React.ComponentProps<typeof ListItemSwitch>,
+  ComponentProps<typeof ListItemSwitch>,
   "label" | "description" | "value" | "icon" | "paymentLogo"
 >;
 

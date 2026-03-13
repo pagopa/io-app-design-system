@@ -1,4 +1,4 @@
-import React, { JSX, forwardRef } from "react";
+import { JSX, forwardRef } from "react";
 import {
   ColorValue,
   GestureResponderEvent,

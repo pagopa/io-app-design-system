@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Pressable, PressableProps, StyleSheet } from "react-native";
 import Animated, {
   Easing,

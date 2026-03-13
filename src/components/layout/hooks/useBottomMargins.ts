@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IOSpacingScale, IOVisualCostants } from "../../../core";
 
@@ -11,6 +12,7 @@ export const useBottomMargins = (
 ) => {
   const insets = useSafeAreaInsets();
   const needSafeAreaMargin = insets.bottom !== 0;
+  const edgeToEdgeMargin = Platform.OS === "ios" ? 0 : 8;
 
   /* Check if the iPhone bottom handle is present.
      If not, or if you don't need safe area insets,
@@ -19,7 +21,7 @@ export const useBottomMargins = (
   const bottomMargin =
     !needSafeAreaMargin || excludeSafeAreaMargins
       ? IOVisualCostants.appMarginDefault
-      : insets.bottom;
+      : insets.bottom + edgeToEdgeMargin;
 
   /* When the secondary action is visible, add extra margin
      to avoid little space from iPhone bottom handle */

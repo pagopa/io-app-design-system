@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ColorValue,
   Platform,
@@ -6,7 +5,7 @@ import {
   View,
   ViewStyle
 } from "react-native";
-import { useIONewTypeface, useIOThemeContext } from "../../context";
+import { useIOThemeContext } from "../../context";
 import {
   hexToRgba,
   IOBadgeHSpacing,
@@ -41,6 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
     borderCurve: "continuous",
     ...Platform.select({
       android: {
@@ -68,7 +68,6 @@ export const Badge = ({
 }: Badge) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
   const { themeType } = useIOThemeContext();
-  const { newTypefaceEnabled } = useIONewTypeface();
 
   const bgOpacityDarkMode = 0.2;
 
@@ -212,7 +211,6 @@ export const Badge = ({
     >
       <IOText
         allowFontScaling={allowFontScaling}
-        font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
         weight={"Semibold"}
         size={12}
         lineHeight={16}
@@ -222,8 +220,7 @@ export const Badge = ({
         style={{
           alignSelf: "center",
           textTransform: "uppercase",
-          letterSpacing: 0.5,
-          flexShrink: 1
+          letterSpacing: 0.5
         }}
       >
         {text}

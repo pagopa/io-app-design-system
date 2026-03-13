@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { RefObject, useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 type AlertProps = WithTestID<{
   variant: "error" | "warning" | "info" | "success";
   content: string;
-  viewRef?: React.RefObject<View>;
+  viewRef?: RefObject<View>;
   accessibilityLabel?: string;
   accessibilityHint?: string;
 }>;

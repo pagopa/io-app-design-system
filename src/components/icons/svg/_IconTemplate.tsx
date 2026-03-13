@@ -1,7 +1,6 @@
-import React from "react";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore (ignore Path unused component)
-import { Svg, Path } from "react-native-svg";
+import { Svg } from "react-native-svg";
 import { SVGIconProps } from "../types";
 
 // The `generateNewIcons.js`s script uses this template to generate

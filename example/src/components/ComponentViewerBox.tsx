@@ -1,5 +1,5 @@
 import { IOColors } from "@pagopa/io-app-design-system";
-import * as React from "react";
+import { ReactNode } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
@@ -33,7 +33,7 @@ type ComponentViewerBoxProps = {
   name: string;
   colorMode?: "dark" | "light";
   last?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   fullWidth?: boolean;
 };
 

@@ -1,4 +1,4 @@
-import React, { JSX, useMemo } from "react";
+import { JSX, useMemo } from "react";
 import { ColorValue } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOColors, IOThemeDark, IOThemeLight } from "../../core/IOColors";
@@ -36,6 +36,7 @@ import PictogramObjManual from "./svg/PictogramObjManual";
 import PictogramObjTrash from "./svg/PictogramObjTrash";
 import PictogramPasscode from "./svg/PictogramPasscode";
 import PictogramPayments from "./svg/PictogramPayments";
+import PictogramPremiumCredentials from "./svg/PictogramPremiumCredentials";
 import PictogramSecurity from "./svg/PictogramSecurity";
 import PictogramStopSecurity from "./svg/PictogramStopSecurity";
 import PictogramSuccess from "./svg/PictogramSuccess";
@@ -108,6 +109,7 @@ import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramPending from "./svg/PictogramPending";
+import PictogramPinSecurity from "./svg/PictogramPinSecurity";
 import PictogramQrCode from "./svg/PictogramQrCode";
 import PictogramReactivate from "./svg/PictogramReactivate";
 import PictogramSavingMoney from "./svg/PictogramSavingMoney";
@@ -182,6 +184,8 @@ export const IOPictograms = {
   meterLimit: PictogramMeterLimit,
   savingMoney: PictogramSavingMoney,
   sendAccess: PictogramSendAccess,
+  pinSecurity: PictogramPinSecurity,
+  premiumCredentials: PictogramPremiumCredentials,
   // Start Objects Pictogram
   ibanCard: PictogramObjIbanCard,
   followMessage: PictogramObjFollowMessage,

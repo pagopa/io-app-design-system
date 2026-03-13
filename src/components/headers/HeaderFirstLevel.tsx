@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useLayoutEffect } from "react";
+import { createRef, useEffect, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
   findNodeHandle,
@@ -8,7 +8,7 @@ import {
 import Animated, {
   AnimatedRef,
   useAnimatedStyle,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withTiming
 } from "react-native-reanimated";
@@ -85,7 +85,7 @@ export const HeaderFirstLevel = ({
   }, []);
 
   /* We show the divider only when the header is scrolled down */
-  const offset = useScrollViewOffset(
+  const offset = useScrollOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
       (animatedFlatListRef as AnimatedRef<Animated.FlatList<any>>)
   );
@@ -149,9 +149,9 @@ export const HeaderFirstLevel = ({
           </H2>
         </View>
         <HStack space={16} style={{ flexShrink: 0 }}>
-          {actions.map((action, index) => (
+          {actions.map(action => (
             <IconButton
-              key={`header-first-level-action-${index}`}
+              key={`header-first-level-action-${action.icon}`}
               {...action}
               color={variant}
             />
@@ -161,5 +161,3 @@ export const HeaderFirstLevel = ({
     </Animated.View>
   );
 };
-
-export default HeaderFirstLevel;

@@ -11,7 +11,7 @@ import {
   SVGPictogramProps,
   hexToRgba
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { JSX } from "react";
 import { StyleSheet, View } from "react-native";
 import { AssetViewerBox, assetItemGutter } from "../components/AssetViewerBox";

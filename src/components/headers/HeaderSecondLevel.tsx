@@ -1,5 +1,10 @@
-import * as React from "react";
-import { createRef, useEffect, useLayoutEffect, useMemo } from "react";
+import {
+  createRef,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState
+} from "react";
 import {
   AccessibilityInfo,
   ColorValue,
@@ -13,17 +18,17 @@ import Animated, {
   SharedValue,
   interpolate,
   interpolateColor,
-  runOnJS,
   useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
-  useScrollViewOffset,
+  useScrollOffset,
   useSharedValue,
   withSpring,
   withTiming
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { scheduleOnRN } from "react-native-worklets";
+import { useIOTheme } from "../../context";
 import {
   IOColors,
   IOSpringValues,
@@ -36,7 +41,7 @@ import {
 } from "../../core";
 import type { IOSpacer, IOSpacingScale } from "../../core/IOSpacing";
 import { WithTestID } from "../../utils/types";
-import IconButton from "../buttons/IconButton";
+import { IconButton } from "../buttons/IconButton";
 import { HSpacer, HStack } from "../layout";
 import { IOText } from "../typography";
 import { HeaderActionProps } from "./common";
@@ -157,14 +162,12 @@ export const HeaderSecondLevel = ({
   thirdAction,
   ignoreAccessibilityCheck = false
 }: HeaderSecondLevel) => {
-  const scrollOffset = useScrollViewOffset(
+  const scrollOffset = useScrollOffset(
     (animatedRef as AnimatedRef<Animated.ScrollView>) ||
       (animatedRef as AnimatedRef<Animated.FlatList<any>>)
   );
 
   const titleRef = createRef<View>();
-
-  const { newTypefaceEnabled } = useIONewTypeface();
 
   const theme = useIOTheme();
   const insets = useSafeAreaInsets();
@@ -270,8 +273,9 @@ export const HeaderSecondLevel = ({
       : 1
   }));
 
-  const [importantForAccessibility, setImportantForAccessibility] =
-    React.useState<"yes" | "no-hide-descendants">("yes");
+  const [importantForAccessibility, setImportantForAccessibility] = useState<
+    "yes" | "no-hide-descendants"
+  >("yes");
 
   // Updates accessibility state based on scroll position.
   useAnimatedReaction(
@@ -289,7 +293,7 @@ export const HeaderSecondLevel = ({
           (currentOffset ?? 0) > offsetToCompare && !ignoreAccessibilityCheck
             ? "yes"
             : "no-hide-descendants";
-        runOnJS(setImportantForAccessibility)(newValue);
+        scheduleOnRN(setImportantForAccessibility, newValue);
       }
     },
     [scrollValues, enableDiscreteTransition]
@@ -338,7 +342,6 @@ export const HeaderSecondLevel = ({
             size={14}
             numberOfLines={1}
             accessible={false}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight={"Semibold"}
             style={[
               { color: titleColor, textAlign: "center" },
@@ -377,5 +380,3 @@ export const HeaderSecondLevel = ({
     </Animated.View>
   );
 };
-
-export default HeaderSecondLevel;

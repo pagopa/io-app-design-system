@@ -4,15 +4,15 @@ import {
   IOVisualCostants,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
 import { ScrollView } from "react-native";
 
 export const SearchNative = () => {
   const navigation = useNavigation();
   const theme = useIOTheme();
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerSearchBarOptions: {
         textColor: theme["textBody-default"],

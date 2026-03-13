@@ -1,8 +1,8 @@
-import React from "react";
+import { ReactNode } from "react";
 import { StyleSheet, View } from "react-native";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 const contentPadding = 24;
 const styles = StyleSheet.create({

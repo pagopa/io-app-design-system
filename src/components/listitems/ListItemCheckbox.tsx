@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Pressable, View } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated from "react-native-reanimated";
@@ -28,7 +27,7 @@ const DISABLED_OPACITY = 0.5;
 
 type ListItemCheckboxProps = Props &
   Pick<
-    React.ComponentProps<typeof Pressable>,
+    ComponentProps<typeof Pressable>,
     "onPress" | "accessibilityLabel" | "accessibilityHint" | "disabled"
   >;
 

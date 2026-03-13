@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, memo, useMemo } from "react";
 import { GestureResponderEvent, Platform, Switch, View } from "react-native";
 import { useIOTheme } from "../../context";
 import {
@@ -45,7 +45,7 @@ export type ListItemSwitchProps = PartialProps &
   ListItemSwitchGraphicProps &
   Pick<ComponentProps<typeof Switch>, "value" | "disabled">;
 
-export const ListItemSwitch = React.memo(
+export const ListItemSwitch = memo(
   ({
     label,
     description,

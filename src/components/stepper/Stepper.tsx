@@ -1,4 +1,3 @@
-import React from "react";
 import { ColorValue, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOColors, IOSpacer, IOVisualCostants } from "../../core";

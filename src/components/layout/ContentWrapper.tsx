@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import { View, ViewProps, ViewStyle } from "react-native";
 import { WithTestID } from "src/utils/types";
 import type { IOAppMargin } from "../../core";

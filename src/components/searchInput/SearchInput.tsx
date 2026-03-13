@@ -1,5 +1,5 @@
 /* eslint-disable functional/immutable-data */
-import React, {
+import {
   forwardRef,
   useCallback,
   useImperativeHandle,
@@ -307,7 +307,6 @@ export const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
           >
             <IOText
               color={theme["interactiveElem-default"]}
-              font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
               weight={"Semibold"}
               size={buttonTextFontSize}
               lineHeight={buttonTextLineHeight}
