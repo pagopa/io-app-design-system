@@ -403,6 +403,7 @@ export const Markdown = () => {
         />
       </TabNavigation>
       <ContentWrapper style={{ paddingVertical: 16 }}>{content}</ContentWrapper>
+      <VSpacer size={48} />
     </NoMarginScreen>
   );
 };
