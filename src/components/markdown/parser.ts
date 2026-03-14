@@ -285,7 +285,6 @@ export const parse = (
 
 /**
  * Parses markdown with the lite subset of rules only.
- * Backwards-compatible with the original parseLite API.
  */
 export const parseLite = (source: string): Array<MarkdownNode> =>
   parse(source, LITE_DISABLED_TYPES);
