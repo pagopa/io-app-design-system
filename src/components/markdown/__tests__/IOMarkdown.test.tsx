@@ -39,9 +39,7 @@ describe("IOMarkdown", () => {
       const el = getByText("bold");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
@@ -77,9 +75,7 @@ describe("IOMarkdown", () => {
       const el = getByText("bold");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
@@ -99,9 +95,7 @@ describe("IOMarkdown", () => {
       const el = getByText("bold italic");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
       expect(styles).toEqual(
         expect.arrayContaining([
@@ -118,9 +112,7 @@ describe("IOMarkdown", () => {
       const boldStyles = [boldEl.props.style].flat();
       const italicStyles = [italicEl.props.style].flat();
       expect(boldStyles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
       expect(italicStyles).toEqual(
         expect.arrayContaining([
@@ -169,9 +161,7 @@ describe("IOMarkdown", () => {
       const link = getByRole("link");
       const styles = [link.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
@@ -195,9 +185,7 @@ describe("IOMarkdown", () => {
       const link = getByRole("link");
       const styles = [link.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
       expect(styles).toEqual(
         expect.arrayContaining([
@@ -213,15 +201,12 @@ describe("IOMarkdown", () => {
       const link = getByRole("link");
       const styles = [link.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
     it("renders multiple links in one paragraph", () => {
-      const content =
-        "[first](https://a.com) and [second](https://b.com)";
+      const content = "[first](https://a.com) and [second](https://b.com)";
       const onLinkPress = jest.fn();
       const { getAllByRole } = renderComponent({ content, onLinkPress });
       const links = getAllByRole("link");
@@ -268,9 +253,7 @@ describe("IOMarkdown", () => {
       const el = getByText("bold item");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 

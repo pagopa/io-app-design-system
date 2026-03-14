@@ -185,26 +185,26 @@ const renderParagraph = (
  * dynamicTypeRamp, uppercase/letterSpacing (H5), legacy typeface (H6),
  * and theme colors automatically.
  */
-const makeHeadingRule = (
-  Heading: HeadingComponent
-): RenderRule => (node, _renderChildren, context) => {
-  const segments = flattenInlineNodes(node.children, {
-    bold: false,
-    italic: false
-  });
+const makeHeadingRule =
+  (Heading: HeadingComponent): RenderRule =>
+  (node, _renderChildren, context) => {
+    const segments = flattenInlineNodes(node.children, {
+      bold: false,
+      italic: false
+    });
 
-  return (
-    <View key={node.key} accessibilityRole="header">
-      <Heading>
-        {segments.map(seg => {
-          const matchingNode = node.children.find(c => c.key === seg.key);
-          const isCode = matchingNode?.type === "code_inline";
-          return renderSegment(seg, context, isCode);
-        })}
-      </Heading>
-    </View>
-  );
-};
+    return (
+      <View key={node.key} accessibilityRole="header">
+        <Heading>
+          {segments.map(seg => {
+            const matchingNode = node.children.find(c => c.key === seg.key);
+            const isCode = matchingNode?.type === "code_inline";
+            return renderSegment(seg, context, isCode);
+          })}
+        </Heading>
+      </View>
+    );
+  };
 
 /* ─── List helpers ─── */
 

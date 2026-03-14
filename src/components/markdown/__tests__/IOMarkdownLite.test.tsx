@@ -30,9 +30,7 @@ describe("IOMarkdownLite", () => {
       const el = getByText("bold text");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
@@ -54,9 +52,7 @@ describe("IOMarkdownLite", () => {
       const el = getByText("bold italic");
       const styles = [el.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
       expect(styles).toEqual(
         expect.arrayContaining([
@@ -101,9 +97,7 @@ describe("IOMarkdownLite", () => {
       const link = getByRole("link");
       const styles = [link.props.style].flat();
       expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontWeight: "600" })
-        ])
+        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
       );
     });
 
