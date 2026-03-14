@@ -24,6 +24,13 @@ describe("IOMarkdown", () => {
     expect(getByText("H6")).toBeTruthy();
   });
 
+  it("wraps headings with accessibilityRole 'header'", () => {
+    const content = `# Accessible Heading`;
+    const { UNSAFE_getAllByProps } = renderComponent({ content });
+    const headers = UNSAFE_getAllByProps({ accessibilityRole: "header" });
+    expect(headers.length).toBeGreaterThanOrEqual(1);
+  });
+
   /* ─── Paragraphs & inline styles ─── */
 
   it("renders paragraph text", () => {

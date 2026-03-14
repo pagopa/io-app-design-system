@@ -71,7 +71,6 @@ export type MarkdownLiteNode = MarkdownNode;
 
 export type RenderContext = {
   onLinkPress?: (url: string) => void;
-  headingColor: IOColors;
   bodyColor: IOColors;
   linkColor: IOColors;
 };

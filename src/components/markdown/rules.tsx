@@ -5,12 +5,12 @@ import { Divider, HSpacer, VSpacer } from "../layout";
 import { IOPictogramsBleed } from "../pictograms";
 import { Body, bodyFontSize, bodyLineHeight } from "../typography/Body";
 import { BodyMonospace } from "../typography/BodyMonospace";
-import { h1FontSize, h1LineHeight } from "../typography/H1";
-import { h2FontSize, h2LineHeight } from "../typography/H2";
-import { h3FontSize, h3LineHeight } from "../typography/H3";
-import { h4FontSize, h4LineHeight } from "../typography/H4";
-import { h5FontSize, h5LineHeight } from "../typography/H5";
-import { h6FontSize, h6LineHeight } from "../typography/H6";
+import { H1 } from "../typography/H1";
+import { H2 } from "../typography/H2";
+import { H3 } from "../typography/H3";
+import { H4 } from "../typography/H4";
+import { H5 } from "../typography/H5";
+import { H6 } from "../typography/H6";
 import { IOText } from "../typography/IOText";
 import { CodeBlock } from "./CodeBlock";
 import { ImageRenderer } from "./ImageRenderer";
@@ -20,22 +20,6 @@ import type {
   RenderContext,
   RenderRule
 } from "./types";
-
-/* ─── Heading config ─── */
-
-type HeadingConfig = {
-  size: number;
-  lineHeight: number;
-};
-
-const headingConfigMap: Record<string, HeadingConfig> = {
-  heading1: { size: h1FontSize, lineHeight: h1LineHeight },
-  heading2: { size: h2FontSize, lineHeight: h2LineHeight },
-  heading3: { size: h3FontSize, lineHeight: h3LineHeight },
-  heading4: { size: h4FontSize, lineHeight: h4LineHeight },
-  heading5: { size: h5FontSize, lineHeight: h5LineHeight },
-  heading6: { size: h6FontSize, lineHeight: h6LineHeight }
-};
 
 /* ─── Inline flattening (shared between heading and paragraph rendering) ─── */
 
@@ -150,13 +134,26 @@ const renderSegment = (
   );
 };
 
+/* ─── Heading component map ─── */
+
+type HeadingComponent = typeof H1;
+
+const headingComponentMap: Record<string, HeadingComponent> = {
+  heading1: H1,
+  heading2: H2,
+  heading3: H3,
+  heading4: H4,
+  heading5: H5,
+  heading6: H6
+};
+
 /* ─── Block rendering helpers ─── */
 
 /**
- * Renders a heading or paragraph block by flattening inline children
+ * Renders a paragraph block by flattening inline children
  * into styled segments.
  */
-const renderTextBlock = (
+const renderParagraph = (
   node: MarkdownNode,
   context: RenderContext
 ): React.ReactNode => {
@@ -165,16 +162,13 @@ const renderTextBlock = (
     italic: false
   });
 
-  const headingConfig = headingConfigMap[node.type];
-  const isHeading = headingConfig !== undefined;
-
   return (
     <IOText
       key={node.key}
-      size={isHeading ? headingConfig.size : bodyFontSize}
-      lineHeight={isHeading ? headingConfig.lineHeight : bodyLineHeight}
-      weight={isHeading ? "Semibold" : "Regular"}
-      color={isHeading ? context.headingColor : context.bodyColor}
+      size={bodyFontSize}
+      lineHeight={bodyLineHeight}
+      weight="Regular"
+      color={context.bodyColor}
     >
       {segments.map(seg => {
         const matchingNode = node.children.find(c => c.key === seg.key);
@@ -182,6 +176,33 @@ const renderTextBlock = (
         return renderSegment(seg, context, isCode);
       })}
     </IOText>
+  );
+};
+
+/**
+ * Creates a render rule for a heading level using the corresponding
+ * DS heading component (H1-H6). This ensures headings inherit
+ * dynamicTypeRamp, uppercase/letterSpacing (H5), legacy typeface (H6),
+ * and theme colors automatically.
+ */
+const makeHeadingRule = (
+  Heading: HeadingComponent
+): RenderRule => (node, _renderChildren, context) => {
+  const segments = flattenInlineNodes(node.children, {
+    bold: false,
+    italic: false
+  });
+
+  return (
+    <View key={node.key} accessibilityRole="header">
+      <Heading>
+        {segments.map(seg => {
+          const matchingNode = node.children.find(c => c.key === seg.key);
+          const isCode = matchingNode?.type === "code_inline";
+          return renderSegment(seg, context, isCode);
+        })}
+      </Heading>
+    </View>
   );
 };
 
@@ -223,11 +244,8 @@ const isBrTag = (content: string): boolean => {
 
 /* ─── Default render rules ─── */
 
-const makeHeadingRule = (): RenderRule => (node, _renderChildren, context) =>
-  renderTextBlock(node, context);
-
 const paragraphRule: RenderRule = (node, _renderChildren, context) =>
-  renderTextBlock(node, context);
+  renderParagraph(node, context);
 
 const textRule: RenderRule = node => (
   <Fragment key={node.key}>{node.content ?? ""}</Fragment>
@@ -376,12 +394,12 @@ const htmlInlineRule: RenderRule = node => {
  * The complete set of default render rules for all supported node types.
  */
 export const DEFAULT_RULES: Record<MarkdownNodeType, RenderRule> = {
-  heading1: makeHeadingRule(),
-  heading2: makeHeadingRule(),
-  heading3: makeHeadingRule(),
-  heading4: makeHeadingRule(),
-  heading5: makeHeadingRule(),
-  heading6: makeHeadingRule(),
+  heading1: makeHeadingRule(headingComponentMap.heading1),
+  heading2: makeHeadingRule(headingComponentMap.heading2),
+  heading3: makeHeadingRule(headingComponentMap.heading3),
+  heading4: makeHeadingRule(headingComponentMap.heading4),
+  heading5: makeHeadingRule(headingComponentMap.heading5),
+  heading6: makeHeadingRule(headingComponentMap.heading6),
   paragraph: paragraphRule,
   text: textRule,
   strong: strongRule,

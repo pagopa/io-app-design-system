@@ -50,7 +50,6 @@ export const IOMarkdown = ({
   const context = useMemo<RenderContext>(
     () => ({
       onLinkPress: handleLinkPress,
-      headingColor: theme["textHeading-default"],
       bodyColor: theme["textBody-default"],
       linkColor: theme["interactiveElem-default"]
     }),
