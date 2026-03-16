@@ -66,7 +66,7 @@ const getNodeType = (
 
   const type =
     cleanedType === "heading"
-      ? (`${cleanedType}${token.tag.slice(1)}` as string)
+      ? `${cleanedType}${token.tag.slice(1)}`
       : cleanedType;
 
   return enabledTypes.has(type) ? (type as MarkdownNodeType) : undefined;
