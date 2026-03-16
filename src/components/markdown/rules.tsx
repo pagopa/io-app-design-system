@@ -376,14 +376,7 @@ const fenceRule: RenderRule = node => (
 
 const hrRule: RenderRule = node => <Divider key={node.key} />;
 
-const htmlBlockRule: RenderRule = node => {
-  if (node.content && isBrTag(node.content)) {
-    return <Fragment key={node.key}>{"\n"}</Fragment>;
-  }
-  return null;
-};
-
-const htmlInlineRule: RenderRule = node => {
+const htmlRule: RenderRule = node => {
   if (node.content && isBrTag(node.content)) {
     return <Fragment key={node.key}>{"\n"}</Fragment>;
   }
@@ -415,6 +408,6 @@ export const DEFAULT_RULES: Record<MarkdownNodeType, RenderRule> = {
   code_inline: codeInlineRule,
   fence: fenceRule,
   hr: hrRule,
-  html_block: htmlBlockRule,
-  html_inline: htmlInlineRule
+  html_block: htmlRule,
+  html_inline: htmlRule
 };
