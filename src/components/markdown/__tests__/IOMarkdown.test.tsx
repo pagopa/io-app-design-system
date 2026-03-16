@@ -241,6 +241,17 @@ describe("IOMarkdown", () => {
       expect(getByText("3.")).toBeTruthy();
     });
 
+    it("renders nested ordered lists with level-specific markers", () => {
+      const content = `1. First\n    1. Nested first\n    2. Nested second\n        1. Third level first\n        2. Third level second\n2. Second`;
+      const { getByText } = renderComponent({ content });
+      expect(getByText("1.")).toBeTruthy();
+      expect(getByText("2.")).toBeTruthy();
+      expect(getByText("i.")).toBeTruthy();
+      expect(getByText("ii.")).toBeTruthy();
+      expect(getByText("a.")).toBeTruthy();
+      expect(getByText("b.")).toBeTruthy();
+    });
+
     it("renders nested unordered lists with level-specific bullets", () => {
       const content = `- Parent item\n    - Nested item\n        - Third level item\n- Second parent item`;
       const { getAllByText } = renderComponent({ content });

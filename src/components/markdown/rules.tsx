@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { View } from "react-native";
 import { Banner } from "../banner";
 import { Divider, HSpacer, VSpacer } from "../layout";
-import { IOPictogramsBleed } from "../pictograms";
 import { Body, bodyFontSize, bodyLineHeight } from "../typography/Body";
 import { BodyMonospace } from "../typography/BodyMonospace";
 import { H1 } from "../typography/H1";
@@ -14,6 +13,14 @@ import { H6 } from "../typography/H6";
 import { IOText } from "../typography/IOText";
 import { CodeBlock } from "./CodeBlock";
 import { ImageRenderer } from "./ImageRenderer";
+import {
+  collectRawText,
+  extractPictogramName,
+  getOrderedListMarker,
+  getUnorderedListBullet,
+  isBrTag,
+  stripPictogramPrefix
+} from "./utils";
 import type {
   MarkdownNode,
   MarkdownNodeType,
@@ -201,54 +208,6 @@ const makeHeadingRule =
     );
   };
 
-/* ─── List helpers ─── */
-
-const BULLET_FULL = "\u2022";
-const BULLET_HOLLOW = "\u25E6";
-
-const getUnorderedListBullet = (listDepth: number): string => {
-  switch (listDepth) {
-    case 0:
-      return BULLET_FULL;
-    case 1:
-      return BULLET_HOLLOW;
-    default:
-      return BULLET_FULL; // Couldn't find a good third-level bullet, fallback to full circle for deeper levels
-  }
-};
-
-/* ─── Blockquote / Banner helpers ─── */
-
-const PICTOGRAM_REGEXP = /^\s*\[!(.*?)\]/;
-
-/**
- * Extracts pictogram name from a text string.
- * Format: `[!pictogramName]`
- */
-const extractPictogramName = (text: string): IOPictogramsBleed => {
-  const match = PICTOGRAM_REGEXP.exec(text);
-  const value = match?.[1];
-  const isValid = value != null && value in IOPictogramsBleed;
-  return isValid ? (value as IOPictogramsBleed) : "notification";
-};
-
-/**
- * Recursively collects text content from AST nodes.
- */
-const collectRawText = (node: MarkdownNode): string => {
-  if (node.content) {
-    return node.content;
-  }
-  return node.children.map(collectRawText).join("");
-};
-
-/* ─── HTML helpers ─── */
-
-const isBrTag = (content: string): boolean => {
-  const match = content.match(/<([^\s/>]+)\s*\/?>/);
-  return match?.[1] === "br";
-};
-
 /* ─── Default render rules ─── */
 
 const paragraphRule: RenderRule = (node, _renderChildren, context) =>
@@ -324,7 +283,7 @@ const orderedListRule: RenderRule = (node, renderChildren) => (
     <VSpacer size={8} />
     {node.children.map((child, i) => (
       <View key={child.key} style={{ flexDirection: "row" }}>
-        <Body>{i + 1}.</Body>
+        <Body>{getOrderedListMarker(i + 1, node.listDepth ?? 0)}</Body>
         <HSpacer size={8} />
         <View style={{ flex: 1, flexShrink: 1 }}>
           {renderChildren(child.children)}
@@ -352,7 +311,7 @@ const blockquoteRule: RenderRule = node => {
   // Collect content from paragraph children, stripping the pictogram pattern
   const content = node.children
     .filter(c => c.type === "paragraph")
-    .map(c => collectRawText(c).replace(PICTOGRAM_REGEXP, "").trim())
+    .map(c => stripPictogramPrefix(collectRawText(c)).trim())
     .filter(Boolean)
     .join("\n");
 

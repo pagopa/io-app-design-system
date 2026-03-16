@@ -268,7 +268,7 @@ Follow these steps:
 
 ## Nested lists
 
-The following example is included to show that nested lists are not handled yet:
+The following example is included to exercise nested list styling across multiple levels:
 
 - Parent bullet item
   - Nested bullet item
@@ -281,6 +281,7 @@ The following example is included to show that nested lists are not handled yet:
    1. Nested ordered item
       1. Third-level ordered item
       1. Second third-level ordered item
+         1. What happens?
    2. Another nested ordered item
 2. Second ordered item
 
