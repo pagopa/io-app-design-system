@@ -46,6 +46,7 @@ const flattenInlineNodes = (
   nodes.reduce<Array<StyledSegment>>((acc, node) => {
     switch (node.type) {
       case "text":
+      case "code_inline":
         return [
           ...acc,
           { key: node.key, text: node.content ?? "", style: inherited }
@@ -83,12 +84,6 @@ const flattenInlineNodes = (
           })
         ];
       }
-
-      case "code_inline":
-        return [
-          ...acc,
-          { key: node.key, text: node.content ?? "", style: inherited }
-        ];
 
       default:
         return acc;
