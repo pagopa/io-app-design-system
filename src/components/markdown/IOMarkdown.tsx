@@ -26,7 +26,7 @@ export const IOMarkdown = ({
   onLinkPress,
   testID,
   disabledRules,
-  rules
+  rules = {}
 }: IOMarkdownProps) => {
   const theme = useIOTheme();
 
@@ -56,7 +56,7 @@ export const IOMarkdown = ({
   );
 
   const mergedRules = useMemo<Record<MarkdownNodeType, RenderRule>>(
-    () => ({ ...DEFAULT_RULES, ...(rules ?? {}) }),
+    () => ({ ...DEFAULT_RULES, ...rules }),
     [rules]
   );
 
