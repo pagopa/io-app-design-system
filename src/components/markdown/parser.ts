@@ -1,4 +1,3 @@
-import { uniqueId } from "lodash";
 import MarkdownIt, { Token } from "markdown-it";
 import { pipe } from "../../utils/pipe";
 import { MarkdownNode, MarkdownNodeType } from "./types";
@@ -140,7 +139,7 @@ const tokensToAST = (
 
     const node: MarkdownNode = {
       type: nodeType,
-      key: uniqueId(`md_${nodeType}_`),
+      key: `md_${nodeType}_${crypto.randomUUID()}`,
       content: token.content || undefined,
       attributes: attributes || undefined,
       children: [],
@@ -219,7 +218,7 @@ const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
 
     const wrapTextRun = (run: ReadonlyArray<MarkdownNode>): MarkdownNode => ({
       ...node,
-      key: uniqueId("md_paragraph_"),
+      key: `md_paragraph_${crypto.randomUUID()}`,
       children: run
     });
 

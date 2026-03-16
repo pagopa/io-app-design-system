@@ -2514,7 +2514,6 @@ __metadata:
     "@svgr/plugin-svgo": ^8.1.0
     "@testing-library/react-native": ^13.2.0
     "@types/jest": ^29.5.14
-    "@types/lodash": ^4.14.157
     "@types/markdown-it": ^14.1.2
     "@types/react": ^19.1.0
     "@types/react-test-renderer": 19.1.0
@@ -2532,7 +2531,6 @@ __metadata:
     eslint-plugin-react-native-a11y: ^3.3.0
     fs-extra: ^11.1.1
     jest: ^29.6.3
-    lodash: ^4.17.21
     markdown-it: ^14.1.0
     pod-install: ^0.1.0
     prettier: ^2.0.5
@@ -3190,13 +3188,6 @@ __metadata:
   version: 5.0.0
   resolution: "@types/linkify-it@npm:5.0.0"
   checksum: ec98e03aa883f70153a17a1e6ed9e28b39a604049b485daeddae3a1482ec65cac0817520be6e301d99fd1a934b3950cf0f855655aae6ec27da2bb676ba4a148e
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:^4.14.157":
-  version: 4.17.24
-  resolution: "@types/lodash@npm:4.17.24"
-  checksum: 2b254973145ecdf9b052d83f00ebaa111245f319d45b217c78f81cea8892fda81180fc749bd50a99c08f4e5efceb834c774d3f74153a50a9c4a28648343dc9f3
   languageName: node
   linkType: hard
 
