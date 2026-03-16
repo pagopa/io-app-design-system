@@ -1095,6 +1095,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
                   "borderCurve": "continuous",
                   "flexDirection": "row",
                   "justifyContent": "center",
+                  "overflow": "hidden",
                 },
                 {
                   "borderRadius": 24,
@@ -1125,7 +1126,6 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
                   },
                   {
                     "alignSelf": "center",
-                    "flexShrink": 1,
                     "letterSpacing": 0.5,
                     "textTransform": "uppercase",
                   },
@@ -2571,6 +2571,7 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
                   "borderCurve": "continuous",
                   "flexDirection": "row",
                   "justifyContent": "center",
+                  "overflow": "hidden",
                 },
                 {
                   "borderRadius": 24,
@@ -2601,7 +2602,6 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
                   },
                   {
                     "alignSelf": "center",
-                    "flexShrink": 1,
                     "letterSpacing": 0.5,
                     "textTransform": "uppercase",
                   },
