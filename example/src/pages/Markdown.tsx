@@ -280,8 +280,7 @@ The following example is included to exercise nested list styling across multipl
 1. First ordered item
    1. Nested ordered item
       1. Third-level ordered item
-      1. Second third-level ordered item
-         1. What happens?
+      2. Second third-level ordered item
    2. Another nested ordered item
 2. Second ordered item
 

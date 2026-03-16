@@ -18,9 +18,14 @@ describe("markdown utils", () => {
       expect(getUnorderedListBullet(1)).toBe("\u25E6");
     });
 
-    it("falls back to a filled bullet for deeper unordered lists", () => {
-      expect(getUnorderedListBullet(2)).toBe("\u2022");
+    it("returns a right pointing small triangle for third-level unordered lists", () => {
+      expect(getUnorderedListBullet(2)).toBe("\u25B8");
+    });
+
+    it("restarts the bullet styles after the third level", () => {
       expect(getUnorderedListBullet(3)).toBe("\u2022");
+      expect(getUnorderedListBullet(4)).toBe("\u25E6");
+      expect(getUnorderedListBullet(5)).toBe("\u25B8");
     });
   });
 
@@ -41,6 +46,12 @@ describe("markdown utils", () => {
       expect(getOrderedListMarker(2, 2)).toBe("b.");
       expect(getOrderedListMarker(26, 2)).toBe("z.");
       expect(getOrderedListMarker(27, 2)).toBe("aa.");
+    });
+
+    it("restarts the marker styles after the third level", () => {
+      expect(getOrderedListMarker(3, 3)).toBe("3.");
+      expect(getOrderedListMarker(4, 4)).toBe("iv.");
+      expect(getOrderedListMarker(2, 5)).toBe("b.");
     });
   });
 

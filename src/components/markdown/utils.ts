@@ -3,6 +3,8 @@ import type { MarkdownNode } from "./types";
 
 const BULLET_FULL = "\u2022";
 const BULLET_HOLLOW = "\u25E6";
+const BULLET_SQUARE = "\u25B8";
+
 const PICTOGRAM_REGEXP = /^\s*\[!(.*?)\]/;
 
 const ROMAN_NUMERALS: ReadonlyArray<readonly [number, string]> = [
@@ -25,13 +27,13 @@ const ROMAN_NUMERALS: ReadonlyArray<readonly [number, string]> = [
  * Returns the bullet glyph used for unordered lists at a given nesting depth.
  */
 export const getUnorderedListBullet = (listDepth: number): string => {
-  switch (listDepth) {
+  switch (listDepth % 3) {
     case 0:
       return BULLET_FULL;
     case 1:
       return BULLET_HOLLOW;
     default:
-      return BULLET_FULL;
+      return BULLET_SQUARE;
   }
 };
 
@@ -79,7 +81,7 @@ export const getOrderedListMarker = (
   value: number,
   listDepth: number
 ): string => {
-  switch (listDepth) {
+  switch (listDepth % 3) {
     case 0:
       return `${value}.`;
     case 1:
