@@ -1,4 +1,3 @@
-import { constant } from "lodash";
 import { useCallback, useMemo } from "react";
 import { Linking, View } from "react-native";
 import { useIOTheme } from "../../context";
@@ -41,7 +40,7 @@ export const IOMarkdown = ({
       if (onLinkPress) {
         onLinkPress(url);
       } else {
-        Linking.openURL(url).catch(constant(null));
+        Linking.openURL(url).catch(() => null);
       }
     },
     [onLinkPress]
