@@ -22,7 +22,7 @@ export const ImageRenderer = ({ node }: ImageRendererProps) => {
   });
 
   const screenWidth =
-    Dimensions.get("screen").width - IOVisualCostants.appMarginDefault * 2;
+    Dimensions.get("window").width - IOVisualCostants.appMarginDefault * 2;
 
   useLayoutEffect(() => {
     if (!src) {
