@@ -241,6 +241,13 @@ describe("IOMarkdown", () => {
       expect(getByText("3.")).toBeTruthy();
     });
 
+    it("renders nested unordered lists with level-specific bullets", () => {
+      const content = `- Parent item\n    - Nested item\n        - Third level item\n- Second parent item`;
+      const { getAllByText } = renderComponent({ content });
+      expect(getAllByText("\u2022").length).toBeGreaterThanOrEqual(1);
+      expect(getAllByText("\u25E6").length).toBe(1);
+    });
+
     it("renders list with accessibilityRole 'list'", () => {
       const content = `- Item one\n- Item two`;
       const { getAllByRole } = renderComponent({ content });

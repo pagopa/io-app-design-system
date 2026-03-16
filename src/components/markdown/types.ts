@@ -44,6 +44,8 @@ export type MarkdownNode = {
   children: ReadonlyArray<MarkdownNode>;
   /** List metadata: whether the list is ordered */
   ordered?: boolean;
+  /** Number of ancestor lists wrapping this node */
+  listDepth?: number;
 };
 
 export type RenderContext = {

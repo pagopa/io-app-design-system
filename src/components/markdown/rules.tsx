@@ -204,6 +204,18 @@ const makeHeadingRule =
 /* ─── List helpers ─── */
 
 const BULLET_FULL = "\u2022";
+const BULLET_HOLLOW = "\u25E6";
+
+const getUnorderedListBullet = (listDepth: number): string => {
+  switch (listDepth) {
+    case 0:
+      return BULLET_FULL;
+    case 1:
+      return BULLET_HOLLOW;
+    default:
+      return BULLET_FULL; // Couldn't find a good third-level bullet, fallback to full circle for deeper levels
+  }
+};
 
 /* ─── Blockquote / Banner helpers ─── */
 
@@ -291,7 +303,7 @@ const bulletListRule: RenderRule = (node, renderChildren) => (
     <VSpacer size={8} />
     {node.children.map(child => (
       <View key={child.key} style={{ flexDirection: "row" }}>
-        <Body>{BULLET_FULL}</Body>
+        <Body>{getUnorderedListBullet(node.listDepth ?? 0)}</Body>
         <HSpacer size={8} />
         <View style={{ flex: 1, flexShrink: 1 }}>
           {renderChildren(child.children)}

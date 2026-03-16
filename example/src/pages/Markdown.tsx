@@ -266,6 +266,24 @@ Follow these steps:
 4. Confirm your identity using [SPID](https://www.spid.gov.it) or CIE
 5. Review the terms and tap **Confirm**
 
+## Nested lists
+
+The following example is included to show that nested lists are not handled yet:
+
+- Parent bullet item
+  - Nested bullet item
+    - Third-level bullet item
+    - Second third-level bullet item
+  - Another nested bullet item
+- Second parent bullet item
+
+1. First ordered item
+   1. Nested ordered item
+      1. Third-level ordered item
+      1. Second third-level ordered item
+   2. Another nested ordered item
+2. Second ordered item
+
 >[!notification]
 ># Confirmation
 >You will receive a push notification and an email confirming the activation.

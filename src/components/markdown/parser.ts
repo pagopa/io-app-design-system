@@ -258,6 +258,24 @@ const liftImages = (
     return textRun.length > 0 ? [...result, wrapTextRun(textRun)] : [...result];
   });
 
+const annotateListDepth = (
+  nodes: ReadonlyArray<MarkdownNode>,
+  parentListDepth = 0
+): Array<MarkdownNode> =>
+  nodes.map(node => {
+    const listDepth = parentListDepth;
+    const childListDepth =
+      node.type === "bullet_list" || node.type === "ordered_list"
+        ? parentListDepth + 1
+        : parentListDepth;
+
+    return {
+      ...node,
+      listDepth,
+      children: annotateListDepth(node.children, childListDepth)
+    };
+  });
+
 /**
  * Computes the enabled types set from the full set minus disabled types.
  */
@@ -297,7 +315,9 @@ export const parse = (
     // 4. Hoist image nodes out of paragraph wrappers so imageRule is invoked
     nodes => liftImages(nodes, getKey),
     // 5. Drop empty paragraphs left behind by disabled/lifted node types
-    nodes => nodes.filter(n => n.type !== "paragraph" || n.children.length > 0)
+    nodes => nodes.filter(n => n.type !== "paragraph" || n.children.length > 0),
+    // 6. Annotate nodes with their list nesting depth for rendering
+    annotateListDepth
   );
 };
 
