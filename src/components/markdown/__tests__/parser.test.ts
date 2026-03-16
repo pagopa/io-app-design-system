@@ -1,15 +1,15 @@
 import { parse, parseLite } from "../parser";
-import { MarkdownLiteNode, MarkdownLiteNodeType, MarkdownNode } from "../types";
+import { MarkdownNode, MarkdownNodeType } from "../types";
 
 /** Recursively collect all node types in an AST */
-const collectTypes = (nodes: ReadonlyArray<MarkdownLiteNode>): Array<string> =>
+const collectTypes = (nodes: ReadonlyArray<MarkdownNode>): Array<string> =>
   nodes.flatMap(n => [n.type, ...collectTypes(n.children)]);
 
 /** Find first node matching a type (depth-first) */
 const findNode = (
-  nodes: ReadonlyArray<MarkdownLiteNode>,
-  type: MarkdownLiteNodeType
-): MarkdownLiteNode | undefined => {
+  nodes: ReadonlyArray<MarkdownNode>,
+  type: MarkdownNodeType
+): MarkdownNode | undefined => {
   for (const n of nodes) {
     if (n.type === type) {
       return n;
@@ -32,7 +32,7 @@ describe("parseLite — supported content", () => {
     expect(textNode!.content).toBe("Hello world");
   });
 
-  it.each<[string, MarkdownLiteNodeType]>([
+  it.each<[string, MarkdownNodeType]>([
     ["# H1", "heading1"],
     ["## H2", "heading2"],
     ["### H3", "heading3"],
@@ -123,7 +123,7 @@ describe("parseLite — unsupported content is skipped", () => {
     "html_inline"
   ];
 
-  const assertNoUnsupportedTypes = (ast: ReadonlyArray<MarkdownLiteNode>) => {
+  const assertNoUnsupportedTypes = (ast: ReadonlyArray<MarkdownNode>) => {
     const types = collectTypes(ast);
     for (const t of UNSUPPORTED_TYPES) {
       expect(types).not.toContain(t);

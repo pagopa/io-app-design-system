@@ -33,24 +33,6 @@ export type MarkdownNodeType =
   | "html_block"
   | "html_inline";
 
-/** Backwards-compatible alias for the lite subset */
-export type MarkdownLiteNodeType = Extract<
-  MarkdownNodeType,
-  | "heading1"
-  | "heading2"
-  | "heading3"
-  | "heading4"
-  | "heading5"
-  | "heading6"
-  | "paragraph"
-  | "text"
-  | "strong"
-  | "em"
-  | "link"
-  | "softbreak"
-  | "hardbreak"
->;
-
 /**
  * A node in the markdown AST.
  */
@@ -64,16 +46,15 @@ export type MarkdownNode = {
   ordered?: boolean;
 };
 
-/** Backwards-compatible alias */
-export type MarkdownLiteNode = MarkdownNode;
-
-/* ─── Render context & rules ─── */
-
 export type RenderContext = {
   onLinkPress?: (url: string) => void;
   bodyColor: IOColors;
   linkColor: IOColors;
 };
+
+export type RenderChildrenFn = (
+  nodes: ReadonlyArray<MarkdownNode>
+) => ReadonlyArray<React.ReactNode>;
 
 /**
  * A render rule receives a node, a function to recursively render children,
@@ -81,9 +62,7 @@ export type RenderContext = {
  */
 export type RenderRule = (
   node: MarkdownNode,
-  renderChildren: (
-    nodes: ReadonlyArray<MarkdownNode>
-  ) => ReadonlyArray<React.ReactNode>,
+  renderChildren: RenderChildrenFn,
   context: RenderContext
 ) => React.ReactNode;
 
@@ -93,27 +72,3 @@ export type RenderRule = (
 export type IOMarkdownRenderRules = Partial<
   Record<MarkdownNodeType, RenderRule>
 >;
-
-/* ─── Component props ─── */
-
-export type IOMarkdownProps = {
-  /** The markdown string to render */
-  content: string;
-  /** Override default link press behavior. Default: Linking.openURL(url) */
-  onLinkPress?: (url: string) => void;
-  /** Test ID for the container View */
-  testID?: string;
-  /** Node types to disable (parser will skip them entirely) */
-  disabledRules?: ReadonlyArray<MarkdownNodeType>;
-  /** Override individual render rules */
-  rules?: IOMarkdownRenderRules;
-};
-
-export type IOMarkdownLiteProps = {
-  /** The markdown string to render */
-  content: string;
-  /** Override default link press behavior. Default: Linking.openURL(url) */
-  onLinkPress?: (url: string) => void;
-  /** Test ID for the container View */
-  testID?: string;
-};

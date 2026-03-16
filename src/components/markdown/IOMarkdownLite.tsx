@@ -1,6 +1,14 @@
 import { IOMarkdown } from "./IOMarkdown";
 import { LITE_DISABLED_TYPES } from "./parser";
-import type { IOMarkdownLiteProps } from "./types";
+
+export type IOMarkdownLiteProps = {
+  /** The markdown string to render */
+  content: string;
+  /** Override default link press behavior. Default: Linking.openURL(url) */
+  onLinkPress?: (url: string) => void;
+  /** Test ID for the container View */
+  testID?: string;
+};
 
 /**
  * Lightweight markdown component supporting only headings,

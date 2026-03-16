@@ -4,12 +4,25 @@ import { useIOTheme } from "../../context";
 import { parse } from "./parser";
 import { DEFAULT_RULES } from "./rules";
 import type {
-  IOMarkdownProps,
+  IOMarkdownRenderRules,
   MarkdownNode,
   MarkdownNodeType,
   RenderContext,
   RenderRule
 } from "./types";
+
+export type IOMarkdownProps = {
+  /** The markdown string to render */
+  content: string;
+  /** Override default link press behavior. Default: Linking.openURL(url) */
+  onLinkPress?: (url: string) => void;
+  /** Test ID for the container View */
+  testID?: string;
+  /** Node types to disable (parser will skip them entirely) */
+  disabledRules?: ReadonlyArray<MarkdownNodeType>;
+  /** Override individual render rules */
+  rules?: IOMarkdownRenderRules;
+};
 
 /**
  * Full-featured markdown component that renders markdown content
