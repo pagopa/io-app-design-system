@@ -30,7 +30,7 @@ export const ImageRenderer = ({ node }: ImageRendererProps) => {
     }
     Image.getSize(src, (width, height) => {
       const aspectRatio = width / height;
-      const constrainedWidth = width > screenWidth ? screenWidth : width;
+      const constrainedWidth = Math.min(width, screenWidth);
       setImageSize({ width: constrainedWidth, aspectRatio });
     });
   }, [screenWidth, src]);
