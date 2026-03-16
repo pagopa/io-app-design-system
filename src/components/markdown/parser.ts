@@ -7,6 +7,20 @@ const mdLite = MarkdownIt({ html: false, typographer: false, linkify: false });
 const mdFull = MarkdownIt({ html: true, typographer: false, linkify: false });
 
 /**
+ * Creates a zero-dependency key generator for the markdown AST.
+ *
+ * These keys are only used as local React render keys, so they do not need
+ * cryptographic randomness or an external package: a per-parse incrementing
+ * counter is sufficient for our needs.
+ */
+const createKeyFactory = () => {
+  // eslint-disable-next-line functional/no-let
+  let keyCounter = 0;
+
+  return (prefix: string) => `md_${prefix}_${keyCounter++}`;
+};
+
+/**
  * Complete set of all supported node types.
  */
 const ALL_TYPES = new Set<string>([
@@ -94,7 +108,8 @@ const flattenInline = (tokens: ReadonlyArray<Token>): ReadonlyArray<Token> =>
  */
 const tokensToAST = (
   tokens: ReadonlyArray<Token>,
-  enabledTypes: Set<string>
+  enabledTypes: Set<string>,
+  getKey: (prefix: string) => string
 ): Array<MarkdownNode> => {
   if (!tokens || tokens.length === 0) {
     return [];
@@ -139,7 +154,7 @@ const tokensToAST = (
 
     const node: MarkdownNode = {
       type: nodeType,
-      key: `md_${nodeType}_${crypto.randomUUID()}`,
+      key: getKey(nodeType),
       content: token.content || undefined,
       attributes: attributes || undefined,
       children: [],
@@ -190,7 +205,10 @@ const tokensToAST = (
  *   alternating paragraph (text run) and standalone image nodes.
  * - Paragraphs without images → unchanged.
  */
-const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
+const liftImages = (
+  nodes: ReadonlyArray<MarkdownNode>,
+  getKey: (prefix: string) => string
+): Array<MarkdownNode> =>
   nodes.flatMap(node => {
     if (node.type !== "paragraph") {
       return [node];
@@ -218,7 +236,7 @@ const liftImages = (nodes: ReadonlyArray<MarkdownNode>): Array<MarkdownNode> =>
 
     const wrapTextRun = (run: ReadonlyArray<MarkdownNode>): MarkdownNode => ({
       ...node,
-      key: `md_paragraph_${crypto.randomUUID()}`,
+      key: getKey("paragraph"),
       children: run
     });
 
@@ -267,6 +285,7 @@ export const parse = (
   const needsHtml =
     enabledTypes.has("html_block") || enabledTypes.has("html_inline");
   const md = needsHtml ? mdFull : mdLite;
+  const getKey = createKeyFactory();
 
   return pipe(
     // 1. Tokenize the markdown source using markdown-it
@@ -274,9 +293,9 @@ export const parse = (
     // 2. Unwrap nested inline tokens into a flat token stream
     flattenInline,
     // 3. Convert the flat token stream into a hierarchical AST
-    tokens => tokensToAST(tokens, enabledTypes),
+    tokens => tokensToAST(tokens, enabledTypes, getKey),
     // 4. Hoist image nodes out of paragraph wrappers so imageRule is invoked
-    liftImages,
+    nodes => liftImages(nodes, getKey),
     // 5. Drop empty paragraphs left behind by disabled/lifted node types
     nodes => nodes.filter(n => n.type !== "paragraph" || n.children.length > 0)
   );
