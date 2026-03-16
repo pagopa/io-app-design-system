@@ -22,11 +22,11 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { MarkdownNodeType } from "../../../src/components/markdown/types";
 import {
   LITE_DISABLED_TYPES,
   parse
 } from "../../../src/components/markdown/parser";
+import { MarkdownNodeType } from "../../../src/components/markdown/types";
 import { NoMarginScreen } from "../components/Screen";
 
 /* ── Benchmark content ─────────────────────────────────────────────── */
@@ -371,11 +371,11 @@ const useMarkdownBenchmark = () => {
         Array.from({ length: count }, () => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore: performance.now() is available in RN runtime
-          const start = performance.now() as number;
+          const start = performance.now();
           parse(content, disabledRules);
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore: performance.now() is available in RN runtime
-          return (performance.now() as number) - start;
+          return performance.now() - start;
         });
 
       // Use InteractionManager to avoid blocking UI
