@@ -69,7 +69,7 @@ const toAlphabeticMarker = (value: number): string => {
   // Convert to a zero-based base-26 index so 1 -> a, 26 -> z, 27 -> aa.
   const normalizedValue = value - 1;
   const prefix = toAlphabeticMarker(Math.floor(normalizedValue / 26));
-  const suffix = String.fromCharCode(97 + (normalizedValue % 26));
+  const suffix = String.fromCodePoint(97 + (normalizedValue % 26));
 
   return `${prefix}${suffix}`;
 };
