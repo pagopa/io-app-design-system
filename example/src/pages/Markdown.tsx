@@ -16,7 +16,6 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
-  InteractionManager,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -396,8 +395,7 @@ const useMarkdownBenchmark = () => {
           return performance.now() - start;
         });
 
-      // Use InteractionManager to avoid blocking UI
-      void InteractionManager.runAfterInteractions(() => {
+      requestAnimationFrame(() => {
         const runBatch = (
           completed: ReadonlyArray<number>,
           remaining: number
