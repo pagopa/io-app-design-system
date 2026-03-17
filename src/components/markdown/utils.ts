@@ -122,6 +122,6 @@ export const collectRawText = (node: MarkdownNode): string => {
  * Returns true when a raw HTML fragment is a `<br>` tag.
  */
 export const isBrTag = (content: string): boolean => {
-  const match = content.match(/<([^\s/>]+)\s*\/?>/);
+  const match = new RegExp(/<([^\s/>]+)\s*\/?>/).exec(content);
   return match?.[1] === "br";
 };
