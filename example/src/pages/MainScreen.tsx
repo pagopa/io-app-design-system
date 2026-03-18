@@ -8,6 +8,7 @@ import {
   VSpacer,
   useIOExperimentalDesign,
   useIONewTypeface,
+  IOThemeType,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 
@@ -65,7 +66,9 @@ const MainScreen = (props: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setTheme(colorScheme);
+    setTheme(
+      colorScheme === "unspecified" ? "light" : (colorScheme as IOThemeType)
+    );
   }, [colorScheme, setTheme]);
 
   // Configure native header search bar
