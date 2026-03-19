@@ -1,12 +1,16 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 import { Linking } from "react-native";
+import { IOColors, IOThemeLight } from "../../../core";
 import { IOThemeContextProvider } from "../../../context";
 import { IOMarkdown } from "../IOMarkdown";
 
+const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
+const legacyParagraphColor = IOColors[IOThemeLight["textBody-default"]];
+
 const renderComponent = (props: React.ComponentProps<typeof IOMarkdown>) =>
   render(
-    <IOThemeContextProvider>
+    <IOThemeContextProvider theme="light">
       <IOMarkdown {...props} />
     </IOThemeContextProvider>
   );
@@ -68,6 +72,39 @@ describe("IOMarkdown", () => {
     it("renders paragraph text", () => {
       const { getByText } = renderComponent({ content: "Hello world" });
       expect(getByText("Hello world")).toBeTruthy();
+    });
+
+    it("renders plain paragraphs with the default Body tertiary color", () => {
+      const { getByText } = renderComponent({ content: "Hello world" });
+      const el = getByText("Hello world");
+      const styles = [el.props.style].flat();
+
+      expect(styles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: defaultParagraphColor })
+        ])
+      );
+      expect(styles).not.toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: legacyParagraphColor })
+        ])
+      );
+    });
+
+    it("applies the provided textAlign to paragraph text", () => {
+      const { getByText } = renderComponent({
+        content: "Centered paragraph",
+        textAlign: "center"
+      });
+      const el = getByText("Centered paragraph");
+      const styles = [el.props.style].flat();
+
+      expect(styles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: defaultParagraphColor }),
+          expect.objectContaining({ textAlign: "center" })
+        ])
+      );
     });
 
     it("renders bold text with fontWeight 600", () => {

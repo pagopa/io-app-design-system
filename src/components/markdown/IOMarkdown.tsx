@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { Linking, View } from "react-native";
+import { Linking, type TextStyle, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { parse } from "./parser";
 import { DEFAULT_RULES } from "./rules";
@@ -16,6 +16,8 @@ export type IOMarkdownProps = {
   content: string;
   /** Override default link press behavior. Default: Linking.openURL(url) */
   onLinkPress?: (url: string) => void;
+  /** Paragraph alignment. Default: "auto" */
+  textAlign?: TextStyle["textAlign"];
   /** Test ID for the container View */
   testID?: string;
   /** Node types to disable (parser will skip them entirely) */
@@ -37,6 +39,7 @@ export type IOMarkdownProps = {
 export const IOMarkdown = ({
   content,
   onLinkPress,
+  textAlign,
   testID,
   disabledRules,
   rules = {}
@@ -62,10 +65,10 @@ export const IOMarkdown = ({
   const context = useMemo<RenderContext>(
     () => ({
       onLinkPress: handleLinkPress,
-      bodyColor: theme["textBody-default"],
-      linkColor: theme["interactiveElem-default"]
+      linkColor: theme["interactiveElem-default"],
+      textAlign: textAlign ?? "auto"
     }),
-    [handleLinkPress, theme]
+    [handleLinkPress, textAlign, theme]
   );
 
   const mergedRules = useMemo<Record<MarkdownNodeType, RenderRule>>(

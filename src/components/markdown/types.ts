@@ -1,4 +1,5 @@
 import type React from "react";
+import type { TextStyle } from "react-native";
 import type { IOColors } from "../../core";
 
 /**
@@ -50,8 +51,8 @@ export type MarkdownNode = {
 
 export type RenderContext = {
   onLinkPress?: (url: string) => void;
-  bodyColor: IOColors;
   linkColor: IOColors;
+  textAlign: TextStyle["textAlign"];
 };
 
 export type RenderChildrenFn = (

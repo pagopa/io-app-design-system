@@ -1,12 +1,16 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 import { Linking } from "react-native";
+import { IOColors, IOThemeLight } from "../../../core";
 import { IOThemeContextProvider } from "../../../context";
 import { IOMarkdownLite } from "../IOMarkdownLite";
 
+const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
+const legacyParagraphColor = IOColors[IOThemeLight["textBody-default"]];
+
 const renderComponent = (props: React.ComponentProps<typeof IOMarkdownLite>) =>
   render(
-    <IOThemeContextProvider>
+    <IOThemeContextProvider theme="light">
       <IOMarkdownLite {...props} />
     </IOThemeContextProvider>
   );
@@ -18,6 +22,39 @@ describe("IOMarkdownLite", () => {
     it("renders basic paragraph text", () => {
       const { getByText } = renderComponent({ content: "Hello world" });
       expect(getByText("Hello world")).toBeTruthy();
+    });
+
+    it("renders plain paragraphs with the default Body tertiary color", () => {
+      const { getByText } = renderComponent({ content: "Hello world" });
+      const el = getByText("Hello world");
+      const styles = [el.props.style].flat();
+
+      expect(styles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: defaultParagraphColor })
+        ])
+      );
+      expect(styles).not.toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: legacyParagraphColor })
+        ])
+      );
+    });
+
+    it("applies the provided textAlign to paragraph text", () => {
+      const { getByText } = renderComponent({
+        content: "Right aligned paragraph",
+        textAlign: "right"
+      });
+      const el = getByText("Right aligned paragraph");
+      const styles = [el.props.style].flat();
+
+      expect(styles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ color: defaultParagraphColor }),
+          expect.objectContaining({ textAlign: "right" })
+        ])
+      );
     });
 
     it("renders heading text", () => {

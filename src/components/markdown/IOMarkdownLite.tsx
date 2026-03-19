@@ -1,3 +1,4 @@
+import type { TextStyle } from "react-native";
 import { IOMarkdown } from "./IOMarkdown";
 import { LITE_DISABLED_TYPES } from "./parser";
 
@@ -6,6 +7,8 @@ export type IOMarkdownLiteProps = {
   content: string;
   /** Override default link press behavior. Default: Linking.openURL(url) */
   onLinkPress?: (url: string) => void;
+  /** Paragraph alignment. Default: "auto" */
+  textAlign?: TextStyle["textAlign"];
   /** Test ID for the container View */
   testID?: string;
 };

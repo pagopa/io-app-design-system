@@ -8,9 +8,11 @@ import {
   IOColors,
   IOMarkdown,
   IOMarkdownLite,
+  ListItemHeader,
   TabItem,
   TabNavigation,
-  VSpacer
+  VSpacer,
+  VStack
 } from "@pagopa/io-app-design-system";
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
@@ -18,6 +20,7 @@ import {
   Alert,
   ScrollView,
   StyleSheet,
+  TextStyle,
   TouchableOpacity,
   View
 } from "react-native";
@@ -30,7 +33,9 @@ import { NoMarginScreen } from "../components/Screen";
 
 /* ── Benchmark content ─────────────────────────────────────────────── */
 
-const SMALL_MARKDOWN = `# Welcome
+const SMALL_MARKDOWN = `### Title
+
+##### Subtitle
 
 This is a **simple** paragraph with *italic* and **bold** text.
 
@@ -599,6 +604,22 @@ export const Markdown = () => {
         );
       case 2:
         return <BenchmarkTab />;
+      case 3:
+        return (
+          <VStack space={8}>
+            {["left", "center", "right", "justify"].map(align => (
+              <>
+                <ListItemHeader label={`Text align: ${align}`} />
+                <IOMarkdownLite
+                  key={align}
+                  content={SMALL_MARKDOWN}
+                  onLinkPress={onLinkPress}
+                  textAlign={align as TextStyle["textAlign"]}
+                />
+              </>
+            ))}
+          </VStack>
+        );
       default:
         return null;
     }
@@ -615,6 +636,7 @@ export const Markdown = () => {
         <TabItem label="Full" accessibilityLabel="Full markdown" />
         <TabItem label="Lite" accessibilityLabel="Lite markdown" />
         <TabItem label="Benchmark" accessibilityLabel="Benchmark" />
+        <TabItem label="Text alignment" accessibilityLabel="Text alignment" />
       </TabNavigation>
       <ContentWrapper style={{ paddingVertical: 16 }}>
         {markdownContent}

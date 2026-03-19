@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { View } from "react-native";
 import { Banner } from "../banner";
 import { Divider, HSpacer, VSpacer } from "../layout";
-import { Body, bodyFontSize, bodyLineHeight } from "../typography/Body";
+import { Body } from "../typography/Body";
 import { BodyMonospace } from "../typography/BodyMonospace";
 import { H1 } from "../typography/H1";
 import { H2 } from "../typography/H2";
@@ -13,6 +13,12 @@ import { H6 } from "../typography/H6";
 import { IOText } from "../typography/IOText";
 import { CodeBlock } from "./CodeBlock";
 import { ImageRenderer } from "./ImageRenderer";
+import type {
+  MarkdownNode,
+  MarkdownNodeType,
+  RenderContext,
+  RenderRule
+} from "./types";
 import {
   collectRawText,
   extractPictogramName,
@@ -21,12 +27,6 @@ import {
   isBrTag,
   stripPictogramPrefix
 } from "./utils";
-import type {
-  MarkdownNode,
-  MarkdownNodeType,
-  RenderContext,
-  RenderRule
-} from "./types";
 
 /* ─── Inline flattening (shared between heading and paragraph rendering) ─── */
 
@@ -165,19 +165,13 @@ const renderParagraph = (
   });
 
   return (
-    <IOText
-      key={node.key}
-      size={bodyFontSize}
-      lineHeight={bodyLineHeight}
-      weight="Regular"
-      color={context.bodyColor}
-    >
+    <Body key={node.key} style={{ textAlign: context.textAlign }}>
       {segments.map(seg => {
         const matchingNode = node.children.find(c => c.key === seg.key);
         const isCode = matchingNode?.type === "code_inline";
         return renderSegment(seg, context, isCode);
       })}
-    </IOText>
+    </Body>
   );
 };
 
@@ -197,7 +191,7 @@ const makeHeadingRule =
 
     return (
       <View key={node.key} accessibilityRole="header">
-        <Heading>
+        <Heading style={{ textAlign: context.textAlign }}>
           {segments.map(seg => {
             const matchingNode = node.children.find(c => c.key === seg.key);
             const isCode = matchingNode?.type === "code_inline";
