@@ -117,12 +117,12 @@ module.exports = {
       }
     },
     {
-      files: ['example/**/*.js', 'example/**/*.config.js'],
+      files: ["example/**/*.js", "example/**/*.config.js"],
       parserOptions: {
-        project: null,
+        project: null
       },
       rules: {
-        '@typescript-eslint/no-var-requires': 'off',
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ],
