@@ -3585,19 +3585,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylistic/eslint-plugin-ts@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "@stylistic/eslint-plugin-ts@npm:4.4.1"
-  dependencies:
-    "@typescript-eslint/utils": ^8.32.1
-    eslint-visitor-keys: ^4.2.0
-    espree: ^10.3.0
-  peerDependencies:
-    eslint: ">=9.0.0"
-  checksum: e12c72ec682d550cbc08970a4661d0ba765e8332494bb3cb6588be43326e40aa24c157422196a9e379a5e8607fcf8b65d8d8523cb26e3715e7a2bbc83b8e2aa0
-  languageName: node
-  linkType: hard
-
 "@stylistic/eslint-plugin@npm:^5.10.0":
   version: 5.10.0
   resolution: "@stylistic/eslint-plugin@npm:5.10.0"
@@ -4034,7 +4021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:8.57.1, @typescript-eslint/utils@npm:^8.0.0, @typescript-eslint/utils@npm:^8.32.1":
+"@typescript-eslint/utils@npm:8.57.1, @typescript-eslint/utils@npm:^8.0.0":
   version: 8.57.1
   resolution: "@typescript-eslint/utils@npm:8.57.1"
   dependencies:
@@ -6028,7 +6015,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^4.2.0, eslint-visitor-keys@npm:^4.2.1":
+"eslint-visitor-keys@npm:^4.2.1":
   version: 4.2.1
   resolution: "eslint-visitor-keys@npm:4.2.1"
   checksum: 3a77e3f99a49109f6fb2c5b7784bc78f9743b834d238cdba4d66c602c6b52f19ed7bcd0a5c5dbbeae3a8689fd785e76c001799f53d2228b278282cf9f699fff5
@@ -6089,7 +6076,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"espree@npm:^10.3.0, espree@npm:^10.4.0":
+"espree@npm:^10.4.0":
   version: 10.4.0
   resolution: "espree@npm:10.4.0"
   dependencies:
@@ -6192,7 +6179,6 @@ __metadata:
     "@react-navigation/native-stack": ^6.9.13
     "@react-navigation/stack": ^7.4.2
     "@stylistic/eslint-plugin": ^5.10.0
-    "@stylistic/eslint-plugin-ts": ^4.4.1
     "@types/jest": ^29.5.13
     "@types/react": ^19.2.0
     "@types/react-test-renderer": ^19.1.0
