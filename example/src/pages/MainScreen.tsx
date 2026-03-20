@@ -8,13 +8,18 @@ import {
   VSpacer,
   useIOExperimentalDesign,
   useIONewTypeface,
-  IOThemeType,
   useIOThemeContext
 } from "@pagopa/io-app-design-system";
 
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Platform, SectionList, View, useColorScheme } from "react-native";
+import {
+  ColorSchemeName,
+  Platform,
+  SectionList,
+  View,
+  useColorScheme
+} from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
@@ -67,7 +72,7 @@ const MainScreen = (props: Props) => {
 
   useEffect(() => {
     setTheme(
-      colorScheme === "unspecified" ? "light" : (colorScheme as IOThemeType)
+      colorScheme === "unspecified" ? "light" : (colorScheme as ColorSchemeName)
     );
   }, [colorScheme, setTheme]);
 
