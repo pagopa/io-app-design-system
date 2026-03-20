@@ -72,7 +72,7 @@ const MainScreen = (props: Props) => {
 
   useEffect(() => {
     setTheme(
-      colorScheme === "unspecified" ? "light" : (colorScheme as ColorSchemeName)
+      colorScheme === "unspecified" ? "light" : colorScheme
     );
   }, [colorScheme, setTheme]);
 
