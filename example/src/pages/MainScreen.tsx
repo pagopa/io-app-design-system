@@ -13,13 +13,7 @@ import {
 
 import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import {
-  ColorSchemeName,
-  Platform,
-  SectionList,
-  View,
-  useColorScheme
-} from "react-native";
+import { Platform, SectionList, View, useColorScheme } from "react-native";
 import { AppParamsList } from "../navigation/params";
 import APP_ROUTES from "../navigation/routes";
 import { IOStackNavigationRouteProps } from "../utils/types";
@@ -71,9 +65,7 @@ const MainScreen = (props: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setTheme(
-      colorScheme === "unspecified" ? "light" : colorScheme
-    );
+    setTheme(colorScheme === "unspecified" ? "light" : colorScheme);
   }, [colorScheme, setTheme]);
 
   // Configure native header search bar
