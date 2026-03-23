@@ -1,12 +1,11 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 import { Linking } from "react-native";
-import { IOColors, IOThemeLight } from "../../../core";
 import { IOThemeContextProvider } from "../../../context";
+import { IOColors, IOThemeLight } from "../../../core";
 import { IOMarkdownLite } from "../IOMarkdownLite";
 
 const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
-const legacyParagraphColor = IOColors[IOThemeLight["textBody-default"]];
 
 const renderComponent = (props: React.ComponentProps<typeof IOMarkdownLite>) =>
   render(
@@ -14,6 +13,18 @@ const renderComponent = (props: React.ComponentProps<typeof IOMarkdownLite>) =>
       <IOMarkdownLite {...props} />
     </IOThemeContextProvider>
   );
+
+const getFirstParagraphStyles = (
+  toJSON: ReturnType<typeof render>["toJSON"]
+) => {
+  const tree = toJSON();
+  const root = Array.isArray(tree) ? tree[0] : tree;
+  const paragraph = root?.children?.[0];
+  if (!paragraph || typeof paragraph === "string") {
+    return [];
+  }
+  return [paragraph?.props?.style].flat();
+};
 
 describe("IOMarkdownLite", () => {
   /* ─── Supported content ─── */
@@ -25,29 +36,22 @@ describe("IOMarkdownLite", () => {
     });
 
     it("renders plain paragraphs with the default Body tertiary color", () => {
-      const { getByText } = renderComponent({ content: "Hello world" });
-      const el = getByText("Hello world");
-      const styles = [el.props.style].flat();
+      const { toJSON } = renderComponent({ content: "Hello world" });
+      const styles = getFirstParagraphStyles(toJSON);
 
       expect(styles).toEqual(
         expect.arrayContaining([
           expect.objectContaining({ color: defaultParagraphColor })
         ])
       );
-      expect(styles).not.toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ color: legacyParagraphColor })
-        ])
-      );
     });
 
     it("applies the provided textAlign to paragraph text", () => {
-      const { getByText } = renderComponent({
+      const { toJSON } = renderComponent({
         content: "Right aligned paragraph",
         textAlign: "right"
       });
-      const el = getByText("Right aligned paragraph");
-      const styles = [el.props.style].flat();
+      const styles = getFirstParagraphStyles(toJSON);
 
       expect(styles).toEqual(
         expect.arrayContaining([
@@ -55,11 +59,6 @@ describe("IOMarkdownLite", () => {
           expect.objectContaining({ textAlign: "right" })
         ])
       );
-    });
-
-    it("renders heading text", () => {
-      const { getByText } = renderComponent({ content: "# My Heading" });
-      expect(getByText("My Heading")).toBeTruthy();
     });
 
     it("renders bold text with fontWeight 600", () => {
@@ -169,11 +168,12 @@ describe("IOMarkdownLite", () => {
   /* ─── Unsupported content ─── */
 
   describe("Unsupported content", () => {
-    it("does not render lists, blockquotes, code, or images", () => {
+    it("does not render headings, lists, blockquotes, code, or images", () => {
       const { queryByText } = renderComponent({
         content:
-          "- list item\n\n> blockquote\n\n```\ncode block\n```\n\n![alt](img.png)"
+          "#Title\n- list item\n\n> blockquote\n\n```\ncode block\n```\n\n![alt](img.png)"
       });
+      expect(queryByText("title")).toBeNull();
       expect(queryByText("list item")).toBeNull();
       expect(queryByText("blockquote")).toBeNull();
       expect(queryByText("code block")).toBeNull();

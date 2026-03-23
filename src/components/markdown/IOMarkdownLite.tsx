@@ -16,11 +16,11 @@ export type IOMarkdownLiteProps = {
 };
 
 /**
- * Lightweight markdown component supporting only headings,
- * paragraphs, bold, italic, links, and line breaks.
+ * Lightweight markdown component supporting only paragraphs, bold, italic,
+ * links, and line breaks.
  *
- * This is a thin wrapper around `IOMarkdown` with extra node types
- * (lists, blockquotes, images, code, etc.) disabled.
+ * This is a thin wrapper around `IOMarkdown` with extra node types (headings,
+ * lists, blockquotes, images, code, horizontal rules, and HTML) disabled.
  */
 export const IOMarkdownLite = (props: IOMarkdownLiteProps) => (
   <IOMarkdown {...props} disabledRules={LITE_DISABLED_TYPES} />

@@ -32,21 +32,6 @@ describe("parseLite — supported content", () => {
     expect(textNode!.content).toBe("Hello world");
   });
 
-  it.each<[string, MarkdownNodeType]>([
-    ["# H1", "heading1"],
-    ["## H2", "heading2"],
-    ["### H3", "heading3"],
-    ["#### H4", "heading4"],
-    ["##### H5", "heading5"],
-    ["###### H6", "heading6"]
-  ])("parses heading '%s' as %s", (input, expectedType) => {
-    const ast = parseLite(input);
-    expect(ast).toHaveLength(1);
-    expect(ast[0].type).toBe(expectedType);
-    const textNode = findNode(ast[0].children, "text");
-    expect(textNode).toBeDefined();
-  });
-
   it("parses **bold** text", () => {
     const ast = parseLite("**bold**");
     expect(ast).toHaveLength(1);
@@ -109,6 +94,12 @@ describe("parseLite — supported content", () => {
 
 describe("parseLite — unsupported content is skipped", () => {
   const UNSUPPORTED_TYPES = [
+    "heading1",
+    "heading2",
+    "heading3",
+    "heading4",
+    "heading5",
+    "heading6",
     "image",
     "bullet_list",
     "list_item",
@@ -129,6 +120,18 @@ describe("parseLite — unsupported content is skipped", () => {
       expect(types).not.toContain(t);
     }
   };
+
+  it.each<string>([
+    "# H1",
+    "## H2",
+    "### H3",
+    "#### H4",
+    "##### H5",
+    "###### H6"
+  ])("skips heading '%s'", input => {
+    const ast = parseLite(input);
+    assertNoUnsupportedTypes(ast);
+  });
 
   it("skips image ![alt](url)", () => {
     const ast = parseLite("![alt text](https://img.png)");

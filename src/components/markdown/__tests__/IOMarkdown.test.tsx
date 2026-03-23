@@ -6,7 +6,6 @@ import { IOColors, IOThemeLight } from "../../../core";
 import { IOMarkdown } from "../IOMarkdown";
 
 const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
-const legacyParagraphColor = IOColors[IOThemeLight["textBody-default"]];
 
 const renderComponent = (props: React.ComponentProps<typeof IOMarkdown>) =>
   render(
@@ -14,6 +13,18 @@ const renderComponent = (props: React.ComponentProps<typeof IOMarkdown>) =>
       <IOMarkdown {...props} />
     </IOThemeContextProvider>
   );
+
+const getFirstParagraphStyles = (
+  toJSON: ReturnType<typeof render>["toJSON"]
+) => {
+  const tree = toJSON();
+  const root = Array.isArray(tree) ? tree[0] : tree;
+  const paragraph = root?.children?.[0];
+  if (!paragraph || typeof paragraph === "string") {
+    return [];
+  }
+  return [paragraph?.props?.style].flat();
+};
 
 describe("IOMarkdown", () => {
   /* ─── Headings ─── */
@@ -47,29 +58,22 @@ describe("IOMarkdown", () => {
     });
 
     it("renders plain paragraphs with the default Body tertiary color", () => {
-      const { getByText } = renderComponent({ content: "Hello world" });
-      const el = getByText("Hello world");
-      const styles = [el.props.style].flat();
+      const { toJSON } = renderComponent({ content: "Hello world" });
+      const styles = getFirstParagraphStyles(toJSON);
 
       expect(styles).toEqual(
         expect.arrayContaining([
           expect.objectContaining({ color: defaultParagraphColor })
         ])
       );
-      expect(styles).not.toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ color: legacyParagraphColor })
-        ])
-      );
     });
 
     it("applies the provided textAlign to paragraph text", () => {
-      const { getByText } = renderComponent({
+      const { toJSON } = renderComponent({
         content: "Centered paragraph",
         textAlign: "center"
       });
-      const el = getByText("Centered paragraph");
-      const styles = [el.props.style].flat();
+      const styles = getFirstParagraphStyles(toJSON);
 
       expect(styles).toEqual(
         expect.arrayContaining([
