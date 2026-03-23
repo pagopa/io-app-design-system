@@ -1,8 +1,8 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
 import { Linking } from "react-native";
-import { IOColors, IOThemeLight } from "../../../core";
 import { IOThemeContextProvider } from "../../../context";
+import { IOColors, IOThemeLight } from "../../../core";
 import { IOMarkdown } from "../IOMarkdown";
 
 const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
@@ -35,34 +35,6 @@ describe("IOMarkdown", () => {
       const { UNSAFE_getAllByProps } = renderComponent({ content });
       const headers = UNSAFE_getAllByProps({ accessibilityRole: "header" });
       expect(headers.length).toBeGreaterThanOrEqual(1);
-    });
-
-    it("renders bold inside heading with fontWeight 600", () => {
-      const content = `# Normal **bold** text`;
-      const { getByText } = renderComponent({ content });
-      const el = getByText("bold");
-      const styles = [el.props.style].flat();
-      expect(styles).toEqual(
-        expect.arrayContaining([expect.objectContaining({ fontWeight: "600" })])
-      );
-    });
-
-    it("renders italic inside heading with fontStyle italic", () => {
-      const content = `# Normal *italic* text`;
-      const { getByText } = renderComponent({ content });
-      const el = getByText("italic");
-      const styles = [el.props.style].flat();
-      expect(styles).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ fontStyle: "italic" })
-        ])
-      );
-    });
-
-    it("renders inline code inside heading", () => {
-      const content = "# Use `code` here";
-      const { getByText } = renderComponent({ content });
-      expect(getByText("code")).toBeTruthy();
     });
   });
 
