@@ -30,6 +30,10 @@ export type IOMarkdownProps = {
  * Full-featured markdown component that renders markdown content
  * using design system primitives.
  *
+ * @remarks
+ * This component is still experimental. Check that it is correctly
+ * formatting your text before proceeding to use it.
+ *
  * Supports headings, paragraphs, bold, italic, links, lists,
  * blockquotes (as Banner), images, code, horizontal rules, and HTML breaks.
  *
