@@ -55,6 +55,12 @@ const ALL_TYPES = new Set<string>([
  * The types disabled when using IOMarkdownLite.
  */
 export const LITE_DISABLED_TYPES: ReadonlyArray<MarkdownNodeType> = [
+  "heading1",
+  "heading2",
+  "heading3",
+  "heading4",
+  "heading5",
+  "heading6",
   "bullet_list",
   "ordered_list",
   "list_item",
