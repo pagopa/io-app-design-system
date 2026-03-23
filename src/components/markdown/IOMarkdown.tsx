@@ -1,6 +1,12 @@
 import { useCallback, useMemo } from "react";
 import { Linking, type TextStyle, View } from "react-native";
 import { useIOTheme } from "../../context";
+import {
+  bodyFontSize,
+  bodyLineHeight,
+  bodySmallFontSize,
+  bodySmallLineHeight
+} from "../typography";
 import { parse } from "./parser";
 import { DEFAULT_RULES } from "./rules";
 import type {
@@ -18,6 +24,8 @@ export type IOMarkdownProps = {
   onLinkPress?: (url: string) => void;
   /** Paragraph alignment. Default: "auto" */
   textAlign?: TextStyle["textAlign"];
+  /** Override default text size */
+  small?: boolean;
   /** Test ID for the container View */
   testID?: string;
   /** Node types to disable (parser will skip them entirely) */
@@ -44,6 +52,7 @@ export const IOMarkdown = ({
   content,
   onLinkPress,
   textAlign,
+  small,
   testID,
   disabledRules,
   rules = {}
@@ -70,9 +79,11 @@ export const IOMarkdown = ({
     () => ({
       onLinkPress: handleLinkPress,
       linkColor: theme["interactiveElem-default"],
-      textAlign: textAlign ?? "auto"
+      textAlign: textAlign ?? "auto",
+      fontSize: small ? bodySmallFontSize : bodyFontSize,
+      lineHeight: small ? bodySmallLineHeight : bodyLineHeight
     }),
-    [handleLinkPress, textAlign, theme]
+    [handleLinkPress, textAlign, small, theme]
   );
 
   const mergedRules = useMemo<Record<MarkdownNodeType, RenderRule>>(

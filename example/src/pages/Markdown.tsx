@@ -603,8 +603,6 @@ export const Markdown = () => {
           />
         );
       case 2:
-        return <BenchmarkTab />;
-      case 3:
         return (
           <VStack space={8}>
             {["left", "center", "right", "justify"].map(align => (
@@ -620,6 +618,29 @@ export const Markdown = () => {
             ))}
           </VStack>
         );
+      case 3:
+        return (
+          <VStack space={8}>
+            {(
+              [
+                ["default", false],
+                ["small", true]
+              ] as const
+            ).map(([label, isSmall]) => (
+              <>
+                <ListItemHeader label={`Size variant: ${label}`} />
+                <IOMarkdownLite
+                  key={label}
+                  content={SMALL_MARKDOWN}
+                  onLinkPress={onLinkPress}
+                  small={isSmall}
+                />
+              </>
+            ))}
+          </VStack>
+        );
+      case 4:
+        return <BenchmarkTab />;
       default:
         return null;
     }
@@ -635,8 +656,9 @@ export const Markdown = () => {
       >
         <TabItem label="Full" accessibilityLabel="Full markdown" />
         <TabItem label="Lite" accessibilityLabel="Lite markdown" />
+        <TabItem label="Alignment" accessibilityLabel="Text alignment" />
+        <TabItem label="Sizing" accessibilityLabel="Text sizing" />
         <TabItem label="Benchmark" accessibilityLabel="Benchmark" />
-        <TabItem label="Text alignment" accessibilityLabel="Text alignment" />
       </TabNavigation>
       <ContentWrapper style={{ paddingVertical: 16 }}>
         {markdownContent}

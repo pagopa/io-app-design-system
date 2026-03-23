@@ -52,7 +52,11 @@ export type MarkdownNode = {
 export type RenderContext = {
   onLinkPress?: (url: string) => void;
   linkColor: IOColors;
+  /** Applied to paragraph */
   textAlign: TextStyle["textAlign"];
+  /** Applied to paragraph segments */
+  fontSize: TextStyle["fontSize"];
+  lineHeight: TextStyle["lineHeight"];
 };
 
 export type RenderChildrenFn = (

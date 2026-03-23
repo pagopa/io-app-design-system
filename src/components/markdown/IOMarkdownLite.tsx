@@ -9,6 +9,8 @@ export type IOMarkdownLiteProps = {
   onLinkPress?: (url: string) => void;
   /** Paragraph alignment. Default: "auto" */
   textAlign?: TextStyle["textAlign"];
+  /** Override default text size */
+  small?: boolean;
   /** Test ID for the container View */
   testID?: string;
 };

@@ -111,11 +111,6 @@ const renderSegment = (
   }
 
   const { bold, italic, link } = segment.style;
-  const hasStyle = bold || italic || link;
-
-  if (!hasStyle) {
-    return segment.text;
-  }
 
   return (
     <IOText
@@ -130,6 +125,8 @@ const renderSegment = (
             textStyle: { textDecorationLine: "underline" as const }
           }
         : {})}
+      size={context.fontSize}
+      lineHeight={context.lineHeight}
     >
       {segment.text}
     </IOText>
@@ -192,11 +189,7 @@ const makeHeadingRule =
     return (
       <View key={node.key} accessibilityRole="header">
         <Heading style={{ textAlign: context.textAlign }}>
-          {segments.map(seg => {
-            const matchingNode = node.children.find(c => c.key === seg.key);
-            const isCode = matchingNode?.type === "code_inline";
-            return renderSegment(seg, context, isCode);
-          })}
+          {segments.map(seg => seg.text)}
         </Heading>
       </View>
     );
