@@ -13,6 +13,9 @@ type BodySmallProps = TypographicStyleProps & {
   weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
+export const bodySmallFontSize = 14;
+export const bodySmallLineHeight = 21;
+
 /**
  * `BodySmall` typographic style
  */
@@ -40,8 +43,8 @@ export const BodySmall = forwardRef<View, BodySmallProps>(
       ...props,
       dynamicTypeRamp: "footnote" /* iOS only */,
       weight: customWeight ?? "Regular",
-      size: 14,
-      lineHeight: 21,
+      size: bodySmallFontSize,
+      lineHeight: bodySmallLineHeight,
       color: customColor ?? defaultColor,
       ...(asLink
         ? {
