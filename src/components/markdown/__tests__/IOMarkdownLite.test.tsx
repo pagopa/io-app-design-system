@@ -1,5 +1,5 @@
 import { fireEvent, render } from "@testing-library/react-native";
-import React from "react";
+import { ComponentProps } from "react";
 import { Linking } from "react-native";
 import { IOThemeContextProvider } from "../../../context";
 import { IOColors, IOThemeLight } from "../../../core";
