@@ -43,6 +43,7 @@ import { ListItems } from "../pages/ListItem";
 import { Loaders } from "../pages/Loaders";
 import { Logos } from "../pages/Logos";
 import MainScreen from "../pages/MainScreen";
+import { Markdown } from "../pages/Markdown";
 import Modules from "../pages/Modules";
 import { NumberPadScreen } from "../pages/NumberPad";
 import { OTPInputScreen } from "../pages/OTPInput";
@@ -209,6 +210,15 @@ const AppNavigator = () => {
             component={Skeleton}
             options={{
               headerTitle: APP_ROUTES.COMPONENTS.SKELETON.title,
+              headerBackTitleVisible: false
+            }}
+          />
+
+          <Stack.Screen
+            name={APP_ROUTES.COMPONENTS.MARKDOWN.route}
+            component={Markdown}
+            options={{
+              headerTitle: APP_ROUTES.COMPONENTS.MARKDOWN.title,
               headerBackTitleVisible: false
             }}
           />
@@ -456,6 +466,7 @@ const AppNavigator = () => {
               headerTitle: APP_ROUTES.COMPONENTS.TOASTS.title
             }}
           />
+
           <Stack.Screen
             name={APP_ROUTES.COMPONENTS.TOOLTIPS.route}
             component={Tooltips}
