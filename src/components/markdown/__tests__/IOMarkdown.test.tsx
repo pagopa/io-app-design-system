@@ -7,7 +7,7 @@ import { IOMarkdown } from "../IOMarkdown";
 
 const defaultParagraphColor = IOColors[IOThemeLight["textBody-tertiary"]];
 
-const renderComponent = (props: React.ComponentProps<typeof IOMarkdown>) =>
+const renderComponent = (props: ComponentProps<typeof IOMarkdown>) =>
   render(
     <IOThemeContextProvider theme="light">
       <IOMarkdown {...props} />
