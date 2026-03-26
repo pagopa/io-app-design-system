@@ -191,7 +191,6 @@ exports[`Test Buttons Components IOButton Snapshot · Link variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="5"
         numberOfLines={1}
         style={
           [
@@ -414,7 +413,6 @@ exports[`Test Buttons Components IOButton Snapshot · Outline variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="8"
         numberOfLines={1}
         style={
           [
@@ -635,7 +633,6 @@ exports[`Test Buttons Components IOButton Snapshot · Solid variant 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="2"
         numberOfLines={1}
         style={
           [

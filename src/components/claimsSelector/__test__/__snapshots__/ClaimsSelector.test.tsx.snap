@@ -77,7 +77,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
           },
         ]
       }
-      nativeID="0"
       style={
         [
           {
@@ -96,34 +95,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         ]
       }
     >
-      <View
-        collapsable={false}
-        jestAnimatedProps={
-          {
-            "value": {},
-          }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "borderBottomLeftRadius": 7,
-              "borderBottomRightRadius": 7,
-              "borderTopLeftRadius": 7,
-              "borderTopRightRadius": 7,
-              "overflow": "hidden",
-            },
-          }
-        }
-        jestInlineStyle={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "padding": 16,
-            },
-          ]
-        }
+      <Text
+        allowFontScaling={true}
+        dynamicTypeRamp="headline"
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -146,39 +121,61 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
           {
             "value": {},
           }
-        >
-          Patente di guida
-        </Text>
-        <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
           }
-          jestAnimatedStyle={
+        }
+        jestInlineStyle={{}}
+        style={
+          [
             {
-              "value": {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
-              },
-            }
-          }
-          jestInlineStyle={{}}
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          accessibilityLabel=""
+          accessible={false}
+          align="xMidYMid"
+          bbHeight={24}
+          bbWidth={24}
+          color="#0E0F13"
+          focusable={false}
+          height={24}
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
           style={
             [
               {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
+          vbHeight={24}
+          vbWidth={24}
+          width={24}
         >
           <RNSVGGroup
             fill={
@@ -731,7 +728,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
           },
         ]
       }
-      nativeID="16"
       style={
         [
           {
@@ -750,34 +746,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
         ]
       }
     >
-      <View
-        collapsable={false}
-        jestAnimatedProps={
-          {
-            "value": {},
-          }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "borderBottomLeftRadius": 7,
-              "borderBottomRightRadius": 7,
-              "borderTopLeftRadius": 7,
-              "borderTopRightRadius": 7,
-              "overflow": "hidden",
-            },
-          }
-        }
-        jestInlineStyle={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "padding": 16,
-            },
-          ]
-        }
+      <Text
+        allowFontScaling={true}
+        dynamicTypeRamp="headline"
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -800,39 +772,61 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
           {
             "value": {},
           }
-        >
-          Patente di guida
-        </Text>
-        <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
           }
-          jestAnimatedStyle={
+        }
+        jestInlineStyle={{}}
+        style={
+          [
             {
-              "value": {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
-              },
-            }
-          }
-          jestInlineStyle={{}}
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          accessibilityLabel=""
+          accessible={false}
+          align="xMidYMid"
+          bbHeight={24}
+          bbWidth={24}
+          color="#0E0F13"
+          focusable={false}
+          height={24}
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
           style={
             [
               {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
+          vbHeight={24}
+          vbWidth={24}
+          width={24}
         >
           <RNSVGGroup
             fill={
@@ -1074,7 +1068,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
           },
         ]
       }
-      nativeID="7"
       style={
         [
           {
@@ -1093,34 +1086,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         ]
       }
     >
-      <View
-        collapsable={false}
-        jestAnimatedProps={
-          {
-            "value": {},
-          }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "borderBottomLeftRadius": 7,
-              "borderBottomRightRadius": 7,
-              "borderTopLeftRadius": 7,
-              "borderTopRightRadius": 7,
-              "overflow": "hidden",
-            },
-          }
-        }
-        jestInlineStyle={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "padding": 16,
-            },
-          ]
-        }
+      <Text
+        allowFontScaling={true}
+        dynamicTypeRamp="headline"
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -1143,39 +1112,61 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
           {
             "value": {},
           }
-        >
-          Patente di guida
-        </Text>
-        <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
           }
-          jestAnimatedStyle={
+        }
+        jestInlineStyle={{}}
+        style={
+          [
             {
-              "value": {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
-              },
-            }
-          }
-          jestInlineStyle={{}}
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          accessibilityLabel=""
+          accessible={false}
+          align="xMidYMid"
+          bbHeight={24}
+          bbWidth={24}
+          color="#0E0F13"
+          focusable={false}
+          height={24}
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
           style={
             [
               {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
+          vbHeight={24}
+          vbWidth={24}
+          width={24}
         >
           <RNSVGGroup
             fill={
@@ -1657,7 +1648,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           },
         ]
       }
-      nativeID="13"
       style={
         [
           {
@@ -1676,34 +1666,10 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
         ]
       }
     >
-      <View
-        collapsable={false}
-        jestAnimatedProps={
-          {
-            "value": {},
-          }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "borderBottomLeftRadius": 7,
-              "borderBottomRightRadius": 7,
-              "borderTopLeftRadius": 7,
-              "borderTopRightRadius": 7,
-              "overflow": "hidden",
-            },
-          }
-        }
-        jestInlineStyle={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "padding": 16,
-            },
-          ]
-        }
+      <Text
+        allowFontScaling={true}
+        dynamicTypeRamp="headline"
+        maxFontSizeMultiplier={1.5}
         style={
           [
             {},
@@ -1726,39 +1692,61 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           {
             "value": {},
           }
-        >
-          Patente di guida
-        </Text>
-        <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
           }
-          jestAnimatedStyle={
+        }
+        jestInlineStyle={{}}
+        style={
+          [
             {
-              "value": {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
-              },
-            }
-          }
-          jestInlineStyle={{}}
+              "transform": [
+                {
+                  "rotate": "0deg",
+                },
+              ],
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          accessibilityLabel=""
+          accessible={false}
+          align="xMidYMid"
+          bbHeight={24}
+          bbWidth={24}
+          color="#0E0F13"
+          focusable={false}
+          height={24}
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
           style={
             [
               {
-                "transform": [
-                  {
-                    "rotate": "0deg",
-                  },
-                ],
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
+          vbHeight={24}
+          vbWidth={24}
+          width={24}
         >
           <RNSVGGroup
             fill={

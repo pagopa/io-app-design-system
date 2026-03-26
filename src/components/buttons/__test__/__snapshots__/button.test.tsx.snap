@@ -191,7 +191,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="14"
         numberOfLines={1}
         style={
           [
@@ -414,7 +413,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="17"
         numberOfLines={1}
         style={
           [
@@ -635,7 +633,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="11"
         numberOfLines={1}
         style={
           [
@@ -781,7 +778,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       meetOrSlice={0}
       minX={0}
       minY={0}
-      nativeID="20"
       style={
         [
           {
@@ -951,7 +947,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       meetOrSlice={0}
       minX={0}
       minY={0}
-      nativeID="22"
       style={
         [
           {
@@ -1352,7 +1347,6 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="5"
         numberOfLines={1}
         style={
           [
@@ -1575,7 +1569,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="8"
         numberOfLines={1}
         style={
           [
@@ -1796,7 +1789,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           ]
         }
         maxFontSizeMultiplier={1.5}
-        nativeID="2"
         numberOfLines={1}
         style={
           [

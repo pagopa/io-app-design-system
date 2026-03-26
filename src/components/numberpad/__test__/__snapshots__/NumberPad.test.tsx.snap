@@ -1193,7 +1193,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               meetOrSlice={0}
               minX={0}
               minY={0}
-              nativeID="10"
               style={
                 [
                   {
@@ -1477,7 +1476,6 @@ exports[`NumberPad Should match the snapshot 1`] = `
               meetOrSlice={0}
               minX={0}
               minY={0}
-              nativeID="13"
               style={
                 [
                   {
