@@ -28,7 +28,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { scheduleOnRN } from "react-native-worklets";
 import { useIOTheme } from "../../context";
 import {
   IOColors,

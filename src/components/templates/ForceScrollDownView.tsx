@@ -16,7 +16,6 @@ import Animated, {
   useSharedValue,
   withSpring
 } from "react-native-reanimated";
-import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scheduleOnRN, scheduleOnUI } from "react-native-worklets";
 import { IOSpringValues, IOVisualCostants } from "../../core";
