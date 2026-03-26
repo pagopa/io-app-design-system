@@ -96,10 +96,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         ]
       }
     >
-      <Text
-        allowFontScaling={true}
-        dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.5}
+      <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
         style={
           [
             {},
@@ -122,62 +146,39 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
           {
             "value": {},
           }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          }
-        }
-        jestInlineStyle={{}}
-        nativeID="1"
-        style={
-          [
+        >
+          Patente di guida
+        </Text>
+        <View
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          ]
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color="#0E0F13"
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
           <RNSVGGroup
             fill={
@@ -229,7 +230,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
         },
       ]
     }
-    nativeID="2"
     style={
       [
         {
@@ -318,7 +318,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
               },
             ]
           }
-          nativeID="3"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -355,7 +354,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
               }
             }
             jestInlineStyle={{}}
-            nativeID="4"
             style={
               [
                 {
@@ -518,7 +516,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                         },
                       ]
                     }
-                    nativeID="5"
                     style={
                       [
                         {
@@ -590,7 +587,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
                         <RNSVGPath
                           d="m7 12 4 4 7-7"
                           fill={null}
-                          onLayout={[Function]}
+                          onSvgLayout={[Function]}
                           propList={
                             [
                               "fill",
@@ -753,10 +750,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
         ]
       }
     >
-      <Text
-        allowFontScaling={true}
-        dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.5}
+      <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
         style={
           [
             {},
@@ -779,62 +800,39 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
           {
             "value": {},
           }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          }
-        }
-        jestInlineStyle={{}}
-        nativeID="17"
-        style={
-          [
+        >
+          Patente di guida
+        </Text>
+        <View
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          ]
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color="#0E0F13"
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
           <RNSVGGroup
             fill={
@@ -886,7 +884,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
         },
       ]
     }
-    nativeID="18"
     style={
       [
         {
@@ -915,7 +912,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
       }
     >
       <View
-        accessibilityLabel="Nome e cognome; "
+        accessibilityLabel="Nome e cognome"
         accessibilityRole="image"
         accessible={true}
         style={
@@ -948,7 +945,8 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
             }
           >
             <View
-              accessible={true}
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
               style={
                 {
                   "flexDirection": "column-reverse",
@@ -1095,10 +1093,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         ]
       }
     >
-      <Text
-        allowFontScaling={true}
-        dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.5}
+      <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
         style={
           [
             {},
@@ -1121,62 +1143,39 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
           {
             "value": {},
           }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          }
-        }
-        jestInlineStyle={{}}
-        nativeID="8"
-        style={
-          [
+        >
+          Patente di guida
+        </Text>
+        <View
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          ]
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color="#0E0F13"
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
           <RNSVGGroup
             fill={
@@ -1228,7 +1227,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
         },
       ]
     }
-    nativeID="9"
     style={
       [
         {
@@ -1317,7 +1315,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
               },
             ]
           }
-          nativeID="10"
           needsOffscreenAlphaCompositing={true}
           style={
             [
@@ -1354,7 +1351,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
               }
             }
             jestInlineStyle={{}}
-            nativeID="11"
             style={
               [
                 {
@@ -1517,7 +1513,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
                         },
                       ]
                     }
-                    nativeID="12"
                     style={
                       [
                         {
@@ -1681,10 +1676,34 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
         ]
       }
     >
-      <Text
-        allowFontScaling={true}
-        dynamicTypeRamp="headline"
-        maxFontSizeMultiplier={1.5}
+      <View
+        collapsable={false}
+        jestAnimatedProps={
+          {
+            "value": {},
+          }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {
+              "borderBottomLeftRadius": 7,
+              "borderBottomRightRadius": 7,
+              "borderTopLeftRadius": 7,
+              "borderTopRightRadius": 7,
+              "overflow": "hidden",
+            },
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "padding": 16,
+            },
+          ]
+        }
         style={
           [
             {},
@@ -1707,62 +1726,39 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
           {
             "value": {},
           }
-        }
-        jestAnimatedStyle={
-          {
-            "value": {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          }
-        }
-        jestInlineStyle={{}}
-        nativeID="14"
-        style={
-          [
+        >
+          Patente di guida
+        </Text>
+        <View
+          collapsable={false}
+          jestAnimatedProps={
             {
-              "transform": [
-                {
-                  "rotate": "0deg",
-                },
-              ],
-            },
-          ]
-        }
-      >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          accessibilityLabel=""
-          accessible={false}
-          align="xMidYMid"
-          bbHeight={24}
-          bbWidth={24}
-          color="#0E0F13"
-          focusable={false}
-          height={24}
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+              "value": {},
+            }
+          }
+          jestAnimatedStyle={
+            {
+              "value": {
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
+              },
+            }
+          }
+          jestInlineStyle={{}}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              {
-                "flex": 0,
-                "height": 24,
-                "width": 24,
+                "transform": [
+                  {
+                    "rotate": "0deg",
+                  },
+                ],
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={24}
         >
           <RNSVGGroup
             fill={
@@ -1814,7 +1810,6 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
         },
       ]
     }
-    nativeID="15"
     style={
       [
         {
@@ -1843,7 +1838,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
       }
     >
       <View
-        accessibilityLabel="Nome e cognome; Mario Rossi"
+        accessibilityLabel="Mario Rossi; Nome e cognome"
         accessibilityRole="text"
         accessible={true}
         style={
@@ -1876,7 +1871,8 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             }
           >
             <View
-              accessible={true}
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
               style={
                 {
                   "flexDirection": "column-reverse",

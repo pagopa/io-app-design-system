@@ -1,4 +1,4 @@
-import React from "react";
+import { useMemo } from "react";
 import { FlexStyle, Image, ImageProps, StyleSheet } from "react-native";
 
 type IOAspectRatioScale = "1:1" | "4:3" | "16:9" | "3:4" | "21:9";
@@ -36,7 +36,7 @@ export const IOImage = ({
   alt,
   aspectRatio = "1:1"
 }: IOImageProps) => {
-  const aspectRatioStyle: Pick<FlexStyle, "aspectRatio"> = React.useMemo(
+  const aspectRatioStyle: Pick<FlexStyle, "aspectRatio"> = useMemo(
     () => ({
       aspectRatio: IOAspectRatioScaleMap[aspectRatio]
     }),

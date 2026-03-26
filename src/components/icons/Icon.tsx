@@ -1,9 +1,8 @@
-import React from "react";
 import { ColorValue } from "react-native";
 import Animated from "react-native-reanimated";
+import { Component } from "react";
 import { IOColors } from "../../core/IOColors";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
-
 /* Icons */
 import IconAbacus from "./svg/IconAbacus";
 import IconAccessibility from "./svg/IconAccessibility";
@@ -152,9 +151,11 @@ import IconOk from "./svg/IconOk";
 import IconOption from "./svg/IconOption";
 import IconPEC from "./svg/IconPEC";
 import IconPSP from "./svg/IconPSP";
+import IconPause from "./svg/IconPause";
 import IconPhone from "./svg/IconPhone";
 import IconPinOff from "./svg/IconPinOff";
 import IconPinOn from "./svg/IconPinOn";
+import IconPlay from "./svg/IconPlay";
 import IconPrint from "./svg/IconPrint";
 import IconProductIOApp from "./svg/IconProductIOApp";
 import IconProductIOAppBlueBg from "./svg/IconProductIOAppBlueBg";
@@ -239,6 +240,8 @@ export const IOIcons = {
   eyeHide: IconEyeHide,
   pinOff: IconPinOff,
   pinOn: IconPinOn,
+  play: IconPlay,
+  pause: IconPause,
   emojiSad: IconEmojiSad,
   emojiHappy: IconEmojiHappy,
   phone: IconPhone,
@@ -512,7 +515,7 @@ export const AnimatedIcon = ({
 /* Make <Icon> component animatable. Reanimated supports class components only,
 so we need to convert <Icon> into a class component first.
 https://github.com/software-mansion/react-native-reanimated/discussions/1527  */
-class AnimatedIconClassComponent extends React.Component<IOAnimatedIconsProps> {
+class AnimatedIconClassComponent extends Component<IOAnimatedIconsProps> {
   constructor(props: IOAnimatedIconsProps) {
     super(props);
   }

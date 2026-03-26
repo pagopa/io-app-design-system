@@ -18,7 +18,7 @@ import {
   VSpacer,
   hexToRgba
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+import { Fragment } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import {
@@ -133,10 +133,10 @@ const renderAvatar = () => (
       >
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <Avatar size="small" logoUri={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
-            </React.Fragment>
+            </Fragment>
           ))}
         </HStack>
       </ScrollView>
@@ -149,10 +149,10 @@ const renderAvatar = () => (
       >
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <Avatar size="medium" logoUri={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
-            </React.Fragment>
+            </Fragment>
           ))}
         </HStack>
       </ScrollView>
@@ -165,10 +165,10 @@ const renderAvatar = () => (
       >
         <HStack space={8}>
           {organizationsURIs.map(({ imageSource }, i) => (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <AvatarSearch source={imageSource} />
               {i === organizationsURIs.length - 1 && <HSpacer size={32} />}
-            </React.Fragment>
+            </Fragment>
           ))}
         </HStack>
       </ScrollView>

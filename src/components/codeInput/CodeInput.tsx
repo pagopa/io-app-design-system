@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorValue, StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIOThemeContext } from "../../context";

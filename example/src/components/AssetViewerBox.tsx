@@ -1,5 +1,5 @@
-import { IOColors, BodySmall, hexToRgba } from "@pagopa/io-app-design-system";
-import React from "react";
+import { BodySmall, hexToRgba, IOColors } from "@pagopa/io-app-design-system";
+import { ReactNode } from "react";
 import {
   ImageBackground,
   ImageSourcePropType,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 
 type AssetViewerBoxProps = {
   name: string;
-  image: React.ReactNode;
+  image: ReactNode;
   /* "bleed" shows the pictogram without padding
   "hasBleed" shows the pictgram label on top right */
   type?: "vector" | "raster" | "bleed" | "hasBleed";

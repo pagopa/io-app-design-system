@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { GestureResponderEvent, Pressable, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { IOListItemStyles, IOListItemVisualParams } from "../../core";
@@ -11,7 +11,7 @@ import { BodySmall, H6 } from "../typography";
 
 export type ListItemInfoCopy = WithTestID<{
   label: string;
-  value: string | React.ReactNode;
+  value: string | ReactNode;
   numberOfLines?: number;
   onPress: (event: GestureResponderEvent) => void;
   icon?: IOIcons;
@@ -38,18 +38,10 @@ export const ListItemInfoCopy = ({
   const { dynamicFontScale, spacingScaleMultiplier, hugeFontEnabled } =
     useIOFontDynamicScale();
 
-  const componentValueToAccessibility = useMemo(
-    () => (typeof value === "string" ? value : ""),
-    [value]
-  );
+  const componentValueToAccessibility = typeof value === "string" ? value : "";
 
-  const listItemAccessibilityLabel = useMemo(
-    () =>
-      accessibilityLabel
-        ? accessibilityLabel
-        : `${label}; ${componentValueToAccessibility}`,
-    [label, componentValueToAccessibility, accessibilityLabel]
-  );
+  const listItemAccessibilityLabel =
+    accessibilityLabel || `${label}; ${componentValueToAccessibility}`;
 
   const foregroundColor = theme["interactiveElem-default"];
 
@@ -118,5 +110,3 @@ export const ListItemInfoCopy = ({
     </Pressable>
   );
 };
-
-export default ListItemInfoCopy;

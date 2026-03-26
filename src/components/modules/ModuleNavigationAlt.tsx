@@ -1,4 +1,4 @@
-import React from "react";
+import { isValidElement, ReactElement } from "react";
 import {
   Image,
   ImageSourcePropType,
@@ -36,10 +36,7 @@ type ImageProps =
   | { icon: IOIcons; image?: never }
   | {
       icon?: never;
-      image:
-        | ImageURISource
-        | ImageSourcePropType
-        | React.ReactElement<SvgProps>;
+      image: ImageURISource | ImageSourcePropType | ReactElement<SvgProps>;
     };
 
 type BaseProps = {
@@ -94,7 +91,7 @@ export const ModuleNavigationAlt = (
       return null;
     }
 
-    if (React.isValidElement(image)) {
+    if (isValidElement(image)) {
       return image;
     } else {
       return (

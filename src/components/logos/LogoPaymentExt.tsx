@@ -1,5 +1,3 @@
-import React from "react";
-
 /* Logos */
 import LogoPaymentExtAmex from "./svg/LogoPaymentExtAmex";
 import LogoPaymentExtApplePay from "./svg/LogoPaymentExtApplePay";

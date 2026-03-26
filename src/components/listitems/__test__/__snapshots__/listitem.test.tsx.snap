@@ -60,7 +60,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
         },
       ]
     }
-    nativeID="23"
     style={
       [
         {
@@ -104,7 +103,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemAction Snapsh
           },
         ]
       }
-      nativeID="24"
       style={
         [
           {
@@ -192,7 +190,8 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfo Snapshot
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
@@ -306,7 +305,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         },
       ]
     }
-    nativeID="17"
     style={
       [
         {
@@ -350,7 +348,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
           },
         ]
       }
-      nativeID="18"
       style={
         [
           {
@@ -540,7 +537,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         },
       ]
     }
-    nativeID="19"
     style={
       [
         {
@@ -581,7 +577,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
           },
         ]
       }
-      nativeID="20"
       style={
         [
           {
@@ -750,7 +745,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         },
       ]
     }
-    nativeID="21"
     style={
       [
         {
@@ -794,7 +788,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
           },
         ]
       }
-      nativeID="22"
       style={
         [
           {
@@ -1020,7 +1013,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         },
       ]
     }
-    nativeID="27"
     style={
       [
         {
@@ -1064,7 +1056,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           },
         ]
       }
-      nativeID="28"
       style={
         [
           {
@@ -1325,7 +1316,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
               ]
             }
-            nativeID="29"
             style={
               [
                 {
@@ -1390,7 +1380,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
@@ -1482,7 +1472,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
         },
       ]
     }
-    nativeID="31"
     style={
       [
         {
@@ -1526,7 +1515,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
           },
         ]
       }
-      nativeID="32"
       style={
         [
           {
@@ -1702,7 +1690,6 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
                 },
               ]
             }
-            nativeID="33"
             style={
               [
                 {
@@ -1770,15 +1757,56 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1794,28 +1822,110 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1828,15 +1938,56 @@ exports[`Test List Item Components - Experimental Enabled  ListItemTransaction S
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -1901,7 +2052,6 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
         },
       ]
     }
-    nativeID="25"
     style={
       [
         {
@@ -1945,7 +2095,6 @@ exports[`Test List Item Components - Experimental Enabled  PressableListItemsBas
           },
         ]
       }
-      nativeID="26"
       style={
         [
           {
@@ -2030,7 +2179,6 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
         },
       ]
     }
-    nativeID="6"
     style={
       [
         {
@@ -2074,7 +2222,6 @@ exports[`Test List Item Components ListItemAction Snapshot 1`] = `
           },
         ]
       }
-      nativeID="7"
       style={
         [
           {
@@ -2162,7 +2309,8 @@ exports[`Test List Item Components ListItemInfo Snapshot 1`] = `
       }
     >
       <View
-        accessible={true}
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
         style={
           {
             "flexDirection": "column",
@@ -2276,7 +2424,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         },
       ]
     }
-    nativeID="0"
     style={
       [
         {
@@ -2320,7 +2467,6 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
           },
         ]
       }
-      nativeID="1"
       style={
         [
           {
@@ -2510,7 +2656,6 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         },
       ]
     }
-    nativeID="2"
     style={
       [
         {
@@ -2551,7 +2696,6 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
           },
         ]
       }
-      nativeID="3"
       style={
         [
           {
@@ -2720,7 +2864,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         },
       ]
     }
-    nativeID="4"
     style={
       [
         {
@@ -2764,7 +2907,6 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
           },
         ]
       }
-      nativeID="5"
       style={
         [
           {
@@ -2990,7 +3132,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
         },
       ]
     }
-    nativeID="10"
     style={
       [
         {
@@ -3034,7 +3175,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
           },
         ]
       }
-      nativeID="11"
       style={
         [
           {
@@ -3295,7 +3435,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 },
               ]
             }
-            nativeID="12"
             style={
               [
                 {
@@ -3360,7 +3499,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
                 <RNSVGPath
                   d="m7 12 4 4 7-7"
                   fill={null}
-                  onLayout={[Function]}
+                  onSvgLayout={[Function]}
                   propList={
                     [
                       "fill",
@@ -3452,7 +3591,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
         },
       ]
     }
-    nativeID="14"
     style={
       [
         {
@@ -3496,7 +3634,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
           },
         ]
       }
-      nativeID="15"
       style={
         [
           {
@@ -3672,7 +3809,6 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 2`] = `
                 },
               ]
             }
-            nativeID="16"
             style={
               [
                 {
@@ -3740,15 +3876,56 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 44,
-            "opacity": 0.75,
-            "width": 44,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 44,
+              "width": 44,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3764,28 +3941,110 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 62,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 62,
+            },
+            {},
+          ]
         }
       />
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 16,
-            "opacity": 0.75,
-            "width": 107,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 16,
+              "width": 107,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3798,15 +4057,56 @@ exports[`Test List Item Components ListItemTransaction Snapshot 1`] = `
     >
       <View
         collapsable={false}
-        style={
+        jestAnimatedProps={
           {
-            "backgroundColor": "#E8EBF1",
-            "borderCurve": "continuous",
-            "borderRadius": 8,
-            "height": 24,
-            "opacity": 0.75,
-            "width": 70,
+            "value": {},
           }
+        }
+        jestAnimatedStyle={
+          {
+            "value": {},
+          }
+        }
+        jestInlineStyle={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {
+              "animationDuration": "1250ms",
+              "animationIterationCount": "infinite",
+              "animationName": {
+                "0%, 100%": {
+                  "opacity": 0.75,
+                },
+                "50%": {
+                  "opacity": 0.35,
+                },
+              },
+              "animationTimingFunction": CubicBezierEasing {
+                "x1": 0.37,
+                "x2": 0.63,
+                "y1": 0,
+                "y2": 1,
+              },
+            },
+          ]
+        }
+        style={
+          [
+            {
+              "backgroundColor": "#E8EBF1",
+              "borderCurve": "continuous",
+              "borderRadius": 8,
+              "height": 24,
+              "width": 70,
+            },
+            {},
+          ]
         }
       />
     </View>
@@ -3871,7 +4171,6 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
         },
       ]
     }
-    nativeID="8"
     style={
       [
         {
@@ -3915,7 +4214,6 @@ exports[`Test List Item Components PressableListItemsBase Snapshot 1`] = `
           },
         ]
       }
-      nativeID="9"
       style={
         [
           {

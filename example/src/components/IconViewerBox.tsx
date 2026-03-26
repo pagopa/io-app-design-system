@@ -4,7 +4,7 @@ import {
   IOText,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
+import { ReactNode } from "react";
 import { StyleSheet, View } from "react-native";
 
 export const iconItemGutter = 8;
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
 type IconViewerBoxProps = {
   name: string;
-  image: React.ReactNode;
+  image: ReactNode;
   size?: "small" | "medium" | "large" | undefined;
   withDot?: boolean;
 };

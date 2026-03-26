@@ -1,4 +1,3 @@
-import * as React from "react";
 import { IOColors } from "../../core";
 import { useIOFontDynamicScale } from "../../utils/accessibility";
 import { findFirstCaseInsensitive } from "../../utils/object";
@@ -12,17 +11,13 @@ import {
   LogoPaymentExt
 } from "../logos";
 
-export type LogoPaymentWithFallback = {
+type LogoPaymentWithFallbackProps = {
   brand?: string;
   fallbackIconColor?: IOColors;
   size?: IOIconSizeScale;
   isExtended?: boolean;
 };
-export type LogoPaymentExtOrDefaultIconProps = {
-  cardIcon?: IOLogoPaymentExtType;
-  fallbackIconColor?: IOColors;
-  size?: IOIconSizeScale;
-};
+
 /**
  * This component renders either
  * - a LogoPayment/LogoPaymentExt component
@@ -38,7 +33,7 @@ export const LogoPaymentWithFallback = ({
   fallbackIconColor = "grey-700",
   isExtended = false,
   size = isExtended ? 48 : 24
-}: LogoPaymentWithFallback) => {
+}: LogoPaymentWithFallbackProps) => {
   const { dynamicFontScale } = useIOFontDynamicScale();
   const logos = isExtended ? IOPaymentExtLogos : IOPaymentLogos;
 

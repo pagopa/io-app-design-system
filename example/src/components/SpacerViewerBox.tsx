@@ -5,7 +5,6 @@ import {
   VSpacer,
   useIOTheme
 } from "@pagopa/io-app-design-system";
-import React from "react";
 import { Text, View } from "react-native";
 
 type SpacerViewerBoxProps = {

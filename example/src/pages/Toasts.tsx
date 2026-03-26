@@ -1,5 +1,4 @@
 import { IOButton, VSpacer, useIOToast } from "@pagopa/io-app-design-system";
-import React from "react";
 import { Screen } from "../components/Screen";
 
 export const Toasts = () => {

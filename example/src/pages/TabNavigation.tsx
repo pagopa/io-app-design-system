@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable arrow-body-style */
-import * as React from "react";
 
 import {
   BodyMonospace,
@@ -13,6 +12,7 @@ import {
   TabNavigation,
   VSpacer
 } from "@pagopa/io-app-design-system";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { ComponentViewerBox } from "../components/ComponentViewerBox";
 import { NoMarginScreen } from "../components/Screen";
@@ -323,7 +323,7 @@ export const TabNavigationScreen = () => {
 };
 
 const TabNavigationWithState = (props: TabNavigation) => {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = useState(0);
 
   return (
     <TabNavigation {...props} selectedIndex={index} onItemPress={setIndex}>

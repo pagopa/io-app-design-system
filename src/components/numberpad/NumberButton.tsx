@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import Animated, {
@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion
 } from "react-native-reanimated";
-import { useIONewTypeface, useIOTheme } from "../../context";
+import { useIOTheme } from "../../context";
 import { hexToRgba, IOColors } from "../../core";
 import { useScaleAnimation } from "../../hooks";
 import { IOText } from "../typography";
@@ -50,7 +50,6 @@ export const NumberButton = memo(
     const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
       useScaleAnimation("medium");
     const reducedMotion = useReducedMotion();
-    const { newTypefaceEnabled } = useIONewTypeface();
 
     const colorMap: Record<NumberButtonVariantType, ColorMapVariant> = useMemo(
       () => ({
@@ -103,7 +102,6 @@ export const NumberButton = memo(
         >
           <IOText
             size={22}
-            font={newTypefaceEnabled ? "Titillio" : "TitilliumSansPro"}
             weight="Semibold"
             color={colorMap[variant].foreground}
             style={{

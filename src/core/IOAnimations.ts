@@ -1,6 +1,18 @@
+import {
+  cubicBezier,
+  type CSSAnimationTimingFunction
+} from "react-native-reanimated";
+
 /**
  * A collection of animation styles used for interactive elements within IO App.
  */
+
+export const IOEasingCurves = {
+  easeInOutSine: cubicBezier(0.37, 0, 0.63, 1),
+  easeInOutCubic: cubicBezier(0.65, 0, 0.35, 1)
+} satisfies Record<string, CSSAnimationTimingFunction>;
+
+export type IOEasingCurves = keyof typeof IOEasingCurves;
 
 export const IOSpringValues = {
   /* Used by Reanimated package */

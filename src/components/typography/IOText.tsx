@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, useMemo } from "react";
+import { ComponentProps, forwardRef, useMemo } from "react";
 import {
   AccessibilityRole,
   ColorValue,
@@ -8,8 +8,8 @@ import {
   View
 } from "react-native";
 import Animated from "react-native-reanimated";
+import { useIONewTypeface } from "../../context";
 import { IOColors } from "../../core";
-import { useIOTheme } from "../../context";
 import { useBoldTextEnabled } from "../../utils/accessibility";
 import {
   IOFontFamily,
@@ -74,11 +74,11 @@ export type TypographicStyleAsLinkProps =
  * @param args the args of the function {@link makeFontStyleObject}
  */
 const calculateTextStyle = (
-  color: IOColors,
+  color?: IOColors,
   ...args: Parameters<typeof makeFontStyleObject>
 ) => ({
   ...makeFontStyleObject(...args),
-  color: IOColors[color]
+  color: color ? IOColors[color] : undefined
 });
 
 /**
@@ -106,21 +106,24 @@ export const IOText = forwardRef<View, IOTextProps>(
     },
     ref
   ) => {
-    const theme = useIOTheme();
     const boldEnabled = useBoldTextEnabled();
+    const { newTypefaceEnabled } = useIONewTypeface();
+
+    const computedFont =
+      font || (newTypefaceEnabled ? "Titillio" : "TitilliumSansPro");
 
     const computedStyleObj = useMemo(
       () =>
         calculateTextStyle(
-          color ?? theme["textBody-default"],
+          color,
           size,
-          font,
+          computedFont,
           lineHeight,
           weight,
           fontStyle,
           boldEnabled
         ),
-      [color, theme, size, font, lineHeight, weight, fontStyle, boldEnabled]
+      [color, size, computedFont, lineHeight, weight, fontStyle, boldEnabled]
     );
 
     /* In some cases, for example when we use color transitions with

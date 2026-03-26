@@ -1,10 +1,9 @@
-import * as React from "react";
-import { useLayoutEffect } from "react";
+import { createRef, isValidElement, ReactNode, useLayoutEffect } from "react";
 import {
   AccessibilityInfo,
+  findNodeHandle,
   StyleSheet,
-  View,
-  findNodeHandle
+  View
 } from "react-native";
 import { IOColors, IOVisualCostants } from "../../core";
 import { IconButton } from "../buttons";
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  title: string | React.ReactNode;
+  title: string | ReactNode;
   onClose: () => void;
   closeAccessibilityLabel: string;
 };
@@ -40,7 +39,7 @@ export const ModalBSHeader = ({
   onClose,
   closeAccessibilityLabel
 }: Props) => {
-  const headerRef = React.createRef<View>();
+  const headerRef = createRef<View>();
 
   useLayoutEffect(() => {
     const reactNode = findNodeHandle(headerRef.current);
@@ -52,7 +51,7 @@ export const ModalBSHeader = ({
 
   return (
     <View style={styles.container} ref={headerRef}>
-      {React.isValidElement(title) ? (
+      {isValidElement(title) ? (
         title
       ) : (
         <View

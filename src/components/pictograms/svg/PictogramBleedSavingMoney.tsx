@@ -1,4 +1,3 @@
-import * as React from "react";
 import Svg, { G, Path, Rect, Defs, ClipPath } from "react-native-svg";
 import { SVGPictogramProps } from "../types";
 const PictogramSavingMoney = ({

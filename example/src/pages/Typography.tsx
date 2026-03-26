@@ -22,7 +22,7 @@ import {
   VSpacer,
   VStack
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { Alert, StyleSheet, View } from "react-native";
 import { Screen } from "../components/Screen";
 

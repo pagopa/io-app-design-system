@@ -4,7 +4,7 @@ import {
   IOThemeContextProvider,
   ToastProvider
 } from "@pagopa/io-app-design-system";
-import * as React from "react";
+
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBannerProvider } from "./components/StatusBannerProvider";

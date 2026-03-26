@@ -5,12 +5,12 @@ import {
   VStack
 } from "@pagopa/io-app-design-system";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import { useState } from "react";
 import { Alert, Platform, ScrollView } from "react-native";
 
 export const SearchCustom = () => {
   const navigation = useNavigation();
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <ScrollView

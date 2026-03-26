@@ -89,7 +89,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
         {},
       ]
     }
-    nativeID="12"
     style={
       [
         {
@@ -148,7 +147,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
           false,
         ]
       }
-      nativeID="13"
       style={
         [
           {
@@ -199,7 +197,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonLink Snapshot 1`] 
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -311,7 +309,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
         {},
       ]
     }
-    nativeID="15"
     style={
       [
         {
@@ -373,7 +370,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
           false,
         ]
       }
-      nativeID="16"
       style={
         [
           {
@@ -424,7 +420,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonOutline Snapshot 1
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -535,7 +531,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
         {},
       ]
     }
-    nativeID="9"
     style={
       [
         {
@@ -596,7 +591,6 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           false,
         ]
       }
-      nativeID="10"
       style={
         [
           {
@@ -647,7 +641,7 @@ exports[`Test Buttons Components - Experimental Enabled ButtonSolid Snapshot 1`]
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -740,7 +734,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
         },
       ]
     }
-    nativeID="19"
     style={
       [
         {
@@ -907,7 +900,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
         },
       ]
     }
-    nativeID="21"
     style={
       [
         {
@@ -1081,7 +1073,6 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
         },
       ]
     }
-    nativeID="18"
     style={
       [
         {
@@ -1259,7 +1250,6 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
         {},
       ]
     }
-    nativeID="3"
     style={
       [
         {
@@ -1318,7 +1308,6 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           false,
         ]
       }
-      nativeID="4"
       style={
         [
           {
@@ -1369,7 +1358,7 @@ exports[`Test Buttons Components ButtonLink Snapshot 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -1481,7 +1470,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
         {},
       ]
     }
-    nativeID="6"
     style={
       [
         {
@@ -1543,7 +1531,6 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           false,
         ]
       }
-      nativeID="7"
       style={
         [
           {
@@ -1594,7 +1581,7 @@ exports[`Test Buttons Components ButtonOutline Snapshot 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -1705,7 +1692,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
         {},
       ]
     }
-    nativeID="0"
     style={
       [
         {
@@ -1766,7 +1752,6 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           false,
         ]
       }
-      nativeID="1"
       style={
         [
           {
@@ -1817,7 +1802,7 @@ exports[`Test Buttons Components ButtonSolid Snapshot 1`] = `
           [
             {},
             {
-              "color": "#0E0F13",
+              "color": undefined,
               "fontFamily": "Titillio",
               "fontSize": 16,
               "fontStyle": "normal",
