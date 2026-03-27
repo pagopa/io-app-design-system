@@ -29,17 +29,21 @@ const styles = StyleSheet.create({
   }
 });
 
-const SecretValue = () => (
-  <IOText
-    font="FiraCode"
-    weight="Semibold"
-    size={22}
-    lineHeight={33}
-    accessible={false}
-  >
-    {"•"}
-  </IOText>
-);
+const SecretValue = () => {
+  const theme = useIOTheme();
+  return (
+    <IOText
+      font="FiraCode"
+      weight="Semibold"
+      size={22}
+      lineHeight={33}
+      color={theme["textHeading-default"]}
+      accessible={false}
+    >
+      {"•"}
+    </IOText>
+  );
+};
 
 export const BoxedInput = memo(({ status, value, secret }: Props) => {
   const theme = useIOTheme();
