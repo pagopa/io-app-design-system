@@ -778,6 +778,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButton Snapshot 1`] 
       meetOrSlice={0}
       minX={0}
       minY={0}
+      pointerEvents="none"
       style={
         [
           {
@@ -947,6 +948,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonContained Snap
       meetOrSlice={0}
       minX={0}
       minY={0}
+      pointerEvents="none"
       style={
         [
           {
@@ -1109,6 +1111,7 @@ exports[`Test Buttons Components - Experimental Enabled IconButtonSolid Snapshot
       meetOrSlice={0}
       minX={0}
       minY={0}
+      pointerEvents="none"
       style={
         [
           {

@@ -159,6 +159,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (controlled) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -810,6 +811,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (custom component) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -1150,6 +1152,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (uncontrolled) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -1730,6 +1733,7 @@ exports[`ClaimsSelector ClaimsSelector Snapshot (unselectable items) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {

@@ -431,6 +431,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemInfoCopy Snap
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -637,6 +638,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNav Snapshot 
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -822,6 +824,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -907,6 +910,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemNavAlert Snap
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -1128,6 +1132,7 @@ exports[`Test List Item Components - Experimental Enabled  ListItemRadioWithAmou
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -2550,6 +2555,7 @@ exports[`Test List Item Components ListItemInfoCopy Snapshot 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -2756,6 +2762,7 @@ exports[`Test List Item Components ListItemNav Snapshot 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -2941,6 +2948,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -3026,6 +3034,7 @@ exports[`Test List Item Components ListItemNavAlert Snapshot 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -3247,6 +3256,7 @@ exports[`Test List Item Components ListItemRadioWithAmount Snapshot 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
