@@ -26,8 +26,8 @@ import Animated, {
   withSpring,
   withTiming
 } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scheduleOnRN } from "react-native-worklets";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useIOTheme } from "../../context";
 import {
   IOColors,
