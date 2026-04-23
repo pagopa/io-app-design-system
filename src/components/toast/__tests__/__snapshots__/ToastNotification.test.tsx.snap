@@ -67,6 +67,7 @@ exports[`Test ToastNotification component - Experimental Enabled should match sn
     meetOrSlice={0}
     minX={0}
     minY={0}
+    pointerEvents="none"
     style={
       [
         {
@@ -425,6 +426,7 @@ exports[`Test ToastNotification component should match snapshot for props ({ mes
     meetOrSlice={0}
     minX={0}
     minY={0}
+    pointerEvents="none"
     style={
       [
         {
