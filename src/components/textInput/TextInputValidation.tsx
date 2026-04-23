@@ -1,14 +1,15 @@
 import {
   ComponentProps,
+  ComponentRef,
   forwardRef,
   useCallback,
   useImperativeHandle,
   useMemo,
+  useRef,
   useState
 } from "react";
 import { AccessibilityInfo, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { TextInputValidationRefProps } from "../../utils/types";
 import { useIOTheme } from "../../context";
 import { IOColors } from "../../core/IOColors";
 import {
@@ -16,6 +17,7 @@ import {
   exitTransitionInputIcon
 } from "../../core/IOTransitions";
 import { triggerHaptic } from "../../functions";
+import { TextInputValidationRefProps } from "../../utils/types";
 import { IOIconSizeScale, IOIcons, Icon } from "../icons";
 import { TextInputBase } from "./TextInputBase";
 
@@ -109,9 +111,12 @@ export const TextInputValidation = forwardRef<
       }
     }, [value, errorMessage, onValidate, getErrorFeedback]);
 
-    // Expose the validateInput function to the parent component
+    const inputRef = useRef<ComponentRef<typeof TextInputBase>>(null);
+
     useImperativeHandle(ref, () => ({
-      validateInput
+      validateInput,
+      focus: () => inputRef.current?.focus?.(),
+      blur: () => inputRef.current?.blur?.()
     }));
 
     const onBlurHandler = useCallback(() => {
@@ -175,6 +180,7 @@ export const TextInputValidation = forwardRef<
     return (
       <TextInputBase
         {...props}
+        ref={inputRef}
         value={value}
         status={isValid === false ? "error" : undefined}
         bottomMessage={labelError}
