@@ -1,4 +1,5 @@
-import { Pressable } from "react-native";
+import { Ref } from "react";
+import { Pressable, Text, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontWeight } from "../../utils/fonts";
 import {
@@ -8,7 +9,8 @@ import {
   TypographicStyleProps
 } from "./IOText";
 
-type LabelMiniProps = TypographicStyleProps & {
+type LabelMiniProps = Omit<TypographicStyleProps, "ref"> & {
+  ref?: Ref<View>;
   weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
@@ -47,6 +49,9 @@ export const LabelMini = ({
   };
 
   if (asLink) {
+    // TODO: If Pressable is replaced with `onPress` on IOText, ref would
+    // always point to a Text node. Both the Ref<View> override in the
+    // prop type and the cast in the non-link branch below can be removed.
     return (
       <Pressable
         onPress={onPress}
@@ -59,7 +64,7 @@ export const LabelMini = ({
   }
 
   return (
-    <IOText ref={ref} {...LabelMiniProps}>
+    <IOText ref={ref as unknown as Ref<Text>} {...LabelMiniProps}>
       {props.children}
     </IOText>
   );
