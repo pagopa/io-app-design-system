@@ -65,7 +65,7 @@ const MainScreen = (props: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setTheme(colorScheme === "unspecified" ? "light" : colorScheme);
+    setTheme(colorScheme);
   }, [colorScheme, setTheme]);
 
   // Configure native header search bar

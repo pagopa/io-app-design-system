@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable functional/immutable-data */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // "rnpm" is deprecated and support for it will be removed in next major version of the CLI.

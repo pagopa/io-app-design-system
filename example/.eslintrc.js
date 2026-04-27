@@ -22,8 +22,7 @@ module.exports = {
     "react-native",
     "react-hooks",
     "import",
-    "functional",
-    "@stylistic"
+    "functional"
   ],
   rules: {
     "react/react-in-jsx-scope": "off",
@@ -68,7 +67,7 @@ module.exports = {
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/dot-notation": "error",
-    "@stylistic/member-delimiter-style": [
+    "@typescript-eslint/member-delimiter-style": [
       "error",
       {
         multiline: {
@@ -87,7 +86,7 @@ module.exports = {
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     semi: "off",
-    "@stylistic/semi": ["error"],
+    "@typescript-eslint/semi": ["error"],
     "@typescript-eslint/unified-signatures": "error",
     "react/prop-types": "off",
     "react/display-name": "off",
@@ -111,20 +110,6 @@ module.exports = {
       files: ["**/*.test.*"],
       rules: {
         "@typescript-eslint/no-non-null-assertion": "off"
-      }
-    },
-    {
-      files: ["**/*.js", "**/*.config.js"],
-      parserOptions: {
-        project: null,
-      },
-      rules: {
-        "@typescript-eslint/await-thenable": "off",
-        "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/restrict-plus-operands": "off",
       }
     }
   ],
