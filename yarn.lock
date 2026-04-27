@@ -2563,7 +2563,7 @@ __metadata:
     svgo: ^3.0.2
     typescript: ^5.8.3
   peerDependencies:
-    react: "*"
+    react: ^19.0.0
     react-native: "*"
     react-native-easing-gradient: "*"
     react-native-gesture-handler: "*"
