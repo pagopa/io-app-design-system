@@ -1,5 +1,5 @@
 import { Ref } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontWeight } from "../../utils/fonts";
 import {
@@ -54,8 +54,8 @@ export const BodySmall = ({
 
   if (asLink && !avoidPressable) {
     // TODO: If Pressable is replaced with `onPress` on IOText, ref would
-    // always point to a Text node. Both the Ref<View> override in the
-    // prop type and the cast in the non-link branch below can be removed.
+    // always point to a Text node and the Ref<View> override in the prop
+    // type can be removed entirely.
     return (
       <Pressable
         onPress={onPress}
@@ -69,7 +69,6 @@ export const BodySmall = ({
 
   return (
     <IOText
-      ref={ref as unknown as Ref<Text>}
       {...BodySmallProps}
       onPress={asLink && avoidPressable ? onPress : undefined}
     >
