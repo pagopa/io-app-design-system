@@ -96,7 +96,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": ">=19",
+    "react": "^19.0.0",
     "react-native": "*",
     "react-native-easing-gradient": "*",
     "react-native-gesture-handler": "*",
