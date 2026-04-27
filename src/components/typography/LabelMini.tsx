@@ -1,5 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontWeight } from "../../utils/fonts";
 import {
@@ -16,56 +15,52 @@ type LabelMiniProps = TypographicStyleProps & {
 /**
  * `LabelMini` typographic style
  */
-export const LabelMini = forwardRef<View, LabelMiniProps>(
-  (
-    {
-      weight: customWeight,
-      color: customColor,
-      asLink,
-      accessibilityRole = "link",
-      textStyle: customTextStyle,
-      onPress,
-      ...props
-    },
-    ref?: ForwardedRef<View>
-  ) => {
-    const theme = useIOTheme();
+export const LabelMini = ({
+  ref,
+  weight: customWeight,
+  color: customColor,
+  asLink,
+  accessibilityRole = "link",
+  textStyle: customTextStyle,
+  onPress,
+  ...props
+}: LabelMiniProps) => {
+  const theme = useIOTheme();
 
-    const defaultColor = asLink
-      ? theme["interactiveElem-default"]
-      : theme["textBody-tertiary"];
+  const defaultColor = asLink
+    ? theme["interactiveElem-default"]
+    : theme["textBody-tertiary"];
 
-    const LabelMiniProps: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "footnote" /* iOS only */,
-      weight: customWeight || "Semibold",
-      size: 12,
-      lineHeight: 18,
-      color: customColor ?? defaultColor,
-      ...(asLink
-        ? {
-            accessibilityRole,
-            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
-          }
-        : {})
-    };
+  const LabelMiniProps: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "footnote" /* iOS only */,
+    weight: customWeight || "Semibold",
+    size: 12,
+    lineHeight: 18,
+    color: customColor ?? defaultColor,
+    ...(asLink
+      ? {
+          accessibilityRole,
+          textStyle: customTextStyle ?? { textDecorationLine: "underline" }
+        }
+      : {})
+  };
 
-    if (asLink) {
-      return (
-        <Pressable
-          onPress={onPress}
-          ref={ref}
-          accessibilityRole={accessibilityRole}
-        >
-          <IOText {...LabelMiniProps}>{props.children}</IOText>
-        </Pressable>
-      );
-    }
-
+  if (asLink) {
     return (
-      <IOText ref={ref} {...LabelMiniProps}>
-        {props.children}
-      </IOText>
+      <Pressable
+        onPress={onPress}
+        ref={ref}
+        accessibilityRole={accessibilityRole}
+      >
+        <IOText {...LabelMiniProps}>{props.children}</IOText>
+      </Pressable>
     );
   }
-);
+
+  return (
+    <IOText ref={ref} {...LabelMiniProps}>
+      {props.children}
+    </IOText>
+  );
+};

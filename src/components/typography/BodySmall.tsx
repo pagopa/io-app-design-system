@@ -1,5 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontWeight } from "../../utils/fonts";
 import {
@@ -19,61 +18,57 @@ export const bodySmallLineHeight = 21;
 /**
  * `BodySmall` typographic style
  */
-export const BodySmall = forwardRef<View, BodySmallProps>(
-  (
-    {
-      weight: customWeight,
-      color: customColor,
-      asLink,
-      avoidPressable,
-      accessibilityRole = "link",
-      textStyle: customTextStyle,
-      onPress,
-      ...props
-    },
-    ref?: ForwardedRef<View>
-  ) => {
-    const theme = useIOTheme();
+export const BodySmall = ({
+  ref,
+  weight: customWeight,
+  color: customColor,
+  asLink,
+  avoidPressable,
+  accessibilityRole = "link",
+  textStyle: customTextStyle,
+  onPress,
+  ...props
+}: BodySmallProps) => {
+  const theme = useIOTheme();
 
-    const defaultColor = asLink
-      ? theme["interactiveElem-default"]
-      : theme["textBody-tertiary"];
+  const defaultColor = asLink
+    ? theme["interactiveElem-default"]
+    : theme["textBody-tertiary"];
 
-    const BodySmallProps: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "footnote" /* iOS only */,
-      weight: customWeight ?? "Regular",
-      size: bodySmallFontSize,
-      lineHeight: bodySmallLineHeight,
-      color: customColor ?? defaultColor,
-      ...(asLink
-        ? {
-            accessibilityRole,
-            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
-          }
-        : {})
-    };
+  const BodySmallProps: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "footnote" /* iOS only */,
+    weight: customWeight ?? "Regular",
+    size: bodySmallFontSize,
+    lineHeight: bodySmallLineHeight,
+    color: customColor ?? defaultColor,
+    ...(asLink
+      ? {
+          accessibilityRole,
+          textStyle: customTextStyle ?? { textDecorationLine: "underline" }
+        }
+      : {})
+  };
 
-    if (asLink && !avoidPressable) {
-      return (
-        <Pressable
-          onPress={onPress}
-          ref={ref}
-          accessibilityRole={accessibilityRole}
-        >
-          <IOText {...BodySmallProps}>{props.children}</IOText>
-        </Pressable>
-      );
-    }
-
+  if (asLink && !avoidPressable) {
     return (
-      <IOText
+      <Pressable
+        onPress={onPress}
         ref={ref}
-        {...BodySmallProps}
-        onPress={asLink && avoidPressable ? onPress : undefined}
+        accessibilityRole={accessibilityRole}
       >
-        {props.children}
-      </IOText>
+        <IOText {...BodySmallProps}>{props.children}</IOText>
+      </Pressable>
     );
   }
-);
+
+  return (
+    <IOText
+      ref={ref}
+      {...BodySmallProps}
+      onPress={asLink && avoidPressable ? onPress : undefined}
+    >
+      {props.children}
+    </IOText>
+  );
+};

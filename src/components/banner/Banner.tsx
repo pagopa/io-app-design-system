@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { Ref } from "react";
 import {
   AccessibilityRole,
   GestureResponderEvent,
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
 /* Component Types */
 
 type BaseBannerProps = WithTestID<{
+  ref?: Ref<View>;
   color: "neutral" | "turquoise";
   pictogramName: IOPictogramsBleed;
   // A11y related props
@@ -123,140 +124,135 @@ const mapBackgroundColorDarkMode: Record<
   turquoise: "turquoise-300"
 };
 
-export const Banner = forwardRef<View, Banner>(
-  (
-    {
-      color,
-      pictogramName,
-      title,
-      content,
-      action,
-      labelClose,
-      onPress,
-      onClose,
-      accessibilityHint,
-      accessibilityLabel,
-      accessibilityRole = "button",
-      testID
-    }: Banner,
-    viewRef
-  ) => {
-    const { onPressIn, onPressOut, scaleAnimatedStyle } =
-      useScaleAnimation("medium");
-    const { themeType } = useIOThemeContext();
-    const theme = useIOTheme();
+export const Banner = ({
+  color,
+  pictogramName,
+  title,
+  content,
+  action,
+  labelClose,
+  onPress,
+  onClose,
+  accessibilityHint,
+  accessibilityLabel,
+  accessibilityRole = "button",
+  ref: viewRef,
+  testID
+}: Banner) => {
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
+  const { themeType } = useIOThemeContext();
+  const theme = useIOTheme();
 
-    // Dynamic colors
-    const colorTitle: IOColors =
-      themeType === "dark" ? "grey-50" : "blueIO-850";
-    const colorCloseButton: IconButton["color"] =
-      themeType === "dark" ? "contrast" : "neutral";
-    const colorMainButton =
-      themeType === "dark" ? "blueIO-200" : theme["interactiveElem-default"];
+  // Dynamic colors
+  const colorTitle: IOColors = themeType === "dark" ? "grey-50" : "blueIO-850";
+  const colorCloseButton: IconButton["color"] =
+    themeType === "dark" ? "contrast" : "neutral";
+  const colorMainButton =
+    themeType === "dark" ? "blueIO-200" : theme["interactiveElem-default"];
 
-    const dynamicContainerStyles: ViewStyle = {
-      backgroundColor:
-        themeType === "dark"
-          ? hexToRgba(IOColors[mapBackgroundColorDarkMode[color]], 0.1)
-          : IOColors[mapBackgroundColorLightMode[color]]
-    };
+  const dynamicContainerStyles: ViewStyle = {
+    backgroundColor:
+      themeType === "dark"
+        ? hexToRgba(IOColors[mapBackgroundColorDarkMode[color]], 0.1)
+        : IOColors[mapBackgroundColorLightMode[color]]
+  };
 
-    /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
+  /* Generates a complete fallbackAccessibilityLabel by concatenating the title, content, and action
    if they are present. */
-    const fallbackAccessibilityLabel = [title, content, action]
-      .filter(Boolean)
-      .join(" ");
+  const fallbackAccessibilityLabel = [title, content, action]
+    .filter(Boolean)
+    .join(" ");
 
-    const renderMainBlock = () => (
-      <>
-        <View
-          style={{ flex: 1, alignSelf: "center", gap: 4 }}
-          accessible={true}
-          // A11y related props
-          accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
-          accessibilityHint={accessibilityHint}
-          accessibilityRole={action !== undefined ? accessibilityRole : "text"}
-        >
-          {title && <H6 color={colorTitle}>{title}</H6>}
-          {content && (
-            <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
-              {content}
-            </BodySmall>
-          )}
-          {action && (
-            /* Disable pointer events to avoid
-             pressed state on the button */
-            <Pressable
-              pointerEvents="none"
-              importantForAccessibility="no-hide-descendants"
-              accessible={true}
-              accessibilityElementsHidden
-              accessibilityLabel={action}
-              accessibilityRole="button"
-              onPress={onPress}
-            >
-              <VSpacer size={8} />
-              <IOText
-                weight="Semibold"
-                color={colorMainButton}
-                size={buttonTextFontSize}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-                // A11y
-                accessible={false}
-                importantForAccessibility="no-hide-descendants"
-                accessibilityElementsHidden={true}
-              >
-                {action}
-              </IOText>
-            </Pressable>
-          )}
-        </View>
-        <View style={[styles.bleedPictogram, { alignSelf: "center" }]}>
-          <PictogramBleed name={pictogramName} size={sizePictogram} />
-        </View>
-        {onClose && labelClose && (
-          <View style={styles.closeIconButton}>
-            <IconButton
-              icon="closeSmall"
-              color={colorCloseButton}
-              onPress={onClose}
-              accessibilityLabel={labelClose}
-            />
-          </View>
-        )}
-      </>
-    );
-
-    const PressableButton = () => (
-      <Pressable
-        ref={viewRef}
-        testID={testID}
-        onPress={onPress}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        accessible={false}
-      >
-        <Animated.View
-          style={[styles.container, dynamicContainerStyles, scaleAnimatedStyle]}
-        >
-          {renderMainBlock()}
-        </Animated.View>
-      </Pressable>
-    );
-
-    const StaticComponent = () => (
+  const renderMainBlock = () => (
+    <>
       <View
-        ref={viewRef}
-        testID={testID}
-        style={[styles.container, dynamicContainerStyles]}
+        style={{ flex: 1, alignSelf: "center", gap: 4 }}
+        accessible={true}
         // A11y related props
-        accessible={false}
+        accessibilityLabel={accessibilityLabel ?? fallbackAccessibilityLabel}
+        accessibilityHint={accessibilityHint}
+        accessibilityRole={action !== undefined ? accessibilityRole : "text"}
+      >
+        {title && <H6 color={colorTitle}>{title}</H6>}
+        {content && (
+          <BodySmall color={theme["textBody-tertiary"]} weight={"Regular"}>
+            {content}
+          </BodySmall>
+        )}
+        {action && (
+          /* Disable pointer events to avoid
+             pressed state on the button */
+          <Pressable
+            pointerEvents="none"
+            importantForAccessibility="no-hide-descendants"
+            accessible={true}
+            accessibilityElementsHidden
+            accessibilityLabel={action}
+            accessibilityRole="button"
+            onPress={onPress}
+          >
+            <VSpacer size={8} />
+            <IOText
+              weight="Semibold"
+              color={colorMainButton}
+              size={buttonTextFontSize}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              // A11y
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden={true}
+            >
+              {action}
+            </IOText>
+          </Pressable>
+        )}
+      </View>
+      <View style={[styles.bleedPictogram, { alignSelf: "center" }]}>
+        <PictogramBleed name={pictogramName} size={sizePictogram} />
+      </View>
+      {onClose && labelClose && (
+        <View style={styles.closeIconButton}>
+          <IconButton
+            icon="closeSmall"
+            color={colorCloseButton}
+            onPress={onClose}
+            accessibilityLabel={labelClose}
+          />
+        </View>
+      )}
+    </>
+  );
+
+  const PressableButton = () => (
+    <Pressable
+      ref={viewRef}
+      testID={testID}
+      onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      accessible={false}
+    >
+      <Animated.View
+        style={[styles.container, dynamicContainerStyles, scaleAnimatedStyle]}
       >
         {renderMainBlock()}
-      </View>
-    );
+      </Animated.View>
+    </Pressable>
+  );
 
-    return action ? <PressableButton /> : <StaticComponent />;
-  }
-);
+  const StaticComponent = () => (
+    <View
+      ref={viewRef}
+      testID={testID}
+      style={[styles.container, dynamicContainerStyles]}
+      // A11y related props
+      accessible={false}
+    >
+      {renderMainBlock()}
+    </View>
+  );
+
+  return action ? <PressableButton /> : <StaticComponent />;
+};
