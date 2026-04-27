@@ -17,6 +17,7 @@ module.exports = {
       jsx: true
     }
   },
+  ignorePatterns: ["example/"],
   plugins: [
     "@typescript-eslint",
     "react",
