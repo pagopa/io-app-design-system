@@ -181,7 +181,7 @@ export const Alert = ({
     <View
       ref={viewRef}
       style={[
-        fullWidth ? { padding } : paddingDefaultVariant,
+        fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
         { backgroundColor: mapVariantStates[variant].background }
       ]}
       testID={testID}
