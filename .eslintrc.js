@@ -116,15 +116,6 @@ module.exports = {
       rules: {
         "@typescript-eslint/no-non-null-assertion": "off"
       }
-    },
-    {
-      files: ["example/**/*.js", "example/**/*.config.js"],
-      parserOptions: {
-        project: null
-      },
-      rules: {
-        "@typescript-eslint/no-var-requires": "off"
-      }
     }
   ],
   settings: {
