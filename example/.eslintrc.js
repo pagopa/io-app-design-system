@@ -11,6 +11,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
     sourceType: "module",
     ecmaFeatures: {
       jsx: true
@@ -116,7 +117,7 @@ module.exports = {
     {
       files: ["**/*.js", "**/*.config.js"],
       parserOptions: {
-        project: null,
+        project: null
       },
       rules: {
         "@typescript-eslint/await-thenable": "off",
@@ -124,7 +125,7 @@ module.exports = {
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/restrict-plus-operands": "off",
+        "@typescript-eslint/restrict-plus-operands": "off"
       }
     }
   ],
