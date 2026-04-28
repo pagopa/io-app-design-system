@@ -1,11 +1,10 @@
-import { ComponentProps, forwardRef, useMemo } from "react";
+import { ComponentProps, ComponentPropsWithRef, useMemo } from "react";
 import {
   AccessibilityRole,
   ColorValue,
   GestureResponderEvent,
   Text,
-  TextStyle,
-  View
+  TextStyle
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { useIONewTypeface } from "../../context";
@@ -50,7 +49,7 @@ type IOTextBaseProps = {
   style?: IOTextStyle;
 };
 
-type IOTextExcludedProps = Omit<ComponentProps<typeof Text>, "style">;
+type IOTextExcludedProps = Omit<ComponentPropsWithRef<typeof Text>, "style">;
 
 export type IOTextProps = IOTextBaseProps & IOTextExcludedProps;
 
@@ -88,77 +87,73 @@ const calculateTextStyle = (
  * @param props
  * @constructor
  */
-export const IOText = forwardRef<View, IOTextProps>(
-  (
-    {
-      color,
-      size,
-      font,
-      lineHeight,
-      weight,
-      fontStyle,
-      textStyle,
-      style,
-      children,
-      allowFontScaling = true,
-      maxFontSizeMultiplier,
-      ...props
-    },
-    ref
-  ) => {
-    const boldEnabled = useBoldTextEnabled();
-    const { newTypefaceEnabled } = useIONewTypeface();
+export const IOText = ({
+  color,
+  size,
+  font,
+  lineHeight,
+  weight,
+  fontStyle,
+  textStyle,
+  style,
+  children,
+  allowFontScaling = true,
+  maxFontSizeMultiplier,
+  ref,
+  ...props
+}: IOTextProps) => {
+  const boldEnabled = useBoldTextEnabled();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
-    const computedFont =
-      font || (newTypefaceEnabled ? "Titillio" : "TitilliumSansPro");
+  const computedFont =
+    font || (newTypefaceEnabled ? "Titillio" : "TitilliumSansPro");
 
-    const computedStyleObj = useMemo(
-      () =>
-        calculateTextStyle(
-          color,
-          size,
-          computedFont,
-          lineHeight,
-          weight,
-          fontStyle,
-          boldEnabled
-        ),
-      [color, size, computedFont, lineHeight, weight, fontStyle, boldEnabled]
-    );
+  const computedStyleObj = useMemo(
+    () =>
+      calculateTextStyle(
+        color,
+        size,
+        computedFont,
+        lineHeight,
+        weight,
+        fontStyle,
+        boldEnabled
+      ),
+    [color, size, computedFont, lineHeight, weight, fontStyle, boldEnabled]
+  );
 
-    /* In some cases, for example when we use color transitions with
+  /* In some cases, for example when we use color transitions with
     `reanimated` we need to manage chromatic values as `ColorValue`
     or `string` (not `IOColors`). So we keep a way to override
     the the `color' attribute without giving the ability to
     override all other all other typographic attributes
     through the `style' prop. */
-    const fontStyleObj = style?.color
-      ? [{ ...computedStyleObj, color: style?.color }]
-      : computedStyleObj;
+  const fontStyleObj = style?.color
+    ? [{ ...computedStyleObj, color: style?.color }]
+    : computedStyleObj;
 
-    /* Some typographic styles like `H5` have certain `TextStyle` properties
+  /* Some typographic styles like `H5` have certain `TextStyle` properties
      like `textTransform` or `letterSpacing` that we want to apply to the text.
      We use the `textStyle` prop to pass these properties to the `IOText`
      component and preserve the ability to define the `style` prop as well.
      The `style` prop is the last one to be applied, so we can properly
      override the `color` attribute.
      */
-    const styleObj = style
-      ? [textStyle ?? {}, fontStyleObj ?? {}, style]
-      : [textStyle ?? {}, fontStyleObj ?? {}];
+  const styleObj = style
+    ? [textStyle ?? {}, fontStyleObj ?? {}, style]
+    : [textStyle ?? {}, fontStyleObj ?? {}];
 
-    /* Accessible typography based on the `fontScale` parameter */
-    const accessibleFontSizeProps: ComponentProps<typeof Text> = {
-      allowFontScaling,
-      maxFontSizeMultiplier: maxFontSizeMultiplier ?? IOMaxFontSizeMultiplier
-    };
+  /* Accessible typography based on the `fontScale` parameter */
+  const accessibleFontSizeProps: ComponentProps<typeof Text> = {
+    allowFontScaling,
+    maxFontSizeMultiplier: maxFontSizeMultiplier ?? IOMaxFontSizeMultiplier
+  };
 
-    return (
-      <Text ref={ref} style={styleObj} {...props} {...accessibleFontSizeProps}>
-        {children}
-      </Text>
-    );
-  }
-);
+  return (
+    <Text ref={ref} style={styleObj} {...props} {...accessibleFontSizeProps}>
+      {children}
+    </Text>
+  );
+};
 
 export const AnimatedIOText = Animated.createAnimatedComponent(IOText);

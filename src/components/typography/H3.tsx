@@ -1,5 +1,3 @@
-import { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
@@ -11,23 +9,17 @@ export const h3LineHeight = 33;
 /**
  * `H3` typographic style
  */
-export const H3 = forwardRef<View, TypographicStyleProps>(
-  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const theme = useIOTheme();
+export const H3 = ({ color: customColor, ...props }: TypographicStyleProps) => {
+  const theme = useIOTheme();
 
-    const H3Props: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "title2", // iOS only
-      weight: "Semibold",
-      size: h3FontSize,
-      lineHeight: h3LineHeight,
-      color: customColor ?? theme["textHeading-default"]
-    };
+  const H3Props: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "title2", // iOS only
+    weight: "Semibold",
+    size: h3FontSize,
+    lineHeight: h3LineHeight,
+    color: customColor ?? theme["textHeading-default"]
+  };
 
-    return (
-      <IOText ref={ref} {...H3Props}>
-        {props.children}
-      </IOText>
-    );
-  }
-);
+  return <IOText {...H3Props}>{props.children}</IOText>;
+};

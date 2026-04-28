@@ -1,4 +1,4 @@
-import { JSX, forwardRef } from "react";
+import { JSX, Ref } from "react";
 import {
   ColorValue,
   GestureResponderEvent,
@@ -24,6 +24,7 @@ const ICON_SIZE: IOIconSizeScale = 24;
 const [padding, paddingFullWidth] = IOAlertSpacing;
 
 type AlertProps = WithTestID<{
+  ref?: Ref<View>;
   variant: "error" | "warning" | "info" | "success";
   content: string;
   fullWidth?: boolean;
@@ -105,123 +106,118 @@ const mapVariantStatesDarkMode: Record<
   }
 };
 
-export const Alert = forwardRef<View, AlertType>(
-  (
-    {
-      variant,
-      content,
-      action,
-      onPress,
-      fullWidth = false,
-      accessibilityHint,
-      testID
-    }: AlertType,
-    viewRef
-  ): JSX.Element => {
-    const { onPressIn, onPressOut, scaleAnimatedStyle } =
-      useScaleAnimation("medium");
-    const { dynamicFontScale, spacingScaleMultiplier } =
-      useIOFontDynamicScale();
-    const { themeType } = useIOThemeContext();
+export const Alert = ({
+  variant,
+  content,
+  action,
+  onPress,
+  fullWidth = false,
+  accessibilityHint,
+  ref: viewRef,
+  testID
+}: AlertType): JSX.Element => {
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
+  const { themeType } = useIOThemeContext();
 
-    const paddingDefaultVariant: ViewStyle = {
-      padding,
-      borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
-      borderCurve: "continuous"
-    };
+  const paddingDefaultVariant: ViewStyle = {
+    padding,
+    borderRadius: IOAlertRadius * dynamicFontScale * spacingScaleMultiplier,
+    borderCurve: "continuous"
+  };
 
-    const mapVariantStates =
-      themeType === "light"
-        ? mapVariantStatesLightMode
-        : mapVariantStatesDarkMode;
+  const mapVariantStates =
+    themeType === "light"
+      ? mapVariantStatesLightMode
+      : mapVariantStatesDarkMode;
 
-    const renderMainBlock = () => (
-      <HStack
-        space={IOVisualCostants.iconMargin as IOSpacer}
-        allowScaleSpacing
-        style={{ alignItems: "center" }}
-      >
-        <Icon
-          allowFontScaling
-          name={mapVariantStates[variant].icon}
-          size={ICON_SIZE}
-          color={mapVariantStates[variant].foreground}
-        />
-        {/* Sadly we don't have specific alignments style for text
+  const renderMainBlock = () => (
+    <HStack
+      space={IOVisualCostants.iconMargin as IOSpacer}
+      allowScaleSpacing
+      style={{ alignItems: "center" }}
+    >
+      <Icon
+        allowFontScaling
+        name={mapVariantStates[variant].icon}
+        size={ICON_SIZE}
+        color={mapVariantStates[variant].foreground}
+      />
+      {/* Sadly we don't have specific alignments style for text
       in React Native, like `text-box-trim` for CSS. So we
       have to put these magic numbers after manual adjustments.
       Tested on both Android and iOS. */}
-        <View
-          style={{
-            marginTop: -4 * dynamicFontScale,
-            marginBottom: -4 * dynamicFontScale,
-            flex: 1
-          }}
-        >
-          <VStack space={8} allowScaleSpacing>
-            <Body
-              color={mapVariantStates[variant].foreground}
-              weight={"Regular"}
-              accessibilityRole="text"
-            >
-              {content}
-            </Body>
-            {action && (
-              <ButtonText
-                color={mapVariantStates[variant].foreground}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {action}
-              </ButtonText>
-            )}
-          </VStack>
-        </View>
-      </HStack>
-    );
-
-    const StaticComponent = () => (
       <View
-        ref={viewRef}
+        style={{
+          marginTop: -4 * dynamicFontScale,
+          marginBottom: -4 * dynamicFontScale,
+          flex: 1
+        }}
+      >
+        <VStack space={8} allowScaleSpacing>
+          <Body
+            color={mapVariantStates[variant].foreground}
+            weight={"Regular"}
+            accessibilityRole="text"
+          >
+            {content}
+          </Body>
+          {action && (
+            <ButtonText
+              color={mapVariantStates[variant].foreground}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {action}
+            </ButtonText>
+          )}
+        </VStack>
+      </View>
+    </HStack>
+  );
+
+  const StaticComponent = () => (
+    <View
+      ref={viewRef}
+      style={[
+        fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
+        { backgroundColor: mapVariantStates[variant].background }
+      ]}
+      testID={testID}
+      accessible={false}
+      accessibilityRole="alert"
+      accessibilityHint={accessibilityHint}
+    >
+      {renderMainBlock()}
+    </View>
+  );
+
+  const PressableButton = () => (
+    <Pressable
+      ref={viewRef}
+      testID={testID}
+      onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      onTouchEnd={onPressOut}
+      // A11y related props
+      accessible={true}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole={"button"}
+    >
+      <Animated.View
         style={[
-          fullWidth ? { padding } : paddingDefaultVariant,
-          { backgroundColor: mapVariantStates[variant].background }
+          fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
+          { backgroundColor: mapVariantStates[variant].background },
+          // Disable pressed animation when component is full width
+          !fullWidth && scaleAnimatedStyle
         ]}
-        testID={testID}
-        accessible={false}
-        accessibilityRole="alert"
-        accessibilityHint={accessibilityHint}
       >
         {renderMainBlock()}
-      </View>
-    );
+      </Animated.View>
+    </Pressable>
+  );
 
-    const PressableButton = () => (
-      <Pressable
-        ref={viewRef}
-        testID={testID}
-        onPress={onPress}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        onTouchEnd={onPressOut}
-        // A11y related props
-        accessible={true}
-        accessibilityHint={accessibilityHint}
-        accessibilityRole={"button"}
-      >
-        <Animated.View
-          style={[
-            fullWidth ? { padding: paddingFullWidth } : paddingDefaultVariant,
-            { backgroundColor: mapVariantStates[variant].background },
-            // Disable pressed animation when component is full width
-            !fullWidth && scaleAnimatedStyle
-          ]}
-        >
-          {renderMainBlock()}
-        </Animated.View>
-      </Pressable>
-    );
-
-    return action ? <PressableButton /> : <StaticComponent />;
-  }
-);
+  return action ? <PressableButton /> : <StaticComponent />;
+};

@@ -1,10 +1,4 @@
-import {
-  ComponentProps,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef
-} from "react";
+import { ComponentProps, Ref, useCallback, useEffect, useRef } from "react";
 import {
   AccessibilityRole,
   ColorValue,
@@ -74,6 +68,7 @@ type IOButtonSpecificProps =
 
 export type IOButtonProps = WithTestID<
   IOButtonSpecificProps & {
+    ref?: Ref<View>;
     /**
      * @default primary
      */
@@ -111,244 +106,237 @@ export type IOButtonProps = WithTestID<
     >
 >;
 
-export const IOButton = forwardRef<View, IOButtonProps>(
-  (
-    {
-      variant = "solid",
-      color = "primary",
-      label,
-      fullWidth = false,
-      disabled = false,
-      loading = false,
-      numberOfLines = 1,
-      textAlign = "auto",
-      icon,
-      iconPosition = "start",
-      onPress,
-      accessibilityLabel,
-      accessibilityHint,
-      accessibilityRole = "button",
-      testID
-    },
-    ref
-  ) => {
-    const mapColorStates = useButtonColorMap(variant);
-    const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
-      useScaleAnimation();
-    const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
-      useButtonAnimatedStyles(variant, color, progress);
-    const reducedMotion = useReducedMotion();
+export const IOButton = ({
+  variant = "solid",
+  color = "primary",
+  label,
+  fullWidth = false,
+  disabled = false,
+  loading = false,
+  numberOfLines = 1,
+  textAlign = "auto",
+  icon,
+  iconPosition = "start",
+  onPress,
+  accessibilityLabel,
+  accessibilityHint,
+  accessibilityRole = "button",
+  ref,
+  testID
+}: IOButtonProps) => {
+  const mapColorStates = useButtonColorMap(variant);
+  const { progress, onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation();
+  const { buttonAnimatedStyle, labelAnimatedStyle, iconColorAnimatedStyle } =
+    useButtonAnimatedStyles(variant, color, progress);
+  const reducedMotion = useReducedMotion();
 
-    const isLinkButton = variant === "link";
+  const isLinkButton = variant === "link";
 
-    // ---------------------------------------
-    // VISUAL ATTRIBUTES
-    // ---------------------------------------
-    const btnIconSizeMap: Record<IOButtonVariant, IOIconSizeScale> = {
-      solid: 20,
-      outline: 20,
-      link: 24
-    };
+  // ---------------------------------------
+  // VISUAL ATTRIBUTES
+  // ---------------------------------------
+  const btnIconSizeMap: Record<IOButtonVariant, IOIconSizeScale> = {
+    solid: 20,
+    outline: 20,
+    link: 24
+  };
 
-    const btnBorderWidthMap: Record<IOButtonVariant, ViewStyle["borderWidth"]> =
-      {
-        solid: 0,
-        outline: 2,
-        link: 0
-      };
+  const btnBorderWidthMap: Record<IOButtonVariant, ViewStyle["borderWidth"]> = {
+    solid: 0,
+    outline: 2,
+    link: 0
+  };
 
-    const btnPaddingHorizontalMap: Record<
-      string,
-      ViewStyle["paddingHorizontal"]
-    > = {
-      default: 24,
-      fullWidth: 16,
-      link: 0
-    };
+  const btnPaddingHorizontalMap: Record<
+    string,
+    ViewStyle["paddingHorizontal"]
+  > = {
+    default: 24,
+    fullWidth: 16,
+    link: 0
+  };
 
-    const btnLinkHitSlop: PressableProps["hitSlop"] = {
-      top: 14,
-      right: 24,
-      bottom: 14,
-      left: 24
-    };
+  const btnLinkHitSlop: PressableProps["hitSlop"] = {
+    top: 14,
+    right: 24,
+    bottom: 14,
+    left: 24
+  };
 
-    const btnIconSize = btnIconSizeMap[variant];
-    const btnBorderWidth = btnBorderWidthMap[variant];
-    const btnBorderRadius = 8;
-    const btnSizeDefault = 48;
+  const btnIconSize = btnIconSizeMap[variant];
+  const btnBorderWidth = btnBorderWidthMap[variant];
+  const btnBorderRadius = 8;
+  const btnSizeDefault = 48;
 
-    const ICON_MARGIN = 8;
-    const DISABLED_OPACITY = 0.5;
+  const ICON_MARGIN = 8;
+  const DISABLED_OPACITY = 0.5;
 
-    // Background color
-    const backgroundColor: ColorValue = disabled
-      ? mapColorStates[color].background.disabled
-      : mapColorStates[color].background.default;
+  // Background color
+  const backgroundColor: ColorValue = disabled
+    ? mapColorStates[color].background.disabled
+    : mapColorStates[color].background.default;
 
-    // Label & Icons colors
-    const foregroundColor: ColorValue = disabled
-      ? mapColorStates[color]?.foreground?.disabled
-      : mapColorStates[color]?.foreground?.default;
+  // Label & Icons colors
+  const foregroundColor: ColorValue = disabled
+    ? mapColorStates[color]?.foreground?.disabled
+    : mapColorStates[color]?.foreground?.default;
 
-    // ---------------------------------------
-    // BUTTON INNER LOGIC
-    // ---------------------------------------
+  // ---------------------------------------
+  // BUTTON INNER LOGIC
+  // ---------------------------------------
 
-    /* Prevent the component from triggering the `isEntering' transition
+  /* Prevent the component from triggering the `isEntering' transition
          on the on the first render. Solution from this discussion:
          https://github.com/software-mansion/react-native-reanimated/discussions/2513
       */
-    const isMounted = useRef<boolean>(false);
+  const isMounted = useRef<boolean>(false);
 
-    useEffect(() => {
-      // eslint-disable-next-line functional/immutable-data
-      isMounted.current = true;
-    }, []);
+  useEffect(() => {
+    // eslint-disable-next-line functional/immutable-data
+    isMounted.current = true;
+  }, []);
 
-    const handleOnPress = useCallback(
-      (event: GestureResponderEvent) => {
-        /* Don't call `onPress` if the button is
+  const handleOnPress = useCallback(
+    (event: GestureResponderEvent) => {
+      /* Don't call `onPress` if the button is
           in loading state */
-        if (loading) {
-          return;
-        }
-        ReactNativeHapticFeedback.trigger("impactLight");
-        onPress(event);
-      },
-      [loading, onPress]
-    );
+      if (loading) {
+        return;
+      }
+      ReactNativeHapticFeedback.trigger("impactLight");
+      onPress(event);
+    },
+    [loading, onPress]
+  );
 
-    // ---------------------------------------
-    // BUTTON INNER CONTENT
-    // ---------------------------------------
-    const renderButtonContent = () => (
-      <>
-        {loading && (
-          <LayoutAnimationConfig skipExiting>
-            <Animated.View
-              style={styles.buttonInner}
-              entering={
-                isMounted.current ? enterTransitionInnerContentSmall : undefined
-              }
-              exiting={exitTransitionInnerContent}
-            >
-              <LoadingSpinner color={foregroundColor} />
-            </Animated.View>
-          </LayoutAnimationConfig>
-        )}
-
-        {!loading && (
+  // ---------------------------------------
+  // BUTTON INNER CONTENT
+  // ---------------------------------------
+  const renderButtonContent = () => (
+    <>
+      {loading && (
+        <LayoutAnimationConfig skipExiting>
           <Animated.View
-            style={[
-              styles.buttonInner,
-              { columnGap: ICON_MARGIN },
-              iconPosition === "end" && { flexDirection: "row-reverse" }
-            ]}
+            style={styles.buttonInner}
             entering={
-              isMounted.current ? enterTransitionInnerContent : undefined
+              isMounted.current ? enterTransitionInnerContentSmall : undefined
             }
+            exiting={exitTransitionInnerContent}
           >
-            {icon &&
-              (!disabled ? (
-                <AnimatedIconWithColorTransition
-                  allowFontScaling
-                  name={icon}
-                  animatedProps={iconColorAnimatedStyle}
-                  size={btnIconSize}
-                />
-              ) : (
-                <AnimatedIcon
-                  allowFontScaling
-                  name={icon}
-                  color={mapColorStates[color]?.foreground?.disabled}
-                  size={btnIconSize}
-                />
-              ))}
-            <AnimatedIOText
-              weight={"Semibold"}
-              size={buttonTextFontSize}
-              lineHeight={isLinkButton ? buttonTextLineHeight : undefined}
-              accessible={false}
-              accessibilityElementsHidden
-              importantForAccessibility="no-hide-descendants"
-              numberOfLines={numberOfLines}
-              ellipsizeMode="tail"
-              style={[
-                { textAlign },
-                disabled
-                  ? { color: mapColorStates[color]?.foreground?.disabled }
-                  : { color: mapColorStates[color]?.foreground?.default },
-                !disabled && labelAnimatedStyle
-              ]}
-            >
-              {label}
-            </AnimatedIOText>
+            <LoadingSpinner color={foregroundColor} />
           </Animated.View>
-        )}
-      </>
-    );
+        </LayoutAnimationConfig>
+      )}
 
-    return (
-      <Pressable
-        ref={ref}
-        accessible={true}
-        // Using || operator because empty string is not an accepted value
-        accessibilityLabel={accessibilityLabel || label}
-        accessibilityHint={accessibilityHint}
-        accessibilityRole={accessibilityRole}
-        accessibilityState={{
-          busy: loading,
-          disabled: disabled || false
-        }}
-        onPress={handleOnPress}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        disabled={disabled}
-        hitSlop={isLinkButton ? btnLinkHitSlop : undefined}
-        style={
-          isLinkButton
-            ? { alignSelf: "flex-start" }
-            : fullWidth
-            ? { flexShrink: 0, alignSelf: "stretch" }
-            : { flexShrink: 1, alignSelf: "auto" }
-        }
-        testID={testID}
-      >
+      {!loading && (
         <Animated.View
           style={[
-            styles.button,
-            /* Prevent Reanimated from overriding background colors
-                if button is disabled */
-            !disabled && !reducedMotion && scaleAnimatedStyle,
-            !disabled && buttonAnimatedStyle,
-            {
-              paddingHorizontal: isLinkButton
-                ? btnPaddingHorizontalMap.link
-                : fullWidth
-                ? btnPaddingHorizontalMap.fullWidth
-                : btnPaddingHorizontalMap.default
-            },
-            {
-              height: isLinkButton ? undefined : btnSizeDefault,
-              backgroundColor,
-              borderWidth: btnBorderWidth,
-              borderRadius: btnBorderRadius,
-              borderColor: foregroundColor
-            },
-            disabled
-              ? {
-                  opacity: DISABLED_OPACITY
-                }
-              : {}
+            styles.buttonInner,
+            { columnGap: ICON_MARGIN },
+            iconPosition === "end" && { flexDirection: "row-reverse" }
           ]}
+          entering={isMounted.current ? enterTransitionInnerContent : undefined}
         >
-          {renderButtonContent()}
+          {icon &&
+            (!disabled ? (
+              <AnimatedIconWithColorTransition
+                allowFontScaling
+                name={icon}
+                animatedProps={iconColorAnimatedStyle}
+                size={btnIconSize}
+              />
+            ) : (
+              <AnimatedIcon
+                allowFontScaling
+                name={icon}
+                color={mapColorStates[color]?.foreground?.disabled}
+                size={btnIconSize}
+              />
+            ))}
+          <AnimatedIOText
+            weight={"Semibold"}
+            size={buttonTextFontSize}
+            lineHeight={isLinkButton ? buttonTextLineHeight : undefined}
+            accessible={false}
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+            numberOfLines={numberOfLines}
+            ellipsizeMode="tail"
+            style={[
+              { textAlign },
+              disabled
+                ? { color: mapColorStates[color]?.foreground?.disabled }
+                : { color: mapColorStates[color]?.foreground?.default },
+              !disabled && labelAnimatedStyle
+            ]}
+          >
+            {label}
+          </AnimatedIOText>
         </Animated.View>
-      </Pressable>
-    );
-  }
-);
+      )}
+    </>
+  );
+
+  return (
+    <Pressable
+      ref={ref}
+      accessible={true}
+      // Using || operator because empty string is not an accepted value
+      accessibilityLabel={accessibilityLabel || label}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole={accessibilityRole}
+      accessibilityState={{
+        busy: loading,
+        disabled: disabled || false
+      }}
+      onPress={handleOnPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      disabled={disabled}
+      hitSlop={isLinkButton ? btnLinkHitSlop : undefined}
+      style={
+        isLinkButton
+          ? { alignSelf: "flex-start" }
+          : fullWidth
+          ? { flexShrink: 0, alignSelf: "stretch" }
+          : { flexShrink: 1, alignSelf: "auto" }
+      }
+      testID={testID}
+    >
+      <Animated.View
+        style={[
+          styles.button,
+          /* Prevent Reanimated from overriding background colors
+                if button is disabled */
+          !disabled && !reducedMotion && scaleAnimatedStyle,
+          !disabled && buttonAnimatedStyle,
+          {
+            paddingHorizontal: isLinkButton
+              ? btnPaddingHorizontalMap.link
+              : fullWidth
+              ? btnPaddingHorizontalMap.fullWidth
+              : btnPaddingHorizontalMap.default
+          },
+          {
+            height: isLinkButton ? undefined : btnSizeDefault,
+            backgroundColor,
+            borderWidth: btnBorderWidth,
+            borderRadius: btnBorderRadius,
+            borderColor: foregroundColor
+          },
+          disabled
+            ? {
+                opacity: DISABLED_OPACITY
+              }
+            : {}
+        ]}
+      >
+        {renderButtonContent()}
+      </Animated.View>
+    </Pressable>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {

@@ -1,5 +1,3 @@
-import { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
 import { useIOTheme } from "../../context";
 import { bodyFontSize, bodyLineHeight } from "./Body";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
@@ -7,27 +5,24 @@ import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
 /**
  * `BodyMonospace` typographic style
  */
-export const BodyMonospace = forwardRef<View, TypographicStyleProps>(
-  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const theme = useIOTheme();
+export const BodyMonospace = ({
+  color: customColor,
+  ...props
+}: TypographicStyleProps) => {
+  const theme = useIOTheme();
 
-    const BodyProps: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "body", // iOS only
-      font: "FiraCode",
-      weight: "Medium",
-      size: bodyFontSize,
-      lineHeight: bodyLineHeight,
-      color: customColor ?? theme["textBody-tertiary"],
-      textStyle: {
-        letterSpacing: 0.5
-      }
-    };
+  const BodyProps: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "body", // iOS only
+    font: "FiraCode",
+    weight: "Medium",
+    size: bodyFontSize,
+    lineHeight: bodyLineHeight,
+    color: customColor ?? theme["textBody-tertiary"],
+    textStyle: {
+      letterSpacing: 0.5
+    }
+  };
 
-    return (
-      <IOText ref={ref} {...BodyProps}>
-        {props.children}
-      </IOText>
-    );
-  }
-);
+  return <IOText {...BodyProps}>{props.children}</IOText>;
+};

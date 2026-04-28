@@ -32,6 +32,7 @@
   },
   "exclude": [
     "android",
+    "example",
     "ios",
     "node_modules",
   ]

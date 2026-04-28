@@ -1,5 +1,3 @@
-import { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
 import { useIONewTypeface, useIOTheme } from "../../context";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
@@ -13,24 +11,18 @@ const legacyFontSize: IOFontSize = 17;
 /**
  * `H6` typographic style
  */
-export const H6 = forwardRef<View, TypographicStyleProps>(
-  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const theme = useIOTheme();
-    const { newTypefaceEnabled } = useIONewTypeface();
+export const H6 = ({ color: customColor, ...props }: TypographicStyleProps) => {
+  const theme = useIOTheme();
+  const { newTypefaceEnabled } = useIONewTypeface();
 
-    const H6Props: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "headline", // iOS only
-      weight: "Semibold",
-      size: newTypefaceEnabled ? h6FontSize : legacyFontSize,
-      lineHeight: h6LineHeight,
-      color: customColor ?? theme["textHeading-default"]
-    };
+  const H6Props: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "headline", // iOS only
+    weight: "Semibold",
+    size: newTypefaceEnabled ? h6FontSize : legacyFontSize,
+    lineHeight: h6LineHeight,
+    color: customColor ?? theme["textHeading-default"]
+  };
 
-    return (
-      <IOText ref={ref} {...H6Props}>
-        {props.children}
-      </IOText>
-    );
-  }
-);
+  return <IOText {...H6Props}>{props.children}</IOText>;
+};
