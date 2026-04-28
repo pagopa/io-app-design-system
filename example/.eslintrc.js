@@ -68,26 +68,11 @@ module.exports = {
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/dot-notation": "error",
-    "@typescript-eslint/member-delimiter-style": [
-      "error",
-      {
-        multiline: {
-          delimiter: "semi",
-          requireLast: true
-        },
-        singleline: {
-          delimiter: "semi",
-          requireLast: false
-        }
-      }
-    ],
     "@typescript-eslint/no-floating-promises": "error",
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": ["error"],
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
-    semi: "off",
-    "@typescript-eslint/semi": ["error"],
     "@typescript-eslint/unified-signatures": "error",
     "react/prop-types": "off",
     "react/display-name": "off",
