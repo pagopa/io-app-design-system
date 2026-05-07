@@ -1,7 +1,7 @@
 /* eslint-disable functional/immutable-data */
 import {
-  forwardRef,
   ReactNode,
+  Ref,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -64,6 +64,7 @@ type InputTextProps = WithTestID<{
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
+  ref?: Ref<TextInput>;
   // autoFocus?: boolean; --- Ignore since this bug is open https://github.com/react-navigation/react-navigation/issues/11643 ---
 }>;
 
@@ -207,282 +208,316 @@ const HelperRow = ({
   );
 };
 
-export const TextInputBase = forwardRef<TextInput, InputTextProps>(
-  (
-    {
-      disabled = false,
-      placeholder,
-      value = "",
-      onChangeText,
-      accessibilityLabel,
-      accessibilityHint,
-      textInputProps,
-      inputType = "default",
-      status,
-      icon,
-      rightElement,
-      counterLimit,
-      accessibilityAnnounceLimitReached,
-      bottomMessage,
-      bottomMessageColor,
-      onBlur,
-      onFocus,
-      isPassword,
-      testID
-    },
-    forwardedRef
-  ) => {
-    const internalInputRef = useRef<TextInput>(null);
-    const isSecretInput = useMemo(() => isPassword, [isPassword]);
-    const [inputStatus, setInputStatus] = useState<InputStatus>(
-      disabled ? "disabled" : "initial"
-    );
-    const focusedState = useSharedValue<number>(0);
+export const TextInputBase = ({
+  disabled = false,
+  placeholder,
+  value = "",
+  onChangeText,
+  accessibilityLabel,
+  accessibilityHint,
+  textInputProps,
+  inputType = "default",
+  status,
+  icon,
+  rightElement,
+  counterLimit,
+  accessibilityAnnounceLimitReached,
+  bottomMessage,
+  bottomMessageColor,
+  onBlur,
+  onFocus,
+  isPassword,
+  testID,
+  ref
+}: InputTextProps) => {
+  const internalInputRef = useRef<TextInput>(null);
+  const isSecretInput = useMemo(() => isPassword, [isPassword]);
+  const [inputStatus, setInputStatus] = useState<InputStatus>(
+    disabled ? "disabled" : "initial"
+  );
+  const focusedState = useSharedValue<number>(0);
 
-    const { newTypefaceEnabled } = useIONewTypeface();
-    const { dynamicFontScale, spacingScaleMultiplier } =
-      useIOFontDynamicScale();
+  const { newTypefaceEnabled } = useIONewTypeface();
+  const { dynamicFontScale, spacingScaleMultiplier } = useIOFontDynamicScale();
 
-    const theme = useIOTheme();
-    const iconColor: IOColors = theme["icon-decorative"];
-    const inputLabelColor: ColorValue =
-      IOColors[theme["textInputLabel-default"]];
-    const inputTextColor: ColorValue =
-      IOColors[theme["textInputValue-default"]];
-    const inputDisabledTextColor: ColorValue =
-      IOColors[theme["textInputValue-disabled"]];
+  const theme = useIOTheme();
+  const iconColor: IOColors = theme["icon-decorative"];
+  const inputLabelColor: ColorValue = IOColors[theme["textInputLabel-default"]];
+  const inputTextColor: ColorValue = IOColors[theme["textInputValue-default"]];
+  const inputDisabledTextColor: ColorValue =
+    IOColors[theme["textInputValue-disabled"]];
 
-    /* Get the label width to enable the correct translation */
-    const [labelWidth, setLabelWidth] = useState<number>(0);
+  /* Get the label width to enable the correct translation */
+  const [labelWidth, setLabelWidth] = useState<number>(0);
 
-    const getLabelWidth = ({ nativeEvent }: LayoutChangeEvent) => {
-      setLabelWidth(nativeEvent.layout.width);
-    };
+  const getLabelWidth = ({ nativeEvent }: LayoutChangeEvent) => {
+    setLabelWidth(nativeEvent.layout.width);
+  };
 
-    /* Set `inputStatus` when `status` changes
+  /* Set `inputStatus` when `status` changes
      (e.g. when it's passed as a prop) */
-    useEffect(() => {
-      if (status) {
-        setInputStatus(status);
-      }
-    }, [status]);
+  useEffect(() => {
+    if (status) {
+      setInputStatus(status);
+    }
+  }, [status]);
 
-    /* Visual attributes */
-    const appBackground: ColorValue = IOColors[theme["appBackground-primary"]];
+  /* Visual attributes */
+  const appBackground: ColorValue = IOColors[theme["appBackground-primary"]];
 
-    const borderColorMap: Record<InputStatus, string> = useMemo(
-      () => ({
-        initial: IOColors[theme["textInputBorder-default"]],
-        disabled: IOColors[theme["textInputBorder-default"]],
-        focused: IOColors[theme["interactiveElem-default"]],
-        error: IOColors[theme.errorText]
-      }),
-      [theme]
-    );
+  const borderColorMap: Record<InputStatus, string> = useMemo(
+    () => ({
+      initial: IOColors[theme["textInputBorder-default"]],
+      disabled: IOColors[theme["textInputBorder-default"]],
+      focused: IOColors[theme["interactiveElem-default"]],
+      error: IOColors[theme.errorText]
+    }),
+    [theme]
+  );
 
-    const easingConf: WithTimingConfig = {
-      duration: inputTransitionDuration,
-      easing: Easing.inOut(Easing.cubic)
-    };
+  const easingConf: WithTimingConfig = {
+    duration: inputTransitionDuration,
+    easing: Easing.inOut(Easing.cubic)
+  };
 
-    const animatedLabelStyle = useAnimatedStyle(() => {
-      const enableTransition = focusedState.value || value.length > 0;
+  const animatedLabelStyle = useAnimatedStyle(() => {
+    const enableTransition = focusedState.value || value.length > 0;
 
-      return {
-        transform: [
-          {
-            /* Since we can't have RN 0.73 yet, we use this calculation
+    return {
+      transform: [
+        {
+          /* Since we can't have RN 0.73 yet, we use this calculation
           to simulate `transformOrigin: left` */
-            translateX: withTiming(
-              enableTransition
-                ? (-labelWidth * (1 - inputLabelScaleFactor)) / 2
-                : 0,
-              easingConf
-            )
-          },
-          {
-            translateY: withTiming(enableTransition ? -12 : 0, easingConf)
-          },
-          {
-            scale: withTiming(
-              enableTransition ? inputLabelScaleFactor : 1,
-              easingConf
-            )
-          }
-        ]
-      };
-    });
+          translateX: withTiming(
+            enableTransition
+              ? (-labelWidth * (1 - inputLabelScaleFactor)) / 2
+              : 0,
+            easingConf
+          )
+        },
+        {
+          translateY: withTiming(enableTransition ? -12 : 0, easingConf)
+        },
+        {
+          scale: withTiming(
+            enableTransition ? inputLabelScaleFactor : 1,
+            easingConf
+          )
+        }
+      ]
+    };
+  });
 
-    /* Interpolate border color based on input status,
+  /* Interpolate border color based on input status,
      but not apply the transition on `focus` state
      because it's already managed by the
      `animatedInnerBorderStyle` */
-    const animatedOuterBorderStyle = useAnimatedStyle(() => ({
-      borderColor:
-        inputStatus !== "focused"
-          ? interpolateColor(
-              1,
-              [0, 1],
-              [borderColorMap.initial, borderColorMap[inputStatus]]
-            )
-          : borderColorMap.initial
-    }));
+  const animatedOuterBorderStyle = useAnimatedStyle(() => ({
+    borderColor:
+      inputStatus !== "focused"
+        ? interpolateColor(
+            1,
+            [0, 1],
+            [borderColorMap.initial, borderColorMap[inputStatus]]
+          )
+        : borderColorMap.initial
+  }));
 
-    const animatedInnerBorderStyle = useAnimatedStyle(() => ({
-      opacity: withTiming(focusedState.value ? 1 : 0, easingConf)
-    }));
+  const animatedInnerBorderStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(focusedState.value ? 1 : 0, easingConf)
+  }));
 
-    const onTextInputPress = () => {
-      if (disabled) {
+  const onTextInputPress = () => {
+    if (disabled) {
+      return;
+    }
+    focusedState.value = 1;
+    setInputStatus("focused");
+    // This now works again!
+    internalInputRef.current?.focus();
+  };
+
+  const onChangeTextHandler = useCallback(
+    (text: string) => {
+      const actualTextLength =
+        inputType !== "default" ? text.replace(/\s/g, "").length : text.length;
+
+      // Notify the user when the limit is reached
+      // This is only for iOS, as Android handles it via accessibilityLiveRegion
+      if (
+        counterLimit &&
+        actualTextLength >= counterLimit &&
+        accessibilityAnnounceLimitReached &&
+        Platform.OS === "ios"
+      ) {
+        AccessibilityInfo.announceForAccessibility(
+          accessibilityAnnounceLimitReached
+        );
+      }
+      if (counterLimit && actualTextLength > counterLimit) {
         return;
       }
+
+      if (inputType !== "default") {
+        // necessary to omit whitespaces added by the valueFormat function
+        const formattedText = text.replace(/\s/g, "");
+        onChangeText(formattedText);
+      } else {
+        onChangeText(text);
+      }
+    },
+    [counterLimit, onChangeText, inputType, accessibilityAnnounceLimitReached]
+  );
+
+  const onBlurHandler = useCallback(() => {
+    focusedState.value = 0;
+    onBlur?.();
+    setInputStatus("initial");
+  }, [focusedState, onBlur]);
+
+  const onFocusHandler = () => {
+    // Only update if not already focused to prevent redundant layout passes
+    if (focusedState.value !== 1) {
       focusedState.value = 1;
+      onFocus?.();
       setInputStatus("focused");
-      // This now works again!
-      internalInputRef.current?.focus();
-    };
+    }
+  };
 
-    const onChangeTextHandler = useCallback(
-      (text: string) => {
-        const actualTextLength =
-          inputType !== "default"
-            ? text.replace(/\s/g, "").length
-            : text.length;
+  const derivedInputProps = useMemo(
+    () => getInputPropsByType(inputType),
+    [inputType]
+  );
 
-        // Notify the user when the limit is reached
-        // This is only for iOS, as Android handles it via accessibilityLiveRegion
-        if (
-          counterLimit &&
-          actualTextLength >= counterLimit &&
-          accessibilityAnnounceLimitReached &&
-          Platform.OS === "ios"
-        ) {
-          AccessibilityInfo.announceForAccessibility(
-            accessibilityAnnounceLimitReached
-          );
-        }
-        if (counterLimit && actualTextLength > counterLimit) {
-          return;
-        }
+  const inputValue = useMemo(
+    () =>
+      derivedInputProps && derivedInputProps.valueFormat
+        ? derivedInputProps.valueFormat(value)
+        : value,
+    [value, derivedInputProps]
+  );
 
-        if (inputType !== "default") {
-          // necessary to omit whitespaces added by the valueFormat function
-          const formattedText = text.replace(/\s/g, "");
-          onChangeText(formattedText);
-        } else {
-          onChangeText(text);
-        }
-      },
-      [counterLimit, onChangeText, inputType, accessibilityAnnounceLimitReached]
-    );
+  // Calculate the adjusted maxLength to account for spaces
+  const adjustedMaxLength = useMemo(() => {
+    if (counterLimit && derivedInputProps && derivedInputProps.valueFormat) {
+      const spacesCount = Math.floor(counterLimit / 4);
+      return counterLimit + spacesCount;
+    }
+    return counterLimit;
+  }, [counterLimit, derivedInputProps]);
 
-    const onBlurHandler = useCallback(() => {
-      focusedState.value = 0;
-      onBlur?.();
-      setInputStatus("initial");
-    }, [focusedState, onBlur]);
+  useImperativeHandle(ref, () => internalInputRef.current!);
 
-    const onFocusHandler = () => {
-      // Only update if not already focused to prevent redundant layout passes
-      if (focusedState.value !== 1) {
-        focusedState.value = 1;
-        onFocus?.();
-        setInputStatus("focused");
-      }
-    };
+  return (
+    <>
+      <Pressable
+        onPress={onTextInputPress}
+        style={[
+          inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
+          styles.textInput,
+          {
+            paddingHorizontal:
+              inputPaddingHorizontal * dynamicFontScale * spacingScaleMultiplier
+          }
+        ]}
+        accessible={false}
+        accessibilityRole={"none"}
+        importantForAccessibility="no"
+      >
+        {/* Fake border managed with Animated.View to avoid
+            little jumps when the border is animated */}
+        <Animated.View
+          style={[styles.textInputOuterBorder, animatedOuterBorderStyle]}
+        />
+        {!disabled && (
+          <Animated.View
+            style={[
+              { borderColor: borderColorMap.focused },
+              styles.textInputInnerBorder,
+              animatedInnerBorderStyle
+            ]}
+          />
+        )}
 
-    const derivedInputProps = useMemo(
-      () => getInputPropsByType(inputType),
-      [inputType]
-    );
-
-    const inputValue = useMemo(
-      () =>
-        derivedInputProps && derivedInputProps.valueFormat
-          ? derivedInputProps.valueFormat(value)
-          : value,
-      [value, derivedInputProps]
-    );
-
-    // Calculate the adjusted maxLength to account for spaces
-    const adjustedMaxLength = useMemo(() => {
-      if (counterLimit && derivedInputProps && derivedInputProps.valueFormat) {
-        const spacesCount = Math.floor(counterLimit / 4);
-        return counterLimit + spacesCount;
-      }
-      return counterLimit;
-    }, [counterLimit, derivedInputProps]);
-
-    useImperativeHandle(forwardedRef, () => internalInputRef.current!);
-
-    return (
-      <>
-        <Pressable
-          onPress={onTextInputPress}
+        {icon && (
+          <>
+            <Icon
+              allowFontScaling
+              name={icon}
+              color={iconColor}
+              size={iconSize}
+            />
+            <HSpacer allowScaleSpacing size={iconMargin} />
+          </>
+        )}
+        <TextInput
+          ref={internalInputRef}
+          testID={testID}
+          {...(derivedInputProps
+            ? derivedInputProps.textInputProps
+            : textInputProps)}
+          accessible
+          importantForAccessibility="yes"
+          accessibilityElementsHidden={false}
+          editable={!disabled}
+          secureTextEntry={isSecretInput}
+          disableFullscreenUI={true}
+          accessibilityState={{ disabled }}
+          accessibilityLabel={accessibilityLabel ?? placeholder}
+          accessibilityHint={accessibilityHint}
+          accessibilityLiveRegion="polite"
+          selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
+          cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
+          maxLength={adjustedMaxLength}
+          maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
+          onBlur={onBlurHandler}
+          onFocus={onFocusHandler}
+          blurOnSubmit={true}
+          onChangeText={onChangeTextHandler}
           style={[
-            inputStatus === "disabled" ? { opacity: inputDisabledOpacity } : {},
-            styles.textInput,
+            {
+              ...makeFontStyleObject(
+                inputLabelFontSize,
+                newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
+                undefined,
+                "Regular"
+              )
+            },
+            styles.textInputStyle,
+            !disabled
+              ? { color: inputTextColor }
+              : { color: inputDisabledTextColor }
+          ]}
+          autoFocus={false}
+          value={inputValue}
+        />
+        {/* We translate the label to the right if icon is present
+            to align it to the `TextInput` */}
+        <Animated.View
+          pointerEvents={"none"}
+          style={[
+            styles.textInputLabelWrapper,
             {
               paddingHorizontal:
                 inputPaddingHorizontal *
                 dynamicFontScale *
                 spacingScaleMultiplier
-            }
+            },
+            icon
+              ? {
+                  left:
+                    (iconSize + iconMargin) *
+                    dynamicFontScale *
+                    spacingScaleMultiplier
+                }
+              : {}
           ]}
-          accessible={false}
-          accessibilityRole={"none"}
-          importantForAccessibility="no"
         >
-          {/* Fake border managed with Animated.View to avoid
-            little jumps when the border is animated */}
-          <Animated.View
-            style={[styles.textInputOuterBorder, animatedOuterBorderStyle]}
-          />
-          {!disabled && (
-            <Animated.View
-              style={[
-                { borderColor: borderColorMap.focused },
-                styles.textInputInnerBorder,
-                animatedInnerBorderStyle
-              ]}
-            />
-          )}
-
-          {icon && (
-            <>
-              <Icon
-                allowFontScaling
-                name={icon}
-                color={iconColor}
-                size={iconSize}
-              />
-              <HSpacer allowScaleSpacing size={iconMargin} />
-            </>
-          )}
-          <TextInput
-            ref={internalInputRef}
-            testID={testID}
-            {...(derivedInputProps
-              ? derivedInputProps.textInputProps
-              : textInputProps)}
-            accessible
-            importantForAccessibility="yes"
-            accessibilityElementsHidden={false}
-            editable={!disabled}
-            secureTextEntry={isSecretInput}
-            disableFullscreenUI={true}
-            accessibilityState={{ disabled }}
-            accessibilityLabel={accessibilityLabel ?? placeholder}
-            accessibilityHint={accessibilityHint}
-            accessibilityLiveRegion="polite"
-            selectionColor={IOColors[theme["interactiveElem-default"]]} // Caret on iOS
-            cursorColor={IOColors[theme["interactiveElem-default"]]} // Caret Android
-            maxLength={adjustedMaxLength}
+          <Animated.Text
+            onLayout={getLabelWidth}
+            numberOfLines={1}
+            accessible={false}
             maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
-            onBlur={onBlurHandler}
-            onFocus={onFocusHandler}
-            blurOnSubmit={true}
-            onChangeText={onChangeTextHandler}
             style={[
               {
                 ...makeFontStyleObject(
@@ -490,96 +525,51 @@ export const TextInputBase = forwardRef<TextInput, InputTextProps>(
                   newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
                   undefined,
                   "Regular"
-                )
+                ),
+                color: inputLabelColor
               },
-              styles.textInputStyle,
-              !disabled
-                ? { color: inputTextColor }
-                : { color: inputDisabledTextColor }
-            ]}
-            autoFocus={false}
-            value={inputValue}
-          />
-          {/* We translate the label to the right if icon is present
-            to align it to the `TextInput` */}
-          <Animated.View
-            pointerEvents={"none"}
-            style={[
-              styles.textInputLabelWrapper,
-              {
-                paddingHorizontal:
-                  inputPaddingHorizontal *
-                  dynamicFontScale *
-                  spacingScaleMultiplier
-              },
-              icon
-                ? {
-                    left:
-                      (iconSize + iconMargin) *
-                      dynamicFontScale *
-                      spacingScaleMultiplier
-                  }
-                : {}
+              animatedLabelStyle
             ]}
           >
-            <Animated.Text
-              onLayout={getLabelWidth}
-              numberOfLines={1}
-              accessible={false}
-              maxFontSizeMultiplier={IOMaxFontSizeMultiplier}
-              style={[
-                {
-                  ...makeFontStyleObject(
-                    inputLabelFontSize,
-                    newTypefaceEnabled ? "Titillio" : "TitilliumSansPro",
-                    undefined,
-                    "Regular"
-                  ),
-                  color: inputLabelColor
-                },
-                animatedLabelStyle
-              ]}
-            >
-              {placeholder}
-            </Animated.Text>
-          </Animated.View>
-          {rightElement && (
-            <Animated.View
+            {placeholder}
+          </Animated.Text>
+        </Animated.View>
+        {rightElement && (
+          <Animated.View
+            style={{
+              alignSelf: "stretch",
+              overflow: "visible",
+              justifyContent: "center"
+            }}
+          >
+            <LinearGradient
+              useAngle={true}
+              angle={90}
               style={{
-                alignSelf: "stretch",
-                overflow: "visible",
-                justifyContent: "center"
+                width: inputRightElementMargin * 3,
+                position: "absolute",
+                left: -inputRightElementMargin * 3,
+                top: 0,
+                bottom: 0
               }}
-            >
-              <LinearGradient
-                useAngle={true}
-                angle={90}
-                style={{
-                  width: inputRightElementMargin * 3,
-                  position: "absolute",
-                  left: -inputRightElementMargin * 3,
-                  top: 0,
-                  bottom: 0
-                }}
-                colors={[hexToRgba(appBackground, 0), appBackground]}
-              />
-              <HSpacer size={inputRightElementMargin} />
-              {rightElement}
-            </Animated.View>
-          )}
-        </Pressable>
-
-        {(bottomMessage || counterLimit) && (
-          <HelperRow
-            value={inputValue}
-            bottomMessage={bottomMessage}
-            bottomMessageColor={bottomMessageColor}
-            counterLimit={counterLimit}
-            inputType={inputType}
-            textInputProps={textInputProps}
-          />
+              colors={[hexToRgba(appBackground, 0), appBackground]}
+            />
+            <HSpacer size={inputRightElementMargin} />
+            {rightElement}
+          </Animated.View>
         )}
-      </>
-    );
-  }
-);
+      </Pressable>
+
+      {(bottomMessage || counterLimit) && (
+        <HelperRow
+          value={inputValue}
+          bottomMessage={bottomMessage}
+          bottomMessageColor={bottomMessageColor}
+          counterLimit={counterLimit}
+          inputType={inputType}
+          textInputProps={textInputProps}
+        />
+      )}
+    </>
+  );
+};

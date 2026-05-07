@@ -25,7 +25,7 @@ export type ValidationWithOptions = { isValid: boolean; errorMessage: string };
 
 type TextInputValidationProps = Omit<
   ComponentProps<typeof TextInputBase>,
-  "rightElement" | "status" | "bottomMessageColor" | "isPassword"
+  "rightElement" | "status" | "bottomMessageColor" | "isPassword" | "ref"
 > & {
   ref?: Ref<TextInputValidationRefProps>;
   /**

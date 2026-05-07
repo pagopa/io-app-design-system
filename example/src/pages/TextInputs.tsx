@@ -9,26 +9,27 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useIsFocused } from "@react-navigation/native";
-import {
-  ComponentProps,
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import { ComponentProps, useEffect, useRef, useState } from "react";
 import { Button, TextInput as RNTextInput, View } from "react-native";
 import { Screen } from "../components/Screen";
 
-const InputComponentWrapper = (
-  props: Omit<ComponentProps<typeof TextInput>, "value" | "onChangeText"> & {
-    value?: string;
-  }
-) => {
+const InputComponentWrapper = ({
+  ref,
+  ...props
+}: Omit<ComponentProps<typeof TextInput>, "value" | "onChangeText"> & {
+  value?: string;
+}) => {
   const [inputValue, setInputValue] = useState(props.value ?? "");
 
   return (
     <>
       <VSpacer />
-      <TextInput {...props} value={inputValue} onChangeText={setInputValue} />
+      <TextInput
+        {...props}
+        ref={ref}
+        value={inputValue}
+        onChangeText={setInputValue}
+      />
       <VSpacer />
     </>
   );
