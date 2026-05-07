@@ -126,9 +126,19 @@ export const OTPInput = ({
         }
         break;
       default:
-        AccessibilityInfo.announceForAccessibility(e.nativeEvent.key);
+        if (!secret) {
+          AccessibilityInfo.announceForAccessibility(e.nativeEvent.key);
+        }
         break;
     }
+  };
+
+  const accessibilityValue = {
+    text:
+      accessibilityValueText?.({
+        valueLength: value.length,
+        length
+      }) ?? (secret ? "" : value.split("").join(", "))
   };
 
   const cells = useMemo(() => Array.from({ length }), [length]);
@@ -152,7 +162,7 @@ export const OTPInput = ({
             StyleSheet.absoluteFillObject,
             Platform.select({
               ios: { opacity: 0.01 },
-              android: { opacity: 0 }
+              android: { opacity: 0.01 }
             })
           ]}
           maxLength={length}
@@ -167,14 +177,8 @@ export const OTPInput = ({
           accessible={true}
           accessibilityLabel={accessibilityLabel}
           accessibilityHint={accessibilityHint}
-          // Ensure the screen reader pronounces the code digit by digit
-          accessibilityValue={{
-            text:
-              accessibilityValueText?.({
-                valueLength: value.length,
-                length
-              }) ?? value.split("").join(" ")
-          }}
+          // Keep secret values out of the screen reader output.
+          accessibilityValue={accessibilityValue}
           autoFocus={autoFocus}
           secureTextEntry={secret}
         />
