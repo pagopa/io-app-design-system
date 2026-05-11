@@ -55,6 +55,7 @@ type InputTextProps = WithTestID<{
   icon?: IOIcons;
   rightElement?: ReactNode;
   counterLimit?: number;
+  showCounterOnlyWhenLimitReached?: boolean;
   accessibilityAnnounceLimitReached?: string;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
@@ -123,6 +124,7 @@ type InputTextHelperRow = Pick<
   InputTextProps,
   | "value"
   | "counterLimit"
+  | "showCounterOnlyWhenLimitReached"
   | "bottomMessage"
   | "bottomMessageColor"
   | "inputType"
@@ -132,6 +134,7 @@ type InputTextHelperRow = Pick<
 const HelperRow = ({
   value,
   counterLimit,
+  showCounterOnlyWhenLimitReached,
   bottomMessage,
   bottomMessageColor,
   inputType,
@@ -153,13 +156,17 @@ const HelperRow = ({
   const bottomMessageColorValue =
     bottomMessageColor ?? bottomMessageColorDefault;
 
+  const shouldShowCounter =
+    !!counterLimit &&
+    (!showCounterOnlyWhenLimitReached || valueCount >= counterLimit);
+
   const helperRowStyle: ViewStyle = useMemo(() => {
-    if (counterLimit && bottomMessage) {
+    if (shouldShowCounter && bottomMessage) {
       return {
         justifyContent: "space-between"
       };
     }
-    if (counterLimit) {
+    if (shouldShowCounter) {
       return {
         justifyContent: "flex-end"
       };
@@ -170,7 +177,7 @@ const HelperRow = ({
       };
     }
     return {};
-  }, [counterLimit, bottomMessage]);
+  }, [shouldShowCounter, bottomMessage]);
 
   return (
     <View
@@ -193,7 +200,7 @@ const HelperRow = ({
           {bottomMessage}
         </BodySmall>
       )}
-      {counterLimit && (
+      {shouldShowCounter && (
         <BodySmall
           accessibilityLiveRegion="polite"
           weight="Regular"
@@ -218,6 +225,7 @@ export const TextInputBase = ({
   icon,
   rightElement,
   counterLimit,
+  showCounterOnlyWhenLimitReached,
   accessibilityAnnounceLimitReached,
   bottomMessage,
   bottomMessageColor,
@@ -556,6 +564,7 @@ export const TextInputBase = ({
           bottomMessage={bottomMessage}
           bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
+          showCounterOnlyWhenLimitReached={showCounterOnlyWhenLimitReached}
           inputType={inputType}
           textInputProps={textInputProps}
         />
