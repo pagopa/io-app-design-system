@@ -28,7 +28,8 @@ type TextInputValidationProps = Omit<
   ref?: Ref<TextInputValidationRefProps>;
   /**
    * If true, the character counter will only be displayed/announced when the counter limit is reached.
-   * If false or undefined, the character counter will be displayed/announced as soon as the user starts typing.
+   * If false or undefined, the character counter will be displayed/announced whenever the counter is enabled,
+   * including before the user starts typing (for example, `0 / limit`).
    */
   showCounterOnlyWhenLimitReached?: boolean;
   /**
