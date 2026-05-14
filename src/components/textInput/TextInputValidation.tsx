@@ -27,6 +27,12 @@ type TextInputValidationProps = Omit<
 > & {
   ref?: Ref<TextInputValidationRefProps>;
   /**
+   * If true, the character counter will only be displayed/announced when the counter limit is reached.
+   * If false or undefined, the character counter will be displayed/announced whenever the counter is enabled,
+   * including before the user starts typing (for example, `0 / limit`).
+   */
+  showCounterOnlyWhenLimitReached?: boolean;
+  /**
    * This function can return either a `boolean` or a `ValidationWithOptions` object.
    * If a `boolean` is returned and the field is not valid, the value of the errorMessage prop will be displayed/announced.
    * If a `ValidationWithOptions` object is returned and the field is not valid, the value displayed/announced will be the one contained within this object.
