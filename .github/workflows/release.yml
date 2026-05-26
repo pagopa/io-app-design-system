@@ -23,4 +23,10 @@ jobs:
       - name: Build the library
         run: yarn prepack
       - name: Publish package on NPM 📦
-        run: npm publish
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" =~ [0-9]+\.[0-9]+\.[0-9]+-.+ ]]; then
+            npm publish --tag next
+          else
+            npm publish
+          fi
