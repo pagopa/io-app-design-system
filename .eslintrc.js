@@ -24,7 +24,8 @@ module.exports = {
     "react-native",
     "react-hooks",
     "import",
-    "functional"
+    "functional",
+    "@stylistic"
   ],
   rules: {
     "react/react-in-jsx-scope": "off",
@@ -69,7 +70,7 @@ module.exports = {
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/dot-notation": "error",
-    "@typescript-eslint/member-delimiter-style": [
+    "@stylistic/member-delimiter-style": [
       "error",
       {
         multiline: {
@@ -88,7 +89,7 @@ module.exports = {
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     semi: "off",
-    "@typescript-eslint/semi": ["error"],
+    "@stylistic/semi": ["error"],
     "@typescript-eslint/unified-signatures": "error",
     "react/prop-types": "off",
     "react/display-name": "off",
@@ -114,6 +115,15 @@ module.exports = {
       files: ["**/*.test.*"],
       rules: {
         "@typescript-eslint/no-non-null-assertion": "off"
+      }
+    },
+    {
+      files: ["example/**/*.js", "example/**/*.config.js"],
+      parserOptions: {
+        project: null
+      },
+      rules: {
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ],
