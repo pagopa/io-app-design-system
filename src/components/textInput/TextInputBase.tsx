@@ -1,10 +1,8 @@
 /* eslint-disable functional/immutable-data */
 import {
   ReactNode,
-  Ref,
   useCallback,
   useEffect,
-  useImperativeHandle,
   useMemo,
   useRef,
   useState
@@ -65,8 +63,13 @@ type InputTextProps = WithTestID<{
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
-  ref?: Ref<TextInput>;
   // autoFocus?: boolean; --- Ignore since this bug is open https://github.com/react-navigation/react-navigation/issues/11643 ---
+  /**
+   * Optional external ref to the underlying React Native `TextInput`. When
+   * provided, the consumer can imperatively call `focus()` / `blur()` on the
+   * input. Useful to work around autoFocus issues on React Navigation v7.
+   */
+  inputRef?: React.RefObject<TextInput | null>;
 }>;
 
 const inputMarginTop: IOSpacingScale = 16;
@@ -235,10 +238,12 @@ export const TextInputBase = ({
   onBlur,
   onFocus,
   isPassword,
-  testID,
-  ref
+  // autoFocus,
+  inputRef: externalInputRef,
+  testID
 }: InputTextProps) => {
   const internalInputRef = useRef<TextInput>(null);
+  const inputRef = externalInputRef ?? internalInputRef;
   const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const [inputStatus, setInputStatus] = useState<InputStatus>(
     disabled ? "disabled" : "initial"
@@ -342,7 +347,7 @@ export const TextInputBase = ({
     focusedState.value = 1;
     setInputStatus("focused");
     // This now works again!
-    internalInputRef.current?.focus();
+    inputRef.current?.focus();
   };
 
   const onChangeTextHandler = useCallback(
@@ -414,8 +419,6 @@ export const TextInputBase = ({
     return counterLimit;
   }, [counterLimit, derivedInputProps]);
 
-  useImperativeHandle(ref, () => internalInputRef.current!);
-
   return (
     <>
       <Pressable
@@ -459,7 +462,7 @@ export const TextInputBase = ({
           </>
         )}
         <TextInput
-          ref={internalInputRef}
+          ref={inputRef}
           testID={testID}
           {...(derivedInputProps
             ? derivedInputProps.textInputProps
