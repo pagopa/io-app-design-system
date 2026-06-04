@@ -151,7 +151,6 @@ import IconOk from "./svg/IconOk";
 import IconOption from "./svg/IconOption";
 import IconPEC from "./svg/IconPEC";
 import IconPSP from "./svg/IconPSP";
-import IconPause from "./svg/IconPause";
 import IconPhone from "./svg/IconPhone";
 import IconPinOff from "./svg/IconPinOff";
 import IconPinOn from "./svg/IconPinOn";
@@ -183,6 +182,7 @@ import IconSpid from "./svg/IconSpid";
 import IconStarEmpty from "./svg/IconStarEmpty";
 import IconStarFilled from "./svg/IconStarFilled";
 import IconStarOff from "./svg/IconStarOff";
+import IconStop from "./svg/IconStop";
 import IconSuccess from "./svg/IconSuccess";
 import IconSwitchCard from "./svg/IconSwitchCard";
 import IconSwitchOff from "./svg/IconSwitchOff";
@@ -241,7 +241,7 @@ export const IOIcons = {
   pinOff: IconPinOff,
   pinOn: IconPinOn,
   play: IconPlay,
-  pause: IconPause,
+  stop: IconStop,
   emojiSad: IconEmojiSad,
   emojiHappy: IconEmojiHappy,
   phone: IconPhone,

@@ -1,6 +1,3 @@
-import { ForwardedRef, forwardRef } from "react";
-import { View } from "react-native";
-
 import { IOColors } from "../../core";
 import { IOFontSize } from "../../utils/fonts";
 import { IOText, IOTextProps, TypographicStyleProps } from "./IOText";
@@ -15,22 +12,19 @@ const defaultColor: IOColors = "white";
 /**
  * `ButtonText` typographic style
  */
-export const ButtonText = forwardRef<View, TypographicStyleProps>(
-  ({ color: customColor, ...props }, ref?: ForwardedRef<View>) => {
-    const ButtonTextProps: IOTextProps = {
-      ...props,
-      weight: "Semibold",
-      size: buttonTextFontSize,
-      lineHeight: buttonTextLineHeight,
-      /* Needed to render `ButtonOutline` and`ButtonLink` because they use
+export const ButtonText = ({
+  color: customColor,
+  ...props
+}: TypographicStyleProps) => {
+  const ButtonTextProps: IOTextProps = {
+    ...props,
+    weight: "Semibold",
+    size: buttonTextFontSize,
+    lineHeight: buttonTextLineHeight,
+    /* Needed to render `ButtonOutline` and`ButtonLink` because they use
 `AnimatedText` for color transition through Reanimated */
-      color: customColor ?? defaultColor
-    };
+    color: customColor ?? defaultColor
+  };
 
-    return (
-      <IOText ref={ref} {...ButtonTextProps}>
-        {props.children}
-      </IOText>
-    );
-  }
-);
+  return <IOText {...ButtonTextProps}>{props.children}</IOText>;
+};

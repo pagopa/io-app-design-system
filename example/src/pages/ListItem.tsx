@@ -123,7 +123,7 @@ const renderListItemNav = () => (
         <ListItemNav
           avatarProps={{
             logoUri: {
-              uri: "https://assets.cdn.io.italia.it/logos/organizations/82003830161.png"
+              uri: "https://assets.io.pagopa.it/logos/organizations/82003830161.png"
             }
           }}
           description="Description"
@@ -565,7 +565,7 @@ const renderListItemAmount = () => (
 /* LIST ITEM TRANSACTION */
 
 /* Mock assets */
-const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
+const cdnPath = "https://assets.io.pagopa.it/logos/organizations/";
 const organizationLogoURI = {
   imageSource: `${cdnPath}82003830161.png`,
   name: "Comune di Milano"

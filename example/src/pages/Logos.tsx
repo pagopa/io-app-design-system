@@ -68,7 +68,7 @@ export const Logos = () => (
   </Screen>
 );
 
-const cdnPath = "https://assets.cdn.io.italia.it/logos/organizations/";
+const cdnPath = "https://assets.io.pagopa.it/logos/organizations/";
 
 const organizationsURIs = [
   {

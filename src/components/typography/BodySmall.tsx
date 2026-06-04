@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
+import { Ref } from "react";
 import { Pressable, View } from "react-native";
 import { useIOTheme } from "../../context";
 import { IOFontWeight } from "../../utils/fonts";
@@ -9,7 +9,8 @@ import {
   TypographicStyleProps
 } from "./IOText";
 
-type BodySmallProps = TypographicStyleProps & {
+type BodySmallProps = Omit<TypographicStyleProps, "ref"> & {
+  ref?: Ref<View>;
   weight?: Extract<IOFontWeight, "Regular" | "Semibold">;
 } & TypographicStyleAsLinkProps;
 
@@ -19,61 +20,59 @@ export const bodySmallLineHeight = 21;
 /**
  * `BodySmall` typographic style
  */
-export const BodySmall = forwardRef<View, BodySmallProps>(
-  (
-    {
-      weight: customWeight,
-      color: customColor,
-      asLink,
-      avoidPressable,
-      accessibilityRole = "link",
-      textStyle: customTextStyle,
-      onPress,
-      ...props
-    },
-    ref?: ForwardedRef<View>
-  ) => {
-    const theme = useIOTheme();
+export const BodySmall = ({
+  ref,
+  weight: customWeight,
+  color: customColor,
+  asLink,
+  avoidPressable,
+  accessibilityRole = "link",
+  textStyle: customTextStyle,
+  onPress,
+  ...props
+}: BodySmallProps) => {
+  const theme = useIOTheme();
 
-    const defaultColor = asLink
-      ? theme["interactiveElem-default"]
-      : theme["textBody-tertiary"];
+  const defaultColor = asLink
+    ? theme["interactiveElem-default"]
+    : theme["textBody-tertiary"];
 
-    const BodySmallProps: IOTextProps = {
-      ...props,
-      dynamicTypeRamp: "footnote" /* iOS only */,
-      weight: customWeight ?? "Regular",
-      size: bodySmallFontSize,
-      lineHeight: bodySmallLineHeight,
-      color: customColor ?? defaultColor,
-      ...(asLink
-        ? {
-            accessibilityRole,
-            textStyle: customTextStyle ?? { textDecorationLine: "underline" }
-          }
-        : {})
-    };
+  const BodySmallProps: IOTextProps = {
+    ...props,
+    dynamicTypeRamp: "footnote" /* iOS only */,
+    weight: customWeight ?? "Regular",
+    size: bodySmallFontSize,
+    lineHeight: bodySmallLineHeight,
+    color: customColor ?? defaultColor,
+    ...(asLink
+      ? {
+          accessibilityRole,
+          textStyle: customTextStyle ?? { textDecorationLine: "underline" }
+        }
+      : {})
+  };
 
-    if (asLink && !avoidPressable) {
-      return (
-        <Pressable
-          onPress={onPress}
-          ref={ref}
-          accessibilityRole={accessibilityRole}
-        >
-          <IOText {...BodySmallProps}>{props.children}</IOText>
-        </Pressable>
-      );
-    }
-
+  if (asLink && !avoidPressable) {
+    // TODO: If Pressable is replaced with `onPress` on IOText, ref would
+    // always point to a Text node and the Ref<View> override in the prop
+    // type can be removed entirely.
     return (
-      <IOText
+      <Pressable
+        onPress={onPress}
         ref={ref}
-        {...BodySmallProps}
-        onPress={asLink && avoidPressable ? onPress : undefined}
+        accessibilityRole={accessibilityRole}
       >
-        {props.children}
-      </IOText>
+        <IOText {...BodySmallProps}>{props.children}</IOText>
+      </Pressable>
     );
   }
-);
+
+  return (
+    <IOText
+      {...BodySmallProps}
+      onPress={asLink && avoidPressable ? onPress : undefined}
+    >
+      {props.children}
+    </IOText>
+  );
+};

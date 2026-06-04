@@ -1,4 +1,4 @@
-import { Ref, forwardRef, useCallback, useMemo } from "react";
+import { Ref, useCallback, useMemo } from "react";
 import {
   GestureResponderEvent,
   Pressable,
@@ -25,6 +25,7 @@ type ColorMode = "light" | "dark";
 type TabItemState = "default" | "selected" | "disabled";
 
 export type TabItem = WithTestID<{
+  ref?: Ref<View>;
   label: string;
   color?: ColorMode;
   selected?: boolean;
@@ -57,155 +58,151 @@ type ColorStates = {
 
 const DISABLED_OPACITY = 0.5;
 
-const TabItem = forwardRef(
-  (
-    {
-      label,
-      color = "light",
-      selected = false,
-      accessibilityLabel,
-      accessibilityHint,
-      testID,
-      onPress,
-      disabled = false,
-      icon,
-      iconSelected
-    }: TabItem,
-    ref: Ref<View>
-  ) => {
-    const { onPressIn, onPressOut, scaleAnimatedStyle } =
-      useScaleAnimation("medium");
-    const theme = useIOTheme();
-    const reducedMotion = useReducedMotion();
+const TabItem = ({
+  label,
+  color = "light",
+  selected = false,
+  accessibilityLabel,
+  accessibilityHint,
+  testID,
+  onPress,
+  disabled = false,
+  icon,
+  iconSelected,
+  ref
+}: TabItem) => {
+  const { onPressIn, onPressOut, scaleAnimatedStyle } =
+    useScaleAnimation("medium");
+  const theme = useIOTheme();
+  const reducedMotion = useReducedMotion();
 
-    const mapColorStates: Record<
-      NonNullable<TabItem["color"]>,
-      ColorStates
-    > = useMemo(
-      () => ({
-        light: {
-          border: {
-            default: IOColors[theme["tab-item-border-default"]],
-            selected: hexToRgba(
-              IOColors[theme["tab-item-foreground-selected"]],
-              0.5
-            )
-          },
-          background: {
-            default: hexToRgba(
-              IOColors[theme["tab-item-background-selected"]],
-              0
-            ),
-            selected: hexToRgba(
-              IOColors[theme["tab-item-background-selected"]],
-              0.25
-            ),
-            pressed: IOColors[theme["appBackground-primary"]]
-          },
-          foreground: {
-            default: theme["tab-item-foreground-default"],
-            selected: theme["tab-item-foreground-selected"],
-            disabled: "grey-700"
-          }
+  const mapColorStates: Record<
+    NonNullable<TabItem["color"]>,
+    ColorStates
+  > = useMemo(
+    () => ({
+      light: {
+        border: {
+          default: IOColors[theme["tab-item-border-default"]],
+          selected: hexToRgba(
+            IOColors[theme["tab-item-foreground-selected"]],
+            0.5
+          )
         },
-        dark: {
-          border: {
-            default: hexToRgba(IOColors.white, 0),
-            selected: IOColors.white
-          },
-          background: {
-            default: hexToRgba(IOColors.white, 0.1),
-            selected: IOColors.white,
-            pressed: IOColors.white
-          },
-          foreground: {
-            default: "white",
-            selected: "black",
-            disabled: "white"
-          }
-        }
-      }),
-      [theme]
-    );
-
-    const itemState: TabItemState = selected
-      ? "selected"
-      : disabled
-      ? "disabled"
-      : "default";
-
-    const foregroundColor = mapColorStates[color].foreground[itemState];
-
-    const selectedStateTransition = useDerivedValue(() =>
-      withSpring(selected ? 1 : 0, IOSpringValues.selection)
-    );
-
-    // Interpolate animation values from `pressed` values
-    const animatedStyle = useAnimatedStyle(() => ({
-      backgroundColor: interpolateColor(
-        selectedStateTransition.value,
-        [0, 1],
-        [
-          mapColorStates[color].background.default,
-          mapColorStates[color].background.selected
-        ]
-      ),
-      borderColor: interpolateColor(
-        selectedStateTransition.value,
-        [0, 1],
-        [
-          mapColorStates[color].border.default,
-          mapColorStates[color].border.selected
-        ]
-      )
-    }));
-
-    const activeIcon = selected ? iconSelected ?? icon : icon;
-
-    const handleOnPress = useCallback(
-      (event: GestureResponderEvent) => {
-        if (onPress) {
-          ReactNativeHapticFeedback.trigger("impactLight");
-          onPress(event);
+        background: {
+          default: hexToRgba(
+            IOColors[theme["tab-item-background-selected"]],
+            0
+          ),
+          selected: hexToRgba(
+            IOColors[theme["tab-item-background-selected"]],
+            0.25
+          ),
+          pressed: IOColors[theme["appBackground-primary"]]
+        },
+        foreground: {
+          default: theme["tab-item-foreground-default"],
+          selected: theme["tab-item-foreground-selected"],
+          disabled: "grey-700"
         }
       },
-      [onPress]
-    );
+      dark: {
+        border: {
+          default: hexToRgba(IOColors.white, 0),
+          selected: IOColors.white
+        },
+        background: {
+          default: hexToRgba(IOColors.white, 0.1),
+          selected: IOColors.white,
+          pressed: IOColors.white
+        },
+        foreground: {
+          default: "white",
+          selected: "black",
+          disabled: "white"
+        }
+      }
+    }),
+    [theme]
+  );
 
-    return (
-      <Pressable
-        ref={ref}
-        accessibilityLabel={accessibilityLabel}
-        accessibilityHint={accessibilityHint}
-        accessibilityRole="tab"
-        accessibilityState={{ checked: !!selected }}
-        testID={testID}
-        onPress={handleOnPress}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        accessible={true}
-        disabled={disabled}
+  const itemState: TabItemState = selected
+    ? "selected"
+    : disabled
+    ? "disabled"
+    : "default";
+
+  const foregroundColor = mapColorStates[color].foreground[itemState];
+
+  const selectedStateTransition = useDerivedValue(() =>
+    withSpring(selected ? 1 : 0, IOSpringValues.selection)
+  );
+
+  // Interpolate animation values from `pressed` values
+  const animatedStyle = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      selectedStateTransition.value,
+      [0, 1],
+      [
+        mapColorStates[color].background.default,
+        mapColorStates[color].background.selected
+      ]
+    ),
+    borderColor: interpolateColor(
+      selectedStateTransition.value,
+      [0, 1],
+      [
+        mapColorStates[color].border.default,
+        mapColorStates[color].border.selected
+      ]
+    )
+  }));
+
+  const activeIcon = selected ? iconSelected ?? icon : icon;
+
+  const handleOnPress = useCallback(
+    (event: GestureResponderEvent) => {
+      if (onPress) {
+        ReactNativeHapticFeedback.trigger("impactLight");
+        onPress(event);
+      }
+    },
+    [onPress]
+  );
+
+  return (
+    <Pressable
+      ref={ref}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityRole="tab"
+      accessibilityState={{ checked: !!selected }}
+      testID={testID}
+      onPress={handleOnPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      accessible={true}
+      disabled={disabled}
+    >
+      <Animated.View
+        style={[
+          styles.container,
+          { columnGap: 4 },
+          !disabled && !reducedMotion && scaleAnimatedStyle,
+          animatedStyle,
+          disabled && { opacity: DISABLED_OPACITY }
+        ]}
       >
-        <Animated.View
-          style={[
-            styles.container,
-            { columnGap: 4 },
-            !disabled && !reducedMotion && scaleAnimatedStyle,
-            animatedStyle,
-            disabled && { opacity: DISABLED_OPACITY }
-          ]}
-        >
-          {activeIcon && (
-            <Icon name={activeIcon} color={foregroundColor} size={16} />
-          )}
-          <IOText size={14} weight="Semibold" color={foregroundColor}>
-            {label}
-          </IOText>
-        </Animated.View>
-      </Pressable>
-    );
-  }
-);
+        {activeIcon && (
+          <Icon name={activeIcon} color={foregroundColor} size={16} />
+        )}
+        <IOText size={14} weight="Semibold" color={foregroundColor}>
+          {label}
+        </IOText>
+      </Animated.View>
+    </Pressable>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

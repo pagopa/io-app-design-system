@@ -55,6 +55,7 @@ type InputTextProps = WithTestID<{
   icon?: IOIcons;
   rightElement?: ReactNode;
   counterLimit?: number;
+  showCounterOnlyWhenLimitReached?: boolean;
   accessibilityAnnounceLimitReached?: string;
   bottomMessage?: string;
   bottomMessageColor?: IOColors;
@@ -62,7 +63,13 @@ type InputTextProps = WithTestID<{
   isPassword?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
-  autoFocus?: boolean;
+  // autoFocus?: boolean; --- Ignore since this bug is open https://github.com/react-navigation/react-navigation/issues/11643 ---
+  /**
+   * Optional external ref to the underlying React Native `TextInput`. When
+   * provided, the consumer can imperatively call `focus()` / `blur()` on the
+   * input. Useful to work around autoFocus issues on React Navigation v7.
+   */
+  inputRef?: React.RefObject<TextInput | null>;
 }>;
 
 const inputMarginTop: IOSpacingScale = 16;
@@ -123,6 +130,7 @@ type InputTextHelperRow = Pick<
   InputTextProps,
   | "value"
   | "counterLimit"
+  | "showCounterOnlyWhenLimitReached"
   | "bottomMessage"
   | "bottomMessageColor"
   | "inputType"
@@ -132,6 +140,7 @@ type InputTextHelperRow = Pick<
 const HelperRow = ({
   value,
   counterLimit,
+  showCounterOnlyWhenLimitReached,
   bottomMessage,
   bottomMessageColor,
   inputType,
@@ -153,13 +162,17 @@ const HelperRow = ({
   const bottomMessageColorValue =
     bottomMessageColor ?? bottomMessageColorDefault;
 
+  const shouldShowCounter =
+    !!counterLimit &&
+    (!showCounterOnlyWhenLimitReached || valueCount >= counterLimit);
+
   const helperRowStyle: ViewStyle = useMemo(() => {
-    if (counterLimit && bottomMessage) {
+    if (shouldShowCounter && bottomMessage) {
       return {
         justifyContent: "space-between"
       };
     }
-    if (counterLimit) {
+    if (shouldShowCounter) {
       return {
         justifyContent: "flex-end"
       };
@@ -170,7 +183,7 @@ const HelperRow = ({
       };
     }
     return {};
-  }, [counterLimit, bottomMessage]);
+  }, [shouldShowCounter, bottomMessage]);
 
   return (
     <View
@@ -193,7 +206,7 @@ const HelperRow = ({
           {bottomMessage}
         </BodySmall>
       )}
-      {counterLimit && (
+      {shouldShowCounter && (
         <BodySmall
           accessibilityLiveRegion="polite"
           weight="Regular"
@@ -218,16 +231,20 @@ export const TextInputBase = ({
   icon,
   rightElement,
   counterLimit,
+  showCounterOnlyWhenLimitReached,
   accessibilityAnnounceLimitReached,
   bottomMessage,
   bottomMessageColor,
   onBlur,
   onFocus,
   isPassword,
-  autoFocus,
+  // autoFocus,
+  inputRef: externalInputRef,
   testID
 }: InputTextProps) => {
-  const inputRef = useRef<TextInput>(null);
+  const internalInputRef = useRef<TextInput>(null);
+  const inputRef = externalInputRef ?? internalInputRef;
+  const isSecretInput = useMemo(() => isPassword, [isPassword]);
   const [inputStatus, setInputStatus] = useState<InputStatus>(
     disabled ? "disabled" : "initial"
   );
@@ -329,7 +346,8 @@ export const TextInputBase = ({
     }
     focusedState.value = 1;
     setInputStatus("focused");
-    inputRef?.current?.focus();
+    // This now works again!
+    inputRef.current?.focus();
   };
 
   const onChangeTextHandler = useCallback(
@@ -371,9 +389,12 @@ export const TextInputBase = ({
   }, [focusedState, onBlur]);
 
   const onFocusHandler = () => {
-    focusedState.value = 1;
-    onFocus?.();
-    setInputStatus("focused");
+    // Only update if not already focused to prevent redundant layout passes
+    if (focusedState.value !== 1) {
+      focusedState.value = 1;
+      onFocus?.();
+      setInputStatus("focused");
+    }
   };
 
   const derivedInputProps = useMemo(
@@ -450,7 +471,7 @@ export const TextInputBase = ({
           importantForAccessibility="yes"
           accessibilityElementsHidden={false}
           editable={!disabled}
-          secureTextEntry={isPassword}
+          secureTextEntry={isSecretInput}
           disableFullscreenUI={true}
           accessibilityState={{ disabled }}
           accessibilityLabel={accessibilityLabel ?? placeholder}
@@ -478,7 +499,7 @@ export const TextInputBase = ({
               ? { color: inputTextColor }
               : { color: inputDisabledTextColor }
           ]}
-          autoFocus={autoFocus}
+          autoFocus={false}
           value={inputValue}
         />
         {/* We translate the label to the right if icon is present
@@ -556,6 +577,7 @@ export const TextInputBase = ({
           bottomMessage={bottomMessage}
           bottomMessageColor={bottomMessageColor}
           counterLimit={counterLimit}
+          showCounterOnlyWhenLimitReached={showCounterOnlyWhenLimitReached}
           inputType={inputType}
           textInputProps={textInputProps}
         />
