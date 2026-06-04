@@ -5,7 +5,6 @@ export * from "./badge";
 export * from "./banner";
 export * from "./buttons";
 export * from "./checkbox";
-export * from "./claimsSelector";
 export * from "./codeInput";
 export * from "./featureInfo";
 export * from "./headers";
