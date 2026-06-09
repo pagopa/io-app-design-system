@@ -466,6 +466,7 @@ export const Icon = ({
       accessibilityElementsHidden={!isAccessible}
       accessibilityLabel={accessibilityLabel}
       importantForAccessibility={isAccessible ? "auto" : "no-hide-descendants"}
+      pointerEvents="none"
     />
   );
 };
@@ -508,6 +509,7 @@ export const AnimatedIcon = ({
       accessibilityElementsHidden={true}
       accessibilityLabel={""}
       importantForAccessibility={"no-hide-descendants"}
+      pointerEvents="none"
     />
   );
 };

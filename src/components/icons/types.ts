@@ -1,4 +1,4 @@
-import { ColorValue, StyleProp } from "react-native";
+import { ColorValue, StyleProp, ViewProps } from "react-native";
 
 export type SVGIconProps = {
   size: number | "100%";
@@ -7,10 +7,6 @@ export type SVGIconProps = {
   accessible: boolean;
   accessibilityElementsHidden: boolean;
   accessibilityLabel: string;
-  importantForAccessibility:
-    | "auto"
-    | "yes"
-    | "no"
-    | "no-hide-descendants"
-    | undefined;
+  importantForAccessibility: ViewProps["importantForAccessibility"];
+  pointerEvents?: ViewProps["pointerEvents"];
 };
