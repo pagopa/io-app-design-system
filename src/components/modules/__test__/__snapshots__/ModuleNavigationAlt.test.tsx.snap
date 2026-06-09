@@ -488,6 +488,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title + Subtitle 
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -741,6 +742,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -839,6 +841,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) Title only + chev
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -1031,6 +1034,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -1178,6 +1182,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Badge (badge
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -1428,6 +1433,7 @@ exports[`ModuleNavigationAlt - Snapshot (Experimental Enabled) With Image (no ic
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -1964,6 +1970,7 @@ exports[`ModuleNavigationAlt - Snapshot Title + Subtitle 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -2217,6 +2224,7 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -2315,6 +2323,7 @@ exports[`ModuleNavigationAlt - Snapshot Title only + chevron (onPress) 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -2507,6 +2516,7 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
             meetOrSlice={0}
             minX={0}
             minY={0}
+            pointerEvents="none"
             style={
               [
                 {
@@ -2654,6 +2664,7 @@ exports[`ModuleNavigationAlt - Snapshot With Badge (badge + chevron) 1`] = `
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
@@ -2904,6 +2915,7 @@ exports[`ModuleNavigationAlt - Snapshot With Image (no icon) + chevron (onPress)
         meetOrSlice={0}
         minX={0}
         minY={0}
+        pointerEvents="none"
         style={
           [
             {
