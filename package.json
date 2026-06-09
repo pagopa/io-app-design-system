@@ -1,6 +1,6 @@
 {
   "name": "@pagopa/io-app-design-system",
-  "version": "7.0.2",
+  "version": "8.0.0",
   "description": "The library defining the core components of the design system of @pagopa/io-app",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -96,7 +96,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": "*",
+    "react": "^19.0.0",
     "react-native": "*",
     "react-native-easing-gradient": "*",
     "react-native-gesture-handler": "*",
