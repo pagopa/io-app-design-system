@@ -107,6 +107,7 @@ import PictogramMessage from "./svg/PictogramMessage";
 import PictogramMeterLimit from "./svg/PictogramMeterLimit";
 import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
+import PictogramNFCScanGreyAndroid from "./svg/PictogramNFCScanGreyAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramPending from "./svg/PictogramPending";
 import PictogramPinSecurity from "./svg/PictogramPinSecurity";
@@ -165,6 +166,7 @@ export const IOPictograms = {
   reactivate: PictogramReactivate,
   activate: PictogramActivate,
   nfcScanAndroid: PictogramNFCScanAndroid,
+  nfcScanGreyAndroid: PictogramNFCScanGreyAndroid,
   nfcScaniOS: PictogramNFCScaniOS,
   attachment: PictogramAttachment,
   lostConnection: PictogramLostConnection,
