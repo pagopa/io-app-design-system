@@ -121,6 +121,7 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
+import PictogramNFCScanGreyAndroid from "./svg/PictogramNFCScanGreyAndroid";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
@@ -165,6 +166,7 @@ export const IOPictograms = {
   reactivate: PictogramReactivate,
   activate: PictogramActivate,
   nfcScanAndroid: PictogramNFCScanAndroid,
+  nfcScanGreyAndroid: PictogramNFCScanGreyAndroid,
   nfcScaniOS: PictogramNFCScaniOS,
   attachment: PictogramAttachment,
   lostConnection: PictogramLostConnection,
