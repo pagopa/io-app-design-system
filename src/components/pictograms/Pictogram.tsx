@@ -107,6 +107,7 @@ import PictogramMessage from "./svg/PictogramMessage";
 import PictogramMeterLimit from "./svg/PictogramMeterLimit";
 import PictogramMoneyCheck from "./svg/PictogramMoneyCheck";
 import PictogramNFCScanAndroid from "./svg/PictogramNFCScanAndroid";
+import PictogramNFCScanGreyAndroid from "./svg/PictogramNFCScanGreyAndroid";
 import PictogramNFCScaniOS from "./svg/PictogramNFCScaniOS";
 import PictogramPending from "./svg/PictogramPending";
 import PictogramPinSecurity from "./svg/PictogramPinSecurity";
@@ -121,7 +122,6 @@ import PictogramStar from "./svg/PictogramStar";
 import PictogramTiming from "./svg/PictogramTiming";
 import PictogramWalletDoc from "./svg/PictogramWalletDoc";
 import { SVGPictogramProps } from "./types";
-import PictogramNFCScanGreyAndroid from "./svg/PictogramNFCScanGreyAndroid";
 
 export const IOPictograms = {
   empty: PictogramEmpty,
