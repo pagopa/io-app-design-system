@@ -8,7 +8,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
-import { RefObject, useCallback, useMemo, useRef, useState } from "react";
+import { RefObject, useCallback, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
 const OTP_LENGTH_8 = 8;
@@ -16,26 +16,43 @@ const OTP_LENGTH_6 = 6;
 const OTP_COMPARE_8 = "12345678";
 const OTP_COMPARE_6 = "123456";
 
-type WrapperProps = {
-  secret?: boolean;
+type AccessibilityValueText = (params: {
+  valueLength: number;
+  length: number;
+}) => string;
+
+type WrapperBaseProps = {
   validation?: boolean;
   autoFocus?: boolean;
   length?: number;
   otpCompare?: string;
-  accessibilityValueText?: (params: {
-    valueLength: number;
-    length: number;
-  }) => string;
 };
 
-const OTPWrapper = ({
-  secret = false,
-  validation = false,
-  autoFocus = false,
-  length = OTP_LENGTH_8,
-  otpCompare = OTP_COMPARE_8,
-  accessibilityValueText
-}: WrapperProps) => {
+type WrapperProps = WrapperBaseProps &
+  (
+    | {
+        secret: true;
+        accessibilityValueText: AccessibilityValueText;
+      }
+    | {
+        secret?: false;
+        accessibilityValueText?: AccessibilityValueText;
+      }
+  );
+
+const secretAccessibilityValueText: AccessibilityValueText = ({
+  valueLength,
+  length
+}) => `${valueLength} of ${length} digits entered`;
+
+const OTPWrapper = (props: WrapperProps) => {
+  const {
+    validation = false,
+    autoFocus = false,
+    length = OTP_LENGTH_8,
+    otpCompare = OTP_COMPARE_8,
+    ...otpInputAccessibilityProps
+  } = props;
   const [value, setValue] = useState("");
   const onValueChange = useCallback(
     (v: string) => {
@@ -51,29 +68,25 @@ const OTPWrapper = ({
     [validation, otpCompare]
   );
 
-  return useMemo(
-    () => (
-      <>
-        <OTPInput
-          value={value}
-          accessibilityLabel={"OTP Input"}
-          onValueChange={onValueChange}
-          length={length}
-          secret={secret}
-          onValidate={onValidate}
-          errorMessage={"Wrong OTP"}
-          autoFocus={autoFocus}
-          accessibilityValueText={accessibilityValueText}
-        />
-        <VSpacer />
-        <IOButton
-          variant="solid"
-          onPress={() => setValue("")}
-          label={"Pulisci valore"}
-        />
-      </>
-    ),
-    [value, onValueChange, secret, onValidate, autoFocus, length, accessibilityValueText]
+  return (
+    <>
+      <OTPInput
+        value={value}
+        accessibilityLabel={"OTP Input"}
+        onValueChange={onValueChange}
+        length={length}
+        onValidate={onValidate}
+        errorMessage={"Wrong OTP"}
+        autoFocus={autoFocus}
+        {...otpInputAccessibilityProps}
+      />
+      <VSpacer />
+      <IOButton
+        variant="solid"
+        onPress={() => setValue("")}
+        label={"Pulisci valore"}
+      />
+    </>
   );
 };
 
@@ -133,15 +146,17 @@ export const OTPInputScreen = () => {
             <VSpacer />
             <OTPWrapper
               secret
-              accessibilityValueText={({ valueLength, length }) =>
-                `${valueLength} of ${length} digits entered`
-              }
+              accessibilityValueText={secretAccessibilityValueText}
             />
             <VSpacer />
             <H5>Validation+Secret</H5>
             <BodySmall>Correct OTP {`${OTP_COMPARE_8}`}</BodySmall>
             <VSpacer />
-            <OTPWrapper secret validation />
+            <OTPWrapper
+              secret
+              validation
+              accessibilityValueText={secretAccessibilityValueText}
+            />
             <VSpacer />
             <H5>Validation+Secret+length 6</H5>
             <BodySmall>
@@ -154,6 +169,7 @@ export const OTPInputScreen = () => {
               validation
               length={OTP_LENGTH_6}
               otpCompare={OTP_COMPARE_6}
+              accessibilityValueText={secretAccessibilityValueText}
             />
             <VSpacer />
             <H5>Autofocus</H5>
