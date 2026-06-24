@@ -8,7 +8,7 @@ import {
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
-import { RefObject, useCallback, useRef, useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
 
 const OTP_LENGTH_8 = 8;
@@ -50,8 +50,7 @@ const OTPWrapper = (props: WrapperProps) => {
     validation = false,
     autoFocus = false,
     length = OTP_LENGTH_8,
-    otpCompare = OTP_COMPARE_8,
-    ...otpInputAccessibilityProps
+    otpCompare = OTP_COMPARE_8
   } = props;
   const [value, setValue] = useState("");
   const onValueChange = useCallback(
@@ -68,25 +67,43 @@ const OTPWrapper = (props: WrapperProps) => {
     [validation, otpCompare]
   );
 
-  return (
-    <>
-      <OTPInput
-        value={value}
-        accessibilityLabel={"OTP Input"}
-        onValueChange={onValueChange}
-        length={length}
-        onValidate={onValidate}
-        errorMessage={"Wrong OTP"}
-        autoFocus={autoFocus}
-        {...otpInputAccessibilityProps}
-      />
-      <VSpacer />
-      <IOButton
-        variant="solid"
-        onPress={() => setValue("")}
-        label={"Pulisci valore"}
-      />
-    </>
+  return useMemo(
+    () => (
+      <>
+        <OTPInput
+          value={value}
+          accessibilityLabel={"OTP Input"}
+          onValueChange={onValueChange}
+          length={length}
+          onValidate={onValidate}
+          errorMessage={"Wrong OTP"}
+          autoFocus={autoFocus}
+          {...(props.secret === true
+            ? {
+                secret: true as const,
+                accessibilityValueText: props.accessibilityValueText
+              }
+            : {
+                accessibilityValueText: props.accessibilityValueText
+              })}
+        />
+        <VSpacer />
+        <IOButton
+          variant="solid"
+          onPress={() => setValue("")}
+          label={"Pulisci valore"}
+        />
+      </>
+    ),
+    [
+      value,
+      onValueChange,
+      props.secret,
+      props.accessibilityValueText,
+      onValidate,
+      autoFocus,
+      length
+    ]
   );
 };
 
