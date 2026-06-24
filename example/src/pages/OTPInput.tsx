@@ -5,6 +5,8 @@ import {
   H5,
   IOButton,
   OTPInput,
+  type OTPInputAccessibilityValueText,
+  type OTPInputSecretProps,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
@@ -16,26 +18,27 @@ const OTP_LENGTH_6 = 6;
 const OTP_COMPARE_8 = "12345678";
 const OTP_COMPARE_6 = "123456";
 
-type WrapperProps = {
-  secret?: boolean;
+type WrapperBaseProps = {
   validation?: boolean;
   autoFocus?: boolean;
   length?: number;
   otpCompare?: string;
-  accessibilityValueText?: (params: {
-    valueLength: number;
-    length: number;
-  }) => string;
 };
 
-const OTPWrapper = ({
-  secret = false,
-  validation = false,
-  autoFocus = false,
-  length = OTP_LENGTH_8,
-  otpCompare = OTP_COMPARE_8,
-  accessibilityValueText
-}: WrapperProps) => {
+type WrapperProps = WrapperBaseProps & OTPInputSecretProps;
+
+const secretAccessibilityValueText: OTPInputAccessibilityValueText = ({
+  valueLength,
+  length
+}) => `${valueLength} of ${length} digits entered`;
+
+const OTPWrapper = (props: WrapperProps) => {
+  const {
+    validation = false,
+    autoFocus = false,
+    length = OTP_LENGTH_8,
+    otpCompare = OTP_COMPARE_8
+  } = props;
   const [value, setValue] = useState("");
   const onValueChange = useCallback(
     (v: string) => {
@@ -59,11 +62,17 @@ const OTPWrapper = ({
           accessibilityLabel={"OTP Input"}
           onValueChange={onValueChange}
           length={length}
-          secret={secret}
           onValidate={onValidate}
           errorMessage={"Wrong OTP"}
           autoFocus={autoFocus}
-          accessibilityValueText={accessibilityValueText}
+          {...(props.secret === true
+            ? {
+                secret: true as const,
+                accessibilityValueText: props.accessibilityValueText
+              }
+            : {
+                accessibilityValueText: props.accessibilityValueText
+              })}
         />
         <VSpacer />
         <IOButton
@@ -73,7 +82,15 @@ const OTPWrapper = ({
         />
       </>
     ),
-    [value, onValueChange, secret, onValidate, autoFocus, length, accessibilityValueText]
+    [
+      value,
+      onValueChange,
+      props.secret,
+      props.accessibilityValueText,
+      onValidate,
+      autoFocus,
+      length
+    ]
   );
 };
 
@@ -133,15 +150,17 @@ export const OTPInputScreen = () => {
             <VSpacer />
             <OTPWrapper
               secret
-              accessibilityValueText={({ valueLength, length }) =>
-                `${valueLength} of ${length} digits entered`
-              }
+              accessibilityValueText={secretAccessibilityValueText}
             />
             <VSpacer />
             <H5>Validation+Secret</H5>
             <BodySmall>Correct OTP {`${OTP_COMPARE_8}`}</BodySmall>
             <VSpacer />
-            <OTPWrapper secret validation />
+            <OTPWrapper
+              secret
+              validation
+              accessibilityValueText={secretAccessibilityValueText}
+            />
             <VSpacer />
             <H5>Validation+Secret+length 6</H5>
             <BodySmall>
@@ -154,6 +173,7 @@ export const OTPInputScreen = () => {
               validation
               length={OTP_LENGTH_6}
               otpCompare={OTP_COMPARE_6}
+              accessibilityValueText={secretAccessibilityValueText}
             />
             <VSpacer />
             <H5>Autofocus</H5>
