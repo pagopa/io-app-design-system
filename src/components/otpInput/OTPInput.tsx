@@ -151,7 +151,7 @@ export const OTPInput = ({
   };
 
   const accessibilityValueText =
-    props.secret === true
+    isSecret
       ? props.accessibilityValueText(accessibilityValueTextParams)
       : props.accessibilityValueText?.(accessibilityValueTextParams) ??
         value.split("").join(", ");
