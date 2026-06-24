@@ -18,12 +18,12 @@ import { BoxedInput } from "./BoxedInput";
 
 const OTP_ITEMS_GAP = 8;
 
-type AccessibilityValueText = (params: {
+export type OTPInputAccessibilityValueText = (params: {
   valueLength: number;
   length: number;
 }) => string;
 
-type BaseProps = {
+type Props = {
   ref?: Ref<View>;
   value: string;
   onValueChange: (value: string) => void;
@@ -38,17 +38,17 @@ type BaseProps = {
   autoFocus?: boolean;
 };
 
-type Props = BaseProps &
-  (
-    | {
-        secret: true;
-        accessibilityValueText: AccessibilityValueText;
-      }
-    | {
-        secret?: false;
-        accessibilityValueText?: AccessibilityValueText;
-      }
-  );
+export type OTPInputSecretProps =
+  | {
+      secret: true;
+      accessibilityValueText: OTPInputAccessibilityValueText;
+    }
+  | {
+      secret?: false;
+      accessibilityValueText?: OTPInputAccessibilityValueText;
+    };
+
+export type OTPInputProps = Props & OTPInputSecretProps;
 
 /**
  * `OTPInput` is a component that allows the user to enter a one-time password.
@@ -77,7 +77,7 @@ export const OTPInput = ({
   deleteButtonAccessibilityLabel,
   ref,
   ...props
-}: Props) => {
+}: OTPInputProps) => {
   const [hasFocus, setHasFocus] = useState(autoFocus);
   const [hasError, setHasError] = useState(false);
   const isSecret = props.secret === true;
@@ -150,11 +150,10 @@ export const OTPInput = ({
     length
   };
 
-  const accessibilityValueText =
-    isSecret
-      ? props.accessibilityValueText(accessibilityValueTextParams)
-      : props.accessibilityValueText?.(accessibilityValueTextParams) ??
-        value.split("").join(", ");
+  const accessibilityValueText = isSecret
+    ? props.accessibilityValueText(accessibilityValueTextParams)
+    : props.accessibilityValueText?.(accessibilityValueTextParams) ??
+      value.split("").join(", ");
 
   const cells = useMemo(() => Array.from({ length }), [length]);
 

@@ -5,6 +5,8 @@ import {
   H5,
   IOButton,
   OTPInput,
+  type OTPInputAccessibilityValueText,
+  type OTPInputSecretProps,
   VSpacer
 } from "@pagopa/io-app-design-system";
 import { useHeaderHeight } from "@react-navigation/elements";
@@ -16,11 +18,6 @@ const OTP_LENGTH_6 = 6;
 const OTP_COMPARE_8 = "12345678";
 const OTP_COMPARE_6 = "123456";
 
-type AccessibilityValueText = (params: {
-  valueLength: number;
-  length: number;
-}) => string;
-
 type WrapperBaseProps = {
   validation?: boolean;
   autoFocus?: boolean;
@@ -28,19 +25,9 @@ type WrapperBaseProps = {
   otpCompare?: string;
 };
 
-type WrapperProps = WrapperBaseProps &
-  (
-    | {
-        secret: true;
-        accessibilityValueText: AccessibilityValueText;
-      }
-    | {
-        secret?: false;
-        accessibilityValueText?: AccessibilityValueText;
-      }
-  );
+type WrapperProps = WrapperBaseProps & OTPInputSecretProps;
 
-const secretAccessibilityValueText: AccessibilityValueText = ({
+const secretAccessibilityValueText: OTPInputAccessibilityValueText = ({
   valueLength,
   length
 }) => `${valueLength} of ${length} digits entered`;
