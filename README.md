@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> Since July 13, 2026, the source of this library has moved into the [`io-app`](https://github.com/pagopa/io-app) monorepo. The `@pagopa/io-app-design-system` npm package continues to be published from there. This repository is kept for history and is no longer the source of truth for new development.
+>
+> #### [Explore the `io-app-design-system` library →](https://github.com/pagopa/io-app/tree/master/libs/design-system)
+
 <div style="display: flex; flex-direction: column; align-items: center">
 
 <img alt="IO App Design System" src="repo-assets/io-app-design-system-github-cover.png" width="100%" style="max-width: 768px" align="center" /><br />
